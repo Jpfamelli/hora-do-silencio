@@ -898,6 +898,7 @@ function patrulhar() {
 function emitNoise(x, z, r, doJogador, garrafa) {
   if (!M.ativo || S.dead || !W.salas.length) return;
   const d = Math.hypot(M.pos.x - x, M.pos.z - z);
+  if (!garrafa) r *= mascaraSom(x, z);
   const att = salaAdj(roomAt(M.pos.x, M.pos.z), roomAt(x, z)) ? 1 : .5;
   if (d < r * att * D().ouvido) {
     if (doJogador && S.hidden && d < 2.6) M.achou = true;
@@ -908,7 +909,7 @@ function emitNoise(x, z, r, doJogador, garrafa) {
 function falaInspetor(perdeu) {
   if (M.falaT > 0) return; M.falaT = rand(8, 14);
   const ent = R.entidades.inspetor, t = pick(perdeu ? ent.falas_perdeu : ent.falas_caca);
-  sub('inspetor', t); SFX.voz(M.pos);
+  sub('inspetor', t); SFX.voz(M.pos, t);
 }
 function updateInspetor(dt) {
   if (!M.ativo) return;
@@ -925,7 +926,7 @@ function updateInspetor(dt) {
     M.diretorT = rand(18, 32) * D().intervalo;
     if (d > 22) { const viz = [P.room, ...W.links.filter(l => (l.a === P.room.id || l.b === P.room.id) && !(l.door && l.door.trava && l.door.trava())).map(l => SALA(l.a === P.room.id ? l.b : l.a))].filter(r => (!r.fora || W.def.inspetorFora) && !r.seguro); const r = pick(viz); if (r) { const [x, z] = pontoEm(r); planejar(M, x, z); } }
   }
-  const ouvido = P.noiseR * att * D().ouvido * (M.state === 'caca' ? 1.6 : 1);
+  const ouvido = P.noiseR * att * D().ouvido * (M.state === 'caca' ? 1.6 : 1) * mascaraSom(P.pos.x, P.pos.z);
   const ouve = !S.hidden && !(P.room.seguro && !fuga) && (fuga || M.furia > 0 || (P.noiseR > 0 && d < ouvido));
   if (ouve && !M.alvoGarrafa) {
     if (M.state !== 'caca') {
@@ -1017,7 +1018,7 @@ function updateAna(dt) {
     andar(ANA, dt, 3.4 * D().vel, false);
     ANA.contaT -= dt;
     if (ANA.contaT <= 0) {
-      ANA.contaT = 1.1; const c = R.entidades.ana.contagem[Math.min(9, ANA.conta)];
+      ANA.contaT = clamp(.55 + (d - 4) * .085, .55, 1.4); const c = R.entidades.ana.contagem[Math.min(9, ANA.conta)];
       SFX.contagem(ANA.pos, ANA.conta); if (ANA.conta % 3 === 0 || ANA.conta >= 8) subPequeno('ana', c);
       ANA.conta++;
       if (ANA.conta >= 10 && d < 10) {
@@ -1058,7 +1059,7 @@ const PROC = { fase: null, t: 0, path: [], pos: new THREE.Vector3(), g: null, lu
 })();
 function iniciarProcissao() {
   if (PROC.fase || S.dead || !W.def.procissao || P.room.fora) return;
-  PROC.fase = 'aviso'; PROC.t = D().aviso; SFX.estatica(D().aviso + 1); SFX.canto(D().aviso + 3);
+  PROC.fase = 'aviso'; PROC.t = D().aviso; { const sl = salasAlcancaveis(P.pos, { semFora: true }), lg = sl.filter(r => distSalas(r, P.room) >= 2); PROC.ini = lg.length ? pick(lg) : null; } SFX.estatica(D().aviso + 1); SFX.canto(D().aviso + 3);
   if (!S.flags.procAviso) { S.flags.procAviso = true; falar('procissao_aviso'); }
   toast('As luzes estão piscando...');
 }
@@ -1071,7 +1072,7 @@ function updateProcissao(dt) {
     if (PROC.t <= 0) {
       const salas = salasAlcancaveis(P.pos, { semFora: true });
       const longe = salas.filter(r => distSalas(r, P.room) >= 2);
-      const ini = longe.length ? pick(longe) : pick(salas.filter(r => r !== P.room)) || P.room;
+      const ini = PROC.ini && longe.includes(PROC.ini) ? PROC.ini : longe.length ? pick(longe) : pick(salas.filter(r => r !== P.room)) || P.room;
       const e1 = { pos: new THREE.Vector3((ini.x0 + ini.x1) / 2, 0, (ini.z0 + ini.z1) / 2), path: [] };
       planejar(e1, P.pos.x, P.pos.z);
       const outras = longe.filter(r => r !== ini);
@@ -1095,7 +1096,7 @@ function updateProcissao(dt) {
   }
 }
 function acabarProcissao() {
-  PROC.fase = null; PROC.g.visible = false; PROC.luz.intensity = 0; PROC.acertou = false; SFX.pararCanto();
+  PROC.fase = null; PROC.ini = null; PROC.g.visible = false; PROC.luz.intensity = 0; PROC.acertou = false; SFX.pararCanto();
   syncLuzes();
   if (!S.dead && !S.done.procissao && R.capitulos[S.chapter].objetivos.some(o => o.id === 'procissao')) { objDone('procissao'); falar('procissao_passou'); conquista('procissao'); }
   S.timers.procissao = rand(100, 160) * D().intervalo;
@@ -1372,135 +1373,388 @@ function pularCena() {
 // =====================================================================
 // ÁUDIO PROCEDURAL
 // =====================================================================
+// Cadeia: fontes -> barramentos (amb/ent/voz passam pelo "vácuo"; sfx e mus não) -> mundo (abafável) -> master
+//         corpo (coração/respiração) vai direto ao master: escondida, você ouve o próprio corpo sem filtro.
+//         master -> corte (DEZ da Ana) -> mono -> compressor -> makeup -> saída
 let AC = null, master, reverb, ruidoBuf;
 const AMB = {};
+const BUS = {};
+const FONTES = new Set();
+const AUD = { sils: [], trovaoIni: 0, trovaoAte: 0, coracaoN: 0, hbT: 0, resp: 0, prendia: false, ultStinger: [], stingerT: -99, dezAte: 0, estPrev: null, anaPrev: null, procT: 0, evT: 28, cacaT: 0, cacaSemi: 0, posCacaT: 0, percT: 0, pulsoT: 0, lampT: 0, ocT: 0, flashPrev: false, tiqueT: 0, avisouCoracao: false, cordaT: -9, cordaN: 0, sala: null, zumbidoAte: 0, pausado: false, erroAvisado: false };
+for (const [k, v] of Object.entries({ vAmb: 1, vSfx: 1, vEnt: 1, vVoz: 1, mono: 0, noturno: 0, falada: 0 })) if (OPT[k] === undefined) OPT[k] = v;
 const SFX = new Proxy({}, { get: (t, k) => (...a) => { if (!AC) return; try { return SOM[k] && SOM[k](...a); } catch (e) { console.warn(e); } } });
+const depois = (ms, fn) => setTimeout(() => { try { if (AC) fn(); } catch (e) { console.warn(e); } }, ms);
+function gerarIR(seg, curva) {
+  const n = Math.max(1, AC.sampleRate * seg | 0), ir = AC.createBuffer(2, n, AC.sampleRate);
+  for (let c = 0; c < 2; c++) { const ch = ir.getChannelData(c); for (let i = 0; i < n; i++) ch[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / n, curva); }
+  return ir;
+}
+function aplicarNoturno() {
+  if (!AC) return;
+  const c = AUD.cmp, n = !!OPT.noturno;
+  c.threshold.value = n ? -46 : -24; c.knee.value = n ? 12 : 30; c.ratio.value = n ? 16 : 12; c.attack.value = .003; c.release.value = n ? .4 : .25;
+  AUD.makeup.gain.value = n ? 2.3 : 1;
+}
+function aplicarVolumes() {
+  if (!AC) return;
+  const t = AC.currentTime;
+  for (const [k, v] of [['amb', 'vAmb'], ['mus', 'vAmb'], ['ent', 'vEnt'], ['voz', 'vVoz'], ['sfx', 'vSfx'], ['corpo', 'vSfx']]) {
+    const alvo = OPT[v] * (k === 'ent' ? (AUD.entK ?? 1) : 1);
+    BUS[k].gain.setTargetAtTime(alvo, t, .05); BUS[k + 'R'].gain.setTargetAtTime(alvo, t, .05);
+  }
+  AUD.mono.channelCount = OPT.mono ? 1 : 2;
+}
 function iniciarAudio() {
-  if (AC) { AC.resume(); return; }
+  if (AC) { if (AC.state === 'suspended') AC.resume(); return; }
   AC = new (window.AudioContext || window.webkitAudioContext)();
   master = AC.createGain(); master.gain.value = OPT.vol;
-  const cmp = AC.createDynamicsCompressor(); master.connect(cmp); cmp.connect(AC.destination);
+  AUD.corte = AC.createGain();
+  AUD.mono = AC.createGain(); AUD.mono.channelCountMode = 'explicit'; AUD.mono.channelInterpretation = 'speakers'; AUD.mono.channelCount = OPT.mono ? 1 : 2;
+  AUD.cmp = AC.createDynamicsCompressor(); AUD.makeup = AC.createGain();
+  master.connect(AUD.corte); AUD.corte.connect(AUD.mono); AUD.mono.connect(AUD.cmp); AUD.cmp.connect(AUD.makeup); AUD.makeup.connect(AC.destination);
+  aplicarNoturno();
+  AUD.abafa = AC.createBiquadFilter(); AUD.abafa.type = 'lowpass'; AUD.abafa.frequency.value = 20000; AUD.abafa.Q.value = .5;
+  AUD.mundo = AC.createGain(); AUD.mundo.connect(AUD.abafa); AUD.abafa.connect(master);
+  AUD.madeira = AC.createDelay(.2); AUD.madeira.delayTime.value = .021;
+  const mfb = AC.createGain(); mfb.gain.value = .38; const mlp = AC.createBiquadFilter(); mlp.type = 'lowpass'; mlp.frequency.value = 1400;
+  AUD.madeiraG = AC.createGain(); AUD.madeiraG.gain.value = 0;
+  AUD.mundo.connect(AUD.madeiraG); AUD.madeiraG.connect(AUD.madeira); AUD.madeira.connect(mlp); mlp.connect(mfb); mfb.connect(AUD.madeira); mlp.connect(AUD.abafa);
+  AUD.vacuo = AC.createGain(); AUD.vacuo.connect(AUD.mundo);
   ruidoBuf = AC.createBuffer(1, AC.sampleRate * 2, AC.sampleRate);
   const d = ruidoBuf.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
-  const ir = AC.createBuffer(2, AC.sampleRate * 2.6, AC.sampleRate);
-  for (let c = 0; c < 2; c++) { const ch = ir.getChannelData(c); for (let i = 0; i < ch.length; i++) ch[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / ch.length, 2.6); }
-  reverb = AC.createConvolver(); reverb.buffer = ir; const rv = AC.createGain(); rv.gain.value = .4; reverb.connect(rv); rv.connect(master);
-  SOM.ambiente();
+  AUD.revIn = AC.createGain(); const ret = AC.createGain(); ret.gain.value = .45; ret.connect(AUD.vacuo);
+  AUD.rev = {};
+  for (const [k, seg, curva] of [['p', .6, 3], ['g', 2.8, 2.4], ['t', 4, 1.8]]) {
+    const s = AC.createGain(); s.gain.value = k === 'p' ? 1 : 0; const cv = AC.createConvolver(); cv.buffer = gerarIR(seg, curva);
+    AUD.revIn.connect(s); s.connect(cv); cv.connect(ret); AUD.rev[k] = s;
+    if (k === 't') { const dl = AC.createDelay(1); dl.delayTime.value = .18; const fb = AC.createGain(); fb.gain.value = .3; cv.connect(dl); dl.connect(fb); fb.connect(dl); dl.connect(ret); }
+  }
+  reverb = AUD.revIn;
+  for (const [k, destino, v] of [['amb', AUD.vacuo, 'vAmb'], ['ent', AUD.vacuo, 'vEnt'], ['voz', AUD.vacuo, 'vVoz'], ['sfx', AUD.mundo, 'vSfx'], ['mus', AUD.mundo, 'vAmb'], ['corpo', master, 'vSfx']]) {
+    BUS[k] = AC.createGain(); BUS[k].gain.value = OPT[v]; BUS[k].connect(destino);
+    BUS[k + 'R'] = AC.createGain(); BUS[k + 'R'].gain.value = OPT[v]; BUS[k + 'R'].connect(AUD.revIn);
+  }
+  SOM.ambiente(); SOM.musica(); SOM.corpo(); SOM.lampadas(); SOM.lanterna();
 }
 function ruido(loop) { const s = AC.createBufferSource(); s.buffer = ruidoBuf; s.loop = !!loop; return s; }
-function saida(pos, wet = .3) {
-  const g = AC.createGain(); let node = g;
-  if (pos) { const p = AC.createPanner(); p.panningModel = 'HRTF'; p.distanceModel = 'inverse'; p.refDistance = 2; p.rolloffFactor = 1.2; p.positionX.value = pos.x; p.positionY.value = pos.y ?? 1.5; p.positionZ.value = pos.z; g.connect(p); node = p; }
-  node.connect(master);
-  if (wet) { const w = AC.createGain(); w.gain.value = wet; node.connect(w); w.connect(reverb); }
+function novoPanner(ref = 2, roll = 1.2) { const p = AC.createPanner(); p.panningModel = OPT.mono ? 'equalpower' : 'HRTF'; p.distanceModel = 'inverse'; p.refDistance = ref; p.rolloffFactor = roll; return p; }
+function posPanner(p, pos) { p.positionX.value = pos.x; p.positionY.value = pos.y ?? 1.5; p.positionZ.value = pos.z; }
+// Oclusão: quanto do som atravessa paredes e portas até a sala da jogadora
+function oclusao(pos) {
+  if (!P.room || !W.salas || !W.salas.length) return null;
+  const r = roomAt(pos.x, pos.z);
+  if (!r || r === P.room || (r.fora && P.room.fora)) return null;
+  const n = distSalas(r, P.room);
+  if (n <= 1) return salaAdj(r, P.room) ? { f: 3000, g: .85 } : { f: 900, g: .5 };
+  if (n === 2) return { f: 550, g: .42 };
+  return { f: 380, g: .3 };
+}
+function saida(pos, wet = .3, bus) {
+  bus = BUS[bus] ? bus : 'sfx';
+  const g = AC.createGain(); let node = g, oc = null;
+  if (pos) {
+    const p = novoPanner(); posPanner(p, pos); g.connect(p); node = p;
+    oc = oclusao(pos);
+    if (oc) { const f = AC.createBiquadFilter(); f.type = 'lowpass'; f.frequency.value = oc.f; f.Q.value = .4; const og = AC.createGain(); og.gain.value = oc.g; node.connect(f); f.connect(og); node = og; }
+  }
+  node.connect(BUS[bus]);
+  if (wet) { const w = AC.createGain(); w.gain.value = wet * (oc ? 1.4 : 1); node.connect(w); w.connect(BUS[bus + 'R']); }
   return g;
 }
+// Fonte contínua com posição e oclusão atualizadas (gerador, canto, lâmpadas)
+function fonteFixa(pos, bus = 'amb', wet = .2) {
+  const g = AC.createGain(), p = novoPanner(2.5, 1.1), f = AC.createBiquadFilter(), og = AC.createGain();
+  f.type = 'lowpass'; f.frequency.value = 20000; f.Q.value = .4;
+  g.connect(p); p.connect(f); f.connect(og); og.connect(BUS[bus]);
+  if (wet) { const w = AC.createGain(); w.gain.value = wet; og.connect(w); w.connect(BUS[bus + 'R']); }
+  const F = { g, p, f, og, pos: { x: pos.x, y: pos.y ?? 1.5, z: pos.z } }; posPanner(p, F.pos); FONTES.add(F); atualizarOclusao(F, true); return F;
+}
+function moverFonte(F, pos) { F.pos.x = pos.x; F.pos.z = pos.z; if (pos.y !== undefined) F.pos.y = pos.y; posPanner(F.p, F.pos); }
+function atualizarOclusao(F, ja) { const oc = oclusao(F.pos), t = AC.currentTime; F.f.frequency.setTargetAtTime(oc ? oc.f : 20000, t, ja ? .001 : .15); F.og.gain.setTargetAtTime(oc ? oc.g : 1, t, ja ? .001 : .15); }
 function env(g, t0, a, peak, dec) { g.gain.setValueAtTime(0.0001, t0); g.gain.exponentialRampToValueAtTime(Math.max(.0002, peak), t0 + a); g.gain.exponentialRampToValueAtTime(0.0001, t0 + a + dec); }
 function osc(tipo, f, t, dur, g) { const o = AC.createOscillator(); o.type = tipo; o.frequency.value = f; o.connect(g); o.start(t); o.stop(t + dur); return o; }
 function burst(t, dur, filtro, freq, q, g, off = Math.random()) { const s = ruido(), f = AC.createBiquadFilter(); f.type = filtro; f.frequency.value = freq; f.Q.value = q; s.connect(f); f.connect(g); s.start(t, off); s.stop(t + dur); return f; }
+function curvaDist(k) { const n = 1024, c = new Float32Array(n); for (let i = 0; i < n; i++) { const x = i / (n - 1) * 2 - 1; c[i] = (1 + k) * x / (1 + k * Math.abs(x)); } return c; }
+// Vozes formantes: vogal -> [f1, f2]
+const VOGAL = { a: [800, 1200], e: [500, 1800], i: [300, 2300], o: [500, 900], u: [320, 800] };
+function silaba(t, pos, f0, vogal, dur, peak, bus = 'voz', wet = .5) {
+  const g = saida(pos, wet, bus), o = AC.createOscillator(); o.type = 'sawtooth'; o.frequency.setValueAtTime(f0, t); o.frequency.linearRampToValueAtTime(f0 * .93, t + dur);
+  const [f1, f2] = VOGAL[vogal] || VOGAL.a;
+  for (const [ff, a] of [[f1, 1], [f2, .55]]) { const bp = AC.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = ff; bp.Q.value = 6; const bg = AC.createGain(); bg.gain.value = a; o.connect(bp); bp.connect(bg); bg.connect(g); }
+  const s = ruido(), sf = AC.createBiquadFilter(); sf.type = 'bandpass'; sf.frequency.value = f2; sf.Q.value = 2; const sg = AC.createGain(); sg.gain.value = .35; s.connect(sf); sf.connect(sg); sg.connect(g); s.start(t, Math.random()); s.stop(t + dur + .1);
+  env(g, t, .06, peak, dur); o.start(t); o.stop(t + dur + .15);
+  return o;
+}
+const STINGERS = [
+  t => { // cordas em cluster que despencam
+    for (const f of [110, 116.5, 155, 233, 247]) { const g = saida(null, .6, 'mus'); const o = AC.createOscillator(); o.type = 'sawtooth'; o.frequency.setValueAtTime(f, t); o.frequency.exponentialRampToValueAtTime(f * .78, t + 1.8); o.connect(g); g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(.09, t + .05); g.gain.exponentialRampToValueAtTime(.0001, t + 2); o.start(t); o.stop(t + 2.1); }
+    const g = saida(null, .8, 'mus'); burst(t, 1, 'highpass', 200, 1, g); env(g, t, .01, .35, .9);
+  },
+  t => { // piano grave com cauda longa
+    for (const [f, a] of [[55, 1], [58.3, .7], [61.7, .6], [110.2, .5], [165.5, .3], [221, .2]]) { const g = saida(null, 1.2, 'mus'); osc('triangle', f, t, 4.5, g); env(g, t, .004, .16 * a, 4); }
+  },
+  t => { // metal raspado ressonante
+    const g = saida(null, .9, 'mus'); for (const f of [1230, 1870, 2650]) { const s = ruido(), bp = AC.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.setValueAtTime(f, t); bp.frequency.linearRampToValueAtTime(f * .9, t + 2); bp.Q.value = 30; s.connect(bp); bp.connect(g); s.start(t, Math.random()); s.stop(t + 2.2); }
+    env(g, t, .02, 2.2, 2); const g2 = saida(null, .5, 'mus'); const o = AC.createOscillator(); o.type = 'sawtooth'; o.frequency.setValueAtTime(300, t); o.frequency.linearRampToValueAtTime(180, t + 1); o.connect(g2); env(g2, t, .01, .05, 1); o.start(t); o.stop(t + 1.1);
+  },
+  t => { // sopro ao contrário, crescente, cortado seco
+    const g = saida(null, .4, 'mus'); burst(t, 1, 'bandpass', 900, .7, g); const o = AC.createOscillator(); o.type = 'sawtooth'; o.frequency.setValueAtTime(70, t); o.frequency.exponentialRampToValueAtTime(140, t + .9); o.connect(g);
+    g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(.55, t + .9); g.gain.setValueAtTime(0, t + .91); o.start(t); o.stop(t + .95);
+    depois(900, () => SOM.impacto(1.2));
+  },
+  t => { // coro distorcido
+    const ws = AC.createWaveShaper(); ws.curve = curvaDist(8); const g = saida(null, .9, 'mus'); ws.connect(g);
+    for (const f of [196, 207.6, 233, 277.2]) { const o = AC.createOscillator(); o.type = 'sawtooth'; o.frequency.setValueAtTime(f, t); o.frequency.linearRampToValueAtTime(f * 1.04, t + 1.6); const lfo = AC.createOscillator(); lfo.frequency.value = rand(5, 8); const lg = AC.createGain(); lg.gain.value = f * .03; lfo.connect(lg); lg.connect(o.frequency); const bp = AC.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 750; bp.Q.value = 3; o.connect(bp); bp.connect(ws); o.start(t); lfo.start(t); o.stop(t + 1.9); lfo.stop(t + 1.9); }
+    g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(.12, t + .08); g.gain.exponentialRampToValueAtTime(.0001, t + 1.8);
+  }
+];
 const SOM = {
   ambiente() {
     const t = AC.currentTime;
-    const dg = AC.createGain(); dg.gain.value = .05; const lp = AC.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 180;
+    const dg = AC.createGain(); dg.gain.value = .04; const lp = AC.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 180;
     for (const f of [41, 41.6, 61.8]) { const o = AC.createOscillator(); o.type = 'sawtooth'; o.frequency.value = f; o.connect(lp); o.start(t); }
-    lp.connect(dg); dg.connect(master); AMB.drone = dg;
+    lp.connect(dg); dg.connect(BUS.amb); AMB.drone = dg;
     const lfo = AC.createOscillator(); lfo.frequency.value = .07; const lg = AC.createGain(); lg.gain.value = 80; lfo.connect(lg); lg.connect(lp.frequency); lfo.start();
     const ch = ruido(true), bp = AC.createBiquadFilter(); bp.type = 'lowpass'; bp.frequency.value = 2800;
-    const cg = AC.createGain(); cg.gain.value = .12; ch.connect(bp); bp.connect(cg); cg.connect(master); ch.start(); AMB.chuva = cg; AMB.chuvaF = bp;
+    const cg = AC.createGain(); cg.gain.value = .12; ch.connect(bp); bp.connect(cg); cg.connect(BUS.amb); ch.start(); AMB.chuva = cg; AMB.chuvaF = bp;
     const v = ruido(true), vb = AC.createBiquadFilter(); vb.type = 'bandpass'; vb.frequency.value = 400; vb.Q.value = 2;
-    const vg = AC.createGain(); vg.gain.value = .04; v.connect(vb); vb.connect(vg); vg.connect(master); v.start();
+    const vg = AC.createGain(); vg.gain.value = .04; v.connect(vb); vb.connect(vg); vg.connect(BUS.amb); v.start(); AMB.vento = vg; AMB.ventoF = vb;
     const vl = AC.createOscillator(); vl.frequency.value = .11; const vlg = AC.createGain(); vlg.gain.value = 220; vl.connect(vlg); vlg.connect(vb.frequency); vl.start();
-    const tg = AC.createGain(); tg.gain.value = 0; const tf = AC.createBiquadFilter(); tf.type = 'bandpass'; tf.frequency.value = 900; tf.Q.value = 6;
-    for (const f of [220, 233, 311]) { const o = AC.createOscillator(); o.type = 'sawtooth'; o.frequency.value = f; o.connect(tf); o.start(); }
-    tf.connect(tg); tg.connect(master); AMB.tensao = tg;
-    const goteira = () => { if (mode === 'jogo' && P.room && !P.room.fora && (W.mapa === 'tuneis' || Math.random() < .3)) { const t2 = AC.currentTime; const g = saida({ x: P.pos.x + rand(-6, 6), y: 2, z: P.pos.z + rand(-6, 6) }, .6); const o = AC.createOscillator(); o.frequency.setValueAtTime(rand(900, 1500), t2); o.frequency.exponentialRampToValueAtTime(rand(300, 500), t2 + .08); o.connect(g); env(g, t2, .002, .05, .1); o.start(t2); o.stop(t2 + .15); } setTimeout(goteira, rand(1500, 5000)); };
+    const goteira = () => {
+      try {
+        if (AC && mode === 'jogo' && P.room && !P.room.fora && (W.mapa === 'tuneis' || P.room.agua || Math.random() < .3)) {
+          const t2 = AC.currentTime, pos = { x: P.pos.x + rand(-6, 6), y: 2, z: P.pos.z + rand(-6, 6) }, poca = W.mapa === 'tuneis' || (P.room.agua && S && !S.flags.aguaBaixa);
+          for (const [k, esc] of poca && Math.random() < .5 ? [[0, 1], [.11, .5]] : [[0, 1]]) { const g = saida(pos, .6, 'amb'); const o = AC.createOscillator(), f0 = rand(900, 1500) * (poca ? .7 : 1); o.frequency.setValueAtTime(f0, t2 + k); o.frequency.exponentialRampToValueAtTime(f0 * .33, t2 + k + .08); o.connect(g); env(g, t2 + k, .002, .05 * esc, .1); o.start(t2 + k); o.stop(t2 + k + .15); }
+        }
+      } catch (e) {}
+      setTimeout(goteira, W.mapa === 'tuneis' ? rand(700, 2600) : rand(1500, 5000));
+    };
     goteira();
   },
+  musica() {
+    const t = AC.currentTime;
+    const cg = AC.createGain(); cg.gain.value = 0; const cf = AC.createBiquadFilter(); cf.type = 'bandpass'; cf.frequency.value = 1100; cf.Q.value = 1.5;
+    const trem = AC.createGain(); trem.gain.value = .5; const tl = AC.createOscillator(); tl.frequency.value = 9; const tlg = AC.createGain(); tlg.gain.value = .5; tl.connect(tlg); tlg.connect(trem.gain); tl.start(t);
+    for (const f of [220, 233.1, 246.9, 329.6]) { const o = AC.createOscillator(); o.type = 'sawtooth'; o.frequency.value = f; o.detune.value = rand(-8, 8); o.connect(cf); o.start(t); }
+    cf.connect(trem); trem.connect(cg); cg.connect(BUS.amb); AMB.cordas = cg;
+    const kg = AC.createGain(); kg.gain.value = 0; const kf = AC.createBiquadFilter(); kf.type = 'lowpass'; kf.frequency.value = 320;
+    AMB.cacaOsc = [55, 58].map(f => { const o = AC.createOscillator(); o.type = 'sawtooth'; o.frequency.value = f; o.connect(kf); o.start(t); return o; });
+    kf.connect(kg); kg.connect(BUS.amb); AMB.caca = kg;
+    const vg = AC.createGain(); vg.gain.value = 0; const vo = AC.createOscillator(); vo.type = 'sawtooth'; vo.frequency.value = 880; const vf = AC.createBiquadFilter(); vf.type = 'bandpass'; vf.frequency.value = 2400; vf.Q.value = 4;
+    const vib = AC.createOscillator(); vib.frequency.value = 6; const vibg = AC.createGain(); vibg.gain.value = 9; vib.connect(vibg); vibg.connect(vo.frequency); vo.connect(vf); vf.connect(vg); vg.connect(BUS.amb); vo.start(t); vib.start(t);
+    AMB.violino = vg; AMB.violinoO = vo;
+    const zg = AC.createGain(); zg.gain.value = 0; const zo = AC.createOscillator(); zo.frequency.value = 2960; zo.connect(zg); zg.connect(BUS.amb); zo.start(t); AMB.zumbido = zg;
+  },
+  corpo() {
+    const s = ruido(true), f = AC.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = 1100; f.Q.value = 1.2; const g = AC.createGain(); g.gain.value = 0; s.connect(f); f.connect(g); g.connect(BUS.corpo); s.start();
+    AMB.resp = { g, f };
+    const o = AC.createOscillator(); o.type = 'triangle'; o.frequency.value = 330; const of = AC.createBiquadFilter(); of.type = 'bandpass'; of.frequency.value = 900; of.Q.value = 3; const og = AC.createGain(); og.gain.value = 0; o.connect(of); of.connect(og); og.connect(BUS.corpo); o.start();
+    AMB.choro = { g: og, o };
+  },
+  lampadas() {
+    AMB.lamp = [];
+    for (let i = 0; i < 3; i++) {
+      const p = novoPanner(1, 1.6), g = AC.createGain(); g.gain.value = 0; const f = AC.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = 240; f.Q.value = 2;
+      const o = AC.createOscillator(); o.type = 'sawtooth'; o.frequency.value = 60; o.connect(f); f.connect(g); g.connect(p); p.connect(BUS.amb); o.start();
+      AMB.lamp.push({ p, g, o });
+    }
+  },
+  lanterna() {
+    const o = AC.createOscillator(); o.frequency.value = 120; const o2 = AC.createOscillator(); o2.frequency.value = 240; const g = AC.createGain(); g.gain.value = 0; const g2 = AC.createGain(); g2.gain.value = .4;
+    o.connect(g); o2.connect(g2); g2.connect(g); g.connect(BUS.sfx); o.start(); o2.start(); AMB.flash = { g, o };
+  },
+  silencio(dur = 1.5, nivel = .1, seco) {
+    const t = AC.currentTime;
+    AUD.sils = AUD.sils.filter(w => w.ate > t); AUD.sils.push({ ate: t + dur, nivel });
+    if (seco) { AUD.vacuo.gain.cancelScheduledValues(t); AUD.vacuo.gain.setValueAtTime(nivel, t); }
+  },
+  vacuo(dur = 1.5) { SOM.silencio(dur, .08); },
+  impacto(v = 1) {
+    const t = AC.currentTime, g = saida(null, .5, 'mus'), o = AC.createOscillator(); o.frequency.setValueAtTime(60, t); o.frequency.exponentialRampToValueAtTime(28, t + .8); o.connect(g); env(g, t, .004, .6 * v, .8); o.start(t); o.stop(t + .9);
+    const g2 = saida(null, .5, 'mus'); burst(t, .5, 'lowpass', 220, 1, g2, 0); env(g2, t, .003, .7 * v, .45);
+  },
+  stinger(tipo) {
+    const t = AC.currentTime;
+    if (tipo === undefined && t - AUD.stingerT < 12) { SOM.impacto(.55); SOM.silencio(.4, .25, true); return; }
+    AUD.stingerT = t;
+    let k = tipo;
+    if (k === undefined || !STINGERS[k]) { const op = STINGERS.map((_, i) => i).filter(i => !AUD.ultStinger.includes(i)); k = pick(op); }
+    AUD.ultStinger.push(k); if (AUD.ultStinger.length > 2) AUD.ultStinger.shift();
+    SOM.silencio(1.4, .12, true);
+    SOM.impacto(1); STINGERS[k](t);
+  },
   passo(vol, piso, fora, agua) {
-    const t = AC.currentTime, g = saida(null, fora ? .05 : .25);
-    if (agua) { burst(t, .25, 'bandpass', 700, 1.5, g); env(g, t, .02, .35 * vol + .08, .22); return; }
-    burst(t, .12, fora ? 'bandpass' : 'lowpass', fora ? 900 : piso === 'madeira' ? 520 : piso === 'concreto' ? 1200 : 900, 1, g);
-    env(g, t, .005, .25 * vol + .03, .09);
-    if (piso === 'madeira' && Math.random() < .12) SOM.rangido(P.pos.x, .1, P.pos.z, .3);
+    const t = AC.currentTime, g = saida(null, fora ? .05 : .25), tom = rand(.88, 1.12);
+    if (agua) { burst(t, .25, 'bandpass', 700 * tom, 1.5, g); env(g, t, .02, .35 * vol + .08, .22); const g2 = saida(null, .2); burst(t + .12, .15, 'highpass', 2500, 1, g2); env(g2, t + .12, .01, .06 * vol + .02, .12); return; }
+    const freq = { madeira: 520, concreto: 1200, ladrilho: 1700, pedra: 950, asfalto: 1100, grama: 700 }[piso] || 900;
+    burst(t, .12, fora || piso === 'grama' ? 'bandpass' : 'lowpass', freq * tom, piso === 'ladrilho' ? 2 : 1, g);
+    env(g, t, .005, (.25 * vol + .03) * (vol < .3 ? .6 : 1), piso === 'ladrilho' ? .06 : .09);
+    if (piso === 'ladrilho' && vol > .3) { const g3 = saida(null, .3); burst(t, .03, 'highpass', 3200, 1, g3); env(g3, t, .001, .08 * vol, .03); }
+    if (fora && piso !== 'asfalto') { const g4 = saida(null, 0); burst(t + .02, .15, 'highpass', 3500, .7, g4); env(g4, t + .02, .02, .05 * vol, .12); }
+    if (vol >= 1) { const g5 = saida(null, 0); burst(t, .2, 'highpass', 2200, .5, g5); env(g5, t, .04, .035, .15); }
+    if (piso === 'madeira' && Math.random() < (vol >= 1 ? .2 : .12)) SOM.rangido(P.pos.x, .1, P.pos.z, .3);
   },
   passoMonstro(pos, vol, agua) {
-    const t = AC.currentTime, p = { x: pos.x, y: .3, z: pos.z };
-    const g = saida(p, .5); const o = AC.createOscillator(); o.frequency.setValueAtTime(70, t); o.frequency.exponentialRampToValueAtTime(30, t + .25); o.connect(g); env(g, t, .01, .9 * vol, .3); o.start(t); o.stop(t + .4);
-    const g2 = saida(p, .4); burst(t, .3, agua ? 'bandpass' : 'lowpass', agua ? 600 : 400, 1, g2); env(g2, t, .005, (agua ? .9 : .6) * vol, agua ? .35 : .2);
+    const t = AC.currentTime, p = { x: pos.x, y: .3, z: pos.z }, r = W.salas && W.salas.length ? roomAt(pos.x, pos.z) : null;
+    const piso = agua ? 'agua' : r ? (r.piso || (r.fora ? 'grama' : 'madeira')) : 'madeira', tom = rand(.92, 1.08);
+    const d = Math.hypot(pos.x - P.pos.x, pos.z - P.pos.z), tunel = W.mapa === 'tuneis';
+    const g = saida(p, .5, 'ent'); const o = AC.createOscillator(); o.frequency.setValueAtTime(70 * tom, t); o.frequency.exponentialRampToValueAtTime(30, t + .25); o.connect(g); env(g, t, .01, .9 * vol, .3); o.start(t); o.stop(t + .4);
+    const cor = { agua: ['bandpass', 600, .9, .35], madeira: ['lowpass', 380, .6, .22], ladrilho: ['bandpass', 1500, .45, .08], concreto: ['bandpass', 1000, .5, .12], pedra: ['lowpass', 700, .6, .18], asfalto: ['bandpass', 900, .4, .1], grama: ['lowpass', 250, .5, .25] }[piso] || ['lowpass', 400, .6, .2];
+    const g2 = saida(p, piso === 'pedra' ? .8 : .4, 'ent'); burst(t, .3, cor[0], cor[1] * tom, 1, g2); env(g2, t, .005, cor[2] * vol, cor[3]);
+    if (piso === 'madeira' && Math.random() < .3) SOM.rangido(pos.x, .2, pos.z, .5 * vol, 'ent');
+    if (piso === 'ladrilho') { const g3 = saida(p, .4, 'ent'); burst(t, .03, 'highpass', 3000, 1, g3); env(g3, t, .001, .2 * vol, .03); }
+    if (d < 8) { const g4 = saida(p, 0, 'ent'); const sb = AC.createOscillator(); sb.frequency.setValueAtTime(52, t); sb.frequency.exponentialRampToValueAtTime(38, t + .3); sb.connect(g4); env(g4, t, .01, .8 * vol * (1 - d / 8), .3); sb.start(t); sb.stop(t + .4); }
+    if (tunel) { const g5 = saida(p, .6, 'ent'); burst(t + .12, .2, 'lowpass', 500, 1, g5); env(g5, t + .12, .01, .25 * vol, .2); }
+    if (vol < 1 && !agua && Math.random() < .4) { const g6 = saida(p, .3, 'ent'); const f = burst(t + .35, .4, 'bandpass', 600, 1.5, g6); f.frequency.linearRampToValueAtTime(350, t + .75); env(g6, t + .35, .1, .12 * vol, .3); }
   },
-  estalo(pos, vol = .6) {
-    const t = AC.currentTime, g = saida({ x: pos.x, y: 3, z: pos.z }, .5);
-    for (let i = 0; i < 2; i++) burst(t + i * .07, .03, 'bandpass', 2600, 8, g);
-    g.gain.setValueAtTime(0, t); g.gain.setValueAtTime(.7 * vol, t + .001); g.gain.exponentialRampToValueAtTime(.0001, t + .2);
+  estalo(pos, vol = .6, estado) {
+    estado = estado || (M.ativo && pos === M.pos ? M.state : 'patrulha');
+    const t = AC.currentTime, g = saida({ x: pos.x, y: 3, z: pos.z }, .5, 'ent');
+    const padrao = { patrulha: [[0, 1800]], investiga: [[0, 2200], [.09, 2200]], procura: [[0, 2000], [.08, 2400], [.16, 2800]], caca: [[0, 3200], [.06, 3300], [.12, 3200], [.18, 3400]] }[estado] || [[0, 1800]];
+    for (const [k, f] of padrao) burst(t + k, .03, 'bandpass', f, 8, g);
+    const fim = padrao[padrao.length - 1][0] + .2;
+    g.gain.setValueAtTime(0, t); g.gain.setValueAtTime(.7 * vol, t + .001); if (fim - .2 > .002) g.gain.setValueAtTime(.7 * vol, t + fim - .2); g.gain.exponentialRampToValueAtTime(.0001, t + fim);
   },
-  rangido(x, y, z, vol = 1) {
-    const t = AC.currentTime, o = AC.createOscillator(); o.type = 'sawtooth'; o.frequency.setValueAtTime(rand(140, 220), t); o.frequency.linearRampToValueAtTime(rand(60, 110), t + .7);
-    const f = AC.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = 900; f.Q.value = 12;
-    const tr = AC.createOscillator(); tr.frequency.value = rand(18, 30); const trg = AC.createGain(); trg.gain.value = .5; tr.connect(trg);
-    const g = saida({ x, y, z }, .4); trg.connect(g.gain); o.connect(f); f.connect(g); env(g, t, .05, .35 * vol, .7); o.start(t); tr.start(t); o.stop(t + .9); tr.stop(t + .9);
+  rangido(x, y, z, vol = 1, bus = 'sfx') {
+    const sd = Math.abs(Math.sin(x * 12.9898 + z * 78.233) * 43758.5453) % 1;
+    const t = AC.currentTime, o = AC.createOscillator(); o.type = 'sawtooth'; o.frequency.setValueAtTime(120 + sd * 120 + rand(-15, 15), t); o.frequency.linearRampToValueAtTime(55 + sd * 60, t + .7);
+    const f = AC.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = 700 + sd * 500; f.Q.value = 12;
+    const tr = AC.createOscillator(); tr.frequency.value = 16 + sd * 16; const trg = AC.createGain(); trg.gain.value = .5; tr.connect(trg);
+    const g = saida({ x, y, z }, .4, bus); trg.connect(g.gain); o.connect(f); f.connect(g); env(g, t, .05, .35 * vol, .7); o.start(t); tr.start(t); o.stop(t + .9); tr.stop(t + .9);
   },
-  pancada(x, z) { const t = AC.currentTime, g = saida({ x, y: 1, z }, .8); burst(t, .8, 'lowpass', 300, 1, g, 0); env(g, t, .003, 1.6, .6); },
-  trancado() { const t = AC.currentTime; for (let i = 0; i < 3; i++) { const g = saida(null, .2); burst(t + i * .09, .08, 'bandpass', 2400, 4, g); env(g, t + i * .09, .002, .3, .05); } },
-  pegar() { const t = AC.currentTime, g = saida(null, .3), o = AC.createOscillator(); o.type = 'triangle'; o.frequency.setValueAtTime(520, t); o.frequency.exponentialRampToValueAtTime(780, t + .12); o.connect(g); env(g, t, .01, .07, .3); o.start(t); o.stop(t + .4); },
-  papel() { const t = AC.currentTime, g = saida(null, .1); burst(t, .3, 'highpass', 2500, .5, g); env(g, t, .02, .15, .25); },
-  clique() { const t = AC.currentTime, g = saida(null, 0); burst(t, .05, 'highpass', 3000, 1, g); env(g, t, .001, .25, .03); },
-  objetivo() { const t = AC.currentTime; for (const [i, f] of [[0, 196], [1, 293.7]]) { const g = saida(null, .6); osc('sine', f, t + i * .25, 1.8, g); env(g, t + i * .25, .05, .08, 1.6); } },
-  vidro(x, z) { const t = AC.currentTime, p = x !== undefined ? { x, y: .5, z } : null; for (let i = 0; i < 8; i++) { const g = saida(p, .4); osc('sine', rand(2500, 6500), t + i * .03, .3, g); env(g, t + i * .03, .001, .08, .2); } const g = saida(p, .5); burst(t, .3, 'highpass', 1800, 1, g); env(g, t, .002, .5, .25); },
-  arremesso() { const t = AC.currentTime, g = saida(null, 0); burst(t, .25, 'bandpass', 600, 1, g); env(g, t, .05, .12, .15); },
-  armario() { const t = AC.currentTime, g = saida(null, .3); burst(t, .3, 'bandpass', 700, 3, g); env(g, t, .005, .5, .25); SOM.rangido(P.pos.x, 1, P.pos.z, .4); },
-  arrastar() { const t = AC.currentTime, g = saida(null, .2); burst(t, .5, 'lowpass', 500, 1, g); env(g, t, .08, .3, .35); },
-  ofego() { if (SOM._of && AC.currentTime - SOM._of < 1.2) return; SOM._of = AC.currentTime; const t = AC.currentTime, g = saida(null, .1); burst(t, .8, 'bandpass', 1300, 1, g); env(g, t, .15, .25, .5); },
-  coracao() { const t = AC.currentTime; for (const k of [0, .17]) { const g = saida(null, 0); const o = AC.createOscillator(); o.frequency.setValueAtTime(58, t + k); o.frequency.exponentialRampToValueAtTime(35, t + k + .14); o.connect(g); env(g, t + k, .01, k ? .35 : .5, .16); o.start(t + k); o.stop(t + k + .25); } },
-  susto() {
+  pancada(x, z) {
+    const t = AC.currentTime, p = { x, y: 1, z }, g = saida(p, .8, 'ent'); burst(t, .8, 'lowpass', 300, 1, g, 0); env(g, t, .003, 1.6, .6);
+    const g2 = saida(p, .5, 'ent'); burst(t, .08, 'highpass', 1800, .8, g2); env(g2, t, .001, .4, .08);
+    for (let i = 1; i < 4; i++) { const g3 = saida(p, .3, 'ent'); burst(t + i * .07 + rand(0, .03), .05, 'bandpass', rand(1500, 2600), 6, g3); env(g3, t + i * .07, .002, .12 / i, .05); }
+  },
+  trancado() {
     const t = AC.currentTime;
-    for (const f of [110, 116.5, 155, 233, 247]) { const g = saida(null, .6); const o = AC.createOscillator(); o.type = 'sawtooth'; o.frequency.setValueAtTime(f, t); o.frequency.linearRampToValueAtTime(f * 1.06, t + 1.4); o.connect(g); g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(.09, t + .06); g.gain.exponentialRampToValueAtTime(.0001, t + 1.8); o.start(t); o.stop(t + 2); }
-    const g = saida(null, .8); burst(t, 1, 'highpass', 200, 1, g); env(g, t, .01, .35, .9);
+    for (let i = 0; i < 4; i++) { const g = saida(null, .2); burst(t + i * .085, .07, 'bandpass', rand(2100, 2700), 5, g); env(g, t + i * .085, .002, .28, .05); }
+    const g = saida(null, .2), o = AC.createOscillator(); o.frequency.setValueAtTime(140, t + .36); o.frequency.exponentialRampToValueAtTime(80, t + .45); o.connect(g); env(g, t + .36, .003, .25, .1); o.start(t + .36); o.stop(t + .5);
+  },
+  pegar() {
+    const t = AC.currentTime, g = saida(null, .3), o = AC.createOscillator(); o.type = 'triangle'; o.frequency.setValueAtTime(440, t); o.frequency.exponentialRampToValueAtTime(660, t + .1); o.connect(g); env(g, t, .01, .05, .25); o.start(t); o.stop(t + .35);
+    const g2 = saida(null, .1); burst(t, .18, 'bandpass', 1800, .8, g2); env(g2, t, .03, .08, .14);
+  },
+  papel() { const t = AC.currentTime, g = saida(null, .1); burst(t, .3, 'highpass', 2500, .5, g); env(g, t, .02, .15, .25); const g2 = saida(null, .1); burst(t + .18, .15, 'highpass', 3500, .5, g2); env(g2, t + .18, .01, .07, .12); },
+  clique() { const t = AC.currentTime, g = saida(null, 0); burst(t, .05, 'highpass', 3000, 1, g); env(g, t, .001, .25, .03); const g2 = saida(null, 0); burst(t + .04, .03, 'bandpass', 1400, 3, g2); env(g2, t + .04, .001, .12, .03); },
+  tique() { const t = AC.currentTime, g = saida(null, 0); burst(t, .02, 'highpass', 4500, 1, g); env(g, t, .001, .09, .02); const g2 = saida(null, 0); osc('square', 100, t, .05, g2); env(g2, t, .002, .012, .04); },
+  objetivo() {
+    const t = AC.currentTime;
+    for (const [i, f] of [[0, 146.8], [1, 174.6], [2, 220]]) { const g = saida(null, .6, 'mus'); osc('sine', f, t + i * .18, 2, g); env(g, t + i * .18, .05, .06, 1.7); }
+    const g = saida(null, 1, 'mus'); osc('sine', 587.3, t + .5, 2.5, g); osc('sine', 587.3 * 2.76, t + .5, 1.2, g); env(g, t + .5, .003, .025, 2.2);
+  },
+  vidro(x, z) {
+    const t = AC.currentTime, p = x !== undefined ? { x, y: .5, z } : null;
+    for (let i = 0; i < 8; i++) { const g = saida(p, .4); osc('sine', rand(2500, 6500), t + i * .03, .3, g); env(g, t + i * .03, .001, .08, .2); }
+    const g = saida(p, .5); burst(t, .3, 'highpass', 1800, 1, g); env(g, t, .002, .5, .25);
+    for (const k of [.16, .29, .41]) { const g2 = saida(p, .4); osc('sine', rand(3000, 7000), t + k, .15, g2); env(g2, t + k, .001, .03, .1); }
+  },
+  arremesso() {
+    const t = AC.currentTime, g = saida(null, 0); const f = burst(t, .35, 'bandpass', 400, 1.2, g); f.frequency.exponentialRampToValueAtTime(1400, t + .3); env(g, t, .05, .12, .25);
+    const g2 = saida(null, 0), o = AC.createOscillator(); o.frequency.setValueAtTime(1300, t); o.frequency.exponentialRampToValueAtTime(800, t + .35); o.connect(g2); env(g2, t, .05, .008, .3); o.start(t); o.stop(t + .4);
+  },
+  armario() {
+    const t = AC.currentTime, g = saida(null, .3); burst(t, .3, 'bandpass', 700, 3, g); env(g, t, .005, .5, .25); SOM.rangido(P.pos.x, 1, P.pos.z, .4);
+    const g2 = saida(null, .2), o = AC.createOscillator(); o.frequency.setValueAtTime(320, t + .28); o.frequency.exponentialRampToValueAtTime(160, t + .33); o.connect(g2); env(g2, t + .28, .002, .18, .06); o.start(t + .28); o.stop(t + .4);
+  },
+  arrastar() {
+    const t = AC.currentTime, g = saida(null, .2); burst(t, .5, 'lowpass', 500, 1, g); env(g, t, .08, .3, .35);
+    for (let i = 0; i < 3; i++) { const k = .1 + i * .13 + rand(0, .05), g2 = saida(null, .2), o = AC.createOscillator(), f0 = rand(1800, 2600); o.frequency.setValueAtTime(f0, t + k); o.frequency.exponentialRampToValueAtTime(f0 * .7, t + k + .12); o.connect(g2); env(g2, t + k, .005, .012, .12); o.start(t + k); o.stop(t + k + .15); }
+  },
+  ofego() { if (SOM._of && AC.currentTime - SOM._of < 1.2) return; SOM._of = AC.currentTime; const t = AC.currentTime, g = saida(null, .1, 'corpo'); burst(t, .8, 'bandpass', rand(1100, 1500), 1, g); env(g, t, .15, .25, .5); const g2 = saida(null, .1, 'corpo'); burst(t + .55, .5, 'bandpass', 900, 1, g2); env(g2, t + .55, .05, .12, .4); },
+  arfar() { const t = AC.currentTime, g = saida(null, .1, 'corpo'); const f = burst(t, .45, 'bandpass', 1300, 1.2, g); f.frequency.linearRampToValueAtTime(1900, t + .35); env(g, t, .04, .3, .35); const g2 = saida(null, .1, 'corpo'); burst(t + .4, .8, 'bandpass', 850, 1, g2); env(g2, t + .4, .05, .14, .7); },
+  coracao(vol = 1) { const t = AC.currentTime; for (const k of [0, .17]) { const g = saida(null, 0, 'corpo'); const o = AC.createOscillator(); o.frequency.setValueAtTime(58, t + k); o.frequency.exponentialRampToValueAtTime(35, t + k + .14); o.connect(g); env(g, t + k, .01, (k ? .35 : .5) * vol, .16); o.start(t + k); o.stop(t + k + .25); } },
+  susto(tipo) {
+    const agora = AC.currentTime;
+    if (agora < AUD.dezAte) { depois((AUD.dezAte - agora) * 1000, () => SOM.stinger(tipo)); return; }
+    SOM.stinger(tipo);
+  },
+  zumbidoOuvido() {
+    const t = AC.currentTime, g = saida(null, 0, 'corpo'); osc('sine', rand(3900, 4500), t, 3.2, g); env(g, t, .05, .02, 3);
+    AUD.zumbidoAte = t + 2.2; AUD.mundo.gain.cancelScheduledValues(t); AUD.mundo.gain.setValueAtTime(.25, t);
   },
   grito(quem) {
-    const t = AC.currentTime, base = quem === 'ana' ? [900, 1200, 1500] : [300, 420, 610];
-    for (const f of base) { const o = AC.createOscillator(); o.type = 'sawtooth'; o.frequency.setValueAtTime(f, t); o.frequency.exponentialRampToValueAtTime(f * .55, t + 1.1); const lfo = AC.createOscillator(); lfo.frequency.value = 38; const lg = AC.createGain(); lg.gain.value = f * .08; lfo.connect(lg); lg.connect(o.frequency); const g = saida(null, .7); o.connect(g); env(g, t, .02, .22, 1.2); o.start(t); lfo.start(t); o.stop(t + 1.3); lfo.stop(t + 1.3); }
-    const g = saida(null, .6); burst(t, 1.2, 'bandpass', 1800, 1, g); env(g, t, .01, .6, 1);
+    const t = AC.currentTime, ana = quem === 'ana', base = ana ? [900, 1200, 1500] : quem === 'procissao' ? [330, 392, 466] : [220, 300, 450];
+    for (const f of base) { const o = AC.createOscillator(); o.type = 'sawtooth'; o.frequency.setValueAtTime(f, t); o.frequency.exponentialRampToValueAtTime(f * .55, t + 1.1); const lfo = AC.createOscillator(); lfo.frequency.value = ana ? 38 : 26; const lg = AC.createGain(); lg.gain.value = f * .08; lfo.connect(lg); lg.connect(o.frequency); const g = saida(null, .7, 'mus'); o.connect(g); env(g, t, .02, .22, 1.2); o.start(t); lfo.start(t); o.stop(t + 1.3); lfo.stop(t + 1.3); }
+    const g = saida(null, .6, 'mus'); burst(t, 1.2, 'bandpass', ana ? 2400 : 1500, 1, g); env(g, t, .01, .6, 1);
+    if (!ana) { const ws = AC.createWaveShaper(); ws.curve = curvaDist(20); const g2 = saida(null, .5, 'mus'); ws.connect(g2); const o = AC.createOscillator(); o.type = 'sawtooth'; o.frequency.setValueAtTime(55, t); o.frequency.linearRampToValueAtTime(40, t + 1); o.connect(ws); env(g2, t, .02, .08, 1); o.start(t); o.stop(t + 1.1); }
+    SOM.impacto(.9); SOM.silencio(.8, .15, true); depois(250, () => SOM.zumbidoOuvido());
   },
-  sino(vol = 1, pos = { x: 0, y: 4, z: -60 }) {
-    const t = AC.currentTime, base = 196;
-    for (const [m, a] of [[.5, .4], [1, 1], [1.19, .5], [1.5, .45], [2, .5], [2.5, .3], [2.67, .25], [3.0, .2], [4.17, .12]]) { const g = saida(pos, .9); osc('sine', base * m, t, 8, g); env(g, t, .004, .35 * a * vol, 7 / m); }
+  sino(vol = 1, pos = { x: 0, y: 4, z: -60 }, desafina = 1) {
+    const t = AC.currentTime, base = 196 * desafina;
+    if (vol >= .9) SOM.silencio(6, .04, true);
+    for (const [m, a] of [[.5, .4], [1, 1], [1.19, .5], [1.5, .45], [2, .5], [2.5, .3], [2.67, .25], [3.0, .2], [4.17, .12]]) { const g = saida(pos, .9); osc('sine', base * m * (desafina < 1 ? rand(.997, 1.003) : 1), t, 8, g); env(g, t, .004, .35 * a * vol, 7 / m); }
   },
   sinoLonge() { SOM.sino(.3, null); },
-  badaladas(n = 9) { for (let i = 0; i < n; i++) setTimeout(() => SOM.sino(.45, null), i * 2200); },
+  badaladas(n = 9) {
+    SOM.silencio(1.8 + n * 2.2, .25);
+    for (let i = 0; i < n; i++) depois(1800 + i * 2200, () => SOM.sino(.45 * (i === n - 1 ? 1.25 : 1), null, 1 - i * .005));
+  },
   estatica(dur = 2, pos) {
     const t = AC.currentTime, s = ruido(true), f = AC.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = 1600; f.Q.value = .8;
     const g = saida(pos || null, .2); s.connect(f); f.connect(g);
     g.gain.setValueAtTime(0, t); for (let i = 0; i < dur * 20; i++) g.gain.setValueAtTime(Math.random() * .22, t + i / 20);
     g.gain.setValueAtTime(0, t + dur); s.start(t); s.stop(t + dur + .1);
+    const g2 = saida(pos || null, .2), o = AC.createOscillator(); o.frequency.setValueAtTime(rand(1800, 3200), t); for (let i = 1; i < 6; i++) o.frequency.linearRampToValueAtTime(rand(1800, 3200), t + dur * i / 6); o.connect(g2);
+    g2.gain.setValueAtTime(0, t); g2.gain.linearRampToValueAtTime(.012, t + .2); g2.gain.setValueAtTime(.012, t + dur - .1); g2.gain.linearRampToValueAtTime(0, t + dur); o.start(t); o.stop(t + dur + .1);
   },
   sussurros(dur = 2) {
     const t = AC.currentTime;
     for (let k = 0; k < 3; k++) {
       const s = ruido(true), f = AC.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = rand(1800, 3500); f.Q.value = 6;
-      const lfo = AC.createOscillator(); lfo.frequency.value = rand(4, 9); const lg = AC.createGain(); lg.gain.value = .05;
-      const g = saida({ x: P.pos.x + rand(-3, 3), y: 1.6, z: P.pos.z + rand(-3, 3) }, .5); g.gain.value = 0;
-      lfo.connect(lg); lg.connect(g.gain); s.connect(f); f.connect(g); s.start(t + k * .3); lfo.start(t + k * .3); s.stop(t + dur + k * .3); lfo.stop(t + dur + k * .3);
+      const g = AC.createGain(); g.gain.value = 0; const p = novoPanner(1, 1);
+      const a0 = rand(0, Math.PI * 2), a1 = a0 + rand(-2, 2), r0 = rand(1.2, 3);
+      p.positionY.value = 1.6; p.positionX.setValueAtTime(P.pos.x + Math.cos(a0) * r0, t); p.positionZ.setValueAtTime(P.pos.z + Math.sin(a0) * r0, t);
+      p.positionX.linearRampToValueAtTime(P.pos.x + Math.cos(a1) * r0, t + dur); p.positionZ.linearRampToValueAtTime(P.pos.z + Math.sin(a1) * r0, t + dur);
+      for (let i = 0; i < dur * 8; i++) g.gain.setValueAtTime(Math.random() < .6 ? rand(.02, .07) : 0, t + k * .3 + i / 8);
+      g.gain.setValueAtTime(0, t + k * .3 + dur);
+      s.connect(f); f.connect(g); g.connect(p); p.connect(BUS.amb); const w = AC.createGain(); w.gain.value = .5; p.connect(w); w.connect(BUS.ambR);
+      s.start(t + k * .3); s.stop(t + dur + k * .3 + .05);
     }
   },
-  risada(x, z) { const t = AC.currentTime; for (let i = 0; i < 5; i++) { const g = saida({ x, y: 1, z }, .9); const o = AC.createOscillator(); o.type = 'triangle'; const f0 = rand(620, 760); o.frequency.setValueAtTime(f0, t + i * .14); o.frequency.exponentialRampToValueAtTime(f0 * .7, t + i * .14 + .1); o.connect(g); env(g, t + i * .14, .01, .05, .1); o.start(t + i * .14); o.stop(t + i * .14 + .15); } },
+  risada(x, z) {
+    const t = AC.currentTime, n = 4 + (Math.random() * 3 | 0);
+    for (let i = 0; i < n; i++) { const at = t + i * rand(.12, .16), f0 = rand(620, 780) * (1 - i * .02); const o = silaba(at, { x, y: 1, z }, f0, i % 2 ? 'i' : 'e', .1, .05, 'ent', .9); o.type = 'triangle'; }
+    const g = saida({ x, y: 1, z }, .9, 'ent'); burst(t, n * .14, 'bandpass', 2600, 2, g); env(g, t, .02, .03, n * .13);
+  },
+  anaPasso(pos) { const t = AC.currentTime, g = saida({ x: pos.x, y: .1, z: pos.z }, .3, 'ent'); burst(t, .05, 'bandpass', rand(1500, 2100), 1.5, g); env(g, t, .003, .1, .05); },
   contagem(pos, n) {
-    const t = AC.currentTime, g = saida({ x: pos.x, y: 1.1, z: pos.z }, .8);
+    const t = AC.currentTime, d = Math.hypot(pos.x - P.pos.x, pos.z - P.pos.z), perto = clamp(1 - (d - 2) / 8, 0, 1);
     const notas = [523, 587, 659, 698, 784, 880, 988, 1047, 1175, 1319];
-    osc('sine', notas[n % 10], t, 1, g); env(g, t, .003, .09 + n * .012, .8);
-    const g2 = saida({ x: pos.x, y: 1.1, z: pos.z }, .5); burst(t, .3, 'bandpass', 3000, 5, g2); env(g2, t, .05, .06, .2);
+    const canto = 1 - perto * .8;
+    if (n < 9) { const g = saida({ x: pos.x, y: 1.1, z: pos.z }, .8, 'ent'); osc('sine', notas[n % 10], t, 1, g); env(g, t, .003, (.09 + n * .012) * canto, .8); }
+    const g2 = saida({ x: pos.x, y: 1.1, z: pos.z }, .5, 'ent'); burst(t, .3, 'bandpass', 3000, 5, g2); env(g2, t, .05, .06 * (.5 + perto), .2);
+    if (n >= 6) {
+      const fw = new THREE.Vector3(); camera.getWorldDirection(fw); fw.y = 0; fw.normalize();
+      const dir = n >= 8 ? { x: -fw.x, z: -fw.z } : { x: (pos.x - P.pos.x) / (d || 1), z: (pos.z - P.pos.z) / (d || 1) };
+      const ouvido = { x: camera.position.x + dir.x * .9, y: camera.position.y, z: camera.position.z + dir.z * .9 };
+      const g3 = AC.createGain(), p3 = novoPanner(.5, 1); posPanner(p3, ouvido); g3.connect(p3); p3.connect(BUS.corpo);
+      for (const [k, fr] of [[0, 3200], [.16, 2600]]) { const s = ruido(), bp = AC.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = fr; bp.Q.value = 4; s.connect(bp); bp.connect(g3); s.start(t + k, Math.random()); s.stop(t + k + .18); }
+      env(g3, t, .03, .05 + .025 * (n - 6) + .04 * perto, .32);
+    }
+    if (n >= 9 && d < 10) {
+      const t0 = t + .38; AUD.corte.gain.cancelScheduledValues(t); AUD.corte.gain.setValueAtTime(1, t0); AUD.corte.gain.linearRampToValueAtTime(0, t0 + .02); AUD.corte.gain.setValueAtTime(0, t0 + .3); AUD.corte.gain.linearRampToValueAtTime(1, t0 + .32);
+      AUD.dezAte = t0 + .3;
+    }
   },
   caixinha(x, z) {
-    const notas = [659, 784, 659, 523, 587, 494, 523, 440, 0, 659, 784, 880, 784, 659, 587, 523]; const t = AC.currentTime;
-    notas.forEach((f, i) => { if (!f) return; const g = saida({ x, y: 1, z }, .7); const at = t + i * .42 * (1 + i * .03); osc('sine', f * .995 + Math.random() * 3, at, 1.6, g); env(g, at, .002, .08, 1.2); });
+    const notas = [659, 784, 659, 523, 587, 494, 523, 440, 0, 659, 784, 880, 784, 659, 587, 523, 466]; const t = AC.currentTime + .7;
+    for (let i = 0; i < 8; i++) { const g = saida({ x, y: 1, z }, .3); burst(t - .7 + i * .08, .015, 'highpass', 3500, 2, g); env(g, t - .7 + i * .08, .001, .1, .015); }
+    SOM.silencio(10, .2);
+    notas.forEach((f, i) => { if (!f) return; const g = saida({ x, y: 1, z }, .7); const at = t + i * .42 * (1 + i * .03); osc('sine', f * (i === 16 ? .97 : .995) + Math.random() * 3, at, 1.6, g); env(g, at, .002, .08, i === 16 ? 2.4 : 1.2); });
   },
   chamadoVoz(x, z) {
-    const t = AC.currentTime;
-    for (const [k, f] of [[0, 330], [.35, 262]]) { const g = saida({ x, y: 1.4, z }, .9); const o = AC.createOscillator(); o.type = 'triangle'; o.frequency.setValueAtTime(f, t + k); o.frequency.linearRampToValueAtTime(f * .92, t + k + .4); const fl = AC.createBiquadFilter(); fl.type = 'bandpass'; fl.frequency.value = 900; fl.Q.value = 3; o.connect(fl); fl.connect(g); env(g, t + k, .08, .12, .5); o.start(t + k); o.stop(t + k + .7); }
+    let t = AC.currentTime; const p = { x, y: 1.4, z }, falso = S && (S.mortes >= 3 || S.dif === 'pesadelo') && Math.random() < .35;
+    if (S && S.chapter >= 4 && Math.random() < .6) { const g = saida(p, .4); burst(t, .05, 'highpass', 3000, 1, g); env(g, t, .001, .2, .03); const g2 = saida({ x, y: .1, z }, .4); burst(t + .35, .12, 'lowpass', 900, 1, g2); env(g2, t + .35, .005, .2, .09); t += .8; }
+    silaba(t, p, 330, 'i', .35, .12, 'voz', .9);
+    const o = silaba(t + .38, p, falso ? 140 : 262, 'a', .5, .12, 'voz', .9);
+    if (falso) { o.frequency.linearRampToValueAtTime(70, t + .9); const ws = AC.createWaveShaper(); ws.curve = curvaDist(15); const g = saida(p, .6, 'ent'); ws.connect(g); const o2 = AC.createOscillator(); o2.type = 'sawtooth'; o2.frequency.setValueAtTime(70, t + .5); o2.frequency.linearRampToValueAtTime(48, t + 1); o2.connect(ws); env(g, t + .5, .1, .06, .5); o2.start(t + .5); o2.stop(t + 1.1); }
   },
   canto(dur) {
     if (AMB.canto) return;
-    const t = AC.currentTime, g = AC.createGain(); g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(.12, t + dur * .8);
-    g.connect(master); const rv = AC.createGain(); rv.gain.value = .6; g.connect(rv); rv.connect(reverb);
+    const t = AC.currentTime, ini = PROC.ini ? { x: (PROC.ini.x0 + PROC.ini.x1) / 2, y: 1.2, z: (PROC.ini.z0 + PROC.ini.z1) / 2 } : { x: P.pos.x + 6, y: 1.2, z: P.pos.z };
+    const F = fonteFixa(ini, 'amb', .6), g = AC.createGain(); g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(.16, t + dur * .8); g.connect(F.g);
     const nodes = [];
     for (const f of [146.8, 174.6, 220, 293.7]) {
       const o = AC.createOscillator(); o.type = 'sawtooth'; o.frequency.value = f * rand(.995, 1.005);
@@ -1508,48 +1762,315 @@ const SOM = {
       const lfo = AC.createOscillator(); lfo.frequency.value = rand(.3, .6); const lg = AC.createGain(); lg.gain.value = 250; lfo.connect(lg); lg.connect(f1.frequency);
       o.connect(f1); f1.connect(g); o.start(t); lfo.start(t); nodes.push(o, lfo);
     }
-    AMB.canto = { g, nodes };
+    const eg = AC.createGain(); eg.gain.value = 0; eg.connect(g);
+    for (const f of [155.6, 207.7, 311.1]) { const o = AC.createOscillator(); o.type = 'sawtooth'; o.frequency.value = f; const bp = AC.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 900; bp.Q.value = 4; o.connect(bp); bp.connect(eg); o.start(t); nodes.push(o); }
+    const semPos = AC.createGain(); semPos.gain.value = .25; g.connect(semPos); semPos.connect(BUS.amb);
+    AMB.canto = { g, nodes, F, extra: eg };
   },
-  pararCanto() { if (!AMB.canto) return; const { g, nodes } = AMB.canto; const t = AC.currentTime; g.gain.cancelScheduledValues(t); g.gain.setValueAtTime(Math.max(.0002, g.gain.value), t); g.gain.exponentialRampToValueAtTime(.0001, t + 1.5); nodes.forEach(n => n.stop(t + 1.6)); AMB.canto = null; },
-  procissao() { const t = AC.currentTime, g = saida(null, .8); burst(t, 1.5, 'lowpass', 500, 1, g, 0); env(g, t, .05, .9, 1.4); SOM.susto(); },
-  procissaoPos(pos) { if (Math.random() < .25) { const t = AC.currentTime, g = saida({ x: pos.x, y: .2, z: pos.z }, .3); burst(t, .08, 'lowpass', 600, 1, g); env(g, t, .003, .5, .07); } },
+  pararCanto() { if (!AMB.canto) return; const { g, nodes, F } = AMB.canto; const t = AC.currentTime; g.gain.cancelScheduledValues(t); g.gain.setValueAtTime(Math.max(.0002, g.gain.value), t); g.gain.exponentialRampToValueAtTime(.0001, t + 1.5); nodes.forEach(n => n.stop(t + 1.6)); depois(1800, () => FONTES.delete(F)); AMB.canto = null; },
+  procissao() { const t = AC.currentTime, g = saida(null, .8, 'mus'); burst(t, 1.5, 'lowpass', 500, 1, g, 0); env(g, t, .05, .9, 1.4); SOM.susto(); },
+  procissaoPos(pos) {
+    const t = AC.currentTime; if (t < AUD.procT) return; AUD.procT = t + rand(.09, .15);
+    const i = Math.random() * 9 | 0, g = saida({ x: pos.x + (i % 3 - 1) * .5, y: .1, z: pos.z + (i / 3 | 0) * .9 - .9 }, .3, 'ent');
+    burst(t, .07, 'bandpass', rand(500, 800), 1.2, g); env(g, t, .003, .35, .06);
+  },
   gerador(on, pos) {
-    if (on && !AMB.ger) { const o = AC.createOscillator(); o.type = 'sawtooth'; o.frequency.value = 48; const f = AC.createBiquadFilter(); f.type = 'lowpass'; f.frequency.value = 260; const g = saida(pos, .1); g.gain.value = .5; o.connect(f); f.connect(g); o.start(); AMB.ger = { o, g }; }
-    else if (!on && AMB.ger) { AMB.ger.o.stop(); AMB.ger = null; }
+    if (on && !AMB.ger) {
+      const t = AC.currentTime; pos = pos || { x: P.pos.x, y: 1, z: P.pos.z };
+      const F = fonteFixa(pos, 'amb', .1);
+      const o = AC.createOscillator(); o.type = 'sawtooth'; o.frequency.setValueAtTime(18, t); o.frequency.linearRampToValueAtTime(48, t + 2.2);
+      const lp = AC.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 260; o.connect(lp);
+      const am = AC.createGain(); am.gain.value = .6; const lfo = AC.createOscillator(); lfo.frequency.setValueAtTime(4, t); lfo.frequency.linearRampToValueAtTime(12.5, t + 2.2); const lg = AC.createGain(); lg.gain.value = .4; lfo.connect(lg); lg.connect(am.gain); lp.connect(am);
+      const n = ruido(true), nf = AC.createBiquadFilter(); nf.type = 'bandpass'; nf.frequency.value = 900; nf.Q.value = 1; const ng = AC.createGain(); ng.gain.value = .08; n.connect(nf); nf.connect(ng); ng.connect(am);
+      am.connect(F.g);
+      const G = F.g.gain; G.setValueAtTime(.0001, t); G.linearRampToValueAtTime(.4, t + .1); G.linearRampToValueAtTime(.05, t + .4); G.linearRampToValueAtTime(.5, t + .6); G.linearRampToValueAtTime(.08, t + .9); G.linearRampToValueAtTime(.55, t + 1.3); G.linearRampToValueAtTime(.5, t + 2);
+      o.start(t); lfo.start(t); n.start(t);
+      AMB.ger = { o, lfo, n, F, pos: { x: pos.x, z: pos.z } };
+    } else if (!on && AMB.ger) {
+      const t = AC.currentTime, G = AMB.ger; G.F.g.gain.cancelScheduledValues(t); G.F.g.gain.setTargetAtTime(0, t, .3); G.o.frequency.setTargetAtTime(20, t, .5);
+      for (const x of [G.o, G.lfo, G.n]) x.stop(t + 1.8); depois(2000, () => FONTES.delete(G.F)); AMB.ger = null;
+    }
   },
   motor(on) {
-    if (on && !AMB.motor) { const o = AC.createOscillator(); o.type = 'sawtooth'; o.frequency.value = 38; const f = AC.createBiquadFilter(); f.type = 'lowpass'; f.frequency.value = 160; const g = AC.createGain(); g.gain.value = .16; o.connect(f); f.connect(g); g.connect(master); o.start(); AMB.motor = { o, g }; }
-    else if (!on && AMB.motor) { const t = AC.currentTime; AMB.motor.g.gain.setValueAtTime(.16, t); AMB.motor.g.gain.exponentialRampToValueAtTime(.0001, t + .8); AMB.motor.o.stop(t + .9); AMB.motor = null; }
+    if (on && !AMB.motor) {
+      const o = AC.createOscillator(); o.type = 'sawtooth'; o.frequency.value = 38; const f = AC.createBiquadFilter(); f.type = 'lowpass'; f.frequency.value = 160; const g = AC.createGain(); g.gain.value = .16;
+      const rpm = AC.createOscillator(); rpm.frequency.value = .3; const rg = AC.createGain(); rg.gain.value = 3; rpm.connect(rg); rg.connect(o.frequency);
+      const bat = AC.createOscillator(); bat.frequency.value = 25; const bg = AC.createGain(); bg.gain.value = .04; bat.connect(bg); bg.connect(g.gain);
+      o.connect(f); f.connect(g); g.connect(BUS.amb); o.start(); rpm.start(); bat.start(); AMB.motor = { o, g, extra: [rpm, bat] };
+    } else if (!on && AMB.motor) { const t = AC.currentTime; AMB.motor.g.gain.cancelScheduledValues(t); AMB.motor.g.gain.setValueAtTime(.16, t); AMB.motor.g.gain.exponentialRampToValueAtTime(.0001, t + .8); AMB.motor.o.frequency.linearRampToValueAtTime(22, t + .8); for (const x of [AMB.motor.o, ...AMB.motor.extra]) x.stop(t + .9); AMB.motor = null; }
   },
-  freada() { const t = AC.currentTime, g = saida(null, .2); const f = burst(t, 1.6, 'bandpass', 2600, 6, g); f.frequency.linearRampToValueAtTime(1400, t + 1.5); env(g, t, .05, .5, 1.4); },
-  orelhao(pos) { const t = AC.currentTime; for (let r = 0; r < 3; r++) { const g = saida(pos, .3); for (const f of [440, 480]) osc('sine', f, t + r * 3, 1.2, g); g.gain.setValueAtTime(0, t + r * 3); for (let i = 0; i < 24; i++) g.gain.setValueAtTime(i % 2 ? 0 : .06, t + r * 3 + i * .05); g.gain.setValueAtTime(0, t + r * 3 + 1.2); } },
-  cavar() { const t = AC.currentTime, g = saida(null, .2); burst(t, .3, 'lowpass', 700, 1, g); env(g, t, .01, .5, .25); },
-  valvula(pos) { SOM.rangido(pos ? pos.x : P.pos.x, 1, pos ? pos.z : P.pos.z, 1); const t = AC.currentTime, g = saida(pos || null, .6); const o = AC.createOscillator(); o.type = 'square'; o.frequency.value = 55; o.connect(g); env(g, t, .02, .15, .5); o.start(t); o.stop(t + .6); },
-  cano(pos) { const t = AC.currentTime; for (let i = 0; i < 4; i++) { const g = saida(pos || null, .8); osc('triangle', rand(80, 160), t + i * .18, .5, g); env(g, t + i * .18, .003, .5, .4); } },
-  forcar() { const t = AC.currentTime, g = saida(null, .4); burst(t, .25, 'lowpass', 400, 1, g); env(g, t, .01, .5, .2); SOM.rangido(P.pos.x, 1, P.pos.z, .6); },
-  fitaClique() { const t = AC.currentTime, g = saida(null, .1); burst(t, .06, 'bandpass', 1500, 3, g); env(g, t, .001, .5, .05); },
+  freada() {
+    const t = AC.currentTime, g = saida(null, .2); const f = burst(t, 1.6, 'bandpass', 2600, 6, g); f.frequency.linearRampToValueAtTime(1400, t + 1.5); env(g, t, .05, .5, 1.4);
+    const g2 = saida(null, .2); const f2 = burst(t, 1.5, 'bandpass', 5200, 8, g2); f2.frequency.linearRampToValueAtTime(2800, t + 1.4); env(g2, t, .05, .15, 1.3);
+    const g3 = saida(null, .4); burst(t + 1.45, .3, 'lowpass', 250, 1, g3, 0); env(g3, t + 1.45, .005, .6, .3);
+  },
+  orelhao(pos) {
+    const t = AC.currentTime;
+    for (let r = 0; r < 3; r++) { const g = saida(pos, .3); for (const f of [920, 1380, 2210]) osc('sine', f, t + r * 3, 1.2, g); g.gain.setValueAtTime(0, t + r * 3); for (let i = 0; i < 24; i++) g.gain.setValueAtTime(i % 2 ? .005 : .04, t + r * 3 + i * .05); g.gain.setValueAtTime(0, t + r * 3 + 1.2); }
+  },
+  cavar() {
+    const t = AC.currentTime, g = saida(null, .2); burst(t, .3, 'lowpass', rand(550, 800), 1, g); env(g, t, .01, .5, .25);
+    const g2 = saida(null, .2); burst(t, .12, 'highpass', 2500, .7, g2); env(g2, t, .005, .12, .1);
+    for (let i = 0; i < 3; i++) { const k = .2 + rand(0, .25), g3 = saida(null, .2); burst(t + k, .02, 'bandpass', rand(1800, 3000), 5, g3); env(g3, t + k, .001, .06, .02); }
+  },
+  corda() {
+    const t = AC.currentTime, g = saida(null, .3); const f = burst(t, .5, 'bandpass', rand(300, 900), 2, g); f.frequency.linearRampToValueAtTime(rand(300, 600), t + .5); env(g, t, .08, .35, .4);
+    SOM.rangido(P.pos.x, 3, P.pos.z, .7);
+    if (t - AUD.cordaT > 1.5) AUD.cordaN = 0; AUD.cordaT = t; AUD.cordaN++;
+    if (AUD.cordaN % 2 === 0) SOM.sino(Math.min(.7, .1 + AUD.cordaN * .1), { x: P.pos.x, y: 6, z: P.pos.z });
+  },
+  valvula(pos) {
+    SOM.rangido(pos ? pos.x : P.pos.x, 1, pos ? pos.z : P.pos.z, 1); const t = AC.currentTime, g = saida(pos || null, .6); const o = AC.createOscillator(); o.type = 'square'; o.frequency.value = 55; o.connect(g); env(g, t, .02, .15, .5); o.start(t); o.stop(t + .6);
+    const g2 = saida(pos || null, .5); const f = burst(t, .5, 'bandpass', 3200, 12, g2); f.frequency.linearRampToValueAtTime(2400, t + .5); env(g2, t, .05, .1, .4);
+    const g3 = saida(pos || null, .6); burst(t + .2, .6, 'lowpass', 900, 1, g3); env(g3, t + .2, .1, .12, .45);
+  },
+  cano(pos) {
+    const t = AC.currentTime;
+    for (let i = 0; i < 4; i++) { const g = saida(pos || null, .8); osc('triangle', rand(80, 160), t + i * .18, .5, g); osc('sine', rand(600, 900), t + i * .18, .4, g); env(g, t + i * .18, .003, .5, .4); }
+    const g = saida(pos || null, .7); burst(t + .3, 1.6, 'lowpass', 700, 1, g); env(g, t + .3, .3, .25, 1.2);
+  },
+  forcar() { const t = AC.currentTime, g = saida(null, .4); burst(t, .25, 'lowpass', 400, 1, g); env(g, t, .01, .5, .2); SOM.rangido(P.pos.x, 1, P.pos.z, .6); if (Math.random() < .4) { const g2 = saida(null, .4); burst(t + .15, .05, 'highpass', 2000, 1, g2); env(g2, t + .15, .001, .25, .05); } },
+  fitaClique() {
+    const t = AC.currentTime;
+    for (const [k, f, v] of [[0, 1500, .5], [.07, 900, .35]]) { const g = saida(null, .1); burst(t + k, .05, 'bandpass', f, 3, g); env(g, t + k, .001, v, .04); }
+    const g = saida(null, 0); const o = AC.createOscillator(); o.type = 'sawtooth'; o.frequency.setValueAtTime(90, t + .1); o.frequency.linearRampToValueAtTime(140, t + .35); const lp = AC.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 500; o.connect(lp); lp.connect(g); env(g, t + .1, .05, .03, .25); o.start(t + .1); o.stop(t + .45);
+  },
   chiadoFita(on) {
-    if (on && !AMB.fita) { const s = ruido(true), f = AC.createBiquadFilter(); f.type = 'highpass'; f.frequency.value = 3500; const g = AC.createGain(); g.gain.value = .025; s.connect(f); f.connect(g); g.connect(master); s.start(); AMB.fita = s; }
-    else if (!on && AMB.fita) { AMB.fita.stop(); AMB.fita = null; }
+    if (on && !AMB.fita) {
+      const t = AC.currentTime, nodes = [];
+      const s = ruido(true), f = AC.createBiquadFilter(); f.type = 'highpass'; f.frequency.value = 3500; const g = AC.createGain(); g.gain.value = .025; s.connect(f); f.connect(g); g.connect(BUS.voz); s.start(); nodes.push(s);
+      const wow = AC.createOscillator(); wow.frequency.value = .6; const wg = AC.createGain(); wg.gain.value = 600; wow.connect(wg); wg.connect(f.frequency); wow.start(); nodes.push(wow);
+      const hum = AC.createOscillator(); hum.frequency.value = 50; const hg = AC.createGain(); hg.gain.value = .006; hum.connect(hg); hg.connect(BUS.voz); hum.start(); nodes.push(hum);
+      const m = ruido(true), mb = AC.createBiquadFilter(); mb.type = 'bandpass'; mb.frequency.value = 700; mb.Q.value = 3; const mh = AC.createBiquadFilter(); mh.type = 'highpass'; mh.frequency.value = 300; const ml = AC.createBiquadFilter(); ml.type = 'lowpass'; ml.frequency.value = 3400;
+      const mg = AC.createGain(); mg.gain.value = 0; const sil = AC.createOscillator(); sil.frequency.value = 4.3; const sg = AC.createGain(); sg.gain.value = .012; sil.connect(sg); sg.connect(mg.gain); const fr = AC.createOscillator(); fr.frequency.value = 1.7; const fg = AC.createGain(); fg.gain.value = 300; fr.connect(fg); fg.connect(mb.frequency);
+      m.connect(mb); mb.connect(mh); mh.connect(ml); ml.connect(mg); mg.connect(BUS.voz); m.start(t); sil.start(t); fr.start(t); nodes.push(m, sil, fr);
+      AMB.fita = { nodes, stop: () => nodes.forEach(n => n.stop()) };
+    } else if (!on && AMB.fita) {
+      AMB.fita.stop(); AMB.fita = null;
+      if (M.ativo && S && !S.dead && M.pos.distanceTo(P.pos) < 15) depois(1200, () => { if (M.ativo && !S.dead) SOM.estalo(M.pos, 1); });
+    }
   },
-  trovao() { const t = AC.currentTime + rand(.4, 1.8), g = saida(null, .7); burst(t, 3.6, 'lowpass', 220, 1, g, 0); g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(P.room && P.room.fora ? 1.4 : .5, t + .15); g.gain.exponentialRampToValueAtTime(.0001, t + 3.5); },
-  voz(pos) { const t = AC.currentTime, o = AC.createOscillator(); o.type = 'sawtooth'; o.frequency.value = 62; const f = AC.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = 300; f.Q.value = 3; const lfo = AC.createOscillator(); lfo.frequency.value = 11; const lg = AC.createGain(); lg.gain.value = 18; lfo.connect(lg); lg.connect(o.frequency); const g = saida({ x: pos.x, y: 2.8, z: pos.z }, .6); o.connect(f); f.connect(g); env(g, t, .2, .55, 1.6); o.start(t); lfo.start(t); o.stop(t + 2); lfo.stop(t + 2); }
+  trovao() {
+    const fora = !!(P.room && P.room.fora), t = AC.currentTime + rand(.4, 1.8);
+    AUD.trovaoIni = t; AUD.trovaoAte = t + 3.5;
+    const g = saida(null, .7, 'amb'); burst(t, 3.6, 'lowpass', fora ? 260 : 140, 1, g, 0); g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(fora ? 1.4 : .45, t + .15); g.gain.exponentialRampToValueAtTime(.0001, t + 3.5);
+    const g2 = saida(null, .7, 'amb'); burst(t + 1.1, 2, 'lowpass', fora ? 180 : 110, 1, g2, 0); g2.gain.setValueAtTime(.0001, t + 1.1); g2.gain.exponentialRampToValueAtTime(fora ? .7 : .25, t + 1.4); g2.gain.exponentialRampToValueAtTime(.0001, t + 3.1);
+    if (fora && Math.random() < .6) { const g3 = saida(null, .5, 'amb'); burst(t - .05, .25, 'highpass', 1200, .7, g3); env(g3, t - .05, .002, .45, .3); }
+  },
+  voz(pos, texto) {
+    const t = AC.currentTime, d = Math.hypot(pos.x - P.pos.x, pos.z - P.pos.z), p = { x: pos.x, y: 2.8, z: pos.z };
+    let falou = false;
+    if (texto && OPT.falada && window.speechSynthesis && window.SpeechSynthesisUtterance) {
+      try { const v = speechSynthesis.getVoices().find(v => /^pt[-_]BR/i.test(v.lang)); if (v) { const u = new SpeechSynthesisUtterance(texto); u.voice = v; u.lang = 'pt-BR'; u.pitch = .1; u.rate = .6; u.volume = clamp(OPT.vol * OPT.vVoz * (1.2 - d / 20), .05, 1); speechSynthesis.cancel(); speechSynthesis.speak(u); falou = true; } } catch (e) {}
+    }
+    const k = falou ? .4 : 1;
+    for (const [f0, ff, q] of [[62, 300, 3], [93, 820, 5]]) { const o = AC.createOscillator(); o.type = 'sawtooth'; o.frequency.value = f0; const f = AC.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = ff; f.Q.value = q; const lfo = AC.createOscillator(); lfo.frequency.value = 11; const lg = AC.createGain(); lg.gain.value = f0 * .28; lfo.connect(lg); lg.connect(o.frequency); const g = saida(p, .6, 'voz'); o.connect(f); f.connect(g); env(g, t, .2, .55 * k * (f0 > 80 ? .4 : 1), 1.6); o.start(t); lfo.start(t); o.stop(t + 2); lfo.stop(t + 2); }
+    const g = saida(p, .4, 'voz'); burst(t, 1.8, 'bandpass', 1400, 1.5, g); env(g, t, .2, .08 * k, 1.5);
+  },
+  suspiro(pos) {
+    const t = AC.currentTime, p = { x: pos.x, y: 2.8, z: pos.z }, g = saida(p, .6, 'voz'); const f = burst(t, 1.9, 'lowpass', 900, 1, g, 0); f.frequency.linearRampToValueAtTime(400, t + 1.8); env(g, t, .4, .25, 1.5);
+    const g2 = saida(p, .6, 'voz'), o = AC.createOscillator(); o.type = 'sawtooth'; o.frequency.setValueAtTime(58, t); o.frequency.linearRampToValueAtTime(44, t + 1.8); const lp = AC.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 300; o.connect(lp); lp.connect(g2); env(g2, t, .5, .2, 1.4); o.start(t); o.stop(t + 2);
+  },
+  alivio() { const t = AC.currentTime; for (const [i, f] of [[0, 220], [1, 277.2], [2, 329.6]]) { const g = saida(null, .8, 'mus'); osc('sine', f, t + i * .12, 4.5, g); g.gain.setValueAtTime(.0001, t + i * .12); g.gain.exponentialRampToValueAtTime(.018, t + i * .12 + 1); g.gain.exponentialRampToValueAtTime(.0001, t + 4.4); } },
+  pulso(v) { const t = AC.currentTime, g = saida(null, .2, 'amb'), o = AC.createOscillator(); o.frequency.setValueAtTime(48, t); o.frequency.exponentialRampToValueAtTime(36, t + .5); o.connect(g); env(g, t, .02, .3 * v, .55); o.start(t); o.stop(t + .65); },
+  metal(v = 1) { const t = AC.currentTime, g = saida(null, .5, 'amb'); burst(t, .12, 'bandpass', rand(2000, 3500), 15, g); env(g, t, .001, .5 * v, .12); const g2 = saida(null, .3, 'amb'); osc('triangle', rand(90, 120), t, .2, g2); env(g2, t, .002, .15 * v, .15); },
+  passosTeto() { const t = AC.currentTime, x0 = P.pos.x + rand(-4, 4), z0 = P.pos.z + rand(-4, 4), a = rand(0, 6.28), n = 4 + (Math.random() * 3 | 0); for (let i = 0; i < n; i++) { const pos = { x: x0 + Math.cos(a) * i * .7, y: 5.5, z: z0 + Math.sin(a) * i * .7 }, k = i * .62, g = saida(pos, .3, 'amb'); burst(t + k, .25, 'lowpass', 230, 1, g); env(g, t + k, .01, .5, .22); } depois(n * 300, () => SOM.rangido(x0, 5.5, z0, .25, 'amb')); },
+  batidasChao() { const t = AC.currentTime, x = P.pos.x + rand(-3, 3), z = P.pos.z + rand(-3, 3); for (let i = 0; i < 3; i++) { const g = saida({ x, y: -2, z }, .4, 'amb'); burst(t + i * .45, .3, 'lowpass', 180, 1, g, 0); env(g, t + i * .45, .005, .7, .25); } },
+  tremor() { const t = AC.currentTime, g = saida(null, .5, 'amb'), o = AC.createOscillator(); o.frequency.value = 28; o.connect(g); g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(.35, t + .8); g.gain.exponentialRampToValueAtTime(.0001, t + 3.2); o.start(t); o.stop(t + 3.3); const g2 = saida(null, .4, 'amb'); burst(t, 3, 'lowpass', 120, 1, g2, 0); env(g2, t, .8, .4, 2.2); for (let i = 0; i < 6; i++) { const k = 1 + rand(0, 2), g3 = saida({ x: P.pos.x + rand(-3, 3), y: 2.5, z: P.pos.z + rand(-3, 3) }, .4, 'amb'); burst(t + k, .02, 'bandpass', rand(2000, 4000), 4, g3); env(g3, t + k, .001, .08, .02); } P.shake = Math.max(P.shake, .012); },
+  predio() { const x = P.pos.x + rand(-7, 7), z = P.pos.z + rand(-7, 7), t = AC.currentTime; if (Math.random() < .5) SOM.rangido(x, 2.6, z, .35, 'amb'); else { const g = saida({ x, y: 2.6, z }, .5, 'amb'); burst(t, .05, 'bandpass', 1100, 4, g); env(g, t, .001, .3, .05); } },
+  rato() { const t = AC.currentTime, x0 = P.pos.x + rand(-5, 5), z0 = P.pos.z + rand(-5, 5), dx = rand(-1, 1), dz = rand(-1, 1); for (let i = 0; i < 8; i++) { const g = saida({ x: x0 + dx * i * .4, y: .05, z: z0 + dz * i * .4 }, .2, 'amb'); burst(t + i * .07, .02, 'highpass', 3500, 1, g); env(g, t + i * .07, .001, .06, .02); } for (const k of [.2, .5]) { const g = saida({ x: x0, y: .1, z: z0 }, .3, 'amb'), o = AC.createOscillator(); o.frequency.setValueAtTime(3800, t + k); o.frequency.linearRampToValueAtTime(4600, t + k + .06); o.connect(g); env(g, t + k, .005, .015, .07); o.start(t + k); o.stop(t + k + .1); } },
+  portaoVento() { const a = rand(0, 6.28), x = P.pos.x + Math.cos(a) * 18, z = P.pos.z + Math.sin(a) * 18; SOM.rangido(x, 1.5, z, .5, 'amb'); depois(800, () => { const t = AC.currentTime, g = saida({ x, y: 1.5, z }, .6, 'amb'); osc('triangle', 210, t, .4, g); osc('triangle', 317, t, .4, g); env(g, t, .002, .1, .35); }); }
 };
-let hbT = 0;
+// O que o barulho ao redor esconde: trovão (todo mundo) e o ronco do gerador (perto dele)
+function mascaraSom(x, z) {
+  let k = 1;
+  if (AC && AC.currentTime > AUD.trovaoIni && AC.currentTime < AUD.trovaoAte) k *= .3;
+  if (AMB.ger && Math.hypot(x - AMB.ger.pos.x, z - AMB.ger.pos.z) < 8) k *= .5;
+  return k;
+}
+function silenciarContinuos() {
+  const t = AC.currentTime;
+  for (const n of [AMB.resp && AMB.resp.g, AMB.choro && AMB.choro.g, AMB.flash && AMB.flash.g, AMB.cordas, AMB.caca, AMB.violino, AMB.zumbido, ...(AMB.lamp || []).map(l => l.g)]) if (n) n.gain.setTargetAtTime(0, t, .1);
+}
+function perfilSala(r) {
+  if (!r) return 'p';
+  if (W.mapa === 'tuneis' || r.acustica === 'tunel') return 't';
+  if (r.acustica) return r.acustica === 'grande' ? 'g' : 'p';
+  if (r.fora) return 'fora';
+  const lx = r.x1 - r.x0, lz = r.z1 - r.z0, area = lx * lz, longo = Math.max(lx, lz) / Math.max(1, Math.min(lx, lz));
+  return area > 60 || (r.h || 3) > 4.5 || longo > 3.5 ? 'g' : 'p';
+}
 function updateAudio(dt) {
   if (!AC) return;
-  const L = AC.listener, p = camera.position;
+  try { updateAudioCore(dt); } catch (e) { if (!AUD.erroAvisado) { AUD.erroAvisado = true; console.warn('áudio', e); } }
+}
+function updateAudioCore(dt) {
+  const L = AC.listener, p = camera.position, now = AC.currentTime;
   const fw = new THREE.Vector3(0, 0, -1).applyQuaternion(camera.quaternion), up = new THREE.Vector3(0, 1, 0).applyQuaternion(camera.quaternion);
   if (L.positionX) { L.positionX.value = p.x; L.positionY.value = p.y; L.positionZ.value = p.z; L.forwardX.value = fw.x; L.forwardY.value = fw.y; L.forwardZ.value = fw.z; L.upX.value = up.x; L.upY.value = up.y; L.upZ.value = up.z; }
   else { L.setPosition(p.x, p.y, p.z); L.setOrientation(fw.x, fw.y, fw.z, up.x, up.y, up.z); }
-  const fora = P.room && P.room.fora, sub = W.mapa === 'tuneis';
-  AMB.chuva.gain.value = lerp(AMB.chuva.gain.value, sub ? 0 : fora ? .14 : .03, dt * 2);
-  AMB.chuvaF.frequency.value = lerp(AMB.chuvaF.frequency.value, fora ? 3000 : 500, dt * 2);
-  const tens = (M.ativo && M.state === 'caca') || PROC.fase ? .05 : (M.ativo && M.pos.distanceTo(P.pos) < 10) || ANA.ativa ? .02 : 0;
-  AMB.tensao.gain.value = lerp(AMB.tensao.gain.value, tens, dt * 1.5);
-  hbT -= dt;
-  if (S && S.fear > 30 && hbT <= 0) { SOM.coracao(); hbT = 60 / lerp(55, 150, S.fear / 100); }
+  const fora = !!(P.room && P.room.fora), subsolo = W.mapa === 'tuneis', jogando = mode === 'jogo' && S && !S.dead;
+  // Ambiente: chuva abafada dentro, quase sumida debaixo da terra, mais forte no telhado do andar de cima
+  AMB.chuva.gain.value = lerp(AMB.chuva.gain.value, subsolo ? .012 : fora ? .14 : W.mapa === 'superior' ? .05 : .03, dt * 2);
+  AMB.chuvaF.frequency.value = lerp(AMB.chuvaF.frequency.value, subsolo ? 300 : fora ? 3000 : 500, dt * 2);
+  const rajada = .5 + .5 * Math.sin(perf * .23) * Math.sin(perf * .61);
+  AMB.vento.gain.value = lerp(AMB.vento.gain.value, subsolo ? .012 : fora ? .03 + .07 * rajada : .02, dt * 1.5);
+  if (!S) return;
+  const dM = M.ativo ? M.pos.distanceTo(P.pos) : 99, dA = ANA.ativa ? ANA.pos.distanceTo(P.pos) : 99, est = M.ativo ? M.state : null;
+  const prende = !!(S.hidden && keys.Space && S.stamina > 0 && jogando);
+  // --- Reverb pela sala onde você está
+  if (P.room && AUD.sala !== P.room) { AUD.sala = P.room; const k = perfilSala(P.room); for (const [c, s] of Object.entries(AUD.rev)) s.gain.setTargetAtTime(k === 'fora' ? (c === 'p' ? .3 : 0) : c === k ? 1 : 0, now, .5); }
+  // --- Oclusão das fontes contínuas
+  AUD.ocT -= dt; if (AUD.ocT <= 0) { AUD.ocT = .3; for (const F of FONTES) atualizarOclusao(F); }
+  // --- Música por estado do Inspetor
+  let lPulso = 0, lCordas = 0, lCaca = 0, lZ = 0;
+  if (est === 'caca') { lCaca = .6 + .4 * clamp(1 - dM / 20, 0, 1); AUD.posCacaT = 4; }
+  else if (est === 'investiga') lCordas = dM < 22 ? 1 : .4;
+  else if (est === 'procura') { lCordas = dM < 18 ? .6 : .25; lZ = dM < 18 ? 1 : .3; }
+  if (M.ativo && dM < 14) lPulso = clamp(1.3 - dM / 14, 0, 1);
+  AUD.posCacaT -= dt;
+  if (AUD.posCacaT > 0 && est !== 'caca') { lPulso = 1; lCordas = 0; lZ = 0; }
+  if (PROC.fase) lCordas = Math.max(lCordas, .5);
+  if (ANA.ativa) lZ = Math.max(lZ, .6 * clamp(1 - dA / 12, 0, 1));
+  if (!jogando) lPulso = lCordas = lCaca = lZ = 0;
+  AMB.cordas.gain.setTargetAtTime(lCordas * .022, now, .5); AMB.caca.gain.setTargetAtTime(lCaca * .07, now, .5);
+  AMB.violino.gain.setTargetAtTime(lCaca * .01, now, .5); AMB.zumbido.gain.setTargetAtTime(lZ * .0035, now, .5);
+  if (est === 'caca') {
+    AUD.cacaT += dt; if (AUD.cacaT > 3 && AUD.cacaSemi < 6) { AUD.cacaT = 0; AUD.cacaSemi++; for (const o of AMB.cacaOsc) o.detune.setTargetAtTime(AUD.cacaSemi * 100, now, .3); AMB.violinoO.frequency.setTargetAtTime(880 * Math.pow(2, AUD.cacaSemi / 12) * rand(.98, 1.02), now, .8); }
+    AUD.percT -= dt; if (AUD.percT <= 0) { AUD.percT = clamp(.3 + dM * .06, .3, 1.1); SOM.metal(.6 + .4 * clamp(1 - dM / 15, 0, 1)); }
+  } else if (AUD.cacaSemi) { AUD.cacaSemi = 0; AUD.cacaT = 0; for (const o of AMB.cacaOsc) o.detune.setTargetAtTime(-300, now, 1.2); AMB.violinoO.frequency.setTargetAtTime(660, now, 1); }
+  AUD.pulsoT -= dt; if (lPulso > .05 && AUD.pulsoT <= 0) { AUD.pulsoT = dM < 6 ? 1.2 : 2; SOM.pulso(lPulso); }
+  // Mudanças de estado: suspiro quando ele perde a pista, acorde de alívio quando desiste
+  if (est !== AUD.estPrev) {
+    if (AUD.estPrev === 'caca' && est === 'procura') SOM.suspiro(M.pos);
+    if ((AUD.estPrev === 'procura' || AUD.estPrev === 'investiga') && est === 'patrulha' && dM < 25 && jogando) SOM.alivio();
+    AUD.estPrev = est;
+  }
+  // --- Vácuo: o silêncio que avisa
+  let vac = 1;
+  for (const w of AUD.sils) if (now < w.ate) vac = Math.min(vac, w.nivel);
+  if (fitaTocando) vac = Math.min(vac, .35);
+  if (ANA.ativa && !ANA.vista && ANA.conta >= 7 && dA < 12) vac = Math.min(vac, .18);
+  if (PROC.fase === 'aviso' && PROC.t < 1.6) vac = Math.min(vac, .06);
+  if (prende) vac = Math.min(vac, .45);
+  if (!S.dead) { const cur = AUD.vacuo.gain.value; AUD.vacuo.gain.setTargetAtTime(vac, now, vac < cur ? .17 : .6); }
+  // --- Abafar: armário, cama, medo extremo, ferida, morte
+  let corte = 20000;
+  if (S.hidden) corte = S.hidden.tipo === 'cama' ? 2000 : 1200;
+  else if (S.fear > 90) corte = 2600;
+  if (S.health < 30) corte = Math.min(corte, 3200);
+  if (S.dead) corte = 500;
+  AUD.abafa.frequency.setTargetAtTime(corte, now, .1);
+  AUD.madeiraG.gain.setTargetAtTime(S.hidden && S.hidden.tipo !== 'cama' ? .3 : 0, now, .1);
+  AUD.mundo.gain.setTargetAtTime(S.dead ? .15 : now < AUD.zumbidoAte ? .3 : 1, now, S.dead ? 1 : .8);
+  // --- Gerador: perto dele você some, mas fica surda para ele
+  const entK = AMB.ger && Math.hypot(P.pos.x - AMB.ger.pos.x, P.pos.z - AMB.ger.pos.z) < 8 ? .4 : 1;
+  if (entK !== AUD.entK) { AUD.entK = entK; aplicarVolumes(); }
+  // --- Coração: só quando importa, pela distância real do perigo
+  let perigo = 0;
+  if (M.ativo) perigo = Math.max(perigo, clamp(1 - dM / 14, 0, 1) * (est === 'caca' ? 1 : .8), est === 'caca' ? .55 : 0);
+  if (ANA.ativa) perigo = Math.max(perigo, clamp(1 - dA / 9, 0, 1));
+  if (PROC.fase) perigo = Math.max(perigo, PROC.fase === 'passando' ? 1 : .6);
+  perigo = Math.max(perigo, clamp((S.fear - 70) / 30, 0, 1) * .6);
+  if (!jogando) perigo = 0;
+  AUD.coracaoN = perigo > AUD.coracaoN ? lerp(AUD.coracaoN, perigo, Math.min(1, dt * 2.5)) : Math.max(perigo, AUD.coracaoN - dt / 6);
+  AUD.hbT -= dt;
+  if (AUD.coracaoN > .06 && AUD.hbT <= 0 && jogando) {
+    const n = AUD.coracaoN; AUD.hbT = 60 / (60 + 95 * n);
+    SOM.coracao((.35 + .65 * n) * (S.hidden ? 1.4 : 1) * (prende ? 1.3 : 1));
+    if (S.hidden && S.fear > 88 && M.ativo && dM < 1.8 && !prende) { if (!AUD.avisouCoracao) { AUD.avisouCoracao = true; sub('inspetor', 'Eu ouço o seu coração.'); } else emitNoise(P.pos.x, P.pos.z, 1.4, true); }
+  }
+  // --- Respiração da Lia
+  const esforco = clamp((60 - S.stamina) / 60, 0, 1);
+  AUD.resp += dt * (.22 + S.fear / 100 * .55 + esforco * .7) * Math.PI * 2;
+  const ciclo = Math.sin(AUD.resp), insp = ciclo > 0;
+  let amp = (.004 + S.fear / 100 * .02 + esforco * .03) * (S.hidden ? 1.4 : 1);
+  if (S.fear > 80) amp *= 1 + Math.sin(perf * 44) * .35;
+  AMB.resp.g.gain.setTargetAtTime(prende || !jogando ? 0 : amp * ciclo * ciclo, now, prende ? .01 : .04);
+  AMB.resp.f.frequency.setTargetAtTime(insp ? 1500 : 950, now, .08);
+  AMB.choro.g.gain.setTargetAtTime(jogando && S.health < 30 && !prende && !insp ? .005 * ciclo * ciclo : 0, now, .05);
+  AMB.choro.o.frequency.setTargetAtTime(300 + Math.sin(perf * 9) * 25, now, .05);
+  if (AUD.prendia && !prende && S.hidden && jogando) { SOM.arfar(); if (M.ativo && dM < 3) emitNoise(P.pos.x, P.pos.z, 1.5, true); }
+  AUD.prendia = prende;
+  if (prende) S.fear = Math.max(0, S.fear - 5 * dt);
+  // --- Lanterna: zumbido baixo e o tique quando falha
+  const acesa = jogando && S.flashOn && !flashPisca;
+  AMB.flash.g.gain.setTargetAtTime(acesa ? .0025 * (S.battery < 18 ? .4 + Math.random() : 1) : 0, now, .02);
+  if (jogando && S.flashOn && flashPisca && !AUD.flashPrev && now > AUD.tiqueT) { AUD.tiqueT = now + .08; SOM.tique(); }
+  AUD.flashPrev = flashPisca;
+  // --- Lâmpadas que zumbem (e desafinam perto dele)
+  AUD.lampT -= dt;
+  if (AUD.lampT <= 0) {
+    AUD.lampT = .4;
+    const perto = jogando && P.room ? W.lampadas.filter(Lp => Lp.ligada && Lp.luz.intensity > .5 && Math.hypot(Lp.x - P.pos.x, Lp.z - P.pos.z) < 9 && salaAdj(roomAt(Lp.x, Lp.z), P.room)).sort((a, b) => Math.hypot(a.x - P.pos.x, a.z - P.pos.z) - Math.hypot(b.x - P.pos.x, b.z - P.pos.z)).slice(0, 3) : [];
+    AMB.lamp.forEach((v, i) => {
+      const Lp = perto[i];
+      if (!Lp) { v.g.gain.setTargetAtTime(0, now, .2); return; }
+      posPanner(v.p, { x: Lp.x, y: 2.6, z: Lp.z });
+      const mal = (M.ativo && Math.hypot(M.pos.x - Lp.x, M.pos.z - Lp.z) < 6) || PROC.fase;
+      v.o.detune.setTargetAtTime(mal ? rand(-90, 90) : 0, now, .1);
+      v.g.gain.setTargetAtTime(Lp.luz.intensity < Lp.base * .3 ? 0 : (mal ? rand(.004, .02) : .008), now, .1);
+    });
+  }
+  // --- Canto da Procissão vem de onde ela vai nascer, e depois anda com ela
+  if (AMB.canto) {
+    const alvo = PROC.fase === 'passando' ? PROC.pos : PROC.ini ? { x: (PROC.ini.x0 + PROC.ini.x1) / 2, z: (PROC.ini.z0 + PROC.ini.z1) / 2 } : null;
+    if (alvo) moverFonte(AMB.canto.F, { x: alvo.x, y: 1.2, z: alvo.z });
+    AMB.canto.extra.gain.setTargetAtTime(PROC.fase === 'passando' ? .5 : 0, now, .4);
+  }
+  // --- Passinhos da Ana quando ninguém está olhando
+  if (ANA.ativa && !ANA.vista) { if (!AUD.anaPrev) AUD.anaPrev = ANA.pos.clone(); if (ANA.pos.distanceTo(AUD.anaPrev) > .55) { AUD.anaPrev.copy(ANA.pos); if (dA < 10 && jogando) SOM.anaPasso(ANA.pos); } } else AUD.anaPrev = null;
+  // --- O prédio respira: sons raros nas calmarias
+  AUD.evT -= dt;
+  if (AUD.evT <= 0 && jogando && P.room) {
+    AUD.evT = rand(30, 65);
+    if (!(M.ativo && dM < 16) && !PROC.fase && !ANA.ativa) {
+      const m = W.mapa;
+      if (fora) SOM.portaoVento();
+      else if (m === 'terreo' && Math.random() < .5) SOM.passosTeto();
+      else if (m === 'superior' && Math.random() < .5) SOM.batidasChao();
+      else if (m === 'tuneis' && Math.random() < .5) SOM.tremor();
+      else if (Math.random() < .5) SOM.rato(); else SOM.predio();
+    }
+  }
+  // drone respira com o perigo
+  AMB.drone.gain.setTargetAtTime(.03 + .03 * AUD.coracaoN, now, 1);
 }
+// Pausa e diário abafam o mundo; menu silencia o que é contínuo; aba escondida suspende o áudio
+setInterval(() => {
+  try {
+    if (!AC) return;
+    const pausado = ui === 'pausa' || ui === 'diario', parado = pausado || !(mode === 'jogo' || mode === 'cena') || (S && S.fim);
+    if (pausado !== AUD.pausado) { AUD.pausado = pausado; const t = AC.currentTime; AUD.abafa.frequency.setTargetAtTime(pausado ? 650 : 20000, t, .08); AUD.mundo.gain.setTargetAtTime(pausado ? .5 : 1, t, .15); }
+    if (parado) silenciarContinuos();
+  } catch (e) {}
+}, 150);
+document.addEventListener('visibilitychange', () => { try { if (!AC) return; if (document.hidden) AC.suspend(); else AC.resume(); } catch (e) {} });
+for (const ev of ['pointerdown', 'keydown']) addEventListener(ev, () => { try { if (AC && AC.state === 'suspended' && !document.hidden) AC.resume(); } catch (e) {} });
+// Opções de som (volumes separados, mono, som noturno, voz falada)
+(function opcoesSom() {
+  const campos = [['vAmb', 'Ambiente e música'], ['vEnt', 'Criaturas'], ['vSfx', 'Efeitos'], ['vVoz', 'Vozes e fitas']];
+  const chk = [['mono', 'Áudio mono'], ['noturno', 'Som noturno'], ['falada', 'Voz falada do Inspetor']];
+  const html = p => campos.map(([k, n]) => `<label>${n} <input type="range" id="${p}-${k}" min="0" max="1.5" step="0.05"></label>`).join('') + chk.map(([k, n]) => `<label><input type="checkbox" id="${p}-${k}"> ${n}</label>`).join('');
+  const st = document.createElement('style');
+  st.textContent = '.som-extra{margin-top:10px;font-family:"IM Fell English SC",serif;font-size:14px;letter-spacing:.08em;color:var(--fraco,#888);width:100%;text-align:center}.som-extra summary{cursor:pointer;list-style:none}.som-extra summary::-webkit-details-marker{display:none}.som-extra summary::before{content:"+ "}.som-extra[open] summary::before{content:"− "}.som-grade{display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;margin-top:10px}.som-grade label{display:flex;align-items:center;gap:8px}';
+  document.head.appendChild(st);
+  for (const [p, sel, tit] of [['o', '#title .opts', 'Som'], ['p', '#pause .set', 'Mais opções de som']]) {
+    const alvo = $(sel); if (!alvo) continue;
+    const d = document.createElement('details'); d.className = 'som-extra'; d.innerHTML = `<summary>${tit}</summary><div class="som-grade">${html(p)}</div>`; alvo.appendChild(d);
+  }
+  const setSom = (k, v) => {
+    OPT[k] = +v; lsSet(OPT_KEY, OPT);
+    for (const p of ['o', 'p']) { const el = $(`#${p}-${k}`); if (!el) continue; if (el.type === 'checkbox') el.checked = !!OPT[k]; else el.value = OPT[k]; }
+    if (!AC) return;
+    if (k === 'noturno') aplicarNoturno(); else aplicarVolumes();
+    if (k === 'falada' && !OPT.falada && window.speechSynthesis) try { speechSynthesis.cancel(); } catch (e) {}
+  };
+  for (const p of ['o', 'p']) {
+    for (const [k] of campos) { const el = $(`#${p}-${k}`); if (el) { el.value = OPT[k]; el.oninput = e => setSom(k, e.target.value); } }
+    for (const [k] of chk) { const el = $(`#${p}-${k}`); if (el) { el.checked = !!OPT[k]; el.onchange = e => setSom(k, e.target.checked ? 1 : 0); } }
+  }
+})();
 
 // =====================================================================
 // CHUVA, RELÂMPAGO, LUZES
@@ -1683,7 +2204,7 @@ function renderDiario() {
     let h = S.flags.regras ? `<div class="paper" style="transform:none;width:100%;max-height:none"><h2>${R.regras.titulo}</h2><p>${R.regras.texto}</p></div>` : '<p style="color:var(--fraco)">Você ainda não tem as regras.</p>';
     h += '<h3>O que você já viu</h3>';
     const best = [];
-    if (S.flags.avist) best.push(['O Inspetor', 'Cego. Caça pelo som e estala a língua para se localizar: dá para ouvir onde ele está. Garrafas (G) o distraem. Escondida, prenda a respiração (ESPAÇO).']);
+    if (S.flags.avist) best.push(['O Inspetor', 'Cego. Caça pelo som e estala a língua para se localizar: dá para ouvir onde ele está. Aprenda os estalos: um clique grave, patrulha; dois, desconfiado; três subindo, procurando; rajada aguda, caçando você. Passos abafados vêm de trás de porta ou parede. Trovões e o ronco do gerador encobrem o seu barulho. Garrafas (G) o distraem. Escondida, prenda a respiração (ESPAÇO).']);
     if (S.flags.procAviso) best.push(['A Procissão', 'Luzes piscando e rádio chiando avisam. Entre num armário ou embaixo de uma cama antes que eles passem.']);
     if (S.flags.anaVista) best.push(['A Menina Que Conta', 'Só se mexe quando você não está olhando para ela com luz. Quando a lanterna pisca, ela avança. Não abre portas fechadas.']);
     if (S.flags.chamado1) best.push(['O Chamado', 'Alguém chama seu nome de uma sala vizinha. Não vá até lá.']);

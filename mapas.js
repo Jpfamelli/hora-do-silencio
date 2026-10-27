@@ -726,7 +726,7 @@ function cemiterio(A, S) {
     setTimeout(() => { A.ativarInspetor(0, -67, 'caca'); A.M.cool = 2.5; SFX.grito('inspetor'); A.emitNoise(0, -60, 60); }, 3200);
     setTimeout(() => { if (A.S.flags.sino && !A.ANA.ativa) A.spawnAna(A.SALA('cem')); }, 9000);
   });
-  itSino.hold = 3; itSino.ruido = 40; itSino.som = 'cavar'; itSino.pode = () => !S.flags.sino && S.placed >= 3;
+  itSino.hold = 3; itSino.ruido = 40; itSino.som = 'corda'; itSino.pode = () => !S.flags.sino && S.placed >= 3;
   gatilho('fuga', -2.2, 2.2, 11.2, 13, () => { if (S.flags.sino) A.escolhaFinal(); }, false);
   gatilho('entrouCapela', -8, 8, -70, -48.5, () => { if (S.chapter === 5 && !S.done.capela) { A.objDone('capela'); A.falar('capela'); } }, false);
   gatilho('vozCemit', -30, 30, -20, -10, () => { SFX.chamadoVoz(-20, -30); });
