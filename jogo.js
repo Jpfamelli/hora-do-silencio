@@ -3743,7 +3743,7 @@ function carregarTitulo() { S = novoEstado('normal'); carregarMapa('estrada', 't
 const H = instalarHistoria({ R, MAPAS, API, lsGet, lsSet, CONQ_KEY, P, M, ANA, PROC, W, SFX, falar, sub, toast, cartao, conquista, emitNoise, iniciarAudio, fecharTeclado, tocarFita, syncWorld, dicaExterna: true, get S() { return S; }, get mode() { return mode; } });
 
 const UIX = criarInterface({
-  get S() { return S; }, P, M, ANA, PROC, W, OPT, DIFS, R, camera, renderer, keys, SFX, CAPS_KEY, SAVE_KEY,
+  get S() { return S; }, P, M, ANA, PROC, W, OPT, DIFS, R, camera, renderer, keys, SFX, CAPS_KEY, SAVE_KEY, scene, get AC() { return AC; }, get master() { return master; },
   get mode() { return mode; }, get ui() { return ui; }, get fita() { return fitaTocando && !fitaPausada ? fitaTocando : null; }, loreAchado, totalLore,
   D: () => D(), salaAdj, roomAt, emitNoise, toast, sub, conquista, lsGet, lsSet,
   salvarOpt: () => lsSet(OPT_KEY, OPT), setOpt, retry: () => $('#dt-retry').click(), fecharPausa, pularFimCap: () => pularFimCap()
