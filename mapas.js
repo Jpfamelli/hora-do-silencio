@@ -10,6 +10,7 @@ import { loreTerreo, loreSuperior } from './src/internato-lore.js';
 import { polirTerreo, polirSuperior } from './src/internato-polimento.js';
 import * as SUB from './src/subterraneo.js';
 import * as SUBL from './src/subterraneo-lore.js';
+import * as SUBP from './src/subterraneo-polimento.js';
 
 // ---------- utilidades compartilhadas entre mapas
 function arvores(A, faixas, n = 300) {
@@ -528,7 +529,7 @@ function superior(A, S) {
 // =====================================================================
 function tuneis(A, S) {
   const { THREE, MAT, box, cyl, prop, plano, item, interact, ITENS, MK, gatilho, SFX, spot } = A;
-  const som = SUB.sons(A), O = SUB.ondas(A), B = SUB.bolhas(A), mao = SUB.maoPalida(A);
+  const som = SUB.sons(A), O = SUB.ondas(A), B = SUB.bolhas(A), mao = SUB.maoPalida(A), FX = SUBP.efeitos(A);
   SUB.vigiarTelas(A);
   const telaAgua = SUB.tela('fx-submersa', 'background:radial-gradient(ellipse at center,rgba(18,48,36,.5) 5%,rgba(4,16,10,.96) 100%)'); telaAgua.dono = 'tuneis';
   const telaFolego = SUB.tela('fx-folego', 'inset:auto;position:absolute;left:50%;top:62%;width:200px;margin-left:-100px;height:auto;font-family:"Special Elite",monospace;font-size:16px;color:#cfe3d4;text-align:center;text-shadow:0 0 8px #000'); telaFolego.dono = 'tuneis';
@@ -548,7 +549,8 @@ function tuneis(A, S) {
     T('t5', 'Galeria leste', 6, 24, -38, -34),
     T('saida', 'Saída', 24, 32, -42, -30),
     T('t6', 'Galeria oeste', -24, -6, -38, -34),
-    { id: 'dep', nome: 'Depósito', x0: -32, x1: -24, z0: -42, z1: -30, tipo: 'deposito', piso: 'concreto', parede: 'tijolo', h: 2.8 }
+    { id: 'dep', nome: 'Depósito', x0: -32, x1: -24, z0: -42, z1: -30, tipo: 'deposito', piso: 'concreto', parede: 'tijolo', h: 2.8 },
+    ...SUBP.salasTuneis() // lote 3: duto baixo dos ratos entre a câmara oeste e o depósito
   ];
   const ab = (id, a, b, x, z, eixo) => ({ id, a, b, x, z, eixo, tipo: 'aberta', largura: 3.6, alto: 2.6 });
   const portas = [
@@ -556,9 +558,10 @@ function tuneis(A, S) {
     ab('2v', 't2', 'v1', -26, -18, 'z'), ab('3v', 't3', 'v2', 26, -18, 'z'), ab('1h', 't1', 'hub', 0, -30, 'x'),
     ab('h4', 'hub', 't4', 0, -42, 'x'), ab('h5', 'hub', 't5', 6, -36, 'z'), ab('5s', 't5', 'saida', 24, -36, 'z'), ab('h6', 'hub', 't6', -6, -36, 'z'),
     { id: 'sec', a: 't4', b: 'secreta', x: 0, z: -54, eixo: 'x', nome: 'porta de ferro', trava: () => !S.flags.aguaBaixa, msg: 'Debaixo d\'água. Não abre com esse peso.' },
-    { id: 'dep', a: 't6', b: 'dep', x: -24, z: -36, eixo: 'z', nome: 'porta do depósito' }
+    { id: 'dep', a: 't6', b: 'dep', x: -24, z: -36, eixo: 'z', nome: 'porta do depósito' },
+    ...SUBP.portasTuneis()
   ];
-  A.construirSalas(salas, portas);
+  A.construirSalas(salas, portas); SUBP.soltarDuto(A);
   // luz fixa e fraca: entrada, cruzamento, cisterna e galeria leste (antes era sorteio, às vezes tudo escuro)
   for (const [x, z, h, al] of [[0, -3, 2.8, 7], [0, -18, 2.8, 8], [0, -36, 3.4, 9], [15, -36, 2.8, 7]]) A.lampada(x, z, h, al, 0xc8d8a0, 3.4);
   // lâmpadas de emergência em gaiola marcando as válvulas, a porta de ferro e a escotilha
@@ -593,7 +596,7 @@ function tuneis(A, S) {
     giro.add(new THREE.Mesh(new THREE.TorusGeometry(.3, .04, 6, 16), MAT.ferrugem));
     for (let i = 0; i < 3; i++) { const r = box(.6, .03, .03, MAT.ferrugem, 0, 0, 0, giro); r.rotation.z = i * Math.PI / 3; }
     cyl(.08, .08, .3, MAT.ferrugem, 0, 0, 0, 8, g).rotation.x = Math.PI / 2;
-    A.plano(.35, .35, new THREE.MeshStandardMaterial({ map: A.textoTex([{ t: String(v.n), tam: 110, estilo: 'bold', y: 80 }], { w: 128, h: 128, fundo: '#2a2018', cor: '#c9a75a', manchas: 2 }), emissive: 0x201408, emissiveIntensity: .6 }), 0, .62, .02, 0, g);
+    const placa = A.plano(.35, .35, new THREE.MeshStandardMaterial({ map: A.textoTex([{ t: String(v.n), tam: 110, estilo: 'bold', y: 80 }], { w: 128, h: 128, fundo: '#2a2018', cor: '#c9a75a', manchas: 2 }), emissive: 0x201408, emissiveIntensity: .6 }), 0, .62, .02, 0, g);
     const pos = { x: v.x, y: 1.3, z: v.z };
     const it = interact(g, () => {
       if (S.flags.aguaBaixa) return `Válvula ${v.n} (aberta)`;
@@ -610,7 +613,7 @@ function tuneis(A, S) {
         const e = estouro[v.n]; jato.position.set(e.x, 1.6, e.z); jato.visible = true;
         som.dissonante(pos); SFX.cano({ x: e.x, y: 2.4, z: e.z }); som.jato({ x: e.x, y: 2.4, z: e.z }, 3); A.emitNoise(e.x, e.z, 18); A.emitNoise(v.x, v.z, 7);
         A.P.shake = .18; A.falar('valvula_errada'); A.toast('Os canos estouram no túnel. A água sobe — e alguém ouviu.');
-        if (erros === 2) setTimeout(() => { if (A.W.mapa === 'tuneis' && !S.flags.aguaBaixa) A.sub('lia', A.codTxt(S.fitas.f2 ? 'Calma. A Irmã Celeste disse a ordem na fita: {v}. Tá no diário.' : 'Tem uma ordem. Alguém deve ter anotado em algum lugar.')); }, 2600);
+        if (erros >= 2) setTimeout(() => { if (A.W.mapa === 'tuneis' && !S.flags.aguaBaixa) A.sub('lia', A.codTxt(S.fitas.f2 ? 'Calma. A Irmã Celeste disse a ordem na fita: {v}. Tá no diário.' : 'Tem uma ordem. Alguém deve ter anotado em algum lugar.')); }, 2600);
       } else {
         S.valv.push(v.n); som.nota(tons[S.valv.length - 1], pos); A.emitNoise(v.x, v.z, 6); enchente = 0; jato.visible = false;
         if (S.valv.length < 3) A.toast(`O cano canta. A água desce um pouco (${S.valv.length}/3).`);
@@ -625,7 +628,7 @@ function tuneis(A, S) {
     });
     it.hold = 2.5; it.guarda = true; it.som = null; it.pode = () => !S.flags.aguaBaixa && !S.valv.includes(v.n);
     Object.defineProperty(it, 'ruido', { get: () => 3 + 9 * Math.min(1, (it.progresso || 0) / it.hold) });
-    valvIts.push({ it, giro, pos, rangT: 0 });
+    valvIts.push({ it, giro, pos, rangT: 0, n: v.n, placa });
   }
   // brinquedos no fundo: só aparecem quando a água baixa
   const brinq = new THREE.Group(); A.W.grupo.add(brinq);
@@ -647,19 +650,20 @@ function tuneis(A, S) {
   box(.9, 1.1, .8, MAT.metal, 0, .55, 0, cofre);
   const cp = new THREE.Group(); cp.position.set(-.42, .55, .41); cofre.add(cp);
   box(.82, 1, .06, new THREE.MeshStandardMaterial({ color: 0x55585a, metalness: .7, roughness: .4, emissive: 0x101010 }), .41, 0, 0, cp);
-  cyl(.08, .08, .05, MAT.bronze, .55, .15, .05, 12, cp).rotation.x = Math.PI / 2;
+  const disco = cyl(.08, .08, .05, MAT.bronze, .55, .15, .05, 12, cp); disco.rotation.x = Math.PI / 2;
   if (S.flags.cofre) cp.rotation.y = -1.7;
   A.addCollider(6.95, 7.85, -60.45, -59.55);
   let fuga = null, f4ok = !!S.fitas.f4;
   const iniciarFugaCofre = (recarga) => { fuga = { t: recarga ? 1.1 : 0, recarga, apagou: false, veio: false }; };
   interact(cofre, () => S.flags.cofre ? 'Cofre aberto e vazio.' : A.R.paginas.every(p => S.notes[p.id]) ? '<b>E</b>Usar o cofre' : `<b>E</b>Usar o cofre (números do Davi: ${A.R.paginas.filter(p => S.notes[p.id]).length}/4)`, () => {
     if (S.flags.cofre) return;
-    A.abrirTeclado('COFRE DO DIRETOR', S.code.join(''), () => {
-      S.flags.cofre = true; S.inv.pa = true; S.inv.chaves.capela = 'Chave da capela'; S.inv.garrafas++; cp.rotation.y = -1.7;
+    const achados = A.R.paginas.filter(p => S.notes[p.id]).length;
+    A.abrirTeclado(achados >= 4 ? 'COFRE DO DIRETOR' : `COFRE DO DIRETOR · ${achados}/4 números achados`, S.code.join(''), () => {
+      S.flags.cofre = true; S.inv.pa = true; S.inv.chaves.capela = 'Chave da capela'; S.inv.garrafas++; // a porta abre devagar (src/subterraneo-polimento.js)
       SFX.pancada(7, -60); A.objDone('cofre');
       A.salvarCheckpoint(); // morrer na fuga volta para logo depois do cofre
       // a gaveta da mesa abre sozinha (src/sustos.js) e só então ele acorda
-      A.sustos.cofre(() => { A.falar('cofre'); setTimeout(() => A.toast('No fundo do cofre, uma garrafa de vidro. G para jogar.'), 2500); });
+      A.sustos.cofre(() => { A.falar('cofre'); setTimeout(() => A.toast(SUBP.tecla('No fundo do cofre, uma garrafa de vidro. G para jogar.')), 2500); });
       iniciarFugaCofre(false);
     }, () => A.emitNoise(7, -60, 10));
   });
@@ -707,7 +711,7 @@ function tuneis(A, S) {
 
   // ---------- estado da água em volta da Lia
   const sub = { on: false, cd: 0, avisouPassou: false };
-  let parT = 0, maoFase = 0, maoVezes = 0, ambT = A.rand(16, 28), ambBolhas = null, lento = 0, passoAcc = 0, monAcc = 0, monY = 0, bolhaT = 0, dicaAgua = false;
+  let subK = 0, parT = 0, maoFase = 0, maoVezes = 0, ambT = A.rand(16, 28), ambBolhas = null, lento = 0, passoAcc = 0, monAcc = 0, monY = 0, bolhaT = 0, dicaAgua = false;
   const lastP = new THREE.Vector3().copy(A.P.pos), lastM = new THREE.Vector3();
   const vista = new THREE.Vector3(), alvoV = new THREE.Vector3();
   A.W.tick.push(dt => {
@@ -732,13 +736,13 @@ function tuneis(A, S) {
     // movimento da Lia neste quadro
     const mov = Math.hypot(P.pos.x - lastP.x, P.pos.z - lastP.z); lastP.copy(P.pos);
     const naAgua = P.naAgua && !S.hidden;
-    if (naAgua && !dicaAgua && S.chapter === 4) { dicaAgua = true; setTimeout(() => { if (A.W.mapa === 'tuneis' && !S.flags.aguaBaixa) A.toast('Agachada (C) na água funda, você afunda: ele não te ouve, mas o ar acaba.'); }, 6000); }
+    if (naAgua && !dicaAgua && S.chapter === 4) { dicaAgua = true; setTimeout(() => { if (A.W.mapa === 'tuneis' && !S.flags.aguaBaixa) A.toast(SUBP.tecla('Agachada (C) na água funda, você afunda: ele não te ouve, mas o ar acaba.')); }, 6000); }
     // afundar: agachada na água alta
     if (sub.cd > 0) sub.cd -= dt;
-    const quer = naAgua && alta && P.crouch && !P.sprinting && sub.cd <= 0;
+    const quer = naAgua && alta && P.crouch && !P.sprinting && sub.cd <= 0 && !SUBP.naSoleira(P.pos); // na soleira do duto agachar não afunda
     if (quer && S.stamina > 2) {
       if (!sub.on) { sub.on = true; som.bolhas(null, 6, .3); O.criar(P.pos.x, nivel, P.pos.z, 1.4, .4, 1.4); }
-      S.stamina = Math.max(0, S.stamina - (mov > .001 ? 28 : 24) * dt);
+      S.stamina = Math.max(0, S.stamina - (mov > .001 ? 28 : P.prende ? 15 : 24) * dt); // parada e prendendo o fôlego, o ar dura mais
       if (S.stamina <= 2) {
         sub.on = false; sub.cd = 2.5; P.crouch = false; som.ofegoAgua(); SFX.ofego(); A.emitNoise(P.pos.x, P.pos.z, 8, true);
         O.criar(P.pos.x, nivel, P.pos.z, 2.2, .5, 1.6); A.toast('Sem ar! Você subiu puxando o fôlego, alto.');
@@ -746,9 +750,10 @@ function tuneis(A, S) {
     } else if (sub.on) { sub.on = false; som.bolhas(null, 4, .2); O.criar(P.pos.x, nivel, P.pos.z, 1.2, .35, 1.2); }
     telaAgua.style.opacity = sub.on ? .92 : 0;
     telaFolego.style.opacity = sub.on ? 1 : 0; barraFolego.style.width = S.stamina + '%';
+    subK += ((sub.on ? 1 : 0) - subK) * Math.min(1, dt * 7); // afunda e sobe suave, sem pulo de câmera
+    if (subK > .01) A.camera.position.y += (nivel - .12 - A.camera.position.y) * subK;
     if (sub.on) {
-      A.camera.position.y = nivel - .12;
-      A.flash.intensity *= Math.random() < .12 ? 0 : .3;
+      A.flash.intensity *= .3; SUBP.falha(A, .12);
       bolhaT -= dt; if (bolhaT <= 0) { bolhaT = mov > .001 ? .35 : .9; B.emitir(P.pos.x, nivel, P.pos.z, mov > .001 ? 3 : 1, .25); }
       if (M.ativo && M.pos.distanceTo(P.pos) < 2.2 && !sub.avisouPassou) { sub.avisouPassou = true; S.fear = Math.min(100, S.fear + 30); A.P.shake = .08; A.toast('Ele está passando por cima de você.'); }
     } else if (!M.ativo || M.pos.distanceTo(P.pos) > 6) sub.avisouPassou = false;
@@ -767,7 +772,7 @@ function tuneis(A, S) {
       if (monY < -1 && aguaM && Math.random() < dt * 5) B.emitir(M.pos.x, nivel, M.pos.z, 2, .3);
       if (monY < -1 && aguaM && Math.random() < dt * .25 && dM < 16) som.respiraAgua({ x: M.pos.x, y: .4, z: M.pos.z }, .25);
       // a lanterna falha com ele perto (interferência)
-      if (dM < 8 && !sub.on && Math.random() < (8 - dM) / 8 * .35) A.flash.intensity = 0;
+      if (dM < 8 && !sub.on) SUBP.falha(A, (8 - dM) / 8 * .35, .55);
     } else monY = 0;
     // ficar parada na água sozinha: alguma coisa vem. Com ele perto, a regra 2 manda (nada acontece).
     const sozinha = dM > 12 && !A.ANA.ativa;
@@ -804,13 +809,13 @@ function tuneis(A, S) {
         fuga.apagou = true; S.flags.apagao = true; A.syncLuzes(); SFX.estalo({ x: 0, z: -56 }, 1); fuga.pisca = 2;
         if (!fuga.recarga) S.fear = Math.min(100, S.fear + 30);
       }
-      if (fuga.pisca > 0) { fuga.pisca -= dt; if (Math.random() < .6) A.flash.intensity = 0; }
+      if (fuga.pisca > 0) { fuga.pisca -= dt; SUBP.falha(A, .6, .2); }
       if (fuga.t > 2.6 && !fuga.veio) {
         fuga.veio = true;
         if (!M.ativo) A.ativarInspetor(0, -46.5, 'investiga'); else { M.pos.set(0, 0, -46.5); M.state = 'investiga'; M.path = []; M.wait = 0; }
         M.cool = 1.5; M.searchT = 0; M.furia = 0; M.recuo = 0; A.planejar(M, 6, -60);
         SFX.pancada(0, -54); setTimeout(() => SFX.pancada(0, -50), 700);
-        A.toast('Ele está vindo pela única saída. Armário, garrafa (G) ou passar agachada por ele.');
+        A.toast(SUBP.tecla('Ele está vindo pela única saída. Armário, garrafa (G) ou passar agachada por ele.'));
       }
       if (!f4ok && fuga.t > 6 && (P.room.id === 'saida' || P.room.id === 't5' || fuga.t > 50)) { const ind = document.getElementById('fita-ind'); if (!ind || ind.hidden) { f4ok = true; A.tocarFita('f4'); } }
     }
@@ -825,7 +830,7 @@ function tuneis(A, S) {
     }
   });
 
-  return SUBL.tuneis(A, S, {
+  return SUBP.tuneis(A, S, SUBL.tuneis(A, S, {
     nome: 'Túneis de drenagem',
     spawns: { entrada: { x: 0, z: -2.5, yaw: 0 }, inicio: { x: 0, z: -2.5, yaw: 0 } },
     dentro: { hemi: .05, moon: 0, fog: .12 },
@@ -846,7 +851,8 @@ function tuneis(A, S) {
       // voltou de uma morte depois do cofre: o apagão e a chegada dele se repetem
       if (S.flags.cofre && !S.done.sair_tuneis) iniciarFugaCofre(true);
     }
-  }, { nivel: () => nivel, O, B, som }); // lore do Lote 2: src/subterraneo-lore.js
+  }, { nivel: () => nivel, O, B, som }), // lore do Lote 2: src/subterraneo-lore.js
+  { FX, som, O, B, nivel: () => nivel, valvIts, jato, sub, telaFolego, barraFolego, mao, emergir: () => emergir, lento: () => lento, emerg, brinq, cofrePorta: cp, disco, itEsc, esc2 }); // lote 3: src/subterraneo-polimento.js
 }
 
 // =====================================================================
@@ -854,7 +860,7 @@ function tuneis(A, S) {
 // =====================================================================
 function cemiterio(A, S) {
   const { THREE, MAT, box, cyl, prop, plano, piso, item, interact, ITENS, MK, gatilho, SFX, spot, rand } = A;
-  const som = SUB.sons(A), maoTerra = SUB.maoPalida(A);
+  const som = SUB.sons(A), maoTerra = SUB.maoPalida(A), FX = SUBP.efeitos(A);
   SUBL.antesCemiterio(A, S);
   const salas = [
     { id: 'cem', nome: 'Cemitério das irmãs', x0: -30, x1: 30, z0: -48, z1: 12, fora: true },
@@ -866,13 +872,13 @@ function cemiterio(A, S) {
   piso(-80, 80, -110, 80, 'grama', 4, -.01);
   piso(-30, 30, -48, 12, 'terra', 4, .002);
   piso(-1.5, 1.5, -48, 12, 'pedra', 2, .004);
-  arvores(A, [[-60, -32, -100, 40], [32, 60, -100, 40], [-30, 30, 14, 50], [-30, -9, -100, -50], [9, 30, -100, -50]], 260);
+  const arv = arvores(A, [[-60, -32, -100, 40], [32, 60, -100, 40], [-30, 30, 14, 50], [-30, -9, -100, -50], [9, 30, -100, -50]], SUBP.baixa() ? 120 : 260);
   muro(A, -30, -48, -30, 12, 2.2); muro(A, 30, -48, 30, 12, 2.2); muro(A, -30, 12, -2.3, 12, 2.2); muro(A, 2.3, 12, 30, 12, 2.2);
   muro(A, -30, -48, -8, -48, 2.2); muro(A, 8, -48, 30, -48, 2.2);
   const fundos = portao(A, 0, 12, 4);
   for (const [x, z, h] of [[-20, -10, 7], [18, -30, 6], [-14, -38, 5], [22, 2, 6], [-24, 4, 5]]) arvoreSeca(A, x, z, h);
   // neblina rasteira que corre entre as covas
-  SUB.neblina(A, -30, 30, -48, 12, .28, .26);
+  const nev = SUB.neblina(A, -30, 30, -48, 12, .28, .26);
   // capela por fora: torre do sino, com uma luz fraca na janela
   box(5, 5, 5, A.texMat('pedra', 1.6, 1.6), 0, 8.5, -66, A.W.grupo, false);
   const tc = new THREE.Mesh(new THREE.ConeGeometry(3.8, 4, 4), MAT.telhado); tc.rotation.y = Math.PI / 4; tc.position.set(0, 13, -66); A.W.grupo.add(tc);
@@ -939,7 +945,7 @@ function cemiterio(A, S) {
   // lápide rachada (nota) e recorte na porta da capela
   { const [x, z] = cel[k++]; const L = lapide(x, z, { nome: '— rachada —', datas: '' }); const it = interact(L.g, () => `<b>E</b>Ler a lápide rachada${S.notes.n11 ? ' (lida)' : ''}`, () => A.lerNota('n11')); }
   // covas sem nome: cruzes tortas e pedras gastas no resto do campo
-  for (let n = 0; k < cel.length && n < 60; k++, n++) {
+  for (let n = 0, max = SUBP.baixa() ? 36 : 60; k < cel.length && n < max; k++, n++) {
     const [x, z] = cel[k], g = new THREE.Group(); g.position.set(x, 0, z); g.rotation.y = rand(-.3, .3); g.rotation.z = rand(-.15, .15); A.W.grupo.add(g);
     if (k % 3 === 0) { box(.1, 1.2, .1, MAT.madeiraEsc, 0, .6, 0, g); box(.6, .1, .1, MAT.madeiraEsc, 0, .9, 0, g); }
     else { const h = rand(.5, .9); A.W.solid.push(box(.6, h, .14, MAT.pedraLap, 0, h / 2, 0, g)); }
@@ -1083,7 +1089,8 @@ function cemiterio(A, S) {
       A.agendarEntidades();
     },
   };
-  return SUBL.cemiterio(A, S, def, { covas, pedras, importantes, velasTum, velasAltar, avivar, itSino, sinoP, corda, fundos, noAltar, cel, nomes }); // lore do Lote 2
+  return SUBP.cemiterio(A, S, SUBL.cemiterio(A, S, def, { covas, pedras, importantes, velasTum, velasAltar, avivar, itSino, sinoP, corda, fundos, noAltar, cel, nomes }), // lore do Lote 2
+    { FX, som, neblina: nev, velasAltar, velasTum, itsTum, importantes, sinoP, obel, arvoresMesh: [arv.tronco, arv.copa] }); // lote 3: src/subterraneo-polimento.js
 }
 
 export const MAPAS = { estrada, terreo, superior, tuneis, cemiterio };

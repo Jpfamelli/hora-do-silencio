@@ -1,0 +1,98 @@
+# Lote 3 — Mapa: túneis, cemitério e capela
+- Túneis: duto de ventilação novo, baixo, ligando a câmara oeste (válvula 1) ao depósito: atalho até a cisterna e a válvula 3
+- Duto: em pé não dá para entrar; só agachada, com aviso ao bater na boca baixa
+- Duto: lá dentro a Lia fica agachada à força (o teto tem pouco mais de um metro)
+- Duto: tentar correr lá dentro vira um rastejar desajeitado, mais lento, e espanta os ratos
+- Duto: ratos lá dentro, com olhinhos alaranjados brilhando no escuro
+- Duto: os ratos viram a cabeça, mexem o rabo e chiam baixinho enquanto estão quietos
+- Duto: passando agachada e sem luz, os ratos abrem caminho devagar para os lados
+- Duto: apontar a lanterna para os ratos faz a Lia avisar ("apaga a luz") e, se insistir, todos disparam
+- Duto: ratos espantados fogem guinchando pelas duas bocas e o barulho chega ao Inspetor
+- Duto: quando os ratos passam pela Lia há tranco, susto e vibração
+- Duto: os ratos voltam ao duto depois de um tempo, quando a Lia está longe
+- Duto: o Inspetor não cabe lá dentro; ele fica raspando a boca do duto e para alguns segundos
+- Duto: a Procissão e a Menina não passam pelo duto (ele não entra no caminho delas)
+- Duto: bocas com moldura de ferro, soleira de concreto segurando a água, grade arrancada encostada com marcas de dentes
+- Duto: na soleira alta da boca do duto, agachar não afunda a Lia na água (dá para entrar sem mergulhar)
+- Duto: placa "VENTILAÇÃO — ALA VELHA 1931" que explica que só se passa agachada
+- Duto: fala da Lia ao entrar ("Devagar. Sem luz. Sem pressa.") e ao sair sem espantar nenhum rato ("Passei.")
+- Duto: os ratos só são desenhados quando a Lia está perto (o resto do mapa não paga por eles)
+- Cemitério: jazigo cercado por uma mureta de pedra em volta do túmulo mais longe da entrada, com um portãozinho de ferro do lado oposto
+- Cemitério: de fora da mureta não dá para cavar; o rótulo diz para entrar pelo portãozinho ou derrubar as pedras soltas
+- Cemitério: o lado da mureta virado para a entrada tem pedras soltas que caem segurando E por 2 segundos
+- Cemitério: enquanto a Lia empurra, as pedras de cima tremem, pedrinhas caem e sobe poeira
+- Cemitério: a mureta desaba de verdade, com blocos voando e rolando, nuvem de poeira e estrondo
+- Cemitério: o estrondo chama o Inspetor na hora, direto para a mureta (troca segurança por segundos)
+- Cemitério: fala da Lia em pânico depois do desabamento e aviso de que ele está vindo
+- Cemitério: se o Inspetor ficar preso do lado de fora da mureta, ele pula por cima com um baque
+- Cemitério: o empurrão nas pedras fica guardado se soltar o E e escoa devagar
+- Cemitério: a mureta derrubada continua no chão ao voltar de um ponto salvo
+- Válvulas: a roda gira cada vez mais rápido conforme o giro avança
+- Válvulas: a placa com o número acende conforme você gira (e fica mais clara com a lanterna em cima)
+- Válvulas: vibração que cresce enquanto gira, com respingos do cano perto do fim
+- Válvulas: a válvula certa encaixa com tranco, vibração e respingo
+- Válvulas: a cada válvula certa, anéis e bolhas sobem dos ralos por todo o túnel
+- Válvulas: som de ralo gorgolejando quando a água desce (mais longo na última válvula)
+- Válvulas: a válvula errada dá vibração forte, tranco e um borrifo de água no cano estourado
+- Válvulas: o jato do cano estourado respinga na água o tempo todo
+- Válvulas: depois do segundo erro, a Lia lembra a ordem a cada novo erro (antes só lembrava uma vez)
+- Túneis: ao afundar e ao subir a câmera desliza suave para baixo e para cima da água, sem pulo
+- Túneis: com pouco ar, a barra de fôlego fica vermelha e pisca
+- Túneis: ao voltar à superfície, gotas na tela que escorrem e somem
+- Túneis: ao voltar à superfície, respingo e anel de onda em volta da Lia
+- Túneis: parada e prendendo o fôlego (ESPAÇO) debaixo d'água, o ar dura bem mais
+- Túneis: dica na primeira vez debaixo d'água sobre prender o fôlego para o ar durar
+- Túneis: gotas pingam do teto perto da Lia, com um "plic" e um anel na água
+- Túneis: a mão pálida sai da água com respingo, anel e vibração
+- Túneis: quando ele emerge da cisterna, três ondas grandes se abrem, a água espirra e tudo treme
+- Túneis: o agarrão no tornozelo dá tranco e vibração forte
+- Cofre: a porta pesada abre devagar, rangendo, com o disco girando (antes pulava aberta)
+- Cofre: ao abrir sobe poeira e o controle vibra
+- Cofre: o teclado mostra quantos números do Davi você já achou
+- Escotilha: enquanto sobe, a escada treme, cai poeira do teto e pedrinhas batem
+- Acessibilidade: o texto debaixo d'água agora diz certo como subir no modo "alternar" ("aperte C de novo"); antes mandava soltar o C
+- Acessibilidade: com "Reduzir flashes", a lanterna debaixo d'água fica fraca sem piscar
+- Acessibilidade: com "Reduzir flashes", a falha da lanterna perto do Inspetor vira um escurecer suave
+- Acessibilidade: com "Reduzir flashes", o apagão do cofre escurece a lanterna sem estroboscópio
+- Acessibilidade: com "Reduzir flashes", as lâmpadas de emergência no apagão pulsam devagar em vez de piscar
+- Acessibilidade: com "Reduzir flashes", a barra de ar com pouco fôlego não pisca
+- Legenda de som: "o cano canta uma nota limpa" na válvula certa
+- Legenda de som: "um cano estoura" com direção, na válvula errada
+- Legenda de som: "a válvula range alto" enquanto gira
+- Legenda de som: "respiração borbulhando debaixo d'água", com direção, quando ele está submerso
+- Legenda de som: "algo grande se levanta da água" quando ele emerge
+- Legenda de som: "a terra cede" na cova que afunda e no obelisco
+- Legenda de som: "a água desce pelos ralos"
+- Legenda de som: "água pingando" nas gotas do teto
+- Legenda de som: "ratos guinchando e correndo" quando os ratos disparam
+- Legenda de som: "unhas pequenas arranhando no escuro" perto do duto
+- Legenda de som: "alguém grande raspa a boca do duto"
+- Legenda de som: "pedras desabando com estrondo" na mureta
+- Legenda de som: "os grilos se calam de repente" e "os grilos voltam a cantar"
+- Leitor de tela: avisos falados ao ficar debaixo d'água, quando a água baixa e no apagão do cofre
+- Leitor de tela: avisos falados a cada túmulo cavado (1 de 3...) e quando a mureta desaba
+- Toque: as dicas da água, do cofre e da fuga dizem o nome do botão (Agachar, Garrafa) em vez da tecla
+- Toque: debaixo d'água o texto diz "toque em Agachar para subir", maior e mais alto na tela
+- Toque: o botão Agachar pisca quando ajuda (água funda com ele perto, boca do duto)
+- Toque: a placa do duto e o aviso de apagar a luz falam dos botões Agachar e Lanterna
+- Toque e controle: vibração leve ao afundar na água
+- Desempenho (qualidade Baixa): o cemitério desenha menos árvores em volta
+- Desempenho (qualidade Baixa): menos covas sem nome no campo
+- Desempenho (qualidade Baixa): as quatro velas do altar dividem uma luz só
+- Desempenho (qualidade Baixa): a neblina rasteira usa uma camada só
+- Desempenho (qualidade Baixa): as lâmpadas de emergência da porta de ferro e da escotilha viram só brilho, com o bulbo mais forte
+- Desempenho: os brinquedos do fundo dos túneis não recalculam posição todo quadro
+- Desempenho: as árvores do cemitério não recalculam posição todo quadro
+- Desempenho: anéis de onda longe da Lia não são criados
+- Desempenho: bolhas longe da Lia não são criadas
+- Desempenho: poeira, terra, respingos e fumaça novos usam um desenho só (metade das partículas na Baixa)
+- Cemitério: cavar solta torrões de terra, com tranco e vibração a cada pazada
+- Cemitério: ao terminar a cova, o objeto sobe da terra num brilho quente com faíscas douradas
+- Cemitério: a vela do túmulo solta um fio de fumaça quando apaga sozinha
+- Cemitério: o rótulo dos túmulos conta quantos já foram cavados (1/3, 2/3)
+- Cemitério: a cova que cede espirra torrões de terra e vibra
+- Cemitério: grilos cantam em volta da Lia e se calam de repente quando o Inspetor chega perto (o silêncio avisa)
+- Capela: cada objeto no altar solta faíscas douradas, com vibração e tranco leve
+- Capela: a cada balanço do sino cai poeira do alto da torre; na fuga o controle vibra junto
+- Capela: a porta batendo atrás da Lia derruba poeira do batente e vibra
+- Fuga: o obelisco caindo levanta uma nuvem de poeira e pedras, com tranco e vibração forte
