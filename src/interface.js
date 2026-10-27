@@ -51,6 +51,10 @@ export function criarInterface(C) {
       { k: 'invY', nome: 'Inverter mouse vertical', tipo: 'sel', ops: SIMNAO },
       { k: 'agachar', nome: 'Agachar (C)', tipo: 'sel', ops: [['alternar', 'Apertar alterna'], ['segurar', 'Segurar']] }
     ]],
+    ['Sustos', [
+      { k: 'truques', nome: 'Truques de tela (o jogo finge travar, a pausa e a aba não são seguras)', tipo: 'sel', ops: [[true, 'Ligados'], [false, 'Desligados']] },
+      { k: 'avisoSusto', nome: 'Avisar antes dos sustos fortes (borda escura e tom grave; o estalo toca mais baixo)', tipo: 'sel', ops: SIMNAO }
+    ]],
     ['Interface', [
       { k: 'ruido', nome: 'Anel do seu barulho', tipo: 'sel', ops: [['auto', 'Automático (sem no Pesadelo)'], ['sim', 'Sempre'], ['nao', 'Nunca']] },
       { k: 'mira', nome: 'Mira', tipo: 'sel', ops: [['ponto', 'Ponto'], ['cruz', 'Cruz'], ['anel', 'Anel']] },

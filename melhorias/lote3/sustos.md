@@ -1,0 +1,101 @@
+# Lote 3 — Sustos e eventos
+- Golpe com peso: quando o Inspetor acerta, o mundo para por 80 ms antes do tranco
+- Golpe da Ana: o tempo cai a 5% por 90 ms, em vez de parar seco
+- Cada golpe tem a sua cor por um quadro: vermelho saturado no Inspetor, azulado na Ana, âmbar na Procissão (desligado com "Reduzir flashes")
+- No golpe o som corta seco e volta abafado, com um zumbido agudo de ouvido que dura 2 segundos
+- Logo depois do golpe a imagem perde a cor por um instante e volta devagar
+- A câmera torce para o lado de onde veio o golpe e volta (desligado com "menos movimento")
+- Agarrão: 110 ms de mundo parado, as bordas da tela fecham de uma vez e todo som corta menos um tom agudo
+- Quando o Inspetor te nota e começa a caçada, o mundo congela por 120 ms com um baque grave abaixo de tudo
+- Por um fio: se o Inspetor passa a menos de 1,5 m sem te notar, o tempo desacelera para 60% por 0,4 s
+- Por um fio: todo o som some e só fica a respiração dele, do lado em que ele está
+- Por um fio: o coração bate, falha a batida seguinte e só volta depois
+- Por um fio: quando ele se afasta, a Lia solta o ar tremendo
+- Cada "Por um fio" aparece na tela com o total de vezes que você já escapou assim
+- O fim de capítulo mostra quantas vezes você escapou por um fio naquele capítulo
+- Conquista nova "Por Um Fio": deixar o Inspetor passar raspando dez vezes sem ser notada
+- Escondida, quando ele passa a menos de 1,2 m, as bordas da tela escurecem como um túnel e voltam em 1,5 s
+- Alívio quando você o despista: o coração desacelera de forma audível ao longo de 4 segundos
+- Alívio: a Lia solta o ar e, se ele passou a menos de 2 m, murmura uma de quatro falas baixinho
+- Durante a caçada a cor da imagem vai sumindo aos poucos e volta devagar quando ela acaba
+- Opção nova de acessibilidade "Avisar antes dos sustos fortes": a borda da tela escurece e um tom grave toca antes do susto
+- Com o aviso ligado, os estalos de susto (e o grito do começo da caçada) tocam a 60% do volume
+- O DEZ da Ana também é avisado antes quando a opção está ligada
+- O susto tem preço: nos sustos fortes a Lia dá meio passo involuntário para trás
+- O susto tem preço: ela solta um "hff" curto que faz barulho; perto do Inspetor, assustar-se pode te denunciar
+- Depois do "hff" a respiração da Lia fica tremida por um instante
+- Alucinação nova: depois de andar por um corredor e parar, soa um passo a mais atrás de você
+- Olhar para trás (Q) com muito medo às vezes mostra uma criança parada por três quadros
+- Trocar a pilha no escuro: um sopro frio no pescoço (uma vez por capítulo)
+- Usar um curativo pela primeira vez: uma voz de criança pergunta baixinho "dói?"
+- Ficar 40 s parada sem mexer em nada: o nome da Lia sussurrado colado na orelha esquerda e a lanterna treme
+- Ficar 20 s de lanterna apagada numa sala: ao acender, passos descalços correm para longe com uma risadinha
+- Jogando entre 3h e 3h59 do relógio real, uma vez por capítulo alguém sussurra a hora certa atrás de você
+- Fechar o diário com medo às vezes deixa uma respiração curta logo atrás (uma vez por capítulo)
+- Fechar uma nota às vezes faz alguém perguntar "...leu tudo?" atrás de você
+- A contagem da Ana aparece rabiscada em giz numa parede perto, fora do centro da tela, a cada número
+- No nove, o número de giz aparece na parede atrás de você
+- Os números de giz somem quando a contagem termina ou ela vai embora
+- No celular, cada número da contagem vibra, cada vez mais forte, e no dez vem o silêncio total
+- No celular, o golpe vibra (o da Ana em dois pulsos curtos)
+- No celular, o "por um fio" vibra como o coração falhando
+- Opção nova "Truques de tela" (ligada por padrão) liga ou desliga todos os sustos que mexem com a pausa, a aba, o HUD e o título
+- O jogo finge que travou: uma vez por noite, nos capítulos III ou IV e num momento calmo, o quadro congela e o som engasga num trecho curto
+- Durante o travamento falso o cursor do sistema vira o de carregando e o contador de quadros (se ligado) mostra 0 qps
+- No fim do travamento o quadro parado escurece e o rosto do Inspetor aparece dentro dele, respirando; depois tudo volta, sem dano
+- Se a Ana estava contando durante o travamento, a contagem pulou para o sete e ela está um metro mais perto
+- O HUD mente uma vez por capítulo: a barra de pilha mostra zero por meio segundo (nunca no Fácil)
+- O HUD mente: o objetivo vira "NÃO OLHE" por um instante (nunca no Fácil)
+- Conquista que mente: escondida e sozinha, aparece a conquista dourada "Ninguém Ouviu", as letras escorrem e viram "EU OUVI" em vermelho
+- Junto com o "EU OUVI", um estalo de língua toca atrás do esconderijo (sem dano)
+- Volume do jogo a zero com o Inspetor perto: aparece a legenda "[ele ainda ouve você]"
+- Com o volume a zero e ele andando perto, a borda da tela pulsa em vermelho no ritmo dos passos dele
+- Na primeira vez a Lia sussurra "Tirar o som não me deixa invisível", e isso libera a conquista secreta "Ele Ainda Ouve"
+- Pausar com o Inspetor a menos de 3 m troca "Pausa" por "Ele também está esperando."
+- Nessa pausa a respiração dele continua baixinho, do lado em que ele está
+- Pausar com a Ana contando mostra o número em que ela parou ("...seis...")
+- Pausar durante a Procissão mostra "(eles continuam cantando)"
+- A foto da pausa mostra o que não estava lá: raramente, depois do capítulo III, uma silhueta de criança surge ao fundo (nunca na mesma sala duas vezes)
+- Pausa aberta por 2 minutos: aparece "eu espero." e uma unha arranha o vidro
+- Pausa aberta por 3 minutos: uma letra de criança escreve sozinha "você não pode parar a gente", com chiado de dedo no vidro
+- Pausa aberta por 4 minutos: a palavra "Pausa" perde as letras até sobrar "Lia?" e uma respiração passa da esquerda para a direita
+- Pausa de 9 minutos: ao voltar, a Ana está colada atrás da Lia respirando no seu ouvido e some quando você vira (conquista secreta "Esperou Demais")
+- Pausa de 9 minutos: ao voltar alguém pergunta "Lia? Você ainda está aí?" e a porta fechada mais perto está aberta
+- Pausa de 3 minutos com o Inspetor solto: ao voltar ele está parado 2 m atrás, com a legenda da respiração; se você não correr, ele vira e vai embora (conquista secreta "Ele Esperou Com Você")
+- Susto da pausa (uma vez por jogo, a partir do capítulo IV, nunca no Fácil): ao voltar, a câmera está 30 graus virada e a Ana está à frente contando "nove"; ela some no DEZ quando você olha
+- Com a aba escondida no meio do jogo, o ícone da aba vira um olho, e volta ao normal 30 s depois que você retorna
+- Durante a brincadeira da Ana, com a aba escondida por mais de 30 s, o título da aba conta "1...", "2..." até "DEZ."
+- Ao voltar dessa aba, ela está 3 m atrás de você: virar e iluminar faz ela sumir; se não, ela some com um "achei" no ouvido
+- Aba escondida por mais de 2 minutos: a pausa mostra "você saiu. ela não." e a silhueta da Menina aparece desfocada por um segundo
+- Aba escondida por mais de 10 minutos: ao voltar, por meio segundo a Ana está parada à sua frente, de costas
+- Largou o computador com o jogo aberto por mais de 90 s: ao voltar há marcas de dedinhos embaçadas no vidro da tela e uma risada passa da esquerda para a direita
+- As marcas de dedos somem quando você anda
+- Com "Estou de fone" ligado, trocar o fone de ouvido faz a Lia sussurrar "não tira... ele ouve pelo alto-falante" e um estalo de língua toca só no lado esquerdo
+- Espremer a janela do jogo até menos de 480 px vira a fresta de um armário, um olho passa do outro lado e alguém sussurra "achei" (conquista secreta "Pela Fresta"; nunca no celular)
+- Sair da tela cheia no capítulo III faz o rosto da Menina aparecer colado na câmera por dois quadros, uma vez só (com "Reduzir flashes" vira uma risada baixinha)
+- Morte: a lanterna cai da mão, quica no chão e rola girando o facho pela sala
+- Morte: o facho da lanterna para iluminando os pés de quem te pegou e depois apaga piscando
+- Morte: dá para ouvir a lanterna batendo no chão e rolando
+- Morte: a cena dura 0,7 s a mais antes do corte, mas não quando você morre seguido no mesmo ponto
+- Morte: o coração da Lia bate cada vez mais fraco e para
+- Morte: a respiração dela falha tremendo antes do silêncio
+- Morte: a imagem vira fita mastigada, com faixas enroscadas e a cor escorrendo pelas bordas
+- Morte: o som desce como fita arrastando num toca-fitas sem pilha, e o resto do mundo quase some
+- Morte pelo Inspetor: os sapatos dele param junto ao seu rosto, um passo de cada lado
+- Morte pela Ana: pés descalços chegam perto e uma risadinha abafada
+- Morte pela Procissão: a luz das velas passa por cima de você
+- Tela de morte que olha de volta: 25 s parada nela e a dica troca por "ainda está aí, Lia?" com um sussurro (uma vez por partida)
+- Depois da terceira morte para a Ana, na tela de morte o foco desliza sozinho para "Menu" com um risinho e volta
+- Raramente (1 em 40 mortes pelo Inspetor, nunca nas duas primeiras) a dica é trocada por "Fica, Lia. Aqui é quieto." numa voz grave
+- Tentar de novo rebobina a fita: a tela faz REW com chiado antes de voltar ao ponto salvo
+- Correção: a morte não dá mais o clarão branco quando "Reduzir flashes" está ligado
+- Título: com o mouse parado por um minuto, a tela embaça como vidro e um dedo pequeno escreve "FICA" letra a letra, com chiado; qualquer movimento apaga
+- Título: na terceira vez o dedo escreve "LIA" no vidro
+- Título: com o mouse parado por dois minutos, um segundo cursor torto aparece no canto e desliza até "Novo jogo" (nunca no toque)
+- Título de madrugada (entre meia-noite e 4h): o canto do rádio-relógio pisca "Você também não dorme?" e libera a conquista secreta "Insônia"
+- Título de madrugada: depois de 30 s, a sombra de uma menina passa atrás das letras do título
+- Calibragem: deixar o brilho no máximo por 10 s revela um quarto sino e uma silhueta atrás dele, que somem ao baixar o brilho (conquista secreta "O Quarto Sino")
+- No celular, a pausa tem uma frase escrita de cabeça para baixo, que só dá para ler virando o aparelho
+- Desempenho: o teste das lâmpadas que estouram quando ele passa roda a cada 0,15 s em vez de todo quadro
+- Desempenho: as camadas novas de efeito ficam desligadas por completo quando apagadas, sem custo para o notebook fraco
+- Acessibilidade: as faixas animadas da fita e o texto piscando do título param quando o sistema pede menos movimento
