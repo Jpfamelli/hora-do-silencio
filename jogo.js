@@ -2606,6 +2606,7 @@ const API = {
   SFX: new Proxy({}, { get: (t, k) => (...a) => SFX[k](...a) }), abrirTeclado: (...a) => abrirTeclado(...a), final: (...a) => final(...a), escolhaFinal: () => escolhaFinal(), codTxt, D, camera, scene,
   get S() { return S; }, get mode() { return mode; }
 };
+Object.defineProperty(API, 'raioI', { get: () => raioI }); // brilho do relâmpago, lido pela capela (src/subterraneo-lore.js)
 Object.assign(API, { MON, flash, audio: { get AC() { return AC; }, saida: (...a) => saida(...a), osc: (...a) => osc(...a), burst: (...a) => burst(...a), env: (...a) => env(...a) } }); // usados pelos mapas subterrâneos (src/subterraneo.js)
 
 // =====================================================================

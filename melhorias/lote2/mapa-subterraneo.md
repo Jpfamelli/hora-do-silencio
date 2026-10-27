@@ -1,0 +1,146 @@
+# Lote 2 — Mapa: túneis, cemitério e capela
+- Túneis: placa de bronze de 1931 (asilo-colônia, pavilhão de isolamento) na entrada, com a placa do internato de 1962 pregada por cima
+- Túneis: ler a placa faz a Lia entender que os túneis eram o caminho escondido de quem ninguém podia ver
+- Túneis: canto do pedreiro na entrada com caixote, marmita, capacete e rádio mudo
+- Túneis: a lamparina a querosene do pedreiro continua acesa (a única luz quente lá embaixo) e pode ser apagada com E
+- Túneis: ao apagar a lamparina, a Lia acha que ele não vai ver o brilho na água... e lembra que ele é cego
+- Túneis: planta dos túneis riscada a carvão na parede, com a sala do diretor marcada como "NÃO EXISTE"
+- Túneis: olhar a planta resume o mapa (cisterna no meio, uma válvula em cada câmara, saída a leste) sem precisar de HUD
+- Túneis: mãos de criança marcadas no cimento do túnel central, com uma mão de adulto por cima, apertando
+- Túneis: carteira escolar entalhada "MOACIR, 9 ANOS" com um soldadinho de lata no túnel central
+- Túneis: iluminar o soldadinho com o Inspetor por perto faz ele parar, dizer "esse era meu" e ir embora para longe (uma vez por noite)
+- Túneis: nomes de crianças de várias décadas riscados com pedra na altura de uma criança
+- Túneis: iluminar o "Davi 79" faz a água tremer em anéis em volta da Lia
+- Túneis: cano exposto no cruzamento; segurando E dá para ouvir, abafada, a conversa de 1979 em que o diretor manda trancar a capela por fora
+- Túneis: ouvir o cano até o fim obriga a ficar parada na água, com todos os riscos da água parada
+- Túneis: parede de tijolos de 1951 fechando a ala velha, com mãozinhas e um sapato de criança visto pela fresta
+- Túneis: a lanterninha vermelha do Davi ainda acesa num nicho; pegar dá uma pilha nova
+- Túneis: depois de pegar a lanterninha, um passinho de criança na água logo atrás da Lia
+- Túneis: cela de castigo dos anos 50 atrás de uma grade no túnel leste, com berços de ferro, correias e plaquinhas JOÃO, ROSA, LUIZ
+- Túneis: na segunda vez que ilumina a cela, a Lia entende que eram berços de criança
+- Túneis: regulamento do asilo de 1932 emoldurado na câmara oeste (nota secreta nova) mostrando a origem das regras e do "inspetor"
+- Túneis: conquista secreta "Mais Velho que o Fogo" ao ler o regulamento, e a Lia percebe que a Hora existia antes do Moacir
+- Túneis: acampamento das crianças na câmara oeste, com três colchonetes, velas derretidas, latas e gibis molhados
+- Túneis: mapa a lápis até a capela ("a irmã vai abrir às nove") e calendário de março de 1979 riscado até o dia 14 no acampamento
+- Túneis: nichos com brinquedos das Horas antigas na câmara leste (estilingue de 1947, bola de meia de 1962, ioiô de 1975)
+- Túneis: quando a água baixa aparece mais um nicho, vazio, com a etiqueta nova de 1994
+- Cisterna: régua de enchente com as cheias de 1955, 1962 e 1975 e a faixa "A ÁGUA CHEGOU AQUI — 14/03/79" acima da cabeça da Lia
+- Cisterna: a régua informa em centímetros o nível da água naquele momento (sobe com o erro, desce com as válvulas)
+- Cisterna: riscos de altura a canivete de Ana, Tomé e Davi ao lado da régua
+- Cisterna: ao iluminar as marcas, a Lia junta as datas: toda vez que a água sobe, alguém some
+- Cisterna: uma mão pequena de lama acima da marca de 1979; com a água baixa, a Lia percebe que a criança estava boiando
+- Cisterna: argolas de ferro chumbadas na altura de uma criança, com restos de corda podre
+- Cisterna: iluminar as argolas faz a água em volta borbulhar
+- Cisterna: parede de nomes riscados de 1931 a 1979, cada vez mais tortos
+- Cisterna: se a Lia morreu nos túneis nesta noite, na tentativa seguinte "LIA 94" aparece riscado fresco na parede de nomes
+- Cisterna: uma bolinha de gude boiando sozinha, que encalha no chão quando a água baixa
+- Túnel norte: um cano solto esconde uma caixa de brinquedos "CONFISCADO — A." (pião, fita vermelha, bolinhas de gude)
+- Túneis: setas e recados de giz do Davi ("POR AQUI LIA", "A SALA DELE", "SAÍDA → depois") que só a lanterna revela e que brilham fraco de perto
+- Túneis: o recado de giz "NÃO VAI PRO NORTE AINDA" vira "AGORA PODE" quando a água baixa
+- Sala do diretor: poltrona de couro virada para a parede dos tubos de escuta
+- Sala do diretor: quatro bocais de escuta (DORM A, DORM B, CELESTE, CAPELA), cada um com uma voz diferente do lugar
+- Sala do diretor: o bocal CAPELA toca o cochicho de 1979 em que Davi, Tomé e Ana combinam a noite do sino
+- Sala do diretor: com a lanterna apagada, um homem de terno aparece sentado de costas na poltrona e some quando a luz volta
+- Sala do diretor: depois de ouvir a fita da gaveta falsa, a poltrona fica sempre virada para a Lia
+- Sala do diretor: mesinha com cinzeiro e cigarro aceso soltando fumaça, copo de conhaque, rádio e tampão de ouvido de cera usado
+- Sala do diretor: depois de abrir o cofre, o cigarro aparece apagado e esmagado
+- Sala do diretor: negatoscópio com radiografias de mãos pequenas ("castigo — régua") que acende sozinho quando a Lia entra
+- Sala do diretor: o negatoscópio pisca quando o Inspetor está perto, servindo de aviso
+- Sala do diretor: estante de rolos etiquetados "SILÊNCIO 02/03, 03/03..." e um gravador de rolo
+- Sala do diretor: tocar o rolo de 14/03/79 abafa o som de verdade por 20 segundos e termina em batidas numa porta e um sino distante
+- Sala do diretor: tocar o rolo de novo termina com uma criança perguntando "posso falar agora?"
+- Sala do diretor: vitrola com disco de cantigas que, ao tocar, faz barulho alto pelos túneis
+- Sala do diretor: se o Inspetor chega perto da vitrola tocando, ele fica parado 8 segundos cantarolando, abrindo uma janela de fuga
+- Sala do diretor: prateleira com máscaras de gesso de rostos de crianças, etiquetadas por ano
+- Sala do diretor: depois do apagão do cofre, as máscaras estão todas viradas para a Lia
+- Sala do diretor: centenas de riscos de dias a prego e as iniciais "M.D." (trancaram o Moacir ali também)
+- Sala do diretor: quinta foto, de 1951, "Moacir aprendendo a ouvir", que some quando a Lia dá as costas
+- Sala do diretor: nota secreta com o livro de alunos "transferidos" de 1951 a 1979, todos em março
+- Sala do diretor: nota secreta com as cartas da mãe ao Davi devolvidas com o carimbo "DEVOLVER — FUGITIVO"
+- Sala do diretor: nota secreta com o livro-caixa que registra querosene e um cadeado para a capela no dia do incêndio
+- Sala do diretor: nota secreta com as fichas das três crianças carimbadas "SILENCIADO" e o bilhete sobre a irmã mais velha
+- Sala do diretor: a resposta do bispo ("o silêncio salva") cai no chão quando o cofre é aberto
+- Sala do diretor: a Lia reage a cada documento novo com uma fala curta
+- Túnel norte e sala do diretor: uma brasa de cigarro acende no escuro na altura de uma boca e some quando a lanterna chega perto
+- Túneis: na primeira brasa, cheiro de cigarro e cera, e a Lia percebe que o diretor também ficou lá embaixo
+- Galeria oeste: o ninho do Moacir, com colchão de palha, prato de lata, vendas de pano e óculos escuros com a lente rachada
+- Galeria oeste: rádio de pilha chiando no ninho do Moacir (o chiado se ouve ao chegar perto)
+- Galeria oeste: relógio de bolso parado em 21h50, a hora em que pegaram o Davi
+- Galeria oeste: latas de comida datadas de 1980 a 1994, a mais nova aberta e fresca ("quem traz comida pra ele?")
+- Galeria oeste: cadeira de escola virada para a parede, com a pedra gasta na altura da testa
+- Galeria oeste: em patrulha, o Inspetor para três segundos no ninho e passa a mão na palha, janela de fuga que se aprende observando
+- Depósito: duas camas de ferro com correias que balançam sem vento e um balde (as "medidas permanentes")
+- Depósito: lista de nomes a giz riscados de 1952 a 1979; ao iluminar as camas, a Lia diz que ali ninguém ouvia
+- Depósito: arquivo morto com caixas de fichas e uma nota secreta: "Fugitivos desde a fundação: 41"
+- Galeria leste: mural de giz em seis desenhos contando a noite do fogo, revelados um a um pela lanterna
+- Galeria leste: o último desenho, uma mulher de lanterna chegando ao portão, tem giz fresco e pó no chão
+- Galeria leste: bueiro no teto com chuva caindo de verdade, gotas fazendo ondas na água
+- Galeria leste: embaixo do bueiro a chuva soa alto, o céu clareia e os trovões chegam
+- Galeria leste: num dos clarões, um rostinho de criança aparece olhando pela grade do bueiro
+- Galeria leste e saída: marcas de mãos de fuligem na altura de uma criança levando até a escotilha
+- Saída: arco de tijolos "CAPELA — 1931" emparedando uma passagem antiga
+- Saída: batidas pequenas vêm do outro lado do arco e param de vez quando a Lia chega perto
+- Saída: grade no teto mostra o chão da capela à luz de velas, com cinzas caindo
+- Saída: ao olhar para cima na grade, a Lia percebe que está embaixo da capela
+- Saída: inscrição de 1931 do Pe. Osvaldo num tijolo perto da escotilha ("para guardar o silêncio da casa")
+- Túneis: folhas do livro de ocorrências de 1947 a 1979 boiando e girando, legíveis só de apontar
+- Túneis: quando a água baixa, as folhas boiando grudam no chão
+- Túneis: quando a água baixa, aparecem brinquedos de pano com etiquetas ROSA, LUIZ, JOÃO e MARIA
+- Túneis: iluminar um desses brinquedos faz uma vozinha dizer o nome
+- Cisterna: crachá enferrujado "M. DUARTE — INSPETOR" no fundo quando a água baixa ("ele tinha olhos bons")
+- Túneis: olhando para baixo na água funda, o reflexo de um menino aparece ao lado da Lia, onde não há ninguém
+- Cisterna: o reflexo do menino aparece do lado da próxima válvula certa, dica sem HUD
+- Túneis: de vez em quando o sino toca lá em cima e a água inteira se arrepia em anéis
+- Túneis: os canos repetem vozes de longe (passos de criança, o diretor no dormitório B, a voz da própria Lia chamando)
+- Túneis: segredo do Benedito: um armário tem um "7" pintado; escondida nele, prendendo o ar com o Inspetor longe, ouve-se outra respiração e "Benedito... ninguém lembra"
+- Segredo: conquista secreta "Ninguém Lembra", e a partir dela a lápide SEM NOME de 1975 vira "BENEDITO — 1966 — 1975"
+- Túneis: a anotação do pedreiro ganha três linhas (argolas na cisterna, a ala velha fechada em 51, crianças carregando cimento)
+- Capela: o lado de dentro da porta tem dezenas de mãos pequenas de fuligem e cinza, uma mão de adulto mais alta e nove riscos de unha
+- Capela: de perto, com a lanterna, aparecem DAVI, ANA, TOMÉ riscados à unha na porta
+- Capela: quando a porta bate, olhar para ela faz a Lia falar das batidas e dos nove riscos (e completar com a confissão, se ouviu a gaveta falsa)
+- Capela: por fora, aldraba com cadeado derretido gravado "A.T." e a Lia percebe que trancaram por fora
+- Capela: terço derretido no chão perto da porta: a Irmã Celeste ficou com as crianças até o fim
+- Capela: tentar abrir a porta trancada faz ouvir batidas do lado de dentro
+- Capela: um cigarro esmagado no degrau da porta
+- Capela: bancos carbonizados e manchas de cinza no chão (a capela agora parece ter queimado)
+- Capela: nomes de outras crianças entalhados nos bancos e, no último, "DAVI ANA TOMÉ 79" com um "LIA" quase apagado
+- Capela: 34 pares de sapatinhos enfileirados na frente dos bancos, com três lugares vazios na primeira fila
+- Capela: quando os três objetos vão para o altar, os três pares que faltavam aparecem sem som
+- Capela: quadro de promessas com fotos 3x4 e bilhetes das crianças ("que o seu Moacir fique surdo")
+- Capela: a parede da torre coberta de 5.475 risquinhos de giz em grupos de cinco, com o último grupo incompleto
+- Capela: viga com quinze datas entalhadas de 1980 a 1994, a última pela metade; depois do sino ela aparece completa
+- Capela: o ninho do Davi ao lado da corda, com colchonete, cobertor, lanterna sem pilha e o caderno "noite 5.478 — amanhã a corda arrebenta"
+- Capela: corda do sino refeita com quinze nós, tiras de uniforme, as fitas da Ana, do Tomé e do Davi e um elástico de cabelo da Lia
+- Capela: segurando E na corda, as tiras bordadas ANA, TOMÉ e DAVI passam pela mão dela, e por último o elástico dela
+- Capela: no fim do esforço um nó cede com tranco e estalo, mas a corda aguenta
+- Capela: o sino mostra a inscrição de 1903 "QUE O SILÊNCIO NÃO SE ROMPA" e, riscado a prego, "QUE A HORA ACABE — D.M."
+- Capela: três silhuetas queimadas de crianças de mãos dadas na parede, visíveis só no relâmpago e com a lanterna apagada
+- Capela: vitral de nove crianças de mãos dadas que acende com os relâmpagos, com três delas sem rosto
+- Capela: a cada objeto colocado no altar, uma criança do vitral ganha o rosto de volta
+- Capela: depois do sino, o vitral mostra o homem alto atrás das nove crianças
+- Capela: pertences antigos cobertos de cera no altar (bolinha, pião, fita vermelha); com os três objetos a cera derrete e oito velas acendem juntas
+- Capela: órgão queimado com sete teclas; cada tecla soa alto e atrai o Inspetor
+- Capela: tocar dó, mi, sol no órgão (as notas das válvulas) abre uma gaveta com um curativo, a voz da Celeste e a conquista secreta "A Água Cantou"
+- Capela: na fuga, se ninguém tocou o órgão, ele dá uma nota sozinho e chama o Inspetor para o fundo da capela
+- Capela: confessionário de madeira que funciona como esconderijo
+- Capela: escondida e quieta no confessionário, uma confissão do outro lado da grade (diretor, Moacir ou Celeste, alternando) e depois "...e você, filha?"
+- Cemitério: cruz do Seu Joaquim do lado de fora do muro, vista pela grade, com chapéu de palha, capa e lanterna de zelador acesa
+- Cemitério: pendurar a chave do portão na grade para ele faz o chapéu cair, o rádio chiar e dá a conquista secreta "Devolvi a Chave"
+- Cemitério: na fuga, a lanterna da cruz do Joaquim balança como quem acena
+- Cemitério: três cruzinhas de graveto DAVI, ANA, TOMÉ com flores do mato frescas; ajoelhar diante delas acalma o medo
+- Cemitério: flores frescas e pegadas de botina nas covas de João, Rosa, Luiz e Maria; na da Irmã Celeste, marcas de joelho
+- Cemitério: pegadas pequenas de fuligem do muro até a capela (o caminho de 1979), brilhando fraco sob a lanterna, com pés enormes descalços por cima
+- Cemitério: cata-ventos de papel nas covas pequenas que param todos ao mesmo tempo quando o Inspetor chega perto
+- Cemitério: a lamparina do Seu Joaquim marca de longe o próximo túmulo a cavar e some quando você se aproxima
+- Cemitério: lápide do Faísca, o cachorro do Joaquim
+- Cemitério: um latido abafado vem da lápide do Faísca quando o Inspetor está a menos de 15 metros
+- Cemitério: galpão do coveiro com caixas de velas, a capa de chuva do Joaquim pingando, uma garrafa e um curativo
+- Cemitério: ala dos pequenos, com cruzes sem nome e só as datas de 1951 a 1978
+- Cemitério: brinquedos de corda na ala dos pequenos dão uma volta sozinhos, um depois do outro, quando a Lia passa
+- Cemitério: cova aberta e vazia do Moacir ("1938 —"); depois do final verdadeiro ela aparece fechada, com "1938 — 1994"
+- Cemitério: a cova do diretor pode ser cavada (opcional e barulhento): caixão cheio de tijolos, carta do bispo e conquista secreta "Cova Vazia"
+- Cemitério: as lápides das crianças antigas agora terminam em março; na terceira lida a Lia percebe o ciclo
+- Cemitério: na lápide da Irmã Celeste, "transferida" foi riscado e trocado à unha por "trancada", e a Lia comenta
+- Cemitério: ler as lápides SEM NOME de 1962 e 1975 depois da régua da cisterna faz a Lia ligar as datas às cheias
+- Cemitério: ler as lápides de João, Luiz e Rosa depois de achar a bolinha ou a caixa dos confiscados faz a Lia reconhecer os objetos
+- Cemitério: com a pá, ler a lápide do diretor avisa que a terra na frente está fofa demais
