@@ -1,0 +1,117 @@
+# Lote 3 — Progressão e rejogabilidade
+- Segurar BACKSPACE por 1 segundo recomeça o capítulo atual do zero na hora, sem passar pela tela de morte nem pelo menu
+- Um anel dourado enche no centro da tela enquanto você segura, com o aviso "segure para recomeçar o capítulo"
+- No controle, segurar SELECT faz o mesmo reinício (funciona até com o diário aberto)
+- No celular, três dedos parados na tela por 1,5 segundo recomeçam o capítulo
+- Sem o cronômetro ligado, o reinício pede confirmação: é preciso segurar de novo em até 4 segundos
+- O reinício na hora zera o tempo, o dano, as perseguições e as mortes do capítulo: a nova tentativa conta limpa para o rank
+- O reinício na hora também funciona direto da tela de morte
+- A pausa mostra quantas vezes você recomeçou o capítulo naquela noite
+- Com o cronômetro ligado, a pausa ensina o atalho de reinício (BACKSPACE, SELECT ou três dedos)
+- Estatísticas contam quantos capítulos você recomeçou na hora
+- Modo corrida: da terceira morte seguida em diante, a tela de morte já abre com "Tentar de novo" em destaque e com o foco nele
+- A tela de morte avisa quando você morreu no mesmo lugar pela 2ª, 3ª, 4ª vez
+- Novo botão "Guardar o último instante" na tela de morte: baixa em PNG o quadro do golpe, com o monstro na sua cara
+- A foto da morte sai carimbada como fita VHS: PLAY, linhas de varredura, a data de hoje em 1994, a hora da noite e o capítulo
+- Ao entrar em cada capítulo pela primeira vez, o jogo tira sozinho uma foto da tela depois de 4 segundos, sem o HUD
+- O menu Capítulos virou um álbum de polaroides tortas com a foto da sua noite em cada capítulo
+- Cada polaroide traz a data e a hora reais em que você chegou ali, escritas a caneta azul
+- Capítulos ainda trancados aparecem como uma polaroide queimada nas bordas
+- Estatísticas contam quantas polaroides da sua noite você já tem
+- O jogo grava a rota da Lia em cada capítulo, segundo a segundo, com o que ela estava fazendo
+- Botão "Rota" no menu Capítulos desenha a planta do mapa com o caminho da última vez
+- A rota é colorida: verde andando, amarelo parada, vermelho escondida e laranja perseguida
+- A rota do seu recorde aparece pontilhada por cima, para ver onde você perdeu tempo
+- O fim de capítulo avisa que a rota daquele capítulo ficou gravada
+- Estatísticas abrem com o contador "O internato inteiro: X%", com barra de progresso
+- O 100% mostra o peso de cada parte: conquistas 30%, notas e fitas 25%, ranks S 15%, desafios 10%, finais 10% e selos 10%
+- Cada parte do 100% abre uma lista com "???" no que falta, sem entregar o segredo
+- A lista de notas e fitas diz em que lugar ainda tem algo para achar ("Túneis: 4/6 · ainda tem algo aqui"), sem dizer o quê
+- A lista de selos mostra quais dos quatro selos de cada capítulo ainda estão apagados
+- O título mostra quanto do internato você já conhece ("37,5% do internato")
+- Nova conquista "O Internato Inteiro" ao chegar a 100%
+- Recompensa do 100%: um desenho de giz da Lia e do Davi de mãos dadas aparece no canto do título
+- A pausa mostra quantas lembranças daquele lugar você já achou ("neste lugar: 3 de 7 lembranças")
+- O jogo passou a contar o tempo real (relógio de parede) desde o primeiro passo da noite, além do tempo de jogo
+- A tela final mostra lado a lado o tempo de jogo, o tempo real e quanto tempo ficou em pausas e menus
+- Quando a noite foi continuada depois de fechar o jogo, a tela final avisa que o tempo real não vale
+- Nova opção "Relógio" no título (aparece com o cronômetro): escolhe se o HUD mostra grande o tempo de jogo ou o tempo real
+- A pausa mostra o tempo real da noite
+- O "Copiar resultado" inclui o tempo real
+- Novo botão "Noite da Semana" no título: uma noite com a mesma semente para todo mundo naquela semana, no Normal e sem amuletos
+- A dica do botão Noite da Semana diz o número da semana e o seu melhor tempo nela
+- A Noite da Semana tem recorde próprio, separado das outras corridas
+- A tela final da Noite da Semana mostra o tempo, se bateu o seu recorde da semana e por quantos segundos
+- Botão "Copiar desafio da semana" na tela final, com um link que vale até domingo
+- Quem abre o link da semana (#semana) vê o botão destacado e o número da semana no título
+- Nova conquista "Noite da Semana"
+- A pausa avisa quando a noite é a Noite da Semana
+- A tela final mostra o selo "corrida limpa" quando a noite foi do começo ao fim sem ajuda
+- Quando não foi limpa, a tela final diz "corrida com ajuda" e o porquê: continuou de um save, trecho mais leve, ajuda invisível ou rejogo pelo menu
+- O "Copiar resultado" diz se a corrida foi limpa ou com ajuda
+- Nova conquista "Sem Rede": corrida limpa no Normal ou no Pesadelo
+- Segredo: digitar MOACIR no título deixa o menu mudo, estala uma língua no escuro e libera o desafio "Ouvido do Inspetor"
+- Nova opção "Ouvido do Inspetor" no título, que só aparece depois de achar o segredo
+- No Ouvido do Inspetor a tela fica quase preta e o mundo só aparece em pulsos quando a Lia faz barulho, do tamanho do barulho
+- No Ouvido do Inspetor, cada passo dele por perto acende um pulso mais forte quanto mais perto ele está
+- No Ouvido do Inspetor, N estala os dedos: o mundo aparece por um instante, mas ele ouve o estalo
+- Terminar um capítulo no Ouvido do Inspetor dá selo secreto no fim de capítulo, conquista secreta e marca no menu Capítulos
+- A noite no Ouvido do Inspetor começa com um aviso de como jogar
+- Novo filtro "Fita de 1979" para rejogar (depois de um final): linhas de varredura, cor desbotada e contraste de fita velha
+- No filtro de fita, uma faixa de tracking sobe pela tela a cada 20 segundos
+- No filtro de fita, "PLAY" no canto e "14 MAR 1979" com a hora da noite correndo, em laranja
+- Novo filtro "Câmera de vigilância": imagem verde de visão noturna, "● REC · CAM 03" piscando e 14/03/1979 com os segundos correndo
+- Novo filtro secreto "Negativo": segurar 1, 9 e 7 juntos no título por um segundo e meio (com som de sino e conquista "Ao Contrário")
+- O seletor de filtro só aparece no título quando há algum filtro liberado
+- Segredo: digitar DAVI no título toca o clique da fita e sussurros, e o título conta que a fita rodou ao contrário
+- Segredo: digitar ANA no título faz o subtítulo contar de um a dez; no DEZ, um susto e a tela inteira fica espelhada por 5 segundos
+- Segredo: digitar 1979 no título troca o nome do jogo pela placa queimada "SÃO LÁZARO 1979" por 8 segundos
+- Nova conquista secreta "Nomes Ditos" ao achar os segredos DAVI, ANA e 1979
+- Segredo: digitar ORELHAO no título faz um orelhão tocar na chuva; clicar atende uma criança que diz o seu nome e termina em sinal de ocupado
+- A voz do orelhão muda conforme o último final que você viu
+- Nova conquista secreta "Ligação a Cobrar" por atender o orelhão
+- Segredo: ficar 2 minutos parado no título faz uma luz se aproximar do portão em três etapas; mexer o mouse apaga tudo
+- Quem espera até o fim vê uma mão de fuligem bater no vidro da tela, com batida e coração (conquista secreta "Visita")
+- Voltar depois de dias: o título diz "Você ficou 3 dias fora. A Ana contou até 259.200."
+- Depois de 30 dias fora, o título lembra a data da sua última visita
+- Abrir o jogo numa segunda aba enquanto a primeira está jogando: o sino bate na primeira e a segunda diz "Já tem alguém aqui dentro, Lia." (conquista secreta "Duas Lias")
+- Abrir o jogo sem internet troca o subtítulo por "Sem sinal. Como naquela noite." (conquista secreta "Linha Cortada")
+- Segredo no console do navegador: um bilhete do Davi pede para digitar ouvir(), que toca a fita perdida dele (conquista secreta "Do Outro Lado")
+- Segredo: imprimir a página no título imprime a ficha de matrícula de 1979 com o seu nome e o carimbo "VAGA TRANSFERIDA" (conquista secreta)
+- Segredo no celular: virar o aparelho de cabeça para baixo no título vira o nome para "O SILÊNCIO DA HORA" e pergunta "por que você me virou?"; desvirar bate o sino (conquista secreta "Do Avesso")
+- Com a aba escondida no meio da noite, o ícone da aba vira um olho que pisca
+- Deixar o jogo pausado por nove minutos: ao voltar, "VOCÊ DEMOROU" e a Lia vê giz no chão à frente dela (conquista secreta "Nove Minutos")
+- Deixar a aba escondida mais de três minutos no meio da noite: ao voltar, "Você saiu. Eu fiquei." e a Lia vê marcas de pé descalço em volta dela (conquista secreta "Você Saiu")
+- Nova conquista secreta "Antes da Hora": prólogo em menos de 2 min 30 s, com o rádio do carro comentando a pressa no fim do capítulo
+- Novo selo secreto "Olhos do Moacir" no fim de capítulo (e conquista) por atravessar o capítulo com a lanterna apagada mais de 80% do tempo
+- Novo selo secreto "Às Cegas, Como Ele" (e conquista) por terminar um capítulo com HUD mínimo, sem legendas de som e sem anel de ruído
+- Nova conquista secreta "Silêncio Absoluto" por terminar um capítulo com o volume em zero; zerar o volume no jogo mostra "[silêncio total. ele gosta assim.]"
+- Novas conquistas de plataforma: "Mão Firme" (Capítulo III no toque) e "No Escuro do Quarto" (20 minutos seguidos em tela cheia)
+- Contador de pulos da cadeira: um tranco forte no mouse logo depois de um susto conta como "você pulou"
+- O fim de capítulo diz quantas vezes você pulou e quem mais pegou você (o Inspetor, a Ana, a Procissão ou o escuro)
+- A tela final e o "Copiar resultado" contam quantas vezes você pulou da cadeira na noite
+- Nova conquista "Coração na Boca": pular da cadeira 10 vezes numa noite
+- Novas conquistas "Último Instante" (guardar a foto da morte) e "Outra Vez" (recomeçar capítulos 20 vezes na hora)
+- Fósforos: as charadas das conquistas secretas novas ficam escondidas até você riscar um fósforo
+- Cada capítulo terminado dá um fósforo, avisado no fim de capítulo
+- Segurar o cartão da secreta risca o fósforo, com uma faixa de fogo correndo pela borda do cartão e um estalo
+- O título e o painel de Conquistas mostram quantos fósforos você tem
+- Painel de Conquistas ganhou abas: Todas, Destravadas, Faltando e Secretas
+- Conquistas destravadas desde a última visita ao painel ganham a etiqueta "NOVA", e o resumo conta quantas são
+- O aviso de conquista mostra quantas você já tem do total ("12/132")
+- O aviso de conquista agora aparece também no título e nos menus, e não só durante o jogo
+- Clicar ou tocar no aviso de conquista dispensa na hora
+- O aviso de conquista é lido por leitores de tela
+- Com "reduzir movimento" ligado no sistema, o aviso de conquista, o carimbo do rank e os selos aparecem sem animação
+- No celular, os botões e as abas dos painéis ficaram maiores e mais fáceis de tocar
+- No menu Capítulos, a letra do rank tem cor própria (S dourado brilhando, A, B e C cada vez mais apagados)
+- O menu Capítulos marca com † o melhor rank tirado no Pesadelo
+- O menu Capítulos mostra a soma dos seus melhores tempos de capítulo
+- Estatísticas mostram o tempo médio por noite, a média de mortes por noite e quantas noites você levou até um final
+- Estatísticas contam em quantos dias diferentes você voltou ao internato
+- Novo botão "Copiar estatísticas" para mandar o resumo e a porcentagem para alguém
+- No fim de capítulo, o tempo conta rapidamente de 00:00 até o seu tempo
+- O fim de capítulo mostra "pontos para o S: 4 de 6" com barra e de onde veio cada ponto (dano, tempo, invisível, silêncio, mortes, amuletos)
+- No fim de capítulo, os selos acendem um a um, cada um com um estalo de papel
+- A pausa mostra o rank que você tiraria se o capítulo acabasse agora
+- Depois de uma noite com 12 mortes ou mais no Normal, a descrição da dificuldade lembra com carinho que o Fácil existe

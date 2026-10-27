@@ -3780,7 +3780,13 @@ const VM = instalarMundoVisual({ THREE, scene, camera, renderer, flash, hemi, mo
 PG.ligar({
   get S() { return S; }, setS: v => { S = v; }, get ui() { return ui; }, get mode() { return mode; },
   KEYS: { SAVE_KEY, CAPS_KEY, CONQ_KEY, OPT_KEY }, OPT, salvarOpt: () => lsSet(OPT_KEY, OPT), saveExterno: true, dicaExterna: true, ajudaExterna: true,
-  P, M, ANA, PROC, W, MON, SFX, D, toast, sub, loreAchado, totalLore, salvarCheckpoint, carregarSnap, entrarJogo, iniciarAudio
+  P, M, ANA, PROC, W, MON, SFX, D, toast, sub, loreAchado, totalLore, salvarCheckpoint, carregarSnap, entrarJogo, iniciarAudio, emitNoise,
+  recomecarCap: () => { // Lote 3: reinício na hora (segurar BACKSPACE / SELECT / três dedos), sem tela de morte nem menu
+    const snap = (lsGet(CAPS_KEY, {})[R.capitulos[S.chapter].id] || {}).snap; if (!snap || trocandoCap) return false;
+    if (ui === 'diario') fecharDiario();
+    clearTimeout(capTO); $('#pause').hidden = true; $('#death').hidden = true; ui = null; mortesNoPonto = 0; $('#fx-black').style.opacity = 0;
+    carregarSnap(snap); $('#hud').hidden = false; lockPointer(); cartaoCapitulo(); renderObj(); return true;
+  }
 });
 AUDM = instalarAudioMundo({
   get AC() { return AC; }, get S() { return S; }, get mode() { return mode; }, get ui() { return ui; }, get perf() { return perf; }, get fita() { return fitaTocando; },
