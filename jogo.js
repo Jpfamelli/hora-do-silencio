@@ -7,6 +7,7 @@ import { instalarVisual } from './src/visual.js';
 import { instalarMundoVisual } from './src/visual-mundo.js';
 import * as JG from './src/jogabilidade.js';
 import { criarMundoJogavel } from './src/jogabilidade-mundo.js';
+import { criarPolimento } from './src/jogabilidade-polimento.js';
 import { criarInterface } from './src/interface.js';
 import { PG } from './src/progressao.js';
 import { PLAT } from './src/plataforma.js';
@@ -347,8 +348,8 @@ function porta(p) {
   const col = p.eixo === 'x' ? addCollider(p.x - lw / 2, p.x + lw / 2, p.z - .06, p.z + .06) : addCollider(p.x - .06, p.x + .06, p.z - lw / 2, p.z + lw / 2);
   const d = { id: p.id, pivot, col, open: false, ang: 0, target: 0, trava: p.trava, msg: p.msg || 'Trancada.', nome: p.nome || 'porta', x: p.x, z: p.z, eixo: p.eixo, grade, aoAbrir: p.aoAbrir };
   W.doors.push(d);
-  const it = interact(pivot, () => (d.trava && d.trava()) ? `${cap(d.nome)} — ${typeof d.msg === 'function' ? d.msg() : d.msg}` : `<b>E</b>${d.open ? 'Fechar' : 'Abrir'} ${d.nome}<small style="opacity:.6"> · segure: devagar</small>`,
-    () => { if (d.trava && d.trava()) { SFX.trancado(); emitNoise(d.x, d.z, 3); if (p.aoTentar) p.aoTentar(); return; } setDoor(d, !d.open); if (!d.open) d.fechadaEm = perf; aoPortaJogador(d); if (d.open && d.aoAbrir) d.aoAbrir(); });
+  const it = interact(pivot, () => (d.trava && d.trava()) ? `${cap(d.nome)} — ${typeof d.msg === 'function' ? d.msg() : d.msg}` : rotuloPorta(d),
+    () => { if (d.trava && d.trava()) { SFX.trancado(); emitNoise(d.x, d.z, 3); if (p.aoTentar) p.aoTentar(); return; } portaJogador(d); if (!d.open) d.fechadaEm = perf; aoPortaJogador(d); if (d.open && d.aoAbrir) d.aoAbrir(); });
   it.porta = d;
   if (p.hold) { it.hold = p.hold; it.ruido = p.ruidoHold || 8; it.som = 'forcar'; it.pode = () => !(d.trava && d.trava()) && !d.open; const lb = it.label; it.label = () => (!d.open && !(d.trava && d.trava())) ? `<b>E</b>${p.holdTexto || 'Forçar a ' + d.nome}` : lb(); }
   const k = `${W.mapa}:${d.id}`;
@@ -357,7 +358,7 @@ function porta(p) {
 }
 function setDoor(d, open, silent) {
   if (!open && d.arrombada) return; // arrombada pelo Inspetor: fica aberta e torta até o fim do capítulo
-  d.open = open; d.target = open ? -Math.PI * .56 : 0; d.col.on = !open;
+  d.open = open; d.target = open ? -Math.PI * .56 : 0; d.col.on = !open; d.fresta = 0; d.vel = 7; d.quique = 0;
   S.doorsOpen[`${W.mapa}:${d.id}`] = open;
   if (!silent) { SFX.rangido(d.x, 1.2, d.z, 1, 'sfx', true); emitNoise(d.x, d.z, (open ? 4.5 : 5.5) * (P.devagar ? .6 : P.sprinting ? 1.3 : 1)); }
 }
@@ -371,7 +372,7 @@ function armario(x, z, face) {
   Math.abs(face[0]) > .5 ? addCollider(x - .31, x + .31, z - .45, z + .45) : addCollider(x - .45, x + .45, z - .31, z + .31);
   const L = { g, x, z, face, tipo: 'armario' };
   W.lockers.push(L); W.solid.push(corpo);
-  interact(g, () => S.hidden === L ? '<b>E</b>Sair do armário · segure: em silêncio' : '<b>E</b>Esconder no armário', () => S.hidden === L ? sairEsconderijo() : SUST.armarioOcupado(L) || entrarEsconderijo(L));
+  interact(g, () => S.hidden === L ? '<b>E</b>Sair do armário · segure: em silêncio' : '<b>E</b>Esconder no armário' + dicaEntrar(), () => S.hidden === L ? sairEsconderijo() : SUST.armarioOcupado(L) || entrarEsconderijo(L));
   return L;
 }
 function cama(x, z, ao = 'x', spotSala) { // cama comprida no eixo "ao"
@@ -385,7 +386,7 @@ function cama(x, z, ao = 'x', spotSala) { // cama comprida no eixo "ao"
   addCollider(x - L / 2, x + L / 2, z - C / 2, z + C / 2); W.solid.push(estrutura);
   const H = { g, x, z, face: ao === 'x' ? [0, 1] : [1, 0], tipo: 'cama', ao };
   W.lockers.push(H);
-  interact(g, () => S.hidden === H ? '<b>E</b>Sair de baixo da cama · segure: em silêncio' : '<b>E</b>Esconder embaixo da cama', () => S.hidden === H ? sairEsconderijo() : entrarEsconderijo(H));
+  interact(g, () => S.hidden === H ? '<b>E</b>Sair de baixo da cama · segure: em silêncio' : '<b>E</b>Esconder embaixo da cama' + dicaEntrar(), () => S.hidden === H ? sairEsconderijo() : entrarEsconderijo(H));
   if (spotSala) W.spots[spotSala].cama.push({ x: x + (ao === 'x' ? -.3 : 0), y: .63, z: z + (ao === 'x' ? 0 : -.3) });
   return H;
 }
@@ -448,7 +449,7 @@ function item(id, pos, mesh, label, onPick, cond) {
   mesh.position.set(pos.x, pos.y, pos.z); W.grupo.add(mesh);
   mesh.traverse(o => { if (o.isMesh) o.castShadow = true; });
   const it = interact(mesh, typeof label === 'function' ? label : () => `<b>E</b>${label}`, () => {
-    S.picked[key] = true; mesh.visible = false; SFX.pegar(); emitNoise(pos.x, pos.z, 2.5);
+    S.picked[key] = true; JP.pegou(mesh, it.label()); mesh.visible = false; SFX.pegar(); emitNoise(pos.x, pos.z, 2.5);
     onPick && onPick(); syncWorld(); renderInvMini();
   });
   it.on = () => mesh.visible;
@@ -624,6 +625,7 @@ function novoEstado(dif) {
 const D = () => {
   let b = PG.dif(S, DIFS);
   if (S.flags && S.flags.alivio === S.chapter) b = { ...b, vel: b.vel * .9, ouvido: b.ouvido * .9 };
+  if (+OPT.avisoCedo && S && S.dif !== 'pesadelo') b = { ...b, aviso: b.aviso + 2 }; // avisos antecipados (acessibilidade): a Procissão avisa mais cedo
   const a = ajudaOculta(); return a ? { ...b, vel: b.vel * a.vel, ouvido: b.ouvido * a.ouvido, aviso: b.aviso + a.aviso } : b;
 };
 const loreBase = () => [...R.notas, ...R.paginas, ...R.fitas].filter(x => !x.secreta);
@@ -635,12 +637,13 @@ const codTxt = s => s.replace(/\{d(\d)\}/g, (_, i) => S.code[i - 1]).replace(/\{
 // JOGADOR
 // =====================================================================
 const P = { pos: new THREE.Vector3(), yaw: 0, pitch: 0, h: 1.62, bob: 0, stepAcc: 0, noiseR: 0, crouch: false, sprinting: false, shake: 0, room: null, naAgua: false, bloqueado: false,
+  vx: 0, vz: 0, hv: 0, camK: 1, camDe: new THREE.Vector3(), giro: 0, sensMul: 1, eBuf: 0, alvoAnt: null, alvoAntEm: -99, trombaCd: 0, tropecoT: 0, tropecoEm: -99, yawAnt: 0, sentada: false, paradoT: 0, pilhaT: 0, agachadaT: 0, rollLado: 0, sombra: 0,
   devagar: false, prende: false, semAr: false, pulso: 0, ofegoT: 0, ofegoRuidoT: 0, corridaT: 0, olhar: 0, incl: 0, baixar: 0, curaT: 0, mirarG: 0, saidaT: 0, portaT: 0, portaIt: null, sacudirT: 0, correrTrava: false, arTrava: false, espiar: 0, causaRuido: null, causaRuidoEm: -99 };
 const keys = {};
 let locked = false, mode = 'titulo', ui = null, alvo = null, perf = 0;
 JG.montarHUD();
 for (const c of JG.TXT.conquistas) if (!R.conquistas.some(x => x.id === c.id)) R.conquistas.push(c);
-addEventListener('keydown', e => { if (e.code === 'Tab' || e.code === 'Space' || e.code === 'AltLeft' || e.code === 'AltRight') e.preventDefault(); keys[e.code] = true; if (!e.repeat) onKey(e); });
+addEventListener('keydown', e => { if (JP.bloqueia(e)) return; if (e.code === 'Tab' || e.code === 'Space' || e.code === 'AltLeft' || e.code === 'AltRight') e.preventDefault(); keys[e.code] = true; if (!e.repeat) onKey(e); });
 addEventListener('keyup', e => { keys[e.code] = false; if (e.code === 'AltLeft' || e.code === 'AltRight') e.preventDefault(); onKeyUp(e); UIX.soltou(e); });
 addEventListener('blur', () => { for (const k in keys) keys[k] = false; P.mirarG = 0; });
 addEventListener('mousedown', e => { if (e.button === 1) { keys.Mouse1 = true; e.preventDefault(); } });
@@ -655,7 +658,7 @@ document.addEventListener('visibilitychange', () => {
 });
 addEventListener('mousemove', e => {
   if (!locked || mode !== 'jogo' || ui || !S || S.dead || P.bloqueado) return;
-  const k = .0022 * OPT.sens;
+  const k = .0022 * OPT.sens * (P.sensMul || 1); // mais fino escondida e mirando a garrafa; atrito sobre o que dá para usar (src/jogabilidade-polimento.js)
   P.yaw -= e.movementX * k; P.pitch = clamp(P.pitch - e.movementY * k * (OPT.invY ? -1 : 1), -1.45, 1.45);
   if (S.hidden) {
     const cama = S.hidden.tipo === 'cama', base = Math.atan2(-S.hidden.face[0], -S.hidden.face[1]); let d = P.yaw - base; d = Math.atan2(Math.sin(d), Math.cos(d));
@@ -690,15 +693,21 @@ function onKey(e) {
   switch (e.code) {
     case 'KeyE':
       if (S.hidden) { P.saidaT = .001; break; }
-      if (alvo && alvo.porta && !alvo.hold && !(alvo.porta.trava && alvo.porta.trava())) { P.portaT = .001; P.portaIt = alvo; break; }
-      if (alvo && !alvo.hold) alvo.act();
-      else if (!alvo) entrarMaisPerto();
+    {
+      let a = alvo;
+      // a mira escapou do esconderijo por um instante no meio da fuga: o E ainda vale
+      if (!a && P.alvoAnt && perf - P.alvoAntEm < .12 && S.dif !== 'pesadelo' && ehEsconderijo(P.alvoAnt) && P.alvoAnt.on()) a = P.alvoAnt;
+      if (a && a.porta && !a.hold && !(a.porta.trava && a.porta.trava())) { P.portaT = .001; P.portaIt = a; P.portaFecha = a.porta.open || a.porta.fresta > 0; P.portaA0 = a.porta.ang; P.portaMexeu = false; break; }
+      if (a && !a.hold) a.act();
+      else if (!a && !entrarMaisPerto() && S.dif !== 'pesadelo') P.eBuf = .15; // E apertado um instante cedo demais: vale quando o esconderijo entrar na mira
+    }
       break;
     case 'KeyF':
       if (!S.inv.lanterna) break;
+      if (P.pilhaT > 0) { toast('Trocando a pilha...'); break; }
       if (SUST.bater()) break;
       if (falhaT > 0) { falhaT = Math.max(0, falhaT - 1.3); SFX.clique(); SFX.trancado(); emitNoise(P.pos.x, P.pos.z, 2, true); P.shake = Math.max(P.shake, .03); if (falhaT <= 0) toast('A luz voltou.'); break; }
-      if (S.battery <= 0) { toast(S.inv.pilhas ? 'Sem pilha. R para trocar.' : 'Sem pilha. Segure R para sacudir a lanterna.'); SFX.clique(); break; }
+      if (S.battery <= 0) { toast(S.inv.pilhas ? `Sem pilha. ${JP.t('KeyR')} para trocar.` : `Sem pilha. Segure ${JP.t('KeyR')} para sacudir a lanterna.`); SFX.clique(); break; }
       if (perf - ultimoF < .45 && S.battery < 25 && consertoT <= 0) { consertoT = 20; toast('Você bateu na lanterna. A luz firmou por um tempo.'); emitNoise(P.pos.x, P.pos.z, 4, true); SFX.trancado(); }
       ultimoF = perf;
       S.flashOn = !S.flashOn; SFX.interruptor(S.flashOn); emitNoise(P.pos.x, P.pos.z, 1.2); SUST.aoLanterna(); break;
@@ -707,7 +716,7 @@ function onKey(e) {
     case 'KeyH': iniciarCurativo(); break;
     case 'KeyG': if (!S.hidden && S.inv.garrafas > 0) P.mirarG = .001; else jogarGarrafa(); break;
     case 'Tab': case 'KeyJ': abrirDiario(); break;
-    case 'KeyC': if (!S.hidden) { P.crouch = OPT.agachar === 'segurar' ? true : !P.crouch; if (P.crouch) dicaAgachar(); } break;
+    case 'KeyC': if (!S.hidden) { if (P.sentada) { levantar(); break; } P.crouch = OPT.agachar === 'segurar' ? true : !P.crouch; if (P.crouch) dicaAgachar(); } break;
     case 'ShiftLeft': case 'ShiftRight': if (OPT.correr) P.correrTrava = !P.correrTrava; break;
     case 'Space': if (OPT.resp) P.arTrava = !P.arTrava; break;
   }
@@ -717,19 +726,31 @@ function onKeyUp(e) {
   if (e.code === 'KeyC' && OPT.agachar === 'segurar') P.crouch = false;
   if (e.code === 'KeyG' && P.mirarG > 0) { P.mirarG = 0; mira.visible = false; if (mode === 'jogo' && !ui && !S.dead) jogarGarrafa(); }
 }
-function dicaAgachar() { if (S.flags.dicaAgachar) return; S.flags.dicaAgachar = true; toast('Agachada, quase não se ouve. Segure ALT para andar devagar em pé. (Não use Ctrl: o navegador fecha a aba.)'); }
+function dicaAgachar() { if (S.flags.dicaAgachar) return; S.flags.dicaAgachar = true; toast(JP.t('Alt') === 'ALT' ? 'Agachada, quase não se ouve. Segure ALT para andar devagar em pé. (Não use Ctrl: o navegador fecha a aba.)' : `Agachada, quase não se ouve. Em pé, use ${JP.t('Alt')} para andar devagar.`); }
+// trocar a pilha leva tempo: a luz apaga, a pilha velha cai e quica no chão (barulho pequeno) e a nova entra com um clique
+let flashBoost = 0;
 function trocarPilha() {
-  if (!S.inv.lanterna) return;
-  if (S.inv.pilhas <= 0) { toast(S.battery < 15 ? 'Sem pilhas. Segure R para sacudir a lanterna.' : 'Você não tem pilhas.'); return; }
+  if (!S.inv.lanterna || P.pilhaT > 0) return;
+  if (S.inv.pilhas <= 0) { toast(S.battery < 15 ? `Sem pilhas. Segure ${JP.t('KeyR')} para sacudir a lanterna.` : 'Você não tem pilhas.'); return; }
   if (S.battery > 85) { toast('A pilha ainda está boa.'); return; }
-  S.inv.pilhas--; S.battery = 100; S.flashOn = true; SFX.pilha(); emitNoise(P.pos.x, P.pos.z, 2.5); toast('Pilha nova.'); renderInvMini();
+  P.pilhaT = .001; P.pilhaCaiu = false; S.flashOn = false; SFX.clique();
+  if (!S.flags.dicaPilhaTempo) { S.flags.dicaPilhaTempo = true; toast('Trocar a pilha leva um segundo no escuro. Escolha bem a hora.'); }
+}
+function updatePilha(dt) {
+  if (!(P.pilhaT > 0)) return;
+  P.pilhaT += dt; S.flashOn = false; mostrarHold(P.pilhaT / 1.2);
+  if (!P.pilhaCaiu && P.pilhaT > .45) { P.pilhaCaiu = true; if (!S.hidden) JP.soltarPilha(MK.pilha()); else { JP.som.tilintar(undefined, 0, 0, .6); emitNoise(P.pos.x, P.pos.z, 1.5, true); } }
+  if (P.pilhaT >= 1.2) {
+    P.pilhaT = 0; S.inv.pilhas--; S.battery = 100; S.flashOn = true; flashBoost = 1; SFX.pilha(); toast('Pilha nova.'); renderInvMini();
+    JP.vibrar(.2, .4, 60);
+  }
 }
 // curativo leva tempo: segure H parada
 function iniciarCurativo() {
   if (S.inv.kits <= 0) { toast('Você não tem curativos.'); return; }
   if (S.health >= 100) { toast('Você não está ferida.'); return; }
   P.curaT = .001; SFX.papel(); emitNoise(P.pos.x, P.pos.z, 3, true);
-  if (!S.flags.dicaCura) { S.flags.dicaCura = true; toast('Segure H parada para fazer o curativo.'); }
+  if (!S.flags.dicaCura) { S.flags.dicaCura = true; toast(`Segure ${JP.t('KeyH')} parada para fazer o curativo.`); }
 }
 function usarKit() { S.inv.kits--; PG.kit(); S.health = Math.min(100, S.health + 50); SFX.pegar(); toast('Melhor assim.'); renderInvMini(); }
 function updateCura(dt, moving) {
@@ -752,14 +773,26 @@ function updateSacudir(dt) {
 }
 // garrafa: toque arremessa, segurar G mostra o arco
 const garrafasVoando = [], cacos = [], ondas = [], _rcG = new THREE.Raycaster(), _rcV = new THREE.Raycaster(), _vV = new THREE.Vector3(), _vF = new THREE.Vector3(), _vA = new THREE.Vector3(), _vU = new THREE.Vector3();
-function alvoGarrafa() {
-  const rc = _rcG; rc.setFromCamera({ x: 0, y: 0 }, camera); rc.far = 16;
+const _dirG = new THREE.Vector3(), _fimG = new THREE.Vector3(), _iniG = new THREE.Vector3(), _centroTela = { x: 0, y: 0 };
+// mirar a garrafa não cria vetores novos a cada quadro (menos travadinhas em notebook fraco)
+function alvoGarrafa(fim = new THREE.Vector3()) {
+  const rc = _rcG; rc.setFromCamera(_centroTela, camera); rc.far = 16;
   const hits = rc.intersectObjects(W.solid, false);
-  const dir = new THREE.Vector3(); camera.getWorldDirection(dir);
-  let fim = hits.length ? hits[0].point.clone().addScaledVector(dir, -.25) : camera.position.clone().addScaledVector(dir, 14);
-  if (fim.y < 0) { const t = (camera.position.y - .05) / Math.max(.01, -dir.y); fim = camera.position.clone().addScaledVector(dir, Math.min(14, t)); }
+  const dir = _dirG; camera.getWorldDirection(dir);
+  if (hits.length) fim.copy(hits[0].point).addScaledVector(dir, -.25); else fim.copy(camera.position).addScaledVector(dir, 14);
+  if (fim.y < 0) { const t = (camera.position.y - .05) / Math.max(.01, -dir.y); fim.copy(camera.position).addScaledVector(dir, Math.min(14, t)); }
   fim.y = Math.max(.05, fim.y);
   return { fim, perto: Math.hypot(fim.x - P.pos.x, fim.z - P.pos.z) < 3 };
+}
+// onde a garrafa cai muda o barulho: madeira quica antes de quebrar, pedra estoura alto, tapete abafa, terra engole
+function superficie(x, z) {
+  const r = roomAt(x, z);
+  if (r && r.agua && !S.flags.aguaBaixa) return { tipo: 'agua', r: 7, cor: 0x8fb4c0 };
+  const p = r && r.piso || (r && r.fora ? 'grama' : 'concreto');
+  if (p === 'terra' || p === 'grama') return { tipo: 'terra', r: 7, cor: 0x9a8a5a };
+  if (p === 'tapete') return { tipo: 'tapete', r: 10, cor: 0xc8b48a };
+  if (p === 'madeira') return { tipo: 'madeira', r: 17, cor: 0xe9dfc8 };
+  return { tipo: 'pedra', r: 17, cor: 0xf4ead2 };
 }
 function jogarGarrafa() {
   if (S.hidden) return;
@@ -778,11 +811,14 @@ function updateMira(dt) {
   if (!(P.mirarG > 0) || S.hidden) { mira.visible = false; return; }
   P.mirarG += dt;
   if (P.mirarG < .3 || S.dif === 'pesadelo') { mira.visible = false; return; }
-  const { fim, perto } = alvoGarrafa(), ini = camera.position.clone(); ini.y -= .15;
+  const { fim, perto } = alvoGarrafa(_fimG), ini = _iniG.copy(camera.position); ini.y -= .15;
+  const sup = superficie(fim.x, fim.z);
   const pos = miraLinha.geometry.attributes.position;
   for (let i = 0; i < 20; i++) { const k = i / 19, x = lerp(ini.x, fim.x, k), z = lerp(ini.z, fim.z, k), y = lerp(ini.y, fim.y, k) + Math.sin(k * Math.PI) * 1.2; pos.setXYZ(i, x, y, z); }
   pos.needsUpdate = true;
-  miraAlvo.position.set(fim.x, .04, fim.z); miraAlvo.material.color.set(perto ? 0xc0392b : 0xe9dfc8); miraLinha.material.color.set(perto ? 0xc0392b : 0xe9dfc8);
+  // o anel mostra a superfície e o tamanho do barulho que a garrafa vai fazer lá
+  miraAlvo.position.set(fim.x, .04, fim.z); miraAlvo.scale.setScalar(clamp(sup.r / 12, .6, 1.5)); miraAlvo.material.opacity = sup.tipo === 'terra' ? .3 : .5;
+  miraAlvo.material.color.set(perto ? 0xc0392b : sup.cor); miraLinha.material.color.set(perto ? 0xc0392b : 0xe9dfc8);
   mira.visible = true;
 }
 function updateGarrafas(dt) {
@@ -793,40 +829,61 @@ function updateGarrafas(dt) {
     if (g.t >= 1) {
       W.grupo.remove(g.m); garrafasVoando.splice(i, 1);
       if (SUST.garrafaVolta(g.fim)) continue;
-      const rr = roomAt(g.fim.x, g.fim.z), naAgua = rr && rr.agua && !S.flags.aguaBaixa;
+      const sup = superficie(g.fim.x, g.fim.z);
       const antes = M.ativo ? M.state : null;
-      if (naAgua) { SFX.passo(1, 'pedra', false, true); criarOnda(g.fim.x, g.fim.z); emitNoise(g.fim.x, g.fim.z, 7, false, true); }
-      else { SFX.vidro(g.fim.x, g.fim.z); emitNoise(g.fim.x, g.fim.z, 17, false, true); criarCacos(g.fim.x, g.fim.z, 60); }
+      if (sup.tipo === 'agua') { SFX.passo(1, 'pedra', false, true); criarOnda(g.fim.x, g.fim.z); emitNoise(g.fim.x, g.fim.z, 7, false, true); }
+      else if (sup.tipo === 'terra') { JP.som.terra(g.fim.x, g.fim.z); emitNoise(g.fim.x, g.fim.z, 7, false, true); if (!S.flags.dicaGarrafaTerra) { S.flags.dicaGarrafaTerra = true; toast('Na terra a garrafa não quebra. Quase não faz barulho.'); } }
+      else if (sup.tipo === 'madeira') { // quica uma vez na madeira (tinido) e só então estoura, meio metro adiante
+        JP.som.quique(g.fim.x, g.fim.z); emitNoise(g.fim.x, g.fim.z, 5, false, true);
+        const p = g.fim.clone(), dx = g.fim.x - g.ini.x, dz = g.fim.z - g.ini.z, l = Math.hypot(dx, dz) || 1; p.x += dx / l * .5; p.z += dz / l * .5; collide(p, .15);
+        quiques.push({ p, t: .3, grupo: W.grupo }); continue;
+      }
+      else quebrarGarrafa(g.fim, sup.tipo === 'tapete' ? 10 : 17);
       if (antes !== null && M.state === 'investiga' && M.alvoGarrafa) conquista('garrafa');
     }
   }
+  for (let i = quiques.length - 1; i >= 0; i--) {
+    const q = quiques[i]; q.t -= dt;
+    if (q.grupo !== W.grupo) { quiques.splice(i, 1); continue; }
+    if (q.t > 0) continue;
+    quiques.splice(i, 1); const antes = M.ativo ? M.state : null;
+    quebrarGarrafa(q.p, 17);
+    if (antes !== null && M.state === 'investiga' && M.alvoGarrafa) conquista('garrafa');
+  }
 }
+const quiques = [];
+// os cacos da garrafa ficam no chão por dez minutos: você pode criar o seu próprio campo minado
+function quebrarGarrafa(p, r) { SFX.vidro(p.x, p.z); emitNoise(p.x, p.z, r, false, true); criarCacos(p.x, p.z, 600); }
 // cacos de vidro no chão: quem pisa faz barulho (agachada não)
 const MAT_CACO = new THREE.MeshStandardMaterial({ color: 0x9fb4a8, roughness: .08, metalness: .8, emissive: 0x0c1410, emissiveIntensity: .7 });
 MAT_CACO.userData.compartilhado = true;
+const GEO_CACO = new THREE.BoxGeometry(1, .006, 1); // uma geometria só para todos os cacos (antes eram nove por monte)
 function criarCacos(x, z, vida = 60) {
   const g = new THREE.Group(); g.position.set(x, .012, z);
-  for (let i = 0; i < 9; i++) { const m = new THREE.Mesh(new THREE.BoxGeometry(rand(.03, .09), .006, rand(.02, .06)), MAT_CACO); m.position.set(rand(-.3, .3), 0, rand(-.3, .3)); m.rotation.y = rand(0, 6.28); g.add(m); }
+  for (let i = 0; i < 9; i++) { const m = new THREE.Mesh(GEO_CACO, MAT_CACO); m.scale.set(rand(.03, .09), 1, rand(.02, .06)); m.position.set(rand(-.3, .3), 0, rand(-.3, .3)); m.rotation.y = rand(0, 6.28); g.add(m); }
   W.grupo.add(g); cacos.push({ g, x, z, t: vida, coolP: 0, coolM: 0, grupo: W.grupo, garrafa: vida !== Infinity });
 }
 function updateCacos(dt) {
+  // os cacos brilham no feixe da lanterna
+  MAT_CACO.emissiveIntensity = S.flashOn ? .8 + .7 * Math.abs(Math.sin(perf * 5.3)) * Math.abs(Math.sin(perf * 2.1)) : .7;
   for (let i = cacos.length - 1; i >= 0; i--) {
     const c = cacos[i]; c.t -= dt; c.coolP -= dt; c.coolM -= dt;
     if (c.grupo !== W.grupo || c.t <= 0) { if (c.grupo === W.grupo) W.grupo.remove(c.g); cacos.splice(i, 1); continue; }
     if (c.t < 3) c.g.scale.setScalar(Math.max(.01, c.t / 3));
     if (!S.hidden && c.coolP <= 0 && P.noiseR > 0 && !P.crouch && Math.hypot(P.pos.x - c.x, P.pos.z - c.z) < .5) {
-      c.coolP = 1.5; SFX.vidro(c.x, c.z); emitNoise(c.x, c.z, 8, true); marcarCausa('cacos');
+      c.coolP = 1.5; SFX.vidro(c.x, c.z); emitNoise(c.x, c.z, P.devagar ? 4 : 8, true); marcarCausa('cacos');
       if (!S.flags.dicaCacos) { S.flags.dicaCacos = true; toast('Vidro no chão. Agachada, você passa por cima sem barulho.'); }
     }
     if (M.ativo && c.coolM <= 0 && Math.hypot(M.pos.x - c.x, M.pos.z - c.z) < .6) { c.coolM = 6; M.wait = Math.max(M.wait, 1.6); SFX.vidro(c.x, c.z); SFX.voz(M.pos); if (c.garrafa) conquista('cacos'); }
   }
 }
 // ondas na água a cada passo
-function criarOnda(x, z) { const m = new THREE.Mesh(new THREE.RingGeometry(.12, .16, 18), new THREE.MeshBasicMaterial({ color: 0xbfd0c8, transparent: true, opacity: .45, depthWrite: false })); m.rotation.x = -Math.PI / 2; m.position.set(x, .435, z); W.grupo.add(m); ondas.push({ m, t: 0, grupo: W.grupo }); }
+const GEO_ONDA = new THREE.RingGeometry(.12, .16, 18); // geometria compartilhada pelas ondas
+function criarOnda(x, z) { const m = new THREE.Mesh(GEO_ONDA, new THREE.MeshBasicMaterial({ color: 0xbfd0c8, transparent: true, opacity: .45, depthWrite: false })); m.rotation.x = -Math.PI / 2; m.position.set(x, .435, z); W.grupo.add(m); ondas.push({ m, t: 0, grupo: W.grupo }); }
 function updateOndas(dt) {
   for (let i = ondas.length - 1; i >= 0; i--) {
     const o = ondas[i]; o.t += dt;
-    if (o.grupo !== W.grupo || o.t > .9) { if (o.grupo === W.grupo) W.grupo.remove(o.m); o.m.geometry.dispose(); o.m.material.dispose(); ondas.splice(i, 1); continue; }
+    if (o.grupo !== W.grupo || o.t > .9) { if (o.grupo === W.grupo) W.grupo.remove(o.m); o.m.material.dispose(); ondas.splice(i, 1); continue; }
     o.m.scale.setScalar(1 + o.t * 7); o.m.material.opacity = .45 * (1 - o.t / .9);
   }
 }
@@ -876,46 +933,160 @@ function hudRespiracao(perto, dM) {
 }
 let holdProprio = false;
 function mostrarHold(k) { holdProprio = true; $('#hold').hidden = false; $('#hold-arc').style.strokeDashoffset = 138.2 * (1 - clamp(k, 0, 1)); }
-// abrir/fechar porta devagar: segure E
+// --- Portas com peso: o jeito de andar decide o barulho. Devagar (ALT) ou agachada, ela gira lenta e quase muda;
+// correndo, escancara, bate na parede e chama ele. Segurar E abre (ou fecha) aos poucos; soltar no meio deixa uma fresta.
+const ABERTA = -Math.PI * .56;
+function passoPorta() { return (P.sprinting || perf - correuEm < .35) ? 'correndo' : (P.devagar || P.crouch || keys.AltLeft || keys.AltRight) ? 'devagar' : 'normal'; }
+function rotuloPorta(d) {
+  const modo = passoPorta(), r = modo === 'devagar' ? 1 : modo === 'correndo' ? 10 : d.fresta ? 2.5 : 5;
+  const acao = d.open ? 'Fechar' : d.fresta ? 'Abrir de vez' : 'Abrir';
+  const seg = d.open ? 'fechar em silêncio' : d.fresta ? 'encostar sem barulho' : 'abrir devagar';
+  return `<b>E</b>${acao} ${d.nome}<small style="opacity:.6"> · tocar: rápido · segurar: ${seg}${modo === 'correndo' ? ' · correndo, ela bate' : ''}</small><span class="onda" title="barulho que a porta vai fazer">${r >= 9 ? '((·))' : r >= 4 ? '(·)' : '·'}</span>`;
+}
+function portaJogador(d) {
+  const modo = passoPorta(), abrir = !d.open, fresta = d.fresta > 0;
+  const kc = 'cara:' + (d.id || d.x + ',' + d.z), naCara = !abrir && M.ativo && M.state === 'caca' && !S.flags.sino && Math.hypot(M.pos.x - d.x, M.pos.z - d.z) < 3 && !((M.portaCd && M.portaCd[kc]) > 0);
+  if (modo === 'devagar') {
+    setDoor(d, abrir, true); d.vel = 2.4; SFX.rangido(d.x, 1.2, d.z, .16); emitNoise(d.x, d.z, 1);
+  } else if (modo === 'correndo') {
+    setDoor(d, abrir, true); d.vel = 18; d.quique = .5;
+    SFX.rangido(d.x, 1.2, d.z, 1.2); SFX.pancada(d.x, d.z); SFX.portaBate(); emitNoise(d.x, d.z, (abrir ? 4.5 : 5.5) * 2); marcarCausa('porta');
+    P.shake = Math.max(P.shake, .07); JP.vibrar(.6, .3, 140);
+    if (naCara) M.wait = Math.max(M.wait, 2.8); // batida com força na cara dele: fica tonto por mais tempo
+    if (!S.flags.dicaPortaBate) { S.flags.dicaPortaBate = true; toast(`Correndo, a porta bate na parede e ele ouve. Com ${JP.t('Alt')} ela abre devagar.`); }
+  } else if (fresta && abrir) { setDoor(d, true, true); d.vel = 5; SFX.rangido(d.x, 1.2, d.z, .45); emitNoise(d.x, d.z, 2.5); } // já entreaberta: empurrar faz menos barulho
+  else setDoor(d, abrir);
+}
+function deixarFresta(d, k) { d.open = false; d.col.on = true; d.fresta = k; d.vel = 9; d.target = ABERTA * k; S.doorsOpen[`${W.mapa}:${d.id}`] = false; }
 function updatePorta(dt) {
   if (P.portaT <= 0) return;
   const it = P.portaIt, d = it && it.porta;
-  if (!d || alvo !== it) { P.portaT = 0; return; }
+  // correção: a porta girando saía da mira e cancelava o "segurar"; agora vale enquanto você estiver perto dela
+  if (!d || S.hidden || Math.hypot(d.x - P.pos.x, d.z - P.pos.z) > 2.6 || (d.trava && d.trava())) { P.portaT = 0; return; }
   if (keys.KeyE) {
-    P.portaT += dt; if (P.portaT > .3) mostrarHold((P.portaT - .3) / 1.1);
-    if (P.portaT >= 1.4) {
-      P.portaT = 0; setDoor(d, !d.open, true); SFX.rangido(d.x, 1.2, d.z, .25); emitNoise(d.x, d.z, 1.2);
+    P.portaT += dt; if (P.portaT <= .3) return;
+    const k = clamp((P.portaT - .3) / 1.1, 0, 1); mostrarHold(k);
+    if (!P.portaMexeu) { P.portaMexeu = true; SFX.rangido(d.x, 1.2, d.z, .1); }
+    d.vel = 9; d.target = P.portaFecha ? P.portaA0 * (1 - k) : ABERTA * k; // a folha acompanha o tempo segurado
+    if (k >= 1) {
+      P.portaT = 0; P.portaMexeu = false;
+      setDoor(d, !P.portaFecha, true); d.vel = 9; SFX.rangido(d.x, 1.2, d.z, .2); emitNoise(d.x, d.z, 1);
       if (!d.open) d.fechadaEm = perf; else if (d.aoAbrir) d.aoAbrir();
       if (!S.flags.dicaPorta) { S.flags.dicaPorta = true; toast('Devagar, quase sem barulho.'); }
     }
-  } else { const t = P.portaT; P.portaT = 0; if (t < .3) it.act(); }
+  } else {
+    const t = P.portaT; P.portaT = 0; P.portaMexeu = false;
+    if (t < .3) { it.act(); return; }
+    // soltou no meio: a porta fica entreaberta, dá para espiar (e ouvir) pela fresta, mas não passar
+    const k = clamp((t - .3) / 1.1, 0, 1), frac = P.portaFecha ? (P.portaA0 / ABERTA) * (1 - k) : k;
+    if (frac < .06) { setDoor(d, false, true); d.fechadaEm = perf; return; }
+    deixarFresta(d, Math.min(1, frac)); emitNoise(d.x, d.z, .6);
+    if (!S.flags.dicaFresta) { S.flags.dicaFresta = true; toast('A porta ficou entreaberta. Dá para espiar pela fresta, mas não para passar.'); }
+  }
+}
+
+// --- O corpo da Lia: peso ao andar, trombadas, tropeços, joelho, sentar para respirar, tábuas que rangem
+const _antes = new THREE.Vector3(), _camAlvo = new THREE.Vector3(), _vIncl = new THREE.Vector3();
+const suave = k => k * k * (3 - 2 * k);
+const ehEsconderijo = it => !!it && W.lockers.some(L => L.g === it.obj);
+function dicaEntrar() { return M.ativo && !S.hidden ? `<small style="opacity:.6"> · com ${JP.t('Alt')} ou agachada: sem barulho</small>` : ''; }
+function trombar() {
+  P.trombaCd = 1.5; P.vx *= -.15; P.vz *= -.15;
+  if (P.olhar > 1.2 && S.dif !== 'facil') { tropecar('costas'); return; } // correndo olhando para trás: o tombo vem
+  P.shake = Math.max(P.shake, .08); JP.som.baque(P.pos.x, P.pos.z); SFX.trombou(); SFX.ofego(); emitNoise(P.pos.x, P.pos.z, 4, true); marcarCausa('trombou'); JP.vibrar(.5, .3, 120);
+  S.stamina = Math.max(0, S.stamina - 10);
+  if (!S.flags.dicaTromba) { S.flags.dicaTromba = true; toast('Correndo às cegas, você bate nas coisas. E ele ouve.'); }
+}
+function tropecar(por) {
+  if (perf - P.tropecoEm < 20 || S.dif === 'facil') return;
+  P.tropecoEm = perf; P.tropecoT = .8; P.vx *= .2; P.vz *= .2; P.correrTrava = false;
+  P.shake = Math.max(P.shake, .1); JP.som.baque(P.pos.x, P.pos.z); SFX.tropecou(); SFX.ofego(); emitNoise(P.pos.x, P.pos.z, 6, true); marcarCausa('tropecou'); JP.vibrar(.8, .5, 260);
+  S.stamina = Math.max(0, S.stamina - 20);
+  if (!S.flags.dicaTropeco) { S.flags.dicaTropeco = true; toast(por === 'costas' ? 'Correndo de costas, você tropeçou. Olhe para onde corre.' : 'No pânico, as pernas falham. Virar de repente correndo derruba.'); }
+}
+function joelho() {
+  const t = P.agachadaT; P.agachadaT = 0;
+  if (keys.AltLeft || keys.AltRight || S.hidden || t < 20) return; // levantar devagar (ALT) nunca estala
+  const chance = S.dif === 'pesadelo' ? 1 / 6 : S.dif === 'facil' ? 0 : 1 / 20;
+  if (Math.random() >= chance) return;
+  JP.som.joelho(); SFX.joelho(); emitNoise(P.pos.x, P.pos.z, S.dif === 'pesadelo' ? 4 : 2, true); marcarCausa('joelho');
+  if (!S.flags.dicaJoelho) { S.flags.dicaJoelho = true; setTimeout(() => subPequeno('lia', `Meu joelho... Da próxima vez levanto devagar, com ${JP.t('Alt')}.`), 400); }
+}
+function levantar() { if (!P.sentada) return; P.sentada = false; P.paradoT = 0; JP.som.tecido(1); }
+function updateSentar(dt, moving) {
+  const pode = !moving && P.room && P.room.seguro && !S.flags.sino && !ameacaAtiva() && !P.crouch && P.curaT <= 0 && !P.prende && W.mapa !== 'estrada' && !P.bloqueado;
+  if (!pode) { P.paradoT = 0; levantar(); return; }
+  P.paradoT += dt;
+  if (!P.sentada && P.paradoT > 40) { P.sentada = true; JP.som.tecido(1.2); if (!S.flags.dicaSentar) { S.flags.dicaSentar = true; toast('A Lia se senta no chão um pouco. O medo passa mais rápido. Ande para levantar.'); } }
+  if (P.sentada) S.fear = Math.max(0, S.fear - 5 * dt);
+}
+// tábuas que rangem: sempre nos mesmos lugares de cada sala de madeira, com uma mancha um pouco mais escura que a lanterna mostra
+const tabuas = []; tabuas.grupo = null;
+const MAT_TABUA = new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: .32, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -2 }); MAT_TABUA.userData.compartilhado = true;
+const GEO_TABUA = new THREE.PlaneGeometry(.95, .17);
+function semente(s) { let h = 7; for (const c of s) h = (h * 31 + c.charCodeAt(0)) % 2147483647; return h || 1; }
+function criarTabuas() {
+  if (tabuas.grupo === W.grupo) return;
+  tabuas.length = 0; tabuas.grupo = W.grupo;
+  if (!W.def || !W.def.inspetor || W.mapa === 'estrada') return;
+  for (const r of W.salas) {
+    if (r.fora || r.piso !== 'madeira' || r.x1 - r.x0 < 3 || r.z1 - r.z0 < 3) continue;
+    let sd = semente(W.mapa + r.id); const rnd = () => (sd = (sd * 16807) % 2147483647) / 2147483647;
+    const n = 2 + Math.floor(rnd() * 3);
+    for (let k = 0, feitas = 0; k < 12 && feitas < n; k++) {
+      const x = lerp(r.x0 + .9, r.x1 - .9, rnd()), z = lerp(r.z0 + .9, r.z1 - .9, rnd()), giro = rnd() < .5;
+      if (W.links.some(l => Math.hypot(l.x - x, l.z - z) < 1.6) || W.colliders.some(c => c.on && x > c.minX - .4 && x < c.maxX + .4 && z > c.minZ - .4 && z < c.maxZ + .4)) continue;
+      const m = new THREE.Mesh(GEO_TABUA, MAT_TABUA); m.rotation.set(-Math.PI / 2, 0, giro ? Math.PI / 2 : 0); m.position.set(x, .008, z); W.grupo.add(m);
+      tabuas.push({ x, z, cd: -99 }); feitas++;
+    }
+  }
+}
+function pisarTabua() {
+  for (const t of tabuas) {
+    if (Math.abs(t.x - P.pos.x) > .5 || Math.abs(t.z - P.pos.z) > .5 || perf - t.cd < 1.2) continue;
+    t.cd = perf; const leve = P.crouch || P.devagar;
+    SFX.rangido(t.x, .1, t.z, leve ? .22 : .7); SFX.tabua(); emitNoise(t.x, t.z, leve ? 2 : P.sprinting ? 8 : 5, true); marcarCausa('tabua');
+    if (!S.flags.dicaTabua) { S.flags.dicaTabua = true; toast('A tábua rangeu. As manchas mais escuras no chão denunciam as soltas.'); }
+    return;
+  }
 }
 
 function updatePlayer(dt) {
   holdProprio = false;
+  if (alvo) { P.alvoAnt = alvo; P.alvoAntEm = perf; }
+  // E apertado um instante antes de o esconderijo (ou o item) entrar na mira ainda vale
+  if (P.eBuf > 0) { P.eBuf -= dt; if (alvo && !alvo.hold && !alvo.porta && !S.hidden && (ehEsconderijo(alvo) || W.items.some(i => i.it === alvo))) { P.eBuf = 0; alvo.act(); } }
+  updatePilha(dt);
   if (S.hidden) {
     const L = S.hidden;
     P.espiar = lerp(P.espiar, (keys.KeyX ? 1 : 0) - (keys.KeyZ ? 1 : 0), Math.min(1, dt * 8));
     const ex = Math.cos(P.yaw) * P.espiar * .08, ez = -Math.sin(P.yaw) * P.espiar * .08;
-    if (L.tipo === 'cama') { P.pos.set(L.x, 0, L.z); camera.position.set(L.x + L.face[0] * .25 + ex, .26, L.z + L.face[1] * .25 + ez); }
-    else if (L.tipo === 'nicho') { P.pos.set(L.x - L.face[0] * .1, 0, L.z - L.face[1] * .1); camera.position.set(L.x + L.face[0] * .18 + ex, .62, L.z + L.face[1] * .18 + ez); }
-    else { P.pos.set(L.x - L.face[0] * .05, 0, L.z - L.face[1] * .05); camera.position.set(P.pos.x + ex, 1.55, P.pos.z + ez); }
+    if (L.tipo === 'cama') { P.pos.set(L.x, 0, L.z); _camAlvo.set(L.x + L.face[0] * .25 + ex, .26, L.z + L.face[1] * .25 + ez); }
+    else if (L.tipo === 'nicho') { P.pos.set(L.x - L.face[0] * .1, 0, L.z - L.face[1] * .1); _camAlvo.set(L.x + L.face[0] * .18 + ex, .62, L.z + L.face[1] * .18 + ez); }
+    else { P.pos.set(L.x - L.face[0] * .05, 0, L.z - L.face[1] * .05); _camAlvo.set(P.pos.x + ex, 1.55, P.pos.z + ez); }
+    // entrar tem gesto: a câmera vai até o esconderijo e gira para a fresta enquanto a porta fecha
+    if (P.camK < 1) { P.camK = Math.min(1, P.camK + dt / .45); camera.position.lerpVectors(P.camDe, _camAlvo, suave(P.camK)); } else camera.position.copy(_camAlvo);
     $('#fx-locker').style.opacity = 1 - Math.abs(P.espiar) * .3;
     P.noiseR = 0; P.sprinting = false;
     const dM = M.ativo ? M.pos.distanceTo(P.pos) : 99, perto = dM < 5.5;
+    // a fresta escurece quando ele para bem na frente e cobre a luz
+    const naFrente = M.ativo && dM < 2.2 && ((M.pos.x - L.x) * L.face[0] + (M.pos.z - L.z) * L.face[1]) > .2;
+    P.sombra = lerp(P.sombra, naFrente ? 1 : 0, Math.min(1, dt * 4));
     updateRespiracao(dt, perto, dM); updateTeste(dt); updateCura(dt, false);
     if (P.prende && perto && dM < 2.6) conquista('folego');
     S.stamina = Math.min(100, S.stamina + 14 * dt);
     M.ansiedade = clamp((P.pulso || 0) / 100, 0, 1); // os "nervos" do HUD são o pulso escondida
     hudRespiracao(perto, dM);
+    const giro = P.giro * (1 - suave(P.camK));
     if (P.saidaT > 0) {
       if (keys.KeyE) { P.saidaT += dt; if (P.saidaT > .35) mostrarHold((P.saidaT - .35) / 1.15); if (P.saidaT >= 1.5) { P.saidaT = 0; sairEsconderijo('silencioso'); camera.rotation.set(P.pitch, P.yaw, 0); return; } }
-      else { const t = P.saidaT; P.saidaT = 0; if (t < .35) { sairEsconderijo(); camera.rotation.set(P.pitch, P.yaw, 0); return; } }
+      else { const t = P.saidaT; P.saidaT = 0; if (t < .35) { sairEsconderijo(keys.AltLeft || keys.AltRight ? 'silencioso' : undefined); camera.rotation.set(P.pitch, P.yaw, 0); return; } } // com ALT segurado, o toque também sai em silêncio
     }
-    camera.rotation.set(P.pitch, P.yaw, 0);
+    camera.rotation.set(P.pitch, P.yaw + giro, 0);
     return;
   }
-  if (P.bloqueado) { $('#breath').hidden = true; camera.position.set(P.pos.x, P.h, P.pos.z); camera.rotation.set(P.pitch, P.yaw, 0); return; }
+  P.sombra = 0;
+  if (P.bloqueado) { P.camK = 1; P.vx = P.vz = 0; $('#breath').hidden = true; camera.position.set(P.pos.x, P.h, P.pos.z); camera.rotation.set(P.pitch, P.yaw, 0); return; }
   const fw = (keys.KeyW ? 1 : 0) - (keys.KeyS ? 1 : 0), st = (keys.KeyD ? 1 : 0) - (keys.KeyA ? 1 : 0);
   const moving = fw || st;
   const fuga = S.flags.sino;
@@ -923,7 +1094,7 @@ function updatePlayer(dt) {
   const inclAlvo = (keys.KeyX ? 1 : 0) - (keys.KeyZ ? 1 : 0);
   P.devagar = !!(keys.AltLeft || keys.AltRight || keys.Mouse1) && !P.crouch;
   const querCorrer = OPT.correr ? P.correrTrava : !!(keys.ShiftLeft || keys.ShiftRight);
-  P.sprinting = querCorrer && moving && fw > 0 && S.stamina > 1 && P.ofegoT <= 0 && P.curaT <= 0 && !inclAlvo;
+  P.sprinting = querCorrer && moving && fw > 0 && S.stamina > 1 && P.ofegoT <= 0 && P.curaT <= 0 && !inclAlvo && P.tropecoT <= 0;
   if (OPT.correr && P.correrTrava && (!moving || fw <= 0 || S.stamina <= 1)) P.correrTrava = false;
   if (P.sprinting) { P.crouch = false; P.devagar = false; correuEm = perf; S.capCorreu = true; }
   let spd = P.crouch ? 1.4 : P.sprinting ? 5.4 : P.devagar ? 1.9 : 2.8;
@@ -932,6 +1103,7 @@ function updatePlayer(dt) {
   if (S.health < 35) spd *= .85;
   if (Math.abs(P.incl) > .3) spd *= .55;
   if (P.ofegoT > 0) spd *= .9;
+  if (P.tropecoT > 0) spd *= .3;
   if (P.sprinting) S.stamina = Math.max(0, S.stamina - (fuga ? 8 : 21) * dt);
   else S.stamina = Math.min(100, S.stamina + (moving ? 8 : 14) * dt);
   // correr até zerar o fôlego cobra caro: ela ofega alto por alguns segundos
@@ -944,31 +1116,57 @@ function updatePlayer(dt) {
   } else P.corridaT = 0;
   const sy = Math.sin(P.yaw), cy = Math.cos(P.yaw);
   const vx = -sy * fw + cy * st, vz = -cy * fw - sy * st, len = Math.hypot(vx, vz) || 1;
-  if (moving) { P.pos.x += vx / len * spd * dt; P.pos.z += vz / len * spd * dt; }
+  // o corpo tem peso: acelera e freia em cerca de 0,12 s; correndo, a curva derrapa um pouco
+  const kv = Math.min(1, dt * (P.sprinting ? 6 : 11));
+  P.vx = lerp(P.vx, moving ? vx / len * spd : 0, kv); P.vz = lerp(P.vz, moving ? vz / len * spd : 0, kv);
+  if (!moving && Math.hypot(P.vx, P.vz) < .05) P.vx = P.vz = 0;
+  _antes.copy(P.pos);
+  P.pos.x += P.vx * dt; P.pos.z += P.vz * dt;
   collide(P.pos, .33);
+  const vel = Math.hypot(P.vx, P.vz), andou = Math.hypot(P.pos.x - _antes.x, P.pos.z - _antes.z);
+  // trombar correndo numa parede, mesa ou batente: baque, tranco e um gemido (olhando para trás, ela tropeça)
+  P.trombaCd -= dt;
+  if (P.sprinting && vel > 3 && vel * dt - andou > vel * dt * .6 && P.trombaCd <= 0) trombar();
+  // pânico: correndo apavorada e virando a câmera de repente, as pernas podem falhar
+  const giroV = Math.abs(Math.atan2(Math.sin(P.yaw - P.yawAnt), Math.cos(P.yaw - P.yawAnt))) / Math.max(dt, 1e-3); P.yawAnt = P.yaw;
+  if (P.sprinting && S.fear > 85 && giroV > 5 && Math.random() < dt * 3) tropecar('panico');
   P.noiseR = !moving ? 0 : (P.crouch ? 1.4 : P.sprinting ? 20 : P.devagar ? 3 : 6.5) * (P.naAgua ? 1.6 : 1);
   if (W.def.ruidoMul) P.noiseR *= W.def.ruidoMul();
-  const moved = moving ? spd * dt : 0;
-  P.stepAcc += moved;
-  const passo = P.sprinting ? .78 : P.crouch ? .55 : P.devagar ? .58 : .62;
-  if (P.stepAcc > passo) { P.stepAcc = 0; SFX.passo(P.sprinting ? 1 : P.crouch ? .25 : P.devagar ? .33 : .55, P.room.piso || 'grama', !!P.room.fora, P.naAgua); SUST.aoPasso(); if (P.naAgua) criarOnda(P.pos.x, P.pos.z); }
+  const moved = Math.min(andou, vel * dt);
+  // o som do passo cai exatamente quando a cabeça desce no balanço
+  P.bob += moved * (P.sprinting ? 2 : 2.9);
+  const fase = Math.floor(P.bob * 2 / Math.PI);
+  if (P.faseAnt === undefined) P.faseAnt = fase;
+  if (fase !== P.faseAnt) { P.faseAnt = fase; if (moving) { SFX.passo(P.sprinting ? 1 : P.crouch ? .25 : P.devagar ? .33 : .55, P.room.piso || 'grama', !!P.room.fora, P.naAgua); SUST.aoPasso(); if (P.naAgua) criarOnda(P.pos.x, P.pos.z); pisarTabua(); } }
   // prender a respiração também fora do esconderijo (parada, com ele perto)
   const dM = M.ativo ? M.pos.distanceTo(P.pos) : 99, perto = !moving && dM < 4;
   updateRespiracao(dt, perto, dM);
   hudRespiracao(perto || (P.prende && dM < 6), dM);
   updateCura(dt, moving); updateSacudir(dt); updatePorta(dt);
-  P.bob += moved * (P.sprinting ? 2.4 : 2.9);
-  P.h = lerp(P.h, P.crouch ? .95 : 1.62, Math.min(1, dt * 9));
+  // agachar com corpo: curva com uma leve passada do ponto, farfalhar de roupa e, às vezes, o joelho
+  if (P.crouch) P.agachadaT += dt;
+  if (P.crouch !== P.crouchAnt) { if (P.crouchAnt !== undefined) { JP.som.tecido(P.crouch ? .8 : 1); if (!P.crouch) joelho(); } P.crouchAnt = P.crouch; }
+  updateSentar(dt, moving);
+  P.tropecoT = Math.max(0, P.tropecoT - dt);
+  const hAlvo = (P.sentada ? .72 : P.crouch ? .95 : 1.62) - (P.tropecoT > 0 ? .5 * Math.min(1, P.tropecoT / .3) : 0), dh = Math.min(dt, .05);
+  P.hv += ((hAlvo - P.h) * 120 - P.hv * 17) * dh; P.h += P.hv * dh;
   // inclinar (Z/X), olhar para trás (Q) e baixar a cabeça no curativo
   P.incl = lerp(P.incl, P.sprinting ? 0 : inclAlvo, Math.min(1, dt * 8));
   P.olhar = lerp(P.olhar, keys.KeyQ && P.curaT <= 0 ? Math.PI * .95 : 0, Math.min(1, dt * 9));
-  P.baixar = lerp(P.baixar, P.curaT > 0 ? .6 : 0, Math.min(1, dt * 4));
+  P.baixar = lerp(P.baixar, P.curaT > 0 ? .6 : P.pilhaT > 0 ? .25 : 0, Math.min(1, dt * 4));
   let hx = P.pos.x, hz = P.pos.z;
-  if (Math.abs(P.incl) > .01) { const c = new THREE.Vector3(P.pos.x + cy * P.incl * .35, 0, P.pos.z - sy * P.incl * .35); collide(c, .15); hx = c.x; hz = c.z; }
-  const bobY = Math.sin(P.bob * 2) * (moving ? (P.sprinting ? .055 : .03) : 0);
-  const sh = P.shake + (S.fear > 70 ? (S.fear - 70) / 30 * .015 : 0);
-  camera.position.set(hx + rand(-sh, sh), P.h + bobY + rand(-sh, sh) - (P.naAgua ? .12 : 0) - Math.abs(P.incl) * .04, hz + rand(-sh, sh));
-  camera.rotation.set(P.pitch - P.baixar, P.yaw + P.olhar, Math.sin(P.bob) * (moving ? .006 : 0) + (S.fear > 85 ? Math.sin(perf * 1.3) * .02 : 0) - P.incl * .12);
+  if (Math.abs(P.incl) > .01) { const c = _vIncl.set(P.pos.x + cy * P.incl * .35, 0, P.pos.z - sy * P.incl * .35); collide(c, .15); hx = c.x; hz = c.z; }
+  // balanço: mais desigual mancando com pouca vida; parada, a respiração mexe a cabeça (mais forte sem fôlego)
+  const manca = S.health < 35 && moving ? (P.faseAnt % 2 ? 1.6 : .55) : 1;
+  const bobY = (Math.abs(Math.sin(P.bob * 2)) * 2 - 1) * (moving ? (P.sprinting ? .055 : .03) : 0) * manca;
+  const folego = (100 - S.stamina) / 100, resp = moving ? 0 : Math.sin(perf * (1.5 + folego * 2.6)) * (.004 + folego * .012) * (P.prende ? .2 : 1);
+  P.rollLado = lerp(P.rollLado, moving ? -st * (P.sprinting ? .018 : .01) : 0, Math.min(1, dt * 6)); // inclina de leve para o lado em que anda
+  const firme = P.prende ? .3 : 1; // prender o ar firma o corpo contra o tremor do medo
+  const sh = P.shake + (S.fear > 70 ? (S.fear - 70) / 30 * .015 * firme : 0);
+  camera.position.set(hx + rand(-sh, sh), P.h + bobY + resp + rand(-sh, sh) - (P.naAgua ? .12 : 0) - Math.abs(P.incl) * .04, hz + rand(-sh, sh));
+  // sair do esconderijo também tem gesto: a câmera desliza para fora em vez de pular
+  if (P.camK < 1) { P.camK = Math.min(1, P.camK + dt / .35); _camAlvo.copy(camera.position); camera.position.lerpVectors(P.camDe, _camAlvo, suave(P.camK)); }
+  camera.rotation.set(P.pitch - P.baixar, P.yaw + P.olhar, Math.sin(P.bob * 2) * (moving ? .006 : 0) * manca + (S.fear > 85 ? Math.sin(perf * 1.3) * .02 * firme : 0) - P.incl * .12 + P.rollLado + clamp(P.hv * .006, -.035, .035) + (P.tropecoT > 0 ? Math.sin(P.tropecoT * 9) * .06 : 0));
   P.shake = Math.max(0, P.shake - dt * .6);
   const r = roomAt(P.pos.x, P.pos.z);
   if (r !== P.room) { P.room = r; S.visited[`${W.mapa}:${r.id}`] = true; if (W.def.entrouSala) W.def.entrouSala(r); }
@@ -1007,8 +1205,10 @@ function updateLanterna(dt) {
   const alvoI = S.flashOn && !flashPisca ? 30 * (fraca ? .5 : 1) : 0;
   // reduzir flashes: em vez de apagar e acender, a luz escurece e volta devagar
   flashVis = OPT.vFlash ? lerp(flashVis, S.flashOn ? 30 * (fraca ? .5 : 1) * (flashPisca ? .45 : 1) : 0, Math.min(1, dt * 5)) : alvoI;
-  flash.intensity = flashVis;
-  flashFill.intensity = flashVis / 50;
+  // pilha nova: a luz volta com um clarão forte uma vez (suave com "reduzir flashes")
+  flashBoost = Math.max(0, flashBoost - dt * 2.5);
+  flash.intensity = flashVis * (1 + flashBoost * (OPT.vFlash ? .3 : .9));
+  flashFill.intensity = flash.intensity / 50;
   const bp = $('#b-pilha'); if (bp) bp.classList.toggle('fraca', S.inv.lanterna && low);
 }
 function updateFear(dt) {
@@ -1047,17 +1247,21 @@ function updateTeste(dt) {
 }
 function entrarEsconderijo(L) {
   const dM = M.ativo ? M.pos.distanceTo(P.pos) : 99;
-  if (L.tipo === 'cama') { SFX.arrastar(); emitNoise(L.x, L.z, 2.5); $('#fx-cama').hidden = false; }
-  else { SFX.armario(); emitNoise(L.x, L.z, L.tipo === 'nicho' ? 2.5 : 3.5); $('#fx-locker').hidden = false; }
+  // o jeito de entrar faz diferença: devagar (ALT) ou agachada é metade do barulho; correndo, a porta do armário bate
+  const jeito = (P.devagar || P.crouch || keys.AltLeft || keys.AltRight) ? .5 : (P.sprinting || perf - correuEm < .4) ? 1.8 : 1;
+  if (L.tipo === 'cama') { SFX.arrastar(); emitNoise(L.x, L.z, 2.5 * jeito); $('#fx-cama').hidden = false; }
+  else { SFX.armario(); if (jeito > 1 && L.tipo === 'armario') { SFX.pancada(L.x, L.z); P.shake = Math.max(P.shake, .05); } emitNoise(L.x, L.z, (L.tipo === 'nicho' ? 2.5 : 3.5) * jeito); $('#fx-locker').hidden = false; }
+  P.camDe.copy(camera.position); P.camK = 0; const yaw0 = P.yaw;
   if (M.ativo && M.state === 'caca' && dM < 4 && salaAdj(roomAt(M.pos.x, M.pos.z), P.room) && !(JM.protegido(L, 3) && dM > 1.6)) {
     teste = { t: rand(4, 6), graca: S.dif === 'pesadelo' ? .4 : 1 };
     M.state = 'procura'; M.searchT = teste.t + 3; planejar(M, L.x + L.face[0] * 1.1, L.z + L.face[1] * 1.1);
-    toast('Ele ouviu você entrar. Prenda a respiração (ESPAÇO) e não solte!');
+    toast(`Ele ouviu você entrar. Prenda a respiração (${JP.t('Space')}) e não solte!`);
   }
   checarEntradaEsconderijo(L); // ele aprende os seus armários favoritos
   S.hidden = L; P.crouch = false; P.pulso = Math.min(P.pulso, 40); P.espiar = 0; P.incl = 0; P.olhar = 0; P.saidaT = 0;
   P.yaw = Math.atan2(-L.face[0], -L.face[1]); P.pitch = L.tipo === 'cama' ? -.1 : 0;
-  if (!S.flags.dicaEspiar) { S.flags.dicaEspiar = true; setTimeout(() => toast('Z e X espiam pela fresta. Toque E para sair rápido, segure E para sair em silêncio.'), 900); }
+  P.giro = Math.atan2(Math.sin(yaw0 - P.yaw), Math.cos(yaw0 - P.yaw)); P.vx = P.vz = 0; P.sentada = false; P.crouchAnt = false; P.agachadaT = 0; P.eBuf = 0;
+  if (!S.flags.dicaEspiar) { S.flags.dicaEspiar = true; setTimeout(() => toast(`${JP.t('ZX')} espiam pela fresta. Toque ${JP.t('KeyE')} para sair rápido; segure ${JP.t('KeyE')} (ou use ${JP.t('Alt')}) para sair em silêncio.`), 900); }
   SUST.aoEsconder(L); JM.aoEsconder(L);
 }
 function sairEsconderijo(modo) {
@@ -1065,6 +1269,7 @@ function sairEsconderijo(modo) {
   if (modo === true) PG.escondidaAntes(); // correção: "forcado" não existia mais depois do merge e sair do esconderijo quebrava o jogo
   SUST.aoSair(L);
   S.hidden = null; teste = null; $('#fx-locker').hidden = true; $('#fx-locker').style.opacity = ''; $('#fx-cama').hidden = true; $('#breath').hidden = true;
+  P.camDe.copy(camera.position); P.camK = 0; P.giro = 0; P.sombra = 0;
   const off = L.tipo === 'cama' ? 1.0 : .85;
   const a = new THREE.Vector3(L.x + L.face[0] * off, 0, L.z + L.face[1] * off), b = new THREE.Vector3(L.x - L.face[0] * off, 0, L.z - L.face[1] * off);
   const livre = v => { const c = v.clone(); collide(c, .33); return c.distanceTo(v) < .05; };
@@ -1083,7 +1288,7 @@ function nicho(x, z, face) {
   Math.abs(face[0]) > .5 ? addCollider(x - .3, x + .3, z - .55, z + .55) : addCollider(x - .55, x + .55, z - .3, z + .3);
   const L = { g, x, z, face, tipo: 'nicho' };
   W.lockers.push(L); W.solid.push(boca);
-  interact(g, () => S.hidden === L ? '<b>E</b>Sair do bueiro · segure: em silêncio' : '<b>E</b>Esconder no bueiro', () => S.hidden === L ? sairEsconderijo() : entrarEsconderijo(L));
+  interact(g, () => S.hidden === L ? '<b>E</b>Sair do bueiro · segure: em silêncio' : '<b>E</b>Esconder no bueiro' + dicaEntrar(), () => S.hidden === L ? sairEsconderijo() : entrarEsconderijo(L));
   return L;
 }
 function nichoNoTunel(r) {
@@ -1098,7 +1303,8 @@ function entrarMaisPerto() {
   if (S.dif === 'pesadelo' || S.hidden) return;
   let melhor = null, md = 1.4;
   for (const L of W.lockers) { const d = Math.hypot(L.x - P.pos.x, L.z - P.pos.z); if (d < md && roomAt(L.x + L.face[0] * .8, L.z + L.face[1] * .8) === P.room) { md = d; melhor = L; } }
-  if (melhor) entrarEsconderijo(melhor);
+  if (melhor) { entrarEsconderijo(melhor); return true; }
+  return false;
 }
 // mira assistida: se o centro da tela não pega nada, procura o interativo mais perto do centro num cone pequeno
 const _vc = new THREE.Vector3(), _fw = new THREE.Vector3(), _bx = new THREE.Box3(), rayCone = new THREE.Raycaster();
@@ -1116,7 +1322,8 @@ function alvoPorCone(vis) {
   return melhor;
 }
 // o Inspetor avisa antes de agarrar: para, levanta os braços, estala, e só então dá o bote
-function paredeEntre(a, b) { const o = new THREE.Vector3(a.x, 1.2, a.z), v = new THREE.Vector3(b.x - a.x, 0, b.z - a.z), l = v.length(); if (l < .35) return false; const rc = new THREE.Raycaster(o, v.normalize(), .05, l - .25); return rc.intersectObjects(W.solid, false).length > 0; }
+const _rcP = new THREE.Raycaster(), _oP = new THREE.Vector3(), _dP = new THREE.Vector3(); // reaproveitados: o teste do bote roda todo quadro perto dele
+function paredeEntre(a, b) { const o = _oP.set(a.x, 1.2, a.z), v = _dP.set(b.x - a.x, 0, b.z - a.z), l = v.length(); if (l < .35) return false; _rcP.set(o, v.normalize()); _rcP.near = .05; _rcP.far = l - .25; return _rcP.intersectObjects(W.solid, false).length > 0; }
 function boteInspetor(dt, d, ra) {
   if (S.hidden || (P.room.seguro && !S.flags.sino)) { M.bote = null; return; }
   if (!M.bote) {
@@ -1133,7 +1340,7 @@ function boteInspetor(dt, d, ra) {
   M.pos.x += dx / l * passo; M.pos.z += dz / l * passo; collide(M.pos, .3);
   const d2 = M.pos.distanceTo(P.pos), r2 = roomAt(M.pos.x, M.pos.z);
   if (d2 < 1.25 && (r2 === P.room || salaAdj(r2, P.room))) atacar('inspetor');
-  else { M.wait = 1; M.cool = Math.max(M.cool, .6); SFX.pancada(M.pos.x, M.pos.z); if (d2 < 2.4) conquista('esquiva'); }
+  else { M.wait = 1; M.cool = Math.max(M.cool, .6); SFX.pancada(M.pos.x, M.pos.z); if (d2 < 2.4) { conquista('esquiva'); JP.porUmFio(); } }
 }
 
 // --- Checkpoint por objetivo, ajuda invisível, retorno justo depois de morrer
@@ -1187,6 +1394,8 @@ const replayBuf = []; let replayT = 0, ruidoQuadro = 0;
 let escuroT = 0, cegoT = 0, flashAntes = false, acost = 0, silencioT = 0, foraProcT = 0;
 function prepararJogador() {
   P.incl = P.olhar = P.baixar = P.espiar = 0; P.curaT = P.mirarG = P.saidaT = P.portaT = P.sacudirT = P.ofegoT = 0; P.pulso = 0; P.semAr = false; P.prende = false;
+  P.vx = P.vz = P.hv = 0; P.camK = 1; P.giro = 0; P.tropecoT = 0; P.sentada = false; P.paradoT = 0; P.pilhaT = 0; P.eBuf = 0; P.alvoAnt = null; P.agachadaT = 0; P.crouchAnt = P.crouch; P.rollLado = 0; P.sombra = 0; P.sensMul = 1; flashBoost = 0;
+  JP.mapa();
   teste = null; mira.visible = false; replayBuf.length = 0; escuroT = 0; cegoT = 0; acost = 0; silencioT = 0; foraProcT = 0; falhaT = 0;
   renderer.toneMappingExposure = +OPT.brilho || 1.1;
   // vidro e entulho no chão dos corredores: olhar onde pisa vale a pena
@@ -1194,6 +1403,7 @@ function prepararJogador() {
     if (r.fora || !['corredor', 'tunel', 'hall'].includes(r.tipo) || Math.random() > .55) continue;
     for (let k = 0; k < 6; k++) { const [x, z] = pontoEm(r, .9); if (W.links.some(l => Math.hypot(l.x - x, l.z - z) < 1.8) || Math.hypot(x - P.pos.x, z - P.pos.z) < 3) continue; criarCacos(x, z, Infinity); break; }
   }
+  criarTabuas();
 }
 function updateJogabilidade(dt) {
   abafar(false);
@@ -1205,7 +1415,7 @@ function updateJogabilidade(dt) {
   flashAntes = S.flashOn;
   acost = clamp((escuroT - 5) / 8, 0, 1); cegoT = Math.max(0, cegoT - dt);
   if (acost >= 1) conquista('olhos');
-  renderer.toneMappingExposure = (+OPT.brilho || 1.1) + acost * .55 + cegoT * 2.2;
+  renderer.toneMappingExposure = ((+OPT.brilho || 1.1) + acost * .55 + cegoT * 2.2) * (1 - .55 * P.sombra); // escondida, ele na frente da fresta cobre a luz
   scene.fog.density *= 1 - .15 * acost; hemi.intensity += acost * .05;
   // anel de ruído na mira, postura no HUD
   ruidoQuadro = Math.max(0, ruidoQuadro - dt * 12);
@@ -1213,7 +1423,8 @@ function updateJogabilidade(dt) {
   let alto = false;
   if (M.ativo && rr > 0) { const att = salaAdj(roomAt(M.pos.x, M.pos.z), P.room) ? 1 : .45; alto = rr * att * D().ouvido * (M.state === 'caca' ? 1.6 : 1) > M.pos.distanceTo(P.pos); }
   // o anel de ruído agora é o da interface (UIX), com opção nas Opções
-  JG.postura(S.hidden ? (P.prende ? 'escondida · prendendo o ar' : 'escondida') : P.curaT > 0 ? 'fazendo curativo' : P.prende ? 'prendendo o ar' : P.ofegoT > 0 ? 'ofegante' : P.sprinting ? 'correndo' : P.crouch ? 'agachada' : P.devagar ? 'devagar' : Math.abs(P.incl) > .3 ? 'espiando' : '');
+  JP.update(dt);
+  JG.postura(S.hidden ? (P.prende ? 'escondida · prendendo o ar' : 'escondida') : P.tropecoT > 0 ? 'caída' : P.pilhaT > 0 ? 'trocando a pilha' : P.sentada ? 'sentada' : P.curaT > 0 ? 'fazendo curativo' : P.prende ? 'prendendo o ar' : P.ofegoT > 0 ? 'ofegante' : P.sprinting ? 'correndo' : P.crouch ? 'agachada' : P.devagar ? 'devagar' : Math.abs(P.incl) > .3 ? 'espiando' : '');
   // checkpoint silencioso depois de cada objetivo
   if (saveDevido > 0) { saveDevido -= dt; if (saveDevido <= 0) { if (trocandoCap) saveDevido = 0; else if (podeSalvar()) { salvarCheckpoint(); JG.mostrarSalvo(); } else saveDevido = 1; } }
   // replay
@@ -1584,8 +1795,8 @@ function iniciarBote() {
 }
 function agarrar() {
   M.state = 'agarra'; M.path = []; M.acao = null; AG.t = 0; AG.dur = 1.5; AG.sacode = 0; AG.prev = P.bloqueado; P.bloqueado = true; MAOS.visible = true;
-  SX.agarrao(); P.shake = .2; S.fear = 100; $('#fx-red').style.transition = 'none'; $('#fx-red').style.opacity = .8;
-  if (!S.flags.dicaAgarrao) { S.flags.dicaAgarrao = true; toast('Sacuda o mouse para se soltar!'); }
+  SX.agarrao(); JP.agarrao(); P.shake = .2; S.fear = 100; $('#fx-red').style.transition = 'none'; $('#fx-red').style.opacity = .8;
+  if (!S.flags.dicaAgarrao) { S.flags.dicaAgarrao = true; toast(JP.t('KeyE') === 'Usar' ? 'Arraste o dedo de um lado para o outro para se soltar!' : JP.t('KeyE') === 'A' ? 'Sacuda o analógico para se soltar!' : 'Sacuda o mouse para se soltar!'); }
 }
 function arranhao() {
   const dano = 15 * (S.dif === 'pesadelo' ? 2 : D().dano); S.health -= dano; S.capDano += dano; P.shake = .12; SFX.ofego();
@@ -1797,7 +2008,7 @@ function updateInspetor(dt) {
       const d2 = M.pos.distanceTo(P.pos);
       if (S.hidden || (P.room.seguro && !fuga)) { M.state = 'procura'; M.searchT = 3; }
       else if (d2 < 1.6) {
-        if (M.boteAgachou && P.noiseR === 0 && M.cacaT < 2.5 && !fuga) { M.state = 'procura'; M.searchT = 4; M.cool = 2.5; SX.arrastoAr(M.pos); toast('A mão dele passou por cima da sua cabeça.'); conquista('esquiva'); }
+        if (M.boteAgachou && P.noiseR === 0 && M.cacaT < 2.5 && !fuga) { M.state = 'procura'; M.searchT = 4; M.cool = 2.5; SX.arrastoAr(M.pos); toast('A mão dele passou por cima da sua cabeça.'); conquista('esquiva'); JP.porUmFio(); }
         else agarrar();
       } else if (d2 < 2.4) { M.state = 'caca'; M.cool = 1.2; arranhao(); planejar(M, P.pos.x, P.pos.z); }
       else { M.state = 'caca'; M.cool = .6; planejar(M, P.pos.x, P.pos.z); }
@@ -2298,7 +2509,7 @@ function atacar(quem, leve) {
   if (ui === 'teclado') fecharTeclado(); else if (ui === 'nota') fecharNota(); else if (ui === 'diario') fecharDiario();
   S.causaCtx = S.causaCtx || causaContexto(quem); P.curaT = 0; P.mirarG = 0; teste = null;
   if (quem === 'inspetor') { M.cool = 7; M.state = 'procura'; M.searchT = 3; M.path = []; M.wait = 2.5; M.recuo = 15; M.acao = null; M.achou = false; M.certo = false; M.bote = null; }
-  UIX.golpe(quem); SUST.golpe(quem);
+  UIX.golpe(quem); SUST.golpe(quem); JP.golpe(quem); // hit-stop e som abafado (src/sustos-plataforma.js, src/jogabilidade-polimento.js)
   SFX.grito(quem); P.shake = .25;
   $('#fx-red').style.transition = 'none'; $('#fx-red').style.opacity = OPT.vFlash ? .45 : 1;
   setTimeout(() => { $('#fx-red').style.transition = 'opacity 2.5s'; $('#fx-red').style.opacity = 0; }, 80);
@@ -2313,7 +2524,7 @@ function atacar(quem, leve) {
   if (quem === 'inspetor') { const dx = P.pos.x - M.pos.x, dz = P.pos.z - M.pos.z, l = Math.hypot(dx, dz) || 1; P.pos.x += dx / l * 1.2; P.pos.z += dz / l * 1.2; collide(P.pos, .33); }
 }
 function morrer(quem) {
-  S.dead = true; S.mortes++; S.causa = quem; SUST.morte(quem); PG.morte(quem); PLAT.aoMorrer(quem); if (MP) MP.morte(quem); mortesNoPonto++; saveDevido = 0;
+  S.dead = true; S.mortes++; S.causa = quem; SUST.morte(quem); PG.morte(quem); PLAT.aoMorrer(quem); if (MP) MP.morte(quem); JP.aoMorrer(mortesNoPonto + 1); mortesNoPonto++; saveDevido = 0;
   const rapido = mortesNoPonto >= 2;
   if (mortesCap.cap !== S.chapter) { mortesCap.cap = S.chapter; mortesCap.n = 0; } mortesCap.n++;
   const ctx = S.causaCtx; S.causaCtx = null;
@@ -3819,7 +4030,7 @@ function conquista(id) { PG.conquista(id); } // fila, secretas e som: src/progre
 
 // Diário
 let abaDiario = 'obj';
-function abrirDiario() { ui = 'diario'; $('#diario').hidden = false; unlock(); renderDiario(); UIX.marcasAbas(); if (S.dif === 'pesadelo') $('#d-pane').insertAdjacentHTML('afterbegin', '<div class="tarja-tempo">o tempo não para</div>'); }
+function abrirDiario() { if (JP.travado()) { JP.agoraNao(); return; } ui = 'diario'; $('#diario').hidden = false; unlock(); renderDiario(); UIX.marcasAbas(); if (S.dif === 'pesadelo') $('#d-pane').insertAdjacentHTML('afterbegin', '<div class="tarja-tempo">o tempo não para</div>'); }
 const ABAS = ['obj', 'regras', 'inv', 'notas', 'tempo', 'pessoas', 'pistas', 'mapa', 'ouvido'];
 function irAba(id) { abaDiario = id; document.querySelectorAll('#diario nav .btn').forEach(x => x.classList.toggle('on', x.dataset.tab === id)); renderDiario(); }
 function trocarAba(e) {
@@ -4060,6 +4271,10 @@ const JM = criarMundoJogavel({
   interact, box, cyl, plano, vela, textoTex, canvasTex, addCollider, roomAt, SALA, salaAdj, distSalas, planejar, emitNoise, codTxt, renderInvMini,
   toast, sub, subPequeno, falar, conquista, abrirNotaUI, abrirTeclado, fecharTeclado, fade, carregarMapa, pararFitaOuvida, marcarCausa
 });
+// Jogabilidade, lote 3: polimento, sensação e acessibilidade (src/jogabilidade-polimento.js)
+const JP = criarPolimento({ THREE, P, M, ANA, PROC, W, OPT, keys, camera, scene, SFX, texHalo: TX_HALO, legendas: UIX.som.def, semMouse: () => PLAT.semMouse(), abafarMundo, emitNoise, toast,
+  A: { saida: (...a) => saida(...a), osc: (...a) => osc(...a), burst: (...a) => burst(...a), env: (...a) => env(...a) },
+  get S() { return S; }, get AC() { return AC; }, get perf() { return perf; }, get alvo() { return alvo; }, get mode() { return mode; }, get ui() { return ui; } });
 const VIS = instalarVisual({ THREE, scene, camera, renderer, canvas, flash, flashFill, MON, ANA, ANA_G, PROC, M, P, W, MAT, OPT, OPT_KEY, lsSet, R, ROLOS, keys, roomAt, visivel, collide, salasAlcancaveis, distSalas, D, MAOS, MAT_CACO, chuvaMat, get alvo() { return alvo; },
   get S() { return S; }, get mode() { return mode; }, get ui() { return ui; }, get flashPisca() { return flashPisca; }, get hbT() { return AUD.hbT; }, get raioI() { return raioI; }, get fita() { return fitaTocando; }, get perf() { return perf; } });
 const VM = instalarMundoVisual({ THREE, scene, camera, renderer, flash, hemi, moon, W, P, M, ANA, ANA_G, PROC, MON, MAT, MK, OPT, R, TX, chuvaMat, respingos, interact, sub, SFX, DOOR, collide, raio: () => { raioT = 0; },
@@ -4083,7 +4298,7 @@ const grain = $('#fx-grain').getContext('2d'), grainImg = grain.createImageData(
 let last = performance.now(), grainT = 0;
 function loop(now) { requestAnimationFrame(loop); if (PLAT.pular(now)) return; const dt = Math.min(.05, (now - last) / 1000); last = now; frame(dt); }
 function frame(dt) {
-  dt = SUST.escala(VIS.tempo(PLAT.antes(Math.min(.05, dt)))); // VIS.tempo: congelamento curto do golpe (src/visual-polimento.js); SUST.escala: golpe e 'por um fio' congelam ou desaceleram o mundo (src/sustos-plataforma.js). Os dois correm em paralelo sobre o dt real.
+  { const r = PLAT.antes(Math.min(.05, dt)); dt = Math.min(VIS.tempo(r), SUST.escala(r), JP.tempo(r)); } // congelamentos curtos do golpe e câmera lenta do "por um fio" (src/visual-polimento.js, src/sustos-plataforma.js, src/jogabilidade-polimento.js): cada um corre sobre o dt real e vale o mais forte
   perf += dt;
   const jogando = mode === 'jogo' && !ui && S && !S.dead && !S.fim;
   const ativo = jogando && (locked || window.__teste || PLAT.semMouse());
@@ -4098,16 +4313,16 @@ function frame(dt) {
   } else if (ativo) {
     S.tempo += dt; S.capT += dt; PG.tick(dt);
     updatePlayer(dt); updateLanterna(dt); updateFear(dt);
-    if (!congelado(dt)) { updateInspetor(dt); updateAna(dt); updateProcissao(dt); ML.tick(dt); } updateEventos(dt); updateGarrafas(dt);
+    { const dm = dt * JP.ritmo(); if (!congelado(dm)) { updateInspetor(dm); updateAna(dm); updateProcissao(dm); ML.tick(dm); } updateEventos(dm); } updateGarrafas(dt); // ritmo do mundo (acessibilidade): a Lia não fica mais lenta
     updateClima(dt); updateJogabilidade(dt); updateAlvo(); JM.update(dt); updateSegurar(dt); updateFita(dt); updateHUD(); updateSub(dt); updateAudio(dt); H.tick(dt);
   } else if (mundoVivo()) { // cofre, quadro (e no Pesadelo notas e diário): o mundo continua, com o som abafado
     S.tempo += dt; S.capT += dt; P.noiseR = 0; abafar(true);
     updateLanterna(dt); updateFear(dt);
-    if (!congelado(dt)) { updateInspetor(dt); updateAna(dt); updateProcissao(dt); ML.tick(dt); } updateEventos(dt); updateGarrafas(dt);
+    { const dm = dt * JP.ritmo(); if (!congelado(dm)) { updateInspetor(dm); updateAna(dm); updateProcissao(dm); ML.tick(dm); } updateEventos(dm); } updateGarrafas(dt); // ritmo do mundo (acessibilidade): a Lia não fica mais lenta
     updateClima(dt); updateFita(dt); updateHUD(); updateSub(dt); updateAudio(dt);
   } else if (mode === 'jogo' && S && S.dead) updateAudio(dt);
   UIX.frame(dt, ativo);
-  for (const d of W.doors) { d.ang = lerp(d.ang, d.target, Math.min(1, dt * 7)); d.pivot.rotation.y = d.ang; }
+  for (const d of W.doors) { d.ang = lerp(d.ang, d.target, Math.min(1, dt * (d.vel || 7))); d.pivot.rotation.y = d.ang + (d.qOff || 0); } // velocidade conforme o passo e quique no batente
   grainT -= dt;
   if (grainT <= 0) { grainT = PLAT.grao(); const d = grainImg.data; for (let i = 0; i < d.length; i += 4) { const v = Math.random() * 255; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = 255; } grain.putImageData(grainImg, 0, 0); }
   VIS.update(dt, ativo); VM.update(dt, ativo);

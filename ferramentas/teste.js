@@ -88,6 +88,11 @@ T.tudo = async () => {
   try {
     localStorage.removeItem('hora-silencio-v2');
     await T.novo(); passo('novo jogo', J.mode === 'jogo'); passo('portas e lore: estrada', !T.checarMapa().length);
+    { // lote 3: TAB (diário) e P (pausa) não abrem durante o agarrão
+      const est = J.M.state, uiAntes = J.ui, tecla = (tipo, code) => window.dispatchEvent(new KeyboardEvent(tipo, { code, key: code, bubbles: true, cancelable: true }));
+      J.M.state = 'agarra'; tecla('keydown', 'Tab'); tecla('keyup', 'Tab'); tecla('keydown', 'KeyP'); tecla('keyup', 'KeyP');
+      const ok = J.ui === uiAntes; J.M.state = est; passo('menus travados no agarrão', ok);
+    }
     T.usar(/porta-malas/); T.usar(/Falar com/); T.dlg(); T.dlg(); T.usar(/chave do portão/);
     await T.ate(() => J.S.inv.chaves.portao, 20); T.usar(/cadeado/);
     passo('prólogo', await T.cap(1) && J.S.mapa === 'terreo'); passo('portas e lore: térreo', !T.checarMapa().length);

@@ -19,7 +19,12 @@ export const TXT = {
     costas: 'Ela veio por trás. Quando ouvir o DEZ, vire e ilumine: ela recua.',
     fora: 'Quando as luzes piscam, você tem segundos. Vá para o armário ou a cama mais perto, não para o mais seguro.',
     cacos: 'Vidro quebrado no chão faz barulho. Agachada, você passa por cima em silêncio.',
-    voz: 'Ele ouviu a sua voz. De verdade. Respire fundo, longe do microfone.'
+    voz: 'Ele ouviu a sua voz. De verdade. Respire fundo, longe do microfone.',
+    porta: 'Você abriu a porta correndo e ela bateu na parede. Andando devagar (ALT) ou agachada, a porta gira sem barulho.',
+    tabua: 'Uma tábua solta rangeu debaixo do seu pé. As manchas mais escuras no chão de madeira são as soltas: desvie ou passe agachada.',
+    trombou: 'Você trombou em alguma coisa correndo no escuro. Ilumine o caminho ou ande devagar.',
+    tropecou: 'Você tropeçou correndo em pânico. Olhe para onde corre e não vire a câmera de repente.',
+    joelho: 'Seu joelho estalou ao levantar. Depois de muito tempo agachada, levante segurando ALT.'
   },
   secas: ['Ele não tem pressa. Você tem.', 'Escute antes de andar.', 'A Hora não perdoa quem respira alto.', 'Todo mundo volta para a cama. Menos você, ainda.'],
   conquistas: [
@@ -109,15 +114,26 @@ export function montarOpcoes(OPT, setOpt) {
     // agachar (alternar/segurar) fica na tela de Opções da interface
     ['correr', 'Correr', [['0', 'segurar'], ['1', 'alternar']]],
     ['resp', 'Respiração', [['0', 'segurar'], ['1', 'alternar']]],
-    ['mic', 'Ele te escuta de verdade (microfone)', [['0', 'desligado'], ['1', 'ligado']]]
+    ['mic', 'Ele te escuta de verdade (microfone)', [['0', 'desligado'], ['1', 'ligado']]],
+    // assistência e acessibilidade (lote 3): nada disso muda a história nem os sustos
+    ['ritmo', 'Ritmo do mundo', [['1', '100%'], ['0.85', '85% (noite assistida)'], ['0.7', '70% (noite assistida)']], '1'],
+    ['avisoCedo', 'Avisos antecipados de perigo', [['0', 'não'], ['1', 'sim']]],
+    ['miraAjuda', 'Ajuda para mirar', [['2', 'no toque e no controle'], ['1', 'sempre'], ['0', 'nunca']], '2'],
+    ['realce', 'Realçar o que dá para usar', [['0', 'não'], ['1', 'sim (fora do Pesadelo)']]],
+    ['sensFina', 'Sensibilidade escondida e mirando', [['0.4', '40%'], ['0.6', '60%'], ['0.8', '80%'], ['1', 'igual']], '0.6'],
+    ['sentirPassos', 'Sentir os passos dele (vibração)', [['0', 'não'], ['1', 'sim']]],
+    ['reinicio', 'Reinício rápido depois de 3 mortes', [['1', 'sim'], ['0', 'não']], '1'],
+    ['umaMao', 'Jogar só com o mouse', [['0', 'não'], ['1', 'sim']]]
   ];
   for (const [pre, alvo] of [['o', '#title .opts'], ['p', '#pause .set']]) {
     const box = $(alvo); if (!box) continue;
-    for (const [k, nome, ops] of defs) {
+    for (const [k, nome, ops, padrao] of defs) {
       const l = document.createElement('label'); l.textContent = nome + ' ';
       const s = document.createElement('select'); s.id = `${pre}-${k}`;
       for (const [v, t] of ops) { const o = document.createElement('option'); o.value = v; o.textContent = t; s.appendChild(o); }
-      s.value = String(OPT[k] || 0); s.onchange = e => setOpt(k, e.target.value); l.appendChild(s); box.appendChild(l);
+      s.value = String(OPT[k] ?? padrao ?? 0);
+      if (k === 'ritmo') l.title = 'Deixa o Inspetor, a contagem da Ana e a Procissão mais lentos. A Lia não muda. Não vale no Pesadelo nem no Uma Vida; a noite fica marcada como assistida.';
+      if (k === 'umaMao') l.title = 'Botão esquerdo anda, direito usa, a roda escolhe uma ação e o botão lateral de trás a executa; o da frente agacha.'; s.onchange = e => setOpt(k, e.target.value); l.appendChild(s); box.appendChild(l);
     }
   }
   const pes = $('#o-dif option[value=pesadelo]'); if (pes) pes.textContent = 'Pesadelo (quase tudo mata)';
