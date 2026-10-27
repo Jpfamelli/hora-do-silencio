@@ -5,6 +5,7 @@ import { extrasEstrada, memoria, lembrar, SPAWN } from './src/estrada-extra.js';
 import { TXT } from './src/estrada-roteiro.js';
 import { extrasTerreo, extrasSuperior, juntar } from './src/internato.js';
 import * as SUB from './src/subterraneo.js';
+import * as SUBL from './src/subterraneo-lore.js';
 
 // ---------- utilidades compartilhadas entre mapas
 function arvores(A, faixas, n = 300) {
@@ -799,7 +800,7 @@ function tuneis(A, S) {
     }
   });
 
-  return {
+  return SUBL.tuneis(A, S, {
     nome: 'Túneis de drenagem',
     spawns: { entrada: { x: 0, z: -2.5, yaw: 0 }, inicio: { x: 0, z: -2.5, yaw: 0 } },
     dentro: { hemi: .05, moon: 0, fog: .12 },
@@ -820,7 +821,7 @@ function tuneis(A, S) {
       // voltou de uma morte depois do cofre: o apagão e a chegada dele se repetem
       if (S.flags.cofre && !S.done.sair_tuneis) iniciarFugaCofre(true);
     }
-  };
+  }, { nivel: () => nivel, O, B, som }); // lore do Lote 2: src/subterraneo-lore.js
 }
 
 // =====================================================================
@@ -829,12 +830,13 @@ function tuneis(A, S) {
 function cemiterio(A, S) {
   const { THREE, MAT, box, cyl, prop, plano, piso, item, interact, ITENS, MK, gatilho, SFX, spot, rand } = A;
   const som = SUB.sons(A), maoTerra = SUB.maoPalida(A);
+  SUBL.antesCemiterio(A, S);
   const salas = [
     { id: 'cem', nome: 'Cemitério das irmãs', x0: -30, x1: 30, z0: -48, z1: 12, fora: true },
     { id: 'capela', nome: 'Capela', x0: -8, x1: 8, z0: -70, z1: -48, piso: 'pedra', parede: 'pedra', h: 6 }
   ];
   const portas = [{ id: 'cap', a: 'cem', b: 'capela', x: 0, z: -48, eixo: 'x', nome: 'porta da capela', largura: 2,
-    trava: () => !S.inv.chaves.capela || Object.keys(S.tumulos).length < 3, msg: () => !S.inv.chaves.capela ? 'Trancada.' : 'Ainda não. Faltam as coisas deles.' }];
+    trava: () => !S.inv.chaves.capela || Object.keys(S.tumulos).length < 3, aoTentar: () => SUBL.tentouCapela(A, S), msg: () => !S.inv.chaves.capela ? 'Trancada.' : 'Ainda não. Faltam as coisas deles.' }];
   A.construirSalas(salas, portas);
   piso(-80, 80, -110, 80, 'grama', 4, -.01);
   piso(-30, 30, -48, 12, 'terra', 4, .002);
@@ -932,7 +934,8 @@ function cemiterio(A, S) {
   }
   ITENS.nota('n12', { x: 1.6, y: 1.5, z: -47.75 }, true);
   // capela por dentro
-  for (let i = 0; i < 5; i++) for (const x of [-4, 4]) { prop(5, .5, .5, MAT.madeiraEsc, x, .25, -51 - i * 2); box(5, .6, .08, MAT.madeiraEsc, x, .7, -50.75 - i * 2); }
+  const carv = SUBL.carvao(A); // bancos queimados no incêndio
+  for (let i = 0; i < 5; i++) for (const x of [-4, 4]) { prop(5, .5, .5, carv, x, .25, -51 - i * 2); box(5, .6, .08, carv, x, .7, -50.75 - i * 2); }
   const altar = prop(3, 1, 1.2, MAT.lencol, 0, .5, -66);
   box(3.1, .05, 1.3, MAT.tecido, 0, 1.02, -66);
   const cruz = new THREE.Group(); cruz.position.set(0, 3.4, -69.8); A.W.grupo.add(cruz);
@@ -1055,7 +1058,7 @@ function cemiterio(A, S) {
       A.agendarEntidades();
     },
   };
-  return def;
+  return SUBL.cemiterio(A, S, def, { covas, pedras, importantes, velasTum, velasAltar, avivar, itSino, sinoP, corda, fundos, noAltar, cel, nomes }); // lore do Lote 2
 }
 
 export const MAPAS = { estrada, terreo, superior, tuneis, cemiterio };
