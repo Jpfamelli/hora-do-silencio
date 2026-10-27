@@ -2,7 +2,7 @@
 
 Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/lote*/<área>.md`. Não edite à mão: edite o arquivo da área e gere de novo.
 
-**Total geral: 2687 melhorias**
+**Total geral: 3908 melhorias**
 
 ## Índice
 
@@ -34,6 +34,19 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
   - Progressão e rejogabilidade: 99
   - Plataforma e acessibilidade: 102
   - Revisão antes de publicar: 6
+- [Lote 3](#lote-3) — 1221 melhorias
+  - História e texto: 93
+  - Mapa: prólogo e estrada: 99
+  - Mapa: térreo e dormitórios: 92
+  - Mapa: túneis, cemitério e capela: 97
+  - Monstros e IA: 91
+  - Sustos e eventos: 100
+  - Áudio: 103
+  - Visual e luz: 94
+  - Jogabilidade: 110
+  - Interface: 120
+  - Progressão e rejogabilidade: 116
+  - Plataforma e acessibilidade: 106
 
 ## Lote 1
 
@@ -2807,3 +2820,1264 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
 1329. Ao ar livre a legenda de som não diz mais "do outro lado das paredes" para os passos do Inspetor no cemitério e na estrada
 1330. A folha da máquina de escrever da diretoria agora sai com acento: "Excelência, o silêncio salva as almas. As três crianças constarão como fugitivas. A IRMÃ DELE ESTÁ AQUI."
 1331. O armário riscado da Ana diz "um dois três quatro...", com acento como o resto do jogo
+
+## Lote 3
+
+1221 melhorias.
+
+### História e texto (93)
+
+1. Depois de cada final, os créditos sobem como as últimas páginas do caderno da Lia, em papel pautado levemente torto
+2. Os créditos rolam sobre uma chuva desenhada em canvas, leve (meia resolução e 30 quadros por segundo)
+3. Nos finais comum e silêncio, os créditos começam sozinhos quando o texto do final termina de aparecer
+4. No final verdadeiro, os créditos começam sozinhos depois que você fecha o epílogo da manhã seguinte
+5. A tela final ganhou o botão "Créditos" para ver de novo quando quiser
+6. O título ganhou o botão "Créditos" depois do primeiro final, com os créditos do último final visto
+7. Os créditos contam o que aconteceu com Davi, Ana e Tomé, e o destino de cada um muda conforme o final
+8. Os 37 internos de 1979 aparecem um por um nos créditos, com Davi, Ana e Tomé riscados a caneta vermelha
+9. Uma rubrica nos créditos lembra que 34 saíram pela janela da capela e 3 não
+10. Página "os que vieram antes": Luiz, João, Maria das Dores, Rosa e Bento, cada um com um destino diferente por final
+11. Página "em memória" com Seu Joaquim, a Irmã Celeste e o Moacir menino
+12. O hino do internato toca baixinho nos créditos, lento, de trás para a frente, num timbre de caixinha desafinada
+13. ESC, Enter, E ou o botão "Pular" fecham os créditos na hora, sempre
+14. Segurar ESPAÇO (ou o dedo na tela, no celular) faz os créditos correrem cinco vezes mais rápido
+15. Cena escondida depois dos créditos: o toca-fitas do carro liga sozinho e a Irmã Celeste fala uma linha diferente para cada final
+16. Quem espera 20 segundos no escuro depois da fita ouve, bem baixinho, alguém chamar "Lia?"
+17. Depois do "Lia?", aparece uma linha escrita à mão com uma pista: para o final verdadeiro, para a quarta criança ou, se já viu tudo, uma despedida
+18. A pista da quarta criança aparece com "três" riscado à mão e "quatro" escrito por cima
+19. Conquista secreta "Quem Ficou Esperando" para quem espera no escuro depois do último nome
+20. Conquista secreta "Até a Última Linha" para quem assiste aos créditos até o fim
+21. Quem viu os três finais e achou a quarta criança vê o próprio nome (digitado no título) como último nome dos créditos, riscado à mão na hora
+22. Depois de assistir aos créditos até o fim, ao voltar ao título o telefone da recepção toca três vezes e para
+23. Na próxima vez que o jogo abre, o rádio-relógio do título fica parado em 21:04 por alguns segundos, com uma legenda
+24. Com "menos movimento" ligado no sistema, os créditos viram páginas que trocam sem rolar e sem chuva animada
+25. Os créditos são anunciados como diálogo para leitores de tela, com a área de texto em região viva
+26. O Chamado troca "Lia..." pelo nome que você digitou no título, uma vez por capítulo, com legenda própria
+27. O nome é falado de verdade pela voz do navegador, bem devagar, grave e baixinho, como se viesse da sala ao lado
+28. Uma vez por noite, o nome é dito colado no seu ouvido: mais alto, com sussurros e o medo subindo
+29. Se você não for atrás do chamado do seu nome, a Lia estranha ("Como ele sabe esse nome?") e vem a conquista secreta "Não Era a Lia"
+30. A voz falada do Chamado para na hora se você pausar ou morrer
+31. Com o nome ANA, a contagem da menina para no nove, ela diz "você tem o meu nome" e recomeça a brincadeira (uma vez por noite)
+32. Com o nome ANA, a tela de morte pela menina passa a se chamar "ANA, DE NOVO"
+33. Com o nome ANA, uma menina interrompe a fita do Davi na abertura do carro
+34. Com o nome MOACIR, o rádio da abertura manda o Moacir voltar para a cama
+35. Com o nome DAVI, o próprio Davi estranha na fita: "Esse é o meu nome. Quem tá aí com você?"
+36. Com o nome LIA, o rádio repete o nome e a fita rebobina sozinha (e o Chamado não troca o nome, porque já é o dela)
+37. Com o nome TOMÉ, o Tomé jura na fita que não falou nada
+38. Com o nome ALBANO, o Inspetor cumprimenta o "diretor" pelo rádio
+39. Com o nome CELESTE, a Irmã Celeste pergunta na fita quem está usando o nome dela
+40. Com o nome JOAQUIM, o Seu Joaquim responde pelo rádio que esse nome é de velho
+41. Com qualquer outro nome, o rádio da abertura dedica as nove badaladas ao ouvinte pelo nome
+42. Conquista secreta "Xará" para quem joga com o nome de alguém do internato
+43. Com o nome MOACIR, o Inspetor para e pergunta quem trouxe o nome dele de volta, logo depois de você vê-lo pela primeira vez
+44. Com o nome DAVI, o Davi fala da capela que hoje vocês tocam o sino juntos
+45. Com o nome TOMÉ, um sussurro de dentro de outro armário cumprimenta você na primeira vez que se esconde
+46. Com o nome CELESTE, a Irmã reza por você ao entrar no quarto dela
+47. Às vezes o Inspetor diz o seu nome na última frase da tela de morte
+48. Ao terminar de digitar o nome no título, o subtítulo responde: "{nome}. Anotado no livro da recepção."
+49. O jogo reconhece o nome com ou sem acento e em qualquer caixa (Tomé, tome, TOMÉ)
+50. Quando alguém diz o seu nome, ele aparece sublinhado com um traço ondulado vermelho na legenda
+51. No cofre, digitar 1979 depois de a gaveta abrir faz o Davi dizer "não é esse ano que abre, é o meu"
+52. No cofre, digitar 1403 (14 de março) também apaga as luzes da sala por 2 segundos
+53. No cofre, digitar o ano atual do aparelho faz o visor mostrar "TARDE DEMAIS" em vermelho tremido, com conquista secreta
+54. No cofre, 1994 tem uma fala própria da Lia sobre o tempo parado lá dentro
+55. No cofre, 1931 lembra o ano em que a Hora ainda era cantada
+56. No cofre, 2104 (21h04) faz o Tomé sussurrar de dentro da parede
+57. No quadro de chaves, 023 lembra o número do Davi na matrícula
+58. No quadro de chaves, 037 lembra os trinta e sete ganchos e as trinta e sete crianças
+59. O visor do teclado brilha dourado quando a combinação conta uma história; todas contam para a conquista Arrombadora
+60. Se a bateria do seu aparelho estiver abaixo de 10% e fora da tomada, a Lia comenta ao ligar a lanterna que a pilha dela também está acabando
+61. Nessa mesma sessão, a pilha da lanterna gasta 20% mais devagar, e vem a conquista secreta "Duas Pilhas"
+62. Legendas sussurradas aparecem menores e mais espaçadas
+63. Gritos (com exclamação e palavras em maiúsculas) tremem na tela e ficam em negrito
+64. Falas do rádio chiam na legenda: as letras falham e borram como sinal ruim
+65. Falas "(na fita)" aparecem em letra datilografada
+66. Os efeitos de legenda desligam com a opção "Texto simples"
+67. Com "menos movimento", as legendas e o visor não tremem
+68. Reticências viram o caractere tipográfico (…) nas legendas
+69. Leitores de tela anunciam legendas, avisos, cartão de capítulo e cartões da abertura
+70. Na tela final, clicar no texto (ou apertar E) mostra todos os parágrafos de uma vez
+71. Com "menos movimento", o texto do final aparece quase todo de uma vez
+72. Nas notas, cabeçalhos de documento em maiúsculas viram versalete, como impresso
+73. Nas notas, a letra escrita à mão fica levemente inclinada
+74. As notas passam a aceitar palavras riscadas à mão
+75. O painel "Fitas ouvidas" mostra cada fala na cor de quem fala, com as rubricas em itálico
+76. O painel "Fitas ouvidas" conta quantas das fitas achadas eram secretas
+77. A tela final diz qual final ainda falta descobrir, sem revelar como
+78. Abrir o jogo de madrugada muda o subtítulo do título
+79. Numa sexta-feira 13, o subtítulo do título lembra que o Inspetor não acredita em sorte
+80. No Dia de Finados, o subtítulo do título diz que acenderam velas no cemitério das irmãs
+81. Na segunda noite (ou depois de um final), cada capítulo abre com uma epígrafe nova de quem já esteve lá
+82. No Pesadelo, os ganchos de fim de capítulo ficam mais curtos e mais cruéis
+83. Três títulos novos de tela de morte: "SILÊNCIO, AGORA", "DEZ." e "NA FILA"
+84. Três últimas frases novas na tela de morte, uma para cada entidade
+85. Duas dicas de morte novas contra o Inspetor (fugir da garrafa andando; entrar no armário antes de ele chegar)
+86. Dica de morte nova contra a Ana: ela também espera no teto das salas escuras
+87. Dica de morte nova contra a Procissão: guardar onde ficou o último armário
+88. Dicas de morte novas por lugar: vela do armário seguro (andar de cima), armários do corredor (térreo) e ordem das válvulas (túneis)
+89. O gravador da Lia ganhou um recado novo para cada jeito de terminar o capítulo
+90. A Lia comenta seis lugares que passavam em silêncio: pátio do posto, pátio do internato, câmaras e túnel norte, saída dos túneis
+91. O cartaz de desaparecidos e a lápide rachada ganharam comentário da Lia ao fechar o papel
+92. As falas de chegada (badaladas, gerador, túneis, cemitério) ganharam uma segunda versão sorteada
+93. O aviso da Procissão ganhou uma segunda versão, gritada
+
+### Mapa: prólogo e estrada (99)
+
+94. Cerca de arame no fundo do pátio do posto com um trecho caído que só dá para passar agachada (em pé, o arame segura)
+95. Trilha nova do barranco entre o posto e o portão, com chão de cascalho próprio (área "Barranco")
+96. Andar em pé no cascalho faz um estalo alto de pedra solta, com som procedural novo
+97. Agachada, o cascalho quase não faz barulho
+98. Correr no barranco faz pedras rolarem ladeira abaixo, com som próprio
+99. No cascalho, o anel de ruído dobra em pé e diminui agachada
+100. Um vulto encolhido dorme no meio do barranco, com respiração pesada que dá para ouvir de longe
+101. O corpo do vulto adormecido sobe e desce no ritmo da respiração
+102. Lanterna acesa perto do vulto vai acordando ele, e apontar a luz direto para ele acorda mais rápido
+103. Aviso antes de acordar: ele para de respirar, vira a cabeça na sua direção e a Lia sussurra que ele mexeu
+104. Se você ficar quieta, o sono dele volta a pesar aos poucos
+105. Acordado, o vulto se levanta devagar e os olhos vermelhos acendem
+106. No barranco, o vulto só anda quando você não está olhando; encarar demais faz ele dar um passo
+107. Se o vulto do barranco te alcança: susto, tela escura e você volta para o pátio do posto (no Pesadelo custa vida)
+108. Depois de duas capturas no barranco (ou no Fácil), aparece a dica de ir agachada e no escuro, ou pela estrada
+109. Segundo vão caído na cerca, junto ao muro do internato, também só agachada, que sai na estrada já perto do portão
+110. Cortar pelo barranco pula a perseguição da estrada inteira (uns 20 s a menos até o portão)
+111. Conquista secreta nova: "Atalho do barranco" na primeira travessia
+112. A Lia comemora baixinho se você atravessou sem acordar o vulto (e tem outra fala se ele acordou)
+113. Ao entrar no barranco a Lia avisa do cascalho; sem a chave, lembra que o portão continua trancado
+114. A Lia sussurra quando você enxerga a coisa encolhida pela primeira vez
+115. A Kombi tombada na vala ganhou colisão (não dá mais para atravessar a lataria)
+116. As árvores da mata foram afastadas da trilha do barranco (nenhum tronco no meio do caminho)
+117. Pedras grandes com colisão marcam e estreitam a trilha
+118. Paredão de terra inclinado fecha o lado de fora do barranco
+119. Cerca de arame com postes ao longo da estrada e no fundo do pátio, separando o barranco
+120. Encostar no arame em pé arranha (som de arame farpado e um tranco na câmera) e a Lia ensina a passar por baixo
+121. Placa "CUIDADO — barranco, cascalho solto, só de joelhos — J.S." no poste do vão, com fala da Lia ao ler
+122. Pedrinhas caem do paredão de vez em quando enquanto você atravessa
+123. Mirar o vulto adormecido mostra a descrição "Uma coisa encolhida no cascalho. Respirando."
+124. Quando você sai do barranco, o vulto volta para o lugar dele e dorme de novo (com sono mais leve)
+125. A câmera treme de leve quando o vulto acordado está a poucos metros
+126. Abertura: painel e volante dentro do carro, visíveis da câmera do motorista
+127. Abertura: a faixa âmbar do painel ilumina a viagem, pisca e apaga quando o motor morre
+128. Abertura: velocímetro desenhado no painel, com o ponteiro caindo até zero na freada
+129. Abertura: limpadores de para-brisa indo e voltando, que param quando o motor morre
+130. Abertura: gotas de chuva escorrendo no para-brisa
+131. Abertura: o carro derrapa um pouco na freada
+132. Mostrador do rádio do carro com a frequência (FM/AM) que muda a cada troca de estação
+133. Ao sair do carro, a porta do motorista abre e bate atrás da Lia, com som de porta de carro
+134. A luz de teto do carro acende com a porta aberta e vai apagando devagar
+135. O carro afunda um pouquinho quando a porta bate
+136. O teto do carro fica amassado e arranhado depois da pancada da abertura
+137. Marcas de pneu da freada no asfalto, atrás do carro
+138. Fumaça sai do capô do carro nos primeiros minutos depois da abertura
+139. O metal do motor estala esfriando quando você fica perto do carro
+140. Vibração (controle e celular) na freada da abertura
+141. Vibração quando o motor engasga e morre
+142. Vibração longa quando as unhas raspam no teto do carro
+143. Correção: as legendas de som agora aparecem durante a cena de abertura (antes ficavam escondidas)
+144. A dica para pular a abertura fala o botão certo: ENTER no teclado, START no controle, botão Pular no celular
+145. Com "movimento de câmera" reduzido (ou o sistema pedindo menos movimento), a abertura treme bem menos
+146. O balanço lateral da câmera na pancada do teto também respeita o movimento reduzido
+147. Com "Reduzir flashes", os faróis morrem com uma apagada só em vez de piscar
+148. Legendas novas na abertura: pneus cantando e o motor engasgando
+149. Ao pegar a lanterna, ela liga piscando duas vezes antes de firmar
+150. O carro balança quando o porta-malas abre
+151. A chave do portão balança no prego quando você chega perto
+152. Pegar a chave do portão faz as chaves tilintarem (som e vibração curta)
+153. Segurando para abrir o cadeado, a corrente e o portão sacodem a cada puxão (com vibração)
+154. Quando abre, o cadeado cai no chão com som de metal e fica caído (também ao continuar o jogo)
+155. O portão range alto ao abrir, com vibração
+156. A concha do orelhão treme a cada toque
+157. Vibração curta a cada toque do orelhão quando você está perto
+158. Pisar nas poças da estrada espirra água (som de respingo)
+159. Pisar nas poças abre um anel na água que se espalha
+160. Vibração quando a buzina do carro toca sozinha na perseguição
+161. Vibração forte quando o vulto da estrada te pega
+162. Na perseguição da estrada, o controle pulsa fraco como um coração quando o medo está alto
+163. Vibração curta quando você flagra o vulto que espreita pela mata
+164. Legendas novas: a buzina do carro, o toque do orelhão e a respiração (com direção)
+165. Legendas novas: unhas no teto, vozes baixas no rádio e no fone, o apito do fliperama
+166. Legendas novas: porta do carro batendo e o motor estalando esfriando
+167. Legendas novas: chaves tilintando, cadeado caindo no chão e portão rangendo
+168. Legendas novas do barranco: cascalho estalando, pedras rolando e arame arranhando
+169. Legenda nova: água espirrando nas poças
+170. "Reduzir flashes": o relâmpago local da estrada clareia mais fraco e sem estroboscópio
+171. "Reduzir flashes": o neon do posto falha sem piscar
+172. "Reduzir flashes": a luz da loja apaga devagar quando o Seu Joaquim some, em vez de estalar piscando
+173. "Reduzir flashes": os faróis acendem sozinhos na perseguição sem piscar seis vezes
+174. "Reduzir flashes": os botões de toque que pulsam pulsam mais devagar
+175. O tranco de câmera da captura pelo vulto da estrada diminui com o movimento reduzido
+176. As dicas de lanterna e pilha falam o botão certo (tecla, botão do controle ou botão de toque)
+177. A dica do diário depois das regras fala o botão certo do aparelho
+178. As dicas da cerca e do barranco falam o botão de agachar e de lanterna do aparelho
+179. No celular, o botão Usar pulsa no porta-malas, no orelhão tocando e no cadeado
+180. No celular, o botão Agachar pulsa diante do vão da cerca e quando o vulto do barranco começa a acordar
+181. No celular, o botão Lanterna pulsa quando a luz acesa está acordando o vulto
+182. No celular e no controle, uma dica extra lembra onde ficam lanterna e pilha depois do porta-malas
+183. Desempenho: menos árvores desenhadas nas qualidades Baixa (55%) e Média (80%), ajustado na hora
+184. Desempenho: as mariposas do posto não são calculadas quando você está longe
+185. Desempenho: o zumbido do neon desliga os osciladores longe do posto ou com a luz morta
+186. Desempenho: a tela do fliperama não é atualizada quando você está longe
+187. Desempenho: o interior do carro (painel, limpador, chuva no vidro) não é desenhado longe do carro
+188. Desempenho: a fumaça do capô fica desligada na qualidade Baixa
+189. Tela de título: num relâmpago, um vulto aparece ao lado do portão do internato e some
+190. Leitura de perto (sem tela cheia) nos preços das bombas do posto
+191. Leitura de perto no calendário de março de 1979
+192. Leitura de perto no mostrador do rádio do carro, explicando como trocar a estação
+
+### Mapa: térreo e dormitórios (92)
+
+193. Nova copa de serviço nos fundos do térreo, com porta no refeitório, ligando o refeitório à lavanderia por uma rota alternativa
+194. Janela de vidro quebrado entre a copa e a lavanderia: segure E agachada por 1,5 s para atravessar pelos cacos
+195. Em pé a janela não deixa passar: o aviso manda agachar e explica que os cacos cortam
+196. Atravessar a janela faz ruído médio (o aviso mostra o ((·)) de barulho) e pode chamar o Inspetor
+197. Durante a travessia os cacos estalam a cada passo, com som posicionado na janela
+198. A tela treme de leve enquanto você se arrasta pelos cacos
+199. Você sai do outro lado ainda agachada e já virada para a frente, pronta para fugir
+200. O Inspetor não passa pela janela: para te seguir ele precisa dar a volta pelos corredores
+201. Se ele estava na sua cola, esmurra o caixilho da janela logo depois que você passa (e a Lia percebe que ele vai dar a volta)
+202. Na primeira travessia a Lia sussurra que ele é grande demais para passar ali
+203. Cacos espalhados no chão dos dois lados da janela: pisar neles em pé faz barulho de vidro, agachada não
+204. Os cacos da janela brilham quando a lanterna bate neles
+205. O vento assobia pela janela quebrada, um som que ajuda a achá-la no escuro
+206. Um trapo preso no caixilho balança com o vento
+207. Riscado a prego no batente: "D. 1979 — por aqui ele não passa", o Davi já fugia por ali
+208. Uma mãozinha marcada no pedaço de vidro que sobrou, de dentro para fora
+209. Passa-pratos da copa: a portinhola bate sozinha quando o Inspetor está no refeitório do outro lado (aviso de perigo)
+210. Carrinho de pratos na copa: esbarrar nele em pé faz a louça bater e chama atenção
+211. Marmita de alumínio "M. DUARTE — INSPETOR" na bancada, ainda morna, para ler
+212. Armário de esconder dentro da copa, para não ficar sem saída na rota dos fundos
+213. Placa "COPA — só funcionários" ao lado da porta no refeitório
+214. Segredo da copa: um recado que só brilha no ladrilho com a lanterna apagada e você agachada perto
+215. Lâmpada na copa que acende quando o gerador liga
+216. A pintura riscada do refeitório saiu da frente da nova porta da copa
+217. O gerador ligado treme de verdade enquanto funciona
+218. O escapamento do gerador ligado solta fumaça
+219. O LED do gerador pisca em vermelho enquanto falta combustível ou fusível (fácil de achar no escuro)
+220. Ligar o gerador dá um tranco na câmera e vibra no celular e no controle
+221. Faíscas saltam (luz e estalos) do quadro de fusíveis quando a energia volta
+222. Os três fusíveis do quadro acendem um por um, com um estalo cada
+223. Chegar bem perto do gerador ligado faz a visão tremer de leve
+224. O visor do quadro de chaves pisca como um cursor esperando o código
+225. Errar o código deixa o visor vermelho, dá uma tremidinha e vibra
+226. Acertar o código acende o visor em verde com um clique de trava
+227. As teclas do quadro de chaves acendem fracas quando há energia
+228. O cadeado da grade da escada brilha quando você já tem a chave
+229. Ao subir, a grade da escada se ergue rangendo antes da tela escurecer
+230. Fita fosforescente na borda dos degraus da escada da recepção, que carrega com a lanterna e apaga devagar no escuro
+231. Forçar a porta principal faz a porta tremer a cada empurrão, com vibração
+232. Quando a porta principal cede, cai poeira do batente e a câmera dá um tranco
+233. O galão e a caixa de fusíveis brilham quando a lanterna passa por eles
+234. O galão e a caixa de fusíveis têm área de mira maior (mais fáceis de pegar no toque e no controle)
+235. Correndo com o galão, dá para ouvir a gasolina chacoalhando
+236. A tampa do alçapão da casa de máquinas se abre rangendo antes de descer
+237. As correntes do balanço do pátio rangem a cada ida e volta (e param quando ele para)
+238. O portão do pátio range no vento de tempos em tempos
+239. Poças no pátio com anéis de gotas de chuva
+240. Goteiras nos dois corredores: a gota cai do teto manchado, faz um anel na poça e pinga com som
+241. A lâmpada da recepção balança com o trovão, e a luz e as sombras mexem junto
+242. Entrando da chuva, você deixa pegadas molhadas no piso que somem devagar
+243. Tapete puído atrás do balcão da recepção, que abafa os passos de quem anda nele
+244. O relógio da recepção faz tique-taque de perto, e acelera quando o Inspetor está por perto
+245. Ratos correm guinchando pela despensa na primeira vez que você entra
+246. Panelas penduradas na cozinha: correr embaixo delas faz tilintar e chama o Inspetor
+247. As panelas também balançam e tilintam quando o Inspetor passa por baixo (um aviso)
+248. Cortina divisória entre as camas da enfermaria balança e farfalha quando você passa
+249. Biblioteca: passar em pé perto da estante derruba um livro com barulho (uma vez)
+250. Uma torneira pinga nos banheiros do térreo
+251. Abajur verde na mesa da diretoria, que acende com a energia
+252. Placa fosforescente no corredor oeste apontando a recepção e a cozinha
+253. Placa fosforescente no corredor leste apontando a enfermaria, as máquinas e a recepção
+254. A grade da escada sem energia agora explica que a chave fica no quadro, que só funciona com energia
+255. O gerador sem nada diz o que falta e onde fica cada coisa (despensa e enfermaria)
+256. Faltando fusíveis, o gerador lembra que a reserva fica na enfermaria
+257. O quadro de fusíveis mostra a contagem (0/3), avisa quando falta só ligar o gerador e quando está ligado
+258. O alçapão da casa de máquinas diz que leva aos túneis
+259. Passadeira gasta em trechos do corredor de cima: andar sobre ela abafa os passos (entre os trechos a madeira range)
+260. Segredo do corredor de cima: levantar a ponta da passadeira revela um recado da Ana e uma garrafa guardada
+261. Placa no patamar com os dormitórios A a E e o depósito ao fundo
+262. Fita fosforescente na escada de descida do patamar
+263. A lâmpada do patamar balança com o trovão
+264. Descer a escada do patamar faz os degraus rangerem
+265. A engrenagem e as chaves da Irmã Celeste e do monta-cargas brilham sob a lanterna
+266. A engrenagem e as chaves têm área de mira maior no toque e no controle
+267. A caixinha de música pulsa em luz quando você já tem a engrenagem (mostra onde montar)
+268. A engrenagem tilinta de tempos em tempos, guiando pelo ouvido até o Dormitório E
+269. Pegar a engrenagem tilinta na mão e vibra de leve
+270. Depois da engrenagem, pegadinhas de pé descalço aparecem no corredor levando à sala de brinquedos
+271. As pegadinhas somem quando a caixinha começa a tocar
+272. Lâmpada vermelha de serviço acima do monta-cargas acende quando você pega a chave dele
+273. Ao descer pelo monta-cargas, a grade bate, o cabo range, a tela treme e o aparelho vibra
+274. Luz de vela vaza por baixo da porta do quarto da Irmã Celeste e some quando a porta abre
+275. Os quadros do corredor de cima batem e ficam tortos quando o Inspetor passa por eles (um rastro de por onde ele andou)
+276. Objetos miúdos do térreo deixam de projetar sombra (menos peso no notebook fraco)
+277. Objetos miúdos do andar de cima deixam de projetar sombra
+278. Na qualidade baixa, fumaça e pegadas usam menos partículas
+279. Os efeitos novos dos dois andares param de animar quando você está longe
+280. Os tremores de câmera do mapa respeitam a opção de tremor (menos movimento)
+281. A vibração do mapa respeita a opção de vibrar e funciona no celular e no controle
+282. Com "menos clarões", o LED do gerador, o visor do quadro e a lâmpada do monta-cargas não piscam rápido
+283. Legendas para os sons novos (vento na janela, cacos, passa-pratos, panelas, ratos, livro, quadros, monta-cargas)
+284. O aviso de agachar na janela mostra o botão certo: C no teclado, B no controle, "Agachar" no toque
+
+### Mapa: túneis, cemitério e capela (97)
+
+285. Túneis: duto de ventilação novo, baixo, ligando a câmara oeste (válvula 1) ao depósito: atalho até a cisterna e a válvula 3
+286. Duto: em pé não dá para entrar; só agachada, com aviso ao bater na boca baixa
+287. Duto: lá dentro a Lia fica agachada à força (o teto tem pouco mais de um metro)
+288. Duto: tentar correr lá dentro vira um rastejar desajeitado, mais lento, e espanta os ratos
+289. Duto: ratos lá dentro, com olhinhos alaranjados brilhando no escuro
+290. Duto: os ratos viram a cabeça, mexem o rabo e chiam baixinho enquanto estão quietos
+291. Duto: passando agachada e sem luz, os ratos abrem caminho devagar para os lados
+292. Duto: apontar a lanterna para os ratos faz a Lia avisar ("apaga a luz") e, se insistir, todos disparam
+293. Duto: ratos espantados fogem guinchando pelas duas bocas e o barulho chega ao Inspetor
+294. Duto: quando os ratos passam pela Lia há tranco, susto e vibração
+295. Duto: os ratos voltam ao duto depois de um tempo, quando a Lia está longe
+296. Duto: o Inspetor não cabe lá dentro; ele fica raspando a boca do duto e para alguns segundos
+297. Duto: a Procissão e a Menina não passam pelo duto (ele não entra no caminho delas)
+298. Duto: bocas com moldura de ferro, soleira de concreto segurando a água, grade arrancada encostada com marcas de dentes
+299. Duto: na soleira alta da boca do duto, agachar não afunda a Lia na água (dá para entrar sem mergulhar)
+300. Duto: placa "VENTILAÇÃO — ALA VELHA 1931" que explica que só se passa agachada
+301. Duto: fala da Lia ao entrar ("Devagar. Sem luz. Sem pressa.") e ao sair sem espantar nenhum rato ("Passei.")
+302. Duto: os ratos só são desenhados quando a Lia está perto (o resto do mapa não paga por eles)
+303. Cemitério: jazigo cercado por uma mureta de pedra em volta do túmulo mais longe da entrada, com um portãozinho de ferro do lado oposto
+304. Cemitério: de fora da mureta não dá para cavar; o rótulo diz para entrar pelo portãozinho ou derrubar as pedras soltas
+305. Cemitério: o lado da mureta virado para a entrada tem pedras soltas que caem segurando E por 2 segundos
+306. Cemitério: enquanto a Lia empurra, as pedras de cima tremem, pedrinhas caem e sobe poeira
+307. Cemitério: a mureta desaba de verdade, com blocos voando e rolando, nuvem de poeira e estrondo
+308. Cemitério: o estrondo chama o Inspetor na hora, direto para a mureta (troca segurança por segundos)
+309. Cemitério: fala da Lia em pânico depois do desabamento e aviso de que ele está vindo
+310. Cemitério: se o Inspetor ficar preso do lado de fora da mureta, ele pula por cima com um baque
+311. Cemitério: o empurrão nas pedras fica guardado se soltar o E e escoa devagar
+312. Cemitério: a mureta derrubada continua no chão ao voltar de um ponto salvo
+313. Válvulas: a roda gira cada vez mais rápido conforme o giro avança
+314. Válvulas: a placa com o número acende conforme você gira (e fica mais clara com a lanterna em cima)
+315. Válvulas: vibração que cresce enquanto gira, com respingos do cano perto do fim
+316. Válvulas: a válvula certa encaixa com tranco, vibração e respingo
+317. Válvulas: a cada válvula certa, anéis e bolhas sobem dos ralos por todo o túnel
+318. Válvulas: som de ralo gorgolejando quando a água desce (mais longo na última válvula)
+319. Válvulas: a válvula errada dá vibração forte, tranco e um borrifo de água no cano estourado
+320. Válvulas: o jato do cano estourado respinga na água o tempo todo
+321. Válvulas: depois do segundo erro, a Lia lembra a ordem a cada novo erro (antes só lembrava uma vez)
+322. Túneis: ao afundar e ao subir a câmera desliza suave para baixo e para cima da água, sem pulo
+323. Túneis: com pouco ar, a barra de fôlego fica vermelha e pisca
+324. Túneis: ao voltar à superfície, gotas na tela que escorrem e somem
+325. Túneis: ao voltar à superfície, respingo e anel de onda em volta da Lia
+326. Túneis: parada e prendendo o fôlego (ESPAÇO) debaixo d'água, o ar dura bem mais
+327. Túneis: dica na primeira vez debaixo d'água sobre prender o fôlego para o ar durar
+328. Túneis: gotas pingam do teto perto da Lia, com um "plic" e um anel na água
+329. Túneis: a mão pálida sai da água com respingo, anel e vibração
+330. Túneis: quando ele emerge da cisterna, três ondas grandes se abrem, a água espirra e tudo treme
+331. Túneis: o agarrão no tornozelo dá tranco e vibração forte
+332. Cofre: a porta pesada abre devagar, rangendo, com o disco girando (antes pulava aberta)
+333. Cofre: ao abrir sobe poeira e o controle vibra
+334. Cofre: o teclado mostra quantos números do Davi você já achou
+335. Escotilha: enquanto sobe, a escada treme, cai poeira do teto e pedrinhas batem
+336. Acessibilidade: o texto debaixo d'água agora diz certo como subir no modo "alternar" ("aperte C de novo"); antes mandava soltar o C
+337. Acessibilidade: com "Reduzir flashes", a lanterna debaixo d'água fica fraca sem piscar
+338. Acessibilidade: com "Reduzir flashes", a falha da lanterna perto do Inspetor vira um escurecer suave
+339. Acessibilidade: com "Reduzir flashes", o apagão do cofre escurece a lanterna sem estroboscópio
+340. Acessibilidade: com "Reduzir flashes", as lâmpadas de emergência no apagão pulsam devagar em vez de piscar
+341. Acessibilidade: com "Reduzir flashes", a barra de ar com pouco fôlego não pisca
+342. Legenda de som: "o cano canta uma nota limpa" na válvula certa
+343. Legenda de som: "um cano estoura" com direção, na válvula errada
+344. Legenda de som: "a válvula range alto" enquanto gira
+345. Legenda de som: "respiração borbulhando debaixo d'água", com direção, quando ele está submerso
+346. Legenda de som: "algo grande se levanta da água" quando ele emerge
+347. Legenda de som: "a terra cede" na cova que afunda e no obelisco
+348. Legenda de som: "a água desce pelos ralos"
+349. Legenda de som: "água pingando" nas gotas do teto
+350. Legenda de som: "ratos guinchando e correndo" quando os ratos disparam
+351. Legenda de som: "unhas pequenas arranhando no escuro" perto do duto
+352. Legenda de som: "alguém grande raspa a boca do duto"
+353. Legenda de som: "pedras desabando com estrondo" na mureta
+354. Legenda de som: "os grilos se calam de repente" e "os grilos voltam a cantar"
+355. Leitor de tela: avisos falados ao ficar debaixo d'água, quando a água baixa e no apagão do cofre
+356. Leitor de tela: avisos falados a cada túmulo cavado (1 de 3...) e quando a mureta desaba
+357. Toque: as dicas da água, do cofre e da fuga dizem o nome do botão (Agachar, Garrafa) em vez da tecla
+358. Toque: debaixo d'água o texto diz "toque em Agachar para subir", maior e mais alto na tela
+359. Toque: o botão Agachar pisca quando ajuda (água funda com ele perto, boca do duto)
+360. Toque: a placa do duto e o aviso de apagar a luz falam dos botões Agachar e Lanterna
+361. Toque e controle: vibração leve ao afundar na água
+362. Desempenho (qualidade Baixa): o cemitério desenha menos árvores em volta
+363. Desempenho (qualidade Baixa): menos covas sem nome no campo
+364. Desempenho (qualidade Baixa): as quatro velas do altar dividem uma luz só
+365. Desempenho (qualidade Baixa): a neblina rasteira usa uma camada só
+366. Desempenho (qualidade Baixa): as lâmpadas de emergência da porta de ferro e da escotilha viram só brilho, com o bulbo mais forte
+367. Desempenho: os brinquedos do fundo dos túneis não recalculam posição todo quadro
+368. Desempenho: as árvores do cemitério não recalculam posição todo quadro
+369. Desempenho: anéis de onda longe da Lia não são criados
+370. Desempenho: bolhas longe da Lia não são criadas
+371. Desempenho: poeira, terra, respingos e fumaça novos usam um desenho só (metade das partículas na Baixa)
+372. Cemitério: cavar solta torrões de terra, com tranco e vibração a cada pazada
+373. Cemitério: ao terminar a cova, o objeto sobe da terra num brilho quente com faíscas douradas
+374. Cemitério: a vela do túmulo solta um fio de fumaça quando apaga sozinha
+375. Cemitério: o rótulo dos túmulos conta quantos já foram cavados (1/3, 2/3)
+376. Cemitério: a cova que cede espirra torrões de terra e vibra
+377. Cemitério: grilos cantam em volta da Lia e se calam de repente quando o Inspetor chega perto (o silêncio avisa)
+378. Capela: cada objeto no altar solta faíscas douradas, com vibração e tranco leve
+379. Capela: a cada balanço do sino cai poeira do alto da torre; na fuga o controle vibra junto
+380. Capela: a porta batendo atrás da Lia derruba poeira do batente e vibra
+381. Fuga: o obelisco caindo levanta uma nuvem de poeira e pedras, com tranco e vibração forte
+
+### Monstros e IA (91)
+
+382. Quando o Inspetor sai da ronda para investigar ou caçar por causa de um barulho seu, toca uma nota grave de corda, curta, uma vez por troca de estado
+383. Junto com essa nota, a mira dá um tranco mínimo (respeita a opção de tremor de câmera)
+384. A legenda "[ele te ouviu]" aparece na hora, com a seta mostrando de que lado ele está
+385. A tela de morte diz o que te entregou da última vez que ele te ouviu (você correu, passos na água, a porta do esconderijo, a sua respiração, a sua voz...)
+386. A tela de morte ganhou o botão "Ver como ele te achou" (ou a tecla V): um replay dos 3 segundos antes da morte
+387. No replay a câmera fica por cima do ombro de quem te pegou, olhando para você
+388. No replay a Lia aparece como uma silhueta clara, e o monstro como uma silhueta vermelha que se vê através das paredes
+389. No replay as ondas do barulho que você fez se espalham pelo chão, do tamanho do barulho
+390. No replay o cone da sua lanterna aparece no chão, mostrando para onde você estava olhando
+391. O replay também existe quando a Ana te pega ("Ver como ela chegou") e quando a Procissão te pega ("Ver por onde eles vieram")
+392. O replay tem título, legenda de cores e barra de progresso, e qualquer tecla ou clique volta para a tela de morte
+393. A sombra dele dobra a esquina antes dele: com uma lâmpada acesa por perto, a silhueta alta de cabeça torta e dedos longos se estica na parede antes de ele aparecer (qualidade Alta e Média)
+394. A sombra na parede balança com o passo dele e some quando ele já está na sua frente
+395. Porta arrombada: na caçada, depois dos socos, a porta estoura contra a parede com estrondo de madeira lascando
+396. Farpas de madeira voam da porta arrombada, quicam no chão e ficam espalhadas ali
+397. O tranco na câmera e a vibração da porta arrombada são mais fortes quanto mais perto você está
+398. A porta arrombada fica aberta e torta até o fim do capítulo e não fecha mais ("arrombada, não fecha mais"), mesmo depois de voltar do checkpoint
+399. Na primeira porta arrombada, a Lia percebe: "fechar não segura mais ele"
+400. Com o microfone ligado e você escondida, ele primeiro vira o rosto para o lado do som real ("[ele vira o rosto para você]") e dá 1 s de chance: só vem investigar se você fizer barulho de novo
+401. Nada de morte barata atrás da porta: até 2 s depois de você abrir uma porta, ele não dá o bote nem avança se estiver a menos de 4 m do outro lado (a não ser que você tenha corrido ou feito barulho alto)
+402. Nesse instante ele estala a língua duas vezes, vira a cabeça para a porta e a legenda avisa "[ele parou do outro lado da porta]"
+403. Cada número da contagem da Ana dá um pulso de vibração no controle e no celular, cada vez mais curto e mais forte
+404. No DEZ da Ana, um tranco duplo de vibração
+405. Escondida com ele a menos de 4 m, se o aparelho vibrar (dano, badalada), ele vira a cabeça para o seu esconderijo por um segundo (desliga junto com a vibração)
+406. Na qualidade Baixa, o ouvido, o recálculo de caminho e o calor da lanterna do Inspetor rodam a 15 Hz e só o movimento roda por quadro: sobra processador para os 30 qps
+407. Legenda "[ele quase te ouviu]" quando ele para e vira a cabeça por um barulho que quase chegou nele
+408. Legendas do que ele está fazendo no seu esconderijo: parou para escutar, fareja a porta, bate no esconderijo, se afasta do esconderijo
+409. Legenda "[tudo fica em silêncio de repente]" no instante do alerta e "[ele ergue os braços]" no bote
+410. O diretor de tensão ganhou legendas: "[ele está indo embora]" quando ele recua e "[um estalo perto da porta: ele voltou]" quando ele volta
+411. Os sons do Inspetor que passavam sem legenda agora têm legenda: estalos de língua, fungadas, respiração rasgada, a puxada de ar, a cantiga, as correntes, o chiado do bote e o tropeço
+412. Novas legendas para maçaneta girando, armário aberto com violência, batidas na madeira, lâmpada estourando, porta batendo longe e passos se afastando
+413. Novas legendas para os sons da Ana e das crianças: pezinhos descalços, passinhos correndo, respiração na nuca e o pedido de silêncio sussurrado
+414. Novas legendas para unhas na parede, passos no andar de cima, a voz conhecida que chama você (o Chamado com voz falsa) e a mão que corta o ar no bote esquivado
+415. Legendas da Ana: "[DEZ — ela está atrás de você]" com direção, "[a porta abre uma fresta]", "[algo cai do teto]" e "[pezinhos descalços bem perto]"
+416. Legendas da Procissão: "[a fila para]" e "[as luzes voltam, uma a uma]"
+417. A borda da tela gela em azul quando a Ana está perto e você não está vendo ela: dá para sentir mesmo sem som
+418. Vibração curta quando ele te ouve e quando ele quase te ouve
+419. Vibração forte de aviso no começo do bote e um pulso no alerta
+420. Cada soco dele no seu esconderijo vibra na mão, e cada fungada dele no armário dá um pulso leve
+421. No agarrão, pulsos de vibração a cada quarto de segundo, mais fortes conforme acaba o tempo para se soltar
+422. Cada soco dele numa porta fechada vibra mais forte que o anterior
+423. A Procissão passando rente faz o seu esconderijo tremer e vibrar cada vez mais forte
+424. Quando a Ana desce do teto, a câmera treme e o aparelho vibra conforme a distância
+425. Cair na armadilha do Chamado ("Achei.") dá vibração forte e um tranco na mira
+426. Uma lâmpada que ele estoura perto de você dá um tranco na câmera e vibra
+427. A porta da Ana abrindo em fresta e a fila da Procissão parando também vibram
+428. No celular, o botão "Prender fôlego" pulsa em vermelho quando ele fareja ou vasculha o seu esconderijo
+429. No celular, o botão "Agachar" pulsa durante o bote (agachar parada é a esquiva)
+430. No celular, o botão "Usar" pulsa durante o agarrão
+431. Os botões que pulsam respeitam o "reduzir movimento" do sistema (ficam acesos, sem piscar)
+432. Nas duas primeiras vezes que ele fareja o seu esconderijo, um aviso diz para segurar ESPAÇO (ou o botão, no celular); no Pesadelo, não
+433. O Inspetor manca: a perna direita arrasta e o corpo pende para o lado a cada passo
+434. Os passos dele ficaram irregulares, um curto e um longo: dá para reconhecer só pelo som
+435. Na procura, cada passo dele vem com o pé se arrastando no chão
+436. Parado na ronda, ele balança de leve e os dedos tamborilam no ar
+437. No alerta, os braços dele sobem pela metade, os dedos se abrem e a boca vai se abrindo
+438. Caçando, os ombros dele sobem e descem com a respiração rasgada
+439. Farejando, a cabeça dele sobe e desce em fungadas curtas que dá para ouvir
+440. Vasculhando, o braço dele dá um soco na porta a cada batida
+441. Quando a lanterna esquenta o rosto dele, ele cobre a cara com a mão
+442. Ao tropeçar na fuga, as mãos dele vão ao chão
+443. Porta na cara: ele cambaleia para trás e a cabeça tomba de lado
+444. Quando você se solta do agarrão, ele uiva de raiva e cambaleia para trás
+445. Quando ele vira a cabeça de repente, o pescoço estala
+446. Na morte, ele endireita a cabeça torta e escancara a boca no último quadro
+447. Ele não esquece: a porta que bateu na cara dele, ele arromba de primeira na caçada seguinte
+448. Cada soco dele numa porta faz a porta tremer no batente
+449. Uma lâmpada que estoura em cima dele faz ele se encolher
+450. O cabelo da Ana balança quando ela se move
+451. Encarada por muito tempo, a cabeça da Ana começa a tremer em espasmos
+452. Com a Ana grudada no teto logo acima de você, a madeira range: um aviso justo para olhar para cima
+453. Quando a Ana muda de pose perto de você, fora da sua vista, dá para ouvir os ossinhos estalando
+454. Quando a Ana vai embora sem te pegar, dá para ouvir os passinhos dela correndo
+455. Escondida até ela cansar, a Ana reclama: "Chata... você não brinca direito."
+456. As crianças da Procissão balançam de lado enquanto andam, cada uma no seu ritmo
+457. Depois que a Procissão passa, as luzes voltam uma a uma, piscando, em vez de acender todas juntas
+458. A criança que fica para trás vira a cabeça devagar para você quando você chega perto
+459. O vulto dele no fundo do corredor inclina a cabeça cada vez mais enquanto você olha, e some com um tranco
+460. Respeitar a regra cinco (não ir até quem chama) faz a Lia soltar o ar de alívio e baixa um pouco o medo
+461. Esquivar do bote agachada faz a Lia soltar o ar de alívio, com vibração
+462. Segredo: ficar agachada e imóvel perto dele durante toda a cantiga faz ele dizer "Boa noite, criança. Volte pra cama." e ir embora (conquista secreta)
+463. Segredo: prender o ar fora do esconderijo enquanto ele escuta colado em você faz ele murmurar "...ninguém?" (conquista secreta)
+464. Segredo: uma garrafa que estoura no pé dele faz ele recuar e dizer "Isso não é brinquedo, menina." (conquista secreta)
+465. Segredo: agachar diante da Ana ajoelhada, com a luz nela, faz ela perguntar "Você também tá de castigo?" (conquista secreta)
+466. Segredo: numa cama, no escuro, quando a Procissão passa rente, uma criança ajeita o seu cobertor e sussurra "Dorme. Senão ele vem." (acalma o medo; conquista secreta)
+467. Nova conquista "Lascas": sobreviver a uma caçada em que ele arrombou uma porta
+468. Ser agarrada três vezes no mesmo capítulo faz ele dizer "De novo você. Não aprende."
+469. Na qualidade Baixa (sem sombras), uma mancha escura sob os pés do Inspetor e da Ana mantém os dois no chão
+470. Dentro de casa, o Inspetor sai do desenho quando está além da névoa (menos desenhos por quadro, sem mudar o que se vê)
+471. Menos travadinhas: o Inspetor, a Ana e a Procissão pararam de criar vetores novos a cada quadro
+472. A checagem de linha livre (usada pela Ana, pela Procissão e pelos sustos) reaproveita o mesmo raio em vez de criar um novo a cada chamada
+
+### Sustos e eventos (100)
+
+473. Golpe com peso: quando o Inspetor acerta, o mundo para por 80 ms antes do tranco
+474. Golpe da Ana: o tempo cai a 5% por 90 ms, em vez de parar seco
+475. Cada golpe tem a sua cor por um quadro: vermelho saturado no Inspetor, azulado na Ana, âmbar na Procissão (desligado com "Reduzir flashes")
+476. No golpe o som corta seco e volta abafado, com um zumbido agudo de ouvido que dura 2 segundos
+477. Logo depois do golpe a imagem perde a cor por um instante e volta devagar
+478. A câmera torce para o lado de onde veio o golpe e volta (desligado com "menos movimento")
+479. Agarrão: 110 ms de mundo parado, as bordas da tela fecham de uma vez e todo som corta menos um tom agudo
+480. Quando o Inspetor te nota e começa a caçada, o mundo congela por 120 ms com um baque grave abaixo de tudo
+481. Por um fio: se o Inspetor passa a menos de 1,5 m sem te notar, o tempo desacelera para 60% por 0,4 s
+482. Por um fio: todo o som some e só fica a respiração dele, do lado em que ele está
+483. Por um fio: o coração bate, falha a batida seguinte e só volta depois
+484. Por um fio: quando ele se afasta, a Lia solta o ar tremendo
+485. Cada "Por um fio" aparece na tela com o total de vezes que você já escapou assim
+486. O fim de capítulo mostra quantas vezes você escapou por um fio naquele capítulo
+487. Conquista nova "Por Um Fio": deixar o Inspetor passar raspando dez vezes sem ser notada
+488. Escondida, quando ele passa a menos de 1,2 m, as bordas da tela escurecem como um túnel e voltam em 1,5 s
+489. Alívio quando você o despista: o coração desacelera de forma audível ao longo de 4 segundos
+490. Alívio: a Lia solta o ar e, se ele passou a menos de 2 m, murmura uma de quatro falas baixinho
+491. Durante a caçada a cor da imagem vai sumindo aos poucos e volta devagar quando ela acaba
+492. Opção nova de acessibilidade "Avisar antes dos sustos fortes": a borda da tela escurece e um tom grave toca antes do susto
+493. Com o aviso ligado, os estalos de susto (e o grito do começo da caçada) tocam a 60% do volume
+494. O DEZ da Ana também é avisado antes quando a opção está ligada
+495. O susto tem preço: nos sustos fortes a Lia dá meio passo involuntário para trás
+496. O susto tem preço: ela solta um "hff" curto que faz barulho; perto do Inspetor, assustar-se pode te denunciar
+497. Depois do "hff" a respiração da Lia fica tremida por um instante
+498. Alucinação nova: depois de andar por um corredor e parar, soa um passo a mais atrás de você
+499. Olhar para trás (Q) com muito medo às vezes mostra uma criança parada por três quadros
+500. Trocar a pilha no escuro: um sopro frio no pescoço (uma vez por capítulo)
+501. Usar um curativo pela primeira vez: uma voz de criança pergunta baixinho "dói?"
+502. Ficar 40 s parada sem mexer em nada: o nome da Lia sussurrado colado na orelha esquerda e a lanterna treme
+503. Ficar 20 s de lanterna apagada numa sala: ao acender, passos descalços correm para longe com uma risadinha
+504. Jogando entre 3h e 3h59 do relógio real, uma vez por capítulo alguém sussurra a hora certa atrás de você
+505. Fechar o diário com medo às vezes deixa uma respiração curta logo atrás (uma vez por capítulo)
+506. Fechar uma nota às vezes faz alguém perguntar "...leu tudo?" atrás de você
+507. A contagem da Ana aparece rabiscada em giz numa parede perto, fora do centro da tela, a cada número
+508. No nove, o número de giz aparece na parede atrás de você
+509. Os números de giz somem quando a contagem termina ou ela vai embora
+510. No celular, cada número da contagem vibra, cada vez mais forte, e no dez vem o silêncio total
+511. No celular, o golpe vibra (o da Ana em dois pulsos curtos)
+512. No celular, o "por um fio" vibra como o coração falhando
+513. Opção nova "Truques de tela" (ligada por padrão) liga ou desliga todos os sustos que mexem com a pausa, a aba, o HUD e o título
+514. O jogo finge que travou: uma vez por noite, nos capítulos III ou IV e num momento calmo, o quadro congela e o som engasga num trecho curto
+515. Durante o travamento falso o cursor do sistema vira o de carregando e o contador de quadros (se ligado) mostra 0 qps
+516. No fim do travamento o quadro parado escurece e o rosto do Inspetor aparece dentro dele, respirando; depois tudo volta, sem dano
+517. Se a Ana estava contando durante o travamento, a contagem pulou para o sete e ela está um metro mais perto
+518. O HUD mente uma vez por capítulo: a barra de pilha mostra zero por meio segundo (nunca no Fácil)
+519. O HUD mente: o objetivo vira "NÃO OLHE" por um instante (nunca no Fácil)
+520. Conquista que mente: escondida e sozinha, aparece a conquista dourada "Ninguém Ouviu", as letras escorrem e viram "EU OUVI" em vermelho
+521. Junto com o "EU OUVI", um estalo de língua toca atrás do esconderijo (sem dano)
+522. Volume do jogo a zero com o Inspetor perto: aparece a legenda "[ele ainda ouve você]"
+523. Com o volume a zero e ele andando perto, a borda da tela pulsa em vermelho no ritmo dos passos dele
+524. Na primeira vez a Lia sussurra "Tirar o som não me deixa invisível", e isso libera a conquista secreta "Ele Ainda Ouve"
+525. Pausar com o Inspetor a menos de 3 m troca "Pausa" por "Ele também está esperando."
+526. Nessa pausa a respiração dele continua baixinho, do lado em que ele está
+527. Pausar com a Ana contando mostra o número em que ela parou ("...seis...")
+528. Pausar durante a Procissão mostra "(eles continuam cantando)"
+529. A foto da pausa mostra o que não estava lá: raramente, depois do capítulo III, uma silhueta de criança surge ao fundo (nunca na mesma sala duas vezes)
+530. Pausa aberta por 2 minutos: aparece "eu espero." e uma unha arranha o vidro
+531. Pausa aberta por 3 minutos: uma letra de criança escreve sozinha "você não pode parar a gente", com chiado de dedo no vidro
+532. Pausa aberta por 4 minutos: a palavra "Pausa" perde as letras até sobrar "Lia?" e uma respiração passa da esquerda para a direita
+533. Pausa de 9 minutos: ao voltar, a Ana está colada atrás da Lia respirando no seu ouvido e some quando você vira (conquista secreta "Esperou Demais")
+534. Pausa de 9 minutos: ao voltar alguém pergunta "Lia? Você ainda está aí?" e a porta fechada mais perto está aberta
+535. Pausa de 3 minutos com o Inspetor solto: ao voltar ele está parado 2 m atrás, com a legenda da respiração; se você não correr, ele vira e vai embora (conquista secreta "Ele Esperou Com Você")
+536. Susto da pausa (uma vez por jogo, a partir do capítulo IV, nunca no Fácil): ao voltar, a câmera está 30 graus virada e a Ana está à frente contando "nove"; ela some no DEZ quando você olha
+537. Com a aba escondida no meio do jogo, o ícone da aba vira um olho, e volta ao normal 30 s depois que você retorna
+538. Durante a brincadeira da Ana, com a aba escondida por mais de 30 s, o título da aba conta "1...", "2..." até "DEZ."
+539. Ao voltar dessa aba, ela está 3 m atrás de você: virar e iluminar faz ela sumir; se não, ela some com um "achei" no ouvido
+540. Aba escondida por mais de 2 minutos: a pausa mostra "você saiu. ela não." e a silhueta da Menina aparece desfocada por um segundo
+541. Aba escondida por mais de 10 minutos: ao voltar, por meio segundo a Ana está parada à sua frente, de costas
+542. Largou o computador com o jogo aberto por mais de 90 s: ao voltar há marcas de dedinhos embaçadas no vidro da tela e uma risada passa da esquerda para a direita
+543. As marcas de dedos somem quando você anda
+544. Com "Estou de fone" ligado, trocar o fone de ouvido faz a Lia sussurrar "não tira... ele ouve pelo alto-falante" e um estalo de língua toca só no lado esquerdo
+545. Espremer a janela do jogo até menos de 480 px vira a fresta de um armário, um olho passa do outro lado e alguém sussurra "achei" (conquista secreta "Pela Fresta"; nunca no celular)
+546. Sair da tela cheia no capítulo III faz o rosto da Menina aparecer colado na câmera por dois quadros, uma vez só (com "Reduzir flashes" vira uma risada baixinha)
+547. Morte: a lanterna cai da mão, quica no chão e rola girando o facho pela sala
+548. Morte: o facho da lanterna para iluminando os pés de quem te pegou e depois apaga piscando
+549. Morte: dá para ouvir a lanterna batendo no chão e rolando
+550. Morte: a cena dura 0,7 s a mais antes do corte, mas não quando você morre seguido no mesmo ponto
+551. Morte: o coração da Lia bate cada vez mais fraco e para
+552. Morte: a respiração dela falha tremendo antes do silêncio
+553. Morte: a imagem vira fita mastigada, com faixas enroscadas e a cor escorrendo pelas bordas
+554. Morte: o som desce como fita arrastando num toca-fitas sem pilha, e o resto do mundo quase some
+555. Morte pelo Inspetor: os sapatos dele param junto ao seu rosto, um passo de cada lado
+556. Morte pela Ana: pés descalços chegam perto e uma risadinha abafada
+557. Morte pela Procissão: a luz das velas passa por cima de você
+558. Tela de morte que olha de volta: 25 s parada nela e a dica troca por "ainda está aí, Lia?" com um sussurro (uma vez por partida)
+559. Depois da terceira morte para a Ana, na tela de morte o foco desliza sozinho para "Menu" com um risinho e volta
+560. Raramente (1 em 40 mortes pelo Inspetor, nunca nas duas primeiras) a dica é trocada por "Fica, Lia. Aqui é quieto." numa voz grave
+561. Tentar de novo rebobina a fita: a tela faz REW com chiado antes de voltar ao ponto salvo
+562. Correção: a morte não dá mais o clarão branco quando "Reduzir flashes" está ligado
+563. Título: com o mouse parado por um minuto, a tela embaça como vidro e um dedo pequeno escreve "FICA" letra a letra, com chiado; qualquer movimento apaga
+564. Título: na terceira vez o dedo escreve "LIA" no vidro
+565. Título: com o mouse parado por dois minutos, um segundo cursor torto aparece no canto e desliza até "Novo jogo" (nunca no toque)
+566. Título de madrugada (entre meia-noite e 4h): o canto do rádio-relógio pisca "Você também não dorme?" e libera a conquista secreta "Insônia"
+567. Título de madrugada: depois de 30 s, a sombra de uma menina passa atrás das letras do título
+568. Calibragem: deixar o brilho no máximo por 10 s revela um quarto sino e uma silhueta atrás dele, que somem ao baixar o brilho (conquista secreta "O Quarto Sino")
+569. No celular, a pausa tem uma frase escrita de cabeça para baixo, que só dá para ler virando o aparelho
+570. Desempenho: o teste das lâmpadas que estouram quando ele passa roda a cada 0,15 s em vez de todo quadro
+571. Desempenho: as camadas novas de efeito ficam desligadas por completo quando apagadas, sem custo para o notebook fraco
+572. Acessibilidade: as faixas animadas da fita e o texto piscando do título param quando o sistema pede menos movimento
+
+### Áudio (103)
+
+573. Novo limitador final "Proteger os ouvidos" (ligado por padrão): nenhum pico passa de -6 dB, e o susto continua forte pelo contraste
+574. Nova opção "Faixa de som" com três modos: Cinema (picos livres), Noite (gritos contidos) e Fone baixo (tudo nivelado)
+575. Modo "Fone baixo": compressão forte com ganho de compensação, para ouvir os passos dele com o volume baixinho
+576. Quem usava a antiga opção "Som noturno" entra direto no modo Noite, sem perder a escolha
+577. Uma frase curta embaixo das opções explica o que cada faixa de som faz
+578. Os sustos (cordas, piano grave, metal, coro, impacto e gritos) ganharam um barramento próprio, separado da música
+579. Novo volume "Sustos", para quem grava baixar o pico sem tirar o peso do resto
+580. Nova opção "Sustos menos altos": um compressor só nos sustos corta o pico e suaviza o ataque, sem mexer no resto do som
+581. Com "Sustos menos altos", o agudo rasgado dos gritos é cortado acima de 3 kHz
+582. Nova opção "Tocando em": fone ou caixa de som, alto-falante do notebook ou alto-falante do celular
+583. Perfil de notebook: corta o grave que a caixinha não toca e gera harmônicos dele, então os passos do Inspetor, o sino e o gerador continuam audíveis
+584. Perfil de celular: corta abaixo de 180 Hz e realça a faixa de 2,5 kHz, onde ficam passos, estalos e a contagem da Ana
+585. Em aparelho de toque, o perfil de celular já vem escolhido
+586. Nos perfis de alto-falante, a ambiência fica 30% mais baixa para os avisos de perigo aparecerem
+587. Nos perfis de alto-falante, o som 3D usa panorama simples em vez do modo de fone, que soa estranho em caixinha
+588. Teto de sons tocando ao mesmo tempo (24, ou 14 na qualidade Baixa): o ambiente sai primeiro e os efeitos só no aperto
+589. Passos do Inspetor, vozes, coração, sustos e menus nunca são cortados pelo teto de sons
+590. Sons de ambiente a mais de 32 m nem começam a tocar
+591. Fontes contínuas a mais de 36 m saem do mixer e param de pesar no processador; voltam com fade quando você se aproxima
+592. Na qualidade Baixa, os ecos do corredor, da capela e dos túneis têm cauda mais curta e custam menos
+593. Na qualidade Baixa, as goteiras pingam menos vezes
+594. Na qualidade Baixa, só duas lâmpadas zumbem ao mesmo tempo
+595. A escolha das lâmpadas que zumbem ficou mais leve, sem recalcular distâncias a cada comparação
+596. No iPhone, um quadro de silêncio no primeiro toque destrava a saída de som
+597. O som volta também com toque e clique, e sai do estado "interrompido" do iPhone (ligação, Siri, troca de bluetooth)
+598. Se o som ficar parado no meio do jogo, aparece o aviso "O som caiu — toque aqui para religar"
+599. Se a saída de som mudar no meio do jogo (fone tirado, bluetooth caiu), o jogo pausa sozinho
+600. Nessa pausa o jogo pergunta "Ainda está de fone?", e Sim ou Não liga ou desliga o som 3D de fone na hora e salva a escolha
+601. Menus: passar o mouse ou o foco num botão faz o estalo seco de uma tecla de gravador
+602. Menus: confirmar faz o clique pesado do PLAY, com o motorzinho da fita
+603. Menus: voltar e fechar fazem um rebobinar curto
+604. Menus: arrastar um controle deslizante faz o tique de um potenciômetro
+605. Arrastar um volume toca uma amostra daquele som no volume novo (chuva, passo dele, voz, clique, susto, menu)
+606. Menus: caixas de marcar estalam como um interruptor antigo, com som diferente para ligar e desligar
+607. Menus: listas de escolha e seções que abrem fazem uma catraca
+608. Menus: tocar num botão bloqueado faz um baque surdo
+609. Novo volume "Sons dos menus"
+610. No título, às vezes um sussurro atravessa de um ouvido para o outro ao passar pelos botões, e a letra treme
+611. Em um a cada trinta desses sussurros, ele vem do lado contrário ao botão
+612. O sussurro do título não toca com "Reduzir flashes" ligado
+613. Abrir a pausa faz um "tum" grave e um rebobinar; voltar ao jogo faz o PLAY
+614. Na pausa, a cada 40 s, um passo dele soa muito longe, do lado onde ele está de verdade
+615. Abrir o diário faz o som da capa do caderno; fechar, o caderno batendo
+616. Trocar de aba no diário vira a página
+617. No Pesadelo, abrir o diário faz barulho: o Inspetor ouve a até 4 m
+618. Fechar uma nota dobra o papel
+619. Cumprir um objetivo termina com uma caneta riscando o próximo
+620. Trocar a pilha tem som próprio de mola e tampa, em vez do clique genérico
+621. Trocar a pilha faz um pouco de barulho (2,5 m)
+622. O interruptor da lanterna estala em dois tempos (aperta e solta), com som diferente ao ligar e ao desligar
+623. Ao ligar a lanterna, o filamento chia antes de firmar
+624. Ao desligar, fica um "tim" fino do bulbo esfriando
+625. O zumbido no ouvido depois de golpe e grito ficou mais agudo (6 a 7,6 kHz) e mais longo
+626. Durante o zumbido o mundo volta aos poucos, de abafado a claro; nesse tempo os passos dele chegam abafados
+627. Badalada do sino a menos de 5 m deixa o ouvido zunindo
+628. Nova opção "Sem zumbido no ouvido" para quem tem zumbido de verdade: tira o tom e abafa menos
+629. Prender o ar escondida abafa o mundo aos poucos, como ouvido tampado
+630. Quanto menos fôlego sobra, mais longe o mundo fica
+631. Com o fôlego quase no fim, a garganta da Lia aperta num "mm" tremido
+632. Com o Inspetor a menos de 10 m, a chuva, o vento, o zumbido das lâmpadas e o drone caem até 45%: o silêncio chega antes dele
+633. A música de caça some quando ele para para dar o bote: o vazio avisa
+634. No bote, o resto do mundo também quase silencia
+635. Medo alto traz um cluster agudo que bate devagar, com folga para entrar e sair (nunca fica piscando)
+636. Quando ele desiste da busca, a Lia solta um suspiro trêmulo
+637. Depois de 4 a 7 minutos sem perigo, o mundo inteiro se cala por 6 a 10 s, sobrando só o corpo da Lia
+638. Em 30% desses silêncios, uma porta bate longe
+639. Com vida abaixo de 40, a respiração ganha um chiado no peito
+640. Com vida abaixo de 40, correr arranca um gemido curto
+641. Com vida abaixo de 20, a perna ferida arrasta no chão a cada dois passos
+642. O passo arrastado faz um pouco de barulho para o Inspetor
+643. No pânico, o sangue bate nos ouvidos no ritmo do coração
+644. Agachar e levantar farfalham a roupa, e às vezes o joelho estala
+645. Começar a correr puxa o ar
+646. No agarrão, a Lia grita com a boca tapada
+647. Ao morrer, o coração dá três últimas batidas, cada vez mais fracas
+648. Os passos da Lia alternam entre a esquerda e a direita
+649. Cada pé tem um tom levemente diferente
+650. Correção: passos em salas sem piso marcado soavam como grama; agora soam como a madeira desenhada no chão
+651. No cemitério, os passos afundam em terra úmida, com som próprio
+652. Os passos do Inspetor também mudam na terra do cemitério
+653. Porta aberta devagar (ALT) range baixo, longo e quase mudo
+654. Porta aberta correndo range alto e curto e bate no batente
+655. O barulho da porta para o Inspetor segue o jeito de abrir: devagar 40% menos, correndo 30% mais
+656. Som atrás de porta fechada passa abafado em 600 Hz e 8 dB mais baixo
+657. Com a porta abrindo (entreaberta), o som passa em 2 kHz
+658. Porta aberta deixa o som passar quase limpo, e passagem sem porta soa mais clara que antes
+659. Enquanto uma porta se mexe, o abafamento dos sons contínuos atualiza cinco vezes mais rápido: abrir com algo do outro lado faz o som "abrir" de repente
+660. A chuva vem em ondas: uma camada de gotas grossas cresce e some devagar
+661. Tábuas soltas no corredor de cima e ladrilhos soltos nos corredores do térreo, sempre nos mesmos lugares, mais claros e com rachadura
+662. Pisar no chão solto faz barulho alto (o Inspetor ouve a até 7 m); agachada é metade, devagar um pouco menos, correndo mais
+663. O ladrilho solto bate em dois toques; a tábua range
+664. O Inspetor também pisa no chão solto, e dá para ouvir onde ele está
+665. Andando perto dos armários, o Inspetor passa a mão neles: um toc-toc de madeira em 3D
+666. No armário onde você está, a batida vem colada no ouvido, a câmera treme, o controle e o celular vibram e o medo sobe
+667. Ao trocar de mapa ou carregar o jogo, o som entra num fade de 1,2 s, sem estalo
+668. Ao voltar do checkpoint, o som não carrega o pânico da morte: silêncios, zumbido, coração e corte de som recomeçam limpos
+669. Nova opção "Tique ao mirar em algo usável": um toque grave em 3D quando a mira acha algo que se usa pela primeira vez
+670. O tique na mira já vem ligado para quem escolheu legendar todos os sons
+671. Novo botão "Testar fone": a Ana sussurra da esquerda, da direita e de trás de você
+672. Novo botão "Som padrão" volta todos os ajustes de som ao original
+673. Cada volume mostra a porcentagem ao lado
+674. Os controles de volume têm nome para leitor de tela
+675. Legendas novas: batidas no armário, chão solto, porta batendo longe, passo longe, mola da lanterna e grito abafado no agarrão
+
+### Visual e luz (94)
+
+676. A mão da Lia aparece em primeira pessoa segurando a lanterna: manga de moletom suja, mão com dedos fechados no cabo e lanterna de metal lascado com aro e lente
+677. A mão balança no ritmo dos passos, bem mais quando você corre
+678. Ao virar rápido a mão atrasa e volta com mola, como se tivesse peso
+679. Com medo alto ou ferida, a mão treme junto com o feixe
+680. Agachada, a mão desce um pouco; correndo, ela abaixa e inclina a lanterna
+681. Ao se esconder a mão desce para fora da tela e volta quando você sai
+682. Ao olhar para trás (Q) a mão sai do quadro
+683. A lente da lanterna na mão acende e apaga junto com o feixe e muda de cor com a pilha fraca
+684. Ao apertar F o polegar afunda o botão da lanterna
+685. Sacudindo a lanterna sem pilha (segurar R), a mão chacoalha a lanterna e a outra mão bate nela
+686. Apertar F com a lanterna falhando faz a mão livre dar tapas na lanterna
+687. Ao trocar a pilha a lanterna desce, a tampa gira e a pilha velha cai para fora da tela
+688. Prendendo o ar fora do esconderijo, a mão livre sobe e tapa a boca
+689. Com o fôlego acabando, os dedos na boca tremem e escorregam
+690. Durante o curativo as duas mãos descem e a mão livre enrola um rolo de gaze
+691. Segurando G aparece a garrafa verde na mão livre e o braço recua conforme a força do arremesso
+692. Ao abrir uma porta de perto, a mão livre espalma e empurra a folha
+693. Com a Procissão passando perto, a Lia aperta a lanterna contra o peito
+694. Com o Inspetor a menos de 3 m a mão treme tanto que o feixe samba na parede
+695. A mão é iluminada pelo próprio feixe e pelas lâmpadas próximas, e fica azulada no clarão do relâmpago
+696. A mão é desenhada por cima da cena: nunca atravessa parede e não deforma quando o campo de visão muda
+697. Parada, a mão sobe e desce com a respiração; prendendo o ar ela congela
+698. Ao morrer a Lia solta a lanterna e a mão cai para fora do quadro
+699. Nova opção "Mostrar a mão" na tela de Imagem e na pausa
+700. A lente da lanterna ganhou textura: anel mais claro, centro quente, riscos e poeira projetados no círculo de luz
+701. Ao ar livre na chuva, gotas na lente da lanterna mancham o círculo de luz
+702. Ao ligar, o filamento acende laranja e sobe para o branco em 120 ms
+703. Ao ligar, o cone abre de 60% até o cheio e passa um pouco do brilho antes de assentar
+704. Ao desligar, o filamento fica laranja por um instante antes de apagar
+705. Pilha nova: depois de acender, a luz fica 20% mais forte e mais branca por um segundo
+706. Com a pilha abaixo de 10% o feixe respira fraco, como filamento morrendo
+707. Encostada na parede, a lanterna faz um círculo pequeno e muito forte
+708. Ao morrer, o feixe despenca da mão girando até o chão e pisca quando a lanterna bate
+709. No golpe o mundo congela por 70 ms antes da dor
+710. No golpe a cabeça é jogada para longe de quem bateu e volta com mola
+711. A borda vermelha do golpe nasce do lado de onde veio o ataque
+712. O Inspetor e a Procissão deixam três arranhões de unha na tela, do lado do golpe, mais grossos com mais dano
+713. O toque da Menina deixa marcas de mãozinhas azuladas e geladas na tela
+714. No golpe a imagem perde a cor por um instante e volta
+715. O golpe derruba o feixe da lanterna para baixo e de lado, e a luz falha por um instante
+716. Abaixo de 25 de vida o mundo vai perdendo a cor até quase preto e branco
+717. O curativo devolve a cor com uma onda quente que sai do centro da tela
+718. Ao pegar um item, ele voa em arco até a mão encolhendo e girando, em vez de sumir
+719. Ao pegar um item, um clarão quente rápido marca o lugar
+720. Peças de objetivo deixam um rastro de poeira dourada no caminho até a mão
+721. O inventário do canto dá um pulo com brilho a cada item pego
+722. Um "+1" sobe ao lado do inventário quando você pega algo (uma estrela nas peças de objetivo)
+723. A primeira vez que o feixe passa por um item ele dá um único reflexo metálico (nunca no Pesadelo)
+724. Portas fechadas de salas acesas deixam uma faixa fina de luz no chão, que pisca com a lâmpada lá de dentro
+725. Quando o Inspetor, a Procissão ou a Menina passa do outro lado, sombras de pés cortam a faixa de luz da porta
+726. Cada lâmpada acesa pinta uma mancha de luz no chão, que balança com o bulbo e falha junto com ele
+727. Portas batendo soltam poeira do batente
+728. Porta batendo perto faz a lâmpada mais próxima balançar no fio e falhar uma vez
+729. Ao cumprir um objetivo, as lâmpadas da sala dão um respiro de luz (não na caça nem com Reduzir flashes)
+730. Cacos de vidro no chão cintilam quando a lanterna passa
+731. Os olhos da Menina refletem a lanterna como dois pontinhos quando ela está longe
+732. Segredo: num canto escuro, dois olhinhos refletem a luz e somem (uma vez por capítulo)
+733. Agachar desce a câmera com mola: passa um pouco do ponto e volta
+734. Andar de lado inclina a câmera de leve para o lado do passo
+735. Correndo, virar rápido inclina a câmera para dentro da curva
+736. Parada, a câmera sobe e desce com a respiração, mais rápido com medo
+737. Prender o ar congela a respiração da câmera; ao soltar, ela afunda com a puxada de ar
+738. Depois de correr, parada, o peito sobe e desce ofegante
+739. O balanço muda com o piso: a água é lenta e funda, a grama e a terra escorregam de lado e a madeira afunda no passo
+740. Sons fortes por perto viram a cabeça de leve para o lado de onde vieram
+741. Entrar no esconderijo deixou de ser um corte: a câmera desliza para dentro em 0,35 s
+742. Sair do esconderijo também desliza para fora
+743. Escondida, a câmera sobe e desce com o peito, mais rápido com medo; prender o ar para o movimento
+744. No armário as frestas embaçam aos poucos com a respiração; prender o ar para de embaçar
+745. Ao voltar do checkpoint ou trocar de mapa, a tela abre como pálpebras com um piscar duplo (com câmera mínima, só um fade)
+746. Ao ar livre, olhar para o céu faz gotas de chuva baterem na tela
+747. As gotas grandes escorrem e todas secam rápido quando você entra num lugar coberto
+748. No clarão do relâmpago as gotas na tela se acendem
+749. Correndo debaixo de chuva a tela também molha
+750. Nos túneis, correr na água joga respingos na tela
+751. Prendendo o ar, as bordas da tela escurecem aos poucos, também fora do esconderijo
+752. Com o fôlego preso acabando, as bordas ficam roxas e a imagem treme
+753. A nota aberta treme na mão com o medo e mais ainda com o Inspetor por perto
+754. Com medo acima de 80 a mira e o texto de interação tremem; prender o ar firma tudo
+755. Ao morrer, o último quadro vira negativo por um instante (não com Reduzir flashes)
+756. Depois da morte a imagem queima das bordas para o centro como película presa no projetor
+757. Na queda da morte a câmera quica uma vez no chão antes de parar
+758. Com o filtro de fita, cada capítulo começa com "▶ PLAY SP" e o contador da fita rodando no canto
+759. Segredo: digitar REBOBINA no menu principal liga (ou desliga) o filtro de fita
+760. Correndo, os pés levantam poeira; na água sobem respingos e no cemitério, lama
+761. No frio, soltar o ar preso solta uma nuvem grande de bafo
+762. Depois de sair da água ou da chuva, a Lia deixa pegadas molhadas que secam sozinhas
+763. Segredo: às vezes pegadas pequenas e descalças aparecem indo até um armário (uma vez por capítulo)
+764. A poeira no feixe fica mais densa em salas velhas e fechadas (enfermaria, depósito, biblioteca, rouparia, sótão) e some na chuva
+765. Nova opção "Estilo fita 240 linhas": imagem pixelada de propósito, que roda leve em computador fraco
+766. O estilo fita ganha pontilhado e linhas de varredura por cima da imagem
+767. Texturas no tamanho da qualidade: na Alta o chão fica nítido com a lanterna rasante, na Baixa fica mais leve
+768. Nova opção "Realçar o que dá para usar": contorno claro e pulsante no que está na mira (desligada no Pesadelo)
+769. Com a paleta para daltonismo, o contorno fica amarelo
+
+### Jogabilidade (110)
+
+770. Abrir a porta correndo faz ela escancarar e bater na parede, com o dobro do barulho, e ele ouve
+771. Abrir a porta andando devagar (ALT) ou agachada faz a folha girar lenta, com um rangido baixinho e quase sem ruído
+772. A porta gira na velocidade do seu passo: lenta devagar, normal andando, de uma vez correndo
+773. Segurar E numa porta abre aos poucos: a folha acompanha o tempo que você segura
+774. Segurar E numa porta aberta fecha aos poucos, em silêncio
+775. Soltar o E no meio deixa a porta entreaberta: dá para espiar e ouvir pela fresta, mas não passar
+776. Empurrar uma porta que já está entreaberta faz bem menos barulho que abrir do zero
+777. Encostar uma fresta quase fechada termina de fechar a porta sem barulho
+778. O texto da porta agora diz "tocar: rápido · segurar: em silêncio" e muda conforme ela está aberta, fechada ou entreaberta
+779. O texto da porta mostra um sinal do tamanho do barulho que ela vai fazer no seu passo atual
+780. Correndo, o texto da porta avisa que ela vai bater
+781. Bater a porta correndo na cara do Inspetor deixa ele tonto por mais tempo
+782. A porta batida dá um tranco na câmera e uma vibração no controle e no celular
+783. A porta que bate quica de leve no batente antes de parar
+784. Primeira vez que a porta bate: a Lia ensina que com ALT ela abre devagar
+785. Correção: segurar E numa porta parava no meio quando a folha girando saía da mira
+786. Segurar E numa porta não é mais cancelado por a porta se mexer, só por você se afastar ou se esconder
+787. Um E apertado um instante antes de o armário, a cama ou o item entrarem na mira passa a valer quando eles entram
+788. Se a mira escapa do esconderijo por um instante no meio da fuga, o E ainda vale (fora do Pesadelo)
+789. Trocar a pilha agora leva 1,2 s no escuro, com o anel de progresso na tela
+790. Ao trocar a pilha, a pilha velha cai, quica no chão e faz um barulho pequeno que entra no ruído
+791. Escondida, a pilha velha não cai no chão: só tilinta baixinho na mão
+792. A pilha nova faz a lanterna voltar com um clarão forte uma vez (suave com "Reduzir flashes")
+793. A Lia baixa um pouco a cabeça enquanto troca a pilha
+794. Primeira troca de pilha avisa que ela leva um segundo no escuro e que é preciso escolher a hora
+795. Apertar F no meio da troca avisa que a pilha está sendo trocada, em vez de não fazer nada
+796. A pilha nova dá uma vibração macia no controle e no celular
+797. As dicas de tecla usam o nome do aparelho em uso: botões do toque, botões do controle ou teclas do teclado
+798. Dica de agachar, de curativo, de pilha, de esconderijo e de prender o ar falam a tecla certa no toque e no controle
+799. A dica do agarrão diz "arraste o dedo" no celular e "sacuda o analógico" no controle, em vez de sempre falar do mouse
+800. A garrafa que cai na madeira quica uma vez com um tinido e só estoura meio metro adiante
+801. A garrafa que cai na terra ou na grama não quebra e quase não faz barulho (atrai pouco)
+802. A garrafa que cai no tapete estoura abafada, com bem menos alcance
+803. O anel da mira da garrafa muda de cor e de tamanho conforme a superfície e o barulho que ela vai fazer lá
+804. Primeira garrafa na terra: a Lia nota que ali ela não quebra
+805. Os cacos da garrafa quebrada ficam no chão por dez minutos: dá para criar o seu próprio campo minado
+806. Os cacos brilham e cintilam quando a lanterna passa por eles
+807. Pisar em cacos andando devagar faz metade do barulho de pisar andando normal
+808. A mira da garrafa não cria objetos novos a cada quadro (menos travadinhas em notebook fraco)
+809. Todos os cacos usam uma geometria só (menos memória e menos travadas ao quebrar garrafa)
+810. As ondas na água a cada passo usam uma geometria só, criada uma vez
+811. O teste de parede entre você e o Inspetor no bote reaproveita o mesmo raio a cada quadro
+812. O corpo da Lia tem peso: acelera e freia em cerca de 0,12 s em vez de parar na hora
+813. Correndo, a curva derrapa um pouco antes de pegar a nova direção
+814. Correr contra parede, mesa ou batente dá um baque surdo, um tranco na câmera e um gemido curto, e ele ouve
+815. Trombar correndo gasta fôlego
+816. Primeira trombada: a Lia avisa que correr às cegas faz barulho
+817. Correr olhando para trás (Q) e trombar em alguma coisa derruba a Lia
+818. No pânico (medo acima de 85), virar a câmera de repente correndo pode fazer a Lia tropeçar
+819. O tropeço derruba a câmera meio metro, balança a lanterna, deixa a Lia lenta por 0,8 s e faz barulho médio
+820. O tropeço nunca acontece duas vezes em 20 s e nunca acontece no Fácil
+821. O som do passo cai exatamente quando a cabeça desce no balanço da câmera
+822. Agachar e levantar seguem uma curva com mola e uma leve passada do ponto, em vez de deslizar reto
+823. Agachar e levantar fazem um farfalhar de roupa
+824. Depois de muito tempo agachada, levantar às vezes estala o joelho, com um ruído pequeno que ele pode ouvir
+825. No Pesadelo o joelho estala com mais frequência e mais alto; no Fácil, nunca
+826. Levantar segurando ALT nunca estala o joelho
+827. Na primeira vez que o joelho estala, a Lia comenta e ensina a levantar devagar
+828. Parada por 40 s numa sala segura, longe do perigo, a Lia senta no chão e o medo passa mais rápido
+829. Sentada, a câmera fica mais baixa; andar ou apertar C faz a Lia levantar
+830. Primeira vez sentada: a Lia explica que o medo passa mais rápido assim
+831. Salas de madeira do internato têm 2 a 4 tábuas soltas fixas, marcadas por uma mancha mais escura no chão
+832. Pisar numa tábua solta range alto e chama o Inspetor; agachada ou devagar, range baixo
+833. Correndo sobre uma tábua solta, o rangido vai ainda mais longe
+834. Primeira tábua que range: a Lia ensina que as manchas escuras denunciam as soltas
+835. Com pouca vida, a Lia manca: o balanço da câmera fica desigual
+836. Parada, a respiração mexe a cabeça de leve, mais forte quando está sem fôlego
+837. Andando de lado, a câmera inclina de leve para o lado do passo
+838. Prender o ar firma o corpo: o tremor da câmera causado pelo medo cai 70%
+839. Com a Menina perto e o medo alto, a Lia lembra que prender o ar firma a mão da lanterna
+840. Entrar no armário tem gesto: a câmera vai até ele e gira para a fresta enquanto a porta fecha
+841. Sair do esconderijo também tem gesto: a câmera desliza para fora em vez de pular
+842. Escondida, a luz da fresta escurece quando o Inspetor para bem na frente e cobre a luz
+843. Entrar no esconderijo devagar (ALT) ou agachada faz metade do barulho
+844. Entrar no armário correndo bate a porta dele, dá um tranco e faz quase o dobro do barulho
+845. Com o Inspetor por perto, o texto do esconderijo lembra que com ALT ou agachada se entra sem barulho
+846. Sair do esconderijo com um toque em E segurando ALT também é silencioso
+847. A dica de espiar escondida ensina as duas formas de sair em silêncio, com as teclas do aparelho em uso
+848. O HUD de postura agora mostra "caída", "trocando a pilha" e "sentada"
+849. Quando o Inspetor acerta, o mundo para por um instante (hit-stop) e o som abafa, dando peso ao golpe
+850. O agarrão também congela o mundo por um instante antes de começar
+851. Golpe e agarrão dão uma vibração forte no controle e no celular
+852. Com "Reduzir flashes", o tranco do golpe é mais suave
+853. Escapar do bote por um fio (ele erra e bate no chão, ou a mão passa por cima) deixa o mundo em câmera lenta por 0,4 s, com o som abafado e a Lia soltando o ar
+854. Quando o Inspetor desiste da caçada com você viva, toca um acorde baixo de alívio, a Lia solta o ar e o controle vibra macio
+855. Ao escapar de uma caçada aparece por 2 s um contador discreto "escapou 2x"
+856. O fim de capítulo mostra quantas vezes ele desistiu de você e quantas você escapou por um fio
+857. Nova opção "Ritmo do mundo" (100%, 85%, 70%): o Inspetor, a Ana, a Procissão e os eventos ficam mais lentos e a Lia não muda
+858. O ritmo do mundo não vale no Pesadelo nem no Uma Vida, e o fim de capítulo marca a noite como assistida
+859. Nova opção "Avisos antecipados de perigo": a Procissão avisa 2 s antes (fora do Pesadelo)
+860. Com os avisos antecipados, a primeira aparição de cada ameaça no capítulo mostra uma frase curta com a regra dela
+861. Nova opção "Ajuda para mirar": sobre algo que dá para usar, a mira fica 38% mais lenta (atrito, nunca puxa); ligada por padrão no toque e no controle
+862. Nova opção de sensibilidade própria escondida e mirando a garrafa (padrão 60%): a fresta e o arco da garrafa não passam mais do ponto
+863. A sensibilidade fina e o atrito valem também no controle e no toque
+864. Nova opção "Realçar o que dá para usar": o objeto na mira ganha um brilho fraco pulsando (desligado no Pesadelo, nunca nas portas)
+865. Nova opção "Sentir os passos dele": cada passo do Inspetor a menos de 10 m vira uma vibração, mais forte quanto mais perto e do lado em que ele está
+866. Nova opção "Reinício rápido": a partir da 3ª morte no mesmo trecho, o jogo volta sozinho em 2 s (qualquer tecla espera)
+867. Nova opção "Jogar só com o mouse": botão esquerdo anda, direito usa, a roda escolhe a ação, o botão lateral de trás executa e o da frente agacha
+868. Jogando só com o mouse, a ação escolhida aparece em letra pequena embaixo da mira
+869. Ao pegar um item, ele voa até a mão em 0,25 s, girando e encolhendo, em vez de sumir
+870. Pegar item tem som próprio por tipo: pilha e metal tilintam, curativo é papel, garrafa é vidro, galão é plástico
+871. Ao pegar pilha, curativo ou garrafa, o número do inventário dá um pulo e brilha
+872. Pegar um item dá uma vibração curtinha no controle e no celular
+873. TAB, J, O e P não abrem nada durante o agarrão nem nos últimos números da contagem da Ana: aparece "Agora não." em vermelho
+874. O botão Diário do toque e o Y do controle também ficam travados no agarrão
+875. Novas dicas na tela de morte para quem morreu por porta batida, tábua solta, trombada, tropeço ou joelho estalado
+876. Novas legendas de som: a tábua range, seu joelho estala, você bateu em alguma coisa, você tropeçou, a porta bate na parede, a pilha velha quica no chão
+877. Correção: embaixo da cama, o controle e o toque tinham limites de olhar menores que os do mouse
+878. Correção: o novo módulo de jogabilidade entra no cache para jogar sem internet
+879. O QA confere que apertar TAB e P durante o agarrão não abre o diário nem a pausa
+
+### Interface (120)
+
+880. Focar um botão de menu toca um tique curto de máquina de escrever, com altura sorteada para não repetir
+881. Confirmar um botão de menu dá um carimbo grave
+882. Voltar, fechar ou cancelar num menu faz som de papel
+883. Arrastar um controle deslizante faz a catraca de um toca-fitas
+884. Trocar uma opção de lista faz o estalo de um interruptor velho
+885. Nova opção "Sons dos menus" para desligar esses sons (eles seguem o volume geral)
+886. O botão em foco ganha uma chama de vela que tremula no lugar do pontinho vermelho
+887. A letra do botão em foco esquenta como filamento de lâmpada
+888. Navegar rápido demais pelos botões apaga a chama, que solta um fiapo de fumaça
+889. Pausa, diário, nota, cofre, opções, painéis, confirmação e o portão final entram com um fade curto em vez de surgir de uma vez
+890. Abrir a pausa, as opções, os painéis e o "Como jogar" passa por um corte de fita VHS de 0,17 s com chiado
+891. Com "Reduzir flashes" ligado, o corte de fita vira um escurecimento simples
+892. Na pausa, a cena congela atrás do menu sem cor, escura e desfocada, em vez de uma tela preta
+893. O HUD some atrás do menu de pausa, sem barras e objetivo por cima
+894. A pausa mostra uma foto instantânea torta do momento em que você parou, em sépia e com grão
+895. A foto da pausa tem a hora da noite e o nome da sala escritos à caneta embaixo
+896. A foto da pausa respira devagar, como se a imagem ainda estivesse viva
+897. A pausa mostra um contador de fita (PAUSA ▌▌ e o tempo jogado) no canto
+898. Segredo: depois de 40 s parada na pausa, uma vez por noite, uma figura pequena aparece no escuro da foto
+899. Passar o mouse na figura da foto faz ela sumir, a pausa escreve "Ela está contando." e libera a conquista secreta "Revelação"
+900. Na tela de morte, o título escorre de cima para baixo antes de firmar
+901. A tela de morte entra aos poucos (frase, causa, dica, botões), mas "Tentar de novo" funciona desde o primeiro quadro
+902. Na tela de morte, o coração bate nas bordas cada vez mais fraco até parar
+903. O mini mapa da morte se desenha da esquerda para a direita
+904. A tela de morte mostra um contador de fita parado (■ STOP e o tempo da noite)
+905. A tela de morte diz a que distância estava o esconderijo mais perto ("O esconderijo mais perto estava a 2,4 m.")
+906. Morrendo para a Menina, a tela diz a que distância estava a porta mais perto e lembra que ela não abre portas
+907. "Tentar de novo" rebobina a fita: linhas de VHS, a imagem entorta e toca um chiado de fita voltando
+908. No fim de capítulo, os pontos de cada critério sobem um a um com tique de catraca
+909. O rank do fim de capítulo bate como carimbo e dá um tranco na tela
+910. Rank S no fim de capítulo toca o sino; os outros dão um carimbo seco
+911. Novo selo carimbado "NINGUÉM TE OUVIU" quando você termina o capítulo sem ser perseguida
+912. O fim de capítulo desenha a curva do seu coração no capítulo, em verde de monitor, com batidas nos picos
+913. Os picos da curva ganham o símbolo de quem causou (◆ Inspetor, ○ Menina, △ Procissão, ◇ ele perto) e as mortes viram ✕
+914. O maior pico vira uma frase: "Seu coração quase parou em (sala), às (hora)."
+915. Medidor de pulo: um tranco forte do mouse logo depois de um susto conta como pulo, e o fim de capítulo diz quantas vezes você pulou e onde foi o maior
+916. A tela final mostra quantas vezes você pulou na noite inteira e onde foi o maior susto
+917. F8 marca o momento (para quem grava ou faz live) com o horário da sessão, a hora da noite, a sala e o que estava acontecendo
+918. O fim de capítulo lista os momentos marcados com F8 para achar o trecho na gravação
+919. Ao levar um golpe, uma mancha vermelha aparece na borda do lado de onde ele veio, mais forte quanto maior o dano
+920. Nova opção para desligar a mancha do golpe
+921. Quando a Menina conta, um anel de dez tracinhos em volta da mira acende um a cada número (desliga junto com o olho da Menina)
+922. No DEZ, o anel inteiro fica branco e pisca
+923. Ao cumprir um objetivo, o próximo aparece no meio da tela por dois segundos e voa para o canto
+924. O objetivo novo vem com uma batida grave curta
+925. O objetivo novo não aparece no meio da tela durante caçada ou Procissão, para não atrapalhar a fuga
+926. Objetivo novo é anunciado para leitor de tela
+927. Com o cronômetro, a parcial aparece grande embaixo da mira por 1,2 s com tique de relógio (some se ele estiver a menos de 8 m)
+928. Parciais do cronômetro ganham ▼ (melhor) e ▲ (pior), para não depender só de verde e vermelho
+929. A vela de "salvo" não acende mais no meio de uma caçada
+930. A vela de "salvo" solta uma fumacinha ao apagar
+931. Nova opção "Batimento da Lia no canto": o medo vira BPM (60 a 180) com um coração batendo no ritmo, para lives
+932. Item pego voa da mira até o inventário no canto
+933. O inventário pulsa e acende quando ganha um item
+934. Chaves e objetos das crianças voam dourados e tocam um som de achado
+935. O texto de interação ganha um ícone do verbo (esconder, ler, porta, girar, tocar fita, ouvir, falar, pegar)
+936. No celular, o botão Usar troca o rótulo pelo verbo da ação (Esconder, Ler, Abrir, Forçar, Tocar...)
+937. O texto de interação treme e borra de leve com o medo alto ou o Inspetor a menos de 5 m
+938. O texto de interação fica avermelhado quando a ação faz barulho e ele está a menos de 10 m
+939. Nas ações de segurar (forçar, girar, cavar), um tique sobe de tom a cada quarto do anel
+940. O anel de segurar fica branco e brilhante nos últimos 20%
+941. Terminar uma ação de segurar dá um pulso no anel e um som de pronto
+942. No celular, cada quarto da ação de segurar dá uma vibração curta
+943. A barra de prender o ar fica vermelha e treme quando está no fim
+944. A barra de fôlego muda de cor quando a Lia está cansada
+945. A barra da pilha ganha três gomos para ler a carga de relance
+946. O indicador de fita tocando ganha ponteiros de volume que mexem
+947. Fala do Inspetor ou da Ana fora da tela ganha seta (◂ ▸ ▾) e "perto" ou "longe" ao lado do nome
+948. O aviso de conquista borra como tinta ao sumir
+949. O nome do capítulo se espalha devagar enquanto aparece
+950. "Clique para voltar ao jogo" respira e lembra que ESC abre a pausa
+951. A caixa de diálogo sobe ao aparecer
+952. O ícone da aba muda com a noite: sino em paz, olho aberto com a Menina, mão vermelha na caçada, vela na pausa, olho fechado com a aba escondida
+953. Título: o cursor vira uma lanterna que revela frases de giz escondidas na parede ("ELA CONTA ATÉ DEZ", nomes das crianças, riscos de contagem)
+954. Título: parado por 20 s, a luz da lanterna começa a falhar
+955. Título: com controle ou teclado, a lanterna segue o botão em foco
+956. Título: depois de 45 s sem mexer, o rádio-relógio chia
+957. Título: depois de 90 s parado, uma silhueta pequena aparece no canto e some quando você mexe o mouse
+958. Segredo: na quinta vez que ela aparece, a silhueta fica um instante a mais e libera a conquista secreta "Ela Estava Esperando"
+959. Segredo: digitar MOACIR no título apaga o rádio-relógio, some com o cursor por 20 s e cada tecla faz um estalo de língua do lado oposto ao mouse; no fim, "Volte para a cama." e a conquista secreta "Ele Ouviu o Nome"
+960. Voltar ao menu liga a tela como uma TV de tubo
+961. O título mostra uma linha curta do que cada botão faz quando ele está em foco
+962. O "Continuar" mostra o objetivo que faltava quando você parou
+963. O "Continuar" mostra há quanto tempo foi o último salvamento
+964. Continuar depois de mais de 12 horas longe: a Lia lembra o capítulo, o objetivo e a última coisa que descobriu
+965. Novo "Como jogar" no título e na pausa: uma folha do caderno com as quatro regras da noite e desenhos
+966. O "Como jogar" mostra os controles certos para teclado, controle ou toque
+967. Antes do primeiro jogo, um aviso no tom do jogo sobre o conteúdo, os sustos e as luzes piscando, com "Reduzir flashes e entrar"
+968. Se o sistema pede menos movimento, o aviso já vem com "Reduzir flashes" em foco
+969. Opções: campo de busca que filtra os ajustes enquanto você digita
+970. Opções: um ponto dourado marca cada ajuste que está diferente do padrão
+971. Opções: prévia ao vivo das legendas com o tamanho, fundo, símbolos e contraste escolhidos
+972. Opções abertas pela pausa: mexer no brilho ou no campo de visão deixa o painel de lado e transparente para ver o jogo de verdade atrás
+973. "Restaurar padrões" agora pede confirmação
+974. A roda do mouse muda o valor do controle deslizante sob o cursor
+975. Home, End, PageUp e PageDown pulam para o primeiro e o último item dos menus
+976. As confirmações (voltar ao menu, recomeçar, começar do zero) começam com o foco na opção que não perde nada
+977. Nas opções, a linha em foco fica destacada e as listas e controles deslizantes ganham contorno visível
+978. Nova opção "Letra fácil de ler (dislexia)": fonte sem serifa do sistema, mais espaço entre letras e linhas, sem itálico, em todo o jogo
+979. Nova opção "Tamanho da interface" (80% a 150%) que aumenta barras, inventário, cronômetro, botões de toque e menus, separada do texto
+980. Nova opção para colocar as legendas no alto da tela (útil no celular, onde os dedos cobrem a parte de baixo)
+981. Nova opção "Ler os menus em voz alta": lê em português o botão em foco, a opção escolhida e o valor do controle deslizante
+982. Nova opção "Menos movimento nos menus", automática pelo sistema, que tira tremores, chamas, cortes e animações das telas
+983. Pausa, opções, diário, morte, cofre, notas e fim de capítulo são anunciados como janelas para leitor de tela
+984. As abas do diário são anunciadas como abas, com a aba aberta marcada
+985. Controles deslizantes anunciam o valor por extenso
+986. Trocar de aba no diário vira a página com som de papel
+987. O diário abre com som de papel e fecha com o estalo de um elástico
+988. Cada aba do diário mostra o número do atalho (1 a 9)
+989. A aba "Ouvido" do diário mostra há quanto tempo cada fala ou som aconteceu
+990. Abrir uma nota faz som de papel
+991. No celular, deslizar o dedo para o lado troca a aba do diário
+992. No celular, as teclas do cofre e do quadro ficam maiores
+993. No celular, nota, diálogo, diário, cofre, morte e fim de capítulo dizem "toque" em vez de nomes de tecla
+994. No controle, a morte e o fim de capítulo dizem "A" em vez de E
+995. No celular, tocar na tela no fim de capítulo segue em frente
+996. No celular, errar o código do cofre vibra
+997. No celular, os botões dos menus têm altura mínima de 44 px para o dedo
+998. Barras de rolagem finas no tom do caderno nos painéis, no diário e nas notas
+999. Nos painéis de capítulos e conquistas, a linha sob o mouse se destaca
+
+### Progressão e rejogabilidade (116)
+
+1000. Segurar BACKSPACE por 1 segundo recomeça o capítulo atual do zero na hora, sem passar pela tela de morte nem pelo menu
+1001. Um anel dourado enche no centro da tela enquanto você segura, com o aviso "segure para recomeçar o capítulo"
+1002. No controle, segurar SELECT faz o mesmo reinício (funciona até com o diário aberto)
+1003. No celular, três dedos parados na tela por 1,5 segundo recomeçam o capítulo
+1004. Sem o cronômetro ligado, o reinício pede confirmação: é preciso segurar de novo em até 4 segundos
+1005. O reinício na hora zera o tempo, o dano, as perseguições e as mortes do capítulo: a nova tentativa conta limpa para o rank
+1006. O reinício na hora também funciona direto da tela de morte
+1007. A pausa mostra quantas vezes você recomeçou o capítulo naquela noite
+1008. Com o cronômetro ligado, a pausa ensina o atalho de reinício (BACKSPACE, SELECT ou três dedos)
+1009. Estatísticas contam quantos capítulos você recomeçou na hora
+1010. Modo corrida: da terceira morte seguida em diante, a tela de morte já abre com "Tentar de novo" em destaque e com o foco nele
+1011. A tela de morte avisa quando você morreu no mesmo lugar pela 2ª, 3ª, 4ª vez
+1012. Novo botão "Guardar o último instante" na tela de morte: baixa em PNG o quadro do golpe, com o monstro na sua cara
+1013. A foto da morte sai carimbada como fita VHS: PLAY, linhas de varredura, a data de hoje em 1994, a hora da noite e o capítulo
+1014. Ao entrar em cada capítulo pela primeira vez, o jogo tira sozinho uma foto da tela depois de 4 segundos, sem o HUD
+1015. O menu Capítulos virou um álbum de polaroides tortas com a foto da sua noite em cada capítulo
+1016. Cada polaroide traz a data e a hora reais em que você chegou ali, escritas a caneta azul
+1017. Capítulos ainda trancados aparecem como uma polaroide queimada nas bordas
+1018. Estatísticas contam quantas polaroides da sua noite você já tem
+1019. O jogo grava a rota da Lia em cada capítulo, segundo a segundo, com o que ela estava fazendo
+1020. Botão "Rota" no menu Capítulos desenha a planta do mapa com o caminho da última vez
+1021. A rota é colorida: verde andando, amarelo parada, vermelho escondida e laranja perseguida
+1022. A rota do seu recorde aparece pontilhada por cima, para ver onde você perdeu tempo
+1023. O fim de capítulo avisa que a rota daquele capítulo ficou gravada
+1024. Estatísticas abrem com o contador "O internato inteiro: X%", com barra de progresso
+1025. O 100% mostra o peso de cada parte: conquistas 30%, notas e fitas 25%, ranks S 15%, desafios 10%, finais 10% e selos 10%
+1026. Cada parte do 100% abre uma lista com "???" no que falta, sem entregar o segredo
+1027. A lista de notas e fitas diz em que lugar ainda tem algo para achar ("Túneis: 4/6 · ainda tem algo aqui"), sem dizer o quê
+1028. A lista de selos mostra quais dos quatro selos de cada capítulo ainda estão apagados
+1029. O título mostra quanto do internato você já conhece ("37,5% do internato")
+1030. Nova conquista "O Internato Inteiro" ao chegar a 100%
+1031. Recompensa do 100%: um desenho de giz da Lia e do Davi de mãos dadas aparece no canto do título
+1032. A pausa mostra quantas lembranças daquele lugar você já achou ("neste lugar: 3 de 7 lembranças")
+1033. O jogo passou a contar o tempo real (relógio de parede) desde o primeiro passo da noite, além do tempo de jogo
+1034. A tela final mostra lado a lado o tempo de jogo, o tempo real e quanto tempo ficou em pausas e menus
+1035. Quando a noite foi continuada depois de fechar o jogo, a tela final avisa que o tempo real não vale
+1036. Nova opção "Relógio" no título (aparece com o cronômetro): escolhe se o HUD mostra grande o tempo de jogo ou o tempo real
+1037. A pausa mostra o tempo real da noite
+1038. O "Copiar resultado" inclui o tempo real
+1039. Novo botão "Noite da Semana" no título: uma noite com a mesma semente para todo mundo naquela semana, no Normal e sem amuletos
+1040. A dica do botão Noite da Semana diz o número da semana e o seu melhor tempo nela
+1041. A Noite da Semana tem recorde próprio, separado das outras corridas
+1042. A tela final da Noite da Semana mostra o tempo, se bateu o seu recorde da semana e por quantos segundos
+1043. Botão "Copiar desafio da semana" na tela final, com um link que vale até domingo
+1044. Quem abre o link da semana (#semana) vê o botão destacado e o número da semana no título
+1045. Nova conquista "Noite da Semana"
+1046. A pausa avisa quando a noite é a Noite da Semana
+1047. A tela final mostra o selo "corrida limpa" quando a noite foi do começo ao fim sem ajuda
+1048. Quando não foi limpa, a tela final diz "corrida com ajuda" e o porquê: continuou de um save, trecho mais leve, ajuda invisível ou rejogo pelo menu
+1049. O "Copiar resultado" diz se a corrida foi limpa ou com ajuda
+1050. Nova conquista "Sem Rede": corrida limpa no Normal ou no Pesadelo
+1051. Segredo: digitar MOACIR no título deixa o menu mudo, estala uma língua no escuro e libera o desafio "Ouvido do Inspetor"
+1052. Nova opção "Ouvido do Inspetor" no título, que só aparece depois de achar o segredo
+1053. No Ouvido do Inspetor a tela fica quase preta e o mundo só aparece em pulsos quando a Lia faz barulho, do tamanho do barulho
+1054. No Ouvido do Inspetor, cada passo dele por perto acende um pulso mais forte quanto mais perto ele está
+1055. No Ouvido do Inspetor, N estala os dedos: o mundo aparece por um instante, mas ele ouve o estalo
+1056. Terminar um capítulo no Ouvido do Inspetor dá selo secreto no fim de capítulo, conquista secreta e marca no menu Capítulos
+1057. A noite no Ouvido do Inspetor começa com um aviso de como jogar
+1058. Novo filtro "Fita de 1979" para rejogar (depois de um final): linhas de varredura, cor desbotada e contraste de fita velha
+1059. No filtro de fita, uma faixa de tracking sobe pela tela a cada 20 segundos
+1060. No filtro de fita, "PLAY" no canto e "14 MAR 1979" com a hora da noite correndo, em laranja
+1061. Novo filtro "Câmera de vigilância": imagem verde de visão noturna, "● REC · CAM 03" piscando e 14/03/1979 com os segundos correndo
+1062. Novo filtro secreto "Negativo": segurar 1, 9 e 7 juntos no título por um segundo e meio (com som de sino e conquista "Ao Contrário")
+1063. O seletor de filtro só aparece no título quando há algum filtro liberado
+1064. Segredo: digitar DAVI no título toca o clique da fita e sussurros, e o título conta que a fita rodou ao contrário
+1065. Segredo: digitar ANA no título faz o subtítulo contar de um a dez; no DEZ, um susto e a tela inteira fica espelhada por 5 segundos
+1066. Segredo: digitar 1979 no título troca o nome do jogo pela placa queimada "SÃO LÁZARO 1979" por 8 segundos
+1067. Nova conquista secreta "Nomes Ditos" ao achar os segredos DAVI, ANA e 1979
+1068. Segredo: digitar ORELHAO no título faz um orelhão tocar na chuva; clicar atende uma criança que diz o seu nome e termina em sinal de ocupado
+1069. A voz do orelhão muda conforme o último final que você viu
+1070. Nova conquista secreta "Ligação a Cobrar" por atender o orelhão
+1071. Segredo: ficar 2 minutos parado no título faz uma luz se aproximar do portão em três etapas; mexer o mouse apaga tudo
+1072. Quem espera até o fim vê uma mão de fuligem bater no vidro da tela, com batida e coração (conquista secreta "Visita")
+1073. Voltar depois de dias: o título diz "Você ficou 3 dias fora. A Ana contou até 259.200."
+1074. Depois de 30 dias fora, o título lembra a data da sua última visita
+1075. Abrir o jogo numa segunda aba enquanto a primeira está jogando: o sino bate na primeira e a segunda diz "Já tem alguém aqui dentro, Lia." (conquista secreta "Duas Lias")
+1076. Abrir o jogo sem internet troca o subtítulo por "Sem sinal. Como naquela noite." (conquista secreta "Linha Cortada")
+1077. Segredo no console do navegador: um bilhete do Davi pede para digitar ouvir(), que toca a fita perdida dele (conquista secreta "Do Outro Lado")
+1078. Segredo: imprimir a página no título imprime a ficha de matrícula de 1979 com o seu nome e o carimbo "VAGA TRANSFERIDA" (conquista secreta)
+1079. Segredo no celular: virar o aparelho de cabeça para baixo no título vira o nome para "O SILÊNCIO DA HORA" e pergunta "por que você me virou?"; desvirar bate o sino (conquista secreta "Do Avesso")
+1080. Com a aba escondida no meio da noite, o ícone da aba vira um olho que pisca
+1081. Deixar o jogo pausado por nove minutos: ao voltar, "VOCÊ DEMOROU" e a Lia vê giz no chão à frente dela (conquista secreta "Nove Minutos")
+1082. Deixar a aba escondida mais de três minutos no meio da noite: ao voltar, "Você saiu. Eu fiquei." e a Lia vê marcas de pé descalço em volta dela (conquista secreta "Você Saiu")
+1083. Nova conquista secreta "Antes da Hora": prólogo em menos de 2 min 30 s, com o rádio do carro comentando a pressa no fim do capítulo
+1084. Novo selo secreto "Olhos do Moacir" no fim de capítulo (e conquista) por atravessar o capítulo com a lanterna apagada mais de 80% do tempo
+1085. Novo selo secreto "Às Cegas, Como Ele" (e conquista) por terminar um capítulo com HUD mínimo, sem legendas de som e sem anel de ruído
+1086. Nova conquista secreta "Silêncio Absoluto" por terminar um capítulo com o volume em zero; zerar o volume no jogo mostra "[silêncio total. ele gosta assim.]"
+1087. Novas conquistas de plataforma: "Mão Firme" (Capítulo III no toque) e "No Escuro do Quarto" (20 minutos seguidos em tela cheia)
+1088. Contador de pulos da cadeira: um tranco forte no mouse logo depois de um susto conta como "você pulou"
+1089. O fim de capítulo diz quantas vezes você pulou e quem mais pegou você (o Inspetor, a Ana, a Procissão ou o escuro)
+1090. A tela final e o "Copiar resultado" contam quantas vezes você pulou da cadeira na noite
+1091. Nova conquista "Coração na Boca": pular da cadeira 10 vezes numa noite
+1092. Novas conquistas "Último Instante" (guardar a foto da morte) e "Outra Vez" (recomeçar capítulos 20 vezes na hora)
+1093. Fósforos: as charadas das conquistas secretas novas ficam escondidas até você riscar um fósforo
+1094. Cada capítulo terminado dá um fósforo, avisado no fim de capítulo
+1095. Segurar o cartão da secreta risca o fósforo, com uma faixa de fogo correndo pela borda do cartão e um estalo
+1096. O título e o painel de Conquistas mostram quantos fósforos você tem
+1097. Painel de Conquistas ganhou abas: Todas, Destravadas, Faltando e Secretas
+1098. Conquistas destravadas desde a última visita ao painel ganham a etiqueta "NOVA", e o resumo conta quantas são
+1099. O aviso de conquista mostra quantas você já tem do total ("12/132")
+1100. O aviso de conquista agora aparece também no título e nos menus, e não só durante o jogo
+1101. Clicar ou tocar no aviso de conquista dispensa na hora
+1102. O aviso de conquista é lido por leitores de tela
+1103. Com "reduzir movimento" ligado no sistema, o aviso de conquista, o carimbo do rank e os selos aparecem sem animação
+1104. No celular, os botões e as abas dos painéis ficaram maiores e mais fáceis de tocar
+1105. No menu Capítulos, a letra do rank tem cor própria (S dourado brilhando, A, B e C cada vez mais apagados)
+1106. O menu Capítulos marca com † o melhor rank tirado no Pesadelo
+1107. O menu Capítulos mostra a soma dos seus melhores tempos de capítulo
+1108. Estatísticas mostram o tempo médio por noite, a média de mortes por noite e quantas noites você levou até um final
+1109. Estatísticas contam em quantos dias diferentes você voltou ao internato
+1110. Novo botão "Copiar estatísticas" para mandar o resumo e a porcentagem para alguém
+1111. No fim de capítulo, o tempo conta rapidamente de 00:00 até o seu tempo
+1112. O fim de capítulo mostra "pontos para o S: 4 de 6" com barra e de onde veio cada ponto (dano, tempo, invisível, silêncio, mortes, amuletos)
+1113. No fim de capítulo, os selos acendem um a um, cada um com um estalo de papel
+1114. A pausa mostra o rank que você tiraria se o capítulo acabasse agora
+1115. Depois de uma noite com 12 mortes ou mais no Normal, a descrição da dificuldade lembra com carinho que o Fácil existe
+
+### Plataforma e acessibilidade (106)
+
+1116. Luzes reais em número fixo: só as lâmpadas e velas mais próximas e à frente iluminam de verdade (8 na Alta, 6 na Média, 4 na Baixa, 2 na Mínima); as outras ficam só com o brilho do bulbo e o halo
+1117. Como o número de luzes não muda mais, apagar e acender lâmpadas (Procissão, sustos) deixa de travar o jogo recompilando shaders bem na hora do susto
+1118. A troca das luzes reais enquanto você anda é suave (a que sai some em 0,2 s, a que entra acende em 0,25 s): nada pisca nem "estala"
+1119. Velas acesas depois do carregamento (capítulos, sustos) entram sozinhas no banco de luzes
+1120. Na qualidade Média, a sombra da lanterna é redesenhada em quadros alternados, mas na hora quando a câmera gira ou anda
+1121. Escondida e de lanterna apagada, a sombra não é redesenhada: ficar parada no armário quase não pesa
+1122. Paredes, pisos e móveis parados (e o próprio mapa) têm a posição calculada uma vez só, em vez de a cada quadro
+1123. O que se mexer depois de parado (um susto, um objeto empurrado) é percebido e volta a ser atualizado sozinho
+1124. Nova qualidade Mínima para PC muito fraco: metade da resolução com pixels grandes de propósito, cara de fita velha
+1125. Na Mínima, linhas de varredura e uma trilha de VHS passando devagar por cima da imagem
+1126. Na Mínima, chuva a 15%, névoa mais perto e nenhuma sombra
+1127. Mínima e Baixa abrem sem antisserrilhado, que pesa muito em placa integrada
+1128. Escada de cortes: com a resolução já no mínimo e o jogo ainda pesado, corta em ordem, um por vez (metade da chuva, menos luzes reais, sombra da lanterna); cada corte volta depois de 10 s folgados
+1129. O contador de quadros mostra o corte atual (corte 1/3), a memória de vídeo (geometrias e texturas) e quantas luzes reais estão em uso
+1130. Na caçada e na Procissão a resolução automática prioriza a fluidez (mira perto de 45 quadros): na hora de fugir o controle não engasga
+1131. Se a Baixa ainda estiver pesada mesmo com todos os cortes, o jogo sugere a qualidade Mínima
+1132. O jogo percebe quando o navegador desenha sem a placa de vídeo (SwiftShader, llvmpipe, Basic Render), explica como ligar a aceleração de hardware e já começa na Mínima
+1133. Proteção contra engasgo: um quadro que travou (mais de 0,25 s) não faz o mundo andar, ninguém morre porque o computador travou
+1134. Trocar teclas: nova seção "Teclas" em Desempenho, é só clicar na ação e apertar a tecla nova
+1135. Tecla já usada: as duas ações trocam de lugar e a linha pisca em vermelho dizendo com quem trocou
+1136. P, ESC, ENTER e as teclas F ficam fixas, para sempre existir uma saída
+1137. Perfil de teclas "Canhoto (IJKL)" e botão "Voltar ao padrão"
+1138. As teclas são guardadas pela posição física (funcionam em ABNT2 e AZERTY) e aparecem com o nome do seu teclado quando o navegador informa
+1139. O aviso de interação ("E Abrir") e o do fôlego (ESPAÇO) mostram a tecla que você escolheu
+1140. A lista de comandos do Desempenho passa a mostrar as suas teclas
+1141. A tecla antiga de uma ação trocada fica quieta, sem disparar a ação duas vezes
+1142. Girar a câmera pelo teclado (J e L, I e K) para quem joga no touchpad, com velocidade própria
+1143. O giro pelo teclado acelera suave nos primeiros 0,3 s, para dar ajuste fino e giro rápido na mesma tecla
+1144. Andar sozinha (tecla N, trocável): a Lia anda para frente e o mouse só guia; para com qualquer tecla de andar, ao se esconder, abrir um menu, levar dano ou ser agarrada
+1145. Um ▸▸ no canto mostra que ela está andando sozinha
+1146. Mouse cru: o jogo pede o movimento sem a aceleração do sistema (volta sozinho ao normal se o navegador recusar)
+1147. Corte de saltos do mouse: acabou o giro de 180 graus sozinho logo depois de prender o ponteiro
+1148. Modo arrastar: jogar sem prender o mouse (segure o botão e arraste para olhar), para Chromebook e computador de escola travado
+1149. No modo arrastar, encostar o mouse na borda da tela gira a câmera devagar
+1150. Se o navegador recusar prender o mouse duas vezes, o jogo oferece o modo arrastar
+1151. No modo arrastar, arrastar com força também solta do agarrão
+1152. Tela cheia ao começar a jogar no computador (opção, ligada por padrão)
+1153. Analógico de verdade no celular: a Lia anda em qualquer direção, sem travar em 8 direções
+1154. No celular, a velocidade e o barulho dos passos crescem com o quanto você empurra o analógico (pouco = devagar e quieto)
+1155. O analógico do controle passa pelo mesmo caminho: direção contínua e velocidade proporcional
+1156. Velocidade do jogo a 90% ou 80% (acessibilidade para reflexo mais lento), com um ◷ no canto enquanto estiver ligada
+1157. Mirar inclinando o celular (giroscópio), somado ao arrasto do dedo
+1158. O giroscópio tem zona morta e filtro: parado não treme, e tem sensibilidade própria
+1159. O giroscópio funciona com o celular deitado para os dois lados
+1160. No iPhone, a permissão de movimento é pedida no toque em "Jogar com toque"
+1161. Sacudir o celular sacode a lanterna sem pilha
+1162. Sacudir o celular também ajuda a se soltar do agarrão
+1163. Toque curto no meio da tela usa o que está na mira, sem procurar o botão Usar
+1164. Toque duplo na área de olhar faz a Lia olhar para trás
+1165. Dois dedos encostados juntos na área de olhar pausam o jogo
+1166. O botão Usar diz o que vai fazer: Abrir, Pegar, Ler, Esconder, Sair, Segurar, Ouvir...
+1167. Botão "Responder" aparece piscando no celular só quando a voz chama (antes não havia como responder ao Chamado no toque)
+1168. Botão grande ESCONDER aparece na caçada quando há armário ou cama logo ali (não existe no Pesadelo)
+1169. Opção "Tela limpa" no toque: os botões ficam quase apagados e acendem só quando servem (pilha fraca, ferida, ele perto)
+1170. Tutorial de gestos em 3 passos na primeira vez no celular (andar, olhar, usar), que some quando você faz o gesto
+1171. Lendo uma nota no celular: botões "Virar a folha" (só quando a folha tem verso) e "Ler em voz alta"
+1172. Cofre e quadro de chaves com teclas bem maiores no toque
+1173. Vibração curta a cada dígito do cofre (mais longa no OK)
+1174. O celular vibra a cada número da contagem da menina, cada vez mais forte, e forte e duplo no fim
+1175. No iPhone, que não vibra, a tela treme de leve no lugar da vibração
+1176. O botão voltar do Android abre a pausa em vez de sair do jogo (voltar de novo fecha a pausa)
+1177. Virar o celular em pé pausa na hora
+1178. A tela de "deite o celular" mostra o capítulo em que você está
+1179. A tela do celular não apaga no meio do jogo nem na abertura; volta a apagar normal na pausa, na morte e no título
+1180. Aviso para quem abriu o link dentro do WhatsApp ou do Instagram, com botão que copia o link para o navegador
+1181. Dica no iPhone: Compartilhar e depois "Adicionar à Tela de Início" para jogar em tela cheia
+1182. Som destravado no iPhone com um silêncio tocado no primeiro toque
+1183. O som volta sozinho no próximo toque depois de uma ligação, alarme ou assistente de voz
+1184. Se o som continuar mudo por mais de 1 s, aparece "toque aqui para voltar o som"
+1185. Com "Estou de fone" ligado, um fone ou caixa de som que muda no meio do jogo pausa e avisa
+1186. Tecla de emergência F9: corta o som, pausa e cobre a tela com um trabalho de Ciências sobre o ciclo da água
+1187. Na emergência o nome da aba também vira o do trabalho de escola
+1188. F9 de novo volta para a pausa, nunca direto para o jogo
+1189. Segredo: depois de 30 s na tela falsa, uma gota de sangue escorre do título e uma frase do trabalho escurece
+1190. Modo foto na pausa (Fotografar): o mundo congela, o HUD some e a câmera fica livre perto da Lia
+1191. A câmera do modo foto não atravessa parede e fica num raio de 2,5 m
+1192. No modo foto dá para inclinar (Q/E), subir e descer (R/F) e mudar o campo de visão (roda do mouse ou a barra)
+1193. Filtros de foto: VHS 1994 (com PLAY e a hora na imagem), Sépia 1979 (riscos e grão), Preto e branco granulado e Polaroide com moldura escrita
+1194. A foto "revela" na tela como filme antes de guardar
+1195. Guardar a foto baixa o PNG no computador e abre o compartilhar no celular
+1196. Segredo: em algumas fotos, na revelação, aparece uma criança que não estava na cena
+1197. Conquista secreta nova: Retrato de família
+1198. O modo foto não abre com ele caçando ou agarrando a Lia
+1199. Janela da plateia (botão na pausa): uma segunda janela com a planta do mapa ao vivo, para quem assiste do sofá, sem servidor
+1200. Na plateia aparecem a Lia com o cone da lanterna e o rastro, o Inspetor com o círculo do que ele ouve, a menina e a Procissão
+1201. Botão "Assustar" da plateia, uma vez por minuto: toca uma risada, um rangido ou passos atrás da Lia, sem atrair o Inspetor
+1202. Modo "a plateia ajuda" na pausa: o botão vira um sussurro "atrás de você..."
+1203. A janela da plateia não desenha o jogo (fica leve) e mostra quando a jogadora pausou ou morreu
+1204. Gravador de sustos (desligado por padrão): guarda sempre os últimos 10 a 20 s de imagem e som
+1205. F8 ou o botão "Salvar o susto" na tela de morte baixa o vídeo, com a hora do jogo no nome do arquivo
+1206. No celular o vídeo do susto vai direto para o compartilhar
+1207. Em navegador sem suporte a gravação, o gravador se desliga e avisa
+1208. Levar a noite para outro aparelho: um código de texto com progresso, conquistas, acervo e opções (comprimido e com verificação), sem servidor
+1209. Dá para baixar a noite como arquivo .txt e abrir esse arquivo no outro aparelho
+1210. Antes de trazer uma noite, o jogo mostra o que vai substituir (capítulo, conquistas, ranks) e recusa código cortado ao copiar
+1211. Cópias de segurança do save (as 3 últimas): se o save estragar, a noite volta do ponto anterior com um aviso no título
+1212. Perfis prontos em Desempenho: Notebook da escola, Notebook fraco, Celular, Para gravar e Medo máximo
+1213. Depois de escolher um perfil aparece a lista do que mudou, com "desfazer"
+1214. Se o servidor do 3D (unpkg) falhar, a próxima tentativa usa o servidor reserva (jsdelivr), e o botão diz isso
+1215. Internet lenta: aos 5 s a tela de espera avisa que o internato ainda está chegando, em vez de parecer travada
+1216. Jogar sem internet com prazo: se a rede demorar mais de 2,5 s, o jogo abre do que está guardado e atualiza por trás
+1217. O jogo sem internet também guarda o 3D do servidor reserva
+1218. Versão nova não troca arquivos no meio de uma noite: um bilhete no título avisa e oferece "abrir agora" (bloqueado no meio do jogo)
+1219. O título mostra "guardado para jogar sem internet" ou quantos arquivos faltam, com "guardar agora"
+1220. "Restaurar padrão" agora também volta as teclas e não repete o tutorial do toque nem zera o contador de fotos
+1221. Correção: a paleta de daltonismo não pinta duas vezes as luzes do banco de luzes reais
