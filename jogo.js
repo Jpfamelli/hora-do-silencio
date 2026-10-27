@@ -1,6 +1,7 @@
 // A HORA DO SILÊNCIO v2 — motor (Three.js). Mapas e conteúdo em mapas.js, texto em roteiro.js.
 import * as THREE from 'three';
 import { MAPAS } from './mapas.js';
+import { PG } from './src/progressao.js';
 
 const R = window.ROTEIRO;
 const $ = s => document.querySelector(s);
@@ -558,7 +559,7 @@ function mobiliar(r) {
 let S;
 function perm3() { const a = [1, 2, 3]; for (let i = 2; i > 0; i--) { const j = Math.random() * (i + 1) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; }
 function novoEstado(dif) {
-  return {
+  return PG.novo({
     dif, chapter: 0, done: {}, picked: {}, flags: {}, notes: {}, fitas: {}, visited: {}, doorsOpen: {},
     inv: { lanterna: false, galao: false, fusiveis: 0, pilhas: 0, kits: 0, garrafas: 0, engrenagens: 0, chaves: {}, reliquias: 0, pa: false },
     placed: 0, valv: [], tumulos: {},
@@ -569,9 +570,9 @@ function novoEstado(dif) {
     mapa: 'estrada', pos: [0, 0], yaw: 0, hidden: null,
     mortes: 0, tempo: 0, capT: 0, capDano: 0, capVisto: 0,
     timers: { procissao: 9999, ana: 9999, chamado: 9999 }
-  };
+  });
 }
-const D = () => DIFS[S.dif] || DIFS.normal;
+const D = () => PG.dif(S, DIFS);
 const totalLore = () => R.notas.length + R.paginas.length + R.fitas.length;
 const loreAchado = () => Object.keys(S.notes).length + Object.keys(S.fitas).length;
 const codTxt = s => s.replace(/\{d(\d)\}/g, (_, i) => S.code[i - 1]).replace(/\{q\}/g, S.quadro.join('')).replace(/\{v\}/g, S.ordem.join(' - '));
@@ -629,13 +630,13 @@ function trocarPilha() {
 function usarKit() {
   if (S.inv.kits <= 0) { toast('Você não tem curativos.'); return; }
   if (S.health >= 100) { toast('Você não está ferida.'); return; }
-  S.inv.kits--; S.health = Math.min(100, S.health + 50); SFX.pegar(); toast('Melhor assim.'); renderInvMini();
+  S.inv.kits--; PG.kit(); S.health = Math.min(100, S.health + 50); SFX.pegar(); toast('Melhor assim.'); renderInvMini();
 }
 const garrafasVoando = [];
 function jogarGarrafa() {
   if (S.hidden) return;
   if (S.inv.garrafas <= 0) { toast('Sem garrafas para jogar.'); return; }
-  S.inv.garrafas--; renderInvMini();
+  S.inv.garrafas--; PG.garrafa(); renderInvMini();
   const rc = new THREE.Raycaster(); rc.setFromCamera({ x: 0, y: 0 }, camera); rc.far = 16;
   const hits = rc.intersectObjects(W.solid, false);
   const dir = new THREE.Vector3(); camera.getWorldDirection(dir);
@@ -770,6 +771,7 @@ function entrarEsconderijo(L) {
 }
 function sairEsconderijo(forcado) {
   const L = S.hidden; if (!L) return;
+  if (forcado) PG.escondidaAntes();
   S.hidden = null; $('#fx-locker').hidden = true; $('#fx-cama').hidden = true; $('#breath').hidden = true;
   const off = L.tipo === 'cama' ? 1.0 : .85;
   const a = new THREE.Vector3(L.x + L.face[0] * off, 0, L.z + L.face[1] * off), b = new THREE.Vector3(L.x - L.face[0] * off, 0, L.z - L.face[1] * off);
@@ -1110,13 +1112,13 @@ function atacar(quem, leve) {
   $('#fx-red').style.transition = 'none'; $('#fx-red').style.opacity = 1;
   setTimeout(() => { $('#fx-red').style.transition = 'opacity 2.5s'; $('#fx-red').style.opacity = 0; }, 80);
   const dano = Math.min(100, DANO[quem] * D().dano * (leve ? .6 : 1));
-  S.health -= dano; S.capDano += dano; S.fear = 100;
+  S.health -= dano; S.capDano += dano; S.fear = 100; PG.dano(quem);
   if (S.health <= 0) { morrer(quem); return; }
   toast(quem === 'inspetor' ? 'Ele te largou. Fuja e se esconda.' : quem === 'ana' ? 'Mãos geladas. Ela sumiu... por enquanto.' : 'Eles passaram por dentro de você. Ainda está viva. Por pouco.');
   if (quem === 'inspetor') { const dx = P.pos.x - M.pos.x, dz = P.pos.z - M.pos.z, l = Math.hypot(dx, dz) || 1; P.pos.x += dx / l * 1.2; P.pos.z += dz / l * 1.2; collide(P.pos, .33); }
 }
 function morrer(quem) {
-  S.dead = true; S.mortes++; S.causa = quem;
+  S.dead = true; S.mortes++; S.causa = quem; PG.morte(quem);
   const head = new THREE.Vector3();
   if (quem === 'inspetor') MON.cabeca.getWorldPosition(head); else if (quem === 'ana') head.set(ANA.pos.x, 1.2, ANA.pos.z); else head.copy(PROC.pos).setY(1);
   const t0 = performance.now(), yaw0 = P.yaw, pitch0 = P.pitch;
@@ -1129,14 +1131,15 @@ function morrer(quem) {
       unlock(); ui = 'morte'; $('#death').hidden = false; $('#hud').hidden = true; SFX.pararCanto(); SFX.chiadoFita(false); fitaTocando = null; $('#fita-ind').hidden = true;
       $('#dt-tit').textContent = quem === 'inspetor' ? 'ELE TE ENCONTROU' : quem === 'ana' ? 'ELA CONTOU ATÉ DEZ' : 'FORA DA CAMA';
       $('#death-dica').textContent = pick(R.dicas_morte[quem] || R.dicas_morte.inspetor);
-    }, 900);
-  }, 1200);
+      PG.telaMorte(quem);
+    }, 700);
+  }, 950);
 }
 
 // =====================================================================
 // HISTÓRIA / OBJETIVOS
 // =====================================================================
-function objDone(id) { if (S.done[id]) return; S.done[id] = true; SFX.objetivo(); renderObj(); checarCapitulo(); }
+function objDone(id) { if (S.done[id]) return; S.done[id] = true; SFX.objetivo(); renderObj(); PG.objetivo(id); checarCapitulo(); }
 function contagem(id) {
   return { fusiveis: S.inv.fusiveis, engrenagens: S.inv.engrenagens, paginas: R.paginas.filter(p => S.notes[p.id]).length, valvulas: S.valv.length, tumulos: Object.keys(S.tumulos).length, altar: S.placed }[id];
 }
@@ -1161,35 +1164,29 @@ function checarCapitulo() {
   trocandoCap = true;
   setTimeout(() => fimDeCapitulo(), 1800);
 }
-function rank() {
-  const t = S.capT / 60, dano = S.capDano;
-  const pts = (dano === 0 ? 3 : dano < 60 ? 2 : dano < 120 ? 1 : 0) + (t < 8 ? 2 : t < 13 ? 1 : 0) + (S.capVisto <= 1 ? 1 : 0);
-  return pts >= 5 ? 'S' : pts >= 4 ? 'A' : pts >= 2 ? 'B' : 'C';
-}
+function rank() { return PG.rank(); } // metas por capítulo, selos e bônus: src/progressao.js
 function fimDeCapitulo() {
   if (S.dead) { trocandoCap = false; return; }
-  const c = R.capitulos[S.chapter], rk = rank();
+  const c = R.capitulos[S.chapter];
   if (S.capDano === 0 && S.chapter > 0) conquista('intocada');
   if (S.chapter === 0) conquista('prologo');
-  const caps = lsGet(CAPS_KEY, {}), ant = caps[c.id] || {}, ordem = 'CBAS';
-  caps[c.id] = { ...ant, rank: !ant.rank || ordem.indexOf(rk) > ordem.indexOf(ant.rank) ? rk : ant.rank, tempo: Math.min(ant.tempo || 1e9, S.capT) };
-  lsSet(CAPS_KEY, caps);
+  if (S.chapter === 3 && !S.flags.tocada_ana_3) conquista('nao_pisquei');
+  if (S.chapter === 1 && S.capLuzT < 60) conquista('olhos_gato');
+  if (S.chapter === 1 && S.capT < 360 && S.capDano === 0) conquista('pressa');
   $('#fc-cap').textContent = c.titulo + ' — concluído';
-  $('#fc-rank').textContent = rk;
-  const min = Math.floor(S.capT / 60), seg = Math.floor(S.capT % 60);
-  $('#fc-stats').innerHTML = `tempo ${min}min ${String(seg).padStart(2, '0')}s · dano sofrido ${Math.round(S.capDano)} · vezes perseguida ${S.capVisto}<br>notas, páginas e fitas ${loreAchado()}/${totalLore()}`;
+  PG.fimCap(c);
   $('#fc-gancho').textContent = c.gancho || '';
   $('#fimcap').hidden = false;
   SFX.sinoLonge();
   setTimeout(() => {
     $('#fimcap').hidden = true;
-    S.chapter++; S.capT = 0; S.capDano = 0; S.capVisto = 0; trocandoCap = false;
+    S.chapter++; S.capT = 0; S.capDano = 0; S.capVisto = 0; PG.zerarCap(); trocandoCap = false;
     cartaoCapitulo();
     if (W.def.inicioCapitulo) W.def.inicioCapitulo(S.chapter);
     if (W.def.inspetor && W.def.inspetor() && !M.ativo) { const t = { ...S.timers }; agendarEntidades(); Object.assign(S.timers, t); }
     syncWorld(); renderObj(); progresso();
     salvarCheckpoint(true);
-  }, 5200);
+  }, 6400);
 }
 
 // =====================================================================
@@ -1222,6 +1219,7 @@ function syncWorld() {
   if (W.def && W.def.sync) W.def.sync();
 }
 function salvarCheckpoint(inicioCap) {
+  PG.salvando(inicioCap);
   S.pos = [P.pos.x, P.pos.z]; S.yaw = P.yaw; S.mapa = W.mapa;
   const snap = JSON.parse(JSON.stringify({ ...S, hidden: null, dead: false, fim: false, _check: undefined }));
   S._check = snap;
@@ -1229,11 +1227,12 @@ function salvarCheckpoint(inicioCap) {
   if (inicioCap) { const caps = lsGet(CAPS_KEY, {}); const c = R.capitulos[S.chapter]; caps[c.id] = { ...(caps[c.id] || {}), snap }; lsSet(CAPS_KEY, caps); }
 }
 function carregarSnap(snap) {
-  const mortes = S ? S.mortes : 0, tempo = S ? S.tempo : 0;
+  const mortes = S ? S.mortes : 0, tempo = S ? S.tempo : 0, antes = PG.antesCarregar();
   S = JSON.parse(JSON.stringify(snap)); S._check = snap;
   S.chapter = Math.max(0, Math.min(R.capitulos.length - 1, S.chapter | 0));
   S.mortes = Math.max(mortes, S.mortes || 0); S.tempo = Math.max(tempo, S.tempo || 0);
   S.health = Math.max(S.health, 60); S.fear = 0; S.stamina = 100; S.dead = false; S.fim = false; S.hidden = null;
+  PG.depoisCarregar(antes);
   trocandoCap = false; fitaTocando = null; $('#fita-ind').hidden = true; SFX.chiadoFita(false); subQ = []; subT = 0; $('#sub').innerHTML = '';
   carregarMapa(S.mapa, { x: S.pos[0], z: S.pos[1], yaw: S.yaw }, { salvar: false });
   agendarEntidades();
@@ -1255,8 +1254,8 @@ function updateEventos(dt) {
   if (W.def.chamado && W.def.chamado()) { TT.chamado -= dt; if (TT.chamado <= 0) { TT.chamado = rand(120, 200) * D().intervalo; chamado(); } }
   if (chamadoArmadilha) {
     chamadoArmadilha.t -= dt;
-    if (chamadoArmadilha.t <= 0) chamadoArmadilha = null;
-    else if (P.room === chamadoArmadilha.sala) { const s = chamadoArmadilha.sala; chamadoArmadilha = null; if (M.ativo) { const [x, z] = pontoEm(s, 1); M.pos.set(x, 0, z); M.state = 'caca'; M.cool = 1.2; planejar(M, P.pos.x, P.pos.z); SFX.susto(); sub('inspetor', 'Achei.'); } }
+    if (chamadoArmadilha.t <= 0) { chamadoArmadilha = null; PG.chamado(false); }
+    else if (P.room === chamadoArmadilha.sala) { const s = chamadoArmadilha.sala; chamadoArmadilha = null; PG.chamado(true); if (M.ativo) { const [x, z] = pontoEm(s, 1); M.pos.set(x, 0, z); M.state = 'caca'; M.cool = 1.2; planejar(M, P.pos.x, P.pos.z); SFX.susto(); sub('inspetor', 'Achei.'); } }
   }
   for (const f of W.tick) f(dt);
 }
@@ -1286,7 +1285,7 @@ function updateFita(dt) {
   fitaT -= dt;
   if (fitaT <= 0) {
     const l = fitaFila.shift();
-    if (!l) { const id = fitaTocando.id; fitaTocando = null; $('#fita-ind').hidden = true; SFX.chiadoFita(false); SFX.fitaClique(); const primeira = !S.fitas[id]; S.fitas[id] = true; if (primeira) { toast('Fita registrada no diário (TAB).'); if (W.def.fitaOuvida) W.def.fitaOuvida(id); progresso(); } return; }
+    if (!l) { const id = fitaTocando.id; fitaTocando = null; $('#fita-ind').hidden = true; SFX.chiadoFita(false); SFX.fitaClique(); const primeira = !S.fitas[id]; S.fitas[id] = true; if (primeira) { PG.lore(id); toast('Fita registrada no diário (TAB).'); if (W.def.fitaOuvida) W.def.fitaOuvida(id); progresso(); } return; }
     sub(l.quem, l.texto, true); fitaT = 2.6 + l.texto.length * .058;
   }
 }
@@ -1296,7 +1295,7 @@ function lerNota(id) {
   if (id !== 'regras') S.notes[id] = true;
   SFX.papel();
   abrirNotaUI(n.titulo, codTxt(n.texto));
-  if (primeira) { progresso(); if (W.def.notaLida) W.def.notaLida(id); }
+  if (primeira) { PG.lore(id); progresso(); if (W.def.notaLida) W.def.notaLida(id); }
 }
 let prevUi = null;
 function abrirNotaUI(titulo, texto) { ui = 'nota'; $('#note').hidden = false; $('#note h2').textContent = titulo; $('#note p').textContent = texto; unlock(); }
@@ -1347,6 +1346,7 @@ let cena = null;
 function iniciarCena() {
   mode = 'cena'; $('#fx-cine').hidden = false; $('#hud').hidden = true;
   cena = { t: 0, fim: 34, falas: R.abertura.slice(), cartoes: R.intro.slice(), cartaoT: 0 };
+  const lembra = PG.falaAbertura(); if (lembra) { cena.falas.push(lembra); cena.fim = lembra.t + 6; }
   if (W.def.cena) W.def.cena.iniciar();
   SFX.motor(true);
 }
@@ -1652,13 +1652,7 @@ let cartaoTO;
 function cartao(t, dur = 4) { const el = $('#cartao'); el.textContent = t; el.style.opacity = 1; clearTimeout(cartaoTO); cartaoTO = setTimeout(() => el.style.opacity = 0, dur * 1000); }
 function fade(on, cb, ms = 650) { $('#fx-black').style.opacity = on ? 1 : 0; if (cb) setTimeout(cb, ms); }
 let conqTO;
-function conquista(id) {
-  const c = lsGet(CONQ_KEY, {}); if (c[id]) return;
-  const def = R.conquistas.find(x => x.id === id); if (!def) return;
-  c[id] = Date.now(); lsSet(CONQ_KEY, c);
-  const el = $('#conq'); el.innerHTML = `Conquista: ${def.nome}<small>${def.desc}</small>`; el.classList.add('on');
-  clearTimeout(conqTO); conqTO = setTimeout(() => el.classList.remove('on'), 4200);
-}
+function conquista(id) { PG.conquista(id); } // fila, secretas e som: src/progressao.js
 
 // Diário
 let abaDiario = 'obj';
@@ -1704,7 +1698,7 @@ function renderDiario() {
     el.innerHTML = L.length ? L.map(([a, b]) => `<div style="padding:8px 0;border-bottom:1px solid #2c2720">${a} <span style="color:var(--fraco);font-style:italic"> · ${b}</span></div>`).join('') : '<p style="color:var(--fraco)">Bolsos vazios.</p>';
   } else if (abaDiario === 'notas') {
     const lista = [...R.notas.map(n => ({ ...n, tipo: 'n' })), ...R.paginas.map(n => ({ ...n, tipo: 'n' })), ...R.fitas.map(f => ({ ...f, tipo: 'f' }))];
-    el.innerHTML = `<p style="color:var(--fraco);margin-bottom:12px">${loreAchado()} de ${totalLore()} encontradas ${loreAchado() >= totalLore() ? '· tudo descoberto' : '· ache tudo para destravar uma escolha no final'}</p><div class="notas">` +
+    el.innerHTML = `<p style="color:var(--fraco);margin-bottom:12px">${loreAchado()} de ${totalLore()} encontradas ${loreAchado() >= totalLore() ? '· tudo descoberto' : PG.loreFinal().ok ? '· as fitas e páginas que importam já estão com você' : `· faltam ${PG.loreFinal().fitas} fita(s) e ${PG.loreFinal().pags} página(s) para outra escolha no final (vale o que você achou em qualquer noite)`}</p><div class="notas">` +
       lista.map(n => { const tem = n.tipo === 'f' ? S.fitas[n.id] : S.notes[n.id]; return `<div class="nota ${tem ? '' : 'x'}" data-id="${n.id}" data-t="${n.tipo}">${tem ? (n.tipo === 'f' ? '▶ ' : '') + n.titulo : '???'}</div>`; }).join('') + '</div>';
     el.querySelectorAll('.nota:not(.x)').forEach(d => d.onclick = () => {
       prevUi = 'diario'; $('#diario').hidden = true;
@@ -1719,8 +1713,8 @@ function renderDiario() {
     let s = `<h3>${W.def.nome}</h3><svg viewBox="0 0 ${(maxX - minX) * k + 20} ${(maxZ - minZ) * k + 20}" preserveAspectRatio="xMidYMid meet">`;
     for (const r of salas) {
       const vis = S.visited[`${W.mapa}:${r.id}`] || r.fora, aqui = P.room === r;
-      s += `<rect x="${sx(r.x0)}" y="${sz(r.z1)}" width="${(r.x1 - r.x0) * k}" height="${(r.z1 - r.z0) * k}" fill="${aqui ? '#3a1f18' : vis ? (r.fora ? '#0d100c' : '#1d1a15') : '#0a0908'}" stroke="${vis ? '#857a63' : '#2a2620'}" stroke-width="1.5"/>`;
-      if (vis && r.nome) s += `<text x="${sx((r.x0 + r.x1) / 2)}" y="${sz((r.z0 + r.z1) / 2) + 5}" fill="#cfc3a6" font-size="${Math.max(10, Math.min(15, (r.x1 - r.x0) * k / 7))}" text-anchor="middle" font-family="IM Fell English SC">${r.nome}</text>`;
+      s += `<rect x="${sx(r.x0)}" y="${sz(r.z1)}" width="${(r.x1 - r.x0) * k}" height="${(r.z1 - r.z0) * k}" fill="${aqui ? '#3a1f18' : PG.salaDica(r) ? '#2e2614' : vis ? (r.fora ? '#0d100c' : '#1d1a15') : '#0a0908'}" stroke="${PG.salaDica(r) ? '#c9a75a' : vis ? '#857a63' : '#2a2620'}" stroke-width="1.5"/>`;
+      if ((vis || PG.salaDica(r)) && r.nome) s += `<text x="${sx((r.x0 + r.x1) / 2)}" y="${sz((r.z0 + r.z1) / 2) + 5}" fill="#cfc3a6" font-size="${Math.max(10, Math.min(15, (r.x1 - r.x0) * k / 7))}" text-anchor="middle" font-family="IM Fell English SC">${r.nome}</text>`;
     }
     s += `<circle cx="${sx(P.pos.x)}" cy="${sz(P.pos.z)}" r="6" fill="#c0392b"/></svg>`;
     el.innerHTML = s;
@@ -1753,7 +1747,7 @@ function tecla(k) {
 }
 
 // Pausa / menus
-function abrirPausa() { ui = 'pausa'; $('#pause').hidden = false; }
+function abrirPausa() { ui = 'pausa'; $('#pause').hidden = false; PG.pausa(); }
 function fecharPausa() { $('#pause').hidden = true; ui = null; lockPointer(); }
 $('#p-voltar').onclick = fecharPausa;
 $('#p-check').onclick = () => { $('#pause').hidden = true; ui = null; carregarSnap(S._check || lsGet(SAVE_KEY)); lockPointer(); };
@@ -1784,19 +1778,21 @@ function final(tipo) {
   const F = R.finais[tipo];
   desativarInspetor(); despawnAna(true);
   conquista('final_' + tipo); if (S.dif === 'pesadelo') conquista('pesadelo');
+  PG.final(tipo);
   $('#fx-black').style.opacity = 1; SFX.pararCanto();
   try { localStorage.removeItem(SAVE_KEY); } catch (e) {}
   setTimeout(() => {
     unlock(); ui = 'final'; $('#hud').hidden = true; $('#escolha').hidden = true; $('#ending').hidden = false;
     $('#e-tit').textContent = F.titulo; $('#e-txt').textContent = F.texto;
     const min = Math.floor(S.tempo / 60), seg = Math.floor(S.tempo % 60);
-    $('#e-stats').innerHTML = `tempo total ${min}min ${String(seg).padStart(2, '0')}s · notas, páginas e fitas ${loreAchado()}/${totalLore()} · encontrada ${S.mortes}x · ${D().nome}<br>Existem 3 finais.`;
+    $('#e-stats').innerHTML = `tempo total ${min}min ${String(seg).padStart(2, '0')}s · notas, páginas e fitas ${loreAchado()}/${totalLore()} · encontrada ${S.mortes}x · ${D().nome}`;
+    PG.telaFinal(tipo);
     SFX.sino(.5, null);
   }, 1600);
 }
 function escolhaFinal() {
   if (S.fim) return;
-  if (loreAchado() < totalLore()) return final('comum');
+  if (!PG.loreFinal().ok) return final('comum'); // bastam as 5 fitas e as 4 páginas, achadas em qualquer noite
   ui = 'escolha'; unlock(); desativarInspetor(); despawnAna(true); $('#escolha').hidden = false;
 }
 $('#es-ir').onclick = () => { $('#escolha').hidden = true; ui = null; final('silencio'); };
@@ -1810,12 +1806,17 @@ $('#b-cont').hidden = !temSave();
 $('#b-novo').onclick = () => {
   iniciarAudio();
   S = novoEstado($('#o-dif').value);
+  PG.novoJogo(S);
   carregarMapa('estrada', 'carro');
   salvarCheckpoint(true);
   $('#title').hidden = true;
   iniciarCena();
 };
-$('#b-cont').onclick = () => { iniciarAudio(); S = null; carregarSnap(lsGet(SAVE_KEY)); $('#o-dif').value = S.dif; entrarJogo(); };
+$('#b-cont').onclick = () => {
+  iniciarAudio(); S = null;
+  try { carregarSnap(lsGet(SAVE_KEY)); } catch (e) { console.warn('save inválido', e); try { localStorage.removeItem(SAVE_KEY); } catch (e2) {} voltarMenu(); $('#t-memoria').textContent = 'O save estava estragado e foi descartado. Use o menu Capítulos.'; return; }
+  $('#o-dif').value = S.dif; entrarJogo();
+};
 function entrarJogo() {
   mode = 'jogo'; ui = null; $('#title').hidden = true; $('#hud').hidden = false; $('#fx-black').style.opacity = 0;
   lockPointer(); cartaoCapitulo(); renderObj();
@@ -1827,11 +1828,16 @@ function voltarMenu() {
   $('#fx-locker').hidden = true; $('#fx-cama').hidden = true; canvas.style.filter = ''; filtroAtual = '';
   unlock(); carregarTitulo();
 }
-function carregarTitulo() { S = novoEstado('normal'); carregarMapa('estrada', 'titulo', { salvar: false }); }
+function carregarTitulo() { S = novoEstado('normal'); carregarMapa('estrada', 'titulo', { salvar: false }); PG.titulo(); }
 
 // =====================================================================
 // LOOP
 // =====================================================================
+PG.ligar({
+  get S() { return S; }, setS: v => { S = v; }, get ui() { return ui; }, get mode() { return mode; },
+  KEYS: { SAVE_KEY, CAPS_KEY, CONQ_KEY, OPT_KEY }, OPT, salvarOpt: () => lsSet(OPT_KEY, OPT),
+  P, M, ANA, PROC, W, MON, SFX, D, toast, sub, loreAchado, totalLore, salvarCheckpoint, carregarSnap, entrarJogo, iniciarAudio
+});
 carregarTitulo();
 const grain = $('#fx-grain').getContext('2d'), grainImg = grain.createImageData(160, 90);
 let last = performance.now(), grainT = 0;
@@ -1849,7 +1855,7 @@ function frame(dt) {
   } else if (mode === 'cena') {
     updateCena(dt); updateClima(dt); updateAudio(dt);
   } else if (ativo) {
-    S.tempo += dt; S.capT += dt;
+    S.tempo += dt; S.capT += dt; PG.tick(dt);
     updatePlayer(dt); updateLanterna(dt); updateFear(dt);
     updateInspetor(dt); updateAna(dt); updateProcissao(dt); updateEventos(dt); updateGarrafas(dt);
     updateClima(dt); updateAlvo(); updateSegurar(dt); updateFita(dt); updateHUD(); updateSub(dt); updateAudio(dt);

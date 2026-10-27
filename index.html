@@ -141,6 +141,36 @@
   #pause .set{display:flex;flex-direction:column;gap:12px;margin:22px 0;font-family:"IM Fell English SC";font-size:14px;letter-spacing:.1em;color:var(--fraco)}
   #pause .set label{display:flex;gap:12px;align-items:center;justify-content:center}
   #pause .ajuda{font-family:"Special Elite";font-size:13px;color:#6d6452;line-height:1.8;margin-top:10px}
+  /* progressão: cronômetro, salvo, selos, boletim, carimbo, painéis */
+  #crono{position:absolute;right:28px;top:96px;font-family:"Special Elite";font-size:22px;color:#e9dfc8;text-align:right;text-shadow:0 0 8px #000}
+  #crono small{display:block;font-size:12px;color:var(--fraco)}
+  #salvo{position:absolute;right:28px;bottom:120px;font-family:"IM Fell English SC";font-size:13px;letter-spacing:.12em;color:#c9a75a;opacity:0;transition:opacity .6s;text-shadow:0 0 6px #000}
+  #salvo::before{content:"";display:inline-block;width:6px;height:12px;margin-right:8px;border-radius:50% 50% 40% 40%;background:radial-gradient(circle at 50% 70%,#ffd27a,#c9672a 60%,transparent 70%);animation:chama 1.1s infinite alternate;vertical-align:-1px}
+  #salvo.on{opacity:1}
+  @keyframes chama{to{transform:scaleY(1.25) translateY(-1px);opacity:.75}}
+  .selos{display:inline-flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:6px 0}
+  .selo{font-style:normal;font-family:"IM Fell English SC";font-size:13px;letter-spacing:.08em;border:1px solid #3a3228;padding:3px 9px;color:#5d5546}
+  .selo em{display:block;font-family:"Special Elite";font-style:normal;font-size:10px;letter-spacing:0;opacity:.7}
+  .selo.on{color:#c9a75a;border-color:#7a6236;box-shadow:0 0 12px rgba(201,167,90,.18)}
+  .boletim{font-family:"Special Elite";font-size:14px;color:var(--fraco);margin-bottom:10px}
+  #fimcap .rank.carimbo{animation:carimbo .55s cubic-bezier(.2,1.6,.4,1) both}
+  @keyframes carimbo{0%{transform:scale(2.6) rotate(-14deg);opacity:0}100%{transform:rotate(-4deg);opacity:1}}
+  #fc-falta{max-width:720px;margin:4px auto 0}
+  .ouro{color:#c9a75a;font-weight:normal}
+  .pn-resumo{text-align:center;font-family:"Special Elite";font-size:14px;color:var(--fraco);margin-bottom:14px}
+  .pn-resumo .barra{display:block;width:240px;height:3px;margin:8px auto 0;background:#2c2720}
+  .pn-resumo .barra i{display:block;height:100%;background:#c9a75a}
+  .lista .it.riscada b{text-decoration:line-through;text-decoration-color:var(--sangue)}
+  .lista .it .frase{color:#c9a75a}
+  .memoria{font-family:"Special Elite";font-size:14px;color:#8a6f5a;margin:-22px 0 26px;text-align:center;min-height:1em;padding:0 16px}
+  .dif-desc{flex-basis:100%;text-align:center;font-family:"IM Fell English";font-style:italic;letter-spacing:0;font-size:15px;min-height:1.2em}
+  #title .opts input[type=text]{width:120px;text-transform:uppercase;background:#000;color:var(--ui);border:1px solid #333;font-family:"Special Elite";padding:2px 6px}
+  #title{overflow-y:auto}
+  #title .opts{row-gap:6px}
+  #t-extras,#t-amuletos{margin-top:12px;font-size:13px}
+  @media (max-height:820px){#title .ctrl{position:static;margin-top:14px}#title .sub{margin-bottom:22px}}
+  #title h1.hora{color:#c9b0a0;text-shadow:0 0 40px #5a0b06,0 0 8px #8e1b14;animation:tremor 1.8s infinite}
+  #death .diag{color:var(--ui);font-style:normal;margin-bottom:12px}
   #aviso-mobile{position:fixed;inset:0;background:#000;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font-size:20px;z-index:9}
 </style>
 <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js"}}</script>
@@ -167,6 +197,8 @@
   </div>
   <div id="inv-mini"></div>
   <div id="fita-ind" hidden></div>
+  <div id="crono" hidden></div>
+  <div id="salvo">progresso salvo</div>
   <div id="sub"></div>
   <div id="toast"></div>
   <div id="conq"></div>
@@ -181,19 +213,28 @@
   <div class="rot" id="rot-ver"></div>
   <h1 id="t-titulo">A HORA<br>DO SILÊNCIO</h1>
   <div class="sub" id="t-sub"></div>
+  <div class="memoria" id="t-memoria"></div>
   <div class="menu">
     <button class="btn" id="b-cont">Continuar</button>
     <button class="btn" id="b-novo">Novo jogo</button>
     <button class="btn" id="b-caps">Capítulos</button>
     <button class="btn" id="b-conq">Conquistas</button>
+    <button class="btn" id="b-stats">Estatísticas</button>
   </div>
   <div class="opts">
     <label>Dificuldade
-      <select id="o-dif"><option value="facil">Fácil</option><option value="normal" selected>Normal</option><option value="pesadelo">Pesadelo</option></select>
+      <select id="o-dif"><option value="facil">Fácil</option><option value="normal" selected>Normal</option><option value="pesadelo">Pesadelo (um toque mata)</option></select>
     </label>
     <label>Mouse <input type="range" id="o-sens" min="0.4" max="2.5" step="0.1" value="1"></label>
     <label>Volume <input type="range" id="o-vol" min="0" max="1" step="0.05" value="0.8"></label>
+    <div class="dif-desc" id="o-dif-desc"></div>
   </div>
+  <div class="opts" id="t-extras">
+    <label><input type="checkbox" id="o-crono"> Cronômetro</label>
+    <label id="l-umavida" hidden title="Morrer encerra a noite. Sem segunda chance."><input type="checkbox" id="o-umavida"> Uma Vida</label>
+    <label title="Cole o código de desafio de outra pessoa para jogar a mesma noite">Desafio <input type="text" id="o-desafio" placeholder="código" maxlength="14" spellcheck="false" autocomplete="off"></label>
+  </div>
+  <div class="opts" id="t-amuletos" hidden></div>
   <div class="ctrl" id="aviso-toque" style="color:#c0392b">Este jogo precisa de teclado e mouse. Abra o link num computador.</div>
   <div class="ctrl">Jogue de fone, no escuro · WASD andar · SHIFT correr · C agachar · E interagir (segure em algumas coisas) · F lanterna · R pilha · H curativo · G jogar garrafa · TAB diário · ESC pausa</div>
 </div>
@@ -233,13 +274,17 @@
   <div class="set">
     <label>Mouse <input type="range" id="p-sens" min="0.4" max="2.5" step="0.1" value="1"></label>
     <label>Volume <input type="range" id="p-vol" min="0" max="1" step="0.05" value="0.8"></label>
+    <label>Cronômetro <input type="checkbox" id="p-crono"></label>
   </div>
+  <div class="stats" id="p-info"></div>
   <div class="ajuda">C agachar · G jogar garrafa · ESPAÇO prender a respiração escondida · TAB diário com as regras</div>
 </div>
 
 <div id="death" class="screen" hidden>
   <h2 id="dt-tit">ELE TE ENCONTROU</h2>
+  <p id="dt-diag" class="diag"></p>
   <p id="death-dica"></p>
+  <div class="stats" id="dt-stats"></div>
   <button class="btn" id="dt-retry">Tentar de novo</button>
   <button class="btn" id="dt-menu">Menu principal</button>
 </div>
@@ -247,7 +292,10 @@
 <div id="fimcap" class="screen" hidden>
   <div style="font-family:'IM Fell English SC';letter-spacing:.14em;color:var(--fraco)" id="fc-cap"></div>
   <div class="rank" id="fc-rank"></div>
+  <div class="boletim" id="fc-boletim"></div>
+  <div id="fc-selos"></div>
   <div class="stats" id="fc-stats"></div>
+  <div class="stats" id="fc-falta"></div>
   <div class="gancho" id="fc-gancho"></div>
 </div>
 
@@ -262,6 +310,7 @@
   <h2 id="e-tit"></h2>
   <p id="e-txt"></p>
   <div class="stats" id="e-stats"></div>
+  <button class="btn" id="e-copiar">Copiar resultado</button>
   <button class="btn" id="e-menu">Menu principal</button>
 </div>
 
