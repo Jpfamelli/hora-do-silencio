@@ -75,9 +75,13 @@ export function extrasEstrada(A, S, c) {
   // ---------- relâmpago local (casa os sustos com o clarão; soma à luz do céu do motor)
   const raioH = new THREE.HemisphereLight(0xc4d2ff, 0x202430, 0), raioD = new THREE.DirectionalLight(0xd0dcff, 0);
   raioD.position.set(-20, 30, 30); grupo.add(raioH, raioD);
-  let raioK = 0;
+  let raioK = 0, raioExt = 0;
+  // o relâmpago do motor (a cada 14–38 s) também vale para os sustos casados com o clarão
+  const SU = A.sustos;
+  if (SU && !SU.__estradaRaio && typeof SU.aoRaio === 'function') { const o = SU.aoRaio; SU.__estradaRaio = true; SU.aoRaio = function (...a) { try { window.__raioEstrada && window.__raioEstrada(); } catch (e) {} return o.apply(this, a); }; }
+  window.__raioEstrada = () => { if (vivo()) raioExt = 1; };
   const relampago = (k = 1, trovao = true) => { raioK = Math.max(raioK, k); if (trovao) A.SFX.trovao(); };
-  const tickRaio = dt => { raioK = Math.max(0, raioK - dt * 2.2); const fl = raioK > 0 && Math.random() < .75 ? raioK : 0; raioH.intensity = fl * 1.6; raioD.intensity = fl * 3.2; };
+  const tickRaio = dt => { raioExt = Math.max(0, raioExt - dt * 3); raioK = Math.max(0, raioK - dt * 2.2); const fl = raioK > 0 && Math.random() < .75 ? raioK : 0; raioH.intensity = fl * 1.6; raioD.intensity = fl * 3.2; };
 
   // ---------- o carro: pisca-alerta, vidro de trás com mãos, porta-malas que abre, pegadas, rádio
   const carro = c.carro, carPos = () => ({ x: carro.position.x, y: 1, z: carro.position.z });
@@ -135,6 +139,7 @@ export function extrasEstrada(A, S, c) {
     if (radioCd > 0) return; radioCd = 1.3; trocas++;
     const pos = posRadio(); A.SFX.estatica(.35, pos); painel.material.emissiveIntensity = .2 + Math.random() * .8;
     if (trocas === 9 && !S.flags.radioSecreto) { S.flags.radioSecreto = true; agenda(.5, () => { A.sub(TXT.radioSecreto.quem, TXT.radioSecreto.texto, true); SX.voz(pos, 9, 300); A.toast('Você achou uma frequência escondida.'); }); return; }
+    if (api.radioExtra) { const ex = api.radioExtra(trocas); if (ex) { agenda(.4, () => A.sub(ex.quem, ex.texto, true)); agenda(.5, () => SX.voz(pos, 8 + (ex.texto.length / 18 | 0), 190)); return; } }
     estacao = (estacao + 1) % TXT.radio.length; const e = TXT.radio[estacao];
     if (estacao === 3) { agenda(1.6, () => { A.SFX.voz(pos); A.sub(e.quem, e.texto, true); medo(15); }); return; }
     agenda(.4, () => A.sub(e.quem, e.texto, true));
@@ -198,15 +203,32 @@ export function extrasEstrada(A, S, c) {
   box(.72, .1, .32, MAT.preto, 0, 1.0, .4, fli); cyl(.012, .012, .1, MAT.metal, -.12, 1.09, .42, 6, fli);
   A.addCollider(12.75, 13.45, -20.65, -20.05); A.W.solid.push(corpoF);
   const telaOff = new THREE.MeshBasicMaterial({ color: 0x050508 });
-  const telaOn = new THREE.MeshBasicMaterial({ map: A.textoTex([{ t: 'FIM DE JOGO', tam: 50, estilo: 'bold' }, { t: 'INSIRA FICHA', tam: 26 }], { w: 256, h: 192, fundo: '#020a02', cor: '#4cff6a', manchas: 0 }) });
+  // placar de recordes: as iniciais deles, e um primeiro lugar piscando que vira LIA depois de três fichas
+  const mortes = () => { try { const s = JSON.parse(localStorage.getItem('hora-silencio-stats') || '{}'); return Math.min(9999, s.mortes || 0); } catch (e) { return 0; } };
+  const placarTex = (pri, piscaOn) => A.canvasTex(256, 192, (g, w) => {
+    g.fillStyle = '#020a02'; g.fillRect(0, 0, w, 192); g.fillStyle = '#4cff6a'; g.textAlign = 'center'; g.font = 'bold 30px monospace'; g.fillText('FIM DE JOGO', w / 2, 34);
+    g.font = 'bold 20px monospace'; const linhas = [[pri, piscaOn], ['DAV', '0909'], ['ANA', '1010'], ['TOM', '0034']];
+    linhas.forEach(([n, p], i) => { if (i === 0 && p === false) return; g.fillText(`${i + 1}. ${n}  ${i === 0 ? String(pri === 'LIA' ? mortes() : 9999).padStart(4, '0') : p}`, w / 2, 72 + i * 26); });
+    g.font = '16px monospace'; g.fillText('INSIRA FICHA', w / 2, 178);
+  });
+  const texPlacarA = placarTex('???', true), texPlacarB = placarTex('???', false);
+  let texPlacarL = null, fichas = 0;
+  const telaOn = new THREE.MeshBasicMaterial({ map: S.flags.placarLia ? (texPlacarL = placarTex('LIA', true)) : texPlacarA });
   const tela = plano(.5, .38, telaOff, 0, 1.38, .305, 0, fli);
   const luzTela = new THREE.PointLight(0x4cff6a, 0, 3.5, 2); luzTela.position.set(0, 1.4, .6); fli.add(luzTela);
   let telaT = 0;
   const fliPos = { x: 13.1, y: 1.3, z: -20 };
-  interact(fli, () => S.flags.joaquimSumiu ? '<b>E</b>Olhar o fliperama' : 'Um fliperama velho. O fio está desligado da tomada.', () => { if (!S.flags.joaquimSumiu) return; SX.bip(fliPos); A.toast('FIM DE JOGO. O fio continua solto no chão.'); });
+  interact(fli, () => S.flags.joaquimSumiu ? `<b>E</b>${S.flags.placarLia ? 'Olhar o placar do fliperama' : 'Apertar o botão do fliperama'}` : 'Um fliperama velho. O fio está desligado da tomada.', () => {
+    if (!S.flags.joaquimSumiu) return; SX.bip(fliPos);
+    if (S.flags.placarLia) { A.toast('1. LIA · 2. DAV · 3. ANA · 4. TOM. O fio continua solto no chão.'); return; }
+    fichas++; A.SFX.tique(fliPos);
+    if (fichas < 3) { A.toast(fichas === 1 ? 'FIM DE JOGO. O fio continua solto no chão.' : 'O primeiro lugar pisca: ???'); return; }
+    S.flags.placarLia = true; texPlacarL = placarTex('LIA', true); telaOn.map = texPlacarL; A.conquista('recorde'); agenda(.8, () => A.falar('est_placar')); medo(10);
+  });
   function tickFliperama(dt) {
     if (!S.flags.joaquimSumiu) return;
     telaT += dt; const on = (telaT % 1.2) < .8;
+    if (!S.flags.placarLia) telaOn.map = (telaT % .5) < .25 ? texPlacarA : texPlacarB;
     tela.material = on ? telaOn : telaOff; luzTela.intensity = on ? .9 : .15;
   }
   // Seu Joaquim vira o rosto para você quando você não está olhando
@@ -393,7 +415,7 @@ export function extrasEstrada(A, S, c) {
       if (ch.vistoT > 4) { ch.vistoT = 1.5; mover(1.4); A.SFX.passoMonstro({ x: vc.position.x, z: vc.position.z }, .8); }
     } else {
       ch.vistoT = 0;
-      mover(4 * (A.D().vel || 1) * (P.sprinting ? 1.25 : 1) * dt);
+      mover(4 * (A.D().vel || 1) * (P.sprinting ? 1.25 : 1) * (S.flags.fumoDeixado ? .7 : 1) * dt);
       ch.passoT -= dt; if (ch.passoT <= 0) { ch.passoT = .55; A.SFX.passoMonstro({ x: vc.position.x, z: vc.position.z }, .5); }
     }
     S.fear = Math.max(S.fear, Math.max(20, Math.min(95, 75 - d * 2)));
@@ -469,5 +491,8 @@ export function extrasEstrada(A, S, c) {
       P.pos.set(SPAWN.x, 0, SPAWN.z); P.yaw = SPAWN.yaw; P.pitch = -.32; A.objDone('sair_carro');
     }
   };
-  return { cena, sumir, iniciarPerseguicao };
+  const api = { cena, sumir, iniciarPerseguicao, radioExtra: null,
+    util: { SX, agenda, olhando, medo, relampago, raio: () => Math.max(raioK, raioExt), posRadio,
+      radioSozinho() { const p = posRadio(); A.SFX.estatica(2, p); painel.material.emissiveIntensity = 1.4; agenda(2, () => { painel.material.emissiveIntensity = .45; }); } } };
+  return api;
 }

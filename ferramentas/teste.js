@@ -104,11 +104,12 @@ T.plataforma = async () => {
   document.getElementById('p-voltar').click(); await new Promise(r => setTimeout(r, 20)); ok('volta da pausa com retorno suave', P.graca > 0); T.passo(1.5);
   let n = 0; P.agenda(() => n++, 1); J.S.dead = true; T.passo(2); J.S.dead = false; ok('fala agendada não corre com o jogo parado', n === 0);
   J.carregarSnap(J.S._check); ok('carregar checkpoint limpa a agenda', P.fila.length === 0);
-  P.forcarCalma(); ok('salvamento leve grava', P.salvarAuto() && !!localStorage.getItem('hora-silencio-v3-auto'));
+  const semPausa = () => { if (J.ui === 'pausa') document.getElementById('p-voltar').click(); }; // no Chrome headless a trava do ponteiro cai sozinha e reabre a pausa
+  semPausa(); P.forcarCalma(); ok('salvamento leve grava', P.salvarAuto() && !!localStorage.getItem('hora-silencio-v3-auto'));
   ok('link de desafio', /desafio=[SABC]+-[0-9a-z]+-[0-9a-z]+$/.test(P.textoResultado().url));
   const fakePad = { connected: true, axes: [0, -1, 0, 0], buttons: Array.from({ length: 17 }, () => ({ pressed: false, value: 0 })) };
   const orig = navigator.getGamepads; navigator.getGamepads = () => [fakePad];
-  P.pad(1 / 30); ok('controle anda para frente', J.keys.KeyW === true);
+  semPausa(); P.pad(1 / 30); ok('controle anda para frente', J.keys.KeyW === true);
   fakePad.axes = [0, 0, 0, 0]; P.pad(1 / 30); ok('soltar o analógico para', !J.keys.KeyW);
   navigator.getGamepads = orig; P.semPad();
   localStorage.removeItem('hora-silencio-v3-auto');

@@ -3,6 +3,7 @@
 // { nome, spawns, fora, dentro, energia(), inspetor(), procissao(), ana(), chamado(), entrar(cap), inicioCapitulo(cap), ... }
 import { extrasEstrada, memoria, lembrar, SPAWN } from './src/estrada-extra.js';
 import { TXT } from './src/estrada-roteiro.js';
+import { mundoEstrada } from './src/estrada-mundo.js';
 import { extrasTerreo, extrasSuperior, juntar } from './src/internato.js';
 import * as SUB from './src/subterraneo.js';
 
@@ -163,6 +164,7 @@ function estrada(A, S) {
   addColliderSafe(A, 17.8, 18.6, -17.6, -16.8);
   const v = vulto(A);
   const ex = extrasEstrada(A, S, { GZ, carro, farolOn, portaMalas, orelhao, joaquim, velho, lp, janela: janelaAcesa, v, novoVulto: () => vulto(A) });
+  mundoEstrada(A, S, { GZ, carro, ex }); // Lote 2: lugares e lore da estrada, do posto e do portão (src/estrada-mundo.js)
   const sumir = inst => { velho.visible = false; ex.sumir(inst); A.W.tick.push(() => { cadeira.rotation.x = Math.sin(A.perf() * 2) * .06; }); };
   if (S.flags.joaquimSumiu) sumir(true);
   interact(velho, () => S.done.posto ? '<b>E</b>Falar com Seu Joaquim' : '<b>E</b>Falar com o velho', () => {
