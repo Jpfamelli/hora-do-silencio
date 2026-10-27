@@ -1,0 +1,104 @@
+# Lote 3 — Áudio
+- Novo limitador final "Proteger os ouvidos" (ligado por padrão): nenhum pico passa de -6 dB, e o susto continua forte pelo contraste
+- Nova opção "Faixa de som" com três modos: Cinema (picos livres), Noite (gritos contidos) e Fone baixo (tudo nivelado)
+- Modo "Fone baixo": compressão forte com ganho de compensação, para ouvir os passos dele com o volume baixinho
+- Quem usava a antiga opção "Som noturno" entra direto no modo Noite, sem perder a escolha
+- Uma frase curta embaixo das opções explica o que cada faixa de som faz
+- Os sustos (cordas, piano grave, metal, coro, impacto e gritos) ganharam um barramento próprio, separado da música
+- Novo volume "Sustos", para quem grava baixar o pico sem tirar o peso do resto
+- Nova opção "Sustos menos altos": um compressor só nos sustos corta o pico e suaviza o ataque, sem mexer no resto do som
+- Com "Sustos menos altos", o agudo rasgado dos gritos é cortado acima de 3 kHz
+- Nova opção "Tocando em": fone ou caixa de som, alto-falante do notebook ou alto-falante do celular
+- Perfil de notebook: corta o grave que a caixinha não toca e gera harmônicos dele, então os passos do Inspetor, o sino e o gerador continuam audíveis
+- Perfil de celular: corta abaixo de 180 Hz e realça a faixa de 2,5 kHz, onde ficam passos, estalos e a contagem da Ana
+- Em aparelho de toque, o perfil de celular já vem escolhido
+- Nos perfis de alto-falante, a ambiência fica 30% mais baixa para os avisos de perigo aparecerem
+- Nos perfis de alto-falante, o som 3D usa panorama simples em vez do modo de fone, que soa estranho em caixinha
+- Teto de sons tocando ao mesmo tempo (24, ou 14 na qualidade Baixa): o ambiente sai primeiro e os efeitos só no aperto
+- Passos do Inspetor, vozes, coração, sustos e menus nunca são cortados pelo teto de sons
+- Sons de ambiente a mais de 32 m nem começam a tocar
+- Fontes contínuas a mais de 36 m saem do mixer e param de pesar no processador; voltam com fade quando você se aproxima
+- Na qualidade Baixa, os ecos do corredor, da capela e dos túneis têm cauda mais curta e custam menos
+- Na qualidade Baixa, as goteiras pingam menos vezes
+- Na qualidade Baixa, só duas lâmpadas zumbem ao mesmo tempo
+- A escolha das lâmpadas que zumbem ficou mais leve, sem recalcular distâncias a cada comparação
+- No iPhone, um quadro de silêncio no primeiro toque destrava a saída de som
+- O som volta também com toque e clique, e sai do estado "interrompido" do iPhone (ligação, Siri, troca de bluetooth)
+- Se o som ficar parado no meio do jogo, aparece o aviso "O som caiu — toque aqui para religar"
+- Se a saída de som mudar no meio do jogo (fone tirado, bluetooth caiu), o jogo pausa sozinho
+- Nessa pausa o jogo pergunta "Ainda está de fone?", e Sim ou Não liga ou desliga o som 3D de fone na hora e salva a escolha
+- Menus: passar o mouse ou o foco num botão faz o estalo seco de uma tecla de gravador
+- Menus: confirmar faz o clique pesado do PLAY, com o motorzinho da fita
+- Menus: voltar e fechar fazem um rebobinar curto
+- Menus: arrastar um controle deslizante faz o tique de um potenciômetro
+- Arrastar um volume toca uma amostra daquele som no volume novo (chuva, passo dele, voz, clique, susto, menu)
+- Menus: caixas de marcar estalam como um interruptor antigo, com som diferente para ligar e desligar
+- Menus: listas de escolha e seções que abrem fazem uma catraca
+- Menus: tocar num botão bloqueado faz um baque surdo
+- Novo volume "Sons dos menus"
+- No título, às vezes um sussurro atravessa de um ouvido para o outro ao passar pelos botões, e a letra treme
+- Em um a cada trinta desses sussurros, ele vem do lado contrário ao botão
+- O sussurro do título não toca com "Reduzir flashes" ligado
+- Abrir a pausa faz um "tum" grave e um rebobinar; voltar ao jogo faz o PLAY
+- Na pausa, a cada 40 s, um passo dele soa muito longe, do lado onde ele está de verdade
+- Abrir o diário faz o som da capa do caderno; fechar, o caderno batendo
+- Trocar de aba no diário vira a página
+- No Pesadelo, abrir o diário faz barulho: o Inspetor ouve a até 4 m
+- Fechar uma nota dobra o papel
+- Cumprir um objetivo termina com uma caneta riscando o próximo
+- Trocar a pilha tem som próprio de mola e tampa, em vez do clique genérico
+- Trocar a pilha faz um pouco de barulho (2,5 m)
+- O interruptor da lanterna estala em dois tempos (aperta e solta), com som diferente ao ligar e ao desligar
+- Ao ligar a lanterna, o filamento chia antes de firmar
+- Ao desligar, fica um "tim" fino do bulbo esfriando
+- O zumbido no ouvido depois de golpe e grito ficou mais agudo (6 a 7,6 kHz) e mais longo
+- Durante o zumbido o mundo volta aos poucos, de abafado a claro; nesse tempo os passos dele chegam abafados
+- Badalada do sino a menos de 5 m deixa o ouvido zunindo
+- Nova opção "Sem zumbido no ouvido" para quem tem zumbido de verdade: tira o tom e abafa menos
+- Prender o ar escondida abafa o mundo aos poucos, como ouvido tampado
+- Quanto menos fôlego sobra, mais longe o mundo fica
+- Com o fôlego quase no fim, a garganta da Lia aperta num "mm" tremido
+- Com o Inspetor a menos de 10 m, a chuva, o vento, o zumbido das lâmpadas e o drone caem até 45%: o silêncio chega antes dele
+- A música de caça some quando ele para para dar o bote: o vazio avisa
+- No bote, o resto do mundo também quase silencia
+- Medo alto traz um cluster agudo que bate devagar, com folga para entrar e sair (nunca fica piscando)
+- Quando ele desiste da busca, a Lia solta um suspiro trêmulo
+- Depois de 4 a 7 minutos sem perigo, o mundo inteiro se cala por 6 a 10 s, sobrando só o corpo da Lia
+- Em 30% desses silêncios, uma porta bate longe
+- Com vida abaixo de 40, a respiração ganha um chiado no peito
+- Com vida abaixo de 40, correr arranca um gemido curto
+- Com vida abaixo de 20, a perna ferida arrasta no chão a cada dois passos
+- O passo arrastado faz um pouco de barulho para o Inspetor
+- No pânico, o sangue bate nos ouvidos no ritmo do coração
+- Agachar e levantar farfalham a roupa, e às vezes o joelho estala
+- Começar a correr puxa o ar
+- No agarrão, a Lia grita com a boca tapada
+- Ao morrer, o coração dá três últimas batidas, cada vez mais fracas
+- Os passos da Lia alternam entre a esquerda e a direita
+- Cada pé tem um tom levemente diferente
+- Correção: passos em salas sem piso marcado soavam como grama; agora soam como a madeira desenhada no chão
+- No cemitério, os passos afundam em terra úmida, com som próprio
+- Os passos do Inspetor também mudam na terra do cemitério
+- Porta aberta devagar (ALT) range baixo, longo e quase mudo
+- Porta aberta correndo range alto e curto e bate no batente
+- O barulho da porta para o Inspetor segue o jeito de abrir: devagar 40% menos, correndo 30% mais
+- Som atrás de porta fechada passa abafado em 600 Hz e 8 dB mais baixo
+- Com a porta abrindo (entreaberta), o som passa em 2 kHz
+- Porta aberta deixa o som passar quase limpo, e passagem sem porta soa mais clara que antes
+- Enquanto uma porta se mexe, o abafamento dos sons contínuos atualiza cinco vezes mais rápido: abrir com algo do outro lado faz o som "abrir" de repente
+- A chuva vem em ondas: uma camada de gotas grossas cresce e some devagar
+- Tábuas soltas no corredor de cima e ladrilhos soltos nos corredores do térreo, sempre nos mesmos lugares, mais claros e com rachadura
+- Pisar no chão solto faz barulho alto (o Inspetor ouve a até 7 m); agachada é metade, devagar um pouco menos, correndo mais
+- O ladrilho solto bate em dois toques; a tábua range
+- O Inspetor também pisa no chão solto, e dá para ouvir onde ele está
+- Andando perto dos armários, o Inspetor passa a mão neles: um toc-toc de madeira em 3D
+- No armário onde você está, a batida vem colada no ouvido, a câmera treme, o controle e o celular vibram e o medo sobe
+- Ao trocar de mapa ou carregar o jogo, o som entra num fade de 1,2 s, sem estalo
+- Ao voltar do checkpoint, o som não carrega o pânico da morte: silêncios, zumbido, coração e corte de som recomeçam limpos
+- Nova opção "Tique ao mirar em algo usável": um toque grave em 3D quando a mira acha algo que se usa pela primeira vez
+- O tique na mira já vem ligado para quem escolheu legendar todos os sons
+- Novo botão "Testar fone": a Ana sussurra da esquerda, da direita e de trás de você
+- Novo botão "Som padrão" volta todos os ajustes de som ao original
+- Cada volume mostra a porcentagem ao lado
+- Os controles de volume têm nome para leitor de tela
+- Legendas novas: batidas no armário, chão solto, porta batendo longe, passo longe, mola da lanterna e grito abafado no agarrão
