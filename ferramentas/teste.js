@@ -104,6 +104,7 @@ T.plataforma = async () => {
   document.getElementById('p-voltar').click(); await new Promise(r => setTimeout(r, 20)); ok('volta da pausa com retorno suave', P.graca > 0); T.passo(1.5);
   let n = 0; P.agenda(() => n++, 1); J.S.dead = true; T.passo(2); J.S.dead = false; ok('fala agendada não corre com o jogo parado', n === 0);
   J.carregarSnap(J.S._check); ok('carregar checkpoint limpa a agenda', P.fila.length === 0);
+  if (J.ui === 'pausa') document.getElementById('p-voltar').click(); // o Chrome headless às vezes devolve um pointerlockchange atrasado, que reabre a pausa
   P.forcarCalma(); ok('salvamento leve grava', P.salvarAuto() && !!localStorage.getItem('hora-silencio-v3-auto'));
   ok('link de desafio', /desafio=[SABC]+-[0-9a-z]+-[0-9a-z]+$/.test(P.textoResultado().url));
   const fakePad = { connected: true, axes: [0, -1, 0, 0], buttons: Array.from({ length: 17 }, () => ({ pressed: false, value: 0 })) };

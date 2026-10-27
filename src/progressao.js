@@ -2,6 +2,7 @@
 // ajuda invisível, diagnóstico de morte, dicas progressivas, modos (Uma Vida, cronômetro, amuletos,
 // código de desafio), conquistas extras, acervo de lore entre partidas, estatísticas e memória do título.
 // O motor (jogo.js) chama PG.ligar(ctx) uma vez e usa os ganchos PG.* em pontos pontuais.
+import { MUNDO } from './progressao-mundo.js'; // Lote 2: mundo e história (acervo, noites que lembram, datas, jornal...)
 const LORE_KEY = 'hora-silencio-v3-acervo';
 const STATS_KEY = 'hora-silencio-stats';
 const ULTIMA_KEY = 'hora-silencio-ultima';
@@ -146,6 +147,7 @@ function painelCapitulos() {
     const linhas = [d.tempo ? `melhor tempo ${fmt(d.tempo)} · meta S ${meta(c.id).s}:00` : 'liberado', `lore do mapa ${achou}/${lore.length}`,
       `desafio secreto: ${d.desafio ? `<b class="ouro">${info.desafio ? info.desafio.nome : 'cumprido'}</b>` : '???'}`];
     if (d.rank === 'S' && info.frase_s) linhas.push(`<i class="frase">“${info.frase_s}”</i>`);
+    linhas.push(...MUNDO.linhasCap(c, i));
     return `<div class="it"><div><b>${c.titulo}</b><br><small>${linhas.join(' · ')}</small><br>${selosHTML(d.selos || {})}</div><div style="display:flex;align-items:center;gap:12px"><span class="rank">${d.rank || ''}</span><button class="btn" data-cap="${c.id}">Jogar</button></div></div>`;
   }).join('');
   abrirPainel('Capítulos', h);
@@ -178,6 +180,7 @@ function painelStats() {
     ['Vezes encontrada', s.mortes || 0], ...Object.entries(causas).map(([k, n]) => [`  · por ${n}`, (s.causas || {})[k] || 0]),
     ['Garrafas jogadas', s.garrafas || 0], ['Capítulos em S', `${(s.capsS || 0)}/${R.capitulos.length}`],
     ['Acervo (notas, páginas e fitas)', `${Object.keys(acervo()).length}/${R.notas.length + R.paginas.length + R.fitas.length}`]
+    , ...MUNDO.linhasStats()
   ];
   abrirPainel('Estatísticas', L.map(([a, b]) => `<div class="it"><div><b>${a}</b></div><span class="rank" style="font-size:20px">${b}</span></div>`).join(''));
 }
@@ -205,6 +208,7 @@ function titulo() {
     am.querySelectorAll('[data-amuleto]').forEach(cb => cb.onchange = () => { C.OPT.mods = [...am.querySelectorAll('[data-amuleto]:checked')].map(x => x.dataset.amuleto); C.salvarOpt(); });
   }
   difDesc();
+  MUNDO.titulo();
   // ele lembra de quem morreu muito
   try {
     const sp = C.W.def && C.W.def.spawns && C.W.def.spawns.titulo;
@@ -229,6 +233,7 @@ export const PG = {
     C = ctx;
     const R = window.ROTEIRO;
     for (const x of RP().conquistas || []) if (!R.conquistas.some(y => y.id === x.id)) R.conquistas.push(x);
+    MUNDO.ligar(ctx, { conquista, ls, stats, acervo, fmtC, fmt, abrirPainel, somaStat });
     addEventListener('keydown', e => {
       teclaTitulo(e);
       if (C.ui === 'morte' && (e.code === 'Enter' || e.code === 'KeyE' || e.code === 'NumpadEnter') && !$('#dt-retry').hidden && !$('#death').hidden) $('#dt-retry').click();
@@ -259,24 +264,27 @@ export const PG = {
     S.completo = true; S.desafio = !!cod;
     seqMortes = 0;
     somaStat(s => { s.partidas = (s.partidas || 0) + 1; });
+    MUNDO.novoJogo(S);
   },
   // dificuldade efetiva: base + amuletos + ajuda invisível
   dif(S, DIFS) {
     const base = DIFS[S && S.dif] || DIFS.normal;
     if (!S) return base;
-    const aj = S.ajuda || 0, mods = S.mods || [], k = (S.dif || '') + aj + mods.join();
+    const aj = S.ajuda || 0, mods = S.mods || [], k = (S.dif || '') + aj + mods.join() + MUNDO.difKey();
     if (PG._k === k && PG._v) return PG._v;
     const v = { ...base };
     if (mods.includes('pilha')) v.pilha *= 2;
     if (mods.includes('ouvido')) v.ouvido *= 1.4;
     if (mods.includes('passos')) v.vel *= 1.12;
     if (mods.includes('aviso')) v.aviso = Math.max(2, v.aviso - 3);
+    MUNDO.difMod(v, S);
     if (aj) { v.vel *= 1 - aj; v.ouvido *= 1 - aj; v.aviso += aj >= .2 ? 3 : 2; }
     PG._k = k; PG._v = v; return v;
   },
   tick(dt) {
     const S = C.S, P = C.P, M = C.M;
     tempoPend += dt;
+    MUNDO.tick(dt);
     S.capRuido = (S.capRuido || 0) + (P.noiseR || 0) * dt;
     if (P.sprinting && !S.flags.sino) { S.capCorreu = (S.capCorreu || 0) + dt; S.correu = (S.correu || 0) + dt; }
     if (S.flashOn) S.capLuzT = (S.capLuzT || 0) + dt;
@@ -299,7 +307,7 @@ export const PG = {
     }
     // cronômetro
     const el = $('#crono'), mostra = !C.OPT.cron && !!(C.OPT.crono || (S.modo && (S.modo.crono || S.modo.umaVida))); // com o cronômetro da interface ligado, só ele aparece
-    if (el) { if (el.hidden === mostra) el.hidden = !mostra; if (mostra) { const t = `${fmtC(S.capT)}<small>total ${fmtC(S.tempo)}${S.modo && S.modo.umaVida ? ' · uma vida' : ''}</small>`; if (PG._crono !== t) { el.innerHTML = t; PG._crono = t; } } }
+    if (el) { if (el.hidden === mostra) el.hidden = !mostra; if (mostra) { const t = `${fmtC(S.capT)}<small>total ${fmtC(S.tempo)}${S.modo && S.modo.umaVida ? ' · uma vida' : ''}${S.modo && S.modo.cat ? ' · ' + MUNDO.cronoExtra(S) : ''}</small>`; if (PG._crono !== t) { el.innerHTML = t; PG._crono = t; } } }
   },
   objetivo(id) {
     const S = C.S; if (!S) return;
@@ -327,6 +335,7 @@ export const PG = {
     const ac = acervo(); if (!ac[id]) { ac[id] = true; ls.set(LORE_KEY, ac); }
     const R = window.ROTEIRO;
     if (Object.keys(ac).length >= R.notas.length + R.paginas.length + R.fitas.length) conquista('arqueologa');
+    MUNDO.lore(id);
   },
   garrafa() { const S = C.S; S.capGarrafas = (S.capGarrafas || 0) + 1; S.garrafasUsadas = (S.garrafasUsadas || 0) + 1; somaStat(s => { s.garrafas = (s.garrafas || 0) + 1; }); },
   kit() { const S = C.S; S.kitsUsados = (S.kitsUsados || 0) + 1; },
@@ -353,6 +362,7 @@ export const PG = {
     if (r.letra !== 'S' && r.falta.length) linhas.push(`para o S faltou: ${r.falta.join(' · ')}`);
     if (novoDes && info.desafio) linhas.push(`desafio secreto cumprido: <b class="ouro">${info.desafio.nome}</b> — ${info.desafio.desc}`);
     if (r.letra === 'S' && info.frase_s) linhas.push(`<i>“${info.frase_s}”</i>`);
+    linhas.push(...MUNDO.fimCap(c, ant));
     if ($('#fc-falta')) $('#fc-falta').innerHTML = linhas.join('<br>');
   },
   zerarCap() { const S = C.S; Object.assign(S, { capMortes: 0, capRuido: 0, capCorreu: 0, capLuzT: 0, capLore: 0, capGarrafas: 0, semObjT: 0, procTipo: null, dicaSala: null }); PG._perto = null; },
@@ -393,6 +403,7 @@ export const PG = {
     const st = somaStat(s => { s.mortes = (s.mortes || 0) + 1; (s.causas = s.causas || {})[quem] = ((s.causas || {})[quem] || 0) + 1; });
     if ((st.mortes || 0) >= 10) conquista('teimosa');
     ls.set(ULTIMA_KEY, { tipo: 'morte', quem, cap: S.chapter, t: Date.now() });
+    MUNDO.morte(quem);
     if (S.modo && S.modo.umaVida) { try { localStorage.removeItem(C.KEYS.SAVE_KEY); } catch (e) {} }
   },
   escondidaAntes() { PG._escT = performance.now(); },
@@ -409,7 +420,7 @@ export const PG = {
   pausa() {
     const S = C.S, el = $('#p-info'); if (!el || !S) return;
     const am = (S.mods || []).map(id => ((RP().amuletos || []).find(a => a.id === id) || {}).nome).filter(Boolean);
-    el.innerHTML = `${window.ROTEIRO.capitulos[S.chapter].titulo} · ${fmtC(S.capT)} neste capítulo · ${fmtC(S.tempo)} na noite · ${S.mortes} ${S.mortes === 1 ? 'morte' : 'mortes'}<br>${C.D().nome}${am.length ? ' · ' + am.join(', ') : ''}${S.modo && S.modo.umaVida ? ' · Uma Vida' : ''} · código de desafio ${codigoDesafio(S)}`;
+    el.innerHTML = `${window.ROTEIRO.capitulos[S.chapter].titulo} · ${fmtC(S.capT)} neste capítulo · ${fmtC(S.tempo)} na noite · ${S.mortes} ${S.mortes === 1 ? 'morte' : 'mortes'}<br>${C.D().nome}${am.length ? ' · ' + am.join(', ') : ''}${S.modo && S.modo.umaVida ? ' · Uma Vida' : ''} · código de desafio ${codigoDesafio(S)}${MUNDO.pausaExtra()}`;
   },
   // final
   loreFinal() {
@@ -419,7 +430,7 @@ export const PG = {
   },
   final(tipo) {
     const S = C.S, R = window.ROTEIRO, c = R.capitulos[S.chapter];
-    if (c && !(S.ranks || {})[c.id]) registrarCap(S, c, calcRank(S)); // o Capítulo V não tem tela de fim: registra aqui
+    if (c && !(S.ranks || {})[c.id]) { const antC = { ...(ls.get(C.KEYS.CAPS_KEY, {})[c.id] || {}) }; registrarCap(S, c, calcRank(S)); MUNDO.fimCap(c, antC, true); } // o Capítulo V não tem tela de fim: registra aqui
     const st = somaStat(s => { s.finais = s.finais || {}; s.finais[tipo] = (s.finais[tipo] || 0) + 1; if (S.completo) { s.concluidas = (s.concluidas || 0) + 1; if (!s.melhorTotal || S.tempo < s.melhorTotal) s.melhorTotal = S.tempo; } });
     if (['comum', 'silencio', 'verdadeiro'].every(f => st.finais[f])) conquista('tres_finais');
     if (S.completo) {
@@ -431,6 +442,7 @@ export const PG = {
     }
     ls.set(ULTIMA_KEY, { tipo: 'final', final: tipo, t: Date.now(), tempo: S.tempo });
     PG._tipoFinal = tipo;
+    MUNDO.final(tipo);
   },
   telaFinal(tipo) {
     const S = C.S, R = window.ROTEIRO, st = stats();
@@ -440,7 +452,8 @@ export const PG = {
     let extra = `<br>ranks: ${ranks}<br>finais vistos ${nf}/3 · conquistas nesta noite ${conqs} · código de desafio ${codigoDesafio(S)}`;
     if (false && tipo === 'comum' && !lf.ok) extra += // o fim verdadeiro depende das atitudes (src/historia.js), não de coleta `<br>para a outra escolha no portão faltaram ${[lf.fitas ? `${lf.fitas} fita${lf.fitas > 1 ? 's' : ''}` : '', lf.pags ? `${lf.pags} página${lf.pags > 1 ? 's' : ''} do Davi` : ''].filter(Boolean).join(' e ')} (use o menu Capítulos para voltar e procurar)`;
     $('#e-stats').innerHTML += extra;
-    if (S.completo && S.tempo < 3600) $('#e-txt').textContent += '\n\nA Hora durou menos que uma hora.';
+    if (S.completo && S.tempo < 3600) { const sp = document.createElement('span'); sp.className = 'par'; sp.textContent = '\n\nA Hora durou menos que uma hora.'; sp.style.animationDelay = ($('#e-txt').querySelectorAll('.par').length * 1.4) + 's'; $('#e-txt').appendChild(sp); } // sem apagar a revelação parágrafo a parágrafo
+    MUNDO.telaFinal(tipo);
   }
 };
 
@@ -448,7 +461,7 @@ function copiarResultado() {
   const S = C.S; if (!S) return;
   const R = window.ROTEIRO, F = R.finais[PG._tipoFinal] || {};
   const ranks = R.capitulos.map(c => (S.ranks || {})[c.id] || '–').join(' ');
-  const txt = `A Hora do Silêncio · ${C.D().nome} · desafio ${codigoDesafio(S)} · ${fmtC(S.tempo)} · ranks ${ranks} · mortes ${S.mortes} · ${C.loreAchado()}/${C.totalLore()} lore · ${(F.titulo || '').replace('FINAL: ', '').toLowerCase()}\n${location.href.split('#')[0]}`;
+  const txt = `A Hora do Silêncio · ${C.D().nome} · desafio ${codigoDesafio(S)} · ${fmtC(S.tempo)} · ranks ${ranks} · mortes ${S.mortes} · ${C.loreAchado()}/${C.totalLore()} lore · ${(F.titulo || '').replace('FINAL: ', '').toLowerCase()}${S.flags._noite ? ` · noite nº ${S.flags._noite}` : ''}\n${location.href.split('#')[0]}`;
   const ok = () => { const b = $('#e-copiar'); b.textContent = 'Copiado!'; setTimeout(() => b.textContent = 'Copiar resultado', 1800); };
   try { navigator.clipboard.writeText(txt).then(ok, () => fallback()); } catch (e) { fallback(); }
   function fallback() { const t = document.createElement('textarea'); t.value = txt; document.body.appendChild(t); t.select(); try { document.execCommand('copy'); ok(); } catch (e) {} t.remove(); }

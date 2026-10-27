@@ -1,0 +1,100 @@
+# Lote 2 — Progressão e rejogabilidade
+- Novo botão "Acervo" no título, que guarda entre as noites tudo o que a Lia descobriu
+- O botão Acervo só aparece depois que a Lia achou alguma coisa
+- Acervo: aba "Fios" junta notas, páginas e fitas em seis fios de mistério (O homem que caça, A noite do fogo, As três crianças, O diário do Davi, Quem mandou a fita, As regras da casa)
+- Cada fio mostra quantas peças já tem ("2 de 4") sem dizer onde estão as que faltam
+- Completar um fio mostra um aviso na tela e a Lia liga os pontos em voz alta com uma frase de fecho
+- A frase de fecho de cada fio completo fica escrita no acervo
+- Dá para reler no acervo, dentro de cada fio, o texto inteiro das notas, páginas e fitas já achadas (sem os códigos da noite)
+- Aba "Lugares" conta as peças de cada lugar (Térreo 4/7, Túneis 2/6...) sem revelar onde estão
+- Depois de terminar uma noite, cada peça que falta ganha uma dica enigmática na aba Lugares ("Um presente atrás de livros que ninguém lê")
+- A aba Lugares conta em quantos lugares do internato a Lia já reparou, somando as noites
+- Aba "Linha do tempo" do São Lázaro, de 1938 a 1994, que acende cada data quando você acha o documento que a conta
+- Datas ainda não descobertas aparecem como "— ? —" na linha do tempo, mostrando que falta história sem dizer onde
+- Aba "Pessoas": verbete escrito pela Lia para Davi, Ana, Tomé, Moacir, Irmã Celeste, Diretor Albano e Seu Joaquim
+- Os verbetes se reescrevem conforme o que você descobriu (o Moacir começa como "o homem vendado" e termina como o menino trancado em 1946)
+- Cada pessoa mostra a porcentagem do que já se sabe dela
+- Fechar 100% de uma pessoa libera uma última frase dela
+- Cada pessoa ganha um retrato desenhado (a venda do Moacir, o véu da Irmã Celeste, as tranças da Ana) que vai se revelando conforme a porcentagem
+- Aba "Gravador da Lia" guarda o recado que a Lia gravou no fim de cada capítulo
+- O botão "Ouvir" do gravador toca o clique e o chiado da fita
+- Depois de chegar ao fim do Capítulo IV, ouvir de novo os recados revela uma voz de menino ao fundo: "eu tô ouvindo, Lia."
+- O acervo lembra a última aba que você abriu
+- Segunda noite em diante: o livro de ocorrências ganha uma linha com a data de hoje em 1994: "Aluna Lia M. fora da cama. Reincidente."
+- Segunda noite em diante: o caderno da cozinheira passa a pedir 38 pratos, o último com o nome L. MORAES
+- Depois de ouvir a fita do Moacir em qualquer noite, a ficha médica dele ganha uma anotação a lápis: ex-aluno da casa, 1946 a 1952
+- Segunda noite em diante: a lista de castigos conta a lápis quantas vezes o Inspetor "decidiu" sobre a Lia (o total de mortes)
+- Depois do final verdadeiro, o diário da Irmã Celeste ganha uma linha nova: "Eles foram dormir. Obrigada, moça."
+- Depois do final verdadeiro, cada página do diário do Davi ganha uma linha mais apagada respondendo à Lia ("você voltou? por quê?", "não precisa mais, Lia"), sem mexer nos números do cofre
+- Segunda noite: no refeitório, a Lia nota um prato a mais com o nome dela
+- Segunda noite: na cozinha, a Lia vê uma caneca de lata separada das outras, com um L arranhado
+- Terceira noite: na cisterna dos túneis, o giz do Davi diz "LIA, VOCÊ VOLTOU"
+- Terceira noite: no último dormitório, uma das camas arrumadas tem o tamanho da Lia
+- Quarta noite: uma xícara de café ainda quente espera no banco da capela
+- Quinta noite: uma pasta grossa "MORAES, LIA" aparece na mesa da diretoria
+- Ao sair do carro, a Lia sente que já passou por aquela estrada (falas diferentes na 2ª, 3ª, 5ª e 9ª noite)
+- O título avisa qual será a sua próxima noite no São Lázaro ("noite nº N")
+- A pausa mostra a noite nº da partida
+- O resultado copiado na tela final inclui a noite nº
+- O jogo guarda os últimos 9 lugares onde a Lia morreu em cada mapa, somando as noites, com a hora do relógio
+- Nas noites seguintes, um X de giz com "LIA" e a hora aparece no chão onde você morreu
+- Ao chegar perto do X de giz, a Lia reconhece a própria letra
+- Entrar numa sala onde você morreu três vezes ou mais faz a Lia dizer "Eu já morri aqui. Eu sei que já."
+- A outra Lia: uma silhueta pálida e encolhida aparece por um instante, à sua frente, num ponto onde você morreu em outra noite
+- A silhueta some se for iluminada pela lanterna, deixando só sussurros, e range o chão quando aparece
+- A outra Lia aparece no máximo uma vez por minuto e nunca durante caçada, Procissão ou esconderijo
+- O jogo grava a rota da sua corrida mais rápida de cada capítulo
+- Com o cronômetro ligado, pegadas molhadas da "outra Lia" marcam no chão a rota do seu recorde
+- As pegadas do recorde se apagam conforme você passa por elas
+- A tela de fim de capítulo avisa quando as suas pegadas daquela noite ficaram gravadas
+- Categorias de corrida no título (aparecem ao ligar o cronômetro): Só a Saída, A Hora Acabou e Todas as Lembranças
+- Recordes separados por categoria e por dificuldade
+- O cronômetro do HUD mostra a categoria da corrida
+- Na categoria Todas as Lembranças, o cronômetro conta as lembranças achadas, incluindo as escondidas
+- A tela final diz se a corrida valeu, se bateu o recorde da categoria e por quantos segundos
+- Estatísticas mostram o recorde de cada categoria em cada dificuldade
+- Jornal do dia seguinte: botão na tela final abre a primeira página de "O Eco da Serra", de 1994
+- A manchete do jornal muda conforme o final ("MOÇA É ENCONTRADA DESCALÇA NA ESTRADA VELHA", "SINO DO SÃO LÁZARO SILENCIA APÓS 15 ANOS"...)
+- O jornal usa o nome que você escreveu, a data de hoje com o ano trocado para 1994, quanto tempo você ficou lá dentro e quantas vezes gritou
+- O jornal tem foto desenhada do internato com a torre do sino, classificados e previsão do tempo
+- Botão "Salvar imagem" baixa o jornal em PNG para mandar a alguém
+- Epílogo depois do final verdadeiro: a Lia no carro de manhã e o rádio dizendo que o sino não tocou pela primeira vez em quinze anos
+- No banco de trás do epílogo, um carrinho azul e uma fita sem etiqueta; ouvir a fita diz só "obrigado."
+- Botão "Na manhã seguinte" na tela do final verdadeiro para rever o epílogo
+- Novo final escondido, A Quarta Criança: quem leu a ficha do Moacir e o caderno da cozinheira e ouviu a fita 3 ganha no portão a escolha "Chamar o Moacir pelo nome"
+- Chamar o Moacir pelo nome acrescenta ao final verdadeiro o Inspetor virando menino por um instante e subindo a torre junto com as crianças
+- No final da Quarta Criança, o jornal do dia seguinte cita o nome Moacir
+- Correção: a linha "A Hora durou menos que uma hora" apagava a animação do texto final; agora entra como mais um parágrafo
+- No dia 14 de março, a data do fogo, o título vira "FAZ N ANOS HOJE" em brasa
+- No dia 14 de março, o livro de ocorrências ganha uma linha com a data de hoje e a tinta ainda molhada
+- No dia 14 de março, a Lia lembra da data ao sair do carro e a Procissão avisa 1 s mais tarde
+- No dia 15 de março, aniversário da Lia, o título lembra e o desenho do Davi ganha uma vela com o pavio ainda quente
+- No Dia de Finados, o título e a Lia lembram das velas do cemitério das irmãs
+- Sexta-feira 13 e três da manhã mudam o subtítulo do título e a fala da Lia ao sair do carro
+- Nome especial MOACIR: o Inspetor fica 10% mais rápido e diz "Esse nome é meu"
+- Nome especial CELESTE: o terço da Irmã Celeste avisa a Procissão 1 s antes
+- Nome especial ALBANO: o Inspetor ouve 10% mais longe e fala com o "diretor"
+- Nomes especiais DAVI, ANA, TOMÉ e LIA mudam a frase do título e quem fala com a Lia no começo da noite
+- O título reage na hora ao nome digitado (MOACIR aparece em vermelho)
+- O efeito de um nome especial é avisado na tela no começo da noite
+- Conquistas secretas dos seis fios: Olhos Fechados, Trancada Por Fora, Recreio, Quatro Números, Remetente e Letra Miúda
+- Conquista secreta "A Verdade Inteira" (todos os fios), que troca o subtítulo do título por "Ele escolheu o armário. Ela escolheu voltar."
+- Conquista secreta "Ninguém Esquecido": todas as pessoas do acervo a 100%
+- Conquista secreta "Quem Ouve a Casa": reparar em oito lugares do internato, somando as noites
+- Conquistas secretas "A Quarta Criança" e "Obrigado", ligadas ao final escondido e ao epílogo
+- Conquistas secretas "Uma Voz a Mais" (o gravador da Lia) e "Primeira Página" (o jornal)
+- Conquistas secretas "Todos Voltam" (achar o próprio X de giz) e "A Outra Lia" (ver a silhueta)
+- Conquista secreta "Mais Rápida Que Ontem": bater o recorde de um capítulo seguindo as próprias pegadas
+- Conquistas secretas de data: Aniversário (14/03), Parabéns, Lia (15/03), Finados, Sexta-Feira e Hora Morta
+- Conquista secreta "A Chamada": escrever quatro nomes da história no campo do seu nome
+- Conquista secreta "Nona Noite": começar a nona noite no São Lázaro
+- Conquistas secretas de corrida "Corredora da Hora" e "Nada Ficou Para Trás"
+- As 11 conquistas secretas antigas que mostravam só "..." ganharam uma dica enigmática no painel
+- O fim de capítulo mostra o que entrou na história naquele capítulo e em que pé está o fio de cada peça
+- A tela final mostra os fios completos, as pessoas lembradas e a noite nº
+- Estatísticas mostram fios completos, pessoas lembradas, datas acesas e lugares notados
+- Estatísticas mostram o lugar onde mais te encontraram e o capítulo mais difícil
+- O menu Capítulos mostra quantas vezes te encontraram em cada capítulo, somando as noites
+- O menu Capítulos mostra o último recado do gravador da Lia em cada capítulo
+- O menu Capítulos indica os capítulos que já têm pegadas gravadas
+- Quem já tinha completado fios em noites antigas recebe as conquistas ao abrir o jogo
