@@ -57,14 +57,40 @@ T.ate = async (cond, seg = 60, deus = true) => {
 };
 T.semFita = () => T.ate(() => document.getElementById('fita-ind').hidden, 120);
 T.cap = n => T.ate(() => J.S.chapter >= n && document.getElementById('fimcap').hidden, 60);
+// ---- portas livres: um corredor de 1 m dos dois lados de cada porta/vão, sem caixa de colisão (evita soft-lock por móvel)
+T.portasLivres = () => {
+  const W = J.W, out = [];
+  for (const l of W.links) {
+    const nx = l.eixo === 'x' ? 0 : 1, nz = l.eixo === 'x' ? 1 : 0;
+    for (const s of [-1, 1]) for (const dist of [.55, .9]) for (const lat of [-.3, 0, .3]) {
+      const x = l.x + nx * s * dist + nz * lat, z = l.z + nz * s * dist + nx * lat;
+      const c = W.colliders.find(c => c.on && !(l.door && c === l.door.col) && x > c.minX - .2 && x < c.maxX + .2 && z > c.minZ - .2 && z < c.maxZ + .2);
+      if (c) { out.push(`${W.mapa}: porta ${l.a}-${l.b} (${l.x},${l.z}) bloqueada em ${x.toFixed(2)},${z.toFixed(2)} por [${c.minX.toFixed(2)},${c.maxX.toFixed(2)}]x[${c.minZ.toFixed(2)},${c.maxZ.toFixed(2)}]`); break; }
+    }
+  }
+  return [...new Set(out)];
+};
+// ---- lore nova só no caminho: cada nota/prop do lote 2 fica numa sala com objetivo (ou corredor entre objetivos)
+T.loreNoCaminho = () => {
+  const g = window.__jgm; if (!g) return ['sem __jgm'];
+  const out = [];
+  for (const l of g.lore) {
+    if (l.mapa !== J.W.mapa) continue;
+    const r = J.roomAt(l.x, l.z);
+    if (!r || r.id !== l.sala) out.push(`lore ${l.id} fora da sala ${l.sala} (está em ${r && r.id})`);
+    if (!(g.rota[l.mapa] || []).includes(l.sala)) out.push(`lore ${l.id} em sala sem objetivo: ${l.sala}`);
+  }
+  return out;
+};
+T.checarMapa = () => { const f = [...T.portasLivres(), ...T.loreNoCaminho()]; for (const x of f) console.log('[QA] ' + x); return f; };
 T.tudo = async () => {
   const log = [], passo = (nome, ok) => { console.log('[QA] ' + (ok ? 'ok ' : 'FALHOU ') + nome + ' ' + Math.round(performance.now() / 1000) + 's'); log.push((ok ? 'OK  ' : 'FALHOU ') + nome + ' | ' + JSON.stringify({ cap: J.S.chapter, mapa: J.S.mapa })); if (!ok) { console.log('[QA] estado: ' + JSON.stringify(T.estado())); throw new Error(nome); } };
   try {
     localStorage.removeItem('hora-silencio-v2');
-    await T.novo(); passo('novo jogo', J.mode === 'jogo');
+    await T.novo(); passo('novo jogo', J.mode === 'jogo'); passo('portas e lore: estrada', !T.checarMapa().length);
     T.usar(/porta-malas/); T.usar(/Falar com/); T.dlg(); T.dlg(); T.usar(/chave do portão/);
     await T.ate(() => J.S.inv.chaves.portao, 20); T.usar(/cadeado/);
-    passo('prólogo', await T.cap(1) && J.S.mapa === 'terreo');
+    passo('prólogo', await T.cap(1) && J.S.mapa === 'terreo'); passo('portas e lore: térreo', !T.checarMapa().length);
     T.usar(/Forçar a porta/); T.usar(/galão/); T.usar(/caixa de fusíveis/); T.usar(/Ligar o gerador/);
     passo('cap I', await T.cap(2));
     await T.semFita(); T.usar(/Fita 1/); await T.ate(() => J.S.fitas.f1, 120);
@@ -72,18 +98,18 @@ T.tudo = async () => {
     T.usar(/código do quadro/); for (const d of J.S.quadro) T.tecla('Digit' + d); T.tecla('Enter');
     await T.ate(() => J.S.done.procissao, 90);
     T.usar(/Subir para os dormitórios/);
-    passo('cap II', await T.cap(3) && J.S.mapa === 'superior');
+    passo('cap II', await T.cap(3) && J.S.mapa === 'superior'); passo('portas e lore: andar de cima', !T.checarMapa().length);
     T.usar(/Pegar a engrenagem/); T.usar(/dar corda na caixinha/); await T.ate(() => J.S.done.ana, 60);
     T.usar(/página 3/); T.dlg();
     T.usar(/chave da Irmã/); T.usar(/porta da Irmã/); await T.semFita(); T.usar(/Fita 2/); await T.ate(() => J.S.fitas.f2, 120);
     T.usar(/página 2/); T.dlg();
     T.usar(/chave do monta-cargas/); T.usar(/Descer pelo monta-cargas/);
-    passo('cap III', await T.cap(4) && J.S.mapa === 'tuneis');
+    passo('cap III', await T.cap(4) && J.S.mapa === 'tuneis'); passo('portas e lore: túneis', !T.checarMapa().length);
     for (const n of J.S.ordem) T.usar(new RegExp('Girar a válvula ' + n));
     T.usar(/página 4/); T.dlg();
     T.usar(/cofre/); for (const d of J.S.code) T.tecla('Digit' + d); T.tecla('Enter');
     await T.ate(() => J.S.flags.cofre, 20); T.usar(/escotilha/);
-    passo('cap IV', await T.cap(5) && J.S.mapa === 'cemiterio');
+    passo('cap IV', await T.cap(5) && J.S.mapa === 'cemiterio'); passo('portas e lore: cemitério', !T.checarMapa().length);
     T.todos(/Cavar o túmulo/); T.usar(/porta da capela/); T.ir(0, -52); await T.ate(() => J.S.done.capela, 10);
     T.usar(/altar/); T.usar(/corda do sino/); await T.ate(() => J.S.flags.sino, 20);
     T.ir(0, 11.6); await T.ate(() => J.S.fim || J.ui === 'escolha', 30);
