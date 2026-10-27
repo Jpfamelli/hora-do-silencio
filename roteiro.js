@@ -365,6 +365,38 @@ window.ROTEIRO = {
     jogador: { datas: "{hoje}", frase: "DEPOIS DAS NOVE", epitafio: "A tinta ainda está fresca. Alguém sabia que você vinha." }
   },
 
+  // Sustos e eventos (src/sustos.js): vozes, sussurros e avisos dos sustos roteirizados e dinâmicos
+  sustos: {
+    respira: 'Respira. Respira pra mim.',
+    proc_fresta: '(muitas vozes, bem perto) ...você não tá na cama...',
+    proc_luz: 'A luz da lanterna vaza pela fresta. Apaga!',
+    aviso: ['O rádio chia...', 'Passos pequenos. Muitos.', 'Estão vindo. Esconde!'],
+    achei: '(do lado de fora, bem baixinho) ...achei.',
+    ocupado: '(de dentro do armário) Esse é meu. Acha outro.',
+    ocupado_toast: 'Alguém segura a porta por dentro.',
+    ocupado_de_novo: 'Não abre. Alguém segura por dentro.',
+    dez_grave: '(voz de homem, devagar) ...um...',
+    mao_cama: '(sussurro) Aqui é meu.',
+    ombro: '...Quem tá aí? Tinha uma mão no meu ombro.',
+    nada_ouve: 'Você não ouve mais nada.',
+    legenda_mente: '[alguém respira atrás de você]',
+    chamado_lia: 'Lia...? Sou eu. Vem cá. Rápido.',
+    chamado_davi: 'Davi? Davi, é você?',
+    responder: 'Davi?! DAVI! Eu tô aqui!',
+    responder_castigo: '(dentro da sua cabeça) Quem responde, fica.',
+    garrafa_volta: '(do escuro, uma criança) De novo.',
+    garrafa_toast: 'A garrafa voltou rolando até você.',
+    telefone: '(sussurro de criança) Ele tá {onde}. Não deixa tocar de novo.',
+    telefone_longe: '(sussurro de criança) Ele não tá aqui embaixo. Ainda.',
+    pausa: 'ELE CONTINUA ESCUTANDO',
+    nove_poco: '(lá em cima, na boca do poço) ...nove...',
+    fim_lia: 'Lia.',
+    lanterna_bater: 'Bate na lanterna (F, F)!',
+    lanterna_volta: 'Voltou.',
+    turma: 'TURMA DE 1978',
+    alunos: '{n} alunos'
+  },
+
   entidades: {
     inspetor: {
       nome: "O Inspetor",

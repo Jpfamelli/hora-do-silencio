@@ -353,8 +353,8 @@ function terreo(A, S) {
   plano(3, 3, new THREE.MeshStandardMaterial({ map: A.TX.rabisco, transparent: true }), 16, 1.5, -25.85);
 
   // sustos
-  gatilho('portaBate', -34, -6, -14, -10, () => { setTimeout(() => { SFX.pancada(-30, -12); SFX.risada(-32, -20); }, 800); });
-  gatilho('lavanderia', 6, 16, -26, -14, () => { SFX.sussurros(2); });
+  gatilho('portaBate', -34, -6, -14, -10, () => A.sustos.portaBate());
+  gatilho('lavanderia', 6, 16, -26, -14, () => { SFX.sussurros(2); A.sustos.lencol(); });
   const X = extrasTerreo(A, S, { relogios: [relFachada, relHall], vulto, placa });
 
   return juntar({
@@ -471,7 +471,7 @@ function superior(A, S) {
   ITENS.garrafa('g1', spot('banhS', 'mesa', 2)); ITENS.garrafa('g2', spot('sotao', 'mesa', 2)); ITENS.garrafa('g3', spot('dormA', 'cama', 3));
   // sustos
   gatilho('brinquedo', 3, 15, -38, -24, () => { if (!S.done.caixinha) SFX.risada(12, -36); });
-  gatilho('corredorFim', -3, 3, -58, -46, () => { SFX.pancada(8, -54); });
+  gatilho('corredorFim', -3, 3, -58, -46, () => { SFX.pancada(8, -54); A.sustos.espiaQuina(); });
   const X = extrasSuperior(A, S, { vulto });
   X.prepararPoco(itPoco);
 
@@ -632,7 +632,8 @@ function tuneis(A, S) {
       S.flags.cofre = true; S.inv.pa = true; S.inv.chaves.capela = 'Chave da capela'; S.inv.garrafas++; cp.rotation.y = -1.7;
       SFX.pancada(7, -60); A.objDone('cofre');
       A.salvarCheckpoint(); // morrer na fuga volta para logo depois do cofre
-      A.falar('cofre'); setTimeout(() => A.toast('No fundo do cofre, uma garrafa de vidro. G para jogar.'), 2500);
+      // a gaveta da mesa abre sozinha (src/sustos.js) e só então ele acorda
+      A.sustos.cofre(() => { A.falar('cofre'); setTimeout(() => A.toast('No fundo do cofre, uma garrafa de vidro. G para jogar.'), 2500); });
       iniciarFugaCofre(false);
     }, () => A.emitNoise(7, -60, 10));
   });
@@ -668,7 +669,7 @@ function tuneis(A, S) {
   let emergir = null;
   gatilho('cisterna', -6, 6, -41, -30.5, () => {
     if (!S.flags.tunSussurro) { S.flags.tunSussurro = true; SFX.sussurros(2.5); }
-    if (S.chapter !== 4 || S.flags.aguaBaixa || S.flags.tunEmergiu || !A.M.ativo) return;
+    if (S.chapter !== 4 || S.flags.aguaBaixa || S.flags.tunEmergiu || !A.M.ativo) { if (!S.flags.tunCisterna) { S.flags.tunCisterna = true; A.sustos.cisterna(); } return; } // sem ele por perto: só a respiração debaixo d'água
     const fx = -Math.sin(A.P.yaw), fz = -Math.cos(A.P.yaw);
     const x = Math.max(-5, Math.min(5, A.P.pos.x + fx * 8)), z = Math.max(-41, Math.min(-31, A.P.pos.z + fz * 8));
     if (Math.hypot(x - A.P.pos.x, z - A.P.pos.z) < 4.5) return;
@@ -973,7 +974,7 @@ function cemiterio(A, S) {
     return '<b>E</b>Puxar a corda do sino';
   }, () => {
     if (S.flags.sino || S.placed < 3) return;
-    S.flags.sino = true; A.objDone('sino'); SFX.sino(1, { x: 4.8, y: 5, z: -64 }); A.falar('sino'); A.P.shake = .2;
+    S.flags.sino = true; A.objDone('sino'); SFX.sino(1, { x: 4.8, y: 5, z: -64 }); A.falar('sino'); A.P.shake = .2; A.sustos.sino();
     let t = 0; A.W.tick.push(dt => { t += dt; sinoP.rotation.x = Math.sin(t * 3) * .6 * Math.exp(-t * .15) + (fuga ? Math.sin(t * 2.2) * .15 : 0); });
     fundos.abrir(); A.setDoor(A.DOOR('cap'), true, true); avivar(4);
     A.desativarInspetor();
@@ -991,7 +992,7 @@ function cemiterio(A, S) {
       avivar(3); S.fear = Math.min(100, S.fear + 20);
     }
   }, false);
-  gatilho('vozCemit', -30, 30, -20, -10, () => { SFX.chamadoVoz(-20, -30); });
+  gatilho('vozCemit', -30, 30, -20, -10, () => { A.sustos.chamadoVoz(-20, -30); });
   // ---------- vida do cemitério
   let ultimo = null;
   const vista = new THREE.Vector3(), alvoV = new THREE.Vector3();

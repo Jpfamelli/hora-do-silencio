@@ -1,0 +1,108 @@
+# Lote 1 — Sustos e eventos
+- Silêncio antes do susto: nos sustos roteirizados o som do mundo some por um instante e volta de uma vez junto com o estouro
+- O primeiro avistamento do Inspetor agora vem com um vácuo de silêncio antes do estouro
+- O estouro da caçada tem recarga de 25 s e só toca forte na primeira caçada do capítulo ou quando ele está a menos de 4 m
+- Nas caçadas repetidas, no lugar do estouro, os estalos dele aceleram e o coração da Lia dispara (o susto não vira barulho comum)
+- Novo diretor de sustos: depois de 75 a 110 s sem nada, com medo baixo e ninguém perto, ele solta um susto pequeno para pegar a jogadora relaxada
+- Calmaria garantida: o diretor nunca assusta a menos de 20 s de uma caçada nem a menos de 45 s de outro susto forte
+- Os sustos do diretor não se repetem em seguida nem no mesmo mapa até a lista acabar
+- Susto ambiente: uma porta aberta por perto bate sozinha
+- Susto ambiente: uma lâmpada pisca três vezes e estoura com faíscas, e o barulho chama o Inspetor
+- Susto ambiente: passos pesados atravessam o andar de cima enquanto você está no térreo
+- Susto ambiente: uma bola vermelha rola do escuro até os pés da Lia e alguém ri
+- Susto ambiente: um rádio longe liga sozinho no chiado e conta "um, dois, três"
+- Susto ambiente: risada de criança logo atrás da nuca
+- Susto ambiente: três batidas lentas na parede ao lado
+- Susto ambiente: uma porta fechada range e abre um palmo sozinha com um sopro de vento, e 20 s depois o Inspetor passa por ela
+- Susto ambiente: uma criança cruza o fundo do corredor correndo descalça quando a lanterna aponta para lá
+- Susto ambiente (uma vez por capítulo): silêncio total por 4 s com o aviso "Você não ouve mais nada" e um estalo bem atrás de você
+- Susto ambiente no Cap. III: a caixinha toca três notas vindas de outra sala antes de você achar a engrenagem
+- Susto ambiente: as lâmpadas do corredor se apagam uma a uma vindo na sua direção, 2 s de silêncio, e voltam
+- No armário: quando ele passa colado, uma sombra corre pelas frestas e a câmera treme com a respiração dele
+- No armário: quando ele procura a menos de 2 m, para, encara o armário e o rosto vendado tapa as frestas
+- No armário: quatro dedos compridos entram pela fresta de cima por 2 s
+- No armário: ele sussurra "Respira. Respira pra mim." com o resto do som abafado
+- No armário: aguentar 3 s prendendo a respiração enquanto ele espia faz ele desistir e ir embora
+- Falso alívio: às vezes, quando ele desiste da busca, os passos se afastam e uma porta bate longe, mas ele fica parado e mudo na sala por 8 s
+- Uma lâmpada pode estourar quando o Inspetor passa embaixo dela, e o prédio vai ficando mais escuro durante a caça
+- Com o Inspetor a 15–25 m, as lâmpadas do corredor apagam em sequência na direção de onde ele vem e voltam 6 s depois
+- O relâmpago recorta a silhueta do Inspetor por trás quando ele está à vista e fora da caçada
+- Cap. I: ao forçar a porta, cai um relâmpago e o Inspetor atravessa a recepção ao longe, de uma porta à outra, sem ver a Lia
+- Cap. I: ao pegar o galão, ele passa de perfil pela porta da despensa, estalando, sem entrar
+- Cap. I: na primeira vez que a enfermaria é aberta, ele está parado do outro lado, de costas; a lanterna pisca e ele some
+- Cap. I: o gerador acende o prédio em cascata, lâmpada por lâmpada, a partir da casa de máquinas
+- Cap. I: a última lâmpada do corredor leste acende com ele parado embaixo, e estoura
+- Cap. I: falso alívio depois do gerador, com as luzes dos corredores morrendo na sua direção e voltando
+- Térreo: a porta da diretoria abre sozinha devagar, com passos atrás dela, e bate quando você sai
+- Segredo do Cap. III: quem aponta a lanterna para o teto do corredor de cima vê ele grudado lá, e ele recolhe arranhando
+- A contagem da Ana aparece inteira na legenda, número por número
+- Ana: no "nove", uma respiração gelada atrás da cabeça e a tela fica azulada; às vezes uma mão pálida entra no canto
+- Ana: no "DEZ", meio segundo de silêncio, o "dez" sussurrado no ouvido e um tranco na câmera
+- Ana: depois do DEZ há 1,2 s para virar e iluminar; quem consegue faz ela sumir rindo, quem congela apanha
+- Ana: no DEZ a lanterna pisca três vezes
+- Ana: variação do DEZ com 3 s de silêncio, uma risada perto e ela surgindo colada
+- Ana: variação do DEZ em que a contagem recomeça com voz grave de homem
+- Correção: no DEZ a Ana não aparece mais do outro lado da parede, em outra sala
+- Cap. III: na primeira aparição depois da caixinha, a lanterna falha 1,2 s e ela está 2 m mais perto, sem dano
+- Cap. III: escondida debaixo da cama, o rosto da Ana aparece no chão ao seu lado; quando você olha, ela ri e some
+- Cap. III: na segunda vez debaixo da cama, uma mão pálida entra pelo canto e sussurra "Aqui é meu"
+- Cap. III: ao sair de baixo da cama, a Ana está sentada de costas na cama ao lado cantarolando; se a luz fica nela, ela vira devagar
+- Cap. III: o espelho do banheiro de cima mostra uma menina atrás de você, mais perto a cada olhada, até sumir
+- Cap. III: um volume respira debaixo do lençol no dormitório E, afunda quando você chega e reaparece mais perto da porta depois da engrenagem
+- Esconderijo não é hotel: quem acampa 45 s no armário sem perigo ouve três batidas na porta e um "achei"
+- Procissão: passando colada no seu esconderijo, ela para, o canto corta e uma criança vira a cabeça para a fresta
+- Procissão: uma luz vermelha fica parada na fresta enquanto ela encara
+- Procissão: na primeira vez que para, as crianças sussurram "...você não tá na cama..."
+- Procissão: com a lanterna acesa dentro do esconderijo, o fôlego cai pela metade (ensina a apagar a luz)
+- Procissão: durante o aviso, o esconderijo mais próximo range baixinho para indicar a direção (menos no Pesadelo)
+- Procissão: se não há esconderijo a menos de 12 m, o aviso ganha 3 s e a morte deixa de ser questão de sorte
+- Procissão: o aviso agora vem em três etapas de texto (o rádio chia, passos pequenos, estão vindo)
+- Procissão: a partir do Cap. III há alarmes falsos em que as luzes piscam e param; o seguinte é de verdade
+- Procissão: depois de um alarme falso, ao sair do esconderijo o canto volta por um segundo, baixinho
+- Lanterna: com pilha fraca e o Inspetor a menos de 8 m, ela pode falhar por 1,5 s (no máximo uma vez por encontro)
+- Lanterna: bater nela (F duas vezes) religa na hora, com dica na primeira falha
+- Cap. IV: a lanterna morre por 4 s quando ele investiga a mesma sala, e você fica ouvindo no escuro
+- Lanterna: ligar com muito medo às vezes mostra uma criança no fim do facho por um único quadro
+- Armário novo: uma vez por capítulo, um rosto pálido aparece por um piscar ao entrar
+- Armário novo: um uniforme velho escorrega do cabide em cima de você, sem fazer barulho para o Inspetor
+- Armário ocupado (Cap. II/III): um armário não abre, alguém segura por dentro e diz "Esse é meu. Acha outro.", e ele nunca mais abre
+- Uma porta abre sozinha enquanto você está de costas para ela (uma vez por mapa)
+- Uma porta se fecha devagar atrás de você, com alguém respirando do outro lado (uma vez por mapa)
+- Morte: corte seco do som antes do golpe final e um impacto grave
+- Morte pelo Inspetor: o rosto vendado enche a tela a meio metro, a cabeça entorta com estalos e uma luz de baixo ilumina tudo
+- Morte: zoom da câmera e um quadro de flash branco antes do preto
+- Morte pela Ana: ela aparece de ponta-cabeça colada na câmera com um "dez" distorcido
+- Morte pela Procissão: nove rostos de olhos vermelhos cercam a câmera e vão fechando
+- Morte pelo Inspetor termina com um "shhh" sussurrado
+- Chamado: a voz agora diz "Li-a" com formantes de criança, e não duas notas
+- Chamado: na terceira vez, quem chama é a voz da própria Lia
+- Cap. IV: o primeiro Chamado é a voz da Lia perguntando "Davi? Davi, é você?" de outro túnel
+- Chamado: depois do segundo, os seus sons (clique da lanterna, porta do armário) se repetem da sala vizinha 2 s depois
+- Segredo: responder ao Chamado com a tecla V apaga tudo e você acorda dentro de um armário com ele do lado de fora
+- Armadilha do Chamado: silêncio antes do "Achei."
+- Corredor oeste: a porta da biblioteca abre sozinha devagar e bate
+- Lavanderia: uma sombra de criança aparece atrás do lençol pendurado e ri
+- Corredor de cima: ele espia da porta do depósito e some quando a lanterna o pega, batendo a porta
+- Cap. III: no meio do corredor de cima, passos imitam os seus por 6 s e uma porta bate à frente
+- Chegada ao andar de cima: uma mão no ombro, com tranco na câmera e tecido arrastando
+- Cap. II: o telefone da recepção toca; atender diz onde ele está agora, ignorar faz barulho que o atrai
+- Cap. II: as badaladas param na oitava, vêm 4 s de silêncio e a nona bate do seu lado
+- Cap. IV: antes do grito do cofre, silêncio e uma gaveta abre sozinha revelando uma venda branca
+- Cap. V: as velas do altar apagam uma a uma depois do sino
+- Túneis: ondinhas na água a cada passo e, às vezes, ondinhas de alguém andando atrás de você
+- Cisterna: respiração e bolhas na água atrás de você
+- Prólogo: o vulto da estrada aparece cada vez mais perto quando você olha para trás; na terceira vez, os passos estão do seu lado
+- Diretoria: o quadro "Turma de 1978" perde uma criança a cada nova olhada, até aparecerem três atrás de todos
+- Garrafa devolvida: muito raramente ela não quebra, volta rolando do escuro e uma criança diz "De novo"
+- Saída do Cap. III: ao descer pelo monta-cargas, a Ana diz "...nove..." lá de cima
+- Chegada ao andar de cima: uma porta bate lá embaixo
+- Alucinações não acontecem mais durante caçada ou Procissão
+- Alucinação visual: uma criança passa no canto do olho, nunca no centro da tela
+- Alucinações com a cara de cada capítulo (gerador falhando, nove passinhos, contagem no ouvido, respiração na água, uma badalada)
+- Legenda que mente: "[alguém respira atrás de você]" aparece sem som nenhum
+- Pausa: na terceira pausa com ele perto, o título vira "ELE CONTINUA ESCUTANDO" e um passo soa
+- Fim de capítulo: silêncio e a sombra dele pisca atrás das letras com um estalo
+- Fim de capítulo: às vezes um sussurro "Lia" no ouvido
+- Corredor no escuro: com a lanterna apagada por 8 s num corredor longo, uma silhueta aparece no fundo e some quando a luz acende
+- Primeira vez no corredor em cada capítulo: algo alto atravessa o fundo devagar, sem te ouvir
+- Lâmpadas estouradas continuam apagadas quando a energia é ressincronizada
