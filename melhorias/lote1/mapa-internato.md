@@ -1,0 +1,107 @@
+# Lote 1 — Mapa: térreo e dormitórios
+- Corrigido: a escada da recepção fechava a única passagem para o corredor oeste; agora dá para chegar à cozinha, à despensa, à biblioteca e à sala de aula andando
+- Corrigido: o balcão da cozinha tampava a porta da despensa (o galão era inalcançável); a porta foi para o canto livre
+- Corrigido: a estante da diretoria tampava a porta (a fita 1 era inalcançável); a porta foi deslocada
+- Corrigido: a estante da rouparia tampava a porta; a rouparia agora abre direto para o patamar da escada
+- Corrigido: uma cama tampava a porta do Dormitório D; a porta agora abre no vão entre as camas
+- Corrigido: uma cama tampava a porta do Dormitório E (a engrenagem era inalcançável); a porta agora abre entre as camas
+- Ao descer dos dormitórios você aparece alinhada com a escada nova, sem ficar presa
+- Corrigido: ao recarregar o checkpoint do Capítulo II a primeira Procissão demorava até dois minutos; agora vem em menos de 30 s
+- Forçar a porta principal: o rangido cresce a cada pulso, de baixinho a muito alto
+- Forçar a porta principal: soltar o E guarda o progresso, e você pode forçar aos poucos
+- O texto da porta principal mostra quanto ela já cedeu
+- Na primeira vez que você força a porta, uma dica explica que soltar o E faz o rangido parar
+- Forçar a porta fazendo muito barulho acorda o Inspetor mais cedo (22 s); com calma você ganha até 45 s
+- A porta principal bate sozinha atrás de você quando você entra na recepção
+- O Inspetor nunca mais acorda em cima de você: ele surge num ponto a pelo menos 14 m
+- Quando o Inspetor acorda, a voz dele pergunta quem abriu a porta da frente
+- Carregar o galão e correr faz o galão chacoalhar e chamar atenção
+- Ao pegar o galão, alguma coisa se arrasta no andar de cima e a Lia comenta
+- Ao pegar os fusíveis, a porta da enfermaria bate sozinha atrás de você
+- O gerador sem combustível agora diz onde procurar (a despensa nos fundos da cozinha)
+- O quadro de chaves sem energia diz que o gerador fica na casa de máquinas
+- A grade da escada, com a energia de volta, aponta o quadro de chaves da recepção
+- Ao ligar o gerador as luzes voltam uma a uma, da casa de máquinas para fora, com estalo de relé
+- A última lâmpada a acender revela o Inspetor parado no fim do corredor leste
+- O Inspetor vem em fúria atrás do som do gerador, e o fim do Capítulo I vira uma fuga curta
+- Novo armário a menos de 2 m da porta da casa de máquinas para a fuga do gerador
+- Uma luz laranja pisca sobre esse armário durante a fuga, marcando o esconderijo
+- A Lia grita para você se esconder e um aviso aponta o armário ao lado da porta
+- O Capítulo I só termina quando você se esconde e ele passa, ou depois de 20 s de fuga
+- Na fuga, com ele perto do armário, aparece a dica de prender a respiração com ESPAÇO
+- Fim da fuga com uma fala da Lia que prepara o resto da noite
+- Novo armário na recepção, ao lado do quadro de chaves
+- Dois armários novos no corredor leste (antes não havia nenhum esconderijo nele)
+- Dois armários novos no corredor oeste
+- Velas votivas acesas sobre três armários: luz quente e parada indica lugar seguro
+- Os corredores ganharam luz fria esverdeada que pisca mais: luz de patrulha
+- Atalho novo: porta lateral entre a diretoria e a recepção, que só abre pelo trinco de dentro da diretoria
+- Atalho novo: porta entre a enfermaria e a diretoria, aberta pelo trinco da enfermaria, fechando um laço de fuga
+- Puxar um trinco faz barulho, então abrir o atalho também chama o Inspetor
+- Capítulo II: o corredor oeste aparece barrado por camas empilhadas, e o caminho fica curto até os objetivos
+- A barricada só surge quando você está longe da ala oeste, então nunca te prende lá dentro
+- A pilha de camas tem texto próprio e a porta do corredor oeste explica o que a segura
+- Os relógios do internato marcam 20h47 no Capítulo I e 21h00 em ponto depois das badaladas
+- O relógio da recepção faz tique-taque no Capítulo I e para quando a Hora começa
+- Capítulo II: todas as lâmpadas ficam avermelhadas e mais fracas
+- Capítulo II: pichação "VOLTE PARA A CAMA" na parede da recepção
+- Capítulo II: um rastro de tinta vermelha leva da recepção até o gravador da diretoria (some depois da fita)
+- As nove badaladas agora tocam no jogo e cada uma derruba as luzes por um instante
+- Cada badalada faz uma porta aberta do térreo bater sozinha
+- Na nona badalada a lâmpada da recepção apaga para sempre
+- A primeira Procissão chega em 4 s se você entrar no corredor leste, sem tempo morto
+- Capítulo II: o telefone da recepção toca quando você passa por ela
+- O telefone tocando faz barulho; deixar tocar chama o Inspetor
+- Atender o telefone traz a voz do Davi com a dica da fita e do teclado (e o fio está cortado)
+- Errar o código do quadro de chaves dá um bipe que se ouve pelo prédio e atrai o Inspetor
+- Três erros seguidos travam o quadro por 10 s, disparam um alarme e mandam o Inspetor direto para lá
+- Com o quadro travado, o texto mostra a contagem regressiva
+- Capítulo II: depois da Procissão, o corredor leste parece se alongar (luzes apagam e a neblina engole o fim) por alguns segundos
+- A lousa da sala de aula muda de frase cada vez que você tira os olhos dela
+- Na última mudança a lousa escreve "ATRÁS DE VOCÊ" e algo ri bem nas suas costas
+- Refeitório: ao voltar, as cadeiras que olhavam para a parede estão viradas para a porta
+- Refeitório: ao voltar, os pratos estão servidos e um deles tilinta sozinho
+- Cacos de vidro espalhados pelo térreo fazem barulho alto quando pisados
+- Os cacos brilham sob a lanterna, então dá para ver o perigo
+- Agachada você pisa nos cacos quase sem barulho, e uma dica avisa isso na primeira vez
+- Lavanderia: um vulto alto aparece por cima dos lençóis e some quando você chega perto ou ilumina
+- Banheiros: a porta de uma cabine bate quando você entra
+- Cozinha: uma panela cai sozinha e o barulho chama o Inspetor
+- Biblioteca: um livro cai da estante quando você entra
+- Sala de aula: uma carteira se arrasta sozinha quando você entra
+- Segredo: um livro torto na biblioteca esconde o mapa desenhado pelo Davi e uma pilha
+- Segredo: o retrato do diretor se vira para a parede quando você volta à diretoria; desvirá-lo revela um curativo e um bilhete
+- Placa da Hora do Silêncio na parede da recepção
+- Contador de segredos do internato (x/5) e fala especial ao achar todos
+- Quando as luzes piscam, o esconderijo mais próximo se acende em laranja
+- Nas duas primeiras Procissões a Lia diz em voz alta onde se esconder e em qual sala
+- Com o Inspetor procurando na sala vizinha, os dedos longos dele aparecem segurando a quina da porta
+- Iluminar os dedos com a lanterna faz eles se recolherem com um estalo
+- Andar de cima: três armários novos no corredor de 56 m, que não tinha nenhum esconderijo
+- Velas votivas sobre dois desses armários
+- Dormitório C: vire de costas e, ao olhar de novo, todas as camas têm alguém deitado debaixo do lençol
+- Dormitório C: na segunda vez, um vulto está sentado numa das camas, e some quando você chega perto ou ilumina
+- Depois da brincadeira da Ana, camas vazias dos dormitórios A, B e D ganham volume, e uma delas respira
+- Esses lençóis murcham com um arrastar quando você chega perto: não tem ninguém
+- Pegadas molhadas de criança aparecem no corredor e levam até a engrenagem no Dormitório E
+- Ao pegar a engrenagem, as portas do corredor batem uma a uma, do patamar até o fundo
+- Depois das portas, alguém conta até dez no depósito e diz que achou você
+- Monta-cargas: agora é preciso segurar E para baixar a caixa, e a manivela faz barulho de metal
+- O monta-cargas trancado diz que a chave está no quarto da Irmã Celeste
+- A caixinha sem engrenagem aponta o Dormitório E, no fundo do corredor
+- A porta da Irmã Celeste, depois da brincadeira, aponta a sala de brinquedos
+- Segredo: agachada, você força um rodapé solto no fim do corredor e acha o carrinho azul do Tomé e uma pilha
+- Segredo: a cabeceira riscada "D.M." no Dormitório A esconde o desenho do Davi para a Lia (recupera vida e acalma)
+- Segredo: o espelho embaçado do banheiro revela "ELA SÓ ANDA NO ESCURO" e um curativo
+- O terço da Irmã Celeste na mesa: pegar faz as contas baterem e o Inspetor ouve
+- Retratos das turmas de 1976 a 1979 no corredor, com três rostos riscados em 1979
+- Depois da brincadeira da Ana, o retrato de 1979 mostra uma figura alta atrás das crianças
+- Bonecas da sala de brinquedos ganharam olhos e se viram para você quando você volta
+- O cavalinho balança sozinho na primeira vez que você entra na sala de brinquedos
+- Ao chegar no andar de cima, a grade lá embaixo bate sozinha
+- Uma silhueta aparece por um instante no fim do corredor de cima na primeira vez que você olha para lá
+- Durante a brincadeira da Ana o corredor fica mais escuro e a neblina engole o fundo
+- Depósito: alguma coisa sobe pelo poço do monta-cargas quando você entra
+- Depois da caixinha, a porta do banheiro de cima range e abre sozinha quando você passa
+- Depois da fita da Irmã Celeste, o crucifixo do quarto vira de cabeça para baixo
+- Pichação "NÃO PARE DE OLHAR" ao lado da sala de brinquedos
