@@ -1,0 +1,111 @@
+# Lote 2 — Sustos e eventos
+- Prólogo: ao voltar à loja do posto depois da chave, há um cartaz novo ao lado do de 1979: "DESAPARECIDA — 1994 — Lia Moraes, 29 anos"
+- Prólogo: a Lia arranca o cartaz com o nome dela, o papel cai no chão e, quando ela olha de novo, ele está colado na parede outra vez
+- O livro de ocorrências se escreve sozinho: depois da primeira Procissão ganha uma linha de tinta fresca com a hora da sua partida ("Visitante Lia M. fora da cama")
+- Livro de ocorrências: quem corre muito durante a Hora ganha a linha "Visitante Lia M. correu durante a Hora"
+- Livro de ocorrências: morrer no térreo acrescenta "Lia M. Armário." com a hora em que você morreu
+- Cap. II: chamada no refeitório — uma freira chama nomes no escuro e vozes de criança respondem "Presente"; Davi, Ana e Tomé ficam sem resposta
+- Cap. II: quando a freira chama "Lia Moraes?", fazer barulho faz o Inspetor responder "Presente" de dentro da sala e vir atrás do som; ficar quieta vale "Falta"
+- Cap. II: na diretoria, um homem de terno fuma sentado de costas na cadeira e vira fumaça quando você chega perto ou ilumina
+- Cap. II: o cigarro dele continua aceso em cima da mesa, soltando fumaça, e a Lia diz "Cigarro e cera. Ele ainda vem aqui."
+- Cap. II: um relâmpago visto da recepção mostra o pátio cheio de crianças paradas na chuva, viradas para o prédio; no clarão seguinte, o pátio está vazio
+- Um relâmpago no refeitório mostra por um instante a sala de 1979: crianças sentadas nas mesas, luz quente e uma figura alta de pé no meio
+- Cap. II: em cada uma das nove badaladas, o corredor pisca para 1979 com luz amarela e crianças de pijama paradas olhando a Lia
+- Cap. II: na nona badalada a visão de 1979 dura um segundo e o Moacir, de olhos abertos no fim do corredor, vira a cabeça para você
+- Cap. I: depois dos fusíveis, o Seu Joaquim aparece no pátio, na chuva, com um lampião, apontando para a casa de máquinas
+- O Seu Joaquim some no relâmpago, quando a lanterna o pega ou quando você chega perto
+- Banheiro de baixo: espelho novo onde um menino aparece atrás do ombro da Lia, mais perto a cada olhada
+- Banheiro de baixo: na segunda olhada o menino do espelho aponta para a porta; na terceira ele sumiu e passinhos descalços correm pelo corredor
+- Cap. I: um relâmpago na enfermaria mostra por um instante alguém alto parado no canto mais longe da sala
+- Fogo-fantasma: a fresta de baixo de uma porta fechada brilha laranja, com madeira estalando e gritos abafados de criança (no máximo duas vezes por partida)
+- Fogo-fantasma: ao chegar perto, a luz some, a porta está fria e cai fuligem do teto em cima de você
+- Cap. II: uma foto instantânea na cama da enfermaria mostra a Lia de costas na estrada, tirada de cima do carro, com "chegou" escrito no verso
+- Pegar a foto instantânea faz a porta fechada mais próxima se abrir sozinha, bem devagar
+- Fim do corredor leste: fumaça de 1979 que só aparece dentro do facho da lanterna
+- Atravessar a fumaça sem prender o ar faz a Lia tossir, e a tosse faz barulho (com dica na primeira vez)
+- Correção: o telefone que avisa onde o Inspetor está ficava exatamente em cima do telefone da recepção; agora ele toca na mesa da diretoria
+- Telefone da diretoria: para quem já ouviu a fita 1, depois do aviso a linha devolve a voz da própria Lia dizendo "Alô? Alô?"
+- Cap. III: chamada noturna no Dormitório B — "Ana?" "presente", "Tomé?" "presente", "Davi?" silêncio, duas vezes
+- Cap. III: no fim da chamada do Dormitório B, quando chamam "Lia?", uma criança responde "Presente" logo atrás de você
+- Depois da brincadeira da Ana, a cama do Dormitório D mais perto da porta ganha uma plaquinha "LIA MORAES" e o lençol aberto como convite
+- Esconder-se na cama com o nome da Lia faz a Ana sussurrar "Agora você mora aqui."
+- Corredor de cima: um armário tem "LIA M." recém-riscado na porta, com lascas de madeira no chão
+- Dentro do armário "LIA M.", risquinhos de unha aparecem por dentro um a um e, depois de 8 s, alguém sussurra "Esse é seu desde 79."
+- Corredor de cima: o armário número 12 (o do Moacir) tem um menino lá dentro que sussurra "Ele vai ficar bonzinho se você não chorar."
+- No armário 12 a respiração dispara: sem segurar ESPAÇO, a Lia faz barulho e o medo sobe
+- Dormitório B: a cama da Ana tem "A.L.P." gravado na cabeceira
+- Debaixo da cama da Ana, o estrado está coberto de centenas de olhos desenhados a lápis; na segunda vez, todos estão olhando para a Lia
+- Debaixo da cama da Ana, algo risca a madeira bem em cima de você, para você olhar para cima
+- Dormitório A: a cama do Davi tem o cobertor de retalhos que a mãe costurou
+- Esconder-se debaixo da cama do Davi: ela ainda está quente, uma mão pequena segura a da Lia e apaga a lanterna
+- Nos 3 s em que o Davi segura a sua mão, o Inspetor desiste de procurar ali (uma vez por partida)
+- Corredor de cima: uma bolinha de gude rola sozinha do fundo do corredor até o pé da Lia, tilintando no piso
+- Pisar na bolinha de gude andando faz o vidro estalar alto e chama o Inspetor (agachada você passa sem barulho)
+- Corredor de cima: amarelinha de giz de 1 a 10 no chão; a cada casa pisada em sequência, a Ana diz o número
+- Pisar na casa 10 da amarelinha faz a Ana dizer "Achei." atrás de você e, se ela estiver solta, adianta a próxima aparição
+- Sala de brinquedos: telefone de lata com barbante; encostar no ouvido faz um menino dizer em que lugar o Inspetor está agora
+- Telefone de lata: puxar o barbante faz o outro lado puxar de volta com força, e o barulho chama atenção
+- Sala de brinquedos: cada vez que você vira as costas aparece mais um bloco numerado no chão; no décimo, a caixinha toca sozinha
+- Rouparia: cabides com etiqueta de nome; os de Davi, Ana e Tomé estão sempre vazios
+- Rouparia: a cada Procissão ou aparição da Ana, mais um uniforme fica molhado e pingando no chão
+- Rouparia: bater de leve na parede (E) faz alguém do outro lado responder com o mesmo número de batidas
+- Rouparia: bater 9 vezes faz a resposta vir de todas as paredes e chama o Inspetor; três vezes seguidas 3 batidas e um menino soletra "S... A... I..."
+- Cap. III: um menino de pijama aparece no fundo do corredor quando a luz está apagada, cada vez mais perto; a 3 m, a lanterna acende sozinha e ele some
+- Cap. III: um menino de uniforme, de costas, aponta o Dormitório E (onde está a engrenagem) e entra antes de você chegar; da porta ele diz "Não olha pra mim ainda."
+- Andar de cima: ao chegar pela escada, a luz puxa para laranja, madeira estala, uma criança tosse e a Lia lembra que foi ali que o Seu Joaquim não conseguiu passar
+- Morrer no andar de cima faz a foto da turma de 1979 ganhar uma adulta de lanterna no fundo; na segunda morte, ela está no meio das crianças
+- Cap. III: um menino translúcido é puxado por um braço comprido para dentro de um armário do corredor, e uma voz de homem diz "Falou durante a Hora."
+- Andar de cima: luz amarela por baixo da porta do banheiro, com a sombra de dois pezinhos passando de vez em quando; ao abrir, só escuro
+- Túneis: na cisterna, um armário marcado com fita "NÃO" esconde o esqueleto encolhido de um repórter de 1987, com crachá do jornal
+- Armário "NÃO": a Lia pega a garrafa da mão do repórter, mas a porta range e o estalo de língua do Inspetor responde ao longe
+- Túneis: parada na água com a lanterna apontada para baixo, o reflexo de um menino aparece por um instante (três vezes; na terceira, ele aponta)
+- Túneis: uma seta de giz branca na cisterna aponta para o lado onde o Inspetor está, e a Lia percebe: "Essa não é a letra dele."
+- Sala do diretor: depois de ler a carta ao bispo, um homem de terno está sentado de costas na poltrona e vira fumaça quando você chega perto
+- Cisterna: choro abafado vem de dentro de um armário enferrujado
+- Esconder-se no armário do choro: o Tomé está lá dentro e diz "Shhh. Ele ouve a gente chorar."
+- Túnel norte: fumaça que só aparece no facho da lanterna, e que faz tossir
+- Cap. V: uma cova aberta ao lado do túmulo do Davi, com a pá fincada e uma cruz nova com "LIA" escrito a giz
+- Cap. V: ao cavar o último túmulo, terra cai atrás de você; quando você vira, a cova da Lia está cheia e coberta de flores
+- Cap. V: de longe, um homem de terno com um lampião passa a corrente na porta da capela e fecha o cadeado; quando você chega, não há corrente nenhuma
+- Cap. V: perto do portão dos fundos, um homem rouco chama do lado de fora do muro, perdido ("Eu sou do jornal...")
+- Responder ao homem do muro com V é responder ao chamado: a voz vira a do Inspetor, do seu lado, e ele vem
+- Cap. V: para quem achou o desenho do Davi, um desenho igual está preso no muro, mas com uma terceira figura alta atrás das duas crianças
+- Fuga do Cap. V: mãos pequenas esmurram a porta da capela por dentro, cada vez mais rápido, gritando "Abre!"
+- Cap. V: no escuro, pegadas de bota iguais às da Lia seguem à frente dela até a capela, e somem quando iluminadas
+- Cap. V: no escuro, três crianças de 1979 andam de mãos dadas pelo caminho até a capela; acender a luz faz elas sumirem
+- Cap. V: depois disso, ao apagar de novo a lanterna, a menor (Ana, de fita vermelha) está parada a 1 m de você, olhando
+- Cap. V: o terceiro objeto no altar traz o incêndio de 1979 por 3 s: luz laranja tremendo, brasas subindo e madeira estalando
+- No incêndio do altar, mãos pequenas batem na porta, crianças gritam e tossem, o sino soa sozinho e tudo corta seco para o silêncio
+- Cap. V: um menino translúcido corre para a capela e um braço comprido o puxa para dentro com um baque na porta
+- Cap. V: para quem viu a Procissão, a fita vermelha da Rosa e a bolinha de gude do João estão molhadas nas lápides deles, "como se tivessem voltado"
+- Capela: fumaça que só a lanterna mostra, e que faz tossir
+- Procissão: na primeira vez que ela para no seu esconderijo, uma bolinha de gude rola da fila até a porta
+- Procissão: com a lanterna apagada, a última criança da fila sussurra "Você também não tem nome."
+- Procissão: a partir da segunda, uma das crianças sussurra "...Lia." ao passar pelo seu esconderijo
+- O Seu Joaquim aparece no fim de um corredor uma vez por capítulo (I a III), aponta um armário e some
+- O armário que o Seu Joaquim apontou é poupado: a Procissão passa reto por ele, e o velho comenta de longe "Esse aí elas não abrem."
+- Contorno de giz no chão onde a Lia morreu, com "LIA — 21hXX", até o fim do capítulo; mortes no mesmo lugar empilham contornos
+- Na terceira morte no mesmo lugar, há um corpo coberto por um lençol ali, que some quando você chega perto ou ilumina
+- O carrinho azul do Tomé rola por baixo da porta até o seu pé pouco antes de o Inspetor entrar (só depois da fita do Tomé, até 3 vezes)
+- Em calmaria, perto de um armário, a Irmã Celeste às vezes cantarola um hino sem letra, bem baixinho
+- Ecos de 1979: ficar parada 6 s em certos lugares, sem nada por perto, faz o mundo calar e tocar uma lembrança daquela noite (o eco faz um pouco de barulho)
+- Eco na cozinha: colheres batendo nos pratos e "Sopa pra trinta e sete. Quem derramar, fica sem."
+- Eco na sala de aula: giz na lousa e uma freira ditando "Quem fala... some."
+- Eco na recepção: um armário de ferro sendo esmurrado e um homem contando
+- Eco no Dormitório A: cochichos entre as camas, "Apaga, apaga! Ele tá subindo a escada."
+- Eco na rouparia: risadinhas abafadas no meio dos lençóis que param de uma vez
+- Eco na cisterna: alguém desce a escada contando os degraus e para no treze
+- Eco na sala do diretor: uma caneta riscando e "Fugitivos. Escreva fugitivos."
+- Eco na capela: tosse de criança e mãos pequenas batendo na madeira
+- A partir da segunda partida que chegou ao Cap. V, uma outra Lia de jaqueta e lanterna anda à sua frente num corredor do térreo e some na esquina
+- Nessas partidas, no Cap. V, a outra Lia está parada no portão dos fundos olhando para a capela
+- Susto ambiente novo: choro baixinho de dentro do armário mais próximo
+- Susto ambiente novo: o apito do inspetor ecoa ao longe, dois toques
+- Susto ambiente novo: um sapato pequeno cai do alto do seu lado e quica no chão
+- Susto ambiente novo: giz riscando uma lousa na sala vizinha
+- Susto ambiente novo: passinhos descalços correm em círculo à sua volta e alguém ri
+- Susto ambiente novo: uma caneca de lata cai e rola atrás de você
+- Susto ambiente novo: alguém sussurra no seu ouvido "Nove e quatro." (a hora do Tomé no livro de ocorrências)
+- Susto ambiente novo: cheiro de fumaça e fuligem caindo do teto
+- Susto ambiente novo (andar de cima): três batidinhas de mão pequena embaixo do assoalho, bem debaixo dos seus pés
+- Susto ambiente novo: algo é arrastado devagar do outro lado da parede
