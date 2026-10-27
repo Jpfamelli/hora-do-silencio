@@ -1,0 +1,144 @@
+# Lote 2 — Mapa: térreo e dormitórios
+- Novo contador "Memória do internato n/62": cada lugar que conta a história e é lido entra na conta, separado do diário
+- Ao juntar 12 memórias a Lia diz que está lendo um cemitério; ao juntar todas, ela encontra um curativo esquecido
+- Recepção: livro de visitas aberto no balcão, com as visitas negadas à mãe da Ana e à mãe do Davi de 1979 a 1993
+- Livro de visitas: a última linha já tem a assinatura de hoje, com o nome que você digitou no título (ou "Lia Moraes")
+- Livro de visitas: lido de novo, aparece uma linha nova na mesma tinta fresca, "Joaquim B. — 1994"
+- Recepção: cesto de "Correspondência retida pela direção" com a carta da mãe da Ana e a carta da Lia criança para o Davi
+- Recepção: quadro de honra "Aluno exemplar da Hora do Silêncio", com o Moacir premiado em 1952 por nunca falar depois das nove
+- Recepção: planta do térreo emoldurada, com os X a lápis do Davi na despensa e na enfermaria (orienta o Capítulo I sem HUD)
+- Depois da Procissão, a planta ganha um "quarto 38" desenhado a lápis no corredor leste
+- Recepção: quadro de chamada com 37 plaquinhas de nome, três viradas para a parede
+- As plaquinhas desviram com a história: a do Tomé aparece no Capítulo II, a da Ana no III
+- Recepção: capa de chuva amarela do Seu Joaquim pendurada perto da porta, pingando numa poça
+- O pingar da capa se ouve de perto (gota procedural posicionada)
+- Depois que o gerador liga, a capa do Joaquim some do cabide e só fica a poça
+- Escada da recepção: os três degraus de cima estão chamuscados de fuligem
+- Parede da escada: mãozinhas pretas de fuligem subindo e uma mão grande de adulto mais embaixo, que a Lia liga ao Joaquim
+- Recepção: imagem de São Lázaro de gesso num nicho, com os dois cachorrinhos aos pés
+- A cabeça do santo gira devagar acompanhando o Inspetor pelo prédio (um radar escondido para quem para e observa)
+- Depois da Procissão o santo chora uma lágrima escura
+- Alto-falantes de baquelite nas paredes da recepção, do refeitório e dos dois corredores
+- Quando o gerador liga, os alto-falantes chiam e a gravação do diretor avisa que a Hora começa em cinco minutos
+- No começo do Capítulo II o alto-falante anuncia "Vinte e uma horas. Todos para a cama."
+- Uma vez no Capítulo II, o alto-falante chama "Aluna Lia Moraes, apresente-se à diretoria"
+- Antes de cada Procissão, os alto-falantes chiam um hino infantil distorcido
+- Corredor oeste: galeria dos Inspetores de Disciplina, cinco retratos com os olhos cada vez mais tapados (sombra, óculos, faixa, venda)
+- Galeria: a sexta moldura está vazia com a plaquinha "1994 —"; depois da Procissão ela mostra um borrão com o cabelo da Lia
+- Ao olhar a galeria pela primeira vez a Lia sussurra "Todos eles... todos de olho fechado"
+- Corredor leste: nove sombras de crianças carimbadas em fuligem na parede, de mão dada
+- As nove sombras somem da parede enquanto a Procissão passa e voltam depois (aviso extra para quem repara)
+- Iluminar as sombras pela primeira vez faz a Lia perder o fôlego
+- Corredor leste: relógio de ponto com o cartão "M. DUARTE" carimbado às 21h toda noite até hoje, com tinta ainda molhada
+- Setas de giz do Davi (caveirinha de pirata e um D) no rodapé apontam o objetivo atual do Capítulo I e do II
+- As setas só aparecem com a lanterna acesa, de perto e apontada para elas
+- Na primeira seta a Lia reconhece o código de pirata da infância dos dois
+- Tinta de ponteiro de relógio: recados das crianças que só brilham com a lanterna apagada e você parada ("NÃO RESPONDE", "ELE OUVE O CORAÇÃO", "CONTA OS ESTALOS"...)
+- Mãozinhas brilhantes no escuro na lavanderia ("SOCORRO") e na casa de máquinas
+- A primeira tinta que acende faz a Lia explicar, sussurrando, de onde vem aquela luz
+- Sala de aula: diário de classe de 1979 com os três "F" em vermelho e um 38º nome matriculado hoje (o seu)
+- Sala de aula: na primeira entrada, uma voz faz a chamada em eco; as crianças respondem "presente" e três nomes ficam em silêncio
+- Na chamada, o último nome é o seu: apertar V responde e atrai o Inspetor; ficar calada rende um "Ausente" frio
+- Sala de aula: caderno de castigo do Davi, em que "Eu não vou falar depois das nove" vira "eu vou tocar o sino"
+- Ler o caderno do Davi faz a carteira do lado ranger sozinha
+- Sala de aula: mural "Lendas do Brasil — 4ª série" com o Homem do Saco legendado "= SEU MOACIR"
+- Sala de aula: brincadeira do copo numa carteira; o copo soletra letra por letra, raspando no papel, a sala onde o Inspetor está agora
+- Na segunda consulta o copo responde "NÃO SOBE AINDA" ou "ELE OUVE O COPO", conforme o capítulo
+- Na terceira consulta o copo voa e se quebra, fazendo barulho alto que chama o Inspetor
+- Biblioteca: livro de chamada de 1979 com os três nomes marcados "presente" em tinta fresca até a data de hoje
+- Biblioteca: fichário de alunos com a ficha do Davi ("fala demais") e a do Moacir de 1947 ("chora à noite"); a gaveta range e faz ruído
+- Biblioteca: gravador e lanterna velha de um repórter de 1983; a gravação termina quando ele responde ao próprio nome (ensina a regra 5)
+- Biblioteca: livro esquecido na mesa com carimbo de devolução da data de hoje em nome de "D. Moraes"
+- Refeitório: um 38º lugar na ponta da mesa, com plaquinha "LIA" e sopa quente soltando vapor
+- Ler a plaquinha faz uma colher bater devagar num prato na outra ponta, e algo se arrastar
+- Refeitório: quadro da chamada do almoço de 17/03/1979 com três faltas e "38. Lia M." a lápis
+- Refeitório: "LIA VEM" riscado no banco, no lugar do Davi, que só se vê agachada
+- Agachada ali com a lanterna apagada, 37 colheres batem nos pratos e um "shhh" coletivo responde
+- Ecos de 1979: no clarão de um relâmpago o refeitório aparece cheio de crianças sentadas, uma vez só
+- Ecos de 1979: na sala de aula, o clarão mostra crianças nas carteiras, uma vez só
+- Cozinha: ao entrar, a chaleira começa a apitar no fogão apagado, cada vez mais alto, e o Inspetor ouve
+- Tirar a chaleira do fogo (E) para o apito, mas queima a mão da Lia (5 de dano)
+- Cozinha: rádio de válvula tocando a radionovela "Coração de Pedra" no Capítulo I
+- No Capítulo II o rádio avança na mesma noite de 1979: nove horas, fumaça no internato, o sino tocando sozinho
+- O rádio da cozinha pode ser ligado e desligado (com clique e ruído baixo)
+- Cozinha: prateleira de canecas com três viradas para a parede; desvirar mostra ANA, TOMÉ e DAVI e faz um tilintar que ele ouve
+- Atrás das três canecas aparece uma 38ª, de criança, com "LIA" e um coração torto
+- Despensa: marcas de altura no batente (Davi 76, 77, 78 e nada depois; a mais antiga "M.D. 1951")
+- Diretoria: na primeira visita, uma brasa de cigarro acesa atrás da mesa, pulsando como uma tragada; some quando a lanterna chega
+- Diretoria: cinzeiro com um cigarro ainda soltando fumaça
+- Diretoria: caixa de cartas carimbadas "RETIDA", com cartas do Tomé, do Davi para a Lia e do Moacir menino em 1951
+- Diretoria: quadro "Aluno Exemplar do Mês" com todas as bocas riscadas a carvão, começando por "M. Duarte, 1949"
+- Diretoria: máquina de escrever que bate uma letra cada vez que você dá as costas, com o som da tecla
+- A folha da máquina termina em "A IRMÃ DELE ESTÁ AQUI." e a leitura mostra só até onde ela já escreveu
+- Diretoria: depois da fita 1, o telefone de baquelite toca; atender é a voz do diretor mandando trancar a capela por fora
+- Não atender faz o telefone da diretoria voltar a tocar quando o Inspetor está perto (a campainha faz barulho)
+- Diretoria: maquete de madeira do térreo com um bonequinho branco onde você está e um preto que anda junto com o Inspetor
+- Olhar a maquete por 3 segundos faz o bonequinho preto virar para você, e o Inspetor vem investigar
+- Enfermaria: régua de crescimento no batente com Davi parando em 1,41 m em 1979 e o risco quase apagado "MOACIR 51"
+- Depois de pegar os fusíveis surge um risco fresco "LIA — 1994" exatamente na altura dos olhos, e o rótulo vira "Alguém mediu você"
+- Enfermaria: prontuário do Moacir aos 13 anos pendurado na última cama (14 horas no armário, perdendo a vista do olho esquerdo)
+- O prontuário ganha uma linha a mais se você já leu a ficha médica do Moacir de 1979
+- Enfermaria: prancheta da Ana ("não dorme no escuro, a mãe pediu luz, negado" e "conta até dez pra não ter medo")
+- Enfermaria: radiografia de mão do Tomé na janela que, a cada relâmpago, acende e aparece ora fechada, ora aberta
+- Lavanderia: uniforme nº 23 do Davi pingando num balde, com o gotejar se ouvindo na sala
+- Depois que você o vê e sai da lavanderia, o uniforme 23 aparece dobrado e seco no chão
+- Lavanderia: pilha de lençóis bordados com "LIA M."; olhando de novo o bordado tem a data de hoje
+- Lavanderia: mochila de 1988 com um walkman; a fita de dois jovens termina numa voz pedindo "responde, Zé"
+- Banheiros: espelhos cobertos com lençol por ordem do diretor ("Aluno não se olha"), com um lençol caído
+- No espelho descoberto, por um instante, aparece uma criança no lugar do seu reflexo (uma vez)
+- Banheiros: a lenda pichada "NÃO DÁ DESCARGA 3 VEZES"; cada descarga ruge pelo prédio e chama atenção
+- Na terceira descarga a Ana ri atrás de você e deixa na pia um curativo e uma pilha
+- Casa de máquinas: caderno de manutenção do Joaquim ao lado do gerador ("nunca ligar depois das nove")
+- Casa de máquinas: lanterna velha e bilhete do Joaquim mostrando que ele chegou antes de você hoje
+- Casa de máquinas: radinho de pilha do Moacir numa cadeira de palha, com narração de futebol chiada de 1979
+- Ligar o radinho chama o Inspetor, mas quando ele chega para seis segundos ouvindo o jogo (uma ferramenta nova de distração)
+- Com a energia ligada, a campainha da escola toca de tempos em tempos num corredor e atrai o Inspetor para lá
+- Pátio: banco de visitas com a placa "1º domingo do mês" e "L + D" riscado na madeira
+- Sentar no banco toca a lembrança da Lia aos 12 anos ("eu volto no outro domingo") e acalma um pouco o medo
+- Pátio: amarelinha de giz de 1 a 10 brilhando na chuva; pulando em ordem, a Ana conta junto de longe
+- No DEZ da amarelinha a Ana aparece por um segundo na janela da torre: "Você sabe brincar"
+- O balanço enferrujado do pátio para de balançar quando a lanterna bate nele
+- Armários: por dentro da porta há riscos de unha e uma frase de criança diferente em cada um, sorteada entre 16 sem repetir
+- A frase do armário só é lida com a lanterna acesa lá dentro, e a Lia sussurra o que está escrito
+- Depois de ler seis armários a Lia percebe que são quarenta anos de crianças trancadas ali
+- O armário do fim do corredor oeste tem "M.D. 1947 — não chora, Moacir" e centenas de risquinhos; ficando 3 s, a Lia entende de quem é
+- Corredor de cima: seis desenhos de giz de cera na altura de uma criança contam a noite do incêndio sem texto (o sino, as crianças, o homem sem olhos, a capela trancada, o fogo, o céu)
+- Depois da brincadeira da Ana, o último desenho ganha uma moça de lanterna
+- Corredor de cima: desenho da Ana que se redesenha mostrando a sala onde você está e uma figura alta logo atrás
+- Na terceira vez o desenho da Ana mostra você dentro de um armário e o homem alto do lado de fora
+- Corredor de cima: varal de desenhos que pioram ano a ano (1976 a 1979), balançando, com um deles assinado "Lia"
+- Patamar: malas de papelão da transferência de 17/03/1979; a do Davi está aberta, com uma meia de menina "L.M."
+- Patamar: sapateira de sapatinhos com guizos pregados no calcanhar, quase todos arrancados ("ordem do Inspetor")
+- Patamar: espelho grande em que, olhando por mais de um segundo, aparece um menino ao lado da Lia (uma vez)
+- Patamar: fuligem do incêndio nas paredes e corrimão carbonizado com a marca da mão do Joaquim
+- Patamar: tábuas queimadas no meio estalam alto (ruído para o Inspetor no Capítulo III); dá para ir pela beirada ou agachada
+- Dormitório A: armário de aluno "DAVI M." com a foto da Lia presa com chiclete e o estojo da fita "NÃO OUVIR ANTES DAS 9"
+- Dormitório A: caixa de sapato embaixo da cama do Davi com três cartas nunca mandadas para a Lia
+- Dormitório A: estrelinhas fosforescentes no teto, só com a lanterna apagada, formando um sino e o primeiro número do Davi
+- Ecos de 1979: no clarão de um relâmpago, crianças sentadas nas camas do Dormitório A olham para você, uma vez só
+- Dormitório B: telefone de lata atravessando a parede; agachada, o Tomé sussurra onde o Inspetor está de verdade naquele momento
+- O telefone de lata funciona uma vez por capítulo e avisa quando ele está do seu lado da parede
+- Dormitório D: a cama da Ana, com a parede coberta de "1 2 3 ... 10" a lápis e o último dez vermelho escorrendo
+- Dormitório D: três bonecas em volta da cama da Ana viradas para a porta, vigiando
+- Dormitório D: lata de biscoito com tocos de vela "pra não ter escuro", que deixa a dúvida sobre o começo do incêndio
+- Rouparia: novo esconderijo, o armário do "CASTIGO", com uma vela em cima
+- Dentro do armário do castigo: "MOACIR, 9 ANOS, 1947"; ficando escondida ali, a voz do Tomé diz que tem mais alguém no armário
+- Rouparia: três uniformes molhados (DAVI, ANA, TOMÉ) pingando numa poça
+- Tirando os olhos dos uniformes, o cabide do Davi fica vazio e aparecem pegadas molhadas saindo pela porta
+- Sala de brinquedos: placar de giz "QUEM EU ACHEI", com o Seu Moacir circulado e a linha da LIA vazia
+- Depois da brincadeira, o placar ganha um risquinho novo na linha da LIA
+- Sala de brinquedos: bestiário em giz de cera ("ELE OUVE", "OLHA PRA ELA", "ESCONDE NA CAMA") ensinando as regras pela mão das crianças
+- Sala de brinquedos: parede de risquinhos agrupados de dez em dez, quinze anos de dias contados pela Ana
+- Sala de brinquedos: teatrinho de fantoches que muda de cena cada vez que você vira as costas (as crianças fogem, a freira cai)
+- No último quadro do teatrinho o fantoche alto de olhos costurados vira e passa a seguir você com a cabeça
+- Sala de brinquedos: casinha de bonecas que é a maquete do andar, com bonecos do Inspetor, da Ana e da Lia andando em tempo real
+- Dormitório E: cabana de lençol da Ana com uma lanterninha acesa e a lista "QUEM EU JÁ ACHEI", desde 1931, terminando no seu nome
+- Depois da brincadeira, a lanterninha da cabana apaga e o nome da Lia está riscado
+- Quarto da Irmã Celeste: envelope para a mãe do Davi carimbado "DEVOLVIDO — RECUSADO PELO DESTINATÁRIO"
+- Quarto da Celeste: mala pronta embaixo da cama com três passagens de 15/03/1979 e os crachás das crianças
+- Ao abrir o quarto, uma silhueta de freira está ajoelhada rezando, com as contas do terço batendo; some quando a luz bate e o terço cai
+- Parada no escuro no quarto da Celeste, você ouve a reza dela terminar com "protege a Ana do escuro"
+- Depósito: o ninho do Davi, com cobertor, gravadorzinho e envelopes "LIA MORAES" de 1979 a 1993, todos devolvidos
+- Monta-cargas: marcas de unha e "MOACIR" riscado a prego por dentro da caixa
+- Com a chave do monta-cargas, crianças cochicham pelo poço o plano de 1979 (a escotilha, a água, "ninguém responde")
+- Tinta de relógio também no andar de cima: "OLHA PRA ELA COM LUZ", "NÃO RESPONDE NEM SE FOR O SEU NOME", mãozinhas no Dormitório C
