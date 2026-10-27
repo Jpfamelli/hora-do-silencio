@@ -162,6 +162,20 @@ T.plataforma = async () => {
   fakePad.buttons[1].pressed = false; P.pad(1 / 30); ok('soltar B solta a tecla', !J.keys.KeyC && !P.segPad.KeyC);
   fakePad.buttons[1].pressed = true; P.pad(1 / 30); fakePad.buttons[1].pressed = false; P.pad(1 / 30); ok('B de novo levanta', J.P.crouch === false);
   navigator.getGamepads = orig; P.semPad();
+  // lote 3: teclas trocáveis, código do save, rótulo do Usar no toque, emergência, analógico contínuo
+  const P3 = P.P3 && P.P3.teste;
+  if (P3) {
+    P3.trocarTecla('usar', 'KeyU'); ok('trocar a tecla de usar', P3.teclaDe('usar') === 'KeyU' && P3.porCodigo.KeyU === 'KeyE');
+    P3.trocarTecla('usar', 'KeyF'); ok('tecla repetida troca as duas ações', P3.teclaDe('usar') === 'KeyF' && P3.teclaDe('lanterna') === 'KeyU');
+    P.O.teclas = {}; P3.mapaTeclas(); ok('teclas voltam ao padrão', P3.teclaDe('usar') === 'KeyE' && !Object.keys(P3.porCodigo).length);
+    try { const d = await P3.lerCodigo(await P3.gerarCodigo()); ok('código da noite vai e volta', !!d['hora-silencio-plat']); } catch (e) { ok('código da noite vai e volta (' + e.message + ')', false); }
+    let recusou = false; try { await P3.lerCodigo('HDS1.abc.00000000'); } catch (e) { recusou = true; } ok('código cortado é recusado', recusou);
+    ok('Usar no toque diz o que faz', P3.rotuloUsar('Abrir a porta') === 'Abrir' && P3.rotuloUsar('Pegar a pilha') === 'Pegar');
+    semPausa(); P3.alternarEmergencia(); ok('emergência cobre a tela e pausa', !document.getElementById('pl-emerg').hidden && J.ui === 'pausa');
+    P3.alternarEmergencia(); ok('emergência volta para a pausa', document.getElementById('pl-emerg').hidden && J.ui === 'pausa');
+    semPausa(); J.S.hidden = null; J.P.bloqueado = false; const x0 = J.P.pos.x, z0 = J.P.pos.z; J.P.mover = { x: .7, y: -.7, l: 1 }; T.passo(.3); J.P.mover = null;
+    ok('analógico anda na diagonal contínua', Math.hypot(J.P.pos.x - x0, J.P.pos.z - z0) > .1);
+  }
   localStorage.removeItem('hora-silencio-v3-auto');
   return falhas;
 };

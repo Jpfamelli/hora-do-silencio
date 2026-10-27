@@ -202,7 +202,7 @@ export function instalarPlat2(C, U) {
     if (!THREE || !C.W.grupo) return;
     const raiz = [C.W.grupo, ...C.scene.children.filter(o => o !== C.W.grupo && (o.isLight || o.isGroup))];
     for (const r of raiz) r.traverse(o => {
-      if (o === C.flash) return;
+      if (o === C.flash || o.userData.pool) return; // as luzes do banco (lote 3) copiam a cor da lâmpada já corrigida
       if (o.isLight && o.color && !o.isAmbientLight && !o.isHemisphereLight && !o.isDirectionalLight) remapear(o.color, o.userData, '_dalt');
       if (!tudo || !o.material) return;
       for (const m of [].concat(o.material)) {

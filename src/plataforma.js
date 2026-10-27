@@ -4,6 +4,7 @@
 // Ligado ao motor por poucos ganchos em jogo.js (PLAT.antes / PLAT.depois / PLAT.instalar ...).
 
 import { instalarPlat2 } from './plataforma2.js';
+import { instalarPlat3 } from './plataforma3.js';
 
 const KEY = 'hora-silencio-plat';
 const AUTO_KEY = 'hora-silencio-v3-auto';
@@ -22,7 +23,9 @@ const PADRAO = {
   // lote 2
   acoes: 'segurar', soltar: 'mouse', padZona: .18, setas: true,
   tqTam: 'm', tqOpac: .85, tqCanhoto: false, tqSens: 1,
-  dalt: 'nao', avisoVisual: false, vibMundo: true, menuLeve: true
+  dalt: 'nao', avisoVisual: false, vibMundo: true, menuLeve: true,
+  // lote 3
+  giroTec: false, giroVel: 1, mouseCru: true, arrastar: false, cheiaJogo: true, giro: false, giroSens: 1, sacudir: true, tqLimpo: false, ritmo: '1', clipe: false, plateiaModo: 'atrapalha'
 };
 const ler = () => { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } };
 const O = { ...PADRAO, ...ler() };
@@ -31,7 +34,9 @@ const salvar = () => { try { localStorage.setItem(KEY, JSON.stringify(O)); } cat
 const QUAL = {
   alta:  { nome: 'Alta',  pr: 1.5,  sombra: 1024, chuva: 1,   grao: .05, nevoa: 1 },
   media: { nome: 'Média', pr: 1,    sombra: 512,  chuva: .6,  grao: .08, nevoa: 1.06 },
-  baixa: { nome: 'Baixa', pr: .75,  sombra: 0,    chuva: .35, grao: .12, nevoa: 1.15 }
+  baixa: { nome: 'Baixa', pr: .75,  sombra: 0,    chuva: .35, grao: .12, nevoa: 1.15 },
+  // lote 3: metade da resolução com pixels grandes de propósito (cara de fita velha), para PC muito fraco
+  minima: { nome: 'Mínima', pr: .5, sombra: 0,    chuva: .15, grao: .14, nevoa: 1.3 }
 };
 const Q = () => QUAL[O.qual] || QUAL.alta;
 
@@ -43,6 +48,8 @@ let toque = false, padAtivo = false, padAtual = null;
 let vidaAnt = 100;
 let grupoAnt = null;
 let estavaAgarrada = false, coracaoT = 0, procAnt = null, procPulso = 0;
+let P3 = { antes: () => 1, depois() {}, toqueFrame() {}, mapa() {}, opcoes() {}, pular: () => false, foto: false, semTrava: () => false, travaOpcoes: () => null, poolInfo: () => '', setCorte() {}, pulsoVisual() {}, montarToque() {}, fecharOpcoes() {} };
+let corte = 0, corteT = 0; // escada de cortes quando a resolução já está no mínimo
 let P2 = { fecharLapide() {}, abrirLapide() {}, morreu() {}, frame() {}, mapa() {}, opcoes() {} }; // trocado em instalar() pelo módulo do lote 2
 let prAtual = 1, tetoPR = 1;
 let fogAplicada = -1;
@@ -65,6 +72,14 @@ function aplicarQual() {
   }
   chuvaGeo.setDrawRange(0, Math.floor(NCH * q.chuva));
   fogAplicada = -1;
+  aplicarCorte();
+}
+// cortes em ordem fixa (um por vez): menos chuva, menos luzes reais, sem sombra da lanterna
+function aplicarCorte() {
+  if (!C) return; const q = Q();
+  C.chuvaGeo.setDrawRange(0, Math.floor(C.NCH * q.chuva * (corte >= 1 ? .5 : 1)));
+  P3.setCorte(corte);
+  C.flash.castShadow = q.sombra > 0 && corte < 3;
 }
 // o que o navegador conta do aparelho: memória, núcleos e o modo "economia de dados"
 function aparelho() {
@@ -88,11 +103,18 @@ function medir(now) {
     if (O.qual === 'baixa') aviso('Seu computador é mais modesto: ativei a qualidade Baixa (dá para mudar em Opções).');
   }
   if (!O.resDin) return;
-  const dtS = ms / 1000, alvoLento = O.lim30 ? 40 : 33, alvoRapido = O.lim30 ? 35 : 18;
+  // na caçada e na Procissão a fluidez vem antes da nitidez: o alvo sobe para perto de 45 quadros
+  const caca = (C.M && C.M.ativo && C.M.state === 'caca') || C.PROC.fase === 'passando';
+  const dtS = ms / 1000, alvoLento = O.lim30 ? 40 : caca ? 23 : 33, alvoRapido = O.lim30 ? 35 : 18;
   if (mediaMs > alvoLento) { lentoT += dtS; rapidoT = 0; } else if (mediaMs < alvoRapido) { rapidoT += dtS; lentoT = 0; } else { lentoT = Math.max(0, lentoT - dtS); rapidoT = Math.max(0, rapidoT - dtS); }
   if (lentoT > 2 && prAtual > .6) { prAtual = Math.max(.6, +(prAtual - .1).toFixed(2)); C.renderer.setPixelRatio(prAtual); lentoT = 0; }
-  else if (rapidoT > 5 && prAtual < tetoPR) { prAtual = Math.min(tetoPR, +(prAtual + .1).toFixed(2)); C.renderer.setPixelRatio(prAtual); rapidoT = 0; }
-  if (!avisouPesado && lentoT > 1.5 && prAtual <= .6 && O.qual !== 'baixa' && C.mode === 'jogo') { avisouPesado = true; C.toast('A imagem está pesada. Em Opções, experimente Qualidade Baixa.'); }
+  else if (rapidoT > 5 && prAtual < tetoPR && corte === 0) { prAtual = Math.min(tetoPR, +(prAtual + .1).toFixed(2)); C.renderer.setPixelRatio(prAtual); rapidoT = 0; }
+  if (!avisouPesado && lentoT > 1.5 && prAtual <= .6 && O.qual !== 'baixa' && O.qual !== 'minima' && C.mode === 'jogo') { avisouPesado = true; C.toast('A imagem está pesada. Em Desempenho, experimente Qualidade Baixa.'); }
+  if (!avisouPesado && O.qual === 'baixa' && C.mode === 'jogo' && corte >= 3 && mediaMs > alvoLento) { avisouPesado = true; C.toast('Ainda pesado. Em Desempenho, a qualidade Mínima (fita velha) roda em quase qualquer computador.'); }
+  const piso = Math.min(.6, tetoPR);
+  if (prAtual <= piso + .001 && mediaMs > alvoLento) { corteT += dtS; if (corteT > 3 && corte < 3) { corte++; corteT = 0; aplicarCorte(); } }
+  else if (mediaMs < alvoRapido && corte > 0) { corteT -= dtS; if (corteT < -10) { corte--; corteT = 0; aplicarCorte(); } }
+  else corteT = 0;
 }
 
 // =====================================================================
@@ -244,7 +266,7 @@ function vibrar(forte, fraco, ms) {
   if (!O.vibrar) return;
   const g = padAtual;
   try { if (padAtivo && g && g.vibrationActuator && g.vibrationActuator.playEffect) g.vibrationActuator.playEffect('dual-rumble', { duration: ms, strongMagnitude: forte, weakMagnitude: fraco }).catch(() => {}); } catch (e) {}
-  try { if (toque && navigator.vibrate) navigator.vibrate(ms); } catch (e) {}
+  try { if (toque && navigator.vibrate) navigator.vibrate(ms); else if (toque) P3.pulsoVisual(ms, forte); } catch (e) {}
 }
 function setPad(on) { if (padAtivo === on) return; padAtivo = on; document.body.classList.toggle('pad', on); }
 function olhar(dx, dy) { // radianos
@@ -273,6 +295,8 @@ function pad(dt) {
   else if (emJogo) {
     const lx = ax(0), ly = ax(1);
     k.KeyW = ly < -.3; k.KeyS = ly > .3; k.KeyA = lx < -.3; k.KeyD = lx > .3;
+    // o analógico anda em qualquer direção e na velocidade de quanto se empurra (pouco = devagar e quieto)
+    const lp = Math.min(1, Math.hypot(lx, ly)); if (lp > .05) C.P.mover = { x: lx, y: ly, l: lp, de: 'pad' }; else if (C.P.mover && C.P.mover.de === 'pad') C.P.mover = null;
     // cada botão vira uma tecla de verdade (aperta e solta): segurar e "alternar" das Opções funcionam igual ao teclado
     const agarrada = C.M && C.M.state === 'agarra';
     if (agarrada) { if (novo(B.A)) puxar(200); segurarBotao('KeyE', false); } else segurarBotao('KeyE', b(B.A));
@@ -383,9 +407,9 @@ function montarToque() {
   <div id="tq-bts">
     <button data-k="KeyE" class="tq-grande" id="tq-usar">Usar</button>
     <button data-k="KeyC" id="tq-agachar">Agachar</button><button data-k="KeyF" id="tq-lanterna">Lanterna</button>
-    <button data-k="Space">Prender fôlego</button><button data-k="KeyG" id="tq-garrafa">Garrafa</button>
+    <button data-k="Space" id="tq-folego">Prender fôlego</button><button data-k="KeyG" id="tq-garrafa">Garrafa</button>
     <button data-k="KeyR" id="tq-pilha">Pilha</button><button data-k="KeyH" id="tq-curativo">Curativo</button>
-    <button data-k="KeyQ">Olhar atrás</button>
+    <button data-k="KeyQ" id="tq-atras">Olhar atrás</button>
   </div>
   <div id="tq-espiar"><button data-k="KeyZ">◂ Espiar</button><button data-k="KeyX">Espiar ▸</button></div>
   <div id="tq-topo"><button data-k="KeyO">Objetivo</button><button data-k="Tab">Diário</button><button data-acao="pausa">Pausa</button></div>`;
@@ -401,7 +425,7 @@ function montarToque() {
     bt.addEventListener('touchstart', ini, { passive: false }); bt.addEventListener('touchend', fim, { passive: false }); bt.addEventListener('touchcancel', fim, { passive: false });
     bt.addEventListener('contextmenu', e => e.preventDefault());
   });
-  aplicarToqueOpcoes();
+  aplicarToqueOpcoes(); P3.montarToque(el);
   const zA = $('#tq-zona-andar'), zO = $('#tq-zona-olhar'), base = $('#tq-base'), pino = $('#tq-pino');
   zA.addEventListener('touchstart', e => { e.preventDefault(); const t = e.changedTouches[0]; stick = { id: t.identifier, x: t.clientX, y: t.clientY, dx: 0, dy: 0 }; base.style.left = t.clientX + 'px'; base.style.top = t.clientY + 'px'; base.classList.add('on'); }, { passive: false });
   zO.addEventListener('touchstart', e => { e.preventDefault(); const t = e.changedTouches[0]; olho = { id: t.identifier, x: t.clientX, y: t.clientY }; }, { passive: false });
@@ -415,20 +439,23 @@ function montarToque() {
       }
     }
   }, { passive: true });
-  const solta = e => { for (const t of e.changedTouches) { if (stick && t.identifier === stick.id) { stick = null; pino.style.transform = ''; base.classList.remove('on'); for (const k of ['KeyW', 'KeyS', 'KeyA', 'KeyD', 'ShiftLeft', 'AltLeft']) C.keys[k] = false; } if (olho && t.identifier === olho.id) olho = null; } };
+  const solta = e => { for (const t of e.changedTouches) { if (stick && t.identifier === stick.id) { stick = null; if (C.P.mover && C.P.mover.de === 'toque') C.P.mover = null; pino.style.transform = ''; base.classList.remove('on'); for (const k of ['KeyW', 'KeyS', 'KeyA', 'KeyD', 'ShiftLeft', 'AltLeft']) C.keys[k] = false; } if (olho && t.identifier === olho.id) olho = null; } };
   addEventListener('touchend', solta); addEventListener('touchcancel', solta);
 }
-function toqueFrame() {
+function toqueFrame(dt) {
   if (!toque) return;
   const el = $('#toque'); if (!el) return;
   const S = C.S, mostra = C.mode === 'jogo' && !C.ui && S && !S.dead && !S.fim;
   if (el.hidden === mostra) el.hidden = !mostra;
   if (stick && mostra) {
-    const k = C.keys, l = stick.l || 0; k.KeyW = stick.dy < -.35; k.KeyS = stick.dy > .35; k.KeyA = stick.dx < -.35; k.KeyD = stick.dx > .35; k.ShiftLeft = l > .96 && stick.dy < -.5;
+    const k = C.keys, l = stick.l || 0; k.KeyW = stick.dy < -.15; k.KeyS = stick.dy > .15; k.KeyA = stick.dx < -.15; k.KeyD = stick.dx > .15; k.ShiftLeft = l > .96 && stick.dy < -.5;
+    // direção contínua: nada de 8 direções travadas; a velocidade e o barulho crescem com o quanto se empurra
+    C.P.mover = l > .08 ? { x: stick.dx, y: stick.dy, l, de: 'toque' } : null;
     k.AltLeft = l > .3 && l < .62; // empurrar pouco o analógico anda devagar, quase sem barulho
     $('#tq-base').classList.toggle('devagar', !!k.AltLeft);
   }
   document.body.classList.toggle('jogando', !!mostra);
+  P3.toqueFrame(dt || .016, mostra);
   if (!mostra) return;
   // botões contam o estado: Usar acende quando há algo, Agachar e Lanterna mostram se estão ligados, itens mostram quantos sobram
   const pr = $('#prompt'), inv = S.inv || {};
@@ -448,7 +475,7 @@ function aplicarToqueOpcoes() {
 // =====================================================================
 // PAUSA, FOCO E ATALHOS PERIGOSOS
 // =====================================================================
-function limparTeclas() { if (!C) return; for (const c in segPad) segPad[c] = false; trava = null; for (const k in C.keys) C.keys[k] = false; C.P.sprinting = false; if (stick) stick = null; }
+function limparTeclas() { if (!C) return; C.P.mover = null; for (const c in segPad) segPad[c] = false; trava = null; for (const k in C.keys) C.keys[k] = false; C.P.sprinting = false; if (stick) stick = null; }
 
 // ---- "Ações longas: tocar para começar e parar": forçar porta, cadeado, válvulas, cavar, sino, curativo, sacudir a lanterna
 // O tempo e o barulho são os mesmos; só some o esforço de manter a tecla apertada.
@@ -490,7 +517,8 @@ let tituloBase = document.title;
 function tituloAba() {
   const S = C.S;
   let t = tituloBase;
-  if (document.hidden && C.mode === 'jogo' && S && !S.fim) t = 'Lia... volte.';
+  if (window.__emergencia) t = 'Trabalho de Ciências - O Ciclo da Água';
+  else if (document.hidden && C.mode === 'jogo' && S && !S.fim) t = 'Lia... volte.';
   else if (C.ui === 'pausa') t = 'Pausa · ' + tituloBase;
   else if (C.mode === 'jogo' && S && C.R.capitulos[S.chapter]) t = C.R.capitulos[S.chapter].titulo.split(' — ')[0] + ' · ' + tituloBase;
   if (document.title !== t) document.title = t;
@@ -556,7 +584,7 @@ function instalarFoco() {
 // =====================================================================
 const LINHAS = [
   ['Imagem'],
-  ['qual', 'Qualidade', 'sel', [['alta', 'Alta'], ['media', 'Média'], ['baixa', 'Baixa (notebook fraco)']]],
+  ['qual', 'Qualidade', 'sel', [['alta', 'Alta'], ['media', 'Média'], ['baixa', 'Baixa (notebook fraco)'], ['minima', 'Mínima (fita velha, PC muito fraco)']]],
   ['resDin', 'Resolução automática', 'chk'],
   ['lim30', 'Limitar a 30 quadros (esquenta menos)', 'chk'],
   ['fps', 'Mostrar quadros por segundo', 'chk'],
@@ -565,6 +593,11 @@ const LINHAS = [
   ['acoes', 'Ações longas (forçar, cavar, sino...)', 'sel', [['segurar', 'Segurar a tecla'], ['tocar', 'Tocar para começar e parar']]],
   ['soltar', 'Soltar do agarrão', 'sel', [['mouse', 'Sacudir o mouse'], ['tecla', 'Apertar E várias vezes']]],
   ['setas', 'Setas também andam', 'chk'],
+  ['giroTec', 'Girar a câmera pelo teclado (J L, I K)', 'chk'],
+  ['giroVel', 'Velocidade do giro pelo teclado', 'rng', [.4, 2.5, .1]],
+  ['mouseCru', 'Mouse cru (sem a aceleração do sistema)', 'chk'],
+  ['arrastar', 'Modo arrastar (olhar sem prender o mouse)', 'chk'],
+  ['cheiaJogo', 'Tela cheia ao começar a jogar', 'chk'],
   ['padSens', 'Sensibilidade do controle', 'rng', [.4, 2.5, .1]],
   ['padZona', 'Zona morta do analógico', 'rng', [.05, .4, .01]],
   ['vibrar', 'Vibração', 'chk'],
@@ -574,12 +607,19 @@ const LINHAS = [
   ['tqOpac', 'Opacidade dos botões', 'rng', [.25, 1, .05]],
   ['tqSens', 'Sensibilidade do dedo', 'rng', [.4, 2.5, .1]],
   ['tqCanhoto', 'Canhoto (troca os lados)', 'chk'],
+  ['tqLimpo', 'Tela limpa: os botões só acendem quando servem', 'chk'],
+  ['giro', 'Mirar inclinando o celular (giroscópio)', 'chk'],
+  ['giroSens', 'Sensibilidade do giroscópio', 'rng', [.3, 2.5, .1]],
+  ['sacudir', 'Sacudir o celular: lanterna sem pilha e agarrão', 'chk'],
   ['Conforto'],
   ['bob', 'Balanço da câmera ao andar', 'chk'],
   ['tremor', 'Tremor da câmera', 'rng', [0, 1, .1]],
   ['Acessibilidade'],
   ['dalt', 'Daltonismo (cores das luzes)', 'sel', [['nao', 'Desligado'], ['protan', 'Protan (vermelho)'], ['deutan', 'Deutan (verde)'], ['tritan', 'Tritan (azul)']]],
   ['avisoVisual', 'Aviso visual de sons fortes (borda da tela)', 'chk'],
+  ['ritmo', 'Velocidade do jogo (reflexo mais lento)', 'sel', [['1', '100% (normal)'], ['0.9', '90%'], ['0.8', '80%']]],
+  ['Gravação'],
+  ['clipe', 'Gravador de sustos: guarda os últimos segundos (F8 salva)', 'chk'],
   ['Som'],
   ['fone', 'Estou de fone (som 3D)', 'chk'],
   ['mono', 'Som mono (um ouvido só)', 'chk'],
@@ -605,7 +645,7 @@ function montarOpcoes() {
   $('#pop-voltar').onclick = fecharOpcoes;
   $('#pop-cheia').onclick = telaCheia;
   $('#pop-calibrar').onclick = () => { fecharOpcoes(); abrirCalibra(null); };
-  $('#pop-padrao').onclick = () => { const q = O.qual, cal = O.calibrado; Object.assign(O, PADRAO, { qual: q, calibrado: cal }); salvar(); aplicarOpcoes(); syncOpcoes(); };
+  $('#pop-padrao').onclick = () => { const q = O.qual, cal = O.calibrado, tut = O.tqTut, fo = O.fotos; Object.assign(O, PADRAO, { qual: q, calibrado: cal, tqTut: tut, fotos: fo, teclas: {} }); salvar(); aplicarOpcoes(); syncOpcoes(); };
 }
 let opDe = null;
 function abrirOpcoes() {
@@ -615,14 +655,14 @@ function abrirOpcoes() {
   setTimeout(() => { const f = focaveis(); if (padAtivo && f[0]) f[0].focus(); }, 30);
 }
 function fecharOpcoes() {
-  $('#plat-opcoes').hidden = true;
+  $('#plat-opcoes').hidden = true; P3.fecharOpcoes();
   if (opDe === 'titulo' && C.mode === 'titulo') $('#title').hidden = false;
   else if (C.ui === 'pausa') $('#pause').hidden = false;
   opDe = null;
 }
 function syncOpcoes() {
   document.querySelectorAll('#plat-opcoes [data-op]').forEach(inp => { const v = O[inp.dataset.op]; if (inp.type === 'checkbox') inp.checked = !!v; else inp.value = v == null ? 'alta' : v; });
-  document.querySelectorAll('#plat-opcoes [data-val]').forEach(e => { const id = e.dataset.val, v = O[id]; e.textContent = id === 'fov' ? v + '°' : id === 'tremor' || id === 'tqOpac' || id === 'padZona' ? Math.round(v * 100) + '%' : (+v).toFixed(2).replace(/\.?0+$/, '') + (id === 'padSens' || id === 'tqSens' ? 'x' : ''); });
+  document.querySelectorAll('#plat-opcoes [data-val]').forEach(e => { const id = e.dataset.val, v = O[id]; e.textContent = id === 'fov' ? v + '°' : id === 'tremor' || id === 'tqOpac' || id === 'padZona' ? Math.round(v * 100) + '%' : (+v).toFixed(2).replace(/\.?0+$/, '') + (id === 'padSens' || id === 'tqSens' || id === 'giroVel' || id === 'giroSens' ? 'x' : ''); });
 }
 function aplicarOpcoes(id) {
   const b = document.body;
@@ -631,6 +671,8 @@ function aplicarOpcoes(id) {
     if (!id || id === 'mono') aplicarMono();
     if (!id || id === 'dalt') P2.opcoes(id);
     if (!id || id === 'acoes') soltarTrava();
+    if (!id || id === 'qual') { corte = 0; corteT = 0; aplicarCorte(); }
+    P3.opcoes(id);
   }
   if (!id || id.startsWith('tq')) aplicarToqueOpcoes();
   const f = $('#fps'); if (f) f.hidden = !O.fps;
@@ -777,17 +819,20 @@ function aviso(t) { const el = $('#t-aviso'); if (!el) return; el.textContent = 
 // API PARA O MOTOR
 // =====================================================================
 export const PLAT = {
-  antialias: () => (O.qual || (toqueNativo ? 'media' : aparelho() === 'fraco' ? 'baixa' : 'alta')) !== 'baixa',
+  antialias: () => !['baixa', 'minima'].includes(O.qual || (toqueNativo ? 'media' : aparelho() === 'fraco' ? 'baixa' : 'alta')),
   invY: () => C && C.OPT.invY ? -1 : 1,
   fone: () => !!O.fone,
   clarao: () => C && +C.OPT.vFlash ? .35 : 1,
   pulso: () => pulsoV,
   grao: () => Q().grao,
-  semMouse: () => toque || padAtivo,
+  semMouse: () => toque || padAtivo || P3.semTrava(),
+  semTrava: () => P3.semTrava(),
+  travaOpcoes: () => P3.travaOpcoes(),
   pular(now) {
     // nos menus parados (pausa, diário, nota, morte, opções) o jogo desenha só 20 quadros por segundo: o notebook esfria
+    if (P3.pular()) return true; // a janela da plateia não desenha o jogo
     let alvo = O.lim30 ? 30 : 0;
-    if (O.menuLeve && C && !robo && !window.__teste && (['pausa', 'diario', 'nota', 'teclado', 'morte'].includes(C.ui) || !$('#plat-opcoes').hidden)) alvo = 48;
+    if (O.menuLeve && C && !robo && !window.__teste && (['pausa', 'diario', 'nota', 'teclado', 'morte'].includes(C.ui) || !$('#plat-opcoes').hidden) && !P3.foto) alvo = 48;
     if (!alvo) return false; if (now - ultimoQuadro < alvo) return true; ultimoQuadro = now; return false;
   },
   agenda,
@@ -800,13 +845,13 @@ export const PLAT = {
   aoCarregar() { fila.length = 0; graca = 0; limparTeclas(); calmaT = 0; },
   antes(dt) {
     if (!C) return dt;
-    pad(dt); toqueFrame(); travaFrame();
+    pad(dt); toqueFrame(dt); travaFrame();
     // agarrão: dica do jeito certo de se soltar e a barra de soltura
     const agarrado = C.M && C.M.state === 'agarra' && emJogoAtivo();
     if (agarrado && !estavaAgarrada) { setTimeout(dicaAgarrao, 0); vibrar(1, .8, 500); }
     if (agarrado) mostrarSoltura(); else { const sb = $('#pl-soltar'); if (sb && !sb.hidden) sb.hidden = true; }
     estavaAgarrada = agarrado;
-    let k = 1;
+    let k = P3.antes(dt);
     if (graca > 0) { k = Math.max(.15, 1 - graca); graca -= dt; }
     if (emJogoAtivo()) rodarAgenda(dt * k);
     return dt * k;
@@ -851,8 +896,9 @@ export const PLAT = {
     atualizarIndicadores();
     const cs = $('#tq-pular'); if (cs) cs.hidden = C.mode !== 'cena';
     PLAT._fpsT = (PLAT._fpsT || 0) - dt;
-    if (O.fps && PLAT._fpsT <= 0) { PLAT._fpsT = .5; const f = $('#fps'); if (f) f.textContent = Math.round(1000 / mediaMs) + ' qps · ' + mediaMs.toFixed(1) + ' ms · ' + prAtual.toFixed(2) + 'x · ' + Q().nome + (C.renderer.info ? ' · ' + C.renderer.info.render.calls + ' desenhos' : ''); }
-    if (C.W.grupo !== grupoAnt) { grupoAnt = C.W.grupo; P2.mapa(); }
+    if (O.fps && PLAT._fpsT <= 0) { PLAT._fpsT = .5; const f = $('#fps'); if (f) f.textContent = Math.round(1000 / mediaMs) + ' qps · ' + mediaMs.toFixed(1) + ' ms · ' + prAtual.toFixed(2) + 'x · ' + Q().nome + (C.renderer.info ? ' · ' + C.renderer.info.render.calls + ' desenhos · ' + C.renderer.info.memory.geometries + ' geom. · ' + C.renderer.info.memory.textures + ' text.' : '') + (P3.poolInfo() ? ' · ' + P3.poolInfo() : '') + (corte ? ' · corte ' + corte + '/3' : ''); }
+    if (C.W.grupo !== grupoAnt) { grupoAnt = C.W.grupo; P2.mapa(); P3.mapa(); }
+    P3.depois(dt, ativo);
     P2.frame(dt, ativo);
     PLAT._tabT = (PLAT._tabT || 0) - dt; if (PLAT._tabT <= 0) { PLAT._tabT = .5; tituloAba(); }
   },
@@ -898,6 +944,9 @@ export const PLAT = {
     const bd = document.createElement('div'); bd.id = 'pl-borda'; document.body.appendChild(bd);
     const sl = document.createElement('div'); sl.id = 'pl-soltar'; sl.hidden = true; sl.innerHTML = '<i></i><span>solte-se</span>'; document.body.appendChild(sl);
     P2 = instalarPlat2(C, { O, salvar, vibrar, aviso, copiar, feedback, focaveis, get padAtivo() { return padAtivo; }, get toque() { return toque; }, robo, qual: () => O.qual || 'alta' });
+    P3 = instalarPlat3(C, { O, salvar, vibrar, aviso, copiar, feedback, olhar, puxar, apertarTecla, soltarTecla, volume, aplicarQual, aplicarOpcoes, syncOpcoes, emJogoAtivo, robo, qual: () => O.qual || 'alta', get toque() { return toque; }, get padAtivo() { return padAtivo; }, get stick() { return stick; } });
+    P3.montarOpcoes($('#plat-opcoes .wrap'));
+    if (P3.plateia) { const pt = $('#portal'); if (pt) pt.hidden = true; }
     const dm = $('#dt-menu'); if (dm) { const lb = document.createElement('button'); lb.className = 'btn'; lb.id = 'dt-lapide'; lb.textContent = 'Guardar lápide'; dm.before(lb); lb.onclick = () => P2.abrirLapide('morte'); }
     const tcl = $('#death .teclas'); if (tcl && !/lápide/.test(tcl.textContent)) tcl.textContent += ' · L guarda a lápide';
     embrulharSons(); instalarFoco(); aplicarOpcoes(); avisoCelular(); lerDesafio(); atualizarContinuar();
@@ -908,6 +957,6 @@ export const PLAT = {
     addEventListener('resize', () => { const t = Math.min(devicePixelRatio || 1, Q().pr); if (t !== tetoPR) { tetoPR = t; prAtual = Math.min(prAtual, t); C.renderer.setPixelRatio(prAtual); } });
     requestAnimationFrame(medir);
     if ('serviceWorker' in navigator && !robo && location.protocol !== 'file:') { const reg = () => navigator.serviceWorker.register('sw.js').catch(() => {}); if (document.readyState === 'complete') reg(); else addEventListener('load', reg); }
-    window.__plat = { O, aplicarOpcoes, salvarAuto, autoValido, textoResultado, agenda, fila, pad, limparTeclas, get graca() { return graca; }, get prAtual() { return prAtual; }, simularOculto() { if (emJogoAtivo()) C.abrirPausa(); volume(0, .2); }, forcarCalma() { calmaT = 99; }, semPad() { setPad(false); }, get P2() { return P2; }, get trava() { return trava; }, travaFrame, puxar, soltarTodosPad, segPad, get AG() { return C.AG; } };
+    window.__plat = { O, aplicarOpcoes, salvarAuto, autoValido, textoResultado, agenda, fila, pad, limparTeclas, get graca() { return graca; }, get prAtual() { return prAtual; }, simularOculto() { if (emJogoAtivo()) C.abrirPausa(); volume(0, .2); }, forcarCalma() { calmaT = 99; }, semPad() { setPad(false); }, get P2() { return P2; }, get trava() { return trava; }, travaFrame, puxar, soltarTodosPad, segPad, get AG() { return C.AG; }, get P3() { return P3; }, get corte() { return corte; } };
   }
 };

@@ -188,3 +188,108 @@ body.toque.tq-canhoto #bars{right:auto;left:max(12px,env(safe-area-inset-left));
 #carregando .cg-lapide i{font-family:"IM Fell English",Georgia,serif;font-size:15px;margin-top:6px}
 #carregando.falhou .cg-lapide{display:none}
 @keyframes cg-lap{from{opacity:0}}
+
+/* ===== Lote 3 ===== */
+/* qualidade Mínima: pixels grandes de propósito e linhas de fita velha por cima */
+body.q-minima #c{image-rendering:pixelated;image-rendering:crisp-edges}
+#pl-vhs{display:none;pointer-events:none}
+body.q-minima #pl-vhs{display:block;position:fixed;inset:0;z-index:1;background:repeating-linear-gradient(0deg,rgba(0,0,0,.16) 0 1px,transparent 1px 3px);mix-blend-mode:multiply}
+body.q-minima #pl-vhs::after{content:"";position:absolute;left:0;right:0;bottom:7%;height:3px;background:rgba(255,255,255,.05);animation:pl-trilha 7s linear infinite}
+@keyframes pl-trilha{0%{bottom:-2%}100%{bottom:102%}}
+
+/* teclas trocáveis: as dicas mostram a tecla escolhida */
+body.remap-usar:not(.pad):not(.toque) #prompt b{font-size:0}
+body.remap-usar:not(.pad):not(.toque) #prompt b::after{content:var(--k-usar);font-size:15px}
+body.remap-folego:not(.pad):not(.toque) #breath b{font-size:0}
+body.remap-folego:not(.pad):not(.toque) #breath b::after{content:var(--k-folego);font-size:17px}
+#pl-teclas{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:4px 22px;margin-top:6px}
+.pl-tecla{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:15px;padding:2px 0;border-bottom:1px solid rgba(207,195,166,.06)}
+.pl-tecla .btn{min-width:110px;font-family:"Special Elite","Courier New",monospace;font-size:14px;padding:4px 10px;margin:0}
+.pl-tecla.mudou .btn{color:#c9a75a}
+.pl-tecla em{font-style:italic;font-size:12px;color:#c0392b}
+.pl-tecla.conflito{animation:pl-conf .4s 3}
+.pl-tecla.conflito .btn{border-color:#c0392b;color:#ff8a7a}
+@keyframes pl-conf{50%{background:rgba(192,57,43,.25)}}
+#pl-teclas-sec h3,#pl-perfis h3,#pl-salvar h3{font-family:"IM Fell English SC",Georgia,serif;font-weight:normal;color:#857a63;letter-spacing:.12em;font-size:15px;margin:16px 0 2px;border-bottom:1px solid #2c2720;padding-bottom:4px}
+.pl-nota{font-style:italic;color:#857a63;font-size:14px;margin:4px 0}
+#pp-mudou{text-align:center;font-style:italic;color:#c9a75a;font-size:14px;min-height:1.2em}
+#ps-txt{width:100%;background:#0c0b09;color:#cfc3a6;border:1px solid #3a3530;font-family:"Special Elite","Courier New",monospace;font-size:12px;padding:8px;box-sizing:border-box;resize:vertical}
+#ps-msg{font-style:italic;color:#c9a75a;font-size:14px;margin:6px 0;min-height:1.2em}
+
+/* cartões e avisos */
+.pl-cartao{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:14;background:#0d0c0a;border:1px solid #3a3530;box-shadow:0 20px 60px #000;padding:22px;max-width:min(440px,92vw);text-align:center}
+.pl-cartao p{font-style:italic;line-height:1.45;margin-bottom:10px}
+.pl-cartao .btn{display:block;margin:8px auto 0}
+#pl-ios{position:absolute;left:0;right:0;bottom:104px;text-align:center;font-size:14px;color:#857a63;padding:0 16px}
+.pl-ios-ic{display:inline-block;border:1px solid #857a63;border-radius:3px;padding:0 4px;font-size:12px}
+#pl-offline{position:absolute;right:16px;bottom:12px;font-family:"Special Elite","Courier New",monospace;font-size:12px;color:#6d6452}
+#pl-offline.ok{color:#7d8f6a}
+#pl-nova{position:absolute;left:16px;bottom:16px;max-width:min(300px,80vw);background:#e6dcc4;color:#2b261d;padding:10px 14px;transform:rotate(-1.5deg);box-shadow:0 6px 18px #000;font-family:"Special Elite","Courier New",monospace;font-size:13px;z-index:3}
+#pl-nova p{margin-bottom:4px}
+.link-mandar{background:none;border:0;color:inherit;text-decoration:underline;cursor:pointer;font:inherit;padding:0}
+#girar small{display:block;margin-top:10px;font-size:15px;color:#857a63}
+#pl-som{position:fixed;left:50%;top:18%;transform:translateX(-50%);z-index:9;animation:pt-resp 1.6s ease-in-out infinite}
+#pl-ritmo,#pl-auto{position:fixed;left:max(14px,env(safe-area-inset-left));bottom:10px;font-family:"Special Elite","Courier New",monospace;font-size:13px;color:#857a63;z-index:3;pointer-events:none}
+#pl-auto{bottom:30px;color:#c9a75a;font-size:18px;letter-spacing:-.1em;animation:pt-resp 1.2s ease-in-out infinite}
+.pl-fone-aviso{margin-top:8px;font-style:italic;color:#c9a75a}
+.pl-linha{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap}
+.pl-linha label{font-size:14px;color:#857a63}
+
+/* iPhone não vibra: a tela treme de leve no lugar */
+body.vib #hud,body.vib #toque{animation:pl-vib .12s linear 3}
+@keyframes pl-vib{25%{transform:translate(var(--vib,2px),0)}75%{transform:translate(calc(var(--vib,2px) * -1),0)}}
+
+/* toque: botões novos, tela limpa, tutorial, nota e cofre */
+#tq-esconder{position:absolute;right:30%;top:42%;min-width:120px!important;min-height:120px!important;font-size:18px!important;border-color:rgba(192,57,43,.8)!important;background:rgba(80,10,6,.6)!important;animation:pl-pulsa .7s ease-in-out infinite}
+@keyframes pl-pulsa{50%{transform:scale(1.08)}}
+#tq-responder{border-color:rgba(192,57,43,.7)!important;animation:pt-resp 1.2s ease-in-out infinite}
+body.tq-limpo #tq-bts button:not(#tq-usar):not(#tq-agachar):not(#tq-lanterna){opacity:.15;transition:opacity .2s}
+body.tq-limpo #tq-bts button.util,body.tq-limpo #tq-bts button.on{opacity:1}
+#tq-tut{position:absolute;pointer-events:none;font-family:"IM Fell English",Georgia,serif;font-style:italic;font-size:18px;color:#e6dcc4;text-shadow:0 0 8px #000;padding:10px 16px;border:1px dashed rgba(207,195,166,.45);border-radius:14px;background:rgba(0,0,0,.35);animation:pt-resp 2s ease-in-out infinite}
+#tq-tut.tut-0{left:8%;bottom:30%}
+#tq-tut.tut-1{right:12%;top:40%}
+#tq-tut.tut-2{right:10%;bottom:max(130px,22%)}
+#pl-nota-bts{display:none;gap:8px;justify-content:center;margin-top:14px}
+body.toque #pl-nota-bts{display:flex}
+#pl-nota-bts .btn{font-size:15px;margin:0}
+@media (pointer:coarse){
+  #keypad .grid{grid-template-columns:repeat(3,84px)}
+  #keypad .grid button{height:72px;font-size:28px}
+  #k-sair{min-height:56px;min-width:140px}
+}
+
+/* tecla de emergência: um trabalho de escola comum */
+#pl-emerg{position:fixed;inset:0;z-index:40;background:#f4f4f2;color:#202020;overflow:auto;font-family:Arial,Helvetica,sans-serif;cursor:default}
+#pl-emerg article{max-width:720px;margin:40px auto;padding:0 22px 60px;line-height:1.6}
+#pl-emerg h1{font-size:26px;font-weight:bold;position:relative;margin-bottom:4px}
+#pl-emerg h2{font-size:18px;margin:18px 0 4px;color:#2a4d7a}
+#pl-emerg .aut{color:#666;font-size:14px}
+#pl-emerg .gota{position:absolute;left:62%;top:22px;width:5px;height:0;background:#7a0d08;border-radius:0 0 3px 3px;opacity:0}
+#pl-emerg.sangra .gota{animation:pl-gota 9s ease-in forwards}
+#pl-emerg.sangra .sempre{color:#5a0a06;transition:color 6s}
+@keyframes pl-gota{0%{opacity:.9;height:0}100%{opacity:.9;height:46px}}
+
+/* modo foto */
+body.modo-foto #hud,body.modo-foto #toque,body.modo-foto #fx-vignette,body.modo-foto #legsom,body.modo-foto #indic,body.modo-foto #fps,body.modo-foto #clique,body.modo-foto #pl-ritmo{visibility:hidden!important}
+#pl-foto{position:fixed;inset:0;z-index:7;cursor:grab}
+#pl-foto .pf-barra{position:absolute;left:0;right:0;bottom:max(12px,env(safe-area-inset-bottom));display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;cursor:default}
+#pl-foto .pf-barra .btn{margin:0;font-size:16px}
+#pl-foto label{font-size:14px;color:#cfc3a6;text-shadow:0 0 6px #000}
+#pl-foto .pf-ajuda{position:absolute;top:12px;left:0;right:0;text-align:center;font-family:"Special Elite","Courier New",monospace;font-size:12px;color:#cfc3a6;text-shadow:0 0 6px #000;opacity:.7}
+#pl-foto .pf-nome{position:absolute;top:34px;left:0;right:0;text-align:center;font-family:"IM Fell English SC",Georgia,serif;letter-spacing:.14em;color:#c9a75a;text-shadow:0 0 6px #000}
+#pl-foto .pf-rev{position:absolute;inset:0;background:rgba(0,0,0,.85);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;cursor:default}
+#pl-foto .pf-rev img{max-width:84vw;max-height:72vh;box-shadow:0 10px 40px #000;transform:rotate(-1deg)}
+#pl-foto .pf-rev.revela img{animation:pl-revela 2.4s ease-out}
+@keyframes pl-revela{0%{filter:brightness(3) contrast(.3) blur(3px)}100%{filter:none}}
+.pf-rev-bts{display:flex;gap:10px}
+
+/* janela da plateia */
+body.plateia>*:not(#pl-plateia){display:none!important}
+#pl-plateia{position:fixed;inset:0;z-index:50;background:#050404;display:flex;flex-direction:column;color:#cfc3a6}
+#pl-plateia header{padding:10px 16px;font-family:"IM Fell English SC",Georgia,serif;letter-spacing:.1em;color:#857a63}
+#pl-plateia header b{color:#cfc3a6;font-weight:normal}
+#pl-plateia canvas{flex:1;width:100%;min-height:0}
+#pl-plateia footer{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;font-size:13px;color:#857a63}
+#pp-leg i{display:inline-block;width:9px;height:9px;border-radius:50%;margin:0 4px 0 10px;vertical-align:middle}
+#pp-leg .l{background:#e8dcbc}#pp-leg .m{background:#c0392b}#pp-leg .a{background:#aabed7}#pp-leg .p{background:#e09640}
+#pl-plateia .btn{margin:0}

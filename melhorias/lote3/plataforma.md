@@ -1,0 +1,107 @@
+# Lote 3 — Plataforma e acessibilidade
+- Luzes reais em número fixo: só as lâmpadas e velas mais próximas e à frente iluminam de verdade (8 na Alta, 6 na Média, 4 na Baixa, 2 na Mínima); as outras ficam só com o brilho do bulbo e o halo
+- Como o número de luzes não muda mais, apagar e acender lâmpadas (Procissão, sustos) deixa de travar o jogo recompilando shaders bem na hora do susto
+- A troca das luzes reais enquanto você anda é suave (a que sai some em 0,2 s, a que entra acende em 0,25 s): nada pisca nem "estala"
+- Velas acesas depois do carregamento (capítulos, sustos) entram sozinhas no banco de luzes
+- Na qualidade Média, a sombra da lanterna é redesenhada em quadros alternados, mas na hora quando a câmera gira ou anda
+- Escondida e de lanterna apagada, a sombra não é redesenhada: ficar parada no armário quase não pesa
+- Paredes, pisos e móveis parados (e o próprio mapa) têm a posição calculada uma vez só, em vez de a cada quadro
+- O que se mexer depois de parado (um susto, um objeto empurrado) é percebido e volta a ser atualizado sozinho
+- Nova qualidade Mínima para PC muito fraco: metade da resolução com pixels grandes de propósito, cara de fita velha
+- Na Mínima, linhas de varredura e uma trilha de VHS passando devagar por cima da imagem
+- Na Mínima, chuva a 15%, névoa mais perto e nenhuma sombra
+- Mínima e Baixa abrem sem antisserrilhado, que pesa muito em placa integrada
+- Escada de cortes: com a resolução já no mínimo e o jogo ainda pesado, corta em ordem, um por vez (metade da chuva, menos luzes reais, sombra da lanterna); cada corte volta depois de 10 s folgados
+- O contador de quadros mostra o corte atual (corte 1/3), a memória de vídeo (geometrias e texturas) e quantas luzes reais estão em uso
+- Na caçada e na Procissão a resolução automática prioriza a fluidez (mira perto de 45 quadros): na hora de fugir o controle não engasga
+- Se a Baixa ainda estiver pesada mesmo com todos os cortes, o jogo sugere a qualidade Mínima
+- O jogo percebe quando o navegador desenha sem a placa de vídeo (SwiftShader, llvmpipe, Basic Render), explica como ligar a aceleração de hardware e já começa na Mínima
+- Proteção contra engasgo: um quadro que travou (mais de 0,25 s) não faz o mundo andar, ninguém morre porque o computador travou
+- Trocar teclas: nova seção "Teclas" em Desempenho, é só clicar na ação e apertar a tecla nova
+- Tecla já usada: as duas ações trocam de lugar e a linha pisca em vermelho dizendo com quem trocou
+- P, ESC, ENTER e as teclas F ficam fixas, para sempre existir uma saída
+- Perfil de teclas "Canhoto (IJKL)" e botão "Voltar ao padrão"
+- As teclas são guardadas pela posição física (funcionam em ABNT2 e AZERTY) e aparecem com o nome do seu teclado quando o navegador informa
+- O aviso de interação ("E Abrir") e o do fôlego (ESPAÇO) mostram a tecla que você escolheu
+- A lista de comandos do Desempenho passa a mostrar as suas teclas
+- A tecla antiga de uma ação trocada fica quieta, sem disparar a ação duas vezes
+- Girar a câmera pelo teclado (J e L, I e K) para quem joga no touchpad, com velocidade própria
+- O giro pelo teclado acelera suave nos primeiros 0,3 s, para dar ajuste fino e giro rápido na mesma tecla
+- Andar sozinha (tecla N, trocável): a Lia anda para frente e o mouse só guia; para com qualquer tecla de andar, ao se esconder, abrir um menu, levar dano ou ser agarrada
+- Um ▸▸ no canto mostra que ela está andando sozinha
+- Mouse cru: o jogo pede o movimento sem a aceleração do sistema (volta sozinho ao normal se o navegador recusar)
+- Corte de saltos do mouse: acabou o giro de 180 graus sozinho logo depois de prender o ponteiro
+- Modo arrastar: jogar sem prender o mouse (segure o botão e arraste para olhar), para Chromebook e computador de escola travado
+- No modo arrastar, encostar o mouse na borda da tela gira a câmera devagar
+- Se o navegador recusar prender o mouse duas vezes, o jogo oferece o modo arrastar
+- No modo arrastar, arrastar com força também solta do agarrão
+- Tela cheia ao começar a jogar no computador (opção, ligada por padrão)
+- Analógico de verdade no celular: a Lia anda em qualquer direção, sem travar em 8 direções
+- No celular, a velocidade e o barulho dos passos crescem com o quanto você empurra o analógico (pouco = devagar e quieto)
+- O analógico do controle passa pelo mesmo caminho: direção contínua e velocidade proporcional
+- Velocidade do jogo a 90% ou 80% (acessibilidade para reflexo mais lento), com um ◷ no canto enquanto estiver ligada
+- Mirar inclinando o celular (giroscópio), somado ao arrasto do dedo
+- O giroscópio tem zona morta e filtro: parado não treme, e tem sensibilidade própria
+- O giroscópio funciona com o celular deitado para os dois lados
+- No iPhone, a permissão de movimento é pedida no toque em "Jogar com toque"
+- Sacudir o celular sacode a lanterna sem pilha
+- Sacudir o celular também ajuda a se soltar do agarrão
+- Toque curto no meio da tela usa o que está na mira, sem procurar o botão Usar
+- Toque duplo na área de olhar faz a Lia olhar para trás
+- Dois dedos encostados juntos na área de olhar pausam o jogo
+- O botão Usar diz o que vai fazer: Abrir, Pegar, Ler, Esconder, Sair, Segurar, Ouvir...
+- Botão "Responder" aparece piscando no celular só quando a voz chama (antes não havia como responder ao Chamado no toque)
+- Botão grande ESCONDER aparece na caçada quando há armário ou cama logo ali (não existe no Pesadelo)
+- Opção "Tela limpa" no toque: os botões ficam quase apagados e acendem só quando servem (pilha fraca, ferida, ele perto)
+- Tutorial de gestos em 3 passos na primeira vez no celular (andar, olhar, usar), que some quando você faz o gesto
+- Lendo uma nota no celular: botões "Virar a folha" (só quando a folha tem verso) e "Ler em voz alta"
+- Cofre e quadro de chaves com teclas bem maiores no toque
+- Vibração curta a cada dígito do cofre (mais longa no OK)
+- O celular vibra a cada número da contagem da menina, cada vez mais forte, e forte e duplo no fim
+- No iPhone, que não vibra, a tela treme de leve no lugar da vibração
+- O botão voltar do Android abre a pausa em vez de sair do jogo (voltar de novo fecha a pausa)
+- Virar o celular em pé pausa na hora
+- A tela de "deite o celular" mostra o capítulo em que você está
+- A tela do celular não apaga no meio do jogo nem na abertura; volta a apagar normal na pausa, na morte e no título
+- Aviso para quem abriu o link dentro do WhatsApp ou do Instagram, com botão que copia o link para o navegador
+- Dica no iPhone: Compartilhar e depois "Adicionar à Tela de Início" para jogar em tela cheia
+- Som destravado no iPhone com um silêncio tocado no primeiro toque
+- O som volta sozinho no próximo toque depois de uma ligação, alarme ou assistente de voz
+- Se o som continuar mudo por mais de 1 s, aparece "toque aqui para voltar o som"
+- Com "Estou de fone" ligado, um fone ou caixa de som que muda no meio do jogo pausa e avisa
+- Tecla de emergência F9: corta o som, pausa e cobre a tela com um trabalho de Ciências sobre o ciclo da água
+- Na emergência o nome da aba também vira o do trabalho de escola
+- F9 de novo volta para a pausa, nunca direto para o jogo
+- Segredo: depois de 30 s na tela falsa, uma gota de sangue escorre do título e uma frase do trabalho escurece
+- Modo foto na pausa (Fotografar): o mundo congela, o HUD some e a câmera fica livre perto da Lia
+- A câmera do modo foto não atravessa parede e fica num raio de 2,5 m
+- No modo foto dá para inclinar (Q/E), subir e descer (R/F) e mudar o campo de visão (roda do mouse ou a barra)
+- Filtros de foto: VHS 1994 (com PLAY e a hora na imagem), Sépia 1979 (riscos e grão), Preto e branco granulado e Polaroide com moldura escrita
+- A foto "revela" na tela como filme antes de guardar
+- Guardar a foto baixa o PNG no computador e abre o compartilhar no celular
+- Segredo: em algumas fotos, na revelação, aparece uma criança que não estava na cena
+- Conquista secreta nova: Retrato de família
+- O modo foto não abre com ele caçando ou agarrando a Lia
+- Janela da plateia (botão na pausa): uma segunda janela com a planta do mapa ao vivo, para quem assiste do sofá, sem servidor
+- Na plateia aparecem a Lia com o cone da lanterna e o rastro, o Inspetor com o círculo do que ele ouve, a menina e a Procissão
+- Botão "Assustar" da plateia, uma vez por minuto: toca uma risada, um rangido ou passos atrás da Lia, sem atrair o Inspetor
+- Modo "a plateia ajuda" na pausa: o botão vira um sussurro "atrás de você..."
+- A janela da plateia não desenha o jogo (fica leve) e mostra quando a jogadora pausou ou morreu
+- Gravador de sustos (desligado por padrão): guarda sempre os últimos 10 a 20 s de imagem e som
+- F8 ou o botão "Salvar o susto" na tela de morte baixa o vídeo, com a hora do jogo no nome do arquivo
+- No celular o vídeo do susto vai direto para o compartilhar
+- Em navegador sem suporte a gravação, o gravador se desliga e avisa
+- Levar a noite para outro aparelho: um código de texto com progresso, conquistas, acervo e opções (comprimido e com verificação), sem servidor
+- Dá para baixar a noite como arquivo .txt e abrir esse arquivo no outro aparelho
+- Antes de trazer uma noite, o jogo mostra o que vai substituir (capítulo, conquistas, ranks) e recusa código cortado ao copiar
+- Cópias de segurança do save (as 3 últimas): se o save estragar, a noite volta do ponto anterior com um aviso no título
+- Perfis prontos em Desempenho: Notebook da escola, Notebook fraco, Celular, Para gravar e Medo máximo
+- Depois de escolher um perfil aparece a lista do que mudou, com "desfazer"
+- Se o servidor do 3D (unpkg) falhar, a próxima tentativa usa o servidor reserva (jsdelivr), e o botão diz isso
+- Internet lenta: aos 5 s a tela de espera avisa que o internato ainda está chegando, em vez de parecer travada
+- Jogar sem internet com prazo: se a rede demorar mais de 2,5 s, o jogo abre do que está guardado e atualiza por trás
+- O jogo sem internet também guarda o 3D do servidor reserva
+- Versão nova não troca arquivos no meio de uma noite: um bilhete no título avisa e oferece "abrir agora" (bloqueado no meio do jogo)
+- O título mostra "guardado para jogar sem internet" ou quantos arquivos faltam, com "guardar agora"
+- "Restaurar padrão" agora também volta as teclas e não repete o tutorial do toque nem zera o contador de fotos
+- Correção: a paleta de daltonismo não pinta duas vezes as luzes do banco de luzes reais

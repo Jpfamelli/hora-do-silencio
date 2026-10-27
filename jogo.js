@@ -672,7 +672,7 @@ document.addEventListener('pointerlockchange', () => {
 });
 canvas.addEventListener('click', () => { if ((mode === 'jogo' || mode === 'cena') && !ui) lockPointer(); });
 $('#clique').addEventListener('click', () => lockPointer());
-function lockPointer() { try { const p = canvas.requestPointerLock(); if (p && p.catch) p.catch(() => {}); } catch (e) {} }
+function lockPointer() { if (PLAT.semTrava && PLAT.semTrava()) return; try { const op = PLAT.travaOpcoes && PLAT.travaOpcoes(); const p = op ? canvas.requestPointerLock(op) : canvas.requestPointerLock(); if (p && p.catch) p.catch(() => { if (op) { try { const q = canvas.requestPointerLock(); if (q && q.catch) q.catch(() => {}); } catch (e2) {} } }); } catch (e) {} }
 const unlock = () => { if (document.pointerLockElement) document.exitPointerLock(); };
 
 // opções de controle (agachar/correr/respirar segurando ou alternando) e o microfone
@@ -1087,7 +1087,9 @@ function updatePlayer(dt) {
   }
   P.sombra = 0;
   if (P.bloqueado) { P.camK = 1; P.vx = P.vz = 0; $('#breath').hidden = true; camera.position.set(P.pos.x, P.h, P.pos.z); camera.rotation.set(P.pitch, P.yaw, 0); return; }
-  const fw = (keys.KeyW ? 1 : 0) - (keys.KeyS ? 1 : 0), st = (keys.KeyD ? 1 : 0) - (keys.KeyA ? 1 : 0);
+  const an = P.mover && P.mover.l > .05 ? P.mover : null; // analógico do toque e do controle (src/plataforma3.js): direção contínua
+  const fw = an ? -an.y : (keys.KeyW ? 1 : 0) - (keys.KeyS ? 1 : 0), st = an ? an.x : (keys.KeyD ? 1 : 0) - (keys.KeyA ? 1 : 0);
+  const anK = an ? Math.min(1, .4 + .6 * an.l / .9) : 1;
   const moving = fw || st;
   const fuga = S.flags.sino;
   P.naAgua = !!(P.room && P.room.agua && !S.flags.aguaBaixa);
@@ -1118,7 +1120,7 @@ function updatePlayer(dt) {
   const vx = -sy * fw + cy * st, vz = -cy * fw - sy * st, len = Math.hypot(vx, vz) || 1;
   // o corpo tem peso: acelera e freia em cerca de 0,12 s; correndo, a curva derrapa um pouco
   const kv = Math.min(1, dt * (P.sprinting ? 6 : 11));
-  P.vx = lerp(P.vx, moving ? vx / len * spd : 0, kv); P.vz = lerp(P.vz, moving ? vz / len * spd : 0, kv);
+  P.vx = lerp(P.vx, moving ? vx / len * spd * anK : 0, kv); P.vz = lerp(P.vz, moving ? vz / len * spd * anK : 0, kv); // anK: analógico do toque/controle (src/plataforma3.js)
   if (!moving && Math.hypot(P.vx, P.vz) < .05) P.vx = P.vz = 0;
   _antes.copy(P.pos);
   P.pos.x += P.vx * dt; P.pos.z += P.vz * dt;
@@ -1132,6 +1134,7 @@ function updatePlayer(dt) {
   if (P.sprinting && S.fear > 85 && giroV > 5 && Math.random() < dt * 3) tropecar('panico');
   P.noiseR = !moving ? 0 : (P.crouch ? 1.4 : P.sprinting ? 20 : P.devagar ? 3 : 6.5) * (P.naAgua ? 1.6 : 1);
   if (W.def.ruidoMul) P.noiseR *= W.def.ruidoMul();
+  P.noiseR *= anK;
   const moved = Math.min(andou, vel * dt);
   // o som do passo cai exatamente quando a cabeça desce no balanço
   P.bob += moved * (P.sprinting ? 2 : 2.9);
@@ -4354,5 +4357,5 @@ function cortarNevoa() {
 }
 requestAnimationFrame(loop);
 
-PLAT.instalar({ THREE, renderer, scene, camera, flash, chuva, chuvaGeo, NCH, P, M, ANA, PROC, W, keys, OPT, SOM, AMB, R, AG, conquista, lsGet, lsSet, SAVE_KEY, CAPS_KEY, CONQ_KEY, onKey, toast, abrirPausa, fecharPausa, entrarJogo, carregarSnap, iniciarAudio, lockPointer, unlock, roomAt, setOpt, get S() { return S; }, get ui() { return ui; }, get mode() { return mode; }, get locked() { return locked; }, get AC() { return AC; }, get master() { return master; } });
+PLAT.instalar({ THREE, renderer, scene, camera, flash, chuva, chuvaGeo, NCH, P, M, ANA, PROC, W, keys, OPT, SOM, AMB, R, AG, conquista, lsGet, lsSet, SAVE_KEY, CAPS_KEY, CONQ_KEY, onKey, toast, abrirPausa, fecharPausa, entrarJogo, carregarSnap, iniciarAudio, lockPointer, unlock, roomAt, setOpt, entrarMaisPerto, SFX, get chamado() { return chamadoArmadilha; }, get alvo() { return alvo; }, get S() { return S; }, get ui() { return ui; }, get mode() { return mode; }, get locked() { return locked; }, get AC() { return AC; }, get master() { return master; } });
 window.__jogo = { get S() { return S; }, P, M, ANA, PROC, W, frame, carregarMapa, objDone, iniciarProcissao, spawnAna, ativarInspetor, camera, renderer, scene, hemi, moon, salvarCheckpoint, carregarSnap, lerNota, tocarFita, pularCena, roomAt, get ui() { return ui; }, get mode() { return mode; }, get alvo() { return alvo; }, keys, onKey, novoEstado: d => { S = novoEstado(d); return S; } };
