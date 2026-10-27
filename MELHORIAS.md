@@ -2,7 +2,7 @@
 
 Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/lote*/<área>.md`. Não edite à mão: edite o arquivo da área e gere de novo.
 
-**Total geral: 3908 melhorias**
+**Total geral: 3913 melhorias**
 
 ## Índice
 
@@ -34,7 +34,7 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
   - Progressão e rejogabilidade: 99
   - Plataforma e acessibilidade: 102
   - Revisão antes de publicar: 6
-- [Lote 3](#lote-3) — 1221 melhorias
+- [Lote 3](#lote-3) — 1226 melhorias
   - História e texto: 93
   - Mapa: prólogo e estrada: 99
   - Mapa: térreo e dormitórios: 92
@@ -47,6 +47,7 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
   - Interface: 120
   - Progressão e rejogabilidade: 116
   - Plataforma e acessibilidade: 106
+  - Revisão antes de publicar: 5
 
 ## Lote 1
 
@@ -2823,7 +2824,7 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
 
 ## Lote 3
 
-1221 melhorias.
+1226 melhorias.
 
 ### História e texto (93)
 
@@ -4081,3 +4082,11 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
 1219. O título mostra "guardado para jogar sem internet" ou quantos arquivos faltam, com "guardar agora"
 1220. "Restaurar padrão" agora também volta as teclas e não repete o tutorial do toque nem zera o contador de fotos
 1221. Correção: a paleta de daltonismo não pinta duas vezes as luzes do banco de luzes reais
+
+### Revisão antes de publicar (5)
+
+1222. O botão "Fotografar" da pausa tinha o mesmo id da polaroide da pausa: aparecia como um papel torto e apagado no canto esquerdo e sumia nas telas estreitas; agora é um botão normal do menu e a polaroide continua sendo só a foto
+1223. A pausa cresceu com as opções novas e passava da tela em 720p: metade dos ajustes (sons, flashes, estilo da imagem) ficava fora de alcance; agora a pausa rola
+1224. Duas opções diferentes tinham o mesmo nome "Realçar o que dá para usar": a do brilho suave virou "Brilho suave no que dá para usar" e a do contorno virou "Contorno para baixa visão"
+1225. A tela de morte dizia duas vezes como tentar de novo ("E tenta de novo" e "E, ESPAÇO ou ENTER: tentar de novo"), e a segunda linha aparecia até no celular e no controle; agora é uma linha só, que o toque e o controle trocam pelo botão certo
+1226. A legenda de som não mede mais a fala a cada quadro: ler a altura da legenda forçava o navegador a recalcular a página inteira enquanto havia uma legenda de som na tela (cerca de 5 ms por quadro a menos nessas horas)

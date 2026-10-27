@@ -61,7 +61,7 @@ export function instalarVisual(C) {
 <label><input type="checkbox" id="${pref}-blur"> Desfoque de pânico</label>
 <label><input type="checkbox" id="${pref}-vhs"> Filtro de fita VHS</label>
 <label><input type="checkbox" id="${pref}-mao"> Mostrar a mão</label>
-<label title="Contorno claro no que está na mira e dá para usar (não vale no Pesadelo)"><input type="checkbox" id="${pref}-real"> Realçar o que dá para usar</label>
+<label title="Contorno claro no que está na mira e dá para usar (não vale no Pesadelo)"><input type="checkbox" id="${pref}-real"> Contorno para baixa visão</label>
 <label title="Imagem pixelada de propósito, como fita gravada: muito mais leve em computador fraco"><input type="checkbox" id="${pref}-retro"> Estilo fita 240 linhas</label>`;
     return d;
   }

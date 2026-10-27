@@ -966,7 +966,7 @@ export function instalarPlat3(C, U) {
   // ===================================================================
   function montarPausa() {
     const ref = $('#p-opcoes') || $('#p-menu'); if (!ref) return;
-    const f = document.createElement('button'); f.className = 'btn'; f.id = 'p-foto'; f.textContent = 'Fotografar'; f.onclick = entrarFoto; ref.before(f);
+    const f = document.createElement('button'); f.className = 'btn'; f.id = 'p-fotografar'; f.textContent = 'Fotografar'; // revisão do lote 3: era 'p-foto', o mesmo id da polaroide da pausa f.onclick = entrarFoto; ref.before(f);
     if (canal) {
       const w = document.createElement('div'); w.id = 'p-plateia'; w.className = 'pl-linha';
       w.innerHTML = '<button class="btn" id="p-plat-abrir">Abrir visão da plateia</button><label>a plateia <select id="p-plat-modo"><option value="atrapalha">atrapalha</option><option value="ajuda">ajuda</option></select></label>';

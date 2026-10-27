@@ -69,7 +69,7 @@ export function montarHUD() {
   const br = $('#breath');
   if (br) { br.insertAdjacentHTML('beforeend', '<span class="pulso" id="b-pulso"></span><span class="estagio" id="b-estagio"></span>'); }
   const dt = $('#death'), retry = $('#dt-retry');
-  if (dt && retry) { const c = document.createElement('canvas'); c.className = 'replay'; c.width = 300; c.height = 170; c.id = 'dt-replay'; c.hidden = true; dt.insertBefore(c, retry); const a = document.createElement('div'); a.className = 'atalho'; a.textContent = 'E, ESPAÇO ou ENTER: tentar de novo'; dt.appendChild(a); }
+  if (dt && retry) { const c = document.createElement('canvas'); c.className = 'replay'; c.width = 300; c.height = 170; c.id = 'dt-replay'; c.hidden = true; dt.insertBefore(c, retry); } // revisão do lote 3: o 'E, ESPAÇO ou ENTER' foi para a linha de teclas (repetia o 'E tenta de novo' e aparecia até no celular)
 }
 
 let salvoTO;
@@ -119,7 +119,7 @@ export function montarOpcoes(OPT, setOpt) {
     ['ritmo', 'Ritmo do mundo', [['1', '100%'], ['0.85', '85% (noite assistida)'], ['0.7', '70% (noite assistida)']], '1'],
     ['avisoCedo', 'Avisos antecipados de perigo', [['0', 'não'], ['1', 'sim']]],
     ['miraAjuda', 'Ajuda para mirar', [['2', 'no toque e no controle'], ['1', 'sempre'], ['0', 'nunca']], '2'],
-    ['realce', 'Realçar o que dá para usar', [['0', 'não'], ['1', 'sim (fora do Pesadelo)']]],
+    ['realce', 'Brilho suave no que dá para usar', [['0', 'não'], ['1', 'sim (fora do Pesadelo)']]],
     ['sensFina', 'Sensibilidade escondida e mirando', [['0.4', '40%'], ['0.6', '60%'], ['0.8', '80%'], ['1', 'igual']], '0.6'],
     ['sentirPassos', 'Sentir os passos dele (vibração)', [['0', 'não'], ['1', 'sim']]],
     ['reinicio', 'Reinício rápido depois de 3 mortes', [['1', 'sim'], ['0', 'não']], '1'],

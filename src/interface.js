@@ -223,13 +223,21 @@ export function criarInterface(C) {
   SONS.fitaClique = { t: 'o gravador estala', imp: 0, cd: 3, cat: 'h' };
   for (const [k, c] of Object.entries({ passoMonstro: 'p', estalo: 'p', vidro: 'p', pancada: 'p', risada: 'p', contagem: 'p', chamadoVoz: 'p', sino: 'h', sinoLonge: 'h', badaladas: 'p', estatica: 'p', canto: 'h', procissao: 'p', sussurros: 'h', orelhao: 'h' })) SONS[k].cat = c;
   som.def = SONS; // outros módulos (src/audio-mundo.js) registram legendas aqui
-  let somHtml = '', legBase = '';
+  let somHtml = '', legBase = '', subTxtAnt = null, subMedidoEm = -99;
   function desenharSom() {
     for (let i = linhasSom.length - 1; i >= 0; i--) if (linhasSom[i].t < agora) linhasSom.splice(i, 1);
     const h = linhasSom.map(l => `<div class="${l.cat === 'p' ? 'perigo' : l.cat === 'h' ? 'historia' : ''}">${l.txt}</div>`).join('');
-    if (h !== somHtml) { $('#legsom').innerHTML = h; somHtml = h; }
+    const mudou = h !== somHtml;
+    if (mudou) { $('#legsom').innerHTML = h; somHtml = h; }
     // revisão do lote 2: com legenda de duas linhas, a legenda de som subia por cima do nome de quem fala
-    if (somHtml) { const sb = $('#sub'), hs = sb && sb.textContent.trim() ? sb.offsetHeight : 0, b = hs ? `calc(12% + ${hs + 10}px)` : ''; if (b !== legBase) { $('#legsom').style.bottom = b; legBase = b; } }
+    // revisão do lote 3: só mede a fala quando ela ou as legendas mudam (ler offsetHeight a cada quadro forçava o navegador a recalcular a página inteira)
+    if (somHtml) {
+      const sb = $('#sub'), st = sb ? sb.textContent.trim() : '';
+      if (mudou || st !== subTxtAnt || agora - subMedidoEm > 1) {
+        subTxtAnt = st; subMedidoEm = agora;
+        const hs = st ? sb.offsetHeight : 0, b = hs ? `calc(12% + ${hs + 10}px)` : ''; if (b !== legBase) { $('#legsom').style.bottom = b; legBase = b; }
+      }
+    }
   }
   // Arco na borda indicando de onde veio o passo do Inspetor (Fácil/Normal, parada ou agachada)
   let setaT = 0;
