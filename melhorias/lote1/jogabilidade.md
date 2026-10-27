@@ -1,0 +1,107 @@
+# Lote 1 — Jogabilidade
+- Bug corrigido: morrer no Cap. II não empurra mais a Procissão para 70-120 s; ela volta a chegar em cerca de 25 s.
+- Checkpoint silencioso depois de cada objetivo concluído, só quando é seguro (ele longe ou sem caçar, sem Procissão, sem a Ana, fora do esconderijo).
+- Checkpoint também a cada válvula girada e a cada túmulo cavado, sem refazer o trecho inteiro.
+- No Pesadelo, o salvamento automático só acontece nos objetivos-marco (gerador, Procissão, caixinha, Ana, cofre, túmulos, sino).
+- Aviso discreto "progresso salvo" com uma fita girando no canto da tela.
+- Anel de ruído em volta da mira: o tamanho mostra quanto barulho você está fazendo agora.
+- O anel de ruído fica vermelho quando o barulho já alcança o Inspetor.
+- Indicador de postura no HUD: agachada, devagar, correndo, ofegante, espiando, prendendo o ar, escondida, fazendo curativo.
+- Ctrl esquerdo não agacha mais (Ctrl+W fechava a aba no meio da fuga); C agacha, com aviso na primeira vez.
+- O navegador pede confirmação antes de fechar ou recarregar a aba durante o jogo.
+- Trocar de aba ou minimizar pausa o jogo e suspende o som.
+- Ao voltar da pausa, as ameaças ficam paradas 0,8 s e a tela escurece de leve para você se situar.
+- Ana: depois do "DEZ" ela fica parada atrás de você por 0,7 s, com sussurro e risada; virar e iluminar a faz recuar e zera a contagem.
+- Ana não consegue atacar no mesmo instante em que surge atrás de você (recarga mínima de 1,2 s).
+- Bug corrigido: prender a respiração sem fôlego não dispara mais ruído e ofego em loop; o ar trava até soltar ESPAÇO e recuperar 25%.
+- Ar para prender a respiração separado do fôlego de correr: fugir correndo até o armário não te deixa sem ar.
+- O ar se recupera rápido fora do esconderijo e devagar dentro dele.
+- Pulso visível no esconderijo: o coração sobe conforme ele se aproxima e o barulho só sai quando o pulso estoura (acabou a respiração aleatória).
+- Estágios de distância escritos no esconderijo: "ele está no quarto", "ele está perto", "ele está do seu lado".
+- Com menos de 25% de ar, a barra pisca vermelha, o aviso treme e aparece "[seu peito queima]".
+- Soltar o ar tem custo: acima de 30% é silencioso, entre 10% e 30% faz um chiado baixo, abaixo de 10% faz barulho alto.
+- No Fácil prender a respiração gasta menos ar; no Pesadelo, mais.
+- Dá para prender a respiração fora do esconderijo, parada e com ele perto, e a visão escurece nas bordas enquanto isso.
+- Parada perto dele sem prender o ar, o pulso também sobe e pode te denunciar (regra 2 virou mecânica).
+- Entrar no esconderijo com ele perto não é mais morte certa: ele para na porta e você precisa prender a respiração até ele desistir ("Volte para a cama.").
+- O teste na porta só acontece se ele estiver na mesma sala ou numa vizinha com a porta aberta, e aparece "[ele parou na porta]".
+- Depois de morrer, o Inspetor volta a pelo menos 3 salas de distância, recuando e sem atacar por 8 s.
+- O retorno depois de morrer começa com fôlego e ar cheios e as ameaças paradas por 0,6 s.
+- Cofre e quadro de chaves não pausam mais o mundo (só no Fácil): o som fica abafado e ele continua andando.
+- Cada tecla do cofre e do quadro faz um bipe que ele ouve; errar o código faz um zumbido mais alto.
+- No Pesadelo, notas e diário também não pausam o mundo, com a tarja "o tempo não para" no diário.
+- Ser atacada fecha na hora o teclado, a nota ou o diário abertos.
+- Olhos que se acostumam: com a lanterna apagada e longe das lâmpadas, a imagem clareia e a névoa afina aos poucos.
+- Acender a lanterna depois de muito tempo no escuro ofusca por um instante.
+- Fita nova: E no gravador pausa e continua a fita.
+- Fita já ouvida pode ser parada com E (a transcrição continua no diário).
+- A voz da fita faz barulho no gravador a cada fala: ouvir é um risco.
+- Dica de morte pelo motivo real: correu, água, respirou no armário, entrou com ele perto, foi ao Chamado, não esquivou do bote, ficou sem luz, a lanterna falhou, a Ana veio por trás, ficou fora na Procissão, pisou em vidro.
+- A partir da 3ª morte no mesmo ponto, a dica aparece em destaque com uma frase seca do internato.
+- E, ESPAÇO ou ENTER na tela de morte tentam de novo na hora.
+- Da 2ª morte no mesmo ponto em diante, a tela de morte chega em 1,2 s em vez de 2,1 s.
+- Replay da morte: mini mapa com o caminho dele até você e os barulhos que você fez nos últimos segundos.
+- Ajuda invisível no Normal depois de 3 mortes no mesmo ponto: ele ouve 10% menos, anda 8% mais devagar e a Procissão avisa 2 s antes.
+- A ajuda aumenta na 5ª morte e, no Fácil, começa na 2ª; nunca existe no Pesadelo e some no próximo checkpoint.
+- Pesadelo com dano por entidade (Inspetor 90, Ana 66, Procissão 94) em vez de qualquer toque matar.
+- No Pesadelo, o golpe do Inspetor mata na hora se você estiver correndo.
+- A brincadeira roteirizada da Ana nunca mata: tira no máximo 70% da vida, em qualquer dificuldade.
+- As dificuldades dizem no menu o que mudam (Fácil: mais fôlego, ele ouve menos; Pesadelo: quase tudo mata).
+- Bote do Inspetor: antes de agarrar ele para, ergue os dois braços e estala alto, dando meio segundo para reagir.
+- Se você sai do alcance durante o bote, ele erra, bate no chão e fica atordoado por 1 s.
+- Ele não ataca mais através de parede ou de porta fechada.
+- Esbarrar nele em patrulha também dá o aviso do bote, em vez de dano instantâneo.
+- Fechar a porta na cara dele durante a caçada o segura 1,5 s, com duas pancadas atrás de você.
+- Andar devagar segurando ALT (ou o botão do meio do mouse): em pé, a 1,9 m/s e com metade do barulho.
+- Correr até zerar o fôlego faz Lia ofegar alto por 4 s: barulho a cada respiração, vista estreita e sem poder correr.
+- Correr 4 s seguidos durante a Hora (Cap. II a IV) faz os passos ecoarem pelo prédio inteiro.
+- Inclinar o corpo com Z e X para espiar o corredor, sem barulho e sem a câmera atravessar a parede.
+- Segurar Q olha para trás por cima do ombro sem mudar a direção da corrida.
+- Espiar pela fresta do esconderijo com Z/X: a fresta abre mais, mas o coração dispara mais rápido.
+- Embaixo da cama a câmera começa olhando para o chão do quarto e gira mais para os lados: dá para ver os pés dele passando.
+- Sair do esconderijo: toque em E sai rápido; segurar E sai devagar e em silêncio.
+- Sair rápido do esconderijo com ele a menos de 4 m faz o dobro de barulho.
+- Portas: segurar E abre ou fecha devagar, quase sem barulho; o toque continua abrindo de uma vez.
+- Curativo leva 2,5 s parada segurando H, com barulho de gaze e a câmera baixando; mexer cancela.
+- Sacudir a lanterna sem pilha (segurar R): devolve um fio de luz em troca de barulho, uma vez a cada 40 s.
+- Bater na lanterna (F duas vezes rápido) firma a luz fraca por 20 s, com barulho.
+- Piscadas da lanterna medidas em tempo: piscam igual a 60 ou 144 Hz (antes piscava 2,4 vezes mais em monitor rápido).
+- Piscadas curtas não soltam mais a Ana; só uma falha longa ou a lanterna apagada deixam ela andar.
+- Com pilha fraca, um estalo avisa meio segundo antes de cada piscada.
+- A barra de pilha pisca quando a pilha está fraca.
+- Falha roteirizada da lanterna no Cap. III quando a Ana começa a contar; apertar F várias vezes bate nela e traz a luz de volta, com barulho.
+- Quando a lanterna apaga, o aviso diz o que fazer: trocar a pilha (R) ou sacudir (segure R).
+- Garrafa com mira: segurar G mostra o arco e o ponto de queda; soltar arremessa (toque rápido continua jogando direto).
+- A mira da garrafa fica vermelha quando ela vai quebrar perto de você; no Pesadelo não há mira.
+- Garrafa que cai na água afunda com um respingo e faz bem menos barulho.
+- Garrafa quebrada deixa cacos no chão por 60 s.
+- Pisar nos cacos faz barulho (agachada não), com dica na primeira vez.
+- O Inspetor que pisa nos cacos para 1,6 s e geme: a garrafa vira alarme.
+- Vidro quebrado espalhado em corredores, halls e túneis: olhar o chão com a lanterna vale a pena.
+- Bug corrigido: depois de uma garrafa, ele não fica mais 4 s surdo para quem corre colado nele.
+- Garrafa jogada em plena caçada, com ele a menos de 5 m, só faz ele virar a cabeça e continuar vindo.
+- Cada passo na água espalha uma onda.
+- Ações de segurar E (forçar porta, válvulas, cavar, sino, caixinha) guardam o progresso quando você solta, perdendo só 15%.
+- O barulho dessas ações agora conta como seu: aparece no anel e denuncia quem está por perto.
+- Mira assistida: se a mira passa raspando, E pega o objeto mais perto do centro num cone pequeno, sem atravessar parede.
+- Apertar E encostada num armário ou cama, mesmo olhando torto, entra nele (Fácil e Normal).
+- Bueiros nas paredes dos túneis compridos viram esconderijo no meio da água.
+- Fim de capítulo seguro: nos segundos antes do cartão, ele recua e a Ana some.
+- O mundo congela atrás do cartão de fim de capítulo: não dá mais para ser atacada por trás do resumo.
+- Bug corrigido: morrer logo depois do último objetivo não avança mais o capítulo por cima do checkpoint.
+- A Procissão não começa com a Ana solta ou com ele caçando por perto: espera 15 s.
+- A Ana não aparece no meio da Procissão.
+- Quando a Procissão avisa, o esconderijo mais perto range para indicar o caminho (Fácil e Normal).
+- Se o esconderijo mais perto estiver longe, o aviso da Procissão dura alguns segundos a mais.
+- A Procissão não abre portas trancadas, e as portas que ela abriu batem sozinhas quando ela passa.
+- No Cap. II, se você ficar mais de 45 s lá fora, um aviso lembra que a Hora espera lá dentro.
+- Chamado sem teletransporte: o Inspetor começa a andar até a sala do chamado; quem vai até lá o encontra chegando, furioso.
+- Opção de agachar segurando a tecla, em vez de alternar.
+- Opção de correr alternando, sem segurar SHIFT (evita a janela de Teclas de Aderência do Windows no meio da fuga).
+- Opção de prender a respiração alternando, para quem não consegue segurar ESPAÇO junto com o mouse.
+- Modo opcional "Ele te escuta de verdade": com o microfone ligado, gritar atrai o Inspetor (processado só no navegador).
+- Segredo: um minuto de silêncio total, no escuro, dentro do internato, desperta uma voz (conquista Regra Zero).
+- Brincadeira da Ana sem loop: no 2º toque ela diz "Você pisca demais" e a cena termina mais cedo.
+- Conquistas novas: Volte Para a Cama, Porta na Cara, Caco de Vidro, Pés de Gato, Por Um Fio e Olhos de Coruja.
+- Lista de controles atualizada no menu e na pausa.
+- Dicas de controle na hora certa: Q na primeira caçada, espiar e sair do armário, curativo, porta devagar, progresso guardado, eco.
