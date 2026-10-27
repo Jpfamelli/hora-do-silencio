@@ -1,0 +1,95 @@
+# Lote 3 — Visual e luz
+- A mão da Lia aparece em primeira pessoa segurando a lanterna: manga de moletom suja, mão com dedos fechados no cabo e lanterna de metal lascado com aro e lente
+- A mão balança no ritmo dos passos, bem mais quando você corre
+- Ao virar rápido a mão atrasa e volta com mola, como se tivesse peso
+- Com medo alto ou ferida, a mão treme junto com o feixe
+- Agachada, a mão desce um pouco; correndo, ela abaixa e inclina a lanterna
+- Ao se esconder a mão desce para fora da tela e volta quando você sai
+- Ao olhar para trás (Q) a mão sai do quadro
+- A lente da lanterna na mão acende e apaga junto com o feixe e muda de cor com a pilha fraca
+- Ao apertar F o polegar afunda o botão da lanterna
+- Sacudindo a lanterna sem pilha (segurar R), a mão chacoalha a lanterna e a outra mão bate nela
+- Apertar F com a lanterna falhando faz a mão livre dar tapas na lanterna
+- Ao trocar a pilha a lanterna desce, a tampa gira e a pilha velha cai para fora da tela
+- Prendendo o ar fora do esconderijo, a mão livre sobe e tapa a boca
+- Com o fôlego acabando, os dedos na boca tremem e escorregam
+- Durante o curativo as duas mãos descem e a mão livre enrola um rolo de gaze
+- Segurando G aparece a garrafa verde na mão livre e o braço recua conforme a força do arremesso
+- Ao abrir uma porta de perto, a mão livre espalma e empurra a folha
+- Com a Procissão passando perto, a Lia aperta a lanterna contra o peito
+- Com o Inspetor a menos de 3 m a mão treme tanto que o feixe samba na parede
+- A mão é iluminada pelo próprio feixe e pelas lâmpadas próximas, e fica azulada no clarão do relâmpago
+- A mão é desenhada por cima da cena: nunca atravessa parede e não deforma quando o campo de visão muda
+- Parada, a mão sobe e desce com a respiração; prendendo o ar ela congela
+- Ao morrer a Lia solta a lanterna e a mão cai para fora do quadro
+- Nova opção "Mostrar a mão" na tela de Imagem e na pausa
+- A lente da lanterna ganhou textura: anel mais claro, centro quente, riscos e poeira projetados no círculo de luz
+- Ao ar livre na chuva, gotas na lente da lanterna mancham o círculo de luz
+- Ao ligar, o filamento acende laranja e sobe para o branco em 120 ms
+- Ao ligar, o cone abre de 60% até o cheio e passa um pouco do brilho antes de assentar
+- Ao desligar, o filamento fica laranja por um instante antes de apagar
+- Pilha nova: depois de acender, a luz fica 20% mais forte e mais branca por um segundo
+- Com a pilha abaixo de 10% o feixe respira fraco, como filamento morrendo
+- Encostada na parede, a lanterna faz um círculo pequeno e muito forte
+- Ao morrer, o feixe despenca da mão girando até o chão e pisca quando a lanterna bate
+- No golpe o mundo congela por 70 ms antes da dor
+- No golpe a cabeça é jogada para longe de quem bateu e volta com mola
+- A borda vermelha do golpe nasce do lado de onde veio o ataque
+- O Inspetor e a Procissão deixam três arranhões de unha na tela, do lado do golpe, mais grossos com mais dano
+- O toque da Menina deixa marcas de mãozinhas azuladas e geladas na tela
+- No golpe a imagem perde a cor por um instante e volta
+- O golpe derruba o feixe da lanterna para baixo e de lado, e a luz falha por um instante
+- Abaixo de 25 de vida o mundo vai perdendo a cor até quase preto e branco
+- O curativo devolve a cor com uma onda quente que sai do centro da tela
+- Ao pegar um item, ele voa em arco até a mão encolhendo e girando, em vez de sumir
+- Ao pegar um item, um clarão quente rápido marca o lugar
+- Peças de objetivo deixam um rastro de poeira dourada no caminho até a mão
+- O inventário do canto dá um pulo com brilho a cada item pego
+- Um "+1" sobe ao lado do inventário quando você pega algo (uma estrela nas peças de objetivo)
+- A primeira vez que o feixe passa por um item ele dá um único reflexo metálico (nunca no Pesadelo)
+- Portas fechadas de salas acesas deixam uma faixa fina de luz no chão, que pisca com a lâmpada lá de dentro
+- Quando o Inspetor, a Procissão ou a Menina passa do outro lado, sombras de pés cortam a faixa de luz da porta
+- Cada lâmpada acesa pinta uma mancha de luz no chão, que balança com o bulbo e falha junto com ele
+- Portas batendo soltam poeira do batente
+- Porta batendo perto faz a lâmpada mais próxima balançar no fio e falhar uma vez
+- Ao cumprir um objetivo, as lâmpadas da sala dão um respiro de luz (não na caça nem com Reduzir flashes)
+- Cacos de vidro no chão cintilam quando a lanterna passa
+- Os olhos da Menina refletem a lanterna como dois pontinhos quando ela está longe
+- Segredo: num canto escuro, dois olhinhos refletem a luz e somem (uma vez por capítulo)
+- Agachar desce a câmera com mola: passa um pouco do ponto e volta
+- Andar de lado inclina a câmera de leve para o lado do passo
+- Correndo, virar rápido inclina a câmera para dentro da curva
+- Parada, a câmera sobe e desce com a respiração, mais rápido com medo
+- Prender o ar congela a respiração da câmera; ao soltar, ela afunda com a puxada de ar
+- Depois de correr, parada, o peito sobe e desce ofegante
+- O balanço muda com o piso: a água é lenta e funda, a grama e a terra escorregam de lado e a madeira afunda no passo
+- Sons fortes por perto viram a cabeça de leve para o lado de onde vieram
+- Entrar no esconderijo deixou de ser um corte: a câmera desliza para dentro em 0,35 s
+- Sair do esconderijo também desliza para fora
+- Escondida, a câmera sobe e desce com o peito, mais rápido com medo; prender o ar para o movimento
+- No armário as frestas embaçam aos poucos com a respiração; prender o ar para de embaçar
+- Ao voltar do checkpoint ou trocar de mapa, a tela abre como pálpebras com um piscar duplo (com câmera mínima, só um fade)
+- Ao ar livre, olhar para o céu faz gotas de chuva baterem na tela
+- As gotas grandes escorrem e todas secam rápido quando você entra num lugar coberto
+- No clarão do relâmpago as gotas na tela se acendem
+- Correndo debaixo de chuva a tela também molha
+- Nos túneis, correr na água joga respingos na tela
+- Prendendo o ar, as bordas da tela escurecem aos poucos, também fora do esconderijo
+- Com o fôlego preso acabando, as bordas ficam roxas e a imagem treme
+- A nota aberta treme na mão com o medo e mais ainda com o Inspetor por perto
+- Com medo acima de 80 a mira e o texto de interação tremem; prender o ar firma tudo
+- Ao morrer, o último quadro vira negativo por um instante (não com Reduzir flashes)
+- Depois da morte a imagem queima das bordas para o centro como película presa no projetor
+- Na queda da morte a câmera quica uma vez no chão antes de parar
+- Com o filtro de fita, cada capítulo começa com "▶ PLAY SP" e o contador da fita rodando no canto
+- Segredo: digitar REBOBINA no menu principal liga (ou desliga) o filtro de fita
+- Correndo, os pés levantam poeira; na água sobem respingos e no cemitério, lama
+- No frio, soltar o ar preso solta uma nuvem grande de bafo
+- Depois de sair da água ou da chuva, a Lia deixa pegadas molhadas que secam sozinhas
+- Segredo: às vezes pegadas pequenas e descalças aparecem indo até um armário (uma vez por capítulo)
+- A poeira no feixe fica mais densa em salas velhas e fechadas (enfermaria, depósito, biblioteca, rouparia, sótão) e some na chuva
+- Nova opção "Estilo fita 240 linhas": imagem pixelada de propósito, que roda leve em computador fraco
+- O estilo fita ganha pontilhado e linhas de varredura por cima da imagem
+- Texturas no tamanho da qualidade: na Alta o chão fica nítido com a lanterna rasante, na Baixa fica mais leve
+- Nova opção "Realçar o que dá para usar": contorno claro e pulsante no que está na mira (desligada no Pesadelo)
+- Com a paleta para daltonismo, o contorno fica amarelo
