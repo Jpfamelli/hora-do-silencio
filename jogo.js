@@ -666,7 +666,7 @@ document.addEventListener('pointerlockchange', () => {
 });
 canvas.addEventListener('click', () => { if ((mode === 'jogo' || mode === 'cena') && !ui) lockPointer(); });
 $('#clique').addEventListener('click', () => lockPointer());
-function lockPointer() { try { const p = canvas.requestPointerLock(); if (p && p.catch) p.catch(() => {}); } catch (e) {} }
+function lockPointer() { if (PLAT.semTrava && PLAT.semTrava()) return; try { const op = PLAT.travaOpcoes && PLAT.travaOpcoes(); const p = op ? canvas.requestPointerLock(op) : canvas.requestPointerLock(); if (p && p.catch) p.catch(() => { if (op) { try { const q = canvas.requestPointerLock(); if (q && q.catch) q.catch(() => {}); } catch (e2) {} } }); } catch (e) {} }
 const unlock = () => { if (document.pointerLockElement) document.exitPointerLock(); };
 
 // opções de controle (agachar/correr/respirar segurando ou alternando) e o microfone
@@ -913,7 +913,9 @@ function updatePlayer(dt) {
     return;
   }
   if (P.bloqueado) { $('#breath').hidden = true; camera.position.set(P.pos.x, P.h, P.pos.z); camera.rotation.set(P.pitch, P.yaw, 0); return; }
-  const fw = (keys.KeyW ? 1 : 0) - (keys.KeyS ? 1 : 0), st = (keys.KeyD ? 1 : 0) - (keys.KeyA ? 1 : 0);
+  const an = P.mover && P.mover.l > .05 ? P.mover : null; // analógico do toque e do controle (src/plataforma3.js): direção contínua
+  const fw = an ? -an.y : (keys.KeyW ? 1 : 0) - (keys.KeyS ? 1 : 0), st = an ? an.x : (keys.KeyD ? 1 : 0) - (keys.KeyA ? 1 : 0);
+  const anK = an ? Math.min(1, .4 + .6 * an.l / .9) : 1;
   const moving = fw || st;
   const fuga = S.flags.sino;
   P.naAgua = !!(P.room && P.room.agua && !S.flags.aguaBaixa);
@@ -941,11 +943,12 @@ function updatePlayer(dt) {
   } else P.corridaT = 0;
   const sy = Math.sin(P.yaw), cy = Math.cos(P.yaw);
   const vx = -sy * fw + cy * st, vz = -cy * fw - sy * st, len = Math.hypot(vx, vz) || 1;
-  if (moving) { P.pos.x += vx / len * spd * dt; P.pos.z += vz / len * spd * dt; }
+  if (moving) { P.pos.x += vx / len * spd * anK * dt; P.pos.z += vz / len * spd * anK * dt; }
   collide(P.pos, .33);
   P.noiseR = !moving ? 0 : (P.crouch ? 1.4 : P.sprinting ? 20 : P.devagar ? 3 : 6.5) * (P.naAgua ? 1.6 : 1);
   if (W.def.ruidoMul) P.noiseR *= W.def.ruidoMul();
-  const moved = moving ? spd * dt : 0;
+  P.noiseR *= anK;
+  const moved = moving ? spd * anK * dt : 0;
   P.stepAcc += moved;
   const passo = P.sprinting ? .78 : P.crouch ? .55 : P.devagar ? .58 : .62;
   if (P.stepAcc > passo) { P.stepAcc = 0; SFX.passo(P.sprinting ? 1 : P.crouch ? .25 : P.devagar ? .33 : .55, P.room.piso || 'grama', !!P.room.fora, P.naAgua); SUST.aoPasso(); if (P.naAgua) criarOnda(P.pos.x, P.pos.z); }
@@ -3842,5 +3845,5 @@ function cortarNevoa() {
 }
 requestAnimationFrame(loop);
 
-PLAT.instalar({ THREE, renderer, scene, camera, flash, chuva, chuvaGeo, NCH, P, M, ANA, PROC, W, keys, OPT, SOM, AMB, R, AG, conquista, lsGet, lsSet, SAVE_KEY, CAPS_KEY, CONQ_KEY, onKey, toast, abrirPausa, fecharPausa, entrarJogo, carregarSnap, iniciarAudio, lockPointer, unlock, roomAt, setOpt, get S() { return S; }, get ui() { return ui; }, get mode() { return mode; }, get locked() { return locked; }, get AC() { return AC; }, get master() { return master; } });
+PLAT.instalar({ THREE, renderer, scene, camera, flash, chuva, chuvaGeo, NCH, P, M, ANA, PROC, W, keys, OPT, SOM, AMB, R, AG, conquista, lsGet, lsSet, SAVE_KEY, CAPS_KEY, CONQ_KEY, onKey, toast, abrirPausa, fecharPausa, entrarJogo, carregarSnap, iniciarAudio, lockPointer, unlock, roomAt, setOpt, entrarMaisPerto, SFX, get chamado() { return chamadoArmadilha; }, get alvo() { return alvo; }, get S() { return S; }, get ui() { return ui; }, get mode() { return mode; }, get locked() { return locked; }, get AC() { return AC; }, get master() { return master; } });
 window.__jogo = { get S() { return S; }, P, M, ANA, PROC, W, frame, carregarMapa, objDone, iniciarProcissao, spawnAna, ativarInspetor, camera, renderer, scene, hemi, moon, salvarCheckpoint, carregarSnap, lerNota, tocarFita, pularCena, roomAt, get ui() { return ui; }, get mode() { return mode; }, get alvo() { return alvo; }, keys, onKey, novoEstado: d => { S = novoEstado(d); return S; } };

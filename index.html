@@ -464,7 +464,13 @@
   #aviso-mobile{position:fixed;inset:0;background:#000;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font-size:20px;z-index:9}
 </style>
 <link rel="stylesheet" href="src/plataforma.css">
-<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js"}}</script>
+<script>
+// Three.js vem do unpkg; se ele falhou da última vez, usa o servidor reserva (jsdelivr), com a mesma versão
+(function () { var r = ''; try { r = localStorage.getItem('hds-cdn') || ''; } catch (e) {}
+  var u = r === 'reserva' ? 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js' : 'https://unpkg.com/three@0.160.0/build/three.module.js';
+  window.__cdn = r === 'reserva' ? 'reserva' : 'unpkg';
+  document.write('<script type="importmap">{"imports":{"three":"' + u + '"}}<' + '/script>'); })();
+</script>
 </head>
 <body>
 <noscript><div style="position:fixed;inset:0;z-index:30;background:#000;color:#cfc3a6;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font-size:20px">A Hora do Silêncio precisa do JavaScript ligado no navegador para abrir o internato.</div></noscript>
@@ -473,14 +479,17 @@
 (function () {
   var el = document.getElementById('carregando');
   function erro(t) { if (window.__jogo || !el) return; el.querySelector('.cg-txt').textContent = t; document.getElementById('cg-tentar').hidden = false; el.classList.add('falhou'); }
+  // da próxima vez, tenta pelo outro servidor (unpkg <-> jsdelivr)
+  function trocarServidor() { try { localStorage.setItem('hds-cdn', window.__cdn === 'reserva' ? '' : 'reserva'); } catch (e) {} var b = document.getElementById('cg-tentar'); if (b) b.textContent = window.__cdn === 'reserva' ? 'Tentar pelo servidor principal' : 'Tentar pelo servidor reserva'; }
   window.addEventListener('error', function (e) {
     if (window.__jogo) return;
     var m = String(e.message || '');
     if (/WebGL/i.test(m)) erro('Seu navegador não conseguiu ligar o 3D (WebGL). Atualize o navegador ou ative a aceleração de hardware nas configurações.');
-    else if (e.target && e.target.tagName === 'SCRIPT') erro('A conexão caiu no meio do caminho e o internato não carregou.');
+    else if (e.target && e.target.tagName === 'SCRIPT') { erro('A conexão caiu no meio do caminho e o internato não carregou.'); trocarServidor(); }
     else if (m) erro('Algo deu errado ao abrir o jogo. Tente de novo.');
   }, true);
-  setTimeout(function () { erro('A conexão está lenta ou caiu. O internato ainda não abriu.'); }, 12000);
+  setTimeout(function () { if (window.__jogo || !el) return; var t = el.querySelector('.cg-txt'); if (t) t.textContent = 'a internet está lenta... o internato ainda está chegando.'; }, 5000);
+  setTimeout(function () { if (window.__jogo) return; erro('A conexão está lenta ou caiu. O internato ainda não abriu.'); trocarServidor(); }, 14000);
 })();
 </script>
 <canvas id="c"></canvas>
