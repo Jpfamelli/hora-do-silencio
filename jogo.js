@@ -8,6 +8,7 @@ import * as JG from './src/jogabilidade.js';
 import { criarInterface } from './src/interface.js';
 import { PG } from './src/progressao.js';
 import { PLAT } from './src/plataforma.js';
+import { criarMonstrosLore } from './src/monstros-lore.js';
 
 const R = window.ROTEIRO;
 const $ = s => document.querySelector(s);
@@ -655,7 +656,7 @@ addEventListener('mousemove', e => {
 });
 document.addEventListener('pointerlockchange', () => {
   locked = document.pointerLockElement === canvas;
-  if (!locked && mode === 'jogo' && !ui && S && !S.dead && !S.fim) abrirPausa();
+  if (!locked && mode === 'jogo' && !ui && S && !S.dead && !S.fim && !window.__teste) abrirPausa(); // no kit de teste o Chrome sem tela solta o mouse sozinho
 });
 canvas.addEventListener('click', () => { if ((mode === 'jogo' || mode === 'cena') && !ui) lockPointer(); });
 $('#clique').addEventListener('click', () => lockPointer());
@@ -1050,7 +1051,7 @@ function entrarEsconderijo(L) {
 }
 function sairEsconderijo(modo) {
   const L = S.hidden; if (!L) return;
-  if (forcado) PG.escondidaAntes();
+  if (modo === true) PG.escondidaAntes(); // correção: "forcado" não existia mais depois do merge e sair do esconderijo quebrava o jogo
   SUST.aoSair(L);
   S.hidden = null; teste = null; $('#fx-locker').hidden = true; $('#fx-locker').style.opacity = ''; $('#fx-cama').hidden = true; $('#breath').hidden = true;
   const off = L.tipo === 'cama' ? 1.0 : .85;
@@ -1319,13 +1320,22 @@ const SOMX = {
     const n = duplo ? 4 : 2; for (let i = 0; i < n; i++) burst(t + i * .07 + (i >= 2 ? .16 : 0), .03, 'bandpass', 2600, 8, lp);
     g.gain.setValueAtTime(0, t); g.gain.setValueAtTime(.7 * vol, t + .001); g.gain.exponentialRampToValueAtTime(.0001, t + (duplo ? .45 : .2));
   },
-  cantarola(pos) { // cantiga desafinada e baixa da patrulha
+  cantarola(pos) { // a melodia da caixinha da Ana, mais lenta, grave e desafinada, em boca fechada
+    if (AMBX.cant) return;
     const t = AC.currentTime, g = saida({ x: pos.x, y: 2.8, z: pos.z }, .6), f = AC.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = 380; f.Q.value = 2; f.connect(g);
-    const o = AC.createOscillator(); o.type = 'triangle'; const notas = [98, 110, 104, 92.5, 98];
-    notas.forEach((n, i) => o.frequency.setValueAtTime(n * rand(.97, 1.03), t + i * .45));
+    const o = AC.createOscillator(); o.type = 'triangle'; const notas = [659, 784, 659, 523, 587, 494, 523, 440].map(n => n / 4);
+    notas.forEach((n, i) => o.frequency.setValueAtTime(n * rand(.96, 1.04), t + i * .62));
     const vib = AC.createOscillator(); vib.frequency.value = 5.5; const vg = AC.createGain(); vg.gain.value = 3; vib.connect(vg); vg.connect(o.frequency);
-    o.connect(f); g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(.16, t + .3); g.gain.setValueAtTime(.16, t + 1.9); g.gain.exponentialRampToValueAtTime(.0001, t + 2.4);
-    o.start(t); vib.start(t); o.stop(t + 2.5); vib.stop(t + 2.5);
+    const fim = notas.length * .62;
+    o.connect(f); g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(.16, t + .3); g.gain.setValueAtTime(.16, t + fim - .5); g.gain.exponentialRampToValueAtTime(.0001, t + fim);
+    o.start(t); vib.start(t); o.stop(t + fim + .1); vib.stop(t + fim + .1);
+    AMBX.cant = { o, vib, g, ate: t + fim }; o.onended = () => { if (AMBX.cant && AMBX.cant.o === o) AMBX.cant = null; };
+  },
+  cortaCantiga() { // ele ouviu algo: a cantiga para no meio da frase
+    const c = AMBX.cant; if (!c) return false; AMBX.cant = null;
+    const t = AC.currentTime; if (t > c.ate - .2) return false;
+    c.g.gain.cancelScheduledValues(t); c.g.gain.setValueAtTime(Math.max(.0002, c.g.gain.value), t); c.g.gain.linearRampToValueAtTime(.0001, t + .04);
+    try { c.o.stop(t + .05); c.vib.stop(t + .05); } catch (e) {} return true;
   },
   fungada(pos) { const t = AC.currentTime; for (const k of [0, .16]) { const g = saida({ x: pos.x, y: 2.8, z: pos.z }, .4); const f = burst(t + k, .12, 'bandpass', 1500, 2, g); f.frequency.linearRampToValueAtTime(2600, t + k + .12); env(g, t + k, .02, .3, .1); } },
   respiraRasgada(pos) {
@@ -1523,6 +1533,7 @@ function quase(x, z) {
 }
 function falaInspetor(perdeu, tipo) {
   if (M.falaT > 0) return; M.falaT = rand(8, 14);
+  const esp = ML.falaExtra(perdeu, tipo); if (esp) { M.ultimaFala = esp; sub('inspetor', esp); SFX.voz(M.pos, esp); return; } // falas de memória e de quem ele reconhece (src/monstros-lore.js)
   const ent = R.entidades.inspetor, ctx = tipo && ent.falas_tipo && ent.falas_tipo[tipo];
   const extra = (!perdeu && ent.porCapitulo && ent.porCapitulo[S.chapter]) || [];
   const lista = ctx && (Math.random() < .8 || !(perdeu ? ent.falas_perdeu : ent.falas_caca)) ? ctx : [...(perdeu ? ent.falas_perdeu : ent.falas_caca), ...extra];
@@ -1567,6 +1578,7 @@ function arranhao() {
 }
 function abrirEsconderijo() {
   const L = S.hidden; if (!L) return;
+  if (ML.protegido(L)) { ML.poupou(L); desistirDoEsconderijo(); return; } // armários que ele não abre (o do castigo, o do terceiro menino)
   SX.armarioBate(L); tremer(L.g, .3, .08); S.causaCtx = 'escondida';
   sairEsconderijo(true); agarrar();
 }
@@ -1723,7 +1735,7 @@ function updateInspetor(dt) {
   if (P.room && P.room !== M.ultSalaJog) { M.ultSalaJog = P.room; const rt = S.flags.rotas || (S.flags.rotas = {}), k = W.mapa + ':' + P.room.id; rt[k] = (rt[k] || 0) + 1; }
   // Audição (submersa na água dos túneis, ela não é ouvida; trovão e chuva mascaram os passos)
   const ajuda = 1; // a ajuda invisível já está em D().ouvido
-  const ouvido = P.noiseR * pisoMult() * att * D().ouvido * ajuda * (M.state === 'caca' ? 1.6 : M.state === 'escuta' ? 1.5 : 1) * mascaraSom(P.pos.x, P.pos.z);
+  const ouvido = P.noiseR * pisoMult() * att * D().ouvido * ajuda * (M.state === 'caca' ? 1.6 : M.state === 'escuta' ? 1.5 : M.state === 'reza' ? .5 : 1) * mascaraSom(P.pos.x, P.pos.z);
   const submersa = !!(W.def.submersa && W.def.submersa());
   const ouve = !S.hidden && !submersa && !(P.room.seguro && !fuga) && (fuga || M.furia > 0 || (P.noiseR > 0 && d < ouvido));
   if (ouve && !(M.alvoGarrafa && d > 4) && !ocupado) {
@@ -1800,7 +1812,7 @@ function updateInspetor(dt) {
   const esc = 1 + Math.max(0, S.chapter - 2) * .083;
   const fugaVel = d > 9 ? 5.6 : d < 3 ? 4.2 : 4.9; // na fuga ele fica colado nas suas costas, sem ser impossível
   const speed = (fuga && M.state === 'caca' ? fugaVel : fuga ? 4.9 : base * esc) * D().vel * (aguaAqui ? .85 : 1);
-  const parado = ['alerta', 'bote', 'agarra', 'escuta', 'emboscada', 'fareja', 'vasculha'].includes(M.state);
+  const parado = ['alerta', 'bote', 'agarra', 'escuta', 'emboscada', 'fareja', 'vasculha', 'reza'].includes(M.state);
   if (fuga && M.state === 'caca') { M.tropecoT -= dt; if (M.tropecoT <= 0 && d > 3) { M.tropecoT = rand(13, 17); M.wait = 2; M.caidoT = 2; SX.tropeco(M.pos); } }
   M.caidoT = Math.max(0, M.caidoT - dt);
   if (M.wait > 0) M.wait -= dt;
@@ -1824,7 +1836,7 @@ function updateInspetor(dt) {
   if (M.state === 'procura' && !M.acao) { M.searchT -= dt; if (M.searchT <= 0) fimProcura(ra); }
   // Assinatura sonora por estado: dá para saber o que ele está fazendo só de ouvir
   M.clickT -= dt; M.somT -= dt;
-  const mudo = ['alerta', 'escuta', 'emboscada', 'fareja', 'vasculha', 'agarra', 'bote'].includes(M.state) || (M.state === 'conferir' && M.wait > 0);
+  const mudo = ['alerta', 'escuta', 'emboscada', 'fareja', 'vasculha', 'agarra', 'bote', 'reza'].includes(M.state) || (M.state === 'conferir' && M.wait > 0);
   if (M.state === 'emboscada' && M.emboscadaT < 1 && !M.emboscadaClique) { M.emboscadaClique = true; SX.estalo(M.pos, .9); }
   if (!mudo && M.clickT <= 0) { M.clickT = { caca: .45, procura: .55, investiga: 1 }[M.state] || 1.8; SX.estalo(M.pos, (M.state === 'caca' ? 1 : .6) * (M.recuo > 0 ? .35 : 1)); }
   if (!mudo && M.somT <= 0) {
@@ -1962,7 +1974,7 @@ function updateAna(dt) {
   if (ANA.vista && luzLanterna) { ANA.encaraT += dt; S.battery = Math.max(0, S.battery - .55 * 1.5 * D().pilha * dt); } else ANA.encaraT = 0;
   if (ANA.encaraT > 6 && !AMBX.hum) SX.anaHum(true, { x: ANA.pos.x, y: 1.2, z: ANA.pos.z });
   if (AMBX.hum && !ANA.vista) SX.anaHum(false);
-  if (ANA.encaraT > 8) { ANA.encaraT = 0; ANA.falhaT = .6; SFX.clique(); SX.anaHum(false); anaAvancar(2); ANA.pose = 5; }
+  if (ANA.encaraT > 8 && !ML.anaOlhada()) { ANA.encaraT = 0; ANA.falhaT = .6; SFX.clique(); SX.anaHum(false); anaAvancar(2); ANA.pose = 5; }
   // Pilha fraca: cada piscada da lanterna deixa ela andar
   if (naVista && S.flashOn && flashPisca && S.battery < 18 && ANA.piscaCd <= 0 && !ANA.teto) { ANA.piscaCd = .45; anaAvancar(.8); ANA.pose = Math.random() * POSES_ANA.length | 0; }
   const ra = roomAt(ANA.pos.x, ANA.pos.z), aguaAqui = ra.agua && !S.flags.aguaBaixa;
@@ -2143,7 +2155,7 @@ function updateProcissao(dt) {
       else { L.luz.intensity = ai; L.bulbo.material.emissiveIntensity = ae; }
     }
     const tot = D().aviso, prog = clamp(1 - PROC.t / tot, 0, 1);
-    while (PROC.previsto && PROC.pegIdx < PROC.previsto.length * prog) { const p = PROC.previsto[PROC.pegIdx++]; PROC.pegadas.push({ m: decal(MAT_PEGADA, p.x + (PROC.pegIdx % 2 ? .12 : -.12), p.z, .2, .4, (p.yaw || 0) + Math.PI, .6) }); }
+    while (PROC.previsto && PROC.pegIdx < PROC.previsto.length * prog) { const p = PROC.previsto[PROC.pegIdx++]; const tam = [.7, .85, 1, 1.15][PROC.pegIdx % 4]; PROC.pegadas.push({ m: decal(MAT_PEGADA, p.x + (PROC.pegIdx % 2 ? .12 : -.12) * tam, p.z, .2 * tam, .4 * tam, (p.yaw || 0) + Math.PI, .6) }); } // pés de crianças de vários tamanhos
     PROC.cantoT -= dt; if (PROC.cantoT <= 0) { PROC.cantoT = 2.4; SX.sussurroSilencio(centroSala(PROC.ini), 1.2); } // o canto já vem de onde eles vão sair
     P.shake = Math.max(P.shake, .012); SUST.procAviso(dt);
     if (PROC.t <= 0) {
@@ -2295,7 +2307,7 @@ function morrer(quem) {
       unlock(); ui = 'morte'; $('#death').hidden = false; $('#hud').hidden = true; SFX.pararCanto(); SFX.chiadoFita(false); fitaTocando = null; $('#fita-ind').hidden = true;
       const MT = (R.mortes && R.mortes[quem]) || {};
       $('#dt-tit').textContent = MT.titulos ? pick(MT.titulos) : quem === 'inspetor' ? 'ELE TE ENCONTROU' : quem === 'ana' ? 'ELA CONTOU ATÉ DEZ' : 'FORA DA CAMA';
-      $('#death-frase').textContent = MT.frases ? pick(MT.frases) : '';
+      $('#death-frase').textContent = ML.fraseMorte(quem) || (MT.frases ? pick(MT.frases) : '');
       UIX.morte(quem); // o que aconteceu, mini-mapa, mortes no capítulo
       dicaMorte(quem, ctx); // dica pela causa exata, quando houver
       PG.telaMorte(quem); // contagem, objetivos que faltavam, penalidade e o modo Uma Vida
@@ -2395,6 +2407,7 @@ function carregarMapa(id, spawn, { salvar = true } = {}) {
   if (salvar) salvarCheckpoint();
   renderObj(); renderInvMini();
   SUST.novoMapa(id);
+  ML.novoMapa(id);
   VIS.mapa();
 }
 function syncLuzes() {
@@ -3722,6 +3735,13 @@ const SUST = criarSustos({
   saida, env, osc, burst, ruido, SFX, box, cyl, plano, interact, gatilho, SALA, DOOR, setDoor, roomAt, visivel, naLuz, emitNoise, collide, pontoEm, planejar, patrulhar,
   sub, falar, toast, fade, entrarEsconderijo, sairEsconderijo, syncLuzes, despawnAna, renderInvMini
 });
+// Monstros e IA, lote 2: lore viva das entidades (chaves, apito, armários dele, Procissão com rosto, Davi, Joaquim, Albano)
+const ML = criarMonstrosLore({
+  THREE, R, $, rand, pick, clamp, lerp, camera, scene, W, P, M, MON, VULTO, ANA, ANA_G, PROC, MAT, OPT, D, SX, SFX,
+  get S() { return S; }, get AC() { return AC; }, get perf() { return perf; }, get flashPisca() { return flashPisca; }, get ui() { return ui; },
+  saida, env, osc, burst, ruido, silaba, box, cyl, plano, canvasTex, textoTex, interact, setDoor, roomAt, SALA, visivel, linhaLivre, naLuz, salaAdj, distSalas, centroSala, pontoEm, planejar, patrulhar, collide,
+  modeloInspetor, acabarProcissao, abrirNotaUI, sub, subPequeno, toast, falar, emitNoise, renderInvMini, despawnAna
+});
 const VIS = instalarVisual({ THREE, scene, camera, renderer, canvas, flash, flashFill, MON, ANA, ANA_G, PROC, M, P, W, MAT, OPT, OPT_KEY, lsSet, R, ROLOS, keys, roomAt, visivel, collide, salasAlcancaveis, distSalas, D,
   get S() { return S; }, get mode() { return mode; }, get ui() { return ui; }, get flashPisca() { return flashPisca; }, get hbT() { return AUD.hbT; }, get raioI() { return raioI; }, get fita() { return fitaTocando; }, get perf() { return perf; } });
 PG.ligar({
@@ -3749,12 +3769,12 @@ function frame(dt) {
   } else if (ativo) {
     S.tempo += dt; S.capT += dt; PG.tick(dt);
     updatePlayer(dt); updateLanterna(dt); updateFear(dt);
-    if (!congelado(dt)) { updateInspetor(dt); updateAna(dt); updateProcissao(dt); } updateEventos(dt); updateGarrafas(dt);
+    if (!congelado(dt)) { updateInspetor(dt); updateAna(dt); updateProcissao(dt); ML.tick(dt); } updateEventos(dt); updateGarrafas(dt);
     updateClima(dt); updateJogabilidade(dt); updateAlvo(); updateSegurar(dt); updateFita(dt); updateHUD(); updateSub(dt); updateAudio(dt); H.tick(dt);
   } else if (mundoVivo()) { // cofre, quadro (e no Pesadelo notas e diário): o mundo continua, com o som abafado
     S.tempo += dt; S.capT += dt; P.noiseR = 0; abafar(true);
     updateLanterna(dt); updateFear(dt);
-    if (!congelado(dt)) { updateInspetor(dt); updateAna(dt); updateProcissao(dt); } updateEventos(dt); updateGarrafas(dt);
+    if (!congelado(dt)) { updateInspetor(dt); updateAna(dt); updateProcissao(dt); ML.tick(dt); } updateEventos(dt); updateGarrafas(dt);
     updateClima(dt); updateFita(dt); updateHUD(); updateSub(dt); updateAudio(dt);
   } else if (mode === 'jogo' && S && S.dead) updateAudio(dt);
   UIX.frame(dt, ativo);

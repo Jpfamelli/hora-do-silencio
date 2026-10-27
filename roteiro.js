@@ -409,6 +409,7 @@ window.ROTEIRO = {
       // falas extras que só aparecem em certos capítulos
       porCapitulo: {
         1: ["Tem alguém novo na casa."],
+        2: ["Nove badaladas. Todos na cama.", "Um apito, todos na cama. Dois, ninguém respira."],
         3: ["A menina não vai te ajudar.", "Conta comigo. Um... dois..."],
         4: ["A água me conta onde você pisa.", "Ninguém desce aqui. Ninguém."],
         5: ["O sino é MEU.", "Saia daí. Eu sei que você está atrás da pedra."]
@@ -441,6 +442,80 @@ window.ROTEIRO = {
       pilha: "Com a pilha fraca a lanterna pisca, e a cada piscada ela chega mais perto. Troque a pilha (R) antes.",
       ana_armario: "Esconder não engana a menina. Ela espera na porta. Com a lanterna acesa por dentro, ela não abre.",
       proc_luz: "Até no armário a luz vaza pela fresta. Apague a lanterna (F) quando eles passarem."
+    }
+  },
+
+  // Lote 2 (Monstros e IA): a vida das entidades, lida por src/monstros-lore.js
+  monstros2: {
+    criancas: ["Tomé, de volta pro armário.", "Ana, pare de contar.", "Davi, longe da capela.", "Quem deixou o carrinho no corredor?", "Trinta e sete camas. Trinta e sete."],
+    castigos: ["Falar... uma hora.", "Chorar... duas.", "Correr... eu decido.", "Sair da cama... eu decido."],
+    menino: ["Não me tranca, padre... eu fico quieto...", "Eu não falei... eu juro que não falei.", "Abre, por favor. Tá escuro."],
+    reconhece: ["Moraes. A mais velha. Você voltou pra cama.", "Lia Moraes. Saiu da cama em setenta e seis. Eu nunca esqueço uma voz."],
+    passoDavi: "Esse passo... é igual ao do menino Davi.",
+    reliquia: { ana: "Ana. Você trouxe a boneca da Ana.", tome: "Tomé. Você trouxe o carrinho do Tomé.", davi: "Davi. Você está com o caderno do Davi." },
+    lugares: {
+      dorm: "Eu dormi aí. Era frio.",
+      diret: "Sim, senhor diretor. Todos na cama, senhor diretor.",
+      secreta: "A sala dele. Eu nunca podia descer aqui.",
+      capela: "O sino me desliga. Não toca. Não toca."
+    },
+    naoFalei: "Eu não falei nada... eu não falei...",
+    humano: "Desculpa... eu só queria que vocês dormissem.",
+    luiz: "Ele vem rezar pro menino.",
+    morteLia: "\"Eu guardei o seu armário.\"",
+    morteChave: "Uma chave pequena tilinta no chão. Número 12.",
+    castigoEntra: "Riscos por dentro. Centenas. Alguém contou os dias aqui. 'M.D. 1951'.",
+    castigoPoupa: "(ele encosta a mão na porta... respira... e vai embora)",
+    castigoChoro: "[um menino chora baixinho, aqui dentro]",
+    terceiroEntra: "(um cochicho, colado na sua orelha) ...eu também não conto.",
+    terceiroSai: "...ele quer que eu saia daqui.",
+    castigoFigura: "Tem alguém lá no fundo. Parado. De frente pra parede.",
+    cantigaPlaca: "A música da caixinha... é a que ele cantarola. Foi ele que deu pra ela.",
+    placa: { titulo: "Plaquinha de latão", texto: "(parafusada embaixo da prateleira das caixinhas)\n\nCAIXINHA DE MÚSICA\nPresente do Inspetor Moacir à aluna Ana L. P.\npela obediência.\n1978" },
+    // Ana
+    domingo: "...a mamãe vem domingo... a mamãe vem domingo...",
+    mae: "...mãe?",
+    voltou: "...você voltou...",
+    irma: "Você é a irmã que foi embora.",
+    leu: "Você leu, né? Não conta pra ninguém.",
+    obrigada: "Obrigada por olhar.",
+    curativo: "Onde ela estava ficou um curativo dobrado. Você guardou.",
+    celesteFecha: "Alguém fechou a porta entre nós duas. Tinha um terço balançando...",
+    bilhete: { titulo: "Bilhete molhado", texto: "(letra de giz de cera, borrada pela água)\n\nvocê piscou.\no davi nunca piscava." },
+    flor: "Uma flor de papel dobrada. Ela deixou pra mim.",
+    brincou: "Você brincou comigo.",
+    numeros: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10 — achei você"],
+    radar: ["um...", "dois...", "três...", "quatro...", "cinco...", "seis...", "sete...", "oito..."],
+    // Procissão
+    detalhes: [
+      ["Rosa", "(uma menina de fita vermelha no cabelo olha pra fresta)"],
+      ["Luiz", "(um menino aperta um pião de madeira contra o peito)"],
+      ["João", "(uma bolinha de gude brilha na mão de um menino pequeno)"],
+      ["Maria das Dores", "(uma menina de uniforme antigo, comprido demais, passa de cabeça baixa)"]
+    ],
+    tome: "(o menor, de capacete de papelão, para na fresta e põe o dedo nos lábios)",
+    tomeBate: "Alguém bateu naquele armário. Duas vezes. Ali!",
+    freira: "(a última da fila, uma freira alta, leva o dedo aos lábios e apressa as crianças)",
+    celesteReza: "(do lado de fora da porta, uma reza baixinha) ...deixem essa dormir.",
+    celesteObrigada: "Obrigada, irmã.",
+    lapides: {
+      "ROSA, 8 ANOS": "(Lia) A fita vermelha. Ela tava na fila.",
+      "LUIZ, 11 ANOS": "(Lia) O pião... eu vi esse pião passar.",
+      "JOÃO, 7 ANOS": "(Lia) A bolinha. O menino pequeno da fila.",
+      "MARIA DAS DORES": "(Lia) O uniforme comprido. Desde 1958 ela marcha."
+    },
+    // Davi, Joaquim, Albano
+    daviGaveta: "Davi?! ...Ele correu pra galeria leste.",
+    daviPisou: "Dois pisões. Era o nosso sinal quando a gente era pequeno.",
+    daviFalso: "Ele não bateu o pé. Aquele não era o Davi.",
+    joaquim: "Seu Joaquim...? Ele assobiava isso no posto.",
+    albano: "Um homem de terno... de costas. Sumiu.",
+    albanoCofre: "Ele apontou pro cofre.",
+    brasa: "Cheiro de cigarro. Fresco.",
+    legendas: {
+      chaves: "chaves tilintando", chavesParam: "as chaves pararam", cantigaCorta: "a cantiga parou no meio", apito: "um apito curto e rachado", apitoLonge: "um apito, longe: a ronda recomeçou",
+      canecas: "canecas tilintando, uma a uma", lencol: "um lençol sendo alisado", terco: "contas de um terço batendo", cantigaRoda: "uma menina cantarola uma cantiga de roda", contaComeca: "a cantiga parou: ela começou a contar",
+      batidas: "duas batidas num armário perto", assobio: "alguém assobia cinco notas, longe", carrinho: "rodinhas rolando no andar de cima", pisao: "dois pisões de criança", passinhos: "passinhos correndo", porta: "a porta do armário range sozinha", reza: "uma reza baixinha"
     }
   },
 
