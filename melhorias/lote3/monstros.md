@@ -1,0 +1,92 @@
+# Lote 3 — Monstros e IA
+- Quando o Inspetor sai da ronda para investigar ou caçar por causa de um barulho seu, toca uma nota grave de corda, curta, uma vez por troca de estado
+- Junto com essa nota, a mira dá um tranco mínimo (respeita a opção de tremor de câmera)
+- A legenda "[ele te ouviu]" aparece na hora, com a seta mostrando de que lado ele está
+- A tela de morte diz o que te entregou da última vez que ele te ouviu (você correu, passos na água, a porta do esconderijo, a sua respiração, a sua voz...)
+- A tela de morte ganhou o botão "Ver como ele te achou" (ou a tecla V): um replay dos 3 segundos antes da morte
+- No replay a câmera fica por cima do ombro de quem te pegou, olhando para você
+- No replay a Lia aparece como uma silhueta clara, e o monstro como uma silhueta vermelha que se vê através das paredes
+- No replay as ondas do barulho que você fez se espalham pelo chão, do tamanho do barulho
+- No replay o cone da sua lanterna aparece no chão, mostrando para onde você estava olhando
+- O replay também existe quando a Ana te pega ("Ver como ela chegou") e quando a Procissão te pega ("Ver por onde eles vieram")
+- O replay tem título, legenda de cores e barra de progresso, e qualquer tecla ou clique volta para a tela de morte
+- A sombra dele dobra a esquina antes dele: com uma lâmpada acesa por perto, a silhueta alta de cabeça torta e dedos longos se estica na parede antes de ele aparecer (qualidade Alta e Média)
+- A sombra na parede balança com o passo dele e some quando ele já está na sua frente
+- Porta arrombada: na caçada, depois dos socos, a porta estoura contra a parede com estrondo de madeira lascando
+- Farpas de madeira voam da porta arrombada, quicam no chão e ficam espalhadas ali
+- O tranco na câmera e a vibração da porta arrombada são mais fortes quanto mais perto você está
+- A porta arrombada fica aberta e torta até o fim do capítulo e não fecha mais ("arrombada, não fecha mais"), mesmo depois de voltar do checkpoint
+- Na primeira porta arrombada, a Lia percebe: "fechar não segura mais ele"
+- Com o microfone ligado e você escondida, ele primeiro vira o rosto para o lado do som real ("[ele vira o rosto para você]") e dá 1 s de chance: só vem investigar se você fizer barulho de novo
+- Nada de morte barata atrás da porta: até 2 s depois de você abrir uma porta, ele não dá o bote nem avança se estiver a menos de 4 m do outro lado (a não ser que você tenha corrido ou feito barulho alto)
+- Nesse instante ele estala a língua duas vezes, vira a cabeça para a porta e a legenda avisa "[ele parou do outro lado da porta]"
+- Cada número da contagem da Ana dá um pulso de vibração no controle e no celular, cada vez mais curto e mais forte
+- No DEZ da Ana, um tranco duplo de vibração
+- Escondida com ele a menos de 4 m, se o aparelho vibrar (dano, badalada), ele vira a cabeça para o seu esconderijo por um segundo (desliga junto com a vibração)
+- Na qualidade Baixa, o ouvido, o recálculo de caminho e o calor da lanterna do Inspetor rodam a 15 Hz e só o movimento roda por quadro: sobra processador para os 30 qps
+- Legenda "[ele quase te ouviu]" quando ele para e vira a cabeça por um barulho que quase chegou nele
+- Legendas do que ele está fazendo no seu esconderijo: parou para escutar, fareja a porta, bate no esconderijo, se afasta do esconderijo
+- Legenda "[tudo fica em silêncio de repente]" no instante do alerta e "[ele ergue os braços]" no bote
+- O diretor de tensão ganhou legendas: "[ele está indo embora]" quando ele recua e "[um estalo perto da porta: ele voltou]" quando ele volta
+- Os sons do Inspetor que passavam sem legenda agora têm legenda: estalos de língua, fungadas, respiração rasgada, a puxada de ar, a cantiga, as correntes, o chiado do bote e o tropeço
+- Novas legendas para maçaneta girando, armário aberto com violência, batidas na madeira, lâmpada estourando, porta batendo longe e passos se afastando
+- Novas legendas para os sons da Ana e das crianças: pezinhos descalços, passinhos correndo, respiração na nuca e o pedido de silêncio sussurrado
+- Novas legendas para unhas na parede, passos no andar de cima, a voz conhecida que chama você (o Chamado com voz falsa) e a mão que corta o ar no bote esquivado
+- Legendas da Ana: "[DEZ — ela está atrás de você]" com direção, "[a porta abre uma fresta]", "[algo cai do teto]" e "[pezinhos descalços bem perto]"
+- Legendas da Procissão: "[a fila para]" e "[as luzes voltam, uma a uma]"
+- A borda da tela gela em azul quando a Ana está perto e você não está vendo ela: dá para sentir mesmo sem som
+- Vibração curta quando ele te ouve e quando ele quase te ouve
+- Vibração forte de aviso no começo do bote e um pulso no alerta
+- Cada soco dele no seu esconderijo vibra na mão, e cada fungada dele no armário dá um pulso leve
+- No agarrão, pulsos de vibração a cada quarto de segundo, mais fortes conforme acaba o tempo para se soltar
+- Cada soco dele numa porta fechada vibra mais forte que o anterior
+- A Procissão passando rente faz o seu esconderijo tremer e vibrar cada vez mais forte
+- Quando a Ana desce do teto, a câmera treme e o aparelho vibra conforme a distância
+- Cair na armadilha do Chamado ("Achei.") dá vibração forte e um tranco na mira
+- Uma lâmpada que ele estoura perto de você dá um tranco na câmera e vibra
+- A porta da Ana abrindo em fresta e a fila da Procissão parando também vibram
+- No celular, o botão "Prender fôlego" pulsa em vermelho quando ele fareja ou vasculha o seu esconderijo
+- No celular, o botão "Agachar" pulsa durante o bote (agachar parada é a esquiva)
+- No celular, o botão "Usar" pulsa durante o agarrão
+- Os botões que pulsam respeitam o "reduzir movimento" do sistema (ficam acesos, sem piscar)
+- Nas duas primeiras vezes que ele fareja o seu esconderijo, um aviso diz para segurar ESPAÇO (ou o botão, no celular); no Pesadelo, não
+- O Inspetor manca: a perna direita arrasta e o corpo pende para o lado a cada passo
+- Os passos dele ficaram irregulares, um curto e um longo: dá para reconhecer só pelo som
+- Na procura, cada passo dele vem com o pé se arrastando no chão
+- Parado na ronda, ele balança de leve e os dedos tamborilam no ar
+- No alerta, os braços dele sobem pela metade, os dedos se abrem e a boca vai se abrindo
+- Caçando, os ombros dele sobem e descem com a respiração rasgada
+- Farejando, a cabeça dele sobe e desce em fungadas curtas que dá para ouvir
+- Vasculhando, o braço dele dá um soco na porta a cada batida
+- Quando a lanterna esquenta o rosto dele, ele cobre a cara com a mão
+- Ao tropeçar na fuga, as mãos dele vão ao chão
+- Porta na cara: ele cambaleia para trás e a cabeça tomba de lado
+- Quando você se solta do agarrão, ele uiva de raiva e cambaleia para trás
+- Quando ele vira a cabeça de repente, o pescoço estala
+- Na morte, ele endireita a cabeça torta e escancara a boca no último quadro
+- Ele não esquece: a porta que bateu na cara dele, ele arromba de primeira na caçada seguinte
+- Cada soco dele numa porta faz a porta tremer no batente
+- Uma lâmpada que estoura em cima dele faz ele se encolher
+- O cabelo da Ana balança quando ela se move
+- Encarada por muito tempo, a cabeça da Ana começa a tremer em espasmos
+- Com a Ana grudada no teto logo acima de você, a madeira range: um aviso justo para olhar para cima
+- Quando a Ana muda de pose perto de você, fora da sua vista, dá para ouvir os ossinhos estalando
+- Quando a Ana vai embora sem te pegar, dá para ouvir os passinhos dela correndo
+- Escondida até ela cansar, a Ana reclama: "Chata... você não brinca direito."
+- As crianças da Procissão balançam de lado enquanto andam, cada uma no seu ritmo
+- Depois que a Procissão passa, as luzes voltam uma a uma, piscando, em vez de acender todas juntas
+- A criança que fica para trás vira a cabeça devagar para você quando você chega perto
+- O vulto dele no fundo do corredor inclina a cabeça cada vez mais enquanto você olha, e some com um tranco
+- Respeitar a regra cinco (não ir até quem chama) faz a Lia soltar o ar de alívio e baixa um pouco o medo
+- Esquivar do bote agachada faz a Lia soltar o ar de alívio, com vibração
+- Segredo: ficar agachada e imóvel perto dele durante toda a cantiga faz ele dizer "Boa noite, criança. Volte pra cama." e ir embora (conquista secreta)
+- Segredo: prender o ar fora do esconderijo enquanto ele escuta colado em você faz ele murmurar "...ninguém?" (conquista secreta)
+- Segredo: uma garrafa que estoura no pé dele faz ele recuar e dizer "Isso não é brinquedo, menina." (conquista secreta)
+- Segredo: agachar diante da Ana ajoelhada, com a luz nela, faz ela perguntar "Você também tá de castigo?" (conquista secreta)
+- Segredo: numa cama, no escuro, quando a Procissão passa rente, uma criança ajeita o seu cobertor e sussurra "Dorme. Senão ele vem." (acalma o medo; conquista secreta)
+- Nova conquista "Lascas": sobreviver a uma caçada em que ele arrombou uma porta
+- Ser agarrada três vezes no mesmo capítulo faz ele dizer "De novo você. Não aprende."
+- Na qualidade Baixa (sem sombras), uma mancha escura sob os pés do Inspetor e da Ana mantém os dois no chão
+- Dentro de casa, o Inspetor sai do desenho quando está além da névoa (menos desenhos por quadro, sem mudar o que se vê)
+- Menos travadinhas: o Inspetor, a Ana e a Procissão pararam de criar vetores novos a cada quadro
+- A checagem de linha livre (usada pela Ana, pela Procissão e pelos sustos) reaproveita o mesmo raio em vez de criar um novo a cada chamada
