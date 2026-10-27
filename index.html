@@ -141,6 +141,28 @@
   #pause .set{display:flex;flex-direction:column;gap:12px;margin:22px 0;font-family:"IM Fell English SC";font-size:14px;letter-spacing:.1em;color:var(--fraco)}
   #pause .set label{display:flex;gap:12px;align-items:center;justify-content:center}
   #pause .ajuda{font-family:"Special Elite";font-size:13px;color:#6d6452;line-height:1.8;margin-top:10px}
+  /* texto: rubricas, escrita à mão, legendas */
+  #sub>span:last-child{display:inline-block;animation:subIn .35s ease-out}
+  @keyframes subIn{from{opacity:0;transform:translateY(5px);filter:blur(2px)}}
+  #sub .rubrica{font-style:italic;opacity:.62;font-size:.86em}
+  #sub.grave>span:last-child{animation:subIn .2s ease-out,tremorSub .18s 3;letter-spacing:.03em}
+  @keyframes tremorSub{50%{transform:translateX(1.5px)}}
+  #sub.eco>span:last-child{font-size:.9em;opacity:.8;letter-spacing:.06em}
+  .paper .rubrica{display:block;font-family:"IM Fell English";font-style:italic;font-size:15px;opacity:.6;margin:6px 0 2px}
+  .paper .mao{font-family:"IM Fell English";font-style:italic;font-size:21px;color:#5a1610;letter-spacing:.02em}
+  #diario .paper .mao{color:#5a1610}
+  #chapter{flex-direction:column}
+  #chapter small{display:block;font-family:"IM Fell English";font-style:italic;font-size:clamp(15px,1.8vw,21px);letter-spacing:.04em;color:var(--fraco);margin-top:14px}
+  #fimcap .recado{font-family:"Special Elite";font-size:15px;color:#c9a75a;max-width:640px;margin-top:18px;min-height:1em}
+  #death .frase{font-family:"IM Fell English";font-style:italic;color:#c0392b;font-size:22px;margin:-6px auto 18px;max-width:640px}
+  #death .conta{font-family:"Special Elite";font-size:13px;color:#6d6452;margin:-18px 0 24px}
+  #ending .par{opacity:0;animation:parIn 1.6s ease-out forwards}
+  @keyframes parIn{to{opacity:1}}
+  #title .nome{font-family:"Special Elite";font-size:14px;width:150px;padding:2px 6px}
+  body.nove #title h1{color:#c9a75a;text-shadow:0 0 40px #5a1610}
+  body.fita-gasta #fx-grain{opacity:.32!important}
+  body.fita-gasta::after{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(180deg,rgba(0,0,0,.18) 0 2px,transparent 2px 4px);mix-blend-mode:multiply;z-index:8}
+  body.fita-gasta #sub{filter:blur(.5px);letter-spacing:.03em}
   #aviso-mobile{position:fixed;inset:0;background:#000;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font-size:20px;z-index:9}
 </style>
 <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js"}}</script>
@@ -186,6 +208,7 @@
     <button class="btn" id="b-novo">Novo jogo</button>
     <button class="btn" id="b-caps">Capítulos</button>
     <button class="btn" id="b-conq">Conquistas</button>
+    <button class="btn" id="b-fitas" hidden>Fitas ouvidas</button>
   </div>
   <div class="opts">
     <label>Dificuldade
@@ -193,6 +216,7 @@
     </label>
     <label>Mouse <input type="range" id="o-sens" min="0.4" max="2.5" step="0.1" value="1"></label>
     <label>Volume <input type="range" id="o-vol" min="0" max="1" step="0.05" value="0.8"></label>
+    <label title="Opcional. Fica salvo só neste navegador.">Seu nome <input type="text" id="o-nome" class="nome" maxlength="16" placeholder="(opcional)" autocomplete="off" spellcheck="false"></label>
   </div>
   <div class="ctrl" id="aviso-toque" style="color:#c0392b">Este jogo precisa de teclado e mouse. Abra o link num computador.</div>
   <div class="ctrl">Jogue de fone, no escuro · WASD andar · SHIFT correr · C agachar · E interagir (segure em algumas coisas) · F lanterna · R pilha · H curativo · G jogar garrafa · TAB diário · ESC pausa</div>
@@ -234,12 +258,14 @@
     <label>Mouse <input type="range" id="p-sens" min="0.4" max="2.5" step="0.1" value="1"></label>
     <label>Volume <input type="range" id="p-vol" min="0" max="1" step="0.05" value="0.8"></label>
   </div>
-  <div class="ajuda">C agachar · G jogar garrafa · ESPAÇO prender a respiração escondida · TAB diário com as regras</div>
+  <div class="ajuda">C agachar · G jogar garrafa · ESPAÇO prender a respiração escondida · TAB diário com as regras<br>E no gravador que está tocando para parar a fita · V (ou botão direito) vira a folha das regras</div>
 </div>
 
 <div id="death" class="screen" hidden>
   <h2 id="dt-tit">ELE TE ENCONTROU</h2>
+  <div class="frase" id="death-frase"></div>
   <p id="death-dica"></p>
+  <div class="conta" id="death-conta"></div>
   <button class="btn" id="dt-retry">Tentar de novo</button>
   <button class="btn" id="dt-menu">Menu principal</button>
 </div>
@@ -249,6 +275,7 @@
   <div class="rank" id="fc-rank"></div>
   <div class="stats" id="fc-stats"></div>
   <div class="gancho" id="fc-gancho"></div>
+  <div class="recado" id="fc-recado"></div>
 </div>
 
 <div id="escolha" class="screen" hidden>

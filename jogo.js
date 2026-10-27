@@ -1,6 +1,7 @@
 // A HORA DO SILÊNCIO v2 — motor (Three.js). Mapas e conteúdo em mapas.js, texto em roteiro.js.
 import * as THREE from 'three';
 import { MAPAS } from './mapas.js';
+import { instalarHistoria, fmtFala, fmtNota, escrever, revelar } from './src/historia.js';
 
 const R = window.ROTEIRO;
 const $ = s => document.querySelector(s);
@@ -423,7 +424,7 @@ const ITENS = {
   gravador: (fid, p, cond) => {
     const f = R.fitas.find(x => x.id === fid);
     const g = MK.gravador(); g.position.set(p.x, p.y, p.z); W.grupo.add(g);
-    const it = interact(g, () => fitaTocando ? 'O gravador está tocando...' : `<b>E</b>${S.fitas[fid] ? 'Ouvir de novo' : 'Ouvir'}: ${f.titulo}`, () => tocarFita(fid));
+    const it = interact(g, () => fitaTocando ? (fitaTocando.id === fid ? '<b>E</b>Parar a fita (faz um clique)' : 'Outra fita está tocando...') : `<b>E</b>${S.fitas[fid] ? 'Ouvir de novo' : 'Ouvir'}: ${f.titulo}`, () => { if (fitaTocando && fitaTocando.id === fid) pararFita(); else tocarFita(fid); });
     if (cond) { it.on = cond; W.tick.push(() => { g.visible = cond(); }); }
     return it;
   }
@@ -572,8 +573,9 @@ function novoEstado(dif) {
   };
 }
 const D = () => DIFS[S.dif] || DIFS.normal;
-const totalLore = () => R.notas.length + R.paginas.length + R.fitas.length;
-const loreAchado = () => Object.keys(S.notes).length + Object.keys(S.fitas).length;
+const loreBase = () => [...R.notas, ...R.paginas, ...R.fitas].filter(x => !x.secreta);
+const totalLore = () => loreBase().length;
+const loreAchado = () => loreBase().filter(x => (x.linhas ? S.fitas : S.notes)[x.id]).length;
 const codTxt = s => s.replace(/\{d(\d)\}/g, (_, i) => S.code[i - 1]).replace(/\{q\}/g, S.quadro.join('')).replace(/\{v\}/g, S.ordem.join(' - '));
 
 // =====================================================================
@@ -602,8 +604,8 @@ const unlock = () => { if (document.pointerLockElement) document.exitPointerLock
 
 function onKey(e) {
   if (mode === 'cena') { if (e.code === 'Escape' || e.code === 'Enter') pularCena(); return; }
-  if (ui === 'dialogo') { if (e.code === 'KeyE' || e.code === 'Space' || e.code === 'Enter') proxDialogo(); return; }
-  if (ui === 'nota') { if (e.code === 'KeyE' || e.code === 'Escape') fecharNota(); return; }
+  if (ui === 'dialogo') { if (e.code === 'KeyE' || e.code === 'Space' || e.code === 'Enter') avancarDialogo(); return; }
+  if (ui === 'nota') { if (e.code === 'KeyE' || e.code === 'Escape') fecharNota(); else if (e.code === 'KeyV') virarRegras(); return; }
   if (ui === 'diario') { if (e.code === 'Tab' || e.code === 'Escape' || e.code === 'KeyJ') fecharDiario(); return; }
   if (ui === 'teclado') { tecladoKey(e); return; }
   if (mode !== 'jogo' || ui || !S || S.dead) return;
@@ -907,7 +909,7 @@ function emitNoise(x, z, r, doJogador, garrafa) {
 }
 function falaInspetor(perdeu) {
   if (M.falaT > 0) return; M.falaT = rand(8, 14);
-  const ent = R.entidades.inspetor, t = pick(perdeu ? ent.falas_perdeu : ent.falas_caca);
+  const ent = R.entidades.inspetor, extra = (!perdeu && ent.porCapitulo && ent.porCapitulo[S.chapter]) || [], t = pick([...(perdeu ? ent.falas_perdeu : ent.falas_caca), ...extra]);
   sub('inspetor', t); SFX.voz(M.pos);
 }
 function updateInspetor(dt) {
@@ -1127,8 +1129,12 @@ function morrer(quem) {
     $('#fx-black').style.opacity = 1;
     setTimeout(() => {
       unlock(); ui = 'morte'; $('#death').hidden = false; $('#hud').hidden = true; SFX.pararCanto(); SFX.chiadoFita(false); fitaTocando = null; $('#fita-ind').hidden = true;
-      $('#dt-tit').textContent = quem === 'inspetor' ? 'ELE TE ENCONTROU' : quem === 'ana' ? 'ELA CONTOU ATÉ DEZ' : 'FORA DA CAMA';
-      $('#death-dica').textContent = pick(R.dicas_morte[quem] || R.dicas_morte.inspetor);
+      const MT = (R.mortes && R.mortes[quem]) || {};
+      $('#dt-tit').textContent = MT.titulos ? pick(MT.titulos) : quem === 'inspetor' ? 'ELE TE ENCONTROU' : quem === 'ana' ? 'ELA CONTOU ATÉ DEZ' : 'FORA DA CAMA';
+      $('#death-frase').textContent = MT.frases ? pick(MT.frases) : '';
+      const dicasMapa = (R.dicas_morte.porMapa && R.dicas_morte.porMapa[W.mapa]) || [];
+      $('#death-dica').textContent = pick([...(R.dicas_morte[quem] || R.dicas_morte.inspetor), ...(quem === 'inspetor' ? dicasMapa : [])]);
+      $('#death-conta').textContent = [S.mortes > 1 && R.mortes ? R.mortes.voltou.replace('{n}', S.mortes - 1) : '', S.dif === 'pesadelo' && R.mortes ? R.mortes.pesadelo : ''].filter(Boolean).join(' · ');
     }, 900);
   }, 1200);
 }
@@ -1178,8 +1184,11 @@ function fimDeCapitulo() {
   $('#fc-rank').textContent = rk;
   const min = Math.floor(S.capT / 60), seg = Math.floor(S.capT % 60);
   $('#fc-stats').innerHTML = `tempo ${min}min ${String(seg).padStart(2, '0')}s · dano sofrido ${Math.round(S.capDano)} · vezes perseguida ${S.capVisto}<br>notas, páginas e fitas ${loreAchado()}/${totalLore()}`;
-  $('#fc-gancho').textContent = c.gancho || '';
+  const recado = H.fimCapitulo(S, rk);
+  $('#fc-stats').innerHTML += '<br><span style="opacity:.7">S: sem dano, rápida e sem ser perseguida</span>';
   $('#fimcap').hidden = false;
+  escrever($('#fc-gancho'), c.gancho || '');
+  $('#fc-recado').textContent = recado ? `Gravador da Lia: ${recado}` : '';
   SFX.sinoLonge();
   setTimeout(() => {
     $('#fimcap').hidden = true;
@@ -1256,7 +1265,7 @@ function updateEventos(dt) {
   if (chamadoArmadilha) {
     chamadoArmadilha.t -= dt;
     if (chamadoArmadilha.t <= 0) chamadoArmadilha = null;
-    else if (P.room === chamadoArmadilha.sala) { const s = chamadoArmadilha.sala; chamadoArmadilha = null; if (M.ativo) { const [x, z] = pontoEm(s, 1); M.pos.set(x, 0, z); M.state = 'caca'; M.cool = 1.2; planejar(M, P.pos.x, P.pos.z); SFX.susto(); sub('inspetor', 'Achei.'); } }
+    else if (P.room === chamadoArmadilha.sala) { const s = chamadoArmadilha.sala; chamadoArmadilha = null; H.respondeu(); if (M.ativo) { const [x, z] = pontoEm(s, 1); M.pos.set(x, 0, z); M.state = 'caca'; M.cool = 1.2; planejar(M, P.pos.x, P.pos.z); SFX.susto(); sub('inspetor', 'Achei.'); } }
   }
   for (const f of W.tick) f(dt);
 }
@@ -1264,7 +1273,7 @@ function chamado() {
   const viz = W.links.filter(l => l.a === P.room.id || l.b === P.room.id).map(l => SALA(l.a === P.room.id ? l.b : l.a)).filter(r => !r.fora);
   if (!viz.length) return;
   const s = pick(viz); const [x, z] = pontoEm(s, 1);
-  SFX.chamadoVoz(x, z); sub('davi', R.falas.chamado[0].texto);
+  SFX.chamadoVoz(x, z); { const v = H.vozChamado(); sub(v.quem, v.texto); }
   if (!S.flags.chamado1) { S.flags.chamado1 = true; setTimeout(() => falar('chamado_regra'), 2600); }
   chamadoArmadilha = { sala: s, t: 14 };
 }
@@ -1272,12 +1281,17 @@ function chamado() {
 // =====================================================================
 // FITAS, NOTAS, DIÁLOGOS
 // =====================================================================
-let fitaTocando = null, fitaFila = [], fitaT = 0;
+let fitaTocando = null, fitaFila = [], fitaT = 0, fitaPos = null;
+function pararFita() {
+  if (!fitaTocando) return;
+  fitaTocando = null; fitaFila = []; $('#fita-ind').hidden = true; SFX.chiadoFita(false); SFX.fitaClique(); emitNoise(P.pos.x, P.pos.z, 4);
+  subQ = subQ.filter(x => !x.prioridade); toast('Você parou a fita no meio.');
+}
 function tocarFita(fid) {
   if (fitaTocando) return;
   const f = R.fitas.find(x => x.id === fid);
-  fitaTocando = f; fitaFila = f.linhas.map(l => ({ ...l, texto: codTxt(l.texto) })); fitaT = .8;
-  $('#fita-ind').textContent = f.titulo; $('#fita-ind').hidden = false;
+  fitaTocando = f; fitaFila = f.linhas.map(l => ({ ...l, texto: codTxt(l.texto) })); fitaT = .8; fitaPos = P.pos.clone();
+  $('#fita-ind').textContent = `${f.titulo} · 0/${f.linhas.length}`; $('#fita-ind').hidden = false;
   SFX.fitaClique(); SFX.chiadoFita(true);
   emitNoise(P.pos.x, P.pos.z, 7);
 }
@@ -1286,20 +1300,31 @@ function updateFita(dt) {
   fitaT -= dt;
   if (fitaT <= 0) {
     const l = fitaFila.shift();
-    if (!l) { const id = fitaTocando.id; fitaTocando = null; $('#fita-ind').hidden = true; SFX.chiadoFita(false); SFX.fitaClique(); const primeira = !S.fitas[id]; S.fitas[id] = true; if (primeira) { toast('Fita registrada no diário (TAB).'); if (W.def.fitaOuvida) W.def.fitaOuvida(id); progresso(); } return; }
+    if (!l) { const id = fitaTocando.id; fitaTocando = null; $('#fita-ind').hidden = true; SFX.chiadoFita(false); SFX.fitaClique(); const primeira = !S.fitas[id]; S.fitas[id] = true; H.fitaFim(id); if (primeira) { toast('Fita registrada no diário (TAB).'); if (W.def.fitaOuvida) W.def.fitaOuvida(id); progresso(); } return; }
     sub(l.quem, l.texto, true); fitaT = 2.6 + l.texto.length * .058;
+    const n = fitaTocando.linhas.length; $('#fita-ind').textContent = `${fitaTocando.titulo} · ${n - fitaFila.length}/${n}`;
+    if (fitaPos) emitNoise(fitaPos.x, fitaPos.z, 4);
+    if (fitaTocando.id === 'f3' && M.ativo && !S.flags.moacirEscutou && M.pos.distanceTo(fitaPos || P.pos) < 18) { S.flags.moacirEscutou = true; M.wait = 6; M.path = []; M.state = 'procura'; M.searchT = 8; falar('moacir_escuta'); }
   }
 }
+let notaAtual = null;
+function virarRegras() {
+  if (notaAtual !== 'regras' || !R.regras.verso) return;
+  notaAtual = 'regras-verso'; S.flags.verso = true; SFX.papel(); conquista('verso');
+  $('#note h2').textContent = R.regras.titulo + ' (verso)'; $('#note p').innerHTML = fmtNota(R.regras.verso); $('#note small').textContent = 'clique ou E para fechar';
+}
+$('#note').addEventListener('contextmenu', e => { e.preventDefault(); virarRegras(); });
 function lerNota(id) {
   const n = id === 'regras' ? R.regras : (R.notas.find(x => x.id === id) || R.paginas.find(x => x.id === id));
   const primeira = id !== 'regras' && !S.notes[id];
   if (id !== 'regras') S.notes[id] = true;
   SFX.papel();
   abrirNotaUI(n.titulo, codTxt(n.texto));
+  notaAtual = id; if (id === 'regras' && R.regras.dicaVerso) $('#note small').textContent = 'clique ou E para fechar · ' + R.regras.dicaVerso;
   if (primeira) { progresso(); if (W.def.notaLida) W.def.notaLida(id); }
 }
 let prevUi = null;
-function abrirNotaUI(titulo, texto) { ui = 'nota'; $('#note').hidden = false; $('#note h2').textContent = titulo; $('#note p').textContent = texto; unlock(); }
+function abrirNotaUI(titulo, texto) { ui = 'nota'; notaAtual = null; $('#note').hidden = false; $('#note h2').textContent = titulo; $('#note p').innerHTML = fmtNota(texto); $('#note small').textContent = 'clique, E ou ESC para fechar'; unlock(); }
 function fecharNota() { $('#note').hidden = true; ui = prevUi || null; prevUi = null; if (ui === 'diario') $('#diario').hidden = false; else lockPointer(); }
 $('#note').addEventListener('click', fecharNota);
 
@@ -1309,10 +1334,14 @@ function proxDialogo() {
   const l = dialogoFila.shift();
   if (!l) { $('#dialogo').hidden = true; ui = null; const cb = dialogoCb; dialogoCb = null; cb && cb(); return; }
   const p = R.personagens[l.quem] || { nome: l.quem, cor: '#fff' };
-  $('#dialogo .quem').textContent = p.nome; $('#dialogo .quem').style.color = p.cor; $('#dialogo .txt').textContent = codTxt(l.texto);
-  SFX.clique();
+  $('#dialogo .quem').textContent = p.nome; $('#dialogo .quem').style.color = p.cor;
+  const txt = codTxt(l.texto), el = $('#dialogo .txt'); let i = 0; el.textContent = ''; clearInterval(dialogoDig);
+  dialogoDig = setInterval(() => { i += 2; el.textContent = txt.slice(0, i); if (i >= txt.length) { clearInterval(dialogoDig); dialogoDig = null; } }, 22);
+  dialogoTxt = txt; SFX.clique();
 }
-$('#dialogo').addEventListener('click', proxDialogo);
+let dialogoDig = null, dialogoTxt = '';
+function avancarDialogo() { if (dialogoDig) { clearInterval(dialogoDig); dialogoDig = null; $('#dialogo .txt').textContent = dialogoTxt; return; } proxDialogo(); }
+$('#dialogo').addEventListener('click', avancarDialogo);
 
 // Interação "segurar E"
 let segurando = { it: null, t: 0, ruidoT: 0 };
@@ -1631,7 +1660,7 @@ function updateHUD() {
   if (filtroAtual !== filt) { canvas.style.filter = filt; filtroAtual = filt; }
 }
 let subQ = [], subT = 0, subAtual = null;
-function falar(chave) { const arr = R.falas[chave]; if (!arr) return; for (const f of arr) subQ.push(f); if (subT <= 0) proxSub(); }
+function falar(chave) { let arr = R.falas[chave]; if (arr && Array.isArray(arr[0])) arr = pick(arr); if (!arr) return; for (const f of arr) subQ.push(f); if (subT <= 0) proxSub(); }
 function sub(quem, texto, prioridade) {
   if (prioridade) { subQ.unshift({ quem, texto, prioridade: true }); proxSub(); }
   else { subQ.unshift({ quem, texto }); if (!subAtual || !subAtual.prioridade) proxSub(); }
@@ -1641,13 +1670,14 @@ function proxSub() {
   const f = subQ.shift(), el = $('#sub'); subAtual = f || null;
   if (!f) { el.innerHTML = ''; subT = 0; return; }
   const p = R.personagens[f.quem] || { nome: f.quem, cor: '#fff' };
-  el.innerHTML = `<span class="quem" style="color:${p.cor}">${p.nome}</span><span style="color:${p.cor}">${codTxt(f.texto)}</span>`;
+  el.className = f.quem === 'inspetor' ? 'grave' : /^\((eco|longe|bem baixinho|do escuro)/.test(f.texto) ? 'eco' : '';
+  el.innerHTML = `<span class="quem" style="color:${p.cor}">${p.nome}</span><span style="color:${p.cor}">${fmtFala(codTxt(f.texto))}</span>`;
   subT = f.curta ? 1.2 : 2.4 + f.texto.length * .055;
 }
 function updateSub(dt) { if (subT > 0) { subT -= dt; if (subT <= 0) proxSub(); } }
 let toastT;
-function toast(t) { const el = $('#toast'); el.textContent = t; el.style.opacity = 1; clearTimeout(toastT); toastT = setTimeout(() => el.style.opacity = 0, 2800); }
-function cartaoCapitulo() { const el = $('#chapter'); el.textContent = R.capitulos[S.chapter].titulo; el.style.opacity = 1; setTimeout(() => el.style.opacity = 0, 3400); }
+function toast(t) { const el = $('#toast'); el.textContent = t; el.style.opacity = 1; clearTimeout(toastT); toastT = setTimeout(() => el.style.opacity = 0, Math.max(2800, t.length * 65)); }
+function cartaoCapitulo() { const el = $('#chapter'), c = R.capitulos[S.chapter]; el.textContent = c.titulo; if (c.epigrafe) { const s = document.createElement('small'); s.textContent = c.epigrafe; el.appendChild(s); } el.style.opacity = 1; setTimeout(() => el.style.opacity = 0, c.epigrafe ? 4200 : 3400); }
 let cartaoTO;
 function cartao(t, dur = 4) { const el = $('#cartao'); el.textContent = t; el.style.opacity = 1; clearTimeout(cartaoTO); cartaoTO = setTimeout(() => el.style.opacity = 0, dur * 1000); }
 function fade(on, cb, ms = 650) { $('#fx-black').style.opacity = on ? 1 : 0; if (cb) setTimeout(cb, ms); }
@@ -1676,11 +1706,11 @@ function renderDiario() {
       h += `<h3>${c.titulo}</h3><ul style="list-style:none">` + c.objetivos.map(o => { const f = S.done[o.id]; if (!f && !liberado) return ''; if (!f) liberado = false; return `<li style="opacity:${f ? .45 : 1}">${f ? '✕' : '◇'} ${o.texto.replace(/\s*\(\{n\}\/\d\)/, '')}</li>`; }).join('') + '</ul>';
     });
     if (R.paginas.some(p => S.notes[p.id])) { const dg = ['p1', 'p2', 'p3', 'p4'].map((id, i) => S.notes[id] ? S.code[i] : '_').join(''); h += `<h3>Números do diário do Davi</h3><div class="digits">${dg}</div>`; }
-    if (S.fitas.f1) h += `<h3>Quadro de chaves</h3><div class="digits">${S.quadro.join('')}</div>`;
+    if (S.fitas.f1 || S.flags.atendeu) h += `<h3>Quadro de chaves${S.fitas.f1 ? '' : ' (a voz no orelhão)'}</h3><div class="digits">${S.quadro.join('')}</div>`;
     if (S.fitas.f2) h += `<h3>Ordem das válvulas</h3><div class="digits">${S.ordem.join('-')}</div>`;
     el.innerHTML = h;
   } else if (abaDiario === 'regras') {
-    let h = S.flags.regras ? `<div class="paper" style="transform:none;width:100%;max-height:none"><h2>${R.regras.titulo}</h2><p>${R.regras.texto}</p></div>` : '<p style="color:var(--fraco)">Você ainda não tem as regras.</p>';
+    let h = S.flags.regras ? `<div class="paper" style="transform:none;width:100%;max-height:none"><h2>${R.regras.titulo}</h2><p>${R.regras.texto}</p>${S.flags.verso ? `<p style="margin-top:14px">${fmtNota(R.regras.verso)}</p>` : ''}</div>` : '<p style="color:var(--fraco)">Você ainda não tem as regras.</p>';
     h += '<h3>O que você já viu</h3>';
     const best = [];
     if (S.flags.avist) best.push(['O Inspetor', 'Cego. Caça pelo som e estala a língua para se localizar: dá para ouvir onde ele está. Garrafas (G) o distraem. Escondida, prenda a respiração (ESPAÇO).']);
@@ -1703,9 +1733,9 @@ function renderDiario() {
     if (I.reliquias) L.push([`Objetos das crianças ×${I.reliquias}`, 'levar ao altar']);
     el.innerHTML = L.length ? L.map(([a, b]) => `<div style="padding:8px 0;border-bottom:1px solid #2c2720">${a} <span style="color:var(--fraco);font-style:italic"> · ${b}</span></div>`).join('') : '<p style="color:var(--fraco)">Bolsos vazios.</p>';
   } else if (abaDiario === 'notas') {
-    const lista = [...R.notas.map(n => ({ ...n, tipo: 'n' })), ...R.paginas.map(n => ({ ...n, tipo: 'n' })), ...R.fitas.map(f => ({ ...f, tipo: 'f' }))];
-    el.innerHTML = `<p style="color:var(--fraco);margin-bottom:12px">${loreAchado()} de ${totalLore()} encontradas ${loreAchado() >= totalLore() ? '· tudo descoberto' : '· ache tudo para destravar uma escolha no final'}</p><div class="notas">` +
-      lista.map(n => { const tem = n.tipo === 'f' ? S.fitas[n.id] : S.notes[n.id]; return `<div class="nota ${tem ? '' : 'x'}" data-id="${n.id}" data-t="${n.tipo}">${tem ? (n.tipo === 'f' ? '▶ ' : '') + n.titulo : '???'}</div>`; }).join('') + '</div>';
+    const lista = [...R.notas.map(n => ({ ...n, tipo: 'n' })), ...R.paginas.map(n => ({ ...n, tipo: 'n' })), ...R.fitas.map(f => ({ ...f, tipo: 'f' }))].filter(n => !n.secreta || (n.tipo === 'f' ? S.fitas[n.id] : S.notes[n.id]));
+    el.innerHTML = `<p style="color:var(--fraco);margin-bottom:12px">${loreAchado()} de ${totalLore()} encontradas ${loreAchado() >= totalLore() ? '· tudo descoberto' : '· o que abre o fim não está no papel: está no que você faz'}</p><div class="notas">` +
+      lista.map(n => { const tem = n.tipo === 'f' ? S.fitas[n.id] : S.notes[n.id]; return `<div class="nota ${tem ? '' : 'x'}" data-id="${n.id}" data-t="${n.tipo}">${tem ? (n.secreta ? '✦ ' : '') + (n.tipo === 'f' ? '▶ ' : '') + n.titulo : '???'}</div>`; }).join('') + '</div>';
     el.querySelectorAll('.nota:not(.x)').forEach(d => d.onclick = () => {
       prevUi = 'diario'; $('#diario').hidden = true;
       if (d.dataset.t === 'f') { const f = R.fitas.find(x => x.id === d.dataset.id); abrirNotaUI(f.titulo, f.linhas.map(l => `${(R.personagens[l.quem] || {}).nome}: ${codTxt(l.texto)}`).join('\n\n')); }
@@ -1747,6 +1777,7 @@ function tecla(k) {
   if (k === '←') digitado = digitado.slice(0, -1);
   else if (k === 'OK') {
     if (digitado === teclado.codigo) { const ok = teclado.ok; fecharTeclado(); ok(); return; }
+    if (H.codigo($('#k-tit').textContent, digitado)) { digitado = ''; if (teclado) $('#k-disp').textContent = '_'.repeat(n); return; }
     $('#keypad').classList.add('erro'); setTimeout(() => $('#keypad').classList.remove('erro'), 450); SFX.trancado(); if (teclado.erro) teclado.erro(); digitado = '';
   } else if (digitado.length < n) digitado += k;
   $('#k-disp').textContent = (digitado + '_'.repeat(n)).slice(0, n);
@@ -1774,7 +1805,7 @@ $('#b-caps').onclick = () => {
 $('#b-conq').onclick = () => {
   const c = lsGet(CONQ_KEY, {});
   $('#pn-tit').textContent = `Conquistas ${R.conquistas.filter(x => c[x.id]).length}/${R.conquistas.length}`;
-  $('#pn-lista').innerHTML = R.conquistas.map(x => `<div class="it ${c[x.id] ? '' : 'x'}"><div><b>${x.nome}</b><br><small>${x.desc}</small></div><span class="rank">${c[x.id] ? '✦' : ''}</span></div>`).join('');
+  $('#pn-lista').innerHTML = R.conquistas.map(x => { const tem = c[x.id], esconde = x.secreta && !tem; return `<div class="it ${tem ? '' : 'x'}"><div><b>${esconde ? '???' : x.nome}</b><br><small>${esconde ? 'Um segredo do internato.' : x.desc}</small></div><span class="rank">${tem ? '✦' : ''}</span></div>`; }).join('');
   $('#title').hidden = true; $('#painel').hidden = false;
 };
 
@@ -1783,20 +1814,22 @@ function final(tipo) {
   if (S.fim) return; S.fim = true;
   const F = R.finais[tipo];
   desativarInspetor(); despawnAna(true);
-  conquista('final_' + tipo); if (S.dif === 'pesadelo') conquista('pesadelo');
+  conquista('final_' + tipo); if (S.dif === 'pesadelo') conquista('pesadelo'); H.aoFinal(tipo);
   $('#fx-black').style.opacity = 1; SFX.pararCanto();
+  if (F.antes) setTimeout(() => cartao(F.antes.texto, 3), 300);
   try { localStorage.removeItem(SAVE_KEY); } catch (e) {}
   setTimeout(() => {
     unlock(); ui = 'final'; $('#hud').hidden = true; $('#escolha').hidden = true; $('#ending').hidden = false;
-    $('#e-tit').textContent = F.titulo; $('#e-txt').textContent = F.texto;
+    $('#e-tit').textContent = F.titulo; revelar($('#e-txt'), H.textoFinal(tipo, F));
     const min = Math.floor(S.tempo / 60), seg = Math.floor(S.tempo % 60);
-    $('#e-stats').innerHTML = `tempo total ${min}min ${String(seg).padStart(2, '0')}s · notas, páginas e fitas ${loreAchado()}/${totalLore()} · encontrada ${S.mortes}x · ${D().nome}<br>Existem 3 finais.`;
+    $('#e-stats').innerHTML = `tempo total ${min}min ${String(seg).padStart(2, '0')}s · notas, páginas e fitas ${loreAchado()}/${totalLore()} · encontrada ${S.mortes}x · ${D().nome}<br>${H.statsFinal(tipo)}`;
     SFX.sino(.5, null);
-  }, 1600);
+  }, F.antes ? 3600 : 1600);
 }
 function escolhaFinal() {
   if (S.fim) return;
-  if (loreAchado() < totalLore()) return final('comum');
+  if (!H.finalLiberado()) return final('comum');
+  if (R.escolha) { $('#escolha h2').textContent = R.escolha.titulo; $('#escolha p').textContent = R.escolha.texto; $('#es-ir').textContent = R.escolha.ir; $('#es-voltar').textContent = R.escolha.voltar; }
   ui = 'escolha'; unlock(); desativarInspetor(); despawnAna(true); $('#escolha').hidden = false;
 }
 $('#es-ir').onclick = () => { $('#escolha').hidden = true; ui = null; final('silencio'); };
@@ -1810,7 +1843,7 @@ $('#b-cont').hidden = !temSave();
 $('#b-novo').onclick = () => {
   iniciarAudio();
   S = novoEstado($('#o-dif').value);
-  carregarMapa('estrada', 'carro');
+  carregarMapa('estrada', 'carro'); H.aoComecar(S);
   salvarCheckpoint(true);
   $('#title').hidden = true;
   iniciarCena();
@@ -1827,7 +1860,8 @@ function voltarMenu() {
   $('#fx-locker').hidden = true; $('#fx-cama').hidden = true; canvas.style.filter = ''; filtroAtual = '';
   unlock(); carregarTitulo();
 }
-function carregarTitulo() { S = novoEstado('normal'); carregarMapa('estrada', 'titulo', { salvar: false }); }
+function carregarTitulo() { S = novoEstado('normal'); carregarMapa('estrada', 'titulo', { salvar: false }); H.titulo(); }
+const H = instalarHistoria({ R, MAPAS, API, lsGet, lsSet, CONQ_KEY, P, M, ANA, PROC, W, SFX, falar, sub, toast, cartao, conquista, emitNoise, iniciarAudio, fecharTeclado, tocarFita, syncWorld, get S() { return S; }, get mode() { return mode; } });
 
 // =====================================================================
 // LOOP
@@ -1852,7 +1886,7 @@ function frame(dt) {
     S.tempo += dt; S.capT += dt;
     updatePlayer(dt); updateLanterna(dt); updateFear(dt);
     updateInspetor(dt); updateAna(dt); updateProcissao(dt); updateEventos(dt); updateGarrafas(dt);
-    updateClima(dt); updateAlvo(); updateSegurar(dt); updateFita(dt); updateHUD(); updateSub(dt); updateAudio(dt);
+    updateClima(dt); updateAlvo(); updateSegurar(dt); updateFita(dt); updateHUD(); updateSub(dt); updateAudio(dt); H.tick(dt);
   } else if (mode === 'jogo' && S && S.dead) updateAudio(dt);
   for (const d of W.doors) { d.ang = lerp(d.ang, d.target, Math.min(1, dt * 7)); d.pivot.rotation.y = d.ang; }
   grainT -= dt;
