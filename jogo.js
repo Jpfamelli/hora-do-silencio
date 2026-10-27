@@ -2024,7 +2024,7 @@ function updateAna(dt) {
           else { dr.fresta = false; setDoor(dr, true); ANA.portaAlvo = null; }
         } else if (d < 10) {
           if (anaAtras()) { ANA.conta = 0; ANA.cool = S.dif === 'pesadelo' ? .6 : S.dif === 'facil' ? 1.1 : .8; SFX.susto(); SX.respiracaoNuca(); P.shake = Math.max(P.shake, .06); ANA.pose = Math.random() * POSES_ANA.length | 0; }
-          else ANA.conta = 5; // não tinha lugar atrás de você: ela recomeça do cinco
+          else { ANA.conta = 5; SUST.dez(); } // sem lugar logo atrás: o DEZ de src/sustos.js (atrás em outro ponto da sala, silêncio longo ou a voz grave); se falhar, recomeça do cinco
         } else ANA.conta = 6; // longe demais: chega mais perto e recomeça do seis
       }
     }

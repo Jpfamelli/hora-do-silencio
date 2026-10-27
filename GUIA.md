@@ -7,9 +7,20 @@ Jogo de terror em primeira pessoa que roda no navegador (Three.js r160 via impor
 - `roteiro.js` — TODO o texto do jogo em `window.ROTEIRO`: personagens, intro, regras, capítulos (objetivos e gancho), falas, fitas, notas, páginas, lápides, entidades, finais, dicas de morte, conquistas. Os `id` são lidos pelo motor e pelos mapas.
 - `jogo.js` — motor, por seções (procure os cabeçalhos `// ====`): RENDER, TEXTURAS (canvas), MUNDO (paredes, salas, portas, armários, camas, lâmpadas, itens), MOBÍLIA AUTOMÁTICA (gera `spots` seguros para itens), ESTADO (`novoEstado`), JOGADOR (movimento, ruído, lanterna, medo, esconderijos), ENTIDADES (Inspetor, Ana, Procissão, Chamado, diretor de tensão), HISTÓRIA/OBJETIVOS (capítulos, rank), MAPAS (carregarMapa, checkpoint), FITAS/NOTAS/DIÁLOGOS, API PARA OS MAPAS, CENA DE ABERTURA, ÁUDIO PROCEDURAL (`SFX`), CHUVA/RELÂMPAGO, HUD/UI, LOOP (`frame(dt)`).
 - `mapas.js` — `export const MAPAS = { estrada, terreo, superior, tuneis, cemiterio }`. Cada mapa recebe a `API` do motor e o estado `S` e devolve `{ nome, spawns, fora, dentro, energia(), inspetor(), procissao(), ana(), chamado(), entrar(cap), inicioCapitulo(cap), sync(), fitaOuvida(id), cena?... }`.
+- `src/` — módulos do Lote 1, cada um ligado ao motor por poucas linhas de gancho (procure o nome do objeto em `jogo.js`):
+  - `historia.js` (`H = instalarHistoria`) segredos, falas de contexto, atitudes do final, formatação do texto (`fmtFala`, `fmtNota`).
+  - `sustos.js` (`SUST = criarSustos`) diretor de sustos, alucinações, esconderijo inseguro, mortes com cena, variações do DEZ da Ana (`SUST.dez`).
+  - `visual.js` (`VIS = instalarVisual`) câmera e campo de visão (único dono de `camera.fov`), lanterna, partículas, efeitos de HUD, calibragem do primeiro jogo (`#vc-*`).
+  - `jogabilidade.js` (`JG`) textos de dica por causa da morte, olhar para trás (Q), ajuda oculta depois de várias mortes.
+  - `interface.js` (`UIX = criarInterface`) tela `#opcoes` (todas as opções salvas em `OPT`), legendas de som `#legsom`, anel de ruído, mini mapa da morte, dicas da Lia (O; segure O = a Lia pensa alto), cronômetro.
+  - `progressao.js` (`PG.ligar`) rank com metas, selos, modos (Uma Vida, cronômetro, amuletos, desafio), acervo de lore, estatísticas. O motor passa `saveExterno`, `dicaExterna` e `ajudaExterna`: o salvamento, as dicas e a ajuda ficam no motor/interface.
+  - `plataforma.js` + `plataforma.css` (`PLAT`) qualidade automática, resolução dinâmica, limite de 30 qps, controle (gamepad), toque, pausa ao perder o foco (P também pausa), salvamento leve, link de desafio, PWA (`sw.js`, `manifest.webmanifest`). Tela própria `#plat-opcoes` ("Desempenho") só com o que não está em `#opcoes`; opções em `hora-silencio-plat`.
+  - `estrada-extra.js`, `estrada-roteiro.js`, `internato.js`, `subterraneo.js` — extras dos mapas, chamados por `mapas.js` (texto novo do prólogo fica em `estrada-roteiro.js`).
+- Opções compartilhadas (`OPT`, chave `hora-silencio-opt`): `brilho`, `fov`, `vFlash` (0/1), `agachar` (`alternar`/`segurar`), `invY`, `legSom`, `cron` (cronômetro da interface; o do PG só aparece se ele estiver desligado). Não crie outra opção com o mesmo papel: leia `C.OPT`.
+- Teclas: WASD, SHIFT correr, ALT devagar, C agachar (Ctrl não agacha), ESPAÇO prender o ar, Z/X espiar, Q olhar para trás, E interagir, F lanterna, R pilha, H curativo, G garrafa, TAB diário, O objetivo, V responder o chamado / virar as regras na nota, L ler a nota em voz alta, P ou ESC pausa.
 - `ferramentas/teste.js` — kit de teste no navegador (`T`). `T.tudo()` joga o jogo inteiro de forma automática.
 - `ferramentas/qa.mjs` — QA headless: `node ferramentas/qa.mjs <pasta-do-jogo> [--shots <pasta>] [--sobrevivencia]`. Serve a pasta, abre no Chrome, roda `T.tudo()`, falha se houver erro de JS ou etapa quebrada. Demora alguns minutos.
-- `melhorias/` — registro das melhorias por lote. `MELHORIAS.md` é o índice geral.
+- `melhorias/lote<N>/<área>.md` — uma linha "- " por melhoria. `MELHORIAS.md` é gerado por `node ferramentas/gerar-melhorias.mjs` (não editar à mão).
 
 ## Campanha (Lote 1: enxuta) — 6 capítulos, 8 a 12 min cada, sem backtracking
 Índices de `S.chapter` 0–5; os mapas checam esses números (`inspetor()`, `ana()`, `procissao()`...).

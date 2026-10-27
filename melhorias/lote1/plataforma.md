@@ -1,6 +1,6 @@
 # Lote 1 — Plataforma e acessibilidade
 - O Ctrl esquerdo não agacha mais: quem agachava e andava apertava Ctrl+W e fechava a aba, perdendo o progresso; agachar ficou só no C
-- Nova opção "Agachar: segurar para agachar" (solta o C e a Lia levanta), além do modo de apertar para alternar
+- "Agachar: segurar" (Opções > Controles) funciona com o C solto em qualquer tela, sem a Lia ficar presa agachada
 - Fechar ou recarregar a aba no meio do jogo agora pede confirmação do navegador
 - Atalhos do navegador com Ctrl (salvar, favoritos, buscar, imprimir...) ficam bloqueados enquanto se joga
 - Perder o ponteiro (ALT+TAB, notificação) solta todas as teclas: a Lia não sai mais correndo sozinha com o SHIFT preso
@@ -8,7 +8,7 @@
 - A tecla P abre a pausa a qualquer momento do jogo
 - Na pausa, P ou ESC volta direto ao jogo
 - Os menus (título, pausa, morte, opções) podem ser navegados com as setas do teclado
-- Opção para inverter o eixo vertical do mouse
+- A opção de inverter o eixo vertical vale também para o analógico do controle
 - O clique direito não abre mais o menu do navegador durante o jogo
 - A ajuda da pausa e a linha de controles do título agora citam a pausa no P e o suporte a controle
 - Trocar de aba ou minimizar a janela pausa o jogo na hora, em qualquer capítulo
@@ -36,7 +36,7 @@
 - Nas qualidades leves o granulado da tela é redesenhado menos vezes por segundo
 - Na qualidade Baixa a névoa fica um pouco mais densa: esconde a distância e deixa tudo mais opressivo
 - Na qualidade Baixa o antisserrilhado é desligado no próximo carregamento
-- O desfoque de tela inteira no pânico (que derrubava o FPS justo na perseguição) foi trocado por visão de túnel
+- O campo de visão tem um dono só: a tela de desempenho não briga mais com o aperto do esconderijo e o ajuste das Opções
 - O filtro de cor do medo só muda em degraus, sem recompor a tela a cada quadro
 - A checagem de "a menina está sendo vista" e o arremesso da garrafa reaproveitam os mesmos objetos: menos travadinhas na brincadeira da Ana
 - O som 3D reaproveita os vetores a cada quadro em vez de criar novos
@@ -62,32 +62,32 @@
 - Na tela final, botão "Desafiar um amigo" que gera um link de desafio (usa o compartilhar do celular quando existe)
 - Quem abre um link de desafio vê no título "Alguém te desafiou: terminou com S A B... Consegue melhor?"
 - O jogo avisa ao navegador que é escuro, sem clarão branco ao abrir
-- Nova tela de Opções no menu principal, organizada em Imagem, Controles, Conforto e Som e legendas
-- As Opções também abrem pela pausa, sem sair do jogo
-- Ajuste de brilho que mexe na exposição da imagem 3D (não só um filtro por cima)
-- Ajuste do campo de visão de 60 a 90 graus
+- Nova tela "Desempenho e conforto" no menu principal, organizada em Imagem, Controles, Conforto e Som
+- A tela de desempenho também abre pela pausa, sem sair do jogo
+- O brilho da calibragem e o das Opções são o mesmo valor, aplicado na exposição da imagem 3D
+- A tela de desempenho não repete o que já está nas Opções (brilho, mira, legendas, agachar): cada ajuste mora num lugar só
 - Opção para desligar o balanço da câmera ao andar (para quem enjoa)
 - Ajuste da intensidade do tremor da câmera, de 0 a 100%
-- Opção para desligar a visão de túnel no pânico
-- Opção "reduzir clarões" que suaviza os relâmpagos
-- A mesma opção suaviza o clarão vermelho de dano
+- ESC com as Opções abertas por cima da pausa fecha só as Opções, não a pausa
+- "Reduzir flashes" das Opções também suaviza o relâmpago do céu
+- As setas do teclado e o controle também navegam pela tela de Opções principal
 - Opção "Estou de fone": com fone o som 3D usa posicionamento binaural; sem fone usa um panorama mais limpo para caixas de som
 - Com fone, os sons 3D carregam um pouco mais longe, e os passos atrás da cabeça arrepiam mais
 - Opção de som mono para quem ouve de um ouvido só
-- Legendas de sons opcionais com direção e distância: [passos pesados atrás ↓ — perto], [risada de menina à esquerda ←], [o sino bate]...
+- Lista de arquivos guardados para jogar sem internet inclui todos os módulos do jogo (src/)
 - Indicador visual de perigo opcional: arcos ao redor da mira apontam para o Inspetor, a Ana e a Procissão
-- Tamanho das legendas ajustável (pequeno, médio e grande), incluindo o diálogo
-- Opção de fundo escuro atrás das legendas para ler em cena clara
-- Mira ajustável: ponto pequeno, ponto grande ou escondida
-- Botão "Restaurar padrão" nas Opções
-- Botão de tela cheia nas Opções
-- Quem pede menos movimento no sistema já começa com tremor reduzido, clarões suaves e sem a tremedeira do título
+- A ajuda da pausa ganhou "P ou ESC volta ao jogo" sem apagar os outros comandos
+- Sem fone, o som 3D usa panorama simples também nos sons abafados pelas paredes
+- Avisos repetidos iguais em menos de 3 segundos não piscam de novo na tela
+- Botão "Restaurar padrão" na tela de desempenho
+- Botão de tela cheia na tela de desempenho
+- Quem pede menos movimento no sistema já começa com tremor reduzido e sem a tremedeira do título
 - Leitores de tela anunciam legendas, avisos e diálogos
 - Botões focados pelo teclado ou controle ganham contorno visível
-- No primeiro Novo jogo, tela "Antes de entrar" com três sinos para ajustar o brilho até o da direita quase sumir
+- Tela "Antes de entrar" com três sinos para ajustar o brilho até o da direita quase sumir
 - Teste de som em que um estalo dá a volta inteira na cabeça, para conferir o fone
 - Volume e "Estou de fone" ajustáveis ali mesmo na tela de calibragem
-- Botão "Testar imagem e som" nas Opções para repetir a calibragem
+- Botão "Testar imagem e som" na tela de desempenho para repetir a calibragem
 - O título abre com "use fones · apague a luz — Clique para ouvir a chuva": o áudio liga já no menu, com chuva e o zumbido
 - A tela de Opções lista todos os comandos do teclado e do controle
 - Avisos repetidos (como "sem pilha") não piscam de novo em menos de 3 s
