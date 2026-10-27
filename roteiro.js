@@ -1028,6 +1028,209 @@ window.ROTEIRO.progressao = {
   );
 })(window.ROTEIRO);
 
+// =====================================================================
+// LOTE 3 — POLIMENTO DO TEXTO (lido por src/historia-polimento.js)
+// Créditos que contam o depois, o Chamado que diz o seu nome, nomes que o internato reconhece,
+// combinações que contam história, a bateria de verdade, epígrafes da segunda noite.
+// =====================================================================
+(function (R) {
+  R.lote3 = {
+    creditos: {
+      titulo: "A HORA DO SILÊNCIO",
+      rubrica: "(as últimas páginas do caderno da Lia, escritas no carro, com a luz do teto acesa e a chuva no vidro)",
+      pular: "segure ESPAÇO ou o dedo na tela para correr · ESC pula",
+      botao: "Créditos",
+      botaoPular: "Pular",
+      destinosTitulo: "o que aconteceu com eles",
+      destinos: {
+        comum: [
+          ["Davi Moraes, 12 anos", "Continua tocando o sino. Toda noite, às nove. Sozinho."],
+          ["Ana Luísa Prado, 9 anos", "Ainda conta até dez no dormitório de cima. Ninguém olha para ela."],
+          ["Tomé Ribeiro, 10 anos", "Continua no armário do corredor. Ainda jura que não falou."]
+        ],
+        silencio: [
+          ["Davi Moraes, 12 anos", "Ficou. Alguém tinha que ficar. Ele escolheu ser esse alguém."],
+          ["Ana Luísa Prado, 9 anos", "Conta junto com as badaladas. Nove. Nunca chega no dez."],
+          ["Tomé Ribeiro, 10 anos", "Dorme com o carrinho debaixo do travesseiro. As rodinhas não giram mais."]
+        ],
+        verdadeiro: [
+          ["Davi Moraes, 12 anos", "Soltou a corda do sino. Dormiu. Pela primeira vez em quinze anos, dormiu."],
+          ["Ana Luísa Prado, 9 anos", "Viu o mar numa manhã de abril. Contou as ondas até dez. E parou de contar."],
+          ["Tomé Ribeiro, 10 anos", "Saiu do armário segurando um carrinho azul. Disse, alto: eu falei. E ninguém brigou."]
+        ]
+      },
+      internosTitulo: "Internos de 1979 — 37 matriculados",
+      internos: [
+        "Abreu, Sebastião", "Almeida, Rita", "Amaral, Joel", "Barbosa, Cícero", "Batista, Lurdes", "Bento, Aparecida", "Campos, Valdir",
+        "Cardoso, Nilza", "Castro, Ivo", "Correia, Dirce", "Costa, Geraldo", "Dias, Elza", "Duarte, Raimundo", "Esteves, Odete",
+        "Farias, Benedito", "Freitas, Zuleica", "Gomes, Ataíde", "Lima, Conceição", "Lopes, Expedito", "Machado, Iracema", "Martins, Osmar",
+        "Mendes, Glória", "Moraes, Davi", "Nogueira, Jurandir", "Oliveira, Neusa", "Pereira, Adão", "Pinto, Marli", "Prado, Ana L.",
+        "Queiroz, Valter", "Ramos, Edite", "Ribeiro, Tomé", "Rocha, Salete", "Santos, Nivaldo", "Siqueira, Zilda", "Souza, Amaro",
+        "Teixeira, Cleide", "Vieira, Rubens"
+      ],
+      riscados: ["Moraes, Davi", "Prado, Ana L.", "Ribeiro, Tomé"],
+      internosRubrica: "(trinta e quatro saíram pela janela da capela. Três nomes estão riscados a caneta vermelha.)",
+      antesTitulo: "os que vieram antes",
+      antes: {
+        comum: [["Luiz, 11 anos · 1952", "Ainda espera alguém abrir o armário."], ["João, 7 anos · 1955", "A bolinha de gude continua presa no musgo."], ["Maria das Dores · 1958", "Falou só um pouquinho. Ainda pede desculpa."], ["Rosa, 8 anos · 1965", "A fita vermelha desbota na chuva."], ["Bento, 9 anos · 1975", "Ninguém procurou. Ninguém procura."]],
+        silencio: [["Luiz, 11 anos · 1952", "Gira o pião no escuro, sem barulho."], ["João, 7 anos · 1955", "Rola a bolinha de gude pelo corredor, toda noite, às nove."], ["Maria das Dores · 1958", "Não fala mais."], ["Rosa, 8 anos · 1965", "Amarra a fita no cabelo da Ana."], ["Bento, 9 anos · 1975", "Brinca com a Ana. Ele não conta."]],
+        verdadeiro: [["Luiz, 11 anos · 1952", "Saiu do armário junto com o Moacir. Dois meninos, de mãos dadas."], ["João, 7 anos · 1955", "Achou a bolinha de gude. Ganhou a partida."], ["Maria das Dores · 1958", "Falou. Falou alto, a noite inteira."], ["Rosa, 8 anos · 1965", "A fita vermelha amanheceu amarrada no portão aberto."], ["Bento, 9 anos · 1975", "Alguém escreveu o nome dele num cartaz. Finalmente."]]
+      },
+      memoriaTitulo: "em memória",
+      memoria: [["Joaquim Silva · 1911 — 1979", "zelador. Voltou para o fogo."], ["Irmã Celeste · 1931 — 1979", "fez a mala para quatro. Esperou quinze anos."], ["Moacir Duarte · 1938 —", "foi menino num armário antes de ser o homem que caçava."]],
+      feito: [
+        "Feito de chuva desenhada, luz de canvas e som que não existe.",
+        "Nenhuma voz deste jogo foi gravada. Todas nasceram agora, no seu computador.",
+        "Nenhum lugar nem pessoa deste jogo existiu. O silêncio, sim."
+      ],
+      fim: "Obrigada por ouvir até o fim.",
+      seuNomeRubrica: "(na última linha, na letra da Lia, um nome que ela não conhece. Alguém riscou por cima.)",
+      posRubrica: "(o toca-fitas do carro liga sozinho. A voz não é a do Davi.)",
+      pos: {
+        comum: { quem: "celeste", texto: "(na fita, voz de mulher, cansada) Você saiu pela porta errada, menina. A mala ainda está feita. Eles ainda estão esperando." },
+        silencio: { quem: "celeste", texto: "(na fita) Ele ficou porque você foi. Eu rezo por ele três vezes. Agora rezo por você também." },
+        verdadeiro: { quem: "celeste", texto: "(na fita, quase sorrindo) Seis e dez. O ônibus saiu na hora. Obrigada, Lia. Os quatro foram juntos." }
+      },
+      espera: "(bem baixinho, de dentro do escuro) Lia?",
+      pistas: {
+        verdadeiro: "(a lápis, na contracapa, letra de menino) Não responde quando chamarem. Ouve a minha fita até o fim. E escuta uma vez a voz do homem que caça. Aí o portão te deixa escolher.",
+        quarta: "(a lápis, na contracapa) Eram ~três~ quatro crianças. A quarta dorme de olhos tapados. Chama ele pelo nome antes do último toque.",
+        tudo: "(a lápis, na contracapa) Você ouviu todo mundo. Pode dormir agora. Ninguém mais vai chamar."
+      },
+      voltar: "clique ou ESC para voltar",
+      telefone: "(lá longe, o telefone da recepção tocou três vezes. E parou.)",
+      relogio: "(o rádio-relógio parou em 21:04)"
+    },
+
+    // o Chamado aprende o nome digitado no título (uma vez por capítulo)
+    chamadoNome: ["{nome}...", "{nome}... vem cá...", "(da sala ao lado) {nome}? É você?", "{nome}... a sua cama tá pronta...", "(baixinho) {nome}... eu sei que você tá ouvindo..."],
+    chamadoPerto: "(dentro do quarto, colado no seu ouvido) {nome}.",
+    ignorouNome: { quem: "lia", texto: "(sussurrando) Esse nome... Como ele sabe esse nome?" },
+
+    // reações ao nome digitado (na abertura do carro)
+    nomes: {
+      ANA: { quem: "ana", texto: "(na fita, uma menina, por cima da voz do Davi) ...Ana? Tem outra Ana aí? Que legal. A gente brinca." },
+      MOACIR: { quem: "inspetor", texto: "(no rádio, muito grave) ...Moacir. Volte para a cama, Moacir. Você ouve demais." },
+      DAVI: { quem: "davi", texto: "(na fita) ...Davi? Esse é o meu nome. Quem tá aí com você, Lia?" },
+      LIA: { quem: "radio", texto: "(chiado) ...Lia... Lia... Lia... (a fita rebobina sozinha)" },
+      TOME: { quem: "tome", texto: "(na fita, bem baixinho) Tomé? Eu não falei. Eu juro que não falei nada." },
+      ALBANO: { quem: "inspetor", texto: "(no rádio) ...diretor. O senhor voltou. A Hora está em ordem, senhor." },
+      CELESTE: { quem: "celeste", texto: "(na fita) Celeste? Quem está usando o meu nome? ...Eu ainda rezo por vocês três." },
+      JOAQUIM: { quem: "joaquim", texto: "(no rádio, longe) Esse nome é de velho, moça. Deixa ele comigo." },
+      outro: { quem: "radio", texto: "...uma ouvinte, {nome}, pediu uma música. Nove badaladas, pra {nome}. Boa noite, {nome}." }
+    },
+    anaNove: { quem: "ana", texto: "(para no nove) ...você tem o meu nome. Então eu começo de novo." },
+    anaMorte: "ANA, DE NOVO",
+    inspetorNome: "“Volte para a cama, {nome}.”",
+    nomeTitulo: "{nome}. Anotado no livro da recepção.",
+
+    // teclados: combinações que contam história e não abrem nada
+    codigos: {
+      cofre1979: { quem: "davi", texto: "(eco, de dentro do cofre) Não é esse ano que abre, Lia. É o meu." },
+      apagou: { quem: "lia", texto: "(no escuro) ...as luzes. Alguém apagou as luzes da sala." },
+      tardeDisp: "TARDE DEMAIS",
+      tarde: { quem: "lia", texto: "Esse ano ainda não chegou aqui dentro. Aqui ainda é 1979." },
+      c1994: { quem: "lia", texto: "Mil novecentos e noventa e quatro. Pra este cofre, ainda é setenta e nove." },
+      c1931: { quem: "lia", texto: "Mil novecentos e trinta e um. O ano em que a Hora ainda era cantada." },
+      c2104: { quem: "tome", texto: "(eco, de dentro da parede) Vinte e uma e quatro... eu não falei... eu não falei..." },
+      q023: { quem: "lia", texto: "Vinte e três. O número do Davi na matrícula. Não é esse." },
+      q037: { quem: "lia", texto: "Trinta e sete ganchos. Trinta e sete crianças. Não, não é esse." }
+    },
+
+    // a bateria de verdade do aparelho
+    bateria: { quem: "lia", texto: "(baixinho) Minha pilha tá acabando... e não é só a da lanterna." },
+
+    // segunda noite: epígrafes de quem já esteve aqui; Pesadelo: ganchos mais curtos
+    epigrafeNG: {
+      c0: "“Você já esteve aqui.”",
+      c1: "Ele lembra do barulho que você fez da outra vez.",
+      c2: "Nove badaladas. Você já sabe contar até lá.",
+      c3: "Ela lembra de você. Ela nunca esquece quem piscou.",
+      c4: "A água guarda os passos de ontem.",
+      c5: "Desta vez, você sabe o que o sino faz."
+    },
+    ganchoPesadelo: {
+      c0: "O portão bateu. Desta vez, ele não abre por fora.",
+      c1: "Nove badaladas. E ele já sabe o seu cheiro.",
+      c2: "Lá em cima, ela já está no oito.",
+      c3: "A água subiu um palmo desde ontem. E ele também desceu.",
+      c4: "Um toque, Lia. Só um."
+    },
+
+    // datas e horas que mudam o subtítulo do título
+    datas: {
+      madrugada: "Madrugada. Até a Hora dorme um pouco agora. Quase.",
+      sexta13: "Sexta-feira, 13. O Inspetor não acredita em sorte.",
+      finados: "Dia de Finados. Alguém acendeu velas no cemitério das irmãs."
+    },
+    faltaFinal: { comum: "um final em que você só foge", silencio: "um final em que você escolhe ir embora", verdadeiro: "um final em que o sino para" },
+    faltaRotulo: "ainda falta: ",
+    fitasSecretas: "{n} delas não queriam ser achadas"
+  };
+
+  // ---- mortes: mais títulos e últimas frases
+  R.mortes.inspetor.titulos.push("SILÊNCIO, AGORA");
+  R.mortes.inspetor.frases.push('"Mais uma pra ficar."');
+  R.mortes.ana.titulos.push("DEZ.");
+  R.mortes.ana.frases.push('"Agora é você que conta. Eu me escondo."');
+  R.mortes.procissao.titulos.push("NA FILA");
+  R.mortes.procissao.frases.push("Ninguém soltou a sua mão. Ninguém nunca solta.");
+
+  // ---- dicas de morte novas (todas verdadeiras para as regras do jogo)
+  R.dicas_morte.inspetor.push("Depois de jogar a garrafa (G), saia andando para o lado contrário do barulho. Não corra.", "Um armário só protege se você entrar antes de ele chegar perto: ele ouve a porta.");
+  R.dicas_morte.ana.push("Ela também espera no teto. Ao entrar numa sala escura, olhe para cima antes de dar as costas.");
+  R.dicas_morte.procissao.push("Quando o rádio chiar, você tem poucos segundos. Guarde onde ficou o último armário que você viu.");
+  R.dicas_morte.porMapa.superior.push("No andar de cima, a vela acesa em cima de um armário marca o esconderijo que ele não abre.");
+  R.dicas_morte.porMapa.terreo.push("No térreo, o corredor é comprido: guarde onde ficam os armários entre um objetivo e outro, antes de precisar deles.");
+  R.dicas_morte.porMapa.tuneis.push("Nos túneis, a válvula errada faz a água subir de novo: confira a ordem no diário (TAB) antes de girar.");
+
+  // ---- a Lia comenta lugares que ainda passavam em silêncio
+  Object.assign(R.lugares, {
+    "estrada:patioPosto": [{ quem: "lia", texto: "As bombas ainda marcam o preço de 1979. Alguém abasteceu aqui naquela noite." }],
+    "terreo:patio": [{ quem: "lia", texto: "O pátio. Foi aqui que eu vi o Davi pela última vez. Eu acho." }],
+    "tuneis:v1": [{ quem: "lia", texto: "Uma válvula do tamanho de uma roda de carro. Girar isso vai fazer o túnel inteiro gemer." }],
+    "tuneis:v2": [{ quem: "lia", texto: "Riscos na parede, na altura de uma criança. Contando os dias." }],
+    "tuneis:t4": [{ quem: "lia", texto: "O túnel norte. O ar aqui é mais quente. Alguém vinha muito pra cá." }],
+    "tuneis:saida": [{ quem: "lia", texto: "Ar frio lá em cima. E cheiro de terra molhada. O cemitério." }]
+  });
+
+  // ---- notas que ainda não tinham comentário
+  Object.assign(R.aoLer, {
+    n1: [{ quem: "lia", texto: "Três rostos num cartaz. Ninguém mais procurou depois do primeiro inverno." }],
+    n11: [{ quem: "lia", texto: "Os que não deixaram falar. Alguém corrigiu a pedra com a unha." }]
+  });
+
+  // ---- chegadas e avisos ganham variações (o motor sorteia uma)
+  R.falas.badaladas = [R.falas.badaladas, [{ quem: "lia", texto: "Uma. Duas... nove. O prédio inteiro prendeu a respiração." }]];
+  R.falas.gerador = [R.falas.gerador, [{ quem: "lia", texto: "Pegou! Pegou... e o barulho vai até a capela. Ele acordou. Eu sei que acordou." }]];
+  R.falas.tuneis_inicio = [R.falas.tuneis_inicio, [{ quem: "lia", texto: "Água gelada até o joelho. Cada passo vai ecoar até lá no fundo." }]];
+  R.falas.cemiterio_inicio = [R.falas.cemiterio_inicio, [{ quem: "lia", texto: "Ar livre, enfim. E mesmo assim eu não consigo respirar. A capela tá logo ali." }]];
+  R.falas.procissao_aviso = [R.falas.procissao_aviso, [{ quem: "lia", texto: "O rádio! As luzes! Esconde, Lia, ESCONDE!" }]];
+
+  // ---- quem tem o nome deles ouve deles, lá dentro
+  R.lote3.nomeJogo = {
+    MOACIR: { quem: "inspetor", texto: "(parado, a cabeça virando devagar) ...Moacir? Quem trouxe o meu nome de volta pra cá?" },
+    DAVI: { quem: "davi", texto: "(eco, de dentro da capela) Você tem o meu nome. Então hoje a gente toca junto." },
+    TOME: { quem: "tome", texto: "(bem baixinho, de algum armário) Psiu... Tomé? Você também se escondeu aqui?" },
+    CELESTE: { quem: "celeste", texto: "(eco, de longe, rezando) ...e por Celeste também, que ninguém mais reza por ela." }
+  };
+
+  // ---- o gravador da Lia ganha mais um recado de cada jeito
+  R.recados_lia.perfeito.push("(sussurrando) Eu tô aprendendo a andar como eles. Sem peso.");
+  R.recados_lia.ferida.push("(com a mão no corte) Ainda dá. Ainda dá, Lia.");
+  R.recados_lia.normal.push("(baixo) Cada porta que eu abro, alguém lá dentro fecha outra.");
+
+  // ---- conquistas novas (segredos do lote 3)
+  R.conquistas.push(
+    { id: "creditos_fim", nome: "Até a Última Linha", desc: "Assista aos créditos até o fim, sem pular.", secreta: true, dica: "Os nomes também contam uma história." },
+    { id: "ultimo_nome", nome: "Quem Ficou Esperando", desc: "Fique no escuro depois do último nome.", secreta: true, dica: "Nem todo mundo vai embora quando a luz apaga." },
+    { id: "xara", nome: "Xará", desc: "Jogue com o nome de alguém do internato.", secreta: true, dica: "O campo do seu nome, no título." },
+    { id: "seu_nome", nome: "Não Era a Lia", desc: "Ouça o Chamado dizer o seu nome e não vá.", secreta: true, dica: "Ele aprende nomes." },
+    { id: "tarde_demais", nome: "Tarde Demais", desc: "Digite no cofre o ano em que você está.", secreta: true, dica: "Que ano é lá fora?" },
+    { id: "pilha_lia", nome: "Duas Pilhas", desc: "Jogue com a bateria do aparelho quase no fim.", secreta: true, dica: "A lanterna não é a única coisa acabando." }
+  );
+})(window.ROTEIRO);
+
 // Aspas tipográficas: a fonte desenha a aspa reta como a de fechar, então as falas abrem com “ e fecham com ”.
 (function curvar(o) {
   for (const k in o) {

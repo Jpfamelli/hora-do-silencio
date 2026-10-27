@@ -1,0 +1,94 @@
+# Lote 3 — História e texto
+- Depois de cada final, os créditos sobem como as últimas páginas do caderno da Lia, em papel pautado levemente torto
+- Os créditos rolam sobre uma chuva desenhada em canvas, leve (meia resolução e 30 quadros por segundo)
+- Nos finais comum e silêncio, os créditos começam sozinhos quando o texto do final termina de aparecer
+- No final verdadeiro, os créditos começam sozinhos depois que você fecha o epílogo da manhã seguinte
+- A tela final ganhou o botão "Créditos" para ver de novo quando quiser
+- O título ganhou o botão "Créditos" depois do primeiro final, com os créditos do último final visto
+- Os créditos contam o que aconteceu com Davi, Ana e Tomé, e o destino de cada um muda conforme o final
+- Os 37 internos de 1979 aparecem um por um nos créditos, com Davi, Ana e Tomé riscados a caneta vermelha
+- Uma rubrica nos créditos lembra que 34 saíram pela janela da capela e 3 não
+- Página "os que vieram antes": Luiz, João, Maria das Dores, Rosa e Bento, cada um com um destino diferente por final
+- Página "em memória" com Seu Joaquim, a Irmã Celeste e o Moacir menino
+- O hino do internato toca baixinho nos créditos, lento, de trás para a frente, num timbre de caixinha desafinada
+- ESC, Enter, E ou o botão "Pular" fecham os créditos na hora, sempre
+- Segurar ESPAÇO (ou o dedo na tela, no celular) faz os créditos correrem cinco vezes mais rápido
+- Cena escondida depois dos créditos: o toca-fitas do carro liga sozinho e a Irmã Celeste fala uma linha diferente para cada final
+- Quem espera 20 segundos no escuro depois da fita ouve, bem baixinho, alguém chamar "Lia?"
+- Depois do "Lia?", aparece uma linha escrita à mão com uma pista: para o final verdadeiro, para a quarta criança ou, se já viu tudo, uma despedida
+- A pista da quarta criança aparece com "três" riscado à mão e "quatro" escrito por cima
+- Conquista secreta "Quem Ficou Esperando" para quem espera no escuro depois do último nome
+- Conquista secreta "Até a Última Linha" para quem assiste aos créditos até o fim
+- Quem viu os três finais e achou a quarta criança vê o próprio nome (digitado no título) como último nome dos créditos, riscado à mão na hora
+- Depois de assistir aos créditos até o fim, ao voltar ao título o telefone da recepção toca três vezes e para
+- Na próxima vez que o jogo abre, o rádio-relógio do título fica parado em 21:04 por alguns segundos, com uma legenda
+- Com "menos movimento" ligado no sistema, os créditos viram páginas que trocam sem rolar e sem chuva animada
+- Os créditos são anunciados como diálogo para leitores de tela, com a área de texto em região viva
+- O Chamado troca "Lia..." pelo nome que você digitou no título, uma vez por capítulo, com legenda própria
+- O nome é falado de verdade pela voz do navegador, bem devagar, grave e baixinho, como se viesse da sala ao lado
+- Uma vez por noite, o nome é dito colado no seu ouvido: mais alto, com sussurros e o medo subindo
+- Se você não for atrás do chamado do seu nome, a Lia estranha ("Como ele sabe esse nome?") e vem a conquista secreta "Não Era a Lia"
+- A voz falada do Chamado para na hora se você pausar ou morrer
+- Com o nome ANA, a contagem da menina para no nove, ela diz "você tem o meu nome" e recomeça a brincadeira (uma vez por noite)
+- Com o nome ANA, a tela de morte pela menina passa a se chamar "ANA, DE NOVO"
+- Com o nome ANA, uma menina interrompe a fita do Davi na abertura do carro
+- Com o nome MOACIR, o rádio da abertura manda o Moacir voltar para a cama
+- Com o nome DAVI, o próprio Davi estranha na fita: "Esse é o meu nome. Quem tá aí com você?"
+- Com o nome LIA, o rádio repete o nome e a fita rebobina sozinha (e o Chamado não troca o nome, porque já é o dela)
+- Com o nome TOMÉ, o Tomé jura na fita que não falou nada
+- Com o nome ALBANO, o Inspetor cumprimenta o "diretor" pelo rádio
+- Com o nome CELESTE, a Irmã Celeste pergunta na fita quem está usando o nome dela
+- Com o nome JOAQUIM, o Seu Joaquim responde pelo rádio que esse nome é de velho
+- Com qualquer outro nome, o rádio da abertura dedica as nove badaladas ao ouvinte pelo nome
+- Conquista secreta "Xará" para quem joga com o nome de alguém do internato
+- Com o nome MOACIR, o Inspetor para e pergunta quem trouxe o nome dele de volta, logo depois de você vê-lo pela primeira vez
+- Com o nome DAVI, o Davi fala da capela que hoje vocês tocam o sino juntos
+- Com o nome TOMÉ, um sussurro de dentro de outro armário cumprimenta você na primeira vez que se esconde
+- Com o nome CELESTE, a Irmã reza por você ao entrar no quarto dela
+- Às vezes o Inspetor diz o seu nome na última frase da tela de morte
+- Ao terminar de digitar o nome no título, o subtítulo responde: "{nome}. Anotado no livro da recepção."
+- O jogo reconhece o nome com ou sem acento e em qualquer caixa (Tomé, tome, TOMÉ)
+- Quando alguém diz o seu nome, ele aparece sublinhado com um traço ondulado vermelho na legenda
+- No cofre, digitar 1979 depois de a gaveta abrir faz o Davi dizer "não é esse ano que abre, é o meu"
+- No cofre, digitar 1403 (14 de março) também apaga as luzes da sala por 2 segundos
+- No cofre, digitar o ano atual do aparelho faz o visor mostrar "TARDE DEMAIS" em vermelho tremido, com conquista secreta
+- No cofre, 1994 tem uma fala própria da Lia sobre o tempo parado lá dentro
+- No cofre, 1931 lembra o ano em que a Hora ainda era cantada
+- No cofre, 2104 (21h04) faz o Tomé sussurrar de dentro da parede
+- No quadro de chaves, 023 lembra o número do Davi na matrícula
+- No quadro de chaves, 037 lembra os trinta e sete ganchos e as trinta e sete crianças
+- O visor do teclado brilha dourado quando a combinação conta uma história; todas contam para a conquista Arrombadora
+- Se a bateria do seu aparelho estiver abaixo de 10% e fora da tomada, a Lia comenta ao ligar a lanterna que a pilha dela também está acabando
+- Nessa mesma sessão, a pilha da lanterna gasta 20% mais devagar, e vem a conquista secreta "Duas Pilhas"
+- Legendas sussurradas aparecem menores e mais espaçadas
+- Gritos (com exclamação e palavras em maiúsculas) tremem na tela e ficam em negrito
+- Falas do rádio chiam na legenda: as letras falham e borram como sinal ruim
+- Falas "(na fita)" aparecem em letra datilografada
+- Os efeitos de legenda desligam com a opção "Texto simples"
+- Com "menos movimento", as legendas e o visor não tremem
+- Reticências viram o caractere tipográfico (…) nas legendas
+- Leitores de tela anunciam legendas, avisos, cartão de capítulo e cartões da abertura
+- Na tela final, clicar no texto (ou apertar E) mostra todos os parágrafos de uma vez
+- Com "menos movimento", o texto do final aparece quase todo de uma vez
+- Nas notas, cabeçalhos de documento em maiúsculas viram versalete, como impresso
+- Nas notas, a letra escrita à mão fica levemente inclinada
+- As notas passam a aceitar palavras riscadas à mão
+- O painel "Fitas ouvidas" mostra cada fala na cor de quem fala, com as rubricas em itálico
+- O painel "Fitas ouvidas" conta quantas das fitas achadas eram secretas
+- A tela final diz qual final ainda falta descobrir, sem revelar como
+- Abrir o jogo de madrugada muda o subtítulo do título
+- Numa sexta-feira 13, o subtítulo do título lembra que o Inspetor não acredita em sorte
+- No Dia de Finados, o subtítulo do título diz que acenderam velas no cemitério das irmãs
+- Na segunda noite (ou depois de um final), cada capítulo abre com uma epígrafe nova de quem já esteve lá
+- No Pesadelo, os ganchos de fim de capítulo ficam mais curtos e mais cruéis
+- Três títulos novos de tela de morte: "SILÊNCIO, AGORA", "DEZ." e "NA FILA"
+- Três últimas frases novas na tela de morte, uma para cada entidade
+- Duas dicas de morte novas contra o Inspetor (fugir da garrafa andando; entrar no armário antes de ele chegar)
+- Dica de morte nova contra a Ana: ela também espera no teto das salas escuras
+- Dica de morte nova contra a Procissão: guardar onde ficou o último armário
+- Dicas de morte novas por lugar: vela do armário seguro (andar de cima), armários do corredor (térreo) e ordem das válvulas (túneis)
+- O gravador da Lia ganhou um recado novo para cada jeito de terminar o capítulo
+- A Lia comenta seis lugares que passavam em silêncio: pátio do posto, pátio do internato, câmaras e túnel norte, saída dos túneis
+- O cartaz de desaparecidos e a lápide rachada ganharam comentário da Lia ao fechar o papel
+- As falas de chegada (badaladas, gerador, túneis, cemitério) ganharam uma segunda versão sorteada
+- O aviso da Procissão ganhou uma segunda versão, gritada
