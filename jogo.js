@@ -654,8 +654,9 @@ addEventListener('mousemove', e => {
   }
 });
 document.addEventListener('pointerlockchange', () => {
-  locked = document.pointerLockElement === canvas;
-  if (!locked && mode === 'jogo' && !ui && S && !S.dead && !S.fim) abrirPausa();
+  const tinha = locked; locked = document.pointerLockElement === canvas;
+  // só pausa quando o mouse estava preso e se soltou (um pedido recusado pelo navegador não reabre a pausa)
+  if (tinha && !locked && mode === 'jogo' && !ui && S && !S.dead && !S.fim) abrirPausa();
 });
 canvas.addEventListener('click', () => { if ((mode === 'jogo' || mode === 'cena') && !ui) lockPointer(); });
 $('#clique').addEventListener('click', () => lockPointer());
@@ -3766,5 +3767,5 @@ function frame(dt) {
 }
 requestAnimationFrame(loop);
 
-PLAT.instalar({ THREE, renderer, scene, camera, flash, chuva, chuvaGeo, NCH, P, M, ANA, PROC, W, keys, OPT, SOM, AMB, R, lsGet, lsSet, SAVE_KEY, CAPS_KEY, CONQ_KEY, onKey, toast, abrirPausa, fecharPausa, entrarJogo, carregarSnap, iniciarAudio, lockPointer, unlock, roomAt, setOpt, get S() { return S; }, get ui() { return ui; }, get mode() { return mode; }, get locked() { return locked; }, get AC() { return AC; }, get master() { return master; } });
+PLAT.instalar({ THREE, renderer, scene, camera, flash, chuva, chuvaGeo, NCH, P, M, ANA, PROC, W, keys, OPT, SOM, AMB, R, AG, conquista, lsGet, lsSet, SAVE_KEY, CAPS_KEY, CONQ_KEY, onKey, toast, abrirPausa, fecharPausa, entrarJogo, carregarSnap, iniciarAudio, lockPointer, unlock, roomAt, setOpt, get S() { return S; }, get ui() { return ui; }, get mode() { return mode; }, get locked() { return locked; }, get AC() { return AC; }, get master() { return master; } });
 window.__jogo = { get S() { return S; }, P, M, ANA, PROC, W, frame, carregarMapa, objDone, iniciarProcissao, spawnAna, ativarInspetor, camera, renderer, scene, hemi, moon, salvarCheckpoint, carregarSnap, lerNota, tocarFita, pularCena, roomAt, get ui() { return ui; }, get mode() { return mode; }, get alvo() { return alvo; }, keys, onKey, novoEstado: d => { S = novoEstado(d); return S; } };

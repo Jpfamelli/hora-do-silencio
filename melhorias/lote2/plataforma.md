@@ -1,0 +1,103 @@
+# Lote 2 — Plataforma e acessibilidade
+- Nova opção "Ações longas: tocar para começar e parar": forçar a porta, cadeado, válvulas, cavar, monta-cargas, escotilha e sino começam com um toque em E e param com outro, com o mesmo tempo e o mesmo barulho
+- No modo "tocar", o curativo (H) também começa com um toque e segue sozinho até terminar
+- No modo "tocar", sacudir a lanterna sem pilha (R) também dispensa segurar a tecla
+- A ação longa por toque se solta sozinha quando termina, quando você se afasta ou quando o alvo muda
+- Na primeira ação longa por toque o jogo avisa que apertar de novo interrompe
+- Nova opção "Soltar do agarrão: apertar E várias vezes", alternativa a sacudir o mouse para quem tem tremor, lesão ou usa trackball
+- No controle, apertar A sem parar solta do agarrão (antes quem jogava no controle não tinha como se soltar)
+- No controle, sacudir o analógico direito também ajuda a se soltar do agarrão
+- No celular, tocar em Usar sem parar ou arrastar o dedo pela tela solta do agarrão (antes era impossível no toque)
+- Barra de "solte-se" aparece no meio da tela durante o agarrão e enche conforme você luta
+- A dica do agarrão diz o jeito certo de se soltar para o que você está usando: mouse, E, controle ou toque
+- A dica da tela de morte pelo agarrão também fala do seu jeito de se soltar e lembra que dá para trocar nas opções
+- Com "apertar E", os apertos durante o agarrão não abrem porta nem pegam item sem querer
+- O controle e o celular vibram forte no instante do agarrão
+- No controle, o B respeita "Agachar: segurar" e a Lia levanta ao soltar o botão (antes ficava agachada para sempre)
+- No controle, segurar ↑ sacode a lanterna sem pilha (antes cancelava na hora)
+- No controle, segurar ↓ faz o curativo até o fim (antes cancelava na hora)
+- No controle, segurar LB mostra o arco da garrafa e soltar arremessa (antes a mira ficava presa)
+- No controle, o RB respeita "Respiração: alternar"
+- No controle, o RT respeita "Correr: alternar"
+- No controle, o LT agora anda devagar, em silêncio, em vez de repetir a garrafa
+- No controle, apertar o analógico direito (R3) olha para trás
+- No controle, escondida, ← e → espiam pela fresta
+- No controle, fora do esconderijo, ← mostra o objetivo (segurar faz a Lia pensar alto)
+- No controle, → responde ao chamado, como o V do teclado
+- No controle, lendo uma nota, X lê em voz alta e Y vira a folha das regras
+- Nova opção de zona morta do analógico, para controles gastos que andam sozinhos
+- Voltar da pausa rápido demais (quando o navegador recusa prender o mouse de novo) não reabre a pausa sozinha num laço
+- Abrir um menu ou o diário pelo controle nunca deixa um botão "preso" apertado ao voltar
+- A lista de comandos da tela de Desempenho mostra todos os botões novos do controle e as setas do teclado
+- No celular, os botões Pilha e Curativo podem ser segurados (sacudir a lanterna e fazer o curativo funcionam)
+- No celular, segurar Garrafa mostra o arco e soltar arremessa
+- No celular, o botão Agachar respeita "Agachar: segurar"
+- No celular, "Prender fôlego" respeita "Respiração: alternar" (antes só funcionava segurando)
+- No celular, novo botão "Olhar atrás"
+- No celular, botões "◂ Espiar" e "Espiar ▸" aparecem só quando você está escondida
+- No celular, novo botão "Objetivo" no topo da tela
+- No celular, o botão Usar acende quando há algo para usar na mira
+- No celular, os botões Agachar e Lanterna ficam acesos quando estão ligados
+- No celular, Garrafa, Pilha e Curativo mostram quantos você tem e ficam apagados quando acabam
+- No celular, o botão Lanterna fica apagado até você achar a lanterna
+- No celular, empurrar pouco o analógico anda devagar e quase sem barulho; até a borda, corre
+- No celular, o analógico muda de cor quando você está andando devagar
+- Nova opção de tamanho dos botões de toque (pequenos, médios, grandes)
+- Nova opção de opacidade dos botões de toque
+- Nova opção "Canhoto" no toque: o analógico vai para a direita e os botões para a esquerda
+- No modo canhoto, o objetivo e as barras trocam de lado para não ficar embaixo dos dedos
+- Sensibilidade do dedo própria, separada da do mouse
+- No celular, toque duplo não dá zoom e o toque longo não abre menu nem seleciona texto
+- As setas do teclado também andam (dá para jogar com uma mão ou em teclados diferentes), com opção para desligar
+- Nova opção de daltonismo (protan, deutan, tritan) que troca as cores das luzes que carregam significado
+- Com daltonismo, as velas dos lugares seguros passam do laranja para uma cor que se distingue (amarelo ou rosa)
+- Com daltonismo, a luz vermelha de emergência dos túneis passa para magenta
+- Com daltonismo, as luzes verdes do mundo passam para azul
+- Com daltonismo, a luz laranja da Procissão também troca de cor
+- Com daltonismo, cada vela ganha uma chama maior, tremulando, para ser lida pela forma e não só pela cor
+- A troca de cores do daltonismo poupa sangue, tinta e paredes: só mudam luzes, chamas e brilhos
+- Com daltonismo, os arcos do indicador de perigo usam pares de cor que não se confundem
+- No indicador de perigo, o arco do Inspetor caçando fica tracejado, lido pela forma
+- Nova opção "Aviso visual de sons fortes": a borda da tela pulsa quando o sino bate, alguém grita ou algo quebra
+- O aviso visual de sons pulsa do lado de onde o som veio (esquerda, direita, frente ou atrás)
+- A legenda do sino conta as badaladas da série ("o sino bate — 5ª vez")
+- O controle e o celular vibram no ritmo das badaladas
+- O controle vibra de leve quando o rádio chia
+- Pulso duplo de vibração enquanto as luzes piscam avisando a Procissão (com aviso visual também)
+- O controle bate como um coração quando o Inspetor está a menos de 5 metros, mais forte quanto mais perto
+- O controle e o celular vibram com as pancadas por perto
+- Nova opção para desligar só a vibração dos avisos do mundo, mantendo a do dano
+- Em aparelhos com pouca memória ou poucos núcleos, o jogo já começa na qualidade Baixa (ou Média) sem esperar a medição
+- Com a economia de dados do celular ligada, o jogo começa na qualidade Baixa
+- Em aparelho fraco o antisserrilhado já começa desligado no primeiro carregamento
+- Nos menus parados (pausa, diário, nota, morte, desempenho) o jogo desenha só 20 quadros por segundo e o notebook esfria
+- Nova opção para desligar os menus leves
+- Com a bateria abaixo de 20% e fora da tomada, o jogo sugere a qualidade Baixa e o limite de 30 quadros
+- Ao entrar num mapa novo, os materiais são preparados de uma vez: menos engasgo na primeira vez que algo aparece na tela
+- O contador de quadros mostra também o tempo de cada quadro, a qualidade e quantos desenhos a cena pede
+- Novo botão "Guardar lápide" na tela de morte: gera uma lápide com a sua morte para mandar no grupo
+- Novo botão "Guardar lápide" no final: uma pedra que diz "AQUI NÃO JAZ" com o final que você conseguiu
+- A lápide usa o nome digitado no título ("no lugar da Lia") ou LIA MORAES
+- A lápide conta a morte em linguagem do jogo, com a hora da noite ("pega pelo Inspetor fora da cama, às 21h12")
+- A lápide diz em que sala e em que capítulo você caiu
+- A lápide mostra em que volta você morreu (ou quantas voltas levou até sair)
+- A lápide leva o endereço do jogo embaixo, para quem receber poder jogar
+- No celular, "Compartilhar" manda a imagem da lápide direto para o app escolhido
+- "Baixar imagem" salva a lápide em PNG; sem compartilhar nativo, a frase vai junto para a área de transferência
+- A tela da lápide tem "Copiar o link do jogo"
+- Cada lápide ganha um epitáfio conforme quem te pegou (o Inspetor, a menina, a Procissão)
+- A lápide é desenhada em granito com musgo, escorrido de chuva, rachadura, um sino entalhado e uma vela acesa no chão
+- Na morte, L abre a lápide; ESC ou B fecha; setas e controle navegam pelos botões
+- O botão "Desafiar um amigo" voltou a aparecer no final (sumia porque o "Copiar resultado" já existia)
+- No título, "mandar o jogo para alguém corajoso" usa o compartilhar do celular ou copia o link com um convite
+- Buscadores agora reconhecem a página como um jogo (dados estruturados de videogame)
+- Com o JavaScript desligado aparece uma mensagem explicando, em vez de uma tela preta
+- Enquanto o internato carrega, uma lápide do cemitério aparece na tela de espera com nome, datas e epitáfio
+- Instalado como aplicativo, o jogo aparece na categoria de jogos
+- O aplicativo instalado ganhou o atalho "Continuar a noite", que entra direto no último salvamento
+- O jogo offline guarda também o módulo novo desta rodada (cache renovado)
+- Segredo: aberto num 14 de março, o dia do incêndio, cinzas caem no ar em todos os mapas
+- Segredo do 14 de março: as bordas da tela ficam escurecidas de fuligem
+- Segredo do 14 de março: o rádio do carro na abertura lembra que hoje faz quinze anos do incêndio
+- Segredo do 14 de março: o título mostra "14 de março. Hoje faz quinze anos."
+- Nova conquista secreta "Aniversário": entrar no internato num 14 de março

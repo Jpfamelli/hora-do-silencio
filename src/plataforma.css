@@ -128,3 +128,63 @@ body.toque #title .ctrl:not(#aviso-toque){display:none}
   .op input[type=range]{width:120px}
   #desafio{position:static;margin-bottom:12px;max-width:none;text-align:center}
 }
+
+/* ===== Lote 2 ===== */
+/* aviso visual de sons fortes: a borda pulsa do lado do som */
+#pl-borda{position:fixed;inset:0;pointer-events:none;z-index:4;opacity:0;--f:.6}
+#pl-borda.b-todo{box-shadow:inset 0 0 calc(70px * var(--f)) calc(14px * var(--f)) rgba(201,167,90,.55);animation:pl-pulso .9s ease-out}
+#pl-borda.b-esq{background:linear-gradient(90deg,rgba(201,167,90,calc(.5 * var(--f))),transparent 18%);animation:pl-pulso .9s ease-out}
+#pl-borda.b-dir{background:linear-gradient(270deg,rgba(201,167,90,calc(.5 * var(--f))),transparent 18%);animation:pl-pulso .9s ease-out}
+#pl-borda.b-cima{background:linear-gradient(180deg,rgba(201,167,90,calc(.5 * var(--f))),transparent 20%);animation:pl-pulso .9s ease-out}
+#pl-borda.b-baixo{background:linear-gradient(0deg,rgba(201,167,90,calc(.5 * var(--f))),transparent 20%);animation:pl-pulso .9s ease-out}
+@keyframes pl-pulso{0%{opacity:0}15%{opacity:1}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){#pl-borda[class]{animation-duration:1.4s}}
+
+/* barra de soltura do agarrão */
+#pl-soltar{position:fixed;left:50%;top:62%;transform:translateX(-50%);width:min(280px,60vw);height:8px;border:1px solid rgba(207,195,166,.45);background:rgba(0,0,0,.6);z-index:5;pointer-events:none}
+#pl-soltar i{display:block;height:100%;width:0;background:#c0392b;transition:width .08s}
+#pl-soltar span{position:absolute;left:0;right:0;top:12px;text-align:center;font-family:"Special Elite","Courier New",monospace;font-size:13px;letter-spacing:.2em;color:#cfc3a6;text-shadow:0 0 6px #000}
+
+/* lápide para compartilhar */
+#lapide{z-index:13;background:rgba(0,0,0,.94);padding:16px;overflow:auto}
+#lapide .lp-caixa{display:flex;gap:28px;align-items:center;justify-content:center;flex-wrap:wrap;max-width:960px}
+#lapide img{width:min(340px,80vw);height:auto;border:1px solid #1a1712;box-shadow:0 0 60px rgba(0,0,0,.9)}
+#lapide .lp-lado{display:flex;flex-direction:column;align-items:center;gap:6px;max-width:320px;text-align:center}
+#lapide h2{font-family:"IM Fell English SC",Georgia,serif;font-weight:normal;font-size:clamp(26px,4vw,40px);letter-spacing:.1em}
+#lapide p{font-style:italic;color:#857a63;margin-bottom:8px;line-height:1.4}
+#lapide small{color:#c9a75a;font-family:"Special Elite","Courier New",monospace;font-size:12px;min-height:1.4em}
+#lapide :focus-visible{outline:1px solid #8e1b14;outline-offset:3px}
+
+/* título: mandar para um amigo, aniversário */
+.link-mandar{display:block;margin:8px auto 0;background:none;border:0;color:#857a63;font-family:"Special Elite","Courier New",monospace;font-size:12px;letter-spacing:.08em;text-decoration:underline dotted;cursor:pointer}
+.link-mandar:hover,.link-mandar:focus-visible{color:#c9a75a;outline:none}
+#pl-aniv{position:absolute;top:18px;right:22px;font-style:italic;color:#a08b6a;font-size:15px;text-shadow:0 0 10px #000}
+#pl-fuligem{z-index:1;background:radial-gradient(ellipse at center,rgba(60,40,25,0) 40%,rgba(40,28,18,.35) 100%);mix-blend-mode:multiply}
+#pl-radio{position:fixed;left:50%;bottom:16%;transform:translateX(-50%);width:min(760px,90vw);text-align:center;font-style:italic;font-size:20px;color:#cfc3a6;text-shadow:0 0 8px #000,0 0 3px #000;z-index:6;pointer-events:none}
+body.aniversario #title h1{text-shadow:0 0 30px rgba(120,60,20,.5)}
+
+/* toque: tamanho, opacidade, canhoto, estado dos botões */
+#toque button{opacity:var(--tq-op,.85)}
+#toque[data-tam=p] button{min-width:54px;min-height:38px;font-size:11px}
+#toque[data-tam=p] .tq-grande{min-width:70px;min-height:70px}
+#toque[data-tam=g] button{min-width:80px;min-height:56px;font-size:15px}
+#toque[data-tam=g] .tq-grande{min-width:104px;min-height:104px;font-size:18px}
+#toque button.ativo{border-color:#c9a75a;color:#f0e2c0}
+#toque .tq-grande.ativo{box-shadow:0 0 14px rgba(201,167,90,.45)}
+#toque button.vazio{opacity:calc(var(--tq-op,.85) * .4)}
+#tq-base.devagar{border-color:rgba(201,167,90,.6)}
+#tq-espiar{position:absolute;left:50%;bottom:max(14px,env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;gap:40px}
+#toque.canhoto #tq-zona-andar{left:auto;right:0}
+#toque.canhoto #tq-zona-olhar{right:auto;left:0}
+#toque.canhoto #tq-bts{right:auto;left:max(12px,env(safe-area-inset-left));direction:ltr}
+#toque.canhoto #tq-topo{right:auto;left:max(12px,env(safe-area-inset-left))}
+body.toque{touch-action:none;-webkit-touch-callout:none;overscroll-behavior:none}
+body.toque.tq-canhoto #obj{left:auto;right:max(14px,env(safe-area-inset-right));text-align:right}
+body.toque.tq-canhoto #bars{right:auto;left:max(12px,env(safe-area-inset-left));align-items:flex-start}
+/* lápide na tela de carregamento */
+#carregando .cg-lapide{display:flex;flex-direction:column;gap:2px;margin-top:18px;font-family:"IM Fell English SC",Georgia,serif;color:#5d5546;max-width:440px;animation:cg-lap 2.4s ease-out both}
+#carregando .cg-lapide b{font-weight:normal;letter-spacing:.14em;font-size:17px;color:#857a63}
+#carregando .cg-lapide span{font-family:"Special Elite","Courier New",monospace;font-size:12px}
+#carregando .cg-lapide i{font-family:"IM Fell English",Georgia,serif;font-size:15px;margin-top:6px}
+#carregando.falhou .cg-lapide{display:none}
+@keyframes cg-lap{from{opacity:0}}
