@@ -3,6 +3,7 @@
 // código de desafio), conquistas extras, acervo de lore entre partidas, estatísticas e memória do título.
 // O motor (jogo.js) chama PG.ligar(ctx) uma vez e usa os ganchos PG.* em pontos pontuais.
 import { MUNDO } from './progressao-mundo.js'; // Lote 2: mundo e história (acervo, noites que lembram, datas, jornal...)
+import { P3 } from './progressao3.js'; // Lote 3: polimento (reinício na hora, 100%, Noite da Semana, segredos do título...)
 const LORE_KEY = 'hora-silencio-v3-acervo';
 const STATS_KEY = 'hora-silencio-stats';
 const ULTIMA_KEY = 'hora-silencio-ultima';
@@ -64,7 +65,8 @@ function proxConq() {
   const def = filaConq.shift(), el = $('#conq');
   if (!def) { conqMostrando = false; return; }
   conqMostrando = true;
-  el.innerHTML = `${def.secreta || def.segredo ? 'Conquista secreta' : 'Conquista'}: ${def.nome}<small>${def.desc}</small>`; el.classList.add('on');
+  const cq = ls.get(C.KEYS.CONQ_KEY, {}), R = window.ROTEIRO, nq = R.conquistas.filter(x => cq[x.id]).length;
+  el.innerHTML = `${def.secreta || def.segredo ? 'Conquista secreta' : 'Conquista'}: ${def.nome}<span class="p3-n">${nq}/${R.conquistas.length}</span><small>${def.desc}</small>`; el.classList.add('on');
   try { C.SFX.pegar(); } catch (e) {}
   setTimeout(() => { el.classList.remove('on'); setTimeout(proxConq, 700); }, 4200);
 }
@@ -76,8 +78,8 @@ function calcRank(S) {
   const tEf = Math.max(0, S.capT - desconto), min = tEf / 60;
   const ruido = S.capT > 1 ? (S.capRuido || 0) / S.capT : 0;
   const selos = { intocada: dano === 0, rapida: min < mt.s, invisivel: (S.capVisto || 0) <= 1, silenciosa: ruido < 3 };
-  let pts = (dano === 0 ? 3 : dano < 60 ? 2 : dano < 120 ? 1 : 0) + (min < mt.s ? 2 : min < mt.a ? 1 : 0) + (selos.invisivel ? 1 : 0) + (selos.silenciosa ? 1 : 0)
-    - (S.capMortes || 0) + ((S.mods || []).length ? 1 : 0);
+  const partes = [['dano', dano === 0 ? 3 : dano < 60 ? 2 : dano < 120 ? 1 : 0], ['tempo', min < mt.s ? 2 : min < mt.a ? 1 : 0], ['invisível', selos.invisivel ? 1 : 0], ['silêncio', selos.silenciosa ? 1 : 0], ['mortes', -(S.capMortes || 0)], ['amuletos', (S.mods || []).length ? 1 : 0]];
+  const pts = partes.reduce((a, p) => a + p[1], 0);
   const letra = pts >= 6 ? 'S' : pts >= 4 ? 'A' : pts >= 2 ? 'B' : 'C';
   const falta = [];
   if (!selos.intocada) falta.push('sem dano');
@@ -86,7 +88,7 @@ function calcRank(S) {
   if (!selos.silenciosa) falta.push('ruído baixo');
   if (S.capMortes) falta.push(`sem morrer (${S.capMortes} ${S.capMortes > 1 ? 'mortes' : 'morte'})`);
   const nivelRuido = ruido < 3 ? 'Silenciosa' : ruido < 5.5 ? 'Cuidadosa' : 'Barulhenta';
-  return { letra, pts, selos, falta, tEf, desconto, ruido, nivelRuido, meta: mt };
+  return { letra, pts, partes, selos, falta, tEf, desconto, ruido, nivelRuido, meta: mt };
 }
 function desafioOk(S, id) {
   switch (id) {
@@ -139,38 +141,31 @@ function painelCapitulos() {
   const R = window.ROTEIRO, caps = ls.get(C.KEYS.CAPS_KEY, {}), ac = acervo();
   const nS = R.capitulos.filter(c => caps[c.id] && caps[c.id].rank === 'S').length, nD = R.capitulos.filter(c => caps[c.id] && caps[c.id].desafio).length;
   const totalAc = Object.keys(ac).length, total = R.notas.length + R.paginas.length + R.fitas.length;
-  let h = `<p class="pn-resumo">Ranks S ${nS}/${R.capitulos.length} · desafios secretos ${nD}/${R.capitulos.length} · acervo ${totalAc}/${total} · o rejogo usa a dificuldade escolhida no menu</p>`;
+  let h = `<p class="pn-resumo">Ranks S ${nS}/${R.capitulos.length} · desafios secretos ${nD}/${R.capitulos.length} · acervo ${totalAc}/${total}${P3.somaMelhores()} · o rejogo usa a dificuldade escolhida no menu</p>`;
   h += R.capitulos.map((c, i) => {
     const d = caps[c.id] || {}, ok = !!d.snap, info = capInfo(c.id);
-    if (!ok) return `<div class="it x riscada"><div><b>${ROMANOS[i]} — fita riscada</b><br><small>ainda não alcançado</small></div></div>`;
+    if (!ok) return `<div class="it x riscada p3-com-pola">${P3.pola(c, i, false)}<div><b>${ROMANOS[i]} — fita riscada</b><br><small>ainda não alcançado</small></div></div>`;
     const lore = LORE_MAPA[c.mapa] || [], achou = lore.filter(id => ac[id]).length;
     const linhas = [d.tempo ? `melhor tempo ${fmt(d.tempo)} · meta S ${meta(c.id).s}:00` : 'liberado', `lore do mapa ${achou}/${lore.length}`,
       `desafio secreto: ${d.desafio ? `<b class="ouro">${info.desafio ? info.desafio.nome : 'cumprido'}</b>` : '???'}`];
     if (d.rank === 'S' && info.frase_s) linhas.push(`<i class="frase">“${info.frase_s}”</i>`);
     linhas.push(...MUNDO.linhasCap(c, i));
-    return `<div class="it"><div><b>${c.titulo}</b><br><small>${linhas.join(' · ')}</small><br>${selosHTML(d.selos || {})}</div><div style="display:flex;align-items:center;gap:12px"><span class="rank">${d.rank || ''}</span><button class="btn" data-cap="${c.id}">Jogar</button></div></div>`;
+    if (P3.ouvidoCap(c.id)) linhas.push('<b class="ouro">Ouvido do Inspetor</b>');
+    const fp = P3.pola(c, i, true);
+    return `<div class="it${fp ? ' p3-com-pola' : ''}">${fp}<div><b>${c.titulo}</b><br><small>${linhas.join(' · ')}</small><br>${selosHTML(d.selos || {})}</div><div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:flex-end"><span class="rank p3-r-${d.rank || ''}">${d.rank || ''}${P3.pes(c.id)}</span>${P3.temRota(c.id) ? `<button class="btn" data-rota="${c.id}" title="O caminho da última vez, com a rota do recorde">Rota</button>` : ''}<button class="btn" data-cap="${c.id}">Jogar</button></div></div>`;
   }).join('');
   abrirPainel('Capítulos', h);
+  $('#pn-lista').querySelectorAll('[data-rota]').forEach(b => b.onclick = () => P3.verRota(b.dataset.rota));
   $('#pn-lista').querySelectorAll('[data-cap]').forEach(b => b.onclick = () => {
     C.iniciarAudio();
     const snap = { ...caps[b.dataset.cap].snap, dif: $('#o-dif').value };
     C.setS(null); $('#painel').hidden = true;
     try { C.carregarSnap(snap); } catch (e) { console.warn('save do capítulo inválido', e); $('#title').hidden = false; memoria('Essa fita estava estragada. Jogue o capítulo de novo para regravar.'); return; }
-    const S = C.S; S.replay = true; S.completo = false; S.modo = { ...(S.modo || {}), crono: !!C.OPT.crono, umaVida: false };
+    const S = C.S; S.replay = true; S.completo = false; S.modo = { ...(S.modo || {}), crono: !!C.OPT.crono, umaVida: false }; P3.aoRejogar(S);
     C.entrarJogo();
   });
 }
-function painelConquistas() {
-  const R = window.ROTEIRO, c = ls.get(C.KEYS.CONQ_KEY, {}), n = R.conquistas.filter(x => c[x.id]).length;
-  const pct = Math.round(n / R.conquistas.length * 100);
-  const data = t => { try { return new Date(t).toLocaleDateString('pt-BR'); } catch (e) { return ''; } };
-  const h = `<p class="pn-resumo">${n} de ${R.conquistas.length} · ${pct}%<span class="barra"><i style="width:${pct}%"></i></span></p>` + R.conquistas.map(x => {
-    const tem = c[x.id];
-    if (!tem && x.secreta) return `<div class="it x"><div><b>???</b><br><small>conquista secreta · “${x.dica || '...'}”</small></div><span class="rank"></span></div>`;
-    return `<div class="it ${tem ? '' : 'x'}"><div><b>${x.nome}</b>${x.secreta ? ' <small>(secreta)</small>' : ''}<br><small>${x.desc}${tem && typeof tem === 'number' ? ` · em ${data(tem)}` : ''}</small></div><span class="rank">${tem ? '✦' : ''}</span></div>`;
-  }).join('');
-  abrirPainel(`Conquistas ${n}/${R.conquistas.length}`, h);
-}
+function painelConquistas() { return P3.painelConquistas(); } // Lote 3: filtros, novas, fósforos (src/progressao3.js)
 function painelStats() {
   const s = stats(), R = window.ROTEIRO, nf = Object.keys(s.finais || {}).length;
   const causas = { inspetor: 'o Inspetor', ana: 'a Menina Que Conta', procissao: 'a Procissão' };
@@ -182,7 +177,9 @@ function painelStats() {
     ['Acervo (notas, páginas e fitas)', `${Object.keys(acervo()).length}/${R.notas.length + R.paginas.length + R.fitas.length}`]
     , ...MUNDO.linhasStats()
   ];
-  abrirPainel('Estatísticas', L.map(([a, b]) => `<div class="it"><div><b>${a}</b></div><span class="rank" style="font-size:20px">${b}</span></div>`).join(''));
+  L.push(...P3.statsLinhas());
+  abrirPainel('Estatísticas', P3.statsTopo() + L.map(([a, b]) => `<div class="it"><div><b>${a}</b></div><span class="rank" style="font-size:20px">${b}</span></div>`).join(''));
+  P3.depoisStats(L);
 }
 
 // --- título
@@ -209,18 +206,20 @@ function titulo() {
   }
   difDesc();
   MUNDO.titulo();
+  P3.titulo();
   // ele lembra de quem morreu muito
   try {
     const sp = C.W.def && C.W.def.spawns && C.W.def.spawns.titulo;
     if (sp && (s.mortes || 0) >= 20) { const y = sp.yaw || 0; C.MON.g.visible = true; C.MON.g.position.set(sp.x - Math.sin(y) * 30, 0, sp.z - Math.cos(y) * 30); C.MON.g.rotation.y = y; }
   } catch (e) {}
 }
-function difDesc() { const el = $('#o-dif-desc'); if (el) el.textContent = (RP().dificuldades || {})[$('#o-dif').value] || ''; }
+function difDesc() { const el = $('#o-dif-desc'); if (el) el.textContent = ((RP().dificuldades || {})[$('#o-dif').value] || '') + P3.difExtra($('#o-dif').value); }
 function teclaTitulo(e) {
   if (!C || C.mode !== 'titulo' || $('#title').hidden || (document.activeElement && document.activeElement.tagName === 'INPUT')) return;
   const k = e.key && e.key.length === 1 ? e.key.toLowerCase() : '';
   if (!k) return;
   bufTitulo = (bufTitulo + k).slice(-12);
+  if (P3.tecla(bufTitulo)) { bufTitulo = ''; return; }
   const M = RP().memoria || {};
   if (bufTitulo.endsWith('silencio')) { bufTitulo = ''; const sg = segredos(); sg.umaVida = true; ls.set(SEGREDO_KEY, sg); C.iniciarAudio(); C.SFX.sinoLonge(); conquista('senha'); memoria(M.senha); $('#l-umavida').hidden = false; }
   if (bufTitulo.endsWith('1403')) { bufTitulo = ''; C.iniciarAudio(); C.SFX.papel(); conquista('quem_lembra'); memoria(M.data); }
@@ -234,6 +233,7 @@ export const PG = {
     const R = window.ROTEIRO;
     for (const x of RP().conquistas || []) if (!R.conquistas.some(y => y.id === x.id)) R.conquistas.push(x);
     MUNDO.ligar(ctx, { conquista, ls, stats, acervo, fmtC, fmt, abrirPainel, somaStat });
+    P3.ligar(ctx, { conquista, ls, stats, acervo, fmtC, fmt, abrirPainel, somaStat, calcRank });
     addEventListener('keydown', e => {
       teclaTitulo(e);
       if (C.ui === 'morte' && (e.code === 'Enter' || e.code === 'KeyE' || e.code === 'NumpadEnter') && !$('#dt-retry').hidden && !$('#death').hidden) $('#dt-retry').click();
@@ -265,6 +265,7 @@ export const PG = {
     seqMortes = 0;
     somaStat(s => { s.partidas = (s.partidas || 0) + 1; });
     MUNDO.novoJogo(S);
+    P3.novoJogo(S);
   },
   // dificuldade efetiva: base + amuletos + ajuda invisível
   dif(S, DIFS) {
@@ -285,6 +286,7 @@ export const PG = {
     const S = C.S, P = C.P, M = C.M;
     tempoPend += dt;
     MUNDO.tick(dt);
+    P3.tick(dt);
     S.capRuido = (S.capRuido || 0) + (P.noiseR || 0) * dt;
     if (P.sprinting && !S.flags.sino) { S.capCorreu = (S.capCorreu || 0) + dt; S.correu = (S.correu || 0) + dt; }
     if (S.flashOn) S.capLuzT = (S.capLuzT || 0) + dt;
@@ -307,7 +309,7 @@ export const PG = {
     }
     // cronômetro
     const el = $('#crono'), mostra = !C.OPT.cron && !!(C.OPT.crono || (S.modo && (S.modo.crono || S.modo.umaVida))); // com o cronômetro da interface ligado, só ele aparece
-    if (el) { if (el.hidden === mostra) el.hidden = !mostra; if (mostra) { const t = `${fmtC(S.capT)}<small>total ${fmtC(S.tempo)}${S.modo && S.modo.umaVida ? ' · uma vida' : ''}${S.modo && S.modo.cat ? ' · ' + MUNDO.cronoExtra(S) : ''}</small>`; if (PG._crono !== t) { el.innerHTML = t; PG._crono = t; } } }
+    if (el) { if (el.hidden === mostra) el.hidden = !mostra; if (mostra) { const rr = P3.relogioReal(), t = `${rr != null ? fmtC(rr) + '<small>tempo real · capítulo ' + fmtC(S.capT) + '</small>' : fmtC(S.capT)}<small>total ${fmtC(S.tempo)}${S.modo && S.modo.umaVida ? ' · uma vida' : ''}${S.modo && S.modo.cat ? ' · ' + MUNDO.cronoExtra(S) : ''}</small>`; if (PG._crono !== t) { el.innerHTML = t; PG._crono = t; } } }
   },
   objetivo(id) {
     const S = C.S; if (!S) return;
@@ -327,7 +329,7 @@ export const PG = {
     };
     setTimeout(tentar, 6000);
   },
-  salvando(inicioCap) { const S = C && C.S; if (!S) return; S.ajuda = 0; seqMortes = 0; if (inicioCap) mostrarSalvo(); },
+  salvando(inicioCap) { const S = C && C.S; if (!S) return; S.ajuda = 0; seqMortes = 0; P3.salvando(); if (inicioCap) mostrarSalvo(); },
   salaDica(r) { const S = C.S; return !!(S && S.dicaSala && r && r.id === S.dicaSala); },
   lore(id) {
     const S = C.S; if (!S) return;
@@ -362,6 +364,7 @@ export const PG = {
     if (r.letra !== 'S' && r.falta.length) linhas.push(`para o S faltou: ${r.falta.join(' · ')}`);
     if (novoDes && info.desafio) linhas.push(`desafio secreto cumprido: <b class="ouro">${info.desafio.nome}</b> — ${info.desafio.desc}`);
     if (r.letra === 'S' && info.frase_s) linhas.push(`<i>“${info.frase_s}”</i>`);
+    linhas.push(...P3.fimCap(c, r)); // antes do MUNDO: a rota do recorde anterior ainda está guardada
     linhas.push(...MUNDO.fimCap(c, ant));
     if ($('#fc-falta')) $('#fc-falta').innerHTML = linhas.join('<br>');
   },
@@ -378,6 +381,7 @@ export const PG = {
     if (!info || info.sem !== S.semente) return;
     for (const k in info.tot) S[k] = Math.max(S[k] || 0, info.tot[k]);
     S.ranks = { ...(S.ranks || {}), ...info.ranks }; S.conqNoite = info.conq; S.modo = info.modo || S.modo; S.completo = info.completo; S.replay = info.replay;
+    if (P3.depoisCarregar()) { seqMortes = 0; return; } // reinício na hora (BACKSPACE): o capítulo começa limpo
     if (info.ch !== S.chapter) return;
     for (const k in info.cap) S[k] = Math.max(S[k] || 0, info.cap[k]);
     for (const f of info.flags) S.flags[f] = true;
@@ -404,6 +408,7 @@ export const PG = {
     if ((st.mortes || 0) >= 10) conquista('teimosa');
     ls.set(ULTIMA_KEY, { tipo: 'morte', quem, cap: S.chapter, t: Date.now() });
     MUNDO.morte(quem);
+    P3.morte(quem);
     if (S.modo && S.modo.umaVida) { try { localStorage.removeItem(C.KEYS.SAVE_KEY); } catch (e) {} }
   },
   escondidaAntes() { PG._escT = performance.now(); },
@@ -415,12 +420,13 @@ export const PG = {
     if ($('#dt-stats')) $('#dt-stats').innerHTML = uv
       ? `Modo Uma Vida: a noite acabou aqui. ${c.titulo} · ${fmtC(S.tempo)} de jogo.`
       : `morte nº ${S.capMortes || 1} neste capítulo · ${S.mortes} na noite · ${faltam ? `faltava${faltam > 1 ? 'm' : ''} ${faltam} objetivo${faltam > 1 ? 's' : ''}` : 'o capítulo estava quase no fim'} · +15s no cronômetro do capítulo<br><small>E ou ENTER para tentar de novo</small>`;
+    P3.telaMorte();
   },
   // pausa
   pausa() {
     const S = C.S, el = $('#p-info'); if (!el || !S) return;
     const am = (S.mods || []).map(id => ((RP().amuletos || []).find(a => a.id === id) || {}).nome).filter(Boolean);
-    el.innerHTML = `${window.ROTEIRO.capitulos[S.chapter].titulo} · ${fmtC(S.capT)} neste capítulo · ${fmtC(S.tempo)} na noite · ${S.mortes} ${S.mortes === 1 ? 'morte' : 'mortes'}<br>${C.D().nome}${am.length ? ' · ' + am.join(', ') : ''}${S.modo && S.modo.umaVida ? ' · Uma Vida' : ''} · código de desafio ${codigoDesafio(S)}${MUNDO.pausaExtra()}`;
+    el.innerHTML = `${window.ROTEIRO.capitulos[S.chapter].titulo} · ${fmtC(S.capT)} neste capítulo · ${fmtC(S.tempo)} na noite · ${S.mortes} ${S.mortes === 1 ? 'morte' : 'mortes'}<br>${C.D().nome}${am.length ? ' · ' + am.join(', ') : ''}${S.modo && S.modo.umaVida ? ' · Uma Vida' : ''} · código de desafio ${codigoDesafio(S)}${MUNDO.pausaExtra()}${P3.pausa()}`;
   },
   // final
   loreFinal() {
@@ -443,6 +449,7 @@ export const PG = {
     ls.set(ULTIMA_KEY, { tipo: 'final', final: tipo, t: Date.now(), tempo: S.tempo });
     PG._tipoFinal = tipo;
     MUNDO.final(tipo);
+    P3.final(tipo);
   },
   telaFinal(tipo) {
     const S = C.S, R = window.ROTEIRO, st = stats();
@@ -454,6 +461,7 @@ export const PG = {
     $('#e-stats').innerHTML += extra;
     if (S.completo && S.tempo < 3600) { const sp = document.createElement('span'); sp.className = 'par'; sp.textContent = '\n\nA Hora durou menos que uma hora.'; sp.style.animationDelay = ($('#e-txt').querySelectorAll('.par').length * 1.4) + 's'; $('#e-txt').appendChild(sp); } // sem apagar a revelação parágrafo a parágrafo
     MUNDO.telaFinal(tipo);
+    P3.telaFinal(tipo);
   }
 };
 
@@ -461,7 +469,7 @@ function copiarResultado() {
   const S = C.S; if (!S) return;
   const R = window.ROTEIRO, F = R.finais[PG._tipoFinal] || {};
   const ranks = R.capitulos.map(c => (S.ranks || {})[c.id] || '–').join(' ');
-  const txt = `A Hora do Silêncio · ${C.D().nome} · desafio ${codigoDesafio(S)} · ${fmtC(S.tempo)} · ranks ${ranks} · mortes ${S.mortes} · ${C.loreAchado()}/${C.totalLore()} lore · ${(F.titulo || '').replace('FINAL: ', '').toLowerCase()}${S.flags._noite ? ` · noite nº ${S.flags._noite}` : ''}\n${location.href.split('#')[0]}`;
+  const txt = `A Hora do Silêncio · ${C.D().nome} · desafio ${codigoDesafio(S)} · ${fmtC(S.tempo)} · ranks ${ranks} · mortes ${S.mortes} · ${C.loreAchado()}/${C.totalLore()} lore · ${(F.titulo || '').replace('FINAL: ', '').toLowerCase()}${S.flags._noite ? ` · noite nº ${S.flags._noite}` : ''}${P3.copiar()}\n${location.href.split('#')[0]}`;
   const ok = () => { const b = $('#e-copiar'); b.textContent = 'Copiado!'; setTimeout(() => b.textContent = 'Copiar resultado', 1800); };
   try { navigator.clipboard.writeText(txt).then(ok, () => fallback()); } catch (e) { fallback(); }
   function fallback() { const t = document.createElement('textarea'); t.value = txt; document.body.appendChild(t); t.select(); try { document.execCommand('copy'); ok(); } catch (e) {} t.remove(); }
