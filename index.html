@@ -462,6 +462,214 @@
   #fc-mundo{max-width:720px;margin:6px auto 0}
   @media (max-width:700px){#radiorel{font-size:18px;top:10px;left:12px}#diario .wrap{padding-left:40px;background-position:0 0}#diario .etiqueta{left:44px}#olho-ana{left:calc(50% + 18px)}}
   #aviso-mobile{position:fixed;inset:0;background:#000;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font-size:20px;z-index:9}
+  /* ---- Interface (lote 3): polimento e plataforma ---- */
+  .so-leitor{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  /* telas que entram suaves, diálogo que sobe */
+  #pause:not([hidden]),#diario:not([hidden]),#note:not([hidden]),#keypad:not([hidden]),#opcoes:not([hidden]),#painel:not([hidden]),#confirma:not([hidden]),#comojogar:not([hidden]),#escolha:not([hidden]){animation:telaIn .14s ease-out}
+  @keyframes telaIn{from{opacity:0;transform:scale(.98)}}
+  #dialogo:not([hidden]){animation:dialogoIn .25s ease-out}
+  @keyframes dialogoIn{from{opacity:0;transform:translate(-50%,12px)}}
+  /* corte de fita entre telas, fita rebobinando no "tentar de novo" */
+  #corte{position:fixed;inset:0;pointer-events:none;z-index:30;opacity:0}
+  #corte.fita{animation:corteFita .17s steps(4) both;background:repeating-linear-gradient(180deg,rgba(255,255,255,.07) 0 2px,transparent 2px 5px),linear-gradient(180deg,transparent 40%,rgba(255,255,255,.14) 46%,transparent 52%)}
+  @keyframes corteFita{0%{opacity:1;transform:translateX(-12px)}50%{opacity:.8;transform:translateX(8px)}100%{opacity:0;transform:none}}
+  #corte.fade{background:#000;animation:corteFade .2s ease-out both}
+  @keyframes corteFade{0%{opacity:.7}100%{opacity:0}}
+  #corte.rebobina{animation:rebobina .7s ease-in both;background:repeating-linear-gradient(180deg,rgba(255,255,255,.1) 0 1px,transparent 1px 3px),linear-gradient(180deg,transparent 20%,rgba(220,220,255,.12) 26%,transparent 30%,transparent 66%,rgba(255,255,255,.12) 72%,transparent 76%);background-size:100% 100%,100% 200%}
+  @keyframes rebobina{0%{opacity:1;background-position:0 0,0 0}80%{opacity:1;background-position:0 0,0 -200%}100%{opacity:0}}
+  body:has(#corte.rebobina) #c{animation:distorce .7s ease-in-out}
+  @keyframes distorce{30%{transform:skewX(5deg) scaleY(1.04)}60%{transform:skewX(-4deg) translateY(-8px)}}
+  /* botões dos menus: chama de vela no lugar do ponto, letra que esquenta, chama que apaga se navegar rápido demais */
+  .btn{transition:color .2s,letter-spacing .3s,text-shadow .12s}
+  .btn:hover,.btn:focus-visible{text-shadow:0 0 10px rgba(232,162,58,.45),0 0 2px rgba(255,230,180,.6)}
+  .btn:hover::before,.btn:focus-visible::before{content:"";position:absolute;left:1px;top:50%;width:6px;height:11px;margin-top:-7px;border-radius:50% 50% 45% 45%;background:radial-gradient(ellipse at 50% 70%,#fff3c4,#e8a23a 55%,rgba(232,162,58,0) 72%);animation:chamaMenu .16s infinite alternate}
+  @keyframes chamaMenu{to{transform:scaleY(1.22) translateX(.6px);opacity:.8}}
+  .btn.apaga::before{animation:fumacaMenu .5s ease-out forwards!important;background:linear-gradient(transparent,rgba(180,170,150,.55))!important;width:2px!important;border-radius:0!important}
+  @keyframes fumacaMenu{to{transform:translateY(-10px);opacity:0}}
+  #diario nav{counter-reset:aba}
+  #diario nav .btn{counter-increment:aba}
+  #diario nav .btn::before,#diario nav .btn:hover::before,#diario nav .btn:focus-visible::before{content:counter(aba);position:absolute;left:3px;top:2px;width:auto;height:auto;margin:0;background:none;animation:none;border-radius:0;font-family:"Special Elite",monospace;font-size:10px;letter-spacing:0;color:#5d5546}
+  #d-pane.vira{animation:vira .22s ease-out;transform-origin:left center}
+  @keyframes vira{from{opacity:.2;transform:perspective(900px) rotateY(-14deg)}}
+  /* título: lanterna no cursor revela o giz, a menina que espera, a TV que liga */
+  #t-giz{position:absolute;inset:0;pointer-events:none;z-index:-1;-webkit-mask-image:radial-gradient(circle 220px at var(--mx,50%) var(--my,50%),#000 0,rgba(0,0,0,.55) 50%,transparent 100%);mask-image:radial-gradient(circle 220px at var(--mx,50%) var(--my,50%),#000 0,rgba(0,0,0,.55) 50%,transparent 100%)}
+  #t-giz::before{content:"";position:absolute;inset:0;background:radial-gradient(circle 220px at var(--mx,50%) var(--my,50%),rgba(255,214,150,.08),transparent 70%)}
+  #t-giz span{position:absolute;font-family:"IM Fell English",Georgia,serif;font-style:italic;font-size:clamp(16px,2.2vw,30px);color:rgba(232,226,210,.55);letter-spacing:.08em;white-space:nowrap;filter:blur(.3px)}
+  #t-giz.falha{animation:luzFalha 2.6s steps(1) infinite}
+  @keyframes luzFalha{0%,100%{opacity:1}12%{opacity:.25}14%{opacity:1}52%{opacity:.5}55%{opacity:0}57%{opacity:1}}
+  #t-vulto{position:absolute;right:5%;bottom:0;width:min(90px,12vw);opacity:0;pointer-events:none;z-index:-1;transition:opacity 4s}
+  #t-vulto svg{width:100%;height:auto;display:block}
+  #t-vulto.on{opacity:.9}
+  #title.liga{animation:tvLiga .55s ease-out}
+  @keyframes tvLiga{0%{transform:scale(1,.004);filter:brightness(6)}35%{transform:scale(1,.004);filter:brightness(4)}70%{transform:scale(1,1.02);filter:brightness(1.5)}100%{transform:none;filter:none}}
+  #title.sem-cursor,#title.sem-cursor *{cursor:none!important}
+  #radiorel.apagado{opacity:.08;transition:opacity .4s}
+  #t-desc{font-style:italic;font-size:14px;color:#6d6452;min-height:18px;margin-top:8px;text-align:center;padding:0 16px}
+  #t-save .falta{display:block;color:#857a63}
+  #t-save .quando{display:block;font-size:11px;color:#5d5546}
+  /* pausa: a cena congela desbotada atrás, foto instantânea, contador de fita */
+  #pause{background:rgba(0,0,0,.6)}
+  body.pausado #c{filter:grayscale(.85) brightness(.5) blur(2px)!important}
+  body.pausado #hud,body.pausado #clique{visibility:hidden}
+  #p-foto{position:absolute;left:max(16px,5vw);top:50%;width:min(270px,26vw);background:#ece4d0;padding:12px 12px 36px;box-shadow:0 18px 50px #000;transform:translateY(-50%) rotate(var(--r,-2deg));animation:fotoIn .5s cubic-bezier(.2,.8,.3,1)}
+  #p-foto canvas{display:block;width:100%;height:auto;animation:respira 6s ease-in-out infinite}
+  #p-foto figcaption{position:absolute;left:14px;right:14px;bottom:9px;font-family:"IM Fell English",Georgia,serif;font-style:italic;font-size:17px;color:#23304d;text-align:left}
+  @keyframes fotoIn{from{opacity:0;transform:translateY(-44%) rotate(-9deg) scale(.9)}}
+  @keyframes respira{50%{transform:scale(1.012)}}
+  @media (max-width:900px){#p-foto{display:none}}
+  #p-fita,#dt-fita{position:absolute;left:20px;top:16px;font-family:"Courier New",monospace;font-weight:bold;font-size:16px;letter-spacing:.08em}
+  #p-fita{color:#7fbf6a;text-shadow:0 0 6px rgba(127,191,106,.6)}
+  #p-fita b{animation:pisca 1.2s steps(1) infinite;margin-right:8px;font-weight:bold}
+  #dt-fita{color:#c0392b;opacity:.8}
+  #dt-fita span{margin-right:8px}
+  /* morte: entra aos poucos, o coração bate até parar, o mapa se desenha */
+  #dt-quase{font-family:"Special Elite",monospace;font-size:15px;color:#c9a75a;margin:0 auto 14px;max-width:640px}
+  #death.entra h2{animation:escorre .6s ease-out both,tremor 3s .6s infinite}
+  @keyframes escorre{from{clip-path:inset(0 0 100% 0);filter:blur(2px)}to{clip-path:inset(0 0 0 0)}}
+  #death.entra .frase{animation:aparece .5s .45s both}
+  #death.entra .causa,#death.entra #dt-quase{animation:aparece .5s .8s both}
+  #death.entra #death-dica,#death.entra .diag{animation:aparece .5s 1.1s both}
+  #death.entra .conta,#death.entra .info,#death.entra .stats,#death.entra .teclas,#death.entra #dt-menu,#death.entra #dt-leve{animation:aparece .4s 1.3s both}
+  @keyframes aparece{from{opacity:0;transform:translateY(4px)}}
+  #death-mapa.revela{animation:revelaMapa .9s .9s ease-out both}
+  @keyframes revelaMapa{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+  #death::before{content:"";position:absolute;inset:0;pointer-events:none}
+  #death.entra::before{animation:bateFim 3.6s ease-out both}
+  @keyframes bateFim{0%,12%,40%,85%,100%{box-shadow:inset 0 0 120px 30px rgba(140,0,0,0)}6%{box-shadow:inset 0 0 120px 30px rgba(140,0,0,.55)}26%{box-shadow:inset 0 0 120px 30px rgba(140,0,0,.35)}62%{box-shadow:inset 0 0 120px 30px rgba(140,0,0,.16)}}
+  /* fim de capítulo: carimbo que dá tranco, selo, curva do coração */
+  #fimcap{overflow-y:auto}
+  #fc-ninguem{display:inline-block;font-family:"Special Elite",monospace;font-size:20px;letter-spacing:.18em;color:#a3241a;border:3px double rgba(163,36,26,.8);padding:4px 14px;transform:rotate(-6deg);margin:-4px 0 10px;animation:carimbo .5s .9s cubic-bezier(.2,1.6,.4,1) both}
+  #fimcap.tranco{animation:tranco .3s}
+  @keyframes tranco{25%{transform:translate(3px,-2px)}50%{transform:translate(-3px,2px)}75%{transform:translate(1px,1px)}}
+  #fc-medo{margin:10px auto 0;width:min(460px,90vw)}
+  #fc-medo canvas{display:block;width:100%;height:auto;border:1px solid #1c3a24;border-radius:3px}
+  #fc-medo .frase{font-family:"IM Fell English",Georgia,serif;font-style:italic;color:#9fd8a8;font-size:17px;margin-top:6px}
+  #fc-medo .pulos{font-family:"Special Elite",monospace;font-size:13px;color:#c9a75a;margin-top:4px;min-height:1em}
+  #fc-medo .marcas{font-family:"Special Elite",monospace;font-size:12px;color:#6d6452;margin-top:6px;text-align:left;max-height:90px;overflow:auto}
+  #fc-medo .marcas b{display:block;color:var(--fraco);font-weight:normal}
+  /* HUD: mancha do golpe, contagem da Menina em anel, objetivo novo no meio, parcial na mira, batimento, item que voa */
+  #dano{position:absolute;left:50%;top:50%;width:0;height:0;pointer-events:none}
+  #dano::before{content:"";position:absolute;left:-28vw;top:-50vh;width:56vw;height:24vh;background:radial-gradient(ellipse at 50% 0,rgba(170,10,0,var(--o,.7)),transparent 70%);filter:blur(6px)}
+  #dano.on{animation:danoSome .9s ease-out forwards}
+  @keyframes danoSome{from{opacity:1}to{opacity:0}}
+  #conta-ana{position:absolute;left:50%;top:50%;width:0;height:0;pointer-events:none}
+  #conta-ana i{position:absolute;left:-1px;top:-30px;width:2px;height:7px;background:rgba(233,223,200,.22);transform-origin:1px 30px}
+  #conta-ana i.on{background:#e9dfc8;box-shadow:0 0 4px #e9dfc8}
+  #conta-ana.dez i{background:#fff;box-shadow:0 0 8px #fff}
+  #conta-ana.dez{animation:pisca .25s 3}
+  #obj-novo{position:absolute;left:50%;top:30%;transform:translateX(-50%);text-align:center;width:min(640px,86vw);text-shadow:0 0 12px #000,0 0 4px #000;pointer-events:none}
+  #obj-novo small{display:block;font-family:"IM Fell English SC",Georgia,serif;letter-spacing:.2em;font-size:13px;color:var(--fraco)}
+  #obj-novo span{font-size:calc(var(--prm) + 3px);color:var(--ui)}
+  #obj-novo.on{animation:objNovo 2.3s ease-in-out both}
+  @keyframes objNovo{0%{opacity:0;transform:translate(-50%,6px)}15%,70%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-40vw,-24vh) scale(.6)}}
+  #hud.hudmin #obj-novo{top:22%}
+  #split-mira{position:absolute;left:50%;top:calc(50% + 64px);transform:translateX(-50%);font-family:"Special Elite",monospace;font-size:22px;text-shadow:0 0 8px #000;color:var(--ui)}
+  #split-mira.bom{color:#7fbf6a}#split-mira.ruim{color:#d0584a}
+  #bpm{position:absolute;left:28px;bottom:100px;font-family:"Special Elite",monospace;font-size:14px;color:#d0584a;text-shadow:0 0 6px #000;display:flex;gap:6px;align-items:center}
+  #bpm i{font-style:normal;display:inline-block;animation:bate var(--b,1s) infinite}
+  @keyframes bate{0%,100%{transform:scale(1)}15%{transform:scale(1.35)}30%{transform:scale(1)}}
+  #inv-voo{position:absolute;left:50%;top:50%;font-size:22px;color:#e9dfc8;text-shadow:0 0 8px #000;pointer-events:none}
+  #inv-voo.vai{animation:voa .5s cubic-bezier(.5,0,.8,.6) forwards}
+  #inv-voo.especial{color:#e8c76a;text-shadow:0 0 12px #c9a75a}
+  @keyframes voa{0%{transform:translate(-50%,-50%) scale(1.4);opacity:1}100%{transform:translate(calc(var(--dx) - 50%),calc(var(--dy) - 50%)) scale(.6);opacity:.2}}
+  #inv-mini{transform-origin:right bottom}
+  #inv-mini.ganhou{animation:ganhou .6s ease-out}
+  @keyframes ganhou{30%{color:#e9dfc8;transform:scale(1.08);text-shadow:0 0 10px rgba(233,223,200,.6)}}
+  /* texto de interação: ícone do verbo, treme de medo, avisa quando a ação faz barulho com ele perto */
+  #prompt[data-ic]::before{content:attr(data-ic);font-family:"Special Elite",monospace;margin-right:8px;opacity:.75;font-size:.9em}
+  #prompt.medo{animation:promptMedo .12s infinite;text-shadow:0 0 10px #000,0 0 4px #000,1px 0 3px rgba(200,40,30,.45)}
+  @keyframes promptMedo{50%{transform:translateX(calc(-50% + 1.5px)) translateY(-1px)}}
+  #prompt.arrisca{color:#e3b2a6}
+  #prompt.arrisca .onda{color:#d0584a}
+  body.contraste #prompt.medo{text-shadow:0 0 10px #000,0 0 4px #000}
+  #hold.quase #hold-arc{stroke:#fff;filter:drop-shadow(0 0 4px #fff)}
+  #hold.fim{animation:holdFim .4s ease-out}
+  @keyframes holdFim{50%{transform:rotate(-90deg) scale(1.25);opacity:.6}}
+  /* barras: fôlego quase no fim, cansaço, pilha em três gomos; vela que solta fumaça; fita que mexe os ponteiros */
+  #breath.pouco{color:#e07a6a;animation:tremorSub .15s infinite}
+  #breath.pouco i::after{background:#c0392b}
+  .bar.cansada i::after{background:#b4855a!important}
+  #b-pilha::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,transparent calc(33.3% - 1px),rgba(0,0,0,.8) calc(33.3% - 1px) 33.3%,transparent 33.3% calc(66.6% - 1px),rgba(0,0,0,.8) calc(66.6% - 1px) 66.6%,transparent 66.6%)}
+  #vela::after{content:"";position:absolute;left:50%;top:-30px;width:6px;height:18px;margin-left:-3px;border-radius:50%;background:radial-gradient(ellipse,rgba(200,200,200,.4),transparent 70%);opacity:0}
+  #vela.on::after{animation:fumaca 2.2s ease-out}
+  @keyframes fumaca{0%,70%{opacity:0;transform:none}85%{opacity:.8}100%{opacity:0;transform:translateY(-16px) scaleX(2)}}
+  #fita-ind::after{content:"";display:inline-block;vertical-align:middle;width:3px;height:10px;margin:0 14px 0 8px;background:#c9a75a;box-shadow:5px 0 #c9a75a,10px 0 #c9a75a;animation:vu .35s ease-in-out infinite alternate;transform-origin:bottom}
+  @keyframes vu{to{transform:scaleY(.35)}}
+  #sub .seta-fala{font-family:"Special Elite",monospace;font-size:.85em;margin-left:8px;opacity:.85;letter-spacing:0}
+  #conq{filter:blur(1.5px);transition:opacity .6s,transform .6s,filter .6s}
+  #conq.on{filter:none}
+  #chapter{transition:opacity 1.4s,letter-spacing 4.5s ease-out}
+  #chapter[style*="opacity: 1"]{letter-spacing:.22em}
+  #clique::after{content:" · ESC abre a pausa";font-size:14px;color:var(--fraco);margin-left:10px;letter-spacing:.08em}
+  #clique{animation:pt-resp 3.2s ease-in-out infinite}
+  .ouv small.quando{font-family:"Special Elite",monospace;font-size:10px;color:#5d5546;margin-right:8px;display:inline-block;min-width:54px}
+  /* opções: busca, marca do que mudou, prévia das legendas, painel transparente para ver o brilho de verdade */
+  #op-busca{display:block;width:100%;margin:0 0 6px;background:#0b0907;border:1px solid #2c2720;color:var(--ui);font-family:"Special Elite",monospace;font-size:14px;padding:7px 10px;user-select:text}
+  #op-busca:focus{outline:1px solid var(--sangue);outline-offset:2px}
+  #opcoes .op.mudou span::after{content:" •";color:#c9a75a}
+  #opcoes .op:focus-within{background:rgba(142,27,20,.09)}
+  #opcoes select:focus-visible,#opcoes input:focus-visible,#pause input:focus-visible{outline:1px solid var(--sangue);outline-offset:3px}
+  #op-previa-leg{margin:8px 0 4px;padding:10px;border:1px dashed #2c2720;text-align:center;background:#000}
+  #op-previa-leg small{display:block;font-family:"Special Elite",monospace;font-size:11px;color:#5d5546;text-align:left}
+  #op-previa-leg .pv-som{font-family:"Special Elite",monospace;font-style:italic;font-size:calc(var(--legq) + 1px);color:#d9a092}
+  #op-previa-leg .pv-fala{font-size:var(--leg);line-height:1.35;text-shadow:0 0 8px #000}
+  #op-previa-leg .pv-fala .quem{display:block;font-family:"IM Fell English SC",Georgia,serif;font-size:var(--legq);letter-spacing:.15em}
+  body.lf-meio #op-previa-leg .pv-fala{background:rgba(255,255,255,.04) linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55))}
+  body.contraste #op-previa-leg .pv-fala span:not(.quem){color:#f2ead6!important}
+  body.op-previa #opcoes{background:transparent;align-items:flex-end}
+  body.op-previa #opcoes .wrap{background:rgba(4,3,2,.82);margin-right:2vw;width:min(460px,94vw)}
+  .lista .it:not(.x):hover{border-color:#4a4235;background:#14110e}
+  .painel .wrap,#diario .pane,.paper,#fc-medo .marcas,#comojogar{scrollbar-width:thin;scrollbar-color:#4a4235 transparent}
+  .painel .wrap::-webkit-scrollbar,#diario .pane::-webkit-scrollbar,.paper::-webkit-scrollbar{width:6px}
+  .painel .wrap::-webkit-scrollbar-thumb,#diario .pane::-webkit-scrollbar-thumb,.paper::-webkit-scrollbar-thumb{background:#4a4235;border-radius:3px}
+  #confirma small{display:block;font-size:14px;color:var(--fraco);margin-top:10px}
+  /* como jogar */
+  #comojogar{background:rgba(0,0,0,.86);padding:16px;overflow-y:auto}
+  .como-folha{width:min(720px,94vw);max-height:none;transform:rotate(-.6deg)}
+  .como-folha .regra{display:flex;gap:14px;align-items:center;margin:10px 0}
+  .como-folha .regra svg{flex:0 0 96px;height:72px;background:#1b1712;border-radius:3px;padding:4px}
+  .como-folha .regra p{white-space:normal;font-size:16px;line-height:1.45}
+  .como-folha .regra b{font-family:"IM Fell English SC",Georgia,serif;font-weight:normal;font-size:19px;color:#5a1610}
+  .como-folha .como-teclas{text-align:left;opacity:.7;line-height:1.7}
+  .como-folha .btn{color:var(--tinta)}
+  @media (max-width:560px){.como-folha .regra{flex-direction:column;align-items:flex-start}}
+  /* acessibilidade: letra fácil, escala da interface, legendas no alto */
+  body.leitura-facil #hud,body.leitura-facil #sub,body.leitura-facil #dialogo,body.leitura-facil .screen,body.leitura-facil .btn,body.leitura-facil #toast,body.leitura-facil #legsom,body.leitura-facil .paper,body.leitura-facil .paper *,body.leitura-facil #chapter,body.leitura-facil #cartao{font-family:Verdana,Tahoma,"Segoe UI",sans-serif!important;font-style:normal!important;letter-spacing:.04em;word-spacing:.12em;line-height:1.6}
+  body.leitura-facil #title h1{font-family:"IM Fell English SC",Georgia,serif!important;line-height:.95}
+  #obj,#bars,#inv-mini,#cron,#crono,#split,#fita-ind,#bpm,#toque button,#title .menu,#pause>.btn,#death>.btn{zoom:var(--ui-esc,1)}
+  body.leg-alto #sub{bottom:auto;top:13%}
+  body.leg-alto #legsom{bottom:auto!important;top:calc(13% + 4.4em)}
+  body.leg-alto #toast{top:32%}
+  /* toque e controle: textos certos e alvos maiores */
+  body.toque #keypad .grid{grid-template-columns:repeat(3,78px);gap:10px}
+  body.toque #keypad .grid button{height:64px;font-size:28px}
+  body.toque #keypad .ajuda{display:none}
+  body.toque #k-sair{font-size:0!important;padding:12px 26px}
+  body.toque #k-sair::after{content:"Sair";font-size:20px}
+  body.toque #d-fechar{font-size:0;padding:12px 22px}
+  body.toque #d-fechar::after{content:"Fechar · deslize para trocar a aba";font-size:16px}
+  body.toque #diario nav .btn::before{display:none}
+  body.toque #diario .pane{overscroll-behavior:contain;touch-action:pan-y}
+  body.toque #note small{font-size:0}
+  body.toque #note small::after{content:"toque para fechar";font-size:12px}
+  body.toque #note .ouvir{display:none}
+  body.toque #death .teclas,body.pad #death .teclas,body.toque #fc-pular,body.pad #fc-pular{font-size:0}
+  body.toque #death .teclas::after{content:"toque em Tentar de novo";font-size:12px}
+  body.pad #death .teclas::after{content:"A tenta de novo";font-size:12px}
+  body.toque #fc-pular::after{content:"toque na tela para seguir";font-size:12px}
+  body.pad #fc-pular::after{content:"A para seguir";font-size:12px}
+  body.toque #dialogo small{font-size:0}
+  body.toque #dialogo small::after{content:"toque para continuar";font-size:12px}
+  body.toque .screen .btn{min-height:44px}
+  body.toque #clique::after{content:""}
+  /* menos movimento */
+  body.menos-mov .screen:not([hidden]),body.menos-mov #dialogo:not([hidden]),body.menos-mov #title.liga,body.menos-mov #fimcap.tranco{animation:none!important}
+  body.menos-mov #title h1,body.menos-mov #death h2,body.menos-mov #prompt.medo,body.menos-mov #p-foto canvas,body.menos-mov #clique,body.menos-mov #fita-ind::after,body.menos-mov #d-pane.vira{animation:none}
+  body.menos-mov .btn::before{animation:none!important}
+  body.menos-mov #obj-novo.on{animation:objNovoFade 2.3s both}
+  @keyframes objNovoFade{0%,100%{opacity:0}15%,75%{opacity:1}}
+  body.menos-mov #chapter{transition:opacity 1.4s}
+  @media (max-width:700px){#bpm{left:16px}#p-fita,#dt-fita{left:12px;top:10px;font-size:13px}}
 </style>
 <link rel="stylesheet" href="src/plataforma.css">
 <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js"}}</script>

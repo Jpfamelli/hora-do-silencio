@@ -1,0 +1,121 @@
+# Lote 3 — Interface
+- Focar um botão de menu toca um tique curto de máquina de escrever, com altura sorteada para não repetir
+- Confirmar um botão de menu dá um carimbo grave
+- Voltar, fechar ou cancelar num menu faz som de papel
+- Arrastar um controle deslizante faz a catraca de um toca-fitas
+- Trocar uma opção de lista faz o estalo de um interruptor velho
+- Nova opção "Sons dos menus" para desligar esses sons (eles seguem o volume geral)
+- O botão em foco ganha uma chama de vela que tremula no lugar do pontinho vermelho
+- A letra do botão em foco esquenta como filamento de lâmpada
+- Navegar rápido demais pelos botões apaga a chama, que solta um fiapo de fumaça
+- Pausa, diário, nota, cofre, opções, painéis, confirmação e o portão final entram com um fade curto em vez de surgir de uma vez
+- Abrir a pausa, as opções, os painéis e o "Como jogar" passa por um corte de fita VHS de 0,17 s com chiado
+- Com "Reduzir flashes" ligado, o corte de fita vira um escurecimento simples
+- Na pausa, a cena congela atrás do menu sem cor, escura e desfocada, em vez de uma tela preta
+- O HUD some atrás do menu de pausa, sem barras e objetivo por cima
+- A pausa mostra uma foto instantânea torta do momento em que você parou, em sépia e com grão
+- A foto da pausa tem a hora da noite e o nome da sala escritos à caneta embaixo
+- A foto da pausa respira devagar, como se a imagem ainda estivesse viva
+- A pausa mostra um contador de fita (PAUSA ▌▌ e o tempo jogado) no canto
+- Segredo: depois de 40 s parada na pausa, uma vez por noite, uma figura pequena aparece no escuro da foto
+- Passar o mouse na figura da foto faz ela sumir, a pausa escreve "Ela está contando." e libera a conquista secreta "Revelação"
+- Na tela de morte, o título escorre de cima para baixo antes de firmar
+- A tela de morte entra aos poucos (frase, causa, dica, botões), mas "Tentar de novo" funciona desde o primeiro quadro
+- Na tela de morte, o coração bate nas bordas cada vez mais fraco até parar
+- O mini mapa da morte se desenha da esquerda para a direita
+- A tela de morte mostra um contador de fita parado (■ STOP e o tempo da noite)
+- A tela de morte diz a que distância estava o esconderijo mais perto ("O esconderijo mais perto estava a 2,4 m.")
+- Morrendo para a Menina, a tela diz a que distância estava a porta mais perto e lembra que ela não abre portas
+- "Tentar de novo" rebobina a fita: linhas de VHS, a imagem entorta e toca um chiado de fita voltando
+- No fim de capítulo, os pontos de cada critério sobem um a um com tique de catraca
+- O rank do fim de capítulo bate como carimbo e dá um tranco na tela
+- Rank S no fim de capítulo toca o sino; os outros dão um carimbo seco
+- Novo selo carimbado "NINGUÉM TE OUVIU" quando você termina o capítulo sem ser perseguida
+- O fim de capítulo desenha a curva do seu coração no capítulo, em verde de monitor, com batidas nos picos
+- Os picos da curva ganham o símbolo de quem causou (◆ Inspetor, ○ Menina, △ Procissão, ◇ ele perto) e as mortes viram ✕
+- O maior pico vira uma frase: "Seu coração quase parou em (sala), às (hora)."
+- Medidor de pulo: um tranco forte do mouse logo depois de um susto conta como pulo, e o fim de capítulo diz quantas vezes você pulou e onde foi o maior
+- A tela final mostra quantas vezes você pulou na noite inteira e onde foi o maior susto
+- F8 marca o momento (para quem grava ou faz live) com o horário da sessão, a hora da noite, a sala e o que estava acontecendo
+- O fim de capítulo lista os momentos marcados com F8 para achar o trecho na gravação
+- Ao levar um golpe, uma mancha vermelha aparece na borda do lado de onde ele veio, mais forte quanto maior o dano
+- Nova opção para desligar a mancha do golpe
+- Quando a Menina conta, um anel de dez tracinhos em volta da mira acende um a cada número (desliga junto com o olho da Menina)
+- No DEZ, o anel inteiro fica branco e pisca
+- Ao cumprir um objetivo, o próximo aparece no meio da tela por dois segundos e voa para o canto
+- O objetivo novo vem com uma batida grave curta
+- O objetivo novo não aparece no meio da tela durante caçada ou Procissão, para não atrapalhar a fuga
+- Objetivo novo é anunciado para leitor de tela
+- Com o cronômetro, a parcial aparece grande embaixo da mira por 1,2 s com tique de relógio (some se ele estiver a menos de 8 m)
+- Parciais do cronômetro ganham ▼ (melhor) e ▲ (pior), para não depender só de verde e vermelho
+- A vela de "salvo" não acende mais no meio de uma caçada
+- A vela de "salvo" solta uma fumacinha ao apagar
+- Nova opção "Batimento da Lia no canto": o medo vira BPM (60 a 180) com um coração batendo no ritmo, para lives
+- Item pego voa da mira até o inventário no canto
+- O inventário pulsa e acende quando ganha um item
+- Chaves e objetos das crianças voam dourados e tocam um som de achado
+- O texto de interação ganha um ícone do verbo (esconder, ler, porta, girar, tocar fita, ouvir, falar, pegar)
+- No celular, o botão Usar troca o rótulo pelo verbo da ação (Esconder, Ler, Abrir, Forçar, Tocar...)
+- O texto de interação treme e borra de leve com o medo alto ou o Inspetor a menos de 5 m
+- O texto de interação fica avermelhado quando a ação faz barulho e ele está a menos de 10 m
+- Nas ações de segurar (forçar, girar, cavar), um tique sobe de tom a cada quarto do anel
+- O anel de segurar fica branco e brilhante nos últimos 20%
+- Terminar uma ação de segurar dá um pulso no anel e um som de pronto
+- No celular, cada quarto da ação de segurar dá uma vibração curta
+- A barra de prender o ar fica vermelha e treme quando está no fim
+- A barra de fôlego muda de cor quando a Lia está cansada
+- A barra da pilha ganha três gomos para ler a carga de relance
+- O indicador de fita tocando ganha ponteiros de volume que mexem
+- Fala do Inspetor ou da Ana fora da tela ganha seta (◂ ▸ ▾) e "perto" ou "longe" ao lado do nome
+- O aviso de conquista borra como tinta ao sumir
+- O nome do capítulo se espalha devagar enquanto aparece
+- "Clique para voltar ao jogo" respira e lembra que ESC abre a pausa
+- A caixa de diálogo sobe ao aparecer
+- O ícone da aba muda com a noite: sino em paz, olho aberto com a Menina, mão vermelha na caçada, vela na pausa, olho fechado com a aba escondida
+- Título: o cursor vira uma lanterna que revela frases de giz escondidas na parede ("ELA CONTA ATÉ DEZ", nomes das crianças, riscos de contagem)
+- Título: parado por 20 s, a luz da lanterna começa a falhar
+- Título: com controle ou teclado, a lanterna segue o botão em foco
+- Título: depois de 45 s sem mexer, o rádio-relógio chia
+- Título: depois de 90 s parado, uma silhueta pequena aparece no canto e some quando você mexe o mouse
+- Segredo: na quinta vez que ela aparece, a silhueta fica um instante a mais e libera a conquista secreta "Ela Estava Esperando"
+- Segredo: digitar MOACIR no título apaga o rádio-relógio, some com o cursor por 20 s e cada tecla faz um estalo de língua do lado oposto ao mouse; no fim, "Volte para a cama." e a conquista secreta "Ele Ouviu o Nome"
+- Voltar ao menu liga a tela como uma TV de tubo
+- O título mostra uma linha curta do que cada botão faz quando ele está em foco
+- O "Continuar" mostra o objetivo que faltava quando você parou
+- O "Continuar" mostra há quanto tempo foi o último salvamento
+- Continuar depois de mais de 12 horas longe: a Lia lembra o capítulo, o objetivo e a última coisa que descobriu
+- Novo "Como jogar" no título e na pausa: uma folha do caderno com as quatro regras da noite e desenhos
+- O "Como jogar" mostra os controles certos para teclado, controle ou toque
+- Antes do primeiro jogo, um aviso no tom do jogo sobre o conteúdo, os sustos e as luzes piscando, com "Reduzir flashes e entrar"
+- Se o sistema pede menos movimento, o aviso já vem com "Reduzir flashes" em foco
+- Opções: campo de busca que filtra os ajustes enquanto você digita
+- Opções: um ponto dourado marca cada ajuste que está diferente do padrão
+- Opções: prévia ao vivo das legendas com o tamanho, fundo, símbolos e contraste escolhidos
+- Opções abertas pela pausa: mexer no brilho ou no campo de visão deixa o painel de lado e transparente para ver o jogo de verdade atrás
+- "Restaurar padrões" agora pede confirmação
+- A roda do mouse muda o valor do controle deslizante sob o cursor
+- Home, End, PageUp e PageDown pulam para o primeiro e o último item dos menus
+- As confirmações (voltar ao menu, recomeçar, começar do zero) começam com o foco na opção que não perde nada
+- Nas opções, a linha em foco fica destacada e as listas e controles deslizantes ganham contorno visível
+- Nova opção "Letra fácil de ler (dislexia)": fonte sem serifa do sistema, mais espaço entre letras e linhas, sem itálico, em todo o jogo
+- Nova opção "Tamanho da interface" (80% a 150%) que aumenta barras, inventário, cronômetro, botões de toque e menus, separada do texto
+- Nova opção para colocar as legendas no alto da tela (útil no celular, onde os dedos cobrem a parte de baixo)
+- Nova opção "Ler os menus em voz alta": lê em português o botão em foco, a opção escolhida e o valor do controle deslizante
+- Nova opção "Menos movimento nos menus", automática pelo sistema, que tira tremores, chamas, cortes e animações das telas
+- Pausa, opções, diário, morte, cofre, notas e fim de capítulo são anunciados como janelas para leitor de tela
+- As abas do diário são anunciadas como abas, com a aba aberta marcada
+- Controles deslizantes anunciam o valor por extenso
+- Trocar de aba no diário vira a página com som de papel
+- O diário abre com som de papel e fecha com o estalo de um elástico
+- Cada aba do diário mostra o número do atalho (1 a 9)
+- A aba "Ouvido" do diário mostra há quanto tempo cada fala ou som aconteceu
+- Abrir uma nota faz som de papel
+- No celular, deslizar o dedo para o lado troca a aba do diário
+- No celular, as teclas do cofre e do quadro ficam maiores
+- No celular, nota, diálogo, diário, cofre, morte e fim de capítulo dizem "toque" em vez de nomes de tecla
+- No controle, a morte e o fim de capítulo dizem "A" em vez de E
+- No celular, tocar na tela no fim de capítulo segue em frente
+- No celular, errar o código do cofre vibra
+- No celular, os botões dos menus têm altura mínima de 44 px para o dedo
+- Barras de rolagem finas no tom do caderno nos painéis, no diário e nas notas
+- Nos painéis de capítulos e conquistas, a linha sob o mouse se destaca

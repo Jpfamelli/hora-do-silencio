@@ -2,8 +2,10 @@
 // dicas da Lia, cronômetro, pistas e histórico no diário, segredos do título.
 // O motor (jogo.js) chama criarInterface(ctx) uma vez e usa os ganchos devolvidos.
 import { criarMundo } from './interface-mundo.js';
+import { criarPolimento } from './interface-polimento.js';
 export function criarInterface(C) {
   let MU = null; // mundo e história (lote 2): src/interface-mundo.js
+  let PL = null; // polimento e plataforma (lote 3): src/interface-polimento.js
   const $ = s => document.querySelector(s);
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
   const lerp = (a, b, t) => a + (b - a) * t;
@@ -82,6 +84,7 @@ export function criarInterface(C) {
     b.toggle('contraste', !!OPT.contraste); b.toggle('texto-simples', !!OPT.textoSimples); b.toggle('letra-legivel', OPT.letraNotas === 'legivel');
     b.toggle('sem-flash', !!OPT.vFlash); b.toggle('velorio', !!(OPT.velorio && OPT.velorioLib));
     $('#fx-velorio').hidden = !(OPT.velorio && OPT.velorioLib);
+    if (PL) PL.aplicar();
   }
   let opcVolta = null;
   function abrirOpcoes(de) {
@@ -107,12 +110,14 @@ export function criarInterface(C) {
         if (def.tipo === 'range') el.nextElementSibling.textContent = (+v).toFixed(def.step < 1 ? 2 : 0);
       };
     });
+    if (PL) PL.opcoes(box);
     $('#opcoes').hidden = false; focar('#opcoes');
   }
   function fecharOpcoes() { $('#opcoes').hidden = true; if (opcVolta) $(opcVolta).hidden = false; focar(opcVolta); opcVolta = null; }
   $('#op-voltar').onclick = fecharOpcoes;
   $('#op-brilho').onclick = () => { $('#opcoes').hidden = true; calibrar(() => { $('#opcoes').hidden = false; }); };
-  $('#op-padrao').onclick = () => { for (const k in PAD) if (!/calibrado|velorioLib/.test(k)) OPT[k] = PAD[k]; C.salvarOpt(); aplicar(); const v = opcVolta; $('#opcoes').hidden = true; $(v).hidden = true; abrirOpcoes(v); };
+  // lote 3: restaurar pede confirmação (antes apagava tudo num clique) e não reabre o aviso de conteúdo
+  $('#op-padrao').onclick = () => { const v = opcVolta; confirmar('Voltar todas as opções ao padrão?', () => { for (const k in PAD) if (!/calibrado|velorioLib|avisoVisto/.test(k)) OPT[k] = PAD[k]; C.salvarOpt(); aplicar(); $(v).hidden = true; abrirOpcoes(v); }, 'Restaurar', 'Cancelar'); };
 
   // Calibração de brilho
   function calibrar(cb) {
@@ -129,18 +134,19 @@ export function criarInterface(C) {
     volta.forEach(s => s.hidden = true);
     const fim = ok => { if (el.hidden) return; el.hidden = true; if (ok) sim(); else { volta.forEach(s => s.hidden = false); focar(); } };
     $('#cf-sim').onclick = () => fim(true); $('#cf-nao').onclick = () => fim(false);
-    el.hidden = false; focar('#confirma');
+    el.hidden = false;
+    setTimeout(() => { if (!el.hidden) $('#cf-nao').focus(); }, 30); // lote 3: o foco começa na opção que não perde nada
   }
   function antesDeNovoJogo(cb) {
     if (window.__teste) return cb();
-    const seguir = () => OPT.calibrado ? cb() : calibrar(cb);
+    const seguir = () => PL.aviso(() => OPT.calibrado ? cb() : calibrar(cb));
     const sv = C.lsGet(C.SAVE_KEY, null);
     if (sv && sv.chapter > 0) confirmar(`Começar do zero apaga o progresso salvo (${R.capitulos[sv.chapter].titulo}). Os capítulos já liberados continuam no menu Capítulos.`, () => { $('#title').hidden = true; seguir(); }, 'Começar do zero', 'Voltar');
     else { $('#title').hidden = true; seguir(); }
   }
 
   // ---------------------------------------------------------------- NAVEGAÇÃO POR TECLADO
-  const TELAS = ['#confirma', '#brilho', '#opcoes', '#painel', '#keypad', '#pause', '#death', '#escolha', '#ending', '#title'];
+  const TELAS = ['#confirma', '#brilho', '#opcoes', '#comojogar', '#painel', '#keypad', '#pause', '#death', '#escolha', '#ending', '#title'];
   const telaAtiva = () => TELAS.map(s => $(s)).find(el => el && !el.hidden);
   const focaveis = el => [...el.querySelectorAll('button.btn, select, input[type=range]')].filter(b => !b.disabled && !b.hidden && b.offsetParent !== null && !b.closest('[hidden]'));
   function focar(sel) { setTimeout(() => { const el = sel ? $(sel) : telaAtiva(); if (!el || el.hidden) return; const f = focaveis(el); if (f.length && !el.contains(document.activeElement)) f[0].focus({ preventScroll: false }); }, 30); }
@@ -150,6 +156,8 @@ export function criarInterface(C) {
     const i = f.indexOf(document.activeElement), el = document.activeElement;
     if (e.code === 'ArrowDown' || (e.code === 'Tab' && !e.shiftKey)) { f[(i + 1) % f.length].focus(); return true; }
     if (e.code === 'ArrowUp' || (e.code === 'Tab' && e.shiftKey)) { f[(i - 1 + f.length) % f.length].focus(); return true; }
+    if (e.code === 'Home' || e.code === 'PageUp') { f[0].focus(); return true; }
+    if (e.code === 'End' || e.code === 'PageDown') { f[f.length - 1].focus(); return true; }
     if (el && el.tagName === 'SELECT' && (e.code === 'ArrowLeft' || e.code === 'ArrowRight')) {
       el.selectedIndex = clamp(el.selectedIndex + (e.code === 'ArrowRight' ? 1 : -1), 0, el.options.length - 1); el.dispatchEvent(new Event('change')); return true;
     }
@@ -191,6 +199,7 @@ export function criarInterface(C) {
     return { d, a, txt: [lado, longe, sala].filter(Boolean).join(', ') };
   }
   function som(k, a) {
+    if (PL) PL.som(k, a);
     const def = SONS[k]; if (!def || C.mode === 'titulo' || OPT.legSom === 'nao') return;
     if (!def.imp && OPT.legSom !== 'todos') return;
     if (k === 'gerador' && !a[0]) return;
@@ -315,6 +324,7 @@ export function criarInterface(C) {
     desenharMapaMorte(quem);
     morteT = rel(); focar('#death');
     causa = null;
+    if (PL) PL.morte(quem);
   }
   function aliviar() {
     const cap = C.S.chapter; C.retry();
@@ -405,6 +415,7 @@ export function criarInterface(C) {
     const S = C.S; if (!S) return;
     const p = R.personagens[quem] || { nome: quem };
     historico(p.nome, texto);
+    if (PL) PL.fala(quem);
     if (!S.flags.pista_q && S.quadro && texto.includes(S.quadro.join(''))) { S.flags.pista_q = true; C.toast('Código anotado no diário (TAB · Pistas).'); }
     if (!S.flags.pista_v && S.ordem && texto.includes(S.ordem.join(' - '))) { S.flags.pista_v = true; C.toast('Ordem anotada no diário (TAB · Pistas).'); }
   }
@@ -417,27 +428,31 @@ export function criarInterface(C) {
     if (pags.some(p => S.notes[p])) L.push(['Números do Davi (cofre)', pags.map((id, i) => S.notes[id] ? S.code[i] : '_').join(' '), pags.map((id, i) => `${i + 1}º: ${S.notes[id] ? 'achado' : 'falta'} (${PAG_LOCAL[id]})`).join(' · ')]);
     el.innerHTML = L.length ? L.map(([a, b, c]) => `<div class="pista"><h3>${a}</h3><div class="digits">${b}</div><small>${c}</small></div>`).join('') : '<p style="color:var(--fraco)">Nenhuma pista anotada. Códigos ditos em fitas e escritos em páginas aparecem aqui.</p>';
   }
+  const quando = t => { const S = C.S, d = S ? Math.max(0, S.tempo - t) : 0; return d < 45 ? 'agora' : d < 3600 ? `há ${Math.round(d / 60)} min` : `há ${Math.floor(d / 3600)} h`; };
   function renderOuvido(el) {
-    el.innerHTML = hist.length ? `<p style="color:var(--fraco);margin-bottom:10px">As últimas falas e sons, do mais recente ao mais antigo.</p>` + hist.slice().reverse().map(h => `<div class="ouv"><span>${h.quem === 'som' ? '' : h.quem}</span>${h.quem === 'som' ? `<i>${/^[▲✦] /.test(h.texto) ? h.texto.slice(0, 2) + '[' + h.texto.slice(2) + ']' : '[' + h.texto + ']'}</i>` : h.texto}</div>`).join('') : '<p style="color:var(--fraco)">Silêncio. Por enquanto.</p>';
+    el.innerHTML = hist.length ? `<p style="color:var(--fraco);margin-bottom:10px">As últimas falas e sons, do mais recente ao mais antigo.</p>` + hist.slice().reverse().map(h => `<div class="ouv"><small class="quando">${quando(h.t)}</small><span>${h.quem === 'som' ? '' : h.quem}</span>${h.quem === 'som' ? `<i>${/^[▲✦] /.test(h.texto) ? h.texto.slice(0, 2) + '[' + h.texto.slice(2) + ']' : '[' + h.texto + ']'}</i>` : h.texto}</div>`).join('') : '<p style="color:var(--fraco)">Silêncio. Por enquanto.</p>';
   }
 
   // ---------------------------------------------------------------- CRONÔMETRO / VELA / FIM DE CAPÍTULO
   let splitT = 0, velaTO;
   function objetivo(id) {
     ociosoT = 0; nivelDica = 0; mostrarObjT = 6;
+    if (PL) queueMicrotask(() => PL.objetivo(id));
     if (MU) MU.objetivo(id);
     const S = C.S; if (!S || !OPT.cron) return;
     const c = R.capitulos[S.chapter], caps = C.lsGet(C.CAPS_KEY, {}), reg = caps[c.id] || {}, sp = reg.splits || {};
     const t = S.capT, ant = sp[id];
     const el = $('#split');
-    if (ant) { const df = t - ant; el.textContent = `${df < 0 ? '−' : '+'}${relogio(Math.abs(df))}`; el.className = df < 0 ? 'bom' : 'ruim'; }
+    if (ant) { const df = t - ant; el.textContent = `${df < 0 ? '▼ −' : '▲ +'}${relogio(Math.abs(df))}`; el.className = df < 0 ? 'bom' : 'ruim'; }
     else { el.textContent = relogio(t); el.className = ''; }
     splitT = 3; el.hidden = false;
     if (!ant || t < ant) { sp[id] = t; caps[c.id] = { ...reg, splits: sp }; C.lsSet(C.CAPS_KEY, caps); }
   }
   function salvou(inicioCap) {
     const S = C.S; if (S) ultSaveTempo = S.tempo;
+    if (PL) PL.salvou();
     if (inicioCap || C.mode !== 'jogo') return;
+    if (C.M.ativo && (C.M.state === 'caca' || C.M.state === 'investiga')) return; // lote 3: a vela não acende no meio da caçada
     const v = $('#vela'); v.hidden = false; v.classList.remove('on'); void v.offsetWidth; v.classList.add('on');
     clearTimeout(velaTO); velaTO = setTimeout(() => { v.hidden = true; }, 2300);
   }
@@ -459,6 +474,7 @@ export function criarInterface(C) {
     $('#fc-pular').style.opacity = 0; setTimeout(() => { $('#fc-pular').style.opacity = 1; }, 1500);
     fimCapT = rel();
     if (MU) MU.fimCap(c);
+    if (PL) PL.fimCap(c, rk);
   }
 
   // ---------------------------------------------------------------- SEGREDOS DO TÍTULO
@@ -471,6 +487,7 @@ export function criarInterface(C) {
   function teclaTitulo(e) {
     const m = /^Key([A-Z])$/.exec(e.code); if (!m) return false;
     digitado = (digitado + m[1]).slice(-12);
+    if (PL && PL.teclaTitulo(digitado)) { digitado = ''; return true; }
     if (digitado.endsWith('SILENCIO')) {
       digitado = ''; OPT.velorioLib = true; OPT.velorio = !OPT.velorio; C.salvarOpt(); aplicar(); sangrar(); C.conquista('segredo_velorio');
       subTitulo(OPT.velorio ? 'Modo Velório. As cores foram enterradas. (digite de novo para desfazer)' : 'As cores voltaram. Por enquanto.');
@@ -487,6 +504,7 @@ export function criarInterface(C) {
     const sv = C.lsGet(C.SAVE_KEY, null), el = $('#t-save');
     if (sv && R.capitulos[sv.chapter]) el.textContent = `${R.capitulos[sv.chapter].titulo} · ${(C.DIFS[sv.dif] || C.DIFS.normal).nome} · ${mmss(sv.tempo || 0)} jogados`;
     else el.textContent = '';
+    if (PL) PL.atualizarTitulo();
     $('#o-dif-desc').textContent = DIF_DESC[$('#o-dif').value] || '';
     focar('#title');
   }
@@ -505,6 +523,7 @@ export function criarInterface(C) {
   // ---------------------------------------------------------------- TECLAS
   function tecla(e) {
     const S = C.S;
+    if (PL && PL.tecla(e)) return true;
     if (!$('#confirma').hidden && e.code === 'Escape') { $('#cf-nao').click(); return true; }
     if (!$('#opcoes').hidden && e.code === 'Escape') { fecharOpcoes(); return true; }
     if (!$('#painel').hidden && e.code === 'Escape') { $('#pn-voltar').click(); return true; }
@@ -536,6 +555,7 @@ export function criarInterface(C) {
   function frame(dt, ativo) {
     agora += dt;
     if (MU) MU.frame(dt, ativo);
+    if (PL) PL.frame(dt, ativo);
     const S = C.S, P = C.P, M = C.M;
     if (S !== Sref) { Sref = S; rastro.length = 0; causa = null; motivoCaca = null; if (S && S.capT < 1 && S.chapter === 0 && S.tempo < 1) { mortesCap = {}; mortesCausa = {}; } }
     $('#cena-pular').hidden = C.mode !== 'cena';
@@ -589,6 +609,7 @@ export function criarInterface(C) {
   }
 
   MU = criarMundo(Object.assign(C, { historico: (q, t) => historico(q, t) }));
+  PL = criarPolimento(C, { PAD, GRUPOS, focar, aplicar, subTitulo, objAtual, direcao, lembranca: () => MU && MU.lembranca(), fimCapT: () => fimCapT });
   aplicar();
   $('#b-opc').onclick = () => abrirOpcoes('#title');
   $('#p-opc').onclick = () => abrirOpcoes('#pause');
