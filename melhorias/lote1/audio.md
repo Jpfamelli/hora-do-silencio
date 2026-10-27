@@ -1,0 +1,139 @@
+# Lote 1 — Áudio
+- Som dividido em barramentos próprios (ambiente e música, criaturas, efeitos, vozes), cada um com volume separado nas opções do título e da pausa
+- Nova opção "Áudio mono" para quem ouve de um lado só ou usa fone com defeito
+- Nova opção "Som noturno": comprime os picos, sussurros e passos sobem e gritos descem
+- Nova opção "Voz falada do Inspetor": as falas dele são ditas em português com voz grave e lenta (se o navegador tiver voz pt-BR)
+- Opções de som ficam salvas entre sessões junto com as outras
+- Criado o silêncio que avisa (SFX.silencio / SFX.vacuo): chuva, ambiente, criaturas e vozes caem quase a zero, mas os seus passos e o seu corpo continuam
+- Quando a Ana chega no sete da contagem perto de você, o mundo vai ficando mudo
+- Nos 1,6 s antes de a Procissão sair, o som some quase por completo
+- Todo susto abre um buraco no resto do som: por um instante só o susto existe
+- No DEZ da Ana: sussurro no ouvido, 0,3 s de silêncio absoluto e só então o susto
+- Do sete ao nove, a contagem da Ana ganha um sussurro colado ao seu ouvido, vindo do lado dela
+- O nove e o DEZ são sussurrados atrás de você, exatamente onde ela vai aparecer
+- Longe, a Ana canta a contagem; perto, a voz dela vira quase só sussurro
+- A contagem da Ana acelera conforme ela se aproxima (de 1,4 s a 0,55 s por número)
+- Passinhos descalços da Ana quando você não está olhando para ela
+- Risada da Ana feita de sílabas infantis com respiração, em vez de bipes
+- Dentro do armário o mundo soa abafado (como ouvir pela fresta) e abre de volta suave ao sair
+- Debaixo da cama o som abafa menos que no armário
+- Eco curto de madeira dentro do armário
+- Molas do colchão rangem ao entrar e sair de baixo da cama
+- Trinco do armário estala ao fechar
+- Coração e respiração não são abafados no esconderijo e ficam mais altos: você ouve o próprio corpo
+- Batimento cardíaco agora segue o perigo real (distância do Inspetor, da Ana e da Procissão), não mais qualquer medo acima de 30
+- O coração vai de 60 a 155 batidas por minuto conforme a ameaça chega perto
+- Depois que o perigo passa, o coração leva uns 6 s para desacelerar
+- Prendendo a respiração, o resto do mundo baixa e o coração fica mais alto
+- O Inspetor ouve o seu coração: escondida, em pânico e com ele colado, ele avisa uma vez e depois cada batida faz barulho
+- Prender a respiração escondida faz o medo baixar mais rápido (a saída para o coração acelerado)
+- Respiração contínua da Lia que acompanha o medo e o cansaço
+- Respiração vira ofegante quando o fôlego está baixo depois de correr
+- Respiração fica trêmula com medo acima de 80
+- Com a vida abaixo de 30 a respiração vira quase choro
+- Prender a respiração corta o som dela na hora
+- Soltar o ar faz um arfar audível, e se ele estiver a menos de 3 m isso faz barulho
+- Estalos do Inspetor dizem o estado dele: um clique grave na patrulha, dois quando desconfia, três subindo quando procura, rajada aguda na caça
+- Diário (aba Regras) explica os estalos, os passos abafados e o que encobre o seu barulho
+- Sons atrás de porta fechada chegam abafados e mais baixos
+- Som da sala vizinha com porta aberta chega levemente filtrado
+- Sons a duas salas ou mais chegam muito abafados
+- Sons de outro cômodo ganham mais eco, soam "do lado de lá"
+- Gerador, canto e lâmpadas atualizam o abafamento enquanto você anda e as portas abrem
+- Passos do Inspetor mudam com o piso da sala dele (madeira, ladrilho, concreto, pedra, asfalto, grama, água)
+- Na madeira o piso range debaixo dele
+- No ladrilho o passo dele estala seco
+- Grave que bate no peito quando ele está a menos de 8 m
+- Nos túneis os passos dele voltam em eco atrasado
+- Quando ele anda devagar dá para ouvir o pé arrastando entre um passo e outro
+- Passos dele variam de tom e não soam mais repetidos
+- Voz do Inspetor com dois formantes e respiração rouca, mais humana e mais feia
+- Suspiro grave e longo quando ele perde a sua pista
+- Acorde de alívio quando ele desiste da busca e volta a patrulhar
+- Música de investigação: cordas em trêmulo quando ele desconfia
+- Música de caça: drone grave desafinado com violino agudo
+- Na caça o drone sobe meio tom a cada 3 s enquanto ele não te perde
+- Na caça, percussão metálica que acelera quanto mais perto ele está
+- Pulso grave quando ele está a menos de 14 m, mais rápido a menos de 6 m
+- Ao sair da caça ficam 4 s só com o pulso: você ainda não está segura
+- Zumbido agudo e fino quando ele está procurando ou a Ana está perto
+- Camadas de música trocam com transição suave em vez de liga/desliga
+- Saiu o acorde fixo de tensão que tocava igual em qualquer perigo
+- O drone de fundo cresce com o perigo e quase some na calmaria
+- Cinco sustos sonoros diferentes (cordas despencando, piano grave, metal raspado, sopro ao contrário, coro distorcido), sem repetir os dois últimos
+- Sustos em sequência (menos de 12 s) viram só um impacto curto, para não banalizar
+- Impacto grave por baixo de todo susto
+- O canto da Procissão vem da sala onde ela vai nascer, dá para saber para onde não correr
+- A Procissão nasce de verdade na sala de onde o canto veio (o aviso é honesto)
+- Quando ela passa, o canto anda junto com a fila
+- O coro fica dissonante enquanto a Procissão atravessa as salas
+- Passos descalços em grupo seguindo a fila, no mesmo ritmo em qualquer computador
+- A estática do rádio ganhou o assobio de sintonia
+- O Chamado diz "Li-a" com sílabas de voz, não mais dois bipes
+- No Cap. IV em diante o Chamado às vezes vem com um clique de lanterna e um passo, como se houvesse outra Lia
+- No Pesadelo ou depois da 3ª morte, às vezes o Chamado desce no meio e vira a voz dele
+- Durante o ronco do trovão o Inspetor ouve 70% menos: dá para correr junto com os trovões
+- Perto do gerador ligado o seu barulho cai pela metade
+- Perto do gerador os sons das criaturas ficam bem mais baixos: ali você é silenciosa, mas surda
+- Gerador liga engasgando antes de pegar e ronca com batida de pistão
+- Gerador desliga caindo de rotação, sem estalo
+- Eco por tipo de sala: quarto seco, corredor e capela longos, túnel com cauda enorme
+- Nos túneis há um eco repetido de 180 ms
+- Ao ar livre quase não há eco
+- Lâmpadas acesas por perto zumbem baixo, cada uma no seu lugar
+- As lâmpadas desafinam e chiam quando o Inspetor está a menos de 6 m ou a Procissão vem
+- A lanterna ligada tem um zumbido elétrico baixinho; desligar dá um silêncio marcante
+- Tique elétrico quando a lanterna falha, e o zumbido engasga com pilha fraca
+- Ouvindo fita, o ambiente abaixa uns 9 dB
+- Chiado da fita com oscilação de gravador velho e zumbido de motor
+- Murmúrio de voz gravada passando pelo filtro de gravador enquanto a fita toca
+- Se o Inspetor estiver perto quando a fita acaba, você ouve o estalo dele: você se distraiu
+- Clique do gravador mecânico em dois tempos com motorzinho
+- As nove badaladas vêm depois de um silêncio e o mundo se cala enquanto tocam
+- Cada badalada desafina um pouco mais e a última soa mais forte
+- O sino grande da capela corta todo o som de uma vez
+- Caixinha de música: dá corda (catraca) antes, o mundo se cala e a última nota sai desafinada
+- Puxar o sino tem som de corda e badaladas que crescem, não mais som de pá
+- Cada porta tem o seu próprio rangido
+- Pancadas de porta têm estalo de madeira e chacoalhar
+- Porta trancada chacoalha a maçaneta e bate o trinco
+- Seus passos mudam por piso também no ladrilho, pedra, asfalto e grama, com variação de tom
+- Agachada, seus passos ficam quase inaudíveis
+- Correndo, dá para ouvir a roupa farfalhando
+- Na água, um respingo depois de cada passo
+- Lá fora, a grama molhada chapinha sob os pés
+- A garrafa assobia no ar
+- Depois de quebrar, os cacos da garrafa quicam
+- Objetivo cumprido toca um acorde menor sombrio com um sininho, menos cara de videogame
+- Pegar item ficou mais discreto, com farfalhar
+- Ler papel tem o som de virar a folha
+- Grito do Inspetor mais grave e rasgado; a Procissão tem grito próprio
+- Depois de ser atacada, zumbido no ouvido e o mundo abafado por uns segundos
+- Com a vida baixa, a audição fica abafada
+- Com medo extremo o mundo abafa um pouco
+- Ao morrer, o som do mundo some devagar e fica abafado
+- Pausa e diário abafam o som em vez de deixar tudo tocando igual
+- No menu e na pausa, respiração, lanterna e música param
+- Trocar de aba suspende o áudio e ele volta quando você volta
+- Se o navegador travar o som, ele volta no primeiro clique ou tecla
+- Debaixo da terra a chuva vira um murmúrio abafado lá em cima
+- No andar de cima a chuva no telhado é mais alta
+- O vento lá fora vem em rajadas
+- Trovão ao ar livre tem estalo inicial e um segundo ronco; dentro do prédio chega abafado
+- Goteiras caem em poça (gota dupla) nos túneis e salas alagadas, e pingam mais vezes nos túneis
+- No térreo, de vez em quando, passos de madeira no andar de cima
+- No andar de cima, às vezes batidas vindas do chão
+- Nos túneis, tremores graves com pedrinhas caindo do teto
+- Ratos correndo e guinchando nas calmarias
+- O prédio estala e range sozinho de vez em quando
+- Lá fora, um portão range ao vento ao longe
+- Motor do carro com rotação variando e trepidação; ao morrer cai de rotação
+- A freada tem chiado agudo de pneu e baque no fim
+- O orelhão toca com campainha metálica de verdade
+- Cavar tem raspar de pá e pedrinhas, diferente a cada golpe
+- Válvula com guincho de metal e jato de água
+- Cano estourando com ressonância metálica e água correndo
+- Forçar a porta às vezes estala a madeira
+- Ofego em duas partes (puxar e soltar o ar)
+- Alucinações de sussurro em sílabas que giram em volta da sua cabeça
+- Um erro no som nunca mais trava o jogo: o áudio se protege e segue
