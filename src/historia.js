@@ -2,6 +2,8 @@
 // Liga-se ao motor por poucos ganchos em jogo.js (instalarHistoria) e embrulha os mapas sem editá-los.
 // Todo o texto mora em roteiro.js; aqui só fica a lógica de quando e como ele aparece.
 
+import { instalarMundo } from './historia-mundo.js';
+
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 // Legenda: rubricas entre parênteses ficam em itálico e apagadas ("(eco)", "(na fita)"...)
@@ -50,6 +52,9 @@ export function instalarHistoria(c) {
   const falarLinhas = linhas => { if (!linhas || !linhas.length) return; R.falas.__h = linhas; c.falar('__h'); };
   const hoje = () => { const d = new Date(); return `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}/${d.getFullYear()}`; };
   const nomeJogador = () => { const n = lsGet(NOME_KEY, ''); return typeof n === 'string' ? n.trim().slice(0, 16) : ''; };
+
+  // Lote 2: lore do mundo (instalado antes dos embrulhos abaixo, para rodar depois deles na hora de montar o mapa)
+  const MUN = instalarMundo(c, { falarLinhas, conqs, nomeJogador, esc, pick });
 
   // ------------------------------------------------------------------
   // Mapas: embrulhos que acrescentam segredos sem mexer em mapas.js
@@ -166,6 +171,7 @@ export function instalarHistoria(c) {
         }
       } else olharT = 0;
     }
+    MUN.tick(dt);
   }
 
   // ------------------------------------------------------------------
@@ -180,18 +186,20 @@ export function instalarHistoria(c) {
       else if (St.capDano >= 60) reacao = dr.ferida;
       else if (St.capVisto === 0) reacao = dr.nunca_vista;
       else if (St.capT < 360) reacao = dr.rapida;
+      else if ((St.capLore || 0) >= 3 && dr.leu) reacao = dr.leu;
     }
     if (reacao) setTimeout(() => { if (S() === St && !St.dead) falarLinhas(reacao); }, 9000);
     const rl = R.recados_lia || {};
     const tipo = St.capDano === 0 && (rk === 'S' || rk === 'A') ? 'perfeito' : St.capDano >= 60 ? 'ferida' : 'normal';
-    const lista = rl[tipo] || []; return lista.length ? lista[St.chapter % lista.length] : '';
+    const lista = (tipo === 'normal' && MUN.culpa(St) && rl.culpa) || rl[tipo] || []; return lista.length ? lista[St.chapter % lista.length] : '';
   }
 
   // ------------------------------------------------------------------
   // Chamado (regra 5): vozes por capítulo, e o registro de quem respondeu
   // ------------------------------------------------------------------
   function vozChamado() {
-    const St = S(), l = (R.chamados && R.chamados[St.chapter]) || R.falas.chamado;
+    const St = S(), esp = MUN.chamadoEspecial(St); if (esp) return esp;
+    const l = (R.chamados && R.chamados[St.chapter]) || R.falas.chamado;
     const k = 'nChamados' + St.chapter, n = St.flags[k] = (St.flags[k] || 0) + 1;
     return l[Math.min(n - 1, l.length - 1)] || R.falas.chamado[0];
   }
@@ -242,7 +250,7 @@ export function instalarHistoria(c) {
   function textoFinal(tipo, F) {
     const St = S(); let t = F.texto;
     if (tipo === 'verdadeiro') { if (St.flags.carrinhoAzul && F.extraCarrinho) t += '\n\n' + F.extraCarrinho; if (St.notes.n13 && F.extraDesenho) t += '\n\n' + F.extraDesenho; }
-    return t;
+    return t + MUN.extrasFinal(tipo, F);
   }
   function aoFinal(tipo) {
     const St = S();

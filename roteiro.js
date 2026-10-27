@@ -268,6 +268,7 @@ window.ROTEIRO = {
       { quem: "diretor", texto: "Os pais estão satisfeitos. O bispo está satisfeito." },
       { quem: "diretor", texto: "Moacir, a combinação nova do quadro de chaves é {q}. Não passe para as freiras." },
       { quem: "diretor", texto: "E pare de trancar os pequenos nos armários a noite inteira. Uma hora basta." },
+      { quem: "diretor", texto: "As cartas das famílias continuam retidas. Saudade faz barulho." },
       { quem: "voz", texto: "(ao fundo, uma criança cochicha) ...tá gravando?" }
     ] },
     { id: "f2", titulo: "Fita 2 — Irmã Celeste, 1979", linhas: [
@@ -276,11 +277,13 @@ window.ROTEIRO = {
       { quem: "celeste", texto: "O Joaquim escreveu regras para elas sobreviverem. Cinco regras. A sexta, 'não entre na capela', não é dele. É do diretor." },
       { quem: "celeste", texto: "O diretor tem uma sala embaixo dos túneis. A água só baixa girando as válvulas na ordem que o Moacir usa: {v}." },
       { quem: "celeste", texto: "O Joaquim diz que tem uma sétima. Escreveu atrás da folha, pra ninguém ver." },
+      { quem: "celeste", texto: "Eu deixo uma vela acesa em cima dos armários onde dá pra se esconder. Onde eu acendo, ele não procura." },
       { quem: "celeste", texto: "Hoje à noite eu vou ajudar as crianças a chegar até o sino. Que Deus perdoe todos nós." }
     ] },
     { id: "f3", titulo: "Fita 3 — Moacir", linhas: [
       { quem: "moacir", texto: "Eu não enxergo mais as letras. Estou gravando porque não consigo escrever." },
       { quem: "moacir", texto: "Eu também dormi nessas camas, sabia? Fui aluno daqui. O diretor de antes me trancava no armário." },
+      { quem: "moacir", texto: "Uma vez trancaram o Luiz comigo. O sino demorou. Quando abriram a porta, só eu saí." },
       { quem: "moacir", texto: "O diretor diz que o silêncio salva as almas. Eu fiz tudo o que ele mandou." },
       { quem: "moacir", texto: "Mas agora eu ouço tudo. Ouço o coração das crianças através das portas." },
       { quem: "moacir", texto: "E quando escuto um barulho... eu não consigo parar. Eu só queria silêncio. Só silêncio." }
@@ -296,7 +299,8 @@ window.ROTEIRO = {
     { id: "f5", titulo: "Rádio do posto", linhas: [
       { quem: "joaquim", texto: "(no rádio) Moça. Eu não consegui tirar os três. O fogo pegou a escada antes." },
       { quem: "joaquim", texto: "(no rádio) Desde então eu fico aqui. Avisando. Ninguém mais escuta um velho morto." },
-      { quem: "joaquim", texto: "(no rádio) Faz o que o menino pediu. E não confia na sexta regra." }
+      { quem: "joaquim", texto: "(no rádio) Faz o que o menino pediu. E não confia na sexta regra." },
+      { quem: "joaquim", texto: "(no rádio) A fita fui eu que mandei. Quinze anos tentando chegar no correio." }
     ] },
     { id: "f6", titulo: "Fita escondida — Tomé", secreta: true, linhas: [
       { quem: "tome", texto: "(cochichando) Tá gravando? Tá. Aqui é o Tomé. Quarta série." },
@@ -328,12 +332,12 @@ window.ROTEIRO = {
     { id: "n10", titulo: "Carta do Diretor ao bispo", texto: "Excelência,\no incêndio será tratado como acidente. As três crianças constarão como fugitivas.\nO Inspetor Moacir não será encontrado. A capela será lacrada e o sino, silenciado.\nSugiro acrescentar às regras dos funcionários: ninguém entra na capela. Ninguém toca o sino.\n— Albano" },
     { id: "n11", titulo: "Lápide rachada", texto: "AQUI JAZEM OS QUE NÃO FALARAM\n\n(riscado na pedra, por cima)\naqui jazem os que não DEIXARAM falar" },
     { id: "n12", titulo: "Recorte de jornal", texto: "INCÊNDIO NO INTERNATO SÃO LÁZARO — 1979\nBombeiros encontram a capela trancada por fora.\nO sino estava tocando quando chegaram. Ninguém estava puxando a corda.\nVizinhos dizem ouvir nove badaladas toda noite às 21h.\n\n(na margem, a caneta) se ligar às nove, o sino responde." },
-    { id: "n13", titulo: "Desenho do Davi", secreta: true, texto: "(um desenho de giz de cera, dobrado em quatro: duas crianças de mãos dadas na frente de uma casa com um sino)\n\n(embaixo, letra caprichada)\nFELIZ ANIVERSÁRIO LIA\nquando eu sair daqui a gente toca o sino junto\n— Davi, 1979" }
+    { id: "n13", titulo: "Desenho do Davi", secreta: true, texto: "(um desenho de giz de cera, dobrado em quatro: duas crianças de mãos dadas na frente de uma casa com um sino)\n\n(embaixo, letra caprichada)\nFELIZ ANIVERSÁRIO LIA (14!)\nquando eu sair daqui a gente toca o sino junto\n— Davi, 1979\n\nP.S. não foi culpa sua eu ter vindo. eu que pedi." }
   ],
 
   // Páginas do diário do Davi (cada uma tem um número do cofre)
   paginas: [
-    { id: "p1", titulo: "Diário do Davi — página 1", texto: "A Lia faz aniversário amanhã. Fiz um desenho pra ela, mas não deixam mandar carta. Escondi atrás dos livros do diretor.\nPrimeiro número do segredo: {d1}." },
+    { id: "p1", titulo: "Diário do Davi — página 1", texto: "A Lia faz 14 anos amanhã, dia 15. Fiz um desenho pra ela, mas não deixam mandar carta. Escondi atrás dos livros do diretor.\nPrimeiro número do segredo: {d1}." },
     { id: "p2", titulo: "Diário do Davi — página 2", texto: "O Tomé trouxe o carrinho escondido. Se o Inspetor ouvir as rodinhas, já era.\nSegundo número: {d2}." },
     { id: "p3", titulo: "Diário do Davi — página 3", texto: "A Ana não para de contar. Diz que se parar de olhar, a gente some. Acho que ela tá certa.\nTerceiro número: {d3}." },
     { id: "p4", titulo: "Diário do Davi — página 4", texto: "Escrevi essa aqui embaixo, na água. Vi o diretor abrindo um cofre no fim deste túnel com esses números. Anotei tudo.\nÚltimo número: {d4}.\nHoje à noite a gente toca o sino." }
@@ -653,6 +657,301 @@ window.ROTEIRO.progressao = {
     { id: "senha", nome: "Silêncio", desc: "Digite a palavra que dá nome à Hora na tela de título.", secreta: true, dica: "A palavra que eles mais repetem." }
   ]
 };
+
+// =====================================================================
+// LOTE 2 — MUNDO E HISTÓRIA (lido por src/historia-mundo.js)
+// Linha do tempo da casa: Pe. Osvaldo funda o asilo-escola em 1931 (Hora do Recolhimento, cantada).
+// Em 1947, velho e doente, ele cola por cima a "Hora do Silêncio". Albano assume em 1951 e endurece a regra.
+// Moacir entra aos 10 anos (1948), fica preso no armário com o Luiz em 1952 (só ele sai), vira monitor
+// e, em 1962, Inspetor (o "sem nome" de 1962 é o primeiro armário dele). A Lia estava matriculada para 1979;
+// a mãe cancelou a vaga dela e o Davi foi sozinho ("pra Lia não"). Albano morre em 1980, trancado num armário.
+// Seu Joaquim (morto em 1979) é quem põe a fita do Davi no correio, em 1994.
+// =====================================================================
+(function (R) {
+  // ---- notas novas: todas "secretas" (bônus de quem explora; não viram coleta obrigatória)
+  // onde: [mapa, sala, tipo de spot] — o módulo procura um spot livre na sala
+  R.notas.push(
+    { id: "n14", secreta: true, onde: ["terreo", "aula", "mesa"], titulo: "Livro de matrícula — 1979", texto: "INTERNATO SÃO LÁZARO — ALUNOS DE 1979 — 37 matriculados\n...\n23. Moraes, Davi — presente\n...\n(três nomes riscados a caneta vermelha: Prado, Ana L. · Ribeiro, Tomé · Moraes, Davi)\n\n(no fim da lista, a lápis)\nMoraes, Lia — matrícula cancelada pelo responsável. Vaga transferida ao irmão." },
+    { id: "n15", secreta: true, onde: ["terreo", "diret", "mesa"], titulo: "Correspondência retida", texto: "(uma caixa de sapato com dezenas de envelopes, todos carimbados: RETIDA — HORA DO SILÊNCIO. Três estão abertos.)\n\n(letra de mãe) Filho, a Lia chora toda noite querendo você em casa. Na Páscoa a gente vai te buscar.\n\n(letra de menina) Davi, mãe disse que você tá de castigo de novo. Para de falar de noite, bobão. Eu vou te buscar nas férias. — Lia\n\n(letra do Davi, nunca enviada) Lia, aqui não pode falar de noite. Você vem me buscar no meu aniversário? Se não der, eu toco o sino pra você ouvir de casa." },
+    { id: "n16", secreta: true, onde: ["terreo", "enferm", "mesa"], titulo: "Prontuário — Ana Luísa Prado, 9 anos", texto: "Duas noites no armário sem luz, nov. 1978.\nDesde então conta até dez em voz alta, sem parar.\nDiz que, se parar de olhar as pessoas, elas somem. \"Foi assim que a mamãe sumiu.\"\nSó dorme com a lanterna da Irmã Celeste acesa no rosto.\n\n(letra da Irmã Celeste, embaixo) Ela não é teimosa. Ela tem medo de ficar sozinha no escuro." },
+    { id: "n17", secreta: true, onde: ["terreo", "biblio", "mesa"], titulo: "Manual do Internato — Pe. Osvaldo, 1931", texto: "Art. 9 — Às nove horas, a Hora do Recolhimento: as crianças cantam juntas e o sino abençoa o sono.\n\n(por cima, uma folha datilografada colada com goma)\nRETIFICAÇÃO — 1947. A Hora do Recolhimento passa a se chamar HORA DO SILÊNCIO. Das 21h ao toque do sino, ninguém fala. Quem falar será recolhido.\n\n(na margem, a caneta) O sino era bênção. Viraram ele em castigo." },
+    { id: "n18", secreta: true, onde: ["tuneis", "secreta", "mesa"], titulo: "Livro dos Inspetores", texto: "INSPETORES DE DISCIPLINA — SÃO LÁZARO\n\nBráulio Nunes — aluno de 1931 a 1939. Armário. Inspetor de 1947 a 1961.\nMoacir Duarte — aluno de 1948 a 1956. Armário. Monitor da Hora em 1956. Inspetor desde 1962.\n\n1994 —\n\n(a última linha está em branco. A tinta da caneta ao lado ainda está molhada.)" },
+    { id: "n19", secreta: true, onde: ["tuneis", "secreta", "mesa"], titulo: "Recorte de jornal — 1980", texto: "EX-DIRETOR DO SÃO LÁZARO É ENCONTRADO MORTO\nAlbano Teixeira, 58 anos, foi achado dentro de um armário da própria casa, em Campos do Jordão.\nA porta estava trancada por fora. A polícia não encontrou a chave.\nVizinhos dizem ter ouvido batidas \"a noite inteira, até as nove\".\n\n(colado com outra cola, em letra de criança) ele também foi pra cama" },
+    { id: "n20", secreta: true, onde: ["superior", "celeste", "chao"], titulo: "Mala embaixo da cama", texto: "(uma mala de couro, feita e nunca levada)\nTrês mudas de roupa de criança. Um terço. Uma lanterna sem pilha.\nQuatro passagens de ônibus: Campos do Jordão — Aparecida, 15/03/1979, 6h10.\nNomes a lápis no verso: Celeste · Davi · Ana · Tomé.\n\n(um bilhete por cima) Se o sino não funcionar, a gente vai embora de manhã. Os quatro." },
+    { id: "n21", secreta: true, onde: ["terreo", "enferm", "prateleira"], titulo: "Receita — papel timbrado da diretoria", texto: "Para o Inspetor M. Duarte:\nColírio de nitrato de prata, 3x ao dia. Aumentar a dose.\nNão informar ao médico da diocese.\n— A.\n\n(na prateleira, uma fileira de frascos vazios, todos com a mesma etiqueta)" },
+    { id: "n22", secreta: true, onde: ["superior", "roup", "prateleira"], titulo: "Uniforme dobrado", texto: "(numa prateleira separada, um uniforme de menina, nunca usado, ainda com o alfinete da costureira)\nEtiqueta: LIA MORAES — matrícula 1979.\n\n(um bilhete preso no alfinete, letra da Irmã Celeste)\nOs pais iam mandar os dois. O Davi pediu para vir sozinho. Disse: \"pra Lia não\"." },
+    { id: "n23", secreta: true, onde: ["estrada", "posto", "prateleira"], titulo: "Livro-caixa do posto", texto: "FIADO — 1979\n10/03 — 5 litros, caminhão do leite.\n12/03 — querosene, Irmã Celeste (velas da capela).\n14/03 — 20 litros, Diretor Albano. Disse que era pro gerador.\n\n(a lápis, depois) O gerador do internato é a óleo. — J." },
+    { id: "n24", secreta: true, onde: ["terreo", "maq", "chao"], titulo: "Galões vazios", texto: "(dois galões de lata, amassados, com o carimbo POSTO SERRA pintado à mão)\nDentro, nem cheiro de óleo. Cheiro de gasolina.\nUm deles tem uma data riscada a prego: 14-3-79." },
+    { id: "n25", secreta: true, onde: ["terreo", "diret", "mesa"], titulo: "Mata-borrão do diretor", texto: "(a mesma frase repetida dezenas de vezes, cada vez mais parecida com uma letra que não é a dele)\nNão entre na capela. Nunca toque o sino.\nNão entre na capela. Nunca toque o sino.\nNão entre na capela. Nunca toque o sino.\n\n(a última linha é idêntica à letra do Seu Joaquim)" },
+    { id: "n26", secreta: true, onde: ["terreo", "cozinha", "mesa"], titulo: "Cardápio da semana — março de 1979", texto: "SEG 10: sopa de fubá. TER 11: arroz e ovo. QUA 12: sopa.\nQUI 13: polenta. SEX 14: sopa para 37.\n\n(a caneta, pela diretoria) SEXTA, 14: sem jantar — Davi M., Tomé R., Ana L. P. (falaram na Hora).\n\n(a lápis, letra da cozinheira) Deixei três pães no armário da escada. Que Deus me perdoe." },
+    { id: "n27", secreta: true, onde: ["terreo", "hall", "mesa"], titulo: "Regulamento interno — 1961", texto: "INTERNATO SÃO LÁZARO — REGULAMENTO DOS FUNCIONÁRIOS\nArt. 9 — Às 21h, a Hora do Silêncio. O sino da capela marca o começo.\nArt. 10 — Criança que falar dorme no armário. Criança que chorar, dorme no porão.\nArt. 11 — As freiras não interferem na disciplina.\n— Diretor A. Teixeira. Carimbo da diocese." },
+    { id: "n28", secreta: true, onde: ["terreo", "biblio", "prateleira"], titulo: "Ficha de aluno — Moacir Duarte, 1948", texto: "Moacir Duarte, 10 anos. Órfão. Entrada: março de 1948.\nObservação: fala dormindo. Ouve demais.\nTratamento recomendado: a Hora. — Pe. Osvaldo\n\n(outra caneta, 1952) Colega de armário: Luiz, 11 anos. Encerrado em 12/06/1952.\n(outra caneta, 1956) Aprendeu. Será útil à casa. — A." },
+    { id: "n29", secreta: true, onde: ["terreo", "hall", "chao"], titulo: "Etiqueta no hidrante", texto: "(a caixa vermelha do hidrante está vazia. O vidro, intacto.)\nRETIRAR AS MANGUEIRAS. OS MENINOS BRINCAM E FAZEM BARULHO. — Diretoria, 1977.\n\n(colado com fita, um desenho de giz de cera: um bombeiro com uma mangueira enorme, apagando um prédio inteiro)\nTOMÉ" },
+    { id: "n30", secreta: true, onde: ["estrada", "posto", "prateleira"], titulo: "Recibo dos Correios", texto: "EMPRESA BRASILEIRA DE CORREIOS — Agência Campos do Jordão\nFevereiro de 1994. Impresso: 1 fita cassete.\nRemetente: J. S. — Posto Serra, km 9.\nDestinatária: Lia Moraes.\n\n(o carimbo está borrado de água. Dentro da gaveta, o selo usado é de 1979.)" },
+    { id: "n31", secreta: true, onde: ["terreo", "refeit", "mesa"], titulo: "Hino do São Lázaro", texto: "(emoldurado, com o vidro rachado)\nNo silêncio a gente aprende,\nquem cala nunca se perde.\n\nQuando o sino bate nove,\na boca fecha e ninguém se move.\n\nDorme a casa, dorme a gente,\no Inspetor escuta a mente.\n\n(a quarta estrofe foi raspada da moldura com a ponta de uma faca)" },
+    { id: "n32", secreta: true, onde: ["superior", "celeste", "mesa"], titulo: "Foto de visita — 1978", texto: "(uma foto de domingo, no pátio: um menino de uniforme segura a mão de uma menina mais velha, de vestido; os dois olham o sino da capela)\n\n(no verso, letra da Irmã Celeste)\nDavi e a irmã, Lia. Dia de visita, nov. 1978.\nVisitas suspensas pelo diretor depois deste dia: \"a menina falou alto no pátio\"." },
+    { id: "n33", secreta: true, onde: ["superior", "brinq", "mesa"], titulo: "A música da caixinha", texto: "(uma folha de caderno com pauta desenhada à mão, letra da Ana)\nUm, dois, a vela apagou.\nTrês, quatro, o moço escutou.\nCinco, seis, ninguém respirou.\nSete, oito, nove: a Hora chegou.\nDez... quem não olhou?" },
+    { id: "n34", secreta: true, onde: ["tuneis", "hub", "chao"], titulo: "Página arrancada", texto: "(uma página do livro de ocorrências, grudada na parede pela umidade)\n14/03/1979 — 21h58. Crianças e a Irmã Celeste na capela. Tocando o sino.\nTranquei por fora. As velas estavam acesas.\nO Inspetor ficou do lado de fora, de joelhos. Não quis entrar.\n— A." },
+    { id: "n35", secreta: true, onde: ["tuneis", "secreta", "mesa"], titulo: "Resposta do bispo", texto: "Prezado Albano,\nmantenha a disciplina. As famílias pagam pelo silêncio, e o silêncio é o que a Igreja vende de mais caro.\nQuanto à capela: lacre. Quanto aos papéis: queime o que precisar queimar.\nNinguém mais da diocese subirá a serra.\n— D." },
+    { id: "n36", secreta: true, onde: ["cemiterio", "capela", "mesa", { x: 2.4, y: .02, z: -64.6 }], titulo: "Livro de ocorrências — 1994", texto: "(o mesmo livro da recepção. Uma página nova, letra apertada, tinta ainda brilhando)\n{noite}" },
+    { id: "n37", secreta: true, onde: ["superior", "celeste", "prateleira"], titulo: "Lista de orações da Irmã Celeste", texto: "(trinta e sete nomes, um por linha, com a data do dia ao lado de cada um: ela rezava por todos, todo dia)\n...\nPrado, Ana Luísa — conta até dez. Rezar duas vezes.\nRibeiro, Tomé — corre quando tem medo. Rezar duas vezes.\nMoraes, Davi — não chora nunca. Rezar três vezes.\n\n(os três últimos sublinhados com força)" },
+    { id: "n38", secreta: true, onde: ["tuneis", "secreta", "mesa"], titulo: "Rascunho das regras", texto: "(a primeira versão da folha do Seu Joaquim. Cinco regras, na letra dele, firme e redonda.)\n1. Não corra. 2. Fique parada. 3. Armário ou cama. 4. Olhe a menina. 5. Não responda.\n\n(embaixo, uma sexta linha, em letras enormes, tortas, afundadas no papel, como de quem escreve sem enxergar)\n6. NÃO ENTRE NA CAPELA" },
+    { id: "n39", secreta: true, onde: ["superior", "corr", "chao"], titulo: "Bilhete no castiçal", texto: "(enrolado na base de uma vela votiva, letra da Irmã Celeste)\nOnde eu acendo, ele não procura.\nAcendam e escondam-se. Eu volto toda noite pra acender." },
+    { id: "n40", secreta: true, onde: ["superior", "dormA", "cama"], titulo: "Regras das crianças", texto: "(riscado na cabeceira com um prego, letra de criança, por baixo da tinta)\n8. se a Ana contar, conta junto baixinho que ela gosta\n9. o T sabe o armário bom\n10. o sino desliga ele\n11. a Irmã Celeste deixa vela onde é seguro\n— D. T. A." }
+  );
+  // ---- comentários quando uma nota é lida pela primeira vez (fala curta, depois de fechar o papel)
+  R.aoLer = {
+    n2: [{ quem: "lia", texto: "Vinte e uma e quatro. Vinte e uma e trinta e um. Ele anotava a hora de cada criança." }],
+    n3: [{ quem: "lia", texto: "Trinta e quatro pratos. Ninguém perguntou pelos outros três." }],
+    n4: [{ quem: "lia", texto: "O diretor recusou. Preferia um vigia que não via." }],
+    n5: [{ quem: "lia", texto: "Bombeiro. Ele queria tirar todo mundo do fogo." }],
+    n6: [{ quem: "lia", texto: "Ela não queria assustar ninguém. Ela tinha medo de ficar sozinha." }],
+    n7: [{ quem: "lia", texto: "O Inspetor decide. Sempre a mesma coisa." }],
+    n8: [{ quem: "lia", texto: "Ele vira a cabeça pro barulho. Não pro meu rosto. Nunca pro meu rosto." }],
+    n9: [{ quem: "lia", texto: "Uma sala que não existe. Pagou em dinheiro pra ninguém lembrar." }],
+    n10: [{ quem: "lia", texto: "Fugitivas. Ele escreveu que as crianças fugiram." }],
+    n12: [{ quem: "lia", texto: "O sino tocava sozinho quando os bombeiros chegaram. Era ele. Era o Davi." }],
+    n14: [{ quem: "lia", texto: "(bem baixo) Era pra ser eu." }],
+    n15: [{ quem: "lia", texto: "Ele nunca recebeu. Nenhuma. E achou que a gente tinha esquecido dele." }],
+    n16: [{ quem: "lia", texto: "Ela conta pra ninguém sumir. Pra ninguém mais sumir." }],
+    n17: [{ quem: "lia", texto: "Era uma música. A Hora era uma música. Alguém transformou num castigo." }],
+    n18: [{ quem: "lia", texto: "Todos eles foram crianças trancadas. E a última linha tá esperando alguém." }],
+    n19: [{ quem: "lia", texto: "Trancado por fora. Ninguém achou a chave. Alguém achou." }],
+    n20: [{ quem: "lia", texto: "Quatro passagens. Ela ia levar os três embora de manhã." }],
+    n21: [{ quem: "lia", texto: "Ele não ficou cego. Deixaram ele cego." }],
+    n22: [{ quem: "lia", texto: "Pra Lia não. (silêncio) Ele foi no meu lugar." }],
+    n23: [{ quem: "lia", texto: "Vinte litros. Na véspera do fogo. E o gerador nem era a gasolina." }],
+    n24: [{ quem: "lia", texto: "Gasolina, num prédio que não usava gasolina." }],
+    n25: [{ quem: "lia", texto: "Ele copiou a letra do velho. A sexta regra é dele." }],
+    n26: [{ quem: "lia", texto: "Sem jantar. Os três, de castigo, na noite do fogo." }],
+    n27: [{ quem: "lia", texto: "Nove da noite. Era castigo antes de virar maldição." }],
+    n28: [{ quem: "lia", texto: "Dez anos. Ouve demais. Trancaram ele até ele aprender a não ouvir. E ele aprendeu o contrário." }],
+    n29: [{ quem: "lia", texto: "Tiraram as mangueiras por causa do barulho. Dois anos antes do fogo." }],
+    n30: [{ quem: "lia", texto: "J. S. Joaquim Silva. Ele mandou a fita. Um homem que morreu em 1979 foi no correio." }],
+    n31: [{ quem: "lia", texto: "Arrancaram a última estrofe. O que será que ela dizia?" }],
+    n32: [{ quem: "lia", texto: "Eu não lembro disso. Eu... eu lembro do sino." }],
+    n33: [{ quem: "lia", texto: "Dez... quem não olhou. (engole seco) Eu sei o resto da música." }],
+    n34: [{ quem: "lia", texto: "Tranquei por fora. Ele escreveu. Com a mesma caneta das ocorrências." }],
+    n35: [{ quem: "lia", texto: "Queime o que precisar queimar." }],
+    n36: [{ quem: "lia", texto: "É a minha noite. Ele anotou tudo o que eu fiz." }],
+    n37: [{ quem: "lia", texto: "Três vezes pelo Davi. Porque ele não chorava." }],
+    n38: [{ quem: "lia", texto: "Foi ele. O Inspetor escreveu a sexta. Sem enxergar o papel." }],
+    n39: [{ quem: "lia", texto: "As velas em cima dos armários. É ela. Ela ainda acende." }],
+    n40: [{ quem: "lia", texto: "As regras deles. Escritas por baixo das regras dos adultos." }]
+  };
+  // pares que, lidos juntos, rendem uma fala e às vezes uma conquista
+  R.pares = [
+    { ids: ["n23", "n24"], quem: "lia", texto: "O diretor comprou vinte litros de gasolina no posto. Na véspera. Não foi acidente.", conquista: "vinte_litros" },
+    { ids: ["n14", "n22"], quem: "lia", texto: "Era a minha vaga. O meu uniforme. Ele vestiu o castigo que era meu.", conquista: "era_pra_ser_eu" },
+    { ids: ["n4", "n21"], quem: "lia", texto: "Ficha médica, colírio, aumentar a dose. O diretor fez um monstro de propósito." },
+    { ids: ["n25", "n38"], quem: "lia", texto: "O diretor treinou a letra do Joaquim, e o Moacir copiou a regra no papel dele. A sexta foi feita a quatro mãos." }
+  ];
+  // o Davi comenta baixinho cada página do diário dele (e o aniversário, se o desenho foi achado)
+  R.paginasReage = {
+    p1: [{ quem: "davi", texto: "(eco) Você leu? Que vergonha, Lia." }],
+    p2: [{ quem: "davi", texto: "(eco) O Tomé chorou quando eu escrevi isso. Achou que ia perder o carrinho." }],
+    p3: [{ quem: "davi", texto: "(eco) Ela tava certa. A gente sumiu." }],
+    p4: [{ quem: "davi", texto: "(eco, da água) Esse eu escrevi molhado. Tremendo." }],
+    p4desenho: [{ quem: "davi", texto: "(eco) Você achou o desenho? Atrasado, né. Feliz aniversário." }]
+  };
+  // o Inspetor reage de longe a certas descobertas
+  R.inspetorLonge = {
+    n14: "(muito longe, através das paredes) ...Moraes. Eu lembro do menino Moraes.",
+    n28: "(longe) Quem está mexendo na minha ficha?",
+    n22: "(longe, cantarolando) No silêncio a gente aprende..."
+  };
+
+  // ---- a Lia comenta mais lugares (mapa:sala)
+  Object.assign(R.lugares, {
+    "estrada:posto": [{ quem: "lia", texto: "Uma loja de posto parada em 1979. O calendário nem virou." }],
+    "terreo:hall": [{ quem: "lia", texto: "Um balcão, um livro aberto, um quadro de chaves. Tudo esperando o turno da noite." }],
+    "terreo:cw": [{ quem: "lia", texto: "Os armários do corredor. Todos com a porta encostada. Nenhum trancado." }],
+    "terreo:ce": [{ quem: "lia", texto: "Marcas de dedo na parede. Na altura de uma criança." }],
+    "terreo:aula": [{ quem: "lia", texto: "Trinta e sete carteiras. A lousa ainda tem giz fresco." }],
+    "terreo:biblio": [{ quem: "lia", texto: "Livros de disciplina, de catecismo, de silêncio. Nenhum de história." }],
+    "terreo:despensa": [{ quem: "lia", texto: "Latas estufadas, sacos de fubá. Alguém contava os pães." }],
+    "terreo:lavand": [{ quem: "lia", texto: "Uniformes no varal. Ainda pingando. Quinze anos pingando." }],
+    "terreo:banh": [{ quem: "lia", texto: "Os espelhos foram cobertos com lençol. Não queriam que eles se vissem." }],
+    "superior:patamar": [{ quem: "lia", texto: "O patamar. Daqui dá pra ouvir o prédio inteiro respirar." }],
+    "superior:corr": [{ quem: "lia", texto: "Velas acesas em cima de alguns armários. Alguém acendeu hoje." }],
+    "superior:dormA": [{ quem: "lia", texto: "Cabeceiras riscadas. Eles escreviam onde o adulto não lia." }],
+    "superior:dormB": [{ quem: "lia", texto: "Os lençóis estão esticados demais. Ninguém dormiu aqui. Ninguém podia se mexer." }],
+    "superior:dormC": [{ quem: "lia", texto: "Um sapatinho embaixo de cada cama. Um par só, separado." }],
+    "superior:dormD": [{ quem: "lia", texto: "Um cheiro de vela apagada. E de criança com medo." }],
+    "superior:banhS": [{ quem: "lia", texto: "As torneiras foram arrancadas. Água corrente faz barulho." }],
+    "superior:brinq": [{ quem: "lia", texto: "Brinquedos sem rodas, sem sino, sem corda. Brinquedos que não fazem barulho." }],
+    "superior:sotao": [{ quem: "lia", texto: "O poço do monta-cargas. Cheira a água parada lá embaixo." }],
+    "tuneis:dep": [{ quem: "lia", texto: "Caixas de documentos, todas com o mesmo carimbo. Arquivo morto." }],
+    "cemiterio:cem": [{ quem: "lia", texto: "Tanta cruz pra uma casa de crianças. Tanta." }]
+  });
+
+  // ---- livro de ocorrências: a sua noite, na letra da casa (tela de morte, n2 e n36)
+  R.ocorrencias = {
+    data: "14/03/1994",
+    morte: {
+      inspetor: ["{d} — {h}. Visitante {nome} fez barulho {lugar}. O Inspetor decidiu.", "{d} — {h}. Visitante {nome} foi ouvida {lugar}. Armário.", "{d} — {h}. Visitante {nome} respirou alto demais {lugar}. O Inspetor decidiu."],
+      ana: ["{d} — {h}. Visitante {nome} parou de olhar a menina {lugar}. Ela contou até dez.", "{d} — {h}. Visitante {nome} piscou {lugar}. A menina achou."],
+      procissao: ["{d} — {h}. Visitante {nome} estava fora da cama {lugar}. Foi para a fila.", "{d} — {h}. Visitante {nome} não estava deitada quando eles passaram {lugar}."]
+    },
+    assinatura: "Autorizado. — A.",
+    respondeu: "{d} — {h}. Visitante {nome} respondeu quando chamaram. Quem responde, fica.",
+    quieta: "— Visitante {nome} não fez barulho nenhum. Anotar.",
+    tinta: "(abaixo das linhas de 1979, em tinta fresca, com a data de hoje)",
+    tremida: "(a última linha, em letra tremida, grande, de quem escreve sem ver) EU OUVI VOCÊ",
+    nomePadrao: "Lia M.",
+    // linhas de acontecimento para o livro de 1994 (n36)
+    eventos: {
+      entrada: "{d} — 20h41. Visitante {nome} entrou pelo portão da frente. Sem autorização.",
+      gerador: "{d} — 20h58. Alguém ligou o gerador. O Inspetor acordou.",
+      procissao: "{d} — 21h03. A visitante estava deitada quando a fila passou. Escapou da ronda.",
+      ana: "{d} — 21h19. A visitante brincou com a aluna Ana L. P. e não piscou.",
+      cofre: "{d} — 21h33. Mexeram na gaveta do diretor.",
+      verso: "— A visitante leu o verso da folha. O zelador ensinou demais."
+    }
+  };
+  R.joaquimNG = " E fui eu que mandei te chamar.";
+
+  // ---- nomes riscados por dentro dos armários (um por armário, fixo; mostrado quando a Lia se esconde)
+  R.armarios = [
+    { texto: "ROSA · 1965", nome: "ROSA" },
+    { texto: "LUIZ 11 ANOS · eu não chorei · 1952", nome: "LUIZ" },
+    { texto: "M.D. 1949 — eu não falo eu não falo eu não falo", nome: "MD" },
+    { texto: "MARIA DAS DORES · falei só um pouquinho", nome: "MARIA" },
+    { texto: "T.R. 21h04 — quero minha mãe", nome: "TOME" },
+    { texto: "um dois tres quatro cinco seis sete oito nove DEZ ele foi", nome: "ANA" },
+    { texto: "BENTO 9 ANOS · 1975 · EU NÃO CONTO", nome: "BENTO" },
+    { texto: "JOÃO · bolinha de gude · 1955", nome: "JOAO" },
+    { texto: "D.M. — o sino desliga ele", nome: "DAVI" },
+    { texto: "(centenas de risquinhos de contagem, em grupos de cinco)", nome: null },
+    { texto: "MOACIR NÃO CHOROU · 1952", nome: "MD" },
+    { texto: "(marcas de unha, de cima a baixo. Nenhuma letra.)", nome: null }
+  ];
+  R.armariosFala = {
+    MD: [{ quem: "lia", texto: "(sussurrando) M.D. Moacir Duarte. Ele também ficava aqui." }],
+    BENTO: [{ quem: "lia", texto: "(sussurrando) Bento. O que não conta. O Tomé falou dele." }],
+    lapide: [{ quem: "lia", texto: "Eu li esse nome. Dentro do armário." }],
+    procissao: [{ quem: "lia", texto: "Eu ouvi esse nome no corredor. Na fila." }]
+  };
+  // a Procissão sussurra nomes (os mesmos das lápides)
+  R.procissaoNomes = ["...João...", "...Rosa...", "...Maria das Dores...", "...Luiz...", "...Bento...", "...silêncio, Lia..."];
+
+  // ---- lápides novas e variantes de lápide
+  R.lapides.push(
+    { id: "joaquim", nome: "JOAQUIM SILVA", datas: "1911 — 1979", frase: "zelador", epitafio: "\"Voltou pro fogo.\" Em cima da pedra, uma chave de portão igual à que você carrega." },
+    { id: "placa", nome: "AS IRMÃS DA RONDA", datas: "1931 — 1979", epitafio: "Placa de bronze: \"Faziam a ronda das camas às 21h, em fila, com velas, cantando baixinho.\" Alguém raspou CANTANDO e escreveu: silêncio." }
+  );
+  Object.assign(R.lapidesVariantes, {
+    joaquimVerso: "\"Voltou pro fogo.\" E embaixo, a lápis: a sétima é minha.",
+    celesteVelas: "Um terço enrolado na cruz. As contas ainda estão mornas. Na base, uma vela acesa: ela ainda acende.",
+    albanoRecorte: "Alguém colou na pedra um recorte de 1980: \"trancado por fora\".",
+    luizF3: "Alguém deixou um pião de madeira em cima. Novo. Riscado na base: M. — perdão.",
+    bento: { nome: "BENTO, 9 ANOS", datas: "1966 — 1975", epitafio: "A terra remexida. Ninguém procurou por você. Nem no cartaz." }
+  });
+
+  // ---- ecos da noite de 1979: uma cena só de som por capítulo, num lugar do caminho
+  R.ecos = [
+    { cap: 1, sala: "terreo:diret", linhas: [{ quem: "diretor", texto: "(eco de 1979, ao telefone) ...sim, Excelência. Medidas permanentes. Esta noite." }] },
+    { cap: 2, sala: "terreo:ce", linhas: [{ quem: "tome", texto: "(eco de 1979, arrastado pelo corredor) Eu não falei! Eu não falei! Moço, eu não falei!" }] },
+    { cap: 3, sala: "superior:roup", linhas: [{ quem: "ana", texto: "(eco de 1979, dentro de um armário) ...oito... nove... dez... mamãe? ...um... dois..." }] },
+    { cap: 4, sala: "tuneis:hub", linhas: [{ quem: "celeste", texto: "(eco de 1979, com água pelos joelhos) Rápido. Pro sino. Ninguém solta a mão." }] },
+    { cap: 5, sala: "cemiterio:capela", linhas: [{ quem: "voz", texto: "(eco de 1979) ...uma chave girando por fora. E depois, muitas mãos pequenas batendo na madeira." }] }
+  ];
+
+  // ---- linha do tempo do diário (aba Notas): cada data aparece quando a pista dela é lida
+  R.linhaTempo = [
+    { ano: "1931", texto: "Pe. Osvaldo funda o São Lázaro. A Hora do Recolhimento é cantada.", pista: "n17" },
+    { ano: "1947", texto: "A Hora do Recolhimento vira Hora do Silêncio.", pista: "n17" },
+    { ano: "1948", texto: "Moacir Duarte, 10 anos, órfão, entra no internato. \"Ouve demais.\"", pista: "n28" },
+    { ano: "1952", texto: "Moacir e Luiz trancados juntos no armário. Só Moacir sai.", pista: "n28" },
+    { ano: "1961", texto: "Albano escreve o regulamento: quem falar, dorme no armário.", pista: "n27" },
+    { ano: "1962", texto: "Moacir vira Inspetor.", pista: "n18" },
+    { ano: "1977", texto: "As mangueiras de incêndio são retiradas \"por causa do barulho\".", pista: "n29" },
+    { ano: "1978", texto: "Visitas da família Moraes suspensas. A Lia falou alto no pátio.", pista: "n32" },
+    { ano: "1979", texto: "A matrícula da Lia é cancelada. O Davi vai sozinho.", pista: "n14" },
+    { ano: "14/03/1979", texto: "Albano compra vinte litros de gasolina no posto.", pista: "n23" },
+    { ano: "14/03/1979", texto: "21h58. Albano tranca a capela por fora com as crianças lá dentro.", pista: "n34" },
+    { ano: "1980", texto: "Albano é achado morto num armário trancado por fora.", pista: "n19" },
+    { ano: "1994", texto: "Uma fita chega pelo correio. Remetente: J. S., Posto Serra.", pista: "n30" }
+  ];
+  R.linhaTempoTitulo = "O que eu sei";
+
+  // ---- anotações na margem, na letra da própria Lia, a partir da segunda noite
+  R.margemNG = {
+    n2: "já li isso. as horas mudam um pouco toda noite",
+    n4: "ele não é cego de tudo. ele sente a luz quente",
+    n6: "conta junto com ela",
+    n7: "correr é o pior",
+    n8: "o terço. qualquer barulho pequeno",
+    n10: "não confia na sexta",
+    n12: "não deixa o sino parar antes da hora",
+    p3: "é verdade. a gente some"
+  };
+  R.margemRubrica = "(na margem, a caneta azul, numa letra que é a sua)";
+
+  // ---- finais: linhas que entram pelo que a Lia descobriu
+  Object.assign(R.finais.verdadeiro, {
+    extraCulpa: "Antes de soltar a corda, ela disse: \"Era pra ser eu.\" E o Davi respondeu, pela última vez: \"Eu escolhi, Lia. Não foi culpa sua.\"",
+    extraCeleste: "No último banco, uma freira rezava baixinho. Quando o sino parou, ela se levantou e levou as crianças pela mão, com uma mala que esperou quinze anos.",
+    extraHino: "As crianças cantaram a quarta estrofe, a que tinham raspado da moldura: \"Quando o sino parar de vez, / a gente fala outra vez.\"",
+    extraLinhagem: "No livro dos Inspetores, a última linha, a de 1994, amanheceu riscada. Ninguém mais ia ser trancado para aprender.",
+    extraBispo: "Lia levou a carta do bispo para fora. Na semana seguinte, a serra encheu de repórter.",
+    extraMar: "Na praia, numa manhã de abril, uma menina de vestido contou as ondas até dez. E parou de contar.",
+    extraLuiz: "Ao lado do homem ajoelhado, um menino de onze anos com um pião na mão. Dois meninos saíram do armário. Pela primeira vez, juntos.",
+    joaquim: ["No portão, o velho de capa tirou o chapéu: \"Obrigado, moça.\"", "No portão, o velho de capa tirou o chapéu: \"Você ouviu todo mundo.\"", "No portão, o velho de capa tirou o chapéu: \"Agora eu posso descansar também.\" E não estava mais lá."],
+    moacir: "(rádio, dias depois) ...Moacir Duarte, cinquenta e seis anos, encontrado numa casa de repouso de Taubaté. Ele não fala. Os enfermeiros contam que ontem, às nove, ele dormiu pela primeira vez sem tapar os ouvidos..."
+  });
+  Object.assign(R.finais.comum, {
+    extraInspetora: "No retrovisor, por um segundo, os olhos dela estavam tapados por uma faixa branca. O rádio disse, baixinho: \"Silêncio.\" Quem responde, fica.",
+    extraCarta: "No banco do passageiro, um envelope que ela não lembrava de ter trazido, carimbado RETIDA. Letra de menino."
+  });
+  Object.assign(R.finais.silencio, {
+    extraRegra: "Em casa, ela achou a folha das regras no bolso. Embaixo da sétima, na letra dela mesma, uma linha nova: \"9. Se alguém voltar, não deixa entrar sozinha.\""
+  });
+  // o jornal do dia seguinte, montado pelo que foi descoberto (todo final termina com ele)
+  R.jornal = {
+    titulo: "(no jornal da manhã seguinte)",
+    confissao: "CASO SÃO LÁZARO É REABERTO: DIRETOR TRANCOU A CAPELA",
+    gasolina: "POSTO DA SERRA VENDEU GASOLINA AO DIRETOR NA VÉSPERA DO INCÊNDIO",
+    moacir: "INSPETOR ERA EX-ALUNO, REVELA ARQUIVO DO INTERNATO",
+    bispo: "CARTA DA DIOCESE MANDAVA \"QUEIMAR O QUE PRECISAR\"",
+    nada: "MOÇA É ENCONTRADA NA ESTRADA VELHA, SEM LEMBRAR DO QUE VIU"
+  };
+  // o que aconteceu com cada um, se a Lia descobriu
+  R.epilogo = {
+    titulo: "(o que ficou de cada um)",
+    ninguem: "Ninguém sabe.",
+    joaquim: ["Seu Joaquim", "Mandou a fita, segurou o portão. Descansou."],
+    celeste: ["Irmã Celeste", "Ia embora com os três às 6h10. Ficou com eles."],
+    moacir: ["Moacir", "Foi menino num armário antes de ser o homem que caçava."],
+    albano: ["Albano", "Morreu trancado por fora. A chave nunca apareceu."]
+  };
+
+  // ---- vozes novas do Chamado
+  R.chamadoMae = { quem: "voz", texto: "(a voz da sua mãe) Lia... a vaga era sua, não era? Vem cá. Vem ficar no lugar dele." };
+  R.chamados[2].splice(1, 0, { quem: "voz", texto: "(voz de mulher, cansada) Lia, vem jantar. Seu irmão já tá na mesa." });
+  R.chamados[3].push({ quem: "davi", texto: "Lia, achei seu uniforme. Vem provar." });
+  R.chamados[5].push({ quem: "joaquim", texto: "Moça... por aqui... o portão é por aqui..." });
+
+  // ---- o Davi e a Lia, entre capítulos
+  R.davi_reage.leu = [{ quem: "davi", texto: "(eco) Você tá lendo tudo, né? Sempre foi fofoqueira." }];
+  R.recados_lia.culpa = ["(baixo) A vaga era minha. Eu nem sabia.", "(com raiva) Eles cancelaram a minha matrícula e mandaram ele.", "(quase sem voz) Davi, eu devia ter ido junto."];
+
+  // ---- o Inspetor ganha falas que contam quem ele foi
+  R.entidades.inspetor.porCapitulo[2] = ["Moraes... eu conheço esse cheiro de Moraes.", "Ninguém canta na Hora. Ninguém."];
+  R.entidades.inspetor.porCapitulo[3] = (R.entidades.inspetor.porCapitulo[3] || []).concat(["Treze... o treze é meu...", "O Luiz também queria sair."]);
+  R.entidades.inspetor.porCapitulo[4] = (R.entidades.inspetor.porCapitulo[4] || []).concat(["O diretor mandou. O diretor sempre manda."]);
+  R.entidades.inspetor.falas_perdeu.push("No silêncio a gente aprende...");
+
+  // ---- conquistas novas (segredos de história)
+  R.conquistas.push(
+    { id: "linhagem", nome: "A Linhagem", desc: "Leia o livro de quem veio antes dele.", secreta: true },
+    { id: "vinte_litros", nome: "Vinte Litros", desc: "Descubra de onde veio o fogo.", secreta: true },
+    { id: "era_pra_ser_eu", nome: "Era Pra Ser Eu", desc: "Descubra por que só o Davi foi.", secreta: true },
+    { id: "nomes_armarios", nome: "Os Nomes nos Armários", desc: "Leia cinco nomes riscados por dentro dos esconderijos.", secreta: true },
+    { id: "o_que_nao_conta", nome: "O Que Não Conta", desc: "Dê nome a quem ninguém procurou.", secreta: true },
+    { id: "a_noite", nome: "A Noite", desc: "Ouça os cinco ecos de 14 de março de 1979.", secreta: true }
+  );
+})(window.ROTEIRO);
 
 // Aspas tipográficas: a fonte desenha a aspa reta como a de fechar, então as falas abrem com “ e fecham com ”.
 (function curvar(o) {
