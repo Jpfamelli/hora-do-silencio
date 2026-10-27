@@ -2,7 +2,7 @@
 
 Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/lote*/<área>.md`. Não edite à mão: edite o arquivo da área e gere de novo.
 
-**Total geral: 1356 melhorias**
+**Total geral: 2681 melhorias**
 
 ## Índice
 
@@ -20,6 +20,19 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
   - Progressão e rejogabilidade: 112
   - Plataforma e acessibilidade: 124
   - Revisão antes de publicar: 6
+- [Lote 2](#lote-2) — 1325 melhorias
+  - História e texto: 116
+  - Mapa: prólogo e estrada: 110
+  - Mapa: térreo e dormitórios: 143
+  - Mapa: túneis, cemitério e capela: 145
+  - Monstros e IA: 97
+  - Sustos e eventos: 110
+  - Áudio: 104
+  - Visual e luz: 98
+  - Jogabilidade: 103
+  - Interface: 98
+  - Progressão e rejogabilidade: 99
+  - Plataforma e acessibilidade: 102
 
 ## Lote 1
 
@@ -1419,3 +1432,1368 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
 1354. As aspas dos textos de cabeceira, do quadro de chaves, do bilhete de aniversário e da legenda do chamado também foram trocadas pelas tipográficas
 1355. Se o agarrão do Inspetor é interrompido (troca de mapa, ponto salvo, morte por outra causa), a tela vermelha some em vez de ficar presa por cima do jogo
 1356. O QA agora tira as capturas dos mapas depois dos testes de plataforma e sobrevivência, num jogo limpo, em vez de fotografar a tela do final cinco vezes
+
+## Lote 2
+
+1325 melhorias.
+
+### História e texto (116)
+
+1. Nova nota secreta na sala de aula: o livro de matrícula de 1979 mostra que a vaga da Lia foi cancelada e "transferida ao irmão"
+2. Nova nota secreta na diretoria: uma caixa de cartas carimbadas RETIDA, com a carta da mãe, a da Lia menina e a última carta do Davi que nunca saiu
+3. Nova nota secreta na enfermaria: o prontuário da Ana explica por que ela conta até dez e só dorme com luz no rosto
+4. Nova nota secreta na biblioteca: o manual de 1931 revela que a Hora era cantada e virou "Hora do Silêncio" numa folha colada por cima em 1947
+5. Nova nota secreta na sala do diretor: o Livro dos Inspetores mostra que cada Inspetor foi antes uma criança trancada, com a linha de 1994 esperando em branco
+6. Nova nota secreta na sala do diretor: um recorte de 1980 conta que o Albano morreu trancado por fora num armário, e a chave nunca apareceu
+7. Nova nota secreta no quarto da Irmã Celeste: a mala feita embaixo da cama, com quatro passagens de ônibus para a manhã seguinte ao incêndio
+8. Nova nota secreta na enfermaria: a receita do colírio mostra que o diretor cegou o Moacir de propósito
+9. Nova nota secreta na rouparia: um uniforme de menina nunca usado, com a etiqueta "LIA MORAES — matrícula 1979" e o bilhete "pra Lia não"
+10. Nova nota secreta na loja do posto: o livro-caixa do Seu Joaquim registra os vinte litros de gasolina que o diretor levou na véspera do fogo
+11. Nova nota secreta na casa de máquinas: galões vazios do posto, com cheiro de gasolina num prédio cujo gerador é a óleo
+12. Nova nota secreta na diretoria: o mata-borrão do diretor treinando a letra do Joaquim para forjar a sexta regra
+13. Nova nota secreta na cozinha: o cardápio da semana do incêndio mostra os três de castigo sem jantar, e os pães que a cozinheira escondeu
+14. Nova nota secreta na recepção: o regulamento dos funcionários de 1961 com o artigo que manda quem fala dormir no armário
+15. Nova nota secreta na biblioteca: a ficha de aluno do Moacir em 1948, "ouve demais", com o colega Luiz encerrado no armário em 1952
+16. Nova nota secreta na recepção: o hidrante vazio com a ordem de tirar as mangueiras "por causa do barulho" e o desenho de bombeiro do Tomé
+17. Nova nota secreta na loja do posto: o recibo dos Correios de 1994 mostra que quem mandou a fita para a Lia foi "J. S., Posto Serra"
+18. Nova nota secreta no refeitório: o hino do internato, com a quarta estrofe raspada da moldura
+19. Nova nota secreta no quarto da Irmã Celeste: a foto de visita de 1978 do Davi com a Lia, e o motivo de as visitas terem sido suspensas
+20. Nova nota secreta na sala de brinquedos: a letra da música da caixinha, escrita pela Ana
+21. Nova nota secreta na cisterna dos túneis: a página arrancada do livro de ocorrências em que o diretor anota que trancou a capela
+22. Nova nota secreta na sala do diretor: a resposta do bispo mandando "queimar o que precisar queimar"
+23. Nova nota secreta na capela: o livro de ocorrências de 1994 escreve a sua noite (portão, gerador, Procissão, Ana, gaveta, suas mortes, se respondeu a um chamado)
+24. Nova nota secreta no quarto da Irmã Celeste: a lista de orações com os 37 nomes e os três últimos sublinhados
+25. Nova nota secreta na sala do diretor: o rascunho das regras, com a sexta escrita em letras tortas de quem não enxerga
+26. Nova nota secreta no corredor de cima: o bilhete no castiçal explica quem acende as velas em cima dos armários seguros
+27. Nova nota secreta no Dormitório A: as regras das crianças riscadas na cabeceira, com dicas reais (contar junto, o sino desliga ele, a vela marca o armário seguro)
+28. A Lia agora comenta em voz baixa o livro de ocorrências da recepção ao fechar o papel
+29. A Lia comenta o caderno da cozinheira (os 34 pratos)
+30. A Lia comenta a ficha médica do Moacir
+31. A Lia comenta a redação do Tomé
+32. A Lia comenta o bilhete da Ana, que passa de ameaça a medo de ficar sozinha
+33. A Lia comenta a lista de castigos
+34. A Lia comenta o diário da Irmã Celeste
+35. A Lia comenta a anotação do pedreiro sobre a sala que não existe
+36. A Lia comenta a carta do diretor ao bispo ("fugitivas")
+37. A Lia comenta o recorte de jornal do sino que tocava sozinho
+38. Ler o livro-caixa do posto e os galões da casa de máquinas faz a Lia concluir que o incêndio não foi acidente
+39. Ler o livro de matrícula e o uniforme faz a Lia entender que o Davi foi no lugar dela
+40. Ler a ficha médica e a receita do colírio faz a Lia perceber que o diretor criou o monstro de propósito
+41. Ler o mata-borrão e o rascunho das regras revela que a sexta regra foi feita pelo diretor e pelo Inspetor juntos
+42. O Davi sussurra uma reação curta e diferente ao ler cada página do diário dele
+43. Se o desenho de aniversário já foi achado, a última página faz o Davi dizer "Atrasado, né. Feliz aniversário."
+44. O Inspetor reage de longe, através das paredes, quando a Lia lê o livro de matrícula, a ficha dele ou o uniforme
+45. A Lia comenta a loja do posto ao entrar pela primeira vez
+46. A Lia comenta a recepção ao entrar pela primeira vez
+47. A Lia comenta o corredor oeste e seus armários encostados
+48. A Lia comenta as marcas de dedo no corredor leste
+49. A Lia comenta a sala de aula e o giz fresco na lousa
+50. A Lia comenta a biblioteca só de livros de disciplina
+51. A Lia comenta a despensa
+52. A Lia comenta a lavanderia com uniformes ainda pingando
+53. A Lia comenta os espelhos cobertos do banheiro
+54. A Lia comenta o patamar da escada
+55. A Lia comenta as velas acesas em cima dos armários do corredor de cima
+56. A Lia comenta as cabeceiras riscadas do Dormitório A
+57. A Lia comenta os lençóis esticados do Dormitório B
+58. A Lia comenta os sapatinhos do Dormitório C
+59. A Lia comenta o cheiro do Dormitório D
+60. A Lia comenta as torneiras arrancadas do banheiro de cima
+61. A Lia comenta os brinquedos que não fazem barulho
+62. A Lia comenta o poço do monta-cargas no depósito
+63. A Lia comenta o arquivo morto do depósito dos túneis
+64. A Lia comenta o tamanho do cemitério das irmãs
+65. A tela de morte ganha uma linha do livro de ocorrências, datilografada, com a data, a hora do relógio do jogo, o lugar de verdade e a causa ("Visitante Lia M. respirou alto demais no corredor leste. O Inspetor decidiu.")
+66. O livro de ocorrências da recepção passa a anotar em tinta fresca as suas mortes da noite e se você respondeu a um chamado, e elas não somem quando o checkpoint volta
+67. Um armário a cada três tem um nome ou frase riscada à unha por dentro da porta (ROSA 1965, M.D. 1949, BENTO 1975...), que aparece quando a Lia se esconde nele
+68. Ao ler por dentro do armário as iniciais do Moacir ou o nome do Bento, a Lia sussurra quem era aquela criança
+69. A Procissão sussurra nomes de crianças mortas enquanto passa (João, Rosa, Maria das Dores, Luiz, Bento)
+70. No cemitério, a Lia reconhece nas lápides os nomes que leu dentro dos armários ou ouviu na Procissão
+71. Nova lápide do Seu Joaquim, zelador, com uma chave de portão igual à da Lia em cima
+72. Nova placa de bronze das irmãs da ronda, que dá rosto à Procissão
+73. A lápide da Irmã Celeste ganha uma vela acesa se a Lia descobriu quem acende as velas
+74. A lápide do Albano ganha o recorte de 1980 colado na pedra se a Lia leu o recorte
+75. A lápide do Luiz ganha o riscado "M. — perdão" depois da fita do Moacir
+76. A lápide sem nome de 1975 vira "BENTO, 9 ANOS" se a Lia leu o nome dele dentro de um armário
+77. A lápide do Seu Joaquim ganha "a sétima é minha" para quem virou a folha das regras
+78. A fita 1 ganha uma linha do diretor sobre as cartas retidas
+79. A fita 2 ganha a linha da Irmã Celeste explicando as velas em cima dos armários seguros
+80. A fita 3 ganha a lembrança do Moacir trancado com o Luiz ("só eu saí")
+81. O rádio do posto ganha a confissão do Seu Joaquim: foi ele quem mandou a fita
+82. O desenho de aniversário do Davi agora diz "(14!)" e tem um P.S. que tira a culpa da Lia
+83. A página 1 do diário do Davi agora diz a idade e o dia do aniversário da Lia, um dia depois do incêndio
+84. Cinco ecos da noite de 1979, um por capítulo, tocam só com voz ao parar num lugar do caminho (o diretor ao telefone, o Tomé sendo arrastado, a Ana contando no armário, a Irmã Celeste na água, a chave girando na capela)
+85. A aba Notas do diário ganha a linha do tempo "O que eu sei", que se preenche com as datas que a Lia descobre, e mostra quantos ecos ela ouviu
+86. A partir da segunda noite, oito notas ganham anotações na margem com a letra da própria Lia, com dicas reais
+87. A partir da segunda noite, o Seu Joaquim acrescenta "E fui eu que mandei te chamar." no diálogo do posto
+88. No Capítulo IV, depois que a Lia descobre a vaga dela, o Chamado usa a voz da mãe
+89. O Chamado do Capítulo II ganha uma voz de mulher chamando para jantar
+90. O Chamado do Capítulo III ganha a voz do Davi oferecendo o uniforme
+91. O Chamado do Capítulo V ganha uma voz falsa do Seu Joaquim indicando o caminho errado
+92. O Inspetor ganha falas no Capítulo II que mostram que ele lembra da família Moraes
+93. O Inspetor ganha falas nos Capítulos III e IV sobre o armário treze, o Luiz e o diretor
+94. Quando perde a Lia, o Inspetor às vezes cantarola o hino do internato
+95. O Davi tem uma reação nova no começo do capítulo para quem leu bastante coisa no anterior ("Sempre foi fofoqueira.")
+96. O gravador da Lia ganha recados de culpa no fim dos capítulos depois que ela descobre que a vaga era dela
+97. Final verdadeiro: se a Lia descobriu a vaga, os irmãos se perdoam numa última troca de falas
+98. Final verdadeiro: se a Lia achou a mala da Irmã Celeste, a freira aparece levando as crianças pela mão
+99. Final verdadeiro: se a Lia leu o prontuário da Ana, a menina para de contar na praia
+100. Final verdadeiro: com a fita 3 e a ficha do Moacir, o Luiz aparece ao lado do Inspetor ajoelhado
+101. Final verdadeiro: com o hino lido, as crianças cantam a quarta estrofe reescrita por elas
+102. Final verdadeiro: com o Livro dos Inspetores lido, a linha de 1994 amanhece riscada
+103. Final verdadeiro: com a resposta do bispo lida, a Lia leva a carta para fora
+104. Final verdadeiro: o Seu Joaquim se despede no portão com uma de três frases, conforme quantos segredos a Lia achou
+105. Final verdadeiro: com a fita 3 e a receita do colírio, um boletim de rádio conta o que aconteceu com o Moacir
+106. Final comum: quem respondeu a três chamados ou mais vê a faixa branca nos próprios olhos no retrovisor
+107. Final comum: com as cartas retidas lidas, aparece no carro um envelope com letra de menino
+108. Final Silêncio Eterno: com o verso das regras lido, a Lia escreve uma nona regra e vira a nova guardiã
+109. Todos os finais terminam com as manchetes do jornal do dia seguinte, montadas pelo que a Lia descobriu
+110. Todos os finais mostram o destino do Seu Joaquim, da Irmã Celeste, do Moacir e do Albano, ou "Ninguém sabe." para quem não achou a pista
+111. Nova conquista secreta "A Linhagem" ao ler o Livro dos Inspetores
+112. Nova conquista secreta "Vinte Litros" ao ligar a gasolina do posto ao incêndio
+113. Nova conquista secreta "Era Pra Ser Eu" ao descobrir por que só o Davi foi
+114. Nova conquista secreta "Os Nomes nos Armários" ao ler cinco nomes riscados nos esconderijos
+115. Nova conquista secreta "O Que Não Conta" ao dar nome ao Bento no cemitério
+116. Nova conquista secreta "A Noite" ao ouvir os cinco ecos de 1979 (somando as noites)
+
+### Mapa: prólogo e estrada (110)
+
+117. Porta-luvas do carro abre pela janela do passageiro e mostra o envelope da fita, com carimbo da Agência São Lázaro de 14/03/1979 e o bilhete da mãe ("Eu já perdi um")
+118. Depois da pancada no teto, aparece uma foto da Lia e do Davi crianças presa no limpador de para-brisa
+119. No clarão de um relâmpago, a foto do para-brisa mostra uma figura alta e vendada atrás das duas crianças
+120. Conquista secreta nova: "Revelada" (ver a foto do para-brisa no relâmpago)
+121. A ponta do tronco que bloqueia a estrada tem corte reto de serrote (textura de anéis) e a Lia percebe que alguém fechou a estrada de propósito
+122. Serrote enferrujado com "J.S." gravado no cabo, largado no mato ao lado do tronco
+123. Rádio do carro ganhou uma estação em que o locutor manda um abraço pelo nome do jogador (ou para "a moça do carro cinza")
+124. A partir da segunda noite, o rádio anuncia que a moça não voltou pra casa e o carro continua na estrada com o pisca ligado
+125. Depois que o Seu Joaquim some, o rádio do carro passa a narrar "ao vivo" que uma mulher está perto do carro olhando o rádio
+126. Segunda transmissão ao vivo do rádio: "ela está de costas para a mata. Não devia."
+127. Os relâmpagos normais da tempestade agora também revelam os segredos da estrada (antes só os clarões dos sustos contavam)
+128. Tapume da interdição "ESTRADA INTERDITADA — D.E.R. 1979" pichado ao longo dos anos: NÃO RESPONDE, SÉRGIO VOLTA PRA CASA, eles contam
+129. Placa verde da estrada com o "SÃO" riscado e "SILÊNCIO" pintado por cima em letra de criança
+130. No relâmpago, uma mãozinha de tinta vermelha aparece no canto da placa verde
+131. Durante a perseguição do vulto, a mesma placa passa a dizer "0 km", arranhada
+132. Cruz do Seu Joaquim na beira da estrada, com foto 3x4 dentro de um saquinho plástico e flores frescas
+133. As flores da cruz murcham na hora em que o velho some do posto
+134. Quem lê a cruz antes de falar com o velho ouve a Lia lembrar disso depois do sumiço ("Eu li o nome dele e entrei mesmo assim")
+135. Ponte de tábuas sobre um córrego: correndo, as tábuas estalam alto e fazem barulho de verdade; andando, pouco; agachada, quase nada
+136. Ao atravessar a ponte correndo, algo grande responde do mato com um estalo
+137. Córrego com água corrente atravessando a mata, com som contínuo de água que cresce perto da ponte
+138. Ônibus escolar do internato tombado na vala, enferrujado, com o letreiro "INTERNATO S. LÁZARO"
+139. Lista de chamada da última viagem (14/03/1979) presa na janela do ônibus: 37 nomes, 34 com tique e os três em branco (nota secreta)
+140. Uma mão pequena encostada por dentro da janela do ônibus, que some quando você chega perto
+141. No clarão do relâmpago, as janelas do ônibus mostram rostos de criança
+142. Mochila pendurada na janela do ônibus balançando sem vento
+143. O pisca-alerta do ônibus acende sozinho uma vez quando você passa por ele
+144. Ponto de ônibus de concreto com o horário do último ônibus riscado ("NÃO PASSA MAIS") e recados de quinze anos (nota secreta)
+145. Mochila da Ana no banco do ponto, com etiqueta e o bilhete "mãe, eu espero aqui"
+146. Tigela de cachorro com água fresca e coleira "Tufão" no pátio do posto, sem cachorro nenhum
+147. A placa "aberto 24h" do posto vira "fechado desde 1979" quando o velho some
+148. Secretária eletrônica no balcão com a luz vermelha piscando "15"
+149. Os recados da secretária tocam com voz e chiado: a mãe do Tomé, o bispo, o repórter, o padre, uma respiração com nove batidas de unha e, por último, a voz da própria Lia
+150. Conquista secreta nova: "Caixa Postal" (ouvir todos os recados)
+151. Jornal de amanhã no balcão (15/03/1994): "Carro abandonado na estrada velha — motorista não foi encontrada"
+152. Depois do final verdadeiro, a manchete do jornal muda para o desabamento do internato e a moça que desceu a estrada de manhã
+153. Livro "Quem subiu" aberto no balcão, com quem pediu a chave desde 1980 e um "não voltou" ao lado de cada nome (nota secreta)
+154. A última linha do livro já tem o nome da Lia, com a tinta molhada e a hora real em que você saiu do carro
+155. Depois de qualquer final, a linha da Lia no livro mostra como terminou a noite anterior (voltou, ficou ou dormiu)
+156. Xícara de café no balcão ainda soltando vapor
+157. Quando o velho some, o vapor para e o café aparece frio e mofado ("Tá gelado. Há anos.")
+158. Caderneta de fiado: pilhas do Moacir por quinze anos, velas da Irmã Celeste, querosene do diretor que não pagou e a gasolina para levar os meninos embora (nota secreta)
+159. Na contracapa da caderneta, uma dica escondida: deixar fumo de corda na capelinha se ouvir assobio no mato
+160. Papéis amassados no chão atrás do balcão com rascunhos antigos das regras, riscados, e o nome de quem morreu por cada uma (nota secreta)
+161. Cama de campanha do Seu Joaquim nos fundos da loja, com cobertor e travesseiro
+162. Marmita fria em cima de um caixote, ao lado da cama
+163. Maço de cartas de ex-alunos ao Joaquim: cada leitura mostra outra carta, sem nenhum monstro na tela
+164. Rolo de fumo de corda para pegar no caixote dos fundos
+165. Foto emoldurada do Joaquim zelador com as crianças no portão, em 1978
+166. Ao desviar os olhos da foto depois do primeiro olhar, uma das crianças some dela
+167. Depois que o velho some, o rosto dele na foto vira só uma mancha de luz
+168. Crachá "JOAQUIM SILVA — ZELADOR — 1958–1979" na parede; a Lia só comenta depois que ele some
+169. Macacão chamuscado "J. SILVA — ZELADOR" pendurado no canto atrás do fliperama
+170. Depois do sumiço, o macacão balança como se alguém tivesse acabado de tirar
+171. Geladeira com uma TV de tubo em cima, fora do ar, mostrando chuvisco animado
+172. A TV mostra de vez em quando as barras coloridas de fim de programação
+173. Chiado da TV que cresce quando você chega perto
+174. No momento em que o velho some, o chuvisco forma por um instante a silhueta da capela com o sino
+175. Dá para desligar a TV (com o "tuc" de tubo apagando), e ela volta a ligar sozinha
+176. Mural de cortiça com fotos marcadas "NÃO VOLTOU", recados de mães de décadas diferentes e uma foto do carro da Lia tirada do teto (nota secreta)
+177. O fliperama, ao ligar sozinho, mostra um placar de recordes com DAV, ANA, TOM e um "???" piscando em primeiro
+178. Apertando o botão do fliperama três vezes, o primeiro lugar vira LIA, com a pontuação igual ao seu número de mortes
+179. Conquista secreta nova: "Recorde" (pôr o seu nome no placar)
+180. Outdoor desbotado "INTERNATO SÃO LÁZARO — DISCIPLINA E FÉ" com os olhos das crianças raspados
+181. Num relâmpago, o homem alto do fundo do outdoor desaparece e não volta mais
+182. Placa da estrada que, iluminada de perto com a lanterna, descasca e mostra a placa antiga "ASILO-COLÔNIA SÃO LÁZARO — PROIBIDA A ENTRADA DE VISITANTES"
+183. Oratório de beira de estrada com telhadinho, velas acesas e luz tremulando
+184. Fotos 3x4 do Davi, da Ana e do Tomé no oratório, e uma da própria Lia de costas ao lado do carro, marcada "hoje"
+185. Ao ver a foto dela no oratório, um clique de câmera soa atrás da Lia
+186. Ex-votos de cera pendurados no oratório e uma orelha de cera do Moacir com o bilhete "que eu pare de ouvir" (nota secreta)
+187. A vela do meio do oratório, apagada, volta a acender sozinha quando você se afasta
+188. Assobio fino na mata que acompanha a Lia na estrada e chega mais perto a cada minuto
+189. Deixar o fumo de corda no oratório faz o assobio parar e deixa o vulto da perseguição 30% mais lento
+190. Conquista secreta nova: "Oferenda"
+191. Cruzes de quem tentou subir antes (o repórter, o padre, a moça de Taubaté), com plaquinhas escritas à mão
+192. Uma cruz nova, de madeira clara e sem nome, no fim da fila
+193. Tábua pintada à mão pelo Joaquim, já desbotada: "NÃO CORRA"
+194. Tábua recente em vermelho: "NÃO RESPONDA. NEM SE FOR ELE."
+195. A última tábua, perto do portão, pregada de cabeça para baixo: "ENTRA"
+196. Marcos de quilômetro de concreto em contagem regressiva ao longo da estrada, do KM 5 ao KM 0
+197. O KM 0, colado ao portão, tem "VOLTE PRA CAMA" escrito a giz
+198. O marco KM 2 vira KM 9 depois que você passa por ele sem olhar; olhando para trás, a Lia percebe
+199. Fitinhas com nomes de família amarradas no KM 1, balançando (a dos Moraes é nova)
+200. Árvore seca cheia de fitas de promessa balançando ao vento, com uma fita rosa bordada "ANA"
+201. Bicicleta de criança queimada no mato, com a plaqueta "S. LÁZARO Nº 23"
+202. Kombi do internato capotada na vala, coberta de musgo
+203. Ao passar perto da Kombi depois do sumiço do velho, o rádio do seu carro liga sozinho lá atrás
+204. Fusca do repórter engolido pelo musgo, com marcas de mão pequenas do lado de fora do vidro de trás
+205. Fita secreta nova no banco do Fusca: a última gravação do repórter em 1986, que termina com uma criança dizendo "dez"
+206. Três cruzinhas brancas sem nome, com uma fita de cabelo, uma rodinha azul e uma folha de caderno
+207. A partir da segunda noite, a Lia reconhece as três cruzinhas
+208. Postes de luz mortos ao longo da estrada; o do trecho final engasga e apaga de vez na perseguição
+209. Poças d'água espalhadas pelo asfalto, refletindo o pouco de luz
+210. Arco de pedra sobre o portão com a inscrição "SILENTIVM SALVAT", que a Lia traduz
+211. Placa de ferro do lema caída no chão do portão, "ACOLHER EM SILÊNCIO", com o "acolher" riscado
+212. Muro do internato com nomes riscados de quem veio procurar alguém e um "Lia esteve aqui — 1994" na letra dela
+213. Fila de 34 mãozinhas de cal no muro, com três lugares vazios no meio
+214. Depois do final verdadeiro, os três lugares vazios da fila aparecem com mãos de tinta fresca
+215. Guarita do Seu Joaquim ao lado do portão, com lampião aceso tremulando lá dentro
+216. Caderno de rondas da guarita: quinze anos de "Nove badaladas. Ninguém entrou." até "A irmã do menino chegou" (nota secreta)
+217. Parede da guarita coberta de risquinhos, um por noite desde 1979
+218. Com a lanterna perto da janela da guarita, aparece um "6?" escrito com o dedo no vidro embaçado
+219. Capa de chuva amarela pingando num prego da guarita, que some quando o cadeado abre
+220. O fantasma do Seu Joaquim aparece com um lampião na mata perto do portão, balançando a cabeça que não, e some quando você se aproxima
+221. Lamparina que guia quem se perde: depois de 40 s sem chegar mais perto do objetivo, uma luz de lampião aparece adiante no caminho certo e apaga quando você chega
+222. Na cena de abertura, os faróis pegam placas que contam errado ("9 km" e logo depois "3 km")
+223. Na cena de abertura, uma menina parada na beira da estrada some quando o farol chega perto, e a Lia sussurra
+224. Na abertura, uma badalada distante soa logo depois que o motor morre
+225. Na abertura, uma respiração vem do banco de trás antes da pancada no teto
+226. Na abertura, quando a Lia vira para trás, uma cabeça aparece por um instante no banco de trás
+
+### Mapa: térreo e dormitórios (143)
+
+227. Novo contador "Memória do internato n/62": cada lugar que conta a história e é lido entra na conta, separado do diário
+228. Ao juntar 12 memórias a Lia diz que está lendo um cemitério; ao juntar todas, ela encontra um curativo esquecido
+229. Recepção: livro de visitas aberto no balcão, com as visitas negadas à mãe da Ana e à mãe do Davi de 1979 a 1993
+230. Livro de visitas: a última linha já tem a assinatura de hoje, com o nome que você digitou no título (ou "Lia Moraes")
+231. Livro de visitas: lido de novo, aparece uma linha nova na mesma tinta fresca, "Joaquim B. — 1994"
+232. Recepção: cesto de "Correspondência retida pela direção" com a carta da mãe da Ana e a carta da Lia criança para o Davi
+233. Recepção: quadro de honra "Aluno exemplar da Hora do Silêncio", com o Moacir premiado em 1952 por nunca falar depois das nove
+234. Recepção: planta do térreo emoldurada, com os X a lápis do Davi na despensa e na enfermaria (orienta o Capítulo I sem HUD)
+235. Depois da Procissão, a planta ganha um "quarto 38" desenhado a lápis no corredor leste
+236. Recepção: quadro de chamada com 37 plaquinhas de nome, três viradas para a parede
+237. As plaquinhas desviram com a história: a do Tomé aparece no Capítulo II, a da Ana no III
+238. Recepção: capa de chuva amarela do Seu Joaquim pendurada perto da porta, pingando numa poça
+239. O pingar da capa se ouve de perto (gota procedural posicionada)
+240. Depois que o gerador liga, a capa do Joaquim some do cabide e só fica a poça
+241. Escada da recepção: os três degraus de cima estão chamuscados de fuligem
+242. Parede da escada: mãozinhas pretas de fuligem subindo e uma mão grande de adulto mais embaixo, que a Lia liga ao Joaquim
+243. Recepção: imagem de São Lázaro de gesso num nicho, com os dois cachorrinhos aos pés
+244. A cabeça do santo gira devagar acompanhando o Inspetor pelo prédio (um radar escondido para quem para e observa)
+245. Depois da Procissão o santo chora uma lágrima escura
+246. Alto-falantes de baquelite nas paredes da recepção, do refeitório e dos dois corredores
+247. Quando o gerador liga, os alto-falantes chiam e a gravação do diretor avisa que a Hora começa em cinco minutos
+248. No começo do Capítulo II o alto-falante anuncia "Vinte e uma horas. Todos para a cama."
+249. Uma vez no Capítulo II, o alto-falante chama "Aluna Lia Moraes, apresente-se à diretoria"
+250. Antes de cada Procissão, os alto-falantes chiam um hino infantil distorcido
+251. Corredor oeste: galeria dos Inspetores de Disciplina, cinco retratos com os olhos cada vez mais tapados (sombra, óculos, faixa, venda)
+252. Galeria: a sexta moldura está vazia com a plaquinha "1994 —"; depois da Procissão ela mostra um borrão com o cabelo da Lia
+253. Ao olhar a galeria pela primeira vez a Lia sussurra "Todos eles... todos de olho fechado"
+254. Corredor leste: nove sombras de crianças carimbadas em fuligem na parede, de mão dada
+255. As nove sombras somem da parede enquanto a Procissão passa e voltam depois (aviso extra para quem repara)
+256. Iluminar as sombras pela primeira vez faz a Lia perder o fôlego
+257. Corredor leste: relógio de ponto com o cartão "M. DUARTE" carimbado às 21h toda noite até hoje, com tinta ainda molhada
+258. Setas de giz do Davi (caveirinha de pirata e um D) no rodapé apontam o objetivo atual do Capítulo I e do II
+259. As setas só aparecem com a lanterna acesa, de perto e apontada para elas
+260. Na primeira seta a Lia reconhece o código de pirata da infância dos dois
+261. Tinta de ponteiro de relógio: recados das crianças que só brilham com a lanterna apagada e você parada ("NÃO RESPONDE", "ELE OUVE O CORAÇÃO", "CONTA OS ESTALOS"...)
+262. Mãozinhas brilhantes no escuro na lavanderia ("SOCORRO") e na casa de máquinas
+263. A primeira tinta que acende faz a Lia explicar, sussurrando, de onde vem aquela luz
+264. Sala de aula: diário de classe de 1979 com os três "F" em vermelho e um 38º nome matriculado hoje (o seu)
+265. Sala de aula: na primeira entrada, uma voz faz a chamada em eco; as crianças respondem "presente" e três nomes ficam em silêncio
+266. Na chamada, o último nome é o seu: apertar V responde e atrai o Inspetor; ficar calada rende um "Ausente" frio
+267. Sala de aula: caderno de castigo do Davi, em que "Eu não vou falar depois das nove" vira "eu vou tocar o sino"
+268. Ler o caderno do Davi faz a carteira do lado ranger sozinha
+269. Sala de aula: mural "Lendas do Brasil — 4ª série" com o Homem do Saco legendado "= SEU MOACIR"
+270. Sala de aula: brincadeira do copo numa carteira; o copo soletra letra por letra, raspando no papel, a sala onde o Inspetor está agora
+271. Na segunda consulta o copo responde "NÃO SOBE AINDA" ou "ELE OUVE O COPO", conforme o capítulo
+272. Na terceira consulta o copo voa e se quebra, fazendo barulho alto que chama o Inspetor
+273. Biblioteca: livro de chamada de 1979 com os três nomes marcados "presente" em tinta fresca até a data de hoje
+274. Biblioteca: fichário de alunos com a ficha do Davi ("fala demais") e a do Moacir de 1947 ("chora à noite"); a gaveta range e faz ruído
+275. Biblioteca: gravador e lanterna velha de um repórter de 1983; a gravação termina quando ele responde ao próprio nome (ensina a regra 5)
+276. Biblioteca: livro esquecido na mesa com carimbo de devolução da data de hoje em nome de "D. Moraes"
+277. Refeitório: um 38º lugar na ponta da mesa, com plaquinha "LIA" e sopa quente soltando vapor
+278. Ler a plaquinha faz uma colher bater devagar num prato na outra ponta, e algo se arrastar
+279. Refeitório: quadro da chamada do almoço de 17/03/1979 com três faltas e "38. Lia M." a lápis
+280. Refeitório: "LIA VEM" riscado no banco, no lugar do Davi, que só se vê agachada
+281. Agachada ali com a lanterna apagada, 37 colheres batem nos pratos e um "shhh" coletivo responde
+282. Ecos de 1979: no clarão de um relâmpago o refeitório aparece cheio de crianças sentadas, uma vez só
+283. Ecos de 1979: na sala de aula, o clarão mostra crianças nas carteiras, uma vez só
+284. Cozinha: ao entrar, a chaleira começa a apitar no fogão apagado, cada vez mais alto, e o Inspetor ouve
+285. Tirar a chaleira do fogo (E) para o apito, mas queima a mão da Lia (5 de dano)
+286. Cozinha: rádio de válvula tocando a radionovela "Coração de Pedra" no Capítulo I
+287. No Capítulo II o rádio avança na mesma noite de 1979: nove horas, fumaça no internato, o sino tocando sozinho
+288. O rádio da cozinha pode ser ligado e desligado (com clique e ruído baixo)
+289. Cozinha: prateleira de canecas com três viradas para a parede; desvirar mostra ANA, TOMÉ e DAVI e faz um tilintar que ele ouve
+290. Atrás das três canecas aparece uma 38ª, de criança, com "LIA" e um coração torto
+291. Despensa: marcas de altura no batente (Davi 76, 77, 78 e nada depois; a mais antiga "M.D. 1951")
+292. Diretoria: na primeira visita, uma brasa de cigarro acesa atrás da mesa, pulsando como uma tragada; some quando a lanterna chega
+293. Diretoria: cinzeiro com um cigarro ainda soltando fumaça
+294. Diretoria: caixa de cartas carimbadas "RETIDA", com cartas do Tomé, do Davi para a Lia e do Moacir menino em 1951
+295. Diretoria: quadro "Aluno Exemplar do Mês" com todas as bocas riscadas a carvão, começando por "M. Duarte, 1949"
+296. Diretoria: máquina de escrever que bate uma letra cada vez que você dá as costas, com o som da tecla
+297. A folha da máquina termina em "A IRMÃ DELE ESTÁ AQUI." e a leitura mostra só até onde ela já escreveu
+298. Diretoria: depois da fita 1, o telefone de baquelite toca; atender é a voz do diretor mandando trancar a capela por fora
+299. Não atender faz o telefone da diretoria voltar a tocar quando o Inspetor está perto (a campainha faz barulho)
+300. Diretoria: maquete de madeira do térreo com um bonequinho branco onde você está e um preto que anda junto com o Inspetor
+301. Olhar a maquete por 3 segundos faz o bonequinho preto virar para você, e o Inspetor vem investigar
+302. Enfermaria: régua de crescimento no batente com Davi parando em 1,41 m em 1979 e o risco quase apagado "MOACIR 51"
+303. Depois de pegar os fusíveis surge um risco fresco "LIA — 1994" exatamente na altura dos olhos, e o rótulo vira "Alguém mediu você"
+304. Enfermaria: prontuário do Moacir aos 13 anos pendurado na última cama (14 horas no armário, perdendo a vista do olho esquerdo)
+305. O prontuário ganha uma linha a mais se você já leu a ficha médica do Moacir de 1979
+306. Enfermaria: prancheta da Ana ("não dorme no escuro, a mãe pediu luz, negado" e "conta até dez pra não ter medo")
+307. Enfermaria: radiografia de mão do Tomé na janela que, a cada relâmpago, acende e aparece ora fechada, ora aberta
+308. Lavanderia: uniforme nº 23 do Davi pingando num balde, com o gotejar se ouvindo na sala
+309. Depois que você o vê e sai da lavanderia, o uniforme 23 aparece dobrado e seco no chão
+310. Lavanderia: pilha de lençóis bordados com "LIA M."; olhando de novo o bordado tem a data de hoje
+311. Lavanderia: mochila de 1988 com um walkman; a fita de dois jovens termina numa voz pedindo "responde, Zé"
+312. Banheiros: espelhos cobertos com lençol por ordem do diretor ("Aluno não se olha"), com um lençol caído
+313. No espelho descoberto, por um instante, aparece uma criança no lugar do seu reflexo (uma vez)
+314. Banheiros: a lenda pichada "NÃO DÁ DESCARGA 3 VEZES"; cada descarga ruge pelo prédio e chama atenção
+315. Na terceira descarga a Ana ri atrás de você e deixa na pia um curativo e uma pilha
+316. Casa de máquinas: caderno de manutenção do Joaquim ao lado do gerador ("nunca ligar depois das nove")
+317. Casa de máquinas: lanterna velha e bilhete do Joaquim mostrando que ele chegou antes de você hoje
+318. Casa de máquinas: radinho de pilha do Moacir numa cadeira de palha, com narração de futebol chiada de 1979
+319. Ligar o radinho chama o Inspetor, mas quando ele chega para seis segundos ouvindo o jogo (uma ferramenta nova de distração)
+320. Com a energia ligada, a campainha da escola toca de tempos em tempos num corredor e atrai o Inspetor para lá
+321. Pátio: banco de visitas com a placa "1º domingo do mês" e "L + D" riscado na madeira
+322. Sentar no banco toca a lembrança da Lia aos 12 anos ("eu volto no outro domingo") e acalma um pouco o medo
+323. Pátio: amarelinha de giz de 1 a 10 brilhando na chuva; pulando em ordem, a Ana conta junto de longe
+324. No DEZ da amarelinha a Ana aparece por um segundo na janela da torre: "Você sabe brincar"
+325. O balanço enferrujado do pátio para de balançar quando a lanterna bate nele
+326. Armários: por dentro da porta há riscos de unha e uma frase de criança diferente em cada um, sorteada entre 16 sem repetir
+327. A frase do armário só é lida com a lanterna acesa lá dentro, e a Lia sussurra o que está escrito
+328. Depois de ler seis armários a Lia percebe que são quarenta anos de crianças trancadas ali
+329. O armário do fim do corredor oeste tem "M.D. 1947 — não chora, Moacir" e centenas de risquinhos; ficando 3 s, a Lia entende de quem é
+330. Corredor de cima: seis desenhos de giz de cera na altura de uma criança contam a noite do incêndio sem texto (o sino, as crianças, o homem sem olhos, a capela trancada, o fogo, o céu)
+331. Depois da brincadeira da Ana, o último desenho ganha uma moça de lanterna
+332. Corredor de cima: desenho da Ana que se redesenha mostrando a sala onde você está e uma figura alta logo atrás
+333. Na terceira vez o desenho da Ana mostra você dentro de um armário e o homem alto do lado de fora
+334. Corredor de cima: varal de desenhos que pioram ano a ano (1976 a 1979), balançando, com um deles assinado "Lia"
+335. Patamar: malas de papelão da transferência de 17/03/1979; a do Davi está aberta, com uma meia de menina "L.M."
+336. Patamar: sapateira de sapatinhos com guizos pregados no calcanhar, quase todos arrancados ("ordem do Inspetor")
+337. Patamar: espelho grande em que, olhando por mais de um segundo, aparece um menino ao lado da Lia (uma vez)
+338. Patamar: fuligem do incêndio nas paredes e corrimão carbonizado com a marca da mão do Joaquim
+339. Patamar: tábuas queimadas no meio estalam alto (ruído para o Inspetor no Capítulo III); dá para ir pela beirada ou agachada
+340. Dormitório A: armário de aluno "DAVI M." com a foto da Lia presa com chiclete e o estojo da fita "NÃO OUVIR ANTES DAS 9"
+341. Dormitório A: caixa de sapato embaixo da cama do Davi com três cartas nunca mandadas para a Lia
+342. Dormitório A: estrelinhas fosforescentes no teto, só com a lanterna apagada, formando um sino e o primeiro número do Davi
+343. Ecos de 1979: no clarão de um relâmpago, crianças sentadas nas camas do Dormitório A olham para você, uma vez só
+344. Dormitório B: telefone de lata atravessando a parede; agachada, o Tomé sussurra onde o Inspetor está de verdade naquele momento
+345. O telefone de lata funciona uma vez por capítulo e avisa quando ele está do seu lado da parede
+346. Dormitório D: a cama da Ana, com a parede coberta de "1 2 3 ... 10" a lápis e o último dez vermelho escorrendo
+347. Dormitório D: três bonecas em volta da cama da Ana viradas para a porta, vigiando
+348. Dormitório D: lata de biscoito com tocos de vela "pra não ter escuro", que deixa a dúvida sobre o começo do incêndio
+349. Rouparia: novo esconderijo, o armário do "CASTIGO", com uma vela em cima
+350. Dentro do armário do castigo: "MOACIR, 9 ANOS, 1947"; ficando escondida ali, a voz do Tomé diz que tem mais alguém no armário
+351. Rouparia: três uniformes molhados (DAVI, ANA, TOMÉ) pingando numa poça
+352. Tirando os olhos dos uniformes, o cabide do Davi fica vazio e aparecem pegadas molhadas saindo pela porta
+353. Sala de brinquedos: placar de giz "QUEM EU ACHEI", com o Seu Moacir circulado e a linha da LIA vazia
+354. Depois da brincadeira, o placar ganha um risquinho novo na linha da LIA
+355. Sala de brinquedos: bestiário em giz de cera ("ELE OUVE", "OLHA PRA ELA", "ESCONDE NA CAMA") ensinando as regras pela mão das crianças
+356. Sala de brinquedos: parede de risquinhos agrupados de dez em dez, quinze anos de dias contados pela Ana
+357. Sala de brinquedos: teatrinho de fantoches que muda de cena cada vez que você vira as costas (as crianças fogem, a freira cai)
+358. No último quadro do teatrinho o fantoche alto de olhos costurados vira e passa a seguir você com a cabeça
+359. Sala de brinquedos: casinha de bonecas que é a maquete do andar, com bonecos do Inspetor, da Ana e da Lia andando em tempo real
+360. Dormitório E: cabana de lençol da Ana com uma lanterninha acesa e a lista "QUEM EU JÁ ACHEI", desde 1931, terminando no seu nome
+361. Depois da brincadeira, a lanterninha da cabana apaga e o nome da Lia está riscado
+362. Quarto da Irmã Celeste: envelope para a mãe do Davi carimbado "DEVOLVIDO — RECUSADO PELO DESTINATÁRIO"
+363. Quarto da Celeste: mala pronta embaixo da cama com três passagens de 15/03/1979 e os crachás das crianças
+364. Ao abrir o quarto, uma silhueta de freira está ajoelhada rezando, com as contas do terço batendo; some quando a luz bate e o terço cai
+365. Parada no escuro no quarto da Celeste, você ouve a reza dela terminar com "protege a Ana do escuro"
+366. Depósito: o ninho do Davi, com cobertor, gravadorzinho e envelopes "LIA MORAES" de 1979 a 1993, todos devolvidos
+367. Monta-cargas: marcas de unha e "MOACIR" riscado a prego por dentro da caixa
+368. Com a chave do monta-cargas, crianças cochicham pelo poço o plano de 1979 (a escotilha, a água, "ninguém responde")
+369. Tinta de relógio também no andar de cima: "OLHA PRA ELA COM LUZ", "NÃO RESPONDE NEM SE FOR O SEU NOME", mãozinhas no Dormitório C
+
+### Mapa: túneis, cemitério e capela (145)
+
+370. Túneis: placa de bronze de 1931 (asilo-colônia, pavilhão de isolamento) na entrada, com a placa do internato de 1962 pregada por cima
+371. Túneis: ler a placa faz a Lia entender que os túneis eram o caminho escondido de quem ninguém podia ver
+372. Túneis: canto do pedreiro na entrada com caixote, marmita, capacete e rádio mudo
+373. Túneis: a lamparina a querosene do pedreiro continua acesa (a única luz quente lá embaixo) e pode ser apagada com E
+374. Túneis: ao apagar a lamparina, a Lia acha que ele não vai ver o brilho na água... e lembra que ele é cego
+375. Túneis: planta dos túneis riscada a carvão na parede, com a sala do diretor marcada como "NÃO EXISTE"
+376. Túneis: olhar a planta resume o mapa (cisterna no meio, uma válvula em cada câmara, saída a leste) sem precisar de HUD
+377. Túneis: mãos de criança marcadas no cimento do túnel central, com uma mão de adulto por cima, apertando
+378. Túneis: carteira escolar entalhada "MOACIR, 9 ANOS" com um soldadinho de lata no túnel central
+379. Túneis: iluminar o soldadinho com o Inspetor por perto faz ele parar, dizer "esse era meu" e ir embora para longe (uma vez por noite)
+380. Túneis: nomes de crianças de várias décadas riscados com pedra na altura de uma criança
+381. Túneis: iluminar o "Davi 79" faz a água tremer em anéis em volta da Lia
+382. Túneis: cano exposto no cruzamento; segurando E dá para ouvir, abafada, a conversa de 1979 em que o diretor manda trancar a capela por fora
+383. Túneis: ouvir o cano até o fim obriga a ficar parada na água, com todos os riscos da água parada
+384. Túneis: parede de tijolos de 1951 fechando a ala velha, com mãozinhas e um sapato de criança visto pela fresta
+385. Túneis: a lanterninha vermelha do Davi ainda acesa num nicho; pegar dá uma pilha nova
+386. Túneis: depois de pegar a lanterninha, um passinho de criança na água logo atrás da Lia
+387. Túneis: cela de castigo dos anos 50 atrás de uma grade no túnel leste, com berços de ferro, correias e plaquinhas JOÃO, ROSA, LUIZ
+388. Túneis: na segunda vez que ilumina a cela, a Lia entende que eram berços de criança
+389. Túneis: regulamento do asilo de 1932 emoldurado na câmara oeste (nota secreta nova) mostrando a origem das regras e do "inspetor"
+390. Túneis: conquista secreta "Mais Velho que o Fogo" ao ler o regulamento, e a Lia percebe que a Hora existia antes do Moacir
+391. Túneis: acampamento das crianças na câmara oeste, com três colchonetes, velas derretidas, latas e gibis molhados
+392. Túneis: mapa a lápis até a capela ("a irmã vai abrir às nove") e calendário de março de 1979 riscado até o dia 14 no acampamento
+393. Túneis: nichos com brinquedos das Horas antigas na câmara leste (estilingue de 1947, bola de meia de 1962, ioiô de 1975)
+394. Túneis: quando a água baixa aparece mais um nicho, vazio, com a etiqueta nova de 1994
+395. Cisterna: régua de enchente com as cheias de 1955, 1962 e 1975 e a faixa "A ÁGUA CHEGOU AQUI — 14/03/79" acima da cabeça da Lia
+396. Cisterna: a régua informa em centímetros o nível da água naquele momento (sobe com o erro, desce com as válvulas)
+397. Cisterna: riscos de altura a canivete de Ana, Tomé e Davi ao lado da régua
+398. Cisterna: ao iluminar as marcas, a Lia junta as datas: toda vez que a água sobe, alguém some
+399. Cisterna: uma mão pequena de lama acima da marca de 1979; com a água baixa, a Lia percebe que a criança estava boiando
+400. Cisterna: argolas de ferro chumbadas na altura de uma criança, com restos de corda podre
+401. Cisterna: iluminar as argolas faz a água em volta borbulhar
+402. Cisterna: parede de nomes riscados de 1931 a 1979, cada vez mais tortos
+403. Cisterna: se a Lia morreu nos túneis nesta noite, na tentativa seguinte "LIA 94" aparece riscado fresco na parede de nomes
+404. Cisterna: uma bolinha de gude boiando sozinha, que encalha no chão quando a água baixa
+405. Túnel norte: um cano solto esconde uma caixa de brinquedos "CONFISCADO — A." (pião, fita vermelha, bolinhas de gude)
+406. Túneis: setas e recados de giz do Davi ("POR AQUI LIA", "A SALA DELE", "SAÍDA → depois") que só a lanterna revela e que brilham fraco de perto
+407. Túneis: o recado de giz "NÃO VAI PRO NORTE AINDA" vira "AGORA PODE" quando a água baixa
+408. Sala do diretor: poltrona de couro virada para a parede dos tubos de escuta
+409. Sala do diretor: quatro bocais de escuta (DORM A, DORM B, CELESTE, CAPELA), cada um com uma voz diferente do lugar
+410. Sala do diretor: o bocal CAPELA toca o cochicho de 1979 em que Davi, Tomé e Ana combinam a noite do sino
+411. Sala do diretor: com a lanterna apagada, um homem de terno aparece sentado de costas na poltrona e some quando a luz volta
+412. Sala do diretor: depois de ouvir a fita da gaveta falsa, a poltrona fica sempre virada para a Lia
+413. Sala do diretor: mesinha com cinzeiro e cigarro aceso soltando fumaça, copo de conhaque, rádio e tampão de ouvido de cera usado
+414. Sala do diretor: depois de abrir o cofre, o cigarro aparece apagado e esmagado
+415. Sala do diretor: negatoscópio com radiografias de mãos pequenas ("castigo — régua") que acende sozinho quando a Lia entra
+416. Sala do diretor: o negatoscópio pisca quando o Inspetor está perto, servindo de aviso
+417. Sala do diretor: estante de rolos etiquetados "SILÊNCIO 02/03, 03/03..." e um gravador de rolo
+418. Sala do diretor: tocar o rolo de 14/03/79 abafa o som de verdade por 20 segundos e termina em batidas numa porta e um sino distante
+419. Sala do diretor: tocar o rolo de novo termina com uma criança perguntando "posso falar agora?"
+420. Sala do diretor: vitrola com disco de cantigas que, ao tocar, faz barulho alto pelos túneis
+421. Sala do diretor: se o Inspetor chega perto da vitrola tocando, ele fica parado 8 segundos cantarolando, abrindo uma janela de fuga
+422. Sala do diretor: prateleira com máscaras de gesso de rostos de crianças, etiquetadas por ano
+423. Sala do diretor: depois do apagão do cofre, as máscaras estão todas viradas para a Lia
+424. Sala do diretor: centenas de riscos de dias a prego e as iniciais "M.D." (trancaram o Moacir ali também)
+425. Sala do diretor: quinta foto, de 1951, "Moacir aprendendo a ouvir", que some quando a Lia dá as costas
+426. Sala do diretor: nota secreta com o livro de alunos "transferidos" de 1951 a 1979, todos em março
+427. Sala do diretor: nota secreta com as cartas da mãe ao Davi devolvidas com o carimbo "DEVOLVER — FUGITIVO"
+428. Sala do diretor: nota secreta com o livro-caixa que registra querosene e um cadeado para a capela no dia do incêndio
+429. Sala do diretor: nota secreta com as fichas das três crianças carimbadas "SILENCIADO" e o bilhete sobre a irmã mais velha
+430. Sala do diretor: a resposta do bispo ("o silêncio salva") cai no chão quando o cofre é aberto
+431. Sala do diretor: a Lia reage a cada documento novo com uma fala curta
+432. Túnel norte e sala do diretor: uma brasa de cigarro acende no escuro na altura de uma boca e some quando a lanterna chega perto
+433. Túneis: na primeira brasa, cheiro de cigarro e cera, e a Lia percebe que o diretor também ficou lá embaixo
+434. Galeria oeste: o ninho do Moacir, com colchão de palha, prato de lata, vendas de pano e óculos escuros com a lente rachada
+435. Galeria oeste: rádio de pilha chiando no ninho do Moacir (o chiado se ouve ao chegar perto)
+436. Galeria oeste: relógio de bolso parado em 21h50, a hora em que pegaram o Davi
+437. Galeria oeste: latas de comida datadas de 1980 a 1994, a mais nova aberta e fresca ("quem traz comida pra ele?")
+438. Galeria oeste: cadeira de escola virada para a parede, com a pedra gasta na altura da testa
+439. Galeria oeste: em patrulha, o Inspetor para três segundos no ninho e passa a mão na palha, janela de fuga que se aprende observando
+440. Depósito: duas camas de ferro com correias que balançam sem vento e um balde (as "medidas permanentes")
+441. Depósito: lista de nomes a giz riscados de 1952 a 1979; ao iluminar as camas, a Lia diz que ali ninguém ouvia
+442. Depósito: arquivo morto com caixas de fichas e uma nota secreta: "Fugitivos desde a fundação: 41"
+443. Galeria leste: mural de giz em seis desenhos contando a noite do fogo, revelados um a um pela lanterna
+444. Galeria leste: o último desenho, uma mulher de lanterna chegando ao portão, tem giz fresco e pó no chão
+445. Galeria leste: bueiro no teto com chuva caindo de verdade, gotas fazendo ondas na água
+446. Galeria leste: embaixo do bueiro a chuva soa alto, o céu clareia e os trovões chegam
+447. Galeria leste: num dos clarões, um rostinho de criança aparece olhando pela grade do bueiro
+448. Galeria leste e saída: marcas de mãos de fuligem na altura de uma criança levando até a escotilha
+449. Saída: arco de tijolos "CAPELA — 1931" emparedando uma passagem antiga
+450. Saída: batidas pequenas vêm do outro lado do arco e param de vez quando a Lia chega perto
+451. Saída: grade no teto mostra o chão da capela à luz de velas, com cinzas caindo
+452. Saída: ao olhar para cima na grade, a Lia percebe que está embaixo da capela
+453. Saída: inscrição de 1931 do Pe. Osvaldo num tijolo perto da escotilha ("para guardar o silêncio da casa")
+454. Túneis: folhas do livro de ocorrências de 1947 a 1979 boiando e girando, legíveis só de apontar
+455. Túneis: quando a água baixa, as folhas boiando grudam no chão
+456. Túneis: quando a água baixa, aparecem brinquedos de pano com etiquetas ROSA, LUIZ, JOÃO e MARIA
+457. Túneis: iluminar um desses brinquedos faz uma vozinha dizer o nome
+458. Cisterna: crachá enferrujado "M. DUARTE — INSPETOR" no fundo quando a água baixa ("ele tinha olhos bons")
+459. Túneis: olhando para baixo na água funda, o reflexo de um menino aparece ao lado da Lia, onde não há ninguém
+460. Cisterna: o reflexo do menino aparece do lado da próxima válvula certa, dica sem HUD
+461. Túneis: de vez em quando o sino toca lá em cima e a água inteira se arrepia em anéis
+462. Túneis: os canos repetem vozes de longe (passos de criança, o diretor no dormitório B, a voz da própria Lia chamando)
+463. Túneis: segredo do Benedito: um armário tem um "7" pintado; escondida nele, prendendo o ar com o Inspetor longe, ouve-se outra respiração e "Benedito... ninguém lembra"
+464. Segredo: conquista secreta "Ninguém Lembra", e a partir dela a lápide SEM NOME de 1975 vira "BENEDITO — 1966 — 1975"
+465. Túneis: a anotação do pedreiro ganha três linhas (argolas na cisterna, a ala velha fechada em 51, crianças carregando cimento)
+466. Capela: o lado de dentro da porta tem dezenas de mãos pequenas de fuligem e cinza, uma mão de adulto mais alta e nove riscos de unha
+467. Capela: de perto, com a lanterna, aparecem DAVI, ANA, TOMÉ riscados à unha na porta
+468. Capela: quando a porta bate, olhar para ela faz a Lia falar das batidas e dos nove riscos (e completar com a confissão, se ouviu a gaveta falsa)
+469. Capela: por fora, aldraba com cadeado derretido gravado "A.T." e a Lia percebe que trancaram por fora
+470. Capela: terço derretido no chão perto da porta: a Irmã Celeste ficou com as crianças até o fim
+471. Capela: tentar abrir a porta trancada faz ouvir batidas do lado de dentro
+472. Capela: um cigarro esmagado no degrau da porta
+473. Capela: bancos carbonizados e manchas de cinza no chão (a capela agora parece ter queimado)
+474. Capela: nomes de outras crianças entalhados nos bancos e, no último, "DAVI ANA TOMÉ 79" com um "LIA" quase apagado
+475. Capela: 34 pares de sapatinhos enfileirados na frente dos bancos, com três lugares vazios na primeira fila
+476. Capela: quando os três objetos vão para o altar, os três pares que faltavam aparecem sem som
+477. Capela: quadro de promessas com fotos 3x4 e bilhetes das crianças ("que o seu Moacir fique surdo")
+478. Capela: a parede da torre coberta de 5.475 risquinhos de giz em grupos de cinco, com o último grupo incompleto
+479. Capela: viga com quinze datas entalhadas de 1980 a 1994, a última pela metade; depois do sino ela aparece completa
+480. Capela: o ninho do Davi ao lado da corda, com colchonete, cobertor, lanterna sem pilha e o caderno "noite 5.478 — amanhã a corda arrebenta"
+481. Capela: corda do sino refeita com quinze nós, tiras de uniforme, as fitas da Ana, do Tomé e do Davi e um elástico de cabelo da Lia
+482. Capela: segurando E na corda, as tiras bordadas ANA, TOMÉ e DAVI passam pela mão dela, e por último o elástico dela
+483. Capela: no fim do esforço um nó cede com tranco e estalo, mas a corda aguenta
+484. Capela: o sino mostra a inscrição de 1903 "QUE O SILÊNCIO NÃO SE ROMPA" e, riscado a prego, "QUE A HORA ACABE — D.M."
+485. Capela: três silhuetas queimadas de crianças de mãos dadas na parede, visíveis só no relâmpago e com a lanterna apagada
+486. Capela: vitral de nove crianças de mãos dadas que acende com os relâmpagos, com três delas sem rosto
+487. Capela: a cada objeto colocado no altar, uma criança do vitral ganha o rosto de volta
+488. Capela: depois do sino, o vitral mostra o homem alto atrás das nove crianças
+489. Capela: pertences antigos cobertos de cera no altar (bolinha, pião, fita vermelha); com os três objetos a cera derrete e oito velas acendem juntas
+490. Capela: órgão queimado com sete teclas; cada tecla soa alto e atrai o Inspetor
+491. Capela: tocar dó, mi, sol no órgão (as notas das válvulas) abre uma gaveta com um curativo, a voz da Celeste e a conquista secreta "A Água Cantou"
+492. Capela: na fuga, se ninguém tocou o órgão, ele dá uma nota sozinho e chama o Inspetor para o fundo da capela
+493. Capela: confessionário de madeira que funciona como esconderijo
+494. Capela: escondida e quieta no confessionário, uma confissão do outro lado da grade (diretor, Moacir ou Celeste, alternando) e depois "...e você, filha?"
+495. Cemitério: cruz do Seu Joaquim do lado de fora do muro, vista pela grade, com chapéu de palha, capa e lanterna de zelador acesa
+496. Cemitério: pendurar a chave do portão na grade para ele faz o chapéu cair, o rádio chiar e dá a conquista secreta "Devolvi a Chave"
+497. Cemitério: na fuga, a lanterna da cruz do Joaquim balança como quem acena
+498. Cemitério: três cruzinhas de graveto DAVI, ANA, TOMÉ com flores do mato frescas; ajoelhar diante delas acalma o medo
+499. Cemitério: flores frescas e pegadas de botina nas covas de João, Rosa, Luiz e Maria; na da Irmã Celeste, marcas de joelho
+500. Cemitério: pegadas pequenas de fuligem do muro até a capela (o caminho de 1979), brilhando fraco sob a lanterna, com pés enormes descalços por cima
+501. Cemitério: cata-ventos de papel nas covas pequenas que param todos ao mesmo tempo quando o Inspetor chega perto
+502. Cemitério: a lamparina do Seu Joaquim marca de longe o próximo túmulo a cavar e some quando você se aproxima
+503. Cemitério: lápide do Faísca, o cachorro do Joaquim
+504. Cemitério: um latido abafado vem da lápide do Faísca quando o Inspetor está a menos de 15 metros
+505. Cemitério: galpão do coveiro com caixas de velas, a capa de chuva do Joaquim pingando, uma garrafa e um curativo
+506. Cemitério: ala dos pequenos, com cruzes sem nome e só as datas de 1951 a 1978
+507. Cemitério: brinquedos de corda na ala dos pequenos dão uma volta sozinhos, um depois do outro, quando a Lia passa
+508. Cemitério: cova aberta e vazia do Moacir ("1938 —"); depois do final verdadeiro ela aparece fechada, com "1938 — 1994"
+509. Cemitério: a cova do diretor pode ser cavada (opcional e barulhento): caixão cheio de tijolos, carta do bispo e conquista secreta "Cova Vazia"
+510. Cemitério: as lápides das crianças antigas agora terminam em março; na terceira lida a Lia percebe o ciclo
+511. Cemitério: na lápide da Irmã Celeste, "transferida" foi riscado e trocado à unha por "trancada", e a Lia comenta
+512. Cemitério: ler as lápides SEM NOME de 1962 e 1975 depois da régua da cisterna faz a Lia ligar as datas às cheias
+513. Cemitério: ler as lápides de João, Luiz e Rosa depois de achar a bolinha ou a caixa dos confiscados faz a Lia reconhecer os objetos
+514. Cemitério: com a pá, ler a lápide do diretor avisa que a terra na frente está fofa demais
+
+### Monstros e IA (97)
+
+515. O Inspetor carrega na cintura um molho de chaves pequenas de armário, enrolado num pano, que balança quando ele anda
+516. Um apito de metal pendurado num cordão no pescoço do Inspetor
+517. Um crachá "M. DUARTE — DISCIPLINA" no peito do casaco dele, que dá para ler com a lanterna
+518. Depois de ler a ficha médica, a venda dele mostra um bordado "M.D." e a cruz vermelha da enfermaria
+519. Um lampião apagado preso à cintura dele, hábito de quando ainda enxergava
+520. Nos túneis, depois do cofre, o lampião dele está aceso: uma luz quente e fraca que mostra de longe onde ele anda no escuro
+521. O vulto dele (a silhueta que some com a luz) também tem o chaveiro, o apito e o lampião
+522. As chaves tilintam baixinho a cada passo dele na ronda, na investigação e na procura
+523. Quando ele para para escutar ou começa a caçar, ele segura o molho e as chaves param: o silêncio de repente é o aviso
+524. Ao entrar na caçada ele sopra um apito curto e rachado, como fazia para mandar as crianças para a cama
+525. No Pesadelo ele apita duas vezes antes de vir
+526. Quando termina uma procura e recomeça a ronda, um apito distante avisa que ele recomeçou
+527. A cantiga que ele cantarola na ronda agora é a música da caixinha da Ana, mais lenta, grave e desafinada
+528. Quando ele ouve alguma coisa, a cantiga para no meio da frase
+529. Legendas próprias para os sons novos (chaves, apito, cantiga cortada, canecas, lençol, terço, assobio, carrinho, pisões), que respeitam a opção "Legendar sons"
+530. Na ronda ele fala com crianças que não existem ("Tomé, de volta pro armário.", "Ana, pare de contar.") e fica parado 3 s: uma janela para passar
+531. Em outras rondas ele recita baixinho a lista de castigos ("Falar... uma hora. Chorar... duas."), e dá para saber onde ele está pelo murmúrio
+532. Depois da fita dele, às vezes, farejando um armário, ele fala com voz de menino: "Não me tranca, padre... eu fico quieto..."
+533. Quem já descobriu que é irmã do Davi ouve, uma vez, ele reconhecer a Lia na caçada: "Moraes. A mais velha. Você voltou pra cama."
+534. Nova frase na tela de morte para quem ele reconheceu: "Eu guardei o seu armário."
+535. Às vezes a tela de morte por ele termina com uma chave pequena tilintando no chão, número 12
+536. Nos dormitórios ele lembra, uma vez por jogo: "Eu dormi aí. Era frio."
+537. Na diretoria ele para e responde a um diretor que não está lá: "Sim, senhor diretor."
+538. Na sala secreta dos túneis: "A sala dele. Eu nunca podia descer aqui."
+539. Na capela: "O sino me desliga. Não toca. Não toca."
+540. Na primeira vez que ele te ouve nos túneis: "Esse passo... é igual ao do menino Davi."
+541. No Capítulo V, com uma relíquia na mão, ele diz o nome do dono ("Tomé. Você trouxe o carrinho do Tomé.")
+542. Falas novas dele no Capítulo II: "Nove badaladas. Todos na cama." e "Um apito, todos na cama. Dois, ninguém respira."
+543. Depois de ouvir a fita 3, as legendas passam a chamá-lo de "Moacir" em vez de "O Inspetor"
+544. Rotina de memória na cozinha: ele conta as canecas batendo nelas uma a uma, parado de 4 a 6 s, e o tilintar diz onde ele está
+545. No andar de cima ele para ao lado de uma cama, se abaixa e alisa o lençol por 3,5 s, como fazia quando era funcionário
+546. Se a Lia está embaixo daquela cama, ele alisa o lençol bem em cima dela sem perceber (o medo dispara)
+547. Nas pausas de memória ele fica mudo e com o ouvido pela metade, mas qualquer barulho alto o tira dali na hora
+548. No cemitério ele visita o túmulo do Luiz e reza 6 s de cabeça baixa: uma janela para cavar
+549. Na primeira visita ao túmulo, a Lia comenta baixinho: "Ele vem rezar pro menino."
+550. Se um barulho interrompe a reza dele no túmulo do Luiz, a caçada volta com fúria
+551. Um armário do corredor oeste tem "M.D. 1951" e centenas de riscos de contagem de dias marcados na porta: o armário onde o Moacir menino era castigado
+552. Ao entrar no armário do castigo pela primeira vez, a Lia descreve os riscos por dentro
+553. Escondida no armário do castigo, a Lia ouve um menino chorando baixinho de tempos em tempos
+554. Ele nunca abre o armário do castigo: chega, encosta a mão na porta, respira e vai embora (o esconderijo mais seguro do térreo, mas longe dos objetivos)
+555. Na ronda, ao passar pelo armário do castigo, ele para 2 s com a mão espalmada na porta
+556. Às vezes, parado ali, ele fala com voz de homem cansado, sem o chiado ("Desculpa... eu só queria que vocês dormissem."), e volta com um estalo de pescoço
+557. Na caçada, passar pelo armário do castigo o trava 2 s com as mãos na cabeça ("Eu não falei nada... eu não falei..."), uma vez por capítulo
+558. Nos túneis, um armário enferrujado com um "M" riscado na porta é, uma vez por partida, o único esconderijo 100% seguro do jogo
+559. Escondida nesse armário pela primeira vez, um menino cochicha colado na sua orelha: "...eu também não conto."
+560. Depois que ele desiste desse armário, a porta range sozinha: o menino quer que você saia
+561. No Capítulo I, ao forçar a porta, dá para ver o Inspetor no fundo da recepção, de pé, virado para a parede como criança de castigo, balançando de leve
+562. Ele vira a cabeça devagar por cima do ombro e some com um estalo quando a luz encosta ou você chega perto
+563. Antes de começar a contar, a Ana cantarola uma cantiga de roda; quando a cantiga corta no meio, a contagem começou
+564. Entre um número e outro, a Ana às vezes sussurra "...a mamãe vem domingo..."
+565. Se você leu o bilhete dela, no nove ela para, pergunta "...mãe?" e espera 1,5 s antes do dez
+566. Quem leu o bilhete ouve no fim da brincadeira: "Você leu, né? Não conta pra ninguém."
+567. Se a Lia já sabe quem é, a Ana diz durante a brincadeira: "Você é a irmã que foi embora."
+568. Para quem já sabe, no três a contagem dela vira "...você voltou..."
+569. Depois de ler o bilhete da Ana, encará-la com calma (sem correr, quase parada) faz a lanterna não falhar no oitavo segundo
+570. Aguentar 10 s olhando assim faz ela dizer "Obrigada por olhar." e ir embora, deixando um curativo para você
+571. No Capítulo III, uma vez por jogo, a Irmã Celeste bate a porta entre você e a Ana no oito, com o terço batendo (nunca no Pesadelo)
+572. Se a Ana te pegou na brincadeira, no Capítulo IV há um bilhete molhado na entrada dos túneis: "você piscou. o davi nunca piscava."
+573. Depois da brincadeira, números de giz cor-de-rosa de 1 a 9 aparecem nas paredes dos túneis ao longo do caminho até a escotilha: ela seguiu a Lia lá para baixo
+574. O dez fica na saída, escrito "achei você", com uma fitinha cor-de-rosa amarrada na escada
+575. Quem passou pela brincadeira sem ser pega encontra uma flor de papel no túnel central (pegar é opcional)
+576. No cemitério, quem pegou a flor ouve a Ana perto do túmulo dela: "Você brincou comigo."
+577. Quem passou pela brincadeira sem ser pega ganha uma aliada no Capítulo V: com ele a menos de 16 m, a voz dela conta os passos de trás para a frente, como um radar
+578. A contagem aliada também ajuda nos túneis para quem nunca respondeu a um chamado (e fica desligada no Pesadelo)
+579. Uma menina da Procissão tem uma fita de cabelo vermelha: a Rosa, da lápide de 1965
+580. Um menino da Procissão aperta um pião de madeira: o Luiz, de 1952
+581. Uma bolinha de gude brilha na mão de um menino pequeno da fila: o João, de 1955
+582. Uma menina da fila usa um uniforme antigo, comprido demais: a Maria das Dores, de 1958
+583. O menor da Procissão, de capacete de bombeiro de papelão, é o Tomé
+584. As crianças da Procissão levam números de armário costurados no peito, e um deles é o 12
+585. Escondida, quando a fila passa rente, a fresta mostra o detalhe de uma das crianças e se ouve o nome dela sussurrado
+586. Quem viu a fila pela fresta reconhece no cemitério as lápides da Rosa, do Luiz, do João e da Maria das Dores, e a Lia comenta cada uma
+587. Com a lanterna apagada no esconderijo, às vezes o Tomé para na fresta e põe o dedo nos lábios
+588. Da terceira Procissão em diante, se você está longe de um esconderijo, o Tomé bate duas vezes no armário mais perto para mostrar onde ir
+589. Da segunda Procissão em diante, a última da fila é uma freira alta de vela na mão, com uma gola branca que só aparece na luz das velas
+590. Quando a freira passa pela sua fresta, ela leva o dedo aos lábios e a Procissão dura 2 s menos
+591. Depois de ouvir a fita 2, se a Procissão passar com você escondida no quarto da Irmã Celeste, a reza dela faz a fila ir embora sem entrar (uma vez por jogo), e a Lia agradece
+592. As pegadas da Procissão agora têm tamanhos diferentes, de crianças de várias idades
+593. Depois do "QUEM ABRIU A MINHA GAVETA?", o Davi aparece por um instante no fim do túnel norte, faz sinal de "vem" e corre para a galeria leste: o caminho da saída
+594. É a primeira vez que o Davi aparece de verdade: de pijama, com uma lanterninha vermelha que acende e ilumina o túnel
+595. Uma vez por capítulo, longe e de costas, o Davi aparece apontando para o esconderijo mais perto dele
+596. Quando você chega a 6 m ou ilumina o menino, ele bate o pé duas vezes e se desfaz em fuligem que cai no chão
+597. A Lia reconhece os dois pisões: era o sinal dos irmãos quando eram pequenos
+598. A partir do Capítulo IV, um Davi de costas pode ser o falso: mais alto, com uma sombra comprida demais no chão, apontando para onde o Inspetor está
+599. O Davi falso não bate o pé e some com um estalo de língua; a Lia percebe: "Aquele não era o Davi."
+600. Uma vez por capítulo, quando nada está perto, a silhueta do Seu Joaquim surge bem longe, de capa e lampião aceso, apontando para um esconderijo
+601. Quando o Seu Joaquim aparece, ouve-se o assobio de cinco notas que ele assobiava no posto, e a Lia reconhece
+602. Quando a luz da lanterna encosta no Seu Joaquim ou você se aproxima, o lampião apaga com um clique e ele some
+603. No Capítulo V o Seu Joaquim espera no portão dos fundos do cemitério desde o começo, com o lampião aceso
+604. No térreo (Capítulos I e II), de vez em quando se ouve um carrinho rolando no teto, de um lado para o outro, e uma risadinha abafada
+605. Nos túneis, uma figura de terno e sem rosto aparece de costas no fim das galerias e some quando iluminada: o diretor Albano
+606. Na sala do diretor, antes de abrir o cofre, ele aparece de frente e aponta para o cofre
+607. Na diretoria (Capítulos I e II), a brasa de um cigarro acende e apaga no canto escuro; ao se aproximar ou iluminar, ela cai no chão e apaga com um chiado
+608. Ao ver a brasa pela primeira vez, a Lia sente: "Cheiro de cigarro. Fresco."
+609. Nova plaquinha de latão na sala de brinquedos: a caixinha foi "presente do Inspetor Moacir à aluna Ana L. P. pela obediência. 1978"
+610. Depois de ler a plaquinha, a Lia reconhece a cantiga dele: "Foi ele que deu pra ela."
+611. Correção: sair de qualquer esconderijo (armário, cama, bueiro) quebrava o jogo com um erro, por uma variável que sumiu num merge
+
+### Sustos e eventos (110)
+
+612. Prólogo: ao voltar à loja do posto depois da chave, há um cartaz novo ao lado do de 1979: "DESAPARECIDA — 1994 — Lia Moraes, 29 anos"
+613. Prólogo: a Lia arranca o cartaz com o nome dela, o papel cai no chão e, quando ela olha de novo, ele está colado na parede outra vez
+614. O livro de ocorrências se escreve sozinho: depois da primeira Procissão ganha uma linha de tinta fresca com a hora da sua partida ("Visitante Lia M. fora da cama")
+615. Livro de ocorrências: quem corre muito durante a Hora ganha a linha "Visitante Lia M. correu durante a Hora"
+616. Livro de ocorrências: morrer no térreo acrescenta "Lia M. Armário." com a hora em que você morreu
+617. Cap. II: chamada no refeitório — uma freira chama nomes no escuro e vozes de criança respondem "Presente"; Davi, Ana e Tomé ficam sem resposta
+618. Cap. II: quando a freira chama "Lia Moraes?", fazer barulho faz o Inspetor responder "Presente" de dentro da sala e vir atrás do som; ficar quieta vale "Falta"
+619. Cap. II: na diretoria, um homem de terno fuma sentado de costas na cadeira e vira fumaça quando você chega perto ou ilumina
+620. Cap. II: o cigarro dele continua aceso em cima da mesa, soltando fumaça, e a Lia diz "Cigarro e cera. Ele ainda vem aqui."
+621. Cap. II: um relâmpago visto da recepção mostra o pátio cheio de crianças paradas na chuva, viradas para o prédio; no clarão seguinte, o pátio está vazio
+622. Um relâmpago no refeitório mostra por um instante a sala de 1979: crianças sentadas nas mesas, luz quente e uma figura alta de pé no meio
+623. Cap. II: em cada uma das nove badaladas, o corredor pisca para 1979 com luz amarela e crianças de pijama paradas olhando a Lia
+624. Cap. II: na nona badalada a visão de 1979 dura um segundo e o Moacir, de olhos abertos no fim do corredor, vira a cabeça para você
+625. Cap. I: depois dos fusíveis, o Seu Joaquim aparece no pátio, na chuva, com um lampião, apontando para a casa de máquinas
+626. O Seu Joaquim some no relâmpago, quando a lanterna o pega ou quando você chega perto
+627. Banheiro de baixo: espelho novo onde um menino aparece atrás do ombro da Lia, mais perto a cada olhada
+628. Banheiro de baixo: na segunda olhada o menino do espelho aponta para a porta; na terceira ele sumiu e passinhos descalços correm pelo corredor
+629. Cap. I: um relâmpago na enfermaria mostra por um instante alguém alto parado no canto mais longe da sala
+630. Fogo-fantasma: a fresta de baixo de uma porta fechada brilha laranja, com madeira estalando e gritos abafados de criança (no máximo duas vezes por partida)
+631. Fogo-fantasma: ao chegar perto, a luz some, a porta está fria e cai fuligem do teto em cima de você
+632. Cap. II: uma foto instantânea na cama da enfermaria mostra a Lia de costas na estrada, tirada de cima do carro, com "chegou" escrito no verso
+633. Pegar a foto instantânea faz a porta fechada mais próxima se abrir sozinha, bem devagar
+634. Fim do corredor leste: fumaça de 1979 que só aparece dentro do facho da lanterna
+635. Atravessar a fumaça sem prender o ar faz a Lia tossir, e a tosse faz barulho (com dica na primeira vez)
+636. Correção: o telefone que avisa onde o Inspetor está ficava exatamente em cima do telefone da recepção; agora ele toca na mesa da diretoria
+637. Telefone da diretoria: para quem já ouviu a fita 1, depois do aviso a linha devolve a voz da própria Lia dizendo "Alô? Alô?"
+638. Cap. III: chamada noturna no Dormitório B — "Ana?" "presente", "Tomé?" "presente", "Davi?" silêncio, duas vezes
+639. Cap. III: no fim da chamada do Dormitório B, quando chamam "Lia?", uma criança responde "Presente" logo atrás de você
+640. Depois da brincadeira da Ana, a cama do Dormitório D mais perto da porta ganha uma plaquinha "LIA MORAES" e o lençol aberto como convite
+641. Esconder-se na cama com o nome da Lia faz a Ana sussurrar "Agora você mora aqui."
+642. Corredor de cima: um armário tem "LIA M." recém-riscado na porta, com lascas de madeira no chão
+643. Dentro do armário "LIA M.", risquinhos de unha aparecem por dentro um a um e, depois de 8 s, alguém sussurra "Esse é seu desde 79."
+644. Corredor de cima: o armário número 12 (o do Moacir) tem um menino lá dentro que sussurra "Ele vai ficar bonzinho se você não chorar."
+645. No armário 12 a respiração dispara: sem segurar ESPAÇO, a Lia faz barulho e o medo sobe
+646. Dormitório B: a cama da Ana tem "A.L.P." gravado na cabeceira
+647. Debaixo da cama da Ana, o estrado está coberto de centenas de olhos desenhados a lápis; na segunda vez, todos estão olhando para a Lia
+648. Debaixo da cama da Ana, algo risca a madeira bem em cima de você, para você olhar para cima
+649. Dormitório A: a cama do Davi tem o cobertor de retalhos que a mãe costurou
+650. Esconder-se debaixo da cama do Davi: ela ainda está quente, uma mão pequena segura a da Lia e apaga a lanterna
+651. Nos 3 s em que o Davi segura a sua mão, o Inspetor desiste de procurar ali (uma vez por partida)
+652. Corredor de cima: uma bolinha de gude rola sozinha do fundo do corredor até o pé da Lia, tilintando no piso
+653. Pisar na bolinha de gude andando faz o vidro estalar alto e chama o Inspetor (agachada você passa sem barulho)
+654. Corredor de cima: amarelinha de giz de 1 a 10 no chão; a cada casa pisada em sequência, a Ana diz o número
+655. Pisar na casa 10 da amarelinha faz a Ana dizer "Achei." atrás de você e, se ela estiver solta, adianta a próxima aparição
+656. Sala de brinquedos: telefone de lata com barbante; encostar no ouvido faz um menino dizer em que lugar o Inspetor está agora
+657. Telefone de lata: puxar o barbante faz o outro lado puxar de volta com força, e o barulho chama atenção
+658. Sala de brinquedos: cada vez que você vira as costas aparece mais um bloco numerado no chão; no décimo, a caixinha toca sozinha
+659. Rouparia: cabides com etiqueta de nome; os de Davi, Ana e Tomé estão sempre vazios
+660. Rouparia: a cada Procissão ou aparição da Ana, mais um uniforme fica molhado e pingando no chão
+661. Rouparia: bater de leve na parede (E) faz alguém do outro lado responder com o mesmo número de batidas
+662. Rouparia: bater 9 vezes faz a resposta vir de todas as paredes e chama o Inspetor; três vezes seguidas 3 batidas e um menino soletra "S... A... I..."
+663. Cap. III: um menino de pijama aparece no fundo do corredor quando a luz está apagada, cada vez mais perto; a 3 m, a lanterna acende sozinha e ele some
+664. Cap. III: um menino de uniforme, de costas, aponta o Dormitório E (onde está a engrenagem) e entra antes de você chegar; da porta ele diz "Não olha pra mim ainda."
+665. Andar de cima: ao chegar pela escada, a luz puxa para laranja, madeira estala, uma criança tosse e a Lia lembra que foi ali que o Seu Joaquim não conseguiu passar
+666. Morrer no andar de cima faz a foto da turma de 1979 ganhar uma adulta de lanterna no fundo; na segunda morte, ela está no meio das crianças
+667. Cap. III: um menino translúcido é puxado por um braço comprido para dentro de um armário do corredor, e uma voz de homem diz "Falou durante a Hora."
+668. Andar de cima: luz amarela por baixo da porta do banheiro, com a sombra de dois pezinhos passando de vez em quando; ao abrir, só escuro
+669. Túneis: na cisterna, um armário marcado com fita "NÃO" esconde o esqueleto encolhido de um repórter de 1987, com crachá do jornal
+670. Armário "NÃO": a Lia pega a garrafa da mão do repórter, mas a porta range e o estalo de língua do Inspetor responde ao longe
+671. Túneis: parada na água com a lanterna apontada para baixo, o reflexo de um menino aparece por um instante (três vezes; na terceira, ele aponta)
+672. Túneis: uma seta de giz branca na cisterna aponta para o lado onde o Inspetor está, e a Lia percebe: "Essa não é a letra dele."
+673. Sala do diretor: depois de ler a carta ao bispo, um homem de terno está sentado de costas na poltrona e vira fumaça quando você chega perto
+674. Cisterna: choro abafado vem de dentro de um armário enferrujado
+675. Esconder-se no armário do choro: o Tomé está lá dentro e diz "Shhh. Ele ouve a gente chorar."
+676. Túnel norte: fumaça que só aparece no facho da lanterna, e que faz tossir
+677. Cap. V: uma cova aberta ao lado do túmulo do Davi, com a pá fincada e uma cruz nova com "LIA" escrito a giz
+678. Cap. V: ao cavar o último túmulo, terra cai atrás de você; quando você vira, a cova da Lia está cheia e coberta de flores
+679. Cap. V: de longe, um homem de terno com um lampião passa a corrente na porta da capela e fecha o cadeado; quando você chega, não há corrente nenhuma
+680. Cap. V: perto do portão dos fundos, um homem rouco chama do lado de fora do muro, perdido ("Eu sou do jornal...")
+681. Responder ao homem do muro com V é responder ao chamado: a voz vira a do Inspetor, do seu lado, e ele vem
+682. Cap. V: para quem achou o desenho do Davi, um desenho igual está preso no muro, mas com uma terceira figura alta atrás das duas crianças
+683. Fuga do Cap. V: mãos pequenas esmurram a porta da capela por dentro, cada vez mais rápido, gritando "Abre!"
+684. Cap. V: no escuro, pegadas de bota iguais às da Lia seguem à frente dela até a capela, e somem quando iluminadas
+685. Cap. V: no escuro, três crianças de 1979 andam de mãos dadas pelo caminho até a capela; acender a luz faz elas sumirem
+686. Cap. V: depois disso, ao apagar de novo a lanterna, a menor (Ana, de fita vermelha) está parada a 1 m de você, olhando
+687. Cap. V: o terceiro objeto no altar traz o incêndio de 1979 por 3 s: luz laranja tremendo, brasas subindo e madeira estalando
+688. No incêndio do altar, mãos pequenas batem na porta, crianças gritam e tossem, o sino soa sozinho e tudo corta seco para o silêncio
+689. Cap. V: um menino translúcido corre para a capela e um braço comprido o puxa para dentro com um baque na porta
+690. Cap. V: para quem viu a Procissão, a fita vermelha da Rosa e a bolinha de gude do João estão molhadas nas lápides deles, "como se tivessem voltado"
+691. Capela: fumaça que só a lanterna mostra, e que faz tossir
+692. Procissão: na primeira vez que ela para no seu esconderijo, uma bolinha de gude rola da fila até a porta
+693. Procissão: com a lanterna apagada, a última criança da fila sussurra "Você também não tem nome."
+694. Procissão: a partir da segunda, uma das crianças sussurra "...Lia." ao passar pelo seu esconderijo
+695. O Seu Joaquim aparece no fim de um corredor uma vez por capítulo (I a III), aponta um armário e some
+696. O armário que o Seu Joaquim apontou é poupado: a Procissão passa reto por ele, e o velho comenta de longe "Esse aí elas não abrem."
+697. Contorno de giz no chão onde a Lia morreu, com "LIA — 21hXX", até o fim do capítulo; mortes no mesmo lugar empilham contornos
+698. Na terceira morte no mesmo lugar, há um corpo coberto por um lençol ali, que some quando você chega perto ou ilumina
+699. O carrinho azul do Tomé rola por baixo da porta até o seu pé pouco antes de o Inspetor entrar (só depois da fita do Tomé, até 3 vezes)
+700. Em calmaria, perto de um armário, a Irmã Celeste às vezes cantarola um hino sem letra, bem baixinho
+701. Ecos de 1979: ficar parada 6 s em certos lugares, sem nada por perto, faz o mundo calar e tocar uma lembrança daquela noite (o eco faz um pouco de barulho)
+702. Eco na cozinha: colheres batendo nos pratos e "Sopa pra trinta e sete. Quem derramar, fica sem."
+703. Eco na sala de aula: giz na lousa e uma freira ditando "Quem fala... some."
+704. Eco na recepção: um armário de ferro sendo esmurrado e um homem contando
+705. Eco no Dormitório A: cochichos entre as camas, "Apaga, apaga! Ele tá subindo a escada."
+706. Eco na rouparia: risadinhas abafadas no meio dos lençóis que param de uma vez
+707. Eco na cisterna: alguém desce a escada contando os degraus e para no treze
+708. Eco na sala do diretor: uma caneta riscando e "Fugitivos. Escreva fugitivos."
+709. Eco na capela: tosse de criança e mãos pequenas batendo na madeira
+710. A partir da segunda partida que chegou ao Cap. V, uma outra Lia de jaqueta e lanterna anda à sua frente num corredor do térreo e some na esquina
+711. Nessas partidas, no Cap. V, a outra Lia está parada no portão dos fundos olhando para a capela
+712. Susto ambiente novo: choro baixinho de dentro do armário mais próximo
+713. Susto ambiente novo: o apito do inspetor ecoa ao longe, dois toques
+714. Susto ambiente novo: um sapato pequeno cai do alto do seu lado e quica no chão
+715. Susto ambiente novo: giz riscando uma lousa na sala vizinha
+716. Susto ambiente novo: passinhos descalços correm em círculo à sua volta e alguém ri
+717. Susto ambiente novo: uma caneca de lata cai e rola atrás de você
+718. Susto ambiente novo: alguém sussurra no seu ouvido "Nove e quatro." (a hora do Tomé no livro de ocorrências)
+719. Susto ambiente novo: cheiro de fumaça e fuligem caindo do teto
+720. Susto ambiente novo (andar de cima): três batidinhas de mão pequena embaixo do assoalho, bem debaixo dos seus pés
+721. Susto ambiente novo: algo é arrastado devagar do outro lado da parede
+
+### Áudio (104)
+
+722. Novo tema musical do internato: um hino de 8 notas em ré menor, sintetizado, que volta em vários pontos do jogo
+723. A caixinha de música da Ana agora toca o hino do internato, uma oitava acima, com a última nota desafinada
+724. A caixinha termina com uma coda: as notas do assobio do Seu Joaquim tocadas ao contrário
+725. O silêncio em volta da caixinha agora dura exatamente o tempo da melodia
+726. No prólogo, o Seu Joaquim assobia as cinco primeiras notas do hino dentro do posto
+727. O assobio do Joaquim tem vibrato e sopro de verdade, e para de vez quando o velho some
+728. O Inspetor cantarola o hino de boca fechada, grave e desafinado, quando patrulha calmo a uma distância média
+729. O cantarolar do Inspetor anda com ele e corta no meio quando algo chama a atenção dele
+730. No andar de cima, a Irmã Celeste cantarola o hino vindo do quarto dela; a voz atravessa a porta e cresce conforme você chega perto
+731. O cantarolar da Celeste para seco no instante em que a Ana começa a contar
+732. Depois da fita da Celeste ela nunca mais canta, a não ser uma última vez, bem atrás da Lia
+733. Na capela, um coral de crianças canta o hino quando você entra pela primeira vez, perdendo vozes a cada verso até sobrar uma
+734. Final verdadeiro: o hino toca inteiro em ré maior, em órgão e coral, terminando numa nota que nunca tinha tocado
+735. Final do silêncio: uma criança sozinha canta o hino e para antes da última nota
+736. Final comum: a caixinha toca o hino ao contrário, abafada, ao longe
+737. No rádio do quarto da Celeste, um trecho do hino em coral antigo passa por baixo do noticiário de 1979
+738. Na nona badalada do Cap. II, a chuva, o vento, o drone e o zumbido das lâmpadas cortam de uma vez por 20 s
+739. Nessa Hora do Silêncio só sobram o coração, a respiração e os passos da Lia
+740. Os passos da Lia soam mais altos durante a Hora do Silêncio
+741. Durante a Hora do Silêncio, qualquer barulho da Lia vale o dobro para o Inspetor
+742. O coração bate mais forte e presente durante a Hora do Silêncio
+743. A Lia sussurra "Nem a chuva." quando tudo para
+744. Depois dos 20 s, o som do mundo volta aos poucos, em 6 s, com legenda
+745. As goteiras também se calam durante a Hora do Silêncio
+746. Cornetas de alto-falante enferrujadas presas no alto dos corredores do térreo e do andar de cima
+747. Na nona badalada, as cornetas estalam ao ligar e a voz do Diretor Albano anuncia a Hora do Silêncio, com legenda
+748. A voz do Albano é procedural: grave, em banda de telefone, distorcida como lata e com eco de corredor
+749. Todas as cornetas perto de você falam juntas, cada uma da sua posição na parede
+750. Chiado de válvula e zumbido elétrico nas cornetas enquanto elas falam
+751. A corneta que fala faz barulho de verdade: o Inspetor vai até ela
+752. No Cap. II, depois da Hora, o Albano avisa pelos alto-falantes em que ala o Inspetor faz a ronda, e às vezes mente
+753. No começo do Cap. III, a chamada da noite pelos alto-falantes, com nomes de alunos sorteados a cada partida
+754. A chamada termina com Ana Luísa, Tomé e Davi, uma pausa longa, "Moraes, Lia." e "Fora da cama."
+755. Depois da chamada, a corneta chama o Inspetor de longe e a Lia percebe que a casa inteira sabe dela
+756. Depois da brincadeira, a Ana usa a mesma corneta para imitar o diretor e ri no fim
+757. Nas calmarias, as cornetas soltam respiração de crianças e um "shhh" coletivo
+758. Antes da Procissão, as cornetas chiam todas juntas: um aviso a mais
+759. Rádios de válvula (modelo novo) na cozinha, no quarto da Irmã Celeste, na sala secreta dos túneis e sobre um caixote no cemitério
+760. Os rádios ligam sozinhos quando você entra na sala, com estalo de sintonia
+761. Cozinha, Cap. I: a Rádio Serra FM noticia o carro achado na estrada velha com a porta aberta e os faróis acesos
+762. Cozinha, Cap. II: o locutor conta que as luzes do internato acenderam sozinhas e pergunta quem mais ouviu o sino
+763. Quarto da Celeste: o rádio pega 1979 e noticia a "fuga" de três alunos, com a desculpa do diretor
+764. Sala secreta: transmissão ao vivo da noite do incêndio, com sirene, gritaria e "TEM CRIANÇA LÁ NO PORÃO!"
+765. Cemitério: o radinho diz que as buscas pela Lia foram suspensas e que o carro foi achado vazio
+766. O rádio do cemitério fala a hora certa pelo relógio da sua partida, por extenso
+767. O rádio do cemitério termina com uma segunda voz por cima do locutor: "ela ainda está lá dentro"
+768. Voz de locutor procedural com filtro de rádio, chiado que vai e volta e sintonia escorregando
+769. Rádio ligado faz barulho: o Inspetor pode ouvir cada frase
+770. Dá para desligar o rádio com E no meio da transmissão: arriscar ouvir até o fim ou calar
+771. Depois de ouvido, o rádio só chia se você mexer nele
+772. Prólogo: antes de o Joaquim sumir, o rádio da loja narra abafado um jogo de futebol de março de 1979
+773. A narração do futebol tem torcida e apito ao fundo
+774. Depois que o velho some, o mesmo locutor só conta "um... dois... três... quatro..."
+775. Ecos de 1979: parada 6 s, de lanterna apagada e sem perigo por perto, a sala toca uma memória abafada do passado, uma vez por sala
+776. Eco do refeitório: colheres nos pratos e um "shhh"
+777. Eco da sala de aula: o giz, a freira chamando "Davi Moraes?" e um "presente" pequeno
+778. Eco da enfermaria: uma correia apertando e um choro tapado
+779. Eco da diretoria: a tosse do Albano, "trinta e sete, sempre trinta e sete" e o carimbo
+780. Eco da lavanderia: o tanque e um choro baixinho
+781. Eco da cozinha: panelas e a cozinheira contando pratos até faltar o trinta e sete
+782. Eco da biblioteca: páginas virando e um sussurro mandando ler em silêncio
+783. Eco dos banheiros: chuveiro e risada de meninos que para de uma vez
+784. Eco do dormitório A: camas rangendo e um cochicho sobre o Inspetor no corredor
+785. Eco do dormitório C: a Ana contando, em 1979
+786. Eco do quarto da Celeste: terço batendo e a reza para ele não descer
+787. Eco da sala de brinquedos: crianças cantando o hino, que param no meio
+788. Eco da cisterna dos túneis: pelos canos, a Ana lá em cima contando e "ela desceu"
+789. Eco da capela: muitas mãos batendo na porta e o sino
+790. Os ecos têm legenda em itálico e vêm do centro da sala, abafados e com reverberação
+791. Os ecos não fazem barulho para o Inspetor e se desfazem se a Lia se mexer
+792. Contador de ecos encontrados, e uma fala da Lia ao ouvir todos
+793. Camada baixíssima de som de 1979 em salas marcantes: colheres, giz, máquina, panela, páginas, terço, camas, risadas e frascos
+794. A memória das salas some quando o Inspetor está a menos de 15 m
+795. Térreo: canos batendo nas paredes nas calmarias
+796. Andar de cima: o vento assobia nas frestas, mais forte nas rajadas e dentro dos dormitórios
+797. Túneis: água corrente ao longe, vindo da cisterna, que atravessa as paredes e ajuda a se orientar
+798. Cemitério: sapos coaxando ao longe
+799. Os sapos se calam de uma vez quando o Inspetor caça ou depois que o sino toca
+800. Cemitério: um cata-vento enferrujado range ao longe de tempos em tempos
+801. Na sala do diretor e no quarto da Celeste depois da fita dela, a chuva e o drone caem quase a zero: um silêncio que pesa
+802. Sala do diretor e depósito dos túneis ganharam acústica de sala (antes soavam como túnel)
+803. O Inspetor carrega um molho de chaves que tilinta a cada passo, com posição 3D e legenda com direção
+804. Na patrulha o tilintar das chaves é lento; caçando, elas chacoalham rápido entre os passos
+805. Quando o Inspetor para para escutar, as chaves se calam com um tinido abafado: o silêncio vira aviso
+806. Diante da porta da Celeste, uma reza das regras do outro lado: "não corra... não respire... não tire os olhos dela... amém"
+807. Ao abrir o quarto vazio da Celeste, o terço balança sozinho na cabeceira
+808. Reza da Celeste como radar: parada no andar de cima ou nos túneis, você ouve uma reza baixinha e contas de terço
+809. A reza acelera e fica aflita quando o perigo chega perto e se cala de vez a menos de 5 m
+810. Cap. V, a partir do segundo túmulo: batidas de muitas mãos na porta da capela, por dentro
+811. As batidas na capela param quando a Lia chega perto da porta
+812. Refeitório: respirações de criança espalhadas pelas cadeiras
+813. A cada visita ao refeitório há menos respirações (37, 20, 9) e, na última, só três, bem atrás de você
+814. Prender o ar faz as respirações do refeitório pararem também
+815. Goteiras pingando em baldes de lata na lavanderia e no banheiro de cima, no ritmo de uma contagem
+816. Com a Ana contando, a goteira do banheiro pinga junto com cada número e uma vozinha conta junto
+817. Nos corredores o prédio range em ciclos lentos de inspira e expira, que aceleram na caça
+818. Legenda opcional "o prédio range" no nível de legendas "todos"
+819. Vitrola de maleta no refeitório (modelo novo)
+820. Ligar a vitrola toca o hino em coral, alto, e atrai o Inspetor para o refeitório por 20 s (uso único)
+821. Na segunda volta do disco, o coral da vitrola perde uma voz a cada nota
+822. Chiado de vinil, estalos e flutuação de velocidade na música da vitrola
+823. Depois a agulha risca e o disco fica pulando no mesmo verso para sempre, chamando o Inspetor de vez em quando
+824. O disco pulando continua lá depois de carregar o jogo
+825. Legendas de som novas para alto-falantes, rádios, ecos, reza, coral, sapos, baldes e vitrola, com direção
+
+### Visual e luz (98)
+
+826. Escritas de giz escondidas que só brilham no clarão do relâmpago e somem logo depois (com "Reduzir flashes" a revelação é lenta e suave)
+827. No térreo, o relâmpago revela frases de giz na recepção, refeitório, sala de aula, biblioteca e enfermaria ("ELE OUVE O TEU CORAÇÃO", "O DIRETOR SABIA"...)
+828. No andar de cima, o relâmpago revela frases de giz nos dormitórios e na sala de brinquedos ("LIA, VEM ME BUSCAR", "A ANA CONTA PRA NÃO CHORAR"...)
+829. Na parede da torre do sino, o clarão mostra em giz "OS NOVE DA NOITE" com os nove nomes
+830. Foto da turma de 1979 pendurada na recepção (a irmã, o diretor e vinte e três crianças), que dá para examinar
+831. No clarão do relâmpago, uma figura alta, vendada e de cabeça torta aparece atrás das crianças na foto de 1979
+832. Refeitório: um relâmpago troca a sala por um instante pelo refeitório de 1979, com toalhas, pratos e canecas postos e crianças sentadas de costas
+833. Dormitório B: o clarão mostra as camas arrumadas com lençóis brancos e travesseiros, com crianças sentadas nelas
+834. Sala de aula: o clarão mostra as crianças nas carteiras e a lousa limpa com a data "14 de março de 1979"
+835. Corredor de cima: o clarão mostra a noite do incêndio, paredes em brasa e crianças correndo
+836. Rouparia: o clarão mostra a sala queimando, com brasas nas paredes e uma menina parada no meio
+837. Capela: o clarão mostra a noite do incêndio, com três crianças batendo na porta trancada e a irmã ao lado delas
+838. Cada lembrança de 1979 acontece uma vez por partida; ficando alguns segundos numa sala marcada, o céu manda um relâmpago
+839. As lembranças de 1979 vêm com luz quente de lampião (fogo laranja nas da noite do incêndio) e sussurros
+840. Escondida durante a Procissão, a sala vista do esconderijo fica como em 1979 por alguns segundos: luz quente, ar limpo e mesa ou cama arrumada
+841. Sombra de fuligem da Irmã Celeste abraçando três crianças na parede da capela, ao lado da porta
+842. Iluminar a sombra da irmã com a lanterna por 2 s faz a Lia dizer "Ela ficou com eles até o fim."
+843. Marcas de mãos pequenas queimadas e arranhões por dentro da porta da capela
+844. Vitral de "São Lázaro do Silêncio" na capela: santo de venda branca, dedo nos lábios e rosto riscado
+845. A cada relâmpago os vitrais se acendem e projetam manchas coloridas no chão da nave
+846. Por um quadro, no clarão, o rosto riscado do santo no vitral vira o rosto do Inspetor de cabeça torta
+847. Segundo vitral: um santo segurando um sino sobre três crianças ajoelhadas, com uma venda pintada depois, por cima do vidro
+848. Depois de tocar o sino, a capela volta a 1979 por 3 s: luz laranja forte e três crianças puxando a corda, sem parar o jogo
+849. Durante essa lembrança, batidas na porta e um tranco; depois, corte seco para o escuro de agora
+850. Do cemitério, as janelas da capela tremulam com luz de fogo, mesmo sem fogo lá dentro
+851. Uma linha de luz laranja tremula por baixo da porta da capela, com uma rosácea acesa por cima dela
+852. Luz laranja tremulando diante da capela, que some quando você entra (lá dentro só há velas)
+853. Cinza fina no ar do cemitério, cada vez mais densa perto da capela
+854. Na fuga depois do sino, a cinza vira neve caindo
+855. A luz de fogo da capela pulsa a cada badalada depois do sino
+856. Grama e terra queimadas em volta da capela, guiando o olhar até ela sem placa
+857. Dentro da capela a imagem esquenta de leve em tom laranja e volta ao frio quando você sai
+858. Cinza caindo dentro da capela e brasas que ainda pulsam nas frestas do piso perto do altar
+859. Lua entre nuvens no cemitério: em ciclos lentos ela sai, o cemitério aparece por alguns segundos e depois some
+860. A lua faz sombras longas das cruzes, lápides, árvores e do obelisco no cemitério
+861. A lua aparece no céu do cemitério, com halo, quando as nuvens abrem
+862. Depois do sino a chuva vai parando aos poucos em 10 s
+863. Na fuga, a neblina abre perto do portão dos fundos e a lua fica no céu
+864. Fogo-fátuo azul paira sobre os túmulos das três crianças até eles serem cavados
+865. Com o gerador ligado, as lâmpadas do térreo respiram no ritmo do motor (oscilação de 5% a cada 1,2 s)
+866. O gerador engasga de vez em quando e sempre nas badaladas: todas as lâmpadas caem a meia luz por meio segundo
+867. Ao ligar o gerador, a luz volta sala por sala a partir da casa de máquinas, com um estalo de luz em cada lâmpada
+868. Lâmpadas estouradas soltam chuvas de faíscas de tempos em tempos quando há energia
+869. Mariposas voando em volta das lâmpadas acesas
+870. Prólogo com luz azul de chuva
+871. Capítulo I com luz verde fluorescente e doente
+872. Capítulo III com luz lilás de luar
+873. Capítulo IV com luz verde-água
+874. Capítulo V com luz cinza-prata, com transição suave de 2 s entre as paletas
+875. No andar de cima todas as lâmpadas ficam frias e azuladas
+876. Abajur de cúpula de pano no quarto da Irmã Celeste: a única luz quente e parada do andar, que vaza pela porta
+877. Depois da fita da Irmã Celeste, o abajur pisca e se apaga sozinho
+878. Janelas com caixilho de madeira em cruz nas paredes externas do térreo e do andar de cima, com chuva escorrendo no vidro (animada)
+879. No relâmpago, a janela clareia e projeta no chão a luz recortada pela cruz do caixilho e pelos galhos lá fora
+880. Luar fraco e azulado entra pelas janelas e marca o chão mesmo sem relâmpago
+881. Cortinas chamuscadas, com a barra queimada e furos, balançando nas janelas do andar de cima
+882. Feixes de luar pelo forro furado do refeitório, com buracos e ripas soltas no teto
+883. Poeira girando devagar dentro dos feixes de luar, que congela no ar quando a Procissão passa
+884. A chuva pinga pelos buracos do forro do refeitório e forma poças no chão
+885. Fuligem subindo pelas paredes do rodapé até o teto, pouca no térreo e muito mais no andar de cima
+886. Teto do depósito de cima totalmente preto de fuligem, e manchas de fuligem nos tetos dos dormitórios
+887. A partir do Capítulo II aparecem manchas de fuligem nos tetos do térreo
+888. Paredes da capela enegrecidas de baixo para cima e teto da nave manchado
+889. Papel de parede infantil de patinhos, desbotado e descascando, nos dormitórios e na sala de brinquedos
+890. Tijolos dos túneis com limo verde escorrido e a marca da linha d'água
+891. Pedra da capela com fuligem e cera de vela escorrida
+892. Setas de giz do Davi no chão que levam aos segredos (o livro torto, o rodapé solto, a cama D.M.) e brilham um pouco mais sob a lanterna
+893. Riscos de giz na altura de criança nos corredores e dormitórios: "SHHH", bonecos de palito de mãos dadas e contagens de 1 a 10
+894. Desenho de giz de um homem alto com X nos olhos e de um sino "DIN DON", na altura de criança
+895. Teias de aranha nos cantos do teto, que só aparecem quando a luz bate
+896. Desenhos de criança presos na sala de brinquedos: "EU E A LIA", "O INSPETOR", a procissão das nove e a Ana contando
+897. Cardápio da semana do incêndio no refeitório, com a quarta-feira riscada e "a gente não jantou"
+898. Brasão do internato (sino de boca costurada, "SILENTIUM SALVAT") na recepção, que dá para examinar
+899. Pratos sujos e trincados com o brasão espalhados nas mesas do refeitório
+900. Brasão no muro do portão da estrada e dos dois lados da placa da fachada
+901. A venda do Inspetor tem "SILÊNCIO" bordado em linha vermelha
+902. A camisola da Ana tem a barra preta de fuligem
+903. Na Procissão, uma criança leva um pião de madeira e outra uma fita vermelha no cabelo
+904. Quando a Procissão passa perto, uma bolinha de gude cai da mão de uma criança, quica e rola pelo chão
+905. Capítulo III: raramente, uma sombra de menina atravessa o círculo da lanterna na parede, sem ninguém ali
+906. Ao pegar a engrenagem, dar corda na caixinha, cavar um túmulo, pôr um objeto no altar ou achar a cama do Davi, a tela vira 1979 por um instante: luz amarela de fita velha e crianças borradas
+907. No clarão do relâmpago, o espelho do banheiro mostra uma menina parada atrás de você
+908. No trovão, cai poeira do forro em cima da Lia
+909. Poças d'água nos corredores e na recepção com goteira pingando do teto e ondinha na água
+910. Poças na estrada velha que brilham com a lanterna
+911. Raio ramificado visível no céu quando você está ao ar livre (nunca com "Reduzir flashes")
+912. Nos túneis, gotas pretas de fuligem pingam do teto
+913. Velas com poça de cera e escorridos na base
+914. Velas acesas soltam um fio fino de fumaça
+915. Quando uma vela apaga, sobe um rolo de fumaça
+916. Lanterna no chão com alça de pulso
+917. Chaves com etiqueta de papel amarrada
+918. Caderno do Davi com elástico vermelho e etiqueta "DAVI M." na capa
+919. Gravador com grade do alto-falante e alça
+920. Galão com rótulo amarelo de "INFLAMÁVEL"
+921. Boneca da Ana com a barra do vestido queimada
+922. Carrinho com faróis acesos
+923. Engrenagem com eixo no centro
+
+### Jogabilidade (103)
+
+924. Armários marcados com um D pequeno riscado pelo Davi aparecem no térreo, no andar de cima e nos túneis
+925. O Inspetor nunca fareja nem abre um armário com o D do Davi por causa de barulho médio (barulho alto ainda denuncia)
+926. Armários com o D do Davi não entram na lista de "armários favoritos" que ele aprende a vistoriar
+927. Ele também não bate nas portas dos armários marcados quando vasculha a sala
+928. O texto de "Esconder no armário" avisa quando há uma marca na porta (D riscado, T entalhado ou D de traço reto)
+929. A página 1 do diário do Davi ganhou a nota na margem explicando as marcas: "se tiver um D, pode entrar"
+930. Na primeira vez escondida num armário do Davi, a Lia sussurra que reconhece a letra dele
+931. Nos túneis existe um D falso, grande e de traço reto, feito por outra mão: ali o Inspetor confere primeiro
+932. Escondida no armário do D falso, ele sabe que você está lá ("O meu armário") e vem vistoriar
+933. A Lia percebe que o D falso não é do Davi ao entrar nele pela primeira vez
+934. Um armário por mapa (térreo, andar de cima, túneis) tem um T pequeno entalhado: o esconderijo do Tomé
+935. Escondida no armário do Tomé, a Lia ouve o cochicho de um menino: "Aqui ele nunca acha."
+936. O Inspetor passa direto pelo armário do Tomé mesmo com barulho médio, e não faz o teste da porta se você entrou fora do alcance dele
+937. Na primeira vez no armário do Tomé, a redação do Tomé ganha uma linha nova no verso (ele marcou o T)
+938. Código de batidas das crianças riscado na parede do corredor de cima, ao lado da porta do dormitório D, na altura de uma criança
+939. Depois de ler o código, três batidas na parede avisam de verdade que o Inspetor está vindo para a sua sala ou a vizinha
+940. Duas batidas na porta avisam "não vem por aqui" quando você chega perto da porta da sala onde ele está
+941. Uma batida baixinha por dentro da parede responde "sim" quando você entra num armário seguro (D ou T)
+942. Rádio de pilha do Seu Joaquim no balcão da recepção, que fica com a Lia
+943. Segurar B liga o rádio: o chiado fica mais forte perto de segredos (frio, morno, quente, fervendo)
+944. O chiado do rádio faz barulho 8 a cada instante: usar perto do Inspetor é perigoso
+945. Perto de cada segredo o Seu Joaquim solta uma frase curta pelo rádio sobre aquele lugar
+946. Em cada mapa, a primeira vez que o rádio liga, o Seu Joaquim fala sobre o lugar
+947. O rádio às vezes liga sozinho quando o Inspetor está a uma sala de distância (B desliga na hora)
+948. Barra de "calor" do rádio no canto da tela enquanto ele chia
+949. Toca-fitas de bolso da Lia: T põe e tira o fone de espuma com a fita sem remetente
+950. Com o fone no ouvido, o som do mundo cai 70% e os estalos do Inspetor quase somem: risco real
+951. O lado B da fita muda a cada capítulo, com duas frases novas do Davi (seis capítulos, doze falas)
+952. As falas do lado B dão pistas das mecânicas novas (marcas D, telefone, código de batidas, D falso, harmônio)
+953. Botão "Ouvir a fita no fone (T)" dentro do diário (TAB)
+954. Aviso "[fone] o prédio fica longe" no HUD enquanto o fone está no ouvido
+955. Com o fone, o medo sobe mais devagar: a voz do Davi acalma, em troca de não ouvir o prédio
+956. Morrer ou trocar de mapa tira o fone automaticamente
+957. Fita já ouvida: segurar E no gravador avança a fita em 3x
+958. Avançar a fita chia alto e faz barulho extra no lugar do gravador
+959. O texto do gravador mostra "segure: avançar (chiado alto)" quando a fita já foi ouvida
+960. Toque rápido de E numa fita já ouvida continua parando a fita, sem atropelar o avanço
+961. Sineta de servir na parede da cozinha: tocar chama o Inspetor para jantar
+962. Na primeira vez no capítulo ele senta à mesa da cozinha, de costas, por 10 s, ouvindo pela metade
+963. Tocar a sineta de novo no mesmo capítulo não engana: ele vem com fúria, caçando
+964. A Lia lembra do caderno da cozinheira ao tocar a sineta pela primeira vez
+965. Fita 3 (do Moacir) vem mastigada: segure E por 6 s para enrolar com a caneta antes de ouvir
+966. Enrolar a fita faz um clique-clique baixinho de plástico, e o progresso fica guardado se soltar
+967. Velas votivas num pires ao lado de esconderijos (seis no jogo: térreo, andar de cima, túneis e capela)
+968. Segurar E junto da vela faz a Lia sentar e lembrar do Davi em voz baixa (uma lembrança diferente por vela)
+969. Lembrar baixa muito o medo, mas o tempo corre: Procissão, Menina e Chamado chegam 15 s mais cedo
+970. Telefone de disco na parede da recepção que funciona a partir do Capítulo I
+971. Discar 03-79 (o Posto Serra) faz o Seu Joaquim atender pelo chiado com uma dica do capítulo atual
+972. Discar 1403 toca a gravação da noite de 14 de março de 1979 (o sino, as batidas na porta, a voz do diretor)
+973. Qualquer outro número dá sinal de ocupado, e girar o disco faz barulho no corredor
+974. Lista de telefones colada ao lado do telefone, com o número do Posto Serra
+975. Placa "POSTO SERRA · FONE 03-79" pintada dentro da loja do posto, no prólogo
+976. Harmônio velho no canto da capela com cinco teclas tocáveis (dó, ré, mi, fá, sol)
+977. Tocar dó, mi, sol (as notas que os canos cantam nas válvulas) abre a tampa do harmônio
+978. Dentro do harmônio: a foto da Irmã Celeste com Davi, Ana e Tomé e o bilhete "eles não estão sozinhos"
+979. Cada nota do harmônio faz barulho, com o Inspetor solto no capítulo final
+980. Microfone do som interno na diretoria: com energia, faz um "alô" sair no alto-falante mais longe da Lia
+981. O Inspetor corre até o alto-falante errado, e depois vem direto ao microfone procurar quem mexeu
+982. O microfone funciona uma vez por capítulo; da segunda vez ele só responde "Truque velho"
+983. Três alto-falantes de madeira nas paredes da recepção e dos corredores do térreo
+984. Vitrola com disco de hinos no depósito do andar de cima, onde o Moacir dormia
+985. Ligar a vitrola toca um hino lento e arranhado; ele vem calmo e fica 15 s parado na porta, quase surdo
+986. É a única janela para passar por ele de pé
+987. Em 30% das vezes a agulha pula: o disco risca e ele entra em fúria atrás de você
+988. A Lia entende que o silêncio dele é luto, não só raiva, ao ouvir o hino
+989. O prato da vitrola gira enquanto o hino toca
+990. Recado de giz do Renato na recepção ("a escada da frente é segura") com um X de criança e "NÃO É MAIS" por cima
+991. Recado de giz do Renato no corredor oeste ("ele nunca entra na cozinha") riscado, desmentido pelas crianças
+992. Recado de giz do Renato na entrada dos túneis ("na água, agachada, ele não te ouve"), que continua certo
+993. A ordem das válvulas riscada em algarismos romanos, meio apagada, no batente da câmara oeste
+994. Calendário de 1979 na diretoria com o código do quadro de chaves escrito no verso
+995. Segurar SHIFT e apertar E no alto da escada desce escorregando pelo corrimão, bem mais rápido
+996. A batida lá embaixo faz barulho 12 e o Inspetor vem investigar a recepção
+997. Na primeira descida pelo corrimão a Lia ri nervosa: "O Davi fazia isso"
+998. Agachada, parada e mirando uma porta fechada, a Lia encosta a orelha e ouve o que tem do outro lado
+999. Do outro lado da porta dá para ouvir se ele está ali, se está na sala seguinte ou se a Menina está contando
+1000. Na primeira vez que ouve pela porta, a Lia lembra que as crianças faziam assim
+1001. Pegadas pequenas de tênis molhado (diferentes dos pés descalços) aparecem quando você fica muito tempo sem avançar
+1002. As pegadas do Davi levam até a sala do próximo objetivo, com passos de criança correndo à frente
+1003. As pegadas somem em 15 s e só aparecem no Fácil e no Normal
+1004. Calendário do posto parado em março de 1979, que a Lia comenta
+1005. Livro de visitas no balcão da recepção, com a última linha assinada "Lia Moraes" em tinta fresca
+1006. Foto da turma de 1978 na diretoria com três rostos riscados
+1007. Latas de sopa na despensa: trinta e sete contadas, três abertas com a colher dentro
+1008. Régua de alturas na enfermaria com os riscos de Tomé, Ana e Davi, e um risco novo acima do dele
+1009. Livro de ponto do Moacir pendurado na casa de máquinas, que para no meio da noite do incêndio
+1010. Rodinha azul do carrinho do Tomé no chão do dormitório E, com uma risada de criança ao olhar
+1011. Amarelinha de giz numerada até dez na sala de brinquedos ("AGORA VOCÊ CONTA")
+1012. Terço da Irmã Celeste pendurado no quarto dela: com ele, no escuro, o medo sobe mais devagar
+1013. Nomes de Davi, Ana e Tomé riscados no monta-cargas do depósito
+1014. Nome do Moacir criança, 1951, riscado no tijolo da cisterna (ele também foi aluno do armário 4)
+1015. Lanterna velha do Moacir pendurada no túnel norte, com uma pilha ainda boa dentro
+1016. Riscos perto da escada da saída dos túneis contando os 14 degraus ("não pisa no 9")
+1017. Três pares de sapatos de criança enfileirados na capela
+1018. Marcas de mãos pequenas de fuligem por dentro da porta da capela
+1019. Seis conquistas secretas novas: Aqui Ele Nunca Acha, As Marcas do Davi, Dó Mi Sol, Hino Para Um Cego, Linha da Serra, O Jantar Está Servido
+1020. Rádio do Joaquim e terço da Irmã Celeste aparecem no inventário do canto da tela
+1021. Dicas de morte novas quando ele te pega por causa do fone, do chiado do rádio, do D falso ou de avançar a fita
+1022. Correção: a mesa do quarto da Irmã Celeste ficava na frente da porta e impedia a entrada no Capítulo III; agora fica no canto
+1023. Correção: o banco do refeitório bloqueava a porta que vem do corredor oeste
+1024. Correção: a pia dos banheiros do térreo invadia a porta
+1025. Kit de teste: T.portasLivres() confere um corredor livre dos dois lados de cada porta em todos os mapas, e o QA falha se algum móvel bloquear
+1026. Kit de teste: T.loreNoCaminho() confere que toda lore nova fica numa sala com objetivo ou no corredor entre objetivos
+
+### Interface (98)
+
+1027. Nova aba "Linha do tempo" no diário (TAB) que se monta sozinha com o que você já leu, ouviu e viu, de 1922 a 1994
+1028. Fatos ainda não descobertos aparecem na linha do tempo só com o ano e um "????" riscado em vermelho, sem dizer onde estão
+1029. Datas exatas que faltam aparecem como "__/__/" para não entregar o dia antes da hora
+1030. Cada fato da linha do tempo mostra de onde veio (lápide, ficha médica, fita do diretor, carta ao bispo...)
+1031. A linha do tempo avisa quando a história tem um buraco grande entre dois anos que você já conhece
+1032. Fatos novos brilham na primeira vez que você abre a linha do tempo depois de descobri-los
+1033. Seção "A noite de 14 de março de 1979" com os horários da noite do incêndio (21h00 a Hora, 21h04 Tomé, 21h31 Ana, 21h50 Davi e o que veio depois)
+1034. Horários da noite do fogo ainda não descobertos aparecem como "??:??"
+1035. A linha do tempo junta o livro de ocorrências, as fitas da irmã, do Davi e do diretor, o rádio do posto e o caderno da cozinheira numa ordem só
+1036. Lápides comuns do cemitério das irmãs viram fatos da linha do tempo quando você lê o epitáfio (Luiz, João, Maria das Dores, Rosa, as covas sem nome)
+1037. Fato secreto na linha do tempo: ler a lápide com o seu nome acrescenta uma entrada em vermelho
+1038. Nova conquista "Quem Lembra Conta": completar a linha do tempo e a noite do fogo
+1039. Nova aba "Pessoas" no diário com uma ficha por personagem: Lia, Davi, Ana, Tomé, Moacir, Diretor Albano, Irmã Celeste, Seu Joaquim e os que vieram antes
+1040. Cada ficha ganha uma frase curta a cada descoberta (Moacir começa com "Cego? Caça pelo som." e termina em "Só queria silêncio.")
+1041. Retrato desenhado em canvas para cada pessoa, com silhueta própria (véu da irmã, chapéu do velho, óculos do diretor, tranças da menina, cabeça torta do Inspetor)
+1042. Pessoas ainda não vistas aparecem como silhueta preta com "?" e o nome "???"
+1043. A Menina e o Inspetor aparecem pelo apelido até você descobrir o nome verdadeiro (Ana, Moacir)
+1044. Cada ficha tem a borda e o nome na cor da legenda daquele personagem
+1045. Fichas mostram com quem a pessoa está ligada, só entre as que você já conhece
+1046. Fichas mostram quantas coisas você sabe sobre cada pessoa (ex.: 3/6) e as que faltam aparecem como reticências
+1047. Ficha "Os que vieram antes" reúne as crianças enterradas antes de 1979
+1048. Nova conquista "Quem Eram Eles": completar todas as fichas de pessoas
+1049. As abas Linha do tempo, Pessoas e Notas e fitas mostram o quanto você já achou (ex.: 18/33)
+1050. Ponto dourado na aba Linha do tempo ou Pessoas quando há algo novo que você ainda não viu
+1051. Uma pena ✎ aparece no canto da tela quando algo novo entra no diário, sem texto e sem tapar o jogo
+1052. Os números 1 a 9 trocam as nove abas do diário
+1053. O diário virou um caderno escolar de 1994: pautas azuis, margem vermelha e etiqueta "Lia Moraes · caderno de 1994"
+1054. Abas do diário viraram marcadores de caderno, com a aba aberta marcada em vermelho no topo
+1055. Notas lidas aparecem no diário como recortes de papel colados com fita durex amarelada, cada um meio torto
+1056. Fitas aparecem no diário como etiquetas de fita cassete escritas a caneta, com os dois carretéis
+1057. Cada nota no diário mostra onde foi achada ("achada: Diretoria")
+1058. Nova seção "Escrito nas paredes e nas placas" na aba Notas e fitas, com tudo que você leu nas paredes e onde
+1059. A ficha médica do Moacir abre como ficha de enfermaria, com grampo, cabeçalho cinza e carimbo vermelho "ARQUIVADO"
+1060. A carta do diretor ao bispo abre em papel timbrado do internato, com letra reta e lacre de cera vermelho
+1061. O recorte de jornal abre amarelado, com o cabeçalho "Gazeta da Serra", manchete em caixa alta, duas colunas e borda pontilhada de tesoura
+1062. O livro de ocorrências abre em papel quadriculado de livro de registro, com a coluna vermelha e o número da folha
+1063. O caderno da cozinheira abre em papel pautado com manchas de gordura
+1064. As páginas do diário do Davi e a redação do Tomé abrem em caderno escolar com furos de espiral, margem vermelha e letra de criança em tinta azul
+1065. O diário da Irmã Celeste abre em papel pautado com letra inclinada em tinta azul e uma cruz no canto
+1066. O bilhete da Ana abre escrito a giz de cera rosa, torto, com um toco de giz amarelo no canto
+1067. A lista de castigos abre como cartão de quadro de avisos, preso com duas tachinhas
+1068. O cartaz de desaparecidos abre com os três espaços das fotos 3x4 e uma tachinha
+1069. A anotação do pedreiro abre em papel de embrulho pardo com marcas de régua
+1070. A lápide rachada abre como pedra cinza, com uma rachadura atravessando o texto
+1071. O desenho do Davi abre em folha de desenho com os vincos de quem dobrou em quatro e um sol de giz no canto
+1072. A folha das regras abre datilografada, presa por uma tachinha
+1073. Fitas abertas pelo diário aparecem como uma fita cassete, com o título na etiqueta e os carretéis
+1074. Cada papel mostra no canto de onde ele é ("ficha da enfermaria", "papel de embrulho", "fita cassete · lado A")
+1075. A nota entra na tela deslizando e assentando, como um papel colocado na mesa
+1076. Nova opção "Letra das notas: manuscrita / legível": a letra de criança, a letra inclinada e o giz viram uma fonte de leitura clara
+1077. "Notas em texto simples" continua valendo por cima de todos os papéis novos (fundo claro, sem inclinação, sem colunas)
+1078. Olhar uma placa de perto por meio segundo mostra a transcrição embaixo da mira ("Placa: INTERNATO SÃO LÁZARO · Ordem · Fé · Silêncio"), sem pausar o jogo
+1079. Escritas de sangue nas paredes são transcritas quando a lanterna fica sobre elas por um segundo ("Na parede: NÃO CORRE")
+1080. A contagem riscada na parede é descrita em palavras quando lida ("dez riscos, contados de um em um")
+1081. Ler placas e paredes não congela o mundo: o Inspetor continua andando enquanto você lê
+1082. Placas e paredes lidas vão para a aba Ouvido do diário
+1083. A transcrição de placas segue o tamanho do texto e o fundo de legenda escolhidos nas opções e é anunciada a leitores de tela
+1084. Nova opção para desligar a leitura de placas e paredes de perto
+1085. Ao entrar numa sala pela primeira vez, uma placa no alto mostra o nome dela
+1086. Embaixo do nome, uma linha desbotada diz o que a sala era em 1979 ("Enfermaria · onde se esperava a Hora passar")
+1087. Linhas de 1979 escritas para a estrada e o posto
+1088. Linhas de 1979 escritas para as quatorze salas do térreo
+1089. Linhas de 1979 escritas para as doze salas do andar dos dormitórios
+1090. Linhas de 1979 escritas para os túneis, a sala do diretor, o cemitério e a capela
+1091. Nova opção "Placa das salas": nome e 1979, só o nome, ou desligada
+1092. Nova opção "Descrição de cena" em Legendas: ao entrar numa sala pela primeira vez, uma linha curta descreve o que se vê, para baixa visão e brilho baixo
+1093. Descrições de cena escritas para todas as salas da campanha
+1094. A placa da sala espera a caçada acabar para aparecer e some no pânico
+1095. A descrição de cena também fica guardada na aba Ouvido, marcada como "Lugar"
+1096. Nas legendas de som, sons de perigo ganham ▲ (passos, estalos, contagem, chiado do rádio, Procissão, alguém chamando)
+1097. Nas legendas de som, sons de história ganham ✦ (canto das crianças, sussurros, sino ao longe, orelhão, caixinha de música)
+1098. Sons de perigo e de história também ganham cores diferentes, além do símbolo
+1099. A aba Ouvido mostra os mesmos símbolos ▲ e ✦ nos sons
+1100. Nova opção para tirar os símbolos dos sons
+1101. Novos sons legendados: caixinha de música, grito, algo pesado sendo arrastado e o estalo do gravador
+1102. Durante a brincadeira da Ana, um olho pequeno ao lado da mira fica aberto enquanto ela está vista e iluminada e fecha quando não está
+1103. O olho da Menina pisca quando a pilha está fraca e a lanterna falha
+1104. Nova opção para desligar o olho da Menina
+1105. Rádio-relógio de LED vermelho no canto da tela de título mostrando a hora real, com os dois-pontos piscando
+1106. Às 21:00 reais o rádio-relógio pisca, o rádio chia, o sino bate nove vezes e a Rádio Serra FM anuncia que a Hora começou
+1107. Se a tela de título ficar aberta por 9 minutos, o rádio-relógio volta para 20:47 e para, como os relógios do internato
+1108. Segredo: clicar no rádio-relógio sintoniza estações; na terceira vez ele marca 21:04 e uma criança cochicha "tá gravando?" (conquista secreta Sintonia)
+1109. Fim de capítulo mostra a soma dos seus melhores trechos entre objetivos e quanto dá para tirar do tempo
+1110. Fim de capítulo mostra quanto tempo você passou ouvindo fitas (o relógio corre) e lendo ou conversando (o relógio para)
+1111. Fim de capítulo diz quantas coisas novas você descobriu sobre o internato naquele capítulo
+1112. Os melhores trechos são guardados mesmo com o cronômetro desligado
+1113. A tela final mostra a soma dos seus recordes por capítulo e o tempo total em fitas, notas e diálogos
+1114. A tela final mostra quanto da linha do tempo e das fichas de pessoas você completou
+1115. A tela final desenha um selo da corrida em canvas: tempo, final, dificuldade, código da noite, mortes, notas e segredos, linha do tempo e código de verificação
+1116. Botão "Salvar selo" baixa o selo como imagem
+1117. Botão "Copiar 'bata meu tempo'" copia um link com a mesma noite, o seu tempo e as suas mortes
+1118. Quem abre esse link vê "Bata 33:48" no título, com a mesma noite já preenchida no campo Desafio
+1119. O link confere o código de verificação e avisa se o tempo foi mexido
+1120. A pausa lembra a última coisa que você descobriu sobre o internato
+1121. O mapa do diário marca com ✎ as salas onde você achou papéis
+1122. Passar o mouse numa sala do mapa mostra o que ela era em 1979
+1123. A legenda do mapa explica as marcas novas
+1124. A tela final rola quando o texto, as estatísticas e o selo não cabem na tela
+
+### Progressão e rejogabilidade (99)
+
+1125. Novo botão "Acervo" no título, que guarda entre as noites tudo o que a Lia descobriu
+1126. O botão Acervo só aparece depois que a Lia achou alguma coisa
+1127. Acervo: aba "Fios" junta notas, páginas e fitas em seis fios de mistério (O homem que caça, A noite do fogo, As três crianças, O diário do Davi, Quem mandou a fita, As regras da casa)
+1128. Cada fio mostra quantas peças já tem ("2 de 4") sem dizer onde estão as que faltam
+1129. Completar um fio mostra um aviso na tela e a Lia liga os pontos em voz alta com uma frase de fecho
+1130. A frase de fecho de cada fio completo fica escrita no acervo
+1131. Dá para reler no acervo, dentro de cada fio, o texto inteiro das notas, páginas e fitas já achadas (sem os códigos da noite)
+1132. Aba "Lugares" conta as peças de cada lugar (Térreo 4/7, Túneis 2/6...) sem revelar onde estão
+1133. Depois de terminar uma noite, cada peça que falta ganha uma dica enigmática na aba Lugares ("Um presente atrás de livros que ninguém lê")
+1134. A aba Lugares conta em quantos lugares do internato a Lia já reparou, somando as noites
+1135. Aba "Linha do tempo" do São Lázaro, de 1938 a 1994, que acende cada data quando você acha o documento que a conta
+1136. Datas ainda não descobertas aparecem como "— ? —" na linha do tempo, mostrando que falta história sem dizer onde
+1137. Aba "Pessoas": verbete escrito pela Lia para Davi, Ana, Tomé, Moacir, Irmã Celeste, Diretor Albano e Seu Joaquim
+1138. Os verbetes se reescrevem conforme o que você descobriu (o Moacir começa como "o homem vendado" e termina como o menino trancado em 1946)
+1139. Cada pessoa mostra a porcentagem do que já se sabe dela
+1140. Fechar 100% de uma pessoa libera uma última frase dela
+1141. Cada pessoa ganha um retrato desenhado (a venda do Moacir, o véu da Irmã Celeste, as tranças da Ana) que vai se revelando conforme a porcentagem
+1142. Aba "Gravador da Lia" guarda o recado que a Lia gravou no fim de cada capítulo
+1143. O botão "Ouvir" do gravador toca o clique e o chiado da fita
+1144. Depois de chegar ao fim do Capítulo IV, ouvir de novo os recados revela uma voz de menino ao fundo: "eu tô ouvindo, Lia."
+1145. O acervo lembra a última aba que você abriu
+1146. Segunda noite em diante: o livro de ocorrências ganha uma linha com a data de hoje em 1994: "Aluna Lia M. fora da cama. Reincidente."
+1147. Segunda noite em diante: o caderno da cozinheira passa a pedir 38 pratos, o último com o nome L. MORAES
+1148. Depois de ouvir a fita do Moacir em qualquer noite, a ficha médica dele ganha uma anotação a lápis: ex-aluno da casa, 1946 a 1952
+1149. Segunda noite em diante: a lista de castigos conta a lápis quantas vezes o Inspetor "decidiu" sobre a Lia (o total de mortes)
+1150. Depois do final verdadeiro, o diário da Irmã Celeste ganha uma linha nova: "Eles foram dormir. Obrigada, moça."
+1151. Depois do final verdadeiro, cada página do diário do Davi ganha uma linha mais apagada respondendo à Lia ("você voltou? por quê?", "não precisa mais, Lia"), sem mexer nos números do cofre
+1152. Segunda noite: no refeitório, a Lia nota um prato a mais com o nome dela
+1153. Segunda noite: na cozinha, a Lia vê uma caneca de lata separada das outras, com um L arranhado
+1154. Terceira noite: na cisterna dos túneis, o giz do Davi diz "LIA, VOCÊ VOLTOU"
+1155. Terceira noite: no último dormitório, uma das camas arrumadas tem o tamanho da Lia
+1156. Quarta noite: uma xícara de café ainda quente espera no banco da capela
+1157. Quinta noite: uma pasta grossa "MORAES, LIA" aparece na mesa da diretoria
+1158. Ao sair do carro, a Lia sente que já passou por aquela estrada (falas diferentes na 2ª, 3ª, 5ª e 9ª noite)
+1159. O título avisa qual será a sua próxima noite no São Lázaro ("noite nº N")
+1160. A pausa mostra a noite nº da partida
+1161. O resultado copiado na tela final inclui a noite nº
+1162. O jogo guarda os últimos 9 lugares onde a Lia morreu em cada mapa, somando as noites, com a hora do relógio
+1163. Nas noites seguintes, um X de giz com "LIA" e a hora aparece no chão onde você morreu
+1164. Ao chegar perto do X de giz, a Lia reconhece a própria letra
+1165. Entrar numa sala onde você morreu três vezes ou mais faz a Lia dizer "Eu já morri aqui. Eu sei que já."
+1166. A outra Lia: uma silhueta pálida e encolhida aparece por um instante, à sua frente, num ponto onde você morreu em outra noite
+1167. A silhueta some se for iluminada pela lanterna, deixando só sussurros, e range o chão quando aparece
+1168. A outra Lia aparece no máximo uma vez por minuto e nunca durante caçada, Procissão ou esconderijo
+1169. O jogo grava a rota da sua corrida mais rápida de cada capítulo
+1170. Com o cronômetro ligado, pegadas molhadas da "outra Lia" marcam no chão a rota do seu recorde
+1171. As pegadas do recorde se apagam conforme você passa por elas
+1172. A tela de fim de capítulo avisa quando as suas pegadas daquela noite ficaram gravadas
+1173. Categorias de corrida no título (aparecem ao ligar o cronômetro): Só a Saída, A Hora Acabou e Todas as Lembranças
+1174. Recordes separados por categoria e por dificuldade
+1175. O cronômetro do HUD mostra a categoria da corrida
+1176. Na categoria Todas as Lembranças, o cronômetro conta as lembranças achadas, incluindo as escondidas
+1177. A tela final diz se a corrida valeu, se bateu o recorde da categoria e por quantos segundos
+1178. Estatísticas mostram o recorde de cada categoria em cada dificuldade
+1179. Jornal do dia seguinte: botão na tela final abre a primeira página de "O Eco da Serra", de 1994
+1180. A manchete do jornal muda conforme o final ("MOÇA É ENCONTRADA DESCALÇA NA ESTRADA VELHA", "SINO DO SÃO LÁZARO SILENCIA APÓS 15 ANOS"...)
+1181. O jornal usa o nome que você escreveu, a data de hoje com o ano trocado para 1994, quanto tempo você ficou lá dentro e quantas vezes gritou
+1182. O jornal tem foto desenhada do internato com a torre do sino, classificados e previsão do tempo
+1183. Botão "Salvar imagem" baixa o jornal em PNG para mandar a alguém
+1184. Epílogo depois do final verdadeiro: a Lia no carro de manhã e o rádio dizendo que o sino não tocou pela primeira vez em quinze anos
+1185. No banco de trás do epílogo, um carrinho azul e uma fita sem etiqueta; ouvir a fita diz só "obrigado."
+1186. Botão "Na manhã seguinte" na tela do final verdadeiro para rever o epílogo
+1187. Novo final escondido, A Quarta Criança: quem leu a ficha do Moacir e o caderno da cozinheira e ouviu a fita 3 ganha no portão a escolha "Chamar o Moacir pelo nome"
+1188. Chamar o Moacir pelo nome acrescenta ao final verdadeiro o Inspetor virando menino por um instante e subindo a torre junto com as crianças
+1189. No final da Quarta Criança, o jornal do dia seguinte cita o nome Moacir
+1190. Correção: a linha "A Hora durou menos que uma hora" apagava a animação do texto final; agora entra como mais um parágrafo
+1191. No dia 14 de março, a data do fogo, o título vira "FAZ N ANOS HOJE" em brasa
+1192. No dia 14 de março, o livro de ocorrências ganha uma linha com a data de hoje e a tinta ainda molhada
+1193. No dia 14 de março, a Lia lembra da data ao sair do carro e a Procissão avisa 1 s mais tarde
+1194. No dia 15 de março, aniversário da Lia, o título lembra e o desenho do Davi ganha uma vela com o pavio ainda quente
+1195. No Dia de Finados, o título e a Lia lembram das velas do cemitério das irmãs
+1196. Sexta-feira 13 e três da manhã mudam o subtítulo do título e a fala da Lia ao sair do carro
+1197. Nome especial MOACIR: o Inspetor fica 10% mais rápido e diz "Esse nome é meu"
+1198. Nome especial CELESTE: o terço da Irmã Celeste avisa a Procissão 1 s antes
+1199. Nome especial ALBANO: o Inspetor ouve 10% mais longe e fala com o "diretor"
+1200. Nomes especiais DAVI, ANA, TOMÉ e LIA mudam a frase do título e quem fala com a Lia no começo da noite
+1201. O título reage na hora ao nome digitado (MOACIR aparece em vermelho)
+1202. O efeito de um nome especial é avisado na tela no começo da noite
+1203. Conquistas secretas dos seis fios: Olhos Fechados, Trancada Por Fora, Recreio, Quatro Números, Remetente e Letra Miúda
+1204. Conquista secreta "A Verdade Inteira" (todos os fios), que troca o subtítulo do título por "Ele escolheu o armário. Ela escolheu voltar."
+1205. Conquista secreta "Ninguém Esquecido": todas as pessoas do acervo a 100%
+1206. Conquista secreta "Quem Ouve a Casa": reparar em oito lugares do internato, somando as noites
+1207. Conquistas secretas "A Quarta Criança" e "Obrigado", ligadas ao final escondido e ao epílogo
+1208. Conquistas secretas "Uma Voz a Mais" (o gravador da Lia) e "Primeira Página" (o jornal)
+1209. Conquistas secretas "Todos Voltam" (achar o próprio X de giz) e "A Outra Lia" (ver a silhueta)
+1210. Conquista secreta "Mais Rápida Que Ontem": bater o recorde de um capítulo seguindo as próprias pegadas
+1211. Conquistas secretas de data: Aniversário (14/03), Parabéns, Lia (15/03), Finados, Sexta-Feira e Hora Morta
+1212. Conquista secreta "A Chamada": escrever quatro nomes da história no campo do seu nome
+1213. Conquista secreta "Nona Noite": começar a nona noite no São Lázaro
+1214. Conquistas secretas de corrida "Corredora da Hora" e "Nada Ficou Para Trás"
+1215. As 11 conquistas secretas antigas que mostravam só "..." ganharam uma dica enigmática no painel
+1216. O fim de capítulo mostra o que entrou na história naquele capítulo e em que pé está o fio de cada peça
+1217. A tela final mostra os fios completos, as pessoas lembradas e a noite nº
+1218. Estatísticas mostram fios completos, pessoas lembradas, datas acesas e lugares notados
+1219. Estatísticas mostram o lugar onde mais te encontraram e o capítulo mais difícil
+1220. O menu Capítulos mostra quantas vezes te encontraram em cada capítulo, somando as noites
+1221. O menu Capítulos mostra o último recado do gravador da Lia em cada capítulo
+1222. O menu Capítulos indica os capítulos que já têm pegadas gravadas
+1223. Quem já tinha completado fios em noites antigas recebe as conquistas ao abrir o jogo
+
+### Plataforma e acessibilidade (102)
+
+1224. Nova opção "Ações longas: tocar para começar e parar": forçar a porta, cadeado, válvulas, cavar, monta-cargas, escotilha e sino começam com um toque em E e param com outro, com o mesmo tempo e o mesmo barulho
+1225. No modo "tocar", o curativo (H) também começa com um toque e segue sozinho até terminar
+1226. No modo "tocar", sacudir a lanterna sem pilha (R) também dispensa segurar a tecla
+1227. A ação longa por toque se solta sozinha quando termina, quando você se afasta ou quando o alvo muda
+1228. Na primeira ação longa por toque o jogo avisa que apertar de novo interrompe
+1229. Nova opção "Soltar do agarrão: apertar E várias vezes", alternativa a sacudir o mouse para quem tem tremor, lesão ou usa trackball
+1230. No controle, apertar A sem parar solta do agarrão (antes quem jogava no controle não tinha como se soltar)
+1231. No controle, sacudir o analógico direito também ajuda a se soltar do agarrão
+1232. No celular, tocar em Usar sem parar ou arrastar o dedo pela tela solta do agarrão (antes era impossível no toque)
+1233. Barra de "solte-se" aparece no meio da tela durante o agarrão e enche conforme você luta
+1234. A dica do agarrão diz o jeito certo de se soltar para o que você está usando: mouse, E, controle ou toque
+1235. A dica da tela de morte pelo agarrão também fala do seu jeito de se soltar e lembra que dá para trocar nas opções
+1236. Com "apertar E", os apertos durante o agarrão não abrem porta nem pegam item sem querer
+1237. O controle e o celular vibram forte no instante do agarrão
+1238. No controle, o B respeita "Agachar: segurar" e a Lia levanta ao soltar o botão (antes ficava agachada para sempre)
+1239. No controle, segurar ↑ sacode a lanterna sem pilha (antes cancelava na hora)
+1240. No controle, segurar ↓ faz o curativo até o fim (antes cancelava na hora)
+1241. No controle, segurar LB mostra o arco da garrafa e soltar arremessa (antes a mira ficava presa)
+1242. No controle, o RB respeita "Respiração: alternar"
+1243. No controle, o RT respeita "Correr: alternar"
+1244. No controle, o LT agora anda devagar, em silêncio, em vez de repetir a garrafa
+1245. No controle, apertar o analógico direito (R3) olha para trás
+1246. No controle, escondida, ← e → espiam pela fresta
+1247. No controle, fora do esconderijo, ← mostra o objetivo (segurar faz a Lia pensar alto)
+1248. No controle, → responde ao chamado, como o V do teclado
+1249. No controle, lendo uma nota, X lê em voz alta e Y vira a folha das regras
+1250. Nova opção de zona morta do analógico, para controles gastos que andam sozinhos
+1251. Voltar da pausa rápido demais (quando o navegador recusa prender o mouse de novo) não reabre a pausa sozinha num laço
+1252. Abrir um menu ou o diário pelo controle nunca deixa um botão "preso" apertado ao voltar
+1253. A lista de comandos da tela de Desempenho mostra todos os botões novos do controle e as setas do teclado
+1254. No celular, os botões Pilha e Curativo podem ser segurados (sacudir a lanterna e fazer o curativo funcionam)
+1255. No celular, segurar Garrafa mostra o arco e soltar arremessa
+1256. No celular, o botão Agachar respeita "Agachar: segurar"
+1257. No celular, "Prender fôlego" respeita "Respiração: alternar" (antes só funcionava segurando)
+1258. No celular, novo botão "Olhar atrás"
+1259. No celular, botões "◂ Espiar" e "Espiar ▸" aparecem só quando você está escondida
+1260. No celular, novo botão "Objetivo" no topo da tela
+1261. No celular, o botão Usar acende quando há algo para usar na mira
+1262. No celular, os botões Agachar e Lanterna ficam acesos quando estão ligados
+1263. No celular, Garrafa, Pilha e Curativo mostram quantos você tem e ficam apagados quando acabam
+1264. No celular, o botão Lanterna fica apagado até você achar a lanterna
+1265. No celular, empurrar pouco o analógico anda devagar e quase sem barulho; até a borda, corre
+1266. No celular, o analógico muda de cor quando você está andando devagar
+1267. Nova opção de tamanho dos botões de toque (pequenos, médios, grandes)
+1268. Nova opção de opacidade dos botões de toque
+1269. Nova opção "Canhoto" no toque: o analógico vai para a direita e os botões para a esquerda
+1270. No modo canhoto, o objetivo e as barras trocam de lado para não ficar embaixo dos dedos
+1271. Sensibilidade do dedo própria, separada da do mouse
+1272. No celular, toque duplo não dá zoom e o toque longo não abre menu nem seleciona texto
+1273. As setas do teclado também andam (dá para jogar com uma mão ou em teclados diferentes), com opção para desligar
+1274. Nova opção de daltonismo (protan, deutan, tritan) que troca as cores das luzes que carregam significado
+1275. Com daltonismo, as velas dos lugares seguros passam do laranja para uma cor que se distingue (amarelo ou rosa)
+1276. Com daltonismo, a luz vermelha de emergência dos túneis passa para magenta
+1277. Com daltonismo, as luzes verdes do mundo passam para azul
+1278. Com daltonismo, a luz laranja da Procissão também troca de cor
+1279. Com daltonismo, cada vela ganha uma chama maior, tremulando, para ser lida pela forma e não só pela cor
+1280. A troca de cores do daltonismo poupa sangue, tinta e paredes: só mudam luzes, chamas e brilhos
+1281. Com daltonismo, os arcos do indicador de perigo usam pares de cor que não se confundem
+1282. No indicador de perigo, o arco do Inspetor caçando fica tracejado, lido pela forma
+1283. Nova opção "Aviso visual de sons fortes": a borda da tela pulsa quando o sino bate, alguém grita ou algo quebra
+1284. O aviso visual de sons pulsa do lado de onde o som veio (esquerda, direita, frente ou atrás)
+1285. A legenda do sino conta as badaladas da série ("o sino bate — 5ª vez")
+1286. O controle e o celular vibram no ritmo das badaladas
+1287. O controle vibra de leve quando o rádio chia
+1288. Pulso duplo de vibração enquanto as luzes piscam avisando a Procissão (com aviso visual também)
+1289. O controle bate como um coração quando o Inspetor está a menos de 5 metros, mais forte quanto mais perto
+1290. O controle e o celular vibram com as pancadas por perto
+1291. Nova opção para desligar só a vibração dos avisos do mundo, mantendo a do dano
+1292. Em aparelhos com pouca memória ou poucos núcleos, o jogo já começa na qualidade Baixa (ou Média) sem esperar a medição
+1293. Com a economia de dados do celular ligada, o jogo começa na qualidade Baixa
+1294. Em aparelho fraco o antisserrilhado já começa desligado no primeiro carregamento
+1295. Nos menus parados (pausa, diário, nota, morte, desempenho) o jogo desenha só 20 quadros por segundo e o notebook esfria
+1296. Nova opção para desligar os menus leves
+1297. Com a bateria abaixo de 20% e fora da tomada, o jogo sugere a qualidade Baixa e o limite de 30 quadros
+1298. Ao entrar num mapa novo, os materiais são preparados de uma vez: menos engasgo na primeira vez que algo aparece na tela
+1299. O contador de quadros mostra também o tempo de cada quadro, a qualidade e quantos desenhos a cena pede
+1300. Novo botão "Guardar lápide" na tela de morte: gera uma lápide com a sua morte para mandar no grupo
+1301. Novo botão "Guardar lápide" no final: uma pedra que diz "AQUI NÃO JAZ" com o final que você conseguiu
+1302. A lápide usa o nome digitado no título ("no lugar da Lia") ou LIA MORAES
+1303. A lápide conta a morte em linguagem do jogo, com a hora da noite ("pega pelo Inspetor fora da cama, às 21h12")
+1304. A lápide diz em que sala e em que capítulo você caiu
+1305. A lápide mostra em que volta você morreu (ou quantas voltas levou até sair)
+1306. A lápide leva o endereço do jogo embaixo, para quem receber poder jogar
+1307. No celular, "Compartilhar" manda a imagem da lápide direto para o app escolhido
+1308. "Baixar imagem" salva a lápide em PNG; sem compartilhar nativo, a frase vai junto para a área de transferência
+1309. A tela da lápide tem "Copiar o link do jogo"
+1310. Cada lápide ganha um epitáfio conforme quem te pegou (o Inspetor, a menina, a Procissão)
+1311. A lápide é desenhada em granito com musgo, escorrido de chuva, rachadura, um sino entalhado e uma vela acesa no chão
+1312. Na morte, L abre a lápide; ESC ou B fecha; setas e controle navegam pelos botões
+1313. O botão "Desafiar um amigo" voltou a aparecer no final (sumia porque o "Copiar resultado" já existia)
+1314. No título, "mandar o jogo para alguém corajoso" usa o compartilhar do celular ou copia o link com um convite
+1315. Buscadores agora reconhecem a página como um jogo (dados estruturados de videogame)
+1316. Com o JavaScript desligado aparece uma mensagem explicando, em vez de uma tela preta
+1317. Enquanto o internato carrega, uma lápide do cemitério aparece na tela de espera com nome, datas e epitáfio
+1318. Instalado como aplicativo, o jogo aparece na categoria de jogos
+1319. O aplicativo instalado ganhou o atalho "Continuar a noite", que entra direto no último salvamento
+1320. O jogo offline guarda também o módulo novo desta rodada (cache renovado)
+1321. Segredo: aberto num 14 de março, o dia do incêndio, cinzas caem no ar em todos os mapas
+1322. Segredo do 14 de março: as bordas da tela ficam escurecidas de fuligem
+1323. Segredo do 14 de março: o rádio do carro na abertura lembra que hoje faz quinze anos do incêndio
+1324. Segredo do 14 de março: o título mostra "14 de março. Hoje faz quinze anos."
+1325. Nova conquista secreta "Aniversário": entrar no internato num 14 de março
