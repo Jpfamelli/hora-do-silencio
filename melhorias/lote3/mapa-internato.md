@@ -1,0 +1,93 @@
+# Lote 3 — Mapa: térreo e dormitórios
+- Nova copa de serviço nos fundos do térreo, com porta no refeitório, ligando o refeitório à lavanderia por uma rota alternativa
+- Janela de vidro quebrado entre a copa e a lavanderia: segure E agachada por 1,5 s para atravessar pelos cacos
+- Em pé a janela não deixa passar: o aviso manda agachar e explica que os cacos cortam
+- Atravessar a janela faz ruído médio (o aviso mostra o ((·)) de barulho) e pode chamar o Inspetor
+- Durante a travessia os cacos estalam a cada passo, com som posicionado na janela
+- A tela treme de leve enquanto você se arrasta pelos cacos
+- Você sai do outro lado ainda agachada e já virada para a frente, pronta para fugir
+- O Inspetor não passa pela janela: para te seguir ele precisa dar a volta pelos corredores
+- Se ele estava na sua cola, esmurra o caixilho da janela logo depois que você passa (e a Lia percebe que ele vai dar a volta)
+- Na primeira travessia a Lia sussurra que ele é grande demais para passar ali
+- Cacos espalhados no chão dos dois lados da janela: pisar neles em pé faz barulho de vidro, agachada não
+- Os cacos da janela brilham quando a lanterna bate neles
+- O vento assobia pela janela quebrada, um som que ajuda a achá-la no escuro
+- Um trapo preso no caixilho balança com o vento
+- Riscado a prego no batente: "D. 1979 — por aqui ele não passa", o Davi já fugia por ali
+- Uma mãozinha marcada no pedaço de vidro que sobrou, de dentro para fora
+- Passa-pratos da copa: a portinhola bate sozinha quando o Inspetor está no refeitório do outro lado (aviso de perigo)
+- Carrinho de pratos na copa: esbarrar nele em pé faz a louça bater e chama atenção
+- Marmita de alumínio "M. DUARTE — INSPETOR" na bancada, ainda morna, para ler
+- Armário de esconder dentro da copa, para não ficar sem saída na rota dos fundos
+- Placa "COPA — só funcionários" ao lado da porta no refeitório
+- Segredo da copa: um recado que só brilha no ladrilho com a lanterna apagada e você agachada perto
+- Lâmpada na copa que acende quando o gerador liga
+- A pintura riscada do refeitório saiu da frente da nova porta da copa
+- O gerador ligado treme de verdade enquanto funciona
+- O escapamento do gerador ligado solta fumaça
+- O LED do gerador pisca em vermelho enquanto falta combustível ou fusível (fácil de achar no escuro)
+- Ligar o gerador dá um tranco na câmera e vibra no celular e no controle
+- Faíscas saltam (luz e estalos) do quadro de fusíveis quando a energia volta
+- Os três fusíveis do quadro acendem um por um, com um estalo cada
+- Chegar bem perto do gerador ligado faz a visão tremer de leve
+- O visor do quadro de chaves pisca como um cursor esperando o código
+- Errar o código deixa o visor vermelho, dá uma tremidinha e vibra
+- Acertar o código acende o visor em verde com um clique de trava
+- As teclas do quadro de chaves acendem fracas quando há energia
+- O cadeado da grade da escada brilha quando você já tem a chave
+- Ao subir, a grade da escada se ergue rangendo antes da tela escurecer
+- Fita fosforescente na borda dos degraus da escada da recepção, que carrega com a lanterna e apaga devagar no escuro
+- Forçar a porta principal faz a porta tremer a cada empurrão, com vibração
+- Quando a porta principal cede, cai poeira do batente e a câmera dá um tranco
+- O galão e a caixa de fusíveis brilham quando a lanterna passa por eles
+- O galão e a caixa de fusíveis têm área de mira maior (mais fáceis de pegar no toque e no controle)
+- Correndo com o galão, dá para ouvir a gasolina chacoalhando
+- A tampa do alçapão da casa de máquinas se abre rangendo antes de descer
+- As correntes do balanço do pátio rangem a cada ida e volta (e param quando ele para)
+- O portão do pátio range no vento de tempos em tempos
+- Poças no pátio com anéis de gotas de chuva
+- Goteiras nos dois corredores: a gota cai do teto manchado, faz um anel na poça e pinga com som
+- A lâmpada da recepção balança com o trovão, e a luz e as sombras mexem junto
+- Entrando da chuva, você deixa pegadas molhadas no piso que somem devagar
+- Tapete puído atrás do balcão da recepção, que abafa os passos de quem anda nele
+- O relógio da recepção faz tique-taque de perto, e acelera quando o Inspetor está por perto
+- Ratos correm guinchando pela despensa na primeira vez que você entra
+- Panelas penduradas na cozinha: correr embaixo delas faz tilintar e chama o Inspetor
+- As panelas também balançam e tilintam quando o Inspetor passa por baixo (um aviso)
+- Cortina divisória entre as camas da enfermaria balança e farfalha quando você passa
+- Biblioteca: passar em pé perto da estante derruba um livro com barulho (uma vez)
+- Uma torneira pinga nos banheiros do térreo
+- Abajur verde na mesa da diretoria, que acende com a energia
+- Placa fosforescente no corredor oeste apontando a recepção e a cozinha
+- Placa fosforescente no corredor leste apontando a enfermaria, as máquinas e a recepção
+- A grade da escada sem energia agora explica que a chave fica no quadro, que só funciona com energia
+- O gerador sem nada diz o que falta e onde fica cada coisa (despensa e enfermaria)
+- Faltando fusíveis, o gerador lembra que a reserva fica na enfermaria
+- O quadro de fusíveis mostra a contagem (0/3), avisa quando falta só ligar o gerador e quando está ligado
+- O alçapão da casa de máquinas diz que leva aos túneis
+- Passadeira gasta em trechos do corredor de cima: andar sobre ela abafa os passos (entre os trechos a madeira range)
+- Segredo do corredor de cima: levantar a ponta da passadeira revela um recado da Ana e uma garrafa guardada
+- Placa no patamar com os dormitórios A a E e o depósito ao fundo
+- Fita fosforescente na escada de descida do patamar
+- A lâmpada do patamar balança com o trovão
+- Descer a escada do patamar faz os degraus rangerem
+- A engrenagem e as chaves da Irmã Celeste e do monta-cargas brilham sob a lanterna
+- A engrenagem e as chaves têm área de mira maior no toque e no controle
+- A caixinha de música pulsa em luz quando você já tem a engrenagem (mostra onde montar)
+- A engrenagem tilinta de tempos em tempos, guiando pelo ouvido até o Dormitório E
+- Pegar a engrenagem tilinta na mão e vibra de leve
+- Depois da engrenagem, pegadinhas de pé descalço aparecem no corredor levando à sala de brinquedos
+- As pegadinhas somem quando a caixinha começa a tocar
+- Lâmpada vermelha de serviço acima do monta-cargas acende quando você pega a chave dele
+- Ao descer pelo monta-cargas, a grade bate, o cabo range, a tela treme e o aparelho vibra
+- Luz de vela vaza por baixo da porta do quarto da Irmã Celeste e some quando a porta abre
+- Os quadros do corredor de cima batem e ficam tortos quando o Inspetor passa por eles (um rastro de por onde ele andou)
+- Objetos miúdos do térreo deixam de projetar sombra (menos peso no notebook fraco)
+- Objetos miúdos do andar de cima deixam de projetar sombra
+- Na qualidade baixa, fumaça e pegadas usam menos partículas
+- Os efeitos novos dos dois andares param de animar quando você está longe
+- Os tremores de câmera do mapa respeitam a opção de tremor (menos movimento)
+- A vibração do mapa respeita a opção de vibrar e funciona no celular e no controle
+- Com "menos clarões", o LED do gerador, o visor do quadro e a lâmpada do monta-cargas não piscam rápido
+- Legendas para os sons novos (vento na janela, cacos, passa-pratos, panelas, ratos, livro, quadros, monta-cargas)
+- O aviso de agachar na janela mostra o botão certo: C no teclado, B no controle, "Agachar" no toque
