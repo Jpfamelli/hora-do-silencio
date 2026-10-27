@@ -1,0 +1,120 @@
+# Lote 1 — Visual e luz
+- Paredes de reboco com infiltração escorrendo do teto, mofo subindo do rodapé e rachaduras finas
+- Azulejos com peças faltando e rachaduras no rejunte
+- Piso e móveis de madeira com arranhões claros
+- Concreto dos túneis com manchas de umidade escorrida
+- Notas e papéis com vincos de dobra
+- Lousa da sala de aula com "ELE OUVE." escrito em vermelho por baixo das linhas de castigo
+- Armários com metal descascado, ferrugem no pé e número riscado
+- Relevo nas paredes, tijolos, pedra, azulejo, concreto, madeira e terra: a lanterna rasante revela juntas e rachaduras
+- Lanterna no chão com a lente acesa e botão, fácil de achar
+- Pilhas com faixa preta e polo de metal
+- Curativo com alça e fechos
+- Galão de gasolina com alça e frisos
+- Fusível com terminais de metal e filamento aceso
+- Garrafa com rótulo de papel
+- Chave com argola e dentes de verdade
+- Gravador com dois rolos de fita e teclas
+- Os rolos do gravador giram enquanto a fita toca
+- Carrinho de brinquedo com rodas e para-brisa
+- Boneca com olhos pretos e cabelo
+- Caderno com páginas aparecendo e lombada
+- Lâmpadas acesas com halo de luz em volta do bulbo
+- Lâmpadas balançam de leve no fio e balançam mais quando o Inspetor passa perto ou com o trovão
+- Perto do Inspetor (menos de 6 m) as lâmpadas falham muito mais: a fiação denuncia que ele está ali
+- Velas tremulam suave em vez de piscar a cada quadro, com chama visível que dança e às vezes engasga
+- A luz da lanterna segue a câmera com um leve atraso quando você vira
+- O feixe balança com o passo e sacode muito ao correr: correr no escuro passa a ser uma escolha ruim
+- Medo alto faz a mão tremer e o feixe oscilar, o que dificulta manter a Menina iluminada
+- Vida baixa também faz a lanterna tremer
+- Com a pilha abaixo de 30% a luz esquenta para âmbar e alaranjado, sem precisar olhar o HUD
+- Com a pilha baixa o cone da lanterna fica mais fechado
+- Com a pilha fraca a lanterna falha em rajadas cada vez mais frequentes, em vez de um pisca-pisca constante
+- Ao trocar a pilha a lanterna demora 0,6 s para acender, com um piscar
+- Dentro do armário a lanterna fica abafada; debaixo da cama, a meia luz
+- Com o Inspetor a menos de 6 m e fora de vista, a lanterna dá falhas curtas de interferência
+- Quando ele estala a língua perto e fora de vista, a mão vira a lanterna de leve na direção do som
+- Feixe da lanterna visível no ar, que termina nas paredes
+- Poeira flutuando dentro do feixe da lanterna
+- Nos túneis a poeira do feixe vira vapor subindo; ao ar livre vira garoa caindo
+- A poeira congela no ar enquanto a Procissão passa
+- Campo de visão abre um pouco quando você corre
+- Com medo acima de 70 o campo de visão fecha até virar túnel
+- Dentro do armário e debaixo da cama o campo de visão fecha: sensação de aperto
+- Nova opção "Campo de visão" de 60 a 90 no menu e na pausa
+- Nova opção "Câmera": movimento completo, reduzido ou mínimo (balanço, tremor e inclinação) para quem enjoa
+- Parada, o tremor de medo cai pela metade, o que diminui o enjoo
+- Com medo acima de 60 a câmera dá trancos no ritmo do coração, em vez de só tremer aleatório
+- Sons altos por perto (porta batendo, vidro, pancada) dão um tranco na câmera proporcional à distância
+- A vinheta escura pulsa no ritmo do coração
+- Com medo acima de 60 a visão periférica escurece (visão de túnel)
+- Prendendo a respiração no esconderijo, a visão de túnel aumenta
+- Com a vida baixa as bordas pulsam em vermelho junto com o coração
+- Ferida, aparecem rachaduras nas bordas da tela, que dão para perceber mesmo sem enxergar vermelho
+- O desfoque de pânico agora pulsa com o coração em vez de ser constante
+- Nova opção "Desfoque de pânico": desligada, o pânico vira bordas mais escuras sem borrar o centro (mais leve em placa fraca)
+- Abaixo de 50 de vida a visão turva por um instante a cada batida
+- O contraste sobe com medo acima de 75
+- Aberração cromática (cores separando) no pânico acima de 85
+- Com o Inspetor a menos de 4 m e fora de vista, a imagem perde cor, ganha contraste, grão e aberração: perigo sem ver
+- O grão do filme aumenta com o medo, com ele por perto e durante o aviso da Procissão
+- Geada azulada nas bordas da tela quando a Menina ou a Procissão está a menos de 8 m
+- Respiração visível (vapor) no frio da estrada e do cemitério
+- O hálito aparece mais forte quando a Menina ou a Procissão está perto, até dentro do prédio
+- A respiração visível acelera conforme o medo sobe
+- Prendendo a respiração (ESPAÇO) o vapor some na hora: dá para ver que você está segurando o ar
+- Chuva em riscos, não em pontos
+- Rajadas de vento inclinam a chuva
+- Respingos da chuva no chão
+- Relâmpago em 1 a 3 clarões seguidos, em vez de piscar aleatório a cada quadro
+- O clarão do relâmpago tinge o céu e a névoa de azul
+- A chuva brilha durante o relâmpago
+- Nova opção "Reduzir flashes": relâmpago fraco (35%) e com subida lenta de 300 ms
+- Com "Reduzir flashes" a lanterna escurece e volta devagar em vez de piscar
+- Com "Reduzir flashes" as lâmpadas comuns e as da Procissão oscilam devagar, no máximo 2 vezes por segundo
+- Aviso de fotossensibilidade antes do primeiro jogo, com a opção de reduzir flashes ali mesmo
+- Calibração de brilho na primeira vez (símbolos quase pretos) e nova opção "Brilho" no menu e na pausa
+- Neblina rasteira em três camadas no cemitério e na estrada, deslizando devagar
+- A água dos túneis corre
+- Ondulações na água onde a Lia pisa
+- Ondulações na água denunciam o Inspetor chegando pelos túneis alagados
+- No aviso da Procissão as lâmpadas apagam numa onda que sai da sala de onde ela vai sair: dá para ler de onde vem e correr para o lado oposto
+- No aviso as lâmpadas pulsam em batidas de 80 a 250 ms (não mais estrobo no ritmo do FPS) e ficam mais escuras perto da origem
+- Cada sombra da Procissão leva uma vela acesa e um capuz
+- A luz vermelha da Procissão pulsa enquanto ela passa
+- Escondida, você vê uma das sombras virar a cabeça para o seu esconderijo por 1 s, com os olhos maiores
+- A Procissão deixa pegadas descalças molhadas que somem em 20 s
+- O Inspetor tem rosto: pele cinza com veias, sangue escorrendo da venda e boca esticada, costurada nos cantos
+- A venda do Inspetor é de pano, com os olhos costurados em X e sangue vazando
+- O rosto úmido dele só brilha com a lanterna bem de perto
+- A boca dele abre quando está caçando
+- O sangue da venda escorre mais durante a caça
+- Na caça a cabeça dele para de tombar e aponta reto para você
+- Na caça o corpo dele inclina para a frente
+- Ao passar por portas ele se curva e põe as mãos no batente
+- Uma das pernas dele arrasta
+- Ele trava seco no meio do passo de vez em quando
+- Procurando, ele arrasta os braços
+- Dedos mais longos e pálidos, com polegar, que se contorcem
+- De longe, no escuro, os dedos pálidos dele ainda aparecem
+- Molho de chaves balançando na cintura dele
+- Os botões do paletó brilham fraco quando a lanterna bate
+- Cada estalo de língua acende por um instante uma luz fria em volta dele quando você está a menos de 10 m: você vê o que ele ouve
+- Pegadas molhadas do Inspetor (a partir dos túneis, na chuva ou depois de sair da água) que somem em 30 s
+- Na caça ele arranha as paredes por onde passa; as marcas ficam até o fim do capítulo
+- A Menina tem rosto (olhos fundos, boca pequena, lágrimas escuras) escondido pelo cabelo
+- A Menina muda de pose (cabeça tombada, braço levantado) só nos instantes em que você não está vendo
+- No limite do feixe a Menina gira a cabeça rápido para você
+- Depois de 4 s na luz a cabeça dela vira devagar para você e os olhos brancos aparecem
+- A Menina deixa pegadas descalças que brilham fraco no feixe e somem em 8 s
+- Lá fora, um relâmpago às vezes revela uma silhueta alta parada ao longe, só durante o clarão
+- Num corredor longo, quando a lanterna falha e volta, por um instante ele está lá no fim (no máximo 2 vezes por capítulo)
+- Escritas nas paredes que só aparecem sob a lanterna ("NÃO CORRE", "ELE OUVE O SEU CORAÇÃO", "LIA", contagem riscada e outras)
+- Itens (pilhas, notas, peças) brilham discretamente quando o feixe aponta para eles a menos de 6 m: fim da caça ao pixel no escuro
+- Ao morrer a Lia cai no chão e a câmera tomba
+- Morte pelo Inspetor: ele se debruça por cima de você, com a boca aberta e o rosto à mostra
+- Morte pela Menina: ela aparece colada no seu rosto, cabeça torta, olhos acesos
+- Novo "Filtro de fita VHS" opcional com linhas de varredura
+- Com o filtro de fita, linhas de tracking rasgam a imagem quando ele está a menos de 6 m, no aviso da Procissão e no medo alto
+- Com o filtro de fita, a imagem salta quando você leva um golpe
+- No Pesadelo a tela vira fita gravada: REC piscando e a data 14 MAR 1979 21:xx com os minutos correndo
