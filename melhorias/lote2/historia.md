@@ -1,0 +1,117 @@
+# Lote 2 — História e texto
+- Nova nota secreta na sala de aula: o livro de matrícula de 1979 mostra que a vaga da Lia foi cancelada e "transferida ao irmão"
+- Nova nota secreta na diretoria: uma caixa de cartas carimbadas RETIDA, com a carta da mãe, a da Lia menina e a última carta do Davi que nunca saiu
+- Nova nota secreta na enfermaria: o prontuário da Ana explica por que ela conta até dez e só dorme com luz no rosto
+- Nova nota secreta na biblioteca: o manual de 1931 revela que a Hora era cantada e virou "Hora do Silêncio" numa folha colada por cima em 1947
+- Nova nota secreta na sala do diretor: o Livro dos Inspetores mostra que cada Inspetor foi antes uma criança trancada, com a linha de 1994 esperando em branco
+- Nova nota secreta na sala do diretor: um recorte de 1980 conta que o Albano morreu trancado por fora num armário, e a chave nunca apareceu
+- Nova nota secreta no quarto da Irmã Celeste: a mala feita embaixo da cama, com quatro passagens de ônibus para a manhã seguinte ao incêndio
+- Nova nota secreta na enfermaria: a receita do colírio mostra que o diretor cegou o Moacir de propósito
+- Nova nota secreta na rouparia: um uniforme de menina nunca usado, com a etiqueta "LIA MORAES — matrícula 1979" e o bilhete "pra Lia não"
+- Nova nota secreta na loja do posto: o livro-caixa do Seu Joaquim registra os vinte litros de gasolina que o diretor levou na véspera do fogo
+- Nova nota secreta na casa de máquinas: galões vazios do posto, com cheiro de gasolina num prédio cujo gerador é a óleo
+- Nova nota secreta na diretoria: o mata-borrão do diretor treinando a letra do Joaquim para forjar a sexta regra
+- Nova nota secreta na cozinha: o cardápio da semana do incêndio mostra os três de castigo sem jantar, e os pães que a cozinheira escondeu
+- Nova nota secreta na recepção: o regulamento dos funcionários de 1961 com o artigo que manda quem fala dormir no armário
+- Nova nota secreta na biblioteca: a ficha de aluno do Moacir em 1948, "ouve demais", com o colega Luiz encerrado no armário em 1952
+- Nova nota secreta na recepção: o hidrante vazio com a ordem de tirar as mangueiras "por causa do barulho" e o desenho de bombeiro do Tomé
+- Nova nota secreta na loja do posto: o recibo dos Correios de 1994 mostra que quem mandou a fita para a Lia foi "J. S., Posto Serra"
+- Nova nota secreta no refeitório: o hino do internato, com a quarta estrofe raspada da moldura
+- Nova nota secreta no quarto da Irmã Celeste: a foto de visita de 1978 do Davi com a Lia, e o motivo de as visitas terem sido suspensas
+- Nova nota secreta na sala de brinquedos: a letra da música da caixinha, escrita pela Ana
+- Nova nota secreta na cisterna dos túneis: a página arrancada do livro de ocorrências em que o diretor anota que trancou a capela
+- Nova nota secreta na sala do diretor: a resposta do bispo mandando "queimar o que precisar queimar"
+- Nova nota secreta na capela: o livro de ocorrências de 1994 escreve a sua noite (portão, gerador, Procissão, Ana, gaveta, suas mortes, se respondeu a um chamado)
+- Nova nota secreta no quarto da Irmã Celeste: a lista de orações com os 37 nomes e os três últimos sublinhados
+- Nova nota secreta na sala do diretor: o rascunho das regras, com a sexta escrita em letras tortas de quem não enxerga
+- Nova nota secreta no corredor de cima: o bilhete no castiçal explica quem acende as velas em cima dos armários seguros
+- Nova nota secreta no Dormitório A: as regras das crianças riscadas na cabeceira, com dicas reais (contar junto, o sino desliga ele, a vela marca o armário seguro)
+- A Lia agora comenta em voz baixa o livro de ocorrências da recepção ao fechar o papel
+- A Lia comenta o caderno da cozinheira (os 34 pratos)
+- A Lia comenta a ficha médica do Moacir
+- A Lia comenta a redação do Tomé
+- A Lia comenta o bilhete da Ana, que passa de ameaça a medo de ficar sozinha
+- A Lia comenta a lista de castigos
+- A Lia comenta o diário da Irmã Celeste
+- A Lia comenta a anotação do pedreiro sobre a sala que não existe
+- A Lia comenta a carta do diretor ao bispo ("fugitivas")
+- A Lia comenta o recorte de jornal do sino que tocava sozinho
+- Ler o livro-caixa do posto e os galões da casa de máquinas faz a Lia concluir que o incêndio não foi acidente
+- Ler o livro de matrícula e o uniforme faz a Lia entender que o Davi foi no lugar dela
+- Ler a ficha médica e a receita do colírio faz a Lia perceber que o diretor criou o monstro de propósito
+- Ler o mata-borrão e o rascunho das regras revela que a sexta regra foi feita pelo diretor e pelo Inspetor juntos
+- O Davi sussurra uma reação curta e diferente ao ler cada página do diário dele
+- Se o desenho de aniversário já foi achado, a última página faz o Davi dizer "Atrasado, né. Feliz aniversário."
+- O Inspetor reage de longe, através das paredes, quando a Lia lê o livro de matrícula, a ficha dele ou o uniforme
+- A Lia comenta a loja do posto ao entrar pela primeira vez
+- A Lia comenta a recepção ao entrar pela primeira vez
+- A Lia comenta o corredor oeste e seus armários encostados
+- A Lia comenta as marcas de dedo no corredor leste
+- A Lia comenta a sala de aula e o giz fresco na lousa
+- A Lia comenta a biblioteca só de livros de disciplina
+- A Lia comenta a despensa
+- A Lia comenta a lavanderia com uniformes ainda pingando
+- A Lia comenta os espelhos cobertos do banheiro
+- A Lia comenta o patamar da escada
+- A Lia comenta as velas acesas em cima dos armários do corredor de cima
+- A Lia comenta as cabeceiras riscadas do Dormitório A
+- A Lia comenta os lençóis esticados do Dormitório B
+- A Lia comenta os sapatinhos do Dormitório C
+- A Lia comenta o cheiro do Dormitório D
+- A Lia comenta as torneiras arrancadas do banheiro de cima
+- A Lia comenta os brinquedos que não fazem barulho
+- A Lia comenta o poço do monta-cargas no depósito
+- A Lia comenta o arquivo morto do depósito dos túneis
+- A Lia comenta o tamanho do cemitério das irmãs
+- A tela de morte ganha uma linha do livro de ocorrências, datilografada, com a data, a hora do relógio do jogo, o lugar de verdade e a causa ("Visitante Lia M. respirou alto demais no corredor leste. O Inspetor decidiu.")
+- O livro de ocorrências da recepção passa a anotar em tinta fresca as suas mortes da noite e se você respondeu a um chamado, e elas não somem quando o checkpoint volta
+- Um armário a cada três tem um nome ou frase riscada à unha por dentro da porta (ROSA 1965, M.D. 1949, BENTO 1975...), que aparece quando a Lia se esconde nele
+- Ao ler por dentro do armário as iniciais do Moacir ou o nome do Bento, a Lia sussurra quem era aquela criança
+- A Procissão sussurra nomes de crianças mortas enquanto passa (João, Rosa, Maria das Dores, Luiz, Bento)
+- No cemitério, a Lia reconhece nas lápides os nomes que leu dentro dos armários ou ouviu na Procissão
+- Nova lápide do Seu Joaquim, zelador, com uma chave de portão igual à da Lia em cima
+- Nova placa de bronze das irmãs da ronda, que dá rosto à Procissão
+- A lápide da Irmã Celeste ganha uma vela acesa se a Lia descobriu quem acende as velas
+- A lápide do Albano ganha o recorte de 1980 colado na pedra se a Lia leu o recorte
+- A lápide do Luiz ganha o riscado "M. — perdão" depois da fita do Moacir
+- A lápide sem nome de 1975 vira "BENTO, 9 ANOS" se a Lia leu o nome dele dentro de um armário
+- A lápide do Seu Joaquim ganha "a sétima é minha" para quem virou a folha das regras
+- A fita 1 ganha uma linha do diretor sobre as cartas retidas
+- A fita 2 ganha a linha da Irmã Celeste explicando as velas em cima dos armários seguros
+- A fita 3 ganha a lembrança do Moacir trancado com o Luiz ("só eu saí")
+- O rádio do posto ganha a confissão do Seu Joaquim: foi ele quem mandou a fita
+- O desenho de aniversário do Davi agora diz "(14!)" e tem um P.S. que tira a culpa da Lia
+- A página 1 do diário do Davi agora diz a idade e o dia do aniversário da Lia, um dia depois do incêndio
+- Cinco ecos da noite de 1979, um por capítulo, tocam só com voz ao parar num lugar do caminho (o diretor ao telefone, o Tomé sendo arrastado, a Ana contando no armário, a Irmã Celeste na água, a chave girando na capela)
+- A aba Notas do diário ganha a linha do tempo "O que eu sei", que se preenche com as datas que a Lia descobre, e mostra quantos ecos ela ouviu
+- A partir da segunda noite, oito notas ganham anotações na margem com a letra da própria Lia, com dicas reais
+- A partir da segunda noite, o Seu Joaquim acrescenta "E fui eu que mandei te chamar." no diálogo do posto
+- No Capítulo IV, depois que a Lia descobre a vaga dela, o Chamado usa a voz da mãe
+- O Chamado do Capítulo II ganha uma voz de mulher chamando para jantar
+- O Chamado do Capítulo III ganha a voz do Davi oferecendo o uniforme
+- O Chamado do Capítulo V ganha uma voz falsa do Seu Joaquim indicando o caminho errado
+- O Inspetor ganha falas no Capítulo II que mostram que ele lembra da família Moraes
+- O Inspetor ganha falas nos Capítulos III e IV sobre o armário treze, o Luiz e o diretor
+- Quando perde a Lia, o Inspetor às vezes cantarola o hino do internato
+- O Davi tem uma reação nova no começo do capítulo para quem leu bastante coisa no anterior ("Sempre foi fofoqueira.")
+- O gravador da Lia ganha recados de culpa no fim dos capítulos depois que ela descobre que a vaga era dela
+- Final verdadeiro: se a Lia descobriu a vaga, os irmãos se perdoam numa última troca de falas
+- Final verdadeiro: se a Lia achou a mala da Irmã Celeste, a freira aparece levando as crianças pela mão
+- Final verdadeiro: se a Lia leu o prontuário da Ana, a menina para de contar na praia
+- Final verdadeiro: com a fita 3 e a ficha do Moacir, o Luiz aparece ao lado do Inspetor ajoelhado
+- Final verdadeiro: com o hino lido, as crianças cantam a quarta estrofe reescrita por elas
+- Final verdadeiro: com o Livro dos Inspetores lido, a linha de 1994 amanhece riscada
+- Final verdadeiro: com a resposta do bispo lida, a Lia leva a carta para fora
+- Final verdadeiro: o Seu Joaquim se despede no portão com uma de três frases, conforme quantos segredos a Lia achou
+- Final verdadeiro: com a fita 3 e a receita do colírio, um boletim de rádio conta o que aconteceu com o Moacir
+- Final comum: quem respondeu a três chamados ou mais vê a faixa branca nos próprios olhos no retrovisor
+- Final comum: com as cartas retidas lidas, aparece no carro um envelope com letra de menino
+- Final Silêncio Eterno: com o verso das regras lido, a Lia escreve uma nona regra e vira a nova guardiã
+- Todos os finais terminam com as manchetes do jornal do dia seguinte, montadas pelo que a Lia descobriu
+- Todos os finais mostram o destino do Seu Joaquim, da Irmã Celeste, do Moacir e do Albano, ou "Ninguém sabe." para quem não achou a pista
+- Nova conquista secreta "A Linhagem" ao ler o Livro dos Inspetores
+- Nova conquista secreta "Vinte Litros" ao ligar a gasolina do posto ao incêndio
+- Nova conquista secreta "Era Pra Ser Eu" ao descobrir por que só o Davi foi
+- Nova conquista secreta "Os Nomes nos Armários" ao ler cinco nomes riscados nos esconderijos
+- Nova conquista secreta "O Que Não Conta" ao dar nome ao Bento no cemitério
+- Nova conquista secreta "A Noite" ao ouvir os cinco ecos de 1979 (somando as noites)
