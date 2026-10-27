@@ -363,7 +363,7 @@ export function criarInterface(C) {
   const objAtual = () => { const S = C.S; if (!S) return null; const c = R.capitulos[S.chapter]; return c && c.objetivos.find(o => !S.done[o.id]); };
   function darDica(manual) {
     const o = objAtual(); if (!o) return;
-    const d = DICAS[o.id] || ['O diário (TAB) tem tudo o que eu já sei.', 'O diário (TAB) tem tudo o que eu já sei.'];
+    const d = DICAS[o.id] || (o.dica ? [o.dica, o.dica] : ['O diário (TAB) tem tudo o que eu já sei.', 'O diário (TAB) tem tudo o que eu já sei.']);
     const esp = nivelDica >= 1 && !(manual && C.S.dif === 'pesadelo');
     if (esp) dicaEspecifica[o.id] = true;
     C.sub('lia', esp ? d[1] : d[0]);

@@ -1,0 +1,113 @@
+# Lote 1 — Progressão e rejogabilidade
+- Cada capítulo tem a sua própria meta de tempo para o rank (o prólogo pede 4 min, o Capítulo III pede 8), em vez dos mesmos 8/13 min para todos
+- Morrer não zera mais o cronômetro do capítulo: o tempo acumulado continua e cada morte soma 15 s de penalidade
+- Morrer não apaga mais o dano nem as perseguições do capítulo (antes dava para "limpar" o rank morrendo)
+- Cada morte no capítulo tira 1 ponto do rank
+- Ler notas e ouvir fitas desconta 30 s do tempo do rank (até 30% do tempo), para o rank não punir quem explora
+- Novo ponto de rank por silêncio: ruído médio baixo no capítulo vale 1 ponto
+- Jogar com amuletos vale 1 ponto extra no rank
+- Rank S passou a exigir 6 pontos de 7 possíveis, equilibrando o novo ponto de silêncio
+- Tela de fim de capítulo mostra 4 selos acesos ou apagados (Intocada, Rápida, Invisível, Silenciosa) com o alvo de cada um
+- Tela de fim de capítulo diz exatamente o que faltou para o S (sem dano, abaixo de X:00, perseguida no máximo 1 vez, ruído baixo, sem morrer)
+- Tela de fim de capítulo compara com o recorde: "novo recorde: Xs mais rápida" ou "+Xs do seu recorde"
+- Tela de fim de capítulo mostra o melhor rank anterior daquele capítulo
+- Tela de fim de capítulo mostra o ruído médio e a classificação Silenciosa, Cuidadosa ou Barulhenta
+- Estatísticas do capítulo agora incluem mortes e garrafas usadas
+- Estatísticas do capítulo mostram quanto tempo foi descontado por explorar
+- Estatísticas do capítulo mostram quantas notas e fitas daquele mapa você achou (X/Y)
+- Boletim escolar no fim do capítulo: "Comportamento: exemplar / bom / regular / o Inspetor decide"
+- A letra do rank entra carimbada, com animação de carimbo
+- Tirar S revela uma frase escondida do capítulo na tela de fim e no menu Capítulos
+- Tela de fim de capítulo fica 1,2 s a mais para dar tempo de ler os novos dados
+- Correção: o rank e o tempo do Capítulo V nunca eram salvos (o último capítulo não tem tela de fim); agora são registrados no final
+- Os selos conquistados ficam salvos por capítulo e aparecem no menu Capítulos
+- Desafio secreto do Prólogo, "Passos de Igreja": chegar ao portão sem correr
+- Desafio secreto do Capítulo I, "Olhos no Escuro": lanterna acesa por menos de um minuto
+- Desafio secreto do Capítulo II, "Debaixo da Cama": deixar a Procissão passar escondida embaixo de uma cama
+- Desafio secreto do Capítulo III, "Olhos Abertos": a Ana não encostar em você na brincadeira
+- Desafio secreto do Capítulo IV, "Sem Distração": atravessar os túneis sem jogar garrafa
+- Desafio secreto do Capítulo V, "Intocável": chegar ao portão dos fundos sem ser ferida
+- Os desafios secretos só se revelam quando cumpridos (na tela de fim e no menu Capítulos aparecem como "???" até lá)
+- Menu Capítulos mostra, por capítulo, quantas notas e fitas daquele mapa você já achou em qualquer noite
+- Menu Capítulos mostra a meta de tempo do S ao lado do melhor tempo
+- Capítulos ainda não alcançados aparecem como "fita riscada", sem revelar o título
+- Menu Capítulos tem um resumo no topo: ranks S, desafios secretos e acervo de lore
+- Rejogar um capítulo pelo menu agora usa a dificuldade escolhida no título, e não a da partida antiga
+- Rejogar um capítulo com save estragado avisa no título em vez de travar o jogo
+- Final verdadeiro agora exige só as 5 fitas e as 4 páginas do Davi; as notas viraram bônus da conquista Arqueóloga
+- Notas, páginas e fitas achadas em qualquer noite ficam guardadas num acervo e contam para o final verdadeiro (dá para buscar o que faltou pelo menu Capítulos)
+- O final comum diz quantas fitas e páginas faltaram para a outra escolha no portão
+- Texto do final comum atualizado para explicar a nova regra das fitas e páginas
+- Diário (aba Notas e fitas) diz quantas fitas e páginas ainda faltam para a outra escolha no final
+- Tela final mostra o rank de cada capítulo da noite
+- Tela final mostra quantos dos 3 finais você já viu, no lugar de "Existem 3 finais."
+- Tela final mostra quantas conquistas você destravou naquela noite
+- Botão "Copiar resultado" na tela final gera um texto para mandar aos amigos (tempo, ranks, mortes, lore, final e código)
+- Terminar o jogo em menos de uma hora acrescenta ao final a linha "A Hora durou menos que uma hora."
+- Checkpoint automático a cada objetivo concluído: morrer não obriga mais a refazer o capítulo todo
+- O checkpoint por objetivo nunca salva em perigo (caçada, Procissão, brincadeira da Ana, escondida, fuga final) e tenta de novo quando o perigo passa
+- O checkpoint por objetivo pula os momentos com cena roteirizada (caixinha, cofre, sino), evitando save que trava a história
+- Aviso discreto "progresso salvo" com uma vela acesa no canto da tela
+- Ajuda invisível: depois de 2 mortes seguidas no mesmo ponto, o Inspetor fica 10% mais lento e surdo e a Procissão avisa 2 s antes
+- Ajuda invisível sobe para 20% (e 3 s de aviso) na terceira morte seguida, e some no próximo checkpoint
+- A ajuda invisível nunca vale no Pesadelo nem no modo Uma Vida
+- Tela de morte explica por que ele te achou: correndo, na água, agachada perto demais, de pé perto dele, parada no caminho, respirando no esconderijo ou na fuga
+- Tela de morte mostra a que distância ele estava
+- Tela de morte da Ana diz se a lanterna estava apagada ou se você tirou os olhos dela
+- Tela de morte da Procissão diz quantos segundos o aviso durou
+- Tela de morte mostra o número da morte no capítulo e na noite e quantos objetivos faltavam
+- Tela de morte avisa que a morte somou 15 s ao cronômetro do capítulo
+- E ou ENTER na tela de morte tentam de novo na hora
+- A sequência de morte ficou mais curta (de 2,1 s para 1,65 s até a tela), mantendo o susto
+- Dica progressiva: depois de 2 min e meio sem progresso, Lia lembra em voz alta a pista do objetivo atual
+- Dica progressiva: depois de 4 min e meio, a sala do objetivo fica destacada e com nome no mapa do diário
+- Dicas escritas para todos os 27 objetivos da campanha
+- No Pesadelo e no modo Uma Vida não há dicas
+- Modo Uma Vida (destravável): morrer encerra a noite e apaga o save, com aviso na tela de morte
+- Cronômetro opcional no HUD com o tempo do capítulo e o total da noite (opção no título e na pausa)
+- Código de desafio: cada noite tem uma semente que define o código do quadro, a ordem das válvulas e os números do cofre
+- Campo "Desafio" no título: colar o código de um amigo joga a mesma noite, com a mesma dificuldade e amuletos
+- Amuletos destravados depois do primeiro final, escolhidos no título
+- Amuleto Pilha Podre: a lanterna gasta o dobro
+- Amuleto Ouvido de Morcego: o Inspetor ouve 40% mais longe
+- Amuleto Passos Pesados: o Inspetor anda 12% mais rápido
+- Amuleto Aviso Curto: a Procissão avisa 3 s mais tarde
+- Descrição de cada dificuldade embaixo do seletor no título
+- Pesadelo agora avisa no seletor que um toque mata
+- A pausa mostra o capítulo, o tempo, as mortes, a dificuldade, os amuletos e o código de desafio da noite
+- Conquista renomeada: a da Procissão virou "Fila Indiana" (antes tinha o mesmo nome do final comum)
+- Conquistas secretas aparecem como "???" com uma dica em forma de regra até serem destravadas
+- Painel de Conquistas mostra contador, porcentagem e barra de progresso
+- Painel de Conquistas mostra a data em que cada conquista foi destravada
+- Conquistas agora entram em fila, sem uma apagar a outra quando saem juntas
+- Conquista destravada toca um som e indica quando é secreta
+- Nova conquista "Pés de Algodão": terminar um capítulo sem correr
+- Nova conquista "Fantasma": terminar um capítulo sem ser perseguida
+- Nova conquista "Silenciosa": terminar um capítulo com ruído médio baixo
+- Nova conquista "Pressa Silenciosa": Capítulo I em menos de 6 minutos sem dano
+- Nova conquista "Não Pisquei": brincadeira da Ana sem ela encostar em você
+- Nova conquista "Aluna Exemplar": tirar S em um capítulo
+- Nova conquista "Boletim Perfeito": S nos seis capítulos
+- Nova conquista "Seis Segredos": cumprir todos os desafios secretos
+- Nova conquista "Amuletos": terminar um capítulo com dois amuletos ou mais
+- Nova conquista "Mãos Vazias": zerar sem jogar garrafa
+- Nova conquista "Pele Dura": zerar sem usar curativos
+- Nova conquista "Nenhuma Cama Vazia": zerar sem morrer
+- Nova conquista "Menos de Uma Hora": zerar em menos de 60 minutos
+- Nova conquista "Ninguém Ouviu": zerar no modo Uma Vida
+- Nova conquista "Todas as Noites": ver os três finais
+- Nova conquista secreta "Olhos de Gato": Capítulo I quase sem lanterna
+- Nova conquista secreta "Regra Cinco": ignorar três chamados do seu nome
+- Nova conquista secreta "Desobediente": ir até o chamado três vezes e sobreviver
+- Nova conquista secreta "Coração Frio": passar a menos de 2 m do Inspetor sem ser notada
+- Nova conquista secreta "Teimosa": morrer dez vezes somando todas as noites
+- A conquista "Arqueóloga" agora soma o que foi achado em todas as noites
+- Segredo: abrir o jogo às 21h muda o título para "A Hora começou", o título treme em vermelho, o primeiro clique toca as nove badaladas e destrava "A Hora Começou"
+- Segredo: digitar "silencio" na tela de título toca o sino, libera o modo Uma Vida e destrava "Silêncio"
+- Segredo: digitar 1403 (a data do incêndio) na tela de título mostra a primeira ocorrência daquela noite e destrava "Quem Lembra"
+- O título lembra da última noite ("Última noite: ele te encontrou no Capítulo III", "a Hora acabou. Por enquanto.")
+- O subtítulo do título muda conforme o último final visto
+- Depois de 20 mortes, o Inspetor aparece parado ao longe na neblina da tela de título
+- O rádio da abertura comenta como terminou a sua noite anterior
+- Novo painel Estatísticas no título: noites começadas e terminadas, tempo jogado, melhor tempo, finais, mortes por causa, garrafas, capítulos em S e acervo
+- "Continuar" com save estragado não trava mais: descarta o save e avisa no título

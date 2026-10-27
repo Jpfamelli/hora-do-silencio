@@ -133,7 +133,7 @@ export function instalarHistoria(c) {
     if (n !== doneN || St.chapter !== capAnt) { doneN = n; capAnt = St.chapter; tParado = 0; }
     tParado += dt;
     const limite = St.dif === 'facil' ? 75 : St.dif === 'pesadelo' ? 150 : 110;
-    if (tParado > limite && !cacando && !c.PROC.fase && !St.hidden) {
+    if (!c.dicaExterna && tParado > limite && !cacando && !c.PROC.fase && !St.hidden) {
       tParado = limite - 90;
       const cap = R.capitulos[St.chapter], o = cap && cap.objetivos.find(x => !St.done[x.id]);
       if (o && o.dica) c.sub('lia', o.dica);

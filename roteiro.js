@@ -497,11 +497,11 @@ window.ROTEIRO = {
   conquistas: [
     { id: "prologo", nome: "A Estrada Velha", desc: "Chegue ao internato." },
     { id: "luz", nome: "Fiat Lux", desc: "Ligue o gerador." },
-    { id: "procissao", nome: "Fora da Cama", desc: "Sobreviva à primeira Procissão." },
+    { id: "procissao", nome: "Fila Indiana", desc: "Sobreviva à primeira Procissão." },
     { id: "ana", nome: "Não Pisque", desc: "Sobreviva à brincadeira da Ana." },
     { id: "garrafa", nome: "Ventríloqua", desc: "Distraia o Inspetor com uma garrafa." },
     { id: "folego", nome: "Sem Respirar", desc: "Prenda a respiração com o Inspetor do lado do armário." },
-    { id: "arqueologa", nome: "Arqueóloga", desc: "Encontre todas as notas, páginas e fitas." },
+    { id: "arqueologa", nome: "Arqueóloga", desc: "Encontre todas as notas, páginas e fitas (somando todas as noites)." },
     { id: "intocada", nome: "Intocada", desc: "Termine um capítulo sem ser ferida." },
     { id: "final_comum", nome: "Só o Começo", desc: "Chegue ao final comum." },
     { id: "final_silencio", nome: "Silêncio Eterno", desc: "Escolha ir embora." },
@@ -520,5 +520,136 @@ window.ROTEIRO = {
     { id: "nove_cliques", nome: "Nove Badaladas", desc: "Toque o sino do título nove vezes, sem pressa.", secreta: true },
     { id: "fita_gasta", nome: "Fita Gasta", desc: "Diga a palavra proibida na tela de título.", secreta: true },
     { id: "confissao", nome: "A Gaveta Falsa", desc: "Descubra o que o diretor guardava embaixo.", secreta: true }
+  ]
+};
+
+// PROGRESSÃO E REJOGABILIDADE — metas de rank, dicas por objetivo, desafios secretos,
+// conquistas extras e textos de memória do título. Lido por src/progressao.js.
+window.ROTEIRO.progressao = {
+  // meta: minutos para "rápida" (s) e para o tempo ainda contar algum ponto (a)
+  capitulos: {
+    c0: { meta: { s: 4, a: 7 }, frase_s: "O velho sabia o seu nome antes de você dizer.",
+      desafio: { nome: "Passos de Igreja", desc: "Chegue ao portão sem correr nenhuma vez." },
+      dicas: {
+        sair_carro: { texto: "Preciso sair do carro. A porta do motorista." },
+        lanterna: { texto: "A lanterna tá no porta-malas, atrás do carro.", sala: "estrada" },
+        posto: { texto: "Tinha uma luz acesa na beira da estrada. O posto.", sala: "posto" },
+        chave_portao: { texto: "Ele disse que a chave tava no prego, atrás de mim.", sala: "posto" },
+        abrir_portao: { texto: "O portão fica no fim da estrada. É só seguir o asfalto.", sala: "estrada" }
+      } },
+    c1: { meta: { s: 7, a: 11 }, frase_s: "No escuro, ele e você eram iguais.",
+      desafio: { nome: "Olhos no Escuro", desc: "Termine o Capítulo I com a lanterna acesa por menos de um minuto." },
+      dicas: {
+        forcar_porta: { texto: "A porta principal. Vou ter que forçar, e vai fazer barulho.", sala: "hall" },
+        galao: { texto: "Gasolina... deve ter na despensa, depois da cozinha.", sala: "despensa" },
+        fusiveis: { texto: "O quadro dizia: reserva na enfermaria. Corredor leste.", sala: "enferm" },
+        gerador: { texto: "O gerador fica na casa de máquinas, no fim do corredor leste.", sala: "maq" }
+      } },
+    c2: { meta: { s: 7, a: 11 }, frase_s: "Eles marcharam rente à sua cama e não viram nada.",
+      desafio: { nome: "Debaixo da Cama", desc: "Deixe a Procissão passar escondida embaixo de uma cama." },
+      dicas: {
+        procissao: { texto: "Quando as luzes piscarem: armário ou cama. Antes que eles cheguem." },
+        fita_diretor: { texto: "O gravador do diretor. A diretoria fica no corredor leste.", sala: "diret" },
+        chave_escada: { texto: "O quadro de chaves fica na recepção. A fita tinha o código.", sala: "hall" },
+        subir: { texto: "A escada dos dormitórios fica na recepção, atrás da grade.", sala: "hall" }
+      } },
+    c3: { meta: { s: 8, a: 12 }, frase_s: "Ela contou até dez. Você não piscou nenhuma vez.",
+      desafio: { nome: "Olhos Abertos", desc: "Sobreviva à brincadeira da Ana sem ela encostar em você." },
+      dicas: {
+        engrenagens: { texto: "A engrenagem... o Dormitório E, no fim do lado direito.", sala: "dormE" },
+        caixinha: { texto: "A caixinha de música tá na sala de brinquedos.", sala: "brinq" },
+        ana: { texto: "Luz nela. Não tira a luz dela. Anda de costas se precisar.", sala: "brinq" },
+        quarto_celeste: { texto: "O quarto da Irmã Celeste fica no fim do corredor, à esquerda.", sala: "celeste" },
+        fita_celeste: { texto: "A fita da Irmã Celeste deve estar no quarto dela.", sala: "celeste" },
+        chave_porao: { texto: "O monta-cargas fica no depósito, no fim do corredor à direita.", sala: "sotao" }
+      } },
+    c4: { meta: { s: 7, a: 11 }, frase_s: "Nenhuma garrafa. Só você, a água e ele.",
+      desafio: { nome: "Sem Distração", desc: "Termine os túneis sem jogar nenhuma garrafa." },
+      dicas: {
+        valvulas: { texto: "As válvulas ficam nas câmaras oeste e leste, e na cisterna. A ordem tava na fita da Irmã Celeste.", sala: "hub" },
+        cofre: { texto: "A sala do diretor fica depois do túnel norte. Os números estavam no diário do Davi.", sala: "secreta" },
+        sair_tuneis: { texto: "A escotilha fica na saída, depois da galeria leste.", sala: "saida" }
+      } },
+    c5: { meta: { s: 6, a: 10 }, frase_s: "O sino parou. E você nem sangrou.",
+      desafio: { nome: "Intocável", desc: "Chegue ao portão dos fundos sem ser ferida no Capítulo V." },
+      dicas: {
+        tumulos: { texto: "Ana, Tomé e Davi. As lápides com os nomes deles.", sala: "cem" },
+        capela: { texto: "A capela fica no fundo do cemitério.", sala: "capela" },
+        altar: { texto: "O altar, no fundo da capela.", sala: "capela" },
+        sino: { texto: "A corda do sino. Segurar e não soltar.", sala: "capela" },
+        fugir: { texto: "O portão dos fundos! Do outro lado do cemitério!", sala: "cem" }
+      } }
+  },
+
+  boletim: { S: "Comportamento: exemplar", A: "Comportamento: bom", B: "Comportamento: regular", C: "Comportamento: o Inspetor decide" },
+
+  dificuldades: {
+    facil: "Ele ouve menos, anda mais devagar e as luzes avisam a Procissão com mais tempo.",
+    normal: "Como a Hora foi pensada. Ele ouve quase tudo o que você faz.",
+    pesadelo: "Um toque mata. Sem dicas, sem ajuda, aviso curto. Ele ouve até o seu coração."
+  },
+
+  amuletos: [
+    { id: "pilha", nome: "Pilha Podre", desc: "a lanterna gasta o dobro" },
+    { id: "ouvido", nome: "Ouvido de Morcego", desc: "ele ouve 40% mais longe" },
+    { id: "passos", nome: "Passos Pesados", desc: "ele anda 12% mais rápido" },
+    { id: "aviso", nome: "Aviso Curto", desc: "a Procissão avisa 3 s mais tarde" }
+  ],
+
+  // O que o título lembra da última noite
+  memoria: {
+    morte: { inspetor: "Última noite: ele te encontrou em {cap}.", ana: "Última noite: ela contou até dez em {cap}.", procissao: "Última noite: você estava fora da cama em {cap}." },
+    final: { comum: "Última noite: você fugiu. O rádio ainda chia.", silencio: "Última noite: você foi embora. O sino ainda toca.", verdadeiro: "Última noite: a Hora acabou. Por enquanto." },
+    subtitulo: { silencio: "Nove badaladas, toda noite. Alguém ficou para tocar.", verdadeiro: "O internato está em silêncio. Um silêncio de verdade.", comum: "Na estrada velha, o rádio ainda chia: \"...eu ouvi você...\"" },
+    hora: "São nove da noite. A Hora começou.",
+    data: "14/03/1979 — 21h04. Aluno Tomé R. falou durante a Hora. Armário.",
+    senha: "Alguma coisa destrancou. Modo Uma Vida liberado."
+  },
+
+  // Rádio da abertura comenta a partida anterior
+  radio_lembra: {
+    morte: "...ontem à noite acharam outro carro atolado na estrada velha. A motorista não foi encontrada...",
+    comum: "...uma moça apareceu na rodovia de madrugada, descalça, repetindo que não podia correr...",
+    silencio: "...moradores da serra dizem que o sino do internato tocou de novo ontem. Nove vezes...",
+    verdadeiro: "...pela primeira vez em quinze anos, ninguém ouviu o sino do São Lázaro ontem à noite..."
+  },
+
+  diagnostico: {
+    escondida: "Ele ouviu você respirar dentro do esconderijo. Segure ESPAÇO quando os estalos chegarem perto.",
+    correndo: "Você estava correndo. Ele ouviu seus passos de longe.",
+    agua: "A água denunciou cada passo seu. Agache para andar dentro dela.",
+    agachada: "Mesmo agachada, você chegou perto demais. Mude de rota ou jogue uma garrafa (G).",
+    andando: "Você andava de pé perto dele. Agache (C) quando ouvir os estalos da língua.",
+    parada: "Você ficou parada no caminho dele. Ele não te viu: tropeçou em você.",
+    fuga: "Depois do sino, ele não para. Corra direto para o portão, sem olhar para trás.",
+    ana_escuro: "A lanterna estava apagada. No escuro, ela anda.",
+    ana_costas: "Você tirou os olhos dela. Ande de costas e mantenha a luz nela.",
+    procissao: "Você estava fora de um esconderijo quando eles passaram. O aviso durou {s} segundos."
+  },
+
+  conquistas: [
+    { id: "nao_corra", nome: "Pés de Algodão", desc: "Termine um capítulo (I a V) sem correr." },
+    { id: "fantasma", nome: "Fantasma", desc: "Termine um capítulo (I a V) sem ser perseguida." },
+    { id: "silenciosa", nome: "Silenciosa", desc: "Termine um capítulo com ruído médio baixo." },
+    { id: "pressa", nome: "Pressa Silenciosa", desc: "Termine o Capítulo I em menos de 6 minutos sem dano." },
+    { id: "nao_pisquei", nome: "Não Pisquei", desc: "Sobreviva à brincadeira da Ana sem ela encostar em você." },
+    { id: "rank_s", nome: "Aluna Exemplar", desc: "Tire S em um capítulo." },
+    { id: "boletim", nome: "Boletim Perfeito", desc: "Tire S em todos os seis capítulos." },
+    { id: "desafios", nome: "Seis Segredos", desc: "Cumpra o desafio secreto de todos os capítulos." },
+    { id: "amuleto", nome: "Amuletos", desc: "Termine um capítulo usando dois amuletos ou mais." },
+    { id: "sem_garrafa", nome: "Mãos Vazias", desc: "Termine o jogo sem jogar nenhuma garrafa." },
+    { id: "sem_curativo", nome: "Pele Dura", desc: "Termine o jogo sem usar curativos." },
+    { id: "sem_morrer", nome: "Nenhuma Cama Vazia", desc: "Termine o jogo sem morrer nenhuma vez." },
+    { id: "menos_hora", nome: "Menos de Uma Hora", desc: "Termine o jogo em menos de 60 minutos." },
+    { id: "uma_vida", nome: "Ninguém Ouviu", desc: "Termine o jogo no modo Uma Vida." },
+    { id: "tres_finais", nome: "Todas as Noites", desc: "Veja os três finais." },
+    { id: "olhos_gato", nome: "Olhos de Gato", desc: "Termine o Capítulo I com a lanterna acesa por menos de um minuto.", secreta: true, dica: "Ele não enxerga. Você precisa?" },
+    { id: "regra_cinco", nome: "Regra Cinco", desc: "Ignore três chamados do seu nome.", secreta: true, dica: "Nunca responda quando chamarem." },
+    { id: "desobediente", nome: "Desobediente", desc: "Vá até o chamado três vezes e sobreviva.", secreta: true, dica: "E se você responder?" },
+    { id: "coracao_frio", nome: "Coração Frio", desc: "Passe a menos de dois metros dele sem ser notada.", secreta: true, dica: "Tão perto que dava para tocar." },
+    { id: "teimosa", nome: "Teimosa", desc: "Morra dez vezes (somando todas as noites).", secreta: true, dica: "Todos voltam." },
+    { id: "hora_certa", nome: "A Hora Começou", desc: "Abra o jogo às nove da noite.", secreta: true, dica: "Tem hora certa para isso." },
+    { id: "quem_lembra", nome: "Quem Lembra", desc: "Digite a data do incêndio na tela de título.", secreta: true, dica: "O livro de ocorrências guarda a data." },
+    { id: "senha", nome: "Silêncio", desc: "Digite a palavra que dá nome à Hora na tela de título.", secreta: true, dica: "A palavra que eles mais repetem." }
   ]
 };

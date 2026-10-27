@@ -6,6 +6,7 @@ import { criarSustos } from './src/sustos.js';
 import { instalarVisual } from './src/visual.js';
 import * as JG from './src/jogabilidade.js';
 import { criarInterface } from './src/interface.js';
+import { PG } from './src/progressao.js';
 
 const R = window.ROTEIRO;
 const $ = s => document.querySelector(s);
@@ -596,7 +597,7 @@ function mobiliar(r) {
 let S;
 function perm3() { const a = [1, 2, 3]; for (let i = 2; i > 0; i--) { const j = Math.random() * (i + 1) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; }
 function novoEstado(dif) {
-  return {
+  return PG.novo({
     dif, chapter: 0, done: {}, picked: {}, flags: {}, notes: {}, fitas: {}, visited: {}, doorsOpen: {},
     inv: { lanterna: false, galao: false, fusiveis: 0, pilhas: 0, kits: 0, garrafas: 0, engrenagens: 0, chaves: {}, reliquias: 0, pa: false },
     placed: 0, valv: [], tumulos: {},
@@ -607,11 +608,11 @@ function novoEstado(dif) {
     mapa: 'estrada', pos: [0, 0], yaw: 0, hidden: null,
     mortes: 0, tempo: 0, capT: 0, capDano: 0, capVisto: 0,
     timers: { procissao: 9999, ana: 9999, chamado: 9999 }
-  };
+  });
 }
-// ajuda: "trecho mais leve" escolhido na tela de morte (interface) e a ajuda invisível depois de várias mortes (jogabilidade)
+// dificuldade: base + amuletos (progressão), "trecho mais leve" da tela de morte (interface) e a ajuda invisível depois de várias mortes (jogabilidade)
 const D = () => {
-  let b = DIFS[S.dif] || DIFS.normal;
+  let b = PG.dif(S, DIFS);
   if (S.flags && S.flags.alivio === S.chapter) b = { ...b, vel: b.vel * .9, ouvido: b.ouvido * .9 };
   const a = ajudaOculta(); return a ? { ...b, vel: b.vel * a.vel, ouvido: b.ouvido * a.ouvido, aviso: b.aviso + a.aviso } : b;
 };
@@ -718,7 +719,7 @@ function iniciarCurativo() {
   P.curaT = .001; SFX.papel(); emitNoise(P.pos.x, P.pos.z, 3, true);
   if (!S.flags.dicaCura) { S.flags.dicaCura = true; toast('Segure H parada para fazer o curativo.'); }
 }
-function usarKit() { S.inv.kits--; S.health = Math.min(100, S.health + 50); SFX.pegar(); toast('Melhor assim.'); renderInvMini(); }
+function usarKit() { S.inv.kits--; PG.kit(); S.health = Math.min(100, S.health + 50); SFX.pegar(); toast('Melhor assim.'); renderInvMini(); }
 function updateCura(dt, moving) {
   if (P.curaT <= 0) return;
   if (!keys.KeyH || moving) { P.curaT = 0; toast('Você parou o curativo.'); return; }
@@ -751,7 +752,7 @@ function alvoGarrafa() {
 function jogarGarrafa() {
   if (S.hidden) return;
   if (S.inv.garrafas <= 0) { toast('Sem garrafas para jogar.'); return; }
-  S.inv.garrafas--; renderInvMini();
+  S.inv.garrafas--; PG.garrafa(); renderInvMini();
   const { fim } = alvoGarrafa();
   const m = MK.garrafa(); m.position.copy(camera.position); W.grupo.add(m);
   garrafasVoando.push({ m, ini: camera.position.clone(), fim, t: 0, dur: clamp(fim.distanceTo(camera.position) / 14, .2, .9), grupo: W.grupo });
@@ -1048,6 +1049,7 @@ function entrarEsconderijo(L) {
 }
 function sairEsconderijo(modo) {
   const L = S.hidden; if (!L) return;
+  if (forcado) PG.escondidaAntes();
   SUST.aoSair(L);
   S.hidden = null; teste = null; $('#fx-locker').hidden = true; $('#fx-locker').style.opacity = ''; $('#fx-cama').hidden = true; $('#breath').hidden = true;
   const off = L.tipo === 'cama' ? 1.0 : .85;
@@ -2266,14 +2268,14 @@ function atacar(quem, leve) {
   const mult = (D().danoPor && D().danoPor[quem]) || D().dano;
   let dano = Math.min(100, DANO[quem] * mult * (leve ? .6 : 1) * (quem === 'inspetor' && D().danoPor && P.sprinting ? 1.3 : 1));
   if (leve) dano = Math.min(dano, S.health * .7);
-  S.health -= dano; S.capDano += dano; S.fear = 100;
+  S.health -= dano; S.capDano += dano; S.fear = 100; PG.dano(quem);
   if (S.health <= 0) { morrer(quem); return; }
   S.causaCtx = null;
   toast(quem === 'inspetor' ? 'Ele te largou. Fuja e se esconda.' : quem === 'ana' ? 'Mãos geladas. Ela sumiu... por enquanto.' : 'Eles passaram por dentro de você. Ainda está viva. Por pouco.');
   if (quem === 'inspetor') { const dx = P.pos.x - M.pos.x, dz = P.pos.z - M.pos.z, l = Math.hypot(dx, dz) || 1; P.pos.x += dx / l * 1.2; P.pos.z += dz / l * 1.2; collide(P.pos, .33); }
 }
 function morrer(quem) {
-  S.dead = true; S.mortes++; S.causa = quem; SUST.morte(quem); mortesNoPonto++; saveDevido = 0;
+  S.dead = true; S.mortes++; S.causa = quem; SUST.morte(quem); PG.morte(quem); mortesNoPonto++; saveDevido = 0;
   const rapido = mortesNoPonto >= 2;
   if (mortesCap.cap !== S.chapter) { mortesCap.cap = S.chapter; mortesCap.n = 0; } mortesCap.n++;
   const ctx = S.causaCtx; S.causaCtx = null;
@@ -2295,15 +2297,17 @@ function morrer(quem) {
       $('#death-frase').textContent = MT.frases ? pick(MT.frases) : '';
       UIX.morte(quem); // o que aconteceu, mini-mapa, mortes no capítulo
       dicaMorte(quem, ctx); // dica pela causa exata, quando houver
+      PG.telaMorte(quem); // contagem, objetivos que faltavam, penalidade e o modo Uma Vida
+      $('#dt-diag').hidden = true; $('#death-info').hidden = true; // a causa e a contagem já aparecem acima
       $('#death-conta').textContent = [S.mortes > 1 && R.mortes ? R.mortes.voltou.replace('{n}', S.mortes - 1) : '', S.dif === 'pesadelo' && R.mortes ? R.mortes.pesadelo : ''].filter(Boolean).join(' · ');
     }, rapido ? 500 : 700);
-  }, rapido ? 700 : 1000);
+  }, rapido ? 700 : 950);
 }
 
 // =====================================================================
 // HISTÓRIA / OBJETIVOS
 // =====================================================================
-function objDone(id) { if (S.done[id]) return; S.done[id] = true; SFX.objetivo(); UIX.objetivo(id); renderObj(); agendarSave(id); checarCapitulo(); }
+function objDone(id) { if (S.done[id]) return; S.done[id] = true; SFX.objetivo(); UIX.objetivo(id); renderObj(); agendarSave(id); PG.objetivo(id); checarCapitulo(); }
 function contagem(id) {
   return { fusiveis: S.inv.fusiveis, engrenagens: S.inv.engrenagens, paginas: R.paginas.filter(p => S.notes[p.id]).length, valvulas: S.valv.length, tumulos: Object.keys(S.tumulos).length, altar: S.placed }[id];
 }
@@ -2332,31 +2336,24 @@ function checarCapitulo() {
   clearTimeout(capTO); capTO = setTimeout(() => fimDeCapitulo(), 1800);
 }
 let capTO = null;
-function rank() {
-  const t = S.capT / 60, dano = S.capDano;
-  const pts = (dano === 0 ? 3 : dano < 60 ? 2 : dano < 120 ? 1 : 0) + (t < 8 ? 2 : t < 13 ? 1 : 0) + (S.capVisto <= 1 ? 1 : 0);
-  return pts >= 5 ? 'S' : pts >= 4 ? 'A' : pts >= 2 ? 'B' : 'C';
-}
+function rank() { return PG.rank(); } // metas por capítulo, selos e bônus: src/progressao.js
 function fimDeCapitulo() {
   if (S.dead) { trocandoCap = false; return; }
-  const c = R.capitulos[S.chapter], rk = rank();
+  const c = R.capitulos[S.chapter];
   if (S.capDano === 0 && S.chapter > 0) conquista('intocada');
   if (!S.capCorreu && S.chapter > 0) conquista('gato');
   if (S.chapter === 0) conquista('prologo');
-  const caps = lsGet(CAPS_KEY, {}), ant = { ...(caps[c.id] || {}) }, ordem = 'CBAS';
-  caps[c.id] = { ...ant, rank: !ant.rank || ordem.indexOf(rk) > ordem.indexOf(ant.rank) ? rk : ant.rank, tempo: Math.min(ant.tempo || 1e9, S.capT) };
-  lsSet(CAPS_KEY, caps);
+  if (S.chapter === 3 && !S.flags.tocada_ana_3) conquista('nao_pisquei');
+  if (S.chapter === 1 && S.capLuzT < 60) conquista('olhos_gato');
+  if (S.chapter === 1 && S.capT < 360 && S.capDano === 0) conquista('pressa');
   $('#fc-cap').textContent = c.titulo + ' — concluído';
-  $('#fc-rank').textContent = rk;
-  const min = Math.floor(S.capT / 60), seg = Math.floor(S.capT % 60);
-  $('#fc-stats').innerHTML = `tempo ${min}min ${String(seg).padStart(2, '0')}s · dano sofrido ${Math.round(S.capDano)} · vezes perseguida ${S.capVisto}<br>notas, páginas e fitas ${loreAchado()}/${totalLore()}`;
+  const rk = rank(), ant = { ...(lsGet(CAPS_KEY, {})[c.id] || {}) }; // recorde anterior (a progressão grava o novo)
   const recado = H.fimCapitulo(S, rk);
-  $('#fc-stats').innerHTML += '<br><span style="opacity:.7">S: sem dano, rápida e sem ser perseguida</span>';
   $('#fimcap').hidden = false;
-  escrever($('#fc-gancho'), c.gancho || '');
   $('#fc-recado').textContent = recado ? `Gravador da Lia: ${recado}` : '';
   if (!ui) ui = 'fimcap'; // o mundo congela atrás do cartão
-  UIX.fimCap(c, rk, ant);
+  UIX.fimCap(c, rk, ant); // gancho datilografado, cor do rank, 'E para seguir'
+  PG.fimCap(c); $('#fc-crit').innerHTML = ''; // rank carimbado, selos, boletim, recorde e o que faltou para o S
   SFX.sinoLonge(); SUST.fimCap();
   let seguiu = false;
   const seguir = () => {
@@ -2364,7 +2361,7 @@ function fimDeCapitulo() {
     $('#fimcap').hidden = true;
     if (ui === 'fimcap') ui = null;
     if (S.dead) { trocandoCap = false; return; }
-    S.chapter++; S.capT = 0; S.capDano = 0; S.capVisto = 0; S.capCorreu = false; trocandoCap = false;
+    S.chapter++; S.capT = 0; S.capDano = 0; S.capVisto = 0; S.capCorreu = false; PG.zerarCap(); trocandoCap = false;
     cartaoCapitulo();
     if (W.def.inicioCapitulo) W.def.inicioCapitulo(S.chapter);
     if (W.def.inspetor && W.def.inspetor() && !M.ativo) { const t = { ...S.timers }; agendarEntidades(); Object.assign(S.timers, t); }
@@ -2372,7 +2369,7 @@ function fimDeCapitulo() {
     salvarCheckpoint(true);
   };
   pularFimCap = seguir;
-  const seguirTO = capTO = setTimeout(seguir, 5200); // morrer ou reiniciar cancela (clearTimeout(capTO))
+  const seguirTO = capTO = setTimeout(seguir, 6400); // morrer ou reiniciar cancela (clearTimeout(capTO))
 }
 let pularFimCap = () => {};
 
@@ -2409,6 +2406,7 @@ function syncWorld() {
   if (W.def && W.def.sync) W.def.sync();
 }
 function salvarCheckpoint(inicioCap) {
+  PG.salvando(inicioCap);
   S.pos = [P.pos.x, P.pos.z]; S.yaw = P.yaw; S.mapa = W.mapa;
   const snap = JSON.parse(JSON.stringify({ ...S, hidden: null, dead: false, fim: false, _check: undefined }));
   S._check = snap; mortesNoPonto = 0; saveDevido = 0;
@@ -2417,12 +2415,13 @@ function salvarCheckpoint(inicioCap) {
   if (inicioCap) { const caps = lsGet(CAPS_KEY, {}); const c = R.capitulos[S.chapter]; caps[c.id] = { ...(caps[c.id] || {}), snap }; lsSet(CAPS_KEY, caps); }
 }
 function carregarSnap(snap) {
-  const mortes = S ? S.mortes : 0, tempo = S ? S.tempo : 0;
+  const mortes = S ? S.mortes : 0, tempo = S ? S.tempo : 0, antes = PG.antesCarregar();
   S = JSON.parse(JSON.stringify(snap)); S._check = snap;
   S.chapter = Math.max(0, Math.min(R.capitulos.length - 1, S.chapter | 0));
   S.mortes = Math.max(mortes, S.mortes || 0); S.tempo = Math.max(tempo, S.tempo || 0);
   S.health = Math.max(S.health, 60); S.fear = 0; S.stamina = 100; S.ar = 100; S.dead = false; S.fim = false; S.hidden = null;
   clearTimeout(capTO); $('#fimcap').hidden = true; if (ui === 'fimcap') ui = null; fitaPausada = false;
+  PG.depoisCarregar(antes);
   trocandoCap = false; fitaTocando = null; $('#fita-ind').hidden = true; SFX.chiadoFita(false); subQ = []; subT = 0; $('#sub').innerHTML = '';
   carregarMapa(S.mapa, { x: S.pos[0], z: S.pos[1], yaw: S.yaw }, { salvar: false });
   // o mapa já agendou as entidades ao entrar: não empurrar a Procissão do Cap. II (25 s) para depois de 70-120 s
@@ -2451,8 +2450,8 @@ function updateEventos(dt) {
   if (W.def.chamado && W.def.chamado()) { TT.chamado -= dt; if (TT.chamado <= 0) { if (ameacaAtiva()) TT.chamado = 15; else { TT.chamado = rand(120, 200) * D().intervalo; chamado(); } } }
   if (chamadoArmadilha) {
     chamadoArmadilha.t -= dt;
-    if (chamadoArmadilha.t <= 0) { chamadoExpirou(chamadoArmadilha.sala); chamadoArmadilha = null; }
-    else if (P.room === chamadoArmadilha.sala) { const s = chamadoArmadilha.sala; chamadoArmadilha = null; chamadoEm = perf; H.respondeu(); chamadoBote(s); }
+    if (chamadoArmadilha.t <= 0) { chamadoExpirou(chamadoArmadilha.sala); chamadoArmadilha = null; PG.chamado(false); }
+    else if (P.room === chamadoArmadilha.sala) { const s = chamadoArmadilha.sala; chamadoArmadilha = null; chamadoEm = perf; H.respondeu(); PG.chamado(true); chamadoBote(s); }
   }
   SUST.update(dt);
   for (const f of W.tick) f(dt);
@@ -2522,7 +2521,7 @@ function updateFita(dt) {
   fitaT -= dt;
   if (fitaT <= 0) {
     const l = fitaFila.shift();
-    if (!l) { const id = fitaTocando.id; fitaTocando = null; $('#fita-ind').hidden = true; SFX.chiadoFita(false); SFX.fitaClique(); const primeira = !S.fitas[id]; S.fitas[id] = true; H.fitaFim(id); if (primeira) { toast('Fita registrada no diário (TAB).'); if (W.def.fitaOuvida) W.def.fitaOuvida(id); progresso(); } return; }
+    if (!l) { const id = fitaTocando.id; fitaTocando = null; $('#fita-ind').hidden = true; SFX.chiadoFita(false); SFX.fitaClique(); const primeira = !S.fitas[id]; S.fitas[id] = true; H.fitaFim(id); if (primeira) { PG.lore(id); toast('Fita registrada no diário (TAB).'); if (W.def.fitaOuvida) W.def.fitaOuvida(id); progresso(); } return; }
     sub(l.quem, l.texto, true); fitaT = 2.6 + l.texto.length * .058;
     const n = fitaTocando.linhas.length; $('#fita-ind').textContent = `${fitaTocando.titulo} · ${n - fitaFila.length}/${n}`;
     if (fitaPos) emitNoise(fitaPos.x, fitaPos.z, 4);
@@ -2543,7 +2542,7 @@ function lerNota(id) {
   SFX.papel();
   abrirNotaUI(n.titulo, codTxt(n.texto));
   notaAtual = id; if (id === 'regras' && R.regras.dicaVerso) $('#note small').textContent = 'clique ou E para fechar · ' + R.regras.dicaVerso;
-  if (primeira) { progresso(); if (W.def.notaLida) W.def.notaLida(id); }
+  if (primeira) { PG.lore(id); progresso(); if (W.def.notaLida) W.def.notaLida(id); }
 }
 let prevUi = null;
 function abrirNotaUI(titulo, texto) { ui = 'nota'; notaAtual = null; $('#note').hidden = false; $('#note h2').textContent = titulo; $('#note p').innerHTML = fmtNota(texto); $('#note small').textContent = 'clique, E ou ESC para fechar · L lê em voz alta'; unlock(); }
@@ -2626,6 +2625,7 @@ function dicaPular(on) {
 function iniciarCena() {
   mode = 'cena'; $('#fx-cine').hidden = false; dicaPular(true);
   cena = { t: 0, fim: 30, falas: R.abertura.slice(), cartoes: R.intro.slice(), cartaoT: 0 };
+  const lembra = PG.falaAbertura(); if (lembra) { cena.falas.push(lembra); cena.fim = lembra.t + 5; } // o rádio lembra como foi a última noite
   if (W.def.cena) W.def.cena.iniciar();
   SFX.motor(true);
 }
@@ -3497,13 +3497,7 @@ let cartaoTO;
 function cartao(t, dur = 4) { const el = $('#cartao'); el.textContent = t; el.style.opacity = 1; clearTimeout(cartaoTO); cartaoTO = setTimeout(() => el.style.opacity = 0, dur * 1000); }
 function fade(on, cb, ms = 650) { $('#fx-black').style.opacity = on ? 1 : 0; if (cb) setTimeout(cb, ms); }
 let conqTO;
-function conquista(id) {
-  const c = lsGet(CONQ_KEY, {}); if (c[id]) return;
-  const def = R.conquistas.find(x => x.id === id); if (!def) return;
-  c[id] = Date.now(); lsSet(CONQ_KEY, c);
-  const el = $('#conq'); el.innerHTML = `${def.segredo ? 'Segredo' : 'Conquista'}: ${def.nome}<small>${def.desc}</small>`; el.classList.add('on');
-  clearTimeout(conqTO); conqTO = setTimeout(() => el.classList.remove('on'), 4200);
-}
+function conquista(id) { PG.conquista(id); } // fila, secretas e som: src/progressao.js
 
 // Diário
 let abaDiario = 'obj';
@@ -3575,8 +3569,8 @@ function renderDiario() {
     let s = `<h3>${W.def.nome}</h3><svg viewBox="0 0 ${(maxX - minX) * k + 20} ${(maxZ - minZ) * k + 20}" preserveAspectRatio="xMidYMid meet">`;
     for (const r of salas) {
       const vis = S.visited[`${W.mapa}:${r.id}`] || r.fora, aqui = P.room === r;
-      s += `<rect x="${sx(r.x0)}" y="${sz(r.z1)}" width="${(r.x1 - r.x0) * k}" height="${(r.z1 - r.z0) * k}" fill="${aqui ? '#3a1f18' : vis ? (r.fora ? '#0d100c' : '#1d1a15') : '#0a0908'}" stroke="${vis ? '#857a63' : '#2a2620'}" stroke-width="1.5"/>`;
-      if (vis && r.nome) s += `<text x="${sx((r.x0 + r.x1) / 2)}" y="${sz((r.z0 + r.z1) / 2) + 5}" fill="#cfc3a6" font-size="${Math.max(10, Math.min(15, (r.x1 - r.x0) * k / 7))}" text-anchor="middle" font-family="IM Fell English SC">${r.nome}</text>`;
+      s += `<rect x="${sx(r.x0)}" y="${sz(r.z1)}" width="${(r.x1 - r.x0) * k}" height="${(r.z1 - r.z0) * k}" fill="${aqui ? '#3a1f18' : PG.salaDica(r) ? '#2e2614' : vis ? (r.fora ? '#0d100c' : '#1d1a15') : '#0a0908'}" stroke="${PG.salaDica(r) ? '#c9a75a' : vis ? '#857a63' : '#2a2620'}" stroke-width="1.5"/>`;
+      if ((vis || PG.salaDica(r)) && r.nome) s += `<text x="${sx((r.x0 + r.x1) / 2)}" y="${sz((r.z0 + r.z1) / 2) + 5}" fill="#cfc3a6" font-size="${Math.max(10, Math.min(15, (r.x1 - r.x0) * k / 7))}" text-anchor="middle" font-family="IM Fell English SC">${r.nome}</text>`;
       if (marca === r.id) { const cx = sx((r.x0 + r.x1) / 2), cz = sz((r.z0 + r.z1) / 2) - 14; s += `<path d="M${cx - 7} ${cz - 7}L${cx + 7} ${cz + 7}M${cx + 7} ${cz - 7}L${cx - 7} ${cz + 7}" stroke="#c0392b" stroke-width="3"/>`; }
     }
     s += `<circle cx="${sx(P.pos.x)}" cy="${sz(P.pos.z)}" r="6" fill="#c0392b"/><text x="${sx(P.pos.x) + 10}" y="${sz(P.pos.z) + 4}" fill="#c0392b" font-size="12" font-family="Special Elite">você</text></svg>`;
@@ -3650,6 +3644,7 @@ function final(tipo) {
   const F = R.finais[tipo];
   desativarInspetor(); despawnAna(true);
   conquista('final_' + tipo); if (S.dif === 'pesadelo') conquista('pesadelo'); H.aoFinal(tipo);
+  PG.final(tipo);
   $('#fx-black').style.opacity = 1; SFX.pararCanto();
   if (F.antes) setTimeout(() => cartao(F.antes.texto, 3), 300);
   try { localStorage.removeItem(SAVE_KEY); } catch (e) {}
@@ -3658,6 +3653,7 @@ function final(tipo) {
     $('#e-tit').textContent = F.titulo; revelar($('#e-txt'), H.textoFinal(tipo, F));
     const min = Math.floor(S.tempo / 60), seg = Math.floor(S.tempo % 60);
     $('#e-stats').innerHTML = `tempo total ${min}min ${String(seg).padStart(2, '0')}s · notas, páginas e fitas ${loreAchado()}/${totalLore()} · encontrada ${S.mortes}x · ${D().nome}<br>${H.statsFinal(tipo)}`;
+    PG.telaFinal(tipo);
     SFX.sino(.5, null);
   }, F.antes ? 3600 : 1600);
 }
@@ -3679,12 +3675,17 @@ $('#b-novo').onclick = () => UIX.antesDeNovoJogo(novoJogo);
 function novoJogo() {
   iniciarAudio();
   S = novoEstado($('#o-dif').value); mortesNoPonto = 0;
+  PG.novoJogo(S);
   carregarMapa('estrada', 'carro'); H.aoComecar(S);
   salvarCheckpoint(true);
   $('#title').hidden = true;
   iniciarCena();
 }
-$('#b-cont').onclick = () => { iniciarAudio(); S = null; carregarSnap(lsGet(SAVE_KEY)); $('#o-dif').value = S.dif; entrarJogo(); };
+$('#b-cont').onclick = () => {
+  iniciarAudio(); S = null;
+  try { carregarSnap(lsGet(SAVE_KEY)); } catch (e) { console.warn('save inválido', e); try { localStorage.removeItem(SAVE_KEY); } catch (e2) {} voltarMenu(); $('#t-memoria').textContent = 'O save estava estragado e foi descartado. Use o menu Capítulos.'; return; }
+  $('#o-dif').value = S.dif; entrarJogo();
+};
 function entrarJogo() {
   mode = 'jogo'; ui = null; $('#title').hidden = true; $('#hud').hidden = false; $('#fx-black').style.opacity = 0;
   lockPointer(); cartaoCapitulo(); renderObj();
@@ -3697,8 +3698,8 @@ function voltarMenu() {
   $('#fx-locker').hidden = true; $('#fx-cama').hidden = true; canvas.style.filter = ''; filtroAtual = '';
   unlock(); carregarTitulo(); UIX.atualizarTitulo();
 }
-function carregarTitulo() { S = novoEstado('normal'); carregarMapa('estrada', 'titulo', { salvar: false }); H.titulo(); }
-const H = instalarHistoria({ R, MAPAS, API, lsGet, lsSet, CONQ_KEY, P, M, ANA, PROC, W, SFX, falar, sub, toast, cartao, conquista, emitNoise, iniciarAudio, fecharTeclado, tocarFita, syncWorld, get S() { return S; }, get mode() { return mode; } });
+function carregarTitulo() { S = novoEstado('normal'); carregarMapa('estrada', 'titulo', { salvar: false }); H.titulo(); PG.titulo(); }
+const H = instalarHistoria({ R, MAPAS, API, lsGet, lsSet, CONQ_KEY, P, M, ANA, PROC, W, SFX, falar, sub, toast, cartao, conquista, emitNoise, iniciarAudio, fecharTeclado, tocarFita, syncWorld, dicaExterna: true, get S() { return S; }, get mode() { return mode; } });
 
 const UIX = criarInterface({
   get S() { return S; }, P, M, ANA, PROC, W, OPT, DIFS, R, camera, renderer, keys, SFX, CAPS_KEY, SAVE_KEY,
@@ -3719,6 +3720,11 @@ const SUST = criarSustos({
 });
 const VIS = instalarVisual({ THREE, scene, camera, renderer, canvas, flash, flashFill, MON, ANA, ANA_G, PROC, M, P, W, MAT, OPT, OPT_KEY, lsSet, R, ROLOS, keys, roomAt, visivel, collide, salasAlcancaveis, distSalas, D,
   get S() { return S; }, get mode() { return mode; }, get ui() { return ui; }, get flashPisca() { return flashPisca; }, get hbT() { return AUD.hbT; }, get raioI() { return raioI; }, get fita() { return fitaTocando; }, get perf() { return perf; } });
+PG.ligar({
+  get S() { return S; }, setS: v => { S = v; }, get ui() { return ui; }, get mode() { return mode; },
+  KEYS: { SAVE_KEY, CAPS_KEY, CONQ_KEY, OPT_KEY }, OPT, salvarOpt: () => lsSet(OPT_KEY, OPT), saveExterno: true, dicaExterna: true, ajudaExterna: true,
+  P, M, ANA, PROC, W, MON, SFX, D, toast, sub, loreAchado, totalLore, salvarCheckpoint, carregarSnap, entrarJogo, iniciarAudio
+});
 carregarTitulo();
 const grain = $('#fx-grain').getContext('2d'), grainImg = grain.createImageData(160, 90);
 let last = performance.now(), grainT = 0;
@@ -3736,7 +3742,7 @@ function frame(dt) {
   } else if (mode === 'cena') {
     updateCena(dt); updateClima(dt); updateAudio(dt);
   } else if (ativo) {
-    S.tempo += dt; S.capT += dt;
+    S.tempo += dt; S.capT += dt; PG.tick(dt);
     updatePlayer(dt); updateLanterna(dt); updateFear(dt);
     if (!congelado(dt)) { updateInspetor(dt); updateAna(dt); updateProcissao(dt); } updateEventos(dt); updateGarrafas(dt);
     updateClima(dt); updateJogabilidade(dt); updateAlvo(); updateSegurar(dt); updateFita(dt); updateHUD(); updateSub(dt); updateAudio(dt); H.tick(dt);
