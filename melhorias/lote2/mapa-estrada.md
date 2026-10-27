@@ -1,0 +1,111 @@
+# Lote 2 — Mapa: prólogo e estrada
+- Porta-luvas do carro abre pela janela do passageiro e mostra o envelope da fita, com carimbo da Agência São Lázaro de 14/03/1979 e o bilhete da mãe ("Eu já perdi um")
+- Depois da pancada no teto, aparece uma foto da Lia e do Davi crianças presa no limpador de para-brisa
+- No clarão de um relâmpago, a foto do para-brisa mostra uma figura alta e vendada atrás das duas crianças
+- Conquista secreta nova: "Revelada" (ver a foto do para-brisa no relâmpago)
+- A ponta do tronco que bloqueia a estrada tem corte reto de serrote (textura de anéis) e a Lia percebe que alguém fechou a estrada de propósito
+- Serrote enferrujado com "J.S." gravado no cabo, largado no mato ao lado do tronco
+- Rádio do carro ganhou uma estação em que o locutor manda um abraço pelo nome do jogador (ou para "a moça do carro cinza")
+- A partir da segunda noite, o rádio anuncia que a moça não voltou pra casa e o carro continua na estrada com o pisca ligado
+- Depois que o Seu Joaquim some, o rádio do carro passa a narrar "ao vivo" que uma mulher está perto do carro olhando o rádio
+- Segunda transmissão ao vivo do rádio: "ela está de costas para a mata. Não devia."
+- Os relâmpagos normais da tempestade agora também revelam os segredos da estrada (antes só os clarões dos sustos contavam)
+- Tapume da interdição "ESTRADA INTERDITADA — D.E.R. 1979" pichado ao longo dos anos: NÃO RESPONDE, SÉRGIO VOLTA PRA CASA, eles contam
+- Placa verde da estrada com o "SÃO" riscado e "SILÊNCIO" pintado por cima em letra de criança
+- No relâmpago, uma mãozinha de tinta vermelha aparece no canto da placa verde
+- Durante a perseguição do vulto, a mesma placa passa a dizer "0 km", arranhada
+- Cruz do Seu Joaquim na beira da estrada, com foto 3x4 dentro de um saquinho plástico e flores frescas
+- As flores da cruz murcham na hora em que o velho some do posto
+- Quem lê a cruz antes de falar com o velho ouve a Lia lembrar disso depois do sumiço ("Eu li o nome dele e entrei mesmo assim")
+- Ponte de tábuas sobre um córrego: correndo, as tábuas estalam alto e fazem barulho de verdade; andando, pouco; agachada, quase nada
+- Ao atravessar a ponte correndo, algo grande responde do mato com um estalo
+- Córrego com água corrente atravessando a mata, com som contínuo de água que cresce perto da ponte
+- Ônibus escolar do internato tombado na vala, enferrujado, com o letreiro "INTERNATO S. LÁZARO"
+- Lista de chamada da última viagem (14/03/1979) presa na janela do ônibus: 37 nomes, 34 com tique e os três em branco (nota secreta)
+- Uma mão pequena encostada por dentro da janela do ônibus, que some quando você chega perto
+- No clarão do relâmpago, as janelas do ônibus mostram rostos de criança
+- Mochila pendurada na janela do ônibus balançando sem vento
+- O pisca-alerta do ônibus acende sozinho uma vez quando você passa por ele
+- Ponto de ônibus de concreto com o horário do último ônibus riscado ("NÃO PASSA MAIS") e recados de quinze anos (nota secreta)
+- Mochila da Ana no banco do ponto, com etiqueta e o bilhete "mãe, eu espero aqui"
+- Tigela de cachorro com água fresca e coleira "Tufão" no pátio do posto, sem cachorro nenhum
+- A placa "aberto 24h" do posto vira "fechado desde 1979" quando o velho some
+- Secretária eletrônica no balcão com a luz vermelha piscando "15"
+- Os recados da secretária tocam com voz e chiado: a mãe do Tomé, o bispo, o repórter, o padre, uma respiração com nove batidas de unha e, por último, a voz da própria Lia
+- Conquista secreta nova: "Caixa Postal" (ouvir todos os recados)
+- Jornal de amanhã no balcão (15/03/1994): "Carro abandonado na estrada velha — motorista não foi encontrada"
+- Depois do final verdadeiro, a manchete do jornal muda para o desabamento do internato e a moça que desceu a estrada de manhã
+- Livro "Quem subiu" aberto no balcão, com quem pediu a chave desde 1980 e um "não voltou" ao lado de cada nome (nota secreta)
+- A última linha do livro já tem o nome da Lia, com a tinta molhada e a hora real em que você saiu do carro
+- Depois de qualquer final, a linha da Lia no livro mostra como terminou a noite anterior (voltou, ficou ou dormiu)
+- Xícara de café no balcão ainda soltando vapor
+- Quando o velho some, o vapor para e o café aparece frio e mofado ("Tá gelado. Há anos.")
+- Caderneta de fiado: pilhas do Moacir por quinze anos, velas da Irmã Celeste, querosene do diretor que não pagou e a gasolina para levar os meninos embora (nota secreta)
+- Na contracapa da caderneta, uma dica escondida: deixar fumo de corda na capelinha se ouvir assobio no mato
+- Papéis amassados no chão atrás do balcão com rascunhos antigos das regras, riscados, e o nome de quem morreu por cada uma (nota secreta)
+- Cama de campanha do Seu Joaquim nos fundos da loja, com cobertor e travesseiro
+- Marmita fria em cima de um caixote, ao lado da cama
+- Maço de cartas de ex-alunos ao Joaquim: cada leitura mostra outra carta, sem nenhum monstro na tela
+- Rolo de fumo de corda para pegar no caixote dos fundos
+- Foto emoldurada do Joaquim zelador com as crianças no portão, em 1978
+- Ao desviar os olhos da foto depois do primeiro olhar, uma das crianças some dela
+- Depois que o velho some, o rosto dele na foto vira só uma mancha de luz
+- Crachá "JOAQUIM SILVA — ZELADOR — 1958–1979" na parede; a Lia só comenta depois que ele some
+- Macacão chamuscado "J. SILVA — ZELADOR" pendurado no canto atrás do fliperama
+- Depois do sumiço, o macacão balança como se alguém tivesse acabado de tirar
+- Geladeira com uma TV de tubo em cima, fora do ar, mostrando chuvisco animado
+- A TV mostra de vez em quando as barras coloridas de fim de programação
+- Chiado da TV que cresce quando você chega perto
+- No momento em que o velho some, o chuvisco forma por um instante a silhueta da capela com o sino
+- Dá para desligar a TV (com o "tuc" de tubo apagando), e ela volta a ligar sozinha
+- Mural de cortiça com fotos marcadas "NÃO VOLTOU", recados de mães de décadas diferentes e uma foto do carro da Lia tirada do teto (nota secreta)
+- O fliperama, ao ligar sozinho, mostra um placar de recordes com DAV, ANA, TOM e um "???" piscando em primeiro
+- Apertando o botão do fliperama três vezes, o primeiro lugar vira LIA, com a pontuação igual ao seu número de mortes
+- Conquista secreta nova: "Recorde" (pôr o seu nome no placar)
+- Outdoor desbotado "INTERNATO SÃO LÁZARO — DISCIPLINA E FÉ" com os olhos das crianças raspados
+- Num relâmpago, o homem alto do fundo do outdoor desaparece e não volta mais
+- Placa da estrada que, iluminada de perto com a lanterna, descasca e mostra a placa antiga "ASILO-COLÔNIA SÃO LÁZARO — PROIBIDA A ENTRADA DE VISITANTES"
+- Oratório de beira de estrada com telhadinho, velas acesas e luz tremulando
+- Fotos 3x4 do Davi, da Ana e do Tomé no oratório, e uma da própria Lia de costas ao lado do carro, marcada "hoje"
+- Ao ver a foto dela no oratório, um clique de câmera soa atrás da Lia
+- Ex-votos de cera pendurados no oratório e uma orelha de cera do Moacir com o bilhete "que eu pare de ouvir" (nota secreta)
+- A vela do meio do oratório, apagada, volta a acender sozinha quando você se afasta
+- Assobio fino na mata que acompanha a Lia na estrada e chega mais perto a cada minuto
+- Deixar o fumo de corda no oratório faz o assobio parar e deixa o vulto da perseguição 30% mais lento
+- Conquista secreta nova: "Oferenda"
+- Cruzes de quem tentou subir antes (o repórter, o padre, a moça de Taubaté), com plaquinhas escritas à mão
+- Uma cruz nova, de madeira clara e sem nome, no fim da fila
+- Tábua pintada à mão pelo Joaquim, já desbotada: "NÃO CORRA"
+- Tábua recente em vermelho: "NÃO RESPONDA. NEM SE FOR ELE."
+- A última tábua, perto do portão, pregada de cabeça para baixo: "ENTRA"
+- Marcos de quilômetro de concreto em contagem regressiva ao longo da estrada, do KM 5 ao KM 0
+- O KM 0, colado ao portão, tem "VOLTE PRA CAMA" escrito a giz
+- O marco KM 2 vira KM 9 depois que você passa por ele sem olhar; olhando para trás, a Lia percebe
+- Fitinhas com nomes de família amarradas no KM 1, balançando (a dos Moraes é nova)
+- Árvore seca cheia de fitas de promessa balançando ao vento, com uma fita rosa bordada "ANA"
+- Bicicleta de criança queimada no mato, com a plaqueta "S. LÁZARO Nº 23"
+- Kombi do internato capotada na vala, coberta de musgo
+- Ao passar perto da Kombi depois do sumiço do velho, o rádio do seu carro liga sozinho lá atrás
+- Fusca do repórter engolido pelo musgo, com marcas de mão pequenas do lado de fora do vidro de trás
+- Fita secreta nova no banco do Fusca: a última gravação do repórter em 1986, que termina com uma criança dizendo "dez"
+- Três cruzinhas brancas sem nome, com uma fita de cabelo, uma rodinha azul e uma folha de caderno
+- A partir da segunda noite, a Lia reconhece as três cruzinhas
+- Postes de luz mortos ao longo da estrada; o do trecho final engasga e apaga de vez na perseguição
+- Poças d'água espalhadas pelo asfalto, refletindo o pouco de luz
+- Arco de pedra sobre o portão com a inscrição "SILENTIVM SALVAT", que a Lia traduz
+- Placa de ferro do lema caída no chão do portão, "ACOLHER EM SILÊNCIO", com o "acolher" riscado
+- Muro do internato com nomes riscados de quem veio procurar alguém e um "Lia esteve aqui — 1994" na letra dela
+- Fila de 34 mãozinhas de cal no muro, com três lugares vazios no meio
+- Depois do final verdadeiro, os três lugares vazios da fila aparecem com mãos de tinta fresca
+- Guarita do Seu Joaquim ao lado do portão, com lampião aceso tremulando lá dentro
+- Caderno de rondas da guarita: quinze anos de "Nove badaladas. Ninguém entrou." até "A irmã do menino chegou" (nota secreta)
+- Parede da guarita coberta de risquinhos, um por noite desde 1979
+- Com a lanterna perto da janela da guarita, aparece um "6?" escrito com o dedo no vidro embaçado
+- Capa de chuva amarela pingando num prego da guarita, que some quando o cadeado abre
+- O fantasma do Seu Joaquim aparece com um lampião na mata perto do portão, balançando a cabeça que não, e some quando você se aproxima
+- Lamparina que guia quem se perde: depois de 40 s sem chegar mais perto do objetivo, uma luz de lampião aparece adiante no caminho certo e apaga quando você chega
+- Na cena de abertura, os faróis pegam placas que contam errado ("9 km" e logo depois "3 km")
+- Na cena de abertura, uma menina parada na beira da estrada some quando o farol chega perto, e a Lia sussurra
+- Na abertura, uma badalada distante soa logo depois que o motor morre
+- Na abertura, uma respiração vem do banco de trás antes da pancada no teto
+- Na abertura, quando a Lia vira para trás, uma cabeça aparece por um instante no banco de trás
