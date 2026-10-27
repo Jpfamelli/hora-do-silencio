@@ -1,0 +1,108 @@
+# Lote 1 — História e texto
+- A conquista do final comum passou a se chamar "Só o Começo" e não repete mais o nome "Fora da Cama"
+- O final verdadeiro agora se abre com três atitudes (nunca responder a um chamado, ouvir a fita do Davi até o fim, ouvir a fita do Moacir), não mais com a coleta de todas as notas
+- O texto do final comum termina com um sussurro do Davi que dá a pista das três atitudes
+- No final comum, a tela mostra quais das três atitudes você cumpriu (✦) e quais faltaram (◇)
+- O final comum mostra o Seu Joaquim segurando o portão aberto, e ele some quando você olha de novo
+- O final Silêncio Eterno ganhou um epílogo no carro: o rádio toca nove badaladas com uma voz de menino contando junto
+- O final verdadeiro mostra o Inspetor caindo de joelhos, com a cabeça voltando ao lugar
+- Antes do texto do final verdadeiro aparece, no escuro, a última fala do Moacir: "Silêncio... finalmente."
+- O final verdadeiro ganha uma linha extra se você achou o carrinho azul do Tomé
+- O final verdadeiro ganha outra linha extra se você achou o desenho de aniversário do Davi
+- Os parágrafos do final aparecem um de cada vez, em vez de todos de uma vez
+- A tela de final mostra quantos finais você já descobriu (de 3), no lugar do genérico "Existem 3 finais"
+- A tela do portão ganhou texto novo, ligado à regra 5, e o botão "Responder ao Davi"
+- O último cartão da abertura ficou mais assustador: a voz da fita "sabe o meu nome"
+- O rádio da abertura marca 21h em ponto e dá a notícia das badaladas vindas do internato
+- Na fita da abertura, o Davi já avisa para não responder quando chamarem, e a cena termina com um chiado sussurrando "silêncio"
+- A folha das regras tem verso: botão direito ou V revela a sétima regra, escrita a lápis pelo Seu Joaquim
+- Virar a folha das regras dá a conquista secreta "A Sétima Regra" e o verso passa a aparecer no diário
+- A sétima regra vale de verdade: na fuga do cemitério, olhar para trás para a capela por um segundo faz o Inspetor surgir na sua frente e enfurecido
+- Na fuga, o Seu Joaquim grita do portão dos fundos: "Fecha os olhos e não olha pra trás!"
+- Nova conquista "Não Olhe Para Trás" para quem foge do cemitério sem olhar para a capela
+- Nova conquista "Surda de Propósito" para quem termina o jogo sem responder a nenhum chamado
+- Cada capítulo abre com uma epígrafe curta embaixo do título (a regra que vai importar ali)
+- Os objetivos do Capítulo I e III dizem onde procurar (despensa ao lado da cozinha, dormitório do fundo), cortando a busca às cegas
+- Se você passar muito tempo sem avançar, a Lia pensa em voz alta onde procurar o objetivo atual (mais cedo no Fácil, mais tarde no Pesadelo)
+- Todos os objetivos da campanha ganharam uma dica própria para esse pensamento em voz alta
+- Os ganchos do fim do prólogo, do Capítulo I e do Capítulo II ficaram mais fortes e terminam num susto
+- O gancho do fim de capítulo aparece letra por letra, como máquina de escrever
+- O fim de capítulo explica o que é preciso para tirar S (sem dano, rápida e sem ser perseguida)
+- No fim de cada capítulo, o "gravador da Lia" registra um recado em primeira pessoa que muda conforme você jogou (baixinho se foi perfeita, ofegante se apanhou)
+- No começo do capítulo seguinte, o Davi sussurra uma reação ao seu jeito de jogar (correu e morreu demais, se machucou, nunca foi vista, foi rápida)
+- Correção de texto: a fala do galão dizia "o quadro dizia", agora diz "a etiqueta do quadro dizia", que é o que está escrito na parede
+- Correção de coerência: o recorte de jornal dizia que a capela estava trancada "por dentro"; agora é "por fora", o que bate com a confissão do diretor
+- O recorte de jornal ganhou uma anotação a caneta na margem
+- A página 1 do diário do Davi conta onde ele escondeu o desenho de aniversário
+- Segredo: o desenho de aniversário do Davi (nota nova) está atrás dos livros da diretoria e dá a conquista "Feliz Aniversário"
+- A Fita 1 termina com uma criança cochichando ao fundo "...tá gravando?"
+- A Fita 2 da Irmã Celeste agora menciona que o Joaquim escreveu uma sétima regra atrás da folha
+- A Fita 3 revela que o Moacir também foi aluno do internato e era trancado no armário
+- A Fita 4 do Davi avisa para não responder nem à voz dele
+- Segredo: uma fita escondida do Tomé na rouparia, que só aparece para quem apaga a lanterna e fica agachada 9 segundos no escuro
+- Achar a fita do Tomé dá a conquista secreta "Escuro de Verdade"
+- Segredo: o carrinho azul do Tomé está no muro do fundo do cemitério, como a fita dele conta; pegar faz o barulho das rodinhas e dá a conquista "Bombeiro"
+- Segredo: digitar 1979 no cofre do diretor destrava uma gaveta falsa com a última gravação do Albano, a confissão do incêndio (conquista "A Gaveta Falsa")
+- Combinações erradas com história no cofre e no quadro: zeros, 1403 (a data das ocorrências faz o rádio chiar), 197 no quadro
+- Digitar 0909 no cofre ou 999 no quadro faz o sino responder e chama o Inspetor até você
+- Tentar três dessas combinações (somadas entre partidas) dá a conquista secreta "Arrombadora"
+- Segredos (fitas e notas escondidas) não contam no total do diário nem para a Arqueóloga, então a conquista volta a ser alcançável sem eles
+- Segredos achados aparecem no diário marcados com ✦; os não achados nem aparecem como "???"
+- O texto do diário de notas não manda mais "achar tudo"; agora diz que o fim depende do que você faz
+- O cartaz de desaparecidos da estrada muda depois do final verdadeiro: os nomes riscados e um "obrigado, lia" em letra de criança
+- A tela de título muda de subtítulo conforme o último tipo de final que você já viu
+- Segredo: jogando entre 21h00 e 21h59, o título vira "A HORA COMEÇOU" em dourado
+- Às nove da noite, o primeiro clique na tela de título faz o sino bater nove vezes
+- Começar um jogo às nove da noite dá a conquista secreta "Depois das Nove"
+- Campo opcional "Seu nome" na tela de título, guardado só no navegador
+- Segredo: com o nome preenchido, uma lápide "SEM NOME" do cemitério passa a mostrar o seu nome, a data de hoje e "DEPOIS DAS NOVE"
+- Ler a lápide com o seu nome dá a conquista secreta "Seu Nome na Pedra"
+- Depois de terminar o jogo uma vez (ou no Pesadelo), a outra lápide "SEM NOME" vira "LIA MORAES, 1965 — 1994"
+- Quem morreu 10 vezes ou mais vê gravado embaixo da lápide da Lia "voltou N vezes"
+- Depois de ouvir a fita do Moacir, a lápide do diretor Albano aparece rachada com "ele também foi pra cama" em letra de criança
+- As lápides comuns do cemitério agora podem ser lidas (E) e cada uma tem um epitáfio curto e perturbador
+- Segredo: clicar nove vezes no subtítulo, sem pressa, como o sino, toca as badaladas e mostra "a hora não acabou" (conquista "Nove Badaladas")
+- Os nove cliques destravam no título o menu "Fitas ouvidas", com a transcrição de todas as fitas que você já ouviu em qualquer partida
+- Segredo: digitar SILENCIO na tela de título liga o modo "Fita Gasta" (linhas de VHS, granulação forte, legendas borradas) e revela "ele não é cego de tudo"
+- As conquistas secretas aparecem como "???" no painel até serem descobertas
+- Atender o orelhão da estrada agora vale: uma voz de criança diz os três números do quadro de chaves
+- O código ouvido no orelhão fica anotado no diário, então dá para abrir o quadro antes de achar a fita
+- Atender o orelhão dá a conquista secreta "Linha Cruzada"
+- Fitas: apertar E de novo no gravador que está tocando para a fita no meio (o clique faz barulho)
+- Fitas: cada linha tocada faz um pouco de ruído onde o gravador está, então ouvir uma fita com o Inspetor por perto é arriscado
+- O indicador da fita mostra em que linha ela está (por exemplo 3/5)
+- Tocar a fita do Moacir com o Inspetor por perto faz ele parar e escutar a própria voz por alguns segundos, e a Lia comenta
+- O Chamado (regra 5) tem vozes diferentes por capítulo: Davi no térreo, a Ana e o Davi nos dormitórios, uma voz falando de "carta" nos túneis
+- Nos túneis, a voz do Chamado tenta te enganar dizendo que "a regra mudou"
+- Responder a um chamado fica registrado e a Lia se arrepende em voz alta
+- O Inspetor ganhou falas novas de caça e de busca
+- O Inspetor tem falas próprias por capítulo (na água dos túneis, no cemitério, com a menina por perto)
+- Nas legendas, "???" vira "O Inspetor" depois que você o vê pela primeira vez
+- Nas legendas, "Menina" vira "Ana" depois da brincadeira ou do bilhete dela
+- O Tomé ganhou voz e cor próprias nas legendas
+- Tela de morte com títulos que variam por quem te pegou ("VOLTE PARA A CAMA", "VOCÊ PISCOU"...)
+- Tela de morte mostra a última coisa que você ouviu, em vermelho
+- Tela de morte conta quantas vezes você já voltou
+- No Pesadelo, a tela de morte lembra que um toque basta
+- Dicas de morte novas: o estalo rápido da língua, a fita que faz barulho, a lanterna piscando com a pilha fraca, entrar no primeiro armário
+- Dicas de morte específicas de cada lugar (térreo, dormitórios, túneis, cemitério)
+- Algumas falas agora têm variações sorteadas (a Procissão passando, responder ao chamado, vida baixa, válvulas)
+- Nova fala ao pegar a caixa de fusíveis, dizendo o próximo passo
+- Nova fala ao pegar a engrenagem: a risadinha da Ana e a Lia percebendo que estava sendo vista
+- Nova fala a cada válvula certa, para você saber que acertou
+- A Lia repete em voz alta o código do quadro depois da Fita 1
+- A Lia repete em voz alta a ordem das válvulas depois da Fita 2
+- Cada túmulo cavado tem uma fala própria sobre o objeto achado (a boneca, o carrinho, o caderno)
+- A Lia comenta baixinho a primeira vez que entra em onze lugares marcantes (diretoria, cozinha, enfermaria, capela...)
+- Aviso de vida baixa (uma vez por capítulo) lembrando do curativo, só quando você tem um
+- Aviso de pilha fraca lembrando da troca, só quando você tem pilha reserva
+- Cap. III: perto do dormitório do fundo a caixinha de música "chama" a engrenagem com notas metálicas, mais frequentes quanto mais perto
+- Diálogos aparecem letra por letra; E ou clique completa a frase e o próximo E avança
+- Legendas: rubricas como "(eco)" e "(na fita)" aparecem em itálico e mais apagadas
+- Legendas do Inspetor tremem na tela
+- Sussurros e ecos aparecem menores e mais espaçados nas legendas
+- As legendas entram com um leve desfoque, em vez de surgir secas
+- Notas: as anotações de cena ficam em itálico e o que é escrito à mão (letra de criança, lápis, caneta, giz) aparece em vermelho escuro
+- Notas mostram no rodapé como fechar, e na folha das regras, como virar
+- Avisos na tela ficam mais tempo quando o texto é longo
+- A pausa explica como parar uma fita e como virar a folha das regras

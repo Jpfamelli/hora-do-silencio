@@ -139,7 +139,7 @@ function estrada(A, S) {
   box(.2, .35, .12, MAT.metal, 0, 1.6, .08, orelhao);
   interact(orelhao, () => S.flags.orelhaoTocou && !S.flags.atendeu ? '<b>E</b>Atender o orelhão' : 'Orelhão.', () => {
     if (!S.flags.orelhaoTocou || S.flags.atendeu) return;
-    S.flags.atendeu = true; SFX.clique(); A.sub('davi', '(respiração) ...Lia? Não corre lá dentro. Ele escuta.', true);
+    S.flags.atendeu = true; SFX.clique(); A.sub('davi', '(voz de criança, longe) ...Lia? O quadro de chaves... {q}. Não corre lá dentro. Ele escuta.', true);
   });
   gatilho('orelhao', -7, 7, -14, -2, () => { S.flags.orelhaoTocou = true; SFX.orelhao({ x: 8.4, y: 1.6, z: -8.4 }); });
 
@@ -652,7 +652,7 @@ function cemiterio(A, S) {
   const nomes = A.R.lapides, cel = S.tumPos;
   const lapide = (x, z, l, i) => {
     const g = new THREE.Group(); g.position.set(x, 0, z); g.rotation.y = Math.PI + rand(-.12, .12); g.rotation.z = rand(-.06, .06); A.W.grupo.add(g);
-    const tex = A.textoTex([{ t: '✝', tam: 40, y: 50 }, { t: l.nome, tam: l.nome.length > 14 ? 22 : 28, y: 120 }, { t: l.datas, tam: 22, y: 170 }], { w: 256, h: 256, fundo: '#55534c', cor: '#1a1814', manchas: 5 });
+    const tex = A.textoTex([{ t: '✝', tam: 40, y: 50 }, { t: l.nome, tam: l.nome.length > 14 ? 22 : 28, y: 120 }, { t: l.datas, tam: 22, y: 170 }, ...(l.frase ? [{ t: l.frase, tam: l.frase.length > 18 ? 15 : 18, y: 212, estilo: 'italic' }] : [])], { w: 256, h: 256, fundo: '#55534c', cor: '#1a1814', manchas: 5 });
     const pedra = box(.8, 1.05, .16, [MAT.pedraLap, MAT.pedraLap, MAT.pedraLap, MAT.pedraLap, new THREE.MeshStandardMaterial({ map: tex, roughness: .95 }), MAT.pedraLap], 0, .52, 0, g);
     A.addCollider(x - .42, x + .42, z - .12, z + .12); A.W.solid.push(pedra);
     const monte = box(.9, .12, 1.7, A.texMat('terra', .5, .5), 0, .06, -1, g, false);
@@ -675,7 +675,7 @@ function cemiterio(A, S) {
         L.monte.scale.y = 3; A.progresso();
       });
       it.hold = 4; it.ruido = 12; it.som = 'cavar'; it.pode = () => !!S.inv.pa && !S.tumulos[l.id];
-    } else interact(L.g, () => `${l.nome} · ${l.datas}`, () => {});
+    } else interact(L.g, () => (l.epitafio || l.aoLer ? '<b>E</b>' : '') + `${l.nome} · ${l.datas}`, () => { if (l.epitafio) A.toast(l.epitafio); if (l.aoLer) l.aoLer(); });
   });
   // lápide rachada (nota) e recorte na porta da capela
   { const [x, z] = cel[k++]; const L = lapide(x, z, { nome: '— rachada —', datas: '' }); const it = interact(L.g, () => `<b>E</b>Ler a lápide rachada${S.notes.n11 ? ' (lida)' : ''}`, () => A.lerNota('n11')); }
