@@ -1,0 +1,109 @@
+# Lote 1 — Mapa: prólogo e estrada
+- Aviso "ENTER pula a cena" visível desde o primeiro segundo da abertura
+- Espaço também pula a cena de abertura
+- Correção: as falas do rádio e da fita na abertura não apareciam (a legenda ficava escondida junto com o HUD); agora aparecem
+- Abertura encurtada de 34 para 30 segundos
+- Cartões de texto da abertura mais rápidos (5 s cada) e terminam antes do susto
+- O carro chega mais rápido e freia aos 16,5 s em vez de 23 s
+- Falas da abertura reposicionadas no tempo para casar com os sustos
+- Na abertura, o vulto atravessa na frente dos faróis no instante exato de um relâmpago
+- Faróis piscam e morrem logo depois que o motor apaga
+- O rádio chia depois da freada e diz "Li... a..." no meio do chiado
+- A fita do Davi agora soa distorcida na segunda fala
+- Pancada forte no teto do carro na abertura, com o carro tremendo
+- A câmera olha para o teto com a pancada e balança junto
+- Alguma coisa raspa o vidro de trás logo depois (som novo)
+- A câmera vira devagar para o vidro de trás e as marcas de mão aparecem
+- Fala final da Lia na abertura reescrita ("Tinha alguma coisa em cima do carro")
+- As setas do teclado sintonizam o rádio do carro durante a abertura
+- O pisca-alerta liga ainda na cena, depois da batida
+- Primeira fala da Lia fora do carro reescrita (a árvore e o teto)
+- Você começa ao lado do porta-malas, já olhando para ele (menos caminhada)
+- A câmera começa inclinada para baixo, mirando o porta-malas
+- O porta-malas abre de verdade (a tampa levanta) ao pegar a lanterna
+- Rangido do porta-malas ao abrir
+- Pisca-alerta laranja a 1,2 Hz com luz de verdade nos quatro cantos do carro
+- Tique-taque do pisca-alerta quando você está perto do carro
+- O pisca-alerta para sozinho quando você se afasta com a lanterna
+- Vidro traseiro novo, embaçado, com marcas de mão (textura em canvas)
+- Olhar o vidro de trás: a Lia percebe que as mãos são por dentro, com respiração e medo
+- Pegadas enormes e descalças do carro até a mata
+- A Lia comenta as pegadas quando passa por elas
+- Rádio do carro com painel aceso, que dá para ligar pela janela do motorista
+- Estação do rádio: noticiário de 1979 sobre o incêndio, com voz procedural
+- Estação do rádio: criança contando de trás para frente
+- Estação do rádio: nove badaladas abafadas pelo chiado
+- Estação do rádio: muda, até o Inspetor dizer "Eu ouvi você" (o medo sobe)
+- Segredo: na nona troca de estação aparece uma frequência escondida com o Davi
+- O rádio mostra "O rádio chia..." enquanto troca de estação
+- Texto do carro trocado: "O motor morreu..." e, depois, "Os faróis acenderam sozinhos..."
+- Portão 12 m mais perto: o trecho do posto ao portão ficou mais curto
+- O prédio do internato agora fica logo atrás do muro e surge da neblina quando você chega
+- As árvores não atravessam mais o prédio (faixas de mata refeitas em volta dele)
+- Neblina da estrada um pouco mais densa
+- Câmera da tela de título reposicionada para o novo portão
+- Relâmpago próprio do mapa para casar os sustos com o clarão
+- Um vulto espreita na borda da visão entre o carro e o posto
+- Ele some quando você olha direto, com um estalo de galho
+- A cada aparição ele surge 2,5 m mais perto (até quatro vezes)
+- Passos pesados na mata enquanto ele espreita
+- Vulto parado no fim da estrada, visível só no clarão de um relâmpago; no clarão seguinte, sumiu
+- Esse susto só dispara quando você está olhando para a frente, para ninguém perder
+- Galhos estalam no mato de tempos em tempos enquanto você anda
+- A risada da mata foi reposicionada para perto do novo portão
+- O orelhão toca várias vezes seguidas até você atender ou se afastar
+- Correção: "Atender o orelhão" ficava disponível para sempre; agora só enquanto toca
+- Correção: o toque continuava depois de atender; agora para na hora
+- Ligação com voz procedural de telefone e respiração do outro lado
+- Segredo: o Davi diz os quatro números do cofre, fora de ordem
+- Depois de zerar o jogo, quem atende o orelhão é a própria Lia, mais velha ("Você voltou")
+- No Pesadelo, a frase do Davi no orelhão muda a cada partida
+- Se você não atender, ele toca de novo quando você sai do posto com a chave
+- Segunda ligação: o Inspetor diz "Eu ouvi você chegar" e a perseguição começa
+- O fone fica pendurado pelo fio, balançando, depois de atender
+- A Lia nota que o fone fora do gancho tocou mesmo assim
+- Segredo: ouvir o fone mudo nove vezes faz a Ana contar até dez e dizer "Achei você"
+- Textos novos do orelhão conforme o estado (gelado, linha ocupada, mudo)
+- Mariposas voando em volta da lâmpada da loja do posto
+- Zumbido elétrico da lâmpada quando você está perto
+- Quando o Seu Joaquim some, a luz estala, pisca e apaga de vez
+- As mariposas caem no chão quando a luz morre
+- A lâmpada estoura com som de vidro e o medo sobe
+- A loja continua escura ao carregar o checkpoint (a luz morta fica salva)
+- O neon do posto passa a falhar muito mais depois que o velho some
+- Calendário de março de 1979 na parede da loja, com o dia 17 circulado
+- A Lia comenta o calendário
+- Preços das bombas em cruzeiros (gasolina e álcool)
+- Garrafas de refrigerante de vidro no balcão
+- Fliperama desligado da tomada no canto da loja
+- O fliperama liga sozinho com "FIM DE JOGO" piscando e luz verde quando o velho some
+- Bipe do fliperama (som novo) e interação com ele
+- O Seu Joaquim vira o rosto para você quando você não está olhando
+- A partir da segunda partida a conversa com o Seu Joaquim é resumida, e ele lembra de você
+- Checkpoint salvo logo depois que o velho some
+- Correção: o sumiço do velho e a fita do rádio do posto não disparam mais se você já saiu do mapa ou voltou ao menu
+- Depois da chave, a buzina do carro toca sozinha duas vezes lá atrás
+- Os faróis do carro piscam e acendem sozinhos
+- O vulto aparece parado na frente dos faróis, revelado por um relâmpago
+- O vulto da perseguição tem olhos vermelhos fracos
+- Ele vem pela estrada atrás de você, mas só anda quando você não está olhando
+- Correr faz ele vir 25% mais rápido
+- Encarar por mais de 4 s faz ele dar um passo mesmo assim
+- Passos pesados dele na estrada
+- Ele inclina e balança a cabeça enquanto você o encara
+- Sussurros quando ele chega a menos de 6 m
+- O medo sobe conforme ele se aproxima
+- Captura: ele aparece na sua cara com um grito e a tela escurece
+- Depois da captura você acorda na saída do posto, sem morrer
+- Dica explicando como ele funciona depois da primeira captura (sempre no Fácil)
+- No Pesadelo a captura custa 25 de vida
+- A velocidade dele acompanha a dificuldade
+- A Lia percebe em voz alta que ele para quando é olhado
+- Cada captura conta como "vez perseguida" no rank do capítulo
+- A Lia sussurra "Abre, abre, abre..." quando chega no portão com ele atrás
+- O cadeado agora exige segurar E por 2 segundos
+- Ao abrir o portão, o vulto some num relâmpago com chiado
+- Objetivo do portão atualizado com "(segure E)" e portão aberto com texto próprio
+- Silhueta na janela acesa do internato quando você chega ao portão; depois a janela apaga
+- A Lia comenta a pessoa na janela
+- Os sustos e falas novos da estrada pausam junto com o jogo

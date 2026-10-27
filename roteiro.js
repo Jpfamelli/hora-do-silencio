@@ -29,11 +29,12 @@ window.ROTEIRO = {
   ],
   // Falas do rádio do carro durante a abertura (segundo em que começa)
   abertura: [
-    { t: 3,  quem: "radio", texto: "...Rádio Serra FM, onze e quarenta da noite. Chuva forte em toda a região da Mantiqueira..." },
-    { t: 10, quem: "radio", texto: "...a estrada velha do internato continua interditada. Motorista, evite..." },
-    { t: 16, quem: "davi",  texto: "(na fita) Lia? Se você está ouvindo, a hora está acabando." },
-    { t: 22, quem: "davi",  texto: "(na fita) Ele está acordando. Traz nossas coisas de volta. Por favor." },
-    { t: 28, quem: "lia",   texto: "Eu tô chegando, Davi. Eu tô chegando." }
+    { t: 1.5, quem: "radio", texto: "...Rádio Serra FM, onze e quarenta da noite. Chuva forte em toda a região da Mantiqueira..." },
+    { t: 8, quem: "radio", texto: "...a estrada velha do internato continua interditada. Motorista, evite..." },
+    { t: 12.5, quem: "davi", texto: "(na fita) Lia? Se você está ouvindo, a hora está acabando." },
+    { t: 19.5, quem: "davi", texto: "(na fita, distorcida) Ele está acordando. Traz nossas coisas de volta. Por favor." },
+    { t: 22.5, quem: "radio", texto: "(chiado) ...Li... a..." },
+    { t: 26.8, quem: "lia", texto: "Tinha alguma coisa em cima do carro. Eu tô chegando, Davi." }
   ],
 
   regras: {
@@ -50,7 +51,7 @@ window.ROTEIRO = {
         { id: "lanterna", texto: "Pegue a lanterna no porta-malas" },
         { id: "posto", texto: "Peça ajuda no posto de gasolina" },
         { id: "chave_portao", texto: "Pegue a chave do portão do internato" },
-        { id: "abrir_portao", texto: "Siga a estrada até o portão e abra o cadeado" }
+        { id: "abrir_portao", texto: "Siga a estrada até o portão e abra o cadeado (segure E)" }
       ],
       gancho: "O portão bateu sozinho atrás de você." },
     { id: "c1", titulo: "Capítulo I — Sem Luz", mapa: "terreo",
@@ -110,7 +111,7 @@ window.ROTEIRO = {
   },
 
   falas: {
-    inicio: [{ quem: "lia", texto: "Não... não, não. Uma árvore caída. Logo aqui." }],
+    inicio: [{ quem: "lia", texto: "Uma árvore caída, logo aqui. E aquilo no teto... não foi um galho." }],
     pegou_lanterna: [{ quem: "lia", texto: "A pilha tá fraca. Tem uma luz acesa lá na frente. Um posto?" }],
     joaquim_sumiu: [
       { quem: "lia", texto: "Seu Joaquim?" },
@@ -118,6 +119,7 @@ window.ROTEIRO = {
     ],
     vulto_estrada: [{ quem: "lia", texto: "Tinha alguém ali. Alto. Alto demais." }],
     portao: [{ quem: "lia", texto: "O cadeado abriu. Que Deus me ajude." }],
+    portao_atras: [{ quem: "lia", texto: "Abre, abre, abre... ele tá vindo." }],
     terreo_inicio: [
       { quem: "lia", texto: "A porta principal tá emperrada. Vai fazer barulho." },
       { quem: "davi", texto: "(eco) Lia... sem luz ninguém sai daqui." }

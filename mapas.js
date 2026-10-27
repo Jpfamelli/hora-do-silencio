@@ -1,6 +1,8 @@
 // MAPAS — A Hora do Silêncio v2
 // Cada mapa recebe a API do motor (A) e o estado (S) e devolve sua definição:
 // { nome, spawns, fora, dentro, energia(), inspetor(), procissao(), ana(), chamado(), entrar(cap), inicioCapitulo(cap), ... }
+import { extrasEstrada, memoria, lembrar, SPAWN } from './src/estrada-extra.js';
+import { TXT } from './src/estrada-roteiro.js';
 
 // ---------- utilidades compartilhadas entre mapas
 function arvores(A, faixas, n = 300) {
@@ -71,8 +73,9 @@ function noCaixote(A, p) { A.prop(.55, .45, .55, A.MAT.madeiraEsc, p.x, .225, p.
 // =====================================================================
 function estrada(A, S) {
   const { THREE, MAT, box, cyl, prop, plano, piso, item, interact, ITENS, MK, gatilho, SFX } = A;
+  const GZ = -60, BZ = GZ - 19; // portão (mais perto do posto que antes) e o prédio, que surge da neblina quando você chega
   const salas = [
-    { id: 'estrada', nome: 'Estrada velha', x0: -7, x1: 7, z0: -72, z1: 82, fora: true, piso: 'asfalto' },
+    { id: 'estrada', nome: 'Estrada velha', x0: -7, x1: 7, z0: GZ, z1: 82, fora: true, piso: 'asfalto' },
     { id: 'patioPosto', nome: 'Posto Serra', x0: 7, x1: 24, z0: -26, z1: -6, fora: true },
     { id: 'posto', nome: 'Loja do posto', x0: 12, x1: 20, z0: -21, z1: -13, piso: 'ladrilho', parede: 'azulejo', h: 3 }
   ];
@@ -82,23 +85,23 @@ function estrada(A, S) {
   piso(-4, 4, -72, 82, 'asfalto', 8, .002);
   piso(-7, -4, -72, 82, 'terra', 3, .003); piso(4, 7, -72, 82, 'terra', 3, .003);
   piso(7, 24, -26, -6, 'concreto', 3, .003);
-  arvores(A, [[-40, -8, -80, 90], [8, 40, 2, 90], [8, 40, -90, -28], [25, 45, -30, 0]], 380);
+  arvores(A, [[-40, -8, GZ + 2, 90], [8, 40, 2, 90], [8, 40, GZ + 2, -28], [25, 45, -30, 0], [36, 52, -100, GZ], [-52, -36, -100, GZ], [-40, 40, -104, BZ - 7]], 420);
   // limites invisíveis (mato fechado)
-  invisivel(A, -7, -72, -7, 82); invisivel(A, 7, -72, 7, -26); invisivel(A, 7, -6, 7, 82);
+  invisivel(A, -7, GZ, -7, 82); invisivel(A, 7, GZ, 7, -26); invisivel(A, 7, -6, 7, 82);
   invisivel(A, 24, -26, 24, -6); invisivel(A, 7, -26, 24, -26); invisivel(A, 7, -6, 24, -6); invisivel(A, -7, 82, 7, 82);
   // muro e portão do internato
-  muro(A, -30, -72, -2.3, -72, 3); muro(A, 2.3, -72, 30, -72, 3);
-  const gate = portao(A, 0, -72, 4);
-  box(.14, .18, .06, MAT.bronze, 0, 1.12, -71.9);
-  placa(A, [{ t: 'INTERNATO SÃO LÁZARO', tam: 40, estilo: 'bold' }, { t: 'propriedade particular · proibida a entrada', tam: 22, estilo: 'italic' }], 6, 2.2, -71.75, 3.6, .9, 0);
-  // o prédio ao longe
+  muro(A, -30, GZ, -2.3, GZ, 3); muro(A, 2.3, GZ, 30, GZ, 3);
+  const gate = portao(A, 0, GZ, 4);
+  box(.14, .18, .06, MAT.bronze, 0, 1.12, GZ + .1);
+  placa(A, [{ t: 'INTERNATO SÃO LÁZARO', tam: 40, estilo: 'bold' }, { t: 'propriedade particular · proibida a entrada', tam: 22, estilo: 'italic' }], 6, 2.2, GZ + .25, 3.6, .9, 0);
+  // o prédio, logo atrás do muro
   const prd = A.texMat('reboco', 12, 1.2);
-  box(70, 8, 10, prd, 0, 4, -100, A.W.grupo, false);
-  box(6, 6, 6, prd, 0, 11, -96, A.W.grupo, false);
-  const torre = new THREE.Mesh(new THREE.ConeGeometry(4.6, 3.6, 4), MAT.telhado); torre.rotation.y = Math.PI / 4; torre.position.set(0, 15.8, -96); A.W.grupo.add(torre);
-  for (let i = -6; i <= 6; i++) for (const y of [2, 5.5]) box(1.4, 1.6, .1, MAT.preto, i * 5, y, -94.9, A.W.grupo, false);
-  const janelaAcesa = box(1.4, 1.6, .1, new THREE.MeshStandardMaterial({ color: 0x000000, emissive: 0xffb060, emissiveIntensity: 0 }), 10, 5.5, -94.85, A.W.grupo, false);
-  A.W.tick.push(() => { janelaAcesa.material.emissiveIntensity = Math.random() < .02 ? 0 : (S.done.chave_portao ? .9 : .25); });
+  box(70, 8, 10, prd, 0, 4, BZ, A.W.grupo, false);
+  box(6, 6, 6, prd, 0, 11, BZ + 4, A.W.grupo, false);
+  const torre = new THREE.Mesh(new THREE.ConeGeometry(4.6, 3.6, 4), MAT.telhado); torre.rotation.y = Math.PI / 4; torre.position.set(0, 15.8, BZ + 4); A.W.grupo.add(torre);
+  for (let i = -6; i <= 6; i++) for (const y of [2, 5.5]) box(1.4, 1.6, .1, MAT.preto, i * 5, y, BZ + 5.1, A.W.grupo, false);
+  const janelaAcesa = box(1.4, 1.6, .1, new THREE.MeshStandardMaterial({ color: 0x000000, emissive: 0xffb060, emissiveIntensity: 0 }), 10, 5.5, BZ + 5.15, A.W.grupo, false);
+  A.W.tick.push(() => { janelaAcesa.material.emissiveIntensity = S.flags.janelaApagou || Math.random() < .02 ? 0 : (S.done.chave_portao ? .9 : .25); });
 
   // árvore caída bloqueando o carro
   const tr = cyl(.45, .55, 11, MAT.tronco, -1.8, .55, 4); tr.rotation.z = Math.PI / 2; tr.rotation.y = .08;
@@ -118,10 +121,10 @@ function estrada(A, S) {
   farolOn(!S.flags.faroisMortos);
   interact(portaMalas, () => S.inv.lanterna ? 'Porta-malas vazio.' : '<b>E</b>Abrir o porta-malas', () => {
     if (S.inv.lanterna) return;
-    S.inv.lanterna = true; S.flashOn = true; S.inv.pilhas += 1; SFX.pegar(); SFX.clique();
+    S.inv.lanterna = true; S.flashOn = true; S.inv.pilhas += 1; SFX.pegar(); SFX.clique(); SFX.rangido(1.6, .9, 11.7, .6);
     A.objDone('lanterna'); A.falar('pegou_lanterna'); A.toast('Lanterna (F) e uma pilha reserva (R).');
   });
-  interact(carro.children[0], () => 'Não vai passar por essa árvore.', () => {});
+  interact(carro.children[0], () => S.flags.perseguicao ? 'Os faróis acenderam sozinhos. A chave nem está no contato.' : 'O motor morreu. E a árvore fecha a estrada.', () => {});
 
   // posto
   const cobertura = box(4, .2, 10, MAT.metal, 9.6, 4.2, -17, A.W.grupo, false);
@@ -129,26 +132,21 @@ function estrada(A, S) {
   for (const z of [-19, -15]) { prop(.5, 1.5, .4, new THREE.MeshStandardMaterial({ color: 0x7a1a12, roughness: .6 }), 9.6, .75, z); }
   const neon = box(3, .06, .1, new THREE.MeshStandardMaterial({ emissive: 0xd8f0ff, emissiveIntensity: 2 }), 9.6, 4.05, -17, A.W.grupo, false);
   const luzNeon = new THREE.PointLight(0xd8f0ff, 6, 14, 1.4); luzNeon.position.set(9.6, 3.8, -17); A.W.grupo.add(luzNeon);
-  A.W.tick.push(() => { const on = Math.random() > .04; luzNeon.intensity = on ? 6 : .2; neon.material.emissiveIntensity = on ? 2 : .1; });
+  A.W.tick.push(() => { const on = Math.random() > (S.flags.joaquimSumiu ? .3 : .04); luzNeon.intensity = on ? 6 : .2; neon.material.emissiveIntensity = on ? 2 : .1; });
   cyl(.08, .08, 5, MAT.metal, 7.6, 2.5, -7.5); placa(A, [{ t: 'POSTO SERRA', tam: 54, estilo: 'bold' }, { t: 'aberto 24h', tam: 26, estilo: 'italic' }], 7.6, 5.2, -7.5, 2.4, 1.2, Math.PI / 2, { fundo: '#1a2a20', cor: '#c9d8b0' });
   janelasFachada(A, [14.2, 17.8], -13, 1.6, 1);
-  // orelhão
+  // orelhão (o toque e a interação ficam em src/estrada-extra.js)
   const orelhao = new THREE.Group(); orelhao.position.set(8.4, 0, -8.4); A.W.grupo.add(orelhao);
   cyl(.06, .06, 2, MAT.metal, 0, 1, 0, 6, orelhao);
   const conc = new THREE.Mesh(new THREE.SphereGeometry(.55, 12, 8, 0, Math.PI * 2, 0, Math.PI / 2), new THREE.MeshStandardMaterial({ color: 0xc8a020, roughness: .6, side: THREE.DoubleSide })); conc.position.y = 2.3; conc.rotation.x = Math.PI; conc.scale.y = .9; orelhao.add(conc);
   box(.2, .35, .12, MAT.metal, 0, 1.6, .08, orelhao);
-  interact(orelhao, () => S.flags.orelhaoTocou && !S.flags.atendeu ? '<b>E</b>Atender o orelhão' : 'Orelhão.', () => {
-    if (!S.flags.orelhaoTocou || S.flags.atendeu) return;
-    S.flags.atendeu = true; SFX.clique(); A.sub('davi', '(respiração) ...Lia? Não corre lá dentro. Ele escuta.', true);
-  });
-  gatilho('orelhao', -7, 7, -14, -2, () => { S.flags.orelhaoTocou = true; SFX.orelhao({ x: 8.4, y: 1.6, z: -8.4 }); });
 
   // dentro da loja: balcão, prateleiras, o velho
   prop(.6, 1, 5, MAT.madeiraEsc, 16.4, .5, -17);
   box(.7, .05, 5.1, MAT.madeira, 16.4, 1.02, -17);
   A.estante(19.7, -17, 'z', 3, A.W.spots.posto.prateleira, -1);
   A.estante(16, -20.7, 'x', 3.4, A.W.spots.posto.prateleira, 1);
-  const lp = A.lampada(16, -17, 3, 7, 0xffd9a0, 3.5); lp.sempre = true;
+  const lp = A.lampada(16, -17, 3, 7, 0xffd9a0, 3.5);
   const radio = box(.4, .25, .2, MAT.madeiraEsc, 16.4, 1.17, -15.4);
   const joaquim = new THREE.Group(); joaquim.position.set(18.2, 0, -17.2); joaquim.rotation.y = -Math.PI / 2; A.W.grupo.add(joaquim);
   const cadeira = new THREE.Group(); joaquim.add(cadeira);
@@ -161,18 +159,26 @@ function estrada(A, S) {
   const cab = new THREE.Mesh(new THREE.SphereGeometry(.13, 12, 10), pele); cab.position.set(0, 1.3, 0); velho.add(cab);
   cyl(.24, .24, .03, roupa, 0, 1.42, 0, 14, velho); cyl(.13, .14, .12, roupa, 0, 1.49, 0, 14, velho);
   addColliderSafe(A, 17.8, 18.6, -17.6, -16.8);
-  const sumir = () => { velho.visible = false; A.W.tick.push(() => { cadeira.rotation.x = Math.sin(A.perf() * 2) * .06; }); };
-  if (S.flags.joaquimSumiu) sumir();
+  const v = vulto(A);
+  const ex = extrasEstrada(A, S, { GZ, carro, farolOn, portaMalas, orelhao, joaquim, velho, lp, janela: janelaAcesa, v, novoVulto: () => vulto(A) });
+  const sumir = inst => { velho.visible = false; ex.sumir(inst); A.W.tick.push(() => { cadeira.rotation.x = Math.sin(A.perf() * 2) * .06; }); };
+  if (S.flags.joaquimSumiu) sumir(true);
   interact(velho, () => S.done.posto ? '<b>E</b>Falar com Seu Joaquim' : '<b>E</b>Falar com o velho', () => {
     if (S.done.posto) { A.dialogo([{ quem: 'joaquim', texto: 'A chave tá no prego. Atrás de você. E não corre lá dentro.' }]); return; }
-    A.dialogo(A.R.dialogos.joaquim, () => { S.flags.regras = true; A.objDone('posto'); A.lerNota('regras'); A.toast('As regras ficam no diário (TAB).'); });
+    const linhas = memoria().joaquim ? TXT.joaquimCurto : A.R.dialogos.joaquim;
+    A.dialogo(linhas, () => { lembrar('joaquim'); S.flags.regras = true; A.objDone('posto'); A.lerNota('regras'); A.toast('As regras ficam no diário (TAB).'); });
   });
   interact(radio, () => S.flags.joaquimSumiu ? '<b>E</b>Ouvir o rádio de novo' : 'Um rádio velho, desligado.', () => { if (S.flags.joaquimSumiu) A.tocarFita('f5'); });
   ITENS.nota('n1', { x: 13.6, y: 1.6, z: -13.12 }, true).obj.rotation.y = Math.PI;
   const chave = MK.chave(); chave.rotation.z = Math.PI / 2; chave.rotation.y = Math.PI / 2;
   item('chave_portao', { x: 12.14, y: 1.5, z: -19.4 }, chave, () => S.done.posto ? '<b>E</b>Pegar a chave do portão' : 'Uma chave pendurada num prego.', () => {
     S.inv.chaves.portao = 'Chave do portão'; A.objDone('chave_portao');
-    setTimeout(() => { S.flags.joaquimSumiu = true; sumir(); SFX.estatica(1.4, { x: 16.4, y: 1.2, z: -15.4 }); A.falar('joaquim_sumiu'); setTimeout(() => A.tocarFita('f5'), 6500); }, 900);
+    setTimeout(() => {
+      if (A.S !== S || S.flags.joaquimSumiu) return;
+      S.flags.joaquimSumiu = true; sumir(); SFX.estatica(1.4, { x: 16.4, y: 1.2, z: -15.4 }); A.falar('joaquim_sumiu');
+      setTimeout(() => { if (A.S === S && S.mapa === 'estrada') A.tocarFita('f5'); }, 6500);
+      if (A.mode === 'jogo') A.salvarCheckpoint();
+    }, 900);
   }, () => true).pode = () => S.done.posto;
   // a chave só pode ser pega depois da conversa
   const itChave = A.W.items[A.W.items.length - 1].it; const actOrig = itChave.act; itChave.act = () => { if (S.done.posto) actOrig(); else A.toast('Melhor falar com ele primeiro.'); };
@@ -180,17 +186,12 @@ function estrada(A, S) {
   ITENS.garrafa('garrafa_posto', { x: 16.3, y: 1.05, z: -18.8 });
   ITENS.kit('kit_posto', A.spot('posto', 'prateleira', 4));
 
-  // sustos da estrada
-  const v = vulto(A);
-  gatilho('vulto', -7, 7, -40, -22, () => {
-    S.flags.faroisMortos = true; farolOn(false); SFX.estatica(.6);
-    v.position.set(-10, 0, -52); v.visible = true; let t = 0;
-    A.W.tick.push(dt => { if (!v.visible) return; t += dt; v.position.x = -10 + t * 7; v.rotation.y = Math.PI / 2; if (t > 3) v.visible = false; });
-    setTimeout(() => A.falar('vulto_estrada'), 900);
-  });
-  gatilho('risada', -7, 7, -62, -52, () => SFX.risada(-12, -58));
+  // sustos da estrada: o vulto (espreita, relâmpago e perseguição) mora em src/estrada-extra.js
+  gatilho('risada', -7, 7, GZ + 10, GZ + 18, () => SFX.risada(-12, GZ + 14));
 
-  interact(gate.L, () => {
+  // cadeado: segure E por 2 s (com o vulto vindo pela estrada)
+  const itGate = interact(gate.L, () => {
+    if (S.done.abrir_portao) return 'O portão está aberto.';
     if (!S.inv.chaves.portao) return 'Portão trancado com cadeado.';
     return '<b>E</b>Abrir o cadeado';
   }, () => {
@@ -198,31 +199,16 @@ function estrada(A, S) {
     if (S.done.abrir_portao) return;
     SFX.trancado(); gate.abrir(); A.falar('portao'); A.objDone('abrir_portao');
   });
+  Object.defineProperty(itGate, 'hold', { get: () => (S.inv.chaves.portao && !S.done.abrir_portao ? 2 : 0) });
+  itGate.som = 'trancado';
 
-  // cena de abertura (carro)
-  let cenaCarro = null;
   return {
     nome: 'A Estrada Velha',
-    spawns: { titulo: { x: 0, z: -48, yaw: 0 }, carro: { x: 1.6, z: 9.6, yaw: 0 }, inicio: { x: -.4, z: 9.2, yaw: 0 } },
-    fora: { hemi: .55, moon: .75, fog: .05 }, dentro: { hemi: .12, moon: .05, fog: .08 },
-    energia: () => true,
+    spawns: { titulo: { x: 0, z: GZ + 24, yaw: 0 }, carro: { x: 1.6, z: 9.6, yaw: 0 }, inicio: { x: SPAWN.x, z: SPAWN.z, yaw: SPAWN.yaw } },
+    fora: { hemi: .55, moon: .75, fog: .055 }, dentro: { hemi: .12, moon: .05, fog: .08 },
+    energia: () => !S.flags.luzPostoMorta,
     inicioCapitulo(cap) { if (cap === 1) A.carregarMapa('terreo', 'inicio'); },
-    cena: {
-      iniciar() { cenaCarro = { z0: 72 }; carro.position.z = 72; farolOn(true); },
-      update(t, dt) {
-        let z;
-        if (t < 23) z = 72 - 2.6 * t;
-        else { const k = Math.min(1, (t - 23) / 2); z = (72 - 2.6 * 23) - (72 - 2.6 * 23 - 9.6) * (1 - Math.pow(1 - k, 3)); }
-        carro.position.z = z;
-        if (t > 21.5 && t < 25) { v.visible = true; v.position.set(-8 + (t - 21.5) * 6, 0, z - 13); v.rotation.y = Math.PI / 2; } else if (t >= 25) v.visible = false;
-        if (t > 23 && !cenaCarro.freou) { cenaCarro.freou = true; SFX.freada(); }
-        if (t > 26 && !cenaCarro.morreu) { cenaCarro.morreu = true; SFX.motor(false); }
-        const tremor = t > 23 && t < 25 ? .03 : .004;
-        A.camera.position.set(carro.position.x - .38 + A.rand(-tremor, tremor), 1.15 + Math.sin(t * 9) * .006, carro.position.z - .05);
-        A.camera.rotation.set(-.03, Math.sin(t * .4) * .03 + (t > 25 ? Math.sin((t - 25) * .7) * .25 : 0), 0);
-      },
-      fim() { carro.position.z = 9.6; v.visible = false; A.P.pos.set(-.4, 0, 9.2); A.P.yaw = 0; A.objDone('sair_carro'); }
-    }
+    cena: ex.cena
   };
 }
 function addColliderSafe(A, x0, x1, z0, z1) { A.addCollider(x0, x1, z0, z1); }
