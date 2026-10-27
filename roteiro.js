@@ -41,6 +41,8 @@ window.ROTEIRO = {
     texto: "1. Quando o sino bater nove vezes, começou a Hora do Silêncio. Não corra.\n\n2. O Inspetor não enxerga. Se ele estiver perto, fique parada. Se estiver muito perto, não respire.\n\n3. Se as luzes piscarem e o rádio chiar, entre num armário ou debaixo de uma cama. Eles estão indo dormir. Não deixe que te vejam fora da cama.\n\n4. Se ouvir uma menina contando, ache-a com a luz e não tire os olhos dela.\n\n5. Nunca responda quando chamarem seu nome.\n\n6. Não entre na capela. Nunca toque o sino."
   },
 
+  // Campanha enxuta: 6 capítulos (prólogo + 5), cada um pensado para 8 a 12 minutos,
+  // sem voltar por mapas já vistos e sem "junte 3 coisas" de enchimento.
   capitulos: [
     { id: "c0", titulo: "Prólogo — A Estrada Velha", mapa: "estrada",
       objetivos: [
@@ -55,7 +57,7 @@ window.ROTEIRO = {
       objetivos: [
         { id: "forcar_porta", texto: "Force a porta principal (segure E)" },
         { id: "galao", texto: "Encontre gasolina para o gerador" },
-        { id: "fusiveis", texto: "Encontre os fusíveis queimados ({n}/3)" },
+        { id: "fusiveis", texto: "Pegue a caixa de fusíveis reserva na enfermaria" },
         { id: "gerador", texto: "Ligue o gerador na casa de máquinas" }
       ],
       gancho: "O sino da capela começou a bater. Uma. Duas. Nove vezes." },
@@ -69,34 +71,25 @@ window.ROTEIRO = {
       gancho: "No andar de cima, alguém está brincando de esconde-esconde." },
     { id: "c3", titulo: "Capítulo III — A Menina Que Conta", mapa: "superior",
       objetivos: [
-        { id: "engrenagens", texto: "Encontre as engrenagens da caixinha de música ({n}/3)" },
+        { id: "engrenagens", texto: "Ache a engrenagem que falta na caixinha de música" },
         { id: "caixinha", texto: "Dê corda na caixinha na sala de brinquedos" },
-        { id: "ana", texto: "Não tire os olhos dela (regra 4)" }
-      ],
-      gancho: "Ela deixou uma chave no chão. Tem um nome gravado: Irmã Celeste." },
-    { id: "c4", titulo: "Capítulo IV — A Sexta Regra", mapa: "superior",
-      objetivos: [
+        { id: "ana", texto: "Não tire os olhos dela (regra 4)" },
         { id: "quarto_celeste", texto: "Abra o quarto da Irmã Celeste" },
         { id: "fita_celeste", texto: "Ouça a fita da Irmã Celeste" },
-        { id: "paginas", texto: "Encontre as páginas do diário do Davi ({n}/4)" },
-        { id: "chave_porao", texto: "Pegue a chave do porão e desça pela casa de máquinas" }
+        { id: "chave_porao", texto: "Desça pelo poço do monta-cargas, no depósito" }
       ],
       gancho: "Lá embaixo, a água estava parada. E alguma coisa respirava dentro dela." },
-    { id: "c5", titulo: "Capítulo V — Os Túneis", mapa: "tuneis",
+    { id: "c4", titulo: "Capítulo IV — Os Túneis", mapa: "tuneis",
       objetivos: [
         { id: "valvulas", texto: "Gire as válvulas na ordem certa para baixar a água ({n}/3)" },
-        { id: "cofre", texto: "Abra o cofre na sala secreta do diretor" },
+        { id: "cofre", texto: "Abra o cofre na sala secreta do diretor (os números do Davi)" },
         { id: "sair_tuneis", texto: "Saia pela escada de pedreiro até o cemitério" }
       ],
       gancho: "Davi não queria ser salvo. Ele queria terminar o que começou." },
-    { id: "c6", titulo: "Capítulo VI — Os Três Túmulos", mapa: "cemiterio",
+    { id: "c5", titulo: "Capítulo V — A Hora", mapa: "cemiterio",
       objetivos: [
-        { id: "tumulos", texto: "Ache e cave os túmulos de Ana, Tomé e Davi ({n}/3)" },
-        { id: "capela", texto: "Entre na capela (quebre a regra 6)" }
-      ],
-      gancho: "A sexta regra nunca foi do Joaquim." },
-    { id: "c7", titulo: "Capítulo VII — A Hora", mapa: "cemiterio",
-      objetivos: [
+        { id: "tumulos", texto: "Cave os túmulos de Ana, Tomé e Davi ({n}/3)" },
+        { id: "capela", texto: "Entre na capela (quebre a regra 6)" },
         { id: "altar", texto: "Coloque os objetos das crianças no altar ({n}/3)" },
         { id: "sino", texto: "Toque o sino (segure E)" },
         { id: "fugir", texto: "Fuja para o portão dos fundos" }
@@ -133,7 +126,7 @@ window.ROTEIRO = {
       { quem: "inspetor", texto: "Silêncio." },
       { quem: "lia", texto: "Regra dois. Fica parada. Não respira." }
     ],
-    galao: [{ quem: "lia", texto: "Gasolina. Agora os fusíveis." }],
+    galao: [{ quem: "lia", texto: "Gasolina. Agora os fusíveis. O quadro dizia: reserva na enfermaria." }],
     gerador: [{ quem: "lia", texto: "Funciona... mas faz um barulho infernal. Ele vai ouvir isso." }],
     badaladas: [{ quem: "lia", texto: "O sino. Nove vezes. A Hora começou." }],
     procissao_aviso: [{ quem: "lia", texto: "As luzes! Regra três, armário, AGORA!" }],
@@ -151,8 +144,8 @@ window.ROTEIRO = {
     ],
     chamado: [{ quem: "davi", texto: "Lia...? Lia, vem cá..." }],
     chamado_regra: [{ quem: "lia", texto: "Regra cinco. Não responde. Não vai." }],
-    paginas_ok: [{ quem: "lia", texto: "Quatro números. É o código de algum cofre." }],
-    chave_porao: [{ quem: "lia", texto: "A chave do porão. Tenho que voltar pra casa de máquinas." }],
+    paginas_ok: [{ quem: "lia", texto: "As quatro páginas do Davi. Quatro números. É o código de algum cofre." }],
+    chave_porao: [{ quem: "lia", texto: "A chave do monta-cargas. O poço do depósito desce direto pro porão." }],
     tuneis_inicio: [{ quem: "lia", texto: "Água até o joelho. Cada passo faz barulho." }],
     valvula_errada: [{ quem: "lia", texto: "Errado. A água subiu de novo. Ordem errada." }],
     valvulas_ok: [{ quem: "lia", texto: "A água tá baixando. Tem uma porta ali que não tava antes." }],
@@ -229,7 +222,7 @@ window.ROTEIRO = {
     { id: "p1", titulo: "Diário do Davi — página 1", texto: "A Lia faz aniversário amanhã. Fiz um desenho pra ela, mas não deixam mandar carta.\nPrimeiro número do segredo: {d1}." },
     { id: "p2", titulo: "Diário do Davi — página 2", texto: "O Tomé trouxe o carrinho escondido. Se o Inspetor ouvir as rodinhas, já era.\nSegundo número: {d2}." },
     { id: "p3", titulo: "Diário do Davi — página 3", texto: "A Ana não para de contar. Diz que se parar de olhar, a gente some. Acho que ela tá certa.\nTerceiro número: {d3}." },
-    { id: "p4", titulo: "Diário do Davi — página 4", texto: "Vi o diretor abrindo um cofre embaixo dos túneis com esses números. Anotei tudo.\nÚltimo número: {d4}.\nHoje à noite a gente toca o sino." }
+    { id: "p4", titulo: "Diário do Davi — página 4", texto: "Escrevi essa aqui embaixo, na água. Vi o diretor abrindo um cofre no fim deste túnel com esses números. Anotei tudo.\nÚltimo número: {d4}.\nHoje à noite a gente toca o sino." }
   ],
 
   // Lápides do cemitério (as três que importam primeiro)

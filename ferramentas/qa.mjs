@@ -41,7 +41,7 @@ try {
   const r = await page.evaluate(() => window.T.tudo());
   for (const l of r.log) console.log(l);
   if (shots) {
-    for (const [i, [mapa, sp, cap]] of [['estrada', 'inicio', 0], ['terreo', 'inicio', 1], ['superior', 'escada', 3], ['tuneis', 'entrada', 5], ['cemiterio', 'tuneis', 6]].entries()) {
+    for (const [i, [mapa, sp, cap]] of [['estrada', 'inicio', 0], ['terreo', 'inicio', 1], ['superior', 'escada', 3], ['tuneis', 'entrada', 4], ['cemiterio', 'tuneis', 5]].entries()) {
       await page.evaluate((m, s, c) => { const J = window.__jogo; J.S.chapter = c; J.S.dead = false; J.S.fim = false; J.S.inv.lanterna = true; J.S.flashOn = true; J.S.battery = 100; J.carregarMapa(m, s); window.T.passo(1); }, mapa, sp, cap);
       await page.screenshot({ path: path.join(shots, `${String(i + 1).padStart(2, '0')}-${mapa}.png`) });
     }

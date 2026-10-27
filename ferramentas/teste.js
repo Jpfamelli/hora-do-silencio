@@ -40,7 +40,7 @@ T.cap0 = async () => {
   T.usar(/porta-malas/); T.usar(/Falar com o velho/); T.dlg(); T.dlg(); T.usar(/chave do portão/);
   await T.esperar(1200); T.usar(/cadeado/); await T.esperar(8000);
 };
-T.cap1 = async () => { T.usar(/Forçar a porta/); T.usar(/galão/); T.todos(/fusível/); T.usar(/Ligar o gerador/); await T.esperar(8000); };
+T.cap1 = async () => { T.usar(/Forçar a porta/); T.usar(/galão/); T.usar(/caixa de fusíveis/); T.usar(/Ligar o gerador/); await T.esperar(8000); };
 // ---- jogada completa automática (usada pelo ferramentas/qa.mjs)
 // Avança o loop sem desenhar (rápido) e espera em tempo real pelos setTimeout do jogo.
 T.ok = () => { if (J.ui === 'pausa') document.getElementById('p-voltar').click(); T.dlg(); };
@@ -65,29 +65,29 @@ T.tudo = async () => {
     T.usar(/porta-malas/); T.usar(/Falar com/); T.dlg(); T.dlg(); T.usar(/chave do portão/);
     await T.ate(() => J.S.inv.chaves.portao, 20); T.usar(/cadeado/);
     passo('prólogo', await T.cap(1) && J.S.mapa === 'terreo');
-    T.usar(/Forçar a porta/); T.usar(/galão/); T.todos(/fusível/); T.usar(/Ligar o gerador/);
+    T.usar(/Forçar a porta/); T.usar(/galão/); T.usar(/caixa de fusíveis/); T.usar(/Ligar o gerador/);
     passo('cap I', await T.cap(2));
     await T.semFita(); T.usar(/Fita 1/); await T.ate(() => J.S.fitas.f1, 120);
+    T.usar(/página 1/); T.dlg();
     T.usar(/código do quadro/); for (const d of J.S.quadro) T.tecla('Digit' + d); T.tecla('Enter');
     await T.ate(() => J.S.done.procissao, 90);
     T.usar(/Subir para os dormitórios/);
     passo('cap II', await T.cap(3) && J.S.mapa === 'superior');
-    T.todos(/engrenagem/); T.usar(/caixinha/); await T.ate(() => J.S.done.ana, 60);
-    passo('cap III', await T.cap(4));
+    T.usar(/Pegar a engrenagem/); T.usar(/dar corda na caixinha/); await T.ate(() => J.S.done.ana, 60);
+    T.usar(/página 3/); T.dlg();
     T.usar(/chave da Irmã/); T.usar(/porta da Irmã/); await T.semFita(); T.usar(/Fita 2/); await T.ate(() => J.S.fitas.f2, 120);
-    for (const re of [/página 1/, /página 2/, /página 3/, /página 4/]) { T.usar(re); T.dlg(); }
-    T.usar(/chave do porão/); T.usar(/Descer para o térreo/); await T.ate(() => J.S.mapa === 'terreo', 20);
-    T.usar(/Descer para o porão/);
-    passo('cap IV', await T.cap(5) && J.S.mapa === 'tuneis');
+    T.usar(/página 2/); T.dlg();
+    T.usar(/chave do monta-cargas/); T.usar(/Descer pelo monta-cargas/);
+    passo('cap III', await T.cap(4) && J.S.mapa === 'tuneis');
     for (const n of J.S.ordem) T.usar(new RegExp('Girar a válvula ' + n));
+    T.usar(/página 4/); T.dlg();
     T.usar(/cofre/); for (const d of J.S.code) T.tecla('Digit' + d); T.tecla('Enter');
     await T.ate(() => J.S.flags.cofre, 20); T.usar(/escotilha/);
-    passo('cap V', await T.cap(6) && J.S.mapa === 'cemiterio');
-    T.todos(/Cavar o túmulo/); T.usar(/porta da capela/); T.ir(0, -52);
-    passo('cap VI', await T.cap(7));
+    passo('cap IV', await T.cap(5) && J.S.mapa === 'cemiterio');
+    T.todos(/Cavar o túmulo/); T.usar(/porta da capela/); T.ir(0, -52); await T.ate(() => J.S.done.capela, 10);
     T.usar(/altar/); T.usar(/corda do sino/); await T.ate(() => J.S.flags.sino, 20);
     T.ir(0, 11.6); await T.ate(() => J.S.fim || J.ui === 'escolha', 30);
-    passo('final', J.S.fim || J.ui === 'escolha');
+    passo('cap V e final', J.S.fim || J.ui === 'escolha');
   } catch (e) { log.push('ERRO ' + e.message); }
   return { log, errs: T.errs, avisos: T.avisos };
 };

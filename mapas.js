@@ -228,7 +228,7 @@ function estrada(A, S) {
 function addColliderSafe(A, x0, x1, z0, z1) { A.addCollider(x0, x1, z0, z1); }
 
 // =====================================================================
-// TÉRREO DO INTERNATO (Capítulos I e II, volta no IV)
+// TÉRREO DO INTERNATO (Capítulos I e II)
 // =====================================================================
 function terreo(A, S) {
   const { THREE, MAT, box, cyl, prop, plano, piso, item, interact, ITENS, MK, gatilho, SFX, spot } = A;
@@ -329,7 +329,7 @@ function terreo(A, S) {
     let n = 0; const iv = setInterval(() => { A.W.lampadas.forEach(L => { L.luz.intensity = Math.random() < .5 ? L.base : 0; }); if (++n > 10) { clearInterval(iv); A.syncWorld(); } }, 120);
     A.objDone('gerador'); setTimeout(() => A.falar('gerador'), 1200);
   });
-  interact(fusBox, () => S.flags.energia ? 'Quadro de fusíveis' : `Quadro de fusíveis (${S.inv.fusiveis}/3)`, () => {});
+  interact(fusBox, () => S.flags.energia ? 'Quadro de fusíveis' : S.inv.fusiveis >= 3 ? 'Quadro de fusíveis (pronto)' : 'Quadro de fusíveis vazio. Etiqueta: "reserva na enfermaria".', () => {});
   const alcapao = box(1.4, .08, 1.4, MAT.madeiraEsc, 27, .04, -23.5);
   box(.1, .04, .5, MAT.ferrugem, 27.4, .1, -23.5, A.W.grupo, false);
   interact(alcapao, () => {
@@ -337,12 +337,14 @@ function terreo(A, S) {
     return '<b>E</b>Descer para o porão';
   }, () => {
     if (!S.inv.chaves.porao) { SFX.trancado(); return; }
-    if (S.chapter === 4) A.objDone('chave_porao');
+    if (S.chapter === 3) A.objDone('chave_porao');
     A.fade(true, () => { A.carregarMapa('tuneis', 'entrada'); A.fade(false); }, 500);
   });
 
   // diretoria: gravador
   ITENS.gravador('f1', spot('diret', 'mesa', 0));
+  // primeira página do diário do Davi fica no caminho obrigatório (ao lado da fita)
+  ITENS.nota('p1', spot('diret', 'mesa', 1));
   // notas
   ITENS.nota('n2', spot('hall', 'mesa', 0));
   ITENS.nota('n3', spot('cozinha', 'mesa', 2));
@@ -350,7 +352,8 @@ function terreo(A, S) {
   ITENS.nota('n5', spot('aula', 'mesa', 3));
   // itens de missão
   item('galao', spot('despensa', 'mesa', 1), MK.galao(), 'Pegar galão de gasolina', () => { S.inv.galao = true; A.objDone('galao'); A.falar('galao'); });
-  [['biblio', 'prateleira', 4], ['lavand', 'mesa', 2], ['enferm', 'mesa', 0]].forEach(([s, t, i], k) => item('fus' + k, spot(s, t, i), MK.fusivel(), 'Pegar fusível', () => { S.inv.fusiveis++; A.progresso(); }));
+  // uma caixa só, com os três fusíveis (nada de caça a três peças)
+  item('fusiveis', spot('enferm', 'mesa', 0), MK.fusivel(), 'Pegar a caixa de fusíveis reserva', () => { S.inv.fusiveis = 3; A.progresso(); });
   // recursos (poucos de propósito)
   ITENS.pilha('p1', spot('aula', 'mesa', 6)); ITENS.pilha('p2', spot('banh', 'mesa', 1)); ITENS.pilha('p3', spot('refeit', 'mesa', 3));
   ITENS.kit('k1', spot('enferm', 'prateleira', 1)); ITENS.kit('k2', spot('cozinha', 'prateleira', 2));
@@ -370,7 +373,7 @@ function terreo(A, S) {
     energia: () => !!S.flags.energia,
     inspetor: () => S.done.forcar_porta && (S.timers.insp === undefined || S.timers.insp <= 0),
     procissao: () => S.flags.energia && S.chapter >= 2,
-    ana: () => S.chapter >= 4,
+    ana: () => S.chapter >= 3,
     chamado: () => S.chapter >= 2,
     sync() { fusNoQuadro.forEach(f => f.visible = !!S.flags.energia); led.material.emissive.set(S.flags.energia ? 0x20ff40 : 0xff2010); visor.material.emissiveIntensity = S.flags.energia && !S.inv.chaves.escada ? 1.5 : 0; },
     entrar(cap) {
@@ -392,7 +395,7 @@ function terreo(A, S) {
 }
 
 // =====================================================================
-// ANDAR DE CIMA — DORMITÓRIOS (Capítulos III e IV)
+// ANDAR DE CIMA — DORMITÓRIOS (Capítulo III; desce direto aos túneis pelo monta-cargas)
 // =====================================================================
 function superior(A, S) {
   const { THREE, MAT, box, cyl, prop, plano, item, interact, ITENS, MK, gatilho, SFX, spot } = A;
@@ -437,7 +440,7 @@ function superior(A, S) {
   const itCaixa = interact(caixa, () => {
     if (S.done.caixinha) return 'A caixinha gira sozinha.';
     if (S.chapter < 3) return 'Uma caixinha de música sem as engrenagens.';
-    if (S.inv.engrenagens < 3) return `Faltam engrenagens (${S.inv.engrenagens}/3).`;
+    if (S.inv.engrenagens < 3) return 'Falta uma engrenagem. A menina escondeu em algum dormitório.';
     return '<b>E</b>Montar e dar corda na caixinha';
   }, () => {
     if (S.done.caixinha || S.inv.engrenagens < 3 || S.chapter < 3) return;
@@ -446,15 +449,29 @@ function superior(A, S) {
   });
   itCaixa.hold = 2; itCaixa.pode = () => !S.done.caixinha && S.inv.engrenagens >= 3 && S.chapter >= 3;
   // engrenagens
-  [['dormA', 'cama', 1], ['roup', 'prateleira', 2], ['dormE', 'cama', 2]].forEach(([s, t, i], k) => item('eng' + k, spot(s, t, i), MK.engrenagem(), 'Pegar engrenagem', () => { S.inv.engrenagens++; A.progresso(); }, () => S.chapter >= 3));
+  // uma engrenagem só, no dormitório do fundo: obriga a atravessar o corredor com ela contando
+  item('eng0', spot('dormE', 'cama', 2), MK.engrenagem(), 'Pegar a engrenagem da caixinha', () => { S.inv.engrenagens = 3; A.progresso(); SFX.risada(8, -31); }, () => S.chapter >= 3);
   // chave da Celeste (deixada pela menina)
   item('chaveCeleste', spot('brinq', 'chao', 2), MK.chave(), 'Pegar a chave da Irmã Celeste', () => { S.inv.chaves.celeste = 'Chave do quarto da Irmã Celeste'; }, () => !!S.done.ana);
   // quarto da Celeste
   ITENS.gravador('f2', spot('celeste', 'mesa', 0));
   ITENS.nota('n8', spot('celeste', 'prateleira', 0));
-  item('chavePorao', spot('celeste', 'mesa', 1), MK.chave(), 'Pegar a chave do porão', () => { S.inv.chaves.porao = 'Chave do porão'; A.falar('chave_porao'); }, () => !!S.fitas.f2);
-  // diário do Davi
-  ITENS.nota('p1', spot('dormB', 'cama', 0)); ITENS.nota('p2', spot('dormC', 'cama', 2)); ITENS.nota('p3', spot('banhS', 'mesa', 1)); ITENS.nota('p4', spot('dormD', 'cama', 1));
+  item('chavePorao', spot('celeste', 'mesa', 1), MK.chave(), 'Pegar a chave do monta-cargas', () => { S.inv.chaves.porao = 'Chave do monta-cargas (porão)'; A.falar('chave_porao'); }, () => !!S.fitas.f2);
+  // diário do Davi: as páginas ficam no caminho da história (p1 no térreo, p2 e p3 aqui, p4 nos túneis)
+  ITENS.nota('p2', spot('celeste', 'cama', 0)); ITENS.nota('p3', spot('brinq', 'chao', 0));
+  // monta-cargas no depósito: desce direto para os túneis (sem voltar ao térreo)
+  const poco = new THREE.Group(); poco.position.set(11.6, 0, -56.2); A.W.grupo.add(poco);
+  box(1.6, 2.6, .08, MAT.ferrugem, 0, 1.3, -.8, poco, false); box(.08, 2.6, 1.6, MAT.ferrugem, -.8, 1.3, 0, poco, false); box(.08, 2.6, 1.6, MAT.ferrugem, .8, 1.3, 0, poco, false);
+  box(1.5, .06, 1.5, MAT.preto, 0, .03, 0, poco, false);
+  for (let i = 0; i < 7; i++) cyl(.015, .015, 2.4, MAT.ferrugem, -.66 + i * .22, 1.3, .8, 5, poco);
+  box(.14, .18, .08, MAT.bronze, .3, 1.2, .84, poco);
+  A.addCollider(10.8, 12.4, -57.6, -55.4);
+  interact(poco, () => S.inv.chaves.porao ? '<b>E</b>Descer pelo monta-cargas' : S.chapter < 3 || !S.done.ana ? 'Um monta-cargas antigo. Grade trancada.' : 'Um monta-cargas. A grade tem cadeado. Leva até o porão.', () => {
+    if (!S.inv.chaves.porao) { SFX.trancado(); A.emitNoise(11.6, -55, 4); return; }
+    if (S.chapter === 3) A.objDone('chave_porao');
+    SFX.cano({ x: 11.6, y: 1.5, z: -56 }); A.P.shake = .15;
+    A.fade(true, () => { A.carregarMapa('tuneis', 'entrada'); A.fade(false); }, 900);
+  });
   ITENS.nota('n6', spot('brinq', 'mesa', 1)); ITENS.nota('n7', spot('roup', 'mesa', 0));
   // recursos
   ITENS.pilha('p1', spot('dormC', 'cama', 0)); ITENS.pilha('p2', spot('sotao', 'mesa', 0)); ITENS.pilha('p3', spot('roup', 'prateleira', 0));
@@ -471,7 +488,7 @@ function superior(A, S) {
     energia: () => !!S.flags.energia,
     inspetor: () => S.chapter >= 3,
     procissao: () => S.flags.energia && S.chapter >= 3,
-    ana: () => S.chapter >= 4,
+    ana: () => S.chapter >= 3 && !!S.done.ana,
     chamado: () => S.chapter >= 3,
     anaSalaScript: 'brinq',
     anaFim() { A.objDone('ana'); A.conquista('ana'); A.falar('ana_foi'); A.syncWorld(); },
@@ -481,14 +498,13 @@ function superior(A, S) {
     },
     inicioCapitulo(cap) {
       if (cap === 3 && !S.flags.supIntro) { S.flags.supIntro = true; A.falar('superior_inicio'); }
-      if (cap === 4) A.syncWorld();
     },
     fitaOuvida(id) { if (id === 'f2') { A.objDone('fita_celeste'); A.syncWorld(); } }
   };
 }
 
 // =====================================================================
-// TÚNEIS ALAGADOS (Capítulo V)
+// TÚNEIS ALAGADOS (Capítulo IV)
 // =====================================================================
 function tuneis(A, S) {
   const { THREE, MAT, box, cyl, prop, plano, item, interact, ITENS, MK, gatilho, SFX, spot } = A;
@@ -556,7 +572,7 @@ function tuneis(A, S) {
   box(.82, 1, .06, new THREE.MeshStandardMaterial({ color: 0x55585a, metalness: .7, roughness: .4, emissive: 0x101010 }), .41, 0, 0, cp);
   cyl(.08, .08, .05, MAT.bronze, .55, .15, .05, 12, cp).rotation.x = Math.PI / 2;
   A.addCollider(6.95, 7.85, -60.45, -59.55);
-  interact(cofre, () => S.flags.cofre ? 'Cofre aberto e vazio.' : '<b>E</b>Usar o cofre', () => {
+  interact(cofre, () => S.flags.cofre ? 'Cofre aberto e vazio.' : A.R.paginas.every(p => S.notes[p.id]) ? '<b>E</b>Usar o cofre' : `<b>E</b>Usar o cofre (números do Davi: ${A.R.paginas.filter(p => S.notes[p.id]).length}/4)`, () => {
     if (S.flags.cofre) return;
     A.abrirTeclado('COFRE DO DIRETOR', S.code.join(''), () => {
       S.flags.cofre = true; S.inv.pa = true; S.inv.chaves.capela = 'Chave da capela'; cp.rotation.y = -1.7;
@@ -567,6 +583,8 @@ function tuneis(A, S) {
   ITENS.gravador('f3', spot('secreta', 'mesa', 0));
   ITENS.nota('n10', spot('secreta', 'mesa', 1));
   ITENS.nota('n9', spot('dep', 'mesa', 0));
+  // última página do Davi, no túnel que leva à sala do diretor
+  ITENS.nota('p4', noCaixote(A, spot('t4', 'chao', 0)));
   // saída
   const esc2 = new THREE.Group(); esc2.position.set(31.6, 0, -36); esc2.rotation.y = -Math.PI / 2; A.W.grupo.add(esc2);
   for (let i = 0; i < 7; i++) box(.8, .04, .04, MAT.ferrugem, 0, .3 + i * .38, 0, esc2); box(.04, 2.8, .04, MAT.ferrugem, -.4, 1.4, 0, esc2); box(.04, 2.8, .04, MAT.ferrugem, .4, 1.4, 0, esc2);
@@ -587,8 +605,8 @@ function tuneis(A, S) {
     dentro: { hemi: .05, moon: 0, fog: .12 },
     energia: () => !!S.flags.energia,
     inspetor: () => true,
-    procissao: () => S.chapter >= 5,
-    ana: () => S.chapter >= 5,
+    procissao: () => S.chapter >= 4,
+    ana: () => S.chapter >= 4,
     chamado: () => true,
     entrar(cap) {
       if (!S.flags.tunIntro) { S.flags.tunIntro = true; setTimeout(() => A.falar('tuneis_inicio'), 1000); }
@@ -598,7 +616,7 @@ function tuneis(A, S) {
 }
 
 // =====================================================================
-// CEMITÉRIO E CAPELA (Capítulos VI e VII)
+// CEMITÉRIO E CAPELA (Capítulo V — final)
 // =====================================================================
 function cemiterio(A, S) {
   const { THREE, MAT, box, cyl, prop, plano, piso, item, interact, ITENS, MK, gatilho, SFX, spot, rand } = A;
@@ -710,7 +728,7 @@ function cemiterio(A, S) {
   });
   itSino.hold = 3; itSino.ruido = 40; itSino.som = 'cavar'; itSino.pode = () => !S.flags.sino && S.placed >= 3;
   gatilho('fuga', -2.2, 2.2, 11.2, 13, () => { if (S.flags.sino) A.escolhaFinal(); }, false);
-  gatilho('entrouCapela', -8, 8, -70, -48.5, () => { if (S.chapter === 6) A.objDone('capela'); }, false);
+  gatilho('entrouCapela', -8, 8, -70, -48.5, () => { if (S.chapter === 5 && !S.done.capela) { A.objDone('capela'); A.falar('capela'); } }, false);
   gatilho('vozCemit', -30, 30, -20, -10, () => { SFX.chamadoVoz(-20, -30); });
 
   return {
@@ -719,10 +737,10 @@ function cemiterio(A, S) {
     spawns: { tuneis: { x: 24, z: 6, yaw: 0 }, inicio: { x: 24, z: 6, yaw: 0 } },
     fora: { hemi: 1.05, moon: 1.3, fog: .042 }, dentro: { hemi: .1, moon: .05, fog: .07 },
     energia: () => false,
-    inspetor: () => S.chapter >= 6 && !S.flags.sino,
+    inspetor: () => S.chapter >= 5 && !S.flags.sino,
     inspetorFora: true, anaFora: true,
     procissao: () => false,
-    ana: () => S.chapter >= 6,
+    ana: () => S.chapter >= 5,
     chamado: () => false,
     sync() { noAltar.forEach((m, i) => m.visible = i < S.placed); for (const [id, L] of Object.entries(importantes)) if (S.tumulos[id]) L.monte.scale.y = 3; },
     entrar(cap) {
@@ -730,7 +748,6 @@ function cemiterio(A, S) {
       if (S.flags.sino) { fundos.abrir(); A.ativarInspetor(0, -66, 'caca'); }
       A.agendarEntidades();
     },
-    inicioCapitulo(cap) { if (cap === 7) A.falar('capela'); }
   };
 }
 

@@ -8,8 +8,8 @@ const rand = (a, b) => a + Math.random() * (b - a);
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const lerp = (a, b, t) => a + (b - a) * t;
 const pick = arr => arr[Math.random() * arr.length | 0];
-const SAVE_KEY = 'hora-silencio-v2';
-const CAPS_KEY = 'hora-silencio-v2-caps';
+const SAVE_KEY = 'hora-silencio-v3';
+const CAPS_KEY = 'hora-silencio-v3-caps';
 const CONQ_KEY = 'hora-silencio-v2-conq';
 const OPT_KEY = 'hora-silencio-opt';
 
@@ -888,7 +888,7 @@ function patrulhar() {
   const salas = salasAlcancaveis(M.pos, { semFora: !W.def.inspetorFora }).filter(r => !r.seguro);
   if (!salas.length) return;
   let r;
-  const pressao = .3 + S.chapter * .05;
+  const pressao = .3 + S.chapter * .07;
   if (M.recuo > 0) r = salas.reduce((a, b) => distSalas(b, P.room) > distSalas(a, P.room) ? b : a, salas[0]);
   else if (Math.random() < pressao && salas.includes(P.room)) r = P.room;
   else r = pick(salas);
@@ -939,7 +939,7 @@ function updateInspetor(dt) {
   if (!S.flags.avist && d < 14 && salaAdj(ra, P.room)) { S.flags.avist = true; SFX.susto(); falar('primeiro_avistamento'); }
   const aguaAqui = ra.agua && !S.flags.aguaBaixa;
   const base = { patrulha: 1.9, investiga: 3.0, procura: 1.6, caca: 4.6 }[M.state] || 1.8;
-  const esc = 1 + Math.max(0, S.chapter - 2) * .05;
+  const esc = 1 + Math.max(0, S.chapter - 2) * .083;
   const speed = (fuga ? 4.9 : base * esc) * D().vel * (aguaAqui ? .85 : 1);
   if (M.wait > 0) M.wait -= dt;
   else if (M.path.length) {
@@ -1149,6 +1149,7 @@ function progresso() {
     if (o.id === 'tumulos') falar('tumulos_ok');
     if (o.id === 'altar') falar('altar_ok');
   }
+  if (!S.flags.paginasOk && R.paginas.every(p => S.notes[p.id])) { S.flags.paginasOk = true; if (!c.objetivos.some(o => o.id === 'paginas')) falar('paginas_ok'); }
   if (loreAchado() >= totalLore()) conquista('arqueologa');
   renderObj();
 }
@@ -1162,7 +1163,7 @@ function checarCapitulo() {
 }
 function rank() {
   const t = S.capT / 60, dano = S.capDano;
-  const pts = (dano === 0 ? 3 : dano < 60 ? 2 : dano < 120 ? 1 : 0) + (t < 6 ? 2 : t < 12 ? 1 : 0) + (S.capVisto <= 1 ? 1 : 0);
+  const pts = (dano === 0 ? 3 : dano < 60 ? 2 : dano < 120 ? 1 : 0) + (t < 8 ? 2 : t < 13 ? 1 : 0) + (S.capVisto <= 1 ? 1 : 0);
   return pts >= 5 ? 'S' : pts >= 4 ? 'A' : pts >= 2 ? 'B' : 'C';
 }
 function fimDeCapitulo() {
@@ -1230,6 +1231,7 @@ function salvarCheckpoint(inicioCap) {
 function carregarSnap(snap) {
   const mortes = S ? S.mortes : 0, tempo = S ? S.tempo : 0;
   S = JSON.parse(JSON.stringify(snap)); S._check = snap;
+  S.chapter = Math.max(0, Math.min(R.capitulos.length - 1, S.chapter | 0));
   S.mortes = Math.max(mortes, S.mortes || 0); S.tempo = Math.max(tempo, S.tempo || 0);
   S.health = Math.max(S.health, 60); S.fear = 0; S.stamina = 100; S.dead = false; S.fim = false; S.hidden = null;
   trocandoCap = false; fitaTocando = null; $('#fita-ind').hidden = true; SFX.chiadoFita(false); subQ = []; subT = 0; $('#sub').innerHTML = '';
@@ -1673,7 +1675,7 @@ function renderDiario() {
       let liberado = true;
       h += `<h3>${c.titulo}</h3><ul style="list-style:none">` + c.objetivos.map(o => { const f = S.done[o.id]; if (!f && !liberado) return ''; if (!f) liberado = false; return `<li style="opacity:${f ? .45 : 1}">${f ? '✕' : '◇'} ${o.texto.replace(/\s*\(\{n\}\/\d\)/, '')}</li>`; }).join('') + '</ul>';
     });
-    if (S.chapter >= 4) { const dg = ['p1', 'p2', 'p3', 'p4'].map((id, i) => S.notes[id] ? S.code[i] : '_').join(''); h += `<h3>Números do diário do Davi</h3><div class="digits">${dg}</div>`; }
+    if (R.paginas.some(p => S.notes[p.id])) { const dg = ['p1', 'p2', 'p3', 'p4'].map((id, i) => S.notes[id] ? S.code[i] : '_').join(''); h += `<h3>Números do diário do Davi</h3><div class="digits">${dg}</div>`; }
     if (S.fitas.f1) h += `<h3>Quadro de chaves</h3><div class="digits">${S.quadro.join('')}</div>`;
     if (S.fitas.f2) h += `<h3>Ordem das válvulas</h3><div class="digits">${S.ordem.join('-')}</div>`;
     el.innerHTML = h;

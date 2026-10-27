@@ -11,6 +11,20 @@ Jogo de terror em primeira pessoa que roda no navegador (Three.js r160 via impor
 - `ferramentas/qa.mjs` — QA headless: `node ferramentas/qa.mjs <pasta-do-jogo> [--shots <pasta>] [--sobrevivencia]`. Serve a pasta, abre no Chrome, roda `T.tudo()`, falha se houver erro de JS ou etapa quebrada. Demora alguns minutos.
 - `melhorias/` — registro das melhorias por lote. `MELHORIAS.md` é o índice geral.
 
+## Campanha (Lote 1: enxuta) — 6 capítulos, 8 a 12 min cada, sem backtracking
+Índices de `S.chapter` 0–5; os mapas checam esses números (`inspetor()`, `ana()`, `procissao()`...).
+| # | Capítulo | Mapa | Objetivos | Momento marcante |
+|---|---|---|---|---|
+| 0 | Prólogo — A Estrada Velha | estrada | sair do carro, lanterna, Seu Joaquim no posto, chave do portão, cadeado | o vulto na estrada; o velho some e o rádio diz que ele morreu em 1979 |
+| 1 | I — Sem Luz | terreo | forçar a porta (barulho), galão (despensa), caixa de fusíveis reserva (enfermaria, uma peça só), gerador | primeiro encontro com o Inspetor; o gerador ronca e atrai ele |
+| 2 | II — Nove Badaladas | terreo | sobreviver à Procissão, fita 1 (código do quadro), quadro de chaves, subir | as nove badaladas e a Procissão |
+| 3 | III — A Menina Que Conta | superior | engrenagem (uma, no dormitório E), caixinha, Ana, quarto da Celeste, fita 2, descer pelo monta-cargas do depósito | a brincadeira da Ana |
+| 4 | IV — Os Túneis | tuneis | válvulas na ordem da fita 2, cofre (números do Davi), escotilha | a sala secreta e o "QUEM ABRIU A MINHA GAVETA?" |
+| 5 | V — A Hora | cemiterio | cavar os 3 túmulos, entrar na capela, altar, sino, fugir (final) | o sino e a fuga com o Inspetor solto |
+- Do andar de cima se desce **direto** para os túneis pelo monta-cargas (`superior`, sala `sotao`); o alçapão da casa de máquinas continua como rota opcional.
+- Páginas do diário do Davi ficam no caminho obrigatório e não são mais um objetivo: p1 na diretoria (ao lado da fita 1), p2 no quarto da Celeste, p3 na sala de brinquedos, p4 no túnel norte (antes da sala do diretor). O cofre mostra quantos números já foram achados. Ao ler as 4, toca a fala `paginas_ok`.
+- Saves usam as chaves `hora-silencio-v3` / `hora-silencio-v3-caps` (os saves da campanha antiga de 8 capítulos não são compatíveis); conquistas continuam em `-v2-conq`.
+
 ## Entidades (originais, inspiradas em monstros conhecidos)
 - **Inspetor** (Moacir, cego): caça pelo som (ruído do jogador, portas, garrafas). Estados patrulha/investiga/procura/caca. Contra: agachar, esconder (armário/cama), prender a respiração (ESPAÇO), garrafa (G).
 - **Ana / Menina Que Conta**: só anda quando não está vista e iluminada; conta até 10 e aparece atrás. Não abre porta fechada.
