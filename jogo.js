@@ -697,6 +697,7 @@ function updatePlayer(dt) {
   if (P.sprinting && P.crouch) P.crouch = false;
   let spd = P.crouch ? 1.4 : P.sprinting ? 5.4 : 2.8;
   if (P.naAgua) spd *= .72;
+  if (W.def.velMul) spd *= W.def.velMul();
   if (S.health < 35) spd *= .85;
   if (P.sprinting) S.stamina = Math.max(0, S.stamina - (fuga ? 8 : 21) * dt);
   else S.stamina = Math.min(100, S.stamina + (moving ? 8 : 14) * dt);
@@ -706,6 +707,7 @@ function updatePlayer(dt) {
   if (moving) { P.pos.x += vx / len * spd * dt; P.pos.z += vz / len * spd * dt; }
   collide(P.pos, .33);
   P.noiseR = !moving ? 0 : (P.crouch ? 1.4 : P.sprinting ? 20 : 6.5) * (P.naAgua ? 1.6 : 1);
+  if (W.def.ruidoMul) P.noiseR *= W.def.ruidoMul();
   const moved = moving ? spd * dt : 0;
   P.stepAcc += moved;
   const passo = P.sprinting ? .78 : P.crouch ? .55 : .62;
@@ -926,7 +928,8 @@ function updateInspetor(dt) {
     if (d > 22) { const viz = [P.room, ...W.links.filter(l => (l.a === P.room.id || l.b === P.room.id) && !(l.door && l.door.trava && l.door.trava())).map(l => SALA(l.a === P.room.id ? l.b : l.a))].filter(r => (!r.fora || W.def.inspetorFora) && !r.seguro); const r = pick(viz); if (r) { const [x, z] = pontoEm(r); planejar(M, x, z); } }
   }
   const ouvido = P.noiseR * att * D().ouvido * (M.state === 'caca' ? 1.6 : 1);
-  const ouve = !S.hidden && !(P.room.seguro && !fuga) && (fuga || M.furia > 0 || (P.noiseR > 0 && d < ouvido));
+  const submersa = !!(W.def.submersa && W.def.submersa());
+  const ouve = !S.hidden && !submersa && !(P.room.seguro && !fuga) && (fuga || M.furia > 0 || (P.noiseR > 0 && d < ouvido));
   if (ouve && !M.alvoGarrafa) {
     if (M.state !== 'caca') {
       if (d < 11 || fuga || M.furia > 0) { M.state = 'caca'; SFX.susto(); falaInspetor(); S.capVisto++; }
@@ -957,7 +960,7 @@ function updateInspetor(dt) {
   M.clickT -= dt;
   if (M.clickT <= 0) { M.clickT = M.state === 'caca' ? .55 : M.state === 'procura' ? .8 : 1.5; SFX.estalo(M.pos, M.state === 'caca' ? 1 : .6); }
   if (!S.dead && M.cool <= 0) {
-    if (!S.hidden && d < 1.2 && !(P.room.seguro && !fuga)) atacar('inspetor');
+    if (!S.hidden && !submersa && d < 1.2 && !(P.room.seguro && !fuga)) atacar('inspetor');
     else if (S.hidden && M.achou && d < 2.4) { sairEsconderijo(true); atacar('inspetor'); }
   }
   if (!S.hidden || d > 4) M.achou = false;
@@ -1319,12 +1322,12 @@ let segurando = { it: null, t: 0, ruidoT: 0 };
 function updateSegurar(dt) {
   const arc = $('#hold-arc');
   if (alvo && alvo.hold && keys.KeyE && !(alvo.pode && !alvo.pode())) {
-    if (segurando.it !== alvo) segurando = { it: alvo, t: 0, ruidoT: 0 };
-    segurando.t += dt; segurando.ruidoT -= dt;
+    if (segurando.it !== alvo) segurando = { it: alvo, t: alvo.guarda ? alvo.progresso || 0 : 0, ruidoT: 0 };
+    segurando.t += dt; segurando.ruidoT -= dt; if (alvo.guarda) { alvo.progresso = segurando.t; alvo.seguradoT = perf; }
     if (segurando.ruidoT <= 0) { segurando.ruidoT = .6; if (alvo.ruido) emitNoise(P.pos.x, P.pos.z, alvo.ruido); if (alvo.som) SFX[alvo.som](); }
     const k = Math.min(1, segurando.t / alvo.hold);
     $('#hold').hidden = false; arc.style.strokeDashoffset = 138.2 * (1 - k);
-    if (k >= 1) { const it = alvo; segurando = { it: null, t: 0, ruidoT: 0 }; $('#hold').hidden = true; keys.KeyE = false; it.act(); }
+    if (k >= 1) { const it = alvo; it.progresso = 0; segurando = { it: null, t: 0, ruidoT: 0 }; $('#hold').hidden = true; keys.KeyE = false; it.act(); }
   } else { segurando = { it: null, t: 0, ruidoT: 0 }; $('#hold').hidden = true; }
 }
 
@@ -1339,6 +1342,7 @@ const API = {
   SFX: new Proxy({}, { get: (t, k) => (...a) => SFX[k](...a) }), abrirTeclado: (...a) => abrirTeclado(...a), final: (...a) => final(...a), escolhaFinal: () => escolhaFinal(), codTxt, D, camera, scene,
   get S() { return S; }, get mode() { return mode; }
 };
+Object.assign(API, { MON, flash, audio: { get AC() { return AC; }, saida: (...a) => saida(...a), osc: (...a) => osc(...a), burst: (...a) => burst(...a), env: (...a) => env(...a) } }); // usados pelos mapas subterrâneos (src/subterraneo.js)
 
 // =====================================================================
 // CENA DE ABERTURA (carro)

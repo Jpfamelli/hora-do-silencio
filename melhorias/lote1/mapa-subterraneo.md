@@ -1,0 +1,102 @@
+# Lote 1 — Mapa: túneis, cemitério e capela
+- Túneis: lâmpadas de emergência vermelhas em gaiola nas duas câmaras das válvulas
+- Túneis: lâmpada de emergência marcando a válvula 3 na cisterna
+- Túneis: lâmpada de emergência ao lado da porta de ferro do túnel norte, guiando até a sala do diretor
+- Túneis: lâmpada de emergência sobre a escotilha de saída
+- Túneis: as lâmpadas de emergência pulsam devagar, como uma respiração vermelha no escuro
+- Túneis: iluminação fixa e fraca na entrada, no cruzamento, na cisterna e na galeria leste (antes era sorteio e às vezes ficava tudo preto)
+- Túneis: cada passo da Lia na água abre um anel de onda na superfície
+- Túneis: o tamanho e a força da onda acompanham o barulho do passo (agachada quase nada, correndo uma onda enorme)
+- Túneis: os passos do Inspetor na água abrem anéis largos que chegam antes dele, dando para ver de onde ele vem no escuro
+- Túneis: quando a água baixa, as ondas param e o capítulo fica seco e silencioso
+- Túneis: o Inspetor patrulha afundado na água, só o alto da cabeça para fora
+- Túneis: bolhas sobem do ponto onde o Inspetor está submerso
+- Túneis: dá para ouvir a respiração gorgolejante dele debaixo da água quando ele está por perto
+- Túneis: ele se levanta da água rápido quando ouve algo ou chega perto
+- Túneis: susto roteirizado na cisterna — ele se ergue de dentro da água oito metros à frente da Lia e fica investigando ali
+- Túneis: som de água escorrendo e borbulhar pesado quando ele se levanta
+- Túneis: fala da Lia depois do susto da cisterna ("Ele tava debaixo d'água. Esperando.")
+- Túneis: nova tática — agachar (C) na água funda afunda a Lia até abaixo da superfície
+- Túneis: debaixo da água a câmera fica abaixo da linha d'água e a tela fica verde e turva
+- Túneis: submersa, o barulho da Lia cai quase a zero
+- Túneis: submersa, o Inspetor não te ouve nem te agarra, mesmo passando por cima de você
+- Túneis: aviso na tela quando ele passa por cima da Lia submersa
+- Túneis: submersa, o fôlego cai rápido e aparece uma barra própria de ar
+- Túneis: sem ar, a Lia sobe à força puxando o fôlego alto (barulho que ele ouve)
+- Túneis: depois de subir sem ar há um tempo antes de poder afundar de novo
+- Túneis: debaixo da água a lanterna fica fraca e falhando
+- Túneis: andar submersa é mais lento e solta bolhas que mostram onde você está
+- Túneis: som de bolhas ao afundar e ao voltar à superfície, com onda no lugar
+- Túneis: dica na primeira vez na água explicando que agachar afunda e que o ar acaba
+- Túneis: afundar só funciona com a água alta; baixar a água tira esse esconderijo (escolha com custo)
+- Túneis: ficar parada na água sem o Inspetor por perto faz bolhas surgirem e virem na direção da Lia
+- Túneis: depois de alguns segundos parada, uma mão pálida sai da água ao lado dela
+- Túneis: se continuar parada, a mão agarra o tornozelo (dano leve, nunca mata, deixa lenta e faz barulho)
+- Túneis: fala da Lia na primeira vez que vê a mão ("Não dá pra ficar parada aqui")
+- Túneis: o perigo da água parada não acontece com o Inspetor perto, para não contradizer a regra 2
+- Túneis: de tempos em tempos, bolhas e uma respiração surgem num ponto da água onde não há ninguém
+- Túneis: a lanterna falha quando o Inspetor está a menos de 8 m (aviso sem HUD)
+- Válvulas: girar agora é segurar E com um rangido que fica cada vez mais alto
+- Válvulas: o barulho que atrai o Inspetor cresce com o giro (girar inteiro de uma vez é mais arriscado)
+- Válvulas: soltar o E guarda o giro, que só volta devagar; dá para girar em etapas ouvindo os passos
+- Válvulas: o rótulo mostra quanto da válvula já foi girado
+- Válvulas: a roda gira de verdade enquanto você segura
+- Válvulas: cada válvula certa toca uma nota no cano (dó, mi, sol), e no fim as três soam juntas
+- Válvulas: cada válvula certa baixa a água um terço de forma visível
+- Válvulas: aviso de progresso a cada válvula certa (1/3, 2/3)
+- Válvulas: a válvula errada não desfaz mais as que já estavam certas
+- Válvulas: a válvula errada estoura um cano no meio do túnel e é lá que o Inspetor vai primeiro, em vez de vir direto em você
+- Válvulas: barulho do erro reduzido de 30 para 18 e longe da Lia (erro custa tempo e tensão, não morte certa)
+- Válvulas: jato de água caindo do cano estourado, com ondas e chiado
+- Válvulas: depois do erro a água sobe de verdade por 25 segundos
+- Válvulas: com a água subida, a Lia anda mais devagar
+- Válvulas: com a água subida, os passos fazem mais barulho
+- Válvulas: o erro tremula a câmera com a pancada dos canos
+- Válvulas: o erro tem uma batida dissonante própria
+- Válvulas: depois de dois erros a Lia lembra a ordem da fita da Irmã Celeste (ou diz que alguém anotou)
+- Túneis: ponto salvo automático logo depois que a água baixa
+- Túneis: a água desce mais rápido quando as três válvulas estão certas
+- Túneis: quando a água baixa aparecem dezenas de brinquedos no fundo dos túneis
+- Túneis: fala da Lia sobre os brinquedos ("Quantas crianças ele trouxe aqui pra baixo?")
+- Túneis: cinco armários enferrujados nos túneis — a Procissão e o Inspetor aqui embaixo agora têm onde se esconder
+- Cofre: ponto salvo garantido logo depois de abrir; morrer na fuga volta para ali
+- Cofre: ao abrir, todas as luzes do mapa apagam
+- Cofre: a lanterna falha por dois segundos no apagão
+- Cofre: no apagão as luzes de emergência piscam rápido e mais fortes
+- Cofre: o Inspetor aparece na porta da sala do diretor, a única saída, e vem investigar o cofre
+- Cofre: uma garrafa garantida no fundo do cofre
+- Cofre: dica das saídas possíveis (armário, garrafa ou passar agachada por ele)
+- Cofre: removida a fúria automática que fazia ele caçar a Lia em qualquer lugar (morte quase certa)
+- Cofre: a fita 4 agora toca quando a Lia chega à galeria da saída, e não no meio da fuga denunciando onde ela está
+- Cofre: voltar de uma morte depois do cofre repete o apagão e a chegada dele na porta
+- Escotilha: subir agora é segurar E, e a escada range alto
+- Escotilha: a tampa bate atrás da Lia com tremor e fala de alívio
+- Sala do diretor: parede com quatro fotos antigas das crianças
+- Sala do diretor: cada vez que você dá as costas, uma foto muda e as crianças passam a encarar a câmera, com uma figura alta no meio
+- Sala do diretor: na quarta troca todas as fotos ficam com os olhos riscados e um recado escrito
+- Sala do diretor: fala da Lia ao entrar ("Aqui embaixo, onde ninguém ouvia")
+- Correção: a placa numerada de cada válvula era criada duas vezes e descartada (textura desperdiçada a cada carregamento)
+- Cemitério: vela acesa em cima de cada um dos três túmulos importantes, visível de longe
+- Cemitério: em cada túmulo importante está o objeto de quem está enterrado (fita de cabelo, pneu de carrinho, folha de caderno)
+- Cemitério: o rótulo da lápide importante descreve a vela e o objeto
+- Cemitério: a vela do túmulo apaga sozinha quando você termina de cavar
+- Cemitério: cavar guarda o progresso; dá para cavar um pouco, fugir e voltar
+- Cemitério: o monte de terra cresce enquanto você cava
+- Cemitério: o rótulo mostra quanto do túmulo já foi cavado
+- Cemitério: o barulho da pá começa mais baixo e cresce com o buraco (6 a 10, antes 12 fixo)
+- Cemitério: ponto salvo depois de cada túmulo cavado
+- Cemitério: no terceiro túmulo, uma cova vizinha cede e uma mão sai da terra
+- Cemitério: fala da Lia depois da mão ("Tem mais alguém enterrado aqui que não quer ficar")
+- Cemitério: andar colado nas lápides abafa o barulho dos passos em 30%
+- Cemitério: neblina rasteira em duas camadas correndo entre as covas
+- Cemitério: fala da Lia apontando as velas no começo do capítulo
+- Cemitério: luz fraca de vela na janela da torre do sino
+- Cemitério: um vulto aparece na janela da torre por um instante quando você olha para ela de longe
+- Capela: ao entrar, a porta bate atrás da Lia
+- Capela: as velas do altar se agitam quando você entra e quando coloca os objetos
+- Capela: as crianças agradecem com vozes quando cada objeto é colocado no altar
+- Capela: ponto salvo com os três objetos no altar, antes do sino (morrer na fuga volta para ali)
+- Fuga: um obelisco ao lado do caminho central tomba e fecha o atalho, obrigando a contornar pelas covas
+- Fuga: o sino continua batendo sozinho a cada poucos segundos, marcando o tempo
+- Fuga: o portão dos fundos balança e range com o vento
+- Fuga: a neblina engrossa durante a fuga
