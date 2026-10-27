@@ -516,7 +516,7 @@ export function instalarVisual(C) {
         const c = rand(lo + 1.3, hi - 1.3);
         if (!semPorta(r, lado, c)) continue;
         const mat = new THREE.MeshBasicMaterial({ map: texEscrita(lista[n]), transparent: true, opacity: 0, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -2 });
-        ESC.push(naParede(r, lado, c, 1.95, 1.5, .75, mat)); n++; break;
+        const mE = naParede(r, lado, c, 1.95, 1.5, .75, mat); mE.userData.leitura = { t: lista[n], parede: true }; ESC.push(mE); n++; break; // leitura pela lanterna: src/interface-mundo.js
       }
     }
   }
