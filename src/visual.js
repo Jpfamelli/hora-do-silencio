@@ -17,10 +17,11 @@ export function instalarVisual(C) {
   const TX_SUAVE = tex(64, 64, (g, w, h) => suave(g, w, h));
 
   // =================================================================== OPÇÕES DE IMAGEM
-  const DEF = { vFov: 72, vCam: 2, vFlash: 0, vBlur: 1, vBrilho: 1, vVhs: 0, vCalib: 0 };
+  // brilho e campo de visão usam as mesmas chaves da tela de Opções (src/interface.js)
+  const DEF = { fov: 72, brilho: 1.1, vCam: 2, vFlash: 0, vBlur: 1, vVhs: 0, vCalib: 0 };
   for (const k in DEF) if (typeof OPT[k] !== 'number' || isNaN(OPT[k])) OPT[k] = DEF[k];
   const salvar = () => C.lsSet(C.OPT_KEY, OPT);
-  const aplicarBrilho = () => { renderer.toneMappingExposure = 1.1 * OPT.vBrilho; };
+  const aplicarBrilho = () => { renderer.toneMappingExposure = +OPT.brilho || 1.1; };
   aplicarBrilho();
 
   const css = document.createElement('style');
@@ -62,9 +63,9 @@ export function instalarVisual(C) {
   const optTit = $('#title .opts'), optPau = $('#pause .set');
   if (optTit) optTit.after(controles('vo'));
   if (optPau) optPau.after(controles('vp'));
-  const CAMPOS = { brilho: 'vBrilho', fov: 'vFov', cam: 'vCam', flash: 'vFlash', blur: 'vBlur', vhs: 'vVhs' };
+  const CAMPOS = { brilho: 'brilho', fov: 'fov', cam: 'vCam', flash: 'vFlash', blur: 'vBlur', vhs: 'vVhs' };
   function syncUI() { for (const p of ['vo', 'vp']) for (const [id, k] of Object.entries(CAMPOS)) { const el = $(`#${p}-${id}`); if (!el) continue; if (el.type === 'checkbox') el.checked = !!OPT[k]; else el.value = OPT[k]; } }
-  function setV(k, v) { OPT[k] = +v; salvar(); if (k === 'vBrilho') aplicarBrilho(); syncUI(); }
+  function setV(k, v) { OPT[k] = +v; salvar(); if (k === 'brilho') aplicarBrilho(); syncUI(); }
   for (const p of ['vo', 'vp']) for (const [id, k] of Object.entries(CAMPOS)) {
     const el = $(`#${p}-${id}`); if (!el) continue;
     el.addEventListener(el.type === 'checkbox' ? 'change' : 'input', () => setV(k, el.type === 'checkbox' ? (el.checked ? 1 : 0) : el.value));
@@ -82,16 +83,16 @@ export function instalarVisual(C) {
 <button class="btn" id="vc-ok">Começar</button>`;
   document.body.appendChild(cal);
   let depoisCal = null;
-  const prevCal = () => { $('#vc-simb').style.filter = `brightness(${(OPT.vBrilho * 1.5).toFixed(2)})`; };
-  $('#vc-brilho').addEventListener('input', e => { setV('vBrilho', e.target.value); prevCal(); });
+  const prevCal = () => { $('#vc-simb').style.filter = `brightness(${(OPT.brilho * 1.36).toFixed(2)})`; };
+  $('#vc-brilho').addEventListener('input', e => { setV('brilho', e.target.value); prevCal(); });
   $('#vc-flash').addEventListener('change', e => setV('vFlash', e.target.checked ? 1 : 0));
-  $('#vc-ok').addEventListener('click', () => { OPT.vCalib = 1; salvar(); cal.hidden = true; const cb = depoisCal; depoisCal = null; if (cb) cb(); });
+  $('#vc-ok').addEventListener('click', () => { OPT.vCalib = 1; OPT.calibrado = true; salvar(); cal.hidden = true; const cb = depoisCal; depoisCal = null; if (cb) cb(); });
   document.addEventListener('click', e => {
-    if (!e.isTrusted || OPT.vCalib || window.__teste) return;
+    if (!e.isTrusted || OPT.vCalib || OPT.calibrado || window.__teste) return;
     const b = e.target && e.target.closest && e.target.closest('#b-novo, #b-cont');
     if (!b) return;
     e.stopImmediatePropagation(); e.preventDefault();
-    depoisCal = () => b.click(); $('#vc-flash').checked = !!OPT.vFlash; $('#vc-brilho').value = OPT.vBrilho; prevCal(); cal.hidden = false;
+    depoisCal = () => b.click(); $('#vc-flash').checked = !!OPT.vFlash; $('#vc-brilho').value = OPT.brilho; prevCal(); cal.hidden = false;
   }, true);
 
   // =================================================================== CAMADAS DE TELA
@@ -700,9 +701,9 @@ export function instalarVisual(C) {
   // =================================================================== LOOP
   let fovAtual = camera.fov, parado = 0, hbPrev = 0; const ultimo = new THREE.Vector3();
   function cameraCorpo(dt, ativo, S) {
-    let alvo = OPT.vFov;
+    let alvo = OPT.fov;
     if (ativo) {
-      if (S.hidden) alvo = OPT.vFov - (S.hidden.tipo === 'armario' ? 12 : 8); // aperto do esconderijo
+      if (S.hidden) alvo = OPT.fov - (S.hidden.tipo === 'armario' ? 12 : 8); // aperto do esconderijo
       else { if (P.sprinting) alvo += 6; if (S.fear > 70) alvo -= (S.fear - 70) / 30 * 8; } // correndo abre, pânico fecha
     }
     fovAtual = lerp(fovAtual, alvo, Math.min(1, dt * 3));

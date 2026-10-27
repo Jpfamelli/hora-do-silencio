@@ -1,0 +1,109 @@
+# Lote 1 — Interface
+- Nova tela de Opções no título e na pausa, em grupos (Imagem, Som, Legendas, Controles, Interface), com efeito na hora e salva no navegador
+- Brilho ajustável de 0,6 a 1,6 nas opções
+- Calibração de brilho com três símbolos escuros antes do primeiro Novo jogo ("ajuste até o do meio quase sumir"), também acessível pelo botão Calibrar brilho
+- Campo de visão ajustável de 60 a 90 graus
+- Opção de inverter o mouse vertical
+- Opção de agachar segurando C, além de apertar para alternar
+- Tamanho do texto em quatro níveis (Pequeno a Enorme), valendo para legendas, diálogos, avisos e o texto de interação
+- Fundo da legenda escolhível: nenhum, meio escuro ou sólido (legível mesmo com relâmpago ou parede clara)
+- Cores de alto contraste: a fala fica sempre clara e o nome do personagem ganha um símbolo (◆ Inspetor, ○ Menina, △ Davi, ● Lia...)
+- Tempo de leitura longo para legendas e avisos, para quem lê devagar
+- Opção Reduzir flashes: relâmpago a 30%, clarão vermelho do golpe pela metade e títulos sem tremor
+- Mira escolhível entre ponto, cruz e anel, em três tamanhos
+- Notas em texto simples (fonte comum, papel claro, sem inclinação) para ler códigos sem chutar
+- Botão Restaurar padrões nas opções
+- Volume e sensibilidade também na tela de opções, sincronizados com os controles antigos do título e da pausa
+- Legendas de som numa linha própria acima das falas, em itálico e entre colchetes ([passos pesados atrás de você])
+- A legenda de som diz a direção do som em relação a onde você olha (à frente, atrás de você, à esquerda, à direita)
+- A legenda de som diz a distância (muito perto, perto, longe) e se o som vem da sala ao lado ou do outro lado das paredes
+- Legendar sons com três níveis: desligado, importantes ou todos (este inclui estalos, trovão, coração, ofego, rangidos e canos)
+- Sons legendados: Menina contando, risada, alguém chamando seu nome, porta batendo, vidro quebrando, sino, nove badaladas, rádio chiando, canto das crianças, Procissão, sussurros, orelhão e gerador
+- Arco vermelho na borda da tela aponta de onde veio o passo do Inspetor quando você está parada, agachada ou escondida (Fácil e Normal)
+- Anel fino em volta da mira mostra o tamanho do seu barulho: quase nada agachada, enorme correndo, maior na água
+- O anel fica vermelho quando o Inspetor está dentro do alcance em que te ouve
+- Correndo, o anel fica tracejado e pulsando, para ser lido sem depender de cor
+- O anel pulsa com o barulho das suas ações (abrir porta, pegar item, forçar, girar válvula)
+- Escondida, o anel pontilhado mostra quando sua respiração pode ser ouvida e fica vermelho se ele ouvir
+- Anel automático: ligado no Fácil e no Normal, desligado no Pesadelo, com opção Sempre ou Nunca
+- Tela de morte mostra o que realmente aconteceu ("Ele ouviu você correr a 8 metros", "Você tirou os olhos dela")
+- Dica de morte escolhida pela causa real (correu, andou perto dele, água, respiração no esconderijo, entrou no armário com ele perto, fôlego acabou, Menina no escuro, lanterna piscando, Procissão)
+- A tela de morte lembra as garrafas e curativos que você tinha e não usou
+- Mini-mapa na tela de morte com as salas, o seu caminho, o rastro do Inspetor (ou da Menina, ou da Procissão) nos últimos 10 segundos e o raio do seu último barulho
+- Na segunda morte pela mesma causa no mesmo capítulo, a dica passa a ser específica daquele trecho
+- Depois de 3 mortes no mesmo capítulo (fora do Pesadelo), aparece "Tentar de novo com este trecho mais leve": o Inspetor anda e ouve 10% menos até o fim do capítulo
+- A tela de morte conta as mortes no capítulo e mostra quanto progresso se perde até o ponto salvo
+- Na tela de morte, E ou R tenta de novo direto e M volta ao menu, sem precisar do mouse
+- A tela de morte aparece 0,4 s mais rápido depois do golpe
+- O botão Tentar de novo já vem selecionado: ENTER também funciona
+- Pausa mostra o capítulo, o objetivo atual, a dificuldade, o tempo jogado e há quanto tempo foi o último ponto salvo
+- ESC (ou P) na pausa volta ao jogo
+- Novo botão na pausa: Recomeçar o capítulo do início
+- Voltar ao menu pela pausa pede confirmação e avisa quanto progresso se perde
+- Lista completa de controles na pausa
+- Menus (título, pausa, morte, opções, capítulos, conquistas, final) navegáveis com setas e TAB, com o ponto vermelho no item em foco
+- Nas opções, setas para os lados mudam o valor dos seletores
+- ESC fecha opções, capítulos, conquistas e confirmações
+- Embaixo de Continuar aparece o capítulo, a dificuldade e o tempo jogado do save
+- Descrição curta de cada dificuldade embaixo do seletor
+- Novo jogo pede confirmação antes de apagar um save em andamento
+- Lista de controles do título atualizada (ESPAÇO, O, Q e setas)
+- Segredo: digitar SILENCIO na tela de título faz o título sangrar letra a letra e liga o Modo Velório (cores enterradas, grão mais forte); digitar de novo desfaz
+- Segredo: digitar DAVI na tela de título faz o irmão responder no subtítulo, com um sino ao longe
+- Segredo: digitar NOVE na tela de título faz o sino bater nove vezes e o título tremer junto
+- Quatro conquistas secretas (Velório, Irmã Mais Velha, Estátua, Nove Vezes) que aparecem como ??? até serem achadas
+- Conquista secreta Estátua: ficar 20 segundos imóvel, fora do esconderijo, com o Inspetor a menos de 6 metros
+- O aviso de conquista diz "Segredo" quando a conquista é secreta
+- Depois de descoberto, o Modo Velório aparece como opção em Imagem
+- Nova aba Pistas no diário: código do quadro, ordem das válvulas e números do Davi em letra grande, com onde cada um foi achado e quais páginas faltam
+- Códigos ditos numa fita vão para o diário no instante em que são falados, com aviso, sem precisar ouvir a fita até o fim
+- Nova aba Ouvido no diário com as últimas 40 falas, avisos e sons importantes, para reler o que passou rápido
+- Corrigido: o inventário mostrava "Fusíveis ×3" e "Engrenagens ×3" com uma peça só; agora mostra "Caixa de fusíveis reserva" e "Engrenagem da caixinha"
+- Abas do diário trocam com as setas, A/D ou os números 1 a 7
+- O mapa do diário escreve "você" ao lado do seu ponto
+- O mapa marca com um X a sala do objetivo atual (sempre no Fácil, no Normal só depois da dica específica da Lia, nunca no Pesadelo)
+- Legenda curta embaixo do mapa explicando o que ele mostra
+- Depois de uns 95 segundos sem progresso e fora de perseguição, a Lia pensa alto uma dica vaga do objetivo atual
+- Se continuar travada, a próxima dica da Lia é específica, com o nome da sala
+- Segurar Q faz a Lia pensar alto na hora (faz um pouco de barulho; no Pesadelo só sai a dica vaga)
+- Dicas da Lia desligadas no Pesadelo e com opção para desligar nos outros modos
+- Dica na primeira caçada: correr faz mais barulho, armário ou cama te salvam
+- Dica no primeiro esconderijo com o Inspetor solto: segure ESPAÇO quando ele chegar perto
+- Dica na primeira vez que o fôlego acaba: ande para recuperar ou ele ouve você ofegar
+- Dica quando a pilha fica fraca pela primeira vez: R troca, ou procure pilhas
+- Dica quando você está ferida e tem curativo: H usa
+- Dica na primeira vez que pisa na água com o Inspetor solto: cada passo faz barulho dobrado
+- Durante a caçada, objetivos, inventário e cronômetro somem e a vinheta escurece; tudo volta 5 segundos depois
+- Opção HUD mínimo: objetivos escondidos, aparecendo só por alguns segundos quando mudam
+- Tecla O destaca o objetivo atual (e mostra no HUD mínimo)
+- Objetivo cumprido brilha antes de ficar riscado
+- Novo objetivo aparece sendo escrito da esquerda para a direita
+- A lista de objetivos só é redesenhada quando muda, sem piscar
+- Uma vela pequena acende no canto quando o progresso é salvo, sem texto
+- A barra de vida pisca quando a vida está baixa
+- A barra de fôlego brilha quando o fôlego acaba
+- A barra de pilha fica vermelha quando a pilha está fraca
+- O inventário do canto mostra a tecla de cada item (R pilhas, H curativos, G garrafas)
+- Cronômetro opcional do capítulo e do total, com centésimos, que para em menus, notas e diálogos
+- Parciais por objetivo no cronômetro, em verde ou vermelho comparadas com o seu melhor tempo
+- Ações que fazem barulho mostram ondas (·) no texto de interação, maiores quanto mais alto o barulho
+- Ações de segurar E mostram quantos segundos levam
+- O texto de interação aparece com um fade curto em vez de pular
+- Texto de interação longo quebra linha em vez de sair da tela
+- A mira vira um losango quando há algo para usar
+- A mira quase some quando você está no escuro sem lanterna e sem nada para usar
+- Nas notas, L lê o texto em voz alta em português (voz mais grave para adultos, mais aguda para os escritos das crianças)
+- ENTER também fecha as notas
+- Fim de capítulo mostra os critérios do rank com os pontos de cada um
+- Fim de capítulo mostra o recorde de tempo do capítulo e avisa quando é um novo recorde
+- Fim de capítulo mostra a meta do rank S e o seu melhor rank naquele capítulo
+- Fim de capítulo pode ser pulado com E ou ENTER depois de 1,5 segundo
+- O gancho do fim de capítulo aparece datilografado, com cliques de máquina de escrever
+- Rank S aparece dourado e brilhando; rank C, em vermelho
+- A caixa de diálogo avisa que ENTER também avança
+- A tela de mouse solto agora diz "Clique para voltar ao jogo"
+- A abertura mostra "ENTER ou ESC pula a abertura"
+- No cofre e no quadro de chaves, os botões afundam quando você digita pelo teclado
+- O cofre e o quadro de chaves mostram as teclas que funcionam (números, BACKSPACE, ENTER)
+- Legendas anunciadas para leitores de tela (aria-live)
+- Em telas estreitas, o HUD encosta menos nas bordas

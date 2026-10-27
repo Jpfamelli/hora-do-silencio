@@ -106,7 +106,7 @@ export function desenharReplay(buf, salas, quem) {
 // ---------------------------------------------------------------- opções de controle
 export function montarOpcoes(OPT, setOpt) {
   const defs = [
-    ['agachar', 'Agachar', [['0', 'alternar'], ['1', 'segurar']]],
+    // agachar (alternar/segurar) fica na tela de Opções da interface
     ['correr', 'Correr', [['0', 'segurar'], ['1', 'alternar']]],
     ['resp', 'Respiração', [['0', 'segurar'], ['1', 'alternar']]],
     ['mic', 'Ele te escuta de verdade (microfone)', [['0', 'desligado'], ['1', 'ligado']]]
