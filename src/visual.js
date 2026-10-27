@@ -1,6 +1,7 @@
 // VISUAL E LUZ — câmera, lanterna, partículas, decalques, detalhes dos modelos e efeitos de tela.
 // Ganchos em jogo.js: VIS.update(dt, ativo) antes de desenhar · VIS.hud() no HUD · VIS.mapa() ao carregar um mapa
 // · VIS.estrobo(dt) no aviso da Procissão · VIS.morte(quem) ao morrer · VIS.ruido(x, z, r) a cada barulho.
+import { instalarPolimento } from './visual-polimento.js';
 export function instalarVisual(C) {
   const { THREE, scene, camera, renderer, canvas, flash, flashFill, MON, ANA, ANA_G, PROC, M, P, W, OPT, keys } = C;
   const $ = s => document.querySelector(s);
@@ -18,7 +19,8 @@ export function instalarVisual(C) {
 
   // =================================================================== OPÇÕES DE IMAGEM
   // brilho e campo de visão usam as mesmas chaves da tela de Opções (src/interface.js)
-  const DEF = { fov: 72, brilho: 1.1, vCam: 2, vFlash: 0, vBlur: 1, vVhs: 0, vCalib: 0 };
+  const DEF = { fov: 72, brilho: 1.1, vCam: 2, vFlash: 0, vBlur: 1, vVhs: 0, vCalib: 0, vMao: 1, vReal: 0, vRetro: 0 };
+  let POL = null; // lote 3: polimento e sensação (src/visual-polimento.js)
   for (const k in DEF) if (typeof OPT[k] !== 'number' || isNaN(OPT[k])) OPT[k] = DEF[k];
   const salvar = () => C.lsSet(C.OPT_KEY, OPT);
   const aplicarBrilho = () => { renderer.toneMappingExposure = +OPT.brilho || 1.1; };
@@ -57,15 +59,18 @@ export function instalarVisual(C) {
 <label>Câmera <select id="${pref}-cam"><option value="2">movimento completo</option><option value="1">movimento reduzido</option><option value="0">movimento mínimo</option></select></label>
 <label><input type="checkbox" id="${pref}-flash"> Reduzir flashes</label>
 <label><input type="checkbox" id="${pref}-blur"> Desfoque de pânico</label>
-<label><input type="checkbox" id="${pref}-vhs"> Filtro de fita VHS</label>`;
+<label><input type="checkbox" id="${pref}-vhs"> Filtro de fita VHS</label>
+<label><input type="checkbox" id="${pref}-mao"> Mostrar a mão</label>
+<label title="Contorno claro no que está na mira e dá para usar (não vale no Pesadelo)"><input type="checkbox" id="${pref}-real"> Realçar o que dá para usar</label>
+<label title="Imagem pixelada de propósito, como fita gravada: muito mais leve em computador fraco"><input type="checkbox" id="${pref}-retro"> Estilo fita 240 linhas</label>`;
     return d;
   }
   const optTit = $('#title .opts'), optPau = $('#pause .set');
   if (optTit) { const det = document.createElement('details'); det.className = 'som-extra vis-det'; det.innerHTML = '<summary>Imagem</summary>'; det.appendChild(controles('vo')); optTit.after(det); }
   if (optPau) optPau.after(controles('vp'));
-  const CAMPOS = { brilho: 'brilho', fov: 'fov', cam: 'vCam', flash: 'vFlash', blur: 'vBlur', vhs: 'vVhs' };
+  const CAMPOS = { brilho: 'brilho', fov: 'fov', cam: 'vCam', flash: 'vFlash', blur: 'vBlur', vhs: 'vVhs', mao: 'vMao', real: 'vReal', retro: 'vRetro' };
   function syncUI() { for (const p of ['vo', 'vp']) for (const [id, k] of Object.entries(CAMPOS)) { const el = $(`#${p}-${id}`); if (!el) continue; if (el.type === 'checkbox') el.checked = !!OPT[k]; else el.value = OPT[k]; } }
-  function setV(k, v) { OPT[k] = +v; salvar(); if (k === 'brilho') aplicarBrilho(); syncUI(); }
+  function setV(k, v) { OPT[k] = +v; salvar(); if (k === 'brilho') aplicarBrilho(); if (k === 'vRetro' && POL) POL.retro(); syncUI(); }
   for (const p of ['vo', 'vp']) for (const [id, k] of Object.entries(CAMPOS)) {
     const el = $(`#${p}-${id}`); if (!el) continue;
     el.addEventListener(el.type === 'checkbox' ? 'change' : 'input', () => setV(k, el.type === 'checkbox' ? (el.checked ? 1 : 0) : el.value));
@@ -431,11 +436,11 @@ export function instalarVisual(C) {
   let pegI = 0; const pegUlt = {}, pegLado = {};
   function pegada(tipo, x, z, yaw, vida) {
     const p = PEG[pegI++ % PEG.length], lado = (pegLado[tipo] = -(pegLado[tipo] || 1));
-    const off = tipo === 'insp' ? .16 : tipo === 'ana' ? .07 : rand(-.5, .5);
+    const off = tipo === 'insp' ? .16 : tipo === 'ana' ? .07 : tipo === 'lia' ? .1 : rand(-.5, .5);
     p.m.position.set(x + Math.cos(yaw) * off * lado, .014, z - Math.sin(yaw) * off * lado);
     p.m.rotation.set(-Math.PI / 2, yaw + Math.PI, 0);
-    const k = tipo === 'insp' ? 1 : tipo === 'ana' ? .55 : .5; p.m.scale.set(.16 * k * 1.6, .32 * k * 1.6, 1);
-    p.m.material.map = tipo === 'insp' ? texBota : texPe; p.vida = p.max = vida; p.tipo = tipo; p.m.visible = true;
+    const k = tipo === 'insp' ? 1 : tipo === 'ana' ? .55 : tipo === 'lia' ? .62 : .5; p.m.scale.set(.16 * k * 1.6, .32 * k * 1.6, 1);
+    p.m.material.map = tipo === 'insp' || tipo === 'lia' ? texBota : texPe; p.vida = p.max = vida; p.tipo = tipo; p.m.visible = true;
   }
   function pegadaSe(tipo, pos, yaw, passo, vida) {
     const u = pegUlt[tipo] || (pegUlt[tipo] = new THREE.Vector3(1e9, 0, 0));
@@ -458,7 +463,7 @@ export function instalarVisual(C) {
     for (const p of PEG) {
       if (!p.m.visible) continue;
       p.vida -= dt; if (p.vida <= 0) { p.m.visible = false; continue; }
-      p.m.material.opacity = Math.min(1, p.vida / p.max * 2.5) * (p.tipo === 'insp' ? .85 : .7);
+      p.m.material.opacity = Math.min(1, p.vida / p.max * 2.5) * (p.tipo === 'insp' ? .85 : p.tipo === 'lia' ? .55 : .7);
       if (p.tipo === 'ana') { v1.copy(p.m.position).sub(camera.position); const d = v1.length(); p.m.material.emissiveIntensity = flash.intensity > 3 && d < 9 && fw.dot(v1.normalize()) > .93 ? .25 : 0; }
     }
   }
@@ -624,6 +629,7 @@ export function instalarVisual(C) {
 
   // =================================================================== MORTE
   function morte(quem) {
+    if (POL) POL.morte(quem);
     const t0 = performance.now() + 420; let y0 = null, z0 = 0;
     (function anim() {
       const S = C.S; if (!S || !S.dead) return;
@@ -631,7 +637,8 @@ export function instalarVisual(C) {
       if (k > 0) {
         if (y0 === null) { y0 = camera.position.y; z0 = camera.rotation.z; }
         const e = k * k * (3 - 2 * k), roll = OPT.vCam >= 1 ? 1.2 : .5; let olha = false;
-        camera.position.y = lerp(y0, .22, e); // a Lia cai no chão
+        const kb = clamp((performance.now() - t0 - 560) / 320, 0, 1); // e quica uma vez antes de parar
+        camera.position.y = lerp(y0, .22, e) + (kb > 0 && kb < 1 ? Math.sin(kb * Math.PI) * .05 * (1 - kb) : 0); // a Lia cai no chão
         if (quem === 'inspetor' && MON.g.visible) { // ele se debruça por cima, com a boca aberta e o rosto à mostra
           camera.getWorldDirection(fw); fw.y = 0; if (fw.lengthSq() < 1e-4) fw.set(0, 0, -1); fw.normalize();
           MON.g.position.set(camera.position.x + fw.x * 1.35, 0, camera.position.z + fw.z * 1.35);
@@ -646,7 +653,7 @@ export function instalarVisual(C) {
         if (olha) { const dx = v1.x - camera.position.x, dz = v1.z - camera.position.z; camera.rotation.y = Math.atan2(-dx, -dz); camera.rotation.x = Math.atan2(v1.y - camera.position.y, Math.hypot(dx, dz)); }
         camera.rotation.z = lerp(z0, roll, e);
       }
-      if (k < 1) requestAnimationFrame(anim);
+      if (k < 1 || performance.now() - t0 < 900) requestAnimationFrame(anim);
     })();
   }
 
@@ -655,6 +662,7 @@ export function instalarVisual(C) {
     const S = C.S; if (!S || C.mode !== 'jogo' || OPT.vCam <= 0) return;
     const d = Math.hypot(P.pos.x - x, P.pos.z - z); if (d < 1.6 || r < 4) return;
     P.shake = Math.max(P.shake, Math.min(.05, r / (d * d + 6) * .03) * (OPT.vCam >= 2 ? 1 : .5));
+    if (POL) POL.ruido(x, z, r);
   }
   let filtroV = '', pulso = 0, perigo = 0, trackT = 0, vidaPrev = 100, recT = 0;
   function batida(S) { pulso = 1; if (OPT.vCam >= 2 && S.fear > 60 && !S.hidden) P.shake = Math.max(P.shake, .004 + (S.fear - 60) / 40 * .008); }
@@ -673,6 +681,7 @@ export function instalarVisual(C) {
     if (S.health < 35) f += ' sepia(.4) hue-rotate(-20deg)';
     const cromo = OPT.vBlur ? Math.max(S.fear > 85 ? (S.fear - 85) / 15 : 0, perigo) : 0; // aberração cromática no pânico
     if (cromo > .05) { cromoDx.setAttribute('dx', (cromo * 4).toFixed(1)); f += ' url(#vis-cromo)'; }
+    if (POL) f += POL.filtro();
     if (canvas.style.filter === '' && filtroV) filtroV = '';
     if (f !== filtroV) { canvas.style.filter = f; filtroV = f; }
   }
@@ -684,7 +693,7 @@ export function instalarVisual(C) {
     elGeada.style.opacity = (frio * .9).toFixed(3); // geada nas bordas perto da Menina ou da Procissão
     if (ativo && S.health < vidaPrev - 5) trackT = .35; vidaPrev = S.health;
     const fita = !!OPT.vVhs || S.dif === 'pesadelo';
-    elScan.style.opacity = ativo && fita ? .55 : 0;
+    elScan.style.opacity = ativo && (fita || OPT.vRetro) ? .55 : 0;
     trackT = Math.max(0, trackT - dt);
     const rasgo = ativo && fita && (trackT > 0 || insp < 6 || aviso || (S.fear > 70 && Math.random() < .02));
     if (rasgo && !OPT.vFlash) { // linhas de tracking rasgando a imagem
@@ -722,6 +731,7 @@ export function instalarVisual(C) {
     ecoI *= Math.exp(-dt * 22); eco.intensity = ecoI; if (M.ativo) eco.position.set(M.pos.x, 2.4, M.pos.z);
     cameraCorpo(dt, ativo, S);
     lanterna(dt, ativo, S, t);
+    if (POL) POL.lanterna(dt, ativo, S, t);
     feixe(dt, S);
     vultos(dt, ativo, S);
     if (ativo) { animInspetor(dt, S, t); animAna(dt, S); animProcissao(dt, S, t); }
@@ -730,6 +740,7 @@ export function instalarVisual(C) {
     for (const n of NEV) { n.t.offset.x += n.vx * dt; n.t.offset.y += n.vz * dt; }
     agua(dt, ativo, S, t);
     telas(dt, ativo, S, t);
+    if (POL) POL.update(dt, ativo, S, t);
   }
   function mapa() {
     PROC.ini = null; VUL.visible = false; vulT = 0;
@@ -738,8 +749,10 @@ export function instalarVisual(C) {
     molhado = 0; poIni = false; if (ANAX) { ANAX.pose = 0; aplicarPose(); ANAX.head.rotation.set(0, 0, 0); ANAX.olhoMat.opacity = 0; ANAX.luzT = 0; }
     for (let i = C.ROLOS.length - 1; i >= 0; i--) { let o = C.ROLOS[i].r; while (o.parent && o.parent !== W.grupo) o = o.parent; if (o.parent !== W.grupo) C.ROLOS.splice(i, 1); }
     escritas(); nevoa();
+    if (POL) POL.mapa();
   }
-  const api = { update, hud, mapa, estrobo, morte, ruido, opt: OPT };
+  POL = instalarPolimento(C, { tex, TX_SUAVE, cone, coneMat, poMat, pegada, pegadaSe, ANAX, salvar, syncUI });
+  const api = { update, hud, mapa, estrobo, morte, ruido, opt: OPT, depois: () => POL.depois(), tempo: dt => POL.tempo(dt) };
   window.__visual = api;
   return api;
 }

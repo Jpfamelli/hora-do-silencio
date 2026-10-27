@@ -4060,7 +4060,7 @@ const JM = criarMundoJogavel({
   interact, box, cyl, plano, vela, textoTex, canvasTex, addCollider, roomAt, SALA, salaAdj, distSalas, planejar, emitNoise, codTxt, renderInvMini,
   toast, sub, subPequeno, falar, conquista, abrirNotaUI, abrirTeclado, fecharTeclado, fade, carregarMapa, pararFitaOuvida, marcarCausa
 });
-const VIS = instalarVisual({ THREE, scene, camera, renderer, canvas, flash, flashFill, MON, ANA, ANA_G, PROC, M, P, W, MAT, OPT, OPT_KEY, lsSet, R, ROLOS, keys, roomAt, visivel, collide, salasAlcancaveis, distSalas, D,
+const VIS = instalarVisual({ THREE, scene, camera, renderer, canvas, flash, flashFill, MON, ANA, ANA_G, PROC, M, P, W, MAT, OPT, OPT_KEY, lsSet, R, ROLOS, keys, roomAt, visivel, collide, salasAlcancaveis, distSalas, D, MAOS, MAT_CACO, chuvaMat, get alvo() { return alvo; },
   get S() { return S; }, get mode() { return mode; }, get ui() { return ui; }, get flashPisca() { return flashPisca; }, get hbT() { return AUD.hbT; }, get raioI() { return raioI; }, get fita() { return fitaTocando; }, get perf() { return perf; } });
 const VM = instalarMundoVisual({ THREE, scene, camera, renderer, flash, hemi, moon, W, P, M, ANA, ANA_G, PROC, MON, MAT, MK, OPT, R, TX, chuvaMat, respingos, interact, sub, SFX, DOOR, collide, raio: () => { raioT = 0; },
   get S() { return S; }, get perf() { return perf; }, get raioI() { return raioI; }, get raioClock() { return raioClock; } }); // mundo e história pela luz (src/visual-mundo.js)
@@ -4083,7 +4083,7 @@ const grain = $('#fx-grain').getContext('2d'), grainImg = grain.createImageData(
 let last = performance.now(), grainT = 0;
 function loop(now) { requestAnimationFrame(loop); if (PLAT.pular(now)) return; const dt = Math.min(.05, (now - last) / 1000); last = now; frame(dt); }
 function frame(dt) {
-  dt = SUST.escala(PLAT.antes(Math.min(.05, dt))); // golpe e 'por um fio' congelam ou desaceleram o mundo (src/sustos-plataforma.js)
+  dt = SUST.escala(VIS.tempo(PLAT.antes(Math.min(.05, dt)))); // VIS.tempo: congelamento curto do golpe (src/visual-polimento.js); SUST.escala: golpe e 'por um fio' congelam ou desaceleram o mundo (src/sustos-plataforma.js). Os dois correm em paralelo sobre o dt real.
   perf += dt;
   const jogando = mode === 'jogo' && !ui && S && !S.dead && !S.fim;
   const ativo = jogando && (locked || window.__teste || PLAT.semMouse());
@@ -4112,7 +4112,7 @@ function frame(dt) {
   if (grainT <= 0) { grainT = PLAT.grao(); const d = grainImg.data; for (let i = 0; i < d.length; i += 4) { const v = Math.random() * 255; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = 255; } grain.putImageData(grainImg, 0, 0); }
   VIS.update(dt, ativo); VM.update(dt, ativo);
   PLAT.depois(dt, ativo);
-  const cortados = cortarNevoa(); renderer.render(scene, camera); for (const o of cortados) o.layers.enable(0); VM.depois();
+  const cortados = cortarNevoa(); renderer.render(scene, camera); for (const o of cortados) o.layers.enable(0); VM.depois(); VIS.depois(); // VIS.depois: a mão da Lia por cima
 }
 // Revisão do lote 2: o lote 2 quase dobrou os objetos de cada mapa. Dentro de casa e nos túneis, o que está além da
 // névoa (sobra menos de 0,4% da cor, invisível de qualquer jeito) sai só deste desenho. Ao ar livre nada muda: no
