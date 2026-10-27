@@ -2566,12 +2566,12 @@ function lerNota(id) {
   const primeira = id !== 'regras' && !S.notes[id];
   if (id !== 'regras') S.notes[id] = true;
   SFX.papel();
-  abrirNotaUI(n.titulo, codTxt(n.texto));
+  abrirNotaUI(n.titulo, codTxt(n.texto), id, true);
   notaAtual = id; if (id === 'regras' && R.regras.dicaVerso) $('#note small').textContent = 'clique ou E para fechar · ' + R.regras.dicaVerso;
   if (primeira) { PG.lore(id); progresso(); if (W.def.notaLida) W.def.notaLida(id); }
 }
 let prevUi = null;
-function abrirNotaUI(titulo, texto) { ui = 'nota'; notaAtual = null; $('#note').hidden = false; $('#note h2').textContent = titulo; $('#note p').innerHTML = fmtNota(texto); $('#note small').textContent = 'clique, E ou ESC para fechar · L lê em voz alta'; unlock(); }
+function abrirNotaUI(titulo, texto, id, doMundo) { ui = 'nota'; notaAtual = null; $('#note').hidden = false; $('#note h2').textContent = titulo; $('#note p').innerHTML = fmtNota(texto); $('#note small').textContent = 'clique, E ou ESC para fechar · L lê em voz alta'; UIX.papel(id || null, !!doMundo); unlock(); }
 function lerVoz() {
   try {
     const ss = window.speechSynthesis; if (!ss) return toast('Seu navegador não lê em voz alta.');
@@ -3538,11 +3538,11 @@ function conquista(id) { PG.conquista(id); } // fila, secretas e som: src/progre
 
 // Diário
 let abaDiario = 'obj';
-function abrirDiario() { ui = 'diario'; $('#diario').hidden = false; unlock(); renderDiario(); if (S.dif === 'pesadelo') $('#d-pane').insertAdjacentHTML('afterbegin', '<div class="tarja-tempo">o tempo não para</div>'); }
-const ABAS = ['obj', 'regras', 'inv', 'notas', 'pistas', 'mapa', 'ouvido'];
+function abrirDiario() { ui = 'diario'; $('#diario').hidden = false; unlock(); renderDiario(); UIX.marcasAbas(); if (S.dif === 'pesadelo') $('#d-pane').insertAdjacentHTML('afterbegin', '<div class="tarja-tempo">o tempo não para</div>'); }
+const ABAS = ['obj', 'regras', 'inv', 'notas', 'tempo', 'pessoas', 'pistas', 'mapa', 'ouvido'];
 function irAba(id) { abaDiario = id; document.querySelectorAll('#diario nav .btn').forEach(x => x.classList.toggle('on', x.dataset.tab === id)); renderDiario(); }
 function trocarAba(e) {
-  const i = ABAS.indexOf(abaDiario), m = /^Digit([1-7])$/.exec(e.code);
+  const i = ABAS.indexOf(abaDiario), m = /^Digit([1-9])$/.exec(e.code);
   if (m) irAba(ABAS[+m[1] - 1]);
   else if (e.code === 'ArrowRight' || e.code === 'KeyD') irAba(ABAS[(i + 1) % ABAS.length]);
   else if (e.code === 'ArrowLeft' || e.code === 'KeyA') irAba(ABAS[(i - 1 + ABAS.length) % ABAS.length]);
@@ -3589,13 +3589,15 @@ function renderDiario() {
   } else if (abaDiario === 'notas') {
     const lista = [...R.notas.map(n => ({ ...n, tipo: 'n' })), ...R.paginas.map(n => ({ ...n, tipo: 'n' })), ...R.fitas.map(f => ({ ...f, tipo: 'f' }))].filter(n => !n.secreta || (n.tipo === 'f' ? S.fitas[n.id] : S.notes[n.id]));
     el.innerHTML = `<p style="color:var(--fraco);margin-bottom:12px">${loreAchado()} de ${totalLore()} encontradas ${loreAchado() >= totalLore() ? '· tudo descoberto' : '· o que abre o fim não está no papel: está no que você faz'}</p><div class="notas">` +
-      lista.map(n => { const tem = n.tipo === 'f' ? S.fitas[n.id] : S.notes[n.id]; return `<div class="nota ${tem ? '' : 'x'}" data-id="${n.id}" data-t="${n.tipo}">${tem ? (n.secreta ? '✦ ' : '') + (n.tipo === 'f' ? '▶ ' : '') + n.titulo : '???'}</div>`; }).join('') + '</div>';
+      lista.map(n => { const tem = n.tipo === 'f' ? S.fitas[n.id] : S.notes[n.id], onde = tem && n.tipo !== 'f' ? UIX.ondeNota(n.id) : ''; return `<div class="nota ${tem ? (n.tipo === 'f' ? 'k7' : 'recorte') : 'x'}" data-id="${n.id}" data-t="${n.tipo}">${tem ? (n.secreta ? '✦ ' : '') + (n.tipo === 'f' ? '▶ ' : '') + n.titulo : '???'}${onde ? `<small>${onde}</small>` : ''}</div>`; }).join('') + '</div>' + UIX.renderParedes();
     el.querySelectorAll('.nota:not(.x)').forEach(d => d.onclick = () => {
       prevUi = 'diario'; $('#diario').hidden = true;
-      if (d.dataset.t === 'f') { const f = R.fitas.find(x => x.id === d.dataset.id); abrirNotaUI(f.titulo, f.linhas.map(l => `${(R.personagens[l.quem] || {}).nome}: ${codTxt(l.texto)}`).join('\n\n')); }
-      else { const n = R.notas.find(x => x.id === d.dataset.id) || R.paginas.find(x => x.id === d.dataset.id); abrirNotaUI(n.titulo, codTxt(n.texto)); }
+      if (d.dataset.t === 'f') { const f = R.fitas.find(x => x.id === d.dataset.id); abrirNotaUI(f.titulo, f.linhas.map(l => `${(R.personagens[l.quem] || {}).nome}: ${codTxt(l.texto)}`).join('\n\n'), 'fita'); }
+      else { const n = R.notas.find(x => x.id === d.dataset.id) || R.paginas.find(x => x.id === d.dataset.id); abrirNotaUI(n.titulo, codTxt(n.texto), n.id); }
     });
-  } else if (abaDiario === 'pistas') UIX.renderPistas(el);
+  } else if (abaDiario === 'tempo') UIX.renderTempo(el);
+  else if (abaDiario === 'pessoas') UIX.renderPessoas(el);
+  else if (abaDiario === 'pistas') UIX.renderPistas(el);
   else if (abaDiario === 'ouvido') UIX.renderOuvido(el);
   else {
     const salas = W.salas; if (!salas.length) return;
@@ -3607,11 +3609,12 @@ function renderDiario() {
     for (const r of salas) {
       const vis = S.visited[`${W.mapa}:${r.id}`] || r.fora, aqui = P.room === r;
       s += `<rect x="${sx(r.x0)}" y="${sz(r.z1)}" width="${(r.x1 - r.x0) * k}" height="${(r.z1 - r.z0) * k}" fill="${aqui ? '#3a1f18' : PG.salaDica(r) ? '#2e2614' : vis ? (r.fora ? '#0d100c' : '#1d1a15') : '#0a0908'}" stroke="${PG.salaDica(r) ? '#c9a75a' : vis ? '#857a63' : '#2a2620'}" stroke-width="1.5"/>`;
+      const mk = UIX.marcaMapa(r); if (mk) { s += `<rect x="${sx(r.x0)}" y="${sz(r.z1)}" width="${(r.x1 - r.x0) * k}" height="${(r.z1 - r.z0) * k}" fill="transparent"><title>${mk.titulo}</title></rect>`; if (mk.notas) s += `<text x="${sx(r.x0) + 5}" y="${sz(r.z1) + 15}" fill="#c9a75a" font-size="13">✎</text>`; }
       if ((vis || PG.salaDica(r)) && r.nome) s += `<text x="${sx((r.x0 + r.x1) / 2)}" y="${sz((r.z0 + r.z1) / 2) + 5}" fill="#cfc3a6" font-size="${Math.max(10, Math.min(15, (r.x1 - r.x0) * k / 7))}" text-anchor="middle" font-family="IM Fell English SC">${r.nome}</text>`;
       if (marca === r.id) { const cx = sx((r.x0 + r.x1) / 2), cz = sz((r.z0 + r.z1) / 2) - 14; s += `<path d="M${cx - 7} ${cz - 7}L${cx + 7} ${cz + 7}M${cx + 7} ${cz - 7}L${cx - 7} ${cz + 7}" stroke="#c0392b" stroke-width="3"/>`; }
     }
     s += `<circle cx="${sx(P.pos.x)}" cy="${sz(P.pos.z)}" r="6" fill="#c0392b"/><text x="${sx(P.pos.x) + 10}" y="${sz(P.pos.z) + 4}" fill="#c0392b" font-size="12" font-family="Special Elite">você</text></svg>`;
-    s += `<p style="color:var(--fraco);font-size:13px;font-family:'Special Elite'">salas visitadas aparecem com nome${marca ? ' · X marca onde a Lia acha que precisa ir' : ''}</p>`;
+    s += `<p style="color:var(--fraco);font-size:13px;font-family:'Special Elite'">salas visitadas aparecem com nome · ✎ onde você achou papéis · passe o mouse numa sala para lembrar o que ela era em 1979${marca ? ' · X marca onde a Lia acha que precisa ir' : ''}</p>`;
     el.innerHTML = s;
   }
 }
@@ -3690,7 +3693,7 @@ function final(tipo) {
     $('#e-tit').textContent = F.titulo; revelar($('#e-txt'), H.textoFinal(tipo, F));
     const min = Math.floor(S.tempo / 60), seg = Math.floor(S.tempo % 60);
     $('#e-stats').innerHTML = `tempo total ${min}min ${String(seg).padStart(2, '0')}s · notas, páginas e fitas ${loreAchado()}/${totalLore()} · encontrada ${S.mortes}x · ${D().nome}<br>${H.statsFinal(tipo)}`;
-    PG.telaFinal(tipo);
+    PG.telaFinal(tipo); UIX.telaFinal(tipo);
     SFX.sino(.5, null); SFX.temaFinal(tipo);
   }, F.antes ? 3600 : 1600);
 }
@@ -3740,7 +3743,7 @@ const H = instalarHistoria({ R, MAPAS, API, lsGet, lsSet, CONQ_KEY, P, M, ANA, P
 
 const UIX = criarInterface({
   get S() { return S; }, P, M, ANA, PROC, W, OPT, DIFS, R, camera, renderer, keys, SFX, CAPS_KEY, SAVE_KEY,
-  get mode() { return mode; }, get ui() { return ui; },
+  get mode() { return mode; }, get ui() { return ui; }, get fita() { return fitaTocando && !fitaPausada ? fitaTocando : null; }, loreAchado, totalLore,
   D: () => D(), salaAdj, roomAt, emitNoise, toast, sub, conquista, lsGet, lsSet,
   salvarOpt: () => lsSet(OPT_KEY, OPT), setOpt, retry: () => $('#dt-retry').click(), fecharPausa, pularFimCap: () => pularFimCap()
 });

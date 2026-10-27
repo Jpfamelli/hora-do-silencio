@@ -69,6 +69,7 @@ function janelasFachada(A, xs, z, y = 1.75, lado = 1) {
 }
 function placa(A, linhas, x, y, z, w, h, ry = 0, opts) {
   const m = A.plano(w, h, new A.THREE.MeshStandardMaterial({ map: A.textoTex(linhas, opts), roughness: .9 }), x, y, z, ry);
+  m.userData.leitura = { t: linhas.map(l => l.t).join(' · ') }; // ler de perto sem tela cheia (src/interface-mundo.js)
   return m;
 }
 function noCaixote(A, p) { A.prop(.55, .45, .55, A.MAT.madeiraEsc, p.x, .225, p.z); return { x: p.x, y: .45, z: p.z }; }

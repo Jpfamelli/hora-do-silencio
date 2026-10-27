@@ -1,13 +1,15 @@
 // INTERFACE — opções, acessibilidade, legendas de som, anel de ruído, tela de morte que ensina,
 // dicas da Lia, cronômetro, pistas e histórico no diário, segredos do título.
 // O motor (jogo.js) chama criarInterface(ctx) uma vez e usa os ganchos devolvidos.
+import { criarMundo } from './interface-mundo.js';
 export function criarInterface(C) {
+  let MU = null; // mundo e história (lote 2): src/interface-mundo.js
   const $ = s => document.querySelector(s);
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
   const lerp = (a, b, t) => a + (b - a) * t;
   const pick = arr => arr[Math.random() * arr.length | 0];
   const OPT = C.OPT, R = C.R;
-  const PAD = { brilho: 1.1, fov: 72, invY: false, agachar: 'alternar', leg: 'M', legFundo: 'nenhum', contraste: false, legTempo: 'normal', legSom: 'importantes', ruido: 'auto', mira: 'ponto', miraTam: 'M', textoSimples: false, vFlash: 0, cron: false, hudMin: false, dicas: true, calibrado: false, velorio: false, velorioLib: false };
+  const PAD = { brilho: 1.1, fov: 72, invY: false, agachar: 'alternar', leg: 'M', legFundo: 'nenhum', contraste: false, legTempo: 'normal', legSom: 'importantes', ruido: 'auto', mira: 'ponto', miraTam: 'M', textoSimples: false, vFlash: 0, cron: false, hudMin: false, dicas: true, calibrado: false, velorio: false, velorioLib: false, letraNotas: 'manuscrita', descCena: false, placaSala: 'historia', leitura: true, olhoAna: true, somSimb: true };
   for (const k in PAD) if (OPT[k] === undefined) OPT[k] = PAD[k];
   if (OPT.agachar === 0 || OPT.agachar === 1) OPT.agachar = OPT.agachar ? 'segurar' : 'alternar'; // valor antigo (0/1) das opções de controle
   let agora = 0;
@@ -40,7 +42,9 @@ export function criarInterface(C) {
       { k: 'legFundo', nome: 'Fundo da legenda', tipo: 'sel', ops: [['nenhum', 'Nenhum'], ['meio', 'Meio escuro'], ['solido', 'Sólido']] },
       { k: 'contraste', nome: 'Cores de alto contraste', tipo: 'sel', ops: SIMNAO },
       { k: 'legTempo', nome: 'Tempo de leitura', tipo: 'sel', ops: [['normal', 'Normal'], ['longo', 'Longo']] },
-      { k: 'legSom', nome: 'Legendar sons', tipo: 'sel', ops: [['nao', 'Desligado'], ['importantes', 'Importantes'], ['todos', 'Todos']] }
+      { k: 'legSom', nome: 'Legendar sons', tipo: 'sel', ops: [['nao', 'Desligado'], ['importantes', 'Importantes'], ['todos', 'Todos']] },
+      { k: 'somSimb', nome: 'Símbolo nos sons (▲ perigo, ✦ história)', tipo: 'sel', ops: SIMNAO },
+      { k: 'descCena', nome: 'Descrição de cena ao entrar numa sala', tipo: 'sel', ops: SIMNAO }
     ]],
     ['Controles', [
       { k: 'sens', nome: 'Sensibilidade do mouse', tipo: 'range', min: .4, max: 2.5, step: .1, motor: true },
@@ -54,7 +58,11 @@ export function criarInterface(C) {
       { k: 'dicas', nome: 'Dicas da Lia quando travar', tipo: 'sel', ops: [[true, 'Ligadas'], [false, 'Desligadas']] },
       { k: 'hudMin', nome: 'HUD mínimo (O mostra o objetivo)', tipo: 'sel', ops: SIMNAO },
       { k: 'cron', nome: 'Cronômetro com parciais', tipo: 'sel', ops: SIMNAO },
-      { k: 'textoSimples', nome: 'Notas em texto simples', tipo: 'sel', ops: SIMNAO }
+      { k: 'textoSimples', nome: 'Notas em texto simples', tipo: 'sel', ops: SIMNAO },
+      { k: 'letraNotas', nome: 'Letra das notas', tipo: 'sel', ops: [['manuscrita', 'Manuscrita'], ['legivel', 'Legível']] },
+      { k: 'placaSala', nome: 'Placa das salas', tipo: 'sel', ops: [['historia', 'Nome e 1979'], ['nome', 'Só o nome'], ['nao', 'Desligada']] },
+      { k: 'leitura', nome: 'Ler placas e paredes de perto', tipo: 'sel', ops: [[true, 'Sim'], [false, 'Não']] },
+      { k: 'olhoAna', nome: 'Olho da Menina ao lado da mira', tipo: 'sel', ops: [[true, 'Sim'], [false, 'Não']] }
     ]]
   ];
   function setar(k, v, motor) {
@@ -67,7 +75,7 @@ export function criarInterface(C) {
     const b = document.body.classList;
     for (const c of [...b]) if (/^(leg|lf|mira|mt)-/.test(c)) b.remove(c);
     b.add('leg-' + OPT.leg, 'lf-' + OPT.legFundo, 'mira-' + OPT.mira, 'mt-' + OPT.miraTam);
-    b.toggle('contraste', !!OPT.contraste); b.toggle('texto-simples', !!OPT.textoSimples);
+    b.toggle('contraste', !!OPT.contraste); b.toggle('texto-simples', !!OPT.textoSimples); b.toggle('letra-legivel', OPT.letraNotas === 'legivel');
     b.toggle('sem-flash', !!OPT.vFlash); b.toggle('velorio', !!(OPT.velorio && OPT.velorioLib));
     $('#fx-velorio').hidden = !(OPT.velorio && OPT.velorioLib);
   }
@@ -190,16 +198,22 @@ export function criarInterface(C) {
       txt += ' ' + dr.txt;
       if (def.insp) seta(dr);
     }
-    linhasSom.push({ txt: `[${txt}]`, t: agora + 2.8 }); while (linhasSom.length > 3) linhasSom.shift();
+    const simb = OPT.somSimb && def.cat ? (def.cat === 'p' ? '▲ ' : '✦ ') : '';
+    linhasSom.push({ txt: `${simb}[${txt}]`, cat: def.cat, t: agora + 2.8 }); while (linhasSom.length > 3) linhasSom.shift();
     desenharSom();
-    if (def.imp) historico('som', txt);
+    if (def.imp) historico('som', simb + txt);
   }
-  SONS.gerador = { t: 'o gerador ronca alto', imp: 1, cd: 8 };
+  SONS.gerador = { t: 'o gerador ronca alto', imp: 1, cd: 8, cat: 'p' };
+  SONS.caixinha = { t: 'uma caixinha de música toca', imp: 1, cd: 6, cat: 'h' };
+  SONS.grito = { t: 'um grito', imp: 1, cd: 3, cat: 'p' };
+  SONS.arrastar = { t: 'algo pesado sendo arrastado', imp: 0, cd: 4, cat: 'p' };
+  SONS.fitaClique = { t: 'o gravador estala', imp: 0, cd: 3, cat: 'h' };
+  for (const [k, c] of Object.entries({ passoMonstro: 'p', estalo: 'p', vidro: 'p', pancada: 'p', risada: 'p', contagem: 'p', chamadoVoz: 'p', sino: 'h', sinoLonge: 'h', badaladas: 'p', estatica: 'p', canto: 'h', procissao: 'p', sussurros: 'h', orelhao: 'h' })) SONS[k].cat = c;
   som.def = SONS; // outros módulos (src/audio-mundo.js) registram legendas aqui
   let somHtml = '';
   function desenharSom() {
     for (let i = linhasSom.length - 1; i >= 0; i--) if (linhasSom[i].t < agora) linhasSom.splice(i, 1);
-    const h = linhasSom.map(l => `<div>${l.txt}</div>`).join('');
+    const h = linhasSom.map(l => `<div class="${l.cat === 'p' ? 'perigo' : l.cat === 'h' ? 'historia' : ''}">${l.txt}</div>`).join('');
     if (h !== somHtml) { $('#legsom').innerHTML = h; somHtml = h; }
   }
   // Arco na borda indicando de onde veio o passo do Inspetor (Fácil/Normal, parada ou agachada)
@@ -377,6 +391,7 @@ export function criarInterface(C) {
   function historico(quem, texto) {
     const u = hist[hist.length - 1]; if (u && u.texto === texto) return;
     hist.push({ quem, texto, t: C.S ? C.S.tempo : 0 }); if (hist.length > 40) hist.shift();
+    if (quem === 'nota' && MU) MU.texto(texto);
   }
   const SIMB = { lia: '●', davi: '△', joaquim: '■', inspetor: '◆', ana: '○', celeste: '✚', diretor: '▲', moacir: '◇', radio: '≈' };
   function nomeFalante(quem, p) { return OPT.contraste ? `${SIMB[quem] || '·'} ${p.nome}` : p.nome; }
@@ -397,13 +412,14 @@ export function criarInterface(C) {
     el.innerHTML = L.length ? L.map(([a, b, c]) => `<div class="pista"><h3>${a}</h3><div class="digits">${b}</div><small>${c}</small></div>`).join('') : '<p style="color:var(--fraco)">Nenhuma pista anotada. Códigos ditos em fitas e escritos em páginas aparecem aqui.</p>';
   }
   function renderOuvido(el) {
-    el.innerHTML = hist.length ? `<p style="color:var(--fraco);margin-bottom:10px">As últimas falas e sons, do mais recente ao mais antigo.</p>` + hist.slice().reverse().map(h => `<div class="ouv"><span>${h.quem === 'som' ? '' : h.quem}</span>${h.quem === 'som' ? `<i>[${h.texto}]</i>` : h.texto}</div>`).join('') : '<p style="color:var(--fraco)">Silêncio. Por enquanto.</p>';
+    el.innerHTML = hist.length ? `<p style="color:var(--fraco);margin-bottom:10px">As últimas falas e sons, do mais recente ao mais antigo.</p>` + hist.slice().reverse().map(h => `<div class="ouv"><span>${h.quem === 'som' ? '' : h.quem}</span>${h.quem === 'som' ? `<i>${/^[▲✦] /.test(h.texto) ? h.texto.slice(0, 2) + '[' + h.texto.slice(2) + ']' : '[' + h.texto + ']'}</i>` : h.texto}</div>`).join('') : '<p style="color:var(--fraco)">Silêncio. Por enquanto.</p>';
   }
 
   // ---------------------------------------------------------------- CRONÔMETRO / VELA / FIM DE CAPÍTULO
   let splitT = 0, velaTO;
   function objetivo(id) {
     ociosoT = 0; nivelDica = 0; mostrarObjT = 6;
+    if (MU) MU.objetivo(id);
     const S = C.S; if (!S || !OPT.cron) return;
     const c = R.capitulos[S.chapter], caps = C.lsGet(C.CAPS_KEY, {}), reg = caps[c.id] || {}, sp = reg.splits || {};
     const t = S.capT, ant = sp[id];
@@ -436,6 +452,7 @@ export function criarInterface(C) {
     maquinaTO = setInterval(() => { i++; g.textContent = txt.slice(0, i); if (i % 3 === 0) C.SFX.clique(); if (i >= txt.length) clearInterval(maquinaTO); }, 38);
     $('#fc-pular').style.opacity = 0; setTimeout(() => { $('#fc-pular').style.opacity = 1; }, 1500);
     fimCapT = rel();
+    if (MU) MU.fimCap(c);
   }
 
   // ---------------------------------------------------------------- SEGREDOS DO TÍTULO
@@ -475,7 +492,7 @@ export function criarInterface(C) {
     const S = C.S; if (!S) return;
     pausaT = rel();
     const c = R.capitulos[S.chapter], o = objAtual();
-    $('#p-info').innerHTML = `${c.titulo}${o ? `<br><span>${o.texto.replace(/\s*\(\{n\}\/\d\)/, '')}</span>` : ''}<br><small>${C.D().nome} · ${mmss(S.tempo)} jogados · ponto salvo há ${mmss(Math.max(0, S.tempo - ultSaveTempo))}</small>`;
+    $('#p-info').innerHTML = `${c.titulo}${o ? `<br><span>${o.texto.replace(/\s*\(\{n\}\/\d\)/, '')}</span>` : ''}<br><small>${C.D().nome} · ${mmss(S.tempo)} jogados · ponto salvo há ${mmss(Math.max(0, S.tempo - ultSaveTempo))}</small>${MU && MU.lembranca() ? `<br><em class="lembra">${MU.lembranca()}</em>` : ''}`;
     focar('#pause');
   }
 
@@ -512,6 +529,7 @@ export function criarInterface(C) {
   function dica1x(flag, txt) { const S = C.S; if (S.flags[flag] || S.dif === 'pesadelo') return; S.flags[flag] = true; C.toast(txt); }
   function frame(dt, ativo) {
     agora += dt;
+    if (MU) MU.frame(dt, ativo);
     const S = C.S, P = C.P, M = C.M;
     if (S !== Sref) { Sref = S; rastro.length = 0; causa = null; motivoCaca = null; if (S && S.capT < 1 && S.chapter === 0 && S.tempo < 1) { mortesCap = {}; mortesCausa = {}; } }
     $('#cena-pular').hidden = C.mode !== 'cena';
@@ -564,9 +582,10 @@ export function criarInterface(C) {
     if (M.ativo && !S.hidden && P.noiseR === 0 && M.pos.distanceTo(P.pos) < 6) { estatuaT += dt; if (estatuaT > 20) C.conquista('segredo_estatua'); } else estatuaT = 0;
   }
 
+  MU = criarMundo(Object.assign(C, { historico: (q, t) => historico(q, t) }));
   aplicar();
   $('#b-opc').onclick = () => abrirOpcoes('#title');
   $('#p-opc').onclick = () => abrirOpcoes('#pause');
   atualizarTitulo();
-  return { tecla, soltou, som, ruido, golpe, morte, objetivo, salvou, fimCap, frame, fala, historico, nomeFalante, renderPistas, renderOuvido, salaMarcada, pausa, atualizarTitulo, antesDeNovoJogo, confirmar, aplicar, mmss, get ultSaveTempo() { return ultSaveTempo; } };
+  return { mundo: MU, papel: (id, m) => MU.papel(id, m), renderTempo: el => MU.renderTempo(el), renderPessoas: el => MU.renderPessoas(el), renderParedes: () => MU.renderParedes(), ondeNota: id => MU.ondeNota(id), marcasAbas: () => MU.marcasAbas(), marcaMapa: r => MU.marcaMapa(r), telaFinal: t => MU.telaFinal(t), tecla, soltou, som, ruido, golpe, morte, objetivo, salvou, fimCap, frame, fala, historico, nomeFalante, renderPistas, renderOuvido, salaMarcada, pausa, atualizarTitulo, antesDeNovoJogo, confirmar, aplicar, mmss, get ultSaveTempo() { return ultSaveTempo; } };
 }

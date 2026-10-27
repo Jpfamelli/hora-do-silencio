@@ -1,0 +1,99 @@
+# Lote 2 — Interface
+- Nova aba "Linha do tempo" no diário (TAB) que se monta sozinha com o que você já leu, ouviu e viu, de 1922 a 1994
+- Fatos ainda não descobertos aparecem na linha do tempo só com o ano e um "????" riscado em vermelho, sem dizer onde estão
+- Datas exatas que faltam aparecem como "__/__/" para não entregar o dia antes da hora
+- Cada fato da linha do tempo mostra de onde veio (lápide, ficha médica, fita do diretor, carta ao bispo...)
+- A linha do tempo avisa quando a história tem um buraco grande entre dois anos que você já conhece
+- Fatos novos brilham na primeira vez que você abre a linha do tempo depois de descobri-los
+- Seção "A noite de 14 de março de 1979" com os horários da noite do incêndio (21h00 a Hora, 21h04 Tomé, 21h31 Ana, 21h50 Davi e o que veio depois)
+- Horários da noite do fogo ainda não descobertos aparecem como "??:??"
+- A linha do tempo junta o livro de ocorrências, as fitas da irmã, do Davi e do diretor, o rádio do posto e o caderno da cozinheira numa ordem só
+- Lápides comuns do cemitério das irmãs viram fatos da linha do tempo quando você lê o epitáfio (Luiz, João, Maria das Dores, Rosa, as covas sem nome)
+- Fato secreto na linha do tempo: ler a lápide com o seu nome acrescenta uma entrada em vermelho
+- Nova conquista "Quem Lembra Conta": completar a linha do tempo e a noite do fogo
+- Nova aba "Pessoas" no diário com uma ficha por personagem: Lia, Davi, Ana, Tomé, Moacir, Diretor Albano, Irmã Celeste, Seu Joaquim e os que vieram antes
+- Cada ficha ganha uma frase curta a cada descoberta (Moacir começa com "Cego? Caça pelo som." e termina em "Só queria silêncio.")
+- Retrato desenhado em canvas para cada pessoa, com silhueta própria (véu da irmã, chapéu do velho, óculos do diretor, tranças da menina, cabeça torta do Inspetor)
+- Pessoas ainda não vistas aparecem como silhueta preta com "?" e o nome "???"
+- A Menina e o Inspetor aparecem pelo apelido até você descobrir o nome verdadeiro (Ana, Moacir)
+- Cada ficha tem a borda e o nome na cor da legenda daquele personagem
+- Fichas mostram com quem a pessoa está ligada, só entre as que você já conhece
+- Fichas mostram quantas coisas você sabe sobre cada pessoa (ex.: 3/6) e as que faltam aparecem como reticências
+- Ficha "Os que vieram antes" reúne as crianças enterradas antes de 1979
+- Nova conquista "Quem Eram Eles": completar todas as fichas de pessoas
+- As abas Linha do tempo, Pessoas e Notas e fitas mostram o quanto você já achou (ex.: 18/33)
+- Ponto dourado na aba Linha do tempo ou Pessoas quando há algo novo que você ainda não viu
+- Uma pena ✎ aparece no canto da tela quando algo novo entra no diário, sem texto e sem tapar o jogo
+- Os números 1 a 9 trocam as nove abas do diário
+- O diário virou um caderno escolar de 1994: pautas azuis, margem vermelha e etiqueta "Lia Moraes · caderno de 1994"
+- Abas do diário viraram marcadores de caderno, com a aba aberta marcada em vermelho no topo
+- Notas lidas aparecem no diário como recortes de papel colados com fita durex amarelada, cada um meio torto
+- Fitas aparecem no diário como etiquetas de fita cassete escritas a caneta, com os dois carretéis
+- Cada nota no diário mostra onde foi achada ("achada: Diretoria")
+- Nova seção "Escrito nas paredes e nas placas" na aba Notas e fitas, com tudo que você leu nas paredes e onde
+- A ficha médica do Moacir abre como ficha de enfermaria, com grampo, cabeçalho cinza e carimbo vermelho "ARQUIVADO"
+- A carta do diretor ao bispo abre em papel timbrado do internato, com letra reta e lacre de cera vermelho
+- O recorte de jornal abre amarelado, com o cabeçalho "Gazeta da Serra", manchete em caixa alta, duas colunas e borda pontilhada de tesoura
+- O livro de ocorrências abre em papel quadriculado de livro de registro, com a coluna vermelha e o número da folha
+- O caderno da cozinheira abre em papel pautado com manchas de gordura
+- As páginas do diário do Davi e a redação do Tomé abrem em caderno escolar com furos de espiral, margem vermelha e letra de criança em tinta azul
+- O diário da Irmã Celeste abre em papel pautado com letra inclinada em tinta azul e uma cruz no canto
+- O bilhete da Ana abre escrito a giz de cera rosa, torto, com um toco de giz amarelo no canto
+- A lista de castigos abre como cartão de quadro de avisos, preso com duas tachinhas
+- O cartaz de desaparecidos abre com os três espaços das fotos 3x4 e uma tachinha
+- A anotação do pedreiro abre em papel de embrulho pardo com marcas de régua
+- A lápide rachada abre como pedra cinza, com uma rachadura atravessando o texto
+- O desenho do Davi abre em folha de desenho com os vincos de quem dobrou em quatro e um sol de giz no canto
+- A folha das regras abre datilografada, presa por uma tachinha
+- Fitas abertas pelo diário aparecem como uma fita cassete, com o título na etiqueta e os carretéis
+- Cada papel mostra no canto de onde ele é ("ficha da enfermaria", "papel de embrulho", "fita cassete · lado A")
+- A nota entra na tela deslizando e assentando, como um papel colocado na mesa
+- Nova opção "Letra das notas: manuscrita / legível": a letra de criança, a letra inclinada e o giz viram uma fonte de leitura clara
+- "Notas em texto simples" continua valendo por cima de todos os papéis novos (fundo claro, sem inclinação, sem colunas)
+- Olhar uma placa de perto por meio segundo mostra a transcrição embaixo da mira ("Placa: INTERNATO SÃO LÁZARO · Ordem · Fé · Silêncio"), sem pausar o jogo
+- Escritas de sangue nas paredes são transcritas quando a lanterna fica sobre elas por um segundo ("Na parede: NÃO CORRE")
+- A contagem riscada na parede é descrita em palavras quando lida ("dez riscos, contados de um em um")
+- Ler placas e paredes não congela o mundo: o Inspetor continua andando enquanto você lê
+- Placas e paredes lidas vão para a aba Ouvido do diário
+- A transcrição de placas segue o tamanho do texto e o fundo de legenda escolhidos nas opções e é anunciada a leitores de tela
+- Nova opção para desligar a leitura de placas e paredes de perto
+- Ao entrar numa sala pela primeira vez, uma placa no alto mostra o nome dela
+- Embaixo do nome, uma linha desbotada diz o que a sala era em 1979 ("Enfermaria · onde se esperava a Hora passar")
+- Linhas de 1979 escritas para a estrada e o posto
+- Linhas de 1979 escritas para as quatorze salas do térreo
+- Linhas de 1979 escritas para as doze salas do andar dos dormitórios
+- Linhas de 1979 escritas para os túneis, a sala do diretor, o cemitério e a capela
+- Nova opção "Placa das salas": nome e 1979, só o nome, ou desligada
+- Nova opção "Descrição de cena" em Legendas: ao entrar numa sala pela primeira vez, uma linha curta descreve o que se vê, para baixa visão e brilho baixo
+- Descrições de cena escritas para todas as salas da campanha
+- A placa da sala espera a caçada acabar para aparecer e some no pânico
+- A descrição de cena também fica guardada na aba Ouvido, marcada como "Lugar"
+- Nas legendas de som, sons de perigo ganham ▲ (passos, estalos, contagem, chiado do rádio, Procissão, alguém chamando)
+- Nas legendas de som, sons de história ganham ✦ (canto das crianças, sussurros, sino ao longe, orelhão, caixinha de música)
+- Sons de perigo e de história também ganham cores diferentes, além do símbolo
+- A aba Ouvido mostra os mesmos símbolos ▲ e ✦ nos sons
+- Nova opção para tirar os símbolos dos sons
+- Novos sons legendados: caixinha de música, grito, algo pesado sendo arrastado e o estalo do gravador
+- Durante a brincadeira da Ana, um olho pequeno ao lado da mira fica aberto enquanto ela está vista e iluminada e fecha quando não está
+- O olho da Menina pisca quando a pilha está fraca e a lanterna falha
+- Nova opção para desligar o olho da Menina
+- Rádio-relógio de LED vermelho no canto da tela de título mostrando a hora real, com os dois-pontos piscando
+- Às 21:00 reais o rádio-relógio pisca, o rádio chia, o sino bate nove vezes e a Rádio Serra FM anuncia que a Hora começou
+- Se a tela de título ficar aberta por 9 minutos, o rádio-relógio volta para 20:47 e para, como os relógios do internato
+- Segredo: clicar no rádio-relógio sintoniza estações; na terceira vez ele marca 21:04 e uma criança cochicha "tá gravando?" (conquista secreta Sintonia)
+- Fim de capítulo mostra a soma dos seus melhores trechos entre objetivos e quanto dá para tirar do tempo
+- Fim de capítulo mostra quanto tempo você passou ouvindo fitas (o relógio corre) e lendo ou conversando (o relógio para)
+- Fim de capítulo diz quantas coisas novas você descobriu sobre o internato naquele capítulo
+- Os melhores trechos são guardados mesmo com o cronômetro desligado
+- A tela final mostra a soma dos seus recordes por capítulo e o tempo total em fitas, notas e diálogos
+- A tela final mostra quanto da linha do tempo e das fichas de pessoas você completou
+- A tela final desenha um selo da corrida em canvas: tempo, final, dificuldade, código da noite, mortes, notas e segredos, linha do tempo e código de verificação
+- Botão "Salvar selo" baixa o selo como imagem
+- Botão "Copiar 'bata meu tempo'" copia um link com a mesma noite, o seu tempo e as suas mortes
+- Quem abre esse link vê "Bata 33:48" no título, com a mesma noite já preenchida no campo Desafio
+- O link confere o código de verificação e avisa se o tempo foi mexido
+- A pausa lembra a última coisa que você descobriu sobre o internato
+- O mapa do diário marca com ✎ as salas onde você achou papéis
+- Passar o mouse numa sala do mapa mostra o que ela era em 1979
+- A legenda do mapa explica as marcas novas
+- A tela final rola quando o texto, as estatísticas e o selo não cabem na tela
