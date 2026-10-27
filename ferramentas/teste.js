@@ -91,6 +91,29 @@ T.tudo = async () => {
   } catch (e) { log.push('ERRO ' + e.message); }
   return { log, errs: T.errs, avisos: T.avisos };
 };
+// ---- plataforma e acessibilidade (rodado pelo qa.mjs depois do T.tudo)
+T.plataforma = async () => {
+  const P = window.__plat, falhas = [], ok = (n, c) => { console.log('[QA] ' + (c ? 'ok ' : 'FALHOU ') + 'plataforma: ' + n); if (!c) falhas.push(n); };
+  if (!P) return ['sem __plat'];
+  await new Promise(r => setTimeout(r, 2500)); // deixa a tela final terminar de abrir
+  document.getElementById('escolha').hidden = true; document.getElementById('e-menu').click();
+  await T.novo(); T.passo(.5);
+  J.P.crouch = false; T.tecla('ControlLeft'); ok('Ctrl não agacha (Ctrl+W fecha a aba)', !J.P.crouch);
+  T.tecla('KeyC'); ok('C agacha', J.P.crouch); T.tecla('KeyC');
+  J.keys.ShiftLeft = true; J.keys.KeyW = true; P.simularOculto(); ok('perder o foco pausa', J.ui === 'pausa'); P.limparTeclas(); ok('teclas soltas ao pausar', !J.keys.ShiftLeft && !J.keys.KeyW);
+  document.getElementById('p-voltar').click(); await new Promise(r => setTimeout(r, 20)); ok('volta da pausa com retorno suave', P.graca > 0); T.passo(1.5);
+  let n = 0; P.agenda(() => n++, 1); J.S.dead = true; T.passo(2); J.S.dead = false; ok('fala agendada não corre com o jogo parado', n === 0);
+  J.carregarSnap(J.S._check); ok('carregar checkpoint limpa a agenda', P.fila.length === 0);
+  P.forcarCalma(); ok('salvamento leve grava', P.salvarAuto() && !!localStorage.getItem('hora-silencio-v3-auto'));
+  ok('link de desafio', /desafio=[SABC]+-[0-9a-z]+-[0-9a-z]+$/.test(P.textoResultado().url));
+  const fakePad = { connected: true, axes: [0, -1, 0, 0], buttons: Array.from({ length: 17 }, () => ({ pressed: false, value: 0 })) };
+  const orig = navigator.getGamepads; navigator.getGamepads = () => [fakePad];
+  P.pad(1 / 30); ok('controle anda para frente', J.keys.KeyW === true);
+  fakePad.axes = [0, 0, 0, 0]; P.pad(1 / 30); ok('soltar o analógico para', !J.keys.KeyW);
+  navigator.getGamepads = orig; P.semPad();
+  localStorage.removeItem('hora-silencio-v3-auto');
+  return falhas;
+};
 T.itens = () => J.W.items.filter(i => i.mesh.visible).map(i => { const p = T.pos(i.it); return `${i.key} ${p.x.toFixed(1)},${p.y.toFixed(2)},${p.z.toFixed(1)}`; });
 window.addEventListener('error', e => T.errs.push(e.message + ' @' + (e.filename || '').split('/').pop() + ':' + e.lineno));
 export default T;

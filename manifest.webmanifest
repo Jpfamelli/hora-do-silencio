@@ -1,0 +1,13 @@
+{
+  "name": "A Hora do Silêncio",
+  "short_name": "Hora do Silêncio",
+  "description": "Terror em primeira pessoa no navegador. Jogue de fone, no escuro.",
+  "lang": "pt-BR",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#000000",
+  "theme_color": "#050505",
+  "icons": [{ "src": "icone.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
