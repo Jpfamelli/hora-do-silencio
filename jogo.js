@@ -320,7 +320,7 @@ function porta(p) {
   const d = { id: p.id, pivot, col, open: false, ang: 0, target: 0, trava: p.trava, msg: p.msg || 'Trancada.', nome: p.nome || 'porta', x: p.x, z: p.z, eixo: p.eixo, grade, aoAbrir: p.aoAbrir };
   W.doors.push(d);
   const it = interact(pivot, () => (d.trava && d.trava()) ? `${cap(d.nome)} — ${typeof d.msg === 'function' ? d.msg() : d.msg}` : `<b>E</b>${d.open ? 'Fechar' : 'Abrir'} ${d.nome}`,
-    () => { if (d.trava && d.trava()) { SFX.trancado(); emitNoise(d.x, d.z, 3); if (p.aoTentar) p.aoTentar(); return; } setDoor(d, !d.open); if (d.open && d.aoAbrir) d.aoAbrir(); });
+    () => { if (d.trava && d.trava()) { SFX.trancado(); emitNoise(d.x, d.z, 3); if (p.aoTentar) p.aoTentar(); return; } setDoor(d, !d.open); aoPortaJogador(d); if (d.open && d.aoAbrir) d.aoAbrir(); });
   if (p.hold) { it.hold = p.hold; it.ruido = p.ruidoHold || 8; it.som = 'forcar'; it.pode = () => !(d.trava && d.trava()) && !d.open; const lb = it.label; it.label = () => (!d.open && !(d.trava && d.trava())) ? `<b>E</b>${p.holdTexto || 'Forçar a ' + d.nome}` : lb(); }
   const k = `${W.mapa}:${d.id}`;
   if (S.doorsOpen[k]) { d.open = true; d.target = d.ang = -Math.PI * .56; pivot.rotation.y = d.ang; col.on = false; }
@@ -684,7 +684,7 @@ function updatePlayer(dt) {
     $('#breath').hidden = !perto;
     const prende = !!keys.Space && S.stamina > 0;
     if (prende) { S.stamina = Math.max(0, S.stamina - 15 * dt); if (perto && M.pos.distanceTo(P.pos) < 2.6) conquista('folego'); if (S.stamina <= 0) { emitNoise(P.pos.x, P.pos.z, 6, true); SFX.ofego(); toast('Você puxou o ar alto demais!'); } }
-    else { S.stamina = Math.min(100, S.stamina + 9 * dt); if (perto && Math.random() < dt * 1.4) emitNoise(P.pos.x, P.pos.z, 2.3, true); }
+    else { S.stamina = Math.min(100, S.stamina + 9 * dt); ansiedadeEsconderijo(dt, perto); }
     $('#b-breath').style.setProperty('--v', S.stamina + '%');
     camera.rotation.set(P.pitch, P.yaw, 0);
     return;
@@ -766,7 +766,7 @@ function alucinacao() {
 
 // Esconderijos
 function entrarEsconderijo(L) {
-  if (M.ativo && M.state === 'caca' && M.pos.distanceTo(P.pos) < 4) { toast('Ele está perto demais! Ele ouviu você entrar.'); M.achou = true; }
+  checarEntradaEsconderijo(L);
   S.hidden = L; P.crouch = false;
   P.yaw = Math.atan2(-L.face[0], -L.face[1]); P.pitch = 0;
   if (L.tipo === 'cama') { SFX.arrastar(); emitNoise(L.x, L.z, 2.5); $('#fx-cama').hidden = false; }
@@ -825,10 +825,23 @@ function distSalas(a, b) {
   return 99;
 }
 function salaAdj(a, b) { if (a === b) return true; return W.links.some(l => ((l.a === a.id && l.b === b.id) || (l.b === a.id && l.a === b.id)) && (!l.door || l.door.open)); }
+// Quanto do som passa de uma sala para outra: porta fechada abafa, sala distante quase não deixa passar
+function atenuacao(a, b) {
+  if (!a || !b) return .5;
+  if (a === b) return 1;
+  let fechada = false;
+  for (const l of W.links) if ((l.a === a.id && l.b === b.id) || (l.b === a.id && l.a === b.id)) { if (!l.door || l.door.open) return 1; fechada = true; }
+  if (fechada) return .35;
+  return distSalas(a, b) > 2 ? .3 : .5;
+}
+const centroSala = r => new THREE.Vector3((r.x0 + r.x1) / 2, 0, (r.z0 + r.z1) / 2);
 function andar(ent, dt, speed, abrePortas = true) {
   if (!ent.path.length) return true;
   const t = ent.path[0];
-  if (abrePortas && t.link && t.link.door && !t.link.door.open && Math.hypot(t.x - ent.pos.x, t.z - ent.pos.z) < 1.5) { setDoor(t.link.door, true); SFX.pancada(t.link.door.x, t.link.door.z); ent.wait = .6; return false; }
+  if (abrePortas && t.link && t.link.door && !t.link.door.open && Math.hypot(t.x - ent.pos.x, t.z - ent.pos.z) < 1.5) {
+    if (ent === M) { portaInspetor(t.link.door); return false; }
+    setDoor(t.link.door, true); SFX.pancada(t.link.door.x, t.link.door.z); ent.wait = .6; return false;
+  }
   const dx = t.x - ent.pos.x, dz = t.z - ent.pos.z, dist = Math.hypot(dx, dz);
   if (dist < .3) { ent.path.shift(); return !ent.path.length; }
   const st = Math.min(dist, speed * dt);
@@ -849,13 +862,135 @@ function visivel(pos, altura = 1.2, alcance = 18) {
   const rc = new THREE.Raycaster(camera.position, v.clone().normalize(), .1, Math.max(.2, dist - .3));
   return rc.intersectObjects(W.solid, false).length === 0;
 }
+// Linha livre entre dois pontos (sem móvel/parede sólida no meio)
+function linhaLivre(a, b, y = 1) {
+  const o = new THREE.Vector3(a.x, y, a.z), v = new THREE.Vector3(b.x, y, b.z).sub(o), dist = v.length();
+  if (dist < .2) return true;
+  const rc = new THREE.Raycaster(o, v.normalize(), .05, dist);
+  return rc.intersectObjects(W.solid, false).length === 0;
+}
+const prendendo = () => !!S.hidden && !!keys.Space && S.stamina > 0;
+const mortesCap = { cap: -1, n: 0 };
+const ajudaCap = () => S.dif !== 'pesadelo' && mortesCap.cap === S.chapter && mortesCap.n >= 3;
+
+// --- Sons novos das entidades (procedurais, ficam aqui para não mexer no SOM de todo mundo)
+const AMBX = {};
+const SOMX = {
+  estalo(pos, vol = .6, duplo) { // estalo de língua: mais abafado de longe, duplo quando ele vira para você
+    const t = AC.currentTime, g = saida({ x: pos.x, y: 3, z: pos.z }, .5), lp = AC.createBiquadFilter(); lp.type = 'lowpass';
+    lp.frequency.value = lerp(5200, 800, clamp(Math.hypot(pos.x - P.pos.x, pos.z - P.pos.z) / 24, 0, 1)); lp.connect(g);
+    const n = duplo ? 4 : 2; for (let i = 0; i < n; i++) burst(t + i * .07 + (i >= 2 ? .16 : 0), .03, 'bandpass', 2600, 8, lp);
+    g.gain.setValueAtTime(0, t); g.gain.setValueAtTime(.7 * vol, t + .001); g.gain.exponentialRampToValueAtTime(.0001, t + (duplo ? .45 : .2));
+  },
+  cantarola(pos) { // cantiga desafinada e baixa da patrulha
+    const t = AC.currentTime, g = saida({ x: pos.x, y: 2.8, z: pos.z }, .6), f = AC.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = 380; f.Q.value = 2; f.connect(g);
+    const o = AC.createOscillator(); o.type = 'triangle'; const notas = [98, 110, 104, 92.5, 98];
+    notas.forEach((n, i) => o.frequency.setValueAtTime(n * rand(.97, 1.03), t + i * .45));
+    const vib = AC.createOscillator(); vib.frequency.value = 5.5; const vg = AC.createGain(); vg.gain.value = 3; vib.connect(vg); vg.connect(o.frequency);
+    o.connect(f); g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(.16, t + .3); g.gain.setValueAtTime(.16, t + 1.9); g.gain.exponentialRampToValueAtTime(.0001, t + 2.4);
+    o.start(t); vib.start(t); o.stop(t + 2.5); vib.stop(t + 2.5);
+  },
+  fungada(pos) { const t = AC.currentTime; for (const k of [0, .16]) { const g = saida({ x: pos.x, y: 2.8, z: pos.z }, .4); const f = burst(t + k, .12, 'bandpass', 1500, 2, g); f.frequency.linearRampToValueAtTime(2600, t + k + .12); env(g, t + k, .02, .3, .1); } },
+  respiraRasgada(pos) {
+    const t = AC.currentTime, g = saida({ x: pos.x, y: 2.8, z: pos.z }, .5); burst(t, .55, 'bandpass', 850, 1.6, g); env(g, t, .08, .45, .45);
+    const g2 = saida({ x: pos.x, y: 2.8, z: pos.z }, .3), o = AC.createOscillator(); o.type = 'sawtooth'; o.frequency.setValueAtTime(70, t); o.frequency.linearRampToValueAtTime(55, t + .5);
+    const lp = AC.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 240; o.connect(lp); lp.connect(g2); env(g2, t, .06, .2, .45); o.start(t); o.stop(t + .6);
+  },
+  inspira(pos) { const t = AC.currentTime, g = saida({ x: pos.x, y: 1.6, z: pos.z }, .3); const f = burst(t, 1.5, 'bandpass', 500, 1.5, g); f.frequency.linearRampToValueAtTime(2200, t + 1.4); g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(.55, t + 1.2); g.gain.exponentialRampToValueAtTime(.0001, t + 1.5); },
+  macaneta(x, z) { const t = AC.currentTime; for (const k of [0, .22, .5]) { const g = saida({ x, y: 1, z }, .3); burst(t + k, .05, 'bandpass', 3200, 6, g); env(g, t + k, .002, .35, .05); } },
+  armarioBate(L) { const t = AC.currentTime, p = { x: L.x, y: 1.2, z: L.z }; const g = saida(p, .7); burst(t, .5, 'bandpass', 480, 2, g, 0); env(g, t, .003, 1.4, .45); const g2 = saida(p, .5); const o = AC.createOscillator(); o.type = 'square'; o.frequency.setValueAtTime(140, t); o.frequency.exponentialRampToValueAtTime(70, t + .4); o.connect(g2); env(g2, t, .003, .25, .4); o.start(t); o.stop(t + .5); },
+  batida(x, z, vol = 1) { const t = AC.currentTime, g = saida({ x, y: 1.2, z }, .5); burst(t, .14, 'lowpass', 380, 1, g, 0); env(g, t, .002, .9 * vol, .12); },
+  corrente(pos) { const t = AC.currentTime; for (let i = 0; i < 3; i++) { const g = saida({ x: pos.x, y: .1, z: pos.z }, .4); osc('triangle', rand(1600, 3200), t + i * .06, .25, g); env(g, t + i * .06, .001, .07, .18); } },
+  passosLonge(pos, dir) { // passos que se afastam (às vezes é mentira)
+    for (let i = 0; i < 6; i++) { const t = AC.currentTime + i * .55, p = { x: pos.x + dir.x * i * 1.4, y: .3, z: pos.z + dir.z * i * 1.4 }; const g = saida(p, .5); const o = AC.createOscillator(); o.frequency.setValueAtTime(70, t); o.frequency.exponentialRampToValueAtTime(30, t + .25); o.connect(g); env(g, t, .01, .8 * (1 - i / 7), .3); o.start(t); o.stop(t + .4); }
+  },
+  passoCima(pos) { for (let i = 0; i < 4; i++) { const t = AC.currentTime + i * .7, g = saida({ x: pos.x + rand(-3, 3), y: 4.5, z: pos.z + rand(-3, 3) }, .6); const lp = AC.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 160; lp.connect(g); const o = AC.createOscillator(); o.frequency.setValueAtTime(60, t); o.frequency.exponentialRampToValueAtTime(28, t + .3); o.connect(lp); env(g, t, .01, .9, .35); o.start(t); o.stop(t + .45); } },
+  unhas(pos) { const t = AC.currentTime, s = ruido(), f = AC.createBiquadFilter(); f.type = 'highpass'; f.frequency.value = 2600; const g = saida({ x: pos.x, y: 1.4, z: pos.z }, .4); const tr = AC.createOscillator(); tr.frequency.value = 13; const tg = AC.createGain(); tg.gain.value = .08; tr.connect(tg); tg.connect(g.gain); s.connect(f); f.connect(g); g.gain.setValueAtTime(.0001, t); g.gain.linearRampToValueAtTime(.12, t + .2); g.gain.linearRampToValueAtTime(.0001, t + 1.4); s.start(t); tr.start(t); s.stop(t + 1.5); tr.stop(t + 1.5); },
+  agarrao() { const t = AC.currentTime, g = saida(null, .4); burst(t, .3, 'lowpass', 220, 1, g, 0); env(g, t, .002, 1.6, .25); SOM.grito('inspetor'); const g2 = saida(null, .2); burst(t + .05, .9, 'bandpass', 900, 3, g2); env(g2, t + .05, .05, .4, .8); },
+  boteChiado(pos) { const t = AC.currentTime, g = saida({ x: pos.x, y: 2.8, z: pos.z }, .3); const f = burst(t, .35, 'highpass', 2200, 1, g); f.frequency.linearRampToValueAtTime(5000, t + .3); env(g, t, .25, .7, .1); },
+  respiracaoNuca() { // sopro de criança colado na sua nuca
+    const fw = new THREE.Vector3(); camera.getWorldDirection(fw); const p = { x: camera.position.x - fw.x * .35, y: camera.position.y, z: camera.position.z - fw.z * .35 };
+    const t = AC.currentTime; for (const k of [0, .6]) { const g = saida(p, .05); burst(t + k, .45, 'bandpass', 1400, 1.2, g); env(g, t + k, .12, .5, .3); }
+  },
+  pesDescalcos(pos, molhado) { const t = AC.currentTime, g = saida({ x: pos.x, y: .1, z: pos.z }, .3); burst(t, .05, molhado ? 'bandpass' : 'highpass', molhado ? 900 : 1800, 1.5, g); env(g, t, .002, molhado ? .3 : .16, .04); },
+  anaHum(on, pos) { // a melodia da caixinha cantarolada, cortada seco quando a luz sai dela
+    if (on && !AMBX.hum) { const o = AC.createOscillator(); o.type = 'sine'; const g = saida(pos, .6); g.gain.value = .07; o.connect(g); const t = AC.currentTime; const notas = [659, 784, 659, 523, 587, 494, 523, 440]; for (let i = 0; i < 40; i++) o.frequency.setValueAtTime(notas[i % 8] * .995, t + i * .5); o.start(t); o.stop(t + 20); AMBX.hum = { o, g }; }
+    else if (!on && AMBX.hum) { const t = AC.currentTime; AMBX.hum.g.gain.cancelScheduledValues(t); AMBX.hum.g.gain.setValueAtTime(0, t); try { AMBX.hum.o.stop(t + .01); } catch (e) {} AMBX.hum = null; }
+  },
+  passinhos(pos) { for (let i = 0; i < 6; i++) for (let k = 0; k < 3; k++) { const t = AC.currentTime + i * .36 + k * .015, g = saida({ x: pos.x + rand(-1, 1), y: .1, z: pos.z + rand(-1, 1) }, .7); burst(t, .05, 'highpass', 1500, 1, g); env(g, t, .002, .35, .05); } },
+  sussurroSilencio(pos, vol = 1) { const t = AC.currentTime; [[0, 2600, .5], [.5, 1900, .35], [.85, 3200, .45]].forEach(([k, f, d]) => { const g = saida({ x: pos.x, y: 1, z: pos.z }, .7); burst(t + k, d, 'bandpass', f, 4, g); env(g, t + k, .08, .18 * vol, d * .8); }); },
+  faisca(x, z) { const t = AC.currentTime; for (let i = 0; i < 9; i++) { const g = saida({ x, y: 2.6, z }, .3), k = rand(0, .45); burst(t + k, .02, 'highpass', 4000, 1, g); env(g, t + k, .001, .4, .02); } },
+  vozFalsa(x, z, quem) { // a voz chama do jeito errado: a sua própria, ou a de quem não pode estar aqui
+    const t = AC.currentTime, fs = quem === 'mae' ? [[0, 247], [.45, 220], [.9, 196]] : [[0, 440], [.3, 392]];
+    for (const [k, f] of fs) { const g = saida({ x, y: 1.5, z }, .9); const o = AC.createOscillator(); o.type = 'triangle'; o.frequency.setValueAtTime(f, t + k); o.frequency.linearRampToValueAtTime(f * .9, t + k + .4); const fl = AC.createBiquadFilter(); fl.type = 'bandpass'; fl.frequency.value = quem === 'mae' ? 700 : 1300; fl.Q.value = 3; o.connect(fl); fl.connect(g); env(g, t + k, .08, .11, .5); o.start(t + k); o.stop(t + k + .7); }
+  },
+  tropeco(pos) { const t = AC.currentTime, g = saida({ x: pos.x, y: .4, z: pos.z }, .6); burst(t, .6, 'lowpass', 260, 1, g, 0); env(g, t, .003, 1.4, .5); SOMX.respiraRasgada(pos); },
+  portaLonge(x, z) { const t = AC.currentTime, g = saida({ x, y: 1, z }, .9); const lp = AC.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 180; lp.connect(g); burst(t, .7, 'lowpass', 300, 1, lp, 0); env(g, t, .003, 1.2, .6); },
+  arrastoAr(pos) { const t = AC.currentTime, g = saida({ x: pos.x, y: 1.4, z: pos.z }, .2); const f = burst(t, .3, 'bandpass', 600, 1, g); f.frequency.linearRampToValueAtTime(2400, t + .25); env(g, t, .03, .6, .25); }
+};
+const SX = new Proxy({}, { get: (t, k) => (...a) => { if (!AC) return; try { return SOMX[k] && SOMX[k](...a); } catch (e) { console.warn(e); } } });
+// Silêncio repentino: abafa o mundo inteiro por um instante
+function abafarMundo(nivel, dur) {
+  if (!AC || !master) return;
+  const t = AC.currentTime, g = master.gain; g.cancelScheduledValues(t); g.setValueAtTime(g.value, t);
+  g.linearRampToValueAtTime(OPT.vol * nivel, t + .06); g.setValueAtTime(OPT.vol * nivel, t + dur); g.linearRampToValueAtTime(OPT.vol, t + dur + .3);
+}
+function abafarDrone(dur) { if (!AC || !AMB.drone) return; const t = AC.currentTime, g = AMB.drone.gain; g.cancelScheduledValues(t); g.setValueAtTime(g.value, t); g.linearRampToValueAtTime(.004, t + .1); g.setValueAtTime(.004, t + dur); g.linearRampToValueAtTime(.05, t + dur + 1); }
+
+// Personagens extras das legendas: a voz que imita a Lia vem com a cor do Inspetor
+if (R.personagens) {
+  R.personagens.liaFalsa = R.personagens.liaFalsa || { nome: (R.personagens.lia || {}).nome || 'Lia', cor: (R.personagens.inspetor || {}).cor || '#c0392b' };
+  R.personagens.mae = R.personagens.mae || { nome: 'Mãe', cor: (R.personagens.inspetor || {}).cor || '#c0392b' };
+  R.personagens.crianca = R.personagens.crianca || { nome: 'Criança', cor: '#b98a8a' };
+}
+
+// Camada de tela dos sustos de esconderijo (sombra na fresta, olhos vermelhos, camisola)
+const FXM = document.createElement('div'); FXM.className = 'fx'; FXM.id = 'fx-monstro'; FXM.style.cssText = 'opacity:0;transition:opacity .3s';
+{ const lk = $('#fx-locker'); if (lk) lk.before(FXM); else document.body.appendChild(FXM); }
+const FXM_BG = {
+  sombra: 'radial-gradient(ellipse 22% 42% at 50% 42%, rgba(0,0,0,.97), rgba(0,0,0,.6) 55%, rgba(0,0,0,0) 80%)',
+  olhos: [[34, 40], [44, 46], [55, 38], [64, 47], [27, 52], [72, 52], [50, 55]].map(([x, y]) => `radial-gradient(circle at ${x}% ${y}%, rgba(255,50,20,.95) 0 .25vw, rgba(255,30,10,0) .7vw), radial-gradient(circle at ${x + 2.2}% ${y}%, rgba(255,50,20,.95) 0 .25vw, rgba(255,30,10,0) .7vw)`).join(',') + ', rgba(20,0,0,.35)',
+  camisola: 'linear-gradient(90deg, transparent 36%, rgba(168,162,148,.42) 44% 56%, transparent 64%)'
+};
+let fxmAtual = '';
+function updateFxMonstro() {
+  let tipo = '';
+  if (S.hidden && !S.dead) {
+    if (M.ativo && (M.state === 'fareja' || M.state === 'vasculha')) tipo = 'sombra';
+    else if (PROC.olhos > 0) tipo = 'olhos';
+    else if (ANA.ativa && !ANA.script && ANA.pos.distanceTo(new THREE.Vector3(S.hidden.x, 0, S.hidden.z)) < 1.9) tipo = 'camisola';
+  }
+  if (tipo !== fxmAtual) { fxmAtual = tipo; if (tipo) FXM.style.background = FXM_BG[tipo]; FXM.style.opacity = tipo ? 1 : 0; }
+}
+// Barra de "nervos" no esconderijo
+{ const br = $('#breath'); if (br) { const w = document.createElement('div'); w.id = 'b-ansia-w'; w.style.cssText = 'margin-top:10px;font-size:14px;color:#d9a79f'; w.innerHTML = 'Nervos<i id="b-ansia"></i>'; br.appendChild(w); const st = document.createElement('style'); st.textContent = '#b-ansia::after{background:#c0392b!important}'; document.head.appendChild(st); } }
+// Mãos do Inspetor presas à câmera durante o agarrão
+const MAOS = new THREE.Group(); MAOS.visible = false; camera.add(MAOS);
+{ const pele = new THREE.MeshStandardMaterial({ color: 0x4a4038, roughness: .55 }); for (const s of [-1, 1]) { const m = new THREE.Group(); m.position.set(s * .3, -.08, -.5); m.rotation.z = s * .55; MAOS.add(m); box(.13, .09, .04, pele, 0, -.06, 0, m, false); for (let i = 0; i < 4; i++) { const f = box(.022, .36, .022, pele, (i - 1.5) * .042, .14, 0, m, false); f.rotation.x = -.35; f.rotation.z = (i - 1.5) * .08; } } }
+const AG = { t: 0, dur: 1.5, sacode: 0, prev: false };
+addEventListener('mousemove', e => { if (M.state === 'agarra') AG.sacode += Math.abs(e.movementX || 0) + Math.abs(e.movementY || 0); });
+// Tremor de armários e portas
+const tremores = [];
+function tremer(obj, dur = .5, forca = .04) { if (obj) tremores.push({ obj, t: dur, forca, base: obj.rotation.z }); }
+function updateTremores(dt) { for (let i = tremores.length - 1; i >= 0; i--) { const r = tremores[i]; r.t -= dt; r.obj.rotation.z = r.t > 0 ? r.base + rand(-r.forca, r.forca) : r.base; if (r.t <= 0) tremores.splice(i, 1); } }
+// Decalques no chão (giz da Ana, pegadas molhadas)
+const TX_GIZ = canvasTex(128, 128, (g, w, h) => { g.clearRect(0, 0, w, h); g.strokeStyle = 'rgba(235,230,215,.85)'; g.lineWidth = 4; g.lineCap = 'round'; g.beginPath(); g.arc(64, 30, 14, 0, Math.PI * 2); g.moveTo(64, 44); g.lineTo(64, 86); g.moveTo(40, 58); g.lineTo(88, 58); g.moveTo(64, 86); g.lineTo(46, 116); g.moveTo(64, 86); g.lineTo(82, 116); g.stroke(); g.beginPath(); g.moveTo(56, 26); g.lineTo(60, 30); g.moveTo(72, 26); g.lineTo(68, 30); g.moveTo(56, 36); g.quadraticCurveTo(64, 30, 72, 36); g.stroke(); g.font = 'bold 22px Georgia'; g.fillStyle = 'rgba(235,230,215,.7)'; g.fillText(String(1 + (Math.random() * 9 | 0)), 98, 30); });
+const TX_PEGADA = canvasTex(64, 128, (g, w, h) => { g.clearRect(0, 0, w, h); g.fillStyle = 'rgba(30,40,45,.85)'; g.beginPath(); g.ellipse(32, 78, 14, 34, 0, 0, Math.PI * 2); g.fill(); for (let i = 0; i < 5; i++) { g.beginPath(); g.arc(18 + i * 7, 34 - Math.abs(i - 1.5) * 3, 4, 0, Math.PI * 2); g.fill(); } });
+TX_GIZ.wrapS = TX_GIZ.wrapT = TX_PEGADA.wrapS = TX_PEGADA.wrapT = THREE.ClampToEdgeWrapping;
+const MAT_GIZ = new THREE.MeshBasicMaterial({ map: TX_GIZ, transparent: true, depthWrite: false }); MAT_GIZ.userData.compartilhado = true;
+function decal(mat, x, z, w, h, ry = 0, opac) {
+  const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), opac !== undefined ? mat.clone() : mat); m.rotation.set(-Math.PI / 2, 0, ry); m.position.set(x, .015, z);
+  if (opac !== undefined) { m.material.opacity = opac; m.material.userData.compartilhado = false; }
+  W.grupo.add(m); return m;
+}
+const MAT_PEGADA = new THREE.MeshBasicMaterial({ map: TX_PEGADA, transparent: true, depthWrite: false, opacity: .6 }); MAT_PEGADA.userData.compartilhado = true;
 
 // --- O INSPETOR
 function modeloInspetor() {
-  const g = new THREE.Group();
+  const g = new THREE.Group(); g.rotation.order = 'YXZ';
   const pele = new THREE.MeshStandardMaterial({ color: 0x4a4038, roughness: .55 });
   const casaco = new THREE.MeshStandardMaterial({ color: 0x0b0b0c, roughness: .95 });
-  const faixa = new THREE.MeshStandardMaterial({ color: 0xbcae94, roughness: 1 });
+  const faixa = new THREE.MeshStandardMaterial({ color: 0xbcae94, roughness: 1, emissive: 0x8a7c62, emissiveIntensity: 0 });
   const sangue = new THREE.MeshStandardMaterial({ color: 0x3a0806, roughness: .6 });
   const legL = new THREE.Group(), legR = new THREE.Group(); legL.position.set(-.15, 1.45, 0); legR.position.set(.15, 1.45, 0);
   for (const l of [legL, legR]) { cyl(.07, .04, 1.45, casaco, 0, -.72, 0, 6, l); box(.12, .06, .34, casaco, 0, -1.43, .07, l); }
@@ -867,27 +1002,36 @@ function modeloInspetor() {
   const cr = new THREE.Mesh(new THREE.SphereGeometry(.16, 14, 10), pele); cr.scale.set(.82, 1.55, .95); cr.position.y = .12; cabeca.add(cr);
   const venda = new THREE.Mesh(new THREE.CylinderGeometry(.14, .145, .1, 14), faixa); venda.position.y = .17; cabeca.add(venda);
   for (const s of [-1, 1]) box(.03, .1, .01, sangue, s * .05, .1, .14, cabeca, false);
-  box(.06, .22, .03, MAT.preto, 0, -.06, .14, cabeca, false);
+  const boca = box(.06, .22, .03, MAT.preto, 0, -.06, .14, cabeca, false);
   cabeca.rotation.z = .45;
   const armL = new THREE.Group(), armR = new THREE.Group(); armL.position.set(-.38, 3.2, 0); armR.position.set(.38, 3.2, 0);
+  const maos = [];
   for (const [a, s] of [[armL, -1], [armR, 1]]) {
     cyl(.045, .03, 1.95, casaco, 0, -.97, 0, 6, a);
-    const mao = new THREE.Group(); mao.position.y = -1.98; a.add(mao);
+    const mao = new THREE.Group(); mao.position.y = -1.98; a.add(mao); maos.push(mao);
     for (let i = 0; i < 4; i++) { const f = box(.016, .42, .016, pele, (i - 1.5) * .028, -.2, 0, mao); f.rotation.x = .25; }
     a.rotation.z = s * .07;
   }
   g.add(legL, legR, armL, armR);
   g.traverse(o => { if (o.isMesh) o.castShadow = true; });
   g.scale.setScalar(.8);
-  return { g, cabeca, armL, armR, legL, legR };
+  return { g, cabeca, armL, armR, legL, legR, faixa, boca, maos };
 }
 const MON = modeloInspetor(); scene.add(MON.g); MON.g.visible = false;
-const M = { pos: new THREE.Vector3(), ativo: false, state: 'patrulha', path: [], wait: 0, searchT: 0, replan: 0, yaw: 0, cool: 0, falaT: 0, stepT: 0, anim: 0, furia: 0, clickT: 0, tensao: 0, recuo: 0, diretorT: 20, achou: false, alvoGarrafa: 0 };
+// O vulto: uma silhueta dele que some quando a luz encosta
+const VULTO = modeloInspetor(); VULTO.g.traverse(o => { if (o.isMesh) { o.material = MAT.sombra; o.castShadow = false; } }); VULTO.g.visible = false; scene.add(VULTO.g);
+const M = { pos: new THREE.Vector3(), ativo: false, state: 'patrulha', path: [], wait: 0, searchT: 0, replan: 0, yaw: 0, cool: 0, falaT: 0, stepT: 0, anim: 0, furia: 0, clickT: 0, tensao: 0, recuo: 0, diretorT: 20, achou: false, alvoGarrafa: 0,
+  ultimo: null, alertaT: 0, cacaT: 0, boteT: 0, boteAgachou: false, boteIni: false, alvoL: null, farejaT: 0, farejaCd: 0, vasculhaT: 0, certo: false, acao: null, emboscadaT: 0, emboscadaClique: false, conferir: 0, conferirSala: null,
+  garrafas: [], ignoraGarrafa: 0, calorT: 0, calorCd: 0, quaseT: 0, olhar: null, olharT: 0, hbT: 1, ansiedade: 0, porta: null, socos: 0, tropecoT: 15, somT: 2, escutaT: 0, escutaCd: 3, chamadoT: 0, favCheck: false, ultimaFala: '', correnteT: 0, ofegoT: 3, cacos: [], cacosGrupo: null, flashes: [], caidoT: 0, portaCd: {} };
 function ativarInspetor(x, z, estado = 'patrulha') {
   M.ativo = true; MON.g.visible = true; M.pos.set(x, 0, z); M.cool = 3; M.state = estado; M.path = []; M.tensao = 0; M.recuo = 0; M.wait = 0;
+  M.achou = false; M.certo = false; M.acao = null; M.ansiedade = 0; M.ultimo = null; M.cacaT = 0; M.chamadoT = 0; M.olharT = 0;
   if (estado === 'patrulha') patrulhar();
 }
-function desativarInspetor() { M.ativo = false; MON.g.visible = false; M.path = []; }
+function desativarInspetor() {
+  if (M.state === 'agarra') { P.bloqueado = AG.prev; MAOS.visible = false; }
+  M.ativo = false; MON.g.visible = false; M.path = []; M.acao = null; if (M.state !== 'patrulha') M.state = 'patrulha';
+}
 function patrulhar() {
   const salas = salasAlcancaveis(M.pos, { semFora: !W.def.inspetorFora }).filter(r => !r.seguro);
   if (!salas.length) return;
@@ -895,84 +1039,386 @@ function patrulhar() {
   const pressao = .3 + S.chapter * .07;
   if (M.recuo > 0) r = salas.reduce((a, b) => distSalas(b, P.room) > distSalas(a, P.room) ? b : a, salas[0]);
   else if (Math.random() < pressao && salas.includes(P.room)) r = P.room;
-  else r = pick(salas);
+  else {
+    // ele aprende as suas rotas: salas por onde você passa mais pesam mais no sorteio
+    const rotas = S.flags.rotas || {}, pesos = salas.map(s => 1 + Math.min(4, (rotas[W.mapa + ':' + s.id] || 0) * .5));
+    let x = Math.random() * pesos.reduce((a, b) => a + b, 0); r = salas[salas.length - 1];
+    for (let i = 0; i < salas.length; i++) { x -= pesos[i]; if (x <= 0) { r = salas[i]; break; } }
+  }
   const [x, z] = pontoEm(r);
-  M.state = 'patrulha'; planejar(M, x, z);
+  M.state = 'patrulha'; M.acao = null; planejar(M, x, z);
 }
 function emitNoise(x, z, r, doJogador, garrafa) {
   if (!M.ativo || S.dead || !W.salas.length) return;
   const d = Math.hypot(M.pos.x - x, M.pos.z - z);
-  const att = salaAdj(roomAt(M.pos.x, M.pos.z), roomAt(x, z)) ? 1 : .5;
-  if (d < r * att * D().ouvido) {
+  const att = atenuacao(roomAt(M.pos.x, M.pos.z), roomAt(x, z));
+  const alcance = r * att * D().ouvido;
+  const ocupado = ['alerta', 'bote', 'agarra', 'fareja', 'vasculha'].includes(M.state);
+  if (d < alcance) {
+    if (garrafa) {
+      M.garrafas = M.garrafas.filter(t => S.tempo - t < 90); M.garrafas.push(S.tempo);
+      if (M.ignoraGarrafa > 0 || M.garrafas.length >= 3) { // cansou do truque: só vira a cabeça e vem ver de onde a garrafa saiu
+        if (M.ignoraGarrafa <= 0) { M.ignoraGarrafa = 45; M.falaT = 0; falaInspetor(false, 'truque'); }
+        M.olhar = new THREE.Vector3(x, 0, z); M.olharT = 1.2;
+        if (!ocupado && M.state !== 'caca' && !S.hidden) { M.state = 'investiga'; M.searchT = 0; M.acao = null; M.ultimo = P.pos.clone(); planejar(M, P.pos.x, P.pos.z); }
+        return;
+      }
+    }
+    const tipo = garrafa ? 'vidro' : W.doors.some(dd => dd.x === x && dd.z === z) ? 'porta' : doJogador && S.hidden ? 'respira' : null;
     if (doJogador && S.hidden && d < 2.6) M.achou = true;
-    if (M.state !== 'caca' || garrafa) { M.state = 'investiga'; M.searchT = 0; planejar(M, x, z); falaInspetor(); if (garrafa) M.alvoGarrafa = 4; }
+    if (ocupado) return;
+    M.ultimo = new THREE.Vector3(x, 0, z); M.acao = null;
+    if (M.state !== 'caca' || garrafa) { M.state = 'investiga'; M.searchT = 0; planejar(M, x, z); falaInspetor(false, tipo); if (garrafa) M.alvoGarrafa = 4; }
     else planejar(M, x, z);
+  } else if (d < alcance * 1.4 && !ocupado && M.state !== 'caca') quase(x, z);
+}
+// Quase ouviu: para, vira a cabeça na direção e estala duas vezes
+function quase(x, z) {
+  if (M.quaseT > 0) return;
+  M.quaseT = 4; M.olhar = new THREE.Vector3(x, 0, z); M.olharT = 1.5; SX.estalo(M.pos, .9, true);
+  if (M.state === 'patrulha' || M.state === 'procura') M.wait = Math.max(M.wait, 1.3);
+}
+function falaInspetor(perdeu, tipo) {
+  if (M.falaT > 0) return; M.falaT = rand(8, 14);
+  const ent = R.entidades.inspetor, ctx = tipo && ent.falas_tipo && ent.falas_tipo[tipo];
+  const extra = (!perdeu && ent.porCapitulo && ent.porCapitulo[S.chapter]) || [];
+  const lista = ctx && (Math.random() < .8 || !(perdeu ? ent.falas_perdeu : ent.falas_caca)) ? ctx : [...(perdeu ? ent.falas_perdeu : ent.falas_caca), ...extra];
+  let t = pick(lista); for (let i = 0; i < 4 && t === M.ultimaFala && lista.length > 1; i++) t = pick(lista);
+  if (tipo === 'luz') S.flags.falouLuz = true;
+  M.ultimaFala = t; sub('inspetor', t); SFX.voz(M.pos);
+}
+function tipoPasso() { return P.sprinting ? 'corrida' : P.naAgua ? 'agua' : (S.flags.energia && !S.flags.falouLuz) ? 'luz' : null; }
+function pisoMult() {
+  if (!P.room) return 1;
+  if (P.naAgua && P.crouch) return .55; // agachada na água: quase sem barulho
+  return { madeira: 1.25, concreto: 1, tapete: .6, grama: .9, terra: .9 }[P.room.piso] || 1;
+}
+function iniciarAlerta() {
+  if (['caca', 'alerta', 'bote', 'agarra'].includes(M.state)) return;
+  M.acao = null;
+  if (S.flags.sino || M.furia > 0) { entrarCaca(); return; }
+  M.state = 'alerta'; M.path = []; M.alertaT = (S.dif === 'pesadelo' ? .4 : S.dif === 'facil' ? 1 : .7);
+  M.olhar = P.pos.clone(); M.olharT = M.alertaT + .3;
+  SX.estalo(M.pos, 1.5, true); abafarMundo(.18, M.alertaT);
+}
+function entrarCaca() {
+  M.state = 'caca'; M.cacaT = 0; SFX.susto();
+  const tp = tipoPasso(); if (tp === 'luz') S.flags.falouLuz = true;
+  M.falaT = 0; falaInspetor(false, tp); S.capVisto++;
+  planejar(M, P.pos.x, P.pos.z); M.replan = .35;
+}
+function iniciarBote() {
+  M.state = 'bote'; M.path = []; M.boteT = S.flags.sino ? .3 : S.dif === 'pesadelo' ? .2 : S.dif === 'facil' ? .5 : .35;
+  M.boteIni = P.crouch; M.boteAgachou = false; M.yaw = Math.atan2(P.pos.x - M.pos.x, P.pos.z - M.pos.z);
+  SX.boteChiado(M.pos); SX.estalo(M.pos, 1.4); P.shake = Math.max(P.shake, .04);
+}
+function agarrar() {
+  M.state = 'agarra'; M.path = []; M.acao = null; AG.t = 0; AG.dur = 1.5; AG.sacode = 0; AG.prev = P.bloqueado; P.bloqueado = true; MAOS.visible = true;
+  SX.agarrao(); P.shake = .2; S.fear = 100; $('#fx-red').style.transition = 'none'; $('#fx-red').style.opacity = .8;
+  if (!S.flags.dicaAgarrao) { S.flags.dicaAgarrao = true; toast('Sacuda o mouse para se soltar!'); }
+}
+function arranhao() {
+  const dano = 15 * (S.dif === 'pesadelo' ? 2 : D().dano); S.health -= dano; S.capDano += dano; P.shake = .12; SFX.ofego();
+  $('#fx-red').style.transition = 'none'; $('#fx-red').style.opacity = .55; setTimeout(() => { $('#fx-red').style.transition = 'opacity 1.5s'; $('#fx-red').style.opacity = 0; }, 60);
+  if (S.health <= 0) { S.causaCtx = 'bote'; morrer('inspetor'); } else toast('As unhas rasparam o seu braço.');
+}
+function abrirEsconderijo() {
+  const L = S.hidden; if (!L) return;
+  SX.armarioBate(L); tremer(L.g, .3, .08); S.causaCtx = 'escondida';
+  sairEsconderijo(true); agarrar();
+}
+function iniciarFareja(L, favorito) {
+  M.state = 'fareja'; M.farejaT = 3; M.alvoL = L; M.path = []; M.acao = null; M.farejaCd = 25;
+  M.yaw = Math.atan2(L.x - M.pos.x, L.z - M.pos.z); SX.inspira(M.pos);
+  if (favorito) { M.falaT = 0; falaInspetor(false, 'favorito'); }
+}
+function iniciarVasculha() {
+  M.state = 'vasculha'; M.vasculhaT = 4.2; M.alvoL = S.hidden; M.path = []; M.acao = null; M.batidas = 0;
+  M.yaw = Math.atan2(S.hidden.x - M.pos.x, S.hidden.z - M.pos.z);
+}
+function desistirDoEsconderijo() {
+  conquista('folego'); M.achou = false; M.certo = false; M.falaT = 0; falaInspetor(true);
+  M.state = 'procura'; M.searchT = 3; M.farejaCd = 25; M.wait = .8;
+  const viz = salasAlcancaveis(M.pos, { semFora: !W.def.inspetorFora }).filter(r => r !== P.room && !r.seguro);
+  if (viz.length) { const [x, z] = pontoEm(pick(viz)); planejar(M, x, z); }
+}
+// Armário que ele vai vistoriar: o favorito da jogadora ou um qualquer da sala, que ele abre com estrondo
+function frenteDe(L, m = .95) { return [L.x + L.face[0] * m, L.z + L.face[1] * m]; }
+function escolherAcaoProcura(ra) {
+  const uso = S.flags.escUso || {};
+  if (!M.favCheck) {
+    M.favCheck = true;
+    const fav = W.lockers.find((L, i) => (uso[W.mapa + ':' + i] || 0) >= 3 && Math.hypot(L.x - M.pos.x, L.z - M.pos.z) < 12 && salaAdj(roomAt(L.x, L.z), ra));
+    if (fav) { const [x, z] = frenteDe(fav); if (planejar(M, x, z)) { M.acao = { tipo: 'favorito', L: fav }; return true; } }
+  }
+  if (Math.random() < .35) {
+    const arms = W.lockers.filter(L => L !== S.hidden && roomAt(L.x, L.z) === ra && Math.hypot(L.x - M.pos.x, L.z - M.pos.z) < 9);
+    if (arms.length) { const L = pick(arms); const [x, z] = frenteDe(L); planejar(M, x, z); M.acao = { tipo: 'bater', L }; return true; }
+  }
+  if (Math.random() < .25 && M.escutaCd <= 0) { escutar(rand(1.5, 2.5)); return true; }
+  return false;
+}
+function executarAcao() {
+  const a = M.acao; M.acao = null; if (!a) return;
+  M.yaw = Math.atan2(a.L.x - M.pos.x, a.L.z - M.pos.z);
+  if (a.tipo === 'favorito' && S.hidden === a.L) { iniciarFareja(a.L, true); return; }
+  SX.armarioBate(a.L); tremer(a.L.g, .45, .06); M.wait = rand(1.4, 2.2);
+  if (S.hidden && Math.hypot(S.hidden.x - a.L.x, S.hidden.z - a.L.z) < 2) { P.shake = Math.max(P.shake, .06); S.fear = Math.min(100, S.fear + 18); }
+}
+function escutar(dur) { // para, inclina a cabeça e fica mudo ouvindo
+  M.escutaVolta = M.state === 'escuta' ? 'procura' : (M.state || 'procura'); if (M.escutaVolta === 'caca' || M.escutaVolta === 'investiga') M.escutaVolta = 'procura';
+  M.state = 'escuta'; M.escutaT = dur; M.escutaCd = rand(5, 8); M.path = [];
+  if (M.ultimo) { M.olhar = M.ultimo.clone(); M.olharT = dur; }
+}
+function fimProcura(ra) {
+  const mesma = S.hidden && roomAt(S.hidden.x, S.hidden.z) === ra;
+  if (S.chapter >= 2 && !S.flags.sino && Math.random() < .25) { // finge que vai embora e fica parado, mudo, esperando
+    M.state = 'emboscada'; M.emboscadaT = rand(6, 10); M.emboscadaClique = false; M.path = [];
+    const dir = new THREE.Vector3(M.pos.x - P.pos.x, 0, M.pos.z - P.pos.z).normalize(); SX.passosLonge(M.pos, dir);
+    return;
+  }
+  if (mesma && Math.random() < .3) { // sai da sala, espera em silêncio e volta de repente
+    const viz = W.links.filter(l => (l.a === ra.id || l.b === ra.id) && (!l.door || l.door.open)).map(l => SALA(l.a === ra.id ? l.b : l.a)).filter(r => !r.seguro && (!r.fora || W.def.inspetorFora));
+    if (viz.length) { const [x, z] = pontoEm(pick(viz)); planejar(M, x, z); M.state = 'conferir'; M.conferir = 1; M.conferirSala = ra; return; }
+  }
+  patrulhar();
+}
+function portaInspetor(dr) {
+  const k = dr.id || (dr.x + ',' + dr.z);
+  if (M.state === 'caca' && !S.flags.sino) { // na caçada ele esmurra a porta antes de arrombar
+    if (M.porta !== dr) { M.porta = dr; M.socos = 0; }
+    if (M.socos < 3) {
+      M.socos++; SFX.pancada(dr.x, dr.z); dr.ang += rand(-.08, .08); M.wait = .55;
+      if (Math.hypot(dr.x - P.pos.x, dr.z - P.pos.z) < 7) P.shake = Math.max(P.shake, .03 + M.socos * .02);
+      return;
+    }
+    M.porta = null; setDoor(dr, true, true); SFX.pancada(dr.x, dr.z); SX.armarioBate({ x: dr.x, z: dr.z }); M.wait = .25;
+  } else { // fora da caçada ele gira a maçaneta devagar e entra quase sem barulho
+    if (M.portaCd[k] > 0) return;
+    M.portaCd[k] = 1.1; SX.macaneta(dr.x, dr.z); M.wait = 1;
+    setTimeout(() => { if (!dr.open) { setDoor(dr, true, true); SFX.rangido(dr.x, 1.2, dr.z, .45); } }, 900);
   }
 }
-function falaInspetor(perdeu) {
-  if (M.falaT > 0) return; M.falaT = rand(8, 14);
-  const ent = R.entidades.inspetor, extra = (!perdeu && ent.porCapitulo && ent.porCapitulo[S.chapter]) || [], t = pick([...(perdeu ? ent.falas_perdeu : ent.falas_caca), ...extra]);
-  sub('inspetor', t); SFX.voz(M.pos);
+// Porta fechada na cara dele durante a caçada
+function aoPortaJogador(d) {
+  if (!M.ativo || d.open || M.state !== 'caca' || S.flags.sino) return;
+  if (Math.hypot(M.pos.x - d.x, M.pos.z - d.z) > 3) return;
+  const k = 'cara:' + (d.id || d.x + ',' + d.z);
+  if ((M.portaCd[k] || 0) > 0) return;
+  M.portaCd[k] = 20; M.wait = Math.max(M.wait, 1.5); SFX.pancada(d.x, d.z); SX.respiraRasgada(M.pos); toast('A porta bateu na cara dele.');
+}
+function checarEntradaEsconderijo(L) {
+  const uso = S.flags.escUso || (S.flags.escUso = {}), k = W.mapa + ':' + W.lockers.indexOf(L);
+  uso[k] = (uso[k] || 0) + 1;
+  if (uso[k] === 3) setTimeout(() => subPequeno('lia', 'Ele já sabe desse armário. Preciso variar.'), 700);
+  if (M.ativo && ['caca', 'alerta', 'bote'].includes(M.state)) {
+    const d = M.pos.distanceTo(P.pos);
+    if (d < 2.5) { toast('Ele está perto demais! Ele ouviu você entrar.'); M.achou = true; M.certo = true; }
+    else if (d < 4) { toast('Ele ouviu a porta. Prenda a respiração (ESPAÇO)!'); M.achou = true; M.certo = false; }
+    if (M.achou) { M.state = 'investiga'; M.acao = null; const [x, z] = frenteDe(L, 1.1); planejar(M, x, z); }
+  }
+}
+// No esconderijo: os nervos sobem quando ele está perto; quando enchem, você ofega alto
+function ansiedadeEsconderijo(dt, perto) {
+  if (!perto) { M.ansiedade = Math.max(0, M.ansiedade - dt * .3); return; }
+  const d = M.pos.distanceTo(P.pos);
+  M.ansiedade += dt * ((1 - clamp(d / 5.5, 0, 1)) * .35 + S.fear / 100 * .12) * (S.dif === 'facil' ? .7 : 1);
+  if (M.ansiedade >= 1) { M.ansiedade = .45; SFX.ofego(); ANA.escondT = 0; emitNoise(P.pos.x, P.pos.z, 2.3, true); if (!S.flags.dicaNervos) { S.flags.dicaNervos = true; toast('Os nervos venceram. Segure ESPAÇO antes da barra encher.'); } }
+}
+function inicioRecuo() { // ele vai embora, e dá para ouvir
+  const salas = salasAlcancaveis(M.pos, { semFora: !W.def.inspetorFora });
+  const longe = salas.reduce((a, b) => distSalas(b, P.room) > distSalas(a, P.room) ? b : a, salas[0] || P.room);
+  if (longe) { const c = centroSala(longe); SX.portaLonge(c.x, c.z); }
+  SX.passosLonge(M.pos, new THREE.Vector3(M.pos.x - P.pos.x, 0, M.pos.z - P.pos.z).normalize());
+}
+function fimRecuo() { // um estalo seco perto de uma porta da sala vizinha: ele voltou
+  const l = W.links.find(l => l.a === P.room.id || l.b === P.room.id);
+  if (l) SX.estalo({ x: l.x, z: l.z }, 1.1);
+}
+function estourarLampada(L) {
+  L.estourou = true; L.base = 0; L.luz.intensity = 0; L.bulbo.material.emissive.setHex(0x000000);
+  SFX.vidro(L.x, L.z); SX.faisca(L.x, L.z);
+  const fl = new THREE.PointLight(0xbfe0ff, 9, 6, 1.5); fl.position.set(L.x, 2.4, L.z); W.grupo.add(fl); M.flashes.push({ l: fl, t: .25 });
+  for (let i = 0; i < 7; i++) { const c = box(rand(.03, .07), .006, rand(.03, .06), MAT.vidro, L.x + rand(-.6, .6), .012, L.z + rand(-.6, .6), W.grupo, false); c.rotation.y = rand(0, 3); }
+  M.cacos.push({ x: L.x, z: L.z, cd: 0 });
+}
+function updateLampadasECacos(dt) {
+  if (M.cacosGrupo !== W.grupo) { M.cacosGrupo = W.grupo; M.cacos = []; M.flashes = []; }
+  for (let i = M.flashes.length - 1; i >= 0; i--) { const f = M.flashes[i]; f.t -= dt; f.l.intensity = Math.max(0, f.t * 36 * Math.random()); if (f.t <= 0) { W.grupo.remove(f.l); M.flashes.splice(i, 1); } }
+  for (const c of M.cacos) { c.cd -= dt; if (c.cd <= 0 && !S.hidden && P.noiseR > 0 && !P.crouch && Math.hypot(P.pos.x - c.x, P.pos.z - c.z) < .8) { c.cd = 1.5; SFX.vidro(c.x, c.z); emitNoise(c.x, c.z, 5, true); } }
+  if (M.ativo && M.state === 'caca') for (const L of W.lampadas) {
+    if (!L.ligada || L.estourou) continue;
+    const dl = Math.hypot(L.x - M.pos.x, L.z - M.pos.z);
+    if (dl < 1.5 && !L.checada) { L.checada = true; if (Math.random() < .25) estourarLampada(L); } else if (dl > 3) L.checada = false;
+  }
 }
 function updateInspetor(dt) {
+  updateTremores(dt);
+  updateLampadasECacos(dt);
+  const hb = $('#b-ansia'); if (hb) hb.style.setProperty('--v', (M.ansiedade * 100).toFixed(0) + '%');
   if (!M.ativo) return;
-  M.cool = Math.max(0, M.cool - dt); M.falaT = Math.max(0, M.falaT - dt); M.recuo = Math.max(0, M.recuo - dt); M.alvoGarrafa = Math.max(0, M.alvoGarrafa - dt);
+  M.cool = Math.max(0, M.cool - dt); M.falaT = Math.max(0, M.falaT - dt); M.alvoGarrafa = Math.max(0, M.alvoGarrafa - dt);
+  M.ignoraGarrafa = Math.max(0, M.ignoraGarrafa - dt); M.quaseT = Math.max(0, M.quaseT - dt); M.olharT = Math.max(0, M.olharT - dt); M.calorCd = Math.max(0, M.calorCd - dt);
+  M.farejaCd = Math.max(0, M.farejaCd - dt); M.escutaCd = Math.max(0, M.escutaCd - dt);
+  for (const k in M.portaCd) M.portaCd[k] -= dt;
+  const recuoAntes = M.recuo; M.recuo = Math.max(0, M.recuo - dt); if (recuoAntes > 0 && M.recuo <= 0) fimRecuo();
   const d = M.pos.distanceTo(P.pos), ra = roomAt(M.pos.x, M.pos.z);
-  const att = salaAdj(ra, P.room) ? 1 : .45;
+  const att = atenuacao(ra, P.room);
   const fuga = S.flags.sino;
   if (M.furia > 0) M.furia -= dt;
-  // Diretor de tensão (inspirado em Alien: Isolation): depois de muita pressão, ele recua um tempo
+  const ocupado = ['alerta', 'bote', 'agarra', 'fareja', 'vasculha'].includes(M.state);
+  // Diretor de tensão: depois de muita pressão ele recua um pouco, e dá para ouvir ele indo embora
   M.tensao = clamp(M.tensao + (d < 10 ? (14 - d) * dt * 1.1 : -dt * 2), 0, 100);
-  if (M.tensao >= 100 && !fuga && M.furia <= 0 && M.state !== 'caca') { M.recuo = rand(25, 40) * D().intervalo; M.tensao = 0; patrulhar(); }
+  if (M.tensao >= 100 && !fuga && M.furia <= 0 && M.state !== 'caca' && !ocupado) { M.recuo = rand(12, 18) * D().intervalo; M.tensao = 0; patrulhar(); inicioRecuo(); }
+  if (M.recuo > 0 && Math.random() < dt * .12) { const r = salasAlcancaveis(P.pos).find(s => distSalas(s, P.room) === 2); if (r) { const [x, z] = pontoEm(r); SFX.passoMonstro({ x, z }, .35); } }
   M.diretorT -= dt;
   if (M.diretorT <= 0 && M.state === 'patrulha' && M.recuo <= 0) {
     M.diretorT = rand(18, 32) * D().intervalo;
     if (d > 22) { const viz = [P.room, ...W.links.filter(l => (l.a === P.room.id || l.b === P.room.id) && !(l.door && l.door.trava && l.door.trava())).map(l => SALA(l.a === P.room.id ? l.b : l.a))].filter(r => (!r.fora || W.def.inspetorFora) && !r.seguro); const r = pick(viz); if (r) { const [x, z] = pontoEm(r); planejar(M, x, z); } }
   }
-  const ouvido = P.noiseR * att * D().ouvido * (M.state === 'caca' ? 1.6 : 1);
+  // Rotas da jogadora (ele aprende por onde você passa)
+  if (P.room && P.room !== M.ultSalaJog) { M.ultSalaJog = P.room; const rt = S.flags.rotas || (S.flags.rotas = {}), k = W.mapa + ':' + P.room.id; rt[k] = (rt[k] || 0) + 1; }
+  // Audição (submersa na água dos túneis, ela não é ouvida)
+  const ajuda = ajudaCap() ? .88 : 1;
+  const ouvido = P.noiseR * pisoMult() * att * D().ouvido * ajuda * (M.state === 'caca' ? 1.6 : M.state === 'escuta' ? 1.5 : 1);
   const submersa = !!(W.def.submersa && W.def.submersa());
   const ouve = !S.hidden && !submersa && !(P.room.seguro && !fuga) && (fuga || M.furia > 0 || (P.noiseR > 0 && d < ouvido));
-  if (ouve && !M.alvoGarrafa) {
+  if (ouve && !M.alvoGarrafa && !ocupado) {
+    M.ultimo = P.pos.clone();
     if (M.state !== 'caca') {
-      if (d < 11 || fuga || M.furia > 0) { M.state = 'caca'; SFX.susto(); falaInspetor(); S.capVisto++; }
-      else M.state = 'investiga';
+      if (d < 11 || fuga || M.furia > 0 || M.state === 'escuta' || M.state === 'emboscada') iniciarAlerta();
+      else { if (M.state !== 'investiga') falaInspetor(false, tipoPasso()); M.state = 'investiga'; M.acao = null; }
     }
-    M.replan -= dt;
-    if (M.replan <= 0) { planejar(M, P.pos.x, P.pos.z); M.replan = .35; }
+    if (M.state === 'caca' || M.state === 'investiga') { M.replan -= dt; if (M.replan <= 0) { planejar(M, P.pos.x, P.pos.z); M.replan = .35; } }
     M.searchT = 0;
-  }
+  } else if (!ouve && !S.hidden && !submersa && P.noiseR > 0 && d < ouvido * 1.4 && !ocupado && M.state !== 'caca') quase(P.pos.x, P.pos.z);
   if (!S.flags.avist && d < 14 && salaAdj(ra, P.room)) { S.flags.avist = true; SFX.susto(); falar('primeiro_avistamento'); }
+  // A lanterna esquenta: luz no rosto dele, de perto, por muito tempo, chama atenção
+  if (!S.hidden && S.flashOn && !flashPisca && d < 3.5 && !ocupado && M.state !== 'caca' && visivel(M.pos, 2.7, 4)) {
+    M.calorT += dt;
+    if (M.calorT > 1.5 && M.calorCd <= 0) { M.calorT = 0; M.calorCd = 20; M.olhar = P.pos.clone(); M.olharT = 1.5; M.state = 'investiga'; M.acao = null; M.ultimo = P.pos.clone(); planejar(M, P.pos.x, P.pos.z); M.falaT = 0; falaInspetor(false, 'calor'); if (!S.flags.dicaCalor) { S.flags.dicaCalor = true; setTimeout(() => subPequeno('lia', 'Ele sentiu o calor da lanterna no rosto.'), 1800); } }
+  } else M.calorT = Math.max(0, M.calorT - dt);
+  // Medo no talo: ela ofega alto (fora do esconderijo)
+  if (!S.hidden && S.fear > 85) { M.ofegoT -= dt; if (M.ofegoT <= 0) { M.ofegoT = 3; SFX.ofego(); emitNoise(P.pos.x, P.pos.z, 2.5, true); } } else M.ofegoT = Math.max(M.ofegoT, 1);
+  // Esconderijo: o coração denuncia, prender o ar acalma, ele fareja quem passa perto
+  if (S.hidden) {
+    if (prendendo()) { S.fear = Math.max(0, S.fear - 6 * dt); M.ansiedade = Math.max(0, M.ansiedade - dt * .5); }
+    if (S.fear > 85 && d < 3 && S.dif !== 'facil') { M.hbT -= dt; if (M.hbT <= 0) { M.hbT = 60 / lerp(55, 150, S.fear / 100); emitNoise(P.pos.x, P.pos.z, 1.6, true); if (!S.flags.dicaCoracao) { S.flags.dicaCoracao = true; subPequeno('lia', 'Ele ouve meu coração. Preciso me acalmar.'); } } }
+    const dl = Math.hypot(M.pos.x - S.hidden.x, M.pos.z - S.hidden.z);
+    if (!M.achou && !ocupado && M.farejaCd <= 0 && M.state !== 'caca' && dl < 1.8) iniciarFareja(S.hidden);
+  }
+  // Estados parados
+  if (M.state === 'alerta') { M.alertaT -= dt; if (M.alertaT <= 0) { if (S.hidden) { M.state = 'investiga'; if (M.ultimo) planejar(M, M.ultimo.x, M.ultimo.z); } else entrarCaca(); } }
+  else if (M.state === 'escuta') { M.escutaT -= dt; if (M.escutaT <= 0) M.state = M.escutaVolta || 'procura'; }
+  else if (M.state === 'emboscada') { M.emboscadaT -= dt; if (M.emboscadaT <= 0) { M.falaT = 0; if (!S.hidden && d < 9) falaInspetor(false, 'volta'); patrulhar(); } }
+  else if (M.state === 'bote') {
+    M.boteT -= dt; if (P.crouch && !M.boteIni) M.boteAgachou = true;
+    if (M.boteT <= 0) {
+      const dir = new THREE.Vector3(P.pos.x - M.pos.x, 0, P.pos.z - M.pos.z); if (dir.length() > .01) { dir.normalize(); M.pos.addScaledVector(dir, .5); collide(M.pos, .3); }
+      const d2 = M.pos.distanceTo(P.pos);
+      if (S.hidden || (P.room.seguro && !fuga)) { M.state = 'procura'; M.searchT = 3; }
+      else if (d2 < 1.6) {
+        if (M.boteAgachou && P.noiseR === 0 && M.cacaT < 2.5 && !fuga) { M.state = 'procura'; M.searchT = 4; M.cool = 2.5; SX.arrastoAr(M.pos); toast('A mão dele passou por cima da sua cabeça.'); }
+        else agarrar();
+      } else if (d2 < 2.4) { M.state = 'caca'; M.cool = 1.2; arranhao(); planejar(M, P.pos.x, P.pos.z); }
+      else { M.state = 'caca'; M.cool = .6; planejar(M, P.pos.x, P.pos.z); }
+    }
+  }
+  else if (M.state === 'agarra') {
+    AG.t += dt;
+    if (S.dead) { MAOS.visible = false; P.bloqueado = AG.prev; M.state = 'procura'; }
+    else {
+      const head = new THREE.Vector3(); MON.cabeca.getWorldPosition(head);
+      const ty = Math.atan2(-(head.x - camera.position.x), -(head.z - camera.position.z)), tp = Math.atan2(head.y - camera.position.y, Math.hypot(head.x - camera.position.x, head.z - camera.position.z));
+      let dy = ty - P.yaw; dy = Math.atan2(Math.sin(dy), Math.cos(dy)); P.yaw += dy * Math.min(1, dt * 10); P.pitch = lerp(P.pitch, clamp(tp, -1.2, 1.2), Math.min(1, dt * 10));
+      MAOS.position.set(rand(-.01, .01), Math.sin(AG.t * 30) * .01, -Math.min(.12, AG.t * .3)); P.shake = Math.max(P.shake, .05);
+      if (AG.t >= AG.dur) { MAOS.visible = false; P.bloqueado = AG.prev; const solto = AG.sacode > 1400; if (!solto && !S.causaCtx) S.causaCtx = 'agarrao'; atacar('inspetor', solto); if (solto && !S.dead) toast('Você se soltou! Corre!'); }
+    }
+  }
+  else if (M.state === 'fareja') {
+    M.farejaT -= dt;
+    if (!S.hidden || S.hidden !== M.alvoL) { M.state = 'procura'; M.searchT = 3; }
+    else if (M.farejaT < 1.5 && !prendendo()) abrirEsconderijo();
+    else if (M.farejaT <= 0) desistirDoEsconderijo();
+  }
+  else if (M.state === 'vasculha') {
+    const t0 = M.vasculhaT; M.vasculhaT -= dt;
+    for (const tb of [3.8, 3.2, 2.6]) if (t0 > tb && M.vasculhaT <= tb && S.hidden) { SX.batida(S.hidden.x, S.hidden.z, 1); tremer(S.hidden.g, .2, .05); P.shake = Math.max(P.shake, .04); }
+    if (!S.hidden || S.hidden !== M.alvoL) { M.state = 'procura'; M.searchT = 3; M.achou = false; }
+    else if (M.certo && M.vasculhaT < 2) abrirEsconderijo();
+    else if (M.vasculhaT < 2.2 && !prendendo()) abrirEsconderijo();
+    else if (M.vasculhaT <= 0) desistirDoEsconderijo();
+  }
+  if (M.chamadoT > 0) { M.chamadoT -= dt; if (M.chamadoT <= 0 && !S.hidden && M.state === 'investiga') iniciarAlerta(); }
+  if (M.state === 'caca') M.cacaT += dt;
+  // Movimento
   const aguaAqui = ra.agua && !S.flags.aguaBaixa;
-  const base = { patrulha: 1.9, investiga: 3.0, procura: 1.6, caca: 4.6 }[M.state] || 1.8;
+  const base = { patrulha: 1.9, investiga: 3.0, procura: 1.6, caca: 4.6, conferir: M.conferir === 2 ? 3.2 : 2 }[M.state] || 1.8;
   const esc = 1 + Math.max(0, S.chapter - 2) * .083;
-  const speed = (fuga ? 4.9 : base * esc) * D().vel * (aguaAqui ? .85 : 1);
+  const fugaVel = d > 9 ? 5.6 : d < 3 ? 4.2 : 4.9; // na fuga ele fica colado nas suas costas, sem ser impossível
+  const speed = (fuga && M.state === 'caca' ? fugaVel : fuga ? 4.9 : base * esc) * D().vel * (aguaAqui ? .85 : 1) * (ajudaCap() ? .92 : 1);
+  const parado = ['alerta', 'bote', 'agarra', 'escuta', 'emboscada', 'fareja', 'vasculha'].includes(M.state);
+  if (fuga && M.state === 'caca') { M.tropecoT -= dt; if (M.tropecoT <= 0 && d > 3) { M.tropecoT = rand(13, 17); M.wait = 2; M.caidoT = 2; SX.tropeco(M.pos); } }
+  M.caidoT = Math.max(0, M.caidoT - dt);
   if (M.wait > 0) M.wait -= dt;
+  else if (parado) { /* parado, ouvindo */ }
   else if (M.path.length) {
     andar(M, dt, speed);
     M.stepT -= speed * dt;
     if (M.stepT <= 0) { M.stepT = 1.05; SFX.passoMonstro(M.pos, M.state === 'caca' ? 1 : .6, aguaAqui); }
+    if (S.chapter === 3) { M.correnteT -= speed * dt; if (M.correnteT <= 0) { M.correnteT = .8; SX.corrente(M.pos); } }
   } else {
-    if (M.state === 'caca' || M.state === 'investiga') { M.state = 'procura'; M.searchT = rand(5, 8); falaInspetor(true); }
-    if (M.state === 'procura') {
-      M.searchT -= dt;
-      if (M.searchT <= 0) patrulhar();
-      else { const [x, z] = pontoEm(ra); planejar(M, x, z); M.wait = rand(.8, 2); }
-    } else { M.wait = rand(1.2, 3.5); patrulhar(); }
+    if (M.acao) executarAcao();
+    else if (M.state === 'caca' || M.state === 'investiga') { M.state = 'procura'; M.searchT = rand(5, 8); M.favCheck = false; falaInspetor(true); if (M.escutaCd <= 0) escutar(rand(2, 3.5)); }
+    else if (M.state === 'conferir') {
+      if (M.conferir === 1) { M.conferir = 2; M.wait = 4; const [x, z] = pontoEm(M.conferirSala); planejar(M, x, z); }
+      else { M.conferir = 0; M.state = 'procura'; M.searchT = 4; SX.estalo(M.pos, 1.3, true); M.falaT = 0; falaInspetor(false, 'volta'); }
+    }
+    else if (M.state === 'procura') { if (!escolherAcaoProcura(ra)) { const [x, z] = pontoEm(ra); planejar(M, x, z); M.wait = rand(.8, 2); } }
+    else { M.wait = rand(1.2, 3.5); patrulhar(); }
   }
-  M.clickT -= dt;
-  if (M.clickT <= 0) { M.clickT = M.state === 'caca' ? .55 : M.state === 'procura' ? .8 : 1.5; SFX.estalo(M.pos, M.state === 'caca' ? 1 : .6); }
-  if (!S.dead && M.cool <= 0) {
-    if (!S.hidden && !submersa && d < 1.2 && !(P.room.seguro && !fuga)) atacar('inspetor');
-    else if (S.hidden && M.achou && d < 2.4) { sairEsconderijo(true); atacar('inspetor'); }
+  // A procura agora acaba de verdade (antes o tempo só corria na chegada de cada ponto)
+  if (M.state === 'procura' && !M.acao) { M.searchT -= dt; if (M.searchT <= 0) fimProcura(ra); }
+  // Assinatura sonora por estado: dá para saber o que ele está fazendo só de ouvir
+  M.clickT -= dt; M.somT -= dt;
+  const mudo = ['alerta', 'escuta', 'emboscada', 'fareja', 'vasculha', 'agarra', 'bote'].includes(M.state) || (M.state === 'conferir' && M.wait > 0);
+  if (M.state === 'emboscada' && M.emboscadaT < 1 && !M.emboscadaClique) { M.emboscadaClique = true; SX.estalo(M.pos, .9); }
+  if (!mudo && M.clickT <= 0) { M.clickT = { caca: .45, procura: .55, investiga: 1 }[M.state] || 1.8; SX.estalo(M.pos, (M.state === 'caca' ? 1 : .6) * (M.recuo > 0 ? .35 : 1)); }
+  if (!mudo && M.somT <= 0) {
+    if (M.state === 'caca') { SX.respiraRasgada(M.pos); M.somT = .9; }
+    else if (M.state === 'investiga') { SX.fungada(M.pos); M.somT = rand(1.2, 2); }
+    else if (M.state === 'patrulha' && M.recuo <= 0) { SX.cantarola(M.pos); M.somT = rand(6, 10); }
+    else M.somT = 1.5;
   }
-  if (!S.hidden || d > 4) M.achou = false;
-  MON.g.position.copy(M.pos); MON.g.rotation.y = M.yaw;
+  if (!S.dead && M.cool <= 0 && !S.hidden && !submersa && !(P.room.seguro && !fuga) && !['bote', 'agarra', 'fareja', 'vasculha', 'alerta'].includes(M.state) && d < (M.state === 'caca' ? 2.3 : 1.2)) iniciarBote();
+  if (!S.dead && M.cool <= 0 && S.hidden && M.achou && d < 2.4 && !['vasculha', 'agarra', 'fareja'].includes(M.state)) iniciarVasculha();
+  if (!S.hidden || d > 4) { M.achou = false; M.certo = false; }
+  // Corpo
+  let gx = M.pos.x, gz = M.pos.z;
+  if ((M.state === 'fareja' || M.state === 'vasculha') && M.alvoL) { const vx = M.alvoL.x - M.pos.x, vz = M.alvoL.z - M.pos.z, l = Math.hypot(vx, vz) || 1; gx += vx / l * .3; gz += vz / l * .3; }
+  MON.g.position.set(gx, 0, gz); MON.g.rotation.y = M.yaw;
+  const lean = M.caidoT > 0 ? .9 : M.state === 'caca' ? (S.chapter >= 5 ? .35 : .14) : (M.state === 'fareja' || M.state === 'vasculha') ? .32 : M.state === 'bote' ? -.12 : 0;
+  MON.g.rotation.x = lerp(MON.g.rotation.x, lean, Math.min(1, dt * 6));
   const sw = Math.sin(M.anim), caca = M.state === 'caca' ? -.6 : 0;
   MON.legL.rotation.x = sw * .5; MON.legR.rotation.x = -sw * .5;
-  MON.armL.rotation.x = -sw * .3 + caca; MON.armR.rotation.x = sw * .3 + caca;
+  const bracoAlto = M.state === 'bote' || M.state === 'agarra' ? -1.5 : M.state === 'vasculha' ? -.9 : null;
+  if (bracoAlto !== null) { MON.armL.rotation.x = lerp(MON.armL.rotation.x, bracoAlto, Math.min(1, dt * 14)); MON.armR.rotation.x = lerp(MON.armR.rotation.x, bracoAlto, Math.min(1, dt * 14)); }
+  else { MON.armL.rotation.x = -sw * .3 + caca; MON.armR.rotation.x = sw * .3 + caca; }
   MON.g.position.y = Math.abs(Math.cos(M.anim)) * .05 - (aguaAqui ? .3 : 0);
-  MON.cabeca.rotation.z = .45 + Math.sin(perf * 7) * (M.state === 'procura' ? .25 : .03) + (Math.random() < .015 ? rand(-.5, .5) : 0);
-  MON.cabeca.rotation.y = M.state === 'procura' ? Math.sin(perf * 1.7) * .9 : 0;
+  // dedos se abrem quando ele escuta ou fareja
+  const abre = M.state === 'escuta' || M.state === 'fareja' || M.state === 'emboscada';
+  for (const mao of MON.maos) mao.children.forEach((f, i) => { f.rotation.z = lerp(f.rotation.z, abre ? (i - 1.5) * .35 : 0, Math.min(1, dt * 5)); });
+  // cabeça
+  let cz = .45 + Math.sin(perf * 7) * (M.state === 'procura' ? .25 : .03) + (Math.random() < .015 ? rand(-.5, .5) : 0), cy = M.state === 'procura' ? Math.sin(perf * 1.7) * .9 : 0, rapido = 6;
+  if (M.state === 'escuta' || M.state === 'emboscada') cz = 1.15;
+  if (M.state === 'fareja' || M.state === 'vasculha') cz = 1.0;
+  if (M.olharT > 0 && M.olhar) { let a = Math.atan2(M.olhar.x - M.pos.x, M.olhar.z - M.pos.z) - M.yaw; a = Math.atan2(Math.sin(a), Math.cos(a)); cy = clamp(a, -1.5, 1.5); rapido = 22; }
+  MON.cabeca.rotation.z = lerp(MON.cabeca.rotation.z, cz, Math.min(1, dt * rapido)); MON.cabeca.rotation.y = lerp(MON.cabeca.rotation.y, cy, Math.min(1, dt * rapido));
+  MON.boca.scale.y = lerp(MON.boca.scale.y, ['caca', 'bote', 'agarra'].includes(M.state) ? 1.9 + Math.sin(perf * 20) * .2 : 1, Math.min(1, dt * 8));
+  // a venda pega a luz da lanterna: a primeira coisa que se vê no escuro
+  let brilho = 0;
+  if (S.flashOn && !flashPisca && d < 14) { const head = new THREE.Vector3(); MON.cabeca.getWorldPosition(head); const fw = new THREE.Vector3(); camera.getWorldDirection(fw); const dot = fw.dot(head.sub(camera.position).normalize()); brilho = clamp((dot - .9) / .1, 0, 1) * (1 - d / 14) * 1.4; }
+  MON.faixa.emissiveIntensity = lerp(MON.faixa.emissiveIntensity, brilho, Math.min(1, dt * 10));
 }
 
 // --- A MENINA QUE CONTA
@@ -983,15 +1429,30 @@ function modeloAna() {
   const cabelo = new THREE.MeshStandardMaterial({ color: 0x050505, roughness: .9, side: THREE.DoubleSide });
   cyl(.12, .3, .85, camisola, 0, .45, 0, 10, g);
   cyl(.13, .12, .3, camisola, 0, 1.0, 0, 10, g);
-  const cab = new THREE.Mesh(new THREE.SphereGeometry(.12, 12, 10), pele); cab.position.y = 1.27; g.add(cab);
-  const cab2 = new THREE.Mesh(new THREE.CylinderGeometry(.13, .19, .6, 12, 1, true), cabelo); cab2.position.y = 1.12; g.add(cab2);
-  box(.2, .32, .02, cabelo, 0, 1.2, .12, g, false);
-  for (const s of [-1, 1]) { const b = cyl(.025, .02, .55, pele, s * .17, .78, 0, 6, g); b.rotation.z = s * .1; }
+  const cabG = new THREE.Group(); cabG.position.y = 1.27; g.add(cabG);
+  const cab = new THREE.Mesh(new THREE.SphereGeometry(.12, 12, 10), pele); cabG.add(cab);
+  const cab2 = new THREE.Mesh(new THREE.CylinderGeometry(.13, .19, .6, 12, 1, true), cabelo); cab2.position.y = -.15; cabG.add(cab2);
+  box(.2, .32, .02, cabelo, 0, -.07, .12, cabG, false);
+  const olhoMat = new THREE.MeshBasicMaterial({ color: 0x000000 });
+  for (const s of [-1, 1]) { const o = new THREE.Mesh(new THREE.SphereGeometry(.011, 6, 6), olhoMat); o.position.set(s * .036, .012, .134); cabG.add(o); }
+  const bracos = [];
+  for (const s of [-1, 1]) { const a = new THREE.Group(); a.position.set(s * .17, 1.05, 0); a.rotation.z = s * .1; g.add(a); cyl(.025, .02, .55, pele, 0, -.27, 0, 6, a); bracos.push(a); }
   g.traverse(o => { if (o.isMesh) o.castShadow = true; });
+  g.userData = { cabG, bracos, olhoMat };
   return g;
 }
 const ANA_G = modeloAna(); scene.add(ANA_G); ANA_G.visible = false;
-const ANA = { pos: new THREE.Vector3(), ativa: false, path: [], yaw: 0, anim: 0, vida: 0, conta: 0, contaT: 0, vista: false, script: false, cool: 0 };
+const ANA = { pos: new THREE.Vector3(), ativa: false, path: [], yaw: 0, anim: 0, vida: 0, conta: 0, contaT: 0, vista: false, script: false, cool: 0,
+  pose: 0, headY: 0, encaraT: 0, falhaT: 0, piscaCd: 0, olhoT: 0, passoAcc: 0, gizT: 0, giz: 0, gizGrupo: null, teto: false, tetoT: 0, escondT: 0, abrirT: 0, pegos: 0, portaAlvo: null, portaT: 0 };
+// Poses: cada vez que ela sai da sua vista, volta diferente
+const POSES_ANA = [
+  { cx: 0, cy: 0, cz: 0, braco: 0, corpo: 0, y: 0 },
+  { cx: 0, cy: 0, cz: 1.45, braco: 0, corpo: 0, y: 0 },      // cabeça deitada no ombro
+  { cx: 0, cy: 0, cz: .2, braco: -1.5, corpo: 0, y: 0 },     // braços estendidos para você
+  { cx: 0, cy: 2.7, cz: .15, braco: 0, corpo: Math.PI, y: 0 }, // de costas, olhando por cima do ombro
+  { cx: .35, cy: 0, cz: .3, braco: -.5, corpo: 0, y: -.34 },  // ajoelhada
+  { cx: .75, cy: 0, cz: 0, braco: 0, corpo: 0, y: 0 }          // cabeça baixa
+];
 function spawnAna(sala, script = false) {
   let alvoSala = sala;
   if (!alvoSala) {
@@ -1004,124 +1465,361 @@ function spawnAna(sala, script = false) {
     if (!script && visivel({ x, z }, 1, 30)) continue;
     if (Math.hypot(x - P.pos.x, z - P.pos.z) < 4.5) continue;
     ANA.pos.set(x, 0, z); ANA.ativa = true; ANA_G.visible = true; ANA.vida = script ? 24 : rand(28, 40); ANA.conta = 0; ANA.contaT = 1; ANA.script = script; ANA.path = []; ANA.cool = 1.5;
+    ANA.pose = 0; ANA.headY = 0; ANA.encaraT = 0; ANA.falhaT = 0; ANA.escondT = 0; ANA.abrirT = 0; ANA.pegos = 0; ANA.portaAlvo = null; ANA.gizT = 0;
+    ANA.teto = !script && !alvoSala.fora && Math.random() < .25; ANA.tetoT = 0; // às vezes ela espera grudada no teto
     SFX.risada(x, z); return true;
   }
   return false;
 }
+function anaAvancar(m) { // chega mais perto de uma vez, sem nunca encostar
+  const v = new THREE.Vector3(P.pos.x - ANA.pos.x, 0, P.pos.z - ANA.pos.z), l = v.length();
+  if (l < 1.6) return;
+  const n = ANA.pos.clone().addScaledVector(v.normalize(), Math.min(m, l - 1.4)); collide(n, .25);
+  if (roomAt(n.x, n.z) === roomAt(ANA.pos.x, ANA.pos.z) || salaAdj(roomAt(n.x, n.z), roomAt(ANA.pos.x, ANA.pos.z))) ANA.pos.copy(n);
+}
+// No DEZ ela aparece atrás de você, mas nunca dentro da parede nem do outro lado de uma porta
+function anaAtras() {
+  const fw = new THREE.Vector3(); camera.getWorldDirection(fw); fw.y = 0; fw.normalize();
+  const lado = new THREE.Vector3(-fw.z, 0, fw.x);
+  const ofs = [[-2.2, 0], [-1.8, .9], [-1.8, -.9], [-1.5, 0], [0, 1.7], [0, -1.7]];
+  for (const [f, s] of ofs) {
+    const c = new THREE.Vector3(P.pos.x + fw.x * f + lado.x * s, 0, P.pos.z + fw.z * f + lado.z * s), c2 = c.clone(); collide(c2, .25);
+    if (c2.distanceTo(c) > .15 || roomAt(c.x, c.z) !== P.room || !linhaLivre(P.pos, c)) continue;
+    ANA.pos.copy(c); return true;
+  }
+  return false;
+}
+function portaParaAna() { // porta fechada entre ela e você: ela espera do outro lado
+  const ra = roomAt(ANA.pos.x, ANA.pos.z), dr = distSalas(ra, P.room);
+  for (const l of W.links) {
+    if (!(l.a === ra.id || l.b === ra.id) || !l.door || l.door.open) continue;
+    const outra = SALA(l.a === ra.id ? l.b : l.a); if (!outra || distSalas(outra, P.room) >= dr) continue;
+    const c = centroSala(ra), v = new THREE.Vector3(c.x - l.x, 0, c.z - l.z).normalize();
+    return { l, door: l.door, x: l.x + v.x * .75, z: l.z + v.z * .75 };
+  }
+  return null;
+}
 function updateAna(dt) {
   if (!ANA.ativa) return;
-  ANA.vida -= dt; ANA.cool = Math.max(0, ANA.cool - dt);
+  ANA.vida -= dt; ANA.cool = Math.max(0, ANA.cool - dt); ANA.piscaCd = Math.max(0, ANA.piscaCd - dt);
   const d = ANA.pos.distanceTo(P.pos);
-  const iluminada = (S.flashOn && !flashPisca && d < 16) || naLuz(ANA.pos) || d < 2.2;
-  ANA.vista = !S.hidden && iluminada && visivel(ANA.pos, 1.0, 18);
+  if (ANA.falhaT > 0) { ANA.falhaT -= dt; flash.intensity = 0; flashFill.intensity = 0; }
+  const luzLanterna = S.flashOn && !flashPisca && ANA.falhaT <= 0 && d < 16;
+  const iluminada = luzLanterna || naLuz(ANA.pos);
+  const naVista = !S.hidden && visivel(ANA.pos, ANA.teto ? 2.3 : 1.0, 18);
+  const antes = ANA.vista;
+  ANA.vista = naVista && iluminada;
   if (ANA.vista) S.flags.anaVista = true;
+  if (ANA.vista && !antes) { let p = ANA.pose; for (let i = 0; i < 4 && p === ANA.pose; i++) p = Math.random() * POSES_ANA.length | 0; ANA.pose = p; }
+  if (iluminada && naVista) ANA.olhoT = .5; else ANA.olhoT = Math.max(0, ANA.olhoT - dt);
+  ANA_G.userData.olhoMat.color.setHex(ANA.olhoT > 0 ? 0xd6e6ff : 0x000000);
   if (ANA.vida <= 0) { despawnAna(); return; }
-  if (S.hidden && !ANA.script) ANA.vida = Math.min(ANA.vida, 3);
-  if (!ANA.vista) {
-    if (!ANA.path.length || Math.random() < dt * 2) planejar(ANA, P.pos.x, P.pos.z, { evitaFechadas: true });
-    andar(ANA, dt, 3.4 * D().vel, false);
-    ANA.contaT -= dt;
-    if (ANA.contaT <= 0) {
-      ANA.contaT = 1.1; const c = R.entidades.ana.contagem[Math.min(9, ANA.conta)];
-      SFX.contagem(ANA.pos, ANA.conta); if (ANA.conta % 3 === 0 || ANA.conta >= 8) subPequeno('ana', c);
-      ANA.conta++;
-      if (ANA.conta >= 10 && d < 10) {
-        const fw = new THREE.Vector3(); camera.getWorldDirection(fw); fw.y = 0; fw.normalize();
-        ANA.pos.set(P.pos.x - fw.x * 1.4, 0, P.pos.z - fw.z * 1.4); collide(ANA.pos, .25); ANA.conta = 0; SFX.susto();
+  // Encarar a menina cobra: gasta pilha, ela cantarola, e depois de muito tempo a lanterna falha
+  if (ANA.vista && luzLanterna) { ANA.encaraT += dt; S.battery = Math.max(0, S.battery - .55 * 1.5 * D().pilha * dt); } else ANA.encaraT = 0;
+  if (ANA.encaraT > 6 && !AMBX.hum) SX.anaHum(true, { x: ANA.pos.x, y: 1.2, z: ANA.pos.z });
+  if (AMBX.hum && !ANA.vista) SX.anaHum(false);
+  if (ANA.encaraT > 8) { ANA.encaraT = 0; ANA.falhaT = .6; SFX.clique(); SX.anaHum(false); anaAvancar(2); ANA.pose = 5; }
+  // Pilha fraca: cada piscada da lanterna deixa ela andar
+  if (naVista && S.flashOn && flashPisca && S.battery < 18 && ANA.piscaCd <= 0 && !ANA.teto) { ANA.piscaCd = .45; anaAvancar(.8); ANA.pose = Math.random() * POSES_ANA.length | 0; }
+  const ra = roomAt(ANA.pos.x, ANA.pos.z), aguaAqui = ra.agua && !S.flags.aguaBaixa;
+  const antesPos = ANA.pos.clone();
+  if (ANA.teto) { // presa no teto: só desce quando você não está olhando
+    if (!ANA.vista) ANA.tetoT += dt;
+    if (!ANA.vista && (ANA.tetoT > 4 || Math.hypot(ANA.pos.x - P.pos.x, ANA.pos.z - P.pos.z) < 3)) { ANA.teto = false; SFX.pancada(ANA.pos.x, ANA.pos.z); ANA.conta = Math.max(ANA.conta, 4); }
+  } else if (S.hidden && !ANA.script) { // escondida? ela vem até a porta e conta baixinho do lado de fora
+    const L = S.hidden, [fx, fz] = frenteDe(L, 1.1);
+    ANA.escondT += dt;
+    if (!ANA.path.length || Math.random() < dt) planejar(ANA, fx, fz, { evitaFechadas: true });
+    andar(ANA, dt, 1.6 * D().vel, false);
+    if (ANA.escondT > 12 && M.ansiedade < .5) ANA.vida = Math.min(ANA.vida, 1.5); // calma de verdade: ela cansa e vai embora
+    if (ANA.abrirT > 0) { ANA.abrirT -= dt; if (ANA.abrirT <= 0 && S.hidden) { S.causaCtx = 'ana_armario'; SX.armarioBate(S.hidden); sairEsconderijo(true); atacar('ana', true); despawnAna(true); return; } }
+    else {
+      ANA.contaT -= dt;
+      if (ANA.contaT <= 0) {
+        ANA.contaT = 1.9 * (ajudaCap() ? 1.2 : 1);
+        SFX.contagem(ANA.pos, Math.min(9, ANA.conta)); if (ANA.conta >= 7) subPequeno('ana', R.entidades.ana.contagem[Math.min(9, ANA.conta)]);
+        ANA.conta++;
+        if (ANA.conta >= 10) {
+          ANA.conta = 0;
+          if (S.flashOn && Math.hypot(ANA.pos.x - L.x, ANA.pos.z - L.z) < 2.2) { SFX.risada(ANA.pos.x, ANA.pos.z); subPequeno('ana', 'Tá claro aí dentro... não vale.'); ANA.vida -= 10; anaRecuar(2.2); }
+          else if (Math.hypot(ANA.pos.x - L.x, ANA.pos.z - L.z) < 2.2) { for (let i = 0; i < 3; i++) setTimeout(() => SX.batida(L.x, L.z, .6), i * 380); tremer(L.g, 1.1, .03); ANA.abrirT = 1.4; }
+        }
       }
     }
+  } else if (!ANA.vista) {
+    const pertoEscuro = naVista && d < 2.2; // perto e no escuro: ela não para, se arrasta devagar
+    if (!ANA.path.length || Math.random() < dt * 2) {
+      const ok = planejar(ANA, P.pos.x, P.pos.z, { evitaFechadas: true });
+      ANA.portaAlvo = ok ? null : portaParaAna();
+      if (ANA.portaAlvo) planejar(ANA, ANA.portaAlvo.x, ANA.portaAlvo.z);
+    }
+    andar(ANA, dt, (pertoEscuro ? .6 : 3.4) * D().vel, false);
+    const naPorta = ANA.portaAlvo && Math.hypot(ANA.pos.x - ANA.portaAlvo.x, ANA.pos.z - ANA.portaAlvo.z) < .9 && !ANA.portaAlvo.door.open;
+    if (naPorta) { ANA.portaT -= dt; if (ANA.portaT <= 0) { ANA.portaT = rand(.25, .6); ANA.portaAlvo.door.ang += rand(-.04, .04); if (Math.random() < .3) SX.macaneta(ANA.portaAlvo.door.x, ANA.portaAlvo.door.z); } }
+    ANA.contaT -= dt;
+    if (ANA.contaT <= 0) {
+      // ela conta mais rápido quando está perto, quando você corre e quando a sua luz está fraca ou apagada
+      let iv = lerp(.55, 1.4, clamp((d - 4) / 8, 0, 1));
+      iv *= P.sprinting ? .6 : P.crouch ? 1.3 : 1;
+      iv *= !S.flashOn ? .8 : S.battery < 18 ? .85 : 1;
+      if (naPorta) iv = .6;
+      if (ajudaCap()) iv *= 1.2;
+      ANA.contaT = clamp(iv, .45, 1.6);
+      const n = Math.min(9, ANA.conta), c = R.entidades.ana.contagem[n];
+      let vozPos = ANA.pos;
+      if (n >= 7 && d < 10) { const fw = new THREE.Vector3(); camera.getWorldDirection(fw); vozPos = { x: P.pos.x - fw.x * .6, z: P.pos.z - fw.z * .6 }; } // oito e nove: atrás da sua cabeça
+      if (n === 7) abafarDrone(2.5);
+      SFX.contagem(vozPos, n); if (ANA.conta % 3 === 0 || ANA.conta >= 7) subPequeno('ana', c);
+      if (n >= 7 && d < 10) SFX.contagem(vozPos, n); // mais alto e mais perto nos últimos números
+      ANA.conta++;
+      if (ANA.conta >= 10) {
+        if (naPorta) { // porta entre vocês: no DEZ a maçaneta gira e a porta abre uma fresta; da segunda vez, abre
+          const dr = ANA.portaAlvo.door; ANA.conta = 4;
+          if (!dr.fresta) { dr.fresta = true; dr.target = -.22; SFX.rangido(dr.x, 1.2, dr.z, .8); subPequeno('ana', 'Tô vendo você pela fresta...'); }
+          else { dr.fresta = false; setDoor(dr, true); ANA.portaAlvo = null; }
+        } else if (d < 10) {
+          if (anaAtras()) { ANA.conta = 0; ANA.cool = S.dif === 'pesadelo' ? .6 : S.dif === 'facil' ? 1.1 : .8; SFX.susto(); SX.respiracaoNuca(); P.shake = Math.max(P.shake, .06); ANA.pose = Math.random() * POSES_ANA.length | 0; }
+          else ANA.conta = 5; // não tinha lugar atrás de você: ela recomeça do cinco
+        } else ANA.conta = 6; // longe demais: chega mais perto e recomeça do seis
+      }
+    }
+    // passinhos descalços e, de vez em quando, um desenho de giz onde ela passou
+    ANA.passoAcc += ANA.pos.distanceTo(antesPos);
+    if (ANA.passoAcc > .32) { ANA.passoAcc = 0; SX.pesDescalcos(ANA.pos, aguaAqui); }
+    if (ANA.gizGrupo !== W.grupo) { ANA.gizGrupo = W.grupo; ANA.giz = 0; }
+    ANA.gizT += dt;
+    if (ANA.gizT > 7 && ANA.giz < 8 && !ra.fora && !aguaAqui) { ANA.gizT = 0; ANA.giz++; decal(MAT_GIZ, ANA.pos.x + rand(-.3, .3), ANA.pos.z + rand(-.3, .3), .7, .7, rand(0, 6.28)); }
   }
   ANA_G.position.copy(ANA.pos);
   if (!ANA.vista) ANA.yaw = Math.atan2(P.pos.x - ANA.pos.x, P.pos.z - ANA.pos.z);
-  ANA_G.rotation.y = ANA.yaw;
-  ANA_G.position.y = roomAt(ANA.pos.x, ANA.pos.z).agua && !S.flags.aguaBaixa ? -.2 : 0;
-  if (!S.dead && !S.hidden && d < .95 && ANA.cool <= 0) {
-    if (ANA.script) { atacar('ana', true); const r = SALA(W.def.anaSalaScript) || P.room; const [x, z] = pontoEm(r, 1); ANA.pos.set(x, 0, z); ANA.vida = 24; ANA.cool = 2; ANA.conta = 0; }
+  const pose = POSES_ANA[ANA.pose] || POSES_ANA[0], U = ANA_G.userData;
+  // a cabeça continua seguindo você mesmo com o corpo parado, até girar demais
+  if (ANA.vista) { let a = Math.atan2(P.pos.x - ANA.pos.x, P.pos.z - ANA.pos.z) - (ANA.yaw + pose.corpo) - pose.cy; a = Math.atan2(Math.sin(a), Math.cos(a)); ANA.headY += clamp(clamp(a, -2.8, 2.8) - ANA.headY, -.4 * dt, .4 * dt); }
+  else ANA.headY = lerp(ANA.headY, 0, Math.min(1, dt * 3));
+  const tilt = ANA.encaraT > 6 ? Math.min(.9, (ANA.encaraT - 6) * .35) : 0;
+  U.cabG.rotation.set(pose.cx, pose.cy + ANA.headY, pose.cz + tilt);
+  for (const b of U.bracos) b.rotation.x = pose.braco;
+  if (ANA.teto) { ANA_G.rotation.set(Math.PI, ANA.yaw, 0); ANA_G.position.y = 3.05; }
+  else { ANA_G.rotation.set(0, ANA.yaw + pose.corpo, 0); ANA_G.position.y = (aguaAqui ? -.2 : 0) + pose.y; }
+  if (!S.dead && !S.hidden && d < .95 && ANA.cool <= 0 && !ANA.teto) {
+    if (S.battery < 18 && S.inv.lanterna) S.causaCtx = 'pilha';
+    if (ANA.script) { atacar('ana', true); const r = SALA(W.def.anaSalaScript) || P.room; const [x, z] = pontoEm(r, 1); ANA.pos.set(x, 0, z); ANA.pegos++; if (ANA.pegos <= 2) ANA.vida = Math.min(24, ANA.vida + 6); ANA.cool = 2; ANA.conta = 0; }
     else { atacar('ana'); despawnAna(true); }
   }
 }
+function anaRecuar(m) { const v = new THREE.Vector3(ANA.pos.x - P.pos.x, 0, ANA.pos.z - P.pos.z).normalize(); const n = ANA.pos.clone().addScaledVector(v, m); collide(n, .25); if (roomAt(n.x, n.z) === roomAt(ANA.pos.x, ANA.pos.z)) ANA.pos.copy(n); ANA.path = []; }
 function despawnAna(silencioso) {
   if (!ANA.ativa) return;
-  ANA.ativa = false; ANA_G.visible = false;
+  ANA.ativa = false; ANA_G.visible = false; ANA.teto = false; SX.anaHum(false);
   if (!silencioso) SFX.risada(ANA.pos.x, ANA.pos.z);
   const eraScript = ANA.script; ANA.script = false;
   if (eraScript && !silencioso && W.def.anaFim) W.def.anaFim();
 }
 
 // --- A PROCISSÃO
-const PROC = { fase: null, t: 0, path: [], pos: new THREE.Vector3(), g: null, luz: null };
+const PROC = { fase: null, t: 0, path: [], pos: new THREE.Vector3(), g: null, luz: null, filhos: [], chamas: [], abertas: [], fechar: [], pegadas: [], rastro: [], trilha: [], grupoRef: null, olhos: 0, pausa: 0, adiada: 0 };
 (function () {
   const g = new THREE.Group();
+  const chamaMat = new THREE.MeshBasicMaterial({ color: 0xffa040, transparent: true, opacity: .9, blending: THREE.AdditiveBlending, depthWrite: false });
   for (let i = 0; i < 9; i++) {
     const s = new THREE.Group();
     cyl(.1, .22, .9, MAT.sombra, 0, .45, 0, 8, s); const c = new THREE.Mesh(new THREE.SphereGeometry(.12, 10, 8), MAT.sombra); c.position.y = 1.05; s.add(c);
     const olho = new THREE.Mesh(new THREE.SphereGeometry(.015, 6, 6), new THREE.MeshBasicMaterial({ color: 0xff3010 })); olho.position.set(-.04, 1.07, .11); s.add(olho); const o2 = olho.clone(); o2.position.x = .04; s.add(o2);
-    s.position.set((i % 3 - 1) * .5, 0, Math.floor(i / 3) * .9 - .9); s.userData.f = Math.random() * 6; g.add(s);
+    cyl(.014, .014, .16, MAT.vela, .12, .74, .14, 6, s); // cada criança leva uma vela
+    const ch = new THREE.Mesh(new THREE.SphereGeometry(.024, 6, 6), chamaMat); ch.scale.y = 1.8; ch.position.set(.12, .86, .14); s.add(ch); PROC.chamas.push(ch);
+    s.position.set((i % 3 - 1) * .5, 0, Math.floor(i / 3) * .9 - .9); s.userData.f = Math.random() * 6; s.userData.base = s.position.clone(); g.add(s); PROC.filhos.push(s);
   }
   PROC.g = g; g.visible = false; scene.add(g);
-  PROC.luz = new THREE.PointLight(0xff2a10, 0, 9, 1.5); PROC.luz.position.y = 1.4; g.add(PROC.luz);
+  PROC.luz = new THREE.PointLight(0xff7a2a, 0, 9, 1.5); PROC.luz.position.y = 1.4; g.add(PROC.luz);
+  // a criança que fica para trás depois que a fila passa
+  const r = new THREE.Group(); cyl(.1, .22, .9, MAT.sombra, 0, .45, 0, 8, r); const rc = new THREE.Mesh(new THREE.SphereGeometry(.12, 10, 8), MAT.sombra); rc.position.y = 1.05; r.add(rc);
+  r.visible = false; scene.add(r); PROC.retG = r;
 })();
 function iniciarProcissao() {
   if (PROC.fase || S.dead || !W.def.procissao || P.room.fora) return;
-  PROC.fase = 'aviso'; PROC.t = D().aviso; SFX.estatica(D().aviso + 1); SFX.canto(D().aviso + 3);
+  if (ui || fitaTocando) { S.timers.procissao = 6; return; } // nunca começa com fita, nota ou diálogo aberto
+  if (P.room.seguro) { S.timers.procissao = 8; return; }
+  const salas = salasAlcancaveis(P.pos, { semFora: true });
+  const longe3 = salas.filter(r => distSalas(r, P.room) >= 3), longe2 = salas.filter(r => distSalas(r, P.room) >= 2);
+  PROC.ini = longe3.length ? pick(longe3) : longe2.length ? pick(longe2) : pick(salas.filter(r => r !== P.room)) || P.room;
+  const aviso = D().aviso + (ajudaCap() ? 2 : 0);
+  PROC.fase = 'aviso'; PROC.t = aviso;
+  // rota prevista: as lâmpadas do caminho piscam em vermelho e pegadas molhadas vão aparecendo
+  const e = { pos: centroSala(PROC.ini), path: [] }; planejar(e, P.pos.x, P.pos.z);
+  PROC.rota = new Set([PROC.ini.id]); for (const w of e.path) if (w.link) { PROC.rota.add(w.link.a); PROC.rota.add(w.link.b); }
+  for (const L of W.lampadas) { L.corOrig = L.luz.color.getHex(); L.naRota = PROC.rota.has(roomAt(L.x, L.z).id); }
+  PROC.previsto = []; let ant = e.pos.clone();
+  for (const w of e.path) { const seg = w.distanceTo(ant), n = Math.floor(seg / 1.2); for (let k = 1; k <= n; k++) { const p = ant.clone().lerp(w, k / Math.max(1, n)); p.yaw = Math.atan2(w.x - ant.x, w.z - ant.z); PROC.previsto.push(p); } ant = w.clone(); }
+  if (PROC.previsto.length > 2) PROC.previsto.length -= 2; // não marca o seu próprio lugar
+  PROC.pegIdx = 0;
+  // sempre dá tempo de chegar a um esconderijo
+  const livre = W.lockers.reduce((m, L) => Math.min(m, Math.hypot(L.x - P.pos.x, L.z - P.pos.z)), 99) * 1.25;
+  if (livre < 90 && livre / 2.8 > aviso) { PROC.t += Math.min(5, livre / 2.8 - aviso + 1); setTimeout(() => subPequeno('lia', 'Um armário, uma cama... qualquer coisa. Rápido!'), 1500); }
+  SFX.estatica(PROC.t + 1); SFX.canto(PROC.t + 3); SX.passinhos(e.pos); SX.sussurroSilencio(e.pos, 1.4);
+  PROC.cantoT = 2;
   if (!S.flags.procAviso) { S.flags.procAviso = true; falar('procissao_aviso'); }
   toast('As luzes estão piscando...');
 }
+function abafarCanto(dur) { if (!AC || !AMB.canto) return; const t = AC.currentTime, g = AMB.canto.g.gain; g.cancelScheduledValues(t); g.setValueAtTime(Math.max(.0002, g.value), t); g.exponentialRampToValueAtTime(.003, t + .3); g.setValueAtTime(.003, t + dur); g.exponentialRampToValueAtTime(.12, t + dur + .8); }
+function posProcissao(dt) { // o que fica depois que ela passa: portas batendo, sussurros, pegadas, a criança para trás
+  if (PROC.grupoRef !== W.grupo) { PROC.grupoRef = W.grupo; PROC.fechar = []; PROC.pegadas = []; PROC.rastro = []; PROC.retG.visible = false; PROC.ret = null; }
+  for (let i = PROC.fechar.length - 1; i >= 0; i--) { const f = PROC.fechar[i]; f.t -= dt; if (f.t <= 0) { PROC.fechar.splice(i, 1); if (f.d.open && !PROC.fase) { setDoor(f.d, false, true); SFX.pancada(f.d.x, f.d.z); } } }
+  for (let i = PROC.rastro.length - 1; i >= 0; i--) { const r = PROC.rastro[i]; r.t -= dt; if (r.t <= 0) { PROC.rastro.splice(i, 1); SX.sussurroSilencio(r.p, r.v); } }
+  for (let i = PROC.pegadas.length - 1; i >= 0; i--) { const p = PROC.pegadas[i]; if (p.t === undefined) continue; p.t -= dt; p.m.material.opacity = clamp(p.t / 8, 0, .6); if (p.t <= 0) { W.grupo.remove(p.m); p.m.geometry.dispose(); p.m.material.dispose(); PROC.pegadas.splice(i, 1); } }
+  const R2 = PROC.ret;
+  if (R2) {
+    R2.t -= dt; const dd = Math.hypot(P.pos.x - R2.x, P.pos.z - R2.z);
+    if (S.flashOn && !flashPisca && visivel({ x: R2.x, z: R2.z }, 1, 14)) { PROC.retG.visible = false; PROC.ret = null; SFX.risada(R2.x, R2.z); SX.pesDescalcos({ x: R2.x, z: R2.z }); }
+    else if (dd < 2 && !R2.falou) { R2.falou = true; SX.sussurroSilencio({ x: R2.x, z: R2.z }, .7); subPequeno('crianca', 'Você tá fora da cama.'); }
+    else if (R2.t <= 0) { PROC.retG.visible = false; PROC.ret = null; }
+  }
+  PROC.olhos = Math.max(0, PROC.olhos - dt);
+}
 function updateProcissao(dt) {
+  posProcissao(dt);
+  updateFxMonstro();
   if (!PROC.fase) return;
   PROC.t -= dt;
   if (PROC.fase === 'aviso') {
-    for (const L of W.lampadas) { const on = Math.random() < .3; L.luz.intensity = on ? L.base * rand(.6, 1.4) : 0; L.bulbo.material.emissiveIntensity = on ? 2 : 0; }
+    for (const L of W.lampadas) {
+      if (L.naRota) { const on = Math.random() < .45; L.luz.color.setHex(0xff3010); L.luz.intensity = on ? L.base * rand(.8, 1.6) : 0; L.bulbo.material.emissiveIntensity = on ? 2.5 : 0; }
+      else { const on = Math.random() < .1; L.luz.intensity = on ? L.base * .35 : 0; L.bulbo.material.emissiveIntensity = on ? .8 : 0; }
+    }
+    const tot = D().aviso, prog = clamp(1 - PROC.t / tot, 0, 1);
+    while (PROC.previsto && PROC.pegIdx < PROC.previsto.length * prog) { const p = PROC.previsto[PROC.pegIdx++]; PROC.pegadas.push({ m: decal(MAT_PEGADA, p.x + (PROC.pegIdx % 2 ? .12 : -.12), p.z, .2, .4, (p.yaw || 0) + Math.PI, .6) }); }
+    PROC.cantoT -= dt; if (PROC.cantoT <= 0) { PROC.cantoT = 2.4; SX.sussurroSilencio(centroSala(PROC.ini), 1.2); } // o canto já vem de onde eles vão sair
     P.shake = Math.max(P.shake, .012);
     if (PROC.t <= 0) {
-      const salas = salasAlcancaveis(P.pos, { semFora: true });
-      const longe = salas.filter(r => distSalas(r, P.room) >= 2);
-      const ini = longe.length ? pick(longe) : pick(salas.filter(r => r !== P.room)) || P.room;
-      const e1 = { pos: new THREE.Vector3((ini.x0 + ini.x1) / 2, 0, (ini.z0 + ini.z1) / 2), path: [] };
+      const ini = PROC.ini && W.salas.includes(PROC.ini) ? PROC.ini : P.room;
+      const e1 = { pos: centroSala(ini), path: [] };
       planejar(e1, P.pos.x, P.pos.z);
+      const salas = salasAlcancaveis(P.pos, { semFora: true }), longe = salas.filter(r => distSalas(r, P.room) >= 2);
       const outras = longe.filter(r => r !== ini);
       const fim = outras.length ? pick(outras) : ini;
+      PROC.fim = fim;
       const e2 = { pos: P.pos.clone(), path: [] };
       planejar(e2, (fim.x0 + fim.x1) / 2, (fim.z0 + fim.z1) / 2);
       PROC.path = [...e1.path, ...e2.path];
-      for (const w of PROC.path) if (w.link && w.link.door && !w.link.door.open) setDoor(w.link.door, true, true);
+      PROC.trilha = PROC.path.map(v => v.clone());
+      PROC.abertas = []; PROC.atraida = false; PROC.parouAqui = false; PROC.pausou = false; PROC.pausa = 0;
+      PROC.pausaIdx = Math.random() < .4 ? Math.floor(PROC.path.length * rand(.3, .6)) : -1; // às vezes param no meio do caminho
       PROC.pos.copy(e1.pos); PROC.fase = 'passando'; PROC.t = 16; PROC.g.visible = true; PROC.luz.intensity = 5;
+      for (const s of PROC.filhos) { s.rotation.y = 0; s.position.copy(s.userData.base); }
       SFX.procissao();
     }
   } else {
     const ent = PROC.ent || (PROC.ent = { yaw: 0, anim: 0 });
     ent.pos = PROC.pos; ent.path = PROC.path;
-    for (let k = 0; k < 2; k++) andar(ent, dt / 2, 12, false);
+    const dP = PROC.pos.distanceTo(P.pos);
+    // escondida perto do caminho: uma vez por jogo, a fila para na frente do seu esconderijo
+    if (S.hidden && dP < 2.6 && !S.flags.procParou && !PROC.parouAqui) { S.flags.procParou = true; PROC.parouAqui = true; PROC.pausa = 3; PROC.olhos = 3; abafarCanto(3); P.shake = .05; if (S.hidden.tipo === 'cama') { const s = PROC.filhos[4]; s.position.y = -.55; } }
+    if (!PROC.pausou && PROC.pausaIdx >= 0 && PROC.path.length <= PROC.pausaIdx && PROC.pausa <= 0) { PROC.pausou = true; PROC.pausa = 3; abafarCanto(3); }
+    if (PROC.pausa > 0) {
+      PROC.pausa -= dt; PROC.t += dt;
+      for (const s of PROC.filhos) { const w = new THREE.Vector3(); s.getWorldPosition(w); const a = Math.atan2(P.pos.x - w.x, P.pos.z - w.z) - PROC.g.rotation.y; s.rotation.y = lerp(s.rotation.y, a, Math.min(1, dt * 4)); }
+      if (PROC.pausa <= 0) for (const s of PROC.filhos) { s.rotation.y = 0; s.position.copy(s.userData.base); }
+    } else {
+      // as portas abrem uma a uma, com estrondo, na hora em que a fila chega
+      const prox = PROC.path.find(v => v.link);
+      if (prox && prox.link.door && !prox.link.door.open && !(prox.link.door.trava && prox.link.door.trava()) && prox.distanceTo(PROC.pos) < 2.6) { const dr = prox.link.door; setDoor(dr, true, true); SFX.pancada(dr.x, dr.z); PROC.abertas.push(dr); }
+      for (let k = 0; k < 2; k++) andar(ent, dt / 2, 12, false);
+    }
+    // a luz chama a atenção deles, até vazando pela fresta do armário
+    if (!PROC.atraida && S.flashOn && !flashPisca && dP < 7 && linhaLivre(PROC.pos, P.pos) && PROC.fim) {
+      PROC.atraida = true;
+      const a = { pos: PROC.pos.clone(), path: [] }; planejar(a, P.pos.x, P.pos.z);
+      const b = { pos: P.pos.clone(), path: [] }; planejar(b, (PROC.fim.x0 + PROC.fim.x1) / 2, (PROC.fim.z0 + PROC.fim.z1) / 2);
+      PROC.path = [...a.path, ...b.path]; PROC.t = Math.max(PROC.t, 8);
+      if (!S.flags.procLuz) { S.flags.procLuz = true; setTimeout(() => subPequeno('lia', 'A luz... eles viram a luz.'), 600); }
+    }
     PROC.g.position.copy(PROC.pos); PROC.g.rotation.y = ent.yaw;
-    PROC.g.children.forEach(s => { if (s.isGroup) s.position.y = Math.abs(Math.sin(perf * 14 + s.userData.f)) * .1; });
+    PROC.g.children.forEach(s => { if (s.isGroup && PROC.pausa <= 0) s.position.y = Math.abs(Math.sin(perf * 14 + s.userData.f)) * .1; });
+    for (const c of PROC.chamas) { c.scale.set(rand(.8, 1.2), rand(1.5, 2.2), 1); }
+    PROC.luz.intensity = rand(3.6, 5.6); PROC.luz.color.setHex(Math.random() < .5 ? 0xff7a2a : 0xff6420);
     SFX.procissaoPos(PROC.pos);
-    if (PROC.pos.distanceTo(P.pos) < 2.2 && !S.hidden && !S.dead && !PROC.acertou) { PROC.acertou = true; atacar('procissao'); }
+    const luzVaza = S.hidden && S.flashOn && !flashPisca;
+    if (dP < 2.2 && (!S.hidden || luzVaza) && !S.dead && !PROC.acertou) { PROC.acertou = true; if (luzVaza) { S.causaCtx = 'proc_luz'; sairEsconderijo(true); } atacar('procissao'); }
     if (!PROC.path.length || PROC.t <= 0) acabarProcissao();
   }
 }
 function acabarProcissao() {
-  PROC.fase = null; PROC.g.visible = false; PROC.luz.intensity = 0; PROC.acertou = false; SFX.pararCanto();
+  PROC.fase = null; PROC.g.visible = false; PROC.luz.intensity = 0; PROC.acertou = false; PROC.pausa = 0; SFX.pararCanto();
+  for (const L of W.lampadas) if (L.corOrig !== undefined) { L.luz.color.setHex(L.corOrig); L.naRota = false; }
   syncLuzes();
+  // as portas que ela abriu batem de volta, da mais perto para a mais longe
+  PROC.fechar = PROC.abertas.sort((a, b) => Math.hypot(a.x - P.pos.x, a.z - P.pos.z) - Math.hypot(b.x - P.pos.x, b.z - P.pos.z)).map((d, i) => ({ d, t: 2 + i * .8 }));
+  PROC.abertas = [];
+  // sussurros que vão sumindo pelo caminho e pegadas que secam em 30 s
+  const tr = PROC.trilha || [];
+  if (tr.length) PROC.rastro = [.3, .6, .9].map((f, i) => ({ p: tr[Math.min(tr.length - 1, Math.floor(tr.length * f))], t: 1.5 + i * 1.6, v: 1 - i * .3 }));
+  for (const p of PROC.pegadas) if (p.t === undefined) p.t = 30;
+  // uma das crianças fica para trás, de costas
+  if (tr.length > 3 && !S.dead && Math.random() < .6) {
+    const p = tr[Math.floor(tr.length * rand(.55, .85))];
+    if (p && roomAt(p.x, p.z) !== P.room) { PROC.ret = { x: p.x, z: p.z, t: 20 }; PROC.retG.position.set(p.x, 0, p.z); PROC.retG.rotation.y = Math.atan2(p.x - P.pos.x, p.z - P.pos.z); PROC.retG.visible = true; }
+  }
   if (!S.dead && !S.done.procissao && R.capitulos[S.chapter].objetivos.some(o => o.id === 'procissao')) { objDone('procissao'); falar('procissao_passou'); conquista('procissao'); }
   S.timers.procissao = rand(100, 160) * D().intervalo;
+}
+
+// --- Sustos de ambiente (o diretor de sustos): ele está longe, mas você não sabe
+const VUL = { ativo: false, t: 0, cd: 30, cimaT: 40, unhaT: 50, fitaPos: null, fitaT: 0 };
+function sustosAmbiente(dt) {
+  const longe = !M.ativo || M.pos.distanceTo(P.pos) > 18;
+  if (P.room.fora) VUL.cd = Math.max(VUL.cd, 5);
+  VUL.cd -= dt; VUL.cimaT -= dt; VUL.unhaT -= dt;
+  if (W.mapa === 'terreo' && longe && VUL.cimaT <= 0) { VUL.cimaT = rand(35, 60); SX.passoCima(P.pos); }
+  if (longe && !P.room.fora && S.fear > 25 && VUL.unhaT <= 0) {
+    VUL.unhaT = rand(45, 80); const r = P.room;
+    const op = [[r.x0, P.pos.z], [r.x1, P.pos.z], [P.pos.x, r.z0], [P.pos.x, r.z1]].sort((a, b) => Math.hypot(a[0] - P.pos.x, a[1] - P.pos.z) - Math.hypot(b[0] - P.pos.x, b[1] - P.pos.z))[0];
+    SX.unhas({ x: op[0], z: op[1] });
+  }
+  // o vulto dele parado no fundo do corredor, que some quando a luz encosta
+  if (!VUL.ativo && VUL.cd <= 0 && S.fear > 50 && longe && !P.room.fora && !S.hidden && Math.random() < dt * .08) {
+    const fw = new THREE.Vector3(); camera.getWorldDirection(fw); fw.y = 0; fw.normalize();
+    const ang = (Math.random() < .5 ? 1 : -1) * .75, dir = fw.clone().applyAxisAngle(new THREE.Vector3(0, 1, 0), ang);
+    for (const dist of [12, 10, 8]) {
+      const p = P.pos.clone().addScaledVector(dir, dist), r = roomAt(p.x, p.z);
+      if (r.fora || !linhaLivre(P.pos, p, 1.5)) continue;
+      VULTO.g.position.set(p.x, 0, p.z); VULTO.g.rotation.y = Math.atan2(P.pos.x - p.x, P.pos.z - p.z); VULTO.g.visible = true; VUL.ativo = true; VUL.t = 6; VUL.cd = rand(45, 75); break;
+    }
+    if (!VUL.ativo) VUL.cd = 8;
+  }
+  if (VUL.ativo) {
+    VUL.t -= dt; const vp = VULTO.g.position;
+    if (S.flashOn && !flashPisca && visivel(vp, 2.2, 20)) { VULTO.g.visible = false; VUL.ativo = false; SX.estalo(vp, 1); S.fear = Math.min(100, S.fear + 15); }
+    else if (VUL.t <= 0 || Math.hypot(vp.x - P.pos.x, vp.z - P.pos.z) < 5 || P.room.fora) { VULTO.g.visible = false; VUL.ativo = false; }
+  }
+  if (VULTO.g.visible && VULTO.mapa !== W.mapa) { VULTO.mapa = W.mapa; VULTO.g.visible = false; VUL.ativo = false; }
+  VULTO.mapa = W.mapa;
+  // a fita tocando vira isca: o gravador faz barulho enquanto toca
+  if (fitaTocando) { if (!VUL.fitaPos) { VUL.fitaPos = P.pos.clone(); VUL.fitaT = 2; } VUL.fitaT -= dt; if (VUL.fitaT <= 0) { VUL.fitaT = 2; emitNoise(VUL.fitaPos.x, VUL.fitaPos.z, 3); } }
+  else VUL.fitaPos = null;
 }
 
 // --- Ataque e morte
 const DANO = { inspetor: 60, ana: 55, procissao: 90 };
 function atacar(quem, leve) {
   if (S.dead) return;
-  if (quem === 'inspetor') { M.cool = 7; M.state = 'procura'; M.searchT = 3; M.path = []; M.wait = 2.5; M.recuo = 15; }
+  if (quem === 'inspetor') { M.cool = 7; M.state = 'procura'; M.searchT = 3; M.path = []; M.wait = 2.5; M.recuo = 15; M.acao = null; M.achou = false; M.certo = false; }
   SFX.grito(quem); P.shake = .25;
   $('#fx-red').style.transition = 'none'; $('#fx-red').style.opacity = 1;
   setTimeout(() => { $('#fx-red').style.transition = 'opacity 2.5s'; $('#fx-red').style.opacity = 0; }, 80);
-  const dano = Math.min(100, DANO[quem] * D().dano * (leve ? .6 : 1));
+  // no Pesadelo o Inspetor mata de uma vez, mas a brincadeira da Ana não vira morte certa
+  const mult = S.dif === 'pesadelo' ? ({ inspetor: 9, ana: leve ? 1 : 1.6, procissao: 1.2 }[quem] || D().dano) : D().dano;
+  const dano = Math.min(100, DANO[quem] * mult * (leve ? .6 : 1));
   S.health -= dano; S.capDano += dano; S.fear = 100;
   if (S.health <= 0) { morrer(quem); return; }
+  S.causaCtx = null;
   toast(quem === 'inspetor' ? 'Ele te largou. Fuja e se esconda.' : quem === 'ana' ? 'Mãos geladas. Ela sumiu... por enquanto.' : 'Eles passaram por dentro de você. Ainda está viva. Por pouco.');
   if (quem === 'inspetor') { const dx = P.pos.x - M.pos.x, dz = P.pos.z - M.pos.z, l = Math.hypot(dx, dz) || 1; P.pos.x += dx / l * 1.2; P.pos.z += dz / l * 1.2; collide(P.pos, .33); }
 }
 function morrer(quem) {
   S.dead = true; S.mortes++; S.causa = quem;
+  if (mortesCap.cap !== S.chapter) { mortesCap.cap = S.chapter; mortesCap.n = 0; } mortesCap.n++;
+  const ctx = S.causaCtx; S.causaCtx = null;
+  if (M.state === 'agarra') { MAOS.visible = false; P.bloqueado = AG.prev; }
+  SX.anaHum(false); FXM.style.opacity = 0; fxmAtual = '';
   const head = new THREE.Vector3();
   if (quem === 'inspetor') MON.cabeca.getWorldPosition(head); else if (quem === 'ana') head.set(ANA.pos.x, 1.2, ANA.pos.z); else head.copy(PROC.pos).setY(1);
   const t0 = performance.now(), yaw0 = P.yaw, pitch0 = P.pitch;
@@ -1135,8 +1833,9 @@ function morrer(quem) {
       const MT = (R.mortes && R.mortes[quem]) || {};
       $('#dt-tit').textContent = MT.titulos ? pick(MT.titulos) : quem === 'inspetor' ? 'ELE TE ENCONTROU' : quem === 'ana' ? 'ELA CONTOU ATÉ DEZ' : 'FORA DA CAMA';
       $('#death-frase').textContent = MT.frases ? pick(MT.frases) : '';
+      const dc = R.entidades.dicas_ctx || {};
       const dicasMapa = (R.dicas_morte.porMapa && R.dicas_morte.porMapa[W.mapa]) || [];
-      $('#death-dica').textContent = pick([...(R.dicas_morte[quem] || R.dicas_morte.inspetor), ...(quem === 'inspetor' ? dicasMapa : [])]);
+      $('#death-dica').textContent = (ctx && dc[ctx]) || pick([...(R.dicas_morte[quem] || R.dicas_morte.inspetor), ...(quem === 'inspetor' ? dicasMapa : [])]);
       $('#death-conta').textContent = [S.mortes > 1 && R.mortes ? R.mortes.voltou.replace('{n}', S.mortes - 1) : '', S.dif === 'pesadelo' && R.mortes ? R.mortes.pesadelo : ''].filter(Boolean).join(' · ');
     }, 900);
   }, 1200);
@@ -1260,24 +1959,53 @@ function agendarEntidades() {
   }
 }
 let chamadoArmadilha = null;
+// Orquestrador: uma ameaça grande por vez, para o medo ter pico e respiro
+function ameacaAtiva() { return !!(PROC.fase || ANA.ativa || chamadoArmadilha || (M.ativo && ["caca", "alerta", "bote", "agarra"].includes(M.state))); }
 function updateEventos(dt) {
   const TT = S.timers;
-  if (W.def.procissao && W.def.procissao() && !PROC.fase) { TT.procissao -= dt; if (TT.procissao <= 0) { if (P.room.fora) TT.procissao = 10; else iniciarProcissao(); } }
-  if (W.def.ana && W.def.ana() && !ANA.ativa) { TT.ana -= dt; if (TT.ana <= 0) { if (!spawnAna()) TT.ana = 8; else TT.ana = rand(60, 110) * D().intervalo; } }
-  if (W.def.chamado && W.def.chamado()) { TT.chamado -= dt; if (TT.chamado <= 0) { TT.chamado = rand(120, 200) * D().intervalo; chamado(); } }
+  sustosAmbiente(dt);
+  if (W.def.procissao && W.def.procissao() && !PROC.fase) { TT.procissao -= dt; if (TT.procissao <= 0) { if (P.room.fora) TT.procissao = 10; else if (ameacaAtiva() && PROC.adiada < 2) { PROC.adiada++; TT.procissao = 12; } else { PROC.adiada = 0; iniciarProcissao(); } } }
+  if (W.def.ana && W.def.ana() && !ANA.ativa) { TT.ana -= dt; if (TT.ana <= 0) { if (ameacaAtiva()) TT.ana = 10; else if (!spawnAna()) TT.ana = 8; else TT.ana = rand(60, 110) * D().intervalo; } }
+  if (W.def.chamado && W.def.chamado()) { TT.chamado -= dt; if (TT.chamado <= 0) { if (ameacaAtiva()) TT.chamado = 15; else { TT.chamado = rand(120, 200) * D().intervalo; chamado(); } } }
   if (chamadoArmadilha) {
     chamadoArmadilha.t -= dt;
-    if (chamadoArmadilha.t <= 0) chamadoArmadilha = null;
-    else if (P.room === chamadoArmadilha.sala) { const s = chamadoArmadilha.sala; chamadoArmadilha = null; H.respondeu(); if (M.ativo) { const [x, z] = pontoEm(s, 1); M.pos.set(x, 0, z); M.state = 'caca'; M.cool = 1.2; planejar(M, P.pos.x, P.pos.z); SFX.susto(); sub('inspetor', 'Achei.'); } }
+    if (chamadoArmadilha.t <= 0) { chamadoExpirou(chamadoArmadilha.sala); chamadoArmadilha = null; }
+    else if (P.room === chamadoArmadilha.sala) { const s = chamadoArmadilha.sala; chamadoArmadilha = null; H.respondeu(); chamadoBote(s); }
   }
   for (const f of W.tick) f(dt);
+}
+// Caiu na armadilha: a porta bate, a voz vira a dele e ele vem da sala vizinha (com 2 s para você reagir)
+function chamadoBote(s) {
+  const c = centroSala(s); SFX.pancada(c.x, c.z); sub("inspetor", "Achei."); SFX.voz(c);
+  if (!M.ativo) return;
+  const viz = W.links.filter(l => (l.a === s.id || l.b === s.id) && !(l.door && l.door.trava && l.door.trava())).map(l => SALA(l.a === s.id ? l.b : l.a)).filter(r => r && !r.seguro && (!r.fora || W.def.inspetorFora));
+  let best = null, bd = -1;
+  for (const r of viz) { const [x, z] = pontoEm(r, 1); const dd = Math.hypot(x - P.pos.x, z - P.pos.z); if (dd > bd) { bd = dd; best = [x, z]; } }
+  if (best && bd >= 5) M.pos.set(best[0], 0, best[1]);
+  M.state = "investiga"; M.acao = null; M.path = []; planejar(M, P.pos.x, P.pos.z); M.cool = 2; M.chamadoT = 2; M.ultimo = P.pos.clone(); M.wait = 0;
+  SFX.passoMonstro(M.pos, 1); setTimeout(() => SFX.passoMonstro(M.pos, 1), 450); SFX.susto();
+}
+// Respeitou a regra cinco: ele bate na porta daquela sala, do outro lado, e sussurra
+function chamadoExpirou(s) {
+  const l = W.links.find(l => (l.a === s.id || l.b === s.id) && l.door) || W.links.find(l => l.a === s.id || l.b === s.id);
+  const p = l ? { x: l.x, z: l.z } : centroSala(s);
+  SX.batida(p.x, p.z, 1); setTimeout(() => SX.batida(p.x, p.z, 1), 420); setTimeout(() => SX.batida(p.x, p.z, .7), 840);
+  setTimeout(() => subPequeno("inspetor", "Quase..."), 1300);
 }
 function chamado() {
   const viz = W.links.filter(l => l.a === P.room.id || l.b === P.room.id).map(l => SALA(l.a === P.room.id ? l.b : l.a)).filter(r => !r.fora);
   if (!viz.length) return;
   const s = pick(viz); const [x, z] = pontoEm(s, 1);
-  SFX.chamadoVoz(x, z); { const v = H.vozChamado(); sub(v.quem, v.texto); }
-  if (!S.flags.chamado1) { S.flags.chamado1 = true; setTimeout(() => falar('chamado_regra'), 2600); }
+  S.flags.chamados = (S.flags.chamados || 0) + 1;
+  const C = R.entidades.chamado || {}; const v = H.vozChamado(); let quem = v.quem, texto = v.texto, voz = "davi";
+  if (S.flags.chamados > 1) { // da segunda vez em diante a voz às vezes muda: a mãe, ou a sua própria
+    const r = Math.random();
+    if (!S.flags.chamadoMae && C.mae && r < .15) { S.flags.chamadoMae = true; quem = "mae"; texto = C.mae; voz = "mae"; }
+    else if (C.lia && r < .4) { quem = "liaFalsa"; texto = pick(C.lia); voz = "lia"; }
+  }
+  if (voz === "davi") SFX.chamadoVoz(x, z); else SX.vozFalsa(x, z, voz);
+  sub(quem, texto);
+  if (!S.flags.chamado1) { S.flags.chamado1 = true; setTimeout(() => falar("chamado_regra"), 2600); }
   chamadoArmadilha = { sala: s, t: 14 };
 }
 
@@ -1378,7 +2106,9 @@ Object.assign(API, { MON, flash, audio: { get AC() { return AC; }, saida: (...a)
 // =====================================================================
 let cena = null;
 // gancho de áudio para os mapas criarem sons próprios (ex.: buzina, orelhão, zumbido) com o mesmo AudioContext
-API.audio = () => AC ? { AC, master, reverb, saida, env, osc, burst, ruido } : null;
+// serve aos dois jeitos: A.audio() (estrada) e A.audio.AC / A.audio.osc(...) (subterrâneo)
+API.audio = Object.assign(() => AC ? { AC, master, reverb, saida, env, osc, burst, ruido } : null, { saida: (...a) => saida(...a), osc: (...a) => osc(...a), burst: (...a) => burst(...a), env: (...a) => env(...a) });
+Object.defineProperty(API.audio, 'AC', { get: () => AC });
 function dicaPular(on) {
   let d = $('#cena-pular');
   if (!d) { d = document.createElement('div'); d.id = 'cena-pular'; d.textContent = 'ENTER pula a cena'; d.style.cssText = 'position:fixed;right:28px;bottom:calc(11% + 14px);font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:#d8cba8;opacity:.6;pointer-events:none;z-index:40;text-shadow:0 0 6px #000'; document.body.appendChild(d); }

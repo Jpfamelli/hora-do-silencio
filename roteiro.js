@@ -379,7 +379,33 @@ window.ROTEIRO = {
       }
     },
     ana: { nome: "A Menina Que Conta", contagem: ["um...", "dois...", "três...", "quatro...", "cinco...", "seis...", "sete...", "oito...", "nove...", "DEZ."] },
-    procissao: { nome: "A Procissão", canto: "silêncio... silêncio... silêncio..." }
+    procissao: { nome: "A Procissão", canto: "silêncio... silêncio... silêncio..." },
+    // Lote 1 (Monstros e IA): falas por tipo de barulho, voz do Chamado e dicas de morte por situação
+    falas_tipo: {
+      vidro: ["Vidro... as crianças também quebravam as coisas.", "Vidro quebrado. Eu sei que não foi o vento.", "Mais vidro? Quem está brincando comigo?"],
+      porta: ["Quem abriu?", "Ouvi a porta. Porta não abre sozinha.", "Fecha a porta quando sair, menina."],
+      corrida: ["Não corre.", "Nos corredores não se corre.", "Corre, corre. Eu gosto quando correm."],
+      agua: ["Tá molhada, menina?", "A água conta tudo pra mim.", "Ploc, ploc. Eu escuto cada passo."],
+      respira: ["Respira pra mim.", "Eu ouvi você respirar.", "Tem alguém aí dentro. Tem sim."],
+      luz: ["Quem acendeu a luz? Luz não é hora.", "Você ligou o meu gerador?"],
+      calor: ["Está quente aqui...", "Que calor é esse no meu rosto?"],
+      favorito: ["Sempre o mesmo lugar...", "Você gosta desse armário, não gosta?"],
+      truque: ["Truque velho.", "De novo a garrafa? Truque de criança."],
+      volta: ["Achou que eu tinha ido embora?", "Eu nunca vou embora."]
+    },
+    chamado: {
+      davi: ["Lia, achei a fita... vem ver.", "Lia, tá doendo... vem cá.", "Lia? Eu tô aqui. Aqui do lado.", "Lia... por que você não vem?"],
+      lia: ["Davi? Tô aqui! Vem!", "Eu tô chegando, Davi.", "Davi, é você?"],
+      mae: "Lia, vem jantar. A comida tá esfriando."
+    },
+    dicas_ctx: {
+      escondida: "Quando ele parar na frente do armário, segure ESPAÇO até ele ir embora. Soltar o ar entrega você.",
+      agarrao: "Quando ele te agarrar, sacuda o mouse com força para se soltar.",
+      bote: "Ele ergue os braços antes do bote. Nesse meio segundo, saia do alcance ou se agache parada.",
+      pilha: "Com a pilha fraca a lanterna pisca, e a cada piscada ela chega mais perto. Troque a pilha (R) antes.",
+      ana_armario: "Esconder não engana a menina. Ela espera na porta. Com a lanterna acesa por dentro, ela não abre.",
+      proc_luz: "Até no armário a luz vaza pela fresta. Apague a lanterna (F) quando eles passarem."
+    }
   },
 
   // Telas de morte: títulos e a última coisa que se ouve

@@ -1,0 +1,115 @@
+# Lote 1 — Monstros e IA
+- A venda do Inspetor pega a luz da lanterna: no escuro, a primeira coisa que se vê é a faixa clara flutuando lá no alto
+- A boca do Inspetor se abre e treme quando ele caça, prepara o bote ou agarra
+- O Inspetor corre curvado para a frente na caçada (e ainda mais curvado no capítulo V)
+- Os dedos compridos do Inspetor se abrem quando ele para para escutar ou farejar
+- A cabeça do Inspetor vira de estalo na direção do barulho que ele ouviu
+- Novo estado de alerta antes da caçada: ele para, o som do mundo some de repente e você tem 0,7 s (0,4 no Pesadelo, 1 s no Fácil) para reagir
+- O alerta vem com um estalo de língua duplo e forte, vindo da posição dele, que passa a significar "ele te ouviu"
+- O ataque do Inspetor agora tem bote: ele ergue os braços, chia e só depois avança, com janela de reação de 0,35 s (0,2 no Pesadelo, 0,5 no Fácil)
+- Sair do alcance durante o bote livra você do agarrão, só com um arranhão de 15 de vida
+- Agachar parada no último segundo faz a mão dele passar por cima da sua cabeça, se ele ainda não estava caçando há muito tempo
+- O agarrão puxa a câmera até o rosto dele e mostra as mãos dele na tela, com grito abafado
+- Durante o agarrão, sacudir o mouse com força solta você e o dano cai bastante
+- No primeiro agarrão aparece a dica "Sacuda o mouse para se soltar!"
+- Na caçada, porta fechada não abre na hora: ele esmurra três vezes (a porta treme e a câmera também) e só depois arromba
+- Fora da caçada ele gira a maçaneta devagar e abre a porta quase sem barulho, em vez de abrir sempre com estrondo
+- Fechar a porta na cara dele durante a caçada o trava 1,5 s com um grito abafado (no máximo uma vez a cada 20 s por porta)
+- O som atravessa as salas de forma realista: porta fechada abafa bastante e salas distantes quase não deixam passar nada
+- O tipo de chão muda o barulho dos passos para ele: madeira denuncia mais, tapete e grama menos
+- Agachada dentro da água você quase não faz barulho para ele
+- Novo estado "escuta": ele para no meio da sala, inclina a cabeça e fica mudo; qualquer passo nessa hora vira caçada com audição 50% maior
+- Ao chegar onde ouviu o último barulho, ele para e escuta antes de começar a procurar
+- Emboscada: às vezes ele finge ir embora com passos se afastando, mas fica parado e mudo por 6 a 10 s; o estalo volta 1 s antes de ele se mexer
+- Se você está escondida na mesma sala, às vezes ele sai, espera 4 s em silêncio do lado de fora e volta de repente para conferir
+- Quando volta da emboscada ou da conferida, ele provoca: "Achou que eu tinha ido embora?"
+- Ele fareja o seu armário ao passar perto: para, inspira fundo, encosta a cabeça na porta, e você tem 1,5 s para começar a prender a respiração
+- Enquanto ele fareja ou bate no armário, a sombra da cabeça dele aparece pelas frestas
+- Quando ele te ouve no esconderijo, em vez de abrir na hora ele dá três batidas lentas na porta e escuta 2 s; prender o fôlego até o fim faz ele desistir
+- Entrar no armário com ele caçando a 2,5–4 m deixou de ser morte certa e virou um teste de fôlego (abaixo de 2,5 m ele ainda abre)
+- O ofego aleatório no esconderijo foi trocado por uma barra de "nervos" que enche com ele perto e o medo alto; você só ofega quando ela enche
+- Prender a respiração escondida acalma: o medo cai e os nervos baixam
+- Com medo acima de 85 e ele a menos de 3 m, o seu coração faz barulho a cada batida (desligado no Fácil) e a Lia percebe: "Ele ouve meu coração"
+- Na procura ele abre armários vazios da sala com estrondo e o armário treme; se você está no do lado, sente o susto colado
+- Ele aprende o seu armário favorito: depois de três usos, vai direto vistoriá-lo e diz "Sempre o mesmo lugar..."
+- Ao usar o mesmo armário pela terceira vez, a Lia avisa que ele já sabe daquele esconderijo
+- Ele aprende as suas rotas: as salas por onde você passa mais viram as preferidas da patrulha dele
+- A garrafa cansa: três garrafas em 90 s e ele diz "Truque velho.", ignora o vidro por 45 s e vem ver de onde a garrafa saiu
+- A lanterna esquenta: luz no rosto dele a menos de 3,5 m por 1,5 s faz ele virar e investigar ("Está quente aqui..."), e a Lia explica
+- "Quase ouviu": um barulho logo fora do alcance dele faz ele parar, virar a cabeça na sua direção e estalar duas vezes
+- As falas do Inspetor agora respondem ao barulho que ele ouviu: vidro, porta, corrida, água ou respiração no armário
+- Na primeira caçada depois do gerador ele comenta a luz: "Quem acendeu a luz?"
+- O Inspetor não repete mais a mesma fala duas vezes seguidas
+- Na patrulha ele cantarola baixo e desafinado, e dá para saber onde ele anda só pela cantiga
+- Investigando, ele dá fungadas curtas
+- Caçando, ele respira rasgado e os estalos de língua ficam bem mais rápidos
+- O estalo de língua soa abafado de longe e nítido de perto, o que ajuda a medir a distância só de ouvido
+- O recuo do diretor de tensão ficou mais curto (12 a 18 s em vez de 25 a 40 s), para capítulos curtos não ficarem vazios
+- Quando ele recua dá para ouvir: uma porta bate longe e os passos dele vão sumindo, e os estalos ficam baixinhos
+- Quando o recuo acaba, um estalo seco perto da porta da sala vizinha avisa que ele voltou
+- Durante o recuo ainda se ouvem passos dele a duas salas de distância, para você nunca ter certeza de que está segura
+- No andar dos dormitórios ele arrasta uma corrente que tilinta a cada passo
+- Lâmpadas acesas podem estourar quando ele passa caçando: vidro, faíscas, um clarão e a lâmpada fica apagada
+- Os cacos da lâmpada estourada ficam no chão e fazem barulho se você pisar neles sem agachar
+- Na fuga final ele acelera quando está longe e desacelera colado em você: fica nas suas costas sem ser impossível
+- Na fuga final ele tropeça a cada 15 s, mais ou menos, e fica 2 s caído
+- Correção: a procura do Inspetor praticamente nunca acabava (o tempo só corria na chegada de cada ponto); agora termina de verdade
+- O vulto dele aparece parado no fundo do corredor quando o medo está alto e some num estalo assim que a lanterna encosta
+- No térreo, de vez em quando se ouvem passos pesados no andar de cima
+- Unhas arranham a parede mais próxima de você quando ele está longe
+- Com o medo no máximo, a Lia ofega alto e isso faz barulho
+- A fita tocando vira isca: o gravador faz barulho enquanto toca, e ele pode ir até lá
+- Depois de três mortes no mesmo capítulo (menos no Pesadelo), o jogo fica um pouco mais justo sem avisar: ele anda e ouve um pouco menos, o aviso da Procissão dura mais e a menina conta mais devagar
+- No Pesadelo o dano agora é por monstro: o Inspetor mata de uma vez, mas a brincadeira da Ana não vira morte certa
+- A tela de morte dá a dica certa para o que aconteceu (agarrão, bote, armário, pilha fraca, luz vazando)
+- Depois do DEZ a menina aparece a 2,2 m (antes 1,4 m) e espera 0,8 s antes de atacar (0,6 no Pesadelo, 1,1 no Fácil): quem vira rápido com a luz se salva
+- No DEZ você sente a respiração de uma criança na nuca e a câmera treme
+- No DEZ ela nunca aparece dentro da parede ou do outro lado da porta: o jogo testa a sala e a linha de visão e tenta os lados
+- Se não houver lugar atrás de você, ela recomeça a contagem do cinco
+- Correção: longe de você a contagem passava do dez sem efeito; agora ela chega mais perto e recomeça do seis
+- A menina conta mais rápido quanto mais perto está (de 1,4 s até 0,55 s por número)
+- Ela conta mais rápido se você corre ou está com a lanterna apagada ou fraca, e mais devagar se você anda agachada
+- O "oito" e o "nove" soam atrás da sua cabeça e mais altos
+- No "oito" o zumbido do ambiente corta e sobra só a voz dela
+- Cada vez que ela sai da sua vista, volta numa pose diferente: cabeça deitada, braços estendidos, de costas olhando por cima do ombro, ajoelhada, cabeça baixa
+- Com o corpo parado, a cabeça dela continua girando para te seguir, além do que um pescoço aguenta
+- Os olhos da menina só brilham na luz e são a última coisa a apagar quando ela sai do feixe
+- Quando ela anda sem ser vista, dá para ouvir os pezinhos descalços (molhados na água), e eles param no instante em que a luz a acerta
+- Encarada por mais de 6 s, ela cantarola a música da caixinha, que corta seco quando a luz sai dela
+- Encarada por muito tempo, a cabeça dela vai entortando devagar
+- Manter a luz nela gasta a pilha 2,5 vezes mais rápido
+- Depois de 8 s encarada, a lanterna falha sozinha e quando volta ela está 2 m mais perto, de cabeça baixa
+- Com a pilha fraca, cada piscada da lanterna deixa ela avançar quase um metro
+- Correção: perto e no escuro ela ficava travada como se estivesse iluminada; agora se arrasta devagar na sua direção
+- Esconder não faz mais a menina sumir: ela vem até a porta do esconderijo e conta baixinho, e dá para ver a camisola dela pela fresta
+- No DEZ com você escondida: com a lanterna acesa por dentro ela recua rindo; apagada, ela bate três vezes e abre (dano leve)
+- Ficar escondida e calma por 12 s faz a menina cansar e ir embora
+- Porta fechada entre vocês: ela espera do outro lado, a porta treme, a maçaneta estala e a contagem acelera
+- No DEZ atrás da porta a maçaneta gira e a porta abre uma fresta; no DEZ seguinte, ela abre
+- Às vezes a menina espera de cabeça para baixo, grudada no teto, e cai quando você tira os olhos dela
+- Por onde ela anda sem ser vista ficam desenhos de giz no chão: um bonequinho riscado e um número
+- Na brincadeira do capítulo III, ser pega não reinicia mais os 24 s inteiros: só soma 6 s, e no máximo duas vezes
+- As nove crianças da Procissão agora levam velas, e a luz delas é um laranja tremido em vez de vermelho fixo
+- No aviso da Procissão as lâmpadas do caminho que ela vai fazer piscam em vermelho e as outras apagam
+- Durante o aviso aparecem pegadas molhadas de pés descalços marcando a rota delas
+- O aviso começa com nove pares de passinhos em uníssono e um sussurro vindos da sala de onde elas vão sair
+- O canto sussurrado "silêncio" se repete durante o aviso vindo da sala de origem, para dar para fugir para o lado certo
+- Sempre dá tempo de se esconder: se o armário mais perto está longe, o aviso dura até 5 s a mais e a Lia avisa
+- A Procissão não começa mais com fita, nota ou diálogo aberto, nem com você numa sala segura
+- A Procissão nasce mais longe de você (três salas quando dá)
+- As portas do caminho abrem uma a uma, com estrondo, na hora em que a fila chega (antes abriam todas de uma vez, em silêncio)
+- Depois que a fila passa, as portas que ela abriu batem de volta uma a uma, da mais perto para a mais longe
+- Uma vez por jogo a fila para na frente do seu esconderijo: o canto some e os olhos vermelhos aparecem pela fresta por 3 s
+- Se você está embaixo da cama, uma das crianças se abaixa para olhar
+- Em parte das vezes a fila para no meio do caminho por 3 s e todas viram a cabeça para você
+- A luz da lanterna atrai a Procissão até você, e a luz vazando pela fresta do armário também fere
+- Na primeira vez que a luz atrai a fila, a Lia percebe: "A luz... eles viram a luz."
+- Depois que ela passa, três sussurros vão sumindo pelo caminho
+- As pegadas molhadas ficam no chão por 30 s e vão secando
+- Às vezes uma criança fica para trás, parada de costas; se a luz a acerta ela some rindo, se você passa perto ela sussurra "Você tá fora da cama."
+- O Chamado não teleporta mais o Inspetor para dentro da sala: a porta bate, a voz vira a dele dizendo "Achei." e ele vem da sala vizinha mais longe, dando 2 s para você reagir
+- A voz do Davi no Chamado tem falas novas ("Lia, achei a fita... vem ver", "Lia, tá doendo...")
+- Da segunda vez em diante o Chamado pode usar a voz da própria Lia, com a legenda na cor do Inspetor para quem prestar atenção
+- Uma vez por jogo o Chamado usa a voz da mãe chamando para jantar
+- Respeitar a regra cinco tem recompensa: quando a armadilha expira, ele bate na porta daquela sala do outro lado e sussurra "Quase..."
+- Uma grande ameaça por vez: a Procissão, a menina e o Chamado esperam enquanto outra estiver acontecendo ou ele estiver caçando
