@@ -3,6 +3,7 @@
 // esconderijos que não são 100% seguros, mortes com cena própria e segredos.
 // O motor (jogo.js) chama criarSustos(E) uma vez e usa os ganchos devolvidos (poucas linhas lá).
 import * as THREE from 'three';
+import { instalarMundo } from './sustos-mundo.js';
 
 export function criarSustos(E) {
   const { R, rand, pick, clamp, lerp, camera, scene, W, P, M, MON, ANA, ANA_G, PROC } = E;
@@ -286,6 +287,7 @@ export function criarSustos(E) {
   });
   API.avistamento = seguro(() => sustoCom(.9));
   API.aoRaio = seguro(() => {
+    MUNDO.aoRaio();
     if (D.raioSombra) { const f = D.raioSombra; D.raioSombra = null; f(); }
     if (M.ativo && M.state !== 'caca' && dist2(M.pos, P.pos) < 14 && E.visivel(M.pos, 2.4, 14)) {
       const dx = M.pos.x - P.pos.x, dz = M.pos.z - P.pos.z, l = Math.hypot(dx, dz) || 1;
@@ -424,10 +426,11 @@ export function criarSustos(E) {
       if (D.procParou <= 0) { if (c) c.rotation.y = 0; elVerm.style.opacity = 0; cantoVolta(); }
       return true;
     }
+    if (L && L.sxJoaquim) return false; // o armário que o Seu Joaquim apontou: a Procissão passa reto
     if (L && !D.procParouNesta && dist2(PROC.pos, L) < 2.6) {
       D.procParouNesta = true; D.procPassagens++;
       if (D.procPassagens > 1 && Math.random() < .5) return false;
-      D.procParou = 2.6; marcarForte();
+      D.procParou = 2.6; marcarForte(); MUNDO.procParou(L);
       D.procCrianca = PROC.g.children.filter(c => c.isGroup)[4] || null;
       elVerm.style.opacity = L.tipo === 'armario' ? 1 : .6; cantoCorta();
       if (!s.flags.sx_procFresta) { s.flags.sx_procFresta = true; depois(.8, () => E.sub('ana', TXT.proc_fresta)); }
@@ -450,7 +453,7 @@ export function criarSustos(E) {
     E.toast(TXT.ocupado_toast); return true;
   });
   API.aoEsconder = seguro(L => {
-    const s = S(); D.hiddenT = 0; D.hiddenBateu = false;
+    const s = S(); D.hiddenT = 0; D.hiddenBateu = false; MUNDO.aoEsconder(L);
     if (agora < D.ecoAte && D.ecoSala) { const r = D.ecoSala; depois(2, () => E.SFX.rangido((r.x0 + r.x1) / 2, 1, (r.z0 + r.z1) / 2, .5)); }
     if (L.tipo === 'cama') { D.camaN = (D.camaN || 0) + 1; D.camaT = 0; return; }
     const novo = !L.sxAberto; L.sxAberto = true;
@@ -470,7 +473,7 @@ export function criarSustos(E) {
     }
   });
   API.aoSair = seguro(L => {
-    const s = S(); esconderFresta(); D.espia = null;
+    const s = S(); esconderFresta(); D.espia = null; MUNDO.aoSair(L);
     if (agora < D.cantoSairAte) { D.cantoSairAte = 0; const a = atras(4); cantoCurto(a, 1.1, .04); }
     if (L && L.tipo === 'cama' && W.mapa === 'superior' && s.chapter === 3 && s.flags.sx_rostoCama && !s.flags.sx_anaSentada && !ANA.ativa) {
       const outra = W.lockers.filter(o => o.tipo === 'cama' && o !== L && Math.hypot(o.x - L.x, o.z - L.z) < 3.5)[0];
@@ -519,6 +522,7 @@ export function criarSustos(E) {
 
   // ===================================================================== MORTE
   API.morte = seguro(quem => {
+    MUNDO.morte(quem);
     D.fov0 = D.fov0 || camera.fov;
     setTimeout(() => restaurarVolume(), 2400);
     som((ac, t) => { const g = E.master.gain; g.cancelScheduledValues(t); g.setValueAtTime(g.value, t); g.setValueAtTime(g.value, t + .33); g.linearRampToValueAtTime(0, t + .38); g.setValueAtTime(0, t + .53); g.setValueAtTime(E.OPT.vol, t + .54); });
@@ -771,17 +775,19 @@ export function criarSustos(E) {
   // ===================================================================== MAPAS: TÉRREO
   function montarTerreo() {
     const s = S();
-    // telefone da recepção
-    const tel = new THREE.Group(); tel.position.set(.25, 1.16, -4.15); W.grupo.add(tel);
+    // telefone da diretoria (antes ficava em cima do telefone da recepção, os dois no mesmo lugar)
+    const msT = (W.spots.diret && W.spots.diret.mesa) || [], pT = msT.length > 2 ? msT[2] : msT[0] ? { x: msT[0].x + .35, y: msT[0].y, z: msT[0].z - .1 } : { x: 12, y: .8, z: -5 };
+    const tel = new THREE.Group(); tel.position.set(pT.x, pT.y, pT.z); W.grupo.add(tel); const telP = { x: pT.x, y: pT.y + .15, z: pT.z };
     E.box(.24, .08, .18, E.MAT.preto, 0, .04, 0, tel); E.box(.26, .05, .07, E.MAT.preto, 0, .1, -.03, tel);
     const disco = new THREE.Mesh(new THREE.CylinderGeometry(.05, .05, .01, 14), E.MAT.metal); disco.position.set(0, .085, .05); tel.add(disco);
-    D.tel = { g: tel, n: 0, t: 0 };
+    D.tel = { g: tel, n: 0, t: 0, p: telP };
     E.interact(tel, () => s.flags.sx_tel === 'tocando' ? '<b>E</b>Atender o telefone' : 'Um telefone de disco. Mudo.', seguro(() => {
       if (s.flags.sx_tel !== 'tocando') return;
       s.flags.sx_tel = 'atendido'; E.SFX.clique();
       const onde = { hall: 'na recepção, do seu lado', cw: 'no corredor oeste', ce: 'no corredor leste', aula: 'na sala de aula', biblio: 'na biblioteca', refeit: 'no refeitório', cozinha: 'na cozinha', despensa: 'na despensa', diret: 'na diretoria', enferm: 'na enfermaria', lavand: 'na lavanderia', banh: 'nos banheiros', maq: 'na casa de máquinas', patio: 'lá fora, no pátio' };
       const r = M.ativo ? E.roomAt(M.pos.x, M.pos.z) : null;
-      depois(.9, () => { E.sub('davi', r ? TXT.telefone.replace('{onde}', onde[r.id] || 'perto') : TXT.telefone_longe, true); voz({ x: .25, y: 1.3, z: -4.15 }, { sopro: true, vogais: [[300, 2300], [700, 1300], [400, 2000], [600, 1500]], dur: 1.8, vol: .1, wet: .05 }); });
+      MUNDO.telefone();
+      depois(.9, () => { E.sub('davi', r ? TXT.telefone.replace('{onde}', onde[r.id] || 'perto') : TXT.telefone_longe, true); voz(telP, { sopro: true, vogais: [[300, 2300], [700, 1300], [400, 2000], [600, 1500]], dur: 1.8, vol: .1, wet: .05 }); });
     }));
     // quadro "Turma de 1978" na diretoria: a cada olhada, falta uma criança
     const cv = document.createElement('canvas'); cv.width = 256; cv.height = 192; const tex = new THREE.CanvasTexture(cv); tex.colorSpace = THREE.SRGBColorSpace;
@@ -841,7 +847,7 @@ export function criarSustos(E) {
   API.badaladas = seguro(() => {
     const s = S();
     if (s.flags.sx_badaladas) { E.SFX.badaladas(9); return; }
-    s.flags.sx_badaladas = true;
+    s.flags.sx_badaladas = true; MUNDO.badaladas();
     for (let i = 0; i < 8; i++) setTimeout(() => E.SFX.sino(.45, null), i * 2200);
     setTimeout(() => vacuo(4.2, .03), 8 * 2200 - 1800);
     setTimeout(() => { const f = fwdH(); E.SFX.sino(1.2, { x: P.pos.x - f.z * 1.2, y: 2, z: P.pos.z + f.x * 1.2 }); P.shake = Math.max(P.shake, .2); marcarForte(); }, 8 * 2200 + 2600);
@@ -925,7 +931,7 @@ export function criarSustos(E) {
     if (W.mapa === 'terreo' && s.chapter === 2 && s.done.procissao && !s.flags.sx_tel && ['hall', 'cw', 'ce'].includes(P.room.id) && D.tel) { s.flags.sx_tel = 'tocando'; D.tel.t = 3; D.tel.n = 0; }
     if (W.mapa === 'terreo' && s.flags.sx_tel === 'tocando' && D.tel) {
       D.tel.t += dt;
-      if (D.tel.t >= 3) { D.tel.t = 0; D.tel.n++; telefoneToque({ x: .25, y: 1.2, z: -4.15 }); E.emitNoise(.25, -4.15, 12); if (D.tel.n > 6) s.flags.sx_tel = 'ignorado'; }
+      if (D.tel.t >= 3) { D.tel.t = 0; D.tel.n++; telefoneToque(D.tel.p); E.emitNoise(D.tel.p.x, D.tel.p.z, 12); if (D.tel.n > 6) s.flags.sx_tel = 'ignorado'; }
     }
     // quadro da turma: some uma criança a cada vez que você olha de novo
     if (D.turma && W.mapa === 'terreo' && P.room.id === 'diret') {
@@ -982,6 +988,7 @@ export function criarSustos(E) {
     const arm = W.lockers.filter(l => l.tipo === 'armario'); D.armOcup = arm.length ? pick(arm) : null;
     if (id === 'terreo') montarTerreo();
     if (id === 'superior') { montarSuperior(); if (!s.flags.sx_chegouCima) { s.flags.sx_chegouCima = true; depois(4, () => batida({ x: 0, y: -2, z: 6 }, 1)); } }
+    MUNDO.novoMapa(id);
     if (id === 'tuneis' && D.mapaAnterior === 'superior' && !s.flags.sx_poco) { s.flags.sx_poco = true; depois(1.4, () => { voz({ x: 0, y: 4, z: -1 }, { f0: 520, vogais: [[300, 2300], [500, 2000], [700, 1200]], dur: 1, vol: .1 }); E.sub('ana', TXT.nove_poco); }); }
   });
   API.update = seguro(dt => {
@@ -997,7 +1004,9 @@ export function criarSustos(E) {
     for (let i = temporarios.length - 1; i >= 0; i--) { let fim = false; try { fim = temporarios[i].upd(dt); } catch (e) { fim = true; console.warn('[sustos]', e && e.message); } if (fim) temporarios.splice(i, 1); }
     updateInspetorSustos(dt); updateAnaSustos(dt); updateEsconderijo(dt); updateCorredor(dt); updatePortas(dt); vigiarEstado(dt);
     diretor();
+    MUNDO.update(dt);
   });
+  const MUNDO = instalarMundo(E, { D, depois, anima, voz, respiracao, passoPos, batida, vacuo, marcarForte, apagao, notas, arranhao, vento, rolar, atras, fwdH, dist2, abrirDevagar, bater, andarModelo, portaDaSala, fundoCorredor, seguro, som, maoContato, AMBIENTE, agora: () => agora });
   API.vacuo = vacuo; API.sustoCom = sustoCom; API.agora = () => agora; API._D = D;
   window.__sustos = API;
   return API;

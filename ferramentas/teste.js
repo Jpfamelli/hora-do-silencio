@@ -101,7 +101,10 @@ T.plataforma = async () => {
   J.P.crouch = false; T.tecla('ControlLeft'); ok('Ctrl não agacha (Ctrl+W fecha a aba)', !J.P.crouch);
   T.tecla('KeyC'); ok('C agacha', J.P.crouch); T.tecla('KeyC');
   J.keys.ShiftLeft = true; J.keys.KeyW = true; P.simularOculto(); ok('perder o foco pausa', J.ui === 'pausa'); P.limparTeclas(); ok('teclas soltas ao pausar', !J.keys.ShiftLeft && !J.keys.KeyW);
-  document.getElementById('p-voltar').click(); await new Promise(r => setTimeout(r, 20)); ok('volta da pausa com retorno suave', P.graca > 0); T.passo(1.5);
+  document.getElementById('p-voltar').click(); await new Promise(r => setTimeout(r, 20)); ok('volta da pausa com retorno suave', P.graca > 0);
+  // sem trava de mouse no Chrome headless, a pointerlockchange reabre a pausa logo depois: fecha de novo para os testes seguintes
+  for (let k = 0; k < 3 && J.ui === 'pausa'; k++) { document.getElementById('p-voltar').click(); await new Promise(r => setTimeout(r, 60)); }
+  T.passo(1.5);
   let n = 0; P.agenda(() => n++, 1); J.S.dead = true; T.passo(2); J.S.dead = false; ok('fala agendada não corre com o jogo parado', n === 0);
   J.carregarSnap(J.S._check); ok('carregar checkpoint limpa a agenda', P.fila.length === 0);
   // no Chrome headless, um pointerlockchange atrasado pode reabrir a pausa depois do checkpoint: fecha antes de testar
