@@ -2632,6 +2632,7 @@ const API = {
   get S() { return S; }, get mode() { return mode; }
 };
 Object.defineProperty(API, 'raioI', { get: () => raioI }); // brilho do relâmpago, lido pela capela (src/subterraneo-lore.js)
+Object.defineProperty(API, 'legendas', { get: () => UIX.som.def }); // legendas de som próprias dos mapas (src/subterraneo-polimento.js)
 Object.assign(API, { MON, flash, audio: { get AC() { return AC; }, saida: (...a) => saida(...a), osc: (...a) => osc(...a), burst: (...a) => burst(...a), env: (...a) => env(...a) } }); // usados pelos mapas subterrâneos (src/subterraneo.js)
 
 // =====================================================================
