@@ -1,6 +1,7 @@
 // A HORA DO SILÊNCIO v2 — motor (Three.js). Mapas e conteúdo em mapas.js, texto em roteiro.js.
 import * as THREE from 'three';
 import { MAPAS } from './mapas.js';
+import { PLAT } from './src/plataforma.js';
 
 const R = window.ROTEIRO;
 const $ = s => document.querySelector(s);
@@ -29,7 +30,7 @@ Object.assign(OPT, lsGet(OPT_KEY, {}));
 // RENDER
 // =====================================================================
 const canvas = $('#c');
-const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: PLAT.antialias(), powerPreference: 'high-performance' });
 renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
 renderer.setSize(innerWidth, innerHeight);
 renderer.shadowMap.enabled = true;
@@ -588,7 +589,7 @@ addEventListener('blur', () => { for (const k in keys) keys[k] = false; });
 addEventListener('mousemove', e => {
   if (!locked || mode !== 'jogo' || ui || !S || S.dead || P.bloqueado) return;
   const k = .0022 * OPT.sens;
-  P.yaw -= e.movementX * k; P.pitch = clamp(P.pitch - e.movementY * k, -1.45, 1.45);
+  P.yaw -= e.movementX * k; P.pitch = clamp(P.pitch - e.movementY * k * PLAT.invY(), -1.45, 1.45);
   if (S.hidden) { const base = Math.atan2(-S.hidden.face[0], -S.hidden.face[1]); let d = P.yaw - base; d = Math.atan2(Math.sin(d), Math.cos(d)); P.yaw = base + clamp(d, -.75, .75); P.pitch = clamp(P.pitch, -.35, .35); }
 });
 document.addEventListener('pointerlockchange', () => {
@@ -617,7 +618,7 @@ function onKey(e) {
     case 'KeyH': usarKit(); break;
     case 'KeyG': jogarGarrafa(); break;
     case 'Tab': case 'KeyJ': abrirDiario(); break;
-    case 'KeyC': case 'ControlLeft': if (!S.hidden) P.crouch = !P.crouch; break;
+    case 'KeyC': if (!S.hidden) P.crouch = !P.crouch; break;
   }
 }
 function trocarPilha() {
@@ -631,12 +632,12 @@ function usarKit() {
   if (S.health >= 100) { toast('Você não está ferida.'); return; }
   S.inv.kits--; S.health = Math.min(100, S.health + 50); SFX.pegar(); toast('Melhor assim.'); renderInvMini();
 }
-const garrafasVoando = [];
+const garrafasVoando = [], _rcG = new THREE.Raycaster(), _rcV = new THREE.Raycaster(), _vV = new THREE.Vector3(), _vF = new THREE.Vector3(), _vA = new THREE.Vector3(), _vU = new THREE.Vector3();
 function jogarGarrafa() {
   if (S.hidden) return;
   if (S.inv.garrafas <= 0) { toast('Sem garrafas para jogar.'); return; }
   S.inv.garrafas--; renderInvMini();
-  const rc = new THREE.Raycaster(); rc.setFromCamera({ x: 0, y: 0 }, camera); rc.far = 16;
+  const rc = _rcG; rc.setFromCamera({ x: 0, y: 0 }, camera); rc.far = 16;
   const hits = rc.intersectObjects(W.solid, false);
   const dir = new THREE.Vector3(); camera.getWorldDirection(dir);
   let fim = hits.length ? hits[0].point.clone().addScaledVector(dir, -.25) : camera.position.clone().addScaledVector(dir, 14);
@@ -837,12 +838,12 @@ function andar(ent, dt, speed, abrePortas = true) {
   return false;
 }
 function visivel(pos, altura = 1.2, alcance = 18) {
-  const alvoV = new THREE.Vector3(pos.x, altura, pos.z);
-  const v = alvoV.clone().sub(camera.position), dist = v.length();
+  const v = _vV.set(pos.x, altura, pos.z).sub(camera.position), dist = v.length();
   if (dist > alcance) return false;
-  const fw = new THREE.Vector3(); camera.getWorldDirection(fw);
-  if (fw.dot(v.clone().normalize()) < Math.cos(.55)) return false;
-  const rc = new THREE.Raycaster(camera.position, v.clone().normalize(), .1, Math.max(.2, dist - .3));
+  const fw = _vF; camera.getWorldDirection(fw);
+  v.normalize();
+  if (fw.dot(v) < Math.cos(.55)) return false;
+  const rc = _rcV; rc.set(camera.position, v); rc.near = .1; rc.far = Math.max(.2, dist - .3);
   return rc.intersectObjects(W.solid, false).length === 0;
 }
 
@@ -1116,7 +1117,7 @@ function atacar(quem, leve) {
   if (quem === 'inspetor') { const dx = P.pos.x - M.pos.x, dz = P.pos.z - M.pos.z, l = Math.hypot(dx, dz) || 1; P.pos.x += dx / l * 1.2; P.pos.z += dz / l * 1.2; collide(P.pos, .33); }
 }
 function morrer(quem) {
-  S.dead = true; S.mortes++; S.causa = quem;
+  S.dead = true; S.mortes++; S.causa = quem; PLAT.aoMorrer(quem);
   const head = new THREE.Vector3();
   if (quem === 'inspetor') MON.cabeca.getWorldPosition(head); else if (quem === 'ana') head.set(ANA.pos.x, 1.2, ANA.pos.z); else head.copy(PROC.pos).setY(1);
   const t0 = performance.now(), yaw0 = P.yaw, pitch0 = P.pitch;
@@ -1235,6 +1236,7 @@ function carregarSnap(snap) {
   S.mortes = Math.max(mortes, S.mortes || 0); S.tempo = Math.max(tempo, S.tempo || 0);
   S.health = Math.max(S.health, 60); S.fear = 0; S.stamina = 100; S.dead = false; S.fim = false; S.hidden = null;
   trocandoCap = false; fitaTocando = null; $('#fita-ind').hidden = true; SFX.chiadoFita(false); subQ = []; subT = 0; $('#sub').innerHTML = '';
+  chamadoArmadilha = null; if (AMB.tensao) AMB.tensao.gain.value = 0; PLAT.aoCarregar();
   carregarMapa(S.mapa, { x: S.pos[0], z: S.pos[1], yaw: S.yaw }, { salvar: false });
   agendarEntidades();
 }
@@ -1261,11 +1263,11 @@ function updateEventos(dt) {
   for (const f of W.tick) f(dt);
 }
 function chamado() {
-  const viz = W.links.filter(l => l.a === P.room.id || l.b === P.room.id).map(l => SALA(l.a === P.room.id ? l.b : l.a)).filter(r => !r.fora);
+  const viz = W.links.filter(l => (l.a === P.room.id || l.b === P.room.id) && !(l.door && l.door.trava && l.door.trava())).map(l => SALA(l.a === P.room.id ? l.b : l.a)).filter(r => !r.fora);
   if (!viz.length) return;
   const s = pick(viz); const [x, z] = pontoEm(s, 1);
   SFX.chamadoVoz(x, z); sub('davi', R.falas.chamado[0].texto);
-  if (!S.flags.chamado1) { S.flags.chamado1 = true; setTimeout(() => falar('chamado_regra'), 2600); }
+  if (!S.flags.chamado1) { S.flags.chamado1 = true; PLAT.agenda(() => { if (!S.dead) falar('chamado_regra'); }, 2.6); }
   chamadoArmadilha = { sala: s, t: 14 };
 }
 
@@ -1390,14 +1392,14 @@ function iniciarAudio() {
 function ruido(loop) { const s = AC.createBufferSource(); s.buffer = ruidoBuf; s.loop = !!loop; return s; }
 function saida(pos, wet = .3) {
   const g = AC.createGain(); let node = g;
-  if (pos) { const p = AC.createPanner(); p.panningModel = 'HRTF'; p.distanceModel = 'inverse'; p.refDistance = 2; p.rolloffFactor = 1.2; p.positionX.value = pos.x; p.positionY.value = pos.y ?? 1.5; p.positionZ.value = pos.z; g.connect(p); node = p; }
+  if (pos) { const p = AC.createPanner(); p.panningModel = PLAT.fone() ? 'HRTF' : 'equalpower'; p.distanceModel = 'inverse'; p.refDistance = PLAT.fone() ? 2.6 : 2; p.rolloffFactor = 1.2; p.positionX.value = pos.x; p.positionY.value = pos.y ?? 1.5; p.positionZ.value = pos.z; g.connect(p); node = p; }
   node.connect(master);
   if (wet) { const w = AC.createGain(); w.gain.value = wet; node.connect(w); w.connect(reverb); }
   return g;
 }
 function env(g, t0, a, peak, dec) { g.gain.setValueAtTime(0.0001, t0); g.gain.exponentialRampToValueAtTime(Math.max(.0002, peak), t0 + a); g.gain.exponentialRampToValueAtTime(0.0001, t0 + a + dec); }
-function osc(tipo, f, t, dur, g) { const o = AC.createOscillator(); o.type = tipo; o.frequency.value = f; o.connect(g); o.start(t); o.stop(t + dur); return o; }
-function burst(t, dur, filtro, freq, q, g, off = Math.random()) { const s = ruido(), f = AC.createBiquadFilter(); f.type = filtro; f.frequency.value = freq; f.Q.value = q; s.connect(f); f.connect(g); s.start(t, off); s.stop(t + dur); return f; }
+function osc(tipo, f, t, dur, g) { const o = AC.createOscillator(); o.type = tipo; o.frequency.value = f; o.connect(g); o.onended = () => o.disconnect(); o.start(t); o.stop(t + dur); return o; }
+function burst(t, dur, filtro, freq, q, g, off = Math.random()) { const s = ruido(), f = AC.createBiquadFilter(); f.type = filtro; f.frequency.value = freq; f.Q.value = q; s.connect(f); f.connect(g); s.onended = () => { s.disconnect(); f.disconnect(); }; s.start(t, off); s.stop(t + dur); return f; }
 const SOM = {
   ambiente() {
     const t = AC.currentTime;
@@ -1466,7 +1468,7 @@ const SOM = {
     for (const [m, a] of [[.5, .4], [1, 1], [1.19, .5], [1.5, .45], [2, .5], [2.5, .3], [2.67, .25], [3.0, .2], [4.17, .12]]) { const g = saida(pos, .9); osc('sine', base * m, t, 8, g); env(g, t, .004, .35 * a * vol, 7 / m); }
   },
   sinoLonge() { SOM.sino(.3, null); },
-  badaladas(n = 9) { for (let i = 0; i < n; i++) setTimeout(() => SOM.sino(.45, null), i * 2200); },
+  badaladas(n = 9) { for (let i = 0; i < n; i++) setTimeout(() => { if (mode === 'jogo' && S && !S.dead && ui !== 'morte') SOM.sino(.45, null); }, i * 2200); },
   estatica(dur = 2, pos) {
     const t = AC.currentTime, s = ruido(true), f = AC.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = 1600; f.Q.value = .8;
     const g = saida(pos || null, .2); s.connect(f); f.connect(g);
@@ -1539,7 +1541,7 @@ let hbT = 0;
 function updateAudio(dt) {
   if (!AC) return;
   const L = AC.listener, p = camera.position;
-  const fw = new THREE.Vector3(0, 0, -1).applyQuaternion(camera.quaternion), up = new THREE.Vector3(0, 1, 0).applyQuaternion(camera.quaternion);
+  const fw = _vA.set(0, 0, -1).applyQuaternion(camera.quaternion), up = _vU.set(0, 1, 0).applyQuaternion(camera.quaternion);
   if (L.positionX) { L.positionX.value = p.x; L.positionY.value = p.y; L.positionZ.value = p.z; L.forwardX.value = fw.x; L.forwardY.value = fw.y; L.forwardZ.value = fw.z; L.upX.value = up.x; L.upY.value = up.y; L.upZ.value = up.z; }
   else { L.setPosition(p.x, p.y, p.z); L.setOrientation(fw.x, fw.y, fw.z, up.x, up.y, up.z); }
   const fora = P.room && P.room.fora, sub = W.mapa === 'tuneis';
@@ -1573,7 +1575,7 @@ function updateClima(dt) {
   raioT -= dt;
   if (raioT <= 0 && W.mapa !== 'tuneis') { raioT = rand(14, 38); raioI = 1; SFX.trovao(); if (S && P.room && !P.room.fora) S.fear = Math.min(100, S.fear + 4); }
   raioI = Math.max(0, raioI - dt * 2.4);
-  const fl = raioI > 0 && Math.random() < .7 ? raioI : 0, semCeu = W.mapa === 'tuneis';
+  const fl = (raioI > 0 && Math.random() < .7 ? raioI : 0) * PLAT.clarao(), semCeu = W.mapa === 'tuneis';
   luzBase = lerp(luzBase, fora ? 1 : 0, Math.min(1, dt * 2));
   moon.intensity = lerp(ambDentro.moon, ambFora.moon, luzBase) + (semCeu ? 0 : fl * 3);
   hemi.intensity = lerp(ambDentro.hemi, ambFora.hemi, luzBase) + (semCeu ? 0 : fl * .7);
@@ -1625,9 +1627,8 @@ function updateHUD() {
   $('#b-folego').style.setProperty('--v', S.stamina + '%');
   $('#b-pilha').style.setProperty('--v', S.battery + '%');
   $('#bars').style.opacity = S.inv.lanterna ? 1 : .3;
-  $('#fx-vignette').style.opacity = Math.min(1, .6 + S.fear / 100 * .4 + (S.health < 40 ? .2 : 0));
-  const blur = S.fear > 75 ? ((S.fear - 75) / 25 * 1.6).toFixed(1) : 0;
-  const filt = `blur(${blur}px) saturate(${(1 - S.fear / 160).toFixed(2)})` + (S.health < 35 ? ' sepia(.4) hue-rotate(-20deg)' : '');
+  $('#fx-vignette').style.opacity = Math.min(1, .6 + S.fear / 100 * .4 + (S.health < 40 ? .2 : 0) + PLAT.pulso());
+  const filt = `saturate(${(Math.round((1 - S.fear / 160) * 10) / 10).toFixed(1)})` + (S.health < 35 ? ' sepia(.4) hue-rotate(-20deg)' : '');
   if (filtroAtual !== filt) { canvas.style.filter = filt; filtroAtual = filt; }
 }
 let subQ = [], subT = 0, subAtual = null;
@@ -1646,7 +1647,8 @@ function proxSub() {
 }
 function updateSub(dt) { if (subT > 0) { subT -= dt; if (subT <= 0) proxSub(); } }
 let toastT;
-function toast(t) { const el = $('#toast'); el.textContent = t; el.style.opacity = 1; clearTimeout(toastT); toastT = setTimeout(() => el.style.opacity = 0, 2800); }
+let toastUlt = '', toastQuando = 0;
+function toast(t) { const agora = performance.now(); if (t === toastUlt && agora - toastQuando < 3000) return; toastUlt = t; toastQuando = agora; const el = $('#toast'); el.textContent = t; el.style.opacity = 1; clearTimeout(toastT); toastT = setTimeout(() => el.style.opacity = 0, 2800); }
 function cartaoCapitulo() { const el = $('#chapter'); el.textContent = R.capitulos[S.chapter].titulo; el.style.opacity = 1; setTimeout(() => el.style.opacity = 0, 3400); }
 let cartaoTO;
 function cartao(t, dur = 4) { const el = $('#cartao'); el.textContent = t; el.style.opacity = 1; clearTimeout(cartaoTO); cartaoTO = setTimeout(() => el.style.opacity = 0, dur * 1000); }
@@ -1835,12 +1837,13 @@ function carregarTitulo() { S = novoEstado('normal'); carregarMapa('estrada', 't
 carregarTitulo();
 const grain = $('#fx-grain').getContext('2d'), grainImg = grain.createImageData(160, 90);
 let last = performance.now(), grainT = 0;
-function loop(now) { requestAnimationFrame(loop); const dt = Math.min(.05, (now - last) / 1000); last = now; frame(dt); }
+function loop(now) { requestAnimationFrame(loop); if (PLAT.pular(now)) return; const dt = Math.min(.05, (now - last) / 1000); last = now; frame(dt); }
 function frame(dt) {
+  dt = PLAT.antes(Math.min(.05, dt));
   perf += dt;
   const jogando = mode === 'jogo' && !ui && S && !S.dead && !S.fim;
-  const ativo = jogando && (locked || window.__teste);
-  $('#clique').hidden = !(jogando && !locked && !window.__teste);
+  const ativo = jogando && (locked || window.__teste || PLAT.semMouse());
+  $('#clique').hidden = !(jogando && !locked && !window.__teste && !PLAT.semMouse());
   if (mode === 'titulo') {
     const t = perf * .05, sp = W.def.spawns.titulo;
     camera.position.set(sp.x + Math.sin(t) * 2, 1.7, sp.z + Math.cos(t * .7)); camera.rotation.set(.03, (sp.yaw || 0) + Math.sin(t * .6) * .2, 0);
@@ -1856,9 +1859,11 @@ function frame(dt) {
   } else if (mode === 'jogo' && S && S.dead) updateAudio(dt);
   for (const d of W.doors) { d.ang = lerp(d.ang, d.target, Math.min(1, dt * 7)); d.pivot.rotation.y = d.ang; }
   grainT -= dt;
-  if (grainT <= 0) { grainT = .05; const d = grainImg.data; for (let i = 0; i < d.length; i += 4) { const v = Math.random() * 255; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = 255; } grain.putImageData(grainImg, 0, 0); }
+  if (grainT <= 0) { grainT = PLAT.grao(); const d = grainImg.data; for (let i = 0; i < d.length; i += 4) { const v = Math.random() * 255; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = 255; } grain.putImageData(grainImg, 0, 0); }
+  PLAT.depois(dt, ativo);
   renderer.render(scene, camera);
 }
 requestAnimationFrame(loop);
 
+PLAT.instalar({ THREE, renderer, scene, camera, flash, chuva, chuvaGeo, NCH, P, M, ANA, PROC, W, keys, OPT, SOM, AMB, R, lsGet, lsSet, SAVE_KEY, CAPS_KEY, CONQ_KEY, onKey, toast, abrirPausa, fecharPausa, entrarJogo, carregarSnap, iniciarAudio, lockPointer, unlock, roomAt, setOpt, get S() { return S; }, get ui() { return ui; }, get mode() { return mode; }, get locked() { return locked; }, get AC() { return AC; }, get master() { return master; } });
 window.__jogo = { get S() { return S; }, P, M, ANA, PROC, W, frame, carregarMapa, objDone, iniciarProcissao, spawnAna, ativarInspetor, camera, renderer, scene, hemi, moon, salvarCheckpoint, carregarSnap, lerNota, tocarFita, pularCena, roomAt, get ui() { return ui; }, get mode() { return mode; }, get alvo() { return alvo; }, keys, onKey, novoEstado: d => { S = novoEstado(d); return S; } };

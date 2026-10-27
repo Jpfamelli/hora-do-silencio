@@ -1,0 +1,125 @@
+# Lote 1 — Plataforma e acessibilidade
+- O Ctrl esquerdo não agacha mais: quem agachava e andava apertava Ctrl+W e fechava a aba, perdendo o progresso; agachar ficou só no C
+- Nova opção "Agachar: segurar para agachar" (solta o C e a Lia levanta), além do modo de apertar para alternar
+- Fechar ou recarregar a aba no meio do jogo agora pede confirmação do navegador
+- Atalhos do navegador com Ctrl (salvar, favoritos, buscar, imprimir...) ficam bloqueados enquanto se joga
+- Perder o ponteiro (ALT+TAB, notificação) solta todas as teclas: a Lia não sai mais correndo sozinha com o SHIFT preso
+- Trocar de aba também solta as teclas presas
+- A tecla P abre a pausa a qualquer momento do jogo
+- Na pausa, P ou ESC volta direto ao jogo
+- Os menus (título, pausa, morte, opções) podem ser navegados com as setas do teclado
+- Opção para inverter o eixo vertical do mouse
+- O clique direito não abre mais o menu do navegador durante o jogo
+- A ajuda da pausa e a linha de controles do título agora citam a pausa no P e o suporte a controle
+- Trocar de aba ou minimizar a janela pausa o jogo na hora, em qualquer capítulo
+- O som baixa quando a aba fica escondida e volta suave quando você retorna
+- Na pausa o clima continua baixinho em vez de seguir no volume cheio
+- Ao voltar da pausa há um segundo de retorno suave: o som sobe e o mundo volta a andar aos poucos, sem susto injusto no armário
+- Depois de tentar de novo após uma morte, o jogo também volta com esse segundo de retorno suave
+- Na tela de morte o som fica abafado, sem o sino berrando por cima da dica
+- O título da aba do navegador mostra o capítulo em que você está
+- O título da aba mostra "Pausa" quando o jogo está pausado
+- Com a aba escondida no meio do jogo, o título da aba vira "Lia... volte."
+- As nove badaladas não continuam tocando depois de morrer nem fora do jogo
+- A fala que explica a regra do Chamado usa o relógio do jogo: não toca mais depois de você morrer ou durante a pausa
+- O Chamado nunca vem de uma sala atrás de porta trancada (antes a armadilha nunca se resolvia)
+- Recarregar o checkpoint cancela uma armadilha do Chamado que estava pendente
+- O zumbido de tensão zera ao recarregar o checkpoint (não fica preso alto depois de morrer na Procissão)
+- Morrer limpa as falas e eventos agendados que ainda iam acontecer
+- Desconectar o controle no meio do jogo pausa automaticamente
+- Na primeira vez, o jogo mede o desempenho no título e escolhe sozinho a qualidade (notebook fraco já começa leve)
+- Nova opção de Qualidade: Alta, Média e Baixa (para notebook fraco), salva entre sessões
+- Na qualidade Baixa a sombra da lanterna é desligada, o maior ganho de desempenho
+- Na qualidade Média a sombra da lanterna usa resolução menor
+- Resolução automática: se o jogo engasgar por 2 s a resolução baixa um pouco, e sobe de novo quando sobra fôlego
+- Nas qualidades leves a chuva usa menos gotas
+- Nas qualidades leves o granulado da tela é redesenhado menos vezes por segundo
+- Na qualidade Baixa a névoa fica um pouco mais densa: esconde a distância e deixa tudo mais opressivo
+- Na qualidade Baixa o antisserrilhado é desligado no próximo carregamento
+- O desfoque de tela inteira no pânico (que derrubava o FPS justo na perseguição) foi trocado por visão de túnel
+- O filtro de cor do medo só muda em degraus, sem recompor a tela a cada quadro
+- A checagem de "a menina está sendo vista" e o arremesso da garrafa reaproveitam os mesmos objetos: menos travadinhas na brincadeira da Ana
+- O som 3D reaproveita os vetores a cada quadro em vez de criar novos
+- Sons curtos desligam seus nós de áudio ao terminar: sessões longas não acumulam estalos nem lentidão
+- Nova opção para limitar a 30 quadros por segundo (o notebook esquenta e faz menos barulho)
+- Nova opção para mostrar os quadros por segundo e a resolução atual no canto da tela
+- Se a imagem continuar pesada mesmo na resolução mínima, um aviso sugere a qualidade Baixa
+- Ao mudar a janela de monitor, a resolução se ajusta à nova tela
+- Se a placa de vídeo reiniciar, aparece uma tela explicando com botão para recarregar, e o jogo tenta salvar antes
+- Tela de carregamento "carregando o internato..." no lugar da tela preta muda
+- Se em 12 s o jogo não abrir, aparece "a conexão está lenta ou caiu" com botão Tentar de novo
+- Mensagem clara quando o navegador não consegue ligar o 3D (WebGL), com o que fazer
+- Mensagem clara quando um arquivo do jogo não chega por queda de conexão
+- Fontes de reserva (Georgia e Courier) em todas as telas: o texto nunca fica invisível se a fonte de fora não carregar
+- Depois da primeira visita o jogo abre sem internet (cache offline com service worker)
+- O cache offline busca a versão nova primeiro, então atualizações do jogo chegam sem precisar limpar nada
+- O jogo pode ser instalado como aplicativo, abrindo em tela cheia e deitado
+- Ícone de sino na aba do navegador (e fim do erro de favicon)
+- Mandar o link no WhatsApp ou redes agora mostra prévia com endereço, idioma e nome do jogo
+- Prévia própria para links compartilhados no X/Twitter
+- Endereço canônico do jogo definido para o link sempre apontar para a versão publicada
+- Na tela final, botão "Copiar resultado" com final, rank de cada capítulo, mortes, tempo e segredos, sem spoiler
+- Na tela final, botão "Desafiar um amigo" que gera um link de desafio (usa o compartilhar do celular quando existe)
+- Quem abre um link de desafio vê no título "Alguém te desafiou: terminou com S A B... Consegue melhor?"
+- O jogo avisa ao navegador que é escuro, sem clarão branco ao abrir
+- Nova tela de Opções no menu principal, organizada em Imagem, Controles, Conforto e Som e legendas
+- As Opções também abrem pela pausa, sem sair do jogo
+- Ajuste de brilho que mexe na exposição da imagem 3D (não só um filtro por cima)
+- Ajuste do campo de visão de 60 a 90 graus
+- Opção para desligar o balanço da câmera ao andar (para quem enjoa)
+- Ajuste da intensidade do tremor da câmera, de 0 a 100%
+- Opção para desligar a visão de túnel no pânico
+- Opção "reduzir clarões" que suaviza os relâmpagos
+- A mesma opção suaviza o clarão vermelho de dano
+- Opção "Estou de fone": com fone o som 3D usa posicionamento binaural; sem fone usa um panorama mais limpo para caixas de som
+- Com fone, os sons 3D carregam um pouco mais longe, e os passos atrás da cabeça arrepiam mais
+- Opção de som mono para quem ouve de um ouvido só
+- Legendas de sons opcionais com direção e distância: [passos pesados atrás ↓ — perto], [risada de menina à esquerda ←], [o sino bate]...
+- Indicador visual de perigo opcional: arcos ao redor da mira apontam para o Inspetor, a Ana e a Procissão
+- Tamanho das legendas ajustável (pequeno, médio e grande), incluindo o diálogo
+- Opção de fundo escuro atrás das legendas para ler em cena clara
+- Mira ajustável: ponto pequeno, ponto grande ou escondida
+- Botão "Restaurar padrão" nas Opções
+- Botão de tela cheia nas Opções
+- Quem pede menos movimento no sistema já começa com tremor reduzido, clarões suaves e sem a tremedeira do título
+- Leitores de tela anunciam legendas, avisos e diálogos
+- Botões focados pelo teclado ou controle ganham contorno visível
+- No primeiro Novo jogo, tela "Antes de entrar" com três sinos para ajustar o brilho até o da direita quase sumir
+- Teste de som em que um estalo dá a volta inteira na cabeça, para conferir o fone
+- Volume e "Estou de fone" ajustáveis ali mesmo na tela de calibragem
+- Botão "Testar imagem e som" nas Opções para repetir a calibragem
+- O título abre com "use fones · apague a luz — Clique para ouvir a chuva": o áudio liga já no menu, com chuva e o zumbido
+- A tela de Opções lista todos os comandos do teclado e do controle
+- Avisos repetidos (como "sem pilha") não piscam de novo em menos de 3 s
+- Botão "Pular abertura" visível durante a cena do carro
+- Suporte a controle (gamepad): analógico esquerdo anda
+- No controle, o analógico direito olha, com zona morta e curva suave para mirar com precisão
+- Ajuste de sensibilidade próprio do controle
+- Botões do controle: A interage (segure para forçar), B agacha, X lanterna, Y diário, LB garrafa, RB prende a respiração, RT corre, ↑ pilha, ↓ curativo, START pausa
+- Todos os menus funcionam no controle: direcional escolhe, A confirma, B volta
+- No controle, esquerda e direita ajustam sliders e listas das Opções
+- Jogando no controle, os avisos na tela trocam E por A e ESPAÇO por RB
+- O controle vibra no ritmo do coração quando o medo passa de 70
+- O controle vibra forte ao levar dano e ao morrer
+- Aviso de "controle conectado" com o resumo dos botões
+- Com controle, dá para jogar sem precisar prender o mouse na janela
+- Opção para desligar a vibração
+- Controles de toque no celular: analógico virtual que aparece onde o dedo encosta
+- No toque, arrastar o lado direito da tela olha em volta
+- Botões de toque para Usar (segurar funciona), Agachar, Lanterna, Prender fôlego, Garrafa, Pilha, Curativo, Diário e Pausa
+- No toque, empurrar o analógico até a borda faz a Lia correr
+- No toque, o HUD se reorganiza para não ficar embaixo dos dedos
+- No celular em pé aparece "Deite o celular para jogar"
+- O aviso do celular deixou de só bloquear: agora oferece "Jogar com toque"
+- O aviso do celular tem "Mandar o link para mim" para guardar o jogo e abrir no computador
+- Ao começar no toque o jogo entra em tela cheia e tenta travar na horizontal
+- No celular a qualidade começa na Média
+- Os botões de toque dão uma vibração curta ao apertar, e o celular vibra ao levar dano
+- No toque, diálogos e notas dizem "toque para continuar" em vez de citar a tecla E
+- O layout respeita o recorte da câmera e as bordas arredondadas dos celulares
+- Salvamento leve a cada 30 s, só quando não há perigo por perto nem evento acontecendo
+- Depois de um F5 ou de fechar a aba, o menu oferece "Continuar de onde parou" em vez de voltar ao começo do capítulo
+- O jogo salva esse ponto também ao trocar de aba ou fechar o navegador
+- Morrer depois de continuar de onde parou ainda volta ao último checkpoint, como antes
+- A vinheta escura da tela pulsa no ritmo do coração quando o medo sobe
+- O QA automático agora testa Ctrl, pausa ao perder o foco, teclas presas, agenda pós-morte, salvamento leve, link de desafio e controle

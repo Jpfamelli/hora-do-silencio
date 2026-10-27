@@ -1,0 +1,134 @@
+/* A Hora do Silêncio — Plataforma e acessibilidade */
+/* carregamento */
+#carregando{position:fixed;inset:0;z-index:20;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;transition:opacity .6s;text-align:center;padding:0 16px}
+#carregando.saindo{opacity:0;pointer-events:none}
+#carregando .cg-tit{font-family:"IM Fell English SC",Georgia,serif;font-size:clamp(28px,6vw,54px);letter-spacing:.1em;color:#cfc3a6}
+#carregando .cg-txt{font-style:italic;color:#857a63;font-size:18px;max-width:560px}
+#carregando .cg-barra{display:block;width:min(260px,70vw);height:2px;background:rgba(255,255,255,.08);position:relative;overflow:hidden}
+#carregando .cg-barra::after{content:"";position:absolute;top:0;bottom:0;left:-40%;width:40%;background:#8e1b14;animation:cg-corre 1.6s ease-in-out infinite}
+#carregando.falhou .cg-barra{display:none}
+@keyframes cg-corre{to{left:100%}}
+
+/* portal do título */
+#portal{z-index:8;background:rgba(0,0,0,.9);cursor:pointer;gap:14px;text-align:center;padding:0 16px}
+#portal .pt-fone{font-family:"Special Elite","Courier New",monospace;color:#857a63;letter-spacing:.2em;font-size:14px}
+#portal .pt-entrar{font-family:"IM Fell English SC",Georgia,serif;font-size:clamp(24px,4vw,38px);letter-spacing:.14em;animation:pt-resp 3.2s ease-in-out infinite}
+#portal small{color:#5d5546;font-style:italic}
+@keyframes pt-resp{50%{opacity:.45}}
+
+/* opções */
+#opcoes{z-index:6}
+#opcoes .wrap{width:min(860px,94vw)}
+#opcoes h3{grid-column:1/-1;font-family:"IM Fell English SC",Georgia,serif;font-weight:normal;color:#857a63;letter-spacing:.12em;font-size:15px;margin:12px 0 2px;border-bottom:1px solid #2c2720;padding-bottom:4px}
+.op-grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:6px 22px}
+.op{display:flex;justify-content:space-between;align-items:center;gap:14px;font-size:16px;padding:5px 0}
+.op em{font-style:normal;color:#857a63;font-family:"Special Elite","Courier New",monospace;font-size:13px}
+.op input[type=range]{width:150px}
+.op input[type=checkbox]{width:18px;height:18px;accent-color:#8e1b14}
+.op-bts{display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin-top:16px}
+.op-ajuda{font-family:"Special Elite","Courier New",monospace;font-size:12px;color:#6d6452;line-height:1.8;margin-top:12px;text-align:center}
+#opcoes :focus-visible,#calibra :focus-visible,#pause :focus-visible,#title :focus-visible,#death :focus-visible,#ending :focus-visible{outline:1px solid #8e1b14;outline-offset:3px}
+
+/* calibragem */
+#calibra{z-index:7;background:rgba(0,0,0,.93);text-align:center;gap:10px;padding:0 16px;overflow:auto}
+#calibra h2{font-family:"IM Fell English SC",Georgia,serif;font-weight:normal;font-size:clamp(28px,5vw,46px);letter-spacing:.1em}
+#calibra p{font-style:italic;color:#857a63;max-width:560px;font-size:17px;line-height:1.45}
+#calibra canvas{width:min(420px,90vw);height:auto;border:1px solid #1a1712}
+#calibra .op{justify-content:center}
+
+/* desafio e avisos no título */
+#desafio{position:absolute;top:18px;left:22px;max-width:min(420px,60vw);font-size:15px;font-style:italic;color:#c9a75a;text-shadow:0 0 8px #000;line-height:1.4}
+#t-aviso{position:absolute;bottom:72px;left:0;right:0;text-align:center;font-family:"Special Elite","Courier New",monospace;font-size:13px;color:#c9a75a;padding:0 16px}
+
+/* legendas: tamanho e fundo */
+body.leg-p #sub{font-size:19px}
+body.leg-g #sub{font-size:31px}
+body.leg-g #sub .quem{font-size:19px}
+body.leg-g #dialogo{font-size:27px}
+body.leg-caixa #sub>span:last-child{background:rgba(0,0,0,.78);padding:2px 10px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+body.leg-caixa #legsom div{background:rgba(0,0,0,.78)}
+
+/* legendas de sons */
+#legsom{position:absolute;left:50%;bottom:calc(12% + 84px);transform:translateX(-50%);text-align:center;font-family:"Special Elite","Courier New",monospace;font-size:15px;color:#bdb39b;text-shadow:0 0 8px #000;pointer-events:none}
+#legsom div{transition:opacity .6s;padding:1px 8px;margin-top:2px}
+body.leg-g #legsom{font-size:19px}
+
+/* indicador visual de perigo (arcos ao redor da mira) */
+#indic{position:absolute;left:50%;top:50%;width:0;height:0}
+#indic i{position:absolute;left:-70px;top:-70px;width:140px;height:140px;border-radius:50%;border:3px solid transparent;border-top-color:#c0392b;opacity:0;transition:opacity .3s;filter:drop-shadow(0 0 4px #000)}
+
+/* mira */
+body.mira-grande #cross{width:9px;height:9px;margin:-4.5px;background:rgba(235,225,205,.8);box-shadow:0 0 0 1px #000}
+body.mira-nenhuma #cross{opacity:0}
+
+/* reduzir clarões */
+body.sem-clarao #fx-red{filter:opacity(.35)}
+
+/* quadros por segundo */
+#fps{position:fixed;right:8px;bottom:6px;font-family:"Special Elite","Courier New",monospace;font-size:11px;color:#6d6452;pointer-events:none;z-index:9}
+
+/* pular abertura */
+#tq-pular{position:fixed;right:22px;bottom:18px;font-size:15px;opacity:.55;z-index:3}
+#tq-pular:hover{opacity:1}
+
+/* placa de vídeo perdida */
+#perdido{z-index:12;background:#000;gap:12px;text-align:center;padding:0 16px}
+#perdido p{font-style:italic;font-size:20px}
+#perdido small{color:#857a63}
+
+/* controle: os atalhos na tela trocam de tecla para botão */
+body.pad #prompt b{font-size:0;border-radius:50%;padding:0 7px}
+body.pad #prompt b::after{content:"A";font-size:15px}
+body.pad #breath b{font-size:0}
+body.pad #breath b::after{content:"RB";font-size:17px}
+body.pad #dialogo small{font-size:0}
+body.pad #dialogo small::after{content:"A para continuar";font-size:12px}
+body.pad #note small{font-size:0}
+body.pad #note small::after{content:"A para fechar";font-size:12px}
+body.pad #clique{display:none}
+
+/* toque */
+#toque{position:fixed;inset:0;z-index:2;pointer-events:none;-webkit-user-select:none;touch-action:none}
+#tq-zona-andar{position:absolute;left:0;top:18%;bottom:0;width:42%;pointer-events:auto}
+#tq-zona-olhar{position:absolute;right:0;top:0;bottom:0;width:58%;pointer-events:auto}
+#tq-base{position:absolute;left:18%;top:72%;width:110px;height:110px;margin:-55px;border-radius:50%;border:1px solid rgba(207,195,166,.25);background:rgba(0,0,0,.25);opacity:.45;transition:opacity .2s}
+#tq-base.on{opacity:.9}
+#tq-pino{position:absolute;left:50%;top:50%;width:46px;height:46px;margin:-23px;border-radius:50%;background:rgba(207,195,166,.35)}
+#tq-bts{position:absolute;right:max(12px,env(safe-area-inset-right));bottom:max(12px,env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(3,auto);gap:8px;pointer-events:none;direction:rtl}
+#tq-topo{position:absolute;right:max(12px,env(safe-area-inset-right));top:max(10px,env(safe-area-inset-top));display:flex;gap:8px}
+#toque button{pointer-events:auto;direction:ltr;font-family:"IM Fell English SC",Georgia,serif;font-size:13px;letter-spacing:.06em;color:#cfc3a6;background:rgba(8,6,4,.55);border:1px solid rgba(207,195,166,.3);border-radius:999px;min-width:64px;min-height:44px;padding:4px 10px;touch-action:none}
+#toque button.on{background:rgba(142,27,20,.6)}
+#toque .tq-grande{min-width:84px;min-height:84px;font-size:16px}
+body.toque #cross{width:6px;height:6px;margin:-3px}
+body.toque #obj{left:max(14px,env(safe-area-inset-left));top:12px;max-width:46vw}
+body.toque #obj-list{font-size:15px}
+body.toque #bars{left:auto;right:max(12px,env(safe-area-inset-right));bottom:auto;top:62px;align-items:flex-end}
+body.toque #inv-mini{display:none}
+body.toque #prompt{top:calc(50% + 26px);font-size:16px}
+body.toque #prompt b{display:none}
+body.toque #breath b{font-size:0}
+body.toque #breath b::after{content:"o botão Prender fôlego";font-size:15px}
+body.toque #clique{display:none}
+body.toque #dialogo small{font-size:0}
+body.toque #dialogo small::after{content:"toque para continuar";font-size:12px}
+body.toque #note small{font-size:0}
+body.toque #note small::after{content:"toque para fechar";font-size:12px}
+body.toque #title .ctrl:not(#aviso-toque){display:none}
+#girar{display:none}
+@media (orientation:portrait){body.toque.jogando #girar{display:flex;position:fixed;inset:0;z-index:11;background:#000;align-items:center;justify-content:center;text-align:center;padding:24px;font-style:italic;font-size:20px}}
+#aviso-mobile .btn{display:block;margin:10px auto 0}
+#aviso-mobile p{margin-bottom:12px;line-height:1.4}
+#aviso-mobile small{display:block;margin-top:12px;color:#857a63;font-size:14px;word-break:break-all}
+
+/* menos movimento */
+@media (prefers-reduced-motion:reduce){
+  #title h1,#death h2{animation:none!important}
+  #fita-ind::before,#portal .pt-entrar{animation:none!important}
+  .btn{transition:none}
+}
+
+@media (max-width:560px){
+  .op-grade{grid-template-columns:1fr}
+  .op input[type=range]{width:120px}
+  #desafio{position:static;margin-bottom:12px;max-width:none;text-align:center}
+}

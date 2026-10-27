@@ -46,6 +46,8 @@ try {
       await page.screenshot({ path: path.join(shots, `${String(i + 1).padStart(2, '0')}-${mapa}.png`) });
     }
   }
+  const fp = await page.evaluate(() => window.T.plataforma ? window.T.plataforma() : []);
+  if (fp.length) { console.log('FALHAS DE PLATAFORMA:', fp); falhou = true; }
   if (argv.includes('--sobrevivencia')) {
     const s = await page.evaluate(async () => { const T = window.T, J = window.__jogo; await T.novo(); J.S.chapter = 2; J.S.flags.energia = true; J.carregarMapa('terreo', 'inicio'); J.ativarInspetor(-20, -12); await T.ate(() => false, 20, true); return T.errs; });
     if (s.length) { console.log('ERROS NA SOBREVIVÊNCIA:', s); falhou = true; }

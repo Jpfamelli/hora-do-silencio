@@ -2,13 +2,28 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>A Hora do Silêncio</title>
 <meta name="description" content="Terror em primeira pessoa no navegador. Internato São Lázaro, 1994. Seu irmão sumiu há quinze anos, e a voz dele voltou numa fita.">
 <meta property="og:title" content="A Hora do Silêncio">
 <meta property="og:description" content="Terror em primeira pessoa no navegador. Jogue de fone, no escuro.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#050505">
+<meta name="color-scheme" content="dark">
+<meta property="og:url" content="https://jpfamelli.github.io/hora-do-silencio/">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="A Hora do Silêncio">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="A Hora do Silêncio">
+<meta name="twitter:description" content="Terror em primeira pessoa no navegador. Internato São Lázaro, 1994. Jogue de fone, no escuro.">
+<link rel="canonical" href="https://jpfamelli.github.io/hora-do-silencio/">
+<link rel="icon" href="icone.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icone.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Hora do Silêncio">
 <style>#aviso-toque{display:none}@media (pointer:coarse) and (not (any-pointer:fine)){#aviso-toque{display:block}}</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +45,7 @@
 
   #hud{position:fixed;inset:0;pointer-events:none}
   #obj{position:absolute;left:28px;top:24px;max-width:400px;text-shadow:0 0 8px #000,0 0 3px #000}
-  #obj-cap{font-family:"IM Fell English SC";font-size:15px;letter-spacing:.12em;color:var(--fraco);margin-bottom:6px}
+  #obj-cap{font-family:"IM Fell English SC",Georgia,serif;font-size:15px;letter-spacing:.12em;color:var(--fraco);margin-bottom:6px}
   #obj-list{list-style:none;font-size:18px;line-height:1.45}
   #obj-list li{padding-left:22px;position:relative}
   #obj-list li::before{content:"";position:absolute;left:2px;top:.55em;width:9px;height:9px;border:1px solid var(--ui);transform:rotate(45deg)}
@@ -39,67 +54,67 @@
   #obj-list li.futuro{display:none}
   #cross{position:absolute;left:50%;top:50%;width:4px;height:4px;margin:-2px;border-radius:50%;background:rgba(220,210,190,.5)}
   #prompt{position:absolute;left:50%;top:calc(50% + 34px);transform:translateX(-50%);font-size:19px;white-space:nowrap;text-shadow:0 0 10px #000,0 0 4px #000;text-align:center}
-  #prompt b{font-family:"Special Elite";border:1px solid var(--ui);padding:0 6px;margin-right:7px;font-weight:normal;font-size:15px}
+  #prompt b{font-family:"Special Elite","Courier New",monospace;border:1px solid var(--ui);padding:0 6px;margin-right:7px;font-weight:normal;font-size:15px}
   #hold{position:absolute;left:50%;top:50%;width:54px;height:54px;margin:-27px;transform:rotate(-90deg)}
   #hold circle{fill:none;stroke-width:3}
-  #bars{position:absolute;left:28px;bottom:26px;display:flex;flex-direction:column;gap:7px;font-family:"IM Fell English SC";font-size:13px;letter-spacing:.1em;transition:opacity .4s}
+  #bars{position:absolute;left:28px;bottom:26px;display:flex;flex-direction:column;gap:7px;font-family:"IM Fell English SC",Georgia,serif;font-size:13px;letter-spacing:.1em;transition:opacity .4s}
   .bar{display:flex;align-items:center;gap:10px}
   .bar span{width:62px;color:var(--fraco)}
   .bar i{display:block;width:150px;height:4px;background:rgba(255,255,255,.08);position:relative;overflow:hidden}
   .bar i::after{content:"";position:absolute;inset:0;width:var(--v,100%);background:var(--c,#cfc3a6)}
-  #inv-mini{position:absolute;right:28px;bottom:26px;text-align:right;font-family:"IM Fell English SC";font-size:14px;letter-spacing:.08em;color:var(--fraco);line-height:1.6;text-shadow:0 0 6px #000}
+  #inv-mini{position:absolute;right:28px;bottom:26px;text-align:right;font-family:"IM Fell English SC",Georgia,serif;font-size:14px;letter-spacing:.08em;color:var(--fraco);line-height:1.6;text-shadow:0 0 6px #000}
   #inv-mini em{font-style:normal;color:var(--ui)}
   #sub{position:absolute;left:50%;bottom:12%;transform:translateX(-50%);width:min(820px,90vw);text-align:center;font-size:24px;line-height:1.35;text-shadow:0 0 12px #000,0 0 4px #000,0 0 2px #000}
-  #sub .quem{font-family:"IM Fell English SC";font-size:16px;letter-spacing:.15em;display:block;opacity:.85}
-  #fita-ind{position:absolute;right:28px;top:24px;font-family:"Special Elite";font-size:14px;color:#c9a75a;text-shadow:0 0 6px #000}
+  #sub .quem{font-family:"IM Fell English SC",Georgia,serif;font-size:16px;letter-spacing:.15em;display:block;opacity:.85}
+  #fita-ind{position:absolute;right:28px;top:24px;font-family:"Special Elite","Courier New",monospace;font-size:14px;color:#c9a75a;text-shadow:0 0 6px #000}
   #fita-ind::before{content:"● ";color:var(--sangue);animation:pisca 1s infinite}
   @keyframes pisca{50%{opacity:0}}
   #toast{position:absolute;left:50%;top:18%;transform:translateX(-50%);font-size:20px;font-style:italic;text-shadow:0 0 10px #000;opacity:0;transition:opacity .5s;text-align:center;width:min(700px,90vw)}
-  #conq{position:absolute;right:28px;top:60px;background:rgba(10,8,6,.85);border:1px solid #3a3228;padding:10px 16px;font-family:"IM Fell English SC";letter-spacing:.08em;opacity:0;transition:opacity .6s,transform .6s;transform:translateX(20px)}
+  #conq{position:absolute;right:28px;top:60px;background:rgba(10,8,6,.85);border:1px solid #3a3228;padding:10px 16px;font-family:"IM Fell English SC",Georgia,serif;letter-spacing:.08em;opacity:0;transition:opacity .6s,transform .6s;transform:translateX(20px)}
   #conq.on{opacity:1;transform:none}
   #conq small{display:block;font-family:"IM Fell English";font-style:italic;letter-spacing:0;color:var(--fraco)}
-  #breath{position:absolute;left:50%;top:62%;transform:translateX(-50%);font-family:"Special Elite";font-size:17px;color:#e9dfc8;text-shadow:0 0 10px #000;text-align:center}
+  #breath{position:absolute;left:50%;top:62%;transform:translateX(-50%);font-family:"Special Elite","Courier New",monospace;font-size:17px;color:#e9dfc8;text-shadow:0 0 10px #000;text-align:center}
   #breath i{display:block;margin:8px auto 0;width:180px;height:3px;background:rgba(255,255,255,.12);position:relative}
   #breath i::after{content:"";position:absolute;inset:0;width:var(--v,100%);background:#e9dfc8}
-  #chapter{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;font-family:"IM Fell English SC";font-size:clamp(28px,5vw,64px);letter-spacing:.14em;text-shadow:0 0 30px #000;opacity:0;transition:opacity 1.4s;text-align:center;padding:0 16px}
+  #chapter{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;font-family:"IM Fell English SC",Georgia,serif;font-size:clamp(28px,5vw,64px);letter-spacing:.14em;text-shadow:0 0 30px #000;opacity:0;transition:opacity 1.4s;text-align:center;padding:0 16px}
   #cartao{position:fixed;left:0;right:0;top:14%;text-align:center;pointer-events:none;font-size:clamp(20px,2.6vw,30px);font-style:italic;text-shadow:0 0 16px #000;opacity:0;transition:opacity 1.2s;padding:0 16px}
-  #clique{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.55);font-family:"IM Fell English SC";letter-spacing:.14em;font-size:22px;cursor:pointer}
+  #clique{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.55);font-family:"IM Fell English SC",Georgia,serif;letter-spacing:.14em;font-size:22px;cursor:pointer}
 
   #dialogo{position:fixed;left:50%;bottom:7%;transform:translateX(-50%);width:min(760px,92vw);background:rgba(8,6,4,.88);border:1px solid #3a3228;padding:18px 24px 14px;font-size:22px;line-height:1.4;box-shadow:0 10px 40px #000}
-  #dialogo .quem{font-family:"IM Fell English SC";font-size:15px;letter-spacing:.14em;margin-bottom:4px}
-  #dialogo small{display:block;text-align:right;font-family:"Special Elite";font-size:12px;color:#6d6452;margin-top:8px}
+  #dialogo .quem{font-family:"IM Fell English SC",Georgia,serif;font-size:15px;letter-spacing:.14em;margin-bottom:4px}
+  #dialogo small{display:block;text-align:right;font-family:"Special Elite","Courier New",monospace;font-size:12px;color:#6d6452;margin-top:8px}
 
   .screen{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column}
-  .btn{pointer-events:auto;font-family:"IM Fell English SC";font-size:22px;letter-spacing:.14em;color:var(--ui);background:none;border:none;cursor:pointer;padding:6px 18px;position:relative;transition:color .2s,letter-spacing .3s}
+  .btn{pointer-events:auto;font-family:"IM Fell English SC",Georgia,serif;font-size:22px;letter-spacing:.14em;color:var(--ui);background:none;border:none;cursor:pointer;padding:6px 18px;position:relative;transition:color .2s,letter-spacing .3s}
   .btn:hover,.btn:focus-visible{color:#fff;letter-spacing:.2em;outline:none}
   .btn:hover::before{content:"·";position:absolute;left:-2px;color:var(--sangue)}
   .btn[disabled]{opacity:.3;pointer-events:none}
 
   #title{background:linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.78) 80%)}
-  #title h1{font-family:"IM Fell English SC";font-weight:normal;font-size:clamp(46px,9vw,120px);letter-spacing:.08em;line-height:.95;text-align:center;text-shadow:0 0 40px #000;animation:tremor 6s infinite}
+  #title h1{font-family:"IM Fell English SC",Georgia,serif;font-weight:normal;font-size:clamp(46px,9vw,120px);letter-spacing:.08em;line-height:.95;text-align:center;text-shadow:0 0 40px #000;animation:tremor 6s infinite}
   @keyframes tremor{0%,92%,100%{transform:none;opacity:1}93%{transform:translate(2px,-1px);opacity:.7}95%{transform:translate(-3px,1px)}97%{opacity:.85}}
   #title .sub{font-style:italic;font-size:clamp(15px,2vw,20px);color:var(--fraco);margin:14px 0 34px;text-align:center}
   #title .menu{display:flex;flex-direction:column;align-items:center;gap:2px}
-  #title .opts{margin-top:24px;display:flex;gap:26px;flex-wrap:wrap;justify-content:center;font-family:"IM Fell English SC";font-size:14px;letter-spacing:.1em;color:var(--fraco)}
+  #title .opts{margin-top:24px;display:flex;gap:26px;flex-wrap:wrap;justify-content:center;font-family:"IM Fell English SC",Georgia,serif;font-size:14px;letter-spacing:.1em;color:var(--fraco)}
   #title .opts label{display:flex;align-items:center;gap:8px}
   select,input[type=range]{accent-color:var(--sangue);background:#000;color:var(--ui);border:1px solid #333;font-family:inherit;padding:2px 4px}
-  #title .ctrl{position:absolute;bottom:20px;left:0;right:0;text-align:center;font-family:"Special Elite";font-size:13px;color:#6d6452;line-height:1.7;padding:0 16px}
+  #title .ctrl{position:absolute;bottom:20px;left:0;right:0;text-align:center;font-family:"Special Elite","Courier New",monospace;font-size:13px;color:#6d6452;line-height:1.7;padding:0 16px}
   #title .rot{position:absolute;top:18px;right:22px;font-size:12px;color:#5d5546;font-style:italic}
 
   .painel{background:rgba(4,3,2,.94)}
   .painel .wrap{width:min(860px,94vw);max-height:86vh;overflow:auto;padding:8px}
-  .painel h2{font-family:"IM Fell English SC";font-weight:normal;font-size:34px;letter-spacing:.1em;margin-bottom:18px;text-align:center}
+  .painel h2{font-family:"IM Fell English SC",Georgia,serif;font-weight:normal;font-size:34px;letter-spacing:.1em;margin-bottom:18px;text-align:center}
   .lista{display:grid;gap:8px}
   .lista .it{display:flex;justify-content:space-between;align-items:center;gap:16px;border:1px solid #2c2720;padding:12px 16px;background:#0e0c0a}
   .lista .it.x{opacity:.35}
-  .lista .it b{font-family:"IM Fell English SC";font-weight:normal;letter-spacing:.08em;font-size:18px}
+  .lista .it b{font-family:"IM Fell English SC",Georgia,serif;font-weight:normal;letter-spacing:.08em;font-size:18px}
   .lista .it small{color:var(--fraco);font-style:italic;font-size:15px}
-  .lista .it .rank{font-family:"IM Fell English SC";font-size:26px;color:#c9a75a;min-width:30px;text-align:center}
+  .lista .it .rank{font-family:"IM Fell English SC",Georgia,serif;font-size:26px;color:#c9a75a;min-width:30px;text-align:center}
 
   #note{background:rgba(0,0,0,.72);cursor:pointer}
-  .paper{width:min(580px,92vw);max-height:84vh;overflow:auto;background:var(--papel);color:var(--tinta);padding:42px 46px 30px;font-family:"Special Elite";font-size:18px;line-height:1.6;box-shadow:0 30px 80px #000,inset 0 0 70px rgba(90,60,20,.45);transform:rotate(-1.2deg);position:relative}
+  .paper{width:min(580px,92vw);max-height:84vh;overflow:auto;background:var(--papel);color:var(--tinta);padding:42px 46px 30px;font-family:"Special Elite","Courier New",monospace;font-size:18px;line-height:1.6;box-shadow:0 30px 80px #000,inset 0 0 70px rgba(90,60,20,.45);transform:rotate(-1.2deg);position:relative}
   .paper::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 27px,rgba(60,40,20,.08) 27px 28px);pointer-events:none}
-  .paper h2{font-family:"IM Fell English SC";font-weight:normal;font-size:24px;margin-bottom:16px;border-bottom:1px solid rgba(42,33,25,.3);padding-bottom:8px}
+  .paper h2{font-family:"IM Fell English SC",Georgia,serif;font-weight:normal;font-size:24px;margin-bottom:16px;border-bottom:1px solid rgba(42,33,25,.3);padding-bottom:8px}
   .paper p{white-space:pre-line}
   .paper small{display:block;margin-top:22px;font-size:12px;opacity:.55;text-align:right}
 
@@ -108,44 +123,60 @@
   #diario nav .btn{font-size:17px}
   #diario nav .btn.on{color:#fff;border-bottom:1px solid var(--sangue)}
   #diario .pane{flex:1;overflow:auto;font-size:18px;line-height:1.6}
-  #diario .pane h3{font-family:"IM Fell English SC";font-weight:normal;color:var(--fraco);letter-spacing:.1em;font-size:15px;margin:14px 0 6px}
+  #diario .pane h3{font-family:"IM Fell English SC",Georgia,serif;font-weight:normal;color:var(--fraco);letter-spacing:.1em;font-size:15px;margin:14px 0 6px}
   #diario .notas{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
-  #diario .nota{pointer-events:auto;cursor:pointer;background:#16130f;border:1px solid #2c2720;padding:12px;font-family:"Special Elite";font-size:14px;color:var(--ui)}
+  #diario .nota{pointer-events:auto;cursor:pointer;background:#16130f;border:1px solid #2c2720;padding:12px;font-family:"Special Elite","Courier New",monospace;font-size:14px;color:var(--ui)}
   #diario .nota.x{opacity:.25;cursor:default}
   #diario .nota:hover:not(.x){border-color:var(--fraco)}
   #diario svg{width:100%;height:100%;max-height:540px}
   #diario .fechar{align-self:flex-end;margin-top:8px}
-  .digits{font-family:"Special Elite";font-size:28px;letter-spacing:.35em;margin-top:4px}
+  .digits{font-family:"Special Elite","Courier New",monospace;font-size:28px;letter-spacing:.35em;margin-top:4px}
 
   #keypad{background:rgba(0,0,0,.8)}
   #keypad .box{background:#1b1a18;border:1px solid #3a3530;padding:26px;box-shadow:0 20px 60px #000;text-align:center}
-  #keypad .tit{font-family:"IM Fell English SC";letter-spacing:.12em;color:var(--fraco);margin-bottom:10px}
-  #keypad .disp{font-family:"Special Elite";font-size:40px;letter-spacing:.5em;background:#0c0c0b;color:#c9a75a;padding:8px 0 8px .5em;margin-bottom:16px;border:1px solid #2c2a26;min-width:240px}
+  #keypad .tit{font-family:"IM Fell English SC",Georgia,serif;letter-spacing:.12em;color:var(--fraco);margin-bottom:10px}
+  #keypad .disp{font-family:"Special Elite","Courier New",monospace;font-size:40px;letter-spacing:.5em;background:#0c0c0b;color:#c9a75a;padding:8px 0 8px .5em;margin-bottom:16px;border:1px solid #2c2a26;min-width:240px}
   #keypad .grid{display:grid;grid-template-columns:repeat(3,70px);gap:8px;justify-content:center}
-  #keypad .grid button{pointer-events:auto;height:58px;font-family:"Special Elite";font-size:24px;background:#2a2723;color:var(--ui);border:1px solid #3d3832;cursor:pointer}
+  #keypad .grid button{pointer-events:auto;height:58px;font-family:"Special Elite","Courier New",monospace;font-size:24px;background:#2a2723;color:var(--ui);border:1px solid #3d3832;cursor:pointer}
   #keypad .grid button:hover{background:#3a3530}
   #keypad.erro .disp{color:var(--sangue);animation:shake .4s}
   @keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 
   #pause,#death,#ending,#fimcap,#escolha{background:rgba(0,0,0,.84);text-align:center;padding:0 16px}
-  #pause h2,#death h2,#ending h2,#fimcap h2,#escolha h2{font-family:"IM Fell English SC";font-weight:normal;font-size:clamp(30px,6vw,64px);letter-spacing:.1em;margin-bottom:18px}
+  #pause h2,#death h2,#ending h2,#fimcap h2,#escolha h2{font-family:"IM Fell English SC",Georgia,serif;font-weight:normal;font-size:clamp(30px,6vw,64px);letter-spacing:.1em;margin-bottom:18px}
   #death{background:radial-gradient(ellipse at center,#1a0201,#000 75%)}
   #death h2{color:var(--sangue);animation:tremor 3s infinite}
   #death p,#ending p,#escolha p{font-style:italic;color:var(--fraco);max-width:640px;margin:0 auto 30px;font-size:19px;line-height:1.5;white-space:pre-line}
   #ending{background:#000}
   #ending p{color:var(--ui);font-style:normal;font-size:21px}
-  .stats{font-family:"Special Elite";font-size:14px;color:#6d6452;margin-bottom:26px;line-height:1.8}
+  .stats{font-family:"Special Elite","Courier New",monospace;font-size:14px;color:#6d6452;margin-bottom:26px;line-height:1.8}
   #fimcap{background:rgba(0,0,0,.9);pointer-events:none}
-  #fimcap .rank{font-family:"IM Fell English SC";font-size:90px;color:#c9a75a;line-height:1;margin:6px 0 10px}
+  #fimcap .rank{font-family:"IM Fell English SC",Georgia,serif;font-size:90px;color:#c9a75a;line-height:1;margin:6px 0 10px}
   #fimcap .gancho{font-style:italic;font-size:22px;max-width:640px;margin-top:22px;color:var(--ui)}
-  #pause .set{display:flex;flex-direction:column;gap:12px;margin:22px 0;font-family:"IM Fell English SC";font-size:14px;letter-spacing:.1em;color:var(--fraco)}
+  #pause .set{display:flex;flex-direction:column;gap:12px;margin:22px 0;font-family:"IM Fell English SC",Georgia,serif;font-size:14px;letter-spacing:.1em;color:var(--fraco)}
   #pause .set label{display:flex;gap:12px;align-items:center;justify-content:center}
-  #pause .ajuda{font-family:"Special Elite";font-size:13px;color:#6d6452;line-height:1.8;margin-top:10px}
+  #pause .ajuda{font-family:"Special Elite","Courier New",monospace;font-size:13px;color:#6d6452;line-height:1.8;margin-top:10px}
   #aviso-mobile{position:fixed;inset:0;background:#000;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font-size:20px;z-index:9}
 </style>
+<link rel="stylesheet" href="src/plataforma.css">
 <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js"}}</script>
 </head>
 <body>
+<div id="carregando"><div class="cg-tit">A Hora do Silêncio</div><div class="cg-txt">carregando o internato...</div><i class="cg-barra"></i><button class="btn" id="cg-tentar" hidden onclick="location.reload()">Tentar de novo</button></div>
+<script>
+(function () {
+  var el = document.getElementById('carregando');
+  function erro(t) { if (window.__jogo || !el) return; el.querySelector('.cg-txt').textContent = t; document.getElementById('cg-tentar').hidden = false; el.classList.add('falhou'); }
+  window.addEventListener('error', function (e) {
+    if (window.__jogo) return;
+    var m = String(e.message || '');
+    if (/WebGL/i.test(m)) erro('Seu navegador não conseguiu ligar o 3D (WebGL). Atualize o navegador ou ative a aceleração de hardware nas configurações.');
+    else if (e.target && e.target.tagName === 'SCRIPT') erro('A conexão caiu no meio do caminho e o internato não carregou.');
+    else if (m) erro('Algo deu errado ao abrir o jogo. Tente de novo.');
+  }, true);
+  setTimeout(function () { erro('A conexão está lenta ou caiu. O internato ainda não abriu.'); }, 12000);
+})();
+</script>
 <canvas id="c"></canvas>
 <div class="fx" id="fx-vignette"></div>
 <canvas class="fx" id="fx-grain" width="160" height="90"></canvas>
@@ -245,7 +276,7 @@
 </div>
 
 <div id="fimcap" class="screen" hidden>
-  <div style="font-family:'IM Fell English SC';letter-spacing:.14em;color:var(--fraco)" id="fc-cap"></div>
+  <div style="font-family:'IM Fell English SC',Georgia,serif;letter-spacing:.14em;color:var(--fraco)" id="fc-cap"></div>
   <div class="rank" id="fc-rank"></div>
   <div class="stats" id="fc-stats"></div>
   <div class="gancho" id="fc-gancho"></div>
@@ -265,6 +296,7 @@
   <button class="btn" id="e-menu">Menu principal</button>
 </div>
 
+<div id="girar">Deite o celular para jogar.</div>
 <div id="aviso-mobile" hidden>Este jogo precisa de teclado e mouse.<br>Abra no computador.</div>
 
 <script src="roteiro.js"></script>
