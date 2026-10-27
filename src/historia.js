@@ -3,13 +3,16 @@
 // Todo o texto mora em roteiro.js; aqui só fica a lógica de quando e como ele aparece.
 
 import { instalarMundo } from './historia-mundo.js';
+import { instalarPolimento } from './historia-polimento.js';
 
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 // Legenda: rubricas entre parênteses ficam em itálico e apagadas ("(eco)", "(na fita)"...)
 export function fmtFala(texto) {
-  return esc(texto).replace(/\(([^)]*)\)/g, '<i class="rubrica">($1)</i>');
+  return esc(texto).replace(/\.\.\./g, '…').replace(/\(([^)]*)\)/g, '<i class="rubrica">($1)</i>');
 }
+// ~palavra~ vira palavra riscada à mão
+const riscos = h => h.replace(/~([^~]+)~/g, '<s>$1</s>');
 // Nota: rubricas viram anotação de cena; a linha seguinte a uma rubrica de "letra/lápis/caneta/giz/riscado" vira escrita à mão
 export function fmtNota(texto) {
   const linhas = String(texto).split('\n'); let mao = false;
@@ -21,7 +24,8 @@ export function fmtNota(texto) {
       return `<em class="rubrica">${esc(m[1])}</em>` + (m[2] ? (mao ? `<span class="mao">${esc(m[2])}</span>` : esc(m[2])) : '');
     }
     if (!t) { return ''; }
-    const out = mao ? `<span class="mao">${esc(l)}</span>` : esc(l);
+    if (!mao && t.length > 6 && t === t.toUpperCase() && /[A-ZÁÉÍÓÚÂÊÔÃÕÇ]{3,}/.test(t)) return `<span class="cab">${riscos(esc(l))}</span>`; // cabeçalho de documento
+    const out = mao ? `<span class="mao">${riscos(esc(l))}</span>` : riscos(esc(l));
     return out;
   }).join('\n');
 }
@@ -34,6 +38,7 @@ export function escrever(el, texto, ms = 28) {
 // Final: parágrafos aparecem um a um
 export function revelar(el, texto, passo = 1400) {
   clearTimeout(el._rev); el.innerHTML = '';
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) passo = 250; // menos movimento: tudo quase de uma vez
   const pars = String(texto).split('\n\n');
   pars.forEach((p, i) => { const s = document.createElement('span'); s.className = 'par'; s.textContent = p + (i < pars.length - 1 ? '\n\n' : ''); s.style.animationDelay = (i * passo / 1000) + 's'; el.appendChild(s); });
 }
@@ -55,6 +60,8 @@ export function instalarHistoria(c) {
 
   // Lote 2: lore do mundo (instalado antes dos embrulhos abaixo, para rodar depois deles na hora de montar o mapa)
   const MUN = instalarMundo(c, { falarLinhas, conqs, nomeJogador, esc, pick });
+  // Lote 3: créditos, o seu nome, legendas, teclados e acessibilidade do texto
+  const POL = instalarPolimento(c, { esc, nomeJogador, conqs, fmtFala, fmtNota });
 
   // ------------------------------------------------------------------
   // Mapas: embrulhos que acrescentam segredos sem mexer em mapas.js
@@ -172,6 +179,7 @@ export function instalarHistoria(c) {
       } else olharT = 0;
     }
     MUN.tick(dt);
+    POL.tick(dt);
   }
 
   // ------------------------------------------------------------------
@@ -199,6 +207,7 @@ export function instalarHistoria(c) {
   // ------------------------------------------------------------------
   function vozChamado() {
     const St = S(), esp = MUN.chamadoEspecial(St); if (esp) return esp;
+    const nm = POL.chamadoNome(St); if (nm) return nm; // uma vez por capítulo, o Chamado diz o nome digitado no título
     const l = (R.chamados && R.chamados[St.chapter]) || R.falas.chamado;
     const k = 'nChamados' + St.chapter, n = St.flags[k] = (St.flags[k] || 0) + 1;
     return l[Math.min(n - 1, l.length - 1)] || R.falas.chamado[0];
@@ -226,11 +235,12 @@ export function instalarHistoria(c) {
     if (cofre && dig === '1979') {
       marca('1979');
       if (!St.flags.gavetaFalsa) { St.flags.gavetaFalsa = true; c.fecharTeclado(); c.SFX.trancado(); c.toast('Clique. Não é o cofre: a gaveta de baixo destravou. Tem uma fita dentro.'); setTimeout(() => c.tocarFita('f7'), 900); }
-      else c.sub('lia', 'A gaveta de baixo já tá aberta.');
+      else { const f = POL.cofre1979(); if (f) c.sub(f.quem, f.texto); else c.sub('lia', 'A gaveta de baixo já tá aberta.'); }
       return true;
     }
+    if (POL.codigo(cofre, dig, marca)) return true;
     if (dig === '0000' || dig === '000') { marca('zero'); c.sub('lia', cofre ? 'Zero, zero, zero, zero. O Davi nunca usaria zero.' : 'Zero, zero, zero. Óbvio demais pro diretor.'); return true; }
-    if (cofre && dig === '1403') { marca('1403'); c.sub('radio', '(um chiado sai do nada) ...quatorze de março... vinte e uma horas...'); setTimeout(() => c.sub('lia', 'A data do livro de ocorrências. A noite do fogo.'), 2600); return true; }
+    if (cofre && dig === '1403') { marca('1403'); POL.apagarLuzes(); c.sub('radio', '(um chiado sai do nada) ...quatorze de março... vinte e uma horas...'); setTimeout(() => c.sub('lia', 'A data do livro de ocorrências. A noite do fogo.'), 2600); return true; }
     if (dig === '0909' || dig === '999') {
       marca('nove'); c.SFX.sino(.5, null); setTimeout(() => c.SFX.sino(.4, null), 1600);
       c.sub('inspetor', 'Nove e nove. Quem está brincando com a Hora?'); c.emitNoise(c.P.pos.x, c.P.pos.z, 40); return true;
@@ -256,10 +266,12 @@ export function instalarHistoria(c) {
     const St = S();
     if (!St.flags.respondeu) c.conquista('nao_respondi');
     if (St.flags.sino && !St.flags.olhouTras) c.conquista('nao_olhei');
+    POL.aoFinal(tipo);
   }
   function statsFinal(tipo) {
     const cq = conqs(), n = ['final_comum', 'final_silencio', 'final_verdadeiro'].filter(k => cq[k]).length;
     let h = (R.finaisDescobertos || '').replace('{n}', n);
+    const falta = POL.faltaFinais(); if (falta) h += ' · ' + esc(falta);
     if (tipo === 'comum') h += '<br>' + atitudes().map(a => `${a.ok ? '✦' : '◇'} ${esc(a.texto)}`).join(' · ');
     return h;
   }
@@ -275,13 +287,14 @@ export function instalarHistoria(c) {
     const bf = $('#b-fitas'); if (bf) bf.hidden = !cq.nove_cliques;
     const inp = $('#o-nome'); if (inp && document.activeElement !== inp) inp.value = nomeJogador();
     document.body.classList.toggle('fita-gasta', !!lsGet(GASTA_KEY, false));
+    POL.titulo();
   }
   let tocouNove = false;
   function primeiroToque() {
     if (tocouNove || !ehNove()) return; tocouNove = true;
     c.iniciarAudio(); c.SFX.badaladas(9);
   }
-  function aoComecar(St) { if (ehNove()) { c.conquista('nove_horas'); St.flags.nove = true; } }
+  function aoComecar(St) { if (ehNove()) { c.conquista('nove_horas'); St.flags.nove = true; } POL.aoComecar(St); }
   // nome do jogador (opcional): fica só neste navegador
   const inp = $('#o-nome');
   if (inp) { inp.addEventListener('input', () => lsSet(NOME_KEY, inp.value.replace(/[<>]/g, '').slice(0, 16))); inp.addEventListener('keydown', e => e.stopPropagation()); }
@@ -311,10 +324,8 @@ export function instalarHistoria(c) {
   const bf = $('#b-fitas');
   if (bf) bf.onclick = () => {
     const l = lsGet(FITAS_KEY, []);
-    $('#pn-tit').textContent = `Fitas ouvidas ${l.length}/${R.fitas.length}`;
-    $('#pn-lista').innerHTML = R.fitas.map(f => l.includes(f.id)
-      ? `<div class="it"><div><b>▶ ${esc(f.titulo)}</b><br><small>${f.linhas.map(x => esc((R.personagens[x.quem] || {}).nome || '') + ': ' + esc(x.texto.replace(/\{[a-z0-9]+\}/g, '…'))).join('<br>')}</small></div></div>`
-      : `<div class="it x"><div><b>???</b><br><small>${f.secreta ? 'Uma fita que não quer ser achada.' : 'Ainda não ouvida.'}</small></div></div>`).join('');
+    const pf = POL.painelFitas(l); $('#pn-tit').textContent = pf.tit;
+    $('#pn-lista').innerHTML = pf.html;
     $('#title').hidden = true; $('#painel').hidden = false;
   };
   window.addEventListener('pointerdown', () => { if (c.mode === 'titulo') primeiroToque(); });

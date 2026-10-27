@@ -3740,7 +3740,7 @@ function voltarMenu() {
   unlock(); carregarTitulo(); UIX.atualizarTitulo();
 }
 function carregarTitulo() { S = novoEstado('normal'); carregarMapa('estrada', 'titulo', { salvar: false }); H.titulo(); PG.titulo(); }
-const H = instalarHistoria({ R, MAPAS, API, lsGet, lsSet, CONQ_KEY, P, M, ANA, PROC, W, SFX, falar, sub, toast, cartao, conquista, emitNoise, iniciarAudio, fecharTeclado, tocarFita, syncWorld, dicaExterna: true, get S() { return S; }, get mode() { return mode; } });
+const H = instalarHistoria({ R, MAPAS, API, lsGet, lsSet, CONQ_KEY, P, M, ANA, PROC, W, SFX, falar, sub, toast, cartao, conquista, emitNoise, iniciarAudio, fecharTeclado, tocarFita, syncWorld, dicaExterna: true, get S() { return S; }, get mode() { return mode; }, get ui() { return ui; }, get AC() { return AC; } });
 
 const UIX = criarInterface({
   get S() { return S; }, P, M, ANA, PROC, W, OPT, DIFS, R, camera, renderer, keys, SFX, CAPS_KEY, SAVE_KEY,
