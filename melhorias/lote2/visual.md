@@ -1,0 +1,99 @@
+# Lote 2 — Visual e luz
+- Escritas de giz escondidas que só brilham no clarão do relâmpago e somem logo depois (com "Reduzir flashes" a revelação é lenta e suave)
+- No térreo, o relâmpago revela frases de giz na recepção, refeitório, sala de aula, biblioteca e enfermaria ("ELE OUVE O TEU CORAÇÃO", "O DIRETOR SABIA"...)
+- No andar de cima, o relâmpago revela frases de giz nos dormitórios e na sala de brinquedos ("LIA, VEM ME BUSCAR", "A ANA CONTA PRA NÃO CHORAR"...)
+- Na parede da torre do sino, o clarão mostra em giz "OS NOVE DA NOITE" com os nove nomes
+- Foto da turma de 1979 pendurada na recepção (a irmã, o diretor e vinte e três crianças), que dá para examinar
+- No clarão do relâmpago, uma figura alta, vendada e de cabeça torta aparece atrás das crianças na foto de 1979
+- Refeitório: um relâmpago troca a sala por um instante pelo refeitório de 1979, com toalhas, pratos e canecas postos e crianças sentadas de costas
+- Dormitório B: o clarão mostra as camas arrumadas com lençóis brancos e travesseiros, com crianças sentadas nelas
+- Sala de aula: o clarão mostra as crianças nas carteiras e a lousa limpa com a data "14 de março de 1979"
+- Corredor de cima: o clarão mostra a noite do incêndio, paredes em brasa e crianças correndo
+- Rouparia: o clarão mostra a sala queimando, com brasas nas paredes e uma menina parada no meio
+- Capela: o clarão mostra a noite do incêndio, com três crianças batendo na porta trancada e a irmã ao lado delas
+- Cada lembrança de 1979 acontece uma vez por partida; ficando alguns segundos numa sala marcada, o céu manda um relâmpago
+- As lembranças de 1979 vêm com luz quente de lampião (fogo laranja nas da noite do incêndio) e sussurros
+- Escondida durante a Procissão, a sala vista do esconderijo fica como em 1979 por alguns segundos: luz quente, ar limpo e mesa ou cama arrumada
+- Sombra de fuligem da Irmã Celeste abraçando três crianças na parede da capela, ao lado da porta
+- Iluminar a sombra da irmã com a lanterna por 2 s faz a Lia dizer "Ela ficou com eles até o fim."
+- Marcas de mãos pequenas queimadas e arranhões por dentro da porta da capela
+- Vitral de "São Lázaro do Silêncio" na capela: santo de venda branca, dedo nos lábios e rosto riscado
+- A cada relâmpago os vitrais se acendem e projetam manchas coloridas no chão da nave
+- Por um quadro, no clarão, o rosto riscado do santo no vitral vira o rosto do Inspetor de cabeça torta
+- Segundo vitral: um santo segurando um sino sobre três crianças ajoelhadas, com uma venda pintada depois, por cima do vidro
+- Depois de tocar o sino, a capela volta a 1979 por 3 s: luz laranja forte e três crianças puxando a corda, sem parar o jogo
+- Durante essa lembrança, batidas na porta e um tranco; depois, corte seco para o escuro de agora
+- Do cemitério, as janelas da capela tremulam com luz de fogo, mesmo sem fogo lá dentro
+- Uma linha de luz laranja tremula por baixo da porta da capela, com uma rosácea acesa por cima dela
+- Luz laranja tremulando diante da capela, que some quando você entra (lá dentro só há velas)
+- Cinza fina no ar do cemitério, cada vez mais densa perto da capela
+- Na fuga depois do sino, a cinza vira neve caindo
+- A luz de fogo da capela pulsa a cada badalada depois do sino
+- Grama e terra queimadas em volta da capela, guiando o olhar até ela sem placa
+- Dentro da capela a imagem esquenta de leve em tom laranja e volta ao frio quando você sai
+- Cinza caindo dentro da capela e brasas que ainda pulsam nas frestas do piso perto do altar
+- Lua entre nuvens no cemitério: em ciclos lentos ela sai, o cemitério aparece por alguns segundos e depois some
+- A lua faz sombras longas das cruzes, lápides, árvores e do obelisco no cemitério
+- A lua aparece no céu do cemitério, com halo, quando as nuvens abrem
+- Depois do sino a chuva vai parando aos poucos em 10 s
+- Na fuga, a neblina abre perto do portão dos fundos e a lua fica no céu
+- Fogo-fátuo azul paira sobre os túmulos das três crianças até eles serem cavados
+- Com o gerador ligado, as lâmpadas do térreo respiram no ritmo do motor (oscilação de 5% a cada 1,2 s)
+- O gerador engasga de vez em quando e sempre nas badaladas: todas as lâmpadas caem a meia luz por meio segundo
+- Ao ligar o gerador, a luz volta sala por sala a partir da casa de máquinas, com um estalo de luz em cada lâmpada
+- Lâmpadas estouradas soltam chuvas de faíscas de tempos em tempos quando há energia
+- Mariposas voando em volta das lâmpadas acesas
+- Prólogo com luz azul de chuva
+- Capítulo I com luz verde fluorescente e doente
+- Capítulo III com luz lilás de luar
+- Capítulo IV com luz verde-água
+- Capítulo V com luz cinza-prata, com transição suave de 2 s entre as paletas
+- No andar de cima todas as lâmpadas ficam frias e azuladas
+- Abajur de cúpula de pano no quarto da Irmã Celeste: a única luz quente e parada do andar, que vaza pela porta
+- Depois da fita da Irmã Celeste, o abajur pisca e se apaga sozinho
+- Janelas com caixilho de madeira em cruz nas paredes externas do térreo e do andar de cima, com chuva escorrendo no vidro (animada)
+- No relâmpago, a janela clareia e projeta no chão a luz recortada pela cruz do caixilho e pelos galhos lá fora
+- Luar fraco e azulado entra pelas janelas e marca o chão mesmo sem relâmpago
+- Cortinas chamuscadas, com a barra queimada e furos, balançando nas janelas do andar de cima
+- Feixes de luar pelo forro furado do refeitório, com buracos e ripas soltas no teto
+- Poeira girando devagar dentro dos feixes de luar, que congela no ar quando a Procissão passa
+- A chuva pinga pelos buracos do forro do refeitório e forma poças no chão
+- Fuligem subindo pelas paredes do rodapé até o teto, pouca no térreo e muito mais no andar de cima
+- Teto do depósito de cima totalmente preto de fuligem, e manchas de fuligem nos tetos dos dormitórios
+- A partir do Capítulo II aparecem manchas de fuligem nos tetos do térreo
+- Paredes da capela enegrecidas de baixo para cima e teto da nave manchado
+- Papel de parede infantil de patinhos, desbotado e descascando, nos dormitórios e na sala de brinquedos
+- Tijolos dos túneis com limo verde escorrido e a marca da linha d'água
+- Pedra da capela com fuligem e cera de vela escorrida
+- Setas de giz do Davi no chão que levam aos segredos (o livro torto, o rodapé solto, a cama D.M.) e brilham um pouco mais sob a lanterna
+- Riscos de giz na altura de criança nos corredores e dormitórios: "SHHH", bonecos de palito de mãos dadas e contagens de 1 a 10
+- Desenho de giz de um homem alto com X nos olhos e de um sino "DIN DON", na altura de criança
+- Teias de aranha nos cantos do teto, que só aparecem quando a luz bate
+- Desenhos de criança presos na sala de brinquedos: "EU E A LIA", "O INSPETOR", a procissão das nove e a Ana contando
+- Cardápio da semana do incêndio no refeitório, com a quarta-feira riscada e "a gente não jantou"
+- Brasão do internato (sino de boca costurada, "SILENTIUM SALVAT") na recepção, que dá para examinar
+- Pratos sujos e trincados com o brasão espalhados nas mesas do refeitório
+- Brasão no muro do portão da estrada e dos dois lados da placa da fachada
+- A venda do Inspetor tem "SILÊNCIO" bordado em linha vermelha
+- A camisola da Ana tem a barra preta de fuligem
+- Na Procissão, uma criança leva um pião de madeira e outra uma fita vermelha no cabelo
+- Quando a Procissão passa perto, uma bolinha de gude cai da mão de uma criança, quica e rola pelo chão
+- Capítulo III: raramente, uma sombra de menina atravessa o círculo da lanterna na parede, sem ninguém ali
+- Ao pegar a engrenagem, dar corda na caixinha, cavar um túmulo, pôr um objeto no altar ou achar a cama do Davi, a tela vira 1979 por um instante: luz amarela de fita velha e crianças borradas
+- No clarão do relâmpago, o espelho do banheiro mostra uma menina parada atrás de você
+- No trovão, cai poeira do forro em cima da Lia
+- Poças d'água nos corredores e na recepção com goteira pingando do teto e ondinha na água
+- Poças na estrada velha que brilham com a lanterna
+- Raio ramificado visível no céu quando você está ao ar livre (nunca com "Reduzir flashes")
+- Nos túneis, gotas pretas de fuligem pingam do teto
+- Velas com poça de cera e escorridos na base
+- Velas acesas soltam um fio fino de fumaça
+- Quando uma vela apaga, sobe um rolo de fumaça
+- Lanterna no chão com alça de pulso
+- Chaves com etiqueta de papel amarrada
+- Caderno do Davi com elástico vermelho e etiqueta "DAVI M." na capa
+- Gravador com grade do alto-falante e alça
+- Galão com rótulo amarelo de "INFLAMÁVEL"
+- Boneca da Ana com a barra do vestido queimada
+- Carrinho com faróis acesos
+- Engrenagem com eixo no centro

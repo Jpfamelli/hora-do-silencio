@@ -4,6 +4,7 @@ import { MAPAS } from './mapas.js';
 import { instalarHistoria, fmtFala, fmtNota, escrever, revelar } from './src/historia.js';
 import { criarSustos } from './src/sustos.js';
 import { instalarVisual } from './src/visual.js';
+import { instalarMundoVisual } from './src/visual-mundo.js';
 import * as JG from './src/jogabilidade.js';
 import { criarInterface } from './src/interface.js';
 import { PG } from './src/progressao.js';
@@ -398,7 +399,7 @@ function vela(x, y, z) {
   cyl(.03, .03, .25, MAT.vela, x, y + .125, z, 8);
   const chama = new THREE.Mesh(new THREE.SphereGeometry(.016, 6, 5), new THREE.MeshBasicMaterial({ color: 0xffc060 })); chama.scale.y = 2.4; chama.position.set(x, y + .29, z); W.grupo.add(chama);
   const l = new THREE.PointLight(0xff9a40, 1.2, 4.5, 1.8); l.position.set(x, y + .4, z); W.grupo.add(l); l.userData.vela = true;
-  const ph = Math.random() * 10;
+  const ph = Math.random() * 10; VM.vela(x, y, z, l, chama); // cera e fumaça (src/visual-mundo.js)
   W.tick.push(() => { // chama tremula suave (sem pisca-pisca a cada quadro) e às vezes engasga; apagada (sustos), some
     if (l.userData.apagada) { l.intensity = 0; chama.visible = false; return; }
     const t = perf * 6 + ph, n = Math.sin(t) * .5 + Math.sin(t * 2.3 + 1) * .3 + Math.sin(t * 5.1) * .2;
@@ -2378,6 +2379,7 @@ function fimDeCapitulo() {
     S.chapter++; S.capT = 0; S.capDano = 0; S.capVisto = 0; S.capCorreu = false; PG.zerarCap(); trocandoCap = false;
     cartaoCapitulo();
     if (W.def.inicioCapitulo) W.def.inicioCapitulo(S.chapter);
+    VM.capitulo(S.chapter);
     if (W.def.inspetor && W.def.inspetor() && !M.ativo) { const t = { ...S.timers }; agendarEntidades(); Object.assign(S.timers, t); }
     syncWorld(); renderObj(); progresso();
     salvarCheckpoint(true);
@@ -2409,7 +2411,7 @@ function carregarMapa(id, spawn, { salvar = true } = {}) {
   renderObj(); renderInvMini();
   SUST.novoMapa(id);
   ML.novoMapa(id);
-  VIS.mapa();
+  VIS.mapa(); VM.mapa();
 }
 function syncLuzes() {
   const ligada = W.def && W.def.energia ? W.def.energia() : false;
@@ -3752,6 +3754,8 @@ const ML = criarMonstrosLore({
 });
 const VIS = instalarVisual({ THREE, scene, camera, renderer, canvas, flash, flashFill, MON, ANA, ANA_G, PROC, M, P, W, MAT, OPT, OPT_KEY, lsSet, R, ROLOS, keys, roomAt, visivel, collide, salasAlcancaveis, distSalas, D,
   get S() { return S; }, get mode() { return mode; }, get ui() { return ui; }, get flashPisca() { return flashPisca; }, get hbT() { return AUD.hbT; }, get raioI() { return raioI; }, get fita() { return fitaTocando; }, get perf() { return perf; } });
+const VM = instalarMundoVisual({ THREE, scene, camera, renderer, flash, hemi, moon, W, P, M, ANA, ANA_G, PROC, MON, MAT, MK, OPT, R, TX, chuvaMat, respingos, interact, sub, SFX, DOOR, collide, raio: () => { raioT = 0; },
+  get S() { return S; }, get perf() { return perf; }, get raioI() { return raioI; }, get raioClock() { return raioClock; } }); // mundo e história pela luz (src/visual-mundo.js)
 PG.ligar({
   get S() { return S; }, setS: v => { S = v; }, get ui() { return ui; }, get mode() { return mode; },
   KEYS: { SAVE_KEY, CAPS_KEY, CONQ_KEY, OPT_KEY }, OPT, salvarOpt: () => lsSet(OPT_KEY, OPT), saveExterno: true, dicaExterna: true, ajudaExterna: true,
@@ -3794,9 +3798,9 @@ function frame(dt) {
   for (const d of W.doors) { d.ang = lerp(d.ang, d.target, Math.min(1, dt * 7)); d.pivot.rotation.y = d.ang; }
   grainT -= dt;
   if (grainT <= 0) { grainT = PLAT.grao(); const d = grainImg.data; for (let i = 0; i < d.length; i += 4) { const v = Math.random() * 255; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = 255; } grain.putImageData(grainImg, 0, 0); }
-  VIS.update(dt, ativo);
+  VIS.update(dt, ativo); VM.update(dt, ativo);
   PLAT.depois(dt, ativo);
-  renderer.render(scene, camera);
+  renderer.render(scene, camera); VM.depois();
 }
 requestAnimationFrame(loop);
 
