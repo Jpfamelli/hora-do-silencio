@@ -1,0 +1,100 @@
+# Lote 3 — Mapa: prólogo e estrada
+- Cerca de arame no fundo do pátio do posto com um trecho caído que só dá para passar agachada (em pé, o arame segura)
+- Trilha nova do barranco entre o posto e o portão, com chão de cascalho próprio (área "Barranco")
+- Andar em pé no cascalho faz um estalo alto de pedra solta, com som procedural novo
+- Agachada, o cascalho quase não faz barulho
+- Correr no barranco faz pedras rolarem ladeira abaixo, com som próprio
+- No cascalho, o anel de ruído dobra em pé e diminui agachada
+- Um vulto encolhido dorme no meio do barranco, com respiração pesada que dá para ouvir de longe
+- O corpo do vulto adormecido sobe e desce no ritmo da respiração
+- Lanterna acesa perto do vulto vai acordando ele, e apontar a luz direto para ele acorda mais rápido
+- Aviso antes de acordar: ele para de respirar, vira a cabeça na sua direção e a Lia sussurra que ele mexeu
+- Se você ficar quieta, o sono dele volta a pesar aos poucos
+- Acordado, o vulto se levanta devagar e os olhos vermelhos acendem
+- No barranco, o vulto só anda quando você não está olhando; encarar demais faz ele dar um passo
+- Se o vulto do barranco te alcança: susto, tela escura e você volta para o pátio do posto (no Pesadelo custa vida)
+- Depois de duas capturas no barranco (ou no Fácil), aparece a dica de ir agachada e no escuro, ou pela estrada
+- Segundo vão caído na cerca, junto ao muro do internato, também só agachada, que sai na estrada já perto do portão
+- Cortar pelo barranco pula a perseguição da estrada inteira (uns 20 s a menos até o portão)
+- Conquista secreta nova: "Atalho do barranco" na primeira travessia
+- A Lia comemora baixinho se você atravessou sem acordar o vulto (e tem outra fala se ele acordou)
+- Ao entrar no barranco a Lia avisa do cascalho; sem a chave, lembra que o portão continua trancado
+- A Lia sussurra quando você enxerga a coisa encolhida pela primeira vez
+- A Kombi tombada na vala ganhou colisão (não dá mais para atravessar a lataria)
+- As árvores da mata foram afastadas da trilha do barranco (nenhum tronco no meio do caminho)
+- Pedras grandes com colisão marcam e estreitam a trilha
+- Paredão de terra inclinado fecha o lado de fora do barranco
+- Cerca de arame com postes ao longo da estrada e no fundo do pátio, separando o barranco
+- Encostar no arame em pé arranha (som de arame farpado e um tranco na câmera) e a Lia ensina a passar por baixo
+- Placa "CUIDADO — barranco, cascalho solto, só de joelhos — J.S." no poste do vão, com fala da Lia ao ler
+- Pedrinhas caem do paredão de vez em quando enquanto você atravessa
+- Mirar o vulto adormecido mostra a descrição "Uma coisa encolhida no cascalho. Respirando."
+- Quando você sai do barranco, o vulto volta para o lugar dele e dorme de novo (com sono mais leve)
+- A câmera treme de leve quando o vulto acordado está a poucos metros
+- Abertura: painel e volante dentro do carro, visíveis da câmera do motorista
+- Abertura: a faixa âmbar do painel ilumina a viagem, pisca e apaga quando o motor morre
+- Abertura: velocímetro desenhado no painel, com o ponteiro caindo até zero na freada
+- Abertura: limpadores de para-brisa indo e voltando, que param quando o motor morre
+- Abertura: gotas de chuva escorrendo no para-brisa
+- Abertura: o carro derrapa um pouco na freada
+- Mostrador do rádio do carro com a frequência (FM/AM) que muda a cada troca de estação
+- Ao sair do carro, a porta do motorista abre e bate atrás da Lia, com som de porta de carro
+- A luz de teto do carro acende com a porta aberta e vai apagando devagar
+- O carro afunda um pouquinho quando a porta bate
+- O teto do carro fica amassado e arranhado depois da pancada da abertura
+- Marcas de pneu da freada no asfalto, atrás do carro
+- Fumaça sai do capô do carro nos primeiros minutos depois da abertura
+- O metal do motor estala esfriando quando você fica perto do carro
+- Vibração (controle e celular) na freada da abertura
+- Vibração quando o motor engasga e morre
+- Vibração longa quando as unhas raspam no teto do carro
+- Correção: as legendas de som agora aparecem durante a cena de abertura (antes ficavam escondidas)
+- A dica para pular a abertura fala o botão certo: ENTER no teclado, START no controle, botão Pular no celular
+- Com "movimento de câmera" reduzido (ou o sistema pedindo menos movimento), a abertura treme bem menos
+- O balanço lateral da câmera na pancada do teto também respeita o movimento reduzido
+- Com "Reduzir flashes", os faróis morrem com uma apagada só em vez de piscar
+- Legendas novas na abertura: pneus cantando e o motor engasgando
+- Ao pegar a lanterna, ela liga piscando duas vezes antes de firmar
+- O carro balança quando o porta-malas abre
+- A chave do portão balança no prego quando você chega perto
+- Pegar a chave do portão faz as chaves tilintarem (som e vibração curta)
+- Segurando para abrir o cadeado, a corrente e o portão sacodem a cada puxão (com vibração)
+- Quando abre, o cadeado cai no chão com som de metal e fica caído (também ao continuar o jogo)
+- O portão range alto ao abrir, com vibração
+- A concha do orelhão treme a cada toque
+- Vibração curta a cada toque do orelhão quando você está perto
+- Pisar nas poças da estrada espirra água (som de respingo)
+- Pisar nas poças abre um anel na água que se espalha
+- Vibração quando a buzina do carro toca sozinha na perseguição
+- Vibração forte quando o vulto da estrada te pega
+- Na perseguição da estrada, o controle pulsa fraco como um coração quando o medo está alto
+- Vibração curta quando você flagra o vulto que espreita pela mata
+- Legendas novas: a buzina do carro, o toque do orelhão e a respiração (com direção)
+- Legendas novas: unhas no teto, vozes baixas no rádio e no fone, o apito do fliperama
+- Legendas novas: porta do carro batendo e o motor estalando esfriando
+- Legendas novas: chaves tilintando, cadeado caindo no chão e portão rangendo
+- Legendas novas do barranco: cascalho estalando, pedras rolando e arame arranhando
+- Legenda nova: água espirrando nas poças
+- "Reduzir flashes": o relâmpago local da estrada clareia mais fraco e sem estroboscópio
+- "Reduzir flashes": o neon do posto falha sem piscar
+- "Reduzir flashes": a luz da loja apaga devagar quando o Seu Joaquim some, em vez de estalar piscando
+- "Reduzir flashes": os faróis acendem sozinhos na perseguição sem piscar seis vezes
+- "Reduzir flashes": os botões de toque que pulsam pulsam mais devagar
+- O tranco de câmera da captura pelo vulto da estrada diminui com o movimento reduzido
+- As dicas de lanterna e pilha falam o botão certo (tecla, botão do controle ou botão de toque)
+- A dica do diário depois das regras fala o botão certo do aparelho
+- As dicas da cerca e do barranco falam o botão de agachar e de lanterna do aparelho
+- No celular, o botão Usar pulsa no porta-malas, no orelhão tocando e no cadeado
+- No celular, o botão Agachar pulsa diante do vão da cerca e quando o vulto do barranco começa a acordar
+- No celular, o botão Lanterna pulsa quando a luz acesa está acordando o vulto
+- No celular e no controle, uma dica extra lembra onde ficam lanterna e pilha depois do porta-malas
+- Desempenho: menos árvores desenhadas nas qualidades Baixa (55%) e Média (80%), ajustado na hora
+- Desempenho: as mariposas do posto não são calculadas quando você está longe
+- Desempenho: o zumbido do neon desliga os osciladores longe do posto ou com a luz morta
+- Desempenho: a tela do fliperama não é atualizada quando você está longe
+- Desempenho: o interior do carro (painel, limpador, chuva no vidro) não é desenhado longe do carro
+- Desempenho: a fumaça do capô fica desligada na qualidade Baixa
+- Tela de título: num relâmpago, um vulto aparece ao lado do portão do internato e some
+- Leitura de perto (sem tela cheia) nos preços das bombas do posto
+- Leitura de perto no calendário de março de 1979
+- Leitura de perto no mostrador do rádio do carro, explicando como trocar a estação
