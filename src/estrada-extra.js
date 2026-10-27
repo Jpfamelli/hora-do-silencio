@@ -2,6 +2,7 @@
 // pela mata, perseguição curta do vulto (ensina "olhe" e "não corra"), orelhão que atende, rádio do carro
 // sintonizável e os detalhes do posto. Chamado por estrada() em mapas.js.
 import { TXT, mesclarTexto } from './estrada-roteiro.js';
+import { semFlash, movK, vibrar } from './estrada-polimento.js';
 
 const CONQ_KEY = 'hora-silencio-v2-conq';
 const MEM_KEY = 'hora-silencio-estrada';
@@ -81,7 +82,7 @@ export function extrasEstrada(A, S, c) {
   if (SU && !SU.__estradaRaio && typeof SU.aoRaio === 'function') { const o = SU.aoRaio; SU.__estradaRaio = true; SU.aoRaio = function (...a) { try { window.__raioEstrada && window.__raioEstrada(); } catch (e) {} return o.apply(this, a); }; }
   window.__raioEstrada = () => { if (vivo()) raioExt = 1; };
   const relampago = (k = 1, trovao = true) => { raioK = Math.max(raioK, k); if (trovao) A.SFX.trovao(); };
-  const tickRaio = dt => { raioExt = Math.max(0, raioExt - dt * 3); raioK = Math.max(0, raioK - dt * 2.2); const fl = raioK > 0 && Math.random() < .75 ? raioK : 0; raioH.intensity = fl * 1.6; raioD.intensity = fl * 3.2; };
+  const tickRaio = dt => { raioExt = Math.max(0, raioExt - dt * 3); raioK = Math.max(0, raioK - dt * 2.2); const sf = semFlash(), fl = raioK > 0 && (sf || Math.random() < .75) ? raioK * (sf ? .35 : 1) : 0; raioH.intensity = fl * 1.6; raioD.intensity = fl * 3.2; };
 
   // ---------- o carro: pisca-alerta, vidro de trás com mãos, porta-malas que abre, pegadas, rádio
   const carro = c.carro, carPos = () => ({ x: carro.position.x, y: 1, z: carro.position.z });
@@ -136,7 +137,7 @@ export function extrasEstrada(A, S, c) {
   let estacao = -1, trocas = 0, radioCd = 0;
   const posRadio = () => ({ x: carro.position.x - .1, y: 1.05, z: carro.position.z - .75 });
   function sintonizar() {
-    if (radioCd > 0) return; radioCd = 1.3; trocas++;
+    if (radioCd > 0) return; radioCd = 1.3; trocas++; if (api.aoSintonizar) api.aoSintonizar(trocas);
     const pos = posRadio(); A.SFX.estatica(.35, pos); painel.material.emissiveIntensity = .2 + Math.random() * .8;
     if (trocas === 9 && !S.flags.radioSecreto) { S.flags.radioSecreto = true; agenda(.5, () => { A.sub(TXT.radioSecreto.quem, TXT.radioSecreto.texto, true); SX.voz(pos, 9, 300); A.toast('Você achou uma frequência escondida.'); }); return; }
     if (api.radioExtra) { const ex = api.radioExtra(trocas); if (ex) { agenda(.4, () => A.sub(ex.quem, ex.texto, true)); agenda(.5, () => SX.voz(pos, 8 + (ex.texto.length / 18 | 0), 190)); return; } }
@@ -156,7 +157,9 @@ export function extrasEstrada(A, S, c) {
   const mg = new THREE.BufferGeometry(); mg.setAttribute('position', new THREE.BufferAttribute(mp, 3));
   const mariposas = new THREE.Points(mg, new THREE.PointsMaterial({ color: 0xcfc4a0, size: .04 })); mariposas.frustumCulled = false; grupo.add(mariposas);
   function tickMariposas(dt) {
-    const morta = S.flags.luzPostoMorta;
+    const morta = S.flags.luzPostoMorta, longe = A.mode === 'jogo' && Math.hypot(P.pos.x - LX, P.pos.z - LZ) > 26;
+    if (mariposas.visible === longe) mariposas.visible = !longe;
+    if (longe && (!morta || mar.every(m => m.caiu))) return; // longe do posto não calcula nada
     mar.forEach((m, i) => {
       if (!morta) { m.a += m.w * dt; m.x = LX + Math.cos(m.a) * m.r; m.yy = LY + m.y + Math.sin(m.a * 1.7) * .08; m.z = LZ + Math.sin(m.a) * m.r; }
       else if (!m.caiu) { m.vy -= 3 * dt; m.yy += m.vy * dt; m.x += Math.cos(m.a) * dt * .3; if (m.yy <= .03) { m.yy = .03; m.caiu = true; } }
@@ -169,9 +172,11 @@ export function extrasEstrada(A, S, c) {
   let zb = null, piscaLuz = 0;
   const vigia = setInterval(() => { if (!vivo()) { clearInterval(vigia); if (zb) zb.parar(); zb = null; } }, 500);
   function tickZumbido() {
-    if (!zb && A.mode === 'jogo') zb = SX.zumbido({ x: LX, y: LY, z: LZ });
+    const d = Math.hypot(P.pos.x - LX, P.pos.z - LZ);
+    if (zb && (d > 14 || S.flags.luzPostoMorta) && zb.g.gain.value < .002) { zb.parar(); zb = null; } // longe ou com a luz morta, desliga os osciladores
+    if (!zb && A.mode === 'jogo' && d < 12 && !S.flags.luzPostoMorta) zb = SX.zumbido({ x: LX, y: LY, z: LZ });
     if (!zb) return;
-    const d = Math.hypot(P.pos.x - LX, P.pos.z - LZ), alvo = (!S.flags.luzPostoMorta && A.mode === 'jogo') ? Math.max(0, 1 - d / 7) * .045 : 0;
+    const alvo = (!S.flags.luzPostoMorta && A.mode === 'jogo') ? Math.max(0, 1 - d / 7) * .045 : 0;
     zb.g.gain.value = lerp(zb.g.gain.value, alvo, .1);
   }
   // calendário parado em março de 1979
@@ -226,7 +231,7 @@ export function extrasEstrada(A, S, c) {
     S.flags.placarLia = true; texPlacarL = placarTex('LIA', true); telaOn.map = texPlacarL; A.conquista('recorde'); agenda(.8, () => A.falar('est_placar')); medo(10);
   });
   function tickFliperama(dt) {
-    if (!S.flags.joaquimSumiu) return;
+    if (!S.flags.joaquimSumiu || Math.hypot(P.pos.x - fliPos.x, P.pos.z - fliPos.z) > 16) return;
     telaT += dt; const on = (telaT % 1.2) < .8;
     if (!S.flags.placarLia) telaOn.map = (telaT % .5) < .25 ? texPlacarA : texPlacarB;
     tela.material = on ? telaOn : telaOff; luzTela.intensity = on ? .9 : .15;
@@ -249,7 +254,9 @@ export function extrasEstrada(A, S, c) {
   }
   function tickLuzPosto(dt) {
     if (piscaLuz <= 0 || S.flags.luzPostoMorta) return;
-    piscaLuz -= dt; const on = Math.random() < .4; lp.luz.intensity = on ? lp.base * Math.random() : 0; lp.bulbo.material.emissiveIntensity = on ? 2 : 0;
+    piscaLuz -= dt;
+    if (semFlash()) { const k = Math.max(0, piscaLuz / 1.3); lp.luz.intensity = lp.base * k; lp.bulbo.material.emissiveIntensity = 2 * k; return; } // reduzir flashes: apaga devagar
+    const on = Math.random() < .4; lp.luz.intensity = on ? lp.base * Math.random() : 0; lp.bulbo.material.emissiveIntensity = on ? 2 : 0;
   }
 
   // ---------- orelhão: toca até você atender (ou se afastar), fala, fica pendurado balançando
@@ -340,7 +347,7 @@ export function extrasEstrada(A, S, c) {
     const visto = olhando(v.position, .4, 40);
     if (visto || esp.vis <= 0) {
       v.visible = false; esp.vis = 0; esp.n++; esp.dist = Math.max(8, esp.dist - 2.5); esp.t = 4 + Math.random() * 4;
-      if (visto) { A.SFX.estalo({ x: v.position.x, z: v.position.z }, .8); medo(12); }
+      if (visto) { A.SFX.estalo({ x: v.position.x, z: v.position.z }, .8); medo(12); vibrar(.25, .1, 90); }
     }
   }
   // ---------- vulto no fim da estrada, revelado só pelo relâmpago (no clarão seguinte, sumiu)
@@ -369,7 +376,7 @@ export function extrasEstrada(A, S, c) {
     ch.fase = 1; ch.t = 0; S.flags.perseguicao = true; S.flags.piscaParou = true;
     vc.position.set(CASA.x, 0, CASA.z); vc.visible = true; olharPara(vc);
     SX.buzina(carPos(), .5); agenda(.75, () => SX.buzina(carPos(), .9));
-    for (let i = 0; i < 6; i++) agenda(i * .22, () => c.farolOn(i % 2 === 0));
+    if (semFlash()) c.farolOn(true); else for (let i = 0; i < 6; i++) agenda(i * .22, () => c.farolOn(i % 2 === 0));
     agenda(1.4, () => c.farolOn(true)); agenda(.5, () => relampago(.9)); agenda(1.3, () => A.falar('vulto_carro'));
     medo(40);
   }
@@ -381,7 +388,7 @@ export function extrasEstrada(A, S, c) {
     ch.fase = 3; ch.t = 0; P.bloqueado = true; S.flags.vultoPegou = (S.flags.vultoPegou || 0) + 1;
     cam.getWorldDirection(_f); _f.y = 0; _f.normalize();
     vc.position.set(P.pos.x + _f.x * .9, -1.15, P.pos.z + _f.z * .9); olharPara(vc); vc.visible = true;
-    A.SFX.grito('inspetor'); A.SFX.susto(); P.shake = .35; S.fear = 100;
+    A.SFX.grito('inspetor'); A.SFX.susto(); P.shake = .35 * Math.max(.3, movK()); S.fear = 100;
     agenda(.7, () => A.fade(true));
     agenda(1.7, () => {
       P.pos.set(5.4, 0, -21); P.yaw = 0; P.pitch = 0; P.bloqueado = false;
@@ -470,17 +477,17 @@ export function extrasEstrada(A, S, c) {
       if (t > 15 && !st.raio1) { st.raio1 = true; relampago(1.3); }
       if (t > TF && !st.freou) { st.freou = true; A.SFX.freada(); }
       if (t > 18.6 && !st.morreu) { st.morreu = true; A.SFX.motor(false); }
-      if (t > 18.6 && t < 19.6) c.farolOn(Math.random() < .5);
+      if (t > 18.6 && t < 19.6) c.farolOn(semFlash() ? t < 19.1 : Math.random() < .5);
       else if (t >= 19.6 && !st.apagou) { st.apagou = true; c.farolOn(false); S.flags.faroisMortos = true; piscaCena = true; }
       if (t > 19.8 && !st.chiado) { st.chiado = true; A.SFX.estatica(1.6, posRadio()); }
       if (t > 24 && !st.pancada) { st.pancada = true; A.SFX.pancada(carro.position.x, carro.position.z); st.shake = .3; }
       if (t > 25.4 && !st.raspou) { st.raspou = true; SX.raspar({ x: carro.position.x, y: 1.25, z: carro.position.z + 1.4 }); S.flags.maos = true; vidroTras.visible = true; }
       tickRaio(dt); tickPisca(); tickFila(dt); radioCd -= dt;
       st.shake = Math.max(0, st.shake - dt * .35);
-      const tremor = (t > TF && t < TF + 2 ? .03 : .004) + st.shake * .05;
+      const tremor = ((t > TF && t < TF + 2 ? .03 : .004) + st.shake * .05) * movK();
       cam.position.set(carro.position.x - .38 + A.rand(-tremor, tremor), 1.15 + Math.sin(t * 9) * .006, carro.position.z - .05);
       let yaw = Math.sin(t * .4) * .03 + (t > TF + 2 ? Math.sin((t - TF - 2) * .7) * .2 : 0), pitch = -.03, roll = 0;
-      if (t > 24) { const k = Math.min(1, (t - 24) / .5); pitch = -.03 + .35 * k * (t < 25.4 ? 1 : Math.max(0, 1 - (t - 25.4) / .8)); roll = Math.sin(t * 23) * st.shake * .25; }
+      if (t > 24) { const k = Math.min(1, (t - 24) / .5); pitch = -.03 + .35 * k * (t < 25.4 ? 1 : Math.max(0, 1 - (t - 25.4) / .8)); roll = Math.sin(t * 23) * st.shake * .25 * movK(); }
       if (t > 25.4) { const k = Math.min(1, (t - 25.4) / 1.6), e = k * k * (3 - 2 * k); yaw = lerp(yaw, Math.PI * .92, e); }
       cam.rotation.set(pitch, yaw, roll);
     },

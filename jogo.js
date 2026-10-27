@@ -2631,7 +2631,8 @@ const API = {
   SFX: new Proxy({}, { get: (t, k) => (...a) => SFX[k](...a) }), abrirTeclado: (...a) => abrirTeclado(...a), final: (...a) => final(...a), escolhaFinal: () => escolhaFinal(), codTxt, D, camera, scene,
   get S() { return S; }, get mode() { return mode; }
 };
-Object.defineProperty(API, 'raioI', { get: () => raioI }); // brilho do relâmpago, lido pela capela (src/subterraneo-lore.js)
+Object.defineProperty(API, 'raioI', { get: () => raioI });
+Object.defineProperty(API, 'legendas', { get: () => UIX.som.def }); // os mapas registram legendas dos sons próprios (src/estrada-polimento.js) // brilho do relâmpago, lido pela capela (src/subterraneo-lore.js)
 Object.assign(API, { MON, flash, audio: { get AC() { return AC; }, saida: (...a) => saida(...a), osc: (...a) => osc(...a), burst: (...a) => burst(...a), env: (...a) => env(...a) } }); // usados pelos mapas subterrâneos (src/subterraneo.js)
 
 // =====================================================================
@@ -2646,8 +2647,9 @@ function dicaPular(on) {
   let d = $('#cena-pular');
   if (!d) { d = document.createElement('div'); d.id = 'cena-pular'; d.textContent = 'ENTER pula a cena'; d.style.cssText = 'position:fixed;right:28px;bottom:calc(11% + 14px);font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:#d8cba8;opacity:.6;pointer-events:none;z-index:40;text-shadow:0 0 6px #000'; document.body.appendChild(d); }
   d.hidden = !on;
+  const bc = document.body.classList; d.textContent = bc.contains('toque') ? 'toque em Pular abertura' : bc.contains('pad') ? 'START pula a cena' : 'ENTER pula a cena';
   // as falas da abertura (rádio, fita) moram no #sub, que fica dentro do HUD: na cena mostra só as legendas
-  if (!$('#css-cena')) { const st = document.createElement('style'); st.id = 'css-cena'; st.textContent = '#hud.so-sub>:not(#sub){display:none!important}'; document.head.appendChild(st); }
+  if (!$('#css-cena')) { const st = document.createElement('style'); st.id = 'css-cena'; st.textContent = '#hud.so-sub>:not(#sub):not(#legsom){display:none!important}'; document.head.appendChild(st); }
   $('#hud').classList.toggle('so-sub', on); if (on) $('#hud').hidden = false;
 }
 function iniciarCena() {

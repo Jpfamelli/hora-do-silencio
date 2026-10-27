@@ -4,6 +4,7 @@
 import { extrasEstrada, memoria, lembrar, SPAWN } from './src/estrada-extra.js';
 import { TXT } from './src/estrada-roteiro.js';
 import { mundoEstrada } from './src/estrada-mundo.js';
+import { polirEstrada, tecla, semFlash } from './src/estrada-polimento.js';
 import { extrasTerreo, extrasSuperior, juntar } from './src/internato.js';
 import { loreTerreo, loreSuperior } from './src/internato-lore.js';
 import * as SUB from './src/subterraneo.js';
@@ -24,6 +25,7 @@ function arvores(A, faixas, n = 300) {
   }
   copa.count = k; tronco.castShadow = copa.castShadow = true;
   A.W.grupo.add(tronco, copa);
+  return { tronco, copa, n, copaN: k };
 }
 function arvoreSeca(A, x, z, h = 6) {
   const { cyl, MAT, rand } = A;
@@ -83,7 +85,8 @@ function estrada(A, S) {
   const salas = [
     { id: 'estrada', nome: 'Estrada velha', x0: -7, x1: 7, z0: GZ, z1: 82, fora: true, piso: 'asfalto' },
     { id: 'patioPosto', nome: 'Posto Serra', x0: 7, x1: 24, z0: -26, z1: -6, fora: true },
-    { id: 'posto', nome: 'Loja do posto', x0: 12, x1: 20, z0: -21, z1: -13, piso: 'ladrilho', parede: 'azulejo', h: 3 }
+    { id: 'posto', nome: 'Loja do posto', x0: 12, x1: 20, z0: -21, z1: -13, piso: 'ladrilho', parede: 'azulejo', h: 3 },
+    { id: 'barranco', nome: 'Barranco', x0: 7.2, x1: 12.6, z0: GZ + .4, z1: -26, fora: true, piso: 'cascalho' } // atalho do Lote 3 (src/estrada-polimento.js)
   ];
   const portas = [{ id: 'posto', a: 'patioPosto', b: 'posto', x: 12, z: -17, eixo: 'z', nome: 'porta da loja' }];
   A.construirSalas(salas, portas);
@@ -91,14 +94,15 @@ function estrada(A, S) {
   piso(-4, 4, -72, 82, 'asfalto', 8, .002);
   piso(-7, -4, -72, 82, 'terra', 3, .003); piso(4, 7, -72, 82, 'terra', 3, .003);
   piso(7, 24, -26, -6, 'concreto', 3, .003);
-  arvores(A, [[-40, -8, GZ + 2, 90], [8, 40, 2, 90], [8, 40, GZ + 2, -28], [25, 45, -30, 0], [36, 52, -100, GZ], [-52, -36, -100, GZ], [-40, 40, -104, BZ - 7]], 420);
+  const arv = arvores(A, [[-40, -8, GZ + 2, 90], [8, 40, 2, 90], [13.6, 40, GZ + 2, -28], [25, 45, -30, 0], [36, 52, -100, GZ], [-52, -36, -100, GZ], [-40, 40, -104, BZ - 7]], 420);
   // limites invisíveis (mato fechado)
-  invisivel(A, -7, GZ, -7, 82); invisivel(A, 7, GZ, 7, -26); invisivel(A, 7, -6, 7, 82);
-  invisivel(A, 24, -26, 24, -6); invisivel(A, 7, -26, 24, -26); invisivel(A, 7, -6, 24, -6); invisivel(A, -7, 82, 7, 82);
+  // a cerca entre a estrada e o barranco e a do fundo do pátio têm um trecho caído cada (só agachada; src/estrada-polimento.js)
+  invisivel(A, -7, GZ, -7, 82); invisivel(A, 7, GZ, 7, GZ + 1.2); invisivel(A, 7, GZ + 3.6, 7, -26); invisivel(A, 7, -6, 7, 82);
+  invisivel(A, 24, -26, 24, -6); invisivel(A, 7, -26, 8.2, -26); invisivel(A, 10.8, -26, 24, -26); invisivel(A, 12.6, GZ, 12.6, -26); invisivel(A, 7, -6, 24, -6); invisivel(A, -7, 82, 7, 82);
   // muro e portão do internato
   muro(A, -30, GZ, -2.3, GZ, 3); muro(A, 2.3, GZ, 30, GZ, 3);
   const gate = portao(A, 0, GZ, 4);
-  box(.14, .18, .06, MAT.bronze, 0, 1.12, GZ + .1);
+  const cadeado = box(.14, .18, .06, MAT.bronze, 0, 1.12, GZ + .1);
   placa(A, [{ t: 'INTERNATO SÃO LÁZARO', tam: 40, estilo: 'bold' }, { t: 'propriedade particular · proibida a entrada', tam: 22, estilo: 'italic' }], 6, 2.2, GZ + .25, 3.6, .9, 0);
   // o prédio, logo atrás do muro
   const prd = A.texMat('reboco', 12, 1.2);
@@ -128,7 +132,7 @@ function estrada(A, S) {
   interact(portaMalas, () => S.inv.lanterna ? 'Porta-malas vazio.' : '<b>E</b>Abrir o porta-malas', () => {
     if (S.inv.lanterna) return;
     S.inv.lanterna = true; S.flashOn = true; S.inv.pilhas += 1; SFX.pegar(); SFX.clique(); SFX.rangido(1.6, .9, 11.7, .6);
-    A.objDone('lanterna'); A.falar('pegou_lanterna'); A.toast('Lanterna (F) e uma pilha reserva (R).');
+    A.objDone('lanterna'); A.falar('pegou_lanterna'); A.toast(`Lanterna (${tecla('F')}) e uma pilha reserva (${tecla('R')}).`);
   });
   interact(carro.children[0], () => S.flags.perseguicao ? 'Os faróis acenderam sozinhos. A chave nem está no contato.' : 'O motor morreu. E a árvore fecha a estrada.', () => {});
 
@@ -138,7 +142,7 @@ function estrada(A, S) {
   for (const z of [-19, -15]) { prop(.5, 1.5, .4, new THREE.MeshStandardMaterial({ color: 0x7a1a12, roughness: .6 }), 9.6, .75, z); }
   const neon = box(3, .06, .1, new THREE.MeshStandardMaterial({ emissive: 0xd8f0ff, emissiveIntensity: 2 }), 9.6, 4.05, -17, A.W.grupo, false);
   const luzNeon = new THREE.PointLight(0xd8f0ff, 6, 14, 1.4); luzNeon.position.set(9.6, 3.8, -17); A.W.grupo.add(luzNeon);
-  A.W.tick.push(() => { const on = Math.random() > (S.flags.joaquimSumiu ? .3 : .04); luzNeon.intensity = on ? 6 : .2; neon.material.emissiveIntensity = on ? 2 : .1; });
+  A.W.tick.push(dt => { const on = Math.random() > (S.flags.joaquimSumiu ? .3 : .04), li = on ? 6 : .2, ne = on ? 2 : .1; if (semFlash() && dt) { const k = Math.min(1, dt * 3); luzNeon.intensity += (li - luzNeon.intensity) * k; neon.material.emissiveIntensity += (ne - neon.material.emissiveIntensity) * k; } else { luzNeon.intensity = li; neon.material.emissiveIntensity = ne; } }); // reduzir flashes: o neon falha sem piscar
   cyl(.08, .08, 5, MAT.metal, 7.6, 2.5, -7.5); placa(A, [{ t: 'POSTO SERRA', tam: 54, estilo: 'bold' }, { t: 'aberto 24h', tam: 26, estilo: 'italic' }], 7.6, 5.2, -7.5, 2.4, 1.2, Math.PI / 2, { fundo: '#1a2a20', cor: '#c9d8b0' });
   janelasFachada(A, [14.2, 17.8], -13, 1.6, 1);
   // orelhão (o toque e a interação ficam em src/estrada-extra.js)
@@ -173,7 +177,7 @@ function estrada(A, S) {
   interact(velho, () => S.done.posto ? '<b>E</b>Falar com Seu Joaquim' : '<b>E</b>Falar com o velho', () => {
     if (S.done.posto) { A.dialogo([{ quem: 'joaquim', texto: 'A chave tá no prego. Atrás de você. E não corre lá dentro.' }]); return; }
     const linhas = memoria().joaquim ? TXT.joaquimCurto : A.R.dialogos.joaquim;
-    A.dialogo(linhas, () => { lembrar('joaquim'); S.flags.regras = true; A.objDone('posto'); A.lerNota('regras'); A.toast('As regras ficam no diário (TAB).'); });
+    A.dialogo(linhas, () => { lembrar('joaquim'); S.flags.regras = true; A.objDone('posto'); A.lerNota('regras'); A.toast(`As regras ficam no diário (${tecla('TAB')}).`); });
   });
   interact(radio, () => S.flags.joaquimSumiu ? '<b>E</b>Ouvir o rádio de novo' : 'Um rádio velho, desligado.', () => { if (S.flags.joaquimSumiu) A.tocarFita('f5'); });
   ITENS.nota('n1', { x: 13.6, y: 1.6, z: -13.12 }, true).obj.rotation.y = Math.PI;
@@ -208,12 +212,15 @@ function estrada(A, S) {
   });
   Object.defineProperty(itGate, 'hold', { get: () => (S.inv.chaves.portao && !S.done.abrir_portao ? 2 : 0) });
   itGate.som = 'trancado';
+  // Lote 3: atalho do barranco, abertura, retorno das ações, acessibilidade e desempenho (src/estrada-polimento.js)
+  const pol = polirEstrada(A, S, { GZ, carro, ex, orelhao, chave, cadeado, gate, arvores: arv, novoVulto: () => vulto(A) });
 
   return {
     nome: 'A Estrada Velha',
     spawns: { titulo: { x: 0, z: GZ + 24, yaw: 0 }, carro: { x: 1.6, z: 9.6, yaw: 0 }, inicio: { x: SPAWN.x, z: SPAWN.z, yaw: SPAWN.yaw } },
     fora: { hemi: .55, moon: .75, fog: .055 }, dentro: { hemi: .12, moon: .05, fog: .08 },
     energia: () => !S.flags.luzPostoMorta,
+    ruidoMul: () => pol.ruidoMul(),
     inicioCapitulo(cap) { if (cap === 1) A.carregarMapa('terreo', 'inicio'); },
     cena: ex.cena
   };
