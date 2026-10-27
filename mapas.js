@@ -326,7 +326,7 @@ function terreo(A, S) {
   }, () => {
     if (S.flags.energia || !S.inv.galao || S.inv.fusiveis < 3) return;
     S.flags.energia = true; SFX.gerador(true, { x: 31.6, y: 1, z: -19 }); A.emitNoise(31.6, -19, 45); A.conquista('luz');
-    let n = 0; const iv = setInterval(() => { A.W.lampadas.forEach(L => { L.luz.intensity = Math.random() < .5 ? L.base : 0; }); if (++n > 10) { clearInterval(iv); A.syncWorld(); } }, 120);
+    A.sustos.cascata(31.6, -19, () => A.syncWorld()); // as luzes acendem em cascata a partir da casa de máquinas
     A.objDone('gerador'); setTimeout(() => A.falar('gerador'), 1200);
   });
   interact(fusBox, () => S.flags.energia ? 'Quadro de fusíveis' : S.inv.fusiveis >= 3 ? 'Quadro de fusíveis (pronto)' : 'Quadro de fusíveis vazio. Etiqueta: "reserva na enfermaria".', () => {});
@@ -363,8 +363,8 @@ function terreo(A, S) {
   plano(3, 3, new THREE.MeshStandardMaterial({ map: A.TX.rabisco, transparent: true }), 16, 1.5, -25.85);
 
   // sustos
-  gatilho('portaBate', -34, -6, -14, -10, () => { setTimeout(() => { SFX.pancada(-30, -12); SFX.risada(-32, -20); }, 800); });
-  gatilho('lavanderia', 6, 16, -26, -14, () => { SFX.sussurros(2); });
+  gatilho('portaBate', -34, -6, -14, -10, () => A.sustos.portaBate());
+  gatilho('lavanderia', 6, 16, -26, -14, () => { SFX.sussurros(2); A.sustos.lencol(); });
 
   return {
     nome: 'Térreo do internato',
@@ -385,7 +385,7 @@ function terreo(A, S) {
     },
     inicioCapitulo(cap) {
       if (cap === 2) {
-        SFX.badaladas(9); setTimeout(() => A.falar('badaladas'), 4000);
+        A.sustos.badaladas(); setTimeout(() => A.falar('badaladas'), 4000);
         S.timers.procissao = 26;
         if (S.fitas.f1) A.objDone('fita_diretor');
       }
@@ -479,7 +479,7 @@ function superior(A, S) {
   ITENS.garrafa('g1', spot('banhS', 'mesa', 2)); ITENS.garrafa('g2', spot('sotao', 'mesa', 2)); ITENS.garrafa('g3', spot('dormA', 'cama', 3));
   // sustos
   gatilho('brinquedo', 3, 15, -38, -24, () => { if (!S.done.caixinha) SFX.risada(12, -36); });
-  gatilho('corredorFim', -3, 3, -58, -46, () => { SFX.pancada(8, -54); });
+  gatilho('corredorFim', -3, 3, -58, -46, () => { SFX.pancada(8, -54); A.sustos.espiaQuina(); });
 
   return {
     nome: 'Andar dos dormitórios',
@@ -576,7 +576,7 @@ function tuneis(A, S) {
     if (S.flags.cofre) return;
     A.abrirTeclado('COFRE DO DIRETOR', S.code.join(''), () => {
       S.flags.cofre = true; S.inv.pa = true; S.inv.chaves.capela = 'Chave da capela'; cp.rotation.y = -1.7;
-      SFX.pancada(7, -60); SFX.susto(); A.objDone('cofre'); A.falar('cofre'); A.M.furia = 10;
+      A.objDone('cofre'); A.sustos.cofre(() => { SFX.pancada(7, -60); SFX.susto(); A.falar('cofre'); A.M.furia = 10; });
       setTimeout(() => A.tocarFita('f4'), 5500);
     }, () => A.emitNoise(7, -60, 10));
   });
@@ -597,7 +597,7 @@ function tuneis(A, S) {
   ITENS.pilha('p1', spot('dep', 'mesa', 1)); ITENS.pilha('p2', noCaixote(A, spot('v2', 'chao', 1))); ITENS.pilha('p3', noCaixote(A, spot('t5', 'chao', 0)));
   ITENS.kit('k1', spot('dep', 'mesa', 2)); ITENS.kit('k2', noCaixote(A, spot('hub', 'chao', 2)));
   ITENS.garrafa('g1', noCaixote(A, spot('t3', 'chao', 0))); ITENS.garrafa('g2', noCaixote(A, spot('t2', 'chao', 1))); ITENS.garrafa('g3', noCaixote(A, spot('hub', 'chao', 0)));
-  gatilho('cisterna', -6, 6, -42, -30, () => { SFX.sussurros(2.5); });
+  gatilho('cisterna', -6, 6, -42, -30, () => { SFX.sussurros(2.5); A.sustos.cisterna(); });
 
   return {
     nome: 'Túneis de drenagem',
@@ -719,7 +719,7 @@ function cemiterio(A, S) {
     return '<b>E</b>Puxar a corda do sino';
   }, () => {
     if (S.flags.sino || S.placed < 3) return;
-    S.flags.sino = true; A.objDone('sino'); SFX.sino(1, { x: 4.8, y: 5, z: -64 }); A.falar('sino'); A.P.shake = .2;
+    S.flags.sino = true; A.objDone('sino'); SFX.sino(1, { x: 4.8, y: 5, z: -64 }); A.falar('sino'); A.P.shake = .2; A.sustos.sino();
     let t = 0; A.W.tick.push(dt => { t += dt; sinoP.rotation.x = Math.sin(t * 3) * .6 * Math.exp(-t * .15); });
     fundos.abrir(); A.setDoor(A.DOOR('cap'), true, true);
     A.desativarInspetor();
@@ -729,7 +729,7 @@ function cemiterio(A, S) {
   itSino.hold = 3; itSino.ruido = 40; itSino.som = 'cavar'; itSino.pode = () => !S.flags.sino && S.placed >= 3;
   gatilho('fuga', -2.2, 2.2, 11.2, 13, () => { if (S.flags.sino) A.escolhaFinal(); }, false);
   gatilho('entrouCapela', -8, 8, -70, -48.5, () => { if (S.chapter === 5 && !S.done.capela) { A.objDone('capela'); A.falar('capela'); } }, false);
-  gatilho('vozCemit', -30, 30, -20, -10, () => { SFX.chamadoVoz(-20, -30); });
+  gatilho('vozCemit', -30, 30, -20, -10, () => { A.sustos.chamadoVoz(-20, -30); });
 
   return {
     nome: 'Cemitério das irmãs',
