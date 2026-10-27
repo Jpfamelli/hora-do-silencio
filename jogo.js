@@ -2281,7 +2281,7 @@ function atacar(quem, leve) {
   if (ui === 'teclado') fecharTeclado(); else if (ui === 'nota') fecharNota(); else if (ui === 'diario') fecharDiario();
   S.causaCtx = S.causaCtx || causaContexto(quem); P.curaT = 0; P.mirarG = 0; teste = null;
   if (quem === 'inspetor') { M.cool = 7; M.state = 'procura'; M.searchT = 3; M.path = []; M.wait = 2.5; M.recuo = 15; M.acao = null; M.achou = false; M.certo = false; M.bote = null; }
-  UIX.golpe(quem);
+  UIX.golpe(quem); SUST.golpe(quem);
   SFX.grito(quem); P.shake = .25;
   $('#fx-red').style.transition = 'none'; $('#fx-red').style.opacity = OPT.vFlash ? .45 : 1;
   setTimeout(() => { $('#fx-red').style.transition = 'opacity 2.5s'; $('#fx-red').style.opacity = 0; }, 80);
@@ -2322,7 +2322,7 @@ function morrer(quem) {
       $('#dt-diag').hidden = true; $('#death-info').hidden = true; // a causa e a contagem já aparecem acima
       $('#death-conta').textContent = [S.mortes > 1 && R.mortes ? R.mortes.voltou.replace('{n}', S.mortes - 1) : '', S.dif === 'pesadelo' && R.mortes ? R.mortes.pesadelo : ''].filter(Boolean).join(' · ');
     }, rapido ? 500 : 700);
-  }, rapido ? 700 : 950);
+  }, (rapido ? 700 : 950) + SUST.atrasoMorte(rapido)); // a lanterna cai e rola antes do corte (src/sustos-plataforma.js)
 }
 
 // =====================================================================
@@ -3757,7 +3757,8 @@ const SUST = criarSustos({
   get S() { return S; }, get AC() { return AC; }, get master() { return master; }, get perf() { return perf; }, get chamado() { return chamadoArmadilha; },
   limparChamado: () => { chamadoArmadilha = null; }, raio: () => { raioT = 0; },
   saida, env, osc, burst, ruido, SFX, box, cyl, plano, interact, gatilho, SALA, DOOR, setDoor, roomAt, visivel, naLuz, emitNoise, collide, pontoEm, planejar, patrulhar,
-  sub, falar, toast, fade, entrarEsconderijo, sairEsconderijo, syncLuzes, despawnAna, renderInvMini
+  sub, falar, toast, fade, entrarEsconderijo, sairEsconderijo, syncLuzes, despawnAna, renderInvMini,
+  conquista, flash, get ui() { return ui; }, get mode() { return mode; } // lote 3 (src/sustos-plataforma.js)
 });
 // Monstros e IA, lote 2: lore viva das entidades (chaves, apito, armários dele, Procissão com rosto, Davi, Joaquim, Albano)
 const ML = criarMonstrosLore({
@@ -3792,7 +3793,7 @@ const grain = $('#fx-grain').getContext('2d'), grainImg = grain.createImageData(
 let last = performance.now(), grainT = 0;
 function loop(now) { requestAnimationFrame(loop); if (PLAT.pular(now)) return; const dt = Math.min(.05, (now - last) / 1000); last = now; frame(dt); }
 function frame(dt) {
-  dt = PLAT.antes(Math.min(.05, dt));
+  dt = SUST.escala(PLAT.antes(Math.min(.05, dt))); // golpe e 'por um fio' congelam ou desaceleram o mundo (src/sustos-plataforma.js)
   perf += dt;
   const jogando = mode === 'jogo' && !ui && S && !S.dead && !S.fim;
   const ativo = jogando && (locked || window.__teste || PLAT.semMouse());

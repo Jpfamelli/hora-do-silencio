@@ -4,6 +4,7 @@
 // O motor (jogo.js) chama criarSustos(E) uma vez e usa os ganchos devolvidos (poucas linhas lá).
 import * as THREE from 'three';
 import { instalarMundo } from './sustos-mundo.js';
+import { instalarSustosL3 } from './sustos-plataforma.js';
 
 export function criarSustos(E) {
   const { R, rand, pick, clamp, lerp, camera, scene, W, P, M, MON, ANA, ANA_G, PROC } = E;
@@ -164,7 +165,7 @@ export function criarSustos(E) {
   }
   function restaurarVolume() { som((ac, t) => { const g = E.master.gain; g.cancelScheduledValues(t); g.setValueAtTime(E.OPT.vol, t); }); }
   function marcarForte() { D.ultimoForte = agora; }
-  function sustoCom(espera = .9, fn) { vacuo(espera); marcarForte(); depois(espera, () => { if (fn) fn(); else E.SFX.susto(); }); }
+  function sustoCom(espera = .9, fn) { vacuo(espera); marcarForte(); L3.avisar(espera); depois(espera, () => { if (fn) fn(); else E.SFX.susto(); L3.assustou(); }); }
   // voz com formantes (vogais) — de criança, de adulto ou sussurrada
   function voz(pos, { f0 = 330, vogais = [[400, 2200], [800, 1200]], dur = .8, vol = .12, sopro = false, wet = .5, cai = .9 } = {}) {
     som((ac, t) => {
@@ -282,7 +283,8 @@ export function criarSustos(E) {
     if (D.capStinger !== s.chapter) { D.capStinger = s.chapter; D.cacasCap = 0; }
     D.cacasCap++; D.ultimaCaca = agora;
     const forte = D.cacasCap === 1 || d < 4;
-    if (forte && agora - D.stingerT > 25) { D.stingerT = agora; E.SFX.susto(); marcarForte(); }
+    L3.notou(d);
+    if (forte && agora - D.stingerT > 25) { D.stingerT = agora; L3.suave(); E.SFX.susto(); marcarForte(); }
     else { estalos(M.pos, 5, .09); E.SFX.coracao(); setTimeout(() => E.SFX.coracao(), 380); }
   });
   API.avistamento = seguro(() => sustoCom(.9));
@@ -308,11 +310,11 @@ export function criarSustos(E) {
     }
     D.estadoM = M.state;
     // lâmpada estoura quando ele passa embaixo (o prédio vai ficando escuro)
-    for (const L of W.lampadas) {
+    D.lampT = (D.lampT || 0) - dt; if (D.lampT <= 0) { D.lampT = .15; for (const L of W.lampadas) { // de 0,15 em 0,15 s: ele anda menos de 0,4 m nesse tempo
       const perto = L.ligada && !L.estourada && Math.hypot(L.x - M.pos.x, L.z - M.pos.z) < 1.5;
       if (perto && !L._sxVisto) { L._sxVisto = true; if (Math.random() < .25 && D.luzesApagadas < 4) estourar(L, false); }
       else if (!perto) L._sxVisto = false;
-    }
+    } }
     // luzes apagam atrás de você, na direção de onde ele vem
     if (P.room.tipo === 'corredor' && d > 15 && d < 25 && M.state !== 'caca' && agora > (D.apagaCorrT || 0)) {
       const lamps = lampadasPerto(26).filter(L => Math.hypot(L.x - M.pos.x, L.z - M.pos.z) < d && Math.hypot(L.x - P.pos.x, L.z - P.pos.z) > 2).sort((a, b) => Math.hypot(a.x - M.pos.x, a.z - M.pos.z) - Math.hypot(b.x - M.pos.x, b.z - M.pos.z));
@@ -355,7 +357,7 @@ export function criarSustos(E) {
     if (Math.random() < .5) { elMao.classList.add('on'); setTimeout(() => elMao.classList.remove('on'), 420); }
   });
   API.dez = seguro(() => {
-    const s = S(); ANA.conta = 0; marcarForte(); ANA.cool = Math.max(ANA.cool, 1.6);
+    const s = S(); ANA.conta = 0; marcarForte(); ANA.cool = Math.max(ANA.cool, 1.6); L3.avisar(.4);
     const v = D.dezSeq = (D.dezSeq === undefined ? 0 : D.dezSeq + 1);
     const tipo = v === 0 ? 'atras' : pick(['atras', 'atras', 'silencio', 'grave']);
     const teleAtras = (m) => {
@@ -522,13 +524,13 @@ export function criarSustos(E) {
 
   // ===================================================================== MORTE
   API.morte = seguro(quem => {
-    MUNDO.morte(quem);
+    MUNDO.morte(quem); L3.morte(quem);
     D.fov0 = D.fov0 || camera.fov;
     setTimeout(() => restaurarVolume(), 2400);
     som((ac, t) => { const g = E.master.gain; g.cancelScheduledValues(t); g.setValueAtTime(g.value, t); g.setValueAtTime(g.value, t + .33); g.linearRampToValueAtTime(0, t + .38); g.setValueAtTime(0, t + .53); g.setValueAtTime(E.OPT.vol, t + .54); });
     setTimeout(seguro(() => {
       const f = fwdH(), c = camera.position, yawCam = Math.atan2(-f.x, -f.z);
-      impactoGrave(1.5); flashBranco(80);
+      impactoGrave(1.5); if (!+E.OPT.vFlash) flashBranco(80); // 'Reduzir flashes' tira o clarão branco da morte
       luzRosto.position.set(c.x + f.x * .3, c.y - .45, c.z + f.z * .3); luzRosto.intensity = 9;
       let alvo;
       if (quem === 'inspetor') {
@@ -644,6 +646,7 @@ export function criarSustos(E) {
 
   // ===================================================================== PAUSA E FIM DE CAPÍTULO
   API.aoPausar = seguro(() => {
+    L3.aoPausar();
     const s = S(); if (!s || s.flags.sx_pausa || !M.ativo || dist2(M.pos, P.pos) > 8) return;
     D.pausas = (D.pausas || 0) + 1; if (D.pausas < 3) return;
     s.flags.sx_pausa = true; const h = document.querySelector('#pause h2'); if (!h) return;
@@ -651,6 +654,7 @@ export function criarSustos(E) {
     setTimeout(() => { h.textContent = orig; h.style.color = ''; }, 1000);
   });
   API.fimCap = seguro(() => {
+    L3.fimCap();
     vacuo(1.5, .02);
     if (Math.random() < .34) setTimeout(() => voz(null, { sopro: true, vogais: [[300, 2400], [800, 1200]], dur: .6, vol: .14, wet: 0 }), 900);
     setTimeout(() => { if (!elFim) return; elFim.style.opacity = .85; E.SFX.estalo({ x: P.pos.x, z: P.pos.z }, .7); setTimeout(() => elFim.style.opacity = 0, 130); }, 3000);
@@ -988,7 +992,7 @@ export function criarSustos(E) {
     const arm = W.lockers.filter(l => l.tipo === 'armario'); D.armOcup = arm.length ? pick(arm) : null;
     if (id === 'terreo') montarTerreo();
     if (id === 'superior') { montarSuperior(); if (!s.flags.sx_chegouCima) { s.flags.sx_chegouCima = true; depois(4, () => batida({ x: 0, y: -2, z: 6 }, 1)); } }
-    MUNDO.novoMapa(id);
+    MUNDO.novoMapa(id); L3.novoMapa(id);
     if (id === 'tuneis' && D.mapaAnterior === 'superior' && !s.flags.sx_poco) { s.flags.sx_poco = true; depois(1.4, () => { voz({ x: 0, y: 4, z: -1 }, { f0: 520, vogais: [[300, 2300], [500, 2000], [700, 1200]], dur: 1, vol: .1 }); E.sub('ana', TXT.nove_poco); }); }
   });
   API.update = seguro(dt => {
@@ -1004,9 +1008,15 @@ export function criarSustos(E) {
     for (let i = temporarios.length - 1; i >= 0; i--) { let fim = false; try { fim = temporarios[i].upd(dt); } catch (e) { fim = true; console.warn('[sustos]', e && e.message); } if (fim) temporarios.splice(i, 1); }
     updateInspetorSustos(dt); updateAnaSustos(dt); updateEsconderijo(dt); updateCorredor(dt); updatePortas(dt); vigiarEstado(dt);
     diretor();
-    MUNDO.update(dt);
+    MUNDO.update(dt); L3.update(dt, s);
   });
   const MUNDO = instalarMundo(E, { D, depois, anima, voz, respiracao, passoPos, batida, vacuo, marcarForte, apagao, notas, arranhao, vento, rolar, atras, fwdH, dist2, abrirDevagar, bater, andarModelo, portaDaSala, fundoCorredor, seguro, som, maoContato, AMBIENTE, agora: () => agora });
+  const L3 = instalarSustosL3(E, { D, depois, anima, voz, respiracao, passoPos, batida, vacuo, marcarForte, apagao, rolar, atras, fwdH, dist2, abrirDevagar, andarModelo, portaDaSala, seguro, som, agora: () => agora, SOMBRA, ANA2, CRIANCA, luzRosto });
+  // Lote 3: o motor multiplica o dt do mundo (golpe congela, 'por um fio' desacelera), avisa o golpe e espera a queda na morte
+  API.escala = dt => { try { return L3.escala(dt); } catch (e) { return dt; } };
+  API.golpe = seguro(q => L3.golpe(q));
+  API.atrasoMorte = r => { try { return L3.atrasoMorte(r) || 0; } catch (e) { return 0; } };
+  API._L3 = L3; // depuração (kit de teste)
   API.vacuo = vacuo; API.sustoCom = sustoCom; API.agora = () => agora; API._D = D;
   window.__sustos = API;
   return API;
