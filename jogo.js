@@ -5,6 +5,7 @@ import { instalarHistoria, fmtFala, fmtNota, escrever, revelar } from './src/his
 import { criarSustos } from './src/sustos.js';
 import { instalarVisual } from './src/visual.js';
 import * as JG from './src/jogabilidade.js';
+import { criarMundoJogavel } from './src/jogabilidade-mundo.js';
 import { criarInterface } from './src/interface.js';
 import { PG } from './src/progressao.js';
 import { PLAT } from './src/plataforma.js';
@@ -462,7 +463,7 @@ const ITENS = {
   gravador: (fid, p, cond) => {
     const f = R.fitas.find(x => x.id === fid);
     const g = MK.gravador(); g.position.set(p.x, p.y, p.z); W.grupo.add(g);
-    const it = interact(g, () => fitaTocando ? (fitaTocando.id === fid ? `<b>E</b>${S.fitas[fid] ? 'Parar a fita' : fitaPausada ? 'Continuar a fita' : 'Pausar a fita'}` : 'O gravador está tocando...') : `<b>E</b>${S.fitas[fid] ? 'Ouvir de novo' : 'Ouvir'}: ${f.titulo}`, () => tocarFita(fid));
+    const it = interact(g, () => fitaTocando ? (fitaTocando.id === fid ? `<b>E</b>${S.fitas[fid] ? 'Parar a fita<small style="opacity:.6"> · segure: avançar (chiado alto)</small>' : fitaPausada ? 'Continuar a fita' : 'Pausar a fita'}` : 'O gravador está tocando...') : `<b>E</b>${S.fitas[fid] ? 'Ouvir de novo' : 'Ouvir'}: ${f.titulo}`, () => tocarFita(fid));
     if (cond) { it.on = cond; W.tick.push(() => { g.visible = cond(); }); }
     return it;
   }
@@ -509,7 +510,7 @@ function mobiliar(r) {
     lamp(9);
   } else if (t === 'refeitorio') {
     const n = Math.max(2, Math.floor(d / 4));
-    for (let k = 0; k < n; k++) { const z = r.z0 + d * (k + .5) / n; mesaSimples(cx, z, w * .65, 1.1, .82, sp.mesa); prop(w * .65, .45, .3, MAT.madeiraEsc, cx, .22, z - .85); prop(w * .65, .45, .3, MAT.madeiraEsc, cx, .22, z + .85); }
+    for (let k = 0; k < n; k++) { const z = r.z0 + d * (k + .5) / n; mesaSimples(cx, z, w * .65, 1.1, .82, sp.mesa); for (const zb of [z - .85, z + .85]) if (!W.links.some(l => Math.abs(l.z - zb) < 1.25 && Math.abs(l.x - cx) < w * .33 + .8)) prop(w * .65, .45, .3, MAT.madeiraEsc, cx, .22, zb); } // banco na frente da porta não
     lamp(10);
   } else if (t === 'cozinha') {
     prop(w * .55, .95, .7, MAT.metal, cx, .48, r.z0 + .45); sp.mesa.push({ x: cx - w * .18, y: .96, z: r.z0 + .5 }, { x: cx + w * .18, y: .96, z: r.z0 + .5 });
@@ -536,7 +537,7 @@ function mobiliar(r) {
   } else if (t === 'banheiro') {
     const n = Math.max(1, Math.floor((w - 2) / 1.4));
     for (let i = 0; i < n; i++) { const x = r.x0 + 1 + i * 1.4; prop(.06, 2, 1.3, MAT.metalVerde, x + .65, 1, r.z0 + .75); box(.4, .4, .5, MAT.branco, x, .2, r.z0 + .4); }
-    for (let i = 0; i < Math.min(3, Math.floor((w - 1) / 1.6)); i++) { const x = r.x0 + 1.2 + i * 1.6; prop(.6, .85, .45, MAT.branco, x, .42, r.z1 - .35); sp.mesa.push({ x, y: .86, z: r.z1 - .4 }); plano(.5, .7, new THREE.MeshStandardMaterial({ color: 0x223, roughness: .05, metalness: .9 }), x, 1.6, r.z1 - .12, Math.PI); }
+    for (let i = 0; i < Math.min(3, Math.floor((w - 1) / 1.6)); i++) { let x = r.x0 + 1.2 + i * 1.6; while (W.links.some(l => Math.hypot(l.x - x, l.z - r.z1) < 1.3) && x < r.x1 - 1) x += .8; prop(.6, .85, .45, MAT.branco, x, .42, r.z1 - .35); sp.mesa.push({ x, y: .86, z: r.z1 - .4 }); plano(.5, .7, new THREE.MeshStandardMaterial({ color: 0x223, roughness: .05, metalness: .9 }), x, 1.6, r.z1 - .12, Math.PI); }
     lamp(7, 0xd0e0d8);
   } else if (t === 'diretoria') {
     mesaSimples(cx, cz, 2.2, 1.1, .82, sp.mesa, MAT.madeiraEsc);
@@ -569,9 +570,11 @@ function mobiliar(r) {
     for (let i = 0; i < 5; i++) { const b = MK.boneca(); b.position.set(r.x0 + .32, 1.16, cz - 1.5 + i * .7); W.grupo.add(b); }
     lamp(8, 0xffd0a0);
   } else if (t === 'quarto') {
-    cama(r.x0 + 1.15, cz, 'x', r.id); mesaSimples(r.x1 - 1.2, cz, 1.2, .7, .8, sp.mesa, MAT.madeiraEsc);
+    // a mesa ficava na frente da porta do quarto da Irmã Celeste e não deixava entrar: vai para o canto livre
+    const mz = W.links.some(l => Math.hypot(l.x - (r.x1 - 1.2), l.z - cz) < 1.8) ? r.z0 + 2.3 : cz;
+    cama(r.x0 + 1.15, cz, 'x', r.id); mesaSimples(r.x1 - 1.2, mz, 1.2, .7, .8, sp.mesa, MAT.madeiraEsc);
     estante(cx, r.z0 + .3, 'x', 2, sp.prateleira, 1);
-    for (let i = 0; i < 3; i++) vela(r.x1 - .9 + i * .2, .8, cz + .25);
+    for (let i = 0; i < 3; i++) vela(r.x1 - .9 + i * .2, .8, mz + .25);
     lamp(6);
   } else if (t === 'maquinas' || t === 'deposito') {
     for (let i = 0; i < 4; i++) { const h = .5 + (i % 3) * .2; const x = r.x0 + 1 + (i % 2) * 1.2, z = r.z0 + 1 + Math.floor(i / 2) * 1.3; prop(.8, h, .8, MAT.madeiraEsc, x, h / 2, z); sp.mesa.push({ x, y: h, z }); }
@@ -655,7 +658,7 @@ addEventListener('mousemove', e => {
 });
 document.addEventListener('pointerlockchange', () => {
   locked = document.pointerLockElement === canvas;
-  if (!locked && mode === 'jogo' && !ui && S && !S.dead && !S.fim) abrirPausa();
+  if (!locked && mode === 'jogo' && !ui && S && !S.dead && !S.fim && !window.__teste) abrirPausa(); // no kit de teste não há mouse: perder a trava não pausa
 });
 canvas.addEventListener('click', () => { if ((mode === 'jogo' || mode === 'cena') && !ui) lockPointer(); });
 $('#clique').addEventListener('click', () => lockPointer());
@@ -675,6 +678,7 @@ function onKey(e) {
   if (ui === 'teclado') { tecladoKey(e); return; }
   if (ui === 'morte') { if ((e.code === 'KeyE' || e.code === 'Space' || e.code === 'Enter') && !$('#death').hidden) $('#dt-retry').click(); return; }
   if (mode !== 'jogo' || ui || !S || S.dead) return;
+  if (JM.tecla(e)) return; // T fone, B rádio
   if (e.code !== 'KeyQ' && e.code !== 'KeyZ' && e.code !== 'KeyX') silencioT = 0;
   switch (e.code) {
     case 'KeyE':
@@ -1010,6 +1014,7 @@ function updateFear(dt) {
   if (ANA.ativa) { const d = ANA.pos.distanceTo(P.pos); if (d < 10) df += (10 - d) * 2; }
   if (PROC.fase) df += 12;
   if (S.hidden) df += 1;
+  if (df > 0) df *= JM.medoMul(); // fone no ouvido e o terço da Celeste
   S.fear = clamp(S.fear + df * dt, 0, 100);
   if (S.fear > 80 && Math.random() < dt * .22) alucinacao();
 }
@@ -1037,7 +1042,7 @@ function entrarEsconderijo(L) {
   const dM = M.ativo ? M.pos.distanceTo(P.pos) : 99;
   if (L.tipo === 'cama') { SFX.arrastar(); emitNoise(L.x, L.z, 2.5); $('#fx-cama').hidden = false; }
   else { SFX.armario(); emitNoise(L.x, L.z, L.tipo === 'nicho' ? 2.5 : 3.5); $('#fx-locker').hidden = false; }
-  if (M.ativo && M.state === 'caca' && dM < 4 && salaAdj(roomAt(M.pos.x, M.pos.z), P.room)) {
+  if (M.ativo && M.state === 'caca' && dM < 4 && salaAdj(roomAt(M.pos.x, M.pos.z), P.room) && !(JM.protegido(L, 3) && dM > 1.6)) {
     teste = { t: rand(4, 6), graca: S.dif === 'pesadelo' ? .4 : 1 };
     M.state = 'procura'; M.searchT = teste.t + 3; planejar(M, L.x + L.face[0] * 1.1, L.z + L.face[1] * 1.1);
     toast('Ele ouviu você entrar. Prenda a respiração (ESPAÇO) e não solte!');
@@ -1046,7 +1051,7 @@ function entrarEsconderijo(L) {
   S.hidden = L; P.crouch = false; P.pulso = Math.min(P.pulso, 40); P.espiar = 0; P.incl = 0; P.olhar = 0; P.saidaT = 0;
   P.yaw = Math.atan2(-L.face[0], -L.face[1]); P.pitch = L.tipo === 'cama' ? -.1 : 0;
   if (!S.flags.dicaEspiar) { S.flags.dicaEspiar = true; setTimeout(() => toast('Z e X espiam pela fresta. Toque E para sair rápido, segure E para sair em silêncio.'), 900); }
-  SUST.aoEsconder(L);
+  SUST.aoEsconder(L); JM.aoEsconder(L);
 }
 function sairEsconderijo(modo) {
   const L = S.hidden; if (!L) return;
@@ -1150,7 +1155,7 @@ function afastarInspetor() {
 const congelado = dt => { if (congelarT > 0) { congelarT -= dt; return true; } return false; };
 // Cofre e quadro não param o mundo (só no Fácil); no Pesadelo, notas e diário também não
 const mundoVivo = () => mode === 'jogo' && S && !S.dead && !S.fim && ((ui === 'teclado' && S.dif !== 'facil') || ((ui === 'nota' || ui === 'diario') && S.dif === 'pesadelo'));
-function abafar(on) { if (master) master.gain.value = lerp(master.gain.value, OPT.vol * (on ? .45 : 1), .2); }
+function abafar(on) { if (master) master.gain.value = lerp(master.gain.value, OPT.vol * (on ? .45 : 1) * JM.volMundo(), .2); }
 function causaContexto(quem) {
   if (quem === 'procissao') return 'fora';
   if (quem === 'ana') return !S.flashOn ? 'semLuz' : flashFalhaLonga || falhaT > 0 ? 'piscou' : 'costas';
@@ -1506,7 +1511,7 @@ function emitNoise(x, z, r, doJogador, garrafa) {
       }
     }
     const tipo = garrafa ? 'vidro' : W.doors.some(dd => dd.x === x && dd.z === z) ? 'porta' : doJogador && S.hidden ? 'respira' : null;
-    if (doJogador && S.hidden && d < 2.6) M.achou = true;
+    if (doJogador && S.hidden && d < 2.6 && !JM.protegido(S.hidden, r)) M.achou = true;
     if (ocupado) return;
     // em plena caçada, colado em você, a garrafa só faz ele virar a cabeça
     if (garrafa && M.state === 'caca' && M.pos.distanceTo(P.pos) < 5) { M.olhar = new THREE.Vector3(x, 0, z); M.olharT = .6; return; }
@@ -1591,11 +1596,11 @@ function escolherAcaoProcura(ra) {
   const uso = S.flags.escUso || {};
   if (!M.favCheck) {
     M.favCheck = true;
-    const fav = W.lockers.find((L, i) => (uso[W.mapa + ':' + i] || 0) >= 3 && Math.hypot(L.x - M.pos.x, L.z - M.pos.z) < 12 && salaAdj(roomAt(L.x, L.z), ra));
+    const fav = W.lockers.find((L, i) => (uso[W.mapa + ':' + i] || 0) >= 3 && !JM.nuncaAbre(L) && Math.hypot(L.x - M.pos.x, L.z - M.pos.z) < 12 && salaAdj(roomAt(L.x, L.z), ra));
     if (fav) { const [x, z] = frenteDe(fav); if (planejar(M, x, z)) { M.acao = { tipo: 'favorito', L: fav }; return true; } }
   }
   if (Math.random() < .35) {
-    const arms = W.lockers.filter(L => L !== S.hidden && roomAt(L.x, L.z) === ra && Math.hypot(L.x - M.pos.x, L.z - M.pos.z) < 9);
+    const arms = W.lockers.filter(L => L !== S.hidden && !JM.nuncaAbre(L) && roomAt(L.x, L.z) === ra && Math.hypot(L.x - M.pos.x, L.z - M.pos.z) < 9);
     if (arms.length) { const L = pick(arms); const [x, z] = frenteDe(L); planejar(M, x, z); M.acao = { tipo: 'bater', L }; return true; }
   }
   if (Math.random() < .25 && M.escutaCd <= 0) { escutar(rand(1.5, 2.5)); return true; }
@@ -1657,7 +1662,7 @@ function checarEntradaEsconderijo(L) {
   if (!teste && M.ativo && ['caca', 'alerta', 'bote'].includes(M.state)) { // na caçada perto, quem decide é o teste da porta (prender o ar)
     const d = M.pos.distanceTo(P.pos);
     if (d < 1.6) { toast('Ele está perto demais! Ele ouviu você entrar.'); M.achou = true; M.certo = true; }
-    else if (d < 4) { toast('Ele ouviu a porta. Prenda a respiração (ESPAÇO)!'); M.achou = true; M.certo = false; }
+    else if (d < 4 && !JM.protegido(L, 3)) { toast('Ele ouviu a porta. Prenda a respiração (ESPAÇO)!'); M.achou = true; M.certo = false; }
     if (M.achou) { M.state = 'investiga'; M.acao = null; const [x, z] = frenteDe(L, 1.1); planejar(M, x, z); }
   }
 }
@@ -1723,7 +1728,7 @@ function updateInspetor(dt) {
   if (P.room && P.room !== M.ultSalaJog) { M.ultSalaJog = P.room; const rt = S.flags.rotas || (S.flags.rotas = {}), k = W.mapa + ':' + P.room.id; rt[k] = (rt[k] || 0) + 1; }
   // Audição (submersa na água dos túneis, ela não é ouvida; trovão e chuva mascaram os passos)
   const ajuda = 1; // a ajuda invisível já está em D().ouvido
-  const ouvido = P.noiseR * pisoMult() * att * D().ouvido * ajuda * (M.state === 'caca' ? 1.6 : M.state === 'escuta' ? 1.5 : 1) * mascaraSom(P.pos.x, P.pos.z);
+  const ouvido = P.noiseR * pisoMult() * att * D().ouvido * ajuda * JM.ouvidoMul() * (M.state === 'caca' ? 1.6 : M.state === 'escuta' ? 1.5 : 1) * mascaraSom(P.pos.x, P.pos.z);
   const submersa = !!(W.def.submersa && W.def.submersa());
   const ouve = !S.hidden && !submersa && !(P.room.seguro && !fuga) && (fuga || M.furia > 0 || (P.noiseR > 0 && d < ouvido));
   if (ouve && !(M.alvoGarrafa && d > 4) && !ocupado) {
@@ -1748,7 +1753,7 @@ function updateInspetor(dt) {
     if (prendendo()) { S.fear = Math.max(0, S.fear - 6 * dt); M.ansiedade = Math.max(0, M.ansiedade - dt * .5); }
     if (S.fear > 85 && d < 3 && S.dif !== 'facil') { M.hbT -= dt; if (M.hbT <= 0) { M.hbT = 60 / lerp(55, 150, S.fear / 100); emitNoise(P.pos.x, P.pos.z, 1.6, true); if (!S.flags.dicaCoracao) { S.flags.dicaCoracao = true; subPequeno('lia', 'Ele ouve meu coração. Preciso me acalmar.'); } } }
     const dl = Math.hypot(M.pos.x - S.hidden.x, M.pos.z - S.hidden.z);
-    if (!M.achou && !ocupado && M.farejaCd <= 0 && M.state !== 'caca' && dl < 1.8) iniciarFareja(S.hidden);
+    if (!M.achou && !ocupado && M.farejaCd <= 0 && M.state !== 'caca' && dl < 1.8 && !JM.protegido(S.hidden)) iniciarFareja(S.hidden);
   }
   // Estados parados
   if (M.state === 'alerta') { M.alertaT -= dt; if (M.alertaT <= 0) { if (S.hidden) { M.state = 'investiga'; if (M.ultimo) planejar(M, M.ultimo.x, M.ultimo.z); } else entrarCaca(); } }
@@ -2392,6 +2397,7 @@ function carregarMapa(id, spawn, { salvar = true } = {}) {
   syncWorld();
   prepararJogador();
   if (def.entrar) def.entrar(S.chapter);
+  JM.mapa(id); // lote 2: marcas, rádio, sineta, vitrola, velas... (src/jogabilidade-mundo.js)
   if (salvar) salvarCheckpoint();
   renderObj(); renderInvMini();
   SUST.novoMapa(id);
@@ -2508,7 +2514,7 @@ function tocarFita(fid) {
   if (fitaTocando) {
     if (fitaTocando.id !== fid) return;
     // E de novo no gravador: fita já ouvida para; fita nova pausa e continua
-    if (S.fitas[fid]) { fitaFila = []; fitaT = 0; fitaPausada = false; SFX.fitaClique(); return; }
+    if (S.fitas[fid]) { if (JM.segurarFita()) return; pararFitaOuvida(); return; }
     fitaPausada = !fitaPausada; SFX.fitaClique(); SFX.chiadoFita(!fitaPausada);
     $('#fita-ind').textContent = fitaTocando.titulo + (fitaPausada ? ' (pausada)' : ''); return;
   }
@@ -2518,9 +2524,11 @@ function tocarFita(fid) {
   SFX.fitaClique(); SFX.chiadoFita(true);
   emitNoise(P.pos.x, P.pos.z, 7);
 }
+function pararFitaOuvida() { fitaFila = []; fitaT = 0; fitaPausada = false; SFX.fitaClique(); }
 function updateFita(dt) {
   if (!fitaTocando || fitaPausada) return;
-  fitaT -= dt;
+  fitaT -= dt * (JM.avancando ? 3 : 1); // fita já ouvida: segurar E avança, com chiado alto
+  if (JM.avancando && fitaPos && Math.random() < dt * 2) { SFX.estatica(.3, { x: fitaPos.x, y: 1, z: fitaPos.z }); emitNoise(fitaPos.x, fitaPos.z, 8); marcarCausa('fita'); }
   if (fitaT <= 0) {
     const l = fitaFila.shift();
     if (!l) { const id = fitaTocando.id; fitaTocando = null; $('#fita-ind').hidden = true; SFX.chiadoFita(false); SFX.fitaClique(); const primeira = !S.fitas[id]; S.fitas[id] = true; H.fitaFim(id); if (primeira) { PG.lore(id); toast('Fita registrada no diário (TAB).'); if (W.def.fitaOuvida) W.def.fitaOuvida(id); progresso(); } return; }
@@ -3462,6 +3470,8 @@ function renderInvMini() {
   if (S.inv.kits) p.push(`Curativos <em>${S.inv.kits}</em><kbd>H</kbd>`);
   if (S.inv.garrafas) p.push(`Garrafas <em>${S.inv.garrafas}</em><kbd>G</kbd>`);
   if (S.inv.reliquias) p.push(`Objetos <em>${S.inv.reliquias}</em>`);
+  if (S.flags.l2radio) p.push('Rádio do Joaquim<kbd>B</kbd>');
+  if (S.flags.l2terco) p.push('Terço da Irmã Celeste');
   $('#inv-mini').innerHTML = p.join('<br>');
 }
 let filtroAtual = '';
@@ -3721,6 +3731,13 @@ const SUST = criarSustos({
   saida, env, osc, burst, ruido, SFX, box, cyl, plano, interact, gatilho, SALA, DOOR, setDoor, roomAt, visivel, naLuz, emitNoise, collide, pontoEm, planejar, patrulhar,
   sub, falar, toast, fade, entrarEsconderijo, sairEsconderijo, syncLuzes, despawnAna, renderInvMini
 });
+const JM = criarMundoJogavel({
+  THREE, W, P, M, PROC, ANA, keys, R, MAT, OPT, SFX, SX, camera,
+  get S() { return S; }, get AC() { return AC; }, get perf() { return perf; }, get alvo() { return alvo; }, get mode() { return mode; }, get ui() { return ui; }, get digitado() { return digitado; },
+  audio: { saida: (...a) => saida(...a), osc: (...a) => osc(...a), burst: (...a) => burst(...a), env: (...a) => env(...a), ruido: (...a) => ruido(...a) },
+  interact, box, cyl, plano, vela, textoTex, canvasTex, addCollider, roomAt, SALA, salaAdj, distSalas, planejar, emitNoise, codTxt, renderInvMini,
+  toast, sub, subPequeno, falar, conquista, abrirNotaUI, abrirTeclado, fecharTeclado, fade, carregarMapa, pararFitaOuvida, marcarCausa
+});
 const VIS = instalarVisual({ THREE, scene, camera, renderer, canvas, flash, flashFill, MON, ANA, ANA_G, PROC, M, P, W, MAT, OPT, OPT_KEY, lsSet, R, ROLOS, keys, roomAt, visivel, collide, salasAlcancaveis, distSalas, D,
   get S() { return S; }, get mode() { return mode; }, get ui() { return ui; }, get flashPisca() { return flashPisca; }, get hbT() { return AUD.hbT; }, get raioI() { return raioI; }, get fita() { return fitaTocando; }, get perf() { return perf; } });
 PG.ligar({
@@ -3749,7 +3766,7 @@ function frame(dt) {
     S.tempo += dt; S.capT += dt; PG.tick(dt);
     updatePlayer(dt); updateLanterna(dt); updateFear(dt);
     if (!congelado(dt)) { updateInspetor(dt); updateAna(dt); updateProcissao(dt); } updateEventos(dt); updateGarrafas(dt);
-    updateClima(dt); updateJogabilidade(dt); updateAlvo(); updateSegurar(dt); updateFita(dt); updateHUD(); updateSub(dt); updateAudio(dt); H.tick(dt);
+    updateClima(dt); updateJogabilidade(dt); updateAlvo(); JM.update(dt); updateSegurar(dt); updateFita(dt); updateHUD(); updateSub(dt); updateAudio(dt); H.tick(dt);
   } else if (mundoVivo()) { // cofre, quadro (e no Pesadelo notas e diário): o mundo continua, com o som abafado
     S.tempo += dt; S.capT += dt; P.noiseR = 0; abafar(true);
     updateLanterna(dt); updateFear(dt);

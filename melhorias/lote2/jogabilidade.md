@@ -1,0 +1,104 @@
+# Lote 2 — Jogabilidade
+- Armários marcados com um D pequeno riscado pelo Davi aparecem no térreo, no andar de cima e nos túneis
+- O Inspetor nunca fareja nem abre um armário com o D do Davi por causa de barulho médio (barulho alto ainda denuncia)
+- Armários com o D do Davi não entram na lista de "armários favoritos" que ele aprende a vistoriar
+- Ele também não bate nas portas dos armários marcados quando vasculha a sala
+- O texto de "Esconder no armário" avisa quando há uma marca na porta (D riscado, T entalhado ou D de traço reto)
+- A página 1 do diário do Davi ganhou a nota na margem explicando as marcas: "se tiver um D, pode entrar"
+- Na primeira vez escondida num armário do Davi, a Lia sussurra que reconhece a letra dele
+- Nos túneis existe um D falso, grande e de traço reto, feito por outra mão: ali o Inspetor confere primeiro
+- Escondida no armário do D falso, ele sabe que você está lá ("O meu armário") e vem vistoriar
+- A Lia percebe que o D falso não é do Davi ao entrar nele pela primeira vez
+- Um armário por mapa (térreo, andar de cima, túneis) tem um T pequeno entalhado: o esconderijo do Tomé
+- Escondida no armário do Tomé, a Lia ouve o cochicho de um menino: "Aqui ele nunca acha."
+- O Inspetor passa direto pelo armário do Tomé mesmo com barulho médio, e não faz o teste da porta se você entrou fora do alcance dele
+- Na primeira vez no armário do Tomé, a redação do Tomé ganha uma linha nova no verso (ele marcou o T)
+- Código de batidas das crianças riscado na parede do corredor de cima, ao lado da porta do dormitório D, na altura de uma criança
+- Depois de ler o código, três batidas na parede avisam de verdade que o Inspetor está vindo para a sua sala ou a vizinha
+- Duas batidas na porta avisam "não vem por aqui" quando você chega perto da porta da sala onde ele está
+- Uma batida baixinha por dentro da parede responde "sim" quando você entra num armário seguro (D ou T)
+- Rádio de pilha do Seu Joaquim no balcão da recepção, que fica com a Lia
+- Segurar B liga o rádio: o chiado fica mais forte perto de segredos (frio, morno, quente, fervendo)
+- O chiado do rádio faz barulho 8 a cada instante: usar perto do Inspetor é perigoso
+- Perto de cada segredo o Seu Joaquim solta uma frase curta pelo rádio sobre aquele lugar
+- Em cada mapa, a primeira vez que o rádio liga, o Seu Joaquim fala sobre o lugar
+- O rádio às vezes liga sozinho quando o Inspetor está a uma sala de distância (B desliga na hora)
+- Barra de "calor" do rádio no canto da tela enquanto ele chia
+- Toca-fitas de bolso da Lia: T põe e tira o fone de espuma com a fita sem remetente
+- Com o fone no ouvido, o som do mundo cai 70% e os estalos do Inspetor quase somem: risco real
+- O lado B da fita muda a cada capítulo, com duas frases novas do Davi (seis capítulos, doze falas)
+- As falas do lado B dão pistas das mecânicas novas (marcas D, telefone, código de batidas, D falso, harmônio)
+- Botão "Ouvir a fita no fone (T)" dentro do diário (TAB)
+- Aviso "[fone] o prédio fica longe" no HUD enquanto o fone está no ouvido
+- Com o fone, o medo sobe mais devagar: a voz do Davi acalma, em troca de não ouvir o prédio
+- Morrer ou trocar de mapa tira o fone automaticamente
+- Fita já ouvida: segurar E no gravador avança a fita em 3x
+- Avançar a fita chia alto e faz barulho extra no lugar do gravador
+- O texto do gravador mostra "segure: avançar (chiado alto)" quando a fita já foi ouvida
+- Toque rápido de E numa fita já ouvida continua parando a fita, sem atropelar o avanço
+- Sineta de servir na parede da cozinha: tocar chama o Inspetor para jantar
+- Na primeira vez no capítulo ele senta à mesa da cozinha, de costas, por 10 s, ouvindo pela metade
+- Tocar a sineta de novo no mesmo capítulo não engana: ele vem com fúria, caçando
+- A Lia lembra do caderno da cozinheira ao tocar a sineta pela primeira vez
+- Fita 3 (do Moacir) vem mastigada: segure E por 6 s para enrolar com a caneta antes de ouvir
+- Enrolar a fita faz um clique-clique baixinho de plástico, e o progresso fica guardado se soltar
+- Velas votivas num pires ao lado de esconderijos (seis no jogo: térreo, andar de cima, túneis e capela)
+- Segurar E junto da vela faz a Lia sentar e lembrar do Davi em voz baixa (uma lembrança diferente por vela)
+- Lembrar baixa muito o medo, mas o tempo corre: Procissão, Menina e Chamado chegam 15 s mais cedo
+- Telefone de disco na parede da recepção que funciona a partir do Capítulo I
+- Discar 03-79 (o Posto Serra) faz o Seu Joaquim atender pelo chiado com uma dica do capítulo atual
+- Discar 1403 toca a gravação da noite de 14 de março de 1979 (o sino, as batidas na porta, a voz do diretor)
+- Qualquer outro número dá sinal de ocupado, e girar o disco faz barulho no corredor
+- Lista de telefones colada ao lado do telefone, com o número do Posto Serra
+- Placa "POSTO SERRA · FONE 03-79" pintada dentro da loja do posto, no prólogo
+- Harmônio velho no canto da capela com cinco teclas tocáveis (dó, ré, mi, fá, sol)
+- Tocar dó, mi, sol (as notas que os canos cantam nas válvulas) abre a tampa do harmônio
+- Dentro do harmônio: a foto da Irmã Celeste com Davi, Ana e Tomé e o bilhete "eles não estão sozinhos"
+- Cada nota do harmônio faz barulho, com o Inspetor solto no capítulo final
+- Microfone do som interno na diretoria: com energia, faz um "alô" sair no alto-falante mais longe da Lia
+- O Inspetor corre até o alto-falante errado, e depois vem direto ao microfone procurar quem mexeu
+- O microfone funciona uma vez por capítulo; da segunda vez ele só responde "Truque velho"
+- Três alto-falantes de madeira nas paredes da recepção e dos corredores do térreo
+- Vitrola com disco de hinos no depósito do andar de cima, onde o Moacir dormia
+- Ligar a vitrola toca um hino lento e arranhado; ele vem calmo e fica 15 s parado na porta, quase surdo
+- É a única janela para passar por ele de pé
+- Em 30% das vezes a agulha pula: o disco risca e ele entra em fúria atrás de você
+- A Lia entende que o silêncio dele é luto, não só raiva, ao ouvir o hino
+- O prato da vitrola gira enquanto o hino toca
+- Recado de giz do Renato na recepção ("a escada da frente é segura") com um X de criança e "NÃO É MAIS" por cima
+- Recado de giz do Renato no corredor oeste ("ele nunca entra na cozinha") riscado, desmentido pelas crianças
+- Recado de giz do Renato na entrada dos túneis ("na água, agachada, ele não te ouve"), que continua certo
+- A ordem das válvulas riscada em algarismos romanos, meio apagada, no batente da câmara oeste
+- Calendário de 1979 na diretoria com o código do quadro de chaves escrito no verso
+- Segurar SHIFT e apertar E no alto da escada desce escorregando pelo corrimão, bem mais rápido
+- A batida lá embaixo faz barulho 12 e o Inspetor vem investigar a recepção
+- Na primeira descida pelo corrimão a Lia ri nervosa: "O Davi fazia isso"
+- Agachada, parada e mirando uma porta fechada, a Lia encosta a orelha e ouve o que tem do outro lado
+- Do outro lado da porta dá para ouvir se ele está ali, se está na sala seguinte ou se a Menina está contando
+- Na primeira vez que ouve pela porta, a Lia lembra que as crianças faziam assim
+- Pegadas pequenas de tênis molhado (diferentes dos pés descalços) aparecem quando você fica muito tempo sem avançar
+- As pegadas do Davi levam até a sala do próximo objetivo, com passos de criança correndo à frente
+- As pegadas somem em 15 s e só aparecem no Fácil e no Normal
+- Calendário do posto parado em março de 1979, que a Lia comenta
+- Livro de visitas no balcão da recepção, com a última linha assinada "Lia Moraes" em tinta fresca
+- Foto da turma de 1978 na diretoria com três rostos riscados
+- Latas de sopa na despensa: trinta e sete contadas, três abertas com a colher dentro
+- Régua de alturas na enfermaria com os riscos de Tomé, Ana e Davi, e um risco novo acima do dele
+- Livro de ponto do Moacir pendurado na casa de máquinas, que para no meio da noite do incêndio
+- Rodinha azul do carrinho do Tomé no chão do dormitório E, com uma risada de criança ao olhar
+- Amarelinha de giz numerada até dez na sala de brinquedos ("AGORA VOCÊ CONTA")
+- Terço da Irmã Celeste pendurado no quarto dela: com ele, no escuro, o medo sobe mais devagar
+- Nomes de Davi, Ana e Tomé riscados no monta-cargas do depósito
+- Nome do Moacir criança, 1951, riscado no tijolo da cisterna (ele também foi aluno do armário 4)
+- Lanterna velha do Moacir pendurada no túnel norte, com uma pilha ainda boa dentro
+- Riscos perto da escada da saída dos túneis contando os 14 degraus ("não pisa no 9")
+- Três pares de sapatos de criança enfileirados na capela
+- Marcas de mãos pequenas de fuligem por dentro da porta da capela
+- Seis conquistas secretas novas: Aqui Ele Nunca Acha, As Marcas do Davi, Dó Mi Sol, Hino Para Um Cego, Linha da Serra, O Jantar Está Servido
+- Rádio do Joaquim e terço da Irmã Celeste aparecem no inventário do canto da tela
+- Dicas de morte novas quando ele te pega por causa do fone, do chiado do rádio, do D falso ou de avançar a fita
+- Correção: a mesa do quarto da Irmã Celeste ficava na frente da porta e impedia a entrada no Capítulo III; agora fica no canto
+- Correção: o banco do refeitório bloqueava a porta que vem do corredor oeste
+- Correção: a pia dos banheiros do térreo invadia a porta
+- Kit de teste: T.portasLivres() confere um corredor livre dos dois lados de cada porta em todos os mapas, e o QA falha se algum móvel bloquear
+- Kit de teste: T.loreNoCaminho() confere que toda lore nova fica numa sala com objetivo ou no corredor entre objetivos
