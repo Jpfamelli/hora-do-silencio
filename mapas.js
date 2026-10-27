@@ -4,6 +4,7 @@
 import { extrasEstrada, memoria, lembrar, SPAWN } from './src/estrada-extra.js';
 import { TXT } from './src/estrada-roteiro.js';
 import { extrasTerreo, extrasSuperior, juntar } from './src/internato.js';
+import { loreTerreo, loreSuperior } from './src/internato-lore.js';
 import * as SUB from './src/subterraneo.js';
 
 // ---------- utilidades compartilhadas entre mapas
@@ -264,7 +265,7 @@ function terreo(A, S) {
   box(.08, 2.6, .08, MAT.ferrugem, 5, 1.3, 6); box(.08, 2.6, .08, MAT.ferrugem, 8, 1.3, 6); box(3.1, .08, .08, MAT.ferrugem, 6.5, 2.6, 6);
   const bal = new THREE.Group(); bal.position.set(6.5, 2.6, 6); A.W.grupo.add(bal);
   box(.01, 2.1, .01, MAT.metal, -.35, -1.05, 0, bal); box(.01, 2.1, .01, MAT.metal, .35, -1.05, 0, bal); box(.8, .05, .3, MAT.madeiraEsc, 0, -2.1, 0, bal);
-  A.W.tick.push(() => { bal.rotation.x = Math.sin(A.perf() * .8) * .25; });
+  A.W.tick.push(() => { bal.rotation.x = Math.sin(A.perf() * .8) * .25 * (1 - (bal.userData.parado || 0)); }); // para quando a lanterna bate nele (internato-lore.js)
   // fachada
   janelasFachada(A, [-31, -27, -23, -17, -13, -9, 9, 13, 21, 25, 29, 32], 0, 1.75, 1);
   placa(A, [{ t: 'INTERNATO SÃO LÁZARO', tam: 44, estilo: 'bold' }, { t: 'Ordem · Fé · Silêncio', tam: 26, estilo: 'italic' }], 0, 3.9, .35, 6, 1.5, 0);
@@ -356,8 +357,9 @@ function terreo(A, S) {
   gatilho('portaBate', -34, -6, -14, -10, () => A.sustos.portaBate());
   gatilho('lavanderia', 6, 16, -26, -14, () => { SFX.sussurros(2); A.sustos.lencol(); });
   const X = extrasTerreo(A, S, { relogios: [relFachada, relHall], vulto, placa });
+  const Y = loreTerreo(A, S, { balanco: bal }); // Lote 2: lugares que contam a história
 
-  return juntar({
+  return juntar(juntar({
     nome: 'Térreo do internato',
     spawns: { inicio: { x: 0, z: 13, yaw: 0 }, escada: { x: EX, z: -7.6, yaw: Math.PI }, porao: { x: 27, z: -21.5, yaw: Math.PI } },
     fora: { hemi: .55, moon: .7, fog: .05 }, dentro: { hemi: .08, moon: .04, fog: .1 },
@@ -382,7 +384,7 @@ function terreo(A, S) {
       }
     },
     fitaOuvida(id) { if (id === 'f1' && S.chapter >= 2) A.objDone('fita_diretor'); }
-  }, X);
+  }, X), Y);
 }
 
 // =====================================================================
@@ -474,8 +476,9 @@ function superior(A, S) {
   gatilho('corredorFim', -3, 3, -58, -46, () => { SFX.pancada(8, -54); A.sustos.espiaQuina(); });
   const X = extrasSuperior(A, S, { vulto });
   X.prepararPoco(itPoco);
+  const Y = loreSuperior(A, S, {}); // Lote 2: lugares que contam a história
 
-  return juntar({
+  return juntar(juntar({
     nome: 'Andar dos dormitórios',
     spawns: { escada: { x: 0, z: 3, yaw: 0 }, inicio: { x: 0, z: 3, yaw: 0 } },
     dentro: { hemi: .07, moon: .03, fog: .1 },
@@ -494,7 +497,7 @@ function superior(A, S) {
       if (cap === 3 && !S.flags.supIntro) { S.flags.supIntro = true; A.falar('superior_inicio'); }
     },
     fitaOuvida(id) { if (id === 'f2') { A.objDone('fita_celeste'); A.syncWorld(); } }
-  }, X);
+  }, X), Y);
 }
 
 // =====================================================================
