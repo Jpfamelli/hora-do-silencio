@@ -8,6 +8,7 @@ import * as JG from './src/jogabilidade.js';
 import { criarInterface } from './src/interface.js';
 import { PG } from './src/progressao.js';
 import { PLAT } from './src/plataforma.js';
+import { instalarAudioMundo } from './src/audio-mundo.js';
 
 const R = window.ROTEIRO;
 const $ = s => document.querySelector(s);
@@ -2660,6 +2661,7 @@ let AC = null, master, reverb, ruidoBuf;
 const AMB = {};
 const BUS = {};
 const FONTES = new Set();
+let AUDM = null; // src/audio-mundo.js: hino, alto-falantes, rádios, ecos de 1979, chaves do Inspetor, Hora do Silêncio
 const AUD = { sils: [], trovaoIni: 0, trovaoAte: 0, coracaoN: 0, hbT: 0, resp: 0, prendia: false, ultStinger: [], stingerT: -99, dezAte: 0, estPrev: null, anaPrev: null, procT: 0, evT: 28, cacaT: 0, cacaSemi: 0, posCacaT: 0, percT: 0, pulsoT: 0, lampT: 0, ocT: 0, flashPrev: false, tiqueT: 0, avisouCoracao: false, cordaT: -9, cordaN: 0, sala: null, zumbidoAte: 0, pausado: false, erroAvisado: false };
 for (const [k, v] of Object.entries({ vAmb: 1, vSfx: 1, vEnt: 1, vVoz: 1, mono: 0, noturno: 0, falada: 0 })) if (OPT[k] === undefined) OPT[k] = v;
 const SFX = new Proxy({}, { get: (t, k) => (...a) => { if (!AC) return; try { UIX.som(k, a); } catch (e) {} try { return SOM[k] && SOM[k](...a); } catch (e) { console.warn(e); } } });
@@ -2802,7 +2804,7 @@ const SOM = {
     const vl = AC.createOscillator(); vl.frequency.value = .11; const vlg = AC.createGain(); vlg.gain.value = 220; vl.connect(vlg); vlg.connect(vb.frequency); vl.start();
     const goteira = () => {
       try {
-        if (AC && mode === 'jogo' && P.room && !P.room.fora && (W.mapa === 'tuneis' || P.room.agua || Math.random() < .3)) {
+        if (AC && mode === 'jogo' && P.room && !P.room.fora && !(AUDM && AUDM.ambK() < .5) && (W.mapa === 'tuneis' || P.room.agua || Math.random() < .3)) {
           const t2 = AC.currentTime, pos = { x: P.pos.x + rand(-6, 6), y: 2, z: P.pos.z + rand(-6, 6) }, poca = W.mapa === 'tuneis' || (P.room.agua && S && !S.flags.aguaBaixa);
           for (const [k, esc] of poca && Math.random() < .5 ? [[0, 1], [.11, .5]] : [[0, 1]]) { const g = saida(pos, .6, 'amb'); const o = AC.createOscillator(), f0 = rand(900, 1500) * (poca ? .7 : 1); o.frequency.setValueAtTime(f0, t2 + k); o.frequency.exponentialRampToValueAtTime(f0 * .33, t2 + k + .08); o.connect(g); env(g, t2 + k, .002, .05 * esc, .1); o.start(t2 + k); o.stop(t2 + k + .15); }
         }
@@ -2864,6 +2866,7 @@ const SOM = {
     SOM.impacto(1); STINGERS[k](t);
   },
   passo(vol, piso, fora, agua) {
+    if (AUDM) vol *= AUDM.passoK();
     const t = AC.currentTime, g = saida(null, fora ? .05 : .25), tom = rand(.88, 1.12);
     if (agua) { burst(t, .25, 'bandpass', 700 * tom, 1.5, g); env(g, t, .02, .35 * vol + .08, .22); const g2 = saida(null, .2); burst(t + .12, .15, 'highpass', 2500, 1, g2); env(g2, t + .12, .01, .06 * vol + .02, .12); return; }
     const freq = { madeira: 520, concreto: 1200, ladrilho: 1700, pedra: 950, asfalto: 1100, grama: 700 }[piso] || 900;
@@ -2878,6 +2881,7 @@ const SOM = {
     const t = AC.currentTime, p = { x: pos.x, y: .3, z: pos.z }, r = W.salas && W.salas.length ? roomAt(pos.x, pos.z) : null;
     const piso = agua ? 'agua' : r ? (r.piso || (r.fora ? 'grama' : 'madeira')) : 'madeira', tom = rand(.92, 1.08);
     const d = Math.hypot(pos.x - P.pos.x, pos.z - P.pos.z), tunel = W.mapa === 'tuneis';
+    SFX.chaves(pos, M.ativo ? M.state : 'patrulha', vol);
     const g = saida(p, .5, 'ent'); const o = AC.createOscillator(); o.frequency.setValueAtTime(70 * tom, t); o.frequency.exponentialRampToValueAtTime(30, t + .25); o.connect(g); env(g, t, .01, .9 * vol, .3); o.start(t); o.stop(t + .4);
     const cor = { agua: ['bandpass', 600, .9, .35], madeira: ['lowpass', 380, .6, .22], ladrilho: ['bandpass', 1500, .45, .08], concreto: ['bandpass', 1000, .5, .12], pedra: ['lowpass', 700, .6, .18], asfalto: ['bandpass', 900, .4, .1], grama: ['lowpass', 250, .5, .25] }[piso] || ['lowpass', 400, .6, .2];
     const g2 = saida(p, piso === 'pedra' ? .8 : .4, 'ent'); burst(t, .3, cor[0], cor[1] * tom, 1, g2); env(g2, t, .005, cor[2] * vol, cor[3]);
@@ -3019,6 +3023,7 @@ const SOM = {
     }
   },
   caixinha(x, z) {
+    if (AUDM) return AUDM.caixinha(x, z); // o hino do internato (src/audio-mundo.js)
     const notas = [659, 784, 659, 523, 587, 494, 523, 440, 0, 659, 784, 880, 784, 659, 587, 523, 466]; const t = AC.currentTime + .7;
     for (let i = 0; i < 8; i++) { const g = saida({ x, y: 1, z }, .3); burst(t - .7 + i * .08, .015, 'highpass', 3500, 2, g); env(g, t - .7 + i * .08, .001, .1, .015); }
     SOM.silencio(10, .2);
@@ -3174,7 +3179,7 @@ function silenciarContinuos() {
 }
 function perfilSala(r) {
   if (!r) return 'p';
-  if (W.mapa === 'tuneis' || r.acustica === 'tunel') return 't';
+  if (r.acustica === 'tunel' || (W.mapa === 'tuneis' && !r.acustica && r.tipo === 'tunel')) return 't';
   if (r.acustica) return r.acustica === 'grande' ? 'g' : 'p';
   if (r.fora) return 'fora';
   const lx = r.x1 - r.x0, lz = r.z1 - r.z0, area = lx * lz, longo = Math.max(lx, lz) / Math.max(1, Math.min(lx, lz));
@@ -3191,10 +3196,11 @@ function updateAudioCore(dt) {
   else { L.setPosition(p.x, p.y, p.z); L.setOrientation(fw.x, fw.y, fw.z, up.x, up.y, up.z); }
   const fora = !!(P.room && P.room.fora), subsolo = W.mapa === 'tuneis', jogando = mode === 'jogo' && S && !S.dead;
   // Ambiente: chuva abafada dentro, quase sumida debaixo da terra, mais forte no telhado do andar de cima
-  AMB.chuva.gain.value = lerp(AMB.chuva.gain.value, subsolo ? .012 : fora ? .14 : W.mapa === 'superior' ? .05 : .03, dt * 2);
+  const ambM = AUDM && mode === 'jogo' ? AUDM.ambiente(dt) : 1; // Hora do Silêncio e salas de lore
+  AMB.chuva.gain.value = ambM < .05 ? 0 : lerp(AMB.chuva.gain.value, (subsolo ? .012 : fora ? .14 : W.mapa === 'superior' ? .05 : .03) * ambM, dt * 2);
   AMB.chuvaF.frequency.value = lerp(AMB.chuvaF.frequency.value, subsolo ? 300 : fora ? 3000 : 500, dt * 2);
   const rajada = .5 + .5 * Math.sin(perf * .23) * Math.sin(perf * .61);
-  AMB.vento.gain.value = lerp(AMB.vento.gain.value, subsolo ? .012 : fora ? .03 + .07 * rajada : .02, dt * 1.5);
+  AMB.vento.gain.value = ambM < .05 ? 0 : lerp(AMB.vento.gain.value, (subsolo ? .012 : fora ? .03 + .07 * rajada : .02) * ambM, dt * 1.5);
   if (!S) return;
   const dM = M.ativo ? M.pos.distanceTo(P.pos) : 99, dA = ANA.ativa ? ANA.pos.distanceTo(P.pos) : 99, est = M.ativo ? M.state : null;
   const prende = !!(S.hidden && keys.Space && S.stamina > 0 && jogando);
@@ -3257,7 +3263,7 @@ function updateAudioCore(dt) {
   AUD.hbT -= dt;
   if (AUD.coracaoN > .06 && AUD.hbT <= 0 && jogando) {
     const n = AUD.coracaoN; AUD.hbT = 60 / (60 + 95 * n);
-    SOM.coracao((.35 + .65 * n) * (S.hidden ? 1.4 : 1) * (prende ? 1.3 : 1));
+    SOM.coracao((.35 + .65 * n) * (S.hidden ? 1.4 : 1) * (prende ? 1.3 : 1) * (AUDM ? AUDM.coracaoK() : 1));
     if (S.hidden && S.fear > 88 && M.ativo && dM < 1.8 && !prende) { if (!AUD.avisouCoracao) { AUD.avisouCoracao = true; sub('inspetor', 'Eu ouço o seu coração.'); } else emitNoise(P.pos.x, P.pos.z, 1.4, true); }
   }
   // --- Respiração da Lia
@@ -3289,7 +3295,7 @@ function updateAudioCore(dt) {
       posPanner(v.p, { x: Lp.x, y: 2.6, z: Lp.z });
       const mal = (M.ativo && Math.hypot(M.pos.x - Lp.x, M.pos.z - Lp.z) < 6) || PROC.fase;
       v.o.detune.setTargetAtTime(mal ? rand(-90, 90) : 0, now, .1);
-      v.g.gain.setTargetAtTime(Lp.luz.intensity < Lp.base * .3 ? 0 : (mal ? rand(.004, .02) : .008), now, .1);
+      v.g.gain.setTargetAtTime(Lp.luz.intensity < Lp.base * .3 ? 0 : (mal ? rand(.004, .02) : .008) * ambM, now, .1);
     });
   }
   // --- Canto da Procissão vem de onde ela vai nascer, e depois anda com ela
@@ -3314,7 +3320,9 @@ function updateAudioCore(dt) {
     }
   }
   // drone respira com o perigo
-  AMB.drone.gain.setTargetAtTime(.03 + .03 * AUD.coracaoN, now, 1);
+  AMB.drone.gain.setTargetAtTime((.03 + .03 * AUD.coracaoN) * ambM, now, ambM < .05 ? .02 : 1);
+  // --- o mundo e a história pelo som (src/audio-mundo.js)
+  if (AUDM) AUDM.tick(dt);
 }
 // Pausa e diário abafam o mundo; menu silencia o que é contínuo; aba escondida suspende o áudio
 setInterval(() => {
@@ -3657,7 +3665,7 @@ function final(tipo) {
     const min = Math.floor(S.tempo / 60), seg = Math.floor(S.tempo % 60);
     $('#e-stats').innerHTML = `tempo total ${min}min ${String(seg).padStart(2, '0')}s · notas, páginas e fitas ${loreAchado()}/${totalLore()} · encontrada ${S.mortes}x · ${D().nome}<br>${H.statsFinal(tipo)}`;
     PG.telaFinal(tipo);
-    SFX.sino(.5, null);
+    SFX.sino(.5, null); SFX.temaFinal(tipo);
   }, F.antes ? 3600 : 1600);
 }
 function escolhaFinal() {
@@ -3727,6 +3735,11 @@ PG.ligar({
   get S() { return S; }, setS: v => { S = v; }, get ui() { return ui; }, get mode() { return mode; },
   KEYS: { SAVE_KEY, CAPS_KEY, CONQ_KEY, OPT_KEY }, OPT, salvarOpt: () => lsSet(OPT_KEY, OPT), saveExterno: true, dicaExterna: true, ajudaExterna: true,
   P, M, ANA, PROC, W, MON, SFX, D, toast, sub, loreAchado, totalLore, salvarCheckpoint, carregarSnap, entrarJogo, iniciarAudio
+});
+AUDM = instalarAudioMundo({
+  get AC() { return AC; }, get S() { return S; }, get mode() { return mode; }, get ui() { return ui; }, get perf() { return perf; }, get fita() { return fitaTocando; },
+  SOM, SFX, BUS, AUD, AMB, VOGAL, FONTES, THREE, MAT, P, M, ANA, PROC, W, keys, camera, legendas: UIX.som.def,
+  saida, env, osc, burst, ruido, curvaDist, fonteFixa, moverFonte, box, cyl, interact, emitNoise, sub, subPequeno, toast, rand, pick, clamp
 });
 carregarTitulo();
 const grain = $('#fx-grain').getContext('2d'), grainImg = grain.createImageData(160, 90);

@@ -195,6 +195,7 @@ export function criarInterface(C) {
     if (def.imp) historico('som', txt);
   }
   SONS.gerador = { t: 'o gerador ronca alto', imp: 1, cd: 8 };
+  som.def = SONS; // outros módulos (src/audio-mundo.js) registram legendas aqui
   let somHtml = '';
   function desenharSom() {
     for (let i = linhasSom.length - 1; i >= 0; i--) if (linhasSom[i].t < agora) linhasSom.splice(i, 1);

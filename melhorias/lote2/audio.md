@@ -1,0 +1,105 @@
+# Lote 2 — Áudio
+- Novo tema musical do internato: um hino de 8 notas em ré menor, sintetizado, que volta em vários pontos do jogo
+- A caixinha de música da Ana agora toca o hino do internato, uma oitava acima, com a última nota desafinada
+- A caixinha termina com uma coda: as notas do assobio do Seu Joaquim tocadas ao contrário
+- O silêncio em volta da caixinha agora dura exatamente o tempo da melodia
+- No prólogo, o Seu Joaquim assobia as cinco primeiras notas do hino dentro do posto
+- O assobio do Joaquim tem vibrato e sopro de verdade, e para de vez quando o velho some
+- O Inspetor cantarola o hino de boca fechada, grave e desafinado, quando patrulha calmo a uma distância média
+- O cantarolar do Inspetor anda com ele e corta no meio quando algo chama a atenção dele
+- No andar de cima, a Irmã Celeste cantarola o hino vindo do quarto dela; a voz atravessa a porta e cresce conforme você chega perto
+- O cantarolar da Celeste para seco no instante em que a Ana começa a contar
+- Depois da fita da Celeste ela nunca mais canta, a não ser uma última vez, bem atrás da Lia
+- Na capela, um coral de crianças canta o hino quando você entra pela primeira vez, perdendo vozes a cada verso até sobrar uma
+- Final verdadeiro: o hino toca inteiro em ré maior, em órgão e coral, terminando numa nota que nunca tinha tocado
+- Final do silêncio: uma criança sozinha canta o hino e para antes da última nota
+- Final comum: a caixinha toca o hino ao contrário, abafada, ao longe
+- No rádio do quarto da Celeste, um trecho do hino em coral antigo passa por baixo do noticiário de 1979
+- Na nona badalada do Cap. II, a chuva, o vento, o drone e o zumbido das lâmpadas cortam de uma vez por 20 s
+- Nessa Hora do Silêncio só sobram o coração, a respiração e os passos da Lia
+- Os passos da Lia soam mais altos durante a Hora do Silêncio
+- Durante a Hora do Silêncio, qualquer barulho da Lia vale o dobro para o Inspetor
+- O coração bate mais forte e presente durante a Hora do Silêncio
+- A Lia sussurra "Nem a chuva." quando tudo para
+- Depois dos 20 s, o som do mundo volta aos poucos, em 6 s, com legenda
+- As goteiras também se calam durante a Hora do Silêncio
+- Cornetas de alto-falante enferrujadas presas no alto dos corredores do térreo e do andar de cima
+- Na nona badalada, as cornetas estalam ao ligar e a voz do Diretor Albano anuncia a Hora do Silêncio, com legenda
+- A voz do Albano é procedural: grave, em banda de telefone, distorcida como lata e com eco de corredor
+- Todas as cornetas perto de você falam juntas, cada uma da sua posição na parede
+- Chiado de válvula e zumbido elétrico nas cornetas enquanto elas falam
+- A corneta que fala faz barulho de verdade: o Inspetor vai até ela
+- No Cap. II, depois da Hora, o Albano avisa pelos alto-falantes em que ala o Inspetor faz a ronda, e às vezes mente
+- No começo do Cap. III, a chamada da noite pelos alto-falantes, com nomes de alunos sorteados a cada partida
+- A chamada termina com Ana Luísa, Tomé e Davi, uma pausa longa, "Moraes, Lia." e "Fora da cama."
+- Depois da chamada, a corneta chama o Inspetor de longe e a Lia percebe que a casa inteira sabe dela
+- Depois da brincadeira, a Ana usa a mesma corneta para imitar o diretor e ri no fim
+- Nas calmarias, as cornetas soltam respiração de crianças e um "shhh" coletivo
+- Antes da Procissão, as cornetas chiam todas juntas: um aviso a mais
+- Rádios de válvula (modelo novo) na cozinha, no quarto da Irmã Celeste, na sala secreta dos túneis e sobre um caixote no cemitério
+- Os rádios ligam sozinhos quando você entra na sala, com estalo de sintonia
+- Cozinha, Cap. I: a Rádio Serra FM noticia o carro achado na estrada velha com a porta aberta e os faróis acesos
+- Cozinha, Cap. II: o locutor conta que as luzes do internato acenderam sozinhas e pergunta quem mais ouviu o sino
+- Quarto da Celeste: o rádio pega 1979 e noticia a "fuga" de três alunos, com a desculpa do diretor
+- Sala secreta: transmissão ao vivo da noite do incêndio, com sirene, gritaria e "TEM CRIANÇA LÁ NO PORÃO!"
+- Cemitério: o radinho diz que as buscas pela Lia foram suspensas e que o carro foi achado vazio
+- O rádio do cemitério fala a hora certa pelo relógio da sua partida, por extenso
+- O rádio do cemitério termina com uma segunda voz por cima do locutor: "ela ainda está lá dentro"
+- Voz de locutor procedural com filtro de rádio, chiado que vai e volta e sintonia escorregando
+- Rádio ligado faz barulho: o Inspetor pode ouvir cada frase
+- Dá para desligar o rádio com E no meio da transmissão: arriscar ouvir até o fim ou calar
+- Depois de ouvido, o rádio só chia se você mexer nele
+- Prólogo: antes de o Joaquim sumir, o rádio da loja narra abafado um jogo de futebol de março de 1979
+- A narração do futebol tem torcida e apito ao fundo
+- Depois que o velho some, o mesmo locutor só conta "um... dois... três... quatro..."
+- Ecos de 1979: parada 6 s, de lanterna apagada e sem perigo por perto, a sala toca uma memória abafada do passado, uma vez por sala
+- Eco do refeitório: colheres nos pratos e um "shhh"
+- Eco da sala de aula: o giz, a freira chamando "Davi Moraes?" e um "presente" pequeno
+- Eco da enfermaria: uma correia apertando e um choro tapado
+- Eco da diretoria: a tosse do Albano, "trinta e sete, sempre trinta e sete" e o carimbo
+- Eco da lavanderia: o tanque e um choro baixinho
+- Eco da cozinha: panelas e a cozinheira contando pratos até faltar o trinta e sete
+- Eco da biblioteca: páginas virando e um sussurro mandando ler em silêncio
+- Eco dos banheiros: chuveiro e risada de meninos que para de uma vez
+- Eco do dormitório A: camas rangendo e um cochicho sobre o Inspetor no corredor
+- Eco do dormitório C: a Ana contando, em 1979
+- Eco do quarto da Celeste: terço batendo e a reza para ele não descer
+- Eco da sala de brinquedos: crianças cantando o hino, que param no meio
+- Eco da cisterna dos túneis: pelos canos, a Ana lá em cima contando e "ela desceu"
+- Eco da capela: muitas mãos batendo na porta e o sino
+- Os ecos têm legenda em itálico e vêm do centro da sala, abafados e com reverberação
+- Os ecos não fazem barulho para o Inspetor e se desfazem se a Lia se mexer
+- Contador de ecos encontrados, e uma fala da Lia ao ouvir todos
+- Camada baixíssima de som de 1979 em salas marcantes: colheres, giz, máquina, panela, páginas, terço, camas, risadas e frascos
+- A memória das salas some quando o Inspetor está a menos de 15 m
+- Térreo: canos batendo nas paredes nas calmarias
+- Andar de cima: o vento assobia nas frestas, mais forte nas rajadas e dentro dos dormitórios
+- Túneis: água corrente ao longe, vindo da cisterna, que atravessa as paredes e ajuda a se orientar
+- Cemitério: sapos coaxando ao longe
+- Os sapos se calam de uma vez quando o Inspetor caça ou depois que o sino toca
+- Cemitério: um cata-vento enferrujado range ao longe de tempos em tempos
+- Na sala do diretor e no quarto da Celeste depois da fita dela, a chuva e o drone caem quase a zero: um silêncio que pesa
+- Sala do diretor e depósito dos túneis ganharam acústica de sala (antes soavam como túnel)
+- O Inspetor carrega um molho de chaves que tilinta a cada passo, com posição 3D e legenda com direção
+- Na patrulha o tilintar das chaves é lento; caçando, elas chacoalham rápido entre os passos
+- Quando o Inspetor para para escutar, as chaves se calam com um tinido abafado: o silêncio vira aviso
+- Diante da porta da Celeste, uma reza das regras do outro lado: "não corra... não respire... não tire os olhos dela... amém"
+- Ao abrir o quarto vazio da Celeste, o terço balança sozinho na cabeceira
+- Reza da Celeste como radar: parada no andar de cima ou nos túneis, você ouve uma reza baixinha e contas de terço
+- A reza acelera e fica aflita quando o perigo chega perto e se cala de vez a menos de 5 m
+- Cap. V, a partir do segundo túmulo: batidas de muitas mãos na porta da capela, por dentro
+- As batidas na capela param quando a Lia chega perto da porta
+- Refeitório: respirações de criança espalhadas pelas cadeiras
+- A cada visita ao refeitório há menos respirações (37, 20, 9) e, na última, só três, bem atrás de você
+- Prender o ar faz as respirações do refeitório pararem também
+- Goteiras pingando em baldes de lata na lavanderia e no banheiro de cima, no ritmo de uma contagem
+- Com a Ana contando, a goteira do banheiro pinga junto com cada número e uma vozinha conta junto
+- Nos corredores o prédio range em ciclos lentos de inspira e expira, que aceleram na caça
+- Legenda opcional "o prédio range" no nível de legendas "todos"
+- Vitrola de maleta no refeitório (modelo novo)
+- Ligar a vitrola toca o hino em coral, alto, e atrai o Inspetor para o refeitório por 20 s (uso único)
+- Na segunda volta do disco, o coral da vitrola perde uma voz a cada nota
+- Chiado de vinil, estalos e flutuação de velocidade na música da vitrola
+- Depois a agulha risca e o disco fica pulando no mesmo verso para sempre, chamando o Inspetor de vez em quando
+- O disco pulando continua lá depois de carregar o jogo
+- Legendas de som novas para alto-falantes, rádios, ecos, reza, coral, sapos, baldes e vitrola, com direção
