@@ -1,0 +1,98 @@
+# Lote 2 — Monstros e IA
+- O Inspetor carrega na cintura um molho de chaves pequenas de armário, enrolado num pano, que balança quando ele anda
+- Um apito de metal pendurado num cordão no pescoço do Inspetor
+- Um crachá "M. DUARTE — DISCIPLINA" no peito do casaco dele, que dá para ler com a lanterna
+- Depois de ler a ficha médica, a venda dele mostra um bordado "M.D." e a cruz vermelha da enfermaria
+- Um lampião apagado preso à cintura dele, hábito de quando ainda enxergava
+- Nos túneis, depois do cofre, o lampião dele está aceso: uma luz quente e fraca que mostra de longe onde ele anda no escuro
+- O vulto dele (a silhueta que some com a luz) também tem o chaveiro, o apito e o lampião
+- As chaves tilintam baixinho a cada passo dele na ronda, na investigação e na procura
+- Quando ele para para escutar ou começa a caçar, ele segura o molho e as chaves param: o silêncio de repente é o aviso
+- Ao entrar na caçada ele sopra um apito curto e rachado, como fazia para mandar as crianças para a cama
+- No Pesadelo ele apita duas vezes antes de vir
+- Quando termina uma procura e recomeça a ronda, um apito distante avisa que ele recomeçou
+- A cantiga que ele cantarola na ronda agora é a música da caixinha da Ana, mais lenta, grave e desafinada
+- Quando ele ouve alguma coisa, a cantiga para no meio da frase
+- Legendas próprias para os sons novos (chaves, apito, cantiga cortada, canecas, lençol, terço, assobio, carrinho, pisões), que respeitam a opção "Legendar sons"
+- Na ronda ele fala com crianças que não existem ("Tomé, de volta pro armário.", "Ana, pare de contar.") e fica parado 3 s: uma janela para passar
+- Em outras rondas ele recita baixinho a lista de castigos ("Falar... uma hora. Chorar... duas."), e dá para saber onde ele está pelo murmúrio
+- Depois da fita dele, às vezes, farejando um armário, ele fala com voz de menino: "Não me tranca, padre... eu fico quieto..."
+- Quem já descobriu que é irmã do Davi ouve, uma vez, ele reconhecer a Lia na caçada: "Moraes. A mais velha. Você voltou pra cama."
+- Nova frase na tela de morte para quem ele reconheceu: "Eu guardei o seu armário."
+- Às vezes a tela de morte por ele termina com uma chave pequena tilintando no chão, número 12
+- Nos dormitórios ele lembra, uma vez por jogo: "Eu dormi aí. Era frio."
+- Na diretoria ele para e responde a um diretor que não está lá: "Sim, senhor diretor."
+- Na sala secreta dos túneis: "A sala dele. Eu nunca podia descer aqui."
+- Na capela: "O sino me desliga. Não toca. Não toca."
+- Na primeira vez que ele te ouve nos túneis: "Esse passo... é igual ao do menino Davi."
+- No Capítulo V, com uma relíquia na mão, ele diz o nome do dono ("Tomé. Você trouxe o carrinho do Tomé.")
+- Falas novas dele no Capítulo II: "Nove badaladas. Todos na cama." e "Um apito, todos na cama. Dois, ninguém respira."
+- Depois de ouvir a fita 3, as legendas passam a chamá-lo de "Moacir" em vez de "O Inspetor"
+- Rotina de memória na cozinha: ele conta as canecas batendo nelas uma a uma, parado de 4 a 6 s, e o tilintar diz onde ele está
+- No andar de cima ele para ao lado de uma cama, se abaixa e alisa o lençol por 3,5 s, como fazia quando era funcionário
+- Se a Lia está embaixo daquela cama, ele alisa o lençol bem em cima dela sem perceber (o medo dispara)
+- Nas pausas de memória ele fica mudo e com o ouvido pela metade, mas qualquer barulho alto o tira dali na hora
+- No cemitério ele visita o túmulo do Luiz e reza 6 s de cabeça baixa: uma janela para cavar
+- Na primeira visita ao túmulo, a Lia comenta baixinho: "Ele vem rezar pro menino."
+- Se um barulho interrompe a reza dele no túmulo do Luiz, a caçada volta com fúria
+- Um armário do corredor oeste tem "M.D. 1951" e centenas de riscos de contagem de dias marcados na porta: o armário onde o Moacir menino era castigado
+- Ao entrar no armário do castigo pela primeira vez, a Lia descreve os riscos por dentro
+- Escondida no armário do castigo, a Lia ouve um menino chorando baixinho de tempos em tempos
+- Ele nunca abre o armário do castigo: chega, encosta a mão na porta, respira e vai embora (o esconderijo mais seguro do térreo, mas longe dos objetivos)
+- Na ronda, ao passar pelo armário do castigo, ele para 2 s com a mão espalmada na porta
+- Às vezes, parado ali, ele fala com voz de homem cansado, sem o chiado ("Desculpa... eu só queria que vocês dormissem."), e volta com um estalo de pescoço
+- Na caçada, passar pelo armário do castigo o trava 2 s com as mãos na cabeça ("Eu não falei nada... eu não falei..."), uma vez por capítulo
+- Nos túneis, um armário enferrujado com um "M" riscado na porta é, uma vez por partida, o único esconderijo 100% seguro do jogo
+- Escondida nesse armário pela primeira vez, um menino cochicha colado na sua orelha: "...eu também não conto."
+- Depois que ele desiste desse armário, a porta range sozinha: o menino quer que você saia
+- No Capítulo I, ao forçar a porta, dá para ver o Inspetor no fundo da recepção, de pé, virado para a parede como criança de castigo, balançando de leve
+- Ele vira a cabeça devagar por cima do ombro e some com um estalo quando a luz encosta ou você chega perto
+- Antes de começar a contar, a Ana cantarola uma cantiga de roda; quando a cantiga corta no meio, a contagem começou
+- Entre um número e outro, a Ana às vezes sussurra "...a mamãe vem domingo..."
+- Se você leu o bilhete dela, no nove ela para, pergunta "...mãe?" e espera 1,5 s antes do dez
+- Quem leu o bilhete ouve no fim da brincadeira: "Você leu, né? Não conta pra ninguém."
+- Se a Lia já sabe quem é, a Ana diz durante a brincadeira: "Você é a irmã que foi embora."
+- Para quem já sabe, no três a contagem dela vira "...você voltou..."
+- Depois de ler o bilhete da Ana, encará-la com calma (sem correr, quase parada) faz a lanterna não falhar no oitavo segundo
+- Aguentar 10 s olhando assim faz ela dizer "Obrigada por olhar." e ir embora, deixando um curativo para você
+- No Capítulo III, uma vez por jogo, a Irmã Celeste bate a porta entre você e a Ana no oito, com o terço batendo (nunca no Pesadelo)
+- Se a Ana te pegou na brincadeira, no Capítulo IV há um bilhete molhado na entrada dos túneis: "você piscou. o davi nunca piscava."
+- Depois da brincadeira, números de giz cor-de-rosa de 1 a 9 aparecem nas paredes dos túneis ao longo do caminho até a escotilha: ela seguiu a Lia lá para baixo
+- O dez fica na saída, escrito "achei você", com uma fitinha cor-de-rosa amarrada na escada
+- Quem passou pela brincadeira sem ser pega encontra uma flor de papel no túnel central (pegar é opcional)
+- No cemitério, quem pegou a flor ouve a Ana perto do túmulo dela: "Você brincou comigo."
+- Quem passou pela brincadeira sem ser pega ganha uma aliada no Capítulo V: com ele a menos de 16 m, a voz dela conta os passos de trás para a frente, como um radar
+- A contagem aliada também ajuda nos túneis para quem nunca respondeu a um chamado (e fica desligada no Pesadelo)
+- Uma menina da Procissão tem uma fita de cabelo vermelha: a Rosa, da lápide de 1965
+- Um menino da Procissão aperta um pião de madeira: o Luiz, de 1952
+- Uma bolinha de gude brilha na mão de um menino pequeno da fila: o João, de 1955
+- Uma menina da fila usa um uniforme antigo, comprido demais: a Maria das Dores, de 1958
+- O menor da Procissão, de capacete de bombeiro de papelão, é o Tomé
+- As crianças da Procissão levam números de armário costurados no peito, e um deles é o 12
+- Escondida, quando a fila passa rente, a fresta mostra o detalhe de uma das crianças e se ouve o nome dela sussurrado
+- Quem viu a fila pela fresta reconhece no cemitério as lápides da Rosa, do Luiz, do João e da Maria das Dores, e a Lia comenta cada uma
+- Com a lanterna apagada no esconderijo, às vezes o Tomé para na fresta e põe o dedo nos lábios
+- Da terceira Procissão em diante, se você está longe de um esconderijo, o Tomé bate duas vezes no armário mais perto para mostrar onde ir
+- Da segunda Procissão em diante, a última da fila é uma freira alta de vela na mão, com uma gola branca que só aparece na luz das velas
+- Quando a freira passa pela sua fresta, ela leva o dedo aos lábios e a Procissão dura 2 s menos
+- Depois de ouvir a fita 2, se a Procissão passar com você escondida no quarto da Irmã Celeste, a reza dela faz a fila ir embora sem entrar (uma vez por jogo), e a Lia agradece
+- As pegadas da Procissão agora têm tamanhos diferentes, de crianças de várias idades
+- Depois do "QUEM ABRIU A MINHA GAVETA?", o Davi aparece por um instante no fim do túnel norte, faz sinal de "vem" e corre para a galeria leste: o caminho da saída
+- É a primeira vez que o Davi aparece de verdade: de pijama, com uma lanterninha vermelha que acende e ilumina o túnel
+- Uma vez por capítulo, longe e de costas, o Davi aparece apontando para o esconderijo mais perto dele
+- Quando você chega a 6 m ou ilumina o menino, ele bate o pé duas vezes e se desfaz em fuligem que cai no chão
+- A Lia reconhece os dois pisões: era o sinal dos irmãos quando eram pequenos
+- A partir do Capítulo IV, um Davi de costas pode ser o falso: mais alto, com uma sombra comprida demais no chão, apontando para onde o Inspetor está
+- O Davi falso não bate o pé e some com um estalo de língua; a Lia percebe: "Aquele não era o Davi."
+- Uma vez por capítulo, quando nada está perto, a silhueta do Seu Joaquim surge bem longe, de capa e lampião aceso, apontando para um esconderijo
+- Quando o Seu Joaquim aparece, ouve-se o assobio de cinco notas que ele assobiava no posto, e a Lia reconhece
+- Quando a luz da lanterna encosta no Seu Joaquim ou você se aproxima, o lampião apaga com um clique e ele some
+- No Capítulo V o Seu Joaquim espera no portão dos fundos do cemitério desde o começo, com o lampião aceso
+- No térreo (Capítulos I e II), de vez em quando se ouve um carrinho rolando no teto, de um lado para o outro, e uma risadinha abafada
+- Nos túneis, uma figura de terno e sem rosto aparece de costas no fim das galerias e some quando iluminada: o diretor Albano
+- Na sala do diretor, antes de abrir o cofre, ele aparece de frente e aponta para o cofre
+- Na diretoria (Capítulos I e II), a brasa de um cigarro acende e apaga no canto escuro; ao se aproximar ou iluminar, ela cai no chão e apaga com um chiado
+- Ao ver a brasa pela primeira vez, a Lia sente: "Cheiro de cigarro. Fresco."
+- Nova plaquinha de latão na sala de brinquedos: a caixinha foi "presente do Inspetor Moacir à aluna Ana L. P. pela obediência. 1978"
+- Depois de ler a plaquinha, a Lia reconhece a cantiga dele: "Foi ele que deu pra ela."
+- Correção: sair de qualquer esconderijo (armário, cama, bueiro) quebrava o jogo com um erro, por uma variável que sumiu num merge
