@@ -603,7 +603,7 @@ function lockPointer() { try { const p = canvas.requestPointerLock(); if (p && p
 const unlock = () => { if (document.pointerLockElement) document.exitPointerLock(); };
 
 function onKey(e) {
-  if (mode === 'cena') { if (e.code === 'Escape' || e.code === 'Enter') pularCena(); return; }
+  if (mode === 'cena') { if (e.code === 'Escape' || e.code === 'Enter' || e.code === 'Space') pularCena(); else if (W.def.cena && W.def.cena.tecla) W.def.cena.tecla(e.code); return; }
   if (ui === 'dialogo') { if (e.code === 'KeyE' || e.code === 'Space' || e.code === 'Enter') avancarDialogo(); return; }
   if (ui === 'nota') { if (e.code === 'KeyE' || e.code === 'Escape') fecharNota(); else if (e.code === 'KeyV') virarRegras(); return; }
   if (ui === 'diario') { if (e.code === 'Tab' || e.code === 'Escape' || e.code === 'KeyJ') fecharDiario(); return; }
@@ -1373,9 +1373,19 @@ const API = {
 // CENA DE ABERTURA (carro)
 // =====================================================================
 let cena = null;
+// gancho de áudio para os mapas criarem sons próprios (ex.: buzina, orelhão, zumbido) com o mesmo AudioContext
+API.audio = () => AC ? { AC, master, reverb, saida, env, osc, burst, ruido } : null;
+function dicaPular(on) {
+  let d = $('#cena-pular');
+  if (!d) { d = document.createElement('div'); d.id = 'cena-pular'; d.textContent = 'ENTER pula a cena'; d.style.cssText = 'position:fixed;right:28px;bottom:calc(11% + 14px);font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:#d8cba8;opacity:.6;pointer-events:none;z-index:40;text-shadow:0 0 6px #000'; document.body.appendChild(d); }
+  d.hidden = !on;
+  // as falas da abertura (rádio, fita) moram no #sub, que fica dentro do HUD: na cena mostra só as legendas
+  if (!$('#css-cena')) { const st = document.createElement('style'); st.id = 'css-cena'; st.textContent = '#hud.so-sub>:not(#sub){display:none!important}'; document.head.appendChild(st); }
+  $('#hud').classList.toggle('so-sub', on); if (on) $('#hud').hidden = false;
+}
 function iniciarCena() {
-  mode = 'cena'; $('#fx-cine').hidden = false; $('#hud').hidden = true;
-  cena = { t: 0, fim: 34, falas: R.abertura.slice(), cartoes: R.intro.slice(), cartaoT: 0 };
+  mode = 'cena'; $('#fx-cine').hidden = false; dicaPular(true);
+  cena = { t: 0, fim: 30, falas: R.abertura.slice(), cartoes: R.intro.slice(), cartaoT: 0 };
   if (W.def.cena) W.def.cena.iniciar();
   SFX.motor(true);
 }
@@ -1384,13 +1394,13 @@ function updateCena(dt) {
   if (W.def.cena) W.def.cena.update(cena.t, dt);
   if (cena.falas.length && cena.t >= cena.falas[0].t) { const f = cena.falas.shift(); sub(f.quem, f.texto, true); }
   cena.cartaoT -= dt;
-  if (cena.cartaoT <= 0 && cena.cartoes.length && cena.t < 28) { cartao(cena.cartoes.shift(), 4.6); cena.cartaoT = 5.4; }
+  if (cena.cartaoT <= 0 && cena.cartoes.length && cena.t < 24) { cartao(cena.cartoes.shift(), 4.2); cena.cartaoT = 5; }
   updateSub(dt);
   if (cena.t >= cena.fim) pularCena();
 }
 function pularCena() {
   if (!cena) return;
-  cena = null; $('#fx-cine').hidden = true; SFX.motor(false); $('#cartao').style.opacity = 0;
+  cena = null; $('#fx-cine').hidden = true; dicaPular(false); SFX.motor(false); $('#cartao').style.opacity = 0;
   if (W.def.cena) W.def.cena.fim();
   mode = 'jogo'; $('#hud').hidden = false; subQ = []; subT = 0; $('#sub').innerHTML = '';
   cartaoCapitulo(); renderObj();
