@@ -893,7 +893,7 @@ window.ROTEIRO.progressao = {
     { texto: "M.D. 1949 — eu não falo eu não falo eu não falo", nome: "MD" },
     { texto: "MARIA DAS DORES · falei só um pouquinho", nome: "MARIA" },
     { texto: "T.R. 21h04 — quero minha mãe", nome: "TOME" },
-    { texto: "um dois tres quatro cinco seis sete oito nove DEZ ele foi", nome: "ANA" },
+    { texto: "um dois três quatro cinco seis sete oito nove DEZ ele foi", nome: "ANA" },
     { texto: "BENTO 9 ANOS · 1975 · EU NÃO CONTO", nome: "BENTO" },
     { texto: "JOÃO · bolinha de gude · 1955", nome: "JOAO" },
     { texto: "D.M. — o sino desliga ele", nome: "DAVI" },

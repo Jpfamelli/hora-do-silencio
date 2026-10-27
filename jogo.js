@@ -3821,7 +3821,24 @@ function frame(dt) {
   if (grainT <= 0) { grainT = PLAT.grao(); const d = grainImg.data; for (let i = 0; i < d.length; i += 4) { const v = Math.random() * 255; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = 255; } grain.putImageData(grainImg, 0, 0); }
   VIS.update(dt, ativo); VM.update(dt, ativo);
   PLAT.depois(dt, ativo);
-  renderer.render(scene, camera); VM.depois();
+  const cortados = cortarNevoa(); renderer.render(scene, camera); for (const o of cortados) o.layers.enable(0); VM.depois();
+}
+// Revisão do lote 2: o lote 2 quase dobrou os objetos de cada mapa. Dentro de casa e nos túneis, o que está além da
+// névoa (sobra menos de 0,4% da cor, invisível de qualquer jeito) sai só deste desenho. Ao ar livre nada muda: no
+// clarão do relâmpago o céu fica mais claro que a névoa e as silhuetas distantes precisam continuar lá.
+const _cortados = [], _cortV = new THREE.Vector3();
+function cortarNevoa() {
+  _cortados.length = 0;
+  if (!W.grupo || !scene.fog || luzBase > .02 || mode === 'titulo') return _cortados;
+  const lim = 2.4 / Math.max(.01, scene.fog.density);
+  W.grupo.traverseVisible(o => {
+    if (!o.isMesh || o.isInstancedMesh || o.isSkinnedMesh || !o.frustumCulled || (o.material && o.material.fog === false)) return;
+    const g = o.geometry; if (!g) return; if (!g.boundingSphere) g.computeBoundingSphere();
+    const e = o.matrixWorld.elements, k = Math.sqrt(Math.max(e[0] * e[0] + e[1] * e[1] + e[2] * e[2], e[4] * e[4] + e[5] * e[5] + e[6] * e[6], e[8] * e[8] + e[9] * e[9] + e[10] * e[10]));
+    _cortV.copy(g.boundingSphere.center).applyMatrix4(o.matrixWorld);
+    if (_cortV.distanceTo(camera.position) - g.boundingSphere.radius * k > lim) { o.layers.disable(0); _cortados.push(o); }
+  });
+  return _cortados;
 }
 requestAnimationFrame(loop);
 

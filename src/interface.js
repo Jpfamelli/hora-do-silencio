@@ -183,7 +183,7 @@ export function criarInterface(C) {
     const lado = Math.abs(a) < 35 ? 'à frente' : Math.abs(a) > 140 ? 'atrás de você' : a > 0 ? 'à direita' : 'à esquerda';
     let longe = d < 2.5 ? 'muito perto' : d < 7 ? 'perto' : d > 18 ? 'longe' : '';
     let sala = '';
-    try { const r = C.roomAt(pos.x, pos.z); if (r && P.room && r !== P.room && d > 2.5) sala = C.salaAdj(r, P.room) ? 'na sala ao lado' : 'do outro lado das paredes'; } catch (e) {}
+    try { const r = C.roomAt(pos.x, pos.z); if (r && P.room && r !== P.room && d > 2.5 && !r.fora && !P.room.fora) sala = C.salaAdj(r, P.room) ? 'na sala ao lado' : 'do outro lado das paredes'; } catch (e) {}
     return { d, a, txt: [lado, longe, sala].filter(Boolean).join(', ') };
   }
   function som(k, a) {
@@ -210,11 +210,13 @@ export function criarInterface(C) {
   SONS.fitaClique = { t: 'o gravador estala', imp: 0, cd: 3, cat: 'h' };
   for (const [k, c] of Object.entries({ passoMonstro: 'p', estalo: 'p', vidro: 'p', pancada: 'p', risada: 'p', contagem: 'p', chamadoVoz: 'p', sino: 'h', sinoLonge: 'h', badaladas: 'p', estatica: 'p', canto: 'h', procissao: 'p', sussurros: 'h', orelhao: 'h' })) SONS[k].cat = c;
   som.def = SONS; // outros módulos (src/audio-mundo.js) registram legendas aqui
-  let somHtml = '';
+  let somHtml = '', legBase = '';
   function desenharSom() {
     for (let i = linhasSom.length - 1; i >= 0; i--) if (linhasSom[i].t < agora) linhasSom.splice(i, 1);
     const h = linhasSom.map(l => `<div class="${l.cat === 'p' ? 'perigo' : l.cat === 'h' ? 'historia' : ''}">${l.txt}</div>`).join('');
     if (h !== somHtml) { $('#legsom').innerHTML = h; somHtml = h; }
+    // revisão do lote 2: com legenda de duas linhas, a legenda de som subia por cima do nome de quem fala
+    if (somHtml) { const sb = $('#sub'), hs = sb && sb.textContent.trim() ? sb.offsetHeight : 0, b = hs ? `calc(12% + ${hs + 10}px)` : ''; if (b !== legBase) { $('#legsom').style.bottom = b; legBase = b; } }
   }
   // Arco na borda indicando de onde veio o passo do Inspetor (Fácil/Normal, parada ou agachada)
   let setaT = 0;

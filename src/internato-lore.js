@@ -742,7 +742,7 @@ export function loreTerreo(A, S, ctx = {}) {
     { quem: 'lia', texto: 'A primeira: “M. Duarte, 1949”. Exemplar era quem ficava calado.' }
   ], { mem: 'exemplar' });
   // máquina de escrever que escreve quando você dá as costas
-  const FRASE_MAQ = 'Excelencia, o silencio salva as almas. As tres criancas constarao como fugitivas. A IRMA DELE ESTA AQUI.';
+  const FRASE_MAQ = 'Excelência, o silêncio salva as almas. As três crianças constarão como fugitivas. A IRMÃ DELE ESTÁ AQUI.';
   const maq = new THREE.Group(); maq.position.set(12.05, .82, -4.68); W.grupo.add(maq);
   box(.36, .1, .26, new THREE.MeshStandardMaterial({ color: 0x1a1a1a, roughness: .4, metalness: .5 }), 0, .05, 0, maq); box(.32, .03, .12, MAT.preto, 0, .1, .05, maq, false);
   const mFolha = new THREE.MeshStandardMaterial({ map: null, color: 0xe8e0c8, roughness: .9, side: THREE.DoubleSide });

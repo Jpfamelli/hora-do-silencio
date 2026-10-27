@@ -2,7 +2,7 @@
 
 Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/lote*/<área>.md`. Não edite à mão: edite o arquivo da área e gere de novo.
 
-**Total geral: 2681 melhorias**
+**Total geral: 2687 melhorias**
 
 ## Índice
 
@@ -20,7 +20,7 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
   - Progressão e rejogabilidade: 112
   - Plataforma e acessibilidade: 124
   - Revisão antes de publicar: 6
-- [Lote 2](#lote-2) — 1325 melhorias
+- [Lote 2](#lote-2) — 1331 melhorias
   - História e texto: 116
   - Mapa: prólogo e estrada: 110
   - Mapa: térreo e dormitórios: 143
@@ -33,6 +33,7 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
   - Interface: 98
   - Progressão e rejogabilidade: 99
   - Plataforma e acessibilidade: 102
+  - Revisão antes de publicar: 6
 
 ## Lote 1
 
@@ -1435,7 +1436,7 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
 
 ## Lote 2
 
-1325 melhorias.
+1331 melhorias.
 
 ### História e texto (116)
 
@@ -2797,3 +2798,12 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
 1323. Segredo do 14 de março: o rádio do carro na abertura lembra que hoje faz quinze anos do incêndio
 1324. Segredo do 14 de março: o título mostra "14 de março. Hoje faz quinze anos."
 1325. Nova conquista secreta "Aniversário": entrar no internato num 14 de março
+
+### Revisão antes de publicar (6)
+
+1326. Dentro do internato e nos túneis, o que fica além da névoa (invisível de qualquer jeito) não é mais desenhado: o lote 2 quase dobrou os objetos dos mapas e o andar de cima tinha caído de 55 para 28 quadros por segundo numa placa de vídeo integrada; agora volta a 45, e os túneis de 32 para 53
+1327. Ao ar livre nada foi cortado: no clarão do relâmpago o céu fica mais claro que a névoa e as silhuetas distantes do cemitério e da estrada continuam aparecendo
+1328. A legenda de som não sobe mais por cima do nome de quem fala quando a fala ocupa duas linhas (aparecia "[um rádio liga sozinho]" em cima de "Rádio")
+1329. Ao ar livre a legenda de som não diz mais "do outro lado das paredes" para os passos do Inspetor no cemitério e na estrada
+1330. A folha da máquina de escrever da diretoria agora sai com acento: "Excelência, o silêncio salva as almas. As três crianças constarão como fugitivas. A IRMÃ DELE ESTÁ AQUI."
+1331. O armário riscado da Ana diz "um dois três quatro...", com acento como o resto do jogo
