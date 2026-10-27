@@ -3,6 +3,7 @@
 // { nome, spawns, fora, dentro, energia(), inspetor(), procissao(), ana(), chamado(), entrar(cap), inicioCapitulo(cap), ... }
 import { extrasEstrada, memoria, lembrar, SPAWN } from './src/estrada-extra.js';
 import { TXT } from './src/estrada-roteiro.js';
+import { extrasTerreo, extrasSuperior, juntar } from './src/internato.js';
 
 // ---------- utilidades compartilhadas entre mapas
 function arvores(A, faixas, n = 300) {
@@ -235,15 +236,18 @@ function terreo(A, S) {
     { id: 'maq', nome: 'Casa de máquinas', x0: 24, x1: 34, z0: -26, z1: -14, tipo: 'maquinas', piso: 'concreto', parede: 'tijolo' }
   ];
   const portas = [
-    { id: 'main', a: 'hall', b: 'patio', x: 0, z: 0, eixo: 'x', nome: 'porta principal', hold: 3, ruidoHold: 9, holdTexto: 'Forçar a porta principal', aoAbrir: () => { if (!S.done.forcar_porta) { A.objDone('forcar_porta'); S.timers.insp = 40; } } },
+    { id: 'main', a: 'hall', b: 'patio', x: 0, z: 0, eixo: 'x', nome: 'porta principal', hold: 3, ruidoHold: 9, holdTexto: 'Forçar a porta principal', aoAbrir: () => { if (!S.done.forcar_porta) { A.objDone('forcar_porta'); S.timers.insp = X.inspAcorda(); } } },
     { id: 'hcw', a: 'hall', b: 'cw', x: -6, z: -12, eixo: 'z' }, { id: 'hce', a: 'hall', b: 'ce', x: 6, z: -12, eixo: 'z' },
     { id: 'aula', a: 'cw', b: 'aula', x: -13, z: -10, eixo: 'x', nome: 'porta da sala de aula' },
     { id: 'biblio', a: 'cw', b: 'biblio', x: -27, z: -10, eixo: 'x', nome: 'porta da biblioteca' },
     { id: 'refeit', a: 'cw', b: 'refeit', x: -15, z: -14, eixo: 'x', nome: 'porta do refeitório' },
     { id: 'cozinha', a: 'cw', b: 'cozinha', x: -29, z: -14, eixo: 'x', nome: 'porta da cozinha' },
     { id: 'rc', a: 'refeit', b: 'cozinha', x: -24, z: -20, eixo: 'z' },
-    { id: 'despensa', a: 'cozinha', b: 'despensa', x: -29, z: -26, eixo: 'x', nome: 'porta da despensa' },
-    { id: 'diret', a: 'ce', b: 'diret', x: 12, z: -10, eixo: 'x', nome: 'porta da diretoria' },
+    { id: 'despensa', a: 'cozinha', b: 'despensa', x: -32.8, z: -26, eixo: 'x', nome: 'porta da despensa' }, // fora do balcão da cozinha
+    { id: 'diret', a: 'ce', b: 'diret', x: 8, z: -10, eixo: 'x', nome: 'porta da diretoria' }, // fora da estante
+    // atalhos de mão única: o trinco fica do lado de dentro
+    { id: 'atalhoDir', a: 'hall', b: 'diret', x: 6, z: -5, eixo: 'z', nome: 'porta lateral da diretoria', trava: () => !S.flags.trinco_atalhoDir, msg: 'Trancada pelo outro lado.', aoTentar: () => X.trinco('atalhoDir', 'diret') },
+    { id: 'atalhoEnf', a: 'diret', b: 'enferm', x: 18, z: -5, eixo: 'z', nome: 'porta da enfermaria para a diretoria', trava: () => !S.flags.trinco_atalhoEnf, msg: 'Trancada pelo outro lado.', aoTentar: () => X.trinco('atalhoEnf', 'enferm') },
     { id: 'enferm', a: 'ce', b: 'enferm', x: 26, z: -10, eixo: 'x', nome: 'porta da enfermaria' },
     { id: 'lavand', a: 'ce', b: 'lavand', x: 11, z: -14, eixo: 'x', nome: 'porta da lavanderia' },
     { id: 'banh', a: 'ce', b: 'banh', x: 20, z: -14, eixo: 'x', nome: 'porta dos banheiros' },
@@ -265,7 +269,7 @@ function terreo(A, S) {
   placa(A, [{ t: 'INTERNATO SÃO LÁZARO', tam: 44, estilo: 'bold' }, { t: 'Ordem · Fé · Silêncio', tam: 26, estilo: 'italic' }], 0, 3.9, .35, 6, 1.5, 0);
   box(4, 4.4, 4, A.texMat('reboco', 1.3, 1.3), 0, 5.4, -3, A.W.grupo, false);
   const tt = new THREE.Mesh(new THREE.ConeGeometry(3.2, 2.4, 4), MAT.telhado); tt.rotation.y = Math.PI / 4; tt.position.set(0, 8.8, -3); A.W.grupo.add(tt);
-  plano(2.2, 2.2, new THREE.MeshStandardMaterial({ map: A.TX.relogio, roughness: .8 }), 0, 5.6, -.98);
+  const relFachada = plano(2.2, 2.2, new THREE.MeshStandardMaterial({ map: A.TX.relogio, roughness: .8 }), 0, 5.6, -.98);
 
   // recepção
   prop(5, 1.1, .8, MAT.madeiraEsc, 0, .55, -4); box(5.1, .06, .9, MAT.madeira, 0, 1.13, -4);
@@ -274,27 +278,28 @@ function terreo(A, S) {
   const quadro = box(1.4, 1, .08, MAT.madeiraEsc, 3, 1.6, -13.85);
   const visor = box(.4, .12, .03, new THREE.MeshStandardMaterial({ color: 0x000, emissive: 0x30ff60, emissiveIntensity: 0 }), 3, 2.0, -13.8, A.W.grupo, false);
   for (let i = 0; i < 9; i++) box(.02, .02, .06, MAT.bronze, 2.6 + (i % 3) * .4, 1.75 - Math.floor(i / 3) * .25, -13.78, A.W.grupo, false);
-  plano(.8, .8, new THREE.MeshStandardMaterial({ map: A.TX.relogio }), -3.5, 2.2, -13.88);
-  // escada para cima (com grade)
-  for (let i = 0; i < 8; i++) box(2.6, .2, .45, MAT.madeiraEsc, -4, .1 + i * .3, -9.6 - i * .45);
-  A.addCollider(-5.4, -2.6, -13.9, -9.3);
-  const grade = new THREE.Group(); grade.position.set(-4, 0, -9.2); A.W.grupo.add(grade);
+  const relHall = plano(.8, .8, new THREE.MeshStandardMaterial({ map: A.TX.relogio }), -3.5, 2.2, -13.88);
+  // escada para cima (com grade) — afastada da parede para não fechar a passagem até o corredor oeste
+  const EX = -3.1;
+  for (let i = 0; i < 8; i++) box(2.6, .2, .45, MAT.madeiraEsc, EX, .1 + i * .3, -9.6 - i * .45);
+  A.addCollider(EX - 1.4, EX + 1.4, -13.9, -9.3);
+  const grade = new THREE.Group(); grade.position.set(EX, 0, -9.2); A.W.grupo.add(grade);
   for (let i = 0; i < 9; i++) cyl(.02, .02, 2.2, MAT.ferrugem, -1.3 + i * .32, 1.1, 0, 6, grade);
   box(2.7, .06, .06, MAT.ferrugem, 0, 2.15, 0, grade); box(.14, .18, .08, MAT.bronze, .2, 1.1, .05, grade);
-  interact(grade, () => S.inv.chaves.escada ? '<b>E</b>Subir para os dormitórios' : 'Uma grade com cadeado fecha a escada.', () => {
-    if (!S.inv.chaves.escada) { SFX.trancado(); A.emitNoise(-4, -9, 3); return; }
+  interact(grade, () => S.inv.chaves.escada ? '<b>E</b>Subir para os dormitórios' : S.flags.energia ? 'Uma grade com cadeado. A chave fica no quadro da recepção, ali na parede.' : 'Uma grade com cadeado fecha a escada.', () => {
+    if (!S.inv.chaves.escada) { SFX.trancado(); A.emitNoise(EX, -9, 3); return; }
     if (S.chapter === 2) A.objDone('subir');
     A.fade(true, () => { A.carregarMapa('superior', 'escada'); A.fade(false); }, 500);
   });
   interact(quadro, () => {
     if (S.inv.chaves.escada) return 'Quadro de chaves (aberto)';
-    if (!S.flags.energia) return 'Quadro de chaves com teclado. Sem energia.';
-    return '<b>E</b>Digitar o código do quadro';
+    if (!S.flags.energia) return 'Quadro de chaves com teclado. Sem energia: o gerador fica na casa de máquinas.';
+    return X.quadroTravado() || '<b>E</b>Digitar o código do quadro';
   }, () => {
-    if (S.inv.chaves.escada || !S.flags.energia) { SFX.trancado(); return; }
+    if (S.inv.chaves.escada || !S.flags.energia || X.quadroTravado()) { SFX.trancado(); return; }
     A.abrirTeclado('QUADRO DE CHAVES', S.quadro.join(''), () => {
-      S.inv.chaves.escada = 'Chave da escada'; SFX.pegar(); A.objDone('chave_escada'); A.falar('chave_escada');
-    }, () => A.emitNoise(3, -13, 8));
+      X.acertouQuadro(); S.inv.chaves.escada = 'Chave da escada'; SFX.pegar(); A.objDone('chave_escada'); A.falar('chave_escada');
+    }, () => X.erroQuadro());
   });
   // casa de máquinas: gerador e alçapão
   const ger = new THREE.Group(); ger.position.set(31.6, 0, -19); A.W.grupo.add(ger);
@@ -306,14 +311,12 @@ function terreo(A, S) {
   const fusNoQuadro = [0, 1, 2].map(i => { const f = MK.fusivel(); f.position.set(33.75, 1.6 - i * .16, -22.5); f.rotation.y = Math.PI / 2; A.W.grupo.add(f); return f; });
   interact(ger, () => {
     if (S.flags.energia) return 'O gerador ronca. Alto demais.';
-    if (!S.inv.galao) return 'Gerador sem combustível.';
+    if (!S.inv.galao) return 'Gerador sem combustível. A cozinha tem uma despensa nos fundos.';
     if (S.inv.fusiveis < 3) return `Faltam fusíveis no quadro da parede (${S.inv.fusiveis}/3).`;
     return '<b>E</b>Ligar o gerador';
   }, () => {
     if (S.flags.energia || !S.inv.galao || S.inv.fusiveis < 3) return;
-    S.flags.energia = true; SFX.gerador(true, { x: 31.6, y: 1, z: -19 }); A.emitNoise(31.6, -19, 45); A.conquista('luz');
-    let n = 0; const iv = setInterval(() => { A.W.lampadas.forEach(L => { L.luz.intensity = Math.random() < .5 ? L.base : 0; }); if (++n > 10) { clearInterval(iv); A.syncWorld(); } }, 120);
-    A.objDone('gerador'); setTimeout(() => A.falar('gerador'), 1200);
+    X.ligarGerador(); // luzes em cascata, ele aparece no fim do corredor; o capítulo fecha quando você escapa
   });
   interact(fusBox, () => S.flags.energia ? 'Quadro de fusíveis' : S.inv.fusiveis >= 3 ? 'Quadro de fusíveis (pronto)' : 'Quadro de fusíveis vazio. Etiqueta: "reserva na enfermaria".', () => {});
   const alcapao = box(1.4, .08, 1.4, MAT.madeiraEsc, 27, .04, -23.5);
@@ -337,9 +340,9 @@ function terreo(A, S) {
   ITENS.nota('n4', spot('enferm', 'mesa', 1));
   ITENS.nota('n5', spot('aula', 'mesa', 3));
   // itens de missão
-  item('galao', spot('despensa', 'mesa', 1), MK.galao(), 'Pegar galão de gasolina', () => { S.inv.galao = true; A.objDone('galao'); A.falar('galao'); });
+  item('galao', spot('despensa', 'mesa', 1), MK.galao(), 'Pegar galão de gasolina', () => { S.inv.galao = true; A.objDone('galao'); A.falar('galao'); X.galaoPego(); });
   // uma caixa só, com os três fusíveis (nada de caça a três peças)
-  item('fusiveis', spot('enferm', 'mesa', 0), MK.fusivel(), 'Pegar a caixa de fusíveis reserva', () => { S.inv.fusiveis = 3; A.progresso(); });
+  item('fusiveis', spot('enferm', 'mesa', 0), MK.fusivel(), 'Pegar a caixa de fusíveis reserva', () => { S.inv.fusiveis = 3; A.progresso(); X.fusiveisPegos(); });
   // recursos (poucos de propósito)
   ITENS.pilha('p1', spot('aula', 'mesa', 6)); ITENS.pilha('p2', spot('banh', 'mesa', 1)); ITENS.pilha('p3', spot('refeit', 'mesa', 3));
   ITENS.kit('k1', spot('enferm', 'prateleira', 1)); ITENS.kit('k2', spot('cozinha', 'prateleira', 2));
@@ -351,10 +354,11 @@ function terreo(A, S) {
   // sustos
   gatilho('portaBate', -34, -6, -14, -10, () => { setTimeout(() => { SFX.pancada(-30, -12); SFX.risada(-32, -20); }, 800); });
   gatilho('lavanderia', 6, 16, -26, -14, () => { SFX.sussurros(2); });
+  const X = extrasTerreo(A, S, { relogios: [relFachada, relHall], vulto, placa });
 
-  return {
+  return juntar({
     nome: 'Térreo do internato',
-    spawns: { inicio: { x: 0, z: 13, yaw: 0 }, escada: { x: -4, z: -7.6, yaw: Math.PI }, porao: { x: 27, z: -21.5, yaw: Math.PI } },
+    spawns: { inicio: { x: 0, z: 13, yaw: 0 }, escada: { x: EX, z: -7.6, yaw: Math.PI }, porao: { x: 27, z: -21.5, yaw: Math.PI } },
     fora: { hemi: .55, moon: .7, fog: .05 }, dentro: { hemi: .08, moon: .04, fog: .1 },
     energia: () => !!S.flags.energia,
     inspetor: () => S.done.forcar_porta && (S.timers.insp === undefined || S.timers.insp <= 0),
@@ -367,17 +371,17 @@ function terreo(A, S) {
       if (cap === 1 && !S.flags.terreoIntro) { S.flags.terreoIntro = true; setTimeout(() => A.falar('terreo_inicio'), 1500); }
       A.agendarEntidades();
       if (S.chapter >= 2 && S.chapter <= 2 && !S.done.procissao) S.timers.procissao = 25;
-      A.W.tick.push(dt => { if (S.timers.insp > 0 && S.done.forcar_porta) { S.timers.insp -= dt; if (S.timers.insp <= 0 && !A.M.ativo) { A.ativarInspetor(-29, -20); } } });
+      A.W.tick.push(dt => { if (S.timers.insp > 0 && S.done.forcar_porta) { S.timers.insp -= dt; if (S.timers.insp <= 0 && !A.M.ativo) { const [ix, iz] = X.pontoDespertar(); A.ativarInspetor(ix, iz); X.despertou(ix, iz); } } });
     },
     inicioCapitulo(cap) {
       if (cap === 2) {
-        SFX.badaladas(9); setTimeout(() => A.falar('badaladas'), 4000);
+        setTimeout(() => A.falar('badaladas'), 4000); // as nove badaladas tocam no internato.js, junto com as luzes
         S.timers.procissao = 26;
         if (S.fitas.f1) A.objDone('fita_diretor');
       }
     },
     fitaOuvida(id) { if (id === 'f1' && S.chapter >= 2) A.objDone('fita_diretor'); }
-  };
+  }, X);
 }
 
 // =====================================================================
@@ -404,9 +408,10 @@ function superior(A, S) {
     { id: 'pat', a: 'patamar', b: 'corr', x: 0, z: -2, eixo: 'x', tipo: 'aberta', largura: 5.6 },
     P('dA', 'dormA', -3, -8, { nome: 'porta do dormitório A' }), P('dB', 'dormB', -3, -20, { nome: 'porta do dormitório B' }), P('bS', 'banhS', -3, -31, { nome: 'porta do banheiro' }),
     P('dC', 'dormC', -3, -42, { nome: 'porta do dormitório C' }),
-    P('cel', 'celeste', -3, -53, { nome: 'porta da Irmã Celeste', trava: () => !S.inv.chaves.celeste, msg: 'Trancada. Na placa: "Irmã Celeste".', aoAbrir: () => A.objDone('quarto_celeste') }),
-    P('rp', 'roup', 3, -7, { nome: 'porta da rouparia' }), P('dD', 'dormD', 3, -18, { nome: 'porta do dormitório D' }), P('br', 'brinq', 3, -31, { nome: 'porta da sala de brinquedos' }),
-    P('dE', 'dormE', 3, -44, { nome: 'porta do dormitório E' }), P('so', 'sotao', 3, -54, { nome: 'porta do depósito' })
+    P('cel', 'celeste', -3, -53, { nome: 'porta da Irmã Celeste', trava: () => !S.inv.chaves.celeste, msg: () => S.done.ana ? 'Trancada. A menina deixou alguma coisa no chão da sala de brinquedos.' : 'Trancada. Na placa: "Irmã Celeste".', aoAbrir: () => A.objDone('quarto_celeste') }),
+    // a rouparia abre para o patamar (a estante tampava a porta do corredor); D e E abrem entre as camas
+    { id: 'rp', a: 'patamar', b: 'roup', x: 4, z: -2, eixo: 'x', nome: 'porta da rouparia' }, P('dD', 'dormD', 3, -19.14, { nome: 'porta do dormitório D' }), P('br', 'brinq', 3, -31, { nome: 'porta da sala de brinquedos' }),
+    P('dE', 'dormE', 3, -45.14, { nome: 'porta do dormitório E' }), P('so', 'sotao', 3, -54, { nome: 'porta do depósito' })
   ];
   A.construirSalas(salas, portas);
   // escada para baixo
@@ -426,7 +431,7 @@ function superior(A, S) {
   const itCaixa = interact(caixa, () => {
     if (S.done.caixinha) return 'A caixinha gira sozinha.';
     if (S.chapter < 3) return 'Uma caixinha de música sem as engrenagens.';
-    if (S.inv.engrenagens < 3) return 'Falta uma engrenagem. A menina escondeu em algum dormitório.';
+    if (S.inv.engrenagens < 3) return 'Falta uma engrenagem. Risadinhas vêm do Dormitório E, no fundo do corredor.';
     return '<b>E</b>Montar e dar corda na caixinha';
   }, () => {
     if (S.done.caixinha || S.inv.engrenagens < 3 || S.chapter < 3) return;
@@ -436,7 +441,7 @@ function superior(A, S) {
   itCaixa.hold = 2; itCaixa.pode = () => !S.done.caixinha && S.inv.engrenagens >= 3 && S.chapter >= 3;
   // engrenagens
   // uma engrenagem só, no dormitório do fundo: obriga a atravessar o corredor com ela contando
-  item('eng0', spot('dormE', 'cama', 2), MK.engrenagem(), 'Pegar a engrenagem da caixinha', () => { S.inv.engrenagens = 3; A.progresso(); SFX.risada(8, -31); }, () => S.chapter >= 3);
+  item('eng0', spot('dormE', 'cama', 2), MK.engrenagem(), 'Pegar a engrenagem da caixinha', () => { S.inv.engrenagens = 3; A.progresso(); SFX.risada(8, -31); X.engrenagemPega(); }, () => S.chapter >= 3);
   // chave da Celeste (deixada pela menina)
   item('chaveCeleste', spot('brinq', 'chao', 2), MK.chave(), 'Pegar a chave da Irmã Celeste', () => { S.inv.chaves.celeste = 'Chave do quarto da Irmã Celeste'; }, () => !!S.done.ana);
   // quarto da Celeste
@@ -452,7 +457,7 @@ function superior(A, S) {
   for (let i = 0; i < 7; i++) cyl(.015, .015, 2.4, MAT.ferrugem, -.66 + i * .22, 1.3, .8, 5, poco);
   box(.14, .18, .08, MAT.bronze, .3, 1.2, .84, poco);
   A.addCollider(10.8, 12.4, -57.6, -55.4);
-  interact(poco, () => S.inv.chaves.porao ? '<b>E</b>Descer pelo monta-cargas' : S.chapter < 3 || !S.done.ana ? 'Um monta-cargas antigo. Grade trancada.' : 'Um monta-cargas. A grade tem cadeado. Leva até o porão.', () => {
+  const itPoco = interact(poco, () => S.inv.chaves.porao ? '<b>E</b>Descer pelo monta-cargas' : S.chapter < 3 || !S.done.ana ? 'Um monta-cargas antigo. Grade trancada.' : 'Um monta-cargas. A grade tem cadeado: a chave deve estar no quarto da Irmã Celeste.', () => {
     if (!S.inv.chaves.porao) { SFX.trancado(); A.emitNoise(11.6, -55, 4); return; }
     if (S.chapter === 3) A.objDone('chave_porao');
     SFX.cano({ x: 11.6, y: 1.5, z: -56 }); A.P.shake = .15;
@@ -466,8 +471,10 @@ function superior(A, S) {
   // sustos
   gatilho('brinquedo', 3, 15, -38, -24, () => { if (!S.done.caixinha) SFX.risada(12, -36); });
   gatilho('corredorFim', -3, 3, -58, -46, () => { SFX.pancada(8, -54); });
+  const X = extrasSuperior(A, S, { vulto });
+  X.prepararPoco(itPoco);
 
-  return {
+  return juntar({
     nome: 'Andar dos dormitórios',
     spawns: { escada: { x: 0, z: 3, yaw: 0 }, inicio: { x: 0, z: 3, yaw: 0 } },
     dentro: { hemi: .07, moon: .03, fog: .1 },
@@ -486,7 +493,7 @@ function superior(A, S) {
       if (cap === 3 && !S.flags.supIntro) { S.flags.supIntro = true; A.falar('superior_inicio'); }
     },
     fitaOuvida(id) { if (id === 'f2') { A.objDone('fita_celeste'); A.syncWorld(); } }
-  };
+  }, X);
 }
 
 // =====================================================================
