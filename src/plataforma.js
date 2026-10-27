@@ -127,7 +127,7 @@ function embrulharSons() {
   const emb = (k, fn) => { const o = S[k]; if (typeof o !== 'function') return; S[k] = (...a) => { try { fn(...a); } catch (e) {} return o(...a); }; };
   emb('passoMonstro', (pos, vol) => { if (pos && vol >= .6) legenda('passos', 'passos pesados', pos, 3); });
   emb('risada', (x, z) => legenda('risada', 'risada de menina', { x, z }, 3));
-  emb('chamadoVoz', (x, z) => legenda('chamado', 'alguém chama "Lia..."', { x, z }, 2));
+  emb('chamadoVoz', (x, z) => legenda('chamado', 'alguém chama “Lia...”', { x, z }, 2));
   emb('rangido', (x, y, z) => legenda('rangido', 'porta rangendo', { x, z }, 3));
   emb('vidro', (x, z) => legenda('vidro', 'vidro quebrando', x !== undefined ? { x, z } : null, 1));
   emb('trovao', () => legenda('trovao', 'trovão', null, 5));

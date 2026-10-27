@@ -61,7 +61,7 @@ export function instalarVisual(C) {
     return d;
   }
   const optTit = $('#title .opts'), optPau = $('#pause .set');
-  if (optTit) optTit.after(controles('vo'));
+  if (optTit) { const det = document.createElement('details'); det.className = 'som-extra vis-det'; det.innerHTML = '<summary>Imagem</summary>'; det.appendChild(controles('vo')); optTit.after(det); }
   if (optPau) optPau.after(controles('vp'));
   const CAMPOS = { brilho: 'brilho', fov: 'fov', cam: 'vCam', flash: 'vFlash', blur: 'vBlur', vhs: 'vVhs' };
   function syncUI() { for (const p of ['vo', 'vp']) for (const [id, k] of Object.entries(CAMPOS)) { const el = $(`#${p}-${id}`); if (!el) continue; if (el.type === 'checkbox') el.checked = !!OPT[k]; else el.value = OPT[k]; } }

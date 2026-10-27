@@ -40,17 +40,19 @@ try {
   page.setDefaultTimeout(0);
   const r = await page.evaluate(() => window.T.tudo());
   for (const l of r.log) console.log(l);
-  if (shots) {
-    for (const [i, [mapa, sp, cap]] of [['estrada', 'inicio', 0], ['terreo', 'inicio', 1], ['superior', 'escada', 3], ['tuneis', 'entrada', 4], ['cemiterio', 'tuneis', 5]].entries()) {
-      await page.evaluate((m, s, c) => { const J = window.__jogo; J.S.chapter = c; J.S.dead = false; J.S.fim = false; J.S.inv.lanterna = true; J.S.flashOn = true; J.S.battery = 100; J.carregarMapa(m, s); window.T.passo(1); }, mapa, sp, cap);
-      await page.screenshot({ path: path.join(shots, `${String(i + 1).padStart(2, '0')}-${mapa}.png`) });
-    }
-  }
   const fp = await page.evaluate(() => window.T.plataforma ? window.T.plataforma() : []);
   if (fp.length) { console.log('FALHAS DE PLATAFORMA:', fp); falhou = true; }
   if (argv.includes('--sobrevivencia')) {
     const s = await page.evaluate(async () => { const T = window.T, J = window.__jogo; await T.novo(); J.S.chapter = 2; J.S.flags.energia = true; J.carregarMapa('terreo', 'inicio'); J.ativarInspetor(-20, -12); await T.ate(() => false, 20, true); return T.errs; });
     if (s.length) { console.log('ERROS NA SOBREVIVÊNCIA:', s); falhou = true; }
+  }
+  if (shots) {
+    // capturas dos mapas por último, num jogo limpo (não mexem no estado dos testes acima)
+    await page.evaluate(async () => { await new Promise(r => setTimeout(r, 1500)); document.querySelectorAll('.screen').forEach(s => { s.hidden = true; }); window.__jogo.S.dead = false; await window.T.novo(); });
+    for (const [i, [mapa, sp, cap]] of [['estrada', 'inicio', 0], ['terreo', 'inicio', 1], ['superior', 'escada', 3], ['tuneis', 'entrada', 4], ['cemiterio', 'tuneis', 5]].entries()) {
+      await page.evaluate((m, s, c) => { const J = window.__jogo; document.querySelectorAll('.screen').forEach(s => { s.hidden = true; }); J.S.chapter = c; J.S.dead = false; J.S.fim = false; J.S.inv.lanterna = true; J.S.flashOn = true; J.S.battery = 100; J.carregarMapa(m, s); window.T.passo(1); }, mapa, sp, cap);
+      await page.screenshot({ path: path.join(shots, `${String(i + 1).padStart(2, '0')}-${mapa}.png`) });
+    }
   }
   const todos = [...erros, ...r.errs];
   if (todos.length) { console.log('ERROS:\n' + [...new Set(todos)].join('\n')); falhou = true; }

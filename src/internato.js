@@ -442,7 +442,7 @@ export function extrasTerreo(A, S, ctx) {
     S.flags.seg_retrato = true; ret.rotation.y = -Math.PI / 2; SFX.arrastar();
     A.dialogo([
       { quem: 'lia', texto: 'Atrás do quadro, um buraco na parede. Um curativo e um bilhete com letra de criança:' },
-      { quem: 'davi', texto: '"Ele ouve o teclado do quadro. Digita certo de primeira."' }
+      { quem: 'davi', texto: '“Ele ouve o teclado do quadro. Digita certo de primeira.”' }
     ], () => { S.inv.kits++; U.segredo('retrato', 'Achou um curativo atrás do retrato.'); });
   });
 
@@ -614,13 +614,13 @@ export function extrasSuperior(A, S, ctx) {
   if (cA) {
     const tDM = U.tex(128, 64, (g, w, h) => { g.fillStyle = '#4a2c1c'; g.fillRect(0, 0, w, h); g.strokeStyle = '#b8a888'; g.lineWidth = 3; g.font = 'bold 34px Georgia'; g.textAlign = 'center'; g.strokeText('D.M.', w / 2, 44); });
     const dm = plano(.42, .2, new THREE.MeshStandardMaterial({ map: tDM, roughness: .8 }), cA.x - .96, .72, cA.z, Math.PI / 2);
-    interact(dm, () => S.flags.seg_dm ? 'A cama do Davi.' : '<b>E</b>Olhar a cabeceira riscada "D.M."', () => {
+    interact(dm, () => S.flags.seg_dm ? 'A cama do Davi.' : '<b>E</b>Olhar a cabeceira riscada “D.M.”', () => {
       if (S.flags.seg_dm) return;
       S.flags.seg_dm = true;
       A.dialogo([
         { quem: 'lia', texto: 'D.M. Davi Moraes. Essa era a cama dele.' },
         { quem: 'lia', texto: 'Tem um papel enfiado no estrado. Um desenho: eu e ele, de mão dada, no portão.' },
-        { quem: 'davi', texto: '"Feliz aniversário, Lia. Um dia eu saio daqui."' }
+        { quem: 'davi', texto: '“Feliz aniversário, Lia. Um dia eu saio daqui.”' }
       ], () => { S.health = Math.min(100, S.health + 30); S.fear = 0; U.segredo('dm', 'O desenho do Davi te dá coragem (+vida).'); });
     });
   }

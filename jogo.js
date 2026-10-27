@@ -1466,7 +1466,7 @@ function ativarInspetor(x, z, estado = 'patrulha') {
   if (estado === 'patrulha') patrulhar();
 }
 function desativarInspetor() {
-  if (M.state === 'agarra') { P.bloqueado = AG.prev; MAOS.visible = false; }
+  if (M.state === 'agarra') { P.bloqueado = AG.prev; MAOS.visible = false; $('#fx-red').style.transition = 'opacity .6s'; $('#fx-red').style.opacity = 0; } // o agarrão interrompido não deixa a tela vermelha presa
   M.ativo = false; MON.g.visible = false; M.path = []; M.acao = null; if (M.state !== 'patrulha') M.state = 'patrulha';
 }
 function patrulhar() {
@@ -1769,7 +1769,7 @@ function updateInspetor(dt) {
   }
   else if (M.state === 'agarra') {
     AG.t += dt;
-    if (S.dead) { MAOS.visible = false; P.bloqueado = AG.prev; M.state = 'procura'; }
+    if (S.dead) { MAOS.visible = false; P.bloqueado = AG.prev; M.state = 'procura'; $('#fx-red').style.transition = 'opacity 1.5s'; $('#fx-red').style.opacity = 0; }
     else {
       const head = new THREE.Vector3(); MON.cabeca.getWorldPosition(head);
       const ty = Math.atan2(-(head.x - camera.position.x), -(head.z - camera.position.z)), tp = Math.atan2(head.y - camera.position.y, Math.hypot(head.x - camera.position.x, head.z - camera.position.z));

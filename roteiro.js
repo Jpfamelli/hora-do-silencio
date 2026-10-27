@@ -653,3 +653,12 @@ window.ROTEIRO.progressao = {
     { id: "senha", nome: "Silêncio", desc: "Digite a palavra que dá nome à Hora na tela de título.", secreta: true, dica: "A palavra que eles mais repetem." }
   ]
 };
+
+// Aspas tipográficas: a fonte desenha a aspa reta como a de fechar, então as falas abrem com “ e fecham com ”.
+(function curvar(o) {
+  for (const k in o) {
+    const v = o[k];
+    if (typeof v === "string" && v.includes('"')) o[k] = v.replace(/(^|[\s(\[—–-])"/g, "$1“").replace(/"/g, "”");
+    else if (v && typeof v === "object") curvar(v);
+  }
+})(window.ROTEIRO);

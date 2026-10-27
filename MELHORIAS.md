@@ -2,11 +2,11 @@
 
 Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/lote*/<área>.md`. Não edite à mão: edite o arquivo da área e gere de novo.
 
-**Total geral: 1350 melhorias**
+**Total geral: 1356 melhorias**
 
 ## Índice
 
-- [Lote 1](#lote-1) — 1350 melhorias
+- [Lote 1](#lote-1) — 1356 melhorias
   - História e texto: 107
   - Mapa: prólogo e estrada: 108
   - Mapa: térreo e dormitórios: 106
@@ -19,10 +19,11 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
   - Interface: 108
   - Progressão e rejogabilidade: 112
   - Plataforma e acessibilidade: 124
+  - Revisão antes de publicar: 6
 
 ## Lote 1
 
-1350 melhorias.
+1356 melhorias.
 
 ### História e texto (107)
 
@@ -1409,3 +1410,12 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
 1348. Morrer depois de continuar de onde parou ainda volta ao último checkpoint, como antes
 1349. A vinheta escura da tela pulsa no ritmo do coração quando o medo sobe
 1350. O QA automático agora testa Ctrl, pausa ao perder o foco, teclas presas, agenda pós-morte, salvamento leve, link de desafio e controle
+
+### Revisão antes de publicar (6)
+
+1351. A tela de título não corta mais o nome do jogo no alto em telas de 720 px: as telas centralizam sem esconder o começo e dá para rolar até o fim
+1352. As opções de imagem da tela de título (brilho, campo de visão, câmera, flashes, desfoque, VHS) ficaram recolhidas em "Imagem", como já era o "Som", e o menu respira
+1353. As falas, notas, lápides e finais usam aspas de abrir e de fechar de verdade: a fonte desenhava a aspa reta sempre como a de fechar ("”...eu ouvi você...”")
+1354. As aspas dos textos de cabeceira, do quadro de chaves, do bilhete de aniversário e da legenda do chamado também foram trocadas pelas tipográficas
+1355. Se o agarrão do Inspetor é interrompido (troca de mapa, ponto salvo, morte por outra causa), a tela vermelha some em vez de ficar presa por cima do jogo
+1356. O QA agora tira as capturas dos mapas depois dos testes de plataforma e sobrevivência, num jogo limpo, em vez de fotografar a tela do final cinco vezes
