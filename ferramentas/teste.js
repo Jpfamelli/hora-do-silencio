@@ -138,10 +138,24 @@ T.plataforma = async () => {
   const semPausa = () => { if (J.ui === 'pausa') document.getElementById('p-voltar').click(); }; // no Chrome headless a trava do ponteiro cai sozinha e reabre a pausa
   semPausa(); P.forcarCalma(); ok('salvamento leve grava', P.salvarAuto() && !!localStorage.getItem('hora-silencio-v3-auto'));
   ok('link de desafio', /desafio=[SABC]+-[0-9a-z]+-[0-9a-z]+$/.test(P.textoResultado().url));
+  // lote 2: ação longa por toque, agarrão por tecla, lápide, botões do controle viram teclas de verdade
+  const tecla = (tipo, code) => dispatchEvent(new KeyboardEvent(tipo, { code, key: code, bubbles: true }));
+  P.O.acoes = 'tocar'; J.S.inv.kits = 1; J.S.health = 40; J.S.hidden = null; J.P.crouch = false;
+  tecla('keydown', 'KeyH'); tecla('keyup', 'KeyH');
+  ok('ação longa por toque fica ligada', !!P.trava && P.trava.code === 'KeyH');
+  T.passo(3.2); ok('curativo termina sem segurar a tecla', J.S.inv.kits === 0 && !P.trava);
+  P.O.acoes = 'segurar';
+  const est = J.M.state; J.M.state = 'agarra'; P.AG.sacode = 0; P.puxar(200); ok('apertar E enche a barra de soltura', P.AG.sacode === 200); P.AG.sacode = 0; J.M.state = est;
+  P.P2.abrirLapide('morte'); const lp = document.getElementById('lapide'), img = document.getElementById('lp-img');
+  ok('lápide abre com a imagem', !lp.hidden && /^data:image\/png/.test(img.src)); P.P2.fecharLapide(); ok('lápide fecha', lp.hidden);
+  ok('lápide fala a causa em linguagem do jogo', /às \d+h\d\d/.test(P.P2.dadosLapide('morte').causa));
   const fakePad = { connected: true, axes: [0, -1, 0, 0], buttons: Array.from({ length: 17 }, () => ({ pressed: false, value: 0 })) };
   const orig = navigator.getGamepads; navigator.getGamepads = () => [fakePad];
   semPausa(); P.pad(1 / 30); ok('controle anda para frente', J.keys.KeyW === true);
   fakePad.axes = [0, 0, 0, 0]; P.pad(1 / 30); ok('soltar o analógico para', !J.keys.KeyW);
+  J.P.crouch = false; fakePad.buttons[1].pressed = true; P.pad(1 / 30); ok('B do controle agacha', J.P.crouch === true);
+  fakePad.buttons[1].pressed = false; P.pad(1 / 30); ok('soltar B solta a tecla', !J.keys.KeyC && !P.segPad.KeyC);
+  fakePad.buttons[1].pressed = true; P.pad(1 / 30); fakePad.buttons[1].pressed = false; P.pad(1 / 30); ok('B de novo levanta', J.P.crouch === false);
   navigator.getGamepads = orig; P.semPad();
   localStorage.removeItem('hora-silencio-v3-auto');
   return falhas;

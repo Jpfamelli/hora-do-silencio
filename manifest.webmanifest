@@ -9,5 +9,24 @@
   "orientation": "landscape",
   "background_color": "#000000",
   "theme_color": "#050505",
-  "icons": [{ "src": "icone.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+  "icons": [
+    {
+      "src": "icone.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "id": "./",
+  "categories": [
+    "games",
+    "entertainment"
+  ],
+  "shortcuts": [
+    {
+      "name": "Continuar a noite",
+      "short_name": "Continuar",
+      "url": "./?continuar=1"
+    }
+  ]
 }

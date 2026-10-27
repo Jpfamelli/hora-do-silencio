@@ -17,6 +17,8 @@
 <meta name="twitter:title" content="A Hora do Silêncio">
 <meta name="twitter:description" content="Terror em primeira pessoa no navegador. Internato São Lázaro, 1994. Jogue de fone, no escuro.">
 <link rel="canonical" href="https://jpfamelli.github.io/hora-do-silencio/">
+<meta name="keywords" content="jogo de terror, terror no navegador, jogo brasileiro, horror, primeira pessoa, internato">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"A Hora do Silêncio","url":"https://jpfamelli.github.io/hora-do-silencio/","inLanguage":"pt-BR","genre":["Terror","Sobrevivência"],"gamePlatform":"Navegador","applicationCategory":"Game","playMode":"SinglePlayer","description":"Terror em primeira pessoa no navegador. Internato São Lázaro, 1994. Seu irmão sumiu há quinze anos, e a voz dele voltou numa fita.","isAccessibleForFree":true}</script>
 <link rel="icon" href="icone.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icone.svg">
 <link rel="manifest" href="manifest.webmanifest">
@@ -465,7 +467,8 @@
 <script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js"}}</script>
 </head>
 <body>
-<div id="carregando"><div class="cg-tit">A Hora do Silêncio</div><div class="cg-txt">carregando o internato...</div><i class="cg-barra"></i><button class="btn" id="cg-tentar" hidden onclick="location.reload()">Tentar de novo</button></div>
+<noscript><div style="position:fixed;inset:0;z-index:30;background:#000;color:#cfc3a6;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font-size:20px">A Hora do Silêncio precisa do JavaScript ligado no navegador para abrir o internato.</div></noscript>
+<div id="carregando"><div class="cg-tit">A Hora do Silêncio</div><div class="cg-txt">carregando o internato...</div><div class="cg-lapide" id="cg-lapide"></div><i class="cg-barra"></i><button class="btn" id="cg-tentar" hidden onclick="location.reload()">Tentar de novo</button></div>
 <script>
 (function () {
   var el = document.getElementById('carregando');
@@ -669,6 +672,10 @@
 <div id="aviso-mobile" hidden>Este jogo precisa de teclado e mouse.<br>Abra no computador.</div>
 
 <script src="roteiro.js"></script>
+<script>
+// enquanto o internato carrega, uma lápide do cemitério aparece na tela de espera
+(function () { try { var R = window.ROTEIRO, el = document.getElementById("cg-lapide"); if (!R || !el || window.__jogo) return; var ls = (R.lapides || []).filter(function (l) { return l.epitafio; }); if (!ls.length) return; var l = ls[Math.floor(Math.random() * ls.length)]; el.innerHTML = "<b></b><span></span><i></i>"; el.children[0].textContent = l.nome; el.children[1].textContent = l.datas || ""; el.children[2].textContent = l.epitafio; } catch (e) {} })();
+</script>
 <script type="module" src="jogo.js"></script>
 </body>
 </html>
