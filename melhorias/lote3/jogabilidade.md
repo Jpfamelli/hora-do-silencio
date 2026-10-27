@@ -1,0 +1,111 @@
+# Lote 3 — Jogabilidade
+- Abrir a porta correndo faz ela escancarar e bater na parede, com o dobro do barulho, e ele ouve
+- Abrir a porta andando devagar (ALT) ou agachada faz a folha girar lenta, com um rangido baixinho e quase sem ruído
+- A porta gira na velocidade do seu passo: lenta devagar, normal andando, de uma vez correndo
+- Segurar E numa porta abre aos poucos: a folha acompanha o tempo que você segura
+- Segurar E numa porta aberta fecha aos poucos, em silêncio
+- Soltar o E no meio deixa a porta entreaberta: dá para espiar e ouvir pela fresta, mas não passar
+- Empurrar uma porta que já está entreaberta faz bem menos barulho que abrir do zero
+- Encostar uma fresta quase fechada termina de fechar a porta sem barulho
+- O texto da porta agora diz "tocar: rápido · segurar: em silêncio" e muda conforme ela está aberta, fechada ou entreaberta
+- O texto da porta mostra um sinal do tamanho do barulho que ela vai fazer no seu passo atual
+- Correndo, o texto da porta avisa que ela vai bater
+- Bater a porta correndo na cara do Inspetor deixa ele tonto por mais tempo
+- A porta batida dá um tranco na câmera e uma vibração no controle e no celular
+- A porta que bate quica de leve no batente antes de parar
+- Primeira vez que a porta bate: a Lia ensina que com ALT ela abre devagar
+- Correção: segurar E numa porta parava no meio quando a folha girando saía da mira
+- Segurar E numa porta não é mais cancelado por a porta se mexer, só por você se afastar ou se esconder
+- Um E apertado um instante antes de o armário, a cama ou o item entrarem na mira passa a valer quando eles entram
+- Se a mira escapa do esconderijo por um instante no meio da fuga, o E ainda vale (fora do Pesadelo)
+- Trocar a pilha agora leva 1,2 s no escuro, com o anel de progresso na tela
+- Ao trocar a pilha, a pilha velha cai, quica no chão e faz um barulho pequeno que entra no ruído
+- Escondida, a pilha velha não cai no chão: só tilinta baixinho na mão
+- A pilha nova faz a lanterna voltar com um clarão forte uma vez (suave com "Reduzir flashes")
+- A Lia baixa um pouco a cabeça enquanto troca a pilha
+- Primeira troca de pilha avisa que ela leva um segundo no escuro e que é preciso escolher a hora
+- Apertar F no meio da troca avisa que a pilha está sendo trocada, em vez de não fazer nada
+- A pilha nova dá uma vibração macia no controle e no celular
+- As dicas de tecla usam o nome do aparelho em uso: botões do toque, botões do controle ou teclas do teclado
+- Dica de agachar, de curativo, de pilha, de esconderijo e de prender o ar falam a tecla certa no toque e no controle
+- A dica do agarrão diz "arraste o dedo" no celular e "sacuda o analógico" no controle, em vez de sempre falar do mouse
+- A garrafa que cai na madeira quica uma vez com um tinido e só estoura meio metro adiante
+- A garrafa que cai na terra ou na grama não quebra e quase não faz barulho (atrai pouco)
+- A garrafa que cai no tapete estoura abafada, com bem menos alcance
+- O anel da mira da garrafa muda de cor e de tamanho conforme a superfície e o barulho que ela vai fazer lá
+- Primeira garrafa na terra: a Lia nota que ali ela não quebra
+- Os cacos da garrafa quebrada ficam no chão por dez minutos: dá para criar o seu próprio campo minado
+- Os cacos brilham e cintilam quando a lanterna passa por eles
+- Pisar em cacos andando devagar faz metade do barulho de pisar andando normal
+- A mira da garrafa não cria objetos novos a cada quadro (menos travadinhas em notebook fraco)
+- Todos os cacos usam uma geometria só (menos memória e menos travadas ao quebrar garrafa)
+- As ondas na água a cada passo usam uma geometria só, criada uma vez
+- O teste de parede entre você e o Inspetor no bote reaproveita o mesmo raio a cada quadro
+- O corpo da Lia tem peso: acelera e freia em cerca de 0,12 s em vez de parar na hora
+- Correndo, a curva derrapa um pouco antes de pegar a nova direção
+- Correr contra parede, mesa ou batente dá um baque surdo, um tranco na câmera e um gemido curto, e ele ouve
+- Trombar correndo gasta fôlego
+- Primeira trombada: a Lia avisa que correr às cegas faz barulho
+- Correr olhando para trás (Q) e trombar em alguma coisa derruba a Lia
+- No pânico (medo acima de 85), virar a câmera de repente correndo pode fazer a Lia tropeçar
+- O tropeço derruba a câmera meio metro, balança a lanterna, deixa a Lia lenta por 0,8 s e faz barulho médio
+- O tropeço nunca acontece duas vezes em 20 s e nunca acontece no Fácil
+- O som do passo cai exatamente quando a cabeça desce no balanço da câmera
+- Agachar e levantar seguem uma curva com mola e uma leve passada do ponto, em vez de deslizar reto
+- Agachar e levantar fazem um farfalhar de roupa
+- Depois de muito tempo agachada, levantar às vezes estala o joelho, com um ruído pequeno que ele pode ouvir
+- No Pesadelo o joelho estala com mais frequência e mais alto; no Fácil, nunca
+- Levantar segurando ALT nunca estala o joelho
+- Na primeira vez que o joelho estala, a Lia comenta e ensina a levantar devagar
+- Parada por 40 s numa sala segura, longe do perigo, a Lia senta no chão e o medo passa mais rápido
+- Sentada, a câmera fica mais baixa; andar ou apertar C faz a Lia levantar
+- Primeira vez sentada: a Lia explica que o medo passa mais rápido assim
+- Salas de madeira do internato têm 2 a 4 tábuas soltas fixas, marcadas por uma mancha mais escura no chão
+- Pisar numa tábua solta range alto e chama o Inspetor; agachada ou devagar, range baixo
+- Correndo sobre uma tábua solta, o rangido vai ainda mais longe
+- Primeira tábua que range: a Lia ensina que as manchas escuras denunciam as soltas
+- Com pouca vida, a Lia manca: o balanço da câmera fica desigual
+- Parada, a respiração mexe a cabeça de leve, mais forte quando está sem fôlego
+- Andando de lado, a câmera inclina de leve para o lado do passo
+- Prender o ar firma o corpo: o tremor da câmera causado pelo medo cai 70%
+- Com a Menina perto e o medo alto, a Lia lembra que prender o ar firma a mão da lanterna
+- Entrar no armário tem gesto: a câmera vai até ele e gira para a fresta enquanto a porta fecha
+- Sair do esconderijo também tem gesto: a câmera desliza para fora em vez de pular
+- Escondida, a luz da fresta escurece quando o Inspetor para bem na frente e cobre a luz
+- Entrar no esconderijo devagar (ALT) ou agachada faz metade do barulho
+- Entrar no armário correndo bate a porta dele, dá um tranco e faz quase o dobro do barulho
+- Com o Inspetor por perto, o texto do esconderijo lembra que com ALT ou agachada se entra sem barulho
+- Sair do esconderijo com um toque em E segurando ALT também é silencioso
+- A dica de espiar escondida ensina as duas formas de sair em silêncio, com as teclas do aparelho em uso
+- O HUD de postura agora mostra "caída", "trocando a pilha" e "sentada"
+- Quando o Inspetor acerta, o mundo para por um instante (hit-stop) e o som abafa, dando peso ao golpe
+- O agarrão também congela o mundo por um instante antes de começar
+- Golpe e agarrão dão uma vibração forte no controle e no celular
+- Com "Reduzir flashes", o tranco do golpe é mais suave
+- Escapar do bote por um fio (ele erra e bate no chão, ou a mão passa por cima) deixa o mundo em câmera lenta por 0,4 s, com o som abafado e a Lia soltando o ar
+- Quando o Inspetor desiste da caçada com você viva, toca um acorde baixo de alívio, a Lia solta o ar e o controle vibra macio
+- Ao escapar de uma caçada aparece por 2 s um contador discreto "escapou 2x"
+- O fim de capítulo mostra quantas vezes ele desistiu de você e quantas você escapou por um fio
+- Nova opção "Ritmo do mundo" (100%, 85%, 70%): o Inspetor, a Ana, a Procissão e os eventos ficam mais lentos e a Lia não muda
+- O ritmo do mundo não vale no Pesadelo nem no Uma Vida, e o fim de capítulo marca a noite como assistida
+- Nova opção "Avisos antecipados de perigo": a Procissão avisa 2 s antes (fora do Pesadelo)
+- Com os avisos antecipados, a primeira aparição de cada ameaça no capítulo mostra uma frase curta com a regra dela
+- Nova opção "Ajuda para mirar": sobre algo que dá para usar, a mira fica 38% mais lenta (atrito, nunca puxa); ligada por padrão no toque e no controle
+- Nova opção de sensibilidade própria escondida e mirando a garrafa (padrão 60%): a fresta e o arco da garrafa não passam mais do ponto
+- A sensibilidade fina e o atrito valem também no controle e no toque
+- Nova opção "Realçar o que dá para usar": o objeto na mira ganha um brilho fraco pulsando (desligado no Pesadelo, nunca nas portas)
+- Nova opção "Sentir os passos dele": cada passo do Inspetor a menos de 10 m vira uma vibração, mais forte quanto mais perto e do lado em que ele está
+- Nova opção "Reinício rápido": a partir da 3ª morte no mesmo trecho, o jogo volta sozinho em 2 s (qualquer tecla espera)
+- Nova opção "Jogar só com o mouse": botão esquerdo anda, direito usa, a roda escolhe a ação, o botão lateral de trás executa e o da frente agacha
+- Jogando só com o mouse, a ação escolhida aparece em letra pequena embaixo da mira
+- Ao pegar um item, ele voa até a mão em 0,25 s, girando e encolhendo, em vez de sumir
+- Pegar item tem som próprio por tipo: pilha e metal tilintam, curativo é papel, garrafa é vidro, galão é plástico
+- Ao pegar pilha, curativo ou garrafa, o número do inventário dá um pulo e brilha
+- Pegar um item dá uma vibração curtinha no controle e no celular
+- TAB, J, O e P não abrem nada durante o agarrão nem nos últimos números da contagem da Ana: aparece "Agora não." em vermelho
+- O botão Diário do toque e o Y do controle também ficam travados no agarrão
+- Novas dicas na tela de morte para quem morreu por porta batida, tábua solta, trombada, tropeço ou joelho estalado
+- Novas legendas de som: a tábua range, seu joelho estala, você bateu em alguma coisa, você tropeçou, a porta bate na parede, a pilha velha quica no chão
+- Correção: embaixo da cama, o controle e o toque tinham limites de olhar menores que os do mouse
+- Correção: o novo módulo de jogabilidade entra no cache para jogar sem internet
+- O QA confere que apertar TAB e P durante o agarrão não abre o diário nem a pausa

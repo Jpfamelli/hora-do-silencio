@@ -249,8 +249,9 @@ function vibrar(forte, fraco, ms) {
 function setPad(on) { if (padAtivo === on) return; padAtivo = on; document.body.classList.toggle('pad', on); }
 function olhar(dx, dy) { // radianos
   const P = C.P, S = C.S;
-  P.yaw -= dx; P.pitch = clamp(P.pitch - dy * (C.OPT.invY ? -1 : 1), -1.45, 1.45);
-  if (S && S.hidden) { const base = Math.atan2(-S.hidden.face[0], -S.hidden.face[1]); let d = P.yaw - base; d = Math.atan2(Math.sin(d), Math.cos(d)); P.yaw = base + clamp(d, -.75, .75); P.pitch = clamp(P.pitch, -.35, .35); }
+  const sm = P.sensMul || 1; // jogabilidade (lote 3): mais fino escondida/mirando e atrito sobre o que dá para usar
+  P.yaw -= dx * sm; P.pitch = clamp(P.pitch - dy * sm * (C.OPT.invY ? -1 : 1), -1.45, 1.45);
+  if (S && S.hidden) { const cama = S.hidden.tipo === 'cama', base = Math.atan2(-S.hidden.face[0], -S.hidden.face[1]); let d = P.yaw - base; d = Math.atan2(Math.sin(d), Math.cos(d)); P.yaw = base + clamp(d, cama ? -1.1 : -.75, cama ? 1.1 : .75); P.pitch = clamp(P.pitch, cama ? -.45 : -.35, cama ? .22 : .35); } // embaixo da cama: os mesmos limites do mouse
 }
 function pad(dt) {
   if (!navigator.getGamepads) return;
