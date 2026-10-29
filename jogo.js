@@ -15,6 +15,7 @@ import { PLAT } from './src/plataforma.js';
 import { criarMonstrosLore } from './src/monstros-lore.js';
 import { criarMonstrosPolimento } from './src/monstros-polimento.js';
 import { criarMonstrosSegredos } from './src/monstros-segredos.js';
+import { criarMonstrosLote5 } from './src/monstros-lote5.js';
 import { instalarAudioMundo } from './src/audio-mundo.js';
 import { instalarAudioPlataforma } from './src/audio-plataforma.js';
 import { instalarAudioSegredos } from './src/audio-segredos.js';
@@ -1957,6 +1958,7 @@ function updateInspetor(dt) {
   M.cool = Math.max(0, M.cool - dt); M.falaT = Math.max(0, M.falaT - dt); M.alvoGarrafa = Math.max(0, M.alvoGarrafa - dt);
   M.ignoraGarrafa = Math.max(0, M.ignoraGarrafa - dt); M.quaseT = Math.max(0, M.quaseT - dt); M.olharT = Math.max(0, M.olharT - dt); M.calorCd = Math.max(0, M.calorCd - dt);
   M.farejaCd = Math.max(0, M.farejaCd - dt); M.escutaCd = Math.max(0, M.escutaCd - dt);
+  M.l5stun = Math.max(0, (M.l5stun || 0) - dt); // Lote 5: o sino/badalada o paralisa (src/monstros-lote5.js)
   for (const k in M.portaCd) M.portaCd[k] -= dt;
   const recuoAntes = M.recuo; M.recuo = Math.max(0, M.recuo - dt); if (recuoAntes > 0 && M.recuo <= 0) fimRecuo();
   const d = M.pos.distanceTo(P.pos), ra = roomAt(M.pos.x, M.pos.z);
@@ -1978,7 +1980,7 @@ function updateInspetor(dt) {
   if (P.room && P.room !== M.ultSalaJog) { M.ultSalaJog = P.room; const rt = S.flags.rotas || (S.flags.rotas = {}), k = W.mapa + ':' + P.room.id; rt[k] = (rt[k] || 0) + 1; }
   // Audição (submersa na água dos túneis, ela não é ouvida; trovão e chuva mascaram os passos)
   const ajuda = 1; // a ajuda invisível já está em D().ouvido
-  const ouvido = P.noiseR * pisoMult() * att * D().ouvido * ajuda * JM.ouvidoMul() * SEG.ouvidoMul() * (M.state === 'caca' ? 1.6 : M.state === 'escuta' ? 1.5 : M.state === 'reza' ? .5 : 1) * mascaraSom(P.pos.x, P.pos.z);
+  const ouvido = P.noiseR * pisoMult() * att * D().ouvido * ajuda * JM.ouvidoMul() * SEG.ouvidoMul() * (M.l5ouvidoMul || 1) * (M.state === 'caca' ? 1.6 : M.state === 'escuta' ? 1.5 : M.state === 'reza' ? .5 : 1) * mascaraSom(P.pos.x, P.pos.z);
   const submersa = !!(W.def.submersa && W.def.submersa());
   const ouve = !S.hidden && !submersa && !(P.room.seguro && !fuga) && (fuga || M.furia > 0 || (P.noiseR > 0 && d < ouvido));
   if (cb && ouve && !(M.alvoGarrafa && d > 4) && !ocupado) {
@@ -2057,8 +2059,8 @@ function updateInspetor(dt) {
   const base = { patrulha: 1.9, investiga: 3.0, procura: 1.6, caca: 4.6, conferir: M.conferir === 2 ? 3.2 : 2 }[M.state] || 1.8;
   const esc = 1 + Math.max(0, S.chapter - 2) * .083;
   const fugaVel = d > 9 ? 5.6 : d < 3 ? 4.2 : 4.9; // na fuga ele fica colado nas suas costas, sem ser impossível
-  const speed = (fuga && M.state === 'caca' ? fugaVel : fuga ? 4.9 : base * esc) * D().vel * (aguaAqui ? .85 : 1);
-  const parado = ['alerta', 'bote', 'agarra', 'escuta', 'emboscada', 'fareja', 'vasculha', 'reza'].includes(M.state);
+  const speed = (fuga && M.state === 'caca' ? fugaVel : fuga ? 4.9 : base * esc) * D().vel * (aguaAqui ? .85 : 1) * (M.l5velMul || 1);
+  const parado = ['alerta', 'bote', 'agarra', 'escuta', 'emboscada', 'fareja', 'vasculha', 'reza'].includes(M.state) || M.l5stun > 0;
   if (fuga && M.state === 'caca') { M.tropecoT -= dt; if (M.tropecoT <= 0 && d > 3) { M.tropecoT = rand(13, 17); M.wait = 2; M.caidoT = 2; SX.tropeco(M.pos); } }
   M.caidoT = Math.max(0, M.caidoT - dt);
   if (M.wait > 0) M.wait -= dt;
@@ -2082,7 +2084,7 @@ function updateInspetor(dt) {
   if (M.state === 'procura' && !M.acao) { M.searchT -= dt; if (M.searchT <= 0) fimProcura(ra); }
   // Assinatura sonora por estado: dá para saber o que ele está fazendo só de ouvir
   M.clickT -= dt; M.somT -= dt;
-  const mudo = ['alerta', 'escuta', 'emboscada', 'fareja', 'vasculha', 'agarra', 'bote', 'reza'].includes(M.state) || (M.state === 'conferir' && M.wait > 0);
+  const mudo = ['alerta', 'escuta', 'emboscada', 'fareja', 'vasculha', 'agarra', 'bote', 'reza'].includes(M.state) || (M.state === 'conferir' && M.wait > 0) || M.l5stun > 0 || M.l5mudo > 0;
   if (M.state === 'emboscada' && M.emboscadaT < 1 && !M.emboscadaClique) { M.emboscadaClique = true; SX.estalo(M.pos, .9); }
   if (!mudo && M.clickT <= 0) { M.clickT = { caca: .45, procura: .55, investiga: 1 }[M.state] || 1.8; SX.estalo(M.pos, (M.state === 'caca' ? 1 : .6) * (M.recuo > 0 ? .35 : 1)); }
   if (!mudo && M.somT <= 0) {
@@ -2091,8 +2093,8 @@ function updateInspetor(dt) {
     else if (M.state === 'patrulha' && M.recuo <= 0) { SX.cantarola(M.pos); M.somT = rand(6, 10); }
     else M.somT = 1.5;
   }
-  if (!S.dead && M.cool <= 0 && !S.hidden && !submersa && !(P.room.seguro && !fuga) && !['bote', 'agarra', 'fareja', 'vasculha', 'alerta'].includes(M.state) && d < (M.state === 'caca' ? 2.3 : 1.2) && !(MP && MP.portaGraca())) iniciarBote();
-  if (!S.dead && M.cool <= 0 && S.hidden && M.achou && d < 2.4 && !['vasculha', 'agarra', 'fareja'].includes(M.state)) iniciarVasculha();
+  if (!S.dead && M.cool <= 0 && M.l5stun <= 0 && !S.hidden && !submersa && !(P.room.seguro && !fuga) && !['bote', 'agarra', 'fareja', 'vasculha', 'alerta'].includes(M.state) && d < (M.state === 'caca' ? 2.3 : 1.2) && !(MP && MP.portaGraca())) iniciarBote();
+  if (!S.dead && M.cool <= 0 && M.l5stun <= 0 && S.hidden && M.achou && d < 2.4 && !['vasculha', 'agarra', 'fareja'].includes(M.state)) iniciarVasculha();
   if (!S.hidden || d > 4) { M.achou = false; M.certo = false; }
   // Corpo
   let gx = M.pos.x, gz = M.pos.z;
@@ -4290,6 +4292,13 @@ const MS = criarMonstrosSegredos({
   saida, env, osc, burst, silaba, box, cyl, plano, interact, roomAt, SALA, visivel, linhaLivre, distSalas, centroSala, pontoEm, planejar, patrulhar, collide, emitNoise,
   sub, subPequeno, toast, conquista, abrirNotaUI, modeloInspetor, ativarInspetor, desativarInspetor, despawnAna, iniciarAlerta, entrarCaca, agarrar, atacar, prendendo
 });
+// Monstros e IA, lote 5: comportamentos novos, variações por capítulo, aparências piores, contra-jogos e perseguições (src/monstros-lote5.js)
+const L5 = criarMonstrosLote5({
+  THREE, W, P, M, MON, ANA, ANA_G, PROC, MAT, OPT, camera, scene, SX, SFX, D,
+  get S() { return S; }, get AC() { return AC; }, get perf() { return perf; }, get flashPisca() { return flashPisca; }, get ui() { return ui; }, get mode() { return mode; }, get raioI() { return raioI; },
+  roomAt, SALA, visivel, linhaLivre, distSalas, salaAdj, centroSala, pontoEm, planejar, collide, salasAlcancaveis, naLuz, prendendo, emitNoise, estourarLampada, setDoor, tremer, abafarMundo,
+  iniciarAlerta, entrarCaca, falaInspetor, subPequeno, sub, toast, conquista, falar
+});
 const JM = criarMundoJogavel({
   THREE, W, P, M, PROC, ANA, keys, R, MAT, OPT, SFX, SX, camera,
   get S() { return S; }, get AC() { return AC; }, get perf() { return perf; }, get alvo() { return alvo; }, get mode() { return mode; }, get ui() { return ui; }, get digitado() { return digitado; },
@@ -4358,7 +4367,7 @@ function frame(dt) {
   } else if (ativo) {
     S.tempo += dt; S.capT += dt; PG.tick(dt);
     updatePlayer(dt); updateLanterna(dt); updateFear(dt);
-    { const dm = dt * JP.ritmo(); if (!congelado(dm)) { updateInspetor(dm); updateAna(dm); updateProcissao(dm); ML.tick(dm); MS.tick(dm); } updateEventos(dm); } updateGarrafas(dt); // ritmo do mundo (acessibilidade): a Lia não fica mais lenta
+    { const dm = dt * JP.ritmo(); if (!congelado(dm)) { updateInspetor(dm); updateAna(dm); updateProcissao(dm); ML.tick(dm); MS.tick(dm); L5.tick(dm); } updateEventos(dm); } updateGarrafas(dt); // ritmo do mundo (acessibilidade): a Lia não fica mais lenta
     updateClima(dt); updateJogabilidade(dt); updateAlvo(); JM.update(dt); SEG.update(dt); updateSegurar(dt); updateFita(dt); updateHUD(); updateSub(dt); updateAudio(dt); H.tick(dt);
   } else if (mundoVivo()) { // cofre, quadro (e no Pesadelo notas e diário): o mundo continua, com o som abafado
     S.tempo += dt; S.capT += dt; P.noiseR = 0; abafar(true);
