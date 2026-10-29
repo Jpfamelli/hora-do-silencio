@@ -23,6 +23,11 @@ export const TXT = {
     ANA: 'UM. DOIS. TRÊS. QUATRO. CINCO.',
     TOME: 'O CARRINHO É AZUL. NÃO É PRETO. É AZUL.',
     JOAQUIM: 'O HOMEM DO RÁDIO SABE MAIS DO QUE DIZ.',
+    BENTO: 'TRÊS BOLINHAS DE GUDE. UMA LISTRADA, UMA PINTADA, UMA LISA. ERAM MINHAS.',
+    LUIZ: 'EU SÓ QUERIA DORMIR. EU SÓ QUERIA DORMIR. EU SÓ QUERIA DORMIR.',
+    SILENCIO: 'A HORA DO SILÊNCIO COMEÇA ÀS NOVE E NÃO ACABA.',
+    REGRA: 'A SÉTIMA REGRA NÃO ESTÁ NA PAREDE. A SÉTIMA REGRA É VOCÊ.',
+    '1979': 'FOI NESSE ANO. NINGUÉM SAIU. NEM ELE.',
     ficha: nome => `FICHA DE MATRÍCULA — ${nome}. IDADE: ??. MOTIVO: ENTROU SOZINHO(A). LEITO: 38. DATA DE SAÍDA: `
   },
   ramais: 'RAMAIS INTERNOS — 1979\n\n03 .... cozinha\n05 .... enfermaria\n07 .... lavanderia\n11 .... biblioteca\n13 .... refeitório\n15 .... casa de máquinas\n09 .... capela\n\n00 .... NÃO DISCAR\n\n(a lápis, embaixo, letra de criança: tem um que não tá aqui)',
@@ -67,7 +72,15 @@ export const CONQUISTAS = [
   { id: 'l4_barcos', nome: 'Frota do Davi', desc: 'Ache os seis barquinhos de papel.', secreta: true, dica: 'perto da água' },
   { id: 'l4_bilhete', nome: 'Recado Para Mim', desc: 'Leia o bilhete que você deixou na noite anterior.', secreta: true, dica: 'papel e lápis' },
   { id: 'l4_nahora', nome: 'Na Hora Certa', desc: 'Esteja no internato quando o relógio de verdade marcar 21h.', secreta: true, dica: 'jogue às nove' },
-  { id: 'l4_lampada', nome: 'Pisca-Pisca', desc: 'Abra a gaveta da enfermaria com o número da lâmpada.', secreta: true, dica: 'não está piscando à toa' }
+  { id: 'l4_lampada', nome: 'Pisca-Pisca', desc: 'Abra a gaveta da enfermaria com o número da lâmpada.', secreta: true, dica: 'não está piscando à toa' },
+  { id: 'l4_pontaria', nome: 'Pontaria', desc: 'Apague uma lâmpada com o estilingue do Davi.', secreta: true, dica: 'ele acertava passarinho do outro lado do pátio' },
+  { id: 'l4_sal', nome: 'Linha de Sal', desc: 'Segure a fila numa linha de sal grosso.', secreta: true, dica: 'a avó sempre dizia' },
+  { id: 'l4_cesta', nome: 'Cesta', desc: 'Jogue uma garrafa dentro do poço de longe.', secreta: true, dica: 'o poço do monta-cargas' },
+  { id: 'l4_bento', nome: 'Bolso do Bento', desc: 'Encaixe as três bolinhas de gude na lápide certa.', secreta: true, dica: 'cada uma num mapa' },
+  { id: 'l4_vitral', nome: 'Pela Janela', desc: 'Deixe o luar entrar quebrando o vitral.', secreta: true, dica: 'uma janela pintada de preto' },
+  { id: 'l4_olho', nome: 'Como Ele Vê', desc: 'Use o olho de vidro para enxergar através das paredes.', secreta: true, dica: 'numa gaveta do depósito' },
+  { id: 'l4_recepcao', nome: 'A Cobrar', desc: 'Atenda a telefonista de 1979 no telefone da recepção.', secreta: true, dica: 'disque 0' },
+  { id: 'l4_canecas', nome: 'Passa a Caneca', desc: 'Dê a volta inteira no ritmo das canecas do refeitório.', secreta: true, dica: 'no tempo do batuque' }
 ];
 const ITENS = {
   bala: { nome: 'Bala de goma', dica: 'Para alguém que goste de doce. Chegue perto da Ana iluminada.' },
@@ -79,7 +92,11 @@ const ITENS = {
   apito: { nome: 'Apito reserva', dica: 'U sopra. Ele obedece ao apito.' },
   lanterninha: { nome: 'Lanterninha do Davi', dica: 'U troca de lanterna. Não gasta pilha.' },
   piao: { nome: 'Pião confiscado', dica: 'U solta o pião girando no chão.' },
-  roxa: { nome: 'Pilha roxa', dica: 'U coloca. Dura pouco.' }
+  roxa: { nome: 'Pilha roxa', dica: 'U coloca. Dura pouco.' },
+  estilingue: { nome: 'Estilingue do Davi', dica: 'U atira uma pedrinha longe, quase sem ruído. Só 3 pedras.' },
+  olho: { nome: 'Olho de vidro', dica: 'U vê como ele por 3 s — mas a audição dele dobra.' },
+  sal: { nome: 'Saco de sal grosso', dica: 'U risca uma linha na porta mais perto. A fila para no sal.' },
+  vela: { nome: 'Toco de vela', dica: 'U acende em cima de um móvel. A luz prende a Ana de perto.' }
 };
 
 export function criarSegredos(C) {
@@ -280,6 +297,27 @@ export function criarSegredos(C) {
       SFX.papel(); dar('bala'); setTimeout(() => lia('Uma bala de goma. Ainda no papel. Quem guarda bala por quinze anos?', true), 700);
     });
     void it;
+    // moeda de 1979 no chão do ponto de ônibus + orelhão
+    const sp2 = W.def.spawns.inicio;
+    if (sp2 && !F().l4moeda && !F().l4orelhao) {
+      let mx = sp2.x + 1.2, mz = sp2.z + 1.2; if (!livre(mx, mz)) { mx = sp2.x - 1.2; }
+      const gm = grupo(mx, .02, mz, 0);
+      const moeda = C.cyl(.03, .03, .006, mat(0xb8a850, 0x403010, .6, { metalness: .7 }), 0, 0, 0, 14, gm); moeda.rotation.x = Math.PI / 2;
+      const itm = examinar(gm, 'Pegar a moeda de 1979 do chão', () => { gm.visible = false; F().l4moeda = true; SFX.pegar(); setTimeout(() => lia('Uma moeda velha. 1979. Dá pra uma ligação a cobrar.', true), 700); });
+      itm.on = () => gm.visible;
+    }
+    const po = lugar('posto', 'o', .3, .4);
+    if (po) {
+      const g2 = grupo(po.wx - Math.sin(po.ry) * .03, 1.2, po.wz - Math.cos(po.ry) * .03, po.ry);
+      C.box(.22, .5, .14, mat(0x204a30, 0x081810, .5), 0, 0, .07, g2);
+      examinar(g2, () => F().l4moeda && !F().l4orelhao ? 'Pôr a moeda e fazer uma ligação a cobrar' : F().l4orelhao ? '!Um orelhão de rua, o fone frio.' : '!Um orelhão. Precisa de uma moeda.', () => {
+        if (!F().l4moeda || F().l4orelhao) return;
+        F().l4orelhao = true; som.tique({ x: po.x, y: 1.2, z: po.z }, 2, .12);
+        C.sub('voz', '(a telefonista) Ligação a cobrar do Internato São Lázaro. A senhora aceita?', true);
+        setTimeout(() => C.sub('davi', '(do outro lado, longe) Lia, não sobe. Por favor, não sobe. Ele tá acordado.', true), 4200);
+        setTimeout(() => lia('Davi? Davi, é você?'), 9000);
+      });
+    }
   }
 
   // ------------------------------------------------ térreo
@@ -287,6 +325,8 @@ export function criarSegredos(C) {
     const s = S();
     montarRelogio(); montarSapateira(); montarMaquina(); montarTelefone(); montarForno(); montarDuto();
     montarGaveta(); montarLampada(); montarChuveiro(); montarCentrifuga(); montarCarteira(); montarTijolo(); montarGude(); montarAtalhoBalcao();
+    montarEstilingue(); montarCarrinho(); montarCanecas(); montarSal(); montarVela(); montarRecepcao(); montarGudeMapa('terreo');
+    notaEscondida('despensa', 'o', .5, 'Carta da cozinheira', '(dobrada atrás de um pote de sal)\n\nFui eu que deixava os pães no porão. As crianças tinham fome de noite. O diretor dizia que fome ensina. Eu não acreditava em regra que faz criança chorar.\n\n— D. Corina, cozinha', 'l4notaT');
     const pc = lugar('cozinha', 'n', .7, .45); if (pc) { C.box(.7, .8, .5, mat(0x9a9a92, 0x202020, .4), pc.x, .4, pc.z, W.grupo, true); barquinho('cozinha', pc.x, .82, pc.z); }
     const pl = lugar('lavand', 'n', .25, .5); if (pl) { C.box(.8, .62, .6, mat(0x7a7a72, 0x181818, .4), pl.x, .31, pl.z, W.grupo, true); barquinho('lavand', pl.x, .64, pl.z); }
     void s;
@@ -374,7 +414,7 @@ export function criarSegredos(C) {
       if (e.code === 'Escape') { fecharModo(); return; }
       if (st.fila.length) return; // a máquina está escrevendo sozinha
       let ch = null;
-      if (e.code === 'Enter') { conferir(); st.linhas.push(st.atual); st.atual = ''; }
+      if (e.code === 'Enter') { conferir(); st.linhas.push(st.atual); st.atual = ''; som.ding(pos); C.emitNoise(mq.x, mq.z, 5); }
       else if (e.code === 'Backspace') st.atual = st.atual.slice(0, -1);
       else if (e.code === 'Space') { conferir(); st.atual += ' '; }
       else if (e.key && e.key.length === 1 && /[\p{L}\d.,!?-]/u.test(e.key)) { ch = e.key.toUpperCase(); st.atual += ch; }
@@ -452,6 +492,8 @@ export function criarSegredos(C) {
     const x = (r.x0 + r.x1) / 2, z = (r.z0 + r.z1) / 2;
     tocarSala(x, z, 9);
     C.toast(`[lá longe, o telefone da ${r.nome.toLowerCase()} começa a tocar]`);
+    const VOZES = { '11': ['voz', '(no fone, soletrando baixinho) ...s-i-l-ê-n-c-i-o... silêncio...'], '13': ['voz', '(arrastar de cadeiras e um pedido de prato pelo fone) ...mais um, mais um, falta sempre um...'], '15': ['moacir', '(o gerador tosse do outro lado) ...liga... desliga... liga...'] };
+    if (VOZES[d]) setTimeout(() => { if (W.mapa === 'terreo') C.sub(VOZES[d][0], VOZES[d][1], true); }, 1600);
     if (!F().l4ramalDica) { F().l4ramalDica = true; setTimeout(() => lia('Ele vai atender. Ele sempre atendia.', true), 1800); }
   }
   function tocarSala(x, z, dur) { G.toques.push({ x, z, t: dur, cd: 0 }); atrair(x, z, 5, { aoChegar: () => { const t = G.toques.find(q => q.x === x && q.z === z); if (t) t.t = Math.min(t.t, 1); } }); }
@@ -765,6 +807,9 @@ export function criarSegredos(C) {
     const pbh = lugar('banhS', 'o', .7, .55);
     if (pbh) { C.box(.7, .45, 1.4, mat(0xd8d8d0, 0x202020, .4), pbh.x, .225, pbh.z, W.grupo, true); barquinho('banheira', pbh.x, .47, pbh.z); }
     // jogo de luz do Dormitório A (janela para a mata): S.O.S.
+    montarAtalhoGiz(); montarVitral(); montarOlho(); montarGudeMapa('superior');
+    vermelhoPlano('patamar', 's', .5, 'ELE DORME DE OLHO ABERTO');
+    notaEscondida('dormE', 'n', .7, 'Desenho numa folha dobrada', '(giz de cera, mão de criança: uma casa, um sol, quatro bonequinhos de mãos dadas)\n\nembaixo, a lápis:\n"A gente ia fugir pela janela. O Davi disse que dava. Eu desenhei pra lembrar."', 'l4notaS');
   }
   function soldadinho() {
     const g = new THREE.Group(), verm = mat(0xa02020, 0x300808, .8), azul = mat(0x203a80, 0x081030, .8);
@@ -852,6 +897,8 @@ export function criarSegredos(C) {
     }
     const pv = lugar('hub', 'n', .3, .5);
     if (pv) { const m = new THREE.Mesh(new THREE.PlaneGeometry(1.4, .7), matTex(escrita(['A ÁGUA ESCUTA'], 'rgba(255,240,230,.95)', 640, 256, 50))); m.position.set(pv.wx + Math.sin(pv.ry) * .01, 1.5, pv.wz + Math.cos(pv.ry) * .01); m.rotation.y = pv.ry; m.visible = false; W.grupo.add(m); G.vermelhos.push(m); }
+    montarGudeMapa('tuneis'); vermelhoPlano('secreta', 's', .5, 'QUEM ABRIU A MINHA GAVETA');
+    notaEscondida('secreta', 'n', .3, 'Botão de farda', '(um botão de metal enrolado num pedaço de pano)\n\nno pano, bordado torto:\n"M. D. — inspetor. Devolver quando ele parar de usar."', 'l4notaU');
   }
   function piao() { const g = new THREE.Group(); const c = new THREE.Mesh(new THREE.ConeGeometry(.04, .06, 10), mat(0xc07020, 0x402008, .9)); c.rotation.x = Math.PI; c.position.y = .03; g.add(c); const t = C.cyl(.042, .042, .02, mat(0x2050a0, 0x081840, .9), 0, .07, 0, 10, g); void t; return g; }
   function montarCemiterio() {
@@ -866,6 +913,7 @@ export function criarSegredos(C) {
         C.abrirNotaUI('Trouxa de pano', 'Uma pilha, um curativo e um papel de embrulho de pão:\n\nVi seu sinal. — J.');
       });
     }
+    montarRespiro(); montarLapide(); vermelhoPlano('cem', 'o', .5, 'ELE NÃO DORME. ELE ESPERA.');
   }
 
   // ------------------------------------------------ pilha roxa (luz negra), uma por noite
@@ -910,7 +958,9 @@ export function criarSegredos(C) {
     G.luzNegra = Math.max(0, G.luzNegra - dt);
     const vis = S().flashOn;
     for (const m of G.decais) { m.visible = vis; if (G.luzNegra < 4) m.material.opacity = G.luzNegra / 4 * .9; }
-    if (G.luzNegra <= 0) { for (const m of G.decais) { W.grupo.remove(m); m.geometry.dispose(); m.material.dispose(); } G.decais = []; C.toast('A pilha roxa acabou.'); }
+    if (vis && ANA.ativa) { try { C.ANA_G.userData.olhoMat.color.setHex(0xc89cff); } catch (e) {} }
+    if (vis) hud.textContent = `luz negra · ${Math.ceil(G.luzNegra)} s`;
+    if (G.luzNegra <= 0) { hud.textContent = ''; for (const m of G.decais) { W.grupo.remove(m); m.geometry.dispose(); m.material.dispose(); } G.decais = []; C.toast('A pilha roxa acabou.'); }
   }
 
   // ------------------------------------------------ lanterna da tentativa anterior
@@ -969,7 +1019,11 @@ export function criarSegredos(C) {
       const it = examinar(g, () => G.piao && G.piao.t > 0 ? '!O pião zumbe girando.' : 'Pegar o pião de volta', () => { if (G.piao && G.piao.t > 0) return; g.visible = false; F().l4piaoLargado = false; dar('piao', 1, true); C.toast('Pião de volta no bolso.'); });
       it.on = () => g.visible;
     },
-    roxa() { tirar('roxa'); luzNegra(); }
+    roxa() { tirar('roxa'); luzNegra(); },
+    estilingue() { if (S().hidden) { C.toast('Aqui dentro não dá.'); return; } atirarPedra(); },
+    olho() { usarOlho(); },
+    sal() { riscarSal(); },
+    vela() { acenderVela(); }
   };
   function darBala() {
     if (!bolso().bala || !ANA.ativa) return false;
@@ -1127,6 +1181,325 @@ export function criarSegredos(C) {
     if (W.def.procissao && W.def.procissao()) S().timers.procissao = Math.min(S().timers.procissao, 60);
   }
 
+  // ============================================================ LOTE 4 — segredos novos
+  // --------- escritas da luz vermelha/negra: um plano extra por mapa
+  function vermelhoPlano(sid, lado, t, txt) {
+    const p = lugar(sid, lado, t, .5); if (!p) return;
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(1.4, .7), matTex(escrita([txt], 'rgba(255,240,230,.95)', 640, 256, 46)));
+    m.position.set(p.wx + Math.sin(p.ry) * .01, 1.45, p.wz + Math.cos(p.ry) * .01); m.rotation.y = p.ry; m.visible = false; W.grupo.add(m); G.vermelhos.push(m);
+  }
+
+  // --------- bilhetes escondidos, um por mapa, cada um com uma referência interna
+  function notaEscondida(sid, lado, t, titulo, texto, flag) {
+    const p = lugar(sid, lado, t, .35); if (!p || F()[flag]) return;
+    const g = grupo(p.wx - Math.sin(p.ry) * .04, 1.1, p.wz - Math.cos(p.ry) * .04, p.ry);
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(.16, .2), new THREE.MeshStandardMaterial({ color: 0xe0d6bc, emissive: 0x302a20, emissiveIntensity: .8, side: THREE.DoubleSide })); m.rotation.x = .1; g.add(m);
+    const it = examinar(g, 'Pegar o papel escondido', () => { g.visible = false; F()[flag] = true; SFX.papel(); C.abrirNotaUI(titulo, texto); });
+    it.on = () => g.visible;
+    G.segredos = G.segredos || []; G.segredos.push({ x: p.x, z: p.z, feito: () => !!F()[flag] });
+  }
+
+  // --------- estilingue do Davi: pedrinha com arco longo, quase sem ruído
+  function montarEstilingue() {
+    const p = lugar('aula', 'n', .8, .55); if (!p || bolso().estilingue || F().l4estilUsado) return;
+    const g = grupo(p.x, 0, p.z, p.ry); const mad = mat(0x5a3a20, 0x140a04);
+    C.box(.5, .04, .4, mad, 0, .7, 0, g); for (const [dx, dz] of [[-.2, -.16], [.2, -.16], [-.2, .16], [.2, .16]]) C.box(.03, .7, .03, MAT_METAL(), dx, .35, dz, g, false);
+    const forq = new THREE.Group(); forq.position.set(0, .78, 0); g.add(forq);
+    C.box(.015, .1, .015, mat(0x6a4824, 0x201004), 0, .05, 0, forq, false);
+    for (const dx of [-.04, .04]) C.box(.012, .08, .012, mat(0x6a4824, 0x201004), dx, .13, 0, forq, false);
+    const it = examinar(g, 'Pegar o estilingue (3 pedrinhas)', () => { g.visible = false; SFX.pegar(); dar('estilingue', 3); setTimeout(() => lia('O estilingue do Davi. Ele acertava passarinho do outro lado do pátio.', true), 700); });
+    it.on = () => g.visible;
+  }
+  function atirarPedra() {
+    tirar('estilingue'); if (bolso().estilingue <= 0) F().l4estilUsado = true;
+    const fw = new THREE.Vector3(); camera.getWorldDirection(fw); fw.normalize();
+    const peso = new THREE.Mesh(new THREE.SphereGeometry(.02, 6, 5), new THREE.MeshStandardMaterial({ color: 0x8a8278, emissive: 0x1a1814, emissiveIntensity: .5 }));
+    peso.position.copy(camera.position).addScaledVector(fw, .4); W.grupo.add(peso);
+    const vel = fw.clone().multiplyScalar(14); G.pedrinhas = G.pedrinhas || []; G.pedrinhas.push({ m: peso, v: vel, t: 0, estourou: false });
+    som.corda(); C.emitNoise(P.pos.x, P.pos.z, .6);
+  }
+  function updatePedrinhas(dt) {
+    const L = G.pedrinhas; if (!L || !L.length) return;
+    for (let i = L.length - 1; i >= 0; i--) {
+      const p = L[i]; p.t += dt; p.v.y -= 7 * dt; p.m.position.addScaledVector(p.v, dt);
+      for (const Lmp of W.lampadas) {
+        if (!Lmp.ligada || Lmp.estourada || !Lmp.bulbo) continue;
+        if (p.m.position.distanceTo(Lmp.bulbo.position) < .4) {
+          Lmp.estourada = true; Lmp.ligada = false; Lmp.luz.intensity = 0; Lmp.bulbo.material.emissiveIntensity = 0; if (Lmp.halo) Lmp.halo.material.opacity = 0;
+          SFX.vidro(Lmp.bulbo.position.x, Lmp.bulbo.position.z); C.emitNoise(Lmp.bulbo.position.x, Lmp.bulbo.position.z, 10);
+          C.conquista('l4_pontaria'); p.estourou = true;
+        }
+      }
+      if (ANA.ativa && !p.assustou && p.m.position.distanceTo(ANA.pos) < 1) { p.assustou = true; G.presa = Math.max(G.presa, .8); C.subPequeno('ana', 'Quem jogou isso?'); }
+      if (W.mapa === 'cemiterio' && p.m.position.y > 3 && C.roomAt(p.m.position.x, p.m.position.z) && C.roomAt(p.m.position.x, p.m.position.z).id === 'capela' && !F().l4badalada) {
+        F().l4badalada = true; som.sino({ x: p.m.position.x, y: 5, z: p.m.position.z }, .5, .91); C.conquista('l4_badalada'); C.toast('[a pedrinha acertou o sino: uma badalada torta]'); if (M.ativo) atrair(p.m.position.x, p.m.position.z, 8, { forca: true, ouvido: .2 }); p.estourou = true;
+      }
+      const parou = p.estourou || p.t > 1.6 || p.m.position.y < .03 || (C.collide && !livre(p.m.position.x, p.m.position.z, .02));
+      if (parou) {
+        const salaP = C.roomAt(p.m.position.x, p.m.position.z);
+        if (!p.estourou && salaP && salaP.agua) { som.rolar({ x: p.m.position.x, y: .1, z: p.m.position.z }); C.emitNoise(p.m.position.x, p.m.position.z, 3); }
+        else if (!p.estourou) { som.tique({ x: p.m.position.x, y: p.m.position.y, z: p.m.position.z }, 1); C.emitNoise(p.m.position.x, p.m.position.z, 6); atrair(p.m.position.x, p.m.position.z, 4, { ouvido: .3 }); }
+        W.grupo.remove(p.m); p.m.geometry.dispose(); p.m.material.dispose(); L.splice(i, 1);
+      }
+    }
+  }
+
+  // --------- olho de vidro: ver como ele por 3 s (silhueta através das paredes), com a audição dele dobrada
+  function montarOlho() {
+    const p = lugar('sotao', 'l', .3, .4); if (!p || bolso().olho || F().l4olhoPego) return;
+    const g = grupo(p.x, 0, p.z, p.ry);
+    C.box(.3, .4, .3, mat(0x4a2c18, 0x140a04), 0, .2, 0, g);
+    const olho = new THREE.Mesh(new THREE.SphereGeometry(.03, 10, 8), new THREE.MeshStandardMaterial({ color: 0xe8e4e0, emissive: 0x403a30, emissiveIntensity: .6, roughness: .1 })); olho.position.y = .43; g.add(olho);
+    const it = examinar(g, 'Pegar o olho de vidro', () => { g.visible = false; F().l4olhoPego = true; SFX.pegar(); dar('olho'); setTimeout(() => lia('Um olho de vidro. Do Moacir, antes de perder os dois. Ainda olha.', true), 700); });
+    it.on = () => g.visible;
+  }
+  function usarOlho() {
+    if (G.olhoCd > 0) { C.toast(`O olho ainda está frio. (${Math.ceil(G.olhoCd)} s)`); return; }
+    G.olhoT = 3; G.olhoCd = 45; C.conquista('l4_olho');
+    if (!G.olhoMesh) {
+      const mt = new THREE.MeshBasicMaterial({ color: 0xffb060, transparent: true, opacity: .55, depthTest: false, depthWrite: false });
+      const silh = new THREE.Group();
+      const corpo = new THREE.Mesh(new THREE.CylinderGeometry(.18, .26, 1.5, 8), mt); corpo.position.y = .9; silh.add(corpo);
+      const cab = new THREE.Mesh(new THREE.SphereGeometry(.17, 8, 6), mt); cab.position.y = 1.85; silh.add(cab);
+      silh.traverse(o => { o.renderOrder = 999; }); silh.visible = false; W.grupo.add(silh); G.olhoMesh = silh;
+      const mt2 = new THREE.MeshBasicMaterial({ color: 0xffd090, transparent: true, opacity: .5, depthTest: false, depthWrite: false });
+      const silhA = new THREE.Group();
+      const corpoA = new THREE.Mesh(new THREE.CylinderGeometry(.1, .14, .95, 7), mt2); corpoA.position.y = .55; silhA.add(corpoA);
+      const cabA = new THREE.Mesh(new THREE.SphereGeometry(.12, 8, 6), mt2); cabA.position.y = 1.12; silhA.add(cabA);
+      silhA.traverse(o => { o.renderOrder = 999; }); silhA.visible = false; W.grupo.add(silhA); G.olhoAna = silhA;
+    }
+    C.toast('A visão dele: âmbar, através das paredes — ele e a menina. Mas agora ele te ouve o dobro.');
+  }
+  function updateOlho(dt) {
+    if (G.olhoCd > 0) G.olhoCd = Math.max(0, G.olhoCd - dt);
+    const s = G.olhoMesh; if (!s) return;
+    const sa = G.olhoAna;
+    if (G.olhoT > 0) { G.olhoT -= dt; s.visible = M.ativo; if (M.ativo && M.pos) s.position.set(M.pos.x, 0, M.pos.z); if (sa) { sa.visible = ANA.ativa; if (ANA.ativa) sa.position.set(ANA.pos.x, 0, ANA.pos.z); } if (G.olhoT <= 0) { s.visible = false; if (sa) sa.visible = false; C.toast('A visão passou.'); } }
+    else { s.visible = false; if (sa) sa.visible = false; }
+  }
+
+  // --------- carrinho azul da lavanderia: distração que faz uma trilha de som
+  function montarCarrinho() {
+    const p = lugar('lavand', 's', .4, .6); if (!p || F().l4carrinhoUsado) return;
+    const g = grupo(p.x, 0, p.z, p.ry), azul = mat(0x203a80, 0x081030, .7), metal = MAT_METAL();
+    C.box(.5, .4, .7, azul, 0, .45, 0, g); for (const [dx, dz] of [[-.2, -.3], [.2, -.3], [-.2, .3], [.2, .3]]) { const roda = C.cyl(.06, .06, .03, metal, dx, .06, dz, 10, g); roda.rotation.z = Math.PI / 2; }
+    C.box(.52, .3, .02, azul, 0, .7, -.34, g);
+    examinar(g, () => F().l4carrinhoUsado ? '!O carrinho azul, parado lá na frente.' : P.crouch ? 'Empurrar o carrinho de roupa com força' : '!Um carrinho de roupa suja, cheio de lençóis. Agachada, dá pra empurrar.', () => {
+      if (F().l4carrinhoUsado || !P.crouch) return;
+      F().l4carrinhoUsado = true; g.visible = true;
+      const fw = new THREE.Vector3(); camera.getWorldDirection(fw); fw.y = 0; fw.normalize();
+      G.carrinho = { g, dir: fw.clone(), t: 4, cd: 0 }; C.emitNoise(p.x, p.z, 5, true);
+      if (ANA.ativa && ANA.pos.distanceTo(P.pos) < 12) setTimeout(() => { if (SFX.risada) SFX.risada(p.x, p.z); }, 900);
+    });
+  }
+  function updateCarrinho(dt) {
+    const c = G.carrinho; if (!c) return;
+    c.t -= dt; c.cd -= dt;
+    const adiant = c.dir.clone().multiplyScalar(2.2 * dt), nx = c.g.position.x + adiant.x, nz = c.g.position.z + adiant.z;
+    if (c.t > 0 && livre(nx, nz, .25)) { c.g.position.x = nx; c.g.position.z = nz; if (c.cd <= 0) { c.cd = .35; som.rolar({ x: nx, y: .2, z: nz }); C.emitNoise(nx, nz, 7); } }
+    else if (c.t > 0) { c.t = 0; som.rolar({ x: c.g.position.x, y: .2, z: c.g.position.z }); C.emitNoise(c.g.position.x, c.g.position.z, 9); }
+    if (c.t <= 0 && !c.parou) { c.parou = true; if (M.ativo) atrair(c.g.position.x, c.g.position.z, 5, { ouvido: .3 }); G.carrinho = null; }
+  }
+
+  // --------- canecas de lata do refeitório: passar no ritmo
+  function montarCanecas() {
+    const r = C.SALA('refeit'); if (!r || F().l4canecas) return;
+    const cx = (r.x0 + r.x1) / 2, cz = (r.z0 + r.z1) / 2, metal = mat(0xb0a890, 0x201c14, .6, { metalness: .5 });
+    const g = grupo(cx - .9, .78, cz, 0); const canecas = [];
+    for (let i = 0; i < 7; i++) { const cn = C.cyl(.035, .03, .07, metal, i * .3, 0, 0, 10, g); canecas.push(cn); }
+    G.canecas = { idx: 0, per: .6, t: 0, cx, cz, g, canecas, erro: 0 };
+    examinar(g, () => F().l4canecas ? '!Sete canecas de lata. A gaveta já foi aberta.' : `Passar a caneca no ritmo (${G.canecas.idx}/7)`, () => {
+      const q = G.canecas; if (!q || F().l4canecas) return;
+      const fase = (perf() % q.per) / q.per, perto = Math.min(fase, 1 - fase);
+      som.lata({ x: cx, y: .8, z: cz }, .25);
+      if (perto < .13) { q.idx++; if (q.canecas[q.idx - 1]) q.canecas[q.idx - 1].position.x += .08; C.subPequeno('lia', '…'); if (q.idx >= 7) { F().l4canecas = true; C.conquista('l4_canecas'); S().inv.kits++; S().inv.pilhas++; C.renderInvMini(); C.toast('A volta inteira. A gaveta da mesa destravou: um curativo e uma pilha.'); } }
+      else { q.idx = 0; q.canecas.forEach((cn, i) => cn.position.x = i * .3); C.emitNoise(cx, cz, 12, true); C.toast('[uma caneca caiu no chão com barulho de lata]'); }
+    });
+  }
+  function updateCanecas(dt) {
+    const q = G.canecas; if (!q || F().l4canecas) return;
+    q.t -= dt; if (q.t <= 0 && dist(q.cx, q.cz) < 6) { q.t = q.per; som.tique({ x: q.cx, y: .8, z: q.cz }, 1, .05); }
+  }
+
+  // --------- saco de sal grosso: a linha que a fila não cruza
+  function montarSal() {
+    const p = lugar('despensa', 'n', .5, .4); if (!p || bolso().sal || F().l4salUsado) return;
+    const g = grupo(p.x, 0, p.z, p.ry);
+    C.box(.28, .34, .22, mat(0xcac4b2, 0x201c14, .5), 0, .5, 0, g);
+    const et = new THREE.Mesh(new THREE.PlaneGeometry(.22, .14), matTex(escrita(['SAL'], 'rgba(40,20,10,.8)', 128, 80, 34))); et.position.set(0, .5, .12); g.add(et);
+    const it = examinar(g, 'Pegar o saco de sal grosso', () => { g.visible = false; SFX.papel(); dar('sal'); setTimeout(() => lia('Sal grosso. A avó dizia que alma ruim não cruza sal.', true), 700); });
+    it.on = () => g.visible;
+  }
+  function riscarSal() {
+    const porta = (W.links || []).map(l => ({ l, d: Math.hypot(l.x - P.pos.x, l.z - P.pos.z) })).sort((a, b) => a.d - b.d)[0];
+    if (!porta || porta.d > 2.6) { C.toast('Chegue perto de uma porta para riscar o sal no batente.'); return; }
+    tirar('sal'); F().l4salUsado = true; SFX.papel();
+    const l = porta.l, linha = new THREE.Mesh(new THREE.PlaneGeometry(1.1, .12), new THREE.MeshBasicMaterial({ color: 0xf0ece0, transparent: true, opacity: .85, depthWrite: false }));
+    linha.rotation.x = -Math.PI / 2; linha.position.set(l.x, .02, l.z); W.grupo.add(linha);
+    G.sal = { x: l.x, z: l.z, m: linha, usado: false };
+    C.toast('Uma linha branca de sal no batente. A primeira que tentar passar vai parar aqui.');
+  }
+  function updateSal(dt) {
+    const s = G.sal; if (!s || s.usado) return; void dt;
+    if (PROC.fase === 'passando' && Math.hypot(PROC.pos.x - s.x, PROC.pos.z - s.z) < 2.2) {
+      s.usado = true; PROC.t = Math.min(PROC.t, .6); C.conquista('l4_sal');
+      C.toast('[a fila para no sal. Uma criança se abaixa pra olhar a linha. A procissão dá a volta.]');
+      fadeSal(s); return;
+    }
+    if (M.ativo && M.pos && ['caca', 'investiga', 'procura', 'vasculha', 'fareja'].includes(M.state) && Math.hypot(M.pos.x - s.x, M.pos.z - s.z) < .7) {
+      s.usado = true; C.conquista('l4_sal');
+      M.state = 'procura'; M.path = []; M.wait = 3; M.searchT = 3; if (M.ultimo) M.ultimo.set(s.x - (P.pos.x - s.x) * .2, 0, s.z - (P.pos.z - s.z) * .2);
+      C.subPequeno('inspetor', '(para no batente, fareja o chão) O que é isso...'); C.toast('[ele parou na linha de sal e voltou]'); fadeSal(s);
+    }
+  }
+  function fadeSal(s) { let t = 0; G.tick.push(dt => { if (!s.m.parent) return; t += dt; s.m.material.opacity = Math.max(0, .85 - t * .4); if (t > 2.2) { s.m.parent.remove(s.m); s.m.geometry.dispose(); s.m.material.dispose(); } }); }
+
+  // --------- atalho de giz das crianças (um vão agachada dentro do andar de cima)
+  function montarAtalhoGiz() {
+    const a = lugar('roup', 's', .3, .2), b = lugar('corr', 'n', .7, .2); if (!a || !b) return;
+    const boca = (p, destino, nome) => {
+      const g = grupo(p.wx + Math.sin(p.ry) * .01, .3, p.wz + Math.cos(p.ry) * .01, p.ry);
+      g.add(new THREE.Mesh(new THREE.PlaneGeometry(.5, .45), new THREE.MeshStandardMaterial({ color: 0x1a1612, emissive: 0x0a0806, emissiveIntensity: .4, roughness: 1 })));
+      const bon = new THREE.Mesh(new THREE.PlaneGeometry(.16, .2), matTex(escrita(['ꝗ'], 'rgba(225,220,205,.7)', 64, 80, 44))); bon.position.set(.22, .26, .003); g.add(bon);
+      examinar(g, () => P.crouch ? `Passar pelo vão das crianças (sai perto da ${nome}) · a lanterna não cabe acesa` : '!Um vão baixo na parede, com um bonequinho de giz agachado. Só agachada.', () => {
+        if (!P.crouch) return;
+        const eraLuz = S().flashOn; if (eraLuz) S().flashOn = false;
+        C.emitNoise(p.x, p.z, 3, true); som.chocalho({ x: p.x, y: .3, z: p.z });
+        C.fade(true, () => { P.pos.set(destino.x, 0, destino.z); P.yaw = destino.ry + Math.PI; P.room = C.roomAt(P.pos.x, P.pos.z); C.fade(false); if (!F().l4giz) { F().l4giz = true; lia('O caminho das crianças. Elas passavam por dentro das paredes.', true); } }, 800);
+      });
+    };
+    boca(a, b, 'corredor'); boca(b, a, 'rouparia');
+  }
+
+  // --------- vitral pintado de preto: a garrafa quebra e o luar entra
+  function montarVitral() {
+    const p = lugar('corr', 's', .5, .25); if (!p || F().l4vitral) return;
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(.9, 1.3), new THREE.MeshStandardMaterial({ color: 0x0c0c10, emissive: 0x060608, emissiveIntensity: .3, roughness: 1 }));
+    m.position.set(p.wx + Math.sin(p.ry) * .02, 1.8, p.wz + Math.cos(p.ry) * .02); m.rotation.y = p.ry; W.grupo.add(m);
+    G.vitral = { x: m.position.x, y: 1.8, z: m.position.z, m };
+    examinar(m, '!Uma janela alta, pintada de preto por dentro. O vidro ainda está lá.', () => {});
+  }
+  function quebrarVitral(fim) {
+    const v = G.vitral; if (!v || F().l4vitral) return false;
+    if (Math.hypot(fim.x - v.x, fim.z - v.z) > 1.2 || Math.abs(fim.y - v.y) > 1.1) return false;
+    F().l4vitral = true; v.m.material.color.setHex(0x2a3a60); v.m.material.emissive.setHex(0x3a4a80); v.m.material.emissiveIntensity = 1;
+    SFX.vidro(v.x, v.z); C.emitNoise(v.x, v.z, 16); C.conquista('l4_vitral');
+    if (M.ativo) atrair(v.x, v.z, 5, { ouvido: .4 });
+    C.abrirNotaUI('O luar na parede', 'O vidro cai. O luar entra azul e bate numa parede onde as crianças pintaram, com tinta clara, o mapa dos esconderijos seguros deste andar — e as velas que os marcam.\n\n(O mapa foi para o diário.)');
+    return true;
+  }
+
+  // --------- respiro do Davi: prender o ar antes de cavar
+  function montarRespiro() {
+    const p = lugar('cem', 'n', .3, .6) || lugar('capela', 'n', .3, .6); if (!p || F().l4respiro) return;
+    const g = grupo(p.x, 0, p.z, p.ry);
+    C.box(.04, .5, .04, mat(0x6a5a44, 0x1a1408, .6), 0, .25, 0, g, false); C.box(.22, .04, .04, mat(0x6a5a44, 0x1a1408, .6), 0, .36, 0, g, false);
+    const et = new THREE.Mesh(new THREE.PlaneGeometry(.2, .08), matTex(escrita(['DAVI'], 'rgba(230,225,210,.7)', 128, 48, 26))); et.position.set(0, .15, .03); g.add(et);
+    G.respiro = { x: p.x, z: p.z, t: 0 };
+    examinar(g, () => F().l4respiro ? '!A cruzinha do Davi. A terra já cedeu, quieta.' : '!Uma cruz pequena de madeira: DAVI. (prenda o ar com ESPAÇO bem aqui)', () => {});
+  }
+  function updateRespiro(dt) {
+    const r = G.respiro; if (!r || F().l4respiro) return;
+    if (dist(r.x, r.z) < 1.6 && keys.Space && !S().hidden) {
+      r.t += dt; hud.textContent = r.t >= 9 ? '' : `segurando o ar... ${Math.min(99, Math.round(r.t / 9 * 100))}%`;
+      if (r.t >= 9) {
+        F().l4respiro = true; hud.textContent = ''; S().inv.pilhas++; C.renderInvMini(); SFX.pegar();
+        C.toast('A terra afunda sozinha, devagar, sem o barulho da pá.');
+        setTimeout(() => C.sub('davi', '(de baixo, quase nada) Obrigado por não fazer barulho.'), 900);
+      }
+    } else if (r.t > 0) { r.t = 0; hud.textContent = ''; }
+  }
+
+  // --------- toco de vela: luz fraca que prende a Ana de perto
+  function montarVela() {
+    const p = lugar('banh', 'o', .7, .35); if (!p || bolso().vela || F().l4velaUsada) return;
+    const g = grupo(p.wx - Math.sin(p.ry) * .05, 1.0, p.wz - Math.cos(p.ry) * .05, p.ry);
+    C.cyl(.02, .025, .06, mat(0xe8e0cc, 0x403828, .6), 0, 0, 0, 8, g);
+    const it = examinar(g, 'Pegar o toco de vela', () => { g.visible = false; SFX.pegar(); dar('vela'); setTimeout(() => lia('Um toco de vela. Do Clube dos Que Não Dormem.', true), 700); });
+    it.on = () => g.visible;
+  }
+  function acenderVela() {
+    if (S().hidden) { C.toast('Aqui dentro não dá.'); return; }
+    tirar('vela'); F().l4velaUsada = true;
+    const fw = new THREE.Vector3(); camera.getWorldDirection(fw); fw.y = 0; fw.normalize();
+    const x = P.pos.x + fw.x * .9, z = P.pos.z + fw.z * .9;
+    const g = grupo(x, .9, z, 0); C.cyl(.02, .025, .07, mat(0xe8e0cc, 0x403828, .6), 0, 0, 0, 8, g);
+    const chama = new THREE.Mesh(new THREE.SphereGeometry(.015, 6, 5), new THREE.MeshBasicMaterial({ color: 0xffc060 })); chama.scale.y = 2.2; chama.position.y = .05; g.add(chama);
+    const luz = new THREE.PointLight(0xffb060, .7, 3.2, 2); luz.position.y = .1; g.add(luz);
+    G.vela = { g, luz, x, z, t: 40 };
+    C.toast('A vela acesa. A luzinha segura a Ana se ela chegar perto.');
+  }
+  function updateVela(dt) {
+    const v = G.vela; if (!v) return;
+    v.t -= dt; v.luz.intensity = (v.t < 4 ? v.t / 4 : 1) * (.55 + Math.sin(perf() * 11) * .12);
+    if (ANA.ativa && ANA.pos.distanceTo(v.g.position) < 2.4) { G.presa = Math.max(G.presa, .4); ANA.conta = Math.min(ANA.conta, ANA.conta); }
+    if (M.ativo && M.pos && M.pos.distanceTo(v.g.position) < 1.2) { v.t = 0; C.subPequeno('inspetor', 'Quem acendeu isso?'); }
+    if (v.t <= 0) { W.grupo.remove(v.g); v.g.traverse(o => { if (o.geometry) o.geometry.dispose(); }); G.vela = null; C.toast('A vela apagou.'); }
+  }
+
+  // --------- telefone de disco da recepção: ramais de 1979
+  function montarRecepcao() {
+    const p = lugar('hall', 'o', .35, .5); if (!p || !C.SALA('hall')) return;
+    const g = grupo(p.wx - Math.sin(p.ry) * .05, 1.1, p.wz - Math.cos(p.ry) * .05, p.ry);
+    C.box(.2, .24, .12, mat(0x201c18, 0x080604, .5), 0, 0, .06, g); C.cyl(.06, .06, .012, mat(0xd8d0c0, 0x303030, .5), 0, -.02, .12, 14, g).rotation.x = Math.PI / 2;
+    G.tel2 = { x: p.x, z: p.z };
+    examinar(g, () => S().flags.energia ? 'Discar no telefone preto da recepção' : '!Um telefone preto, pesado. Sem energia, só o disco gira.', () => abrirDisco2());
+  }
+  function abrirDisco2() {
+    const st = { d: '' };
+    const render = () => { ov.innerHTML = `<h3>TELEFONE DA RECEPÇÃO</h3><div class="disco">${esc((st.d + '__').slice(0, 2))}</div><small>números 0 a 9 giram o disco · ESC desliga</small>`; };
+    abrirModo({ tipo: 'disco', render, tecla(e) {
+      if (e.code === 'Escape') { fecharModo(); return; }
+      const m = /^(Digit|Numpad)(\d)$/.exec(e.code); if (!m) return;
+      const n = +m[2]; st.d += m[2]; som.tique({ x: G.tel2.x, y: 1.1, z: G.tel2.z }, n || 10, .06); C.emitNoise(G.tel2.x, G.tel2.z, 2.5); render();
+      if (st.d.length >= 2) { const d = st.d; setTimeout(() => { fecharModo(); discar2(d); }, 650); }
+    } });
+  }
+  function discar2(d) {
+    if (!S().flags.energia) { C.toast('A linha está muda.'); return; }
+    if (d === '20') { som.respira(null); C.sub('voz', '(voz de mulher, cansada, de muito longe) A linha do Internato São Lázaro está ocupada desde o dia 14. Desde o dia 14. Desde o...', true); C.conquista('l4_recepcao'); return; }
+    if (d === '21') { C.sub('moacir', '(voz de menino, baixinho) Eu quero voltar pra cama. Por favor. Eu quero voltar pra cama.', true); setTimeout(() => lia('Esse era ele. Menino. Antes.'), 4200); return; }
+    if (d === '37') { C.sub('voz', '(uma voz lê sem parar) Albano. Ana. Bento. Davi. Luiz. Moacir. Tomé. Albano. Ana. Bento...', true); setTimeout(() => C.toast('[a lista recomeça do começo]'), 6500); return; }
+    C.toast('Chama, chama... e ninguém atende.');
+  }
+
+  // --------- bolinhas de gude com padrão: três mapas, uma lápide
+  const GUDE_DEF = { terreo: { sid: 'biblio', flag: 'l4gudeA', nome: 'listrada' }, superior: { sid: 'dormE', flag: 'l4gudeB', nome: 'pintada' }, tuneis: { sid: 't4', flag: 'l4gudeC', nome: 'lisa' } };
+  function montarGudeMapa(id) {
+    const d = GUDE_DEF[id]; if (!d || F()[d.flag]) return;
+    const p = lugar(d.sid, pick(['n', 's', 'o', 'l']), rand(.3, .7), .45); if (!p) return;
+    const cor = id === 'terreo' ? 0xc04040 : id === 'superior' ? 0x40a060 : 0xd8d0c0;
+    const m = new THREE.Mesh(new THREE.SphereGeometry(.035, 10, 8), new THREE.MeshStandardMaterial({ color: cor, emissive: 0x201008, emissiveIntensity: .8, roughness: .2, metalness: .2 }));
+    m.position.set(p.x, .035, p.z); W.grupo.add(m);
+    const it = examinar(m, `Pegar a bolinha de gude ${d.nome}`, () => { m.visible = false; F()[d.flag] = true; SFX.pegar(); C.renderInvMini(); setTimeout(() => lia(`Uma bolinha de gude ${d.nome}. Igual às do Bento.`, true), 700); });
+    it.on = () => m.visible;
+    G.segredos = G.segredos || []; G.segredos.push({ x: p.x, z: p.z, feito: () => !!F()[d.flag] });
+  }
+  function montarLapide() {
+    const p = lugar('cem', 's', .6, .5) || lugar('capela', 'o', .3, .5); if (!p) return;
+    const g = grupo(p.x, 0, p.z, p.ry);
+    C.box(.5, .7, .1, mat(0x8a847a, 0x1a1816, .4), 0, .35, 0, g);
+    const et = new THREE.Mesh(new THREE.PlaneGeometry(.4, .16), matTex(escrita(['BENTO'], 'rgba(30,28,24,.8)', 256, 96, 34))); et.position.set(0, .45, .055); g.add(et);
+    for (let i = 0; i < 3; i++) { C.cyl(.04, .04, .03, mat(0x2a2824, 0x0a0806, .5), (i - 1) * .12, .2, .05, 10, g).rotation.x = Math.PI / 2; }
+    examinar(g, () => {
+      const n = ['l4gudeA', 'l4gudeB', 'l4gudeC'].filter(k => F()[k]).length;
+      return F().l4bento ? '!A lápide do Bento. A gaveta de pedra já abriu.' : n < 3 ? `!Lápide de BENTO, com três furinhos. Faltam ${3 - n} bolinhas de gude.` : 'Encaixar as três bolinhas de gude';
+    }, () => {
+      if (F().l4bento) return;
+      const n = ['l4gudeA', 'l4gudeB', 'l4gudeC'].filter(k => F()[k]).length; if (n < 3) return;
+      F().l4bento = true; som.rolar({ x: p.x, y: .2, z: p.z }); C.conquista('l4_bento');
+      const s = S(); s.inv.kits++; s.inv.pilhas++; C.renderInvMini();
+      C.abrirNotaUI('A gaveta de pedra do Bento', 'As três bolinhas encaixam com um estalo. Uma gaveta de pedra desliza:\n\nUm curativo, uma pilha e um bilhete —\n"Guardei pra quem viesse me procurar. Ninguém veio. Até você. — B."');
+    });
+  }
+
+  // --------- a bala faz da Ana uma aliada que avisa
+  function updateAliada(dt) {
+    if (!F().l4balaDada || !ANA.ativa) { G.aliadaCd = 0; return; }
+    G.aliadaCd = (G.aliadaCd || 0) - dt; if (G.aliadaCd > 0) return;
+    if (M.ativo && M.pos && M.pos.distanceTo(P.pos) < 9 && ANA.pos.distanceTo(P.pos) < 14) { G.aliadaCd = 12; C.subPequeno('ana', '(cantarolando, só pra você) ele tá chegando...'); }
+  }
+
   const COR_LATA = new THREE.Color(1, .82, .5);
   // ------------------------------------------------ ganchos para o motor
   return {
@@ -1137,10 +1510,11 @@ export function criarSegredos(C) {
         if (modo && (S().dead || C.ui || C.mode !== 'jogo' || M.state === 'agarra')) fecharModo();
         if (modo && modo.tick) modo.tick(dt);
         for (const f of G.tick) f(dt);
-        G.presa = Math.max(0, G.presa - dt); if (G.apitoT) G.apitoT = Math.max(0, G.apitoT - dt);
+        G.presa = Math.max(0, G.presa - dt); if (G.apitoT) G.apitoT = Math.max(0, G.apitoT - dt); if (G.ecoCd) G.ecoCd = Math.max(0, G.ecoCd - dt);
         if (G.giraT > 0) { G.giraT -= dt; if (M.ativo) M.yaw += dt * 2.2; }
         updateIsca(dt); updateBolo(dt); updateLampada(dt); updateChuva(dt); updateEspelho(dt); updateCentri(dt); updateLimao(dt); updateGude(dt);
         updateSoldado(dt); updatePiao(dt); updateRevelados(dt); updateLuzNegra(dt); updatePiscadas(dt); updateConta(); updateSombra(dt); updateDeslize(dt); updateDescalca(dt); updateHora(dt);
+        updatePedrinhas(dt); updateOlho(dt); updateCarrinho(dt); updateCanecas(dt); updateSal(dt); updateRespiro(dt); updateVela(dt); updateAliada(dt);
         for (let i = G.toques.length - 1; i >= 0; i--) { const q = G.toques[i]; q.t -= dt; q.cd -= dt; if (q.cd <= 0) { q.cd = 2.2; som.toque({ x: q.x, y: 1.3, z: q.z }); if (!q.mudo) C.emitNoise(q.x, q.z, 14); } if (q.t <= 0) G.toques.splice(i, 1); }
         for (const m of G.vermelhos) { m.visible = !!(F().l4vermelho && S().flashOn && m.position.distanceTo(camera.position) < 8); }
         if (F().l4lanterninha && S().flashOn) { if (G.batAnt != null && S().battery < G.batAnt) S().battery = G.batAnt; G.batAnt = S().battery; } else G.batAnt = null;
@@ -1165,7 +1539,7 @@ export function criarSegredos(C) {
     piscou() { try { piscou(); } catch (e) {} },
     pilha() { const n = (F().l4pilhas || 0) + 1; F().l4pilhas = n; if (n === 9) setTimeout(() => { C.abrirNotaUI(TXT.pai.titulo, TXT.pai.texto); setTimeout(() => lia('O pai... ele já tinha vindo aqui?'), 600); }, 900); },
     ruidoMul() { let k = 1; const s = S(); if (!s) return 1; if (F().l4descalca) k *= .6; if (G && G.chuva && dist(G.chuva.x, G.chuva.z) < 10) k *= .5; return k; },
-    ouvidoMul() { if (!G) return 1; if (G.apitoT > 0) return 0; if (G.isca && G.isca.chegou) return G.isca.ouvido; return 1; },
+    ouvidoMul() { if (!G) return 1; if (G.apitoT > 0) return 0; if (G.olhoT > 0) return 2; if (G.isca && G.isca.chegou) return G.isca.ouvido; return 1; },
     semLuzAna(d) { if (!S()) return false; if (F().l4vermelho && S().flashOn) return true; if (F().l4lanterninha && d > 4) return true; return false; },
     anaPresa() { return !!(G && G.presa > 0); },
     danoMul(quem) { if (quem === 'procissao' && F().l4amuleto) { F().l4amuleto = 0; C.toast('O amuleto do relógio esquentou no seu bolso e rachou.'); C.renderInvMini(); return .5; } return 1; },
@@ -1192,6 +1566,16 @@ export function criarSegredos(C) {
             if (!F().l4lampadaQuebrada) { F().l4lampadaQuebrada = true; setTimeout(() => lia('Escuro de vez aqui. Pra Procissão... e pra Ana também.', true), 900); }
             return true;
           }
+        }
+        if (G.vitral && quebrarVitral(fim)) return true;
+        const sala = C.roomAt(fim.x, fim.z);
+        if (sala && ['sotao', 'lavand', 'hub'].includes(sala.id) && (G.ecoCd || 0) <= 0) {
+          G.ecoCd = 15; som.lata({ x: fim.x, y: .2, z: fim.z }, .3);
+          C.toast('[o vidro caiu lá no fundo, com um eco: parece ter vindo de outro canto]');
+          const r = objetivoSala() || C.SALA('hall') || sala, ex = (r.x0 + r.x1) / 2, ez = (r.z0 + r.z1) / 2;
+          if (M.ativo) atrair(ex, ez, 10, { forca: true, ouvido: .4 });
+          if (dist(fim.x, fim.z) > 6) C.conquista('l4_cesta');
+          return true;
         }
         if (W.mapa === 'cemiterio' && fim.y > 3 && C.roomAt(fim.x, fim.z).id === 'capela' && !F().l4badalada) {
           F().l4badalada = true; som.sino({ x: fim.x, y: 5, z: fim.z }, .6, .91); C.conquista('l4_badalada'); C.toast('[uma badalada torta, rachada]');

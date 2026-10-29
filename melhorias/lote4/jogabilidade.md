@@ -113,3 +113,93 @@
 - Escritas secretas da luz negra também aparecem nos túneis ("A ÁGUA ESCUTA")
 - O Inspetor atraído por uma isca fica parado ouvindo o ponto por um tempo, baixando a audição
 - As dicas de uso de cada item do bolso aparecem ao pegá-lo e ao trocar com Y
+- Estilingue do Davi escondido numa carteira da sala de aula, com três pedrinhas
+- A tecla U atira a pedrinha num arco longo e quase sem ruído na mão
+- A pedrinha que cai longe faz um estalo que o Inspetor só investiga, sem correr
+- Acertar uma lâmpada acesa com a pedrinha estoura o bulbo (conquista "Pontaria")
+- As três pedrinhas acabam e não se repõem: é ferramenta de emergência
+- A pedrinha que passa raspando pela Ana a faz parar de contar e perguntar quem jogou
+- A pedrinha que cai na água faz plop e chama bem menos o Inspetor
+- Olho de vidro escondido numa gaveta do depósito
+- A tecla U dá três segundos de "visão dele": a silhueta âmbar do Inspetor através das paredes
+- A menina também aparece como silhueta na visão do olho
+- Durante a visão do olho a audição do Inspetor dobra de alcance
+- O olho de vidro só recarrega depois de 45 segundos, com aviso quando a visão passa
+- Conquista secreta "Como Ele Vê" por usar o olho de vidro
+- Carrinho azul de roupa suja na lavanderia, empurrável só agachada
+- Empurrado, o carrinho rola sozinho em linha reta por vários metros
+- A trilha de som do carrinho puxa o Inspetor ao longo de todo o caminho
+- O carrinho para ao bater numa parede e o Inspetor vai procurar no ponto final
+- A Ana ri ao ver o carrinho andar sozinho
+- O carrinho só pode ser empurrado uma vez por capítulo
+- Sete canecas de lata enfileiradas na mesa do refeitório
+- Um tique no ritmo (cerca de 100 bpm) marca a hora de passar a caneca, só quando você está perto
+- Passar as sete no ritmo abre a gaveta da mesa (um curativo e uma pilha)
+- A caneca acertada se desloca na mesa, mostrando o progresso
+- Errar o ritmo derruba uma caneca no chão com barulho de lata
+- Conquista secreta "Passa a Caneca" pela volta inteira no ritmo
+- Saco de sal grosso na despensa da cozinha, com uma frase da avó
+- A tecla U risca uma linha branca de sal no batente da porta mais perto
+- A linha de sal fica visível de leve no escuro
+- O Inspetor para na linha de sal, fareja o chão e volta uma vez
+- A Procissão, ao chegar na linha de sal, para e dá a volta
+- A linha de sal some depois de usada uma vez (conquista "Linha de Sal")
+- Garrafa jogada no poço do monta-cargas, no tanque da lavanderia ou na cisterna faz um eco fundo
+- O eco engana o Inspetor, que vai procurar no lugar errado
+- Acertar o poço de longe (mais de 6 m) dá a conquista secreta "Cesta"
+- Vão baixo das crianças entre a rouparia e o corredor de cima, marcado com giz
+- O vão das crianças só passa agachada, e a lanterna apaga ao entrar
+- O vão de giz corta caminho nos dois sentidos
+- Cruz pequena de madeira com o nome DAVI no cemitério
+- Prender o ar nove segundos junto à cruz do Davi faz a terra ceder sem barulho de pá
+- O Davi agradece de baixo por não fazer barulho e deixa uma pilha
+- Toco de vela do Clube dos Que Não Dormem, escondido no banheiro
+- A tecla U acende a vela em cima de um móvel à frente
+- A luz da vela prende a Ana se ela chegar perto
+- A chama da vela treme como luz de verdade e apaga sozinha depois de um tempo
+- O Inspetor apaga a vela com a mão se chegar nela
+- Telefone preto de disco na recepção, separado do da diretoria
+- Discar 20 na recepção atende a telefonista de 1979 ("ocupada desde o dia 14")
+- Discar 21 toca o Moacir menino pedindo para voltar para a cama
+- Discar 37 toca a lista de nomes das crianças, que recomeça sozinha
+- Qualquer outro número na recepção não dá em nada
+- Sem energia o disco da recepção gira, mas a linha fica muda
+- Conquista secreta "A Cobrar" por atender a telefonista de 1979
+- Três bolinhas de gude escondidas: biblioteca, dormitório E e túneis
+- As bolinhas se distinguem pelo desenho e pelo nome (listrada, pintada, lisa), nunca só pela cor
+- A Lia comenta ao pegar cada bolinha de gude
+- A lápide de BENTO no cemitério tem três furinhos e mostra quantas bolinhas faltam
+- Encaixar as três bolinhas abre uma gaveta de pedra com curativo, pilha e um bilhete do Bento
+- Conquista secreta "Bolso do Bento" por encaixar as três bolinhas
+- Janela alta pintada de preto no corredor de cima (vitral)
+- Uma garrafa acertada no vitral quebra o vidro e deixa o luar azul entrar
+- O luar revela na parede o mapa dos esconderijos seguros do andar, que vai para o diário
+- Conquista secreta "Pela Janela" por quebrar o vitral
+- Ramal 11 (biblioteca) responde com uma criança soletrando "silêncio"
+- Ramal 13 (refeitório) responde com cadeiras arrastando e "falta sempre um"
+- Ramal 15 (casa de máquinas) responde com o gerador tossindo "liga, desliga"
+- A máquina responde a BENTO com a história das três bolinhas de gude
+- A máquina responde a LUIZ repetindo "eu só queria dormir"
+- A máquina responde a SILÊNCIO sobre a Hora que começa às nove e não acaba
+- A máquina responde a REGRA dizendo que a sétima regra é você
+- A máquina responde a 1979 com "ninguém saiu, nem ele"
+- O ENTER da máquina agora faz o sino de retorno de carro e mais um ruído
+- Moeda de 1979 no chão do ponto de ônibus, no prólogo
+- Orelhão de rua no posto que só liga com a moeda
+- A ligação a cobrar traz a telefonista e o Davi pedindo "não sobe"
+- Sem a moeda o orelhão fica frio e não liga
+- A luz negra acende os olhos da Ana no escuro
+- A luz negra mostra um contador de segundos no HUD
+- Nova escrita secreta no andar de cima: "ELE DORME DE OLHO ABERTO"
+- Nova escrita secreta nos túneis: "QUEM ABRIU A MINHA GAVETA"
+- Nova escrita secreta no cemitério: "ELE NÃO DORME. ELE ESPERA."
+- Depois de ganhar a bala, a Ana cantarola um aviso quando o Inspetor se aproxima
+- Os quatro itens novos (estilingue, olho de vidro, saco de sal, toco de vela) entram no bolso de segredos
+- A dica de uso de cada item novo aparece ao pegá-lo e ao trocar com Y
+- Novas conquistas secretas entram no diário (Pontaria, Linha de Sal, Cesta, Bolso do Bento, Pela Janela, Como Ele Vê, A Cobrar, Passa a Caneca)
+- Carta da cozinheira escondida na despensa, sobre os pães deixados no porão
+- Desenho dobrado das crianças escondido no dormitório E, sobre fugir pela janela
+- Botão de farda do Inspetor escondido na sala secreta dos túneis
+- O bonequinho de giz marca a boca do vão dos dois lados do atalho
+- O disco da recepção volta devagar, com um tique que o Inspetor pode ouvir
+- Usar o olho de vidro ainda frio avisa quantos segundos faltam para recarregar
