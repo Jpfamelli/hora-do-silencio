@@ -4,6 +4,7 @@
 // O motor (jogo.js) chama PG.ligar(ctx) uma vez e usa os ganchos PG.* em pontos pontuais.
 import { MUNDO } from './progressao-mundo.js'; // Lote 2: mundo e história (acervo, noites que lembram, datas, jornal...)
 import { P3 } from './progressao3.js'; // Lote 3: polimento (reinício na hora, 100%, Noite da Semana, segredos do título...)
+import { L4 } from './progressao-lote4.js'; // Lote 4: segredos e easter eggs (códigos, modos, cartas, boatos, parede das Lias...)
 const LORE_KEY = 'hora-silencio-v3-acervo';
 const STATS_KEY = 'hora-silencio-stats';
 const ULTIMA_KEY = 'hora-silencio-ultima';
@@ -207,6 +208,7 @@ function titulo() {
   difDesc();
   MUNDO.titulo();
   P3.titulo();
+  L4.titulo();
   // ele lembra de quem morreu muito
   try {
     const sp = C.W.def && C.W.def.spawns && C.W.def.spawns.titulo;
@@ -220,6 +222,7 @@ function teclaTitulo(e) {
   if (!k) return;
   bufTitulo = (bufTitulo + k).slice(-12);
   if (P3.tecla(bufTitulo)) { bufTitulo = ''; return; }
+  if (L4.tecla(bufTitulo)) { bufTitulo = ''; return; }
   const M = RP().memoria || {};
   if (bufTitulo.endsWith('silencio')) { bufTitulo = ''; const sg = segredos(); sg.umaVida = true; ls.set(SEGREDO_KEY, sg); C.iniciarAudio(); C.SFX.sinoLonge(); conquista('senha'); memoria(M.senha); $('#l-umavida').hidden = false; }
   if (bufTitulo.endsWith('1403')) { bufTitulo = ''; C.iniciarAudio(); C.SFX.papel(); conquista('quem_lembra'); memoria(M.data); }
@@ -234,6 +237,7 @@ export const PG = {
     for (const x of RP().conquistas || []) if (!R.conquistas.some(y => y.id === x.id)) R.conquistas.push(x);
     MUNDO.ligar(ctx, { conquista, ls, stats, acervo, fmtC, fmt, abrirPainel, somaStat });
     P3.ligar(ctx, { conquista, ls, stats, acervo, fmtC, fmt, abrirPainel, somaStat, calcRank });
+    L4.ligar(ctx, { conquista, ls, stats, acervo, fmtC, fmt, abrirPainel, somaStat, lerCodigo });
     addEventListener('keydown', e => {
       teclaTitulo(e);
       if (C.ui === 'morte' && (e.code === 'Enter' || e.code === 'KeyE' || e.code === 'NumpadEnter') && !$('#dt-retry').hidden && !$('#death').hidden) $('#dt-retry').click();
@@ -287,6 +291,7 @@ export const PG = {
     tempoPend += dt;
     MUNDO.tick(dt);
     P3.tick(dt);
+    L4.tick(dt);
     S.capRuido = (S.capRuido || 0) + (P.noiseR || 0) * dt;
     if (P.sprinting && !S.flags.sino) { S.capCorreu = (S.capCorreu || 0) + dt; S.correu = (S.correu || 0) + dt; }
     if (S.flashOn) S.capLuzT = (S.capLuzT || 0) + dt;
@@ -366,6 +371,7 @@ export const PG = {
     if (r.letra === 'S' && info.frase_s) linhas.push(`<i>“${info.frase_s}”</i>`);
     linhas.push(...P3.fimCap(c, r)); // antes do MUNDO: a rota do recorde anterior ainda está guardada
     linhas.push(...MUNDO.fimCap(c, ant));
+    linhas.push(...L4.fimCap(c, r));
     if ($('#fc-falta')) $('#fc-falta').innerHTML = linhas.join('<br>');
   },
   zerarCap() { const S = C.S; Object.assign(S, { capMortes: 0, capRuido: 0, capCorreu: 0, capLuzT: 0, capLore: 0, capGarrafas: 0, semObjT: 0, procTipo: null, dicaSala: null }); PG._perto = null; },
@@ -409,6 +415,7 @@ export const PG = {
     ls.set(ULTIMA_KEY, { tipo: 'morte', quem, cap: S.chapter, t: Date.now() });
     MUNDO.morte(quem);
     P3.morte(quem);
+    L4.morte(quem);
     if (S.modo && S.modo.umaVida) { try { localStorage.removeItem(C.KEYS.SAVE_KEY); } catch (e) {} }
   },
   escondidaAntes() { PG._escT = performance.now(); },
@@ -421,12 +428,13 @@ export const PG = {
       ? `Modo Uma Vida: a noite acabou aqui. ${c.titulo} · ${fmtC(S.tempo)} de jogo.`
       : `morte nº ${S.capMortes || 1} neste capítulo · ${S.mortes} na noite · ${faltam ? `faltava${faltam > 1 ? 'm' : ''} ${faltam} objetivo${faltam > 1 ? 's' : ''}` : 'o capítulo estava quase no fim'} · +15s no cronômetro do capítulo<br><small>E ou ENTER para tentar de novo</small>`;
     P3.telaMorte();
+    L4.telaMorte();
   },
   // pausa
   pausa() {
     const S = C.S, el = $('#p-info'); if (!el || !S) return;
     const am = (S.mods || []).map(id => ((RP().amuletos || []).find(a => a.id === id) || {}).nome).filter(Boolean);
-    el.innerHTML = `${window.ROTEIRO.capitulos[S.chapter].titulo} · ${fmtC(S.capT)} neste capítulo · ${fmtC(S.tempo)} na noite · ${S.mortes} ${S.mortes === 1 ? 'morte' : 'mortes'}<br>${C.D().nome}${am.length ? ' · ' + am.join(', ') : ''}${S.modo && S.modo.umaVida ? ' · Uma Vida' : ''} · código de desafio ${codigoDesafio(S)}${MUNDO.pausaExtra()}${P3.pausa()}`;
+    el.innerHTML = `${window.ROTEIRO.capitulos[S.chapter].titulo} · ${fmtC(S.capT)} neste capítulo · ${fmtC(S.tempo)} na noite · ${S.mortes} ${S.mortes === 1 ? 'morte' : 'mortes'}<br>${C.D().nome}${am.length ? ' · ' + am.join(', ') : ''}${S.modo && S.modo.umaVida ? ' · Uma Vida' : ''} · código de desafio ${codigoDesafio(S)}${MUNDO.pausaExtra()}${P3.pausa()}${L4.pausa()}`;
   },
   // final
   loreFinal() {
@@ -450,6 +458,7 @@ export const PG = {
     PG._tipoFinal = tipo;
     MUNDO.final(tipo);
     P3.final(tipo);
+    L4.final(tipo);
   },
   telaFinal(tipo) {
     const S = C.S, R = window.ROTEIRO, st = stats();
