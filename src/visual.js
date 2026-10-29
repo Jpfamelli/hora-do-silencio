@@ -2,6 +2,7 @@
 // Ganchos em jogo.js: VIS.update(dt, ativo) antes de desenhar · VIS.hud() no HUD · VIS.mapa() ao carregar um mapa
 // · VIS.estrobo(dt) no aviso da Procissão · VIS.morte(quem) ao morrer · VIS.ruido(x, z, r) a cada barulho.
 import { instalarPolimento } from './visual-polimento.js';
+import { instalarSegredos } from './visual-segredos.js';
 export function instalarVisual(C) {
   const { THREE, scene, camera, renderer, canvas, flash, flashFill, MON, ANA, ANA_G, PROC, M, P, W, OPT, keys } = C;
   const $ = s => document.querySelector(s);
@@ -21,6 +22,7 @@ export function instalarVisual(C) {
   // brilho e campo de visão usam as mesmas chaves da tela de Opções (src/interface.js)
   const DEF = { fov: 72, brilho: 1.1, vCam: 2, vFlash: 0, vBlur: 1, vVhs: 0, vCalib: 0, vMao: 1, vReal: 0, vRetro: 0 };
   let POL = null; // lote 3: polimento e sensação (src/visual-polimento.js)
+  let SEG = null; // lote 4: segredos da luz (src/visual-segredos.js)
   for (const k in DEF) if (typeof OPT[k] !== 'number' || isNaN(OPT[k])) OPT[k] = DEF[k];
   const salvar = () => C.lsSet(C.OPT_KEY, OPT);
   const aplicarBrilho = () => { renderer.toneMappingExposure = +OPT.brilho || 1.1; };
@@ -630,6 +632,7 @@ export function instalarVisual(C) {
   // =================================================================== MORTE
   function morte(quem) {
     if (POL) POL.morte(quem);
+    if (SEG) SEG.morte(quem);
     const t0 = performance.now() + 420; let y0 = null, z0 = 0;
     (function anim() {
       const S = C.S; if (!S || !S.dead) return;
@@ -731,6 +734,7 @@ export function instalarVisual(C) {
     ecoI *= Math.exp(-dt * 22); eco.intensity = ecoI; if (M.ativo) eco.position.set(M.pos.x, 2.4, M.pos.z);
     cameraCorpo(dt, ativo, S);
     lanterna(dt, ativo, S, t);
+    if (SEG) SEG.luz(dt, S); // papel vermelho e lanterna do Davi tingem o feixe antes do polimento
     if (POL) POL.lanterna(dt, ativo, S, t);
     feixe(dt, S);
     vultos(dt, ativo, S);
@@ -741,6 +745,7 @@ export function instalarVisual(C) {
     agua(dt, ativo, S, t);
     telas(dt, ativo, S, t);
     if (POL) POL.update(dt, ativo, S, t);
+    if (SEG) SEG.update(dt, ativo, S, t);
   }
   function mapa() {
     PROC.ini = null; VUL.visible = false; vulT = 0;
@@ -750,9 +755,11 @@ export function instalarVisual(C) {
     for (let i = C.ROLOS.length - 1; i >= 0; i--) { let o = C.ROLOS[i].r; while (o.parent && o.parent !== W.grupo) o = o.parent; if (o.parent !== W.grupo) C.ROLOS.splice(i, 1); }
     escritas(); nevoa();
     if (POL) POL.mapa();
+    if (SEG) SEG.mapa();
   }
-  POL = instalarPolimento(C, { tex, TX_SUAVE, cone, coneMat, poMat, pegada, pegadaSe, ANAX, salvar, syncUI });
-  const api = { update, hud, mapa, estrobo, morte, ruido, opt: OPT, depois: () => POL.depois(), tempo: dt => POL.tempo(dt) };
+  POL = instalarPolimento(C, { tex, TX_SUAVE, cone, coneMat, poMat, pegada, pegadaSe, ANAX, salvar, syncUI, mapaLanterna: ch => SEG ? SEG.mapaLanterna(ch) : null });
+  SEG = instalarSegredos(C, { tex, salvar });
+  const api = { update, hud, mapa, estrobo, morte, ruido, opt: OPT, vermelha: () => !!(SEG && SEG.vermelha()), depois: () => POL.depois(), tempo: dt => POL.tempo(dt) };
   window.__visual = api;
   return api;
 }

@@ -2198,7 +2198,7 @@ function updateAna(dt) {
   ANA.vida -= dt; ANA.cool = Math.max(0, ANA.cool - dt); ANA.piscaCd = Math.max(0, ANA.piscaCd - dt);
   const d = ANA.pos.distanceTo(P.pos);
   if (ANA.falhaT > 0) { ANA.falhaT -= dt; flash.intensity = 0; flashFill.intensity = 0; }
-  const luzLanterna = S.flashOn && !flashPisca && ANA.falhaT <= 0 && d < 16;
+  const luzLanterna = S.flashOn && !flashPisca && ANA.falhaT <= 0 && d < 16 && !VIS.vermelha(); // lote 4: a luz do papel vermelho não vale para ela
   const iluminada = luzLanterna || naLuz(ANA.pos);
   const naVista = !S.hidden && visivel(ANA.pos, ANA.teto ? 2.3 : 1.0, 18);
   const antes = ANA.vista;
@@ -4278,7 +4278,7 @@ const JM = criarMundoJogavel({
 const JP = criarPolimento({ THREE, P, M, ANA, PROC, W, OPT, keys, camera, scene, SFX, texHalo: TX_HALO, legendas: UIX.som.def, semMouse: () => PLAT.semMouse(), abafarMundo, emitNoise, toast,
   A: { saida: (...a) => saida(...a), osc: (...a) => osc(...a), burst: (...a) => burst(...a), env: (...a) => env(...a) },
   get S() { return S; }, get AC() { return AC; }, get perf() { return perf; }, get alvo() { return alvo; }, get mode() { return mode; }, get ui() { return ui; } });
-const VIS = instalarVisual({ THREE, scene, camera, renderer, canvas, flash, flashFill, MON, ANA, ANA_G, PROC, M, P, W, MAT, OPT, OPT_KEY, lsSet, R, ROLOS, keys, roomAt, visivel, collide, salasAlcancaveis, distSalas, D, MAOS, MAT_CACO, chuvaMat, get alvo() { return alvo; },
+const VIS = instalarVisual({ THREE, scene, camera, renderer, canvas, flash, flashFill, MON, ANA, ANA_G, PROC, M, P, W, MAT, OPT, OPT_KEY, lsSet, R, ROLOS, keys, roomAt, visivel, collide, salasAlcancaveis, distSalas, D, MAOS, MAT_CACO, chuvaMat, chuvaGeo, SFX, sub, toast, conquista, interact, item, MK, legendas: UIX.som.def, get alvo() { return alvo; },
   get S() { return S; }, get mode() { return mode; }, get ui() { return ui; }, get flashPisca() { return flashPisca; }, get hbT() { return AUD.hbT; }, get raioI() { return raioI; }, get fita() { return fitaTocando; }, get perf() { return perf; } });
 const VM = instalarMundoVisual({ THREE, scene, camera, renderer, flash, hemi, moon, W, P, M, ANA, ANA_G, PROC, MON, MAT, MK, OPT, R, TX, chuvaMat, respingos, interact, sub, SFX, DOOR, collide, raio: () => { raioT = 0; },
   get S() { return S; }, get perf() { return perf; }, get raioI() { return raioI; }, get raioClock() { return raioClock; } }); // mundo e história pela luz (src/visual-mundo.js)
