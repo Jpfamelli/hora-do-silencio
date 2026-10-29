@@ -1,0 +1,92 @@
+# Lote 5 — Mapa: prólogo e estrada
+- Novo monstro no prólogo: o batedor de 1979, a silhueta do Seu Joaquim morto parada ao longe na estrada
+- O batedor só avança quando você para de andar; enquanto você caminha, ele congela no lugar
+- Ele se move em passadas secas e isoladas, não deslizando, para parecer teletransporte entre instantes
+- As passadas do batedor ficam mais rápidas conforme ele chega perto de você
+- O salto de cada passada é maior quando ele está longe e menor quando está perto
+- Som de passo pesado a cada avanço do batedor
+- Vibração do controle/celular quando o batedor dá um passo por perto
+- O batedor vira o rosto para você o tempo todo
+- Fala da Lia ao avistar o batedor pela primeira vez
+- Fala de aviso quando o batedor chega a cerca de 26 metros
+- Fala de aviso quando o batedor chega a cerca de 11 metros, ensinando a continuar andando
+- O medo sobe quanto mais perto o batedor chega
+- Se o batedor encostar em você estando parada, há um sobressalto com estalo, relâmpago e tremor
+- No Pesadelo, esse encontro com o batedor custa 15 de vida
+- Depois do sobressalto, o batedor recua para longe e recomeça a aproximação
+- Chegar perto do portão encerra o batedor com uma fala de reconhecimento
+- Um sino distante soa quando o batedor é encerrado no portão
+- No Pesadelo o batedor começa mais perto (40 m em vez de 46)
+- No Fácil o batedor anda mais devagar e dá passadas menores
+- Contra-jogo: apontar a lanterna no batedor trava o próximo passo dele
+- Um chiado/estalo enquanto você mantém a lanterna no batedor
+- Respiração ofegante do batedor quando ele está a menos de 15 metros
+- Sussurro de contagem (o eco de 1979) enquanto o batedor avança
+- Os passos do batedor soam mais alto quando ele está atrás de você, fora da visão
+- Estalo duplo quando o batedor vira para você ao ser avistado
+- Os olhos do batedor ardem mais forte conforme ele se aproxima
+- A aparência do batedor varia pela semente da noite (sem rosto ou sombra)
+- O batedor fica registrado na memória da estrada depois de visto
+- Novo monstro: o acompanhante que anda pela borda da mata no seu passo
+- O acompanhante segue o seu z com atraso, colado na beira do mato
+- Quando você para, o acompanhante vira o rosto para você devagar
+- Passos do acompanhante no seu ritmo de caminhada
+- Fala da Lia ao perceber o acompanhante
+- Fala e sussurro quando você para e olha para o acompanhante
+- Em noites repetidas o acompanhante aparece mais cedo
+- O lado (esquerda ou direita) do acompanhante é escolhido pela semente
+- O acompanhante aparece de costas, com a cabeça virada para você
+- Estalo de galho no mato quando o acompanhante surge
+- Contra-jogo: correr sem parar deixa o acompanhante para trás e ele some
+- O acompanhante se abaixa junto quando você se agacha
+- Apontar a lanterna no acompanhante o empurra para dentro do mato e baixa o seu medo
+- No Pesadelo, encarar o acompanhante parada por tempo demais o faz dar um passo para a estrada
+- Estalo seco quando o acompanhante avança no Pesadelo
+- Em noites repetidas o acompanhante causa mais medo
+- Novo momento na abertura: um vulto na estrada diante dos faróis
+- O vulto da abertura congela na luz dos faróis do carro
+- O vulto da abertura avança no escuro, quando os faróis apagam
+- A cabeça do vulto da abertura treme ao andar no escuro
+- Fala ensinando a mecânica central ("na luz congela, no escuro anda") ao fim da abertura
+- O vulto da abertura some quando a cena mata os faróis
+- Uma aparição perturbadora por noite, sempre no caminho da estrada
+- O tipo da aparição é sorteado pela semente e pela noite
+- A aparição surge na beira da estrada, fora do centro da sua visão
+- A aparição some quando você olha direto para ela, ou depois de alguns segundos
+- Estalo, medo e vibração quando a aparição é vista
+- Fala específica da Lia para cada tipo de aparição
+- Som de ambiente próprio de cada tipo de aparição ao surgir
+- Aparência nova "encharcado": material molhado e escuro, pingando
+- Gotas d'água animadas caindo do vulto encharcado
+- Aparência nova "criança": do tamanho da Ana, de pé no acostamento
+- Som de caixinha de música na aparência criança
+- Aparência nova "alto demais": a cabeça passa da copa das árvores
+- Trovão ao surgir a aparência alta
+- Aparência nova "sem rosto": um oval claro e liso no lugar do rosto
+- Os olhos vermelhos somem na aparência sem rosto
+- Aparência nova "de costas": corpo virado, cabeça olhando para você
+- A aparição de costas gira de repente para te encarar antes de sumir, com um susto
+- Os olhos de todas as aparições ardem conforme a distância
+- Perseguição do portão com momentos novos (sem alterar o perseguidor original)
+- Buzina do carro soando sozinha atrás de você durante a perseguição, chamando ele
+- Fala da Lia sobre a buzina do carro
+- Batimento cardíaco que acelera conforme você chega ao portão na perseguição
+- Sussurros que ficam mais frequentes perto do portão na perseguição
+- Parar no meio da perseguição é punido com um sussurro extra e mais medo
+- Um segundo vulto, alto, corta na sua frente entre você e o portão
+- Relâmpago no instante em que o vulto corta sua frente
+- Fala da Lia sobre o vulto que cortou o caminho
+- O vulto que cortou se dissolve, deixando o portão passável (sem travar a fuga)
+- Animação do vulto que cortou o caminho
+- Um sopro de respiração perto demais, uma única vez, perto do portão
+- Fala do momento "quase" com vibração forte perto do portão
+- Novo: a silhueta do Seu Joaquim aparece na estrada no instante em que o rádio diz que ele morreu
+- Relâmpago e medo no momento da revelação do Seu Joaquim
+- A silhueta do Seu Joaquim vira o rosto para você e some no clarão seguinte
+- Os vultos do Lote 5 são próprios e não interferem nos vultos do prólogo já existentes
+- Cada sistema de monstro tem sua própria instância de vulto, sem dois sistemas brigarem pelo mesmo mesh
+- Agenda própria dos monstros que para junto com a pausa e morre ao trocar de mapa
+- A decisão "parado × andando" usa a velocidade suavizada do jogador, sem travar o teste automático
+- Todos os vultos do lote se escondem fora do jogo e fora da cena, sem sobra na tela
+- Semente estável por sessão que varia as aparências e os lados dos monstros a cada noite
+- Dificuldade afeta os monstros do prólogo (Fácil mais brando, Pesadelo mais agressivo e com dano)
