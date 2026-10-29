@@ -1,0 +1,98 @@
+# Lote 4 — Mapa: prólogo e estrada
+- Agora dá pra entrar de novo no carro depois de ter saído, com a ação "Entrar no carro".
+- Sentada no carro a câmera baixa pro banco do motorista e o movimento fica travado, como estar de verdade ali dentro.
+- Buzina com E no volante, que faz barulho alto e chama a atenção do que anda na estrada.
+- Três buzinadas curtas fazem uma luz piscar de volta numa janela da torre (conquista secreta "Sinal de Vida").
+- Repetir as três buzinadas depois faz a buzina tocar sozinha, sem ninguém encostar no volante.
+- Mais de sete buzinadas seguidas levam uma pancada no teto do carro, com susto e tremor.
+- Nove buzinadas lentas fazem o ônibus de 1979 responder com buzina rouca que se aproxima nove vezes.
+- Faróis amarelos surgem na neblina e o ônibus de 1979 passa iluminado, cheio de crianças, com três janelas vazias (conquista "Último Ônibus").
+- A chave no contato só gira depois de pegar a lanterna; antes disso a Lia avisa que precisa de luz.
+- Segurar E na chave dá o Final 0 "Ninguém Precisa Chegar Lá": o motor engasga, pega e o carro dá ré pela serra.
+- No Final 0 um vulto aparece no retrovisor por um único quadro durante a ré.
+- Ficar sentada no carro por 45 s faz a Lia murmurar que só quer esperar a chuva passar.
+- Aos 60 s a chuva no teto do carro engrossa, com som procedural novo.
+- Aos 90 s o rádio vira só chiado, um chiado que parece respiração.
+- Aos 120 s batem três vezes no vidro do lado da Lia, sem ninguém do lado de fora.
+- Aos 150 s o porta-luvas abre sozinho com um clique.
+- Aos 170 s o banco de trás afunda com rangido de couro e a câmera trava olhando pra frente.
+- Aos 180 s abre o final secreto "Fiquei no Carro": tela preta com "Você não entrou. Então ele saiu."
+- O retrovisor interno muda entre as noites: 1ª vazio, 2ª cinto afivelado com mãozinha no vidro, 3ª "LIA" escrito por dentro.
+- Mirar o retrovisor por 2 s revela o reflexo daquela noite e dá medo quando não está vazio.
+- Segurar Q sentada no carro vira a cabeça pro banco de trás e mostra uma criança encharcada por 0,4 s.
+- Depois da criança do banco de trás fica o estofado molhado e uma mãozinha marcada no vidro.
+- Farol alto com F sentada no carro ilumina a neblina bem mais longe.
+- Na terceira troca de farol alto, três crianças de mãos dadas aparecem paradas no meio da estrada e somem.
+- Tentar andar sentada no carro mostra um aviso de que é E na porta pra sair.
+- Uma moeda de cruzeiro fica no cinzeiro do carro pra pegar e usar na máquina de chiclete do posto.
+- Os finais secretos mostram cartão próprio com o tempo na estrada e avisam que não contam pros três finais.
+- Andar pra trás na estrada além do carro engrossa a neblina e a estrada dá a volta, trazendo você de volta ao carro.
+- Na terceira volta há uma Lia de capa sentada no banco, de costas, ouvindo a fita (conquista "Não Tem Volta").
+- Nas voltas a porta do carro aparece aberta e com mãozinhas no vidro por dentro.
+- Andar só de ré por 40 m na estrada faz um vulto surgir andando de costas do seu lado.
+- Virar pro vulto da ré: ele já está de frente (conquista "Ré").
+- Dá pra piscar a lanterna em S.O.S. (três curtas, três longas, três curtas) apontando pro internato.
+- Uma janela responde piscando D-A-V-I em código Morse de verdade (conquista "Alguém Respondeu").
+- A janela que respondeu ao S.O.S. fica acesa até você entrar pelo portão.
+- Depois do S.O.S. uma pilha extra rola por baixo do portão.
+- Piscar a lanterna três vezes pra luz do posto faz a lâmpada responder piscando três vezes (conquista "Três Piscadas").
+- Às vezes o posto responde com quatro piscadas em vez de três, sem explicação.
+- Um gato magro dorme na bomba do posto; aproximar devagar e fazer carinho dá a conquista "Bichano".
+- Correr perto do gato o espanta e ele não volta mais naquela noite.
+- O gato ronrona com som procedural modulado quando recebe carinho.
+- O gato arrepia e chia virado pro mato quando o vulto está por perto, servindo de radar vivo.
+- Um pote de balas de goma de 1979 no balcão do posto deixa pegar uma bala pro inventário.
+- Deixar a bala no banco do ponto de ônibus some com ela e deixa um bilhete no lugar (conquista "Doce").
+- A máquina de chiclete empoeirada do posto aceita a moeda de cruzeiro do carro.
+- Girar a manivela solta uma bolinha queimada e um anelzinho com a letra D, do Davi.
+- Uma profecia sorteada por noite sai da máquina de chiclete (uma frase sobre o perigo da noite).
+- Poço de tijolo atrás do posto deixa descer e puxar o balde, com rangido de corda.
+- O balde traz uma coisa diferente a cada noite: bolinha de gude, sapato de criança, bilhete molhado ou só água morna.
+- Na terceira puxada do balde uma mãozinha solta a alça lá do fundo (conquista "O Que Tinha no Fundo").
+- Binóculo atrás do posto aperta o campo de visão com zoom e vinheta redonda ao olhar.
+- Pelo binóculo a janela da torre pisca os quatro dígitos do cofre da noite em grupos separados (conquista "Quem Pisca").
+- O contador da bomba de gasolina corre de volta até 14,03 ao apertar o gatilho, ligando a data do incêndio.
+- Caixa de correio do posto com cartas devolvidas pro Davi e uma carta de amanhã escrita pela própria Lia.
+- O tapete do posto tem a ponta levantada e esconde um alçapão, aberto agachada com E.
+- No porão o rádio amador do Seu Joaquim, com luz verde, pode ser ligado (conquista "O Porão do Joaquim").
+- O porão tem um mapa com alfinetes de quem sumiu na serra e quinze recibos dos Correios de famílias diferentes.
+- O Seu Joaquim comenta cada segredo que você acha (a bala, a luz, o velho, o gato, o S.O.S.).
+- Um marco "KM 79" caído no mato pode ser levantado, um número que não devia entrar na contagem.
+- Ao levantar o marco a névoa abre e o internato aparece inteiro e aceso como em 1979, com música de festa (conquista "Quilômetro 79").
+- Uma criança de pijama atravessa correndo a estrada antes de tudo voltar a ser ruína.
+- Pegadas pequenas aparecem na lama só no clarão do relâmpago.
+- A pipa "LIA VOA" presa no poste pode ser puxada devagar pela linha até cair com o mapa do atalho no verso.
+- Uma manilha de concreto na vala deixa olhar dentro só agachada e revela três mochilas de anos diferentes.
+- Do fundo escuro da manilha vem uma respiração pequena.
+- Placas amarelas de "escola" com crianças que vão diminuindo (três, duas, uma) até sobrar um homem alto.
+- A lanterna apontada pra última placa de escola desfaz o homem e vira placa comum.
+- Cartaz de campanha de 1978 do diretor Albano no poste, com os dois olhos furados a prego.
+- No clarão do relâmpago o cartaz mostra "ORDEM DE QUEM?" escrito a carvão por cima.
+- Uma bicicleta fantasma passa na neblina com a carta batendo no raio, sem ninguém em cima.
+- O velho do saco atravessa a estrada e some no barranco, num evento raro (cerca de uma noite em vinte).
+- A placa "INTERNATO SÃO LÁZARO" no portão vai perdendo letras conforme o total de mortes, até sobrar só "LÁ".
+- Na noite seguinte a um final secreto, o rádio da abertura comenta o que aconteceu na noite anterior.
+- Nota secreta nova: a carta de 15/03/1994 da Lia adulta, com o aviso sobre o portão.
+- Nota secreta nova: o mapa com alfinetes do porão do posto.
+- Nota secreta nova: a tabela de Morse pregada na escada do porão.
+- Nota secreta nova: o cartaz de campanha do diretor Albano.
+- Nota secreta nova: a pipa com o mapa do atalho e o bilhete do Tomé na rabiola.
+- Nota secreta nova: o bilhete e as mochilas da manilha.
+- Fita secreta nova "TESTE — NÃO GRAVAR POR CIMA", o Davi aos 11 anos testando o gravador.
+- Falas novas da Lia reagindo a cada segredo encontrado (mais de trinta linhas de contexto).
+- Quinze conquistas secretas novas só do prólogo, com dicas que não entregam o segredo.
+- Som procedural novo: a buzina rouca do ônibus de 1979.
+- Som procedural novo: o motor a diesel do ônibus, com volume que sobe e desce pela distância.
+- Som procedural novo: o ronronar do gato.
+- Som procedural novo: o chiado arrepiado do gato.
+- Som procedural novo: o miado.
+- Som procedural novo: o couro do banco de trás afundando.
+- Som procedural novo: as três batidas no vidro do carro.
+- Som procedural novo: a música de festa ao longe no marco 79.
+- Som procedural novo: a carta batendo no raio da bicicleta.
+- Som procedural novo: o motor engasgando e pegando no Final 0.
+- Som procedural novo: as engrenagens da bomba girando pra trás.
+- Legendas acessíveis novas pra todos os sons dos segredos, com categoria de perigo ou de história.
+- A porta do motorista abre e fecha sozinha ao entrar e sair do carro (gancho novo no polimento).
+- As luzes do internato (torre e janela do S.O.S.) atravessam a névoa pra serem vistas lá da estrada.
+- A moeda e o anelzinho entram no inventário ligando o prólogo ao final verdadeiro.
