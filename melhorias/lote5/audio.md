@@ -1,0 +1,91 @@
+# Lote 5 — Áudio
+- Um grave abaixo de 40 Hz treme a tela no instante exato em que o Inspetor decide caçar.
+- Um zumbido grave cresce quando o Inspetor divide a sala com você, invisível no escuro.
+- Um fio de zumbido agudo soa quando o Inspetor vira a cara para a sua direção.
+- A respiração rasgada dele vaza pela fresta quando ele espera do outro lado de uma porta.
+- A respiração rasgada dele vaza abafada pela parede quando ele está na sala ao lado.
+- Escondida colada nele, dá para ouvir o ar entrando e saindo pelos dentes dele.
+- O Inspetor passa a tatear o chão com uma bengala, em ritmo que acelera conforme o estado.
+- A bengala muda de tom ao bater num móvel.
+- A bengala ecoa mais molhada e longa nos túneis.
+- Um sub-grave quase inaudível avisa quando o molho de chaves dele cala de repente.
+- Uma legenda avisa quando o gerador está abafando os seus passos.
+- Perto e sem ver, o Inspetor tem a assinatura sonora de uma corda grave arranhada.
+- Perto e sem ver, a Ana tem a assinatura sonora de uma caixinha desafinada.
+- Perto e sem ver, a Procissão tem a assinatura sonora de um coro de crianças.
+- Perto e sem ver, o Chamado tem a assinatura sonora de uma voz ao contrário.
+- Na nona badalada tudo congela e silencia: a Hora do Silêncio.
+- Fazer barulho durante a Hora do Silêncio vira um ruído enorme que as entidades captam.
+- Com medo alto, o próprio coração vaza durante a Hora do Silêncio e pode te entregar.
+- Com ele muito perto, um segundo batimento soa do lado de onde ele vem, como bússola.
+- Com ele a menos de 3 m, um segundo coração grave bate junto com o seu.
+- Do Capítulo III em diante, a Ana completa a cantiga da caixinha de outro canto.
+- Na caçada durante a Procissão, o coro da fila vira a voz rachada do Inspetor.
+- O coro da Procissão sobe e desce de volume conforme a fila se aproxima ou se afasta.
+- Vozes de criança sobem onde você fica parada tempo demais, empurrando você a se mexer.
+- Um sussurro ao contrário cresce um instante antes de ele entrar na sala onde você está.
+- Um choro de menino anda pelas salas e puxa você para o lado errado.
+- A Ana reproduz o clique da sua lanterna de outra direção para te fazer olhar errado.
+- Ao passar por armários vazios, ouve-se uma respiração infantil presa, às vezes um soluço.
+- Perto do Inspetor em pausa de memória, o batimento que se ouve é de uma criança assustada.
+- Na caçada, por baixo do chiado dele, ouve-se o menino Moacir chorando.
+- Nos túneis, uma batida corre pelos canos vindo de longe.
+- A respiração dele passa a servir de régua contínua de distância.
+- Essa respiração-régua é binaural: vem do lado exato de onde ele está.
+- Quando o Inspetor entra em escuta, o mundo cala de repente como aviso.
+- Todo o som é cortado por um instante logo antes do bote.
+- Nos túneis, um estalo-eco chega do lado oposto para enganar a sua audição.
+- Na procura, o Inspetor chama pelos nomes das crianças de 1979, errando o seu.
+- Nas pausas de memória, o hino cantarolado serve de radar: some conforme ele se afasta.
+- Perto da Ana com medo alto, o coração sincroniza e acelera com a contagem dela.
+- Colado atrás de você no escuro, a respiração dele vem claramente de trás.
+- Na reza, a voz dele oscila do chiado do monstro para a de um menino cansado.
+- Depois de fazer carinho no gato Breu, um Chamado às vezes imita o miado dele.
+- Raramente, na caçada, o apito soa do lado oposto de onde ele realmente está.
+- Ignorar o Chamado por muito tempo faz duas vozes chamarem de lados opostos ao mesmo tempo.
+- Nos capítulos finais, um interfone antigo às vezes toca numa sala.
+- Numa emboscada, ele às vezes reproduz o seu último barulho vindo de uma sala errada.
+- O jogo passa a guardar o seu último barulho para ele poder imitá-lo.
+- Uma trilha de caça pulsante sobe de volume e andamento conforme ele chega perto.
+- Os passos dele ganham eco longo em salas grandes como o refeitório e a capela.
+- Nos túneis, a sua respiração volta distorcida pelos canos ao prender e soltar o ar.
+- O coro da Procissão muda de timbre por andar (térreo, superior, túneis, cemitério).
+- No cemitério, quando a procissão do caixão para perto, todo o som some até sobrar a respiração.
+- Prender o ar perto dele faz o seu coração desacelerar e perder o compasso.
+- Quem ouviu a fita 2 ganha a reza da Celeste como radar, que sobe quando ele se aproxima do esconderijo.
+- O Chamado às vezes imita o gerador, o telefone, a fita ou a sineta vindo de uma sala errada.
+- Na caçada, ele sincroniza os passos com os seus por um momento e quebra de propósito.
+- O fio de zumbido da venda também cresce com o medo alto.
+- Com medo acima de 90 e ele colado, a tela pulsa no ritmo do seu coração.
+- Um realce na cantiga marca o momento em que a fúria do Inspetor cresce.
+- O apito dele sobe meio-tom por capítulo e racha mais com a fúria quando a caça começa.
+- O estalo de língua fica mais abafado quando ele está atrás da sua cabeça.
+- O estalo de língua fica mais seco e metálico a cada capítulo.
+- A cantiga que ele cantarola acelera e sobe de tom conforme a fúria aumenta.
+- O sino do fim soa em subgrave e faz o chão tremer junto.
+- A respiração rasgada dele fica mais encatarrada a cada capítulo.
+- A fungada dele fica mais doente e grave nos capítulos finais.
+- O chiado do bote ganha um subgrave de impacto.
+- A inspiração funda dele fica mais longa e trêmula quando está furioso.
+- O arranhar de unhas sobe de intensidade conforme ele chega perto.
+- Os passos dele ecoam na nave da capela e no cemitério.
+- Caçando e colado em você, a rajada de estalos de língua fica mais longa e aguda.
+- Nos capítulos finais, a contagem da Ana desafina para baixo.
+- O "silêncio..." sussurrado da Ana ganha cauda longa e encharcada nos túneis.
+- Os pés da Ana pisam na água nos túneis.
+- Furioso, o Inspetor chacoalha a maçaneta mais vezes e mais forte.
+- O grito do Inspetor desce de tom a cada capítulo, ficando mais monstruoso.
+- No cemitério, o sino distante soa abafado pela chuva e um tom abaixo.
+- Furtado o apito, o assopro dele passa a sair ferido, só chiado.
+- A corrente dele chacoalha com eco longo nos túneis.
+- O sopro de criança colado na sua nuca passa de um ouvido ao outro.
+- A pancada dele na porta ecoa pela galeria e pela nave.
+- O arrastar do ar dele fica mais longo e sedento quando está furioso.
+- Na caçada, a bengala dele vira um arrastão contínuo no chão.
+- No cemitério, o estalo de língua dele também ecoa pela nave.
+- Quando a Procissão vira na sua direção, o som some de repente.
+- Um zumbido grave também cresce quando a Ana divide a sala com você, invisível.
+- A fila da Procissão sussurra "silêncio... silêncio..." enquanto passa.
+- A cantiga da caixinha vira tom menor quando ele caça ou a Ana se aproxima.
+- Furioso, ele esmurra o armário onde você se esconde com um subgrave.
+- A batida dele ressoa pela galeria nos túneis.
