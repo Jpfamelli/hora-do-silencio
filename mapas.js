@@ -11,6 +11,7 @@ import { polirTerreo, polirSuperior } from './src/internato-polimento.js';
 import * as SUB from './src/subterraneo.js';
 import * as SUBL from './src/subterraneo-lore.js';
 import * as SUBP from './src/subterraneo-polimento.js';
+import * as SUBS from './src/subterraneo-segredos.js';
 
 // ---------- utilidades compartilhadas entre mapas
 function arvores(A, faixas, n = 300) {
@@ -550,7 +551,8 @@ function tuneis(A, S) {
     T('saida', 'Saída', 24, 32, -42, -30),
     T('t6', 'Galeria oeste', -24, -6, -38, -34),
     { id: 'dep', nome: 'Depósito', x0: -32, x1: -24, z0: -42, z1: -30, tipo: 'deposito', piso: 'concreto', parede: 'tijolo', h: 2.8 },
-    ...SUBP.salasTuneis() // lote 3: duto baixo dos ratos entre a câmara oeste e o depósito
+    ...SUBP.salasTuneis(), // lote 3: duto baixo dos ratos entre a câmara oeste e o depósito
+    ...SUBS.salasTuneis() // lote 4: cabana de lençóis atrás da grade baixa do túnel norte
   ];
   const ab = (id, a, b, x, z, eixo) => ({ id, a, b, x, z, eixo, tipo: 'aberta', largura: 3.6, alto: 2.6 });
   const portas = [
@@ -559,9 +561,9 @@ function tuneis(A, S) {
     ab('h4', 'hub', 't4', 0, -42, 'x'), ab('h5', 'hub', 't5', 6, -36, 'z'), ab('5s', 't5', 'saida', 24, -36, 'z'), ab('h6', 'hub', 't6', -6, -36, 'z'),
     { id: 'sec', a: 't4', b: 'secreta', x: 0, z: -54, eixo: 'x', nome: 'porta de ferro', trava: () => !S.flags.aguaBaixa, msg: 'Debaixo d\'água. Não abre com esse peso.' },
     { id: 'dep', a: 't6', b: 'dep', x: -24, z: -36, eixo: 'z', nome: 'porta do depósito' },
-    ...SUBP.portasTuneis()
+    ...SUBP.portasTuneis(), ...SUBS.portasTuneis()
   ];
-  A.construirSalas(salas, portas); SUBP.soltarDuto(A);
+  A.construirSalas(salas, portas); SUBP.soltarDuto(A); SUBS.soltar(A);
   // luz fixa e fraca: entrada, cruzamento, cisterna e galeria leste (antes era sorteio, às vezes tudo escuro)
   for (const [x, z, h, al] of [[0, -3, 2.8, 7], [0, -18, 2.8, 8], [0, -36, 3.4, 9], [15, -36, 2.8, 7]]) A.lampada(x, z, h, al, 0xc8d8a0, 3.4);
   // lâmpadas de emergência em gaiola marcando as válvulas, a porta de ferro e a escotilha
@@ -830,7 +832,7 @@ function tuneis(A, S) {
     }
   });
 
-  return SUBP.tuneis(A, S, SUBL.tuneis(A, S, {
+  return SUBS.tuneis(A, S, SUBP.tuneis(A, S, SUBL.tuneis(A, S, {
     nome: 'Túneis de drenagem',
     spawns: { entrada: { x: 0, z: -2.5, yaw: 0 }, inicio: { x: 0, z: -2.5, yaw: 0 } },
     dentro: { hemi: .05, moon: 0, fog: .12 },
@@ -852,7 +854,8 @@ function tuneis(A, S) {
       if (S.flags.cofre && !S.done.sair_tuneis) iniciarFugaCofre(true);
     }
   }, { nivel: () => nivel, O, B, som }), // lore do Lote 2: src/subterraneo-lore.js
-  { FX, som, O, B, nivel: () => nivel, valvIts, jato, sub, telaFolego, barraFolego, mao, emergir: () => emergir, lento: () => lento, emerg, brinq, cofrePorta: cp, disco, itEsc, esc2 }); // lote 3: src/subterraneo-polimento.js
+  { FX, som, O, B, nivel: () => nivel, valvIts, jato, sub, telaFolego, barraFolego, mao, emergir: () => emergir, lento: () => lento, emerg, brinq, cofrePorta: cp, disco, itEsc, esc2 }), // lote 3: src/subterraneo-polimento.js
+  { nivel: () => nivel, O, sub, valvIts, jato, FX }); // lote 4: src/subterraneo-segredos.js
 }
 
 // =====================================================================
@@ -1089,8 +1092,9 @@ function cemiterio(A, S) {
       A.agendarEntidades();
     },
   };
-  return SUBP.cemiterio(A, S, SUBL.cemiterio(A, S, def, { covas, pedras, importantes, velasTum, velasAltar, avivar, itSino, sinoP, corda, fundos, noAltar, cel, nomes }), // lore do Lote 2
-    { FX, som, neblina: nev, velasAltar, velasTum, itsTum, importantes, sinoP, obel, arvoresMesh: [arv.tronco, arv.copa] }); // lote 3: src/subterraneo-polimento.js
+  return SUBS.cemiterio(A, S, SUBP.cemiterio(A, S, SUBL.cemiterio(A, S, def, { covas, pedras, importantes, velasTum, velasAltar, avivar, itSino, sinoP, corda, fundos, noAltar, cel, nomes }), // lore do Lote 2
+    { FX, som, neblina: nev, velasAltar, velasTum, itsTum, importantes, sinoP, obel, arvoresMesh: [arv.tronco, arv.copa] }), // lote 3: src/subterraneo-polimento.js
+    { FX, itsTum, importantes, covas, sinoP, fundos }); // lote 4: src/subterraneo-segredos.js
 }
 
 export const MAPAS = { estrada, terreo, superior, tuneis, cemiterio };

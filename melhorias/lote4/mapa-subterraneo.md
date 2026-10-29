@@ -1,0 +1,97 @@
+# Lote 4 — Mapa: túneis, cemitério e capela
+- Na parede da escada dos túneis, a lista "QUEM DESCEU" riscada a prego de 1951 a 1979 ganha uma última linha nova com o nome que o jogador digitou no título e a data de hoje.
+- Se o jogador não digitou nome, a última linha da lista diz "A IRMÃ", e a Lia reage sozinha ao perceber que desceu hoje.
+- A Lia estranha em voz alta ver o próprio nome fresco riscado a prego ("como ele sabe esse nome?").
+- Na coluna do túnel norte há marcas de altura a canivete, com nome e ano, de 1931 a 1979.
+- A marca "DAVI 79" fica na altura dos olhos da Lia quando ela se agacha; a marca "LIA 94" está na altura dela em pé.
+- Encostar a mão no risco mostra uma reação muda da Lia, sem fala forçada.
+- Agachar junto às marcas de altura por um tempo faz o Davi sussurrar do outro lado da parede "...você cresceu" e dá a conquista secreta "Do Tamanho Dele".
+- Sete nichos de pedra no túnel norte, cada um com um chapéu de feltro, um apito de metal e a placa com ano e inicial dos Inspetores (1931 a 1979 — M.).
+- O oitavo nicho está vazio, limpo e sem poeira, com a placa já gravada "1994 — L.".
+- Iluminar o oitavo nicho deixa a Lia muda, sobe o medo e dá a conquista secreta "O Oitavo Nicho".
+- Uma prateleira no túnel oeste com 37 pares de sapatos de criança etiquetados: 34 secos e 3 molhados de lama (TOMÉ, ANA, DAVI).
+- No lugar 38 da prateleira há um par de botas de adulto número 36; tocar nelas dá uma pilha, a fala "São as minhas. Eu tô de bota." e a conquista "Trinta e Oito".
+- Um sapato de criança sai por uma fresta da parede de tijolos de 1951; puxar faz uma mãozinha puxar de volta.
+- Na terceira puxada o sapato solta, uma voz de menino diz "...Cícero" e revela o nome "CÍCERO — 1951 — fugitivo", com a conquista "O Quadragésimo Primeiro".
+- Um poço de pedra seco na câmara oeste, cuja lanterna não alcança o fundo.
+- Jogar uma garrafa no poço faz uma menina contar de nove até um lá embaixo e a garrafa voltar rolando até o pé da Lia, com um bilhete no gargalo; dá a conquista "Fundo do Poço".
+- O bilhete do poço entra no diário como nota secreta ("não joga lixo no meu quarto").
+- Jogar uma segunda garrafa no poço faz só uma risadinha vir lá do fundo.
+- Uma gaiola com um canário vivo pendurada na cisterna, que canta enquanto o Inspetor está longe.
+- O canário se cala de repente quando o Inspetor chega perto, servindo de detector honesto para quem repara.
+- A Lia liga o canário à mina ("quando ele cala, é porque vem coisa ruim").
+- Abrir a portinhola da gaiola solta o canário, que voa e some.
+- Na cisterna, a tecla V faz a Lia chamar "Davi?" para dentro do poço, e o eco volta três vezes mais fraco.
+- Na quarta vez o eco volta mais alto que a própria voz, com a voz do Davi ("AQUI NÃO. ELE TÁ OUVINDO."), chama o Inspetor e dá a conquista "Eco Desobediente".
+- Um tijolo com um "D" riscado na câmara leste; agachada, puxar o tijolo revela o canivete do Davi (D.M.) enrolado num pano.
+- Nove arranhões de unha na parede do túnel leste, o nono pela metade.
+- Ficar parada no escuro diante dos arranhões completa o nono sozinho, com som de unha na pedra e a Lia sussurrando "...nove".
+- Um rato branco de olhos vermelhos aparece no túnel leste e só anda quando a Lia o segue agachada e sem correr.
+- Iluminar o rato na cara faz ele fugir para o lado errado; segui-lo até o fim o leva a entrar num buraco da parede.
+- Enfiar a mão no buraco do rato dá uma pilha, o bilhete do Pipoca (nota secreta) e a conquista "Rato de Laboratório".
+- Uma quarta válvula, de emergência, deitada no fundo da cisterna, só visível agachada com a lanterna apontada para a água.
+- Girar a válvula de emergência esvazia tudo de uma vez sem seguir a ordem, mas os canos roncam e o Inspetor vem direto; dá a conquista "Válvula do Pedreiro".
+- A anotação do pedreiro (nota n9) ganha uma linha a lápis sobre a válvula de emergência no fundo da cisterna.
+- Dar um toque rápido numa válvula faz o cano cantar a nota dela (grave, médio, agudo), com legenda própria.
+- Acertar a ordem das três válvulas sem errar depois de ouvir as notas dá a conquista "Afinada".
+- Uma grade baixa e frouxa na parede leste do túnel norte, que só se solta agachada.
+- Atrás da grade, uma cabana de lençóis com cabos de vassoura, lanterna de pilha, figurinhas, um gibi e uma caixinha de música.
+- A cabana é uma sala segura: o Inspetor não entra, só fareja do lado de fora ("pano. Só pano velho.") e vai embora.
+- Dentro da cabana o medo cai até zero e a caixinha de música toca bem baixo; dá a conquista "Debaixo do Lençol".
+- A cabana só pode ser usada uma vez por noite: ao sair, os lençóis caem e ela deixa de esconder.
+- Só dá para passar pela grade agachada; em pé a Lia bate a cabeça e um colisor a impede.
+- A parede de dentro da cabana tem nomes de quem se escondeu ali, com pauzinhos contando as noites, terminando em "LIA — pra quando ela vier".
+- Ler os nomes da cabana troca a música da caixinha pela cantiga que a Irmã Celeste cantava.
+- Um mapa de tesouro a lápis dentro da cabana, mostrando duas árvores secas perto do galpão e um X vermelho, assinado D. T. A.
+- A Lia lê o mapa e entende onde o tesouro dos três está enterrado, no cemitério.
+- No cemitério, a fase da lua acompanha a fase real pela data do aparelho, mudando a força do luar.
+- Em noite de lua cheia de verdade, o cemitério fica mais claro (menos sombra para esconder) e surge uma lápide extra "AQUI JAZ O QUE A LUA MOSTROU", com a conquista "Lua Cheia".
+- A Lia comenta ao chegar numa noite de lua cheia que não há sombra para se esconder.
+- Uma lápide coberta de musgo no fundo do cemitério; segurar E limpa o musgo devagar.
+- Limpa, a lápide revela "LIA MORAES · 1967 — 1979 · transferida" (a vaga que não foi dela), a Lia só respira e vem a conquista "Era Eu".
+- Um canto do cemitério ganha uma lápide pequena "LIA" para cada vez que o jogador morreu nesta noite, cada uma com uma regra quebrada (CORREU, RESPONDEU, etc.).
+- Vendo três ou mais dessas lápides, a Lia para e diz "Quantas vezes eu já vim aqui?".
+- Um fogo-fátuo azul que só aparece com a lanterna apagada e foge se o jogador acende a luz.
+- Seguir o fogo-fátuo no escuro (ele espera quem para) leva a uma lápide caída de criança onde ele entra; a Lia explica "fogo que anda".
+- Na lápide onde o fogo entrou surge uma bolinha de gude azul do Tomé; pegá-la dá a conquista "Luz de Defunto".
+- Uma cova antiga com um sininho de segurança e a corda entrando na terra, que toca sozinho de vez em quando.
+- Puxar a cordinha do sininho faz algo puxar de volta com força, dando um tranco na câmera e a conquista "Ainda Aqui".
+- Uma cova aberta serve de esconderijo: deitar nela deixa a respiração quase inaudível para o Inspetor.
+- Depois de 15 s deitada na cova, começa a cair terra de cima (alguém enterrando); aguentar dá a conquista "Sete Palmos", e aos 25 s a tela fecha e força a saída.
+- Entre duas árvores secas perto do galpão, uma cruz de pedras marca o tesouro enterrado dos três.
+- Cavar o X com a pá revela uma lata com figurinha, bolinha de gude, o apito do Tomé e a carta dos três (nota secreta).
+- Ler a carta dos três enche a vida e zera o medo uma vez, com a conquista "Tesouro de Pirata".
+- Uma poça escura e parada reflete a lápide ao lado; agachada, o reflexo mostra outro nome ("MOACIR DUARTE · 1938 — hoje").
+- A Lia percebe que a pedra não diz aquilo, só o reflexo na água.
+- Uma cova sem nome com a terra fofa, mexida há pouco; remexer com a pá revela um cartão de matrícula com o nome do jogador e a data de hoje, com a foto arrancada.
+- A Lia fecha a cova às pressas em pânico e ganha a conquista "Lugar Reservado".
+- Um barracão de ferramentas de porta presa por arame; soltar o arame (ou cortá-lo com o canivete do Davi, rápido e sem barulho) abre o barracão.
+- Dentro do barracão, a pá do coveiro de cabo curto faz os túmulos saírem bem mais rápido quando pega.
+- Usar o canivete do Davi para abrir o barracão rende uma fala dele e evita o ruído de soltar o arame.
+- Um anjo de pedra com o braço estendido que aponta para o próximo túmulo a cavar e muda de direção quando ninguém olha.
+- Na fuga final, o anjo passa a apontar para o portão dos fundos, poupando segundos a quem repara.
+- Encarar o anjo por muito tempo faz ouvir pedra rangendo atrás do jogador e sobe o medo.
+- Uma árvore seca no fundo com sapatinhos de criança pendurados pelos cadarços, mais um par de botas de adulto novo número 36.
+- O par de adulto balança sem vento quando a lanterna passa por ele, e a Lia estranha.
+- Uma pia batismal de água preta na capela; segurar E põe a mão na água enquanto o medo sobe e algo frio fecha a mão.
+- A pia devolve um escapulário de pano da Irmã Celeste; na fuga, a Celeste reza e segura o Inspetor um pouco mais ao sair da capela.
+- No muro dos fundos, um sinal riscado a giz (três curtas, três longas, três curtas) "PRO SEU JOAQUIM VER — D." e uma luzinha amarela do posto ao longe.
+- Piscar a lanterna no padrão de socorro faz o posto responder piscando de volta e o rádio do Seu Joaquim falar; dá a conquista "Câmbio".
+- Depois do câmbio, na fuga, uma vela acesa no lado esquerdo do portão faz o Inspetor perder alguns segundos ali.
+- Um confessionário na capela cuja madeira por dentro tem nomes riscados por crianças, entre eles "LIA — 14/03/79 — guardei teu lugar".
+- Ler a madeira do confessionário dá a conquista "Lugar Guardado".
+- Escondida no confessionário por um tempo, uma voz de homem velho do outro lado da grade fala da sua noite (quantas vezes morreu) e dá uma penitência que é uma dica real.
+- Na segunda vez no confessionário, o outro lado está vazio e a madeira está molhada como se alguém tivesse chorado ali.
+- Se o canário foi solto nos túneis, ele reaparece pousado na trave do sino da capela.
+- Tocar o sino com o canário presente faz ele cantar nove notas em vez de fugir, com a conquista "Livre".
+- Três notas secretas novas no diário (bilhete do poço, bilhete do Pipoca, carta dos três).
+- Vinte conquistas secretas novas do subterrâneo, com um contador "Segredo do subterrâneo X/20" a cada descoberta.
+- Vinte legendas de som próprias dos segredos (canário, eco, patinhas, sininho, terra caindo, rádio em código, etc.) para quem joga com legendas ligadas.
+- Dois sons procedurais novos de canto do canário: o piado curto da gaiola e as nove notas do hino na trave do sino.
+- Som procedural novo de garrafa rolando de volta, usado no poço seco.
+- Som procedural novo de ronco dos canos, usado na válvula de emergência.
+- Som procedural novo de unha raspando a pedra, usado nos arranhões da parede.
+- Som procedural novo de terra caindo, usado na cova aberta e na cova sem nome.
+- Som procedural novo de pedra rangendo, usado quando o anjo é encarado demais.
+- A cabana de lençóis é mantida fora do mapa de caminhos das entidades, para que Inspetor, Procissão e Menina nunca entrem nela.
+- As garrafas jogadas no poço seco são tratadas por um único gancho sobre o retorno de garrafa, sem quebrar o comportamento normal das garrafas.
