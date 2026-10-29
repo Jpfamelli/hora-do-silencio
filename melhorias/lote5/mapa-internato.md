@@ -1,0 +1,92 @@
+# Lote 5 — Mapa: térreo e dormitórios
+- O Inspetor agora deixa marcas de garra na parede do corredor sempre que caça por ali.
+- As marcas de garra são desenhadas em canvas, com sulcos irregulares e curvos.
+- Cada marca pode ter 3, 4 ou 5 sulcos, sorteados para não ficarem idênticas.
+- As marcas variam de tamanho e altura, como arranhões reais de alguém em movimento.
+- Cada sulco tem uma lasca de madeira clara ao lado, que pega a luz da lanterna.
+- Um arranhão audível acompanha o surgimento de cada nova marca.
+- As marcas ficam na parede pelo resto do capítulo: o corredor guarda a memória da caçada.
+- Um corredor muito arranhado avisa, uma vez, que "ele caça muito por aqui" (ler o perigo pelo mundo).
+- No Capítulo II o Inspetor caça mais: as marcas aparecem mais rápido que no Capítulo I.
+- A cadência das marcas tem tempo mínimo entre elas para não poluir a parede.
+- No andar de cima o Inspetor também marca a parede do corredor quando caça.
+- Silhueta do Inspetor aparece numa janela da fachada, iluminada por um relâmpago no pátio.
+- A cabeça da silhueta acompanha a Lia enquanto o relâmpago dura.
+- A silhueta some no escuro seguinte, quando o clarão apaga.
+- A aparição da janela acontece no máximo uma vez por capítulo.
+- Um sussurro acompanha a aparição na janela.
+- Um trovão reforça o susto da silhueta na janela.
+- Ver a silhueta na janela aumenta o medo da Lia.
+- A Lia comenta "Tem alguém na janela." ao avistar a silhueta.
+- No Capítulo II, ao entrar o corredor leste, as portas das salas começam a bater fechando em sequência.
+- As portas fecham da entrada para o fundo, logo atrás da Lia (perseguição de mão única).
+- Cada porta que fecha solta uma pancada seca.
+- Cada batida de porta faz a tela tremer.
+- Cada batida emite ruído que atrai o Inspetor.
+- Um estalo de língua do Inspetor vem da entrada do corredor ao disparar a sequência.
+- O Inspetor desperta e avança logo atrás quando a sequência de portas começa.
+- A Lia grita "As portas... estão fechando sozinhas!" no disparo.
+- A porta da diretoria nunca é fechada pela sequência (não atrapalha o objetivo do capítulo).
+- Uma pancada seca final marca o fim da sequência de portas.
+- A Lia comenta "Saí bem antes da última." ao fim da perseguição das portas.
+- A sequência das portas reinicia no começo do Capítulo II (pode repetir em nova tentativa).
+- A escada da recepção agora range alto se a Lia sobe ou desce correndo.
+- Descer a escada devagar ou agachada mantém o silêncio.
+- O ruído dos degraus atrai o Inspetor, proporcional à velocidade.
+- Correr nos degraus solta um estalo de tábua além do rangido.
+- Um aviso ensina, uma vez, que devagar os degraus ficam quietos.
+- A troca de andar virou uma decisão de ritmo durante a caçada (rápido = barulho, devagar = ele encosta).
+- Quando o Inspetor caça a menos de 6,5 m, ouve-se a respiração pesada dele.
+- Um sussurro extra surge quando ele está muito perto (menos de 3,5 m) caçando.
+- Estalos de língua marcam a posição dele quando está procurando por perto.
+- Ele inspira audível de vez em quando enquanto investiga a menos de 12 m.
+- No Capítulo I, um estalo distante e solitário soa pouco depois de entrar (ele recém-desperto).
+- No Capítulo II, uma pancada seca ecoa no corredor leste ao começar o capítulo.
+- No andar de cima, um rosto pálido aparece do lado de fora da janela do corredor.
+- O rosto na janela acompanha a Lia pela fachada enquanto ela anda.
+- O rosto some quando a Lia para de andar.
+- O rosto some quando a Lia olha direto para ele.
+- O rosto tem olhos pretos afundados, sem brilho (aparência perturbadora).
+- Um sussurro acompanha o sumiço do rosto.
+- Ver o rosto na janela aumenta o medo da Lia.
+- O rosto na janela não dá dano: é presságio.
+- O rosto na janela aparece no máximo uma vez por capítulo.
+- Set-piece do Capítulo III: uma figura do Inspetor desce a fileira de camas de um dormitório alisando lençol por lençol.
+- A rotina dele avança em batidas, com pausa de memória a cada cama.
+- Um som de arrastar lençol acompanha cada cama alisada.
+- Cada cama alisada emite um ruído baixo.
+- A figura tem a mão estendida em direção ao lençol.
+- Contra-jogo: ficar sempre à frente da rotina dele é seguro; na cama que ele vai alisar enche o medo.
+- Um aviso ensina o contra-jogo das camas ("fique sempre à frente da rotina dele").
+- A Lia comenta "Ele está passando a mão em cada cama. Uma por uma." ao disparar a cena.
+- A Lia solta um alívio ("não olhou pra mim") quando ele termina a fileira.
+- A figura das camas olha para a Lia enquanto avança pela fileira.
+- A cena das camas aumenta o medo ao disparar.
+- Set-piece do Capítulo III: tábuas do teto desabam em pontos marcados do corredor de cima.
+- O desvio é por rota (correr para o lado certo), não por apertar botão na hora.
+- Cada queda dispara quando a Lia se aproxima do ponto marcado.
+- Um rangido avisa antes de cada tábua cair.
+- As tábuas caem com gravidade e giro, não somem instantaneamente.
+- O impacto de cada tábua solta pancada, estalo de madeira e ruído alto.
+- O impacto das tábuas faz a tela tremer.
+- Encostar numa tábua que cai tira vida e atrasa a Lia.
+- Os escombros não criam colisor: nunca travam o caminho (sem backtracking forçado).
+- O estrondo do desabamento prende o Inspetor atrás por um tempo.
+- A Lia grita "O teto está vindo abaixo! Corre!" no início do desabamento.
+- A Lia comenta "O corredor inteiro veio abaixo atrás de mim." ao escapar.
+- Os pontos de queda alternam de lado, obrigando a Lia a ziguezaguear.
+- Na descida pelo monta-cargas, a mão do Inspetor entra pelas frestas do teto.
+- O braço do Inspetor tem palma e quatro dedos modelados, agarrando a grade.
+- A grade do monta-cargas sacode enquanto a plataforma desce.
+- A tela treme no ritmo dos arranhões durante a descida.
+- Arranhões na grade soam durante a descida.
+- A Lia grita "A mão dele entrou pela grade! Desce, desce logo!" na descida.
+- Uma pancada seca marca o momento em que a plataforma encosta embaixo.
+- A transição para os túneis, que antes era só um corte, virou um momento de impotência tensa.
+- A descida do monta-cargas é automática: basta aguentar, sem comando novo.
+- A escada do andar dos dormitórios também range se a Lia desce correndo.
+- Descer a escada dos dormitórios devagar mantém o silêncio.
+- Correr na escada dos dormitórios emite ruído que atrai o Inspetor.
+- Um aviso ensina, uma vez, o silêncio da escada dos dormitórios.
+- Flags próprias do lote (prefixo l5) para os eventos não dispararem fora de hora nem repetirem errado.
+- O novo módulo de monstros do internato entrou na lista de cache offline (sw.js).
