@@ -834,6 +834,7 @@ function updateGarrafas(dt) {
     if (g.t >= 1) {
       W.grupo.remove(g.m); garrafasVoando.splice(i, 1);
       if (SUST.garrafaVolta(g.fim)) continue;
+      try { if (SUST._L4b && SUST._L4b.garrafaBateu) SUST._L4b.garrafaBateu(g.fim.x, g.fim.z); } catch (e) {} // garrafa no sino da torre (src/sustos-segredos2.js)
       if (SEG.garrafa(g)) continue; // garrafa que estoura a lâmpada (src/jogabilidade-segredos.js)
       const sup = superficie(g.fim.x, g.fim.z);
       const antes = M.ativo ? M.state : null;
