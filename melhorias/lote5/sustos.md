@@ -1,0 +1,94 @@
+# Lote 5 — Sustos e eventos
+- Dedos compridos do Inspetor entram pela fresta do armário quando ele caça perto; prender o ar e ficar em silêncio afasta, fazer barulho arromba.
+- Variação na cama: um braço comprido varre o escuro embaixo do colchão; encolher no canto e não respirar salva.
+- Ficar tempo demais (mais de 25 s) embaixo de uma cama faz mãos surgirem do escuro, obrigando a trocar de esconderijo.
+- Quase-encontro: ao prender o ar escondida, o Inspetor passa rente, encosta a mão na porta, respira fundo e segue sem abrir.
+- Emboscada da parede: quando ele "desiste", às vezes fica parado em silêncio ao lado do armário em vez de ir embora.
+- Falsa retirada: os passos somem, mas ele espera parado na única saída da sala.
+- O armário favorito da noite pode já estar ocupado pelo rosto dele; susto forte e corrida sem morte.
+- Falso agarrão ao sair do esconderijo com ele perto: as mãos entram, a tela pisca e tudo some, sem dano.
+- A voz do Davi conta de dentro do seu próprio armário, junto com a sua respiração presa.
+- Uma mão sai de um armário vazio e bate a porta, marcando aquele esconderijo como inseguro na noite.
+- A cama pode "já ter alguém" (o Davi, presença fria): a Lia se recusa a deitar e o esconderijo fica inseguro.
+- A Ana se deita do outro lado da cama e estende a mão até quase te tocar; a luz na cara dela a faz recuar.
+- Alucinação: um rosto sorrindo bem atrás de você aparece no vidro por um instante.
+- Alucinação: a Ana parada no limite da sua visão quando você gira a câmera.
+- Alucinação: o corredor estica (efeito dolly) e a porta do fim foge; respeita "menos movimento".
+- Alucinação: as paredes da sala incham e recuam, respirando, por alguns segundos.
+- Alucinação: uma mancha de escuro em formato de boca no vão da porta, de onde o Chamado vem.
+- Alucinação: um vulto pequeno de criança cruza o fundo do corredor rindo.
+- Alucinação: a sombra do Inspetor atravessa o teto de cabeça para baixo, arranhando a madeira.
+- Alucinação: ele aparece parado onde ninguém caberia (enfiado na parede, de ponta-cabeça, no chão) e some com a luz.
+- Alucinação: pegadas molhadas surgem uma a uma atrás de você e param quando você para.
+- Alucinação: o reflexo dele aparece um passo mais perto do que ele realmente está.
+- Alucinação: um vulto no fundo repete o seu último movimento com atraso.
+- Alucinação: um casaco no cabide infla devagar, como se respirasse.
+- Alucinação: uma cadeira de balanço range e balança sozinha.
+- Alucinação: o colchão de uma cama afunda no canto do olho, como se alguém tivesse deitado.
+- Alucinação: nove pares de sapatinhos de criança enfileirados no chão ao entrar numa sala.
+- Alucinação: nas rouparias, um dos "manequins" não era manequim e vira quando você passa de costas.
+- Alucinação: por um quadro, o seu reflexo vira a cabeça sozinho.
+- Alucinação: o seu reflexo demora meio segundo a te acompanhar no vidro.
+- Alucinação: uma mãozinha de criança vem do escuro ao lado da cama; a luz ou prender o ar a recolhe.
+- Alucinação: um vidro embaça sozinho e surge a marca de uma mão por dentro quando ele está perto.
+- Alucinação: um Inspetor falso que NÃO some com a luz; só desaparece ao piscar (Z) ou passar por ele.
+- Alucinação: ele está encarapitado no vão do teto e desce devagar quando você passa por baixo.
+- Alucinação: o cobertor de uma cama sobe e desce, como se alguém respirasse embaixo.
+- Alucinação: uma porta que você fechou range e se abre de novo sozinha.
+- Alucinação: a sombra dele cruza, longa e torta, a parede iluminada.
+- Alucinação: uma risada de criança desliza pela sala, de um lado para o outro.
+- Alucinação: no escuro, uma mãozinha fria segura a sua.
+- Ambiente: uma lâmpada estoura bem quando você passa por baixo dela.
+- Alucinação: ele aparece parado no vão de uma porta ao fundo do corredor.
+- Alucinação: dois olhos vermelhos piscam no escuro atrás de você.
+- Alucinação: um choro de criança vem de dentro da parede.
+- Os passos do Inspetor imitam o seu compasso na procura; a Lia percebe ("Ele para quando eu paro").
+- A beira da tela pulsa com uma respiração que não é a sua, mais forte do lado de onde a ameaça vem.
+- Sopro frio na nuca em corredores "seguros", com um sussurro atrás da câmera e nada ao virar.
+- Deixar o diário aberto demais com ele por perto faz a cantiga dele parar lá fora.
+- Quando o Inspetor fareja, uma legenda avisa que o ar (cortinas, velas, poeira) é puxado na direção dele.
+- O Inspetor bate três vezes na parede, chamando, no instante em que te perde (sai da caça).
+- O estalo de língua dele fica mais rápido e mais alto conforme ele se aproxima na caça.
+- A respiração dele fica audível quando está colado (menos de 2 m) fora da caça.
+- Falso "boa noite, crianças": tudo se acalma, as luzes voltam e, 8 s depois, ele volta de repente.
+- Perseguição na chuva: cada relâmpago no cemitério congela a silhueta dele mais perto de você.
+- Relâmpago que aproxima: fora da caça, o vulto reaparece mais perto quando você não está olhando.
+- Cara a cara: com a lanterna apagada e ele colado, um relâmpago revela o rosto dele por um quadro.
+- Reveal lento do primeiro vulto: ele se materializa devagar do breu antes do primeiro estalo.
+- O braço comprido entra pela boca do poço do monta-cargas (fim do Cap III); agachar no fundo salva.
+- Chamado em estéreo: a mesma voz chama de duas salas opostas ao mesmo tempo.
+- Chamado por bilhete (Cap IV): um papel de criança desliza por baixo da porta com "vem".
+- O Chamado pode se disfarçar de uma fita tocando sozinha numa sala vizinha.
+- Silhueta idêntica à Lia na sala do Chamado: ao se aproximar, ela vira e é o rosto da venda.
+- Fuga final (Cap V): as lâmpadas estouram em cadeia atrás de você conforme corre.
+- Fuga final: estrondos de desabamento atrás, com tremor e poeira, empurrando sempre para a frente.
+- Fuga final: um apagão curto no meio da corrida, guiada só pelo apito dele.
+- A Ana dupla: duas meninas contam em estéreo; a falsa some com a luz, a verdadeira não.
+- A Ana imita a sua lanterna com um facho falso à frente; apontar para ele revela a Ana real atrás.
+- Dar as costas de propósito para a Ana (Cap III) a faz se aproximar e sussurrar na nuca.
+- Procissão: ofegar fora do esconderijo apaga a vela da criança mais perto, que vira para o escuro.
+- Procissão: uma vela ergue e ilumina o seu rosto pela fresta; prender o ar evita que a fila vire.
+- Procissão: uma criança tropeça, a fila para por 2 s e uma delas vira a cabeça para o seu esconderijo.
+- Standoff no batente: você e ele dos dois lados de uma porta entreaberta, a maçaneta girando.
+- Calmaria enganosa: um período seguro e silencioso é plantado logo antes de um susto.
+- Fingir de morta na cama: imóvel e com o ar preso, ele te cobre com o lençol murmurando "dorme" e vai.
+- O apito furtado pode ser respondido por um segundo apito rachado, muito longe.
+- Ele chega antes: raramente, no lugar de uma morte da Ana ou da Procissão, o Inspetor "recolhe" você.
+- Ao voltar de uma morte, o Inspetor pode estar parado segurando a lanterna caída, apontando pro lado errado.
+- A chamada de 1979 no cemitério: a cada nome, uma lápide responde; no fim chamam "Lia Moraes".
+- O chão que cede (Cap IV): em plena caça, um tranco forte de susto nos túneis.
+- Perseguição vertical (Cap IV, noite rara): ele some num buraco do teto e cai à sua frente.
+- O jantar que olha de volta: no refeitório, um relâmpago mostra as cadeiras ocupadas por um quadro.
+- Morte específica no armário do castigo: a vista vira de dentro, com três batidas e respiração de menino.
+- Os vultos do Lote 5 ganham um par de olhos vermelhos brilhando sob a venda, mais perturbadores.
+- Eco de um passo que não é seu, atrás de você, durante a procura do Inspetor.
+- Estalo de língua colado na fresta do esconderijo quando o Inspetor passa rente a você.
+- Passos falsos que se afastam logo antes da emboscada, para te fazer correr cedo demais.
+- Silhueta de uma criança parada na janela, revelada por um relâmpago.
+- A beira da tela fica vermelha e pulsa quando o Inspetor está colado em plena caça.
+- A cantiga grave do Inspetor sobe de tom conforme ele se aproxima.
+- Brasa e fuligem sobem atrás de você na fuga final, o incêndio de 1979 que volta.
+- A última da fila da Procissão (a freira) para e encara o seu esconderijo por um instante.
+- Morte pela Procissão: muitas mãos pequenas tomam a tela por um instante.
+- O armário "ocupado" e os sustos raros são sorteados pela semente da noite, dando cara própria a cada noite.
+- Todos os sustos novos respeitam "reduzir flashes" e "menos movimento" e nunca bloqueiam o caminho.

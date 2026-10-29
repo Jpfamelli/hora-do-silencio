@@ -6,6 +6,7 @@ import * as THREE from 'three';
 import { instalarMundo } from './sustos-mundo.js';
 import { instalarSustosL3 } from './sustos-plataforma.js';
 import { instalarSustosL4 } from './sustos-segredos.js';
+import { instalarSustosL5 } from './sustos-lote5.js';
 
 export function criarSustos(E) {
   const { R, rand, pick, clamp, lerp, camera, scene, W, P, M, MON, ANA, ANA_G, PROC } = E;
@@ -288,9 +289,9 @@ export function criarSustos(E) {
     if (forte && agora - D.stingerT > 25) { D.stingerT = agora; L3.suave(); E.SFX.susto(); marcarForte(); }
     else { estalos(M.pos, 5, .09); E.SFX.coracao(); setTimeout(() => E.SFX.coracao(), 380); }
   });
-  API.avistamento = seguro(() => sustoCom(.9));
+  API.avistamento = seguro(() => { sustoCom(.9); L5.avistamento(); });
   API.aoRaio = seguro(() => {
-    MUNDO.aoRaio();
+    MUNDO.aoRaio(); L5.aoRaio();
     if (D.raioSombra) { const f = D.raioSombra; D.raioSombra = null; f(); }
     if (M.ativo && M.state !== 'caca' && dist2(M.pos, P.pos) < 14 && E.visivel(M.pos, 2.4, 14)) {
       const dx = M.pos.x - P.pos.x, dz = M.pos.z - P.pos.z, l = Math.hypot(dx, dz) || 1;
@@ -456,7 +457,7 @@ export function criarSustos(E) {
     E.toast(TXT.ocupado_toast); return true;
   });
   API.aoEsconder = seguro(L => {
-    const s = S(); D.hiddenT = 0; D.hiddenBateu = false; MUNDO.aoEsconder(L); L4.aoEsconder(L);
+    const s = S(); D.hiddenT = 0; D.hiddenBateu = false; MUNDO.aoEsconder(L); L4.aoEsconder(L); L5.aoEsconder(L);
     if (agora < D.ecoAte && D.ecoSala) { const r = D.ecoSala; depois(2, () => E.SFX.rangido((r.x0 + r.x1) / 2, 1, (r.z0 + r.z1) / 2, .5)); }
     if (L.tipo === 'cama') { D.camaN = (D.camaN || 0) + 1; D.camaT = 0; return; }
     const novo = !L.sxAberto; L.sxAberto = true;
@@ -476,7 +477,7 @@ export function criarSustos(E) {
     }
   });
   API.aoSair = seguro(L => {
-    const s = S(); esconderFresta(); D.espia = null; MUNDO.aoSair(L); L4.aoSair(L);
+    const s = S(); esconderFresta(); D.espia = null; MUNDO.aoSair(L); L4.aoSair(L); L5.aoSair(L);
     if (agora < D.cantoSairAte) { D.cantoSairAte = 0; const a = atras(4); cantoCurto(a, 1.1, .04); }
     if (L && L.tipo === 'cama' && W.mapa === 'superior' && s.chapter === 3 && s.flags.sx_rostoCama && !s.flags.sx_anaSentada && !ANA.ativa) {
       const outra = W.lockers.filter(o => o.tipo === 'cama' && o !== L && Math.hypot(o.x - L.x, o.z - L.z) < 3.5)[0];
@@ -525,7 +526,7 @@ export function criarSustos(E) {
 
   // ===================================================================== MORTE
   API.morte = seguro(quem => {
-    MUNDO.morte(quem); L3.morte(quem); L4.morte(quem);
+    MUNDO.morte(quem); L3.morte(quem); L4.morte(quem); L5.morte(quem);
     D.fov0 = D.fov0 || camera.fov;
     setTimeout(() => restaurarVolume(), 2400);
     som((ac, t) => { const g = E.master.gain; g.cancelScheduledValues(t); g.setValueAtTime(g.value, t); g.setValueAtTime(g.value, t + .33); g.linearRampToValueAtTime(0, t + .38); g.setValueAtTime(0, t + .53); g.setValueAtTime(E.OPT.vol, t + .54); });
@@ -638,7 +639,7 @@ export function criarSustos(E) {
 
   // ===================================================================== PASSOS (eco e água)
   API.aoPasso = seguro(() => {
-    L4.aoPasso();
+    L4.aoPasso(); L5.aoPasso();
     if (agora < D.ecoPassosAte) { const a = atras(1.6); depois(.15, () => passoPos({ x: a.x, y: .1, z: a.z }, .5)); }
     if (P.naAgua) {
       anel(P.pos.x, P.pos.z);
@@ -994,7 +995,7 @@ export function criarSustos(E) {
     const arm = W.lockers.filter(l => l.tipo === 'armario'); D.armOcup = arm.length ? pick(arm) : null;
     if (id === 'terreo') montarTerreo();
     if (id === 'superior') { montarSuperior(); if (!s.flags.sx_chegouCima) { s.flags.sx_chegouCima = true; depois(4, () => batida({ x: 0, y: -2, z: 6 }, 1)); } }
-    MUNDO.novoMapa(id); L3.novoMapa(id); L4.novoMapa(id);
+    MUNDO.novoMapa(id); L3.novoMapa(id); L4.novoMapa(id); L5.novoMapa(id);
     if (id === 'tuneis' && D.mapaAnterior === 'superior' && !s.flags.sx_poco) { s.flags.sx_poco = true; depois(1.4, () => { voz({ x: 0, y: 4, z: -1 }, { f0: 520, vogais: [[300, 2300], [500, 2000], [700, 1200]], dur: 1, vol: .1 }); E.sub('ana', TXT.nove_poco); }); }
   });
   API.update = seguro(dt => {
@@ -1010,13 +1011,16 @@ export function criarSustos(E) {
     for (let i = temporarios.length - 1; i >= 0; i--) { let fim = false; try { fim = temporarios[i].upd(dt); } catch (e) { fim = true; console.warn('[sustos]', e && e.message); } if (fim) temporarios.splice(i, 1); }
     updateInspetorSustos(dt); updateAnaSustos(dt); updateEsconderijo(dt); updateCorredor(dt); updatePortas(dt); vigiarEstado(dt);
     diretor();
-    MUNDO.update(dt); L3.update(dt, s); L4.update(dt, s);
+    MUNDO.update(dt); L3.update(dt, s); L4.update(dt, s); L5.update(dt, s);
   });
   const MUNDO = instalarMundo(E, { D, depois, anima, voz, respiracao, passoPos, batida, vacuo, marcarForte, apagao, notas, arranhao, vento, rolar, atras, fwdH, dist2, abrirDevagar, bater, andarModelo, portaDaSala, fundoCorredor, seguro, som, maoContato, AMBIENTE, agora: () => agora });
   const L3 = instalarSustosL3(E, { D, depois, anima, voz, respiracao, passoPos, batida, vacuo, marcarForte, apagao, rolar, atras, fwdH, dist2, abrirDevagar, andarModelo, portaDaSala, seguro, som, agora: () => agora, SOMBRA, ANA2, CRIANCA, luzRosto });
   // Lote 4: segredos e easter eggs (src/sustos-segredos.js)
   const L4 = instalarSustosL4(E, { D, depois, anima, voz, respiracao, passoPos, batida, vacuo, marcarForte, apagao, notas, rolar, vento, atras, fwdH, dist2, abrirDevagar, bater, portaDaSala, fundoCorredor, seguro, som, sustoCom, agora: () => agora, SOMBRA, ANA2, CRIANCA, luzRosto });
   API._L4 = L4;
+  // Lote 5: MONSTROS — comportamentos novos, variações por capítulo, aparições, contra-jogos e perseguições (src/sustos-lote5.js)
+  const L5 = instalarSustosL5(E, { D, depois, anima, voz, respiracao, passoPos, batida, marcarForte, apagao, arranhao, rolar, vacuo, notas, portaDaSala, atras, fwdH, dist2, som, sustoCom, seguro, agora: () => agora });
+  API._L5 = L5;
   // Lote 3: o motor multiplica o dt do mundo (golpe congela, 'por um fio' desacelera), avisa o golpe e espera a queda na morte
   API.escala = dt => { try { return L3.escala(dt); } catch (e) { return dt; } };
   API.golpe = seguro(q => L3.golpe(q));
