@@ -18,6 +18,7 @@ import { criarMonstrosSegredos } from './src/monstros-segredos.js';
 import { instalarAudioMundo } from './src/audio-mundo.js';
 import { instalarAudioPlataforma } from './src/audio-plataforma.js';
 import { instalarAudioSegredos } from './src/audio-segredos.js';
+import { instalarAudioLote5 } from './src/audio-lote5.js';
 
 const R = window.ROTEIRO;
 const $ = s => document.querySelector(s);
@@ -1548,19 +1549,23 @@ const ajudaCap = () => !!ajudaOculta(); // a mesma ajuda invisível de D(): ouvi
 // --- Sons novos das entidades (procedurais, ficam aqui para não mexer no SOM de todo mundo)
 const AMBX = {};
 const SOMX = {
-  estalo(pos, vol = .6, duplo) { // estalo de língua: mais abafado de longe, duplo quando ele vira para você
+  estalo(pos, vol = .6, duplo) { // estalo de língua: mais abafado de longe e atrás da cabeça (3D), mais seco e rachado a cada capítulo
     const t = AC.currentTime, g = saida({ x: pos.x, y: 3, z: pos.z }, .5), lp = AC.createBiquadFilter(); lp.type = 'lowpass';
-    lp.frequency.value = lerp(5200, 800, clamp(Math.hypot(pos.x - P.pos.x, pos.z - P.pos.z) / 24, 0, 1)); lp.connect(g);
-    const n = duplo ? 4 : 2; for (let i = 0; i < n; i++) burst(t + i * .07 + (i >= 2 ? .16 : 0), .03, 'bandpass', 2600, 8, lp);
+    let corte = lerp(5200, 800, clamp(Math.hypot(pos.x - P.pos.x, pos.z - P.pos.z) / 24, 0, 1));
+    try { const fw = new THREE.Vector3(); camera.getWorldDirection(fw); fw.y = 0; fw.normalize(); const dx = pos.x - P.pos.x, dz = pos.z - P.pos.z, l = Math.hypot(dx, dz) || 1; if ((dx / l * fw.x + dz / l * fw.z) < -.3) corte *= .55; } catch (e) {} // atrás da cabeça: mais abafado
+    lp.frequency.value = corte; lp.connect(g);
+    const cap = S ? S.chapter : 0, fb = 2600 + cap * 150, q = Math.max(3, 8 - cap * .6); // a cada capítulo o estalo fica mais seco e metálico
+    const n = duplo ? 4 : 2; for (let i = 0; i < n; i++) burst(t + i * .07 + (i >= 2 ? .16 : 0), .03, 'bandpass', fb, q, lp);
     g.gain.setValueAtTime(0, t); g.gain.setValueAtTime(.7 * vol, t + .001); g.gain.exponentialRampToValueAtTime(.0001, t + (duplo ? .45 : .2));
   },
   cantarola(pos) { // a melodia da caixinha da Ana, mais lenta, grave e desafinada, em boca fechada
     if (AMBX.cant) return;
     const t = AC.currentTime, g = saida({ x: pos.x, y: 2.8, z: pos.z }, .6), f = AC.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = 380; f.Q.value = 2; f.connect(g);
-    const o = AC.createOscillator(); o.type = 'triangle'; const notas = [659, 784, 659, 523, 587, 494, 523, 440].map(n => n / 4);
-    notas.forEach((n, i) => o.frequency.setValueAtTime(n * rand(.96, 1.04), t + i * .62));
-    const vib = AC.createOscillator(); vib.frequency.value = 5.5; const vg = AC.createGain(); vg.gain.value = 3; vib.connect(vg); vg.connect(o.frequency);
-    const fim = notas.length * .62;
+    const fur = clamp((M.furia || 0) / 6, 0, 1), esp = .62 * (1 - .35 * fur), mp = 1 + .12 * fur; // quanto mais furioso, mais rápida e aguda a cantiga
+    const o = AC.createOscillator(); o.type = 'triangle'; const notas = [659, 784, 659, 523, 587, 494, 523, 440].map(n => n / 4 * mp);
+    notas.forEach((n, i) => o.frequency.setValueAtTime(n * rand(.96, 1.04), t + i * esp));
+    const vib = AC.createOscillator(); vib.frequency.value = 5.5 + 3 * fur; const vg = AC.createGain(); vg.gain.value = 3 + 3 * fur; vib.connect(vg); vg.connect(o.frequency);
+    const fim = notas.length * esp;
     o.connect(f); g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(.16, t + .3); g.gain.setValueAtTime(.16, t + fim - .5); g.gain.exponentialRampToValueAtTime(.0001, t + fim);
     o.start(t); vib.start(t); o.stop(t + fim + .1); vib.stop(t + fim + .1);
     AMBX.cant = { o, vib, g, ate: t + fim }; o.onended = () => { if (AMBX.cant && AMBX.cant.o === o) AMBX.cant = null; };
@@ -1571,35 +1576,37 @@ const SOMX = {
     c.g.gain.cancelScheduledValues(t); c.g.gain.setValueAtTime(Math.max(.0002, c.g.gain.value), t); c.g.gain.linearRampToValueAtTime(.0001, t + .04);
     try { c.o.stop(t + .05); c.vib.stop(t + .05); } catch (e) {} return true;
   },
-  fungada(pos) { const t = AC.currentTime; for (const k of [0, .16]) { const g = saida({ x: pos.x, y: 2.8, z: pos.z }, .4); const f = burst(t + k, .12, 'bandpass', 1500, 2, g); f.frequency.linearRampToValueAtTime(2600, t + k + .12); env(g, t + k, .02, .3, .1); } },
+  fungada(pos) { const t = AC.currentTime, cap = S ? S.chapter : 0; for (const k of [0, .16]) { const g = saida({ x: pos.x, y: 2.8, z: pos.z }, .4); const f = burst(t + k, .12, 'bandpass', 1500 - cap * 120, 2, g); f.frequency.linearRampToValueAtTime(2600 - cap * 180, t + k + .12); env(g, t + k, .02, .3, .1); } if (cap >= 3) { const g2 = saida({ x: pos.x, y: 2.8, z: pos.z }, .3); burst(t + .3, .35, 'lowpass', 500, 1, g2, 0); env(g2, t + .3, .04, .18, .3); } },
   respiraRasgada(pos) {
     const t = AC.currentTime, g = saida({ x: pos.x, y: 2.8, z: pos.z }, .5); burst(t, .55, 'bandpass', 850, 1.6, g); env(g, t, .08, .45, .45);
     const g2 = saida({ x: pos.x, y: 2.8, z: pos.z }, .3), o = AC.createOscillator(); o.type = 'sawtooth'; o.frequency.setValueAtTime(70, t); o.frequency.linearRampToValueAtTime(55, t + .5);
     const lp = AC.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 240; o.connect(lp); lp.connect(g2); env(g2, t, .06, .2, .45); o.start(t); o.stop(t + .6);
+    // a cada capítulo a respiração fica mais encatarrada: um chiado molhado por cima
+    const cap = S ? S.chapter : 0; if (cap >= 2) { const g3 = saida({ x: pos.x, y: 2.8, z: pos.z }, .3); const f = burst(t + .05, .5, 'bandpass', 1400, 4, g3); f.frequency.linearRampToValueAtTime(900, t + .5); env(g3, t + .05, .06, .04 + cap * .02, .45); }
   },
-  inspira(pos) { const t = AC.currentTime, g = saida({ x: pos.x, y: 1.6, z: pos.z }, .3); const f = burst(t, 1.5, 'bandpass', 500, 1.5, g); f.frequency.linearRampToValueAtTime(2200, t + 1.4); g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(.55, t + 1.2); g.gain.exponentialRampToValueAtTime(.0001, t + 1.5); },
-  macaneta(x, z) { const t = AC.currentTime; for (const k of [0, .22, .5]) { const g = saida({ x, y: 1, z }, .3); burst(t + k, .05, 'bandpass', 3200, 6, g); env(g, t + k, .002, .35, .05); } },
-  armarioBate(L) { const t = AC.currentTime, p = { x: L.x, y: 1.2, z: L.z }; const g = saida(p, .7); burst(t, .5, 'bandpass', 480, 2, g, 0); env(g, t, .003, 1.4, .45); const g2 = saida(p, .5); const o = AC.createOscillator(); o.type = 'square'; o.frequency.setValueAtTime(140, t); o.frequency.exponentialRampToValueAtTime(70, t + .4); o.connect(g2); env(g2, t, .003, .25, .4); o.start(t); o.stop(t + .5); },
-  batida(x, z, vol = 1) { const t = AC.currentTime, g = saida({ x, y: 1.2, z }, .5); burst(t, .14, 'lowpass', 380, 1, g, 0); env(g, t, .002, .9 * vol, .12); },
-  corrente(pos) { const t = AC.currentTime; for (let i = 0; i < 3; i++) { const g = saida({ x: pos.x, y: .1, z: pos.z }, .4); osc('triangle', rand(1600, 3200), t + i * .06, .25, g); env(g, t + i * .06, .001, .07, .18); } },
+  inspira(pos) { const t = AC.currentTime, fur = clamp((M.furia || 0) / 6, 0, 1), dur = 1.5 + fur * .6, g = saida({ x: pos.x, y: 1.6, z: pos.z }, .3); const f = burst(t, dur, 'bandpass', 500, 1.5, g); f.frequency.linearRampToValueAtTime(2200, t + dur - .1); if (fur > .3) { const tr = AC.createOscillator(); tr.frequency.value = 6 + 6 * fur; const tg = AC.createGain(); tg.gain.value = .12 * fur; tr.connect(tg); tg.connect(g.gain); tr.start(t); tr.stop(t + dur); } g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(.55, t + dur - .3); g.gain.exponentialRampToValueAtTime(.0001, t + dur); },
+  macaneta(x, z) { const t = AC.currentTime, fur = clamp((M.furia || 0) / 6, 0, 1), n = fur > .3 ? 5 : 3; for (let i = 0; i < n; i++) { const k = i * (fur > .3 ? .14 : .22) + rand(0, .03), g = saida({ x, y: 1, z }, .3); burst(t + k, .05, 'bandpass', 3200, 6, g); env(g, t + k, .002, .35 + fur * .2, .05); } }, // furioso, ele chacoalha a maçaneta mais vezes e mais forte
+  armarioBate(L) { const t = AC.currentTime, p = { x: L.x, y: 1.2, z: L.z }, fur = clamp((M.furia || 0) / 6, 0, 1); const g = saida(p, .7); burst(t, .5, 'bandpass', 480, 2, g, 0); env(g, t, .003, 1.4 + fur * .6, .45); const g2 = saida(p, .5); const o = AC.createOscillator(); o.type = 'square'; o.frequency.setValueAtTime(140, t); o.frequency.exponentialRampToValueAtTime(70, t + .4); o.connect(g2); env(g2, t, .003, .25, .4); o.start(t); o.stop(t + .5); if (fur > .3) { const g3 = saida(p, 0); const o3 = AC.createOscillator(); o3.frequency.setValueAtTime(48, t); o3.frequency.exponentialRampToValueAtTime(28, t + .5); o3.connect(g3); env(g3, t, .003, .4 * fur, .5); o3.start(t); o3.stop(t + .6); } }, // furioso, ele esmurra o armário com um subgrave
+  batida(x, z, vol = 1) { const t = AC.currentTime, tun = W.mapa === 'tuneis', g = saida({ x, y: 1.2, z }, tun ? .9 : .5); burst(t, .14, 'lowpass', 380, 1, g, 0); env(g, t, .002, .9 * vol, .12); if (tun) { const g2 = saida({ x, y: 1.2, z }, 1); burst(t + .1, .35, 'lowpass', 300, 1, g2, 0); env(g2, t + .1, .01, .4 * vol, .4); } }, // a batida dele ressoa pela galeria nos túneis
+  corrente(pos) { const t = AC.currentTime, tun = W.mapa === 'tuneis'; for (let i = 0; i < 3; i++) { const g = saida({ x: pos.x, y: .1, z: pos.z }, tun ? .9 : .4); osc('triangle', rand(1600, 3200), t + i * .06, tun ? .4 : .25, g); env(g, t + i * .06, .001, .07, tun ? .3 : .18); } }, // a corrente dele chacoalha com eco longo nos túneis
   passosLonge(pos, dir) { // passos que se afastam (às vezes é mentira)
     for (let i = 0; i < 6; i++) { const t = AC.currentTime + i * .55, p = { x: pos.x + dir.x * i * 1.4, y: .3, z: pos.z + dir.z * i * 1.4 }; const g = saida(p, .5); const o = AC.createOscillator(); o.frequency.setValueAtTime(70, t); o.frequency.exponentialRampToValueAtTime(30, t + .25); o.connect(g); env(g, t, .01, .8 * (1 - i / 7), .3); o.start(t); o.stop(t + .4); }
   },
   passoCima(pos) { for (let i = 0; i < 4; i++) { const t = AC.currentTime + i * .7, g = saida({ x: pos.x + rand(-3, 3), y: 4.5, z: pos.z + rand(-3, 3) }, .6); const lp = AC.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 160; lp.connect(g); const o = AC.createOscillator(); o.frequency.setValueAtTime(60, t); o.frequency.exponentialRampToValueAtTime(28, t + .3); o.connect(lp); env(g, t, .01, .9, .35); o.start(t); o.stop(t + .45); } },
-  unhas(pos) { const t = AC.currentTime, s = ruido(), f = AC.createBiquadFilter(); f.type = 'highpass'; f.frequency.value = 2600; const g = saida({ x: pos.x, y: 1.4, z: pos.z }, .4); const tr = AC.createOscillator(); tr.frequency.value = 13; const tg = AC.createGain(); tg.gain.value = .08; tr.connect(tg); tg.connect(g.gain); s.connect(f); f.connect(g); g.gain.setValueAtTime(.0001, t); g.gain.linearRampToValueAtTime(.12, t + .2); g.gain.linearRampToValueAtTime(.0001, t + 1.4); s.start(t); tr.start(t); s.stop(t + 1.5); tr.stop(t + 1.5); },
+  unhas(pos) { const t = AC.currentTime, prox = clamp(1 - Math.hypot(pos.x - P.pos.x, pos.z - P.pos.z) / 8, 0, 1), s = ruido(), f = AC.createBiquadFilter(); f.type = 'highpass'; f.frequency.value = 2600; const g = saida({ x: pos.x, y: 1.4, z: pos.z }, .4); const tr = AC.createOscillator(); tr.frequency.value = 13 + prox * 8; const tg = AC.createGain(); tg.gain.value = .08; tr.connect(tg); tg.connect(g.gain); s.connect(f); f.connect(g); g.gain.setValueAtTime(.0001, t); g.gain.linearRampToValueAtTime(.12 + prox * .1, t + .2); g.gain.linearRampToValueAtTime(.0001, t + 1.4); s.start(t); tr.start(t); s.stop(t + 1.5); tr.stop(t + 1.5); },
   agarrao() { const t = AC.currentTime, g = saida(null, .4); burst(t, .3, 'lowpass', 220, 1, g, 0); env(g, t, .002, 1.6, .25); SOM.grito('inspetor'); const g2 = saida(null, .2); burst(t + .05, .9, 'bandpass', 900, 3, g2); env(g2, t + .05, .05, .4, .8); },
-  boteChiado(pos) { const t = AC.currentTime, g = saida({ x: pos.x, y: 2.8, z: pos.z }, .3); const f = burst(t, .35, 'highpass', 2200, 1, g); f.frequency.linearRampToValueAtTime(5000, t + .3); env(g, t, .25, .7, .1); },
+  boteChiado(pos) { const t = AC.currentTime, g = saida({ x: pos.x, y: 2.8, z: pos.z }, .3); const f = burst(t, .35, 'highpass', 2200, 1, g); f.frequency.linearRampToValueAtTime(5000, t + .3); env(g, t, .25, .7, .1); const g2 = saida({ x: pos.x, y: 1.4, z: pos.z }, 0); const o = AC.createOscillator(); o.frequency.setValueAtTime(54, t); o.frequency.exponentialRampToValueAtTime(34, t + .35); o.connect(g2); env(g2, t, .01, .3, .3); o.start(t); o.stop(t + .4); },
   respiracaoNuca() { // sopro de criança colado na sua nuca
     const fw = new THREE.Vector3(); camera.getWorldDirection(fw); const p = { x: camera.position.x - fw.x * .35, y: camera.position.y, z: camera.position.z - fw.z * .35 };
-    const t = AC.currentTime; for (const k of [0, .6]) { const g = saida(p, .05); burst(t + k, .45, 'bandpass', 1400, 1.2, g); env(g, t + k, .12, .5, .3); }
+    const t = AC.currentTime, rt = new THREE.Vector3(fw.z, 0, -fw.x); for (const [i, k] of [[0, 0], [1, .6]]) { const lado = i ? 1 : -1; const pk = { x: p.x + rt.x * lado * .25, y: p.y, z: p.z + rt.z * lado * .25 }; const g = saida(pk, .05); burst(t + k, .45, 'bandpass', 1400, 1.2, g); env(g, t + k, .12, .5, .3); } // o sopro na nuca passa de um ouvido ao outro
   },
   pesDescalcos(pos, molhado) { const t = AC.currentTime, g = saida({ x: pos.x, y: .1, z: pos.z }, .3); burst(t, .05, molhado ? 'bandpass' : 'highpass', molhado ? 900 : 1800, 1.5, g); env(g, t, .002, molhado ? .3 : .16, .04); },
   anaHum(on, pos) { // a melodia da caixinha cantarolada, cortada seco quando a luz sai dela
     if (on && !AMBX.hum) { const o = AC.createOscillator(); o.type = 'sine'; const g = saida(pos, .6); g.gain.value = .07; o.connect(g); const t = AC.currentTime; const notas = [659, 784, 659, 523, 587, 494, 523, 440]; for (let i = 0; i < 40; i++) o.frequency.setValueAtTime(notas[i % 8] * .995, t + i * .5); o.start(t); o.stop(t + 20); AMBX.hum = { o, g }; }
     else if (!on && AMBX.hum) { const t = AC.currentTime; AMBX.hum.g.gain.cancelScheduledValues(t); AMBX.hum.g.gain.setValueAtTime(0, t); try { AMBX.hum.o.stop(t + .01); } catch (e) {} AMBX.hum = null; }
   },
-  passinhos(pos) { for (let i = 0; i < 6; i++) for (let k = 0; k < 3; k++) { const t = AC.currentTime + i * .36 + k * .015, g = saida({ x: pos.x + rand(-1, 1), y: .1, z: pos.z + rand(-1, 1) }, .7); burst(t, .05, 'highpass', 1500, 1, g); env(g, t, .002, .35, .05); } },
-  sussurroSilencio(pos, vol = 1) { const t = AC.currentTime; [[0, 2600, .5], [.5, 1900, .35], [.85, 3200, .45]].forEach(([k, f, d]) => { const g = saida({ x: pos.x, y: 1, z: pos.z }, .7); burst(t + k, d, 'bandpass', f, 4, g); env(g, t + k, .08, .18 * vol, d * .8); }); },
+  passinhos(pos) { const mol = W.mapa === 'tuneis'; for (let i = 0; i < 6; i++) for (let k = 0; k < 3; k++) { const t = AC.currentTime + i * .36 + k * .015, g = saida({ x: pos.x + rand(-1, 1), y: .1, z: pos.z + rand(-1, 1) }, .7); burst(t, .05, mol ? 'bandpass' : 'highpass', mol ? 800 : 1500, mol ? 1.5 : 1, g); env(g, t, .002, .35, .05); } }, // passinhos descalços molhados nos túneis
+  sussurroSilencio(pos, vol = 1) { const t = AC.currentTime, tun = W.mapa === 'tuneis'; [[0, 2600, .5], [.5, 1900, .35], [.85, 3200, .45]].forEach(([k, f, d]) => { const g = saida({ x: pos.x, y: 1, z: pos.z }, tun ? 1 : .7); burst(t + k, d * (tun ? 1.5 : 1), 'bandpass', f, 4, g); env(g, t + k, .08, .18 * vol, d * (tun ? 1.3 : .8)); }); }, // "silêncio..." encharcado e com cauda longa nos túneis
   faisca(x, z) { const t = AC.currentTime; for (let i = 0; i < 9; i++) { const g = saida({ x, y: 2.6, z }, .3), k = rand(0, .45); burst(t + k, .02, 'highpass', 4000, 1, g); env(g, t + k, .001, .4, .02); } },
   vozFalsa(x, z, quem) { // a voz chama do jeito errado: a sua própria, ou a de quem não pode estar aqui
     const t = AC.currentTime, fs = quem === 'mae' ? [[0, 247], [.45, 220], [.9, 196]] : [[0, 440], [.3, 392]];
@@ -1607,7 +1614,7 @@ const SOMX = {
   },
   tropeco(pos) { const t = AC.currentTime, g = saida({ x: pos.x, y: .4, z: pos.z }, .6); burst(t, .6, 'lowpass', 260, 1, g, 0); env(g, t, .003, 1.4, .5); SOMX.respiraRasgada(pos); },
   portaLonge(x, z) { const t = AC.currentTime, g = saida({ x, y: 1, z }, .9); const lp = AC.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 180; lp.connect(g); burst(t, .7, 'lowpass', 300, 1, lp, 0); env(g, t, .003, 1.2, .6); },
-  arrastoAr(pos) { const t = AC.currentTime, g = saida({ x: pos.x, y: 1.4, z: pos.z }, .2); const f = burst(t, .3, 'bandpass', 600, 1, g); f.frequency.linearRampToValueAtTime(2400, t + .25); env(g, t, .03, .6, .25); }
+  arrastoAr(pos) { const t = AC.currentTime, fur = clamp((M.furia || 0) / 6, 0, 1), dur = .3 + fur * .4, g = saida({ x: pos.x, y: 1.4, z: pos.z }, .2); const f = burst(t, dur, 'bandpass', 600, 1, g); f.frequency.linearRampToValueAtTime(2400, t + dur - .05); env(g, t, .03, .6 + fur * .2, dur - .05); } // o arrastar do ar fica mais longo e sedento quando ele está furioso
 };
 const SX = new Proxy({}, { get: (t, k) => (...a) => { if (!AC) return; try { UIX.som('x_' + k, a); } catch (e) {} try { return SOMX[k] && SOMX[k](...a); } catch (e) { console.warn(e); } } }); // Lote 3: os sons das entidades também ganham legenda
 // Silêncio repentino: abafa o mundo inteiro por um instante
@@ -1731,6 +1738,7 @@ function patrulhar() {
 }
 function emitNoise(x, z, r, doJogador, garrafa) {
   if (AUDS) AUDS.ruido(x, z, r, doJogador, garrafa); // gravador dos túneis e eco da cisterna (src/audio-segredos.js)
+  if (AUDL5 && doJogador && r > 1) AUDL5.registraRuido(x, z, r); // lote 5: guarda o último barulho para ele imitar
   VIS.ruido(x, z, r);
   UIX.ruido(x, z, r);
   if (S && Math.hypot(x - P.pos.x, z - P.pos.z) < 1.6) ruidoQuadro = Math.max(ruidoQuadro, r);
@@ -2083,7 +2091,7 @@ function updateInspetor(dt) {
   // Assinatura sonora por estado: dá para saber o que ele está fazendo só de ouvir
   M.clickT -= dt; M.somT -= dt;
   const mudo = ['alerta', 'escuta', 'emboscada', 'fareja', 'vasculha', 'agarra', 'bote', 'reza'].includes(M.state) || (M.state === 'conferir' && M.wait > 0);
-  if (M.state === 'emboscada' && M.emboscadaT < 1 && !M.emboscadaClique) { M.emboscadaClique = true; SX.estalo(M.pos, .9); }
+  if (M.state === 'emboscada' && M.emboscadaT < 1 && !M.emboscadaClique) { M.emboscadaClique = true; if (!(AUDL5 && Math.random() < .45 && AUDL5.imitaUltimoSom())) SX.estalo(M.pos, .9); } // lote 5: às vezes ele repete o seu último barulho de uma sala errada
   if (!mudo && M.clickT <= 0) { M.clickT = { caca: .45, procura: .55, investiga: 1 }[M.state] || 1.8; SX.estalo(M.pos, (M.state === 'caca' ? 1 : .6) * (M.recuo > 0 ? .35 : 1)); }
   if (!mudo && M.somT <= 0) {
     if (M.state === 'caca') { SX.respiraRasgada(M.pos); M.somT = .9; }
@@ -2933,6 +2941,7 @@ const FONTES = new Set();
 let AUDM = null; // src/audio-mundo.js: hino, alto-falantes, rádios, ecos de 1979, chaves do Inspetor, Hora do Silêncio
 let AUDP = null; // src/audio-plataforma.js: menus que soam, som que cai, fone que sai, chão solto, batidas nos armários
 let AUDS = null; // src/audio-segredos.js (Lote 4): telefone, bipes, sussurros num ouvido só, gravador, cisterna, panelas, lata, ralos
+let AUDL5 = null; // src/audio-lote5.js: os monstros pelo ouvido (respiração por parede/porta, bengala, leitmotifs, infra-som, Hora do Silêncio, coração-bússola)
 const AUD = { sils: [], trovaoIni: 0, trovaoAte: 0, coracaoN: 0, hbT: 0, resp: 0, prendia: false, ultStinger: [], stingerT: -99, dezAte: 0, estPrev: null, anaPrev: null, procT: 0, evT: 28, cacaT: 0, cacaSemi: 0, posCacaT: 0, percT: 0, pulsoT: 0, lampT: 0, ocT: 0, flashPrev: false, tiqueT: 0, avisouCoracao: false, cordaT: -9, cordaN: 0, sala: null, zumbidoAte: 0, pausado: false, erroAvisado: false,
   vozes: [], limVoz: 24, zumbidoIni: 0, zumbidoFim: 0, clusterOn: false, calmaT: 0, calmaAlvo: 300, pausaT: 0, pe: 1, crouchPrev: false, corriaPrev: false, agarraPrev: false, mortoPrev: false, grupoPrev: null };
 for (const [k, v] of Object.entries({ vAmb: 1, vSfx: 1, vEnt: 1, vVoz: 1, mono: 0, noturno: 0, falada: 0 })) if (OPT[k] === undefined) OPT[k] = v;
@@ -3251,15 +3260,18 @@ const SOM = {
     if (piso === 'ladrilho') { const g3 = saida(p, .4, 'ent'); burst(t, .03, 'highpass', 3000, 1, g3); env(g3, t, .001, .2 * vol, .03); }
     if (d < 8) { const g4 = saida(p, 0, 'ent'); const sb = AC.createOscillator(); sb.frequency.setValueAtTime(52, t); sb.frequency.exponentialRampToValueAtTime(38, t + .3); sb.connect(g4); env(g4, t, .01, .8 * vol * (1 - d / 8), .3); sb.start(t); sb.stop(t + .4); }
     if (tunel) { const g5 = saida(p, .6, 'ent'); burst(t + .12, .2, 'lowpass', 500, 1, g5); env(g5, t + .12, .01, .25 * vol, .2); }
+    else if (W.mapa === 'cemiterio' || (r && /capela|nave/i.test(r.id || ''))) { const g5 = saida(p, .9, 'ent'); burst(t + .16, .3, 'bandpass', 1200, .8, g5); env(g5, t + .16, .02, .14 * vol, .35); } // o passo ecoa na nave da capela
     if (vol < 1 && !agua && Math.random() < .4) { const g6 = saida(p, .3, 'ent'); const f = burst(t + .35, .4, 'bandpass', 600, 1.5, g6); f.frequency.linearRampToValueAtTime(350, t + .75); env(g6, t + .35, .1, .12 * vol, .3); }
   },
   estalo(pos, vol = .6, estado) {
     estado = estado || (M.ativo && pos === M.pos ? M.state : 'patrulha');
-    const t = AC.currentTime, g = saida({ x: pos.x, y: 3, z: pos.z }, .5, 'ent');
-    const padrao = { patrulha: [[0, 1800]], investiga: [[0, 2200], [.09, 2200]], procura: [[0, 2000], [.08, 2400], [.16, 2800]], caca: [[0, 3200], [.06, 3300], [.12, 3200], [.18, 3400]] }[estado] || [[0, 1800]];
+    const t = AC.currentTime, g0 = saida({ x: pos.x, y: 3, z: pos.z }, .5, 'ent');
+    let g = g0; try { const fw = new THREE.Vector3(); camera.getWorldDirection(fw); fw.y = 0; fw.normalize(); const dx = pos.x - P.pos.x, dz = pos.z - P.pos.z, l = Math.hypot(dx, dz) || 1; if ((dx / l * fw.x + dz / l * fw.z) < -.3) { const lp = AC.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 1400; lp.connect(g0); g = lp; } } catch (e) {} // atrás da cabeça o estalo fica abafado (3D)
+    const perto = Math.hypot(pos.x - P.pos.x, pos.z - P.pos.z) < 4;
+    const padrao = { patrulha: [[0, 1800]], investiga: [[0, 2200], [.09, 2200]], procura: [[0, 2000], [.08, 2400], [.16, 2800]], caca: perto ? [[0, 3200], [.06, 3300], [.12, 3200], [.18, 3400], [.24, 3500], [.30, 3600]] : [[0, 3200], [.06, 3300], [.12, 3200], [.18, 3400]] }[estado] || [[0, 1800]]; // caçando e colado em você, a rajada de estalos é mais longa e aguda
     for (const [k, f] of padrao) burst(t + k, .03, 'bandpass', f, 8, g);
     const fim = padrao[padrao.length - 1][0] + .2;
-    g.gain.setValueAtTime(0, t); g.gain.setValueAtTime(.7 * vol, t + .001); if (fim - .2 > .002) g.gain.setValueAtTime(.7 * vol, t + fim - .2); g.gain.exponentialRampToValueAtTime(.0001, t + fim);
+    g0.gain.setValueAtTime(0, t); g0.gain.setValueAtTime(.7 * vol, t + .001); if (fim - .2 > .002) g0.gain.setValueAtTime(.7 * vol, t + fim - .2); g0.gain.exponentialRampToValueAtTime(.0001, t + fim);
   },
   rangido(x, y, z, vol = 1, bus = 'sfx', porta) {
     const sd = Math.abs(Math.sin(x * 12.9898 + z * 78.233) * 43758.5453) % 1;
@@ -3275,6 +3287,7 @@ const SOM = {
     const t = AC.currentTime, p = { x, y: 1, z }, g = saida(p, .8, 'ent'); burst(t, .8, 'lowpass', 300, 1, g, 0); env(g, t, .003, 1.6, .6);
     const g2 = saida(p, .5, 'ent'); burst(t, .08, 'highpass', 1800, .8, g2); env(g2, t, .001, .4, .08);
     for (let i = 1; i < 4; i++) { const g3 = saida(p, .3, 'ent'); burst(t + i * .07 + rand(0, .03), .05, 'bandpass', rand(1500, 2600), 6, g3); env(g3, t + i * .07, .002, .12 / i, .05); }
+    if (W.mapa === 'tuneis' || W.mapa === 'cemiterio') { const ge = saida(p, 1, 'ent'); burst(t + .14, .4, 'lowpass', 400, 1, ge, 0); env(ge, t + .14, .01, .5, .45); } // a pancada ecoa pela galeria/nave
   },
   trancado() {
     const t = AC.currentTime;
@@ -3326,7 +3339,7 @@ const SOM = {
     AUD.zumbidoAte = t + 2.2 * forca; AUD.zumbidoIni = t; AUD.zumbidoFim = t + 3.6 * forca; AUD.mundo.gain.cancelScheduledValues(t); AUD.mundo.gain.setValueAtTime(OPT.semZumbido ? .5 : .25, t);
   },
   grito(quem) {
-    const t = AC.currentTime, ana = quem === 'ana', base = ana ? [900, 1200, 1500] : quem === 'procissao' ? [330, 392, 466] : [220, 300, 450];
+    const t = AC.currentTime, ana = quem === 'ana', grv = quem === 'inspetor' && S ? Math.pow(2, -S.chapter / 24) : 1, base = (ana ? [900, 1200, 1500] : quem === 'procissao' ? [330, 392, 466] : [220, 300, 450]).map(f => f * grv); // o grito do Inspetor desce de tom a cada capítulo, mais monstruoso
     for (const f of base) { const o = AC.createOscillator(); o.type = 'sawtooth'; o.frequency.setValueAtTime(f, t); o.frequency.exponentialRampToValueAtTime(f * .55, t + 1.1); const lfo = AC.createOscillator(); lfo.frequency.value = ana ? 38 : 26; const lg = AC.createGain(); lg.gain.value = f * .08; lfo.connect(lg); lg.connect(o.frequency); const g = saida(null, .7, 'susto'); o.connect(g); env(g, t, .02, .22, 1.2); o.start(t); lfo.start(t); o.stop(t + 1.3); lfo.stop(t + 1.3); }
     const g = saida(null, .6, 'susto'); burst(t, 1.2, 'bandpass', ana ? 2400 : 1500, 1, g); env(g, t, .01, .6, 1);
     if (!ana) { const ws = AC.createWaveShaper(); ws.curve = curvaDist(20); const g2 = saida(null, .5, 'susto'); ws.connect(g2); const o = AC.createOscillator(); o.type = 'sawtooth'; o.frequency.setValueAtTime(55, t); o.frequency.linearRampToValueAtTime(40, t + 1); o.connect(ws); env(g2, t, .02, .08, 1); o.start(t); o.stop(t + 1.1); }
@@ -3335,13 +3348,14 @@ const SOM = {
   sino(vol = 1, pos = { x: 0, y: 4, z: -60 }, desafina = 1) {
     const t = AC.currentTime, base = 196 * desafina;
     if (vol >= .9) SOM.silencio(6, .04, true);
+    if (vol >= .9) { const g0 = saida(null, 0, 'susto'); const o0 = AC.createOscillator(); o0.type = 'sine'; o0.frequency.setValueAtTime(34, t); o0.frequency.exponentialRampToValueAtTime(24, t + 2.2); o0.connect(g0); env(g0, t, .02, .4, 2.2); o0.start(t); o0.stop(t + 2.4); try { if (!OPT.semTremor) P.shake = Math.max(P.shake || 0, .06); } catch (e) {} } // o sino do fim em subgrave: o chão treme junto
     if (pos && vol >= .45 && Math.hypot(pos.x - P.pos.x, pos.z - P.pos.z) < 5) depois(180, () => SOM.zumbidoOuvido(.8));
     for (const [m, a] of [[.5, .4], [1, 1], [1.19, .5], [1.5, .45], [2, .5], [2.5, .3], [2.67, .25], [3.0, .2], [4.17, .12]]) { const g = saida(pos, .9); osc('sine', base * m * (desafina < 1 ? rand(.997, 1.003) : 1), t, 8, g); env(g, t, .004, .35 * a * vol, 7 / m); }
   },
-  sinoLonge() { SOM.sino(.3, null); },
+  sinoLonge() { SOM.sino(.3, W.mapa === 'cemiterio' ? { x: 0, y: 4, z: -60 } : null, W.mapa === 'cemiterio' ? .98 : 1); }, // no cemitério o sino distante soa abafado pela chuva e um tom abaixo
   badaladas(n = 9) {
     SOM.silencio(1.8 + n * 2.2, .25);
-    for (let i = 0; i < n; i++) depois(1800 + i * 2200, () => { if (!(S && S.dead) && ui !== 'morte') { SOM.sino(.45 * (i === n - 1 ? 1.25 : 1), null, 1 - i * .005); if (i === 8 && n === 9 && AUDS) AUDS.sinoNona(); } });
+    for (let i = 0; i < n; i++) depois(1800 + i * 2200, () => { if (!(S && S.dead) && ui !== 'morte') { SOM.sino(.45 * (i === n - 1 ? 1.25 : 1), null, 1 - i * .005); if (i === 8 && n === 9 && AUDS) AUDS.sinoNona(); if (i === 8 && n === 9 && AUDL5) AUDL5.horaDoSilencio(); } });
   },
   estatica(dur = 2, pos) {
     const t = AC.currentTime, s = ruido(true), f = AC.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = 1600; f.Q.value = .8;
@@ -3370,12 +3384,12 @@ const SOM = {
     for (let i = 0; i < n; i++) { const at = t + i * rand(.12, .16), f0 = rand(620, 780) * (1 - i * .02); const o = silaba(at, { x, y: 1, z }, f0, i % 2 ? 'i' : 'e', .1, .05, 'ent', .9); o.type = 'triangle'; }
     const g = saida({ x, y: 1, z }, .9, 'ent'); burst(t, n * .14, 'bandpass', 2600, 2, g); env(g, t, .02, .03, n * .13);
   },
-  anaPasso(pos) { const t = AC.currentTime, g = saida({ x: pos.x, y: .1, z: pos.z }, .3, 'ent'); burst(t, .05, 'bandpass', rand(1500, 2100), 1.5, g); env(g, t, .003, .1, .05); },
+  anaPasso(pos) { const t = AC.currentTime, mol = W.mapa === 'tuneis', g = saida({ x: pos.x, y: .1, z: pos.z }, .3, 'ent'); burst(t, .05, 'bandpass', mol ? rand(700, 1000) : rand(1500, 2100), 1.5, g); env(g, t, .003, .1, .05); if (mol) { const g2 = saida({ x: pos.x, y: .1, z: pos.z }, .2, 'ent'); burst(t + .02, .08, 'highpass', 2600, 1, g2); env(g2, t + .02, .002, .05, .07); } }, // os pés da Ana pisam na água nos túneis
   contagem(pos, n) {
     const t = AC.currentTime, d = Math.hypot(pos.x - P.pos.x, pos.z - P.pos.z), perto = clamp(1 - (d - 2) / 8, 0, 1);
     const notas = [523, 587, 659, 698, 784, 880, 988, 1047, 1175, 1319];
     const canto = 1 - perto * .8;
-    if (n < 9) { const g = saida({ x: pos.x, y: 1.1, z: pos.z }, .8, 'ent'); osc('sine', notas[n % 10], t, 1, g); env(g, t, .003, (.09 + n * .012) * canto, .8); }
+    if (n < 9) { const g = saida({ x: pos.x, y: 1.1, z: pos.z }, .8, 'ent'); osc('sine', notas[n % 10] * (S && S.chapter >= 4 ? .94 : 1), t, 1, g); env(g, t, .003, (.09 + n * .012) * canto, .8); } // nos capítulos finais a contagem da Ana desafina para baixo
     const g2 = saida({ x: pos.x, y: 1.1, z: pos.z }, .5, 'ent'); burst(t, .3, 'bandpass', 3000, 5, g2); env(g2, t, .05, .06 * (.5 + perto), .2);
     if (n >= 6) {
       const fw = new THREE.Vector3(); camera.getWorldDirection(fw); fw.y = 0; fw.normalize();
@@ -3832,6 +3846,7 @@ function updateAudioCore(dt) {
   // --- o mundo e a história pelo som (src/audio-mundo.js)
   if (AUDM) AUDM.tick(dt);
   if (AUDS) AUDS.tick(dt); // segredos do som (lote 4)
+  if (AUDL5) AUDL5.tick(dt, { dM, dA, est, jogando, prende, perigo, fora, subsolo }); // os monstros pelo ouvido (lote 5)
 }
 // Pausa e diário abafam o mundo; menu silencia o que é contínuo; aba escondida suspende o áudio
 setInterval(() => {
@@ -4337,6 +4352,12 @@ AUDS = instalarAudioSegredos({
   get AC() { return AC; }, get S() { return S; }, get mode() { return mode; }, get ui() { return ui; }, get perf() { return perf; }, get fita() { return fitaTocando; }, get chamado() { return chamadoArmadilha; }, get AUDM() { return AUDM; },
   SOM, SFX, BUS, OPT, R, THREE, MAT, P, M, ANA, PROC, W, keys, camera, legendas: UIX.som.def, fone: () => PLAT.fone(),
   saida, env, osc, burst, ruido, curvaDist, box, cyl, interact, emitNoise, roomAt, sub, subPequeno, toast, conquista, fecharTeclado, renderInvMini
+});
+// Lote 5: os monstros pelo ouvido (src/audio-lote5.js)
+AUDL5 = instalarAudioLote5({
+  get AC() { return AC; }, get S() { return S; }, get mode() { return mode; }, get ui() { return ui; }, get perf() { return perf; }, get master() { return master; }, get chamado() { return chamadoArmadilha; },
+  SOM, SOMX, SFX, BUS, AUD, AMB, OPT, THREE, P, M, ANA, PROC, W, camera, legendas: UIX.som.def, som: (k, a) => { try { UIX.som(k, a); } catch (e) {} },
+  saida, env, osc, burst, ruido, curvaDist, roomAt, salaAdj, emitNoise, abafarMundo, rand, pick, clamp, sub, subPequeno, toast
 });
 carregarTitulo();
 const grain = $('#fx-grain').getContext('2d'), grainImg = grain.createImageData(160, 90);
