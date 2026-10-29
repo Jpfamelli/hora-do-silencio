@@ -99,3 +99,93 @@
 - Sala de aula: projetor de slides novo; cada E passa um slide da excursão de 1978 desenhado em canvas
 - A cada slide da excursão, um vulto alto está mais perto da turma
 - O décimo slide, que não devia existir, mostra a Lia de costas vista de dentro da sala, e uma luz passa a bater atrás de você até a lâmpada do projetor queimar com um estalo
+- Espelho de parede novo no banheiro de cima e no patamar, com o vidro embaçado e o reflexo que custa a chegar
+- Encarar o espelho com a lanterna acesa por 6 segundos faz o reflexo atrasado da Lia aparecer e virar a cabeça devagar para a porta atrás de você
+- O reflexo atrasado some com o vidro rangendo e a Lia solta o ar ("...não era eu."), uma vez por noite, com a conquista secreta "Atrasada"
+- TV de tubo nova na sala de brinquedos, ligada no chuvisco animado em canvas
+- Encarar a TV por 12 segundos firma a imagem: a Lia vista de cima e de trás, com um vulto de pé atrás dela
+- Afastar-se ou tirar os olhos da TV firmada a desliga com um estalo de tubo
+- Fita sem etiqueta nova no gravador da sala do diretor
+- Tocar a fita sem etiqueta refaz a sua última morte da noite (passos, ofego e o golpe) e termina na sala onde você morreu
+- Se você ainda não morreu nenhuma vez, a fita roda vazia e termina com um "...ainda não."
+- Foto de turma nova emoldurada no refeitório (térreo) e no corredor de cima, desenhada em canvas e legível sem tela cheia
+- A cada morte somada entre as noites, mais um rosto da foto da turma escurece
+- Com nove mortes ou mais, a legenda da foto passa de "TURMA DE 1979" para "TURMA DE 1979 E 1994"
+- Parar a lanterna na foto da turma por 3 segundos faz uma das crianças virar a cabeça
+- Dormitório de cima: ao olhar para trás, um volume de criança aparece sob o lençol da cama do Davi
+- O volume do lençol reaparece mais perto cada vez que sai do seu campo de visão, até sussurrar "Você demorou" colado nas suas costas e o medo saltar
+- Se você já se escondeu na cama de cima, na noite seguinte o lençol está com a marca de um corpo pequeno
+- Em metade das noites, pegadas molhadas pequenas aparecem no chão levando até um armário, com legenda ao chegar perto
+- O armário das pegadas molhadas guarda um uniforme encharcado pendurado e uma pilha de recompensa
+- Túneis: um armário, ao ser fechado por dentro, é trancado por fora depois de 3 segundos, com unhas arranhando e o celular vibrando
+- Preso no armário trancado por fora, a voz do Albano diz "Agora você sabe." antes de a porta abrir sozinha (conquista secreta "Trancada"); nunca durante uma caçada
+- Corredor de cima: porta com riscos de giz no batente que ganha um risco novo a cada vez que você passa, de 1 a 9
+- No nono risco a porta se abre um palmo e uma voz, com a voz da Lia criança, diz o seu nome (conquista secreta "Nove Riscos")
+- A porta dos riscos mostra, por dentro, marcas de outra pessoa que passou muitas vezes: "J.S. 1986"
+- Sala de brinquedos: copo de lata com barbante; encostar o ouvido faz ouvir uma respiração pequena do outro lado
+- O barbante do telefone de lata some por baixo da porta na direção de um armário (conquista secreta "Linha Cruzada")
+- Dormitório de cima: a Lia conta "trinta e sete" pares de sapatos
+- Ao tirar os olhos dos sapatos e voltar, há trinta e oito pares; o novo é pequeno e molhado (conquista secreta "Trinta e Oito")
+- Cemitério (Cap. V): acertar a garrafa longe, na torre, dá uma badalada seca e solitária (conquista secreta "Badalada Solitária")
+- Se a Procissão estiver passando quando o sino da torre toca, ela para e vira o rosto para a torre; logo depois o Inspetor vem pelo barulho
+- Escondida num armário, bater (E) três vezes rápido faz um ruído baixo e, num armário por capítulo, alguém responde do vizinho no mesmo ritmo
+- Responder de novo a batida do vizinho faz ela virar o código do Davi (dois, pausa, três)
+- Se você não responde a batida, a porta do armário vizinho range e fica aberta, vazia
+- Um armário longe do caminho, uma vez por noite, não deixa você ficar na primeira tentativa: uma mão fecha por dentro com um "tá cheio" sussurrado e te põe pra fora
+- Na segunda tentativa, o armário "tá cheio" abre com cheiro de fumaça e um bilhete "tá ocupado"
+- Durante a Procissão, escondida, dá para contar uma figura a mais: a última carrega uma lanterna igual à da Lia e veste o casaco dela
+- A décima figura da Procissão vira a cabeça para o seu esconderijo e some; entra nas ocorrências raras e, na segunda noite, a Lia diz "Eram dez. Eu contei."
+- Conquista secreta nova "Dez na Fila" para quem contou a décima figura da Procissão
+- Cap. I: quando o gerador liga, três silhuetas aparecem por um instante nas janelas de cima, uma delas pequena demais, no telhado (conquista secreta "Contei Três")
+- Sótão: luneta de latão nova; olhar pela primeira vez mostra o carro da Lia lá embaixo com alguém acenando no banco do motorista
+- Olhar de novo pela luneta mostra o banco vazio; na terceira vez um rosto está colado do outro lado da lente, com vidro quebrando e corte de som
+- Num corredor comprido, parar com a lanterna acesa faz a sua sombra na parede continuar andando dois passos e parar sozinha
+- Seguir até onde a sombra parou revela uma marca de giz e uma pilha de recompensa
+- Variação rara: no andar de cima a Ana conta "...nove... dez... onze..." e cai um silêncio de cinco segundos
+- Depois do silêncio, a Ana está a um palmo do seu rosto dizendo "Errei de propósito." e dá o dano do dez (conquista secreta "Onze")
+- Portas novas com fechadura na sala do diretor e no quarto da Celeste deixam espiar pela fechadura, com vinheta circular
+- Na maioria das vezes a fechadura só mostra a sala escura do outro lado
+- Uma vez por noite, um olho leitoso olha de volta pela fechadura a dois centímetros (conquista secreta "Pela Fechadura"); em outra fechadura aparece a própria Lia agachada de costas do outro lado
+- Sala de aula: em noites raras uma chamada lê vários nomes e termina em "...Moraes, Lia.", esperando
+- Ficar parada e quieta cinco segundos na chamada faz a sua própria voz responder "Presente." e a Lia dizer que não falou nada (conquista secreta "Chamei a Mim Mesma")
+- Depois de responder a chamada, uma segunda Lia às vezes aparece correndo no fim dos corredores daquele capítulo
+- Um manequim de costura com vestido de freira aparece num lugar diferente a cada capítulo (rouparia, quarto da Celeste, cemitério), cada vez mais virado para você
+- No cemitério o manequim de costura tomba com um estalo de madeira quando você passa perto (conquista secreta "A Costureira")
+- Dormitório: boneca nova que respira quando você mexe nela
+- Na terceira vez que você mexe na boneca, uma mão cinza fecha a tampa com um "...ocupado" e o medo sobe
+- Banheiro de cima: ao entrar, as cabines rangem fechando uma a uma
+- Bater nas cabines faz uma voz responder "tá ocupado"; a terceira batida abre a última cabine com "PRA LIA" no azulejo e um curativo no chão
+- Banheiro do térreo: furo novo na parede que deixa espiar o corredor do outro lado
+- Na terceira espiada pelo furo (ou com o Inspetor perto) um olho branco está colado nele, que depois aparece tampado com papel por dentro
+- Enfermaria: um berço que balança sozinho quando a lanterna está apagada, com um cantarolar baixo
+- Sala de brinquedos: um cavalinho de balanço que range sozinho quando está atrás de você
+- Sala de aula: quadro-negro novo com "LIA" escrito a giz e um risco para cada morte sua, atualizado a cada morte
+- Sala de brinquedos: brinquedos no chão que viram para você quando você tira os olhos deles
+- Ficar parada 45 segundos numa sala faz alguém sussurrar o seu nome colado nas suas costas, uma vez por sala por noite
+- Escondida e sem perigo por perto, de vez em quando uma segunda respiração se junta à sua dentro do esconderijo
+- Lista nova de ocorrências raras "parte 2" no diário (a décima figura, a chamada, o rosto da luneta, a Ana contando onze, as silhuetas), com aviso e a data de cada uma
+- Cozinha: uma panela balança e bate na parede sozinha ao entrar
+- Despensa: uma lata rola sozinha pelo chão ao entrar
+- Biblioteca: um livro cai da estante quando você está de costas
+- Refeitório: uma cadeira arrasta sozinha quando a lanterna está apagada
+- Enfermaria: um frasco tomba da prateleira quando você tira os olhos
+- Copa: a torneira pinga sozinha no escuro ao entrar
+- Corredor do térreo: parada perto de uma porta trancada, a maçaneta mexe sozinha
+- Pátio: a corrente de um balanço range no escuro
+- Sala de aula: o giz range sozinho na lousa quando a luz está apagada
+- Hall de entrada: passos no andar vazio de cima ao entrar
+- Quarto da Celeste: o terço pendurado balança sozinho quando você fica parada
+- Depósito de cima: uma cadeirinha vira para você quando você tira os olhos
+- Sótão: os degraus rangem contando atrás de você ao entrar
+- Sala de brinquedos: a caixinha de música solta uma nota sozinha no escuro
+- Dormitório A: alguém suspira numa das camas quando a lanterna está apagada
+- Banheiro de cima: uma torneira abre sozinha no escuro
+- Corredor de cima: um assobio baixo no fim do corredor quando você fica parada
+- Dormitório D: um travesseiro aparece ainda com a marca de uma cabeça quando você tira os olhos
+- Túneis: parada no escuro, uma gota cai no ritmo do seu coração
+- Túneis: uma corrente arrasta no escuro quando a lanterna está apagada
+- Túneis: uma respiração atrás da parede ao entrar numa câmara
+- Capela: uma vela do altar reacende sozinha no escuro
+- Cemitério: a terra de um túmulo se mexe quando você vira as costas
+- Capela: um coro baixo, vindo de lugar nenhum, quando você fica parada
+- Cemitério: um sino, muito longe, bate uma vez só ao entrar
