@@ -99,3 +99,94 @@
 - Os efeitos de flash dos segredos respeitam a opção "Reduzir flashes", esmaecendo em vez de piscar.
 - Todos os objetos e sombras novos são posicionados sem atravessar a mobília que já existe na sala.
 - Os segredos são sorteados pela semente da noite, então o lugar muda e os amigos discordam de qual é.
+- TV de tubo na recepção que mostra a Lia de costas, filmada de um ponto atrás e acima dela.
+- A imagem da TV vem com chuvisco esverdeado e linhas de varredura descendo por cima.
+- Na terceira vez que você olha a TV, uma criança aparece atrás da Lia na tela.
+- Virar o corpo não mostra ninguém; olhar a TV de novo, a criança está colada no ombro.
+- Na qualidade Mínima a TV fica só no chuvisco, sem a câmera de verdade, para não pesar.
+- Mapa do internato desenhado pelo Davi, pendurado na biblioteca, que dá para ler de perto.
+- O mapa ganha um X de giz vermelho em cada lugar onde a Lia morreu naquela noite.
+- A letra do Davi no mapa fica mais tremida a cada X novo que aparece.
+- Depois de cinco mortes na noite, ele escreve na margem do mapa: "para de vir por aí".
+- Espelho embaçado no banheiro com o reflexo da Lia seguindo a câmera com meio segundo de atraso.
+- Encarar o espelho por muito tempo faz o reflexo piscar sozinho, quando a Lia não piscou.
+- O reflexo do espelho só pisca uma vez por noite, e rende a conquista secreta "Quem Pisca".
+- Na qualidade Mínima o espelho vira um vidro embaçado parado, sem o reflexo ao vivo.
+- Num corredor, com a lanterna acesa, a sombra da Lia na parede passa a se mover atrasada.
+- Quando a Lia para, a sombra ainda dá mais um passo antes de parar também.
+- Ao lado da sombra da Lia aparece uma sombra pequena, de mão dada com ela.
+- Olhar para trás (Q) devolve as sombras ao normal; só acontece uma vez por noite.
+- Cavalinho de madeira sobre uma caixa na sala de brinquedos, com uma marca de giz no chão.
+- Em pé na marca de giz e com a luz no cavalinho, a sombra dele vira um número e uma seta.
+- O número da sombra do cavalinho diz em que cama do dormitório procurar.
+- Na capela, no clarão do relâmpago, o vitral joga manchas coloridas no chão.
+- Parada sobre a mancha vermelha do vitral, o medo da Lia para de subir por um instante.
+- A Lia percebe sozinha: "A luz vermelha... ela não me acha na luz vermelha."
+- Segunda foto de turma, de 1979, na recepção, com os rostos de propósito borrados.
+- A cada segredo da luz que você acha, um rosto da foto de 1979 volta ao foco.
+- Um rosto da última fileira nunca fica nítido: é a Lia menina, que não estava lá.
+- Desenhos de giz escondidos que só aparecem quando o facho da lanterna bate rasante na parede.
+- De frente, com a luz cheia, esse giz some na textura da parede.
+- Cada desenho rasante traz uma frase de criança e a silhueta de uma criança desenhada.
+- Videocassete e TV na diretoria tocando uma fita de "ANIVERSÁRIO 1978".
+- A imagem da fita vem tremendo com faixas de tracking e range quando está desregulada.
+- Encarar a TV sem desviar firma a imagem aos poucos, até as faixas pararem.
+- Com a fita firme, no fundo da festa aparece um menino magro olhando para a câmera.
+- Firmar a fita dá a conquista secreta "Ajusta o Tracking".
+- Óculos de lente rachada do Moacir largados no corredor, que dá para examinar.
+- Olhar perto dos óculos com a lanterna faz cada som virar um anel de luz que se abre.
+- Na terceira vez que você usa os óculos, um anel desenha uma silhueta alta ao seu lado.
+- Em pisos de ladrilho, concreto ou pedra, pegadas de pés descalços surgem atrás da Lia.
+- As pegadas atrás só aparecem quando você olha para trás (Q) com a lanterna acesa.
+- As pegadas atrás apagam sozinhas depois de alguns segundos.
+- No fim do corredor de cima, o relâmpago mostra por um instante um vulto parado na janela.
+- Passado o relâmpago, a janela do corredor está vazia de novo.
+- Manchas escuras pingando na pia do banheiro, que a luz da lanterna faz sumir.
+- Retrato antigo cujos olhos pintados brilham quando a lanterna passa por eles.
+- Parada diante do retrato, os olhos pintados parecem acompanhar a Lia.
+- No teto do Dormitório B, a frase "ELE CONTA AS CAMAS" só aparece no clarão do relâmpago.
+- No pátio, a sombra de um balanço se mexe sozinha, sem balanço nenhum ali.
+- No encerado da lousa da sala de aula, um vulto aparece refletido atrás da Lia.
+- Caleidoscópio de lata no chão da sala de brinquedos, para apontar a luz dentro.
+- A luz no caleidoscópio projeta no teto seis gomos espelhados com uma menina dentro.
+- A cada instante encarando, a menina do caleidoscópio chega mais perto do centro.
+- Deixar a menina chegar ao centro do caleidoscópio assusta e faz o medo subir.
+- Desviar o olhar antes de a menina chegar ao centro dá a conquista secreta "Seis Meninas".
+- Legenda de som nova: "a televisão chia sozinha".
+- Legenda de som nova: "a fita range no videocassete".
+- Legenda de som nova: "um som vira um anel de luz".
+- Os novos reflexos em tempo real (TV e espelho) desligam na qualidade Mínima e viram imagem parada.
+- Nenhum dos objetos novos atravessa a mobília que já existe em cada sala.
+- Os desenhos de giz rasantes e os óculos do Moacir são sorteados pela semente da noite.
+- Os efeitos de clarão dos novos segredos respeitam a opção "Reduzir flashes", esmaecendo em vez de piscar.
+- A memória entre noites também guarda os novos segredos achados, somando no contador "x de ?".
+- No cemitério, uma vela com chama que fica vermelha conforme a Lia se aproxima.
+- Setas de giz fosforescente no chão do túnel que brilham quando a lanterna apaga.
+- As setas do túnel só carregam o brilho se você apontar a lanterna para o chão antes.
+- Mãozinhas fosforescentes no teto do banheiro de cima, que brilham no escuro depois de carregadas.
+- Móbile de brinquedos na sala de brinquedos projetando sombras de coelho e de pássaro.
+- Entre as sombras do móbile há uma de gente, que vira a cabeça para a Lia.
+- Na estrada, a lua se reflete numa poça perto do carro.
+- Olhar o reflexo da lua na poça pode mostrar, raramente, o rosto da Ana.
+- Porta de vidro no túnel onde prender e soltar o ar revela, no vapor, "ELE OUVE O AR".
+- A frase no vapor também avisa: prender o fôlego perto do Inspetor não dura para sempre.
+- Pela parte de fora do vidro do túnel não aparece nada; a escrita é de dentro.
+- Plaquinha de porta no corredor de cima que troca de "5" para "6" quando você desvia o olhar.
+- A Lia estranha a plaquinha: "Essa porta era a cinco. Agora diz seis."
+- Pingos no teto do Dormitório C que, sob a lanterna, formam a palavra "VOLTA".
+- Relógio de parede da sala de aula parado às três horas, que dá para ler.
+- A Lia liga o relógio parado à hora em que tudo parou no internato.
+- No relâmpago, as grades da janela do corredor fazem sombra de cela no chão.
+- Entre as barras da sombra de cela aparece a silhueta de uma criança.
+- Foto no hall com os olhos riscados cujos olhos ainda brilham sob a lanterna.
+- Sombras de dois pés passam por baixo de uma porta de tempos em tempos, quando você está perto.
+- Na capela, no clarão do relâmpago, uma cruz aparece desenhada de cabeça para baixo.
+- Caco de espelho dentro de um armário que, sob a lanterna, mostra um rosto que não é o da Lia.
+- No altar da capela, as velas acesas vão de três para seis sozinhas enquanto você está lá.
+- Contorno de giz de um corpo no pátio que ganha um segundo corpo ao lado quando você desvia e volta a olhar.
+- No relâmpago, uma mãozinha aparece no vidro de um dormitório, pelo lado de fora do segundo andar.
+- O armário do caco de espelho e os desenhos rasantes mudam de lugar pela semente da noite.
+- Todos os novos reflexos, sombras e brilhos usam só textura e luz, sem dar dano nem travar o caminho.
+- A fita de aniversário range e chia enquanto a imagem está desregulada.
+- A TV da recepção zumbe sozinha no instante em que a criança aparece na tela.
+- Os anéis de luz dos óculos do Moacir nascem no seu passo e num ponto logo à sua frente.

@@ -216,7 +216,10 @@ export function instalarSegredos(C, X) {
   function montar() {
     montarPend = false; if (!C.S || !W.grupo) return;
     const passos = [riscos, varal, estrelas, olhosArmario, lampadaCodigo, velaFria, sombraAponta, bafoJanelas, seisPortas, liaMenina, pilhaFraca, circuloSeco, lapidePoca,
-      fotoTurma, desenhoCompleta, teatroLencol, vendaOlhos, celofane, teclasGastas, monoculo, gibi, sinosVitral, poeiraLeitura, naoPare, quarto1979, contorno, tetoDormA, quadroCostas];
+      fotoTurma, desenhoCompleta, teatroLencol, vendaOlhos, celofane, teclasGastas, monoculo, gibi, sinosVitral, poeiraLeitura, naoPare, quarto1979, contorno, tetoDormA, quadroCostas,
+      tvRecepcao, mapaDavi, espelhoAtrasa, sombraLenta, cavalinho, vitralCor, turma1979, cadernoGiz, fitaVideo, oculosMoacir, pegadasAtras, vultoJanela, pingosPia, retratoOlhos, tetoDormB, balancoPatio, lousaReflexo, caleidoscopio,
+      velaCor, setasTunel, maosTeto, mobilePecas, luaParabrisa, vaporTunel, portaNumero, gotasTeto, relogioParado, barrasCela, fotosRiscadas, pesSobPorta, cruzCapela,
+      armarioRosto, altarVelas, contornoPatio, maoVidroDorm];
     for (const f of passos) { try { f(); } catch (e) { console.warn('visual-segredos', f.name, e); } }
   }
 
@@ -1190,6 +1193,473 @@ export function instalarSegredos(C, X) {
       rtCam.position.set(P.pos.x + sx * 2.1, 2.3, P.pos.z + cz * 2.1); rtCam.lookAt(P.pos.x - sx * 2, 1.1, P.pos.z - cz * 2);
       const ant = renderer.getRenderTarget(); renderer.setRenderTarget(RT); renderer.render(scene, rtCam); renderer.setRenderTarget(ant);
     });
+  }
+
+  // =================================================================== LOTE 4 (2ª rodada): mais luz, sombra e reflexo
+  LEG.l4tv = { t: 'a televisão chia sozinha', imp: 1, cd: 10, cat: 'h' };
+  LEG.l4fita = { t: 'a fita range no videocassete', imp: 1, cd: 8, cat: 'h' };
+  LEG.l4anel = { t: 'um som vira um anel de luz', imp: 0, cd: 4, cat: 'h' };
+  if (R && R.conquistas) {
+    for (const c of [
+      { id: 'l4_tracking', nome: 'Ajusta o Tracking', desc: 'Firme a imagem da fita de aniversário na diretoria.', secreta: true, dica: 'Encare a TV sem desviar até a faixa parar de tremer.' },
+      { id: 'l4_seis', nome: 'Seis Meninas', desc: 'Veja a menina do caleidoscópio chegar quase ao centro e desvie a tempo.', secreta: true, dica: 'Olhe pela lata, mas não encare até o fim.' },
+      { id: 'l4_espelho', nome: 'Quem Pisca', desc: 'Encare o espelho até o reflexo piscar sozinho.', secreta: true, dica: 'Fique parada diante do espelho do banheiro.' }
+    ]) if (!R.conquistas.some(x => x.id === c.id)) R.conquistas.push(c);
+  }
+  const TX_ANEL = tex(64, 64, (g) => { for (let k = 0; k < 3; k++) { g.strokeStyle = `rgba(200,230,255,${.7 - k * .2})`; g.lineWidth = 4 - k; g.beginPath(); g.arc(32, 32, 26 - k * 3, 0, 7); g.stroke(); } });
+  function rtNovo(w, h, layer) { const rt = new THREE.WebGLRenderTarget(w, h); rt.texture.colorSpace = THREE.SRGBColorSpace; const cam = new THREE.PerspectiveCamera(60, w / h, .1, 40); cam.layers.enable(layer); return { rt, cam }; }
+  const texLiaFrente = piscou => tex(128, 256, g => {
+    g.fillStyle = '#26303e'; g.beginPath(); g.moveTo(30, 250); g.lineTo(36, 110); g.quadraticCurveTo(64, 92, 92, 110); g.lineTo(98, 250); g.fill();
+    g.fillStyle = '#2a1c14'; g.beginPath(); g.arc(64, 60, 30, PI, 0); g.fill(); g.fillRect(38, 58, 52, 26);
+    g.fillStyle = '#d9c3a0'; g.beginPath(); g.arc(64, 78, 24, 0, 7); g.fill();
+    g.fillStyle = '#1a1410'; if (piscou) { g.fillRect(50, 76, 10, 2); g.fillRect(70, 76, 10, 2); } else { g.beginPath(); g.arc(55, 76, 3, 0, 7); g.arc(75, 76, 3, 0, 7); g.fill(); }
+  });
+
+  // A1. TV da recepção que te mostra de costas
+  let TVrt = null;
+  function tvRecepcao() {
+    if (mapaId() !== 'terreo') return; const r = SALA('hall'); if (!r) return;
+    const lug = lugarParede(r, .95, .86, 1.1, [0, 2, 3, 1], .42); if (!lug) return;
+    naParede(r, lug.lado, lug.c, 1.0, 1.0, .86, new THREE.MeshStandardMaterial({ color: 0x3a3630, roughness: .8 }), .2);
+    const fixo = minima();
+    let mapaTV;
+    if (!fixo) { if (!TVrt) TVrt = rtNovo(96, 128, 2); mapaTV = TVrt.rt.texture; }
+    else mapaTV = tex(96, 128, (g, w, h) => { g.fillStyle = '#1a2018'; g.fillRect(0, 0, w, h); for (let i = 0; i < 900; i++) { const v = Math.random() * 180 | 0; g.fillStyle = `rgb(${v},${v + 20},${v})`; g.fillRect(Math.random() * w | 0, Math.random() * h | 0, 2, 2); } });
+    const over = tex(64, 64, (g, w, h) => { g.clearRect(0, 0, w, h); for (let y = 0; y < h; y += 3) { g.fillStyle = 'rgba(0,0,0,.28)'; g.fillRect(0, y, w, 1); } }, true);
+    const tela = naParede(r, lug.lado, lug.c, 1.05, .66, .5, new THREE.MeshBasicMaterial({ map: mapaTV, color: 0x9fb09f }), .205);
+    const scan = naParede(r, lug.lado, lug.c, 1.05, .66, .5, new THREE.MeshBasicMaterial({ map: over, transparent: true, depthWrite: false, opacity: .4, blending: THREE.AdditiveBlending }), .206);
+    tela.userData.leitura = 'Uma TV de tubo no chuvisco. Dá para se ver de costas nela.';
+    const lia = new THREE.Sprite(new THREE.SpriteMaterial({ map: texLiaCostas(), depthWrite: true })); lia.scale.set(.75, 1.55, 1); lia.layers.set(2); W.grupo.add(lia);
+    const cri = new THREE.Sprite(new THREE.SpriteMaterial({ map: TX_SOMBRA.pe, color: 0x101014 })); cri.scale.set(.5, 1.0, 1); cri.layers.set(2); cri.visible = false; W.grupo.add(cri);
+    let acc = 0, olhadas = 0, olhando = 0, era = false;
+    G.ticks.push((dt, ativo, S) => {
+      scan.material.map.offset.y = (scan.material.map.offset.y + dt * 2) % 1;
+      if (fixo || !naSala('hall')) { olhando = 0; era = false; return; }
+      const v = olhar(tela.position, .85, 7) > .3;
+      if (v && !era) olhadas++; era = v;
+      olhando = v ? olhando + dt : 0;
+      cri.visible = olhadas >= 3 && olhando > 1.2;
+      if (cri.visible && ativo && !fl().l4v_tv) { fl().l4v_tv = true; fala('Tem uma criança atrás de mim. Só na TV.'); som('l4tv'); segredo('tv'); }
+      acc += dt; if (acc < .1 || !v) return; acc = 0;
+      const yaw = camera.rotation.y, sx = Math.sin(yaw), cz = Math.cos(yaw);
+      lia.position.set(P.pos.x, .85, P.pos.z); cri.position.set(P.pos.x + sx * .35, .6, P.pos.z + cz * .35);
+      TVrt.cam.position.set(P.pos.x + sx * 2.0, 2.1, P.pos.z + cz * 2.0); TVrt.cam.lookAt(P.pos.x - sx, 1.1, P.pos.z - cz);
+      const ant = renderer.getRenderTarget(); renderer.setRenderTarget(TVrt.rt); renderer.render(scene, TVrt.cam); renderer.setRenderTarget(ant);
+    });
+  }
+
+  // A2. O mapa do Davi marca onde você morreu
+  function mapaDavi() {
+    if (mapaId() !== 'terreo') return; const r = SALA('biblio'); if (!r) return;
+    const xs = [], zs = []; for (const s of W.salas) { xs.push(s.x0, s.x1); zs.push(s.z0, s.z1); }
+    const minx = Math.min(...xs), maxx = Math.max(...xs), minz = Math.min(...zs), maxz = Math.max(...zs), dx = maxx - minx || 1, dz = maxz - minz || 1;
+    const noite = C.S.mortes | 0, marcas = DB.mortes.filter(m => m.mapa === 'terreo' && m.x != null).slice(-Math.max(noite, 0));
+    const t = tex(360, 360, (g, w, h) => {
+      papel(g, w, h, '#d8cba6');
+      g.strokeStyle = 'rgba(40,30,15,.5)'; g.lineWidth = 2;
+      for (const s of W.salas) { if (s.fora) continue; const X = (s.x0 - minx) / dx * (w - 44) + 22, Y = (s.z0 - minz) / dz * (h - 70) + 46, W2 = (s.x1 - s.x0) / dx * (w - 44), H2 = (s.z1 - s.z0) / dz * (h - 70); g.strokeRect(X, Y, W2, H2); }
+      letreiro(g, 'MAPA DO DAVI', w / 2, 26, 20, '#3a2a12');
+      marcas.forEach((m, i) => { const X = (m.x - minx) / dx * (w - 44) + 22, Y = (m.z - minz) / dz * (h - 70) + 46, tr = 1.5 + Math.min(i * .7, 5); traco(g, [[X - 10, Y - 10], [X + 10, Y + 10]], '#b01810', 3.4, 2, .6, .95, tr); traco(g, [[X + 10, Y - 10], [X - 10, Y + 10]], '#b01810', 3.4, 2, .6, .95, tr); });
+      if (marcas.length >= 5) letreiro(g, 'para de vir por aí', w / 2, h - 22, 17, '#b01810', 'italic');
+    });
+    const lug = lugarParede(r, .8, .8, 1.5, [0, 1, 2, 3]); if (!lug) return;
+    const m = naParede(r, lug.lado, lug.c, 1.5, .8, .8, new THREE.MeshStandardMaterial({ map: t, transparent: true, depthWrite: false, roughness: 1, polygonOffset: true, polygonOffsetFactor: -2 }));
+    m.userData.leitura = marcas.length ? `O mapa do Davi, com ${marcas.length} X vermelho${marcas.length > 1 ? 's' : ''}.` : 'Um mapa do internato, desenhado à mão.';
+    let vt = 0;
+    G.ticks.push((dt, ativo) => { if (!ativo || fl().l4v_mapaDavi) return; if (naSala('biblio') && olhar(m.position, .9, 4) > .3) { vt += dt; if (vt > 1.4) { fl().l4v_mapaDavi = true; fala(marcas.length >= 5 ? 'Para de vir por aí... é a letra do Davi.' : marcas.length ? 'Ele marcou onde eu caí. Com a mão tremendo.' : 'O mapa do Davi. Ainda sem nenhum X.'); segredo('mapaDavi'); } } else vt = 0; });
+  }
+
+  // A3. Espelho do banheiro: o reflexo atrasa e pisca
+  let ESrt = null;
+  function espelhoAtrasa() {
+    const sala = mapaId() === 'superior' ? 'banhS' : mapaId() === 'terreo' ? 'banh' : null; if (!sala) return; const r = SALA(sala); if (!r) return;
+    const lug = lugarParede(r, .78, 1.1, 1.4, [0, 1, 2, 3], .2); if (!lug) return;
+    naParede(r, lug.lado, lug.c, 1.4, .78, 1.1, new THREE.MeshStandardMaterial({ color: 0x2a2a30, roughness: .4, metalness: .6 }), .108);
+    const fixo = minima();
+    let mapaE;
+    if (!fixo) { if (!ESrt) ESrt = rtNovo(128, 160, 3); mapaE = ESrt.rt.texture; }
+    else mapaE = tex(128, 160, (g, w, h) => { g.fillStyle = '#8a9098'; g.fillRect(0, 0, w, h); for (let i = 0; i < 140; i++) { g.fillStyle = `rgba(210,218,228,${rand(.05, .2)})`; g.beginPath(); g.arc(rand(0, w), rand(0, h), rand(4, 16), 0, 7); g.fill(); } });
+    const vidro = naParede(r, lug.lado, lug.c, 1.4, .66, .98, new THREE.MeshBasicMaterial({ map: mapaE, color: 0xaab0b8 }), .11);
+    vidro.userData.leitura = 'Um espelho embaçado. O reflexo demora a te acompanhar.';
+    const n = dirLado(lug.lado);
+    const liaF = new THREE.Sprite(new THREE.SpriteMaterial({ map: texLiaFrente(false), depthWrite: true })); liaF.scale.set(.8, 1.6, 1); liaF.layers.set(3); W.grupo.add(liaF);
+    const buf = []; let piscou = false, enc = 0;
+    G.ticks.push((dt, ativo, S) => {
+      if (fixo || !naSala(sala)) { enc = 0; return; }
+      const v = olhar(vidro.position, .8, 5);
+      buf.push({ x: P.pos.x, z: P.pos.z }); if (buf.length > 40) buf.shift();
+      const atras = buf[Math.max(0, buf.length - 30)];
+      liaF.position.set(atras.x, .9, atras.z);
+      enc = v > .3 ? enc + dt : 0;
+      if (enc > 9 && !piscou) { piscou = true; liaF.material.map = texLiaFrente(true); setTimeout(() => { try { liaF.material.map = texLiaFrente(false); } catch (e) {} }, 180); if (ativo && !fl().l4v_espelho) { fl().l4v_espelho = true; fala('Ela piscou. Eu não pisquei.'); conq('l4_espelho'); segredo('espelho'); } }
+      if (v <= 0) return;
+      ESrt.cam.position.set(vidro.position.x - n.x * .1, 1.3, vidro.position.z - n.z * .1); ESrt.cam.lookAt(atras.x, 1.0, atras.z);
+      const ant = renderer.getRenderTarget(); renderer.setRenderTarget(ESrt.rt); renderer.render(scene, ESrt.cam); renderer.setRenderTarget(ant);
+    });
+  }
+
+  // A4. A sombra atrasada no corredor (com uma mãozinha a mais)
+  function sombraLenta() {
+    const sala = mapaId() === 'superior' ? 'corr' : mapaId() === 'terreo' ? 'cw' : null; if (!sala) return; const r = SALA(sala); if (!r) return;
+    const corr = sala === 'corr', lado = corr ? 3 : 0, c = corr ? (r.z0 + r.z1) / 2 : (r.x0 + r.x1) / 2, eixo = corr ? 'z' : 'x';
+    const matA = new THREE.MeshBasicMaterial({ map: TX_SOMBRA.pe, transparent: true, opacity: 0, depthWrite: false, color: 0, polygonOffset: true, polygonOffsetFactor: -3 });
+    const m = naParede(r, lado, c, 1.15, .7, 1.65, matA, .09);
+    const matB = matA.clone(); const m2 = new THREE.Mesh(new THREE.PlaneGeometry(.4, .95), matB); m2.rotation.copy(m.rotation); m2.userData.l4 = true; W.grupo.add(m2);
+    const buf = []; let done = false, qAnt = false;
+    G.ticks.push((dt, ativo, S) => {
+      if (!naSala(sala) || !luzOn() || done) { matA.opacity = Math.max(0, matA.opacity - dt * 3); matB.opacity = matA.opacity * .8; return; }
+      buf.push({ x: P.pos.x, z: P.pos.z }); if (buf.length > 28) buf.shift();
+      const lag = buf[0];
+      m.position[eixo] = clamp(lag[eixo], corr ? r.z0 + .6 : r.x0 + .6, corr ? r.z1 - .6 : r.x1 - .6);
+      m2.position.copy(m.position); m2.position.y = .95; m2.position[eixo] += .32;
+      const vis = olhar(m.position, .55, 7) > 0 ? 1 : 0;
+      matA.opacity = lerp(matA.opacity, vis * (OPT.vFlash ? .4 : .72), Math.min(1, dt * 6)); matB.opacity = matA.opacity * .85;
+      const q = ativo && keys.KeyQ; if (q && !qAnt) { done = true; if (!fl().l4v_sombraLenta) { fl().l4v_sombraLenta = true; fala('A minha sombra deu mais um passo. Sozinha. E tinha outra, pequena, de mãos dadas.'); segredo('sombraLenta'); } } qAnt = q;
+    });
+  }
+
+  // A5. Teatro de sombras do cavalinho
+  function cavalinho() {
+    if (mapaId() !== 'superior') return; const r = SALA('brinq'); if (!r) return;
+    const p = noChao(r, 1.4, 28, .5); if (!p) return;
+    const caixa = new THREE.Mesh(new THREE.BoxGeometry(.5, .5, .5), new THREE.MeshStandardMaterial({ color: 0x6a4a2a, roughness: .9 })); caixa.position.set(p.x, .25, p.z); caixa.userData.l4 = true; W.grupo.add(caixa);
+    const cav = new THREE.Group(); cav.position.set(p.x, .5, p.z); cav.userData.l4 = true; W.grupo.add(cav);
+    const mc = new THREE.MeshStandardMaterial({ color: 0x5a3a1a, roughness: .9 });
+    const corpo = new THREE.Mesh(new THREE.BoxGeometry(.4, .18, .14), mc); corpo.position.y = .22; cav.add(corpo);
+    const cab = new THREE.Mesh(new THREE.BoxGeometry(.16, .22, .12), mc); cab.position.set(.22, .32, 0); cav.add(cab);
+    const mx = clamp(p.x - 1.6, r.x0 + .5, r.x1 - .5), mz = p.z;
+    const marca = new THREE.Mesh(new THREE.PlaneGeometry(.5, .5), new THREE.MeshBasicMaterial({ map: tex(128, 128, (g) => { g.clearRect(0, 0, 128, 128); traco(g, roda(64, 64, 40, 20), 'rgba(230,230,210,.7)', 4, 2); letreiro(g, 'X', 64, 64, 40, 'rgba(230,230,210,.7)'); }), transparent: true, depthWrite: false })); marca.rotation.x = -PI / 2; marca.position.set(mx, .03, mz); marca.userData.l4 = true; W.grupo.add(marca);
+    marca.userData.leitura = 'Uma marca de giz no chão, como se dissesse onde pisar.';
+    const bed = (C.S.code[0] % 5) + 1;
+    const somT = tex(256, 256, (g) => { g.clearRect(0, 0, 256, 256); letreiro(g, 'CAMA ' + bed, 128, 110, 40, 'rgba(0,0,0,.85)'); traco(g, [[60, 170], [196, 170]], 'rgba(0,0,0,.85)', 6, 2); traco(g, [[196, 170], [170, 152]], 'rgba(0,0,0,.85)', 6, 2); traco(g, [[196, 170], [170, 188]], 'rgba(0,0,0,.85)', 6, 2); });
+    const somMat = new THREE.MeshBasicMaterial({ map: somT, transparent: true, opacity: 0, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -3 });
+    naParede(r, 2, clamp(mz, r.z0 + .7, r.z1 - .7), 1.3, 1.0, 1.0, somMat, .1);
+    G.ticks.push((dt, ativo) => {
+      const naMarca = Math.hypot(P.pos.x - mx, P.pos.z - mz) < .8, mira = luzOn() && olhar(cav.position, .78, 3) > .2, ok = naMarca && mira;
+      somMat.opacity = lerp(somMat.opacity, ok ? .8 : 0, Math.min(1, dt * 5));
+      if (ok && ativo && !fl().l4v_cavalinho) { fl().l4v_cavalinho = true; fala('A sombra do cavalinho virou um número. Cama ' + bed + '.'); segredo('cavalinho'); }
+    });
+  }
+
+  // A6. Vitral que joga cor no chão; o vermelho esconde a Lia
+  function vitralCor() {
+    if (mapaId() !== 'cemiterio') return; const r = SALA('capela'); if (!r) return;
+    const cx = (r.x0 + r.x1) / 2, cz = (r.z0 + r.z1) / 2, cores = [0xb02020, 0x2040b0, 0x30a040, 0xc0a020];
+    const mats = cores.map((cor, i) => { const m = new THREE.Mesh(new THREE.PlaneGeometry(1.1, 1.1), new THREE.MeshBasicMaterial({ color: cor, transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending, fog: false })); m.rotation.x = -PI / 2; m.position.set(cx + (i - 1.5) * 1.3, .03, cz); m.userData.l4 = true; W.grupo.add(m); return m; });
+    const verm = mats[0]; let aviso = false;
+    G.ticks.push((dt, ativo, S) => {
+      const k = naSala('capela') ? clamp((C.raioI || 0) * 1.5, 0, 1) : 0; for (const m of mats) m.material.opacity = k * .5;
+      if (naSala('capela') && k > .2 && Math.hypot(P.pos.x - verm.position.x, P.pos.z - verm.position.z) < .8) { if (S) S.fear = Math.max(0, S.fear - dt * 10); if (ativo && !aviso) { aviso = true; fala('A luz vermelha... ela não me acha na luz vermelha.'); segredo('vitralCor'); } }
+    });
+  }
+
+  // A7. Foto da turma de 1979 que ganha foco a cada segredo
+  function turma1979() {
+    if (mapaId() !== 'terreo') return; const r = SALA('hall'); if (!r) return;
+    const achados = Object.keys(DB.seg).length;
+    const t = tex(360, 260, (g, w, h) => {
+      g.fillStyle = '#2a2620'; g.fillRect(0, 0, w, h); g.fillStyle = '#c8bc9a'; g.fillRect(12, 12, w - 24, h - 24);
+      letreiro(g, 'TURMA DE 1979', w / 2, 30, 18, '#3a2e18');
+      const rostos = [[70, 110], [140, 100], [210, 100], [280, 110], [100, 170], [180, 170], [260, 170], [175, 215]];
+      rostos.forEach(([x, y], i) => { const nitido = i < Math.min(achados, rostos.length - 1); g.save(); try { if (!nitido) g.filter = 'blur(5px)'; } catch (e) {} g.fillStyle = '#d9c3a0'; g.beginPath(); g.arc(x, y, 15, 0, 7); g.fill(); g.fillStyle = '#2a1c14'; g.beginPath(); g.arc(x, y - 5, 17, PI, 0); g.fill(); g.restore(); });
+    });
+    const lug = lugarParede(r, .7, .5, 1.6, [0, 2, 3, 1], .2); if (!lug) return;
+    const m = naParede(r, lug.lado, lug.c, 1.6, .7, .5, new THREE.MeshStandardMaterial({ map: t, roughness: 1, polygonOffset: true, polygonOffsetFactor: -2 }));
+    m.userData.leitura = `Foto da turma de 1979. ${achados} rosto${achados !== 1 ? 's' : ''} já voltaram ao foco.`;
+    let vt = 0;
+    G.ticks.push((dt, ativo) => { if (!ativo || fl().l4v_turma79) return; if (naSala('hall') && olhar(m.position, .9, 4) > .3) { vt += dt; if (vt > 1.4) { fl().l4v_turma79 = true; fala('Os rostos vão voltando. Menos um, lá atrás. Esse nunca volta.'); segredo('turma79'); } } else vt = 0; });
+  }
+
+  // A8. Caderno de giz: só aparece com o facho rasante
+  function cadernoGiz() {
+    if (!['terreo', 'superior', 'tuneis'].includes(mapaId())) return;
+    const cands = W.salas.filter(s => !s.fora); if (!cands.length) return;
+    semear(71); const feitos = [];
+    for (let k = 0; k < 2; k++) { const r = cands[Math.floor(rnd() * cands.length)]; const lug = lugarParede(r, .9, .9, 1.2, [0, 1, 2, 3]); if (!lug) continue;
+      const frases = ['A LIA DORMIA AQUI', 'NÃO CONTA PRA IRMÃ', 'A GENTE AINDA BRINCA', 'ELE ANDA DE NOITE'];
+      const t = tex(256, 256, (g) => { g.clearRect(0, 0, 256, 256); letreiro(g, frases[Math.floor(rnd() * frases.length)], 128, 78, 22, 'rgba(230,228,215,.9)'); silCrianca(g, 128, 210, 140, 'rgba(230,228,215,.8)'); });
+      const mat = new THREE.MeshBasicMaterial({ map: t, transparent: true, opacity: 0, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -3 });
+      const m = naParede(r, lug.lado, lug.c, 1.2, .9, .9, mat); const nr = dirLado(lug.lado); feitos.push({ m, mat, nr }); }
+    if (!feitos.length) return; let falou = false;
+    G.ticks.push((dt, ativo) => { for (const f of feitos) { const vis = naLuz(f.m.position, 6, .9), raso = 1 - Math.abs(fw.x * f.nr.x + fw.z * f.nr.z);
+      f.mat.opacity = lerp(f.mat.opacity, vis > 0 ? clamp((raso - .72) / .28, 0, 1) * (OPT.vFlash ? .5 : .9) : 0, Math.min(1, dt * 5));
+      if (f.mat.opacity > .4 && ativo && !falou && !fl().l4v_rasante) { falou = true; fl().l4v_rasante = true; fala('Tem giz aqui. Só aparece com a luz de lado.'); segredo('rasante'); } } });
+  }
+
+  // A9. Fita de vídeo com tracking que firma quando você encara
+  function fitaVideo() {
+    if (mapaId() !== 'terreo') return; const r = SALA('diret'); if (!r) return;
+    const lug = lugarParede(r, .9, .8, 1.0, [1, 0, 2, 3], .35); if (!lug) return;
+    naParede(r, lug.lado, lug.c, 1.0, .9, .8, new THREE.MeshStandardMaterial({ color: 0x2a2824, roughness: .8 }), .2);
+    const base = tex(128, 96, (g) => { g.fillStyle = '#b0a070'; g.fillRect(0, 0, 128, 96); g.fillStyle = '#8a2a2a'; g.fillRect(20, 40, 88, 30); for (let i = 0; i < 5; i++) { g.fillStyle = '#e8d0a0'; g.beginPath(); g.arc(30 + i * 16, 36, 6, 0, 7); g.fill(); } g.fillStyle = '#242424'; g.beginPath(); g.arc(106, 34, 7, 0, 7); g.fill(); letreiro(g, 'ANIVERSÁRIO 1978', 64, 84, 12, '#403020'); });
+    const baseCv = base.image, cv = document.createElement('canvas'); cv.width = 128; cv.height = 96; const g2 = cv.getContext('2d'); const texF = new THREE.CanvasTexture(cv); texF.colorSpace = THREE.SRGBColorSpace;
+    const tela = naParede(r, lug.lado, lug.c, 1.05, .6, .46, new THREE.MeshBasicMaterial({ map: texF, color: 0x9aa89a }), .205);
+    tela.userData.leitura = 'Uma fita: ANIVERSÁRIO 1978. A imagem treme. Encare para firmar.';
+    let olhando = 0, pronto = false, chi = 0, redraw = 0;
+    G.ticks.push((dt, ativo, S) => {
+      if (!naSala('diret')) { olhando = Math.max(0, olhando - dt); return; } // fora da diretoria: nada de canvas
+      const v = olhar(tela.position, .85, 5); olhando = v > .3 ? olhando + dt : Math.max(0, olhando - dt * 2);
+      const tr = pronto ? 0 : clamp(1 - olhando / 4, 0, 1);
+      redraw += dt; if (redraw >= 1 / 15) { redraw = 0; g2.clearRect(0, 0, 128, 96); const jit = (Math.random() - .5) * tr * 18; g2.drawImage(baseCv, 0, jit, 128, 96); for (let i = 0; i < Math.floor(tr * 10); i++) { const y = Math.random() * 96; g2.fillStyle = `rgba(240,240,240,${rand(.2, .6)})`; g2.fillRect(0, y, 128, rand(1, 3)); } texF.needsUpdate = true; }
+      chi += dt; if (tr > .3 && chi > .6) { chi = 0; som('l4fita'); }
+      if (!pronto && olhando > 4) { pronto = true; som('l4fita'); if (ativo) { fala('Um menino magro no fundo. Ele não era dessa turma.'); conq('l4_tracking'); segredo('fita'); } }
+    });
+  }
+
+  // A10. Os óculos rachados do Moacir: o som vira anel de luz
+  function oculosMoacir() {
+    const sala = mapaId() === 'terreo' ? 'cw' : mapaId() === 'tuneis' ? 't6' : null; if (!sala) return; const r = SALA(sala); if (!r) return;
+    const p = noChao(r, 1, 24, .4) || { x: (r.x0 + r.x1) / 2, z: (r.z0 + r.z1) / 2 };
+    const oc = new THREE.Group(); oc.position.set(p.x, .06, p.z); oc.userData.l4 = true; W.grupo.add(oc);
+    const mo = new THREE.MeshStandardMaterial({ color: 0x202020, roughness: .4, metalness: .3 });
+    for (const sx of [-1, 1]) { const a = new THREE.Mesh(new THREE.TorusGeometry(.05, .012, 6, 12), mo); a.position.set(sx * .06, 0, 0); a.rotation.x = PI / 2; oc.add(a); }
+    oc.userData.leitura = 'Os óculos de lente rachada do Moacir. Por eles, o mundo escurece e o som vira luz.';
+    const aneis = []; for (let i = 0; i < 4; i++) { const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: TX_ANEL, transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending, fog: false, color: 0xbfe0ff })); s.userData.l4 = true; scene.add(s); aneis.push({ s, t: 9 }); }
+    let usos = DB.seg.oculos ? 2 : 0, vis = 0, era = false;
+    G.ticks.push((dt, ativo, S) => {
+      const perto = Math.hypot(P.pos.x - p.x, P.pos.z - p.z) < 1.2 && luzOn() && olhar(oc.position, .7, 1.7) > .1;
+      if (perto && !era && usos < 3) { usos++; vis = 3.2; som('l4anel'); if (usos >= 3 && !fl().l4v_oculos) { fl().l4v_oculos = true; fala('Uma silhueta alta. Do meu lado. Feita só de som.'); } segredo('oculos'); }
+      era = perto; vis = Math.max(0, vis - dt);
+      let i = 0; for (const a of aneis) { a.t += dt; if (a.t > 1.3) { a.t = 0; const yaw = camera.rotation.y;
+        const alvo = usos >= 3 && i === 0 ? { x: P.pos.x + Math.cos(yaw) * .6, z: P.pos.z - Math.sin(yaw) * .6, y: 1.3 } : i === 1 ? { x: P.pos.x + Math.cos(yaw) * 2, z: P.pos.z - Math.sin(yaw) * 2, y: 1.0 } : { x: P.pos.x, z: P.pos.z, y: 1.0 };
+        a.s.position.set(alvo.x, alvo.y, alvo.z); }
+        const k = a.t / 1.3; a.s.scale.setScalar(.2 + k * 1.6); a.s.material.opacity = (vis > 0 ? clamp(vis, 0, 1) : 0) * (1 - k) * .5; i++; }
+    });
+  }
+
+  // A11. Pegadas descalças atrás de você (só olhando para trás)
+  function pegadasAtras() {
+    if (mapaId() === 'estrada') return;
+    const N = 6, ps = []; for (let i = 0; i < N; i++) { const m = new THREE.Mesh(new THREE.PlaneGeometry(.14, .28), new THREE.MeshBasicMaterial({ map: TX_PE, transparent: true, opacity: 0, depthWrite: false, color: 0x203040 })); m.rotation.x = -PI / 2; m.visible = false; m.userData.l4 = true; W.grupo.add(m); ps.push({ m, t: 0 }); }
+    let dist = 0, idx = 0; const last = new THREE.Vector3().copy(P.pos);
+    G.ticks.push((dt, ativo, S) => {
+      const piso = P.room && !P.room.fora && /ladrilho|concreto|pedra/.test(P.room.piso || '');
+      dist += last.distanceTo(P.pos); last.copy(P.pos);
+      if (piso && dist > .6) { dist = 0; const pt = ps[idx % N]; idx++; pt.m.position.set(P.pos.x, .02, P.pos.z); pt.m.rotation.z = camera.rotation.y + (idx % 2 ? .3 : -.3); pt.t = 4; pt.m.visible = true; }
+      const olhandoTras = ativo && keys.KeyQ && luzOn();
+      let vivo = false; for (const pt of ps) { pt.t = Math.max(0, pt.t - dt); pt.m.material.opacity = (pt.t > 0 && olhandoTras) ? clamp(pt.t / 4, 0, 1) * .6 : 0; if (pt.t > 1) vivo = true; if (pt.t <= 0) pt.m.visible = false; }
+      if (olhandoTras && vivo && !fl().l4v_pegadasT) { fl().l4v_pegadasT = true; fala('Pegadas. Atrás de mim. Pés descalços.'); segredo('pegadasTras'); }
+    });
+  }
+
+  // A12. Vulto na janela do fim do corredor (no relâmpago)
+  function vultoJanela() {
+    if (mapaId() !== 'superior') return; const js = janelasDe(x => x.id === 'corr'); if (!js.length) return; const j = js[js.length - 1];
+    const b = naParede(j.r, j.lado, j.c, 1.75, .01, .01, new THREE.MeshBasicMaterial({ visible: false }), .2);
+    const spr = new THREE.Sprite(new THREE.SpriteMaterial({ map: TX_SOMBRA.pe, color: 0x05070a, transparent: true, opacity: 0, depthWrite: false })); spr.scale.set(.7, 1.5, 1); spr.position.copy(b.position); spr.position.y = 1.3; spr.userData.l4 = true; W.grupo.add(spr);
+    G.ticks.push((dt, ativo, S) => { const k = naSala('corr') ? clamp((C.raioI || 0) * 2, 0, 1) : 0; spr.material.opacity = k * .9; if (k > .5 && ativo && olhar(spr.position, .9, 22) > .3 && !fl().l4v_vultoJan) { fl().l4v_vultoJan = true; fala('Tinha alguém na janela. Agora não tem.'); segredo('vultoJanela'); } });
+  }
+
+  // A13. Pingos escuros na pia que a luz faz sumir
+  function pingosPia() {
+    const sala = mapaId() === 'superior' ? 'banhS' : mapaId() === 'terreo' ? 'banh' : null; if (!sala) return; const r = SALA(sala); if (!r) return;
+    const p = noChao(r, 1, 20, .4) || { x: (r.x0 + r.x1) / 2, z: r.z0 + .6 };
+    const t = tex(128, 128, (g) => { g.clearRect(0, 0, 128, 128); for (let i = 0; i < 6; i++) { g.fillStyle = 'rgba(60,10,10,.8)'; g.beginPath(); g.ellipse(rand(30, 98), rand(30, 98), rand(4, 9), rand(6, 14), 0, 0, 7); g.fill(); } });
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(.5, .5), new THREE.MeshBasicMaterial({ map: t, transparent: true, opacity: 0, depthWrite: false })); m.rotation.x = -PI / 2; m.position.set(p.x, .9, p.z); m.userData.l4 = true; W.grupo.add(m);
+    G.ticks.push((dt, ativo, S) => { const v = naLuz(m.position, 3, .85); m.material.opacity = lerp(m.material.opacity, v > 0 ? 0 : .7, Math.min(1, dt * 4)); if (naSala(sala) && Math.hypot(P.pos.x - p.x, P.pos.z - p.z) < 1 && ativo && !fl().l4v_pingos) { fl().l4v_pingos = true; fala('Mancha pingando na pia. Acendi a luz e sumiu.'); segredo('pingos'); } });
+  }
+
+  // A14. O retrato cujos olhos brilham e acompanham
+  function retratoOlhos() {
+    const sala = mapaId() === 'terreo' ? 'diret' : mapaId() === 'superior' ? 'celeste' : null; if (!sala) return; const r = SALA(sala); if (!r) return;
+    const lug = lugarParede(r, .5, .62, 1.7, [0, 1, 2, 3], .2); if (!lug) return;
+    const t = tex(128, 160, (g) => { g.fillStyle = '#4a3a28'; g.fillRect(0, 0, 128, 160); g.fillStyle = '#8a7a5a'; g.fillRect(10, 10, 108, 140); g.fillStyle = '#6a5a44'; g.beginPath(); g.ellipse(64, 72, 30, 38, 0, 0, 7); g.fill(); g.fillStyle = '#2a2018'; g.beginPath(); g.arc(64, 58, 26, PI, 0); g.fill(); });
+    const m = naParede(r, lug.lado, lug.c, 1.7, .5, .62, new THREE.MeshStandardMaterial({ map: t, roughness: 1, polygonOffset: true, polygonOffsetFactor: -2 }));
+    const nr = dirLado(lug.lado), lateral = lug.lado < 2 ? 'x' : 'z';
+    const os = [-1, 1].map(sx => { const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: TX_BRILHO, color: 0xfff0c0, transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending })); s.scale.set(.03, .03, 1); s.position.copy(m.position); s.position.y = 1.74; s.position[lateral] += sx * .07; s.position.x -= nr.x * .01; s.position.z -= nr.z * .01; s.userData.l4 = true; W.grupo.add(s); return s; });
+    G.ticks.push((dt, ativo) => { const v = naLuz(m.position, 6, .95); for (const o of os) o.material.opacity = v * (.5 + Math.random() * .3); if (v > .5 && ativo && !fl().l4v_retrato) { fl().l4v_retrato = true; fala('Os olhos do quadro brilham. E acompanham.'); segredo('retrato'); } });
+  }
+
+  // A15. No teto do Dormitório B, uma frase no clarão
+  function tetoDormB() {
+    if (mapaId() !== 'superior') return; const r = SALA('dormB'); if (!r) return;
+    const cx = (r.x0 + r.x1) / 2, cz = (r.z0 + r.z1) / 2, h = r.h || 3.2;
+    const t = tex(256, 256, (g) => { g.clearRect(0, 0, 256, 256); letreiro(g, 'ELE CONTA AS CAMAS', 128, 128, 30, 'rgba(200,40,30,.9)'); });
+    const m = new THREE.Mesh(new THREE.PlaneGeometry((r.x1 - r.x0) - 1, (r.z1 - r.z0) - 1), new THREE.MeshBasicMaterial({ map: t, transparent: true, opacity: 0, depthWrite: false })); m.rotation.x = PI / 2; m.position.set(cx, h - .02, cz); m.userData.l4 = true; W.grupo.add(m);
+    G.ticks.push(() => { m.material.opacity = naSala('dormB') ? clamp((C.raioI || 0) * 1.4, 0, OPT.vFlash ? .4 : .9) : 0; });
+  }
+
+  // A16. A sombra do balanço que se mexe sozinha no pátio
+  function balancoPatio() {
+    if (mapaId() !== 'terreo') return; const r = SALA('patio'); if (!r) return;
+    const t = tex(128, 256, (g) => { g.clearRect(0, 0, 128, 256); g.fillStyle = 'rgba(0,0,0,.6)'; g.fillRect(58, 10, 4, 180); g.fillRect(40, 186, 48, 8); g.beginPath(); g.arc(60, 72, 6, 0, 7); g.fill(); });
+    const spr = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, opacity: 0, depthWrite: false })); spr.scale.set(1, 2, 1); spr.position.set(clamp((r.x0 + r.x1) / 2 + 3, r.x0 + 1, r.x1 - 1), 1, r.z0 + 1.5); spr.userData.l4 = true; W.grupo.add(spr);
+    G.ticks.push((dt, ativo, S, tt) => { const v = naLuz(spr.position, 8, .9); spr.material.opacity = v * .5; spr.material.rotation = Math.sin(tt * 1.3) * .18; if (v > .4 && ativo && !fl().l4v_balanco) { fl().l4v_balanco = true; fala('A sombra de um balanço se mexe. Balanço nenhum ali.'); segredo('balanco'); } });
+  }
+
+  // A17. O vulto refletido no encerado da lousa
+  function lousaReflexo() {
+    if (mapaId() !== 'terreo') return; const r = SALA('aula'); if (!r) return;
+    const lug = lugarParede(r, 1.6, 1.0, 1.4, [1, 0], .2); if (!lug) return;
+    naParede(r, lug.lado, lug.c, 1.4, 1.6, 1.0, new THREE.MeshStandardMaterial({ color: 0x14251a, roughness: .35 }), .108);
+    const b = naParede(r, lug.lado, lug.c, 1.4, .01, .01, new THREE.MeshBasicMaterial({ visible: false }), .112);
+    const vulto = new THREE.Sprite(new THREE.SpriteMaterial({ map: TX_SOMBRA.pe, color: 0x0a140e, transparent: true, opacity: 0, depthWrite: false })); vulto.scale.set(.5, 1.1, 1); vulto.position.copy(b.position); vulto.position.y = 1.35; vulto.userData.l4 = true; W.grupo.add(vulto);
+    let vt = 0;
+    G.ticks.push((dt, ativo) => { const v = naLuz(b.position, 6, .9); vulto.material.opacity = lerp(vulto.material.opacity, v > .3 ? .4 : 0, Math.min(1, dt * 3)); if (v > .3) { vt += dt; if (vt > 3 && ativo && !fl().l4v_lousa) { fl().l4v_lousa = true; fala('No encerado da lousa tem um vulto refletido. Atrás de mim.'); segredo('lousa'); } } else vt = 0; });
+  }
+
+  // A18. O caleidoscópio de lata e a menina que se aproxima
+  function caleidoscopio() {
+    if (mapaId() !== 'superior') return; const r = SALA('brinq'); if (!r) return;
+    const p = noChao(r, 1.4, 24, .4); if (!p) return;
+    const lata = new THREE.Mesh(new THREE.CylinderGeometry(.05, .05, .3, 10), new THREE.MeshStandardMaterial({ color: 0x8a7a3a, roughness: .5, metalness: .4 })); lata.position.set(p.x, .15, p.z); lata.rotation.z = .4; lata.userData.l4 = true; W.grupo.add(lata);
+    lata.userData.leitura = 'Um caleidoscópio de lata. Aponte a luz para dentro dele.';
+    const cv = document.createElement('canvas'); cv.width = 256; cv.height = 256; const g2 = cv.getContext('2d'); const texK = new THREE.CanvasTexture(cv); texK.colorSpace = THREE.SRGBColorSpace;
+    const h = r.h || 3.2; const proj = new THREE.Mesh(new THREE.PlaneGeometry(1.4, 1.4), new THREE.MeshBasicMaterial({ map: texK, transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending })); proj.rotation.x = PI / 2; proj.position.set(p.x, h - .03, p.z); proj.userData.l4 = true; W.grupo.add(proj);
+    let prog = 0, salvou = false, era = false, rk = 0;
+    G.ticks.push((dt, ativo, S) => {
+      const mira = luzOn() && olhar(lata.position, .8, 2.2) > .1;
+      prog = mira ? Math.min(1, prog + dt / 8) : Math.max(0, prog - dt / 4);
+      proj.material.opacity = prog > .02 ? .6 : 0;
+      if (naSala('brinq') && prog > .02) { rk += dt; if (rk >= 1 / 15) { rk = 0; g2.clearRect(0, 0, 256, 256); g2.save(); g2.translate(128, 128);
+        for (let s = 0; s < 6; s++) { g2.rotate(PI / 3); g2.save(); if (s % 2) g2.scale(1, -1); g2.fillStyle = 'rgba(120,90,160,.5)'; g2.beginPath(); g2.moveTo(0, 0); g2.arc(0, 0, 120, -PI / 6, PI / 6); g2.closePath(); g2.fill(); const d = (1 - prog) * 100 + 10; g2.fillStyle = 'rgba(20,16,24,.9)'; g2.beginPath(); g2.arc(d, -8, 6, 0, 7); g2.fill(); g2.fillRect(d - 5, -4, 10, 16); g2.restore(); }
+        g2.restore(); texK.needsUpdate = true; } }
+      if (era && !mira && prog > .4 && prog < .95 && !salvou) { salvou = true; conq('l4_seis'); fala('Seis meninas. Desviei a tempo.'); }
+      if (prog >= 1 && ativo && !fl().l4v_caleid) { fl().l4v_caleid = true; fala('A menina chegou ao centro. E virou pra mim.'); if (S) S.fear = Math.min(100, S.fear + 15); segredo('caleidoscopio'); }
+      era = mira;
+    });
+  }
+
+  // B1. Vela do cemitério que fica vermelha quando você chega
+  function velaCor() {
+    if (mapaId() !== 'cemiterio') return; const r = SALA('cem'); if (!r) return; const p = noChao(r, 2, 20, .4) || { x: r.x0 + 3, z: r.z1 - 3 };
+    const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: TX_BRILHO, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, fog: false })); s.scale.set(.2, .36, 1); s.position.set(p.x, .4, p.z); s.userData.l4 = true; scene.add(s);
+    G.ticks.push((dt, ativo, S, tt) => { const perto = Math.hypot(P.pos.x - p.x, P.pos.z - p.z), k = clamp(1 - (perto - 1) / 3, 0, 1); s.material.color.setRGB(1, .6 - k * .5, .3 - k * .2); s.material.opacity = .7 + Math.sin(tt * 9) * .15; if (k > .7 && ativo && !fl().l4v_velaCor) { fl().l4v_velaCor = true; fala('A chama ficou vermelha quando eu cheguei perto.'); segredo('velaCor'); } });
+  }
+
+  // B2. Setas de giz fosforescente no chão do túnel
+  function setasTunel() {
+    if (mapaId() !== 'tuneis') return; const r = W.salas.find(s => !s.fora); if (!r) return; const cx = (r.x0 + r.x1) / 2, cz = (r.z0 + r.z1) / 2;
+    const t = tex(256, 256, (g) => { g.clearRect(0, 0, 256, 256); for (let k = 0; k < 3; k++) { const y = 60 + k * 70; traco(g, [[60, y], [200, y]], 'rgba(150,255,170,.9)', 6, 2); traco(g, [[200, y], [170, y - 20]], 'rgba(150,255,170,.9)', 6, 2); traco(g, [[200, y], [170, y + 20]], 'rgba(150,255,170,.9)', 6, 2); } });
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), new THREE.MeshBasicMaterial({ map: t, transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending, fog: false })); m.rotation.x = -PI / 2; m.position.set(cx, .03, cz); m.userData.l4 = true; W.grupo.add(m);
+    let carga = 0; G.ticks.push((dt, ativo, S) => { const dentro = P.room && P.room.id === r.id; if (dentro && luzOn() && pitch() < -.2) carga = Math.min(1, carga + dt / 2.5); else carga = Math.max(0, carga - dt / (S.flashOn ? 5 : 9)); m.material.opacity = carga * (S.flashOn ? .1 : .9); if (dentro && !S.flashOn && carga > .5 && ativo && !fl().l4v_setas) { fl().l4v_setas = true; fala('Setas no chão. Brilham quando apago a luz.'); segredo('setas'); } });
+  }
+
+  // B3. Mãozinhas fosforescentes no teto do banheiro de cima
+  function maosTeto() {
+    if (mapaId() !== 'superior') return; const r = SALA('banhS'); if (!r) return; const cx = (r.x0 + r.x1) / 2, cz = (r.z0 + r.z1) / 2, h = r.h || 3.2;
+    const t = tex(256, 256, (g) => { g.clearRect(0, 0, 256, 256); g.fillStyle = 'rgba(150,255,170,1)'; for (let k = 0; k < 6; k++) { const x = rand(40, 216), y = rand(40, 216); g.beginPath(); g.ellipse(x, y, 16, 22, 0, 0, 7); g.fill(); for (let f = 0; f < 5; f++) { g.beginPath(); g.ellipse(x - 16 + f * 8, y - 24, 4, 10, 0, 0, 7); g.fill(); } } });
+    const m = new THREE.Mesh(new THREE.PlaneGeometry((r.x1 - r.x0) - 1, (r.z1 - r.z0) - 1), new THREE.MeshBasicMaterial({ map: t, transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending, fog: false })); m.rotation.x = PI / 2; m.position.set(cx, h - .02, cz); m.userData.l4 = true; W.grupo.add(m);
+    let carga = 0; G.ticks.push((dt, ativo, S) => { const dentro = naSala('banhS'); if (dentro && luzOn() && pitch() > .5) carga = Math.min(1, carga + dt / 3); else carga = Math.max(0, carga - dt / (S.flashOn ? 4 : 10)); m.material.opacity = carga * (S.flashOn ? .1 : .9); if (dentro && !S.flashOn && carga > .5 && ativo && !fl().l4v_maosTeto) { fl().l4v_maosTeto = true; fala('Mãozinhas no teto. Alguém se pendurou aqui.'); segredo('maosTeto'); } });
+  }
+
+  // B4. Móbile de brinquedos: sombras de bichos e uma de gente
+  function mobilePecas() {
+    if (mapaId() !== 'superior') return; const r = SALA('brinq'); if (!r) return; const cx = (r.x0 + r.x1) / 2, cz = (r.z0 + r.z1) / 2, h = r.h || 3.2;
+    const t = tex(256, 256, (g) => { g.clearRect(0, 0, 256, 256); g.fillStyle = 'rgba(0,0,0,.8)'; g.beginPath(); g.ellipse(70, 130, 16, 20, 0, 0, 7); g.ellipse(64, 100, 5, 16, 0, 0, 7); g.ellipse(78, 100, 5, 16, 0, 0, 7); g.fill(); g.beginPath(); g.ellipse(150, 130, 18, 12, 0, 0, 7); g.moveTo(168, 126); g.lineTo(190, 120); g.lineTo(168, 134); g.fill(); silCrianca(g, 212, 160, 90, 'rgba(0,0,0,.85)'); });
+    const spr = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, opacity: 0, depthWrite: false })); spr.scale.set(2.2, 2.2, 1); spr.position.set(cx, h - 1.1, cz - .1); spr.userData.l4 = true; W.grupo.add(spr);
+    G.ticks.push((dt, ativo, S, tt) => { const v = naLuz(v1.set(cx, 1.6, cz), 6, .9); spr.material.opacity = v * .5; spr.position.x = cx + Math.sin(tt * .8) * .1; if (v > .4 && ativo && !fl().l4v_mobile) { fl().l4v_mobile = true; fala('Sombras de coelho, de passarinho... e uma de gente, que vira a cabeça.'); segredo('mobile'); } });
+  }
+
+  // B5. A lua com rosto refletida na poça perto do carro
+  function luaParabrisa() {
+    if (mapaId() !== 'estrada') return;
+    const spr = new THREE.Sprite(new THREE.SpriteMaterial({ map: LUA[0], transparent: true, opacity: 0, depthWrite: false, fog: false })); spr.scale.set(1.2, 1.2, 1); spr.userData.l4 = true; scene.add(spr);
+    const px = 2, pz = 6; spr.position.set(px, .1, pz);
+    G.ticks.push((dt, ativo, S, tt) => { spr.material.opacity = (P.room && P.room.fora ? .3 : 0) * (.6 + Math.sin(tt * 2) * .2); semear(144); if (rnd() < 1 / 3 && Math.hypot(P.pos.x - px, P.pos.z - pz) < 2.2 && olhar(spr.position, .9, 4) > .3) { spr.material.map = LUA[1]; if (ativo && !fl().l4v_luaPoca) { fl().l4v_luaPoca = true; fala('A lua na poça... tinha um rosto.'); segredo('luaPoca'); } } });
+  }
+
+  // B6. "ELE OUVE O AR" escrito no vapor de uma porta de vidro no túnel
+  function vaporTunel() {
+    if (mapaId() !== 'tuneis') return; const r = W.salas.find(s => !s.fora && (s.id === 'dep' || s.id === 'secreta')) || W.salas.find(s => !s.fora); if (!r) return;
+    const lug = lugarParede(r, .9, 1.2, 1.3, [0, 1, 2, 3]); if (!lug) return;
+    naParede(r, lug.lado, lug.c, 1.3, .9, 1.3, new THREE.MeshStandardMaterial({ color: 0x2a3038, roughness: .2, metalness: .5, transparent: true, opacity: .5 }), .108);
+    const t = tex(256, 128, (g) => { g.clearRect(0, 0, 256, 128); letreiro(g, 'ELE OUVE O AR', 128, 64, 30, 'rgba(210,220,230,.9)'); });
+    const mat = new THREE.MeshBasicMaterial({ map: t, transparent: true, opacity: 0, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -3 });
+    const m = naParede(r, lug.lado, lug.c, 1.3, .8, .4, mat, .11); m.userData.rev = 0;
+    let ar = 0; G.ticks.push((dt, ativo, S) => { const perto = m.position.distanceTo(camera.position) < 1.4 && olhar(m.position, .7, 1.6) > 0; const prende = !!(keys.Space || P.arTrava) && ativo && !S.hidden; if (prende) ar += dt; else { if (ar >= 2 && perto) { m.userData.rev = 3; if (!fl().l4v_vapor) { fl().l4v_vapor = true; setTimeout(() => fala('Escrito no vapor: ele ouve o ar. Prender o fôlego perto dele não dura pra sempre.'), 600); segredo('vapor'); } } ar = 0; } if (m.userData.rev > 0) m.userData.rev -= dt; mat.opacity = clamp((m.userData.rev || 0) / 3, 0, 1) * .85; });
+  }
+
+  // B7. A plaquinha de porta que muda de número quando você não olha
+  function portaNumero() {
+    if (mapaId() !== 'superior') return; const r = SALA('corr'); if (!r) return;
+    const faz = n => tex(128, 128, (g) => { papel(g, 128, 128, '#d8cba6'); letreiro(g, String(n), 64, 64, 60, '#3a2a12'); });
+    const lug = lugarParede(r, .3, .3, 1.8, [2, 3]); if (!lug) return; let num = 5;
+    const m = naParede(r, lug.lado, lug.c, 1.8, .3, .3, new THREE.MeshStandardMaterial({ map: faz(num), roughness: 1, polygonOffset: true, polygonOffsetFactor: -2 })); m.userData.leitura = 'Uma plaquinha de porta com um número.';
+    let fora = 0, falou = false; G.ticks.push((dt, ativo) => { const vendo = naSala('corr') && olhar(m.position, .9, 5) > .3; if (!vendo) { fora += dt; if (fora > 2 && num < 6) { num = 6; m.material.map = faz(num); } } else { if (num === 6 && ativo && !falou) { falou = true; fala('Essa porta era a cinco. Agora diz seis.'); segredo('portaNum'); } fora = 0; } });
+  }
+
+  // B8. Pingos no teto do Dormitório C que formam uma palavra
+  function gotasTeto() {
+    if (mapaId() !== 'superior') return; const r = SALA('dormC'); if (!r) return; const cx = (r.x0 + r.x1) / 2, cz = (r.z0 + r.z1) / 2, h = r.h || 3.2;
+    const t = tex(256, 128, (g) => { g.clearRect(0, 0, 256, 128); letreiro(g, 'VOLTA', 128, 64, 44, 'rgba(70,20,20,.85)'); });
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(1.4, .7), new THREE.MeshBasicMaterial({ map: t, transparent: true, opacity: 0, depthWrite: false })); m.rotation.x = PI / 2; m.position.set(cx, h - .02, cz); m.userData.l4 = true; W.grupo.add(m);
+    G.ticks.push((dt, ativo) => { const v = naLuz(v1.set(cx, h - .1, cz), 6, .9) * (pitch() > .4 ? 1 : 0); m.material.opacity = v * .8; if (v > .4 && ativo && !fl().l4v_gotas) { fl().l4v_gotas = true; fala('Pingou do teto e formou uma palavra. VOLTA.'); segredo('gotas'); } });
+  }
+
+  // B9. O relógio da sala de aula parado às três
+  function relogioParado() {
+    if (mapaId() !== 'terreo') return; const r = SALA('aula'); if (!r) return; const lug = lugarParede(r, .4, .4, 2.1, [0, 1, 2, 3]); if (!lug) return;
+    const t = tex(128, 128, (g) => { g.fillStyle = '#e8e0d0'; g.beginPath(); g.arc(64, 64, 60, 0, 7); g.fill(); g.strokeStyle = '#222'; g.lineWidth = 3; g.beginPath(); g.arc(64, 64, 58, 0, 7); g.stroke(); g.lineWidth = 4; g.beginPath(); g.moveTo(64, 64); g.lineTo(64, 24); g.moveTo(64, 64); g.lineTo(92, 64); g.stroke(); });
+    const m = naParede(r, lug.lado, lug.c, 2.1, .4, .4, new THREE.MeshStandardMaterial({ map: t, roughness: .6, polygonOffset: true, polygonOffsetFactor: -2 })); m.userData.leitura = 'Um relógio de parede parado às três horas.';
+    let vt = 0; G.ticks.push((dt, ativo) => { if (!ativo || fl().l4v_relogio) return; if (naSala('aula') && olhar(m.position, .9, 5) > .3) { vt += dt; if (vt > 1.5) { fl().l4v_relogio = true; fala('O relógio parou às três. A hora que tudo parou aqui.'); segredo('relogio'); } } else vt = 0; });
+  }
+
+  // B10. Sombra de cela e uma criança entre as barras (corredor de cima)
+  function barrasCela() {
+    if (mapaId() !== 'superior') return; const r = SALA('corr'); if (!r) return;
+    const t = tex(256, 256, (g) => { g.clearRect(0, 0, 256, 256); g.fillStyle = 'rgba(0,0,0,.55)'; for (let i = 0; i < 7; i++) g.fillRect(20 + i * 32, 0, 10, 256); silCrianca(g, 128, 210, 120, 'rgba(0,0,0,.5)'); });
+    const mat = new THREE.MeshBasicMaterial({ map: t, transparent: true, opacity: 0, depthWrite: false }); const m = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), mat); m.rotation.x = -PI / 2; m.position.set((r.x0 + r.x1) / 2, .03, clamp((r.z0 + r.z1) / 2 - 10, r.z0 + 1, r.z1 - 1)); m.userData.l4 = true; W.grupo.add(m);
+    G.ticks.push((dt, ativo, S) => { const k = naSala('corr') ? clamp((C.raioI || 0) * 1.4, 0, 1) : 0; mat.opacity = k * .6; if (k > .5 && ativo && !fl().l4v_barras) { fl().l4v_barras = true; fala('As grades fazem sombra de cela. E tem alguém entre as barras.'); segredo('barras'); } });
+  }
+
+  // B11. Fotos do hall com os olhos riscados que ainda brilham
+  function fotosRiscadas() {
+    if (mapaId() !== 'terreo') return; const r = SALA('hall'); if (!r) return; const lug = lugarParede(r, .4, .5, 1.65, [0, 2, 3, 1], .2); if (!lug) return;
+    const t = tex(128, 160, (g) => { g.fillStyle = '#3a3228'; g.fillRect(0, 0, 128, 160); g.fillStyle = '#b8ac8a'; g.fillRect(12, 12, 104, 136); g.fillStyle = '#8a7a5a'; g.beginPath(); g.arc(64, 70, 26, 0, 7); g.fill(); g.strokeStyle = '#201810'; g.lineWidth = 4; g.beginPath(); g.moveTo(48, 60); g.lineTo(60, 70); g.moveTo(68, 60); g.lineTo(80, 70); g.stroke(); });
+    const m = naParede(r, lug.lado, lug.c, 1.65, .4, .5, new THREE.MeshStandardMaterial({ map: t, roughness: 1, polygonOffset: true, polygonOffsetFactor: -2 }));
+    const olho = new THREE.Sprite(new THREE.SpriteMaterial({ map: TX_BRILHO, color: 0xffe0a0, transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending })); olho.scale.set(.05, .05, 1); olho.position.copy(m.position); olho.position.y = 1.72; olho.userData.l4 = true; W.grupo.add(olho);
+    G.ticks.push((dt, ativo) => { const v = naLuz(m.position, 6, .95); olho.material.opacity = v * (.4 + Math.random() * .4); if (v > .5 && ativo && !fl().l4v_fotosR) { fl().l4v_fotosR = true; fala('Riscaram os olhos dessa foto. Mas ainda brilham.'); segredo('fotosR'); } });
+  }
+
+  // B12. Pés que passam por baixo de uma porta
+  function pesSobPorta() {
+    if (!['terreo', 'superior'].includes(mapaId())) return; const link = W.links.find(l => l.nome); if (!link) return;
+    const t = tex(128, 32, (g) => { g.clearRect(0, 0, 128, 32); g.fillStyle = 'rgba(0,0,0,.8)'; g.beginPath(); g.ellipse(48, 16, 10, 8, 0, 0, 7); g.ellipse(80, 16, 10, 8, 0, 0, 7); g.fill(); });
+    const mat = new THREE.MeshBasicMaterial({ map: t, transparent: true, opacity: 0, depthWrite: false }); const m = new THREE.Mesh(new THREE.PlaneGeometry(.8, .1), mat); m.position.set(link.x, .05, link.z); m.rotation.x = -PI / 2; m.userData.l4 = true; W.grupo.add(m);
+    let acc = rand(6, 14), falou = false; G.ticks.push((dt, ativo) => { acc -= dt; const d = Math.hypot(P.pos.x - link.x, P.pos.z - link.z); if (acc < 0 && d < 4) { mat.opacity = Math.min(1, mat.opacity + dt * 2); if (mat.opacity >= 1) acc = rand(16, 28); if (!falou && ativo && mat.opacity > .6) { falou = true; fala('Passaram pés por baixo da porta. Agora.'); segredo('pesPorta'); } } else mat.opacity = Math.max(0, mat.opacity - dt * 1.5); });
+  }
+
+  // B13. A cruz da capela que aparece de cabeça para baixo no relâmpago
+  function cruzCapela() {
+    if (mapaId() !== 'cemiterio') return; const r = SALA('capela'); if (!r) return; const lug = lugarParede(r, .6, 1.0, 1.9, [1, 0]); if (!lug) return;
+    const t = tex(128, 200, (g) => { g.clearRect(0, 0, 128, 200); g.fillStyle = 'rgba(120,20,20,.85)'; g.fillRect(56, 20, 16, 160); g.fillRect(26, 60, 76, 16); });
+    const mat = new THREE.MeshBasicMaterial({ map: t, transparent: true, opacity: 0, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -3 });
+    const m = naParede(r, lug.lado, lug.c, 1.9, .6, 1.0, mat); m.rotation.z = PI;
+    G.ticks.push((dt, ativo) => { const k = naSala('capela') ? clamp((C.raioI || 0) * 1.5, 0, 1) : 0; mat.opacity = k * .85; if (k > .5 && ativo && !fl().l4v_cruz) { fl().l4v_cruz = true; fala('No raio, a cruz aparece. De cabeça pra baixo.'); segredo('cruz'); } });
+  }
+
+  // B14. Caco de espelho num armário mostrando um rosto que não é o seu
+  function armarioRosto() {
+    if (!['terreo', 'superior'].includes(mapaId())) return; const arm = W.lockers.filter(L => L.tipo === 'armario' && L.g); if (!arm.length) return;
+    semear(88); const L = arm[Math.floor(rnd() * arm.length)];
+    const t = tex(128, 160, (g) => { g.clearRect(0, 0, 128, 160); g.fillStyle = 'rgba(180,190,200,.25)'; g.fillRect(24, 20, 80, 120); g.strokeStyle = 'rgba(40,40,45,.6)'; g.lineWidth = 2; g.beginPath(); g.moveTo(40, 20); g.lineTo(70, 140); g.moveTo(90, 30); g.lineTo(60, 120); g.stroke(); g.fillStyle = 'rgba(20,16,18,.55)'; g.beginPath(); g.arc(64, 74, 22, 0, 7); g.fill(); g.fillStyle = 'rgba(200,200,190,.5)'; g.beginPath(); g.arc(55, 70, 4, 0, 7); g.arc(73, 70, 4, 0, 7); g.fill(); });
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(.3, .4), new THREE.MeshBasicMaterial({ map: t, transparent: true, opacity: 0, depthWrite: false })); m.position.set(0, 1.4, .3); m.rotation.y = PI; m.userData.l4 = true; L.g.add(m);
+    G.ticks.push((dt, ativo, S) => { L.g.getWorldPosition(v2); v2.y = 1.4; m.material.opacity = S.hidden === L ? 0 : naLuz(v2, 5, .95) * .7; if (m.material.opacity > .4 && ativo && !fl().l4v_armRosto) { fl().l4v_armRosto = true; fala('Tem um caco de espelho no armário. E um rosto nele que não é o meu.'); segredo('armRosto'); } });
+  }
+
+  // B15. As velas do altar que acendem sozinhas
+  function altarVelas() {
+    if (mapaId() !== 'cemiterio') return; const r = SALA('capela'); if (!r) return; const cx = (r.x0 + r.x1) / 2, cz = r.z0 + 1.5;
+    const velas = []; for (let i = 0; i < 7; i++) { const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: TX_BRILHO, color: 0xffcf80, transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending, fog: false })); s.scale.set(.12, .22, 1); s.position.set(cx - .9 + i * .3, 1.0, cz); s.userData.l4 = true; scene.add(s); velas.push(s); }
+    let n = 3, tt = 0; G.ticks.push((dt, ativo, S, t2) => { tt += dt; if (naSala('capela') && tt > 4 && n < 7) { tt = 0; n++; } velas.forEach((s, i) => { s.material.opacity = i < n ? .6 + Math.sin(t2 * 8 + i) * .2 : 0; }); if (n >= 6 && naSala('capela') && ativo && !fl().l4v_altar) { fl().l4v_altar = true; fala('Tinha três velas acesas. Agora são seis. Ninguém acendeu.'); segredo('altar'); } });
+  }
+
+  // B16. O contorno de giz no pátio que ganha um segundo corpo
+  function contornoPatio() {
+    if (mapaId() !== 'terreo') return; const r = SALA('patio'); if (!r) return; const p = noChao(r, 2, 20, .6) || { x: 0, z: 8 };
+    const faz = dois => tex(256, 256, (g) => { const corpo = (x, rot) => { g.save(); g.translate(x, 128); g.rotate(rot); traco(g, roda(0, -70, 16, 14), 'rgba(230,230,210,.7)', 4, 2); traco(g, [[0, -54], [0, 10]], 'rgba(230,230,210,.7)', 4, 2); traco(g, [[0, -40], [-30, -10]], 'rgba(230,230,210,.7)', 4, 2); traco(g, [[0, -40], [30, -10]], 'rgba(230,230,210,.7)', 4, 2); traco(g, [[0, 10], [-22, 70]], 'rgba(230,230,210,.7)', 4, 2); traco(g, [[0, 10], [22, 70]], 'rgba(230,230,210,.7)', 4, 2); g.restore(); }; g.clearRect(0, 0, 256, 256); corpo(96, .2); if (dois) corpo(160, -.3); });
+    const mat = new THREE.MeshBasicMaterial({ map: faz(false), transparent: true, opacity: 0, depthWrite: false }); const m = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), mat); m.rotation.x = -PI / 2; m.position.set(p.x, .03, p.z); m.userData.l4 = true; W.grupo.add(m);
+    let vendoAnt = false, pend = false, dois = false; G.ticks.push((dt, ativo) => { const v = naLuz(m.position, 7, .9); mat.opacity = v * .6; const vendo = v > .3; if (vendoAnt && !vendo) pend = true; if (!vendoAnt && vendo && pend && !dois) { dois = true; mat.map = faz(true); } vendoAnt = vendo; if (dois && vendo && ativo && !fl().l4v_contP) { fl().l4v_contP = true; fala('Era um contorno de giz. Agora são dois. Lado a lado.'); segredo('contornoPatio'); } });
+  }
+
+  // B17. Mãozinha no vidro de um dormitório, no relâmpago
+  function maoVidroDorm() {
+    if (mapaId() !== 'superior') return; const js = janelasDe(r => r.id === 'dormD'); if (!js.length) return; const j = js[0];
+    const t = tex(128, 160, (g) => { g.clearRect(0, 0, 128, 160); g.fillStyle = 'rgba(210,210,220,.5)'; g.beginPath(); g.ellipse(64, 90, 18, 24, 0, 0, 7); g.fill(); for (let f = 0; f < 5; f++) { g.beginPath(); g.ellipse(40 + f * 12, 58, 5, 14, 0, 0, 7); g.fill(); } });
+    const mat = new THREE.MeshBasicMaterial({ map: t, transparent: true, opacity: 0, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -5 });
+    naParede(j.r, j.lado, j.c, 1.5, .5, .6, mat, .1185);
+    G.ticks.push((dt, ativo) => { const k = naSala('dormD') ? clamp((C.raioI || 0) * 1.6, 0, 1) : 0; mat.opacity = k * .7; if (k > .5 && ativo && !fl().l4v_maoVidro) { fl().l4v_maoVidro = true; fala('Uma mão pequena no vidro. Pelo lado de fora. No segundo andar.'); segredo('maoVidro'); } });
   }
 
   // =================================================================== LANTERNA DO DAVI (recompensa: estrelinha de fita isolante no círculo de luz)
