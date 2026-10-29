@@ -9,6 +9,8 @@ import { segredosEstrada, letrasPlaca } from './src/estrada-segredos.js';
 import { extrasTerreo, extrasSuperior, juntar } from './src/internato.js';
 import { loreTerreo, loreSuperior } from './src/internato-lore.js';
 import { polirTerreo, polirSuperior } from './src/internato-polimento.js';
+import { segredosTerreo } from './src/internato-segredos.js';
+import { segredosSuperior } from './src/internato-segredos-sup.js';
 import * as SUB from './src/subterraneo.js';
 import * as SUBL from './src/subterraneo-lore.js';
 import * as SUBP from './src/subterraneo-polimento.js';
@@ -385,13 +387,14 @@ function terreo(A, S) {
   const X = extrasTerreo(A, S, { relogios: [relFachada, relHall], vulto, placa });
   const Y = loreTerreo(A, S, { balanco: bal }); // Lote 2: lugares que contam a história
   const Z = polirTerreo(A, S, { X, ger, led, visor, quadro, grade, EX, fusNoQuadro, alcapao, bal, itens: [itGalao, itFus] }); // Lote 3: polimento e janela da copa
+  const SG = segredosTerreo(A, S, {}); // Lote 4: segredos e salas escondidas
 
-  return juntar(juntar(juntar({
+  return juntar(juntar(juntar(juntar({
     nome: 'Térreo do internato',
     ruidoMul: () => Z.ruidoMul(),
     spawns: { inicio: { x: 0, z: 13, yaw: 0 }, escada: { x: EX, z: -7.6, yaw: Math.PI }, porao: { x: 27, z: -21.5, yaw: Math.PI } },
     fora: { hemi: .55, moon: .7, fog: .05 }, dentro: { hemi: .08, moon: .04, fog: .1 },
-    energia: () => !!S.flags.energia,
+    energia: () => !!S.flags.energia && !S.flags.sg4_apagao, // a chave geral do Lote 4 apaga o prédio de propósito
     inspetor: () => S.done.forcar_porta && (S.timers.insp === undefined || S.timers.insp <= 0),
     procissao: () => S.flags.energia && S.chapter >= 2,
     ana: () => S.chapter >= 3,
@@ -412,7 +415,7 @@ function terreo(A, S) {
       }
     },
     fitaOuvida(id) { if (id === 'f1' && S.chapter >= 2) A.objDone('fita_diretor'); }
-  }, X), Y), Z);
+  }, X), Y), Z), SG);
 }
 
 // =====================================================================
@@ -506,8 +509,9 @@ function superior(A, S) {
   X.prepararPoco(itPoco);
   const Y = loreSuperior(A, S, {}); // Lote 2: lugares que contam a história
   const Z = polirSuperior(A, S, { X, caixa, itPoco, desce, itEng, itens: [itEng, itChC, itChP] }); // Lote 3: polimento
+  const SG = segredosSuperior(A, S, {}); // Lote 4: segredos e salas escondidas
 
-  return juntar(juntar(juntar({
+  return juntar(juntar(juntar(juntar({
     nome: 'Andar dos dormitórios',
     ruidoMul: () => Z.ruidoMul(),
     spawns: { escada: { x: 0, z: 3, yaw: 0 }, inicio: { x: 0, z: 3, yaw: 0 } },
@@ -527,7 +531,7 @@ function superior(A, S) {
       if (cap === 3 && !S.flags.supIntro) { S.flags.supIntro = true; A.falar('superior_inicio'); }
     },
     fitaOuvida(id) { if (id === 'f2') { A.objDone('fita_celeste'); A.syncWorld(); } }
-  }, X), Y), Z);
+  }, X), Y), Z), SG);
 }
 
 // =====================================================================
