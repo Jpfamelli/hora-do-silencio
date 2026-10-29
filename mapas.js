@@ -6,6 +6,7 @@ import { TXT } from './src/estrada-roteiro.js';
 import { mundoEstrada } from './src/estrada-mundo.js';
 import { polirEstrada, tecla, semFlash } from './src/estrada-polimento.js';
 import { segredosEstrada, letrasPlaca } from './src/estrada-segredos.js';
+import { monstrosEstrada } from './src/estrada-monstros.js';
 import { extrasTerreo, extrasSuperior, juntar } from './src/internato.js';
 import { loreTerreo, loreSuperior } from './src/internato-lore.js';
 import { polirTerreo, polirSuperior } from './src/internato-polimento.js';
@@ -224,6 +225,9 @@ function estrada(A, S) {
   // Lote 4: segredos do carro, da estrada e do posto (src/estrada-segredos.js); `fora` é lido pelo motor a cada quadro (a névoa engrossa na estrada que dá a volta)
   const fora = { hemi: .55, moon: .75, fog: .055 };
   segredosEstrada(A, S, { GZ, BZ, carro, ex, pol, fora, luzNeon, neon, farolOn, v, novoVulto: () => vulto(A) });
+  // Lote 5: monstros do prólogo — o batedor de 1979, o acompanhante da mata, o vulto dos faróis,
+  // aparições perturbadoras e os momentos a mais da perseguição (src/estrada-monstros.js)
+  monstrosEstrada(A, S, { GZ, BZ, carro, farolOn, gate, ex, v, novoVulto: () => vulto(A) });
 
   return {
     nome: 'A Estrada Velha',
