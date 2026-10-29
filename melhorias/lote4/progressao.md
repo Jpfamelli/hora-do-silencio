@@ -91,3 +91,93 @@
 - Conquista "A Prateleira Cheia" ao achar os seis objetos da prateleira.
 - As dezoito conquistas novas entram no catálogo e contam para o 100% do internato.
 - O título marca sozinho a ocorrência "nove da noite" quando aberto às 21h.
+- Código VELA no título liga a Noite da Vela, com a tela em calor curto e trêmulo de vela.
+- Código MARCO no título liga a Noite da Lembrança, com tudo em tom de foto de 1979.
+- Código FESTA no título liga a Noite de Festa, com calor de lampião junino por cima de tudo.
+- Código CORVO no título libera a lanterna fria do Corvo, azul de petróleo.
+- Código ONIBUS no título libera o Farol do ônibus, branco-azulado e de cone largo.
+- Código DEZ no título revela a Hora Dobrada e faz o sino bater dez vezes.
+- Noite da Vela aparece como modo ligável no painel Modos.
+- Noite da Lembrança aparece como modo ligável no painel Modos.
+- Noite de Festa aparece como modo ligável no painel Modos.
+- Os três novos modos de luz se excluem entre si ao serem ligados.
+- Os véus de vela e de festa respeitam a opção de movimento reduzido.
+- As escolhas dos novos modos ficam salvas nas opções entre as noites.
+- Lanterna do Corvo entra na lista de lanternas, com vidro escuro e luz azul.
+- Farol do ônibus entra na lista de lanternas, com cone largo de estrada.
+- A lanterna do Corvo e o Farol tingem o feixe com a cor própria durante o jogo.
+- Nova aba Telefones no painel Segredos com a lista telefônica da noite.
+- Telefone do Posto Serra, que atende só com chiado quando a pista é achada.
+- Telefone da secretaria do bispo, que desliga na cara da Lia.
+- Telefone da casa da mãe da Lia, que deixou a luz acesa esperando.
+- Telefone dos Correios, com a encomenda devolvida do Davi em 1979.
+- Telefone sem dono, que só respira no mesmo compasso que você.
+- O número sem dono só atende tarde da noite, entre nove e dez horas.
+- Discar um número toca um chiado procedural e revela a gravação.
+- Conquista "Lista Telefônica" ao discar os cinco números.
+- Nova aba Álbum no painel Segredos com as figurinhas do Davi.
+- Cada figurinha cola sozinha quando você acha a lore daquele capítulo.
+- Figurinha do ônibus velho, do Prólogo.
+- Figurinha da lâmpada apagada, do Capítulo I.
+- Figurinha do sino, do capítulo da capela.
+- Figurinha da amarelinha, do capítulo da Menina.
+- Figurinha da válvula, dos túneis.
+- Figurinha da cruz de giz, do cemitério.
+- Figurinha dourada que só aparece com o álbum completo.
+- Página final do álbum revela as quatro crianças e uma sombra alta atrás.
+- Conquista "A Lata Inteira" ao completar o álbum do Davi.
+- Nova aba Caça no painel Segredos com a caça ao tesouro do verso do gibi.
+- Versinho rimado da estrada, sobre o motor que não recusa.
+- Versinho rimado do térreo, sobre escutar o corredor inteiro.
+- Versinho rimado da capela, sobre contar até nove e não mais um.
+- Versinho rimado da Menina, sobre pular a casa e não a linha.
+- Versinho rimado dos túneis, sobre a gaveta que grita.
+- Versinho rimado do cemitério, sobre o nome que ninguém quis.
+- Cada versinho é riscado quando o segredo correspondente é achado.
+- Conquista "Caça ao Tesouro" ao riscar os seis versinhos.
+- Nova aba Mapa no painel Segredos com a planta de giz dos segredos.
+- Uma janelinha acesa por lore achada em cada ala do internato.
+- Gastar um fósforo abre uma charada para uma ala ainda escura.
+- Cada ala tem a sua charada própria, na linguagem do Davi.
+- Conquista "A Planta Inteira" ao acender todas as janelinhas da planta.
+- Nova aba Visitas no painel Segredos, uma linha por noite que você passou.
+- Na nona noite, o Davi assina embaixo do livro com letra de criança.
+- Conquista "Quem Volta" ao assinar o livro na sua nona noite.
+- Carteirinha do Clube do Silêncio na tela de final, com número de sócio.
+- O número de sócio vem da lore achada naquela noite, não de repetição.
+- Conquista "Sócia do Clube" ao ganhar a carteirinha num final.
+- Mapa de giz do internato desenhado no capô do carro na tela de final.
+- Selo de explorador no fim do capítulo, com casinhas de giz por segredo.
+- Casinhas cheias para a lore achada e vazias para a que falta.
+- Quando falta algo, uma única palavra de dica aponta a ala.
+- Conquista "Olho Vivo" ao achar toda a lore de um mapa numa passada só.
+- Placa de bronze no título depois do final verdadeiro, com o nome do jogador.
+- Linha "Lugares que não existem" no título, contando a lore sem revelar o resto.
+- Conquista "Primeira Noite" ao terminar a campanha uma vez.
+- Conquista "Dez Noites" ao começar dez noites no São Lázaro.
+- Conquista "Maratona" ao somar cinco horas dentro do internato.
+- Conquista "Três Caminhos" ao ver os três finais.
+- Conquista "Antes da Hora" ao tocar o sino do Capítulo V bem rápido.
+- Conquista "Igual à Mãe" ao bater seu recorde de tempo total.
+- Conquista "Calendário" ao jogar em três datas marcadas diferentes.
+- Ocorrência rara: entrar no Dia das Crianças, 12 de outubro.
+- Ocorrência rara: entrar na noite de São João, 24 de junho.
+- Ocorrência rara: entrar na véspera ou no dia de Natal.
+- Ocorrência rara: entrar na virada do ano.
+- Ocorrência rara: entrar no Dia de Finados, 2 de novembro.
+- Boato novo: "à luz de vela, a casa fica mansa — por engano."
+- Boato novo: "teve festa junina na noite do fogo."
+- Boato novo: "o último ônibus das nove ainda passa."
+- Boato novo: "um corvo entrega lanternas a quem fica."
+- Bilhete de pausa novo: "conta comigo até nove."
+- Bilhete de pausa novo: "a vela dura menos que a coragem."
+- Bilhete de pausa novo: "ninguém some de vez, só muda de andar."
+- Linha nova na tela de morte na primeira morte: "a primeira vez a gente nunca esquece."
+- Linha nova na tela de morte nas seguintes: "mais uma pra parede, a Celeste anotou."
+- A Hora Dobrada também marca a ocorrência das nove e o boato do sino que bate dez.
+- Cada código novo toca um som próprio ao ser digitado no título.
+- As vinte conquistas novas entram no catálogo e contam para o 100% do internato.
+- As cinco ocorrências por data entram no livro das noites raras do painel.
+- Os quatro boatos novos entram no mural de boatos do painel.
+- O painel Segredos passa a ter treze abas, cinco delas novas.
+- O novo módulo entra no cache offline do service worker para jogar sem internet.
