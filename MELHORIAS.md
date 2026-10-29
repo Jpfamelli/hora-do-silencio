@@ -2,7 +2,7 @@
 
 Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/lote*/<área>.md`. Não edite à mão: edite o arquivo da área e gere de novo.
 
-**Total geral: 4931 melhorias**
+**Total geral: 4933 melhorias**
 
 ## Índice
 
@@ -48,7 +48,7 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
   - Progressão e rejogabilidade: 116
   - Plataforma e acessibilidade: 106
   - Revisão antes de publicar: 5
-- [Lote 4](#lote-4) — 1018 melhorias
+- [Lote 4](#lote-4) — 1020 melhorias
   - História e texto: 92
   - Mapa: prólogo e estrada: 97
   - Mapa: túneis, cemitério e capela: 96
@@ -59,6 +59,7 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
   - Jogabilidade: 113
   - Interface: 100
   - Progressão e rejogabilidade: 92
+  - Revisão antes de publicar: 2
 
 ## Lote 1
 
@@ -4104,7 +4105,7 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
 
 ## Lote 4
 
-1018 melhorias.
+1020 melhorias.
 
 ### História e texto (92)
 
@@ -5153,3 +5154,8 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
 1016. Conquista "A Prateleira Cheia" ao achar os seis objetos da prateleira.
 1017. As dezoito conquistas novas entram no catálogo e contam para o 100% do internato.
 1018. O título marca sozinho a ocorrência "nove da noite" quando aberto às 21h.
+
+### Revisão antes de publicar (2)
+
+1019. Service worker: o cache voltou a ser versionado (`hora-silencio-v6`) em vez de ficar preso no `v5` do Lote 3, então o `activate` limpa o cache antigo e os módulos novos do Lote 4 entram de uma vez na próxima abertura
+1020. Service worker: removida a entrada falsa `'hora-silencio-v6'` da lista `BASE`, que não é arquivo e fazia o `install` buscar um 404 toda vez e o indicador de "pronto para jogar sem internet" nunca fechar em 100%
