@@ -95,3 +95,96 @@
 - Som procedural novo de pedra rangendo, usado quando o anjo é encarado demais.
 - A cabana de lençóis é mantida fora do mapa de caminhos das entidades, para que Inspetor, Procissão e Menina nunca entrem nela.
 - As garrafas jogadas no poço seco são tratadas por um único gancho sobre o retorno de garrafa, sem quebrar o comportamento normal das garrafas.
+- Na sala do diretor, um armário de ferro com cadeado pequeno e marcas de unha por dentro da porta.
+- Sem a chave, o armário fica trancado e a Lia nota as marcas de unha de quem ficou preso ali dentro.
+- Com a chave (a do cofre serve), abrir o armário range alto e faz barulho que pode atrair o Inspetor.
+- A porta do armário abre com uma animação lenta de dobradiça enferrujada.
+- Aberto, o interior mostra “MOACIR ABRE” arranhado muitas vezes, e a Lia entende que o diretor também foi trancado ali quando menino.
+- Se o Inspetor estiver no mapa quando o armário abre, ele para, fica mudo e sussurra “agora a senhora sabe como é.”, dando a conquista “Por Fora”.
+- Na câmara leste, uma parede com marcas de argamassa que soa oca quando batida.
+- Bater na parede faz barulho que o Inspetor ouve, e a primeira batida mostra a legenda “[oco]”.
+- Três batidas derrubam os tijolos (que caem como pedaços soltos no chão) e abrem um nicho, com a conquista “Parede Oca”.
+- No nicho da parede oca há uma lata de bolachas com a lista do que os três esconderam do diretor (nota secreta) e uma pilha.
+- No depósito, uma parede curva de tijolo leva o som do outro lado: ficar parada e quieta deixa ouvir.
+- Esperar junto à parede curva faz ouvir uma conversa de 1979 entre a Irmã Celeste e o diretor sobre a capela trancada.
+- Continuar ouvindo entrega a ordem verdadeira das válvulas (grave, médio, agudo), anotada no diário, com a conquista “Câmara dos Sussurros”.
+- No túnel central, uma parede com 37 nomes de crianças riscados a prego.
+- Passar a lanterna devagar sobre a parede faz uma voz de criança dizer cada nome, um por vez.
+- No fim da parede, um 38º nome está sendo riscado agora, “L I _”; ao ler todos, o Davi completa “L, I, A”, com a conquista “Ela Leu os Nomes”.
+- Na câmara oeste, uma parede onde a Lia sente o ar quente e estranha o calor lá embaixo.
+- Ficar parada junto à parede quente avisa que há algo vivo atrás dos tijolos; iluminar de perto derruba a parede.
+- Atrás da parede quente há a caldeira antiga, com brilho de brasa no escuro, e a placa (nota secreta) que conta que foi ali que o incêndio de 1979 começou, com a conquista “Mais Quente que o Fogo”.
+- No túnel central, um nicho com 37 tocos de vela e nomes riscados na pedra.
+- Acender a vela mais baixa (a do Davi) faz a corrente apagar as outras e a chama apontar para o armário que o Inspetor não abre, com a conquista “Trinta e Sete Pavios”.
+- Na galeria leste, uma chave de telégrafo do Clube do Rádio ligada a um fio que sobe pela parede.
+- Mexer na chave de telégrafo entrega o bilhete do Clube do Rádio (nota secreta) com o código do pedido de socorro.
+- Mandar S O S faz cliques que o Inspetor ouve, a alavanca se mexe, e o Seu Joaquim responde em bipes lá de cima, com a conquista “S O S”.
+- No túnel leste, uma câmera fotográfica velha com o contador em 1.
+- Disparar o flash acende um clarão de luz de verdade e faz barulho; depois a foto revelada mostra que havia alguém de pé atrás da Lia, com a conquista “Uma Pose Só”.
+- No fundo da galeria oeste, um beco sem saída onde dá para chamar baixinho.
+- No beco, o eco volta três vezes mais fraco; na quarta vez volta mais alto que a própria voz, com o Davi avisando que ele está ouvindo, com a conquista “Beco Sem Fim”.
+- No túnel leste, uma velha riscada na parede, cheia de partidas D contra L, todas empatadas.
+- Jogar a velha contra o D sempre empata, até descobrir a jogada que vence; vencer traz o susto do “DEZ” atrás da Lia, uma pilha e a conquista “Ela Sempre Ganhava”.
+- Com a água baixa, uma argola de ferro aparece no fundo lamacento da cisterna.
+- Puxar a argola rende a cruz de primeira comunhão do Davi; com ela no bolso, a corda do sino parece pesar menos na capela, com a conquista “Primeira Comunhão”.
+- Numa fresta da escada dos túneis, um dente de leite embrulhado em algodão com um bilhete dos meninos (nota secreta), com a conquista “O Primeiro Dente”.
+- No túnel norte, giz de criança “NÃO OLHE PRA TRÁS” e marcas numeradas 1 2 1 2, como se o corredor desse voltas; a Lia liga à sétima regra.
+- Na capela, uma escada de mão que range leva ao campanário.
+- Do alto do campanário se vê o internato, o cemitério e, na estrada, o carro da Lia com os faróis acesos e alguém no banco do motorista, com a conquista “Lá de Cima”.
+- A subida ao campanário usa uma vinheta escura com cartões de texto.
+- Embaixo do altar, uma pedra do chão com nove riscos que só afunda quando a Lia está agachada.
+- A pedra afunda com animação e a descida à cripta usa a mesma vinheta escura.
+- A cripta embaixo do altar tem caixões de criança vazios e um sem nome; dá a nota secreta “Mais velho que o fogo, parte II” e a conquista “A Oitava”.
+- Na capela, um pano de veludo escondido pode ser pego pela Lia.
+- O ponto para enrolar o pano no sino só aparece com o pano no bolso, antes de tocar e com os três objetos no altar.
+- Enrolar o pano no badalo faz a badalada sair abafada, baixa o medo e muda o final, com a conquista “Badalada Baixa”.
+- A capela ganha um décimo banco que só aparece no clarão do relâmpago, com um vulto de menina sentado.
+- Sentar no décimo banco (com a lanterna apagada) faz a Ana contar até dez devagar, sem ataque, e dá a pista do último túmulo, com a conquista “O Décimo Banco”.
+- Acender a lanterna no décimo banco o faz sumir, com um riso vindo de trás do altar.
+- No cemitério, uma lápide sem nome de 1975.
+- Agachar e encostar o ouvido na lápide de 1975 faz ouvir batidas lá de baixo, no código que diz “NÃO CAVA EU”.
+- Responder encostando de novo acalma a Lia e libera a fala do Benedito, que pediu pra ficar onde está, com a conquista “Não Cava Eu”.
+- Uma lápide sem nome com um vaso de lata vazio e um pé de maria-sem-vergonha junto ao muro leste.
+- Colher uma flor tira uma flor do pé junto ao muro.
+- Pôr a flor no vaso revela o nome da cozinheira que escondia os pães e faz a lanterna durar mais, com a conquista “Uma Flor”.
+- Um mausoléu com nove velas na frente, três já acesas desde o início.
+- As velas do mausoléu acendem em etapas (três, cinco, sete, nove) conforme você cava os túmulos.
+- Com as nove velas acesas, a grade do mausoléu abre e mostra a foto do Moacir menino e do amigo Luiz, com a conquista “Nove Velas”.
+- No cemitério, uma cova rasa de onde sai uma voz fraca pedindo água.
+- Deixar uma garrafa sobre a cova rasa acalma a Lia e acende uma vela que marca o caminho mais seguro, com a conquista “Alma Sedenta”.
+- Durante a fuga, depois do sino, uma estrela de lata do Davi brilha e gira perto do caminho central, pulsando a cada relâmpago.
+- Pegar a estrela de lata é risco puro com o Inspetor solto e dá a conquista “Estrela de Lata”.
+- Na fuga, cerca de sete segundos depois do sino, começa a valer a sétima regra (se o sino parar, não olhe para trás).
+- Olhar para a torre nesse instante trava a Lia num “...Davi?”, custa tempo e mostra crianças acenando na janela, com a conquista “Desobedeci a Sétima”.
+- Fugir até o portão sem olhar para trás dá a conquista oposta, “Obediente”.
+- Atrás do altar, um ossário com um rosto de cera que só brilha fraco com a lanterna apagada.
+- Pegar o rosto de cera é barulhento; deixá-lo no túmulo vazio do diretor fecha a cova sozinha, muda uma linha do final e dá a conquista “Fechado”.
+- No portão dos fundos, cinco letras de giz que só aparecem no clarão do relâmpago formam a palavra “VOLTA”.
+- Ler as letras do portão dá uma fala da Lia sobre o recado do Davi e a conquista “A Palavra”.
+- Na capela, um harmônio empoeirado solta uma nota presa quando a Lia passa perto ou mexe nas teclas.
+- Cinco notas secretas novas no diário (caldeira, lata de bolachas, cripta, bilhete do telégrafo, dente de leite).
+- Vinte e cinco conquistas secretas novas do subterrâneo, com um contador próprio “Segredo do subterrâneo II X/25”.
+- Onze legendas de som novas dos segredos (parede oca, batidas, conversa de 1979, nomes, ar quente, telégrafo, resposta, flash, badalada abafada, batidas na cova e voz pedindo água).
+- Som procedural novo de parede que soa oca.
+- Som procedural novo de batida de punho na parede.
+- Som procedural novo de cliques de telégrafo.
+- Som procedural novo de bipes de resposta vindos de cima.
+- Som procedural novo de estouro de flash de câmera.
+- Som procedural novo de ar quente vazando pela parede.
+- Som procedural novo de badalada abafada do sino.
+- Som procedural novo de batidas fracas vindas de baixo da terra.
+- Os segredos novos ficam num módulo próprio (subterraneo-segredos2.js), ligado por duas linhas em mapas.js, e entram no cache para jogar sem internet.
+- Na cisterna cheia, agachar e iluminar a água mostra no reflexo uma escotilha que não está no teto quando você olha para cima.
+- Ver a escotilha no reflexo sobe o medo da Lia.
+- Na câmara leste, oito tijolos com as iniciais J M R L B D A T, as mesmas iniciais das lápides do cemitério.
+- No muro do cemitério, uma coruja cujos olhos acendem quando a lanterna bate nela.
+- Encarar a coruja por tempo demais faz ela dizer “Lia” com a voz do Davi e voar.
+- O envio do telégrafo segue o ritmo três curtos, três longos, três curtos.
+- A conversa de 1979 na câmara dos sussurros começa com uma troca de falas antes de entregar a dica das válvulas.
+- Quem fica pouco tempo na câmara dos sussurros ouve só o começo da conversa, sem a pista.
+- O disparo da câmera dá um tranco leve na câmera além do clarão.
+- Durante a trava da sétima regra, a Lia não consegue se mover por um instante.
+- Quando o sino toca abafado, o final guarda a marca da badalada baixa.
+- Devolver o rosto de cera ao túmulo do diretor guarda a marca do final fechado.
+- Pôr a flor no vaso guarda uma pilha extra para o fim do capítulo.
+- A voz da cova rasa só avisa quando a Lia chega perto, com legenda própria.
