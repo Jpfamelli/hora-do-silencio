@@ -1,0 +1,93 @@
+# Lote 4 — Progressão e rejogabilidade
+- Código ACORDA no título libera o modo Noite Espelhada e uma fala nova do Davi.
+- Código LAMPIÃO equipa a lanterna de lampião, com a luz quente de 1979.
+- Código RECREIO equipa a lanterna de brinquedo azul do Davi.
+- Código FOGO liga a Noite de Fumaça.
+- Código ESCURO liga a Noite Sem Luz.
+- Código AVESSO vira o título de cabeça para baixo.
+- Código AIL (Lia ao contrário) espelha o título na horizontal.
+- Digitar o nome de uma criança de 1979 no título revela a ficha e o destino dela.
+- A chamada de 1979 traz doze destinos distintos, um por criança.
+- Conquista "Lista de Chamada" ao chamar dez das crianças pelo nome.
+- Novo botão "Segredos" no título abre um painel de descobertas com oito abas.
+- Aba Prateleira mostra os achados da casa; o que falta vira só poeira.
+- Cada achado da prateleira mostra uma frase curta da Lia.
+- Aba Cartas reúne as cartas das entidades para comparar os números delas.
+- Aba Boatos traz o mural de boatos do São Lázaro.
+- Aba Todas Voltam mostra a parede de riscos das suas mortes.
+- Aba Ocorrências traz o livro das noites raras com contador.
+- Aba Chamada guarda as fichas das crianças já chamadas.
+- Aba Lanternas deixa escolher a lanterna cosmética.
+- Aba Modos liga e desliga os modos escondidos.
+- Lanterna comum, a de sempre, selecionável na aba Lanternas.
+- Lanterna do Davi, luz levemente fria e azulada.
+- Lanterna de bombeiro, cone amarelo e largo, liberada pelo fio das três crianças.
+- Lamparina da Irmã Celeste, luz quente que treme, liberada pela fita dela no acervo.
+- Lanterna do zelador Joaquim, lata amassada, liberada ao reparar em oito lugares.
+- Lampião de 1979, luz redonda e baixa, liberado pelo código LAMPIÃO.
+- Lanterna vermelha, só para quem chega a 100% do internato.
+- A lanterna escolhida tinge a tela com a cor dela durante o jogo.
+- Carta do Inspetor vira ao sobreviver a uma perseguição dele.
+- Carta da Menina Que Conta vira ao sobreviver ao jogo da Ana.
+- Carta da Procissão vira ao se esconder dela.
+- Carta do Chamado vira ao ignorar a voz e sobreviver.
+- Carta da Coruja vira ao ouvir o aviso da Procissão.
+- Carta do Breu vira depois de passar um tempo no escuro.
+- Carta secreta do menino Moacir, liberada pelo prontuário do quarto dele.
+- Carta secreta do Davi, liberada ao completar o diário dele.
+- Cada carta traz uma fraqueza real escrita pelo Davi.
+- As cartas ficam como "???" enquanto não são viradas.
+- Conquista "Clube do Silêncio" ao virar todas as cartas das entidades.
+- Boato "o sino já bateu dez" é marcado ao jogar às nove da noite.
+- Boato "ele janta sozinho" é marcado ao sobreviver ao Inspetor.
+- Boato "um andar entre os andares" é marcado ao achar certa nota secreta.
+- Boato "havia uma quarta criança" é marcado ao chamar o Moacir pelo nome.
+- Boato "do avesso dá pra ver quem ficou" é marcado na Noite Espelhada.
+- Boato "quem passa nove horas aqui não sai" é marcado ao somar nove horas.
+- Os boatos ficam apagados até serem vividos, sem dizer como achar.
+- Conquista "Todos os Boatos" ao viver os seis.
+- Ocorrência rara: jogar exatamente às nove da noite.
+- Ocorrência rara: somar nove horas dentro do internato.
+- Ocorrência rara: entrar num 14 de março, a noite do fogo.
+- Ocorrência rara: entrar num 15 de março, aniversário da Lia.
+- Ocorrência rara: entrar numa sexta-feira 13.
+- Ocorrência rara: entrar às três da manhã.
+- Ocorrência rara: terminar um capítulo na Noite Espelhada.
+- Ocorrência rara: chegar à sua décima terceira noite.
+- As ocorrências ficam como "???" até serem vistas, mantendo o mistério.
+- Parede de giz com um risco por morte, somando todas as noites.
+- Os riscos se agrupam de cinco em cinco, como contagem de prisão.
+- No risco número 37, a Irmã Celeste escreve o nome do jogador embaixo.
+- A parede mostra quantas mortes foram por cada entidade.
+- A parede guarda até 60 riscos, lidos das estatísticas de morte.
+- Modo Noite Espelhada vira o render do jogo de lado (só visual).
+- Modo Noite de Fumaça cobre a tela com um véu animado de fuligem.
+- O véu de fumaça respeita a opção de movimento reduzido.
+- Modo Noite Sem Luz escurece tudo com uma penumbra a mais.
+- Os modos avisam que são cosméticos e não valem para o ranking.
+- As escolhas de lanterna e de modo ficam salvas nas opções entre as noites.
+- Os modos continuam travados até o código certo ser descoberto.
+- Bilhete da Lia da noite passada aparece no título, gerado da última morte.
+- O bilhete muda conforme quem te pegou (Inspetor, Menina ou Procissão).
+- Colar um código de desafio no campo mostra o recado da lápide do amigo.
+- Bilhete de criança na tela de pausa, variando por capítulo e mortes.
+- Mensagem do Seu Joaquim no final de quem não mexeu em nada.
+- Contador de medos na tela de morte: "morte X de 4 já vistas".
+- Linha especial quando você já morreu de todos os jeitos da casa.
+- Conquista secreta "Acorda" ao escrever ACORDA no título.
+- Conquista "De Cabeça Para Baixo" ao escrever AVESSO.
+- Conquista "Do Outro Lado do Espelho" ao escrever AIL.
+- Conquista "Luz de Querosene" ao escrever LAMPIÃO.
+- Conquista "Brinquedo do Davi" ao escrever RECREIO.
+- Conquista "Fumaça" ao ligar a Noite de Fumaça.
+- Conquista "Sem Lâmpada" ao ligar a Noite Sem Luz.
+- Conquista "Trinta e Sete" ao acumular 37 mortes.
+- Conquista "Hora Cheia" ao somar nove horas dentro do internato.
+- Conquista "Treze" ao chegar à sua décima terceira noite.
+- Conquista "Não Mexi em Nada" ao terminar a noite sem achar nenhum segredo.
+- Conquista "Quem Procura Acha" ao reunir 20 peças do acervo.
+- Conquista "Já Morri de Tudo" ao ver todas as cenas de morte da casa.
+- Conquista "Doze" ao deixar o Inspetor te pegar doze vezes.
+- Conquista "A Prateleira Cheia" ao achar os seis objetos da prateleira.
+- As dezoito conquistas novas entram no catálogo e contam para o 100% do internato.
+- O título marca sozinho a ocorrência "nove da noite" quando aberto às 21h.
