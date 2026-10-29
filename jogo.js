@@ -8,6 +8,7 @@ import { instalarMundoVisual } from './src/visual-mundo.js';
 import * as JG from './src/jogabilidade.js';
 import { criarMundoJogavel } from './src/jogabilidade-mundo.js';
 import { criarPolimento } from './src/jogabilidade-polimento.js';
+import { criarSegredos } from './src/jogabilidade-segredos.js';
 import { criarInterface } from './src/interface.js';
 import { PG } from './src/progressao.js';
 import { PLAT } from './src/plataforma.js';
@@ -690,6 +691,7 @@ function onKey(e) {
   if (ui === 'teclado') { tecladoKey(e); return; }
   if (ui === 'morte') { if ((e.code === 'KeyE' || e.code === 'Space' || e.code === 'Enter') && !$('#death').hidden) $('#dt-retry').click(); return; }
   if (mode !== 'jogo' || ui || !S || S.dead) return;
+  if (SEG.tecla(e)) return; // lote 4: U usa e Y troca o item do bolso, contar junto com a Ana (src/jogabilidade-segredos.js)
   if (JM.tecla(e)) return; // T fone, B rádio
   if (MS.tecla(e)) return; // lote 4: V (o nome dele, contar junto, a senha, a chamada) e G com o apito dele (src/monstros-segredos.js)
   if (e.code !== 'KeyQ' && e.code !== 'KeyZ' && e.code !== 'KeyX') silencioT = 0;
@@ -713,7 +715,7 @@ function onKey(e) {
       if (S.battery <= 0) { toast(S.inv.pilhas ? `Sem pilha. ${JP.t('KeyR')} para trocar.` : `Sem pilha. Segure ${JP.t('KeyR')} para sacudir a lanterna.`); SFX.clique(); break; }
       if (perf - ultimoF < .45 && S.battery < 25 && consertoT <= 0) { consertoT = 20; toast('Você bateu na lanterna. A luz firmou por um tempo.'); emitNoise(P.pos.x, P.pos.z, 4, true); SFX.trancado(); }
       ultimoF = perf;
-      S.flashOn = !S.flashOn; SFX.interruptor(S.flashOn); emitNoise(P.pos.x, P.pos.z, 1.2); SUST.aoLanterna(); break;
+      S.flashOn = !S.flashOn; SFX.interruptor(S.flashOn); emitNoise(P.pos.x, P.pos.z, 1.2); SUST.aoLanterna(); SEG.piscou(); break;
     case 'KeyV': { const c = chamadoArmadilha; SUST.responder(); if (c && !chamadoArmadilha) H.respondeu(); } break;
     case 'KeyR': if (S.inv.lanterna && S.inv.pilhas <= 0 && S.battery < 15) P.sacudirT = .001; else trocarPilha(); break;
     case 'KeyH': iniciarCurativo(); break;
@@ -744,7 +746,7 @@ function updatePilha(dt) {
   P.pilhaT += dt; S.flashOn = false; mostrarHold(P.pilhaT / 1.2);
   if (!P.pilhaCaiu && P.pilhaT > .45) { P.pilhaCaiu = true; if (!S.hidden) JP.soltarPilha(MK.pilha()); else { JP.som.tilintar(undefined, 0, 0, .6); emitNoise(P.pos.x, P.pos.z, 1.5, true); } }
   if (P.pilhaT >= 1.2) {
-    P.pilhaT = 0; S.inv.pilhas--; S.battery = 100; S.flashOn = true; flashBoost = 1; SFX.pilha(); toast('Pilha nova.'); renderInvMini();
+    P.pilhaT = 0; S.inv.pilhas--; S.battery = 100; S.flashOn = true; flashBoost = 1; SFX.pilha(); toast('Pilha nova.'); renderInvMini(); SEG.pilha();
     JP.vibrar(.2, .4, 60);
   }
 }
@@ -832,6 +834,7 @@ function updateGarrafas(dt) {
     if (g.t >= 1) {
       W.grupo.remove(g.m); garrafasVoando.splice(i, 1);
       if (SUST.garrafaVolta(g.fim)) continue;
+      if (SEG.garrafa(g)) continue; // garrafa que estoura a lâmpada (src/jogabilidade-segredos.js)
       const sup = superficie(g.fim.x, g.fim.z);
       const antes = M.ativo ? M.state : null;
       if (sup.tipo === 'agua') { SFX.passo(1, 'pedra', false, true); criarOnda(g.fim.x, g.fim.z); emitNoise(g.fim.x, g.fim.z, 7, false, true); }
@@ -1138,6 +1141,7 @@ function updatePlayer(dt) {
   P.noiseR = !moving ? 0 : (P.crouch ? 1.4 : P.sprinting ? 20 : P.devagar ? 3 : 6.5) * (P.naAgua ? 1.6 : 1);
   if (W.def.ruidoMul) P.noiseR *= W.def.ruidoMul();
   P.noiseR *= anK;
+  P.noiseR *= SEG.ruidoMul(); // descalça e o chuveiro aberto (src/jogabilidade-segredos.js)
   const moved = Math.min(andou, vel * dt);
   // o som do passo cai exatamente quando a cabeça desce no balanço
   P.bob += moved * (P.sprinting ? 2 : 2.9);
@@ -1974,7 +1978,7 @@ function updateInspetor(dt) {
   if (P.room && P.room !== M.ultSalaJog) { M.ultSalaJog = P.room; const rt = S.flags.rotas || (S.flags.rotas = {}), k = W.mapa + ':' + P.room.id; rt[k] = (rt[k] || 0) + 1; }
   // Audição (submersa na água dos túneis, ela não é ouvida; trovão e chuva mascaram os passos)
   const ajuda = 1; // a ajuda invisível já está em D().ouvido
-  const ouvido = P.noiseR * pisoMult() * att * D().ouvido * ajuda * JM.ouvidoMul() * (M.state === 'caca' ? 1.6 : M.state === 'escuta' ? 1.5 : M.state === 'reza' ? .5 : 1) * mascaraSom(P.pos.x, P.pos.z);
+  const ouvido = P.noiseR * pisoMult() * att * D().ouvido * ajuda * JM.ouvidoMul() * SEG.ouvidoMul() * (M.state === 'caca' ? 1.6 : M.state === 'escuta' ? 1.5 : M.state === 'reza' ? .5 : 1) * mascaraSom(P.pos.x, P.pos.z);
   const submersa = !!(W.def.submersa && W.def.submersa());
   const ouve = !S.hidden && !submersa && !(P.room.seguro && !fuga) && (fuga || M.furia > 0 || (P.noiseR > 0 && d < ouvido));
   if (cb && ouve && !(M.alvoGarrafa && d > 4) && !ocupado) {
@@ -2202,11 +2206,11 @@ function updateAna(dt) {
   ANA.vida -= dt; ANA.cool = Math.max(0, ANA.cool - dt); ANA.piscaCd = Math.max(0, ANA.piscaCd - dt);
   const d = ANA.pos.distanceTo(P.pos);
   if (ANA.falhaT > 0) { ANA.falhaT -= dt; flash.intensity = 0; flashFill.intensity = 0; }
-  const luzLanterna = S.flashOn && !flashPisca && ANA.falhaT <= 0 && d < 16 && !VIS.vermelha(); // lote 4: a luz do papel vermelho não vale para ela
+  const luzLanterna = S.flashOn && !flashPisca && ANA.falhaT <= 0 && d < 16 && !VIS.vermelha() && !SEG.semLuzAna(d); // papel vermelho (visual) + lanterninha/papel (src/jogabilidade-segredos.js)
   const iluminada = luzLanterna || naLuz(ANA.pos);
   const naVista = !S.hidden && visivel(ANA.pos, ANA.teto ? 2.3 : 1.0, 18);
   const antes = ANA.vista;
-  ANA.vista = naVista && iluminada;
+  ANA.vista = (naVista && iluminada) || SEG.anaPresa(); // flash, bala, sombra, soldadinho: ela fica parada
   if (ANA.vista) S.flags.anaVista = true;
   if (ANA.vista && !antes) { let p = ANA.pose; for (let i = 0; i < 4 && p === ANA.pose; i++) p = Math.random() * POSES_ANA.length | 0; ANA.pose = p; }
   if (iluminada && naVista) ANA.olhoT = .5; else ANA.olhoT = Math.max(0, ANA.olhoT - dt);
@@ -2524,14 +2528,16 @@ function atacar(quem, leve) {
   const mult = (D().danoPor && D().danoPor[quem]) || D().dano;
   let dano = Math.min(100, DANO[quem] * mult * (leve ? .6 : 1) * (quem === 'inspetor' && D().danoPor && P.sprinting ? 1.3 : 1));
   if (leve) dano = Math.min(dano, S.health * .7);
+  dano *= SEG.danoMul(quem); // amuleto do relógio
   S.health -= dano; S.capDano += dano; S.fear = 100; PG.dano(quem);
+  if (S.health <= 0 && SEG.salvarDaMorte()) S.health = 20; // ampola de adrenalina da enfermaria
   if (S.health <= 0) { morrer(quem); return; }
   S.causaCtx = null;
   toast(quem === 'inspetor' ? 'Ele te largou. Fuja e se esconda.' : quem === 'ana' ? 'Mãos geladas. Ela sumiu... por enquanto.' : 'Eles passaram por dentro de você. Ainda está viva. Por pouco.');
   if (quem === 'inspetor') { const dx = P.pos.x - M.pos.x, dz = P.pos.z - M.pos.z, l = Math.hypot(dx, dz) || 1; P.pos.x += dx / l * 1.2; P.pos.z += dz / l * 1.2; collide(P.pos, .33); }
 }
 function morrer(quem) {
-  S.dead = true; S.mortes++; S.causa = quem; SUST.morte(quem); PG.morte(quem); PLAT.aoMorrer(quem); if (MP) MP.morte(quem); JP.aoMorrer(mortesNoPonto + 1); mortesNoPonto++; saveDevido = 0;
+  S.dead = true; S.mortes++; S.causa = quem; SUST.morte(quem); PG.morte(quem); PLAT.aoMorrer(quem); if (MP) MP.morte(quem); JP.aoMorrer(mortesNoPonto + 1); SEG.morte(quem); mortesNoPonto++; saveDevido = 0;
   const rapido = mortesNoPonto >= 2;
   if (mortesCap.cap !== S.chapter) { mortesCap.cap = S.chapter; mortesCap.n = 0; } mortesCap.n++;
   const ctx = S.causaCtx; S.causaCtx = null;
@@ -2649,6 +2655,7 @@ function carregarMapa(id, spawn, { salvar = true } = {}) {
   prepararJogador();
   if (def.entrar) def.entrar(S.chapter);
   JM.mapa(id); // lote 2: marcas, rádio, sineta, vitrola, velas... (src/jogabilidade-mundo.js)
+  SEG.mapa(id); // lote 4: segredos e easter eggs (src/jogabilidade-segredos.js)
   if (salvar) salvarCheckpoint();
   renderObj(); renderInvMini();
   SUST.novoMapa(id);
@@ -3997,6 +4004,7 @@ function renderInvMini() {
   if (S.inv.reliquias) p.push(`Objetos <em>${S.inv.reliquias}</em>`);
   if (S.flags.l2radio) p.push('Rádio do Joaquim<kbd>B</kbd>');
   if (S.flags.l2terco) p.push('Terço da Irmã Celeste');
+  p.push(...SEG.inv()); // bolso de segredos (src/jogabilidade-segredos.js)
   $('#inv-mini').innerHTML = p.join('<br>');
 }
 let filtroAtual = '';
@@ -4291,6 +4299,12 @@ const JM = criarMundoJogavel({
 const JP = criarPolimento({ THREE, P, M, ANA, PROC, W, OPT, keys, camera, scene, SFX, texHalo: TX_HALO, legendas: UIX.som.def, semMouse: () => PLAT.semMouse(), abafarMundo, emitNoise, toast,
   A: { saida: (...a) => saida(...a), osc: (...a) => osc(...a), burst: (...a) => burst(...a), env: (...a) => env(...a) },
   get S() { return S; }, get AC() { return AC; }, get perf() { return perf; }, get alvo() { return alvo; }, get mode() { return mode; }, get ui() { return ui; } });
+// Jogabilidade, lote 4: segredos e easter eggs (src/jogabilidade-segredos.js)
+const SEG = criarSegredos({ THREE, W, P, M, ANA, ANA_G, PROC, R, OPT, SFX, keys, camera, flash, flashFill, texHalo: TX_HALO,
+  audio: { saida: (...a) => saida(...a), osc: (...a) => osc(...a), burst: (...a) => burst(...a), env: (...a) => env(...a), ruido: (...a) => ruido(...a) },
+  get S() { return S; }, get AC() { return AC; }, get perf() { return perf; }, get alvo() { return alvo; }, get mode() { return mode; }, get ui() { return ui; },
+  interact, box, cyl, addCollider, textoTex, roomAt, SALA, planejar, collide, emitNoise, marcarCausa, renderInvMini, toast, sub, subPequeno, conquista, abrirNotaUI, abrirTeclado, fade, spawnAna,
+  somTecido: v => JP.som.tecido(v) });
 const VIS = instalarVisual({ THREE, scene, camera, renderer, canvas, flash, flashFill, MON, ANA, ANA_G, PROC, M, P, W, MAT, OPT, OPT_KEY, lsSet, R, ROLOS, keys, roomAt, visivel, collide, salasAlcancaveis, distSalas, D, MAOS, MAT_CACO, chuvaMat, chuvaGeo, SFX, sub, toast, conquista, interact, item, MK, legendas: UIX.som.def, get alvo() { return alvo; },
   get S() { return S; }, get mode() { return mode; }, get ui() { return ui; }, get flashPisca() { return flashPisca; }, get hbT() { return AUD.hbT; }, get raioI() { return raioI; }, get fita() { return fitaTocando; }, get perf() { return perf; } });
 const VM = instalarMundoVisual({ THREE, scene, camera, renderer, flash, hemi, moon, W, P, M, ANA, ANA_G, PROC, MON, MAT, MK, OPT, R, TX, chuvaMat, respingos, interact, sub, SFX, DOOR, collide, raio: () => { raioT = 0; },
@@ -4343,7 +4357,7 @@ function frame(dt) {
     S.tempo += dt; S.capT += dt; PG.tick(dt);
     updatePlayer(dt); updateLanterna(dt); updateFear(dt);
     { const dm = dt * JP.ritmo(); if (!congelado(dm)) { updateInspetor(dm); updateAna(dm); updateProcissao(dm); ML.tick(dm); MS.tick(dm); } updateEventos(dm); } updateGarrafas(dt); // ritmo do mundo (acessibilidade): a Lia não fica mais lenta
-    updateClima(dt); updateJogabilidade(dt); updateAlvo(); JM.update(dt); updateSegurar(dt); updateFita(dt); updateHUD(); updateSub(dt); updateAudio(dt); H.tick(dt);
+    updateClima(dt); updateJogabilidade(dt); updateAlvo(); JM.update(dt); SEG.update(dt); updateSegurar(dt); updateFita(dt); updateHUD(); updateSub(dt); updateAudio(dt); H.tick(dt);
   } else if (mundoVivo()) { // cofre, quadro (e no Pesadelo notas e diário): o mundo continua, com o som abafado
     S.tempo += dt; S.capT += dt; P.noiseR = 0; abafar(true);
     updateLanterna(dt); updateFear(dt);
@@ -4354,7 +4368,7 @@ function frame(dt) {
   for (const d of W.doors) { d.ang = lerp(d.ang, d.target, Math.min(1, dt * (d.vel || 7))); d.pivot.rotation.y = d.ang + (d.qOff || 0); } // velocidade conforme o passo e quique no batente
   grainT -= dt;
   if (grainT <= 0) { grainT = PLAT.grao(); const d = grainImg.data; for (let i = 0; i < d.length; i += 4) { const v = Math.random() * 255; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = 255; } grain.putImageData(grainImg, 0, 0); }
-  VIS.update(dt, ativo); VM.update(dt, ativo);
+  VIS.update(dt, ativo); VM.update(dt, ativo); SEG.depois(); // cor da lanterna: papel vermelho, luz negra, lanterninha
   PLAT.depois(dt, ativo);
   const cortados = cortarNevoa(); renderer.render(scene, camera); for (const o of cortados) o.layers.enable(0); VM.depois(); VIS.depois(); // VIS.depois: a mão da Lia por cima
 }
