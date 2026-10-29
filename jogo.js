@@ -15,6 +15,7 @@ import { PLAT } from './src/plataforma.js';
 import { criarMonstrosLore } from './src/monstros-lore.js';
 import { criarMonstrosPolimento } from './src/monstros-polimento.js';
 import { criarMonstrosSegredos } from './src/monstros-segredos.js';
+import { instalarMonstrosVisual } from './src/monstros-visual.js';
 import { instalarAudioMundo } from './src/audio-mundo.js';
 import { instalarAudioPlataforma } from './src/audio-plataforma.js';
 import { instalarAudioSegredos } from './src/audio-segredos.js';
@@ -2503,7 +2504,7 @@ function sustosAmbiente(dt) {
   }
   if (VUL.ativo) {
     VUL.t -= dt; const vp = VULTO.g.position;
-    if (S.flashOn && !flashPisca && visivel(vp, 2.2, 20)) { VULTO.g.visible = false; VUL.ativo = false; SX.estalo(vp, 1); S.fear = Math.min(100, S.fear + 15); }
+    if (S.flashOn && !flashPisca && visivel(vp, 2.2, 20)) { MVIS.posImagemVulto(); VULTO.g.visible = false; VUL.ativo = false; SX.estalo(vp, 1); S.fear = Math.min(100, S.fear + 15); }
     else if (VUL.t <= 0 || Math.hypot(vp.x - P.pos.x, vp.z - P.pos.z) < 5 || P.room.fora) { VULTO.g.visible = false; VUL.ativo = false; }
   }
   if (VULTO.g.visible && VULTO.mapa !== W.mapa) { VULTO.mapa = W.mapa; VULTO.g.visible = false; VUL.ativo = false; }
@@ -4290,6 +4291,11 @@ const MS = criarMonstrosSegredos({
   saida, env, osc, burst, silaba, box, cyl, plano, interact, roomAt, SALA, visivel, linhaLivre, distSalas, centroSala, pontoEm, planejar, patrulhar, collide, emitNoise,
   sub, subPequeno, toast, conquista, abrirNotaUI, modeloInspetor, ativarInspetor, desativarInspetor, despawnAna, iniciarAlerta, entrarCaca, agarrar, atacar, prendendo
 });
+// Monstros e IA, lote 5: visual e luz das entidades (src/monstros-visual.js)
+const MVIS = instalarMonstrosVisual({
+  THREE, scene, camera, MON, VULTO, ANA, ANA_G, PROC, M, P, W, MAT, OPT, canvasTex, rand, pick, clamp, lerp, naLuz, visivel, subPequeno, conquista, SX,
+  get S() { return S; }, get perf() { return perf; }, get flashPisca() { return flashPisca; }, get mode() { return mode; }
+});
 const JM = criarMundoJogavel({
   THREE, W, P, M, PROC, ANA, keys, R, MAT, OPT, SFX, SX, camera,
   get S() { return S; }, get AC() { return AC; }, get perf() { return perf; }, get alvo() { return alvo; }, get mode() { return mode; }, get ui() { return ui; }, get digitado() { return digitado; },
@@ -4359,7 +4365,7 @@ function frame(dt) {
     S.tempo += dt; S.capT += dt; PG.tick(dt);
     updatePlayer(dt); updateLanterna(dt); updateFear(dt);
     { const dm = dt * JP.ritmo(); if (!congelado(dm)) { updateInspetor(dm); updateAna(dm); updateProcissao(dm); ML.tick(dm); MS.tick(dm); } updateEventos(dm); } updateGarrafas(dt); // ritmo do mundo (acessibilidade): a Lia não fica mais lenta
-    updateClima(dt); updateJogabilidade(dt); updateAlvo(); JM.update(dt); SEG.update(dt); updateSegurar(dt); updateFita(dt); updateHUD(); updateSub(dt); updateAudio(dt); H.tick(dt);
+    updateClima(dt); updateJogabilidade(dt); updateAlvo(); JM.update(dt); SEG.update(dt); updateSegurar(dt); updateFita(dt); updateHUD(); updateSub(dt); updateAudio(dt); H.tick(dt); MVIS.tick(dt); // lote 5: visual e luz das entidades
   } else if (mundoVivo()) { // cofre, quadro (e no Pesadelo notas e diário): o mundo continua, com o som abafado
     S.tempo += dt; S.capT += dt; P.noiseR = 0; abafar(true);
     updateLanterna(dt); updateFear(dt);

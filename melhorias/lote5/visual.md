@@ -1,0 +1,95 @@
+# Lote 5 — Visual e luz
+- A venda do Inspetor virou um pano com trama e costura desenhado em canvas, no lugar da faixa lisa.
+- A venda fica visivelmente mais suja e torta a partir do Capítulo III.
+- No Capítulo V a venda está encharcada e caída, deixando ver o vinco das órbitas costuradas sob o pano.
+- Iluminar o rosto dele bem de perto (menos de 1,5 m) revela, uma vez por jogo, as pálpebras costuradas com linha preta.
+- A Lia reage a essa revelação com uma fala: "As pálpebras dele... estão costuradas."
+- Essa revelação destrava uma conquista escondida.
+- Depois da revelação, a venda volta ao lugar aos poucos, sem corte seco.
+- No bote e no agarrão de pertinho, a venda escorrega e aparecem as órbitas vazias costuradas com linha grossa.
+- Dois pontos úmidos brilham sob a venda quando o facho acha o rosto, como se a luz achasse os olhos cegos.
+- O brilho desses olhos cresce conforme o facho fica mais centrado no rosto.
+- No modo caçada surge, por baixo da venda, um risco de sorriso largo pintado.
+- O sorriso da caçada entra e sai suavemente conforme ele muda de estado.
+- Com a fúria alta, um escorrido vermelho desce pela venda.
+- A partir do Capítulo III, dois olhos de giz de criança aparecem desenhados por cima da venda.
+- Os olhos de giz só aparecem quando a luz está mesmo no rosto dele, de perto.
+- Encarar o rosto dele no facho por mais de 4 s faz piscar, por frações de segundo, a cara queimada de 1979.
+- Quanto mais tempo a luz fica nele, mais frequente volta o flash queimado.
+- No medo acima de 95, com ele no feixe, o rosto também "troca" pela versão queimada por alguns quadros.
+- Na reza, e do Capítulo IV em diante, um filete escuro escorre da venda como lágrima preta.
+- Esse escorrido vira uma gota que cresce e pinga, marcando o chão onde ele parou.
+- A venda fica translúcida por um instante no facho forte, deixando ver que atrás não há olhos.
+- Quando ele grita no bote e no agarrão, a mandíbula desencaixa bem além do humano e a boca vira um vão escuro.
+- Cada mão do Inspetor ganhou um dedo a mais.
+- Os dedos dele ficaram mais compridos, menos humanos de perto.
+- As pontas dos dedos ganharam unhas pretas e compridas.
+- O molho na cintura, iluminado de perto, mostra que não são chaves: são dentes de leite num cordão.
+- A Lia percebe isso com uma fala: "Aquilo não são chaves..."
+- O corpo e o casaco dele escurecem com fuligem a cada capítulo que passa.
+- A cabeça dele pende mais torta conforme a noite avança.
+- No Capítulo V o corpo dele fica translúcido e fuliginoso: a luz atravessa as bordas.
+- O pescoço dele estica alguns centímetros para cima quando ele para para escutar.
+- Na caçada ele solta fiapos e poeira do casaco, que caem no chão por onde corre.
+- No frio dos túneis e do cemitério, o hálito dele vira vapor branco que sobe antes de aparecer o corpo.
+- Na caçada os dedos arranham o chão e deixam riscos finos que somem devagar.
+- No cemitério ele deixa pegadas de terra úmida por onde passou.
+- Nos capítulos finais ele deixa pegadas de fuligem fria.
+- Nos túneis ele deixa marcas de mão molhada na parede, guiando-se por ela.
+- Esses rastros de chão e parede somem com o tempo e são limpos ao trocar de mapa.
+- O vulto dele no escuro tem braços longuíssimos, que recolhem ao normal quando ele vai dar o bote.
+- Quando o vulto some ao tocar a luz, fica uma silhueta "queimada" na tela por um instante, no lugar exato onde ele estava.
+- O rosto da Ana troca a cada vez que ela reaparece, e nunca é o mesmo duas vezes seguidas.
+- Variação de rosto da Ana: sorriso largo demais.
+- Variação de rosto da Ana: sem boca.
+- Variação de rosto da Ana: olhos deslocados e boca no lugar errado.
+- Variação de rosto da Ana: a boca no lugar dos olhos.
+- Fiapos de cabelo sempre cruzam o rosto da Ana, então ele nunca se monta inteiro.
+- O rosto da Ana fica mais forte quando ela está na sua luz e desbota no escuro.
+- Quando as luzes piscam perto da Ana, o rosto vira o de sorriso rasgado por um ou dois quadros.
+- Encará-la por tempo demais faz a cabeça da Ana girar devagar além do humano, com um estalo de ossos.
+- Quando a cabeça dela entorta muito, o cabelo cai para a frente e cobre o rosto.
+- Encarar a Ana vai apodrecendo a pele dela em estágios: pálida, acinzentada, encharcada e escura.
+- Parada e encarada, a Ana flutua cerca de 2 cm do chão, sem pés.
+- A sombra da Ana no chão sempre aponta para a posição da Lia.
+- A sombra dela se projeta um passo à frente do corpo, avisando para onde ela vai.
+- No escuro, quando a Ana se move sem ser vista, os olhos dela deixam um leve rastro luminoso.
+- O cabelo molhado da Ana pinga e deixa marcas escuras no chão.
+- Os olhos pretos da Ana acendem num brilho fraco enquanto ela conta no escuro.
+- As crianças da Procissão agora têm rosto, revelado pela luz das velas.
+- Os rostos das crianças estão marcados pelo fogo de 1979.
+- As crianças da Procissão não têm boca.
+- Quando a fila para e vira o rosto, as crianças flutuam cerca de 2 cm do chão, sem pés.
+- Olhos pintados na nuca das crianças piscam quando a sua luz passa por trás da fila.
+- As nove velas da fila funcionam como cronômetro: apagam uma a uma durante a passagem.
+- Quando a última vela apaga, a passagem terminou — um relógio visual honesto dentro do esconderijo.
+- Na caçada a vinheta escura fecha nas bordas, como visão em túnel de pânico.
+- Com o medo alto, essa mesma vinheta de pânico aperta mesmo fora da caçada.
+- Na caçada o grão de filme fica mais forte.
+- A borda da tela ganha um chuvisco quando a cabeça do Inspetor está apontada para você.
+- O chuvisco da borda some quando ele desvia o rosto.
+- Com vida abaixo de 30, uma vinheta vermelha pulsa nas bordas no ritmo do batimento.
+- Quanto menor a vida, mais forte e rápido fica o pulso vermelho.
+- Com a Ana muito perto e você em pânico, a "visão" dela invade a tela em tons de giz, com a contagem sobreposta.
+- Na fuga final, depois do sino, luzes de emergência vermelhas piscam na tela.
+- Num susto raro durante a caçada, a tela vira por meio segundo o "ponto de vista" cego dele, em negativo de ruído.
+- A Ana na periferia da visão aparece como um borrão escuro, que some quando você centraliza a mira nela.
+- Pares de olhos piscam no fundo das salas escuras e somem quando a luz chega perto.
+- Esses olhos no escuro reaparecem em pontos diferentes a cada vez.
+- Se a lanterna ou uma lâmpada acesa os alcança, os olhos somem na hora.
+- Todos os efeitos fortes (flash queimado, estática de borda, sorriso rasgado, grão, susto do ponto de vista) respeitam a opção "reduzir flashes".
+- A vinheta vermelha de vida baixa e a visão da Ana entram suavizadas com "reduzir flashes" ligado.
+- A Ana e o Inspetor param de piscar efeitos agressivos quando a acessibilidade pede.
+- Os decalques de rastro usam um conjunto reaproveitado de peças, sem pesar na memória.
+- Novo módulo de visual e luz das entidades (src/monstros-visual.js), ligado ao motor por poucas linhas de gancho.
+- O novo módulo entrou na lista do Service Worker para o jogo continuar abrindo sem internet.
+- A boca do Inspetor é uma linha costurada de pontos escuros que se rasga escancarada no grito e volta a costurar na ronda.
+- A costura da boca aparece nítida de perto e mais fraca de longe.
+- A mandíbula volta a fechar sozinha quando ele se acalma.
+- A gota da venda reinicia depois de pingar, voltando a escorrer devagar.
+- O rosto queimado volta ao normal sozinho quando você tira a luz do rosto dele.
+- Os fiapos de casaco caem, perdem força e desaparecem no chão.
+- O vapor do hálito sobe, cresce e se dissipa aos poucos.
+- Os efeitos de tela desligam na tela de morte e fora da partida.
+- As partículas e decalques são limpos ao trocar de mapa para não vazarem entre capítulos.
+- O texto de cada rosto, venda e rastro é 100% canvas e som procedural: nenhum arquivo externo novo.
