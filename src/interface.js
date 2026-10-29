@@ -4,10 +4,12 @@
 import { criarMundo } from './interface-mundo.js';
 import { criarPolimento } from './interface-polimento.js';
 import { criarSegredos } from './interface-segredos.js';
+import { criarInterfaceMonstros } from './interface-monstros.js';
 export function criarInterface(C) {
   let MU = null; // mundo e história (lote 2): src/interface-mundo.js
   let PL = null; // polimento e plataforma (lote 3): src/interface-polimento.js
   let SG = null; // segredos e easter eggs (lote 4): src/interface-segredos.js
+  let MM = null; // leitura do perigo (lote 5): src/interface-monstros.js
   const $ = s => document.querySelector(s);
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
   const lerp = (a, b, t) => a + (b - a) * t;
@@ -185,8 +187,8 @@ export function criarInterface(C) {
     sussurros: { t: 'sussurros', imp: 1, cd: 4 },
     orelhao: { t: 'um telefone toca', imp: 1, cd: 4, pos: a => a[0] },
     trovao: { t: 'trovão', imp: 0, cd: 4 },
-    coracao: { t: 'seu coração dispara', imp: 0, cd: 6 },
-    ofego: { t: 'você ofega', imp: 0, cd: 3 },
+    coracao: { t: 'seu coração dispara', imp: 0, cd: 6, cat: 'eu' },
+    ofego: { t: 'você ofega', imp: 0, cd: 3, cat: 'eu' },
     rangido: { t: 'madeira rangendo', imp: 0, cd: 4, pos: a => ({ x: a[0], z: a[2] }) },
     cano: { t: 'canos batendo', imp: 0, cd: 3, pos: a => a[0] }
   };
@@ -214,7 +216,7 @@ export function criarInterface(C) {
       txt += ' ' + dr.txt;
       if (def.insp) seta(dr);
     }
-    const simb = OPT.somSimb && def.cat ? (def.cat === 'p' ? '▲ ' : def.cat === 's' ? '✶ ' : '✦ ') : '';
+    const simb = OPT.somSimb && def.cat ? (def.cat === 'p' ? '▲ ' : def.cat === 's' ? '✶ ' : def.cat === 'h' ? '✦ ' : def.cat === 'eu' ? '› ' : '') : '';
     linhasSom.push({ txt: `${simb}[${txt}]`, cat: def.cat, t: agora + 2.8 }); while (linhasSom.length > 3) linhasSom.shift();
     desenharSom();
     if (def.imp) historico('som', simb + txt);
@@ -229,14 +231,14 @@ export function criarInterface(C) {
   // lote 4: legenda avulsa (sem som por trás), para os segredos da interface
   function legenda(txt, cat) {
     if (OPT.legSom === 'nao' || C.mode === 'titulo') return;
-    const simb = OPT.somSimb && cat ? (cat === 'p' ? '▲ ' : cat === 's' ? '✶ ' : '✦ ') : '';
+    const simb = OPT.somSimb && cat ? (cat === 'p' ? '▲ ' : cat === 's' ? '✶ ' : cat === 'h' ? '✦ ' : cat === 'eu' ? '› ' : cat === 'dele' ? '▲ ' : '') : '';
     linhasSom.push({ txt: simb + txt, cat, t: agora + 4 }); while (linhasSom.length > 3) linhasSom.shift();
     desenharSom(); historico('som', simb + txt.replace(/^\[|\]$/g, ''));
   }
   let somHtml = '', legBase = '', subTxtAnt = null, subMedidoEm = -99;
   function desenharSom() {
     for (let i = linhasSom.length - 1; i >= 0; i--) if (linhasSom[i].t < agora) linhasSom.splice(i, 1);
-    const h = linhasSom.map(l => `<div class="${l.cat === 'p' ? 'perigo' : l.cat === 'h' ? 'historia' : l.cat === 's' ? 'segredo' : ''}">${l.txt}</div>`).join('');
+    const h = linhasSom.map(l => `<div class="${l.cat === 'p' ? 'perigo' : l.cat === 'h' ? 'historia' : l.cat === 's' ? 'segredo' : l.cat === 'eu' ? 'eu' : l.cat === 'dele' ? 'dele' : ''}">${l.txt}</div>`).join('');
     const mudou = h !== somHtml;
     if (mudou) { $('#legsom').innerHTML = h; somHtml = h; }
     // revisão do lote 2: com legenda de duas linhas, a legenda de som subia por cima do nome de quem fala
@@ -270,7 +272,13 @@ export function criarInterface(C) {
     anelR = lerp(anelR, Math.max(alvoR, pulso), Math.min(1, dt * 10));
     if (anelR < .25) { el.hidden = true; return; }
     el.hidden = false;
-    const px = Math.min(96, 7 + anelR / 20 * 70);
+    let px = Math.min(96, 7 + anelR / 20 * 70);
+    // lote 5: anel honesto — o círculo encolhe conforme o som chega menos ao Inspetor (porta/parede/distância)
+    if (OPT.ruidoHonesto && M.ativo && !S.hidden) {
+      let att = .45; try { att = C.salaAdj(C.roomAt(M.pos.x, M.pos.z), P.room) ? 1 : .45; } catch (e) {}
+      const d = M.pos.distanceTo(P.pos); att *= clamp(1 - (d - 4) / 22, .3, 1);
+      px = Math.max(7, px * att);
+    }
     el.style.width = el.style.height = (px * 2) + 'px'; el.style.margin = (-px) + 'px 0 0 ' + (-px) + 'px';
     let perigo = false;
     if (M.ativo) {
@@ -344,6 +352,7 @@ export function criarInterface(C) {
     causa = null;
     if (PL) PL.morte(quem);
     if (SG) SG.morte(quem);
+    if (MM) try { MM.morte(quem); } catch (e) {}
   }
   function aliviar() {
     const cap = C.S.chapter; C.retry();
@@ -550,6 +559,7 @@ export function criarInterface(C) {
     $('#p-info').innerHTML = `${c.titulo}${o ? `<br><span>${o.texto.replace(/\s*\(\{n\}\/\d\)/, '')}</span>` : ''}<br><small>${C.D().nome} · ${mmss(S.tempo)} jogados · ponto salvo há ${mmss(Math.max(0, S.tempo - ultSaveTempo))}</small>${MU && MU.lembranca() ? `<br><em class="lembra">${MU.lembranca()}</em>` : ''}`;
     focar('#pause');
     if (SG) SG.pausa();
+    if (MM) try { MM.pausa(); } catch (e) {}
   }
 
   // ---------------------------------------------------------------- TECLAS
@@ -590,6 +600,7 @@ export function criarInterface(C) {
     if (MU) MU.frame(dt, ativo);
     if (PL) PL.frame(dt, ativo);
     if (SG) SG.frame(dt, ativo);
+    if (MM) try { MM.frame(dt, ativo); } catch (e) {}
     const S = C.S, P = C.P, M = C.M;
     if (S !== Sref) { Sref = S; rastro.length = 0; causa = null; motivoCaca = null; if (S && S.capT < 1 && S.chapter === 0 && S.tempo < 1) { mortesCap = {}; mortesCausa = {}; } }
     $('#cena-pular').hidden = C.mode !== 'cena';
@@ -645,9 +656,10 @@ export function criarInterface(C) {
   MU = criarMundo(Object.assign(C, { historico: (q, t) => historico(q, t) }));
   PL = criarPolimento(C, { PAD, GRUPOS, focar, aplicar, subTitulo, objAtual, direcao, lembranca: () => MU && MU.lembranca(), fimCapT: () => fimCapT });
   try { SG = criarSegredos(C, { PAD, GRUPOS, som, legenda, subTitulo, registrarCodigo, emCampo, focar, mapaMorte: () => mapaT }); } catch (e) { console.warn('[segredos]', e); }
+  try { MM = criarInterfaceMonstros(C, { PAD, GRUPOS, direcao, legenda, focar, historico: (q, t) => historico(q, t) }); } catch (e) { console.warn('[monstros-ui]', e); }
   aplicar();
   $('#b-opc').onclick = () => abrirOpcoes('#title');
   $('#p-opc').onclick = () => abrirOpcoes('#pause');
   atualizarTitulo();
-  return { mundo: MU, papel: (id, m) => MU.papel(id, m), renderTempo: el => MU.renderTempo(el), renderPessoas: el => MU.renderPessoas(el), renderParedes: () => MU.renderParedes(), ondeNota: id => MU.ondeNota(id), marcasAbas: () => { MU.marcasAbas(); if (SG) SG.diario(); }, marcaMapa: r => MU.marcaMapa(r), telaFinal: t => { MU.telaFinal(t); if (SG) SG.telaFinal(t); }, renderAlbum: el => SG ? SG.renderAlbum(el) : (el.innerHTML = ''), renderUltima: el => SG ? SG.renderUltima(el) : (el.innerHTML = ''), tecla, soltou, som, ruido, golpe, morte, objetivo, salvou, fimCap, frame, fala, historico, nomeFalante, renderPistas, renderOuvido, salaMarcada, pausa, atualizarTitulo, antesDeNovoJogo, confirmar, aplicar, mmss, get ultSaveTempo() { return ultSaveTempo; } };
+  return { mundo: MU, papel: (id, m) => MU.papel(id, m), renderTempo: el => MU.renderTempo(el), renderPessoas: el => MU.renderPessoas(el), renderParedes: () => MU.renderParedes(), ondeNota: id => MU.ondeNota(id), marcasAbas: () => { MU.marcasAbas(); if (SG) SG.diario(); }, marcaMapa: r => MU.marcaMapa(r), telaFinal: t => { MU.telaFinal(t); if (SG) SG.telaFinal(t); }, renderAlbum: el => SG ? SG.renderAlbum(el) : (el.innerHTML = ''), renderUltima: el => SG ? SG.renderUltima(el) : (el.innerHTML = ''), renderMonstros: el => MM ? MM.renderMonstros(el) : (el.innerHTML = ''), tecla, soltou, som, ruido, golpe, morte, objetivo, salvou, fimCap, frame, fala, historico, nomeFalante, renderPistas, renderOuvido, salaMarcada, pausa, atualizarTitulo, antesDeNovoJogo, confirmar, aplicar, mmss, get ultSaveTempo() { return ultSaveTempo; } };
 }

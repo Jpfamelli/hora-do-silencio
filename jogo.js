@@ -4048,7 +4048,7 @@ function conquista(id) { PG.conquista(id); } // fila, secretas e som: src/progre
 // Diário
 let abaDiario = 'obj';
 function abrirDiario() { if (JP.travado()) { JP.agoraNao(); return; } ui = 'diario'; $('#diario').hidden = false; unlock(); renderDiario(); UIX.marcasAbas(); if (S.dif === 'pesadelo') $('#d-pane').insertAdjacentHTML('afterbegin', '<div class="tarja-tempo">o tempo não para</div>'); }
-const ABAS = ['obj', 'regras', 'inv', 'notas', 'tempo', 'pessoas', 'pistas', 'mapa', 'ouvido', 'album', 'ultima']; // lote 4: Álbum (0) e Última página
+const ABAS = ['obj', 'regras', 'inv', 'notas', 'tempo', 'pessoas', 'monstros', 'pistas', 'mapa', 'ouvido', 'album', 'ultima']; // lote 4: Álbum e Última página · lote 5: Monstros (bestiário vivo)
 function irAba(id) { abaDiario = id; document.querySelectorAll('#diario nav .btn').forEach(x => x.classList.toggle('on', x.dataset.tab === id)); renderDiario(); }
 function trocarAba(e) {
   const i = ABAS.indexOf(abaDiario), m = /^Digit([0-9])$/.exec(e.code);
@@ -4081,6 +4081,7 @@ function renderDiario() {
     if (S.flags.anaVista) best.push(['A Menina Que Conta', 'Só se mexe quando você não está olhando para ela com luz. Quando a lanterna pisca, ela avança. Não abre portas fechadas.']);
     if (S.flags.chamado1) best.push(['O Chamado', 'Alguém chama seu nome de uma sala vizinha. Não vá até lá.']);
     h += best.length ? best.map(([a, b]) => `<div style="padding:8px 0;border-bottom:1px solid #2c2720"><b style="font-family:'IM Fell English SC';font-weight:normal">${a}</b><br><span style="color:var(--fraco);font-style:italic">${b}</span></div>`).join('') : '<p style="color:var(--fraco)">Nada. Ainda.</p>';
+    h += `<p style="color:var(--fraco);font-size:14px;margin-top:10px">O caderno completo de comportamentos, com o contra-jogo de cada um, está na aba <b style="font-family:'IM Fell English SC';font-weight:normal;color:var(--ui)">Monstros</b>.</p>`;
     el.innerHTML = h;
   } else if (abaDiario === 'inv') {
     const I = S.inv, L = [];
@@ -4106,6 +4107,7 @@ function renderDiario() {
     });
   } else if (abaDiario === 'tempo') UIX.renderTempo(el);
   else if (abaDiario === 'pessoas') UIX.renderPessoas(el);
+  else if (abaDiario === 'monstros') UIX.renderMonstros(el);
   else if (abaDiario === 'pistas') UIX.renderPistas(el);
   else if (abaDiario === 'ouvido') UIX.renderOuvido(el);
   else if (abaDiario === 'album') UIX.renderAlbum(el);
@@ -4255,7 +4257,7 @@ const H = instalarHistoria({ R, MAPAS, API, lsGet, lsSet, CONQ_KEY, P, M, ANA, P
 const UIX = criarInterface({
   get S() { return S; }, P, M, ANA, PROC, W, OPT, DIFS, R, camera, renderer, keys, SFX, CAPS_KEY, SAVE_KEY, scene, get AC() { return AC; }, get master() { return master; },
   get mode() { return mode; }, get ui() { return ui; }, get fita() { return fitaTocando && !fitaPausada ? fitaTocando : null; }, loreAchado, totalLore,
-  D: () => D(), salaAdj, roomAt, emitNoise, toast, sub, conquista, lsGet, lsSet,
+  D: () => D(), salaAdj, roomAt, emitNoise, toast, sub, conquista, lsGet, lsSet, get chamado() { return chamadoArmadilha; },
   salvarOpt: () => lsSet(OPT_KEY, OPT), setOpt, retry: () => $('#dt-retry').click(), fecharPausa, pularFimCap: () => pularFimCap()
 });
 
