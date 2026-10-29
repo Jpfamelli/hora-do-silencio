@@ -1,0 +1,95 @@
+# Lote 5 — Interface
+- Novo grupo de opções "Leitura do perigo" reunindo todas as ajudas para ler os monstros.
+- Todas as ajudas de acessibilidade do perigo vêm desligadas por padrão (só a borda de faro, atmosférica, vem ligada).
+- Nova bússola de ameaças opcional: setas finas na borda apontando cada monstro ativo.
+- A bússola tem três modos: desligada, só no Fácil ou sempre ligada.
+- Seta vermelha aponta o Inspetor.
+- Seta rosa aponta a Menina Que Conta.
+- Seta âmbar aponta a Procissão quando ela está atravessando.
+- Seta azul aponta a sala de onde o Chamado está chamando.
+- Ícone de forma própria na borda (◆ Inspetor, 9 Menina, † Procissão, ♪ Chamado) para distinguir sem depender da cor.
+- Opção para desligar o ícone e deixar só a cor na bússola.
+- A seta clareia quando o monstro está perto e some aos poucos quando ele está longe.
+- A seta some de vez quando o monstro passa de cerca de 24 metros.
+- A seta ganha brilho pulsante no instante em que aquele monstro entra em caçada.
+- Na caçada, a seta nunca fica apagada demais, para você não perder o caçador de vista.
+- Marcador mais grosso e largo quando o monstro está logo atrás de você.
+- As setas da bússola param de pulsar com "reduzir movimento" ligado.
+- A bússola some inteira quando não há nenhum monstro ativo.
+- Modo opcional da bússola que mostra só a ameaça mais próxima, para poluir menos a tela.
+- Contador "⚠ N ameaças" no alto da tela quando há duas ou mais ativas ao mesmo tempo.
+- Novo pulso vermelho nas bordas quando o Inspetor está colado nas suas costas (opção).
+- O pulso só liga quando ele está fora do seu campo de visão, de fato atrás de você.
+- O pulso bate no ritmo do coração.
+- O pulso cresce quanto mais perto ele está.
+- O pulso some assim que ele se afasta ou sai de trás de você.
+- Com "reduzir flashes" ligado, o pulso fica mais suave.
+- Nova vinheta de presença: a borda escurece do lado onde o Inspetor está quando ele chega perto (opção).
+- A vinheta acompanha a direção dele em volta da tela.
+- A vinheta escurece mais quanto mais perto ele está.
+- A vinheta também responde à Procissão quando ela passa perto.
+- A vinheta direcional fica desligada no Pesadelo.
+- Borda cor de terra, pulsante, quando o Inspetor está fuçando ou seguindo o seu rastro (opção, ligada por padrão).
+- A borda de faro para de pulsar com "reduzir movimento".
+- Aviso "▿ rastro" no canto quando você está deixando cheiro com ele por perto.
+- O aviso de rastro vira "rastro sumindo na água" quando você está dentro d'água.
+- Indicador opcional da postura do Inspetor no canto: rondando, ouvindo, procurando ou caçando.
+- Bolinha colorida (verde → vermelho) acompanha a postura do Inspetor.
+- Símbolo por postura ao lado do texto (· rondando, ◠ ouvindo, ◉ procurando, ‼ caçando).
+- Ícone de ouvido perto da mira que enche conforme o seu som chega de fato ao Inspetor (opção).
+- O quanto chega considera porta fechada, parede e distância, não o barulho bruto.
+- O ícone de ouvido escreve "ele te ouve" quando o seu som chega forte a ele.
+- Opção para o anel do seu barulho encolher atrás de porta ou parede, mostrando o que chega nele.
+- O seu próprio barulho (ofegar, coração) agora sai em azul nas legendas, separado do perigo.
+- O barulho dos monstros sai em vermelho e em negrito, destacado do seu.
+- Símbolo "›" marca o seu barulho nas legendas, diferente do ▲ de perigo.
+- Nova legenda "[sua respiração]" quando você respira escondida com ele perto.
+- Nova legenda "[seus passos ecoam]" ao correr e "[você faz barulho]" ao se mover alto.
+- Legenda opcional "[passos dele: perto / médio / longe]" para quem joga sem som.
+- Legenda "[ele te ouviu — à direita/esquerda/atrás]" no instante em que o seu barulho o alerta.
+- Legenda "[ele perdeu o seu rastro]" quando ele desiste e volta a rondar.
+- Legenda "[ele está fuçando os esconderijos]" quando ele começa a vasculhar.
+- Legenda "[ele está bem atrás de você]" quando ele cola nas suas costas.
+- Legenda "[a Procissão vem aí — as luzes falham]" no aviso da Procissão.
+- Legenda "[ela chegou a nove]" quando a contagem da Menina chega a nove.
+- Legenda "[ela está no teto]" quando a Menina sobe no teto.
+- Legenda "[as duas te acharam]" quando a Menina e o Inspetor caçam juntos no capítulo da brincadeira.
+- Legenda de alívio "[silêncio — eles sumiram]" quando todo o perigo passa.
+- O olho da Menina ao lado da mira fica vermelho e pulsa enquanto ela está contando.
+- Nova aba "Monstros" no diário: o caderno de comportamentos.
+- O caderno se preenche sozinho conforme você sobrevive a cada comportamento, nunca por coleta.
+- Cada comportamento aprendido mostra a dica de contra-jogo logo abaixo.
+- Comportamento ainda não visto aparece como "???" ou "algo que você ainda não viu", sem spoiler.
+- Cada ficha conta quantos comportamentos você já descobriu (ex.: 4/7).
+- Quatro fichas, uma por entidade, cada uma na sua cor.
+- Entidade ainda não encontrada mostra a ficha velada ("ainda não encontrada").
+- Seis comportamentos do Inspetor catalogados (ouve, estala, investiga, caça, fuça, desiste).
+- Quatro comportamentos da Menina (conta, só no escuro, não abre porta, espera no teto).
+- Dois comportamentos da Procissão (aviso das luzes, atravessa as salas).
+- Um comportamento do Chamado (chama pelo nome — é isca).
+- Cada comportamento no caderno guarda e mostra aos quantos minutos você o viu pela primeira vez.
+- Linha "Última vez que o Inspetor foi ouvido: <sala>" no topo do caderno, para quem joga sem som.
+- Aviso discreto no toast quando um comportamento novo entra no caderno.
+- Esse aviso nunca aparece durante o perigo (caçada, bote, Procissão).
+- O aviso do caderno respeita um intervalo mínimo para não encher a tela.
+- A aba de Regras agora aponta para o caderno completo na aba Monstros.
+- A pausa passou a listar as ameaças ativas e o que cada uma está fazendo.
+- Na pausa, cada ameaça aparece na cor da sua entidade.
+- Sem nenhuma ameaça, a pausa diz "Ninguém por perto agora. Respire.".
+- A tela de morte lembra o contra-jogo específico de quem te pegou, com o nome da entidade.
+- Novo módulo da interface entra no cache offline (service worker) para jogar sem internet.
+- Reposicionamento dos novos avisos de canto (postura, rastro, contador) em telas estreitas de celular.
+- A bússola, o pulso, a vinheta e o faro usam o mesmo cálculo honesto de direção já existente, sem inventar posição.
+- Pulso, vinheta e faro surgem e somem com suavização, sem piscar de um quadro para o outro.
+- Os avisos de canto (postura, rastro, ouvido) somem durante a caçada para não disputar atenção com o essencial.
+- O indicador de postura anuncia a mudança de estado para leitores de tela (aria-live).
+- As legendas novas de perigo já aparecem no modo "Importantes", sem exigir o modo "Todos".
+- O olho vermelho da Menina também respeita "reduzir movimento" e para de pulsar.
+- A borda de faro só acende com o Inspetor fuçando ou seguindo o rastro, nunca durante a ronda comum.
+- A bússola e o contador de ameaças continuam visíveis com o HUD mínimo, por serem informação de perigo.
+- As setas da bússola giram com transição suave, acompanhando o monstro sem "pular" de um lado a outro.
+- Todos os novos elementos de HUD nascem escondidos e só aparecem quando a opção correspondente está ligada.
+- O caderno de comportamentos fica salvo no progresso da noite e reabre preenchido.
+- A leitura do perigo calcula a direção de cada ameaça só uma vez por quadro, deixando o jogo mais leve na caçada.
+- O HUD de leitura do perigo só mexe na tela quando algo muda, acabando com o engasgo durante a pausa e o fim de capítulo.
+- Qualquer tropeço na leitura do perigo não trava mais o quadro do jogo: o erro é contido e a ação continua.
