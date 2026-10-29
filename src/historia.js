@@ -317,13 +317,13 @@ export function instalarHistoria(c) {
       c.conquista('nove_cliques'); const bf = $('#b-fitas'); if (bf) bf.hidden = false;
     }
   });
-  // digitar SILENCIO no título liga/desliga o modo "Fita Gasta"
+  // digitar FITAGASTA no título liga/desliga o modo "Fita Gasta" (lote 4: SILENCIO ficou só com o Uma Vida, ver src/interface.js)
   let digitado = '';
   window.addEventListener('keydown', e => {
-    if (c.mode !== 'titulo' || document.activeElement === inp) return;
+    const foco = document.activeElement; if (c.mode !== 'titulo' || (foco && /^(INPUT|TEXTAREA|SELECT)$/.test(foco.tagName))) return;
     if (!/^Key[A-Z]$/.test(e.code)) return;
-    digitado = (digitado + e.code.slice(3)).slice(-8);
-    if (digitado === 'SILENCIO') {
+    digitado = (digitado + e.code.slice(3)).slice(-9);
+    if (digitado === 'FITAGASTA') {
       digitado = ''; const on = !lsGet(GASTA_KEY, false); lsSet(GASTA_KEY, on); document.body.classList.toggle('fita-gasta', on);
       c.iniciarAudio(); c.SFX.estatica(1.2); if (on) { $('#t-sub').textContent = (R.subtitulos && R.subtitulos.fitaGasta) || ''; c.conquista('fita_gasta'); } else titulo();
     }
