@@ -1,0 +1,115 @@
+# Lote 4 — Jogabilidade
+
+- Bolso de segredos: a tecla U usa o item escondido e Y troca entre eles, com dica no toast
+- Os itens de segredo (bala, folha, fita, câmera, celofane, soldadinho, apito, lanterninha, pião, pilha roxa) aparecem no inventário da tela
+- Máquina de escrever na diretoria: entra no modo digitar com tela de perto e cada tecla faz "clac"
+- Digitar na máquina gera ruído que o Inspetor ouve, e o sininho a cada 14 teclas o atrai
+- Datilografar muito (40 teclas) faz o Inspetor vir investigar a diretoria
+- A palavra SOCORRO faz a máquina responder sozinha "NINGUÉM VEM."
+- A palavra ALBANO faz a máquina escrever uma linha da confissão do diretor
+- A palavra MOACIR faz a máquina escrever "1951. NOVE ANOS. ARMÁRIO 4."
+- A palavra DAVI faz a máquina responder e o Davi sussurra "Lia..." do outro lado da parede
+- Digitar o próprio nome do jogador faz a máquina imprimir a ficha de matrícula dele
+- Outras palavras secretas (CELESTE, TOME, JOAQUIM, ANA) também fazem a máquina responder
+- Conquista secreta "Datilógrafa" por fazer a máquina responder três palavras diferentes
+- A máquina guarda o que foi escrito entre visitas (as últimas seis linhas)
+- Pote de balas de goma no balcão do posto, que a Lia pega no prólogo
+- Dar a bala à Ana iluminada e perto faz ela parar de contar e falar "Faz quinze anos que ninguém me dá nada"
+- Conquista secreta "Doce de Verdade" por entregar a bala à Ana
+- Relógio de pêndulo da recepção: girar os ponteiros 5 minutos por toque, com tique alto
+- Adiantar o relógio até as nove badaladas faz a Procissão vir fora de hora como risco escolhido
+- O fundo do relógio abre e solta um amuleto que reduz o dano da próxima Procissão pela metade
+- Conquista secreta "Fora de Hora" por adiantar o relógio até as nove
+- Sapateira na recepção: tirar os sapatos deixa os passos 40% mais baixos
+- Descalça, o chão duro e os cacos machucam às vezes, com um gemido que faz ruído
+- Calçar os sapatos de novo leva alguns segundos (segurar E)
+- No Capítulo II os sapatos deixados reaparecem arrumados, apontando para a escada
+- Conquista secreta "Como Elas" por passar os Capítulos I e II descalça
+- Telefone de disco na diretoria com lista de ramais datilografada para ler
+- Discar um ramal de sala faz o telefone de lá tocar e atrai o Inspetor como isca à distância
+- Ramal 09 atende com a Irmã Celeste rezando o terço até a linha cair
+- Ramal 00 ("NÃO DISCAR") toca a própria voz da Lia chegando ao portão agora há pouco
+- Ramal 26 (fora da lista) atende uma criança respirando e o telefone da diretoria toca de volta 20 s depois
+- Ramal 37 faz todos os telefones do prédio tocarem e o Inspetor gira sem saber para onde ir
+- Conquista secreta "Ramal Zero" por discar o ramal proibido
+- Forno de ferro da cozinha abre com rangido e revela um bolo de doze velas que acendem sozinhas
+- Soprar as velas (segurar ESPAÇO e soltar) recupera vida e uma voz de criança canta parabéns pela parede
+- Se demorar, as velas apagam sozinhas, uma por uma, de trás para frente
+- Conquista secreta "Doze Velas" por soprar o bolo do forno
+- Duto atrás do fogão que leva à casa de máquinas (e de volta), só agachada, com estrondo de lata
+- Gaveta trancada da enfermaria abre com um teclado de três números
+- Uma lâmpada do corredor pisca o número da gaveta em grupos, sem dizer que é código
+- Olhar para a lâmpada por alguns segundos faz a Lia murmurar que não está piscando à toa
+- A gaveta guarda uma ampola de adrenalina: na próxima morte do capítulo a Lia levanta com 20 de vida
+- Conquista secreta "Pisca-Pisca" por abrir a gaveta com o número da lâmpada
+- Chuveiro do banheiro: abrir solta água que reduz pela metade o ruído dos passos por perto
+- O Inspetor vai até o chuveiro fechar o registro, abrindo uma janela para passar por trás dele
+- Abrir o chuveiro uma segunda vez no capítulo faz o Inspetor vir direto até você
+- O vapor do chuveiro embaça o espelho e revela nele uma seta apontando para o segredo mais próximo
+- Centrífuga da lavanderia: puxar a alavanca faz um ronco enorme que puxa o Inspetor de longe
+- Ficar na lavanderia quando ele chega à centrífuga é fatal (ele desliga a máquina com a mão)
+- A Lia ri de nervoso "Funcionou." quando a centrífuga dá certo como isca
+- Carteira D.M. da sala de aula guarda uma folha em branco que cheira a limão
+- Segurar a folha perto de uma luz acesa por alguns segundos revela um mapa de pirata com um X
+- Revelar a folha exige ficar parada e de mãos ocupadas; o Inspetor perto faz a folha cair
+- Tijolo solto com X de giz no muro do pátio, que só abre agachada
+- Dentro do tijolo há a lata do tesouro com bolinhas de gude e a fita "SINO — NÃO GASTAR"
+- Tocar a fita do sino perto do Inspetor faz ele travar segurando a cabeça (só uma vez)
+- No fim da fita do sino o Davi fala baixinho "Pra quando você precisar. — D."
+- Conquista secreta "O X do Mapa" por achar a lata do tesouro
+- Bolinha de gude que rola sozinha pelo piso torto do corredor oeste até bater no rodapé
+- Onde a bolinha para há um alçapão pequeno com uma pilha escondida
+- Atalho de rejogo: tijolo atrás do balcão da recepção até a copa, a partir da segunda noite com o Cap. I completo
+- Baú de brinquedos com uma câmera instantânea de três cargas na sala de brinquedos
+- O flash da câmera congela a Ana por alguns segundos e revela crianças que a lanterna não mostra
+- O clique e o motor da câmera são ruído alto que o Inspetor ouve
+- Com "Reduzir flashes" ligado, o flash da câmera vira um clarão suave
+- Papel de bala vermelho que vai e volta da lente da lanterna (usar com U)
+- Com a luz vermelha aparecem escritas secretas nas paredes (setas do Davi, número do cofre, avisos)
+- No vermelho a Ana trata a luz como escuro e anda mesmo sendo iluminada
+- Soldadinho de corda: largado no chão, marcha tocando tambor e vira isca para o Inspetor e para a Ana
+- Jogo da velha de giz no corredor, com o Davi jogando o O perfeito (nunca perde)
+- Empatar três vezes no jogo da velha derruba uma pilha e escreve "VOCÊ AINDA JOGA IGUAL"
+- Perder o jogo da velha escreve "PERDEU. AGORA CONTA" e chama a brincadeira da Ana
+- Conquista secreta "Velha de Giz" por empatar três vezes com o Davi
+- Cada jogada do jogo da velha faz barulho de giz que o Inspetor ouve
+- Papel e lápis no quarto da Celeste para escrever um bilhete para a próxima Lia (até 80 letras)
+- O bilhete escrito reaparece na noite seguinte com a letra manuscrita e a assinatura "Lia, noite N"
+- Se a Lia morreu depois de escrever, o bilhete reaparece manchado de fuligem
+- Conquista secreta "Recado Para Mim" por ler o bilhete deixado numa noite anterior
+- Apito reserva do Inspetor num prego da rouparia
+- Soprar o apito faz o Inspetor largar tudo e ir para o pátio em linha reta por 15 s
+- Soprar o apito perto da Procissão a faz chegar antes como castigo
+- Conquista secreta "Hora do Recreio" por soprar o apito reserva
+- Lanterninha de lata do Davi no depósito: não gasta pilha, mas ilumina pouco e prende a Ana só de perto
+- Pião confiscado nos túneis: largado no chão, zumbe por alguns segundos e prende o Inspetor ouvindo
+- Pilha roxa de luz negra, uma por noite, num lugar sorteado perto da rota
+- A luz negra mostra mãos de crianças nas paredes e setas de giz até o próximo objetivo por 40 s
+- Lanterna da tentativa anterior: no ponto da morte fica a lanterna caída, acesa, apontando de onde a morte veio
+- Pegar a lanterna caída dá meia pilha e uma frase da Lia; não aparece no modo Uma Vida
+- Barquinhos de papel do Davi, um por mapa, sempre perto de água, cada um com uma linha de um bilhete
+- Achar os seis barquinhos revela o bilhete inteiro do Davi e dá a conquista "Frota do Davi"
+- Piscar a lanterna três vezes para a Ana parada faz os olhos dela piscarem de volta e surgir uma seta de giz
+- Piscar quatro vezes a Ana entende como deboche e começa a contar na hora
+- Pedir socorro com a lanterna em S.O.S. (três curtas, três longas, três curtas) de uma janela para fora
+- O S.O.S. da enfermaria faz o posto piscar de volta e o Seu Joaquim dar uma dica no rádio
+- O S.O.S. do Dormitório A faz um lampião no morro responder e deixa uma trouxa com pilha e curativo no portão
+- Conquista secreta "Três Curtas" por pedir socorro com a lanterna
+- Contar junto com a Ana apertando as teclas 1 a 9 no ritmo dela pula o susto do DEZ uma vez
+- Errar o ritmo ao contar junto faz a Ana acelerar a contagem
+- Conquista secreta "Contei Junto" por contar no ritmo da Ana
+- Bichinho de sombra na parede (segurar E parada perto de uma parede com a lanterna) faz um coelho de sombra
+- Se a Ana estiver por perto, o bichinho de sombra a faz rir, parar de contar e pedir "De novo!"
+- Conquista secreta "Teatro de Sombras" por fazer a Ana rir com o coelho de sombra
+- Deslize agachada: apertar C correndo faz a Lia escorregar, rápido mas com barulho de tecido
+- O deslize gasta fôlego e é desligado no modo Uma Vida
+- Garrafa jogada numa lâmpada acesa estoura o bulbo com faíscas e deixa o trecho no escuro de vez
+- A lâmpada quebrada esconde da Procissão, mas a Ana anda livre no escuro
+- Garrafa acertada no alto da capela faz uma badalada torta que atrai o Inspetor e adianta a Procissão
+- Conquista secreta "Badalada Torta" por acertar a garrafa no sino da capela
+- Na nona troca de pilha da noite, a Lia acha um bilhete do pai no fundo da lanterna sobre o homem do rádio
+- Se o relógio do aparelho marcar 21h de verdade dentro do internato, o sino bate nove vezes fora do roteiro
+- Conquista secreta "Na Hora Certa" por estar no internato às nove da noite reais
+- Escritas secretas da luz negra também aparecem nos túneis ("A ÁGUA ESCUTA")
+- O Inspetor atraído por uma isca fica parado ouvindo o ponto por um tempo, baixando a audição
+- As dicas de uso de cada item do bolso aparecem ao pegá-lo e ao trocar com Y
