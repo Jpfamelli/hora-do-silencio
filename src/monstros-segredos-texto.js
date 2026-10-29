@@ -89,6 +89,17 @@ export const TXT = {
   chamadaPresente: 'Presente.',
   chamadaAtrasada: 'Atrasada quinze anos.',
   chamadaToast: 'V: responder "presente"',
+  // lote 4, mais segredos
+  farejoM: '...cheiro de chuva.',
+  farejoLia: '(Ele me cheirou. Sabe que eu vim de fora.)',
+  respiraLia: '(Dá pra ouvir ele respirar. Devagar, como quem dorme acordado.)',
+  coracaoLia: '(Prendo o ar e meu coração grita. Ele quase ouve.)',
+  relogioLia: '(O ponteiro anda para trás. Toda vez que ela chega perto.)',
+  camasMurmura: ['...uma.', '...duas.', '...faltam três.', '...essa está vazia.', '...dorme.', '...cadê o nove?'],
+  apitoNota: '(Sem o apito, ele não tilinta mais. Ficou mudo. Pior.)',
+  gatoAnaLia: '(O Breu está encarando o escuro. Ela está lá.)',
+  fitaLia: 'Uma fita de cabelo vermelha na cama. Ela deixou pra mim.',
+  breuCemLia: '(O Breu veio até aqui. Sentou entre as lápides e me olhou.)',
   // legendas
   leg: {
     sussurro: 'a Lia sussurra',
@@ -108,7 +119,12 @@ export const TXT = {
     nuca: 'respiração na sua nuca',
     pecas: 'passos pequenos a mais',
     lanternaPisca: 'a lanterna dela pisca uma vez',
-    fila: 'a Lia conta baixinho'
+    fila: 'a Lia conta baixinho',
+    respira: 'ele respira devagar',
+    farejo: 'ele fareja o ar',
+    cantarolaLonge: 'ele cantarola, longe',
+    tiqueAna: 'um tique, ao contrário',
+    coracao: 'o seu coração dispara'
   }
 };
 export const CONQ = [

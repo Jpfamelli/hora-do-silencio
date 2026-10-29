@@ -69,7 +69,11 @@ export function criarMonstrosSegredos(E) {
     chiado(pos) { const t = E.AC.currentTime, g = E.saida({ x: pos.x, y: .3, z: pos.z }, .3); E.burst(t, .6, 'highpass', 2800, 1, g); E.env(g, t, .03, .18, .5); },
     ronrona(pos) { const t = E.AC.currentTime, g = E.saida({ x: pos.x, y: .3, z: pos.z }, .2); const o = E.AC.createOscillator(); o.type = 'sawtooth'; o.frequency.value = 26; const lp = E.AC.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 160; o.connect(lp); lp.connect(g); E.env(g, t, .3, .2, 1.8); o.start(t); o.stop(t + 2.2); },
     risadinha(pos) { const t = E.AC.currentTime; for (let i = 0; i < 3; i++) E.silaba(t + i * .13, { x: pos.x, y: .8, z: pos.z }, rand(430, 480), 'i', .1, .035, 'voz', .3); },
-    vozFila(pos) { const t = E.AC.currentTime; for (let i = 0; i < 3; i++) E.silaba(t + i * .22, { x: pos.x, y: 1.5, z: pos.z }, rand(200, 225), pick(['o', 'a', 'u']), .2, .03, 'voz', .5); }
+    vozFila(pos) { const t = E.AC.currentTime; for (let i = 0; i < 3; i++) E.silaba(t + i * .22, { x: pos.x, y: 1.5, z: pos.z }, rand(200, 225), pick(['o', 'a', 'u']), .2, .03, 'voz', .5); },
+    respira(pos) { const t = E.AC.currentTime; for (let i = 0; i < 2; i++) { const g = E.saida({ x: pos.x, y: 1.5, z: pos.z }, .3), k = t + i * .9; E.burst(k, .5, 'lowpass', 480, .7, g); E.env(g, k, .18, .09, .5); } },
+    farejo(pos) { const t = E.AC.currentTime; for (let i = 0; i < 3; i++) { const g = E.saida({ x: pos.x, y: 1.4, z: pos.z }, .35), k = t + i * .16; E.burst(k, .1, 'highpass', 2600, 1.4, g); E.env(g, k, .01, .09, .08); } },
+    coracao() { const t = E.AC.currentTime; for (let i = 0; i < 2; i++) { const g = E.saida(null, .5), k = t + i * .22; const o = E.AC.createOscillator(); o.type = 'sine'; o.frequency.setValueAtTime(70, k); o.frequency.exponentialRampToValueAtTime(42, k + .14); o.connect(g); E.env(g, k, .005, .22 - i * .06, .16); o.start(k); o.stop(k + .22); } },
+    tiqueAna(pos) { const t = E.AC.currentTime, g = E.saida(pos ? { x: pos.x, y: 1.4, z: pos.z } : null, .22); E.burst(t, .03, 'bandpass', 3200, 6, g); E.env(g, t, .001, .14, .03); }
   };
   const SX4 = new Proxy({}, { get: (t, k) => (...a) => { if (!temAudio()) return; try { return SOM[k] && SOM[k](...a); } catch (e) { console.warn(e); } } });
 
@@ -631,6 +635,7 @@ export function criarMonstrosSegredos(E) {
   function carinho(St) {
     if (!GATO) return; SX4.ronrona(GATO.pos); legenda('ronrona'); St.fear = Math.max(0, St.fear - 20);
     if (!St.flags.ms_gato) { St.flags.ms_gato = true; E.toast(TXT.gatoPlaca); E.conquista('ms4_gato'); }
+    if (!MEM.breu) { MEM.breu = true; lsGravar(MEM); }
     GATO.seguindo = true;
   }
   function tickGato(dt, St) {
@@ -785,6 +790,76 @@ export function criarMonstrosSegredos(E) {
   }
 
   // =====================================================================
+  // 11. MAIS SEGREDOS: a respiração na reza, o cheiro de chuva, o cantarolar ao longe,
+  //     o relógio que desanda perto da Ana, a contagem das camas, o apito que emudece,
+  //     o coração no escuro, o gato que encara a Ana, a fita da Ana e o Breu no cemitério
+  // =====================================================================
+  let rezaT = 0, coraT = 0, cantT = rand(4, 8), tiqueT = 0, camasT = rand(5, 10), paradaT = 0, posAnt = null, fitaMesh = null;
+  // perto dele rezando, no escuro, dá para ouvir ele respirar; prendendo o ar, o seu coração quase o entrega
+  function tickReza(dt, St) {
+    rezaT -= dt; coraT -= dt;
+    if (!M.ativo || M.state !== 'reza' || CENA) return;
+    const d = dist(M.pos, P.pos); if (d > 3.6 || St.flashOn) return;
+    if (rezaT <= 0) { rezaT = 4; SX4.respira(M.pos); legenda('respira', false); if (!flagCap(St, 'ms_respira')) { marcarCap(St, 'ms_respira'); depois(1.4, () => E.subPequeno('lia', TXT.respiraLia)); } }
+    if (d < 2.6 && coraT <= 0 && typeof E.prendendo === 'function' && E.prendendo()) { coraT = .8; SX4.coracao(); legenda('coracao'); if (!flagCap(St, 'ms_coracao')) { marcarCap(St, 'ms_coracao'); depois(.6, () => E.subPequeno('lia', TXT.coracaoLia)); St.fear = Math.min(100, St.fear + 10); } }
+  }
+  // no primeiro encontro do Capítulo I ele fareja o ar: sente o cheiro de chuva de quem veio de fora
+  function tickCheiro(dt, St) {
+    if (St.flags.ms_farejo || St.chapter !== 1 || W.mapa !== 'terreo' || !M.ativo || CENA) return;
+    if (['caca', 'bote', 'agarra'].includes(M.state) || dist(M.pos, P.pos) > 6) return;
+    St.flags.ms_farejo = true; SX4.farejo(M.pos); legenda('farejo', false);
+    depois(.6, () => falaM(TXT.farejoM, true)); depois(2.2, () => E.subPequeno('lia', TXT.farejoLia));
+  }
+  // sozinho e longe, na patrulha, ele cantarola: um aviso honesto de que está do outro lado
+  function tickCantarola(dt, St) {
+    cantT -= dt; if (cantT > 0) return; cantT = rand(6, 11);
+    if (!M.ativo || M.state !== 'patrulha' || ameaca() || CENA) return;
+    if (dist(M.pos, P.pos) < 20) return;
+    if (Math.random() < .4) legenda('cantarolaLonge', false);
+  }
+  // os relógios desandam quando a Menina está perto; parar para reparar faz a Lia comentar
+  function tickRelogioAna(dt, St) {
+    tiqueT -= dt; const mexeu = posAnt ? dist(posAnt, P.pos) > .03 : true; posAnt = P.pos.clone();
+    if (!ANA.ativa || ANA.script || St.hidden) { paradaT = 0; return; }
+    if (dist(ANA.pos, P.pos) > 8) { paradaT = 0; return; }
+    if (tiqueT <= 0) { tiqueT = rand(1.4, 2.2); SX4.tiqueAna(null); legenda('tiqueAna', false); }
+    if (mexeu) paradaT = 0; else paradaT += dt;
+    if (paradaT > 3 && !flagCap(St, 'ms_relogio')) { marcarCap(St, 'ms_relogio'); E.subPequeno('lia', TXT.relogioLia); }
+  }
+  // na ronda, passando por um dormitório, ele conta as camas em voz baixa
+  function tickContaCamas(dt, St) {
+    camasT -= dt; if (camasT > 0) return;
+    if (!M.ativo || M.state !== 'patrulha' || ameaca() || CENA || !['terreo', 'superior'].includes(W.mapa)) return;
+    const ra = E.roomAt(M.pos.x, M.pos.z); if (!ra || ra.tipo !== 'dorm') return;
+    camasT = rand(7, 13); if (dist(M.pos, P.pos) > 16) return;
+    E.subPequeno('inspetor', pick(TXT.camasMurmura));
+  }
+  // depois de furtar o apito, ele perde o tilintar que o denunciava: fica mudo, e a Lia percebe
+  function tickApitoNota(dt, St) {
+    if (St.flags.ms_apito && !St.flags.ms_apitoNota) { St.flags.ms_apitoNota = true; depois(2, () => E.subPequeno('lia', TXT.apitoNota)); }
+  }
+  // o gato encara o escuro de onde a Ana vem e chia: um aviso de onde ela está
+  function tickGatoAna(dt, St) {
+    const G = GATO; if (!G || G.foi || !ANA.ativa || ANA.script || G.g.parent !== W.grupo) return;
+    if (dist(G.pos, ANA.pos) > 18) return;
+    G.cab.rotation.y = Math.atan2(ANA.pos.x - G.pos.x, ANA.pos.z - G.pos.z) - G.g.rotation.y;
+    if (G.chiaT <= 0) { G.chiaT = 4; SX4.chiado(G.pos); if (dist(G.pos, P.pos) < 14 && !flagCap(St, 'ms_gatoAna')) { marcarCap(St, 'ms_gatoAna'); depois(.8, () => E.subPequeno('lia', TXT.gatoAnaLia)); } }
+  }
+  // ao vencer a brincadeira de contar junto, a Ana deixa uma fita de cabelo na cama do Dormitório E
+  function tickFita(dt, St) {
+    if (fitaMesh || St.flags.ms_fita || !St.flags.ms_junto || W.mapa !== 'superior') return;
+    const r = E.SALA('dormE'); if (!r) return; St.flags.ms_fita = true;
+    fitaMesh = E.box(.16, .02, .04, new THREE.MeshStandardMaterial({ color: 0xb02030, roughness: .7 }), r.x0 + 1.4, .68, (r.z0 + r.z1) / 2);
+    fitaMesh.rotation.y = .5; depois(.6, () => E.subPequeno('lia', TXT.fitaLia));
+  }
+  // no cemitério, quem fez carinho no Breu ouve ele uma última vez, sentado entre as lápides
+  function tickBreuCem(dt, St) {
+    if (St.flags.ms_breuCem || W.mapa !== 'cemiterio' || !MEM.breu || St.capT < 8 || ameaca()) return;
+    St.flags.ms_breuCem = true; SX4.miado({ x: P.pos.x, z: P.pos.z - 3 }, .4); legenda('miado', false);
+    depois(1.2, () => E.subPequeno('lia', TXT.breuCemLia));
+  }
+
+  // =====================================================================
   // GANCHOS
   // =====================================================================
   // armário que o Tomé apontou: protegido uma vez (envolve o ML.protegido do lote 2)
@@ -806,6 +881,7 @@ export function criarMonstrosSegredos(E) {
   const novoMapa = seguro(id => {
     const St = S(); if (!St) return;
     CENA = null; BR.fase = null; veu.style.opacity = 0; meninoT = 0; GATO_INSP = 0; apitoFase = null; desfeitas.length = 0; PORT.ant = new Map(); velaMesh = null; RANC = null;
+    fitaMesh = null; posAnt = null; paradaT = 0;
     montarItMon(); montarItAna(); montarDente(St); montarDesenhos(); montarRancor(St); montarGato(St); montarGarrafas(St); montarChapeu(St);
   });
   const tick = seguro(dt => {
@@ -821,6 +897,8 @@ export function criarMonstrosSegredos(E) {
     tickChamado(dt, St); tickGato(dt, St);
     tickCamas(dt, St); tickPortas(dt, St); tickPassos(dt, St); tickGarrafas(dt, St);
     tickChapeu(dt, St); tickChamada(dt, St);
+    tickReza(dt, St); tickCheiro(dt, St); tickCantarola(dt, St); tickRelogioAna(dt, St);
+    tickContaCamas(dt, St); tickApitoNota(dt, St); tickGatoAna(dt, St); tickFita(dt, St); tickBreuCem(dt, St);
   });
   // chamado pelo motor na tela de morte: registra a morte e dá a frase própria do pulso
   const fraseMorte = quem => {

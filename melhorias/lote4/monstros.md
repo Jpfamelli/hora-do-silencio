@@ -124,3 +124,14 @@
 - Conquista secreta "Presente"
 - As 21 conquistas secretas novas aparecem como "???" na lista até serem descobertas
 - As cenas raras, a noite sem ele, a fila de costas e o outro chapéu são sorteados uma vez por noite e continuam iguais depois do checkpoint
+- Perto dele rezando, no escuro e sem lanterna, dá para ouvir ele respirar devagar, com som e legenda próprios
+- Prender o ar colada nele durante a reza faz o coração da Lia disparar (som, legenda e um susto a mais no medo), quase entregando a posição
+- No primeiro encontro do Capítulo I ele fareja o ar e murmura "...cheiro de chuva.", e a Lia percebe que ele sabe que ela veio de fora
+- Sozinho e a mais de 20 m na patrulha, ele às vezes cantarola o hino: um aviso honesto de que está do outro lado
+- Com a Ana a menos de 8 m, os relógios do andar desandam com um tique ao contrário (legenda própria)
+- Parar quieta perto do relógio que desanda faz a Lia reparar que o ponteiro só anda para trás quando a Menina chega perto
+- Na ronda, ao passar por um dormitório, ele conta as camas em voz baixa ("...uma.", "...essa está vazia.", "...cadê o nove?")
+- Depois de furtar o apito, ele perde o tilintar que o denunciava e fica mudo; a Lia percebe que ficou pior assim
+- Com a Ana ativa por perto, o gato Breu vira a cabeça para o escuro de onde ela vem e chia, apontando onde ela está
+- Ao vencer a brincadeira de contar junto, a Ana deixa uma fita de cabelo vermelha na cama do Dormitório E
+- No cemitério, quem fez carinho no Breu em outra noite o ouve uma última vez, sentado entre as lápides
