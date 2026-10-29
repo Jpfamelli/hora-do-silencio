@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A Hora do Silêncio — esta sala não existe</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#050505">
+<style>
+  html,body{height:100%;margin:0;background:#050505;color:#cfc3a6;font-family:Georgia,"Times New Roman",serif;overflow:hidden}
+  .wrap{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;text-align:center;padding:24px;cursor:pointer}
+  .porta{width:120px;height:200px;position:relative;background:#120f0c;border:3px solid #2a2219;border-radius:4px;box-shadow:inset 0 0 40px #000}
+  .porta::before{content:"";position:absolute;left:12%;top:0;width:2px;height:100%;background:linear-gradient(#000,#3a2e20,#000);transform:rotate(3deg)}
+  .porta::after{content:"";position:absolute;right:28%;top:8%;width:1px;height:70%;background:#000;transform:rotate(-6deg);box-shadow:4px 20px 0 -0.5px #000,-3px 60px 0 -0.5px #000}
+  .macaneta{position:absolute;right:14px;top:50%;width:9px;height:9px;border-radius:50%;background:#5e5141}
+  h1{font-size:26px;letter-spacing:1px;font-weight:400;margin:0}
+  p{color:#857a63;max-width:420px;line-height:1.5;margin:0}
+  a{color:#8e8060;text-decoration:underline}
+  small{color:#4a4336}
+</style>
+</head>
+<body>
+<div class="wrap" id="w" title="toque para ouvir">
+  <div class="porta"><span class="macaneta"></span></div>
+  <h1>Esta sala não existe.</h1>
+  <p>Ou existia, até 1979. A porta que você procurava foi pregada por dentro.</p>
+  <a href="./">voltar para a cama</a>
+  <small>São Lázaro — ala interditada</small>
+</div>
+<script>
+  // nove badaladas procedurais ao primeiro toque (WebAudio, sem assets)
+  let tocou = false;
+  document.getElementById('w').addEventListener('click', e => {
+    if (e.target.tagName === 'A' || tocou) return; tocou = true;
+    try {
+      const ac = new (window.AudioContext || window.webkitAudioContext)();
+      for (let i = 0; i < 9; i++) {
+        const t = ac.currentTime + i * 0.9, o = ac.createOscillator(), g = ac.createGain();
+        o.type = 'triangle'; o.frequency.setValueAtTime(196 + (i % 2) * 6, t);
+        g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.3, t + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.8);
+        o.connect(g).connect(ac.destination); o.start(t); o.stop(t + 0.85);
+      }
+    } catch (er) {}
+  });
+</script>
+</body>
+</html>

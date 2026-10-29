@@ -1,0 +1,95 @@
+# Lote 4 — Plataforma e acessibilidade
+- Sistema de marcadores no endereço que aplica o segredo e limpa o # (pra mandar o link a um amigo)
+- #davi no endereço: o Davi reescreve o subtítulo do título e o sino toca longe
+- #ana no endereço: a Ana sussurra "agora você tá do lado de cá" no título
+- #1979 (ou #cinzas): chuva de cinzas caindo sobre o título
+- #14031979: chuva de cinzas com o lembrete do aniversário, 14 de março
+- #silencio: deixa o título mudo
+- #breu: o título fica quase no escuro, como se o prédio todo tivesse apagado
+- #espelho: o título vira espelhado (com os botões e o campo de texto corrigidos)
+- #apito: um apito do Inspetor, longe, no título
+- #chuva: a tempestade do título fica muito mais forte
+- #festa: liga a Lanterna de Festa, cosmética
+- #porao (ou #bastidores): abre a Sala de Testes escondida
+- #1978: abre a visita ao internato de 1978, antes da ruína
+- #presente: abre a Galeria das entidades
+- Digitar PORAO ou BASTIDORES no título também abre a Sala de Testes
+- Digitar PRESENTE no título também abre a Galeria
+- Digitar FESTA no título liga a Lanterna de Festa
+- Digitar ENTRANHAS no título dá um aviso do Seu Joaquim e a conquista Por Baixo do Papel
+- Digitar ARQUEOLOGIA (ou V1) revela o link da primeira versão e a conquista Arqueologia
+- Teclado de giz no título: um alfabeto de giz para digitar os códigos sem teclado físico
+- O teclado de giz mostra, em letra de giz, o que você já escreveu
+- Navegação do teclado de giz pelas setas do teclado
+- Navegação do teclado de giz pelo analógico e pela direcional do controle
+- Navegação do teclado de giz pelo toque, cada letra clicável
+- O teclado de giz abre segurando o título por 2 segundos (toque ou mouse)
+- O teclado de giz abre apertando LB e RB juntos no controle
+- O teclado de giz reaproveita todos os códigos que já existiam (SILENCIO, DAVI, NOVE, MOACIR, os nomes)
+- Som de giz ao escolher cada letra; ESC fecha o teclado de giz
+- Opção "Teclado de giz grande" para enxergar melhor as letras no controle ou no celular
+- Segurar os dois gatilhos no título por 9 segundos: o controle bate em código e a conquista Do Outro Lado do Controle
+- Vibração ritmada do controle enquanto você segura os dois gatilhos
+- Virar o celular de cabeça para baixo no título por 3 segundos: o título inverte, a Ana fala e vem a conquista Do Lado de Cá
+- O título volta ao normal assim que o celular é desvirado
+- Comando __segredos.ajuda() no console lista todos os comandos secretos
+- Comando lia() no console vira a câmera, sussurra e imprime a ficha de matrícula de 1979
+- Comando davi() no console entrega o número do cofre e dá a conquista Por Baixo do Papel
+- Comando cofre() no console dá a dica do número do cofre
+- Comando regras() no console imprime as regras com a sétima no fim
+- Comando quem() no console lista os nomes das crianças, com um em branco
+- Comando luz() no console responde "não." e apaga a lanterna por 1 segundo
+- Comando ouvir() no console toca os sussurros
+- Dica discreta no console convidando quem fuça a digitar __segredos.ajuda()
+- Caps Lock ligado durante o jogo faz a Lia sussurrar "[para de gritar comigo]"
+- Scroll Lock (ou Insert) trava o tempo por 2 segundos, apaga o som e deixa "[alguém empurrou você]" + conquista Tecla Errada
+- Copiar o texto de uma nota cola junto a linha escondida "(eu vi o que você copiou. — A.)"
+- Dar zoom no navegador revela a frase miúda escondida e dá a conquista Lupa
+- Entrar em tela cheia no Capítulo III faz a Ana sussurrar "agora não tem pra onde ir"
+- Jogar exatamente às 21h00 do relógio real: as badaladas tocam fora do roteiro e vem a conquista Ao Vivo
+- Às 21h04 do relógio real: o eco do Tomé e uma linha de giz "eu só falei..."
+- Abrir o jogo num dia de semana entre 7h e 12h: "Você não deveria estar na aula, Lia?" + conquista Matando Aula
+- Cálculo da fase da lua pela data do aparelho, sem internet
+- Numa noite de lua cheia de verdade: uma lua desenhada atrás do sino no título + conquista Lua Cheia no São Lázaro
+- Carta do Davi gravada no armazenamento do navegador (chave davi_bilhete) para quem abre as ferramentas do navegador
+- Apagar a carta do Davi e recarregar: o título responde "Obrigado por me soltar." + conquista
+- Depois do final verdadeiro, o ícone do jogo vira um sino rachado
+- Depois do final verdadeiro, o título da aba vira "A Hora do Silêncio — acabou?"
+- Nome do amigo no link de desafio (&de=): o título mostra "{nome} te desafiou"
+- Recado de giz no link de desafio (&r=): aparece escrito no portão, assinado por quem mandou
+- Filtro do recado do link: só letras e números, até 40 caracteres, sem links
+- Conquista Correio Interno para quem abre um link com recado de amigo
+- Botão "Desafiar com recado" no fim do capítulo que monta o link com nome e recado
+- Os segredos achados ficam guardados num selo para o compartilhamento
+- Sala de Testes: sala cinza, cubos sem textura e placas "TESTE DE LUZ 01" e "COLISÃO OK"
+- Na Sala de Testes o Inspetor fica de manequim; quando o mouse sai da tela a luz apaga e ele cola em você
+- Conquista Bastidores ao entrar na Sala de Testes
+- Galeria: silhuetas das entidades girando, com uma lanterna que segue o mouse
+- Fichas do Inspetor, da Ana, da Procissão e do Breu dentro da Galeria
+- Na Galeria, parar de mexer o mouse faz o Inspetor virar a cabeça para você
+- Conquista Visitação ao abrir a Galeria
+- Visita de 1978: o térreo de dia, cores quentes e a lousa com "14 de março — festa!"
+- Na visita de 1978, às 21h o sino toca e tudo corta para a ruína
+- Botão VOLTAR e tecla ESC fecham qualquer sala secreta
+- Pista discreta no rodapé do título: "obra — acesso ao PORÃO restrito"
+- Bilhete do Davi escondido num comentário do código-fonte (patamar, terceira tábua)
+- Frase cifrada (cada letra andou 9 casas) no código-fonte que decifra em ENTRANHAS
+- Comentário no código-fonte listando os códigos e os marcadores para quem fuça
+- Página 404 do internato: porta rachada em CSS e o texto "Esta sala não existe. Ou existia, até 1979."
+- A página 404 toca as nove badaladas procedurais ao primeiro toque
+- A página 404 entra no cache para funcionar sem internet
+- Meta tags de imagem para o link do jogo aparecer melhor quando compartilhado (og:image e twitter:image)
+- O módulo pesado dos segredos carrega só quando precisa (no ocioso), sem pesar a abertura do jogo
+- Os arquivos novos entram no cache offline, com a versão do cache atualizada para v6
+- Opção Modo Streamer: legendas maiores para quem transmite
+- Opção "Legendas no topo" para as legendas não ficarem atrás da webcam
+- Opção "Mostrar área da webcam" com um retângulo no canto para não cobrir o jogo
+- Opção "Segredos sem flashes" para respeitar quem é sensível a piscas
+- Fieldset "Segredos e acessibilidade" na tela Desempenho, com tudo salvo entre sessões
+- Lanterna de Festa: uma luz que muda de cor devagar no título, com a conquista Luz de Festa
+- 14 conquistas secretas novas registradas sem mexer no roteiro compartilhado
+- T.segredos() no kit de teste confere as conquistas, o console e a carga do módulo das salas secretas
+- O QA passa a rodar os segredos (T.segredos dentro de T.plataforma) para eles não quebrarem em silêncio
+- O link da v1 abre a primeira versão do internato numa aba nova (Arqueologia)
+- Os segredos e a pista do porão só aparecem fora do QA, sem atrapalhar os testes automáticos
+- CSS próprio do lote (plataforma4.css) injetado só quando o jogo abre

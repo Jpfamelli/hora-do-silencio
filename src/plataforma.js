@@ -5,6 +5,7 @@
 
 import { instalarPlat2 } from './plataforma2.js';
 import { instalarPlat3 } from './plataforma3.js';
+import { instalarPlat4 } from './plataforma4.js';
 
 const KEY = 'hora-silencio-plat';
 const AUTO_KEY = 'hora-silencio-v3-auto';
@@ -51,6 +52,7 @@ let estavaAgarrada = false, coracaoT = 0, procAnt = null, procPulso = 0;
 let P3 = { antes: () => 1, depois() {}, toqueFrame() {}, mapa() {}, opcoes() {}, pular: () => false, foto: false, semTrava: () => false, travaOpcoes: () => null, poolInfo: () => '', setCorte() {}, pulsoVisual() {}, montarToque() {}, fecharOpcoes() {} };
 let corte = 0, corteT = 0; // escada de cortes quando a resolução já está no mínimo
 let P2 = { fecharLapide() {}, abrirLapide() {}, morreu() {}, frame() {}, mapa() {}, opcoes() {} }; // trocado em instalar() pelo módulo do lote 2
+let P4 = { frame() {}, mapa() {}, aoFim() {} }; // lote 4: segredos e easter eggs
 let prAtual = 1, tetoPR = 1;
 let fogAplicada = -1;
 let ultimoQuadro = 0;
@@ -778,6 +780,7 @@ function prepararFinal() {
   const b = document.createElement('button'); b.className = 'btn'; b.id = 'e-desafio'; b.textContent = 'Desafiar um amigo';
   const l = document.createElement('button'); l.className = 'btn'; l.id = 'e-lapide'; l.textContent = 'Guardar lápide';
   menu.before(b, l); l.onclick = () => P2.abrirLapide('final');
+  try { P4.aoFim(); } catch (e) {}
   b.onclick = async () => {
     const r = textoResultado();
     if (navigator.share) { try { await navigator.share({ title: 'A Hora do Silêncio', text: r.texto, url: r.url }); return; } catch (e) { if (e && e.name === 'AbortError') return; } }
@@ -897,9 +900,10 @@ export const PLAT = {
     const cs = $('#tq-pular'); if (cs) cs.hidden = C.mode !== 'cena';
     PLAT._fpsT = (PLAT._fpsT || 0) - dt;
     if (O.fps && PLAT._fpsT <= 0) { PLAT._fpsT = .5; const f = $('#fps'); if (f) f.textContent = Math.round(1000 / mediaMs) + ' qps · ' + mediaMs.toFixed(1) + ' ms · ' + prAtual.toFixed(2) + 'x · ' + Q().nome + (C.renderer.info ? ' · ' + C.renderer.info.render.calls + ' desenhos · ' + C.renderer.info.memory.geometries + ' geom. · ' + C.renderer.info.memory.textures + ' text.' : '') + (P3.poolInfo() ? ' · ' + P3.poolInfo() : '') + (corte ? ' · corte ' + corte + '/3' : ''); }
-    if (C.W.grupo !== grupoAnt) { grupoAnt = C.W.grupo; P2.mapa(); P3.mapa(); }
+    if (C.W.grupo !== grupoAnt) { grupoAnt = C.W.grupo; P2.mapa(); P3.mapa(); try { P4.mapa(); } catch (e) {} }
     P3.depois(dt, ativo);
     P2.frame(dt, ativo);
+    try { P4.frame(dt, ativo); } catch (e) {}
     PLAT._tabT = (PLAT._tabT || 0) - dt; if (PLAT._tabT <= 0) { PLAT._tabT = .5; tituloAba(); }
   },
   instalar(ctx) {
@@ -946,6 +950,7 @@ export const PLAT = {
     P2 = instalarPlat2(C, { O, salvar, vibrar, aviso, copiar, feedback, focaveis, get padAtivo() { return padAtivo; }, get toque() { return toque; }, robo, qual: () => O.qual || 'alta' });
     P3 = instalarPlat3(C, { O, salvar, vibrar, aviso, copiar, feedback, olhar, puxar, apertarTecla, soltarTecla, volume, aplicarQual, aplicarOpcoes, syncOpcoes, emJogoAtivo, robo, qual: () => O.qual || 'alta', get toque() { return toque; }, get padAtivo() { return padAtivo; }, get stick() { return stick; } });
     P3.montarOpcoes($('#plat-opcoes .wrap'));
+    try { P4 = instalarPlat4(C, { O, salvar, vibrar, copiar, feedback, robo, get padAtivo() { return padAtivo; }, get toque() { return toque; }, qual: () => O.qual || 'alta' }); } catch (e) {}
     if (P3.plateia) { const pt = $('#portal'); if (pt) pt.hidden = true; }
     const dm = $('#dt-menu'); if (dm) { const lb = document.createElement('button'); lb.className = 'btn'; lb.id = 'dt-lapide'; lb.textContent = 'Guardar lápide'; dm.before(lb); lb.onclick = () => P2.abrirLapide('morte'); }
     const tcl = $('#death .teclas'); if (tcl && !/lápide/.test(tcl.textContent)) tcl.textContent += ' · L guarda a lápide';

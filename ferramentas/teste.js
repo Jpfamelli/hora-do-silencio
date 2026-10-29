@@ -176,7 +176,20 @@ T.plataforma = async () => {
     semPausa(); J.S.hidden = null; J.P.bloqueado = false; const x0 = J.P.pos.x, z0 = J.P.pos.z; J.P.mover = { x: .7, y: -.7, l: 1 }; T.passo(.3); J.P.mover = null;
     ok('analógico anda na diagonal contínua', Math.hypot(J.P.pos.x - x0, J.P.pos.z - z0) > .1);
   }
+  try { for (const f of (await T.segredos())) falhas.push(f); } catch (e) { falhas.push('segredos (' + e.message + ')'); }
   localStorage.removeItem('hora-silencio-v3-auto');
+  return falhas;
+};
+// ---- segredos e easter eggs do Lote 4 (checa sem precisar jogar até eles)
+T.segredos = async () => {
+  const falhas = [], ok = (n, c) => { console.log('[QA] ' + (c ? 'ok ' : 'FALHOU ') + 'segredo: ' + n); if (!c) falhas.push(n); };
+  const R = window.ROTEIRO;
+  ok('conquistas do lote 4 registradas', ['s4_bastidores', 's4_galeria', 's4_lua_cheia', 's4_por_baixo', 's4_correio'].every(id => (R.conquistas || []).some(c => c.id === id)));
+  ok('console de segredos existe', !!(window.__segredos && typeof window.__segredos.davi === 'function'));
+  ok('comando davi() dá a pista do cofre', /14/.test(String(window.__segredos.davi())));
+  ok('ajuda() lista os comandos', typeof window.__segredos.ajuda() === 'string');
+  // módulo pesado carrega sob demanda
+  try { const m = await import('../src/plataforma4-extra.js'); ok('módulo das salas secretas carrega', typeof m.criarExtra === 'function'); } catch (e) { ok('módulo das salas secretas carrega (' + e.message + ')', false); }
   return falhas;
 };
 T.itens = () => J.W.items.filter(i => i.mesh.visible).map(i => { const p = T.pos(i.it); return `${i.key} ${p.x.toFixed(1)},${p.y.toFixed(2)},${p.z.toFixed(1)}`; });
