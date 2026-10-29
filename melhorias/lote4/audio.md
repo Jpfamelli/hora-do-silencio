@@ -1,0 +1,104 @@
+# Lote 4 — Áudio
+- Discar 0190 (a delegacia da lista da parede) no telefone da recepção agora atende: uma telefonista de 1979 diz que a viatura já está a caminho
+- Na ligação para a delegacia, uma sirene vai chegando pelo fone por nove segundos e para de uma vez, sem nunca chegar
+- Depois da sirene, uma respiração funda e a voz baixa do Inspetor no telefone: "Ninguém vem."
+- Nova conquista secreta "Ninguém Vem" para quem liga para a delegacia
+- Ligar de novo para a delegacia na mesma noite toca só a sirene longe, que nunca chega
+- Discar 2241 (o Bispado da lista) faz um padre cansado atender e mandar a Irmã Celeste "ir dormir", e a Lia entende que ela pediu ajuda
+- Discar 0037 faz uma criança contar "trinta e cinco, trinta e seis... cadê o trinta e sete?" no telefone
+- As vozes do telefone passam por um filtro de linha de verdade: banda estreita, chiado e zumbido de 50 Hz no ouvido
+- A fita escondida do Tomé agora termina com quatro bipes de telefone de verdade (tons DTMF com as duas frequências certas de cada dígito)
+- Os bipes no fim da fita do Tomé têm legenda própria e a Lia comenta que alguém discou um número enquanto gravava
+- Discar o número dos bipes no telefone da recepção toca a última ligação da Irmã Celeste em 1979, pedindo socorro com a capela pegando fogo
+- No fim da ligação da Irmã a linha cai com um estalo e alguém do outro lado continua respirando
+- Nova conquista secreta "A Última Ligação" para quem decifra os bipes e disca o número
+- A vitrola riscada do refeitório agora pode ter a agulha empurrada com E: ela arranha alto o disco inteiro
+- Cada empurrão da agulha faz o disco completar a frase repetida com uma dica real de um segredo do som (seis dicas por noite, depois só silêncio)
+- O arranhão da agulha é alto o bastante para o Inspetor ouvir: cada dica tem preço
+- A dica do disco é cantada pela própria vitrola, com o "wow" do vinil, além da legenda
+- Segurar S e empurrar a agulha gira o disco para trás: o hino do internato toca invertido, uma oitava abaixo, com coro de crianças
+- O disco ao contrário revela a quarta estrofe do hino, a que foi raspada da moldura, cantada e legendada verso por verso
+- O hino ao contrário ecoa pelo prédio: o Inspetor ouve de longe e grita "QUEM ESTÁ CANTANDO ISSO?"
+- Nova conquista secreta "Lado Escondido do Disco"
+- O rótulo da vitrola riscada ensina discretamente a girar o disco para trás (segure S)
+- Dar corda na caixinha da Ana segurando S gira a manivela ao contrário: a melodia toca invertida e mais grave
+- No meio da caixinha ao contrário, uma criança diz "Luiz", o menino do armário de 1952, e a Lia liga os pontos
+- A manivela ao contrário range alto e se ouve no corredor
+- Nova conquista secreta "O Nome na Caixinha"
+- Quem fica perto da caixinha até a última nota ouve uma frase musical nova, que nunca toca na brincadeira
+- No fim da caixinha, por baixo da música, a voz gravada de uma mulher diz "Dorme, meus três."
+- Nova conquista secreta "Dorme, Meus Três" para quem ouve a caixinha até o fim
+- Os rádios de válvula já ouvidos ganham uma ação nova: "Girar o dial até o fim" (uma vez por rádio, por noite, e faz barulho)
+- Girar o dial faz um som de sintonia de verdade, varrendo o chiado de grave para agudo
+- No fim do dial do rádio da cozinha, uma menina lê números em grupos de quatro: o código do quadro e os números do cofre da noite (o diário não anota sozinho)
+- No fim do dial do rádio do quarto da Irmã Celeste toca um capítulo da radionovela "Coração de Serra", que espelha a noite e termina com "e a Lia chegou"
+- No fim do dial do rádio do cemitério, uma transmissão de 1979 lê a lista dos desaparecidos do incêndio e termina com o nome do jogador
+- No fim do dial do rádio da sala secreta, o chiado esconde um desenho: "PORÃO" e um rosto, visíveis num app de espectrograma
+- O chiado desenhado é feito por um banco de osciladores de 2 a 8 kHz lendo uma imagem em canvas, coluna por coluna
+- A Lia percebe que o chiado da sala secreta "tem forma", sem entregar o segredo
+- Nova conquista secreta "O Som Tem Desenho"
+- Ficar parada mais de 12 s perto de um rádio já ouvido faz o locutor interromper e narrar o que a Lia está fazendo
+- A narração do rádio usa o estado real: a sala onde ela está, se está agachada, de pé ou escondida, e se a lanterna está acesa
+- Cinco moldes diferentes de narração no rádio, sorteados, e a Lia reage ("O rádio tá falando de mim")
+- Nova conquista secreta "Notícia de Última Hora"
+- Na diretoria, parada, um sussurro só no ouvido esquerdo diz o código do quadro de trás para frente
+- No corredor de cima, um sussurro só no ouvido direito avisa que a Ana não abre porta fechada
+- No túnel norte, um sussurro com a fase invertida entre os ouvidos diz o primeiro e o último número do cofre: claro no fone, quase some em caixa de som e some no som mono
+- Com "Legendar sons: Todos", os sussurros de um lado só aparecem escritos e marcados com o lado, para o segredo não depender só do ouvido
+- Sem fone ou com som mono, quem tem legendas recebe o aviso "[um sussurro que você não pegou]"
+- Nova conquista secreta "Ouvido Direito" para quem ouve os três sussurros de fone, somando as noites
+- A nona badalada da Hora tem uma voz grave escondida no fim do decaimento que diz "fique"
+- A voz dentro do sino ganha legenda só com "Legendar sons: Todos"
+- Na sala do diretor nos túneis há um gravador de rolo novo, com a luz vermelha piscando: ele está gravando desde que você desceu
+- O gravador guarda os seus passos, as portas e as garrafas dos túneis (até 60 s) a partir dos ruídos que o motor já registra
+- Rebobinar o gravador toca a sua noite de volta, com guincho de rebobinar e cada som posicionado em 3D com eco onde aconteceu
+- Os rolos do gravador giram enquanto ele toca
+- Em uma de cada duas noites, a fita do gravador tem um passo a mais logo atrás de onde a Lia estava
+- Quem não vira para trás durante o replay ouve no fim uma voz de menino: "eu tava junto"
+- Quem vira durante o replay não acha nada, e a Lia fica na dúvida se havia alguém
+- O gravador tocando faz barulho a cada poucos segundos: ouvir a própria noite atrai o Inspetor
+- Se você entrou quieta demais, o gravador toca só chiado
+- Nova conquista secreta "Eu Tava Junto"
+- Na cisterna dos túneis, o barulho da Lia volta nove segundos depois como eco atrasado (passos, tropeços, garrafas)
+- O eco da cisterna também chama o Inspetor: uma garrafa jogada ali vira duas distrações
+- A primeira vez que o eco volta, a Lia percebe que a cisterna repete tudo
+- Nova conquista secreta "A Casa Repete" para quem engana o Inspetor com o eco de uma garrafa
+- Segurando B com o Inspetor a menos de 12 m, o rádio do Seu Joaquim capta a respiração dele, filtrada e distorcida
+- A respiração no rádio fica mais alta e mais frequente quanto mais perto ele está: um radar com o preço do chiado
+- Na primeira vez, o Seu Joaquim explica pelo rádio que o diretor pôs um rádio de babá no apito dele
+- Nova conquista secreta "Na Mesma Frequência"
+- Segurar V por 2 s enquanto o Inspetor cantarola o hino faz a Lia assobiar as mesmas notas, baixinho
+- No primeiro assobio ele para, vira a cabeça e completa a última nota
+- No segundo assobio (somando as noites) ele pergunta quem assobia o hino da casa e vem atrás do som
+- Do terceiro assobio em diante ele assobia junto, lembra do Davi e manda a Lia dormir
+- Nova conquista secreta "Dueto"
+- O banheiro do térreo e o de cima ganharam um ralo de ferro no chão
+- Agachada e parada 5 s sobre o ralo do térreo, o som dos túneis sobe pelo cano: gotas e água correndo com eco
+- Pelo ralo do térreo, crianças cochicham a ordem das válvulas, uma corrige a outra, e terminam com "shh, ela tá ouvindo"
+- Pelo ralo de cima, um menino cantarola o hino lá longe e alguém do outro lado encosta o ouvido e respira
+- Ficar no ralo mais de 8 s depois dos cochichos faz uma gota cair no rosto: a Lia levanta assustada
+- Nova conquista secreta "Pelo Cano"
+- A cozinha ganhou sete panelas penduradas numa barra, cada uma com uma nota (e a sexta, rachada, que não canta)
+- Bater numa panela toca a nota com timbre metálico e a panela balança, mas o barulho se ouve longe
+- Tocar nas panelas as cinco primeiras notas do hino faz uma colher bater três vezes na mesa e uma cozinheira de outro tempo gritar "Já pra mesa, que esfria!"
+- O hino nas panelas dá um curativo escondido na última panela
+- Nova conquista secreta "Já Pra Mesa"
+- No Dormitório A há uma lata presa na parede por um barbante que atravessa para o Dormitório B
+- Encostar o ouvido na lata toca uma conversa cochichada de duas crianças de 1979, com som abafado de lata
+- A segunda escuta da lata traz outra conversa, sobre tocar o sino
+- Na terceira vez ninguém fala: só uma respiração do outro lado, e a lata treme na parede
+- Nova conquista secreta "Telefone de Lata"
+- No cemitério, ficar 40 s parada olhando para a capela faz as gotas nas calhas tocarem o hino, nota por nota
+- Andar ou desviar o olhar quebra a música da chuva na hora
+- Nova conquista secreta "A Chuva Lembra"
+- Segurar ALT enquanto toca a fita do Moacir a deixa em meia velocidade: o som arrasta e aparece uma segunda voz, adulta, "eu ouvi tudo isso também"
+- Segurar SHIFT no fim da fita do diretor revela uma risada de menina que não existe na velocidade normal
+- Nova conquista secreta "Rotação Errada"
+- Ouvir a fita da Irmã Celeste com o volume geral entre 1% e 15% revela uma versão sussurrada: "Aumenta não. Ele tá ouvindo você ouvir."
+- A fita sussurrada do volume baixo traz uma pista extra: a primeira e a última válvula
+- Nova conquista secreta "Baixinho"
+- Da segunda noite em diante, o rádio do posto tem um pedido musical "de um ouvinte do São Lázaro", dedicado ao nome que você digitou
+- O pedido toca a música da caixinha num piano de caixinha desafinado e chiado
+- O locutor do pedido muda o recado conforme a noite anterior: se você morreu muito, "ele tá esperando"
+- Novo contador "Segredo do som (n/29)" a cada segredo de áudio achado, que vale entre as noites
+- Nova conquista secreta "Ouvido Absoluto" para quem acha todos os segredos do som

@@ -15,6 +15,7 @@ import { criarMonstrosLore } from './src/monstros-lore.js';
 import { criarMonstrosPolimento } from './src/monstros-polimento.js';
 import { instalarAudioMundo } from './src/audio-mundo.js';
 import { instalarAudioPlataforma } from './src/audio-plataforma.js';
+import { instalarAudioSegredos } from './src/audio-segredos.js';
 
 const R = window.ROTEIRO;
 const $ = s => document.querySelector(s);
@@ -1723,6 +1724,7 @@ function patrulhar() {
   M.state = 'patrulha'; M.acao = null; planejar(M, x, z);
 }
 function emitNoise(x, z, r, doJogador, garrafa) {
+  if (AUDS) AUDS.ruido(x, z, r, doJogador, garrafa); // gravador dos túneis e eco da cisterna (src/audio-segredos.js)
   VIS.ruido(x, z, r);
   UIX.ruido(x, z, r);
   if (S && Math.hypot(x - P.pos.x, z - P.pos.z) < 1.6) ruidoQuadro = Math.max(ruidoQuadro, r);
@@ -2921,6 +2923,7 @@ const BUS = {};
 const FONTES = new Set();
 let AUDM = null; // src/audio-mundo.js: hino, alto-falantes, rádios, ecos de 1979, chaves do Inspetor, Hora do Silêncio
 let AUDP = null; // src/audio-plataforma.js: menus que soam, som que cai, fone que sai, chão solto, batidas nos armários
+let AUDS = null; // src/audio-segredos.js (Lote 4): telefone, bipes, sussurros num ouvido só, gravador, cisterna, panelas, lata, ralos
 const AUD = { sils: [], trovaoIni: 0, trovaoAte: 0, coracaoN: 0, hbT: 0, resp: 0, prendia: false, ultStinger: [], stingerT: -99, dezAte: 0, estPrev: null, anaPrev: null, procT: 0, evT: 28, cacaT: 0, cacaSemi: 0, posCacaT: 0, percT: 0, pulsoT: 0, lampT: 0, ocT: 0, flashPrev: false, tiqueT: 0, avisouCoracao: false, cordaT: -9, cordaN: 0, sala: null, zumbidoAte: 0, pausado: false, erroAvisado: false,
   vozes: [], limVoz: 24, zumbidoIni: 0, zumbidoFim: 0, clusterOn: false, calmaT: 0, calmaAlvo: 300, pausaT: 0, pe: 1, crouchPrev: false, corriaPrev: false, agarraPrev: false, mortoPrev: false, grupoPrev: null };
 for (const [k, v] of Object.entries({ vAmb: 1, vSfx: 1, vEnt: 1, vVoz: 1, mono: 0, noturno: 0, falada: 0 })) if (OPT[k] === undefined) OPT[k] = v;
@@ -3329,7 +3332,7 @@ const SOM = {
   sinoLonge() { SOM.sino(.3, null); },
   badaladas(n = 9) {
     SOM.silencio(1.8 + n * 2.2, .25);
-    for (let i = 0; i < n; i++) depois(1800 + i * 2200, () => { if (!(S && S.dead) && ui !== 'morte') SOM.sino(.45 * (i === n - 1 ? 1.25 : 1), null, 1 - i * .005); });
+    for (let i = 0; i < n; i++) depois(1800 + i * 2200, () => { if (!(S && S.dead) && ui !== 'morte') { SOM.sino(.45 * (i === n - 1 ? 1.25 : 1), null, 1 - i * .005); if (i === 8 && n === 9 && AUDS) AUDS.sinoNona(); } });
   },
   estatica(dur = 2, pos) {
     const t = AC.currentTime, s = ruido(true), f = AC.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = 1600; f.Q.value = .8;
@@ -3819,6 +3822,7 @@ function updateAudioCore(dt) {
   AMB.drone.gain.setTargetAtTime((.03 + .03 * AUD.coracaoN) * ambM, now, ambM < .05 ? .02 : 1);
   // --- o mundo e a história pelo som (src/audio-mundo.js)
   if (AUDM) AUDM.tick(dt);
+  if (AUDS) AUDS.tick(dt); // segredos do som (lote 4)
 }
 // Pausa e diário abafam o mundo; menu silencia o que é contínuo; aba escondida suspende o áudio
 setInterval(() => {
@@ -4136,7 +4140,7 @@ function tecla(k) {
   if (k === '←') digitado = digitado.slice(0, -1);
   else if (k === 'OK') {
     if (digitado === teclado.codigo) { const ok = teclado.ok; fecharTeclado(); ok(); return; }
-    if (H.codigo($('#k-tit').textContent, digitado)) { digitado = ''; if (teclado) $('#k-disp').textContent = '_'.repeat(n); return; }
+    if ((AUDS && AUDS.codigo($('#k-tit').textContent, digitado)) || H.codigo($('#k-tit').textContent, digitado)) { digitado = ''; if (teclado) $('#k-disp').textContent = '_'.repeat(n); return; }
     $('#keypad').classList.add('erro'); setTimeout(() => $('#keypad').classList.remove('erro'), 450); SFX.trancado(); if (mundoVivo()) emitNoise(P.pos.x, P.pos.z, 10, true); if (teclado.erro) teclado.erro(); digitado = '';
   } else if (digitado.length < n) digitado += k;
   $('#k-disp').textContent = (digitado + '_'.repeat(n)).slice(0, n);
@@ -4296,11 +4300,18 @@ PG.ligar({
 AUDM = instalarAudioMundo({
   get AC() { return AC; }, get S() { return S; }, get mode() { return mode; }, get ui() { return ui; }, get perf() { return perf; }, get fita() { return fitaTocando; },
   SOM, SFX, BUS, AUD, AMB, VOGAL, FONTES, THREE, MAT, P, M, ANA, PROC, W, keys, camera, legendas: UIX.som.def,
-  saida, env, osc, burst, ruido, curvaDist, fonteFixa, moverFonte, box, cyl, interact, emitNoise, sub, subPequeno, toast, rand, pick, clamp
+  saida, env, osc, burst, ruido, curvaDist, fonteFixa, moverFonte, box, cyl, interact, emitNoise, sub, subPequeno, toast, rand, pick, clamp,
+  conquista, seg: () => AUDS // lote 4: segredos do som
 });
 AUDP = instalarAudioPlataforma({
   get AC() { return AC; }, get S() { return S; }, get mode() { return mode; }, get ui() { return ui; },
   SOM, OPT, AUD, W, P, M, THREE, emitNoise, toast, abrirPausa, legendas: UIX.som.def
+});
+// Lote 4: segredos do som (src/audio-segredos.js)
+AUDS = instalarAudioSegredos({
+  get AC() { return AC; }, get S() { return S; }, get mode() { return mode; }, get ui() { return ui; }, get perf() { return perf; }, get fita() { return fitaTocando; }, get chamado() { return chamadoArmadilha; }, get AUDM() { return AUDM; },
+  SOM, SFX, BUS, OPT, R, THREE, MAT, P, M, ANA, PROC, W, keys, camera, legendas: UIX.som.def, fone: () => PLAT.fone(),
+  saida, env, osc, burst, ruido, curvaDist, box, cyl, interact, emitNoise, roomAt, sub, subPequeno, toast, conquista, fecharTeclado, renderInvMini
 });
 carregarTitulo();
 const grain = $('#fx-grain').getContext('2d'), grainImg = grain.createImageData(160, 90);

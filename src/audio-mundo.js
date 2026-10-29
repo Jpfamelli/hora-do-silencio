@@ -101,6 +101,39 @@ const TXT = {
     }
   }
 };
+// Lote 4 (segredos do som): vitrola, caixinha e rádios que narram
+const L4 = {
+  dicas: [
+    '...a sexta... a sexta... (a agulha pula) ...a sexta panela não canta. As outras cantam o hino: ré, fá, lá, sol, fá.',
+    '...o telefone... o telefone... (a agulha pula) ...o telefone ainda liga pra delegacia. Zero, um, nove, zero. Ninguém vem.',
+    '...o ralo... o ralo... (a agulha pula) ...agachada no ralo do banheiro, de boca fechada, dá pra ouvir os túneis.',
+    '...pra trás... pra trás... (a agulha pula) ...quem gira o disco pra trás ouve a estrofe que rasparam.',
+    '...a caixinha... a caixinha... (a agulha pula) ...a caixinha da menina também toca ao contrário. E até o fim.',
+    '...o dial... o dial... (a agulha pula) ...os rádios velhos falam outra coisa no fim do dial.'
+  ],
+  dicasFim: '(a agulha pula e cai no silêncio. O disco não tem mais nada pra dizer hoje.)',
+  arranhao: '(a agulha arranha alto o disco inteiro)',
+  estrofe: [
+    { quem: 'voz', texto: '(o disco gira para trás. No meio do hino ao contrário, crianças cantam uma estrofe que não está na moldura)' },
+    { quem: 'voz', texto: '♪ Quando o sino der a nona, quem não dorme fica aqui... ♪' },
+    { quem: 'voz', texto: '♪ ...conta os nomes, guarda a hora, que a casa lembra de ti. ♪' }
+  ],
+  estrofeInsp: 'QUEM ESTÁ CANTANDO ISSO?',
+  estrofeLia: 'A quarta estrofe. A que rasparam da moldura. Eles cantavam escondido.',
+  revJa: '(o disco já girou para trás hoje. A agulha não aguenta de novo.)',
+  luiz: '(no meio da música ao contrário, uma criança diz um nome) ...Luiz.',
+  luizLia: 'Luiz. O menino que trancaram no armário com o Moacir. A caixinha lembra dele.',
+  ninar: '(a caixinha chega numa frase que nunca tocou antes. Por baixo, a voz gravada de uma mulher) Dorme, meus três.',
+  ninarLia: 'Três. Ela disse três. A mãe gravou isso pra eles.',
+  narra: [
+    ({ sala, postura }) => '(o locutor interrompe a música) Notícia de última hora: uma moça está ' + postura + ' ' + sala + ' do internato. Ela acha que ninguém está vendo.',
+    ({ sala, luz }) => '(o rádio chia) ...e atenção, ouvintes: alguém ' + sala + ' do São Lázaro está com a lanterna ' + luz + '. Alguém mais vê?',
+    ({ postura }) => '(o locutor baixa a voz) ...ela está ' + postura + ', parada. Faz tempo que não se mexe. Será que ela sabe o que tem atrás dela?',
+    ({ sala }) => '...previsão do tempo para quem está ' + sala + ': silêncio a noite toda. Quem fizer barulho chama chuva de ferro.',
+    ({ escondida, sala }) => escondida ? '...ela entrou num armário ' + sala + '. As crianças também achavam que armário salvava.' : '...a moça ' + sala + ' não está escondida. Repito: não está escondida.'
+  ],
+  narraLia: 'Ele tá falando de mim. O rádio tá falando de mim.'
+};
 const TOTAL_ECOS = Object.values(TXT.ecos).reduce((n, m) => n + Object.keys(m).length, 0);
 
 const LEGENDAS = {
@@ -359,9 +392,9 @@ export function instalarAudioMundo(C) {
     C.box(.06, .06, .02, MAT.bronze, .12, .07, .095, g, false);
     const ant = C.cyl(.006, .006, .45, MAT.metal, .14, .44, -.04, 6, g); ant.rotation.z = -.45;
     const r = { x: p.x, y: p.y + .15, z: p.z, sala, chave, tocando: null, ouvido: false, g };
-    C.interact(g, () => r.tocando ? '<b>E</b>Desligar o rádio' : r.ouvido ? 'Um rádio velho. Agora só chia.' : 'Um rádio velho, de válvula. Desligado.', () => {
+    C.interact(g, () => r.tocando ? '<b>E</b>Desligar o rádio' : r.ouvido ? (C.seg && C.seg() && C.seg().dialPode(r) ? '<b>E</b>Girar o dial até o fim<small style="opacity:.6"> · faz barulho</small>' : 'Um rádio velho. Agora só chia.') : 'Um rádio velho, de válvula. Desligado.', () => {
       if (r.tocando) { desligarRadio(r); C.SFX.clique(); ruidoMundo(r.x, r.z, 2); }
-      else if (r.ouvido) C.SFX.estatica(.5, r);
+      else if (r.ouvido) { if (!(C.seg && C.seg() && C.seg().dial(r))) C.SFX.estatica(.5, r); }
     });
     return r;
   }
@@ -374,7 +407,11 @@ export function instalarAudioMundo(C) {
     C.cyl(.03, .03, .014, MAT.vidro, -.03, .13, .02, 10, g);
     C.box(.02, .02, .22, MAT.metal, .15, .14, .01, g, false);
     E.vit = { x: p.x - .4, y: p.y + .2, z: p.z, g };
-    C.interact(g, () => fl().am_vitrola ? 'A agulha pula no mesmo verso, sem parar.' : '<b>E</b>Ligar a vitrola', () => { if (!fl().am_vitrola) ligarVitrola(); });
+    C.interact(g, () => !fl().am_vitrola ? '<b>E</b>Ligar a vitrola' : E.pula ? (fl().am4_rev ? '<b>E</b>Empurrar a agulha<small style="opacity:.6"> · arranha alto</small>' : '<b>E</b>Empurrar a agulha<small style="opacity:.6"> · segure S para girar o disco para trás</small>') : 'A vitrola toca o hino, alto.', () => {
+      if (!fl().am_vitrola) return ligarVitrola();
+      if (!E.pula) return;
+      if (keys.KeyS || keys.ArrowDown) vitrolaReversa(); else empurrarAgulha();
+    });
   }
 
   // ---------------------------------------------------------------- HORA DO SILÊNCIO (nona badalada)
@@ -483,6 +520,34 @@ export function instalarAudioMundo(C) {
     let feito = false;
     return { inp, out, wow: wow2, parar() { if (feito) return; feito = true; clearInterval(est); const n = ac().currentTime; out.gain.setTargetAtTime(0, n, .05); for (const x of [s, wow]) try { x.stop(n + .4); } catch (e) {} } };
   }
+  // Lote 4: empurrar a agulha completa a frase com uma dica de segredo (uma por vez, por noite)
+  function arranhar(dest, t, v = 1) { const g = ac().createGain(); g.connect(dest); const f = C.burst(t, .7, 'bandpass', 3600, 5, g); f.frequency.exponentialRampToValueAtTime(600, t + .65); C.env(g, t, .004, .9 * v, .65); }
+  function empurrarAgulha() {
+    const v = E.vit, A = ac(), n = fl().am4_dica || 0, t = A.currentTime + .05;
+    E.pula.t = 7; arranhar(E.pula.h.inp, t, 1.2); C.SFX.vitrolaPula(v); ruidoMundo(v.x, v.z, 16);
+    if (!fl().am4_arr) { fl().am4_arr = 1; C.toast(L4.arranhao); }
+    if (n >= L4.dicas.length) { mais(.8, () => C.subPequeno ? C.subPequeno('voz', L4.dicasFim) : null); return; }
+    fl().am4_dica = n + 1; const txt = L4.dicas[n];
+    mais(.7, () => C.sub('voz', txt));
+    falarTxt(E.pula.h.inp, t + .7, txt, { f0: 330, vel: .12, formK: 1.3, pk: .12, wow: E.pula.h.wow });
+    if (C.seg && C.seg()) C.seg().achar('agulha');
+  }
+  // segurar S e empurrar: o disco gira para trás e revela a quarta estrofe raspada da moldura (uma vez por noite)
+  function vitrolaReversa() {
+    const v = E.vit, A = ac();
+    if (fl().am4_rev) { C.toast(L4.revJa); arranhar(E.pula.h.inp, A.currentTime, .6); ruidoMundo(v.x, v.z, 10); return; }
+    fl().am4_rev = 1; E.pula.t = 20;
+    const h = vivo(cadeiaVinil(v, 1.4)), t0 = A.currentTime + .3;
+    // a agulha raspa para trás antes de pegar o sulco
+    const g = A.createGain(); g.connect(h.inp); const f = C.burst(t0, 1.2, 'bandpass', 500, 3, g); f.frequency.exponentialRampToValueAtTime(3200, t0 + 1.1); C.env(g, t0, .3, .5, .9);
+    const p = hino(h.inp, { timbre: 'coro', t: t0 + 1.2, bpm: 50, vozes: 5, pk: 1.7, desaf: 40, reverso: true, oit: .5, wow: h.wow });
+    const r2 = hino(h.inp, { timbre: 'coro', t: p.fim + .2, bpm: 60, vozes: 3, pk: 1.4, desaf: 25, wow: h.wow });
+    falarTxt(h.inp, p.fim + .2, 'quando o sino der a nona, quem não dorme fica aqui. conta os nomes, guarda a hora, que a casa lembra de ti.', { f0: 300, vel: .17, formK: 1.3, pk: .07 });
+    L4.estrofe.forEach((l, i) => mais(1 + i * 4.5, () => C.sub(l.quem, l.texto, true)));
+    for (let k = 0; k < 8; k++) mais(1.2 + k * 2, () => ruidoMundo(v.x, v.z, 30));
+    mais(6, () => { if (M.ativo) C.sub('inspetor', L4.estrofeInsp); });
+    mais(r2.fim - A.currentTime, () => { h.parar(); vivos.delete(h); C.sub('lia', L4.estrofeLia); if (C.conquista) C.conquista('l4a_disco'); if (C.seg && C.seg()) C.seg().achar('estrofe'); });
+  }
   // depois que risca: o disco pula no mesmo verso, para sempre, e o refeitório fica perigoso
   function vitrolaPulando() {
     const v = E.vit; if (!v || E.pula) return;
@@ -533,9 +598,31 @@ export function instalarAudioMundo(C) {
   function caixinha(x, z) {
     const A = ac(), t = A.currentTime + .7, pos = { x, y: 1, z };
     for (let i = 0; i < 8; i++) { const g = C.saida(pos, .3); C.burst(t - .7 + i * .08, .015, 'highpass', 3500, 2, g); C.env(g, t - .7 + i * .08, .001, .1, .015); }
-    const g = C.saida(pos, .7), p1 = hino(g, { timbre: 'caixinha', oit: 2, bpm: 84, t: t - .05, ultDesaf: .97 });
+    const g = C.saida(pos, .7);
+    // Lote 4: segurando S, a manivela gira para trás: o hino sai invertido, mais grave, e no meio uma criança diz um nome
+    if (keys.KeyS || keys.ArrowDown) {
+      const lp = biq('lowpass', 1800); lp.connect(g);
+      rangeLongo(g, t - .7, false, 2.4, 1.2); ruidoMundo(x, z, 12);
+      const p = hino(lp, { timbre: 'caixinha', oit: 1, bpm: 60, t: t + .6, reverso: true, desaf: 30, pk: 1.2 });
+      const meio = t + .6 + (p.fim - t - .6) / 2;
+      vozNo(g, meio, 330, 'u', .28, .14, { q: 5, cai: .9, formK: 1.3 }); vozNo(g, meio + .3, 360, 'i', .5, .14, { q: 5, cai: .8, formK: 1.3 });
+      mais(meio - A.currentTime, () => C.sub('voz', L4.luiz, true));
+      mais(p.fim - A.currentTime + 1, () => { C.sub('lia', L4.luizLia); if (C.conquista) C.conquista('l4a_luiz'); if (C.seg && C.seg()) C.seg().achar('luiz'); });
+      C.SOM.silencio(p.fim - A.currentTime + 1, .2);
+      return;
+    }
+    const p1 = hino(g, { timbre: 'caixinha', oit: 2, bpm: 84, t: t - .05, ultDesaf: .97 });
     const p2 = hino(g, { timbre: 'caixinha', notas: ASSOBIO, oit: 2, bpm: 60, t: p1.fim + .5, reverso: true, ultDesaf: .94, pk: .8 });
     C.SOM.silencio(p2.fim - A.currentTime + 1, .2);
+    // Lote 4: quem fica perto até a última nota ouve uma frase nova, e a mãe por baixo da música (uma vez por noite)
+    if (!fl().am4_ninar) mais(p2.fim - A.currentTime - .2, () => {
+      const s = St(); if (!s || s.dead || dist(P.pos, x, z) > 5 || fl().am4_ninar) return;
+      fl().am4_ninar = 1; const n = ac().currentTime + .3;
+      const p3 = hino(g, { timbre: 'caixinha', notas: HINO_MAIOR.slice(4), oit: 2, bpm: 52, t: n, pk: .9 });
+      falarTxt(g, n + 1, 'dorme, meus três.', { f0: 210, vel: .2, formK: 1.1, pk: .06 });
+      mais(1, () => C.sub('voz', L4.ninar, true));
+      mais(p3.fim - ac().currentTime + .8, () => { C.sub('lia', L4.ninarLia); if (C.conquista) C.conquista('l4a_ninar'); if (C.seg && C.seg()) C.seg().achar('ninar'); });
+    });
   }
 
   // ---------------------------------------------------------------- ECOS DE 1979
@@ -626,6 +713,16 @@ export function instalarAudioMundo(C) {
       const qual = linhasRadio(r); if (!qual) continue;
       fl()['am_r_' + qual[0]] = 1; r.ouvido = true;
       tocarRadio(r, qual[1], { extra: extraRadio(qual[0] === 'cozinha1' || qual[0] === 'cozinha2' ? 'cozinha' : qual[0]), chiado: qual[0] === 'secreta' ? 1.6 : 1 });
+    }
+    // --- Lote 4: parada perto de um rádio já ouvido, o locutor narra o que ela está fazendo (uma vez por rádio, por noite)
+    for (const r of E.radios) {
+      if (!r || r.tocando || !r.ouvido || fl()['am4_narra_' + r.chave] || PROC.fase || C.fita) continue;
+      if (dist(P.pos, r.x, r.z) > 5 || E.paradoT < 12 || !calma) continue;
+      fl()['am4_narra_' + r.chave] = 1;
+      const sala = room && room.nome ? (room.fora ? 'no ' : 'na ') + room.nome.toLowerCase() : 'num canto escuro', postura = s.hidden ? 'escondida' : P.crouch ? 'agachada' : 'de pé';
+      const txt = pick(L4.narra)({ sala, postura, luz: s.flashOn ? 'acesa' : 'apagada', escondida: !!s.hidden });
+      tocarRadio(r, [txt], { vol: .8 }); mais(6, () => C.sub('lia', L4.narraLia));
+      if (C.conquista) C.conquista('l4a_radio'); if (C.seg && C.seg()) C.seg().achar('narra');
     }
     // --- prólogo: o rádio do posto narra futebol de 1979; depois que o velho some, só conta
     if (m === 'estrada' && s.chapter === 0) {
@@ -790,5 +887,7 @@ export function instalarAudioMundo(C) {
     salaK += ((lore ? .15 : 1) - salaK) * Math.min(1, dt * 1.5);
     return ambK() * salaK;
   }
-  return { tick, ambiente, ambK, horaAtiva, caixinha, passoK: () => horaAtiva() ? 1.5 : 1, coracaoK: () => horaAtiva() ? 1.3 : 1 };
+  // ferramentas para src/audio-segredos.js (Lote 4)
+  const int = { E: () => E, hino, falarTxt, vozNo, sussNo, cadeiaRadio, cadeiaEco, cadeiaVinil, tocarRadio, desligarRadio, respiracao, pingo, panela, clink, batidas, rangeLongo, risadas, sirene, choroTapado, vivo, biq, mais, HINO, HINO_MAIOR, ASSOBIO };
+  return { int, tick, ambiente, ambK, horaAtiva, caixinha, passoK: () => horaAtiva() ? 1.5 : 1, coracaoK: () => horaAtiva() ? 1.3 : 1 };
 }
