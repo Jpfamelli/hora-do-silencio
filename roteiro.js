@@ -1231,6 +1231,354 @@ window.ROTEIRO.progressao = {
   );
 })(window.ROTEIRO);
 
+// LOTE 4 — SEGREDOS E EASTER EGGS (src/historia-segredos.js): lugares escondidos, códigos, cartas, finais
+// secretos e a palavra que liga tudo. Notas e fitas daqui são todas "secreta: true" (não contam no total).
+(function (R) {
+  R.lote4 = {
+    // ---- o carro (prólogo): sentar de novo, o rádio que segue o programa, a partida que não pega
+    carro: {
+      entrar: "Entrar no carro",
+      chave: "Girar a chave",
+      dicaSentada: "W/S: sair do carro · segure E na chave: dar a partida",
+      sentou: [{ quem: "lia", texto: "(baixinho) Só um minuto. Só um minuto aqui dentro, com a porta fechada." }],
+      saiu: { quem: "lia", texto: "Tá. Tá bom. Ele tá esperando." },
+      programa: [
+        { quem: "radio", texto: "...e a previsão pra madrugada é de chuva forte na serra. A Defesa Civil pede: não suba a estrada velha..." },
+        { quem: "radio", texto: "...recado de ouvinte agora. Para a Lia, que está parada na estrada velha: o seu irmão pediu pra avisar que a porta da frente emperra..." },
+        { quem: "lia", texto: "...o quê?" },
+        { quem: "radio", texto: "...outro recado, sem nome: 'não liga o motor, moça. ele gosta de barulho'. Fica o recado." },
+        { quem: "radio", texto: "(um hino de escola, tocado devagar demais) ...a Serra FM encerra a sua programação. Boa noite a quem ficou." },
+        { quem: "radio", texto: "(silêncio de rádio. Nem chiado.)" }
+      ],
+      batidas: [{ quem: "lia", texto: "(prendendo o ar) ...tem alguém em cima do carro." }, { quem: "lia", texto: "Tá bom. Tá bom, eu saio. Eu saio!" }],
+      tentativas: [
+        "(o motor tosse e morre) Vamos. Vamos...",
+        "(tosse de novo) Eu sei que tem gasolina.",
+        "(engasga) Eu juro que se você pegar...",
+        "(nada) Não. Não, não, não.",
+        "(um estalo lá fora, no mato) ...o barulho. Ele gosta de barulho.",
+        "(tosse longa) Mais uma. Só mais uma.",
+        "(engasga) O Davi tá lá dentro. E eu tô aqui girando uma chave.",
+        "(o motor quase pega) Quase. Quase!"
+      ],
+      pegou: { quem: "lia", texto: "(o motor pega. A Lia não respira.) ...pegou." },
+      final: {
+        titulo: "FINAL ESCONDIDO: NÃO ENTREI",
+        texto: "A Lia engatou a ré e foi embora pela estrada velha, de faróis apagados até a curva.\n\nNo dia seguinte, o jornal da cidade deu uma nota pequena: \"Mais uma noite em que ninguém subiu a serra.\"\n\nEla nunca contou pra ninguém que o rádio do carro, naquela madrugada, sussurrou do banco de trás. Uma palavra só.\n\n\"Lia?\"\n\nQuinze anos viraram trinta. A fita continua chegando pelo correio. Todo ano, no dia 14.",
+        tempo: "Você foi embora em {t}. Ninguém precisa chegar lá.",
+        botao: "Voltar ao menu"
+      },
+      volta: { t: 25.2, quem: "davi", texto: "(na fita, mais perto que antes) Você foi embora, Lia. Por que você foi?" }
+    },
+    // ---- Seu Joaquim: depois da conversa obrigatória, ele ainda responde (cada vez com menos paciência)
+    joaquim: {
+      extras: [
+        { quem: "joaquim", texto: "Chove assim desde setenta e nove. A serra não esquece." },
+        { quem: "joaquim", texto: "O seu irmão roubava bala do meu pote. Achava que eu não via. Eu via." },
+        { quem: "joaquim", texto: "Moça, a chave. No prego. Atrás de você." },
+        { quem: "joaquim", texto: "Você é teimosa igual ele. Ele também voltava pra perguntar a mesma coisa." },
+        { quem: "joaquim", texto: "Não tô com fome, não tô com frio e não tô com pressa. Tô morto, moça." },
+        { quem: "joaquim", texto: "Vai, moça. Eu já morri, não tenho o dia todo." },
+        { quem: "joaquim", texto: "(ele bufa e olha pro rádio) ..." },
+        { quem: "joaquim", texto: "Senta aí. Já que não vai embora, então escuta." }
+      ],
+      historia: [
+        { quem: "joaquim", texto: "(tirando o chapéu) Naquela noite o diretor parou aqui. Carro preto, sem farol." },
+        { quem: "joaquim", texto: "Pediu dois galões cheios. Disse que era pro gerador. O gerador era a diesel, moça." },
+        { quem: "joaquim", texto: "Eu enchi. Eu enchi os dois. E fiquei aqui ouvindo o sino bater até parar." },
+        { quem: "joaquim", texto: "(estende um rolo de fumo) Leva. Deixa no oratório da curva. É o que eu nunca tive coragem de deixar." }
+      ],
+      luz: { quem: "joaquim", texto: "Tira essa luz da minha cara. Morto não fica cego, fica cansado." },
+      apressada: { quem: "joaquim", texto: "Apressada igual o menino. Ele também corria. Não adiantou." }
+    },
+    caixa: { rotulo: "Abrir a gaveta da caixa registradora", vazia: "A gaveta range. Só moedas de cruzeiro e poeira.", chave: "No fundo da gaveta, uma chavinha com etiqueta de papel: A.T. 1980." },
+    sapatos: { rotulo: "Ler uma carta da caixa de sapatos", lido: "Uma carta por noite. As outras continuam lacradas." },
+    chamadaNome: "\n\n(uma 38ª linha, à mão, na letra do Davi; a tinta ainda escorre)\n38. {nome} ✓",
+    // ---- térreo
+    braile: {
+      rotulo: "Uma plaquinha de latão com pontinhos em relevo",
+      ler: "Ler com os dedos, no escuro",
+      dica: "Pontinhos em relevo. Isso não é pra olhar. É pra ler no escuro, de joelhos, com os dedos.",
+      lia: [{ quem: "lia", texto: "(de olhos fechados) Ele lia assim. Passando a mão. Toda noite, no mesmo lugar." }],
+      terceira: [{ quem: "lia", texto: "(a voz falha) ...é a cabeça dele. Eu tô lendo a cabeça dele." }]
+    },
+    gaveta: { rotulo: "Abrir a gaveta da carteira riscada D.M.", titulo: "CADEADO DA GAVETA — D.M.", erro: "Errado. Na tampa, a canivete: 'eu e ela, naquela noite'." },
+    lousa: { rotulo: "Ler a chamada na lousa", presente: "PRESENTE" },
+    castigo: {
+      rotulo: "Ler a lousa do castigo",
+      nada: "NÃO FALAREI NA HORA, cem vezes. Uma das linhas, no meio, parece mais escura. Molhada.",
+      clarao: "No clarão, uma linha da lousa brilhou diferente das outras.",
+      fuga: { quem: "lia", texto: "Três segundos. O Davi escreveu na lousa. CORRE!" }
+    },
+    pasta: { rotulo: "Folhear a pasta da professora" },
+    livro: { rotulo: "Pegar o livro 'Contos para Dormir'" },
+    retida: { rotulo: "Ler a carta mais nova da caixa de retidas" },
+    bolo: {
+      forno: "Abrir o forno frio",
+      achou: "Dentro do forno frio, um bolo seco, duro como pedra. DAVI 12, em glacê rachado. Doze velinhas tortas.",
+      acender: "Acender as doze velinhas",
+      soprar: "Soprar as velinhas",
+      cantam: [
+        { quem: "voz", texto: "(sussurrado, de muitas bocas, no escuro) ...parabéns pra você, nesta data querida..." },
+        { quem: "voz", texto: "(uma voz só, bem perto) Faz um pedido, Lia." },
+        { quem: "lia", texto: "(muito baixo) ...eu quero ele de volta." }
+      ]
+    },
+    planta: { rotulo: "Abrir a planta enrolada" },
+    zelador: { rotulo: "Ler o caderno do zelador" },
+    placa: { rotulo: "Olhar a placa de bronze de 1931", gasta: "Os nomes estão gastos. Um foi raspado. Com a luz bem de perto, de lado, talvez dê pra ler o relevo." },
+    bilhete: { rotulo: "Ler o bilhete dobrado em quatro", lembra: { quem: "lia", texto: "(rindo, sem querer) A língua do P. A gente falava assim pra Irmã não entender." }, recusa: { quem: "lia", texto: "Esse não. Esse eu não quero ler." } },
+    // ---- andar de cima
+    colchao: { rotulo: "Ler a carta debaixo do colchão D.M." },
+    corrente: { rotulo: "Ler a carta-corrente", copiar: "Copiar a carta-corrente nove vezes", copiou: "A décima linha aparece sozinha, em outra letra: QUEM QUEBROU FOI O DAVI. ELE NÃO TINHA MEDO.", ignorou: { t: 25.6, quem: "lia", texto: "...tem um papel no banco do carona. A carta-corrente. Eu não copiei." } },
+    espelho: { pegar: "Pegar a folha escrita ao contrário", ler: "Ler a folha do Davi no espelho", lia: { quem: "lia", texto: "Ao contrário. Ele era canhoto. Escrevia assim pra freira não ler." }, desvira: { quem: "lia", texto: "No espelho dá pra ler." } },
+    visitante: { quem: "lia", texto: "(sussurrando, com o dedo na madeira) J.P. esteve aqui. Dois mil e vinte e seis. ...Alguém de depois?" },
+    cadeado: { rotulo: "Forçar o cadeadinho do diário rosa com um grampo" },
+    monitor: { rotulo: "Ler o caderno do monitor" },
+    galena: {
+      rotulo: "Ajustar o fio do radinho de lata",
+      falas: [
+        { quem: "radio", texto: "(longe, por dentro da lata) ...Rádio Serra FM, vinte e uma horas em ponto. Chuva forte em toda a região..." },
+        { quem: "radio", texto: "(chiado) ...moradores voltam a relatar badaladas vindas do internato..." },
+        { quem: "lia", texto: "(no radinho, com a minha voz) Tinha alguma coisa em cima do carro. Eu tô chegando, Davi." },
+        { quem: "lia", texto: "...essa sou eu. Isso foi agora há pouco. Ou foi ontem. Ou vai ser amanhã." }
+      ]
+    },
+    perguntas: {
+      rotulo: "Responder o caderno de perguntas",
+      dica: "aperte 1, 2, 3 ou 4 para responder",
+      opcoes: ["o escuro", "ficar sozinha", "ser esquecida", "não achar o Davi"],
+      respondeu: { quem: "lia", texto: "(escreve devagar, com a letra que tinha aos catorze) Pronto. Agora alguém sabe." },
+      capela: [
+        { quem: "voz", texto: "(do escuro, perto do chão) Tá escuro aqui, né, Lia? Você escreveu que tinha medo." },
+        { quem: "voz", texto: "(atrás de você, muito perto) Todo mundo foi embora. Só ficou você. Você escreveu." },
+        { quem: "voz", texto: "(sussurro) Qual era o seu nome mesmo, moça? ...Ninguém lembra." },
+        { quem: "davi", texto: "(eco, do alto da torre) Eu tô aqui. Você escreveu que tinha medo de não me achar. Eu tô aqui." }
+      ],
+      final: [
+        "No caminho de volta, a Lia deixou a lanterna acesa a noite inteira. Não precisou mais.",
+        "No carro, pela primeira vez em quinze anos, ela não ligou o rádio pra ter companhia.",
+        "Na pedra do Davi, alguém tinha riscado o nome dela também. Ninguém ia esquecer.",
+        "Ela achou o Davi. Demorou quinze anos e uma noite. Mas achou."
+      ]
+    },
+    gibi: { rotulo: "Ler o gibi feito à mão" },
+    // ---- túneis
+    tijolo: { rotulo: "Puxar o tijolo solto com L.M. riscado", depois: [{ quem: "lia", texto: "(a respiração se quebra; ela chora sem barulho)" }, { quem: "lia", texto: "...catorze. Eu fiz catorze e ninguém me deixou ouvir isso." }] },
+    pacto: { rotulo: "Ler o que está escrito a carvão" },
+    cofre: {
+      c1503: { disp: "PARABÉNS", toast: "Uma gavetinha de cima solta: uma vela de aniversário torta, um 14 de cera, e um curativo.", fala: { quem: "lia", texto: "Quinze de março. Ele sabia que eu ia tentar o meu aniversário. Ele sabia que eu ia..." } },
+      c1234: { quem: "davi", texto: "(eco, dentro do cofre) Um, dois, três, quatro? Você não mudou nada, Lia." },
+      c9999: { quem: "lia", texto: "(longe, o sino bate uma vez sozinho) ...não fui eu. Eu não toquei em nada." },
+      inverso: { quem: "davi", texto: "(eco) Tá de trás pra frente. Igual a fita quando enrosca." }
+    },
+    // ---- cemitério e capela
+    capsula: { rotulo: "Cavar a terra fofa ao lado da cruz sem nome", semPa: "A terra tá fofa, mas com a mão não vai. Preciso de uma pá.", lata: "Uma lata de bolacha enferrujada. Dentro, três envelopes: PARA ABRIR EM 1994." },
+    cruzJ: { rotulo: "Olhar a cruz de madeira", texto: "Uma cruz de madeira, sem lápide. A canivete: J. S. — 1979.", radio: { quem: "radio", texto: "(chiado, de lugar nenhum) ...eu nunca saí do posto, moça. Mas o corpo ficou aqui." } },
+    banco: { rotulo: "Olhar o banco da última fileira", escuro: "Madeira gasta. Riscos de gerações. Com luz de lado, bem de perto, talvez dê pra ler.", lia: { quem: "lia", texto: "(passando o dedo) L.M., 1994. A madeira ainda tá clara. Isso foi feito hoje." } },
+    albano: { trancado: "Um armário trancado por fora. Etiqueta amarelada: A.T.", abrir: "Abrir o armário trancado por fora (chave A.T. 1980)", portao: { quem: "joaquim", texto: "Por aqui, moça! ...Agora você sabe o que eu fiz. Corre!" } },
+    // ---- coisas que valem a noite inteira
+    letra: "Num canto, pintada pequena, uma letra: {l}. Embaixo, um número riscado: {n}.",
+    choro: { senta: { quem: "lia", texto: "(a Lia escorrega pela parede até o chão e chora baixinho)" }, levanta: { quem: "lia", texto: "(respira fundo) Eu vim buscar ele. Levanta, Lia." } },
+    liaPagina: { quem: "lia", texto: "Tem uma página a mais no meu diário. Com a minha letra. De hoje." },
+    liaPaginaLida: { quem: "lia", texto: "Eu não escrevi isso. ...Escrevi?" },
+    regra8Jogador: "\n\n(embaixo, com outra caneta, na letra da Lia)\n8. {r}",
+    regra8Pesadelo: "\n\n(no pé da folha, em letra de criança, quase apagada)\n8. Se você ler isso, ele já sabe que você leu.",
+    regra8Leu: { quem: "lia", texto: "(o papel treme na mão) ...ele sabe." },
+    carta: {
+      titulo: "Antes de ir embora",
+      davi: "Deixar uma carta no túmulo do Davi (até 140 letras)",
+      regra: "Escrever uma regra a mais na folha do Joaquim (até 80 letras)",
+      salvar: "Guardar",
+      guardou: "Guardado. Amanhã à noite alguém vai ler.",
+      respostas: {
+        desculpa: "(na fita, depois do chiado) Não tem o que desculpar, Lia. Eu que pedi pra vir. Eu escrevi isso no desenho, lembra?",
+        saudade: "(na fita, depois do chiado) Eu também. Eu conto os seus passos no corredor. Você anda igual a mãe.",
+        mae: "(na fita, depois do chiado) Fala pra mãe que eu comi tudo. Que eu não chorei. Mentira, mas fala.",
+        medo: "(na fita, depois do chiado) Medo é bom, Lia. Medo deixa a gente quietinho. Quietinho ele não acha.",
+        voltar: "(na fita, depois do chiado) Volta não. ...Volta sim. Volta só mais uma vez.",
+        outra: "(na fita, depois do chiado) Eu li a sua carta. Li três vezes. A letra tá igual."
+      }
+    },
+    acorda: {
+      linhas: [
+        "(clique de REC) Lia? Se você está ouvindo, a hora está acabando.",
+        "Ele está acordando. Traz nossas coisas de volta. E não responde quando ele chamar.",
+        "(baixinho, só pra ele) Eu sei que você vai voltar. Você sempre volta.",
+        "Davi acordou primeiro."
+      ]
+    },
+    fita5: { aviso: "Tem um gravador no chão que não estava aqui. Na etiqueta, a lápis: 5." },
+    cartaAdulto: { t: 25.8, quem: "lia", texto: "...tem um envelope preso no limpador do para-brisa. Letra de adulto. Assinado: Davi." },
+    primeiraVersao: { t: 9.8, quem: "radio", texto: "(entre duas estações) ...da outra vez eram oito noites, Lia. O prédio encolheu..." },
+    copa: [
+      "rádio-relógio: ...a seleção treina em silêncio, rumo à Copa nos Estados Unidos...",
+      "rádio-relógio: ...o técnico pede calma à torcida. Na serra, chove...",
+      "rádio-relógio: ...faltam poucas semanas para a Copa. No São Lázaro, ninguém tem televisão..."
+    ],
+    copaFinal: "rádio-relógio: ...é campeão nos pênaltis! O país inteiro grita! ...e lá no São Lázaro, ninguém comemorou.",
+    // ---- esquisitices que a Lia anota sem perceber
+    esquisitices: {
+      costas: "Hoje eu andei de costas pela estrada. Muito tempo. Não sei por quê.",
+      carro: "Voltei pro carro. Fiquei sentada com a porta fechada, fingindo que era outra noite.",
+      partida: "Girei a chave do carro morto. Mais de uma vez. Ele estava ouvindo.",
+      prosa: "Conversei com um morto até ele perder a paciência.",
+      luzJoaquim: "Apontei a lanterna na cara do Seu Joaquim. Ele reclamou.",
+      choro: "Fiquei sentada no chão chorando. Ninguém veio. Ou veio e não disse nada.",
+      respondeu: "Respondi quando ele chamou. A regra dizia pra não responder.",
+      braile: "Li no escuro com os dedos, de joelhos, como ele lê.",
+      mortes: "Morri tantas vezes que perdi a conta. A lousa não perdeu.",
+      escondida: "Fiquei escondida tanto tempo que esqueci do que eu tava fugindo.",
+      bolo: "Fiz um pedido num bolo de quinze anos atrás.",
+      cofre: "Digitei o meu aniversário num cofre. Ele sabia.",
+      corrente: "Copiei uma carta-corrente nove vezes. A décima linha se escreveu sozinha.",
+      visitante: "Dentro de um armário tinha o nome de alguém que ainda não nasceu."
+    },
+    // conquistas novas (secretas)
+    conquistas: [
+      { id: "nao_entrei", nome: "Não Entrei", desc: "Vá embora antes de passar pelo portão.", secreta: true, dica: "O carro morreu. Morreu mesmo?" },
+      { id: "programa_inteiro", nome: "Até o Hino", desc: "Fique no carro até a rádio sair do ar.", secreta: true, dica: "Ninguém precisa chegar lá. Ainda." },
+      { id: "prosa_comprida", nome: "Prosa Comprida", desc: "Converse com o Seu Joaquim até ele contar o que fez.", secreta: true, dica: "Velho gosta de ser perguntado." },
+      { id: "trancado_fora", nome: "Trancado Por Fora, Também", desc: "Abra o armário da capela com a chave certa.", secreta: true, dica: "Uma chave com iniciais, longe de onde ela abre." },
+      { id: "irmao_velho", nome: "Irmão Mais Novo", desc: "Abra a gaveta do Davi na sala de aula.", secreta: true, dica: "Eu e ela, naquela noite." },
+      { id: "presente", nome: "Presente", desc: "Chegue à sala de aula sem ter sido encontrada nenhuma vez.", secreta: true, dica: "A chamada também conta quem caiu." },
+      { id: "quando_crescer", nome: "Quando Crescer", desc: "Leia as redações da pasta da professora.", secreta: true },
+      { id: "o_pedido", nome: "O Pedido", desc: "Sopre as velinhas que esperam no forno frio.", secreta: true, dica: "A cozinha tem um forno que não esquenta." },
+      { id: "dedos", nome: "Ler Com os Dedos", desc: "Leia as três plaquinhas do Moacir no escuro.", secreta: true, dica: "Algumas coisas não são pra olhar." },
+      { id: "visitante", nome: "Visitante", desc: "Ache o nome de alguém que ainda não veio.", secreta: true, dica: "O Davi dormia num armário quando tinha medo." },
+      { id: "ate_dez", nome: "Até Dez", desc: "Abra o diário de cadeadinho da Ana.", secreta: true },
+      { id: "catorze", nome: "Catorze", desc: "Ouça a fita atrás do tijolo com as suas iniciais.", secreta: true, dica: "Uma das meninas da língua do P sabia onde." },
+      { id: "abrir_1994", nome: "Abrir em 1994", desc: "Desenterre a lata que esperava por este ano.", secreta: true, dica: "Uma cruz sem nome no canto do cemitério." },
+      { id: "ja_estive", nome: "Já Estive Aqui", desc: "Ache as suas iniciais entalhadas na capela.", secreta: true },
+      { id: "acorda", nome: "Acorda", desc: "Diga a palavra dos lugares que não existem.", secreta: true, dica: "Seis letras pequenas, em seis lugares escondidos." },
+      { id: "regra_oito", nome: "Regra Oito", desc: "Leia a regra que só existe no Pesadelo.", secreta: true },
+      { id: "quatorze_cofre", nome: "Parabéns", desc: "Digite no cofre o aniversário da Lia.", secreta: true, dica: "Página 1 do Davi." },
+      { id: "fita_cinco", nome: "A Fita 5", desc: "Ache três segredos na mesma noite.", secreta: true, dica: "Ela não está em lugar nenhum. Ainda." },
+      { id: "espelho", nome: "Canhoto", desc: "Leia a folha do Davi do jeito que ele escreveu.", secreta: true },
+      { id: "giz_molhado", nome: "Giz Molhado", desc: "Leia a linha da lousa que só aparece no clarão.", secreta: true, dica: "Apague a luz e espere o céu." },
+      { id: "galena", nome: "Lata e Fio", desc: "Sintonize o radinho que o Davi fez.", secreta: true },
+      { id: "carta_davi", nome: "Correio dos Mortos", desc: "Deixe uma carta pro Davi e volte para a resposta.", secreta: true }
+    ]
+  };
+
+  const L4 = R.lote4;
+  const nota = (id, titulo, texto, extra) => R.notas.push(Object.assign({ id, titulo, texto, secreta: true }, extra || {}));
+  // ---- prólogo
+  nota("l4_cartaJ", "Carta para quem vier depois das nove", "{carta}");
+  // ---- térreo
+  nota("l4_braile1", "Plaquinha de latão — casa de máquinas", "(pontinhos em relevo, lidos com a ponta dos dedos)\nHoje um menino respirou alto debaixo da cama. Eu fingi que não ouvi.\nEu sempre finjo. Ninguém sabe que eu finjo.\n— M.");
+  nota("l4_braile2", "Plaquinha de latão — patamar", "(pontinhos em relevo, gastos de tanta mão)\nO diretor diz que eu sou os ouvidos da casa.\nEu escuto o choro, o sino, a chuva. Escuto a minha mãe, que morreu em 1931.\nSe eu parar de escutar, eu durmo. E se eu dormir, eles acordam.\n— M.");
+  nota("l4_braile3", "Plaquinha de latão — grade do túnel norte", "(pontinhos em relevo, frescos, como se alguém ainda escrevesse)\nTem uma moça no prédio. Ela anda igual a mãe dela.\nEu sei que é a irmã do menino do sino. Eu sei desde o portão.\nEu não vou contar pra minha cabeça. A cabeça faz o que o corpo manda.\nLia, se você ler isto: eu também estou cansado.\n— Moacir");
+  nota("l4_gaveta", "Gaveta da carteira D.M.", "(um curativo ainda no papel e um bilhete dobrado)\n(letra de lápis, apertada)\nse a Lia vier, ela é a mais corajosa.\nela tem 14 e eu tenho 12 mas eu sou o mais velho por dentro.\nnão conta pra ela que eu disse isso.\n— D.");
+  nota("l4_lousa", "Chamada na lousa", "{lousa}");
+  nota("l4_castigo", "Lousa do castigo", "NÃO FALAREI NA HORA.\nNÃO FALAREI NA HORA.\nNÃO FALAREI NA HORA.\n(no meio, uma linha escrita com giz molhado, que só aparece no clarão)\nQUANDO O SINO BATER ELE DEMORA TRÊS SEGUNDOS PRA ACORDAR. CORRE.\nNÃO FALAREI NA HORA.\nNÃO FALAREI NA HORA.");
+  nota("l4_redacoes", "Redações: O que eu quero ser", "REDAÇÃO — 3ª SÉRIE — 1979\n(letra do Davi)\nEu quero ser bombeiro, igual o Tomé quer. Pra ninguém mais ficar trancado. Bombeiro tem machado e machado abre porta.\n\n(letra redonda de menina)\nEu quero ser grande. — Ana\n\n(uma folha amarelada, de 1947, guardada junto)\nEu quero ser inspetor. Inspetor anda no escuro e não tem medo. — Moacir, 8 anos");
+  nota("l4_ficha", "Ficha de empréstimo — Contos para Dormir", "BIBLIOTECA SÃO LÁZARO — FICHA DE EMPRÉSTIMO\nIrmã Lourdes — 1966 — devolvido\nLuiz — 1951 — devolvido\nDavi M. — 14/03/1979 —\n(embaixo, em tinta fresca, com a sua letra)\nLia M. — 1994 —");
+  nota("l4_retida", "Correspondência retida — 1994", "{retida}");
+  nota("l4_planta", "Planta do andar de cima — 1931", "PLANTA BAIXA — ANDAR DOS DORMITÓRIOS — 1931\nDormitórios A, B, C, D, E.\n(um sexto retângulo no fim do corredor, apagado com borracha)\nF — NÃO CONSTA\n(carimbo vermelho por cima)\nREFORMA DE 1980: OITO ALAS. SOBROU ISSO.\n(a lápis, na margem, letra de menino)\no F ainda tá lá. só não tem porta.");
+  nota("l4_zelador", "Caderno do zelador", "IDEIAS PRA ASSUSTAR OS MENINOS (e não deixar ninguém sair da cama)\n- um homem que só ouve. bom. ninguém respira.\n- oito andares de corredor. cansa demais. ~cortei~.\n- menina que conta até cem. não. até dez. dez é pior.\n- um sino que bate nove.\n- mil coisas pra arrumar e o sino ainda desafina.\n(na última linha, outra letra)\nquem lê isso também está na lista.");
+  nota("l4_placa", "Placa de inauguração — 1931", "INTERNATO SÃO LÁZARO — 1931\nFUNDADORES: PADRE OSVALDO · IRMÃ BENEDITA · IRMÃ CONCEIÇÃO\n(um nome raspado; o relevo aparece com a luz de lado)\nMOACIR DUARTE (PAI) — ZELADOR E BENFEITOR\n(embaixo, menor)\nO FILHO FICA COM A CASA.");
+  nota("l4_bilheteP1", "Bilhete dobrado (letra de menina)", "PEU PSEI PON PDE PO PDA PVI PES PCON PDE PU PA PGA PVE PTA", { traducao: "EU SEI ONDE O DAVI ESCONDEU A GAVETA: NA SALA DE AULA, A CARTEIRA RISCADA." });
+  // ---- andar de cima
+  nota("l4_colchao", "Carta debaixo do colchão D.M.", "{colchao}");
+  nota("l4_corrente", "Carta-corrente (1979)", "ESTA CARTA VEIO DE OUTRO INTERNATO.\nCOPIE NOVE VEZES E ESCONDA NOVE COLCHÕES.\nSE QUEBRAR A CORRENTE, ELE VEM TE BUSCAR HOJE, ANTES DA NONA BADALADA.\n(nove nomes de crianças, cada um com uma letra)\nRosa · João · Luiz · Maria · Tomé · Ana · Bento · ...\n(a nona linha está em branco)");
+  nota("l4_espelho", "Folha escrita ao contrário", "{espelho}", { normal: "(letra de canhoto, escrita de trás pra frente)\nQuando eu tenho medo eu durmo no armário do dormitório C. O do canto.\nLá dentro tem nome riscado de gente que ainda nem veio.\nO Inspetor não abre aquele. Ele diz que é dos que ainda vão chegar.\n— D." });
+  nota("l4_visitante", "Riscado dentro do armário", "(riscado na madeira, por dentro, com prego)\nJ.P. esteve aqui — 2026\n(e embaixo, fundo, em letra de 1979)\neu também. — D.M.");
+  nota("l4_ana", "Diário de cadeadinho da Ana", "(um diário rosa, com cheiro de talco velho)\nquerido diário. hoje a irmã me trancou no escuro de novo porque eu chorei na hora.\neu contei até dez. até dez a mamãe sempre voltava.\nela não voltou. mas eu continuo contando.\nse alguém achar isso: não tira o olho de mim. eu só ando quando ninguém me vê. que nem antes.\n— Ana Luísa, 9 anos");
+  nota("l4_monitor", "Caderno do monitor (fora da cama)", "{monitor}");
+  nota("l4_perguntas", "Caderno de perguntas das meninas", "{perguntas}");
+  nota("l4_gibi", "Capitão Trovão contra o Homem Cego (gibi feito à mão)", "(seis quadrinhos a lápis de cor, numerados)\n1. O Capitão Trovão se esconde no forro. O Homem Cego passa embaixo e não ouve nada.\n2. O Capitão pisca a lanterna três vezes pra uma menina lá fora. Ela pisca de volta.\n3. O Capitão abre uma gaveta com a idade dele e da irmã. 'ACESSO PERMITIDO!'\n4. O Capitão puxa um tijolo com duas letras e acha um tesouro: uma fita.\n5. O Capitão cava um X do lado de uma cruz sem nome. 'PRA ABRIR NO FUTURO!'\n6. O Capitão toca o sino. O Homem Cego cai de joelhos. FIM.\n(na contracapa) próxima edição: o Capitão Trovão e a Sala Que Não Existe");
+  nota("l4_bilheteP2", "Bilhete dobrado (letra de menino)", "PO PTO PMÉ PES PCON PDEU PO PCAR PRI PNHO PNO PMU PRO", { traducao: "O TOMÉ ESCONDEU O CARRINHO NO MURO." });
+  nota("l4_bilheteP3", "Bilhete dobrado (letra da Lia, aos catorze)", "PNO PTÚ PNEL PO PES PTE PTEM PUM PTI PJO PLO PCOM PMEU PNO PME PDA PVI PGRA PVOU PPRA PMIM", { traducao: "NO TÚNEL OESTE TEM UM TIJOLO COM MEU NOME. DAVI GRAVOU PRA MIM.", recusa: true });
+  // ---- túneis
+  nota("l4_pacto", "Escrito a carvão na parede", "(letras grandes, a carvão, por cima dos tijolos)\nQUEM SAIR VOLTA PRA BUSCAR OS OUTROS.\nDAVI · TOMÉ · ~BENTO~\n(a assinatura do Bento está borrada, como se uma mão tivesse passado por cima)");
+  // ---- cemitério
+  nota("l4_capsula", "Cápsula do tempo — PARA ABRIR EM 1994", "{capsula}");
+  nota("l4_banco", "Iniciais no banco da capela", "(entalhado na madeira do encosto, de gerações)\nR. 1958 · J. 1955 · L. 1952 · M.D. 1931 · T.R. 1979 · D.M. 1979\n(e, com a madeira ainda clara, como se fosse hoje)\nL.M. 1994");
+  nota("l4_albano", "Armário da sacristia (trancado por fora)", "(lá dentro: um terno preto pendurado, marcas de unha por dentro da porta, e uma folha presa no bolso)\nA última página do diretor Albano Teixeira.\nNão foi o fogo. Foi a porta. Alguém trancou por fora enquanto eu procurava a chave da capela.\nOuvi a voz do zelador do outro lado: 'agora o senhor fica com o silêncio que pediu'.\n(a letra piora)\nJoaquim. Eu sei que é você. Abre. Abre. Abre.");
+  // ---- do diário (segredos que se escrevem sozinhos)
+  nota("l4_esquisitices", "Coisas que eu fiz hoje (e não lembro de decidir)", "{esq}");
+  nota("l4_davi", "Página escrita a lápis de cor", "{davi}");
+  nota("l4_lia", "Uma página com a minha letra", "(com a letra da Lia, datada de hoje)\nCapítulo I. Sem luz.\nVou forçar a porta da frente. Vai fazer barulho.\nO galão de gasolina não está na despensa. NÃO ABRA A DESPENSA.\nOs fusíveis estão na enfermaria. Ele vai estar no corredor quando o gerador roncar.\n(a última linha está borrada)\nEu já fiz isso antes. Eu sempre faço isso.");
+  nota("l4_cartaAdulto", "Carta do Davi (que nunca existiu)", "Lia,\neu teria trinta e sete anos hoje. Teria saído em 1979 pela escotilha com o Tomé e ninguém ia saber do sino.\nEu ia ser bombeiro. Ia ter um cachorro chamado Tufão, porque o do Seu Joaquim era o melhor cachorro do mundo.\nIa te ligar todo dia 15 de março e cantar desafinado de propósito.\nVocê ia reclamar e rir. Eu ia fingir que não ouvi você chorar.\nNão deu. Mas você achou tudo. Cada canto, cada tijolo, cada lata. Ninguém procurou tanto por mim.\nEntão eu existi do mesmo jeito.\n— Davi\n(P.S. a letra tá de adulto porque eu treinei. 15 anos de treino.)");
+
+  // ---- fitas secretas
+  R.fitas.push(
+    { id: "l4_festa", titulo: "Atrás do tijolo L.M. — Davi, março de 1979", secreta: true, linhas: [
+      { quem: "davi", texto: "(cochichando) Tá gravando? Lia, é pra visita de amanhã. Se deixarem a visita." },
+      { quem: "davi", texto: "(cantando baixinho, desafinado) Parabéns pra você... nesta data querida..." },
+      { quem: "davi", texto: "Catorze, hein. Você vai fazer catorze, vai virar mocinha e vai me esquecer." },
+      { quem: "davi", texto: "(rindo) Mentira. Não esquece não. Se esquecer eu puxo o seu pé." },
+      { quem: "davi", texto: "(mais sério) Se não deixarem a visita, eu escondo isso aqui. Atrás do tijolo com o seu nome. Você é a melhor no esconde-esconde." }
+    ] },
+    { id: "l4_cinco", titulo: "Fita 5 — 13 de março de 1979", secreta: true, linhas: [
+      { quem: "davi", texto: "(muito baixo) Treze de março. Amanhã é a noite. O Tomé, o Bento e eu." },
+      { quem: "davi", texto: "O plano é tocar o sino até ele cair de joelhos. A Irmã Celeste disse que o sino segura ele." },
+      { quem: "davi", texto: "A Lia não pode vir. Eu escrevi pra mãe não trazer. Se ela vier, ela vai querer ficar comigo." },
+      { quem: "davi", texto: "(pausa) Se der errado... a Lia vai saber o que fazer. Ela sempre sabe. Ela só demora." },
+      { quem: "davi", texto: "(clique) ...Bento, para de respirar no microfone." }
+    ] }
+  );
+  for (const c of L4.conquistas) if (!R.conquistas.some(x => x.id === c.id)) R.conquistas.push(c);
+  // linhas a mais nos finais (entram por src/historia-segredos.js, só quando o segredo foi achado)
+  L4.finais = {
+    braile3: "Antes de cair, o homem alto passou a mão no rosto da Lia. Leu. E sorriu, pela primeira vez em quarenta e oito anos.",
+    pacto: "Lia voltou. Como eles combinaram.",
+    ficha: "Na saída, ela deixou 'Contos para Dormir' na mesa da biblioteca. A ficha ganhou, enfim, uma data de devolução: 15/03/1994.",
+    albano: "No portão, o Seu Joaquim não olhou pra ela. Ele também tinha trancado uma porta.",
+    capsula: "No banco do carro, a lata de bolacha. A carta do Tomé tinha um caminhão de bombeiro desenhado. A do Bento, só o nome. Ela guardou as duas.",
+    carro: "Na estrada, o carro pegou na primeira tentativa."
+  };
+  // textos que o jogo monta na hora (marcadores entre chaves)
+  L4.modelos = {
+    cartasJoaquim: [
+      "1980. Pra quem vier depois das nove: a primeira regra eu aprendi ouvindo. O sino bateu nove e o corredor ficou mudo. Não corre.",
+      "1981. Ninguém subiu esse ano. Eu fiquei feliz. Depois fiquei com medo de ficar feliz.",
+      "1982. Um rapaz de moto subiu em junho. A moto ainda está no mato. Ele não.",
+      "1983. Descobri que ele não enxerga quando derrubei a lanterna e ele passou por cima dela. Segunda regra.",
+      "1984. As luzes piscaram aqui no posto. Entrei debaixo do balcão. Terceira regra. O posto fica longe do internato, moça. Longe demais pra piscar.",
+      "1985. A menina conta até dez. Uma mãe subiu pra buscar a filha e eu ouvi a contagem até aqui. Quarta regra.",
+      "1986. O repórter do Fusca. Eu avisei. Ele respondeu quando chamaram o nome dele. Quinta regra.",
+      "1987. A sexta regra eu não escrevi. Apareceu na folha. Não confia nela.",
+      "1988. Hoje fiz dez anos de morto e ninguém lembrou. Nem eu, até o rádio dizer a data.",
+      "1989. Mandei a fita de novo. Voltou. ENDEREÇO INSUFICIENTE.",
+      "1990. Sonhei que o menino Davi pagava as balas que roubou. Acordei com moedas de 1979 no balcão.",
+      "1991. A estrada fechou. Agora só sobe quem quer muito.",
+      "1992. Escrevi a sétima regra no verso. Se o sino parar, não olha pra trás. Eu olhei. Por isso eu fiquei.",
+      "1993. Ano que vem a fita chega. Eu sinto. A moça tem os olhos do menino."
+    ],
+    cartaRubrica: "(envelope lacrado, carimbo do posto: {ano})",
+    lousaCab: "CHAMADA — 3ª SÉRIE — 14/03/1979",
+    lousaNomes: "ANA L. · BENTO · DAVI M. · JOÃO · LUIZ · MARIA · ROSA · TOMÉ R.",
+    lousaLia: "(embaixo, com outro giz)\nLIA M. — {marcas}",
+    lousaZero: "(embaixo, em letra de freira, caprichada)\nLIA M. — PRESENTE",
+    lousaRodape: "(ao lado dos risquinhos, pequeno) contando todas as noites: {n}",
+    retida: "(o envelope mais novo da caixa, endereçado a você, com a letra do jogo; carimbo: RETIDA — 1994)\nLia,\nontem à noite você {final}.\nNo {capitulo} você caiu {nCap} {vezesCap}. No total foram {n} {vezes}.\nVocê ficou escondida {escondida}.\n{chamado}\nvocê demorou a voltar dessa vez.\n— D.",
+    retidaFinal: { comum: "saiu pelo portão dos fundos, sozinha", silencio: "foi embora e deixou o sino tocando", verdadeiro: "tocou o sino comigo", carro: "nem entrou. Foi embora de carro", nenhum: "não chegou até o fim" },
+    retidaChamado: { sim: "E respondeu quando ele chamou. Eu ouvi.", nao: "E não respondeu quando ele chamou. Boa menina." },
+    colchao: "(letra redonda de menina, de 1978)\nDavi, a mamãe disse que você vem no Natal. Se não vier eu vou buscar.\nEu deixei a minha lanterna com você. Não tem medo do escuro.\n— Lia",
+    colchaoResp: [
+      "(na margem, a lápis, uma letra de menino que não estava lá antes)\nvocê não caiu nenhuma vez hoje. tá andando igual eu.",
+      "(na margem, a lápis, uma letra de menino que não estava lá antes)\nvocê caiu um pouco hoje. levanta devagar. ele gosta de barulho de joelho.",
+      "(na margem, a lápis, uma letra de menino que não estava lá antes)\nvocê caiu muito hoje, Lia. a lanterna tá com você. usa."
+    ],
+    monitor: "LIVRO DE OCORRÊNCIAS NOTURNAS — FORA DA CAMA\nRosa — fora da cama — 21h05 — banheiro\nJoão — fora da cama — 21h12 — escada\nLuiz — fora da cama — 21h40 — rouparia\n(décadas de nomes, a mesma letra do começo ao fim)\nDavi M. — fora da cama — 21h00 — capela\n(a última linha, com a tinta ainda molhada)\nLIA M. — fora da cama — {h} — {sala}",
+    monitorDepois: "(mais embaixo, a mesma tinta, escrita depois que você leu)\nLIA M. — ainda fora da cama — {h}",
+    perguntas: "(caderno de capa dura, passado de cama em cama)\nNOME? Rosa · Maria · Ana Luísa\nSIGNO? peixes · não sei · peixes também\nQUEM VOCÊ GOSTA? (riscado) (riscado) do Davi\nMAIOR MEDO? do sino · da irmã · de contar até dez sozinha\n(a última página, com uma pergunta só, escrita para alguém que ainda não chegou)\nLIA, QUAL O SEU MAIOR MEDO?\n1. o escuro  2. ficar sozinha  3. ser esquecida  4. não achar o Davi",
+    perguntasResp: "\n(com a sua letra, recém-escrita)\n{r}.",
+    capsula: "(três envelopes de 1978, com letra de criança; PARA ABRIR EM 1994)\n\nDAVI — PRA LIA GRANDE\nLia, você virou professora? Ainda tem medo de escuro? {medo}\n{respondeu}\nSe você estiver lendo isso no internato: não fica. Vai embora. {mortes}\n\nTOMÉ\n(um caminhão de bombeiro desenhado, com a escada até o céu)\n\nBENTO\n(em branco. Só o nome, escrito com cuidado, três vezes.)",
+    capsulaMedo: ["Eu acho que tem: você tá com a lanterna acesa agora, aposto.", "Eu acho que não: aposto que você tá andando no escuro, que nem eu ensinei."],
+    capsulaResp: ["E não responde quando ele chamar. Você vai querer. Não responde.", "Eu sabia que você ia responder quando chamassem. Você nunca aguentou ficar quieta."],
+    capsulaMortes: ["E não cai, que aqui o chão é duro.", "Eu sei que você já caiu {n} vezes. Para de cair, Lia."],
+    davi: {
+      d10: "(lápis de cor, letra de criança, numa página que não estava aqui)\nLia, você achou o forro! Você sempre foi a melhor no esconde-esconde.\nFalta pouco.\n(segredos achados: {n})",
+      d20: "(lápis de cor, a letra mais caprichada)\nVinte! Você achou mais coisa que a Irmã Celeste em trinta anos.\nAs letras pequenas: {letras}. Elas formam uma palavra. A palavra acorda gente.\n(segredos achados: {n})",
+      dTodos: "(lápis de cor, todas as cores)\nTUDO. Você achou tudo, Lia.\nNa próxima noite olha no para-brisa do carro. Eu deixei uma coisa.\n(segredos achados: {n})"
+    },
+    esqCab: "(com a letra da Lia, mas ela não lembra de ter escrito)"
+  };
+})(window.ROTEIRO);
+
 // Aspas tipográficas: a fonte desenha a aspa reta como a de fechar, então as falas abrem com “ e fecham com ”.
 (function curvar(o) {
   for (const k in o) {

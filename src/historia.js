@@ -4,6 +4,7 @@
 
 import { instalarMundo } from './historia-mundo.js';
 import { instalarPolimento } from './historia-polimento.js';
+import { instalarSegredos } from './historia-segredos.js';
 
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
@@ -62,6 +63,8 @@ export function instalarHistoria(c) {
   const MUN = instalarMundo(c, { falarLinhas, conqs, nomeJogador, esc, pick });
   // Lote 3: créditos, o seu nome, legendas, teclados e acessibilidade do texto
   const POL = instalarPolimento(c, { esc, nomeJogador, conqs, fmtFala, fmtNota });
+  // Lote 4: segredos, salas e cartas escondidas, finais secretos, a palavra que liga tudo
+  const SEG = instalarSegredos(c, { falarLinhas, conqs, nomeJogador });
 
   // ------------------------------------------------------------------
   // Mapas: embrulhos que acrescentam segredos sem mexer em mapas.js
@@ -180,6 +183,7 @@ export function instalarHistoria(c) {
     }
     MUN.tick(dt);
     POL.tick(dt);
+    SEG.tick(dt);
   }
 
   // ------------------------------------------------------------------
@@ -224,6 +228,7 @@ export function instalarHistoria(c) {
     const l = lsGet(FITAS_KEY, []); if (!l.includes(id)) { l.push(id); lsSet(FITAS_KEY, l); }
     if (id === 'f6') c.conquista('escuro');
     if (id === 'f7') c.conquista('confissao');
+    SEG.fitaFim(id);
   }
 
   // ------------------------------------------------------------------
@@ -239,6 +244,7 @@ export function instalarHistoria(c) {
       return true;
     }
     if (POL.codigo(cofre, dig, marca)) return true;
+    if (SEG.codigo(cofre, dig, marca)) return true;
     if (dig === '0000' || dig === '000') { marca('zero'); c.sub('lia', cofre ? 'Zero, zero, zero, zero. O Davi nunca usaria zero.' : 'Zero, zero, zero. Óbvio demais pro diretor.'); return true; }
     if (cofre && dig === '1403') { marca('1403'); POL.apagarLuzes(); c.sub('radio', '(um chiado sai do nada) ...quatorze de março... vinte e uma horas...'); setTimeout(() => c.sub('lia', 'A data do livro de ocorrências. A noite do fogo.'), 2600); return true; }
     if (dig === '0909' || dig === '999') {
@@ -260,13 +266,14 @@ export function instalarHistoria(c) {
   function textoFinal(tipo, F) {
     const St = S(); let t = F.texto;
     if (tipo === 'verdadeiro') { if (St.flags.carrinhoAzul && F.extraCarrinho) t += '\n\n' + F.extraCarrinho; if (St.notes.n13 && F.extraDesenho) t += '\n\n' + F.extraDesenho; }
-    return t + MUN.extrasFinal(tipo, F);
+    return t + MUN.extrasFinal(tipo, F) + SEG.extrasFinal(tipo);
   }
   function aoFinal(tipo) {
     const St = S();
     if (!St.flags.respondeu) c.conquista('nao_respondi');
     if (St.flags.sino && !St.flags.olhouTras) c.conquista('nao_olhei');
     POL.aoFinal(tipo);
+    SEG.aoFinal(tipo);
   }
   function statsFinal(tipo) {
     const cq = conqs(), n = ['final_comum', 'final_silencio', 'final_verdadeiro'].filter(k => cq[k]).length;
@@ -288,13 +295,14 @@ export function instalarHistoria(c) {
     const inp = $('#o-nome'); if (inp && document.activeElement !== inp) inp.value = nomeJogador();
     document.body.classList.toggle('fita-gasta', !!lsGet(GASTA_KEY, false));
     POL.titulo();
+    SEG.titulo();
   }
   let tocouNove = false;
   function primeiroToque() {
     if (tocouNove || !ehNove()) return; tocouNove = true;
     c.iniciarAudio(); c.SFX.badaladas(9);
   }
-  function aoComecar(St) { if (ehNove()) { c.conquista('nove_horas'); St.flags.nove = true; } POL.aoComecar(St); }
+  function aoComecar(St) { if (ehNove()) { c.conquista('nove_horas'); St.flags.nove = true; } POL.aoComecar(St); SEG.aoComecar(St); }
   // nome do jogador (opcional): fica só neste navegador
   const inp = $('#o-nome');
   if (inp) { inp.addEventListener('input', () => lsSet(NOME_KEY, inp.value.replace(/[<>]/g, '').slice(0, 16))); inp.addEventListener('keydown', e => e.stopPropagation()); }

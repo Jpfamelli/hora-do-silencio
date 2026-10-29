@@ -1,0 +1,93 @@
+# Lote 4 — História e texto
+- Final escondido "Não Entrei": no prólogo dá pra voltar ao carro e, girando a chave do motor morto nove vezes, ir embora pela estrada em vez de subir.
+- Tela própria do final escondido, com texto, tempo que você levou pra ir embora e sussurro de "Lia?" no banco de trás.
+- O rádio do carro segue o programa da Serra FM até sair do ar (previsão, recado de ouvinte pra Lia, hino, silêncio) se você ficar sentada.
+- Depois do rádio sair do ar, três batidas no teto bem em cima da cabeça e a Lia é obrigada a sair do carro (conquista "Até o Hino").
+- Sentar no carro com a porta fechada ganha fala própria da Lia e sair de novo é feito por W/S.
+- As nove tentativas de partida têm cada uma a sua fala, ficando mais desesperadas até o motor pegar.
+- Quem achou todos os segredos recebe, na noite seguinte, a carta do Davi adulto presa no limpador do para-brisa.
+- Seu Joaquim continua respondendo depois da conversa obrigatória, cada vez com menos paciência, ao longo de oito falas novas.
+- Insistir até o fim faz o Seu Joaquim tirar o chapéu e contar a noite de 1979 (os galões de gasolina) e entregar o fumo de corda (conquista "Prosa Comprida").
+- Apontar a lanterna na cara do Seu Joaquim por três segundos faz ele reclamar: "Morto não fica cego, fica cansado."
+- Chegar ao posto em menos de um minuto troca a primeira fala do Joaquim por "Apressada igual o menino."
+- A gaveta da caixa registradora do posto abre com barulho e esconde a chavinha "A.T. 1980".
+- Uma caixa de sapatos no posto tem uma carta do Joaquim por ano (1980 a 1993), uma por noite, contando como ele aprendeu cada regra.
+- A lista de chamada do ônibus ganha uma 38ª linha escrita à mão com o nome que você digitou, com a tinta escorrendo.
+- Plaquinha em braile do Moacir na casa de máquinas: agachada e no escuro, a Lia lê com os dedos o diário dele em primeira pessoa.
+- Plaquinha em braile no patamar, com outra página da cabeça do Inspetor.
+- Terceira plaquinha em braile (túnel norte) só aparece pra quem leu as duas primeiras; é a vez em que ele admite que também está cansado.
+- O braile aparece na tela como pontinhos e vira letra aos poucos, como se os dedos estivessem lendo.
+- Gaveta da carteira riscada "D.M." na sala de aula, com cadeado de quatro números: a idade dos dois naquela noite (1214).
+- A gaveta do Davi guarda um curativo e um bilhete em que ele se diz o mais velho por dentro (conquista "Irmão Mais Novo").
+- A chamada na lousa da sala de aula ganha risquinhos de giz, um por morte somando todas as noites, agrupados de cinco em cinco.
+- Chegar à sala de aula sem ter morrido na noite mostra "LIA M. — PRESENTE" em letra de freira (conquista "Presente").
+- A lousa do castigo tem uma linha escrita a giz molhado que só aparece no clarão do relâmpago, com a luz apagada: a dica dos três segundos do sino.
+- Na fuga do Cap. V, quem leu a lousa do castigo ganha a fala "Três segundos. O Davi escreveu na lousa. CORRE!".
+- A pasta da professora tem as redações "O que eu quero ser" do Davi, da Ana e do Moacir criança (conquista "Quando Crescer").
+- A ficha de empréstimo de "Contos para Dormir" na biblioteca mostra o livro que o Davi pegou em 14/03/1979 e nunca devolveu, com a sua linha de 1994.
+- O bolo de doze velas do Davi no forno frio da cozinha: dá pra achar, acender as velinhas e soprar, e crianças cantam parabéns no escuro (conquista "O Pedido").
+- A planta de 1931 no depósito mostra o Dormitório F apagado a lápis e carimbado "NÃO CONSTA", primeira pista da sala que não existe.
+- O caderno do zelador com "ideias pra assustar os meninos" é um bastidor leve que cita as versões antigas do jogo.
+- A placa de bronze de 1931 na recepção tem um nome raspado que só aparece em relevo com a lanterna bem de perto e de lado.
+- Bilhetes na língua do P espalhados no caminho: a Lia os traduz em voz alta depois de alguns segundos olhando.
+- Um dos bilhetes da língua do P a Lia se recusa a traduzir ("Esse não. Esse eu não quero ler.").
+- Carta da Lia criança debaixo do colchão D.M. que ganha, ao reler, uma resposta a lápis do Davi conforme quantas vezes você morreu.
+- Carta-corrente de 1979 debaixo do travesseiro: copiar nove vezes faz a décima linha se escrever sozinha com o nome do Davi.
+- Se você ignorar a carta-corrente, ela aparece no banco do carro na abertura da noite seguinte.
+- Folha do Davi escrita ao contrário (ele era canhoto) no dormitório C, que só se lê de verdade diante do espelho do banheiro (conquista "Canhoto").
+- Ficar escondida dentro do armário do dormitório C revela "J.P. esteve aqui — 2026" riscado na madeira (conquista "Visitante").
+- Diário de cadeadinho da Ana na sala de brinquedos, aberto forçando com um grampo (estalinhos que o Inspetor pode ouvir); reescreve o medo dela como saudade da mãe.
+- Caderno do monitor na rouparia com décadas de nomes "fora da cama" e a sua linha com a tinta ainda molhada, hora e sala preenchidas na hora.
+- Reler o caderno do monitor mais tarde acrescenta uma linha nova: "ainda fora da cama".
+- Radinho de galena feito pelo Davi no dormitório D: sintonizado, pega a transmissão da própria noite com a voz da Lia (conquista "Lata e Fio").
+- Caderno de perguntas das meninas no dormitório E: a última pergunta é pra Lia (qual o seu maior medo), respondida apertando 1 a 4.
+- A resposta do maior medo muda o susto da capela no Cap. V e uma linha do final verdadeiro.
+- Gibi "Capitão Trovão contra o Homem Cego" feito à mão pelo Davi, com seis quadrinhos que escondem as pistas dos próprios segredos do jogo.
+- Tijolo solto "L.M." na galeria oeste dos túneis, com a fita em que o Davi canta parabéns pelos catorze anos da Lia (conquista "Catorze").
+- Ouvir a fita dos catorze anos zera o medo e a Lia chora em silêncio.
+- O pacto das três crianças escrito a carvão no depósito ("quem sair volta pra buscar os outros"), com a assinatura do Bento borrada.
+- Cápsula do tempo das três crianças ao lado de uma cruz sem nome no cemitério, cavada com a pá: cartas de 1978 "para abrir em 1994" (conquista "Abrir em 1994").
+- As cartas da cápsula mudam conforme sua noite: se estava de lanterna acesa, se respondeu ao chamado, quantas vezes caiu.
+- Cruz de madeira "J. S. — 1979" no canto do cemitério, com o rádio confirmando que o Seu Joaquim morreu ali.
+- Em algumas noites o Seu Joaquim está de pé ao lado da própria cruz e some quando a Lia se aproxima.
+- Banco da última fileira da capela com iniciais entalhadas de gerações, incluindo "L.M. 1994" fresco, visível só com a luz de lado (conquista "Já Estive Aqui").
+- Armário da sacristia trancado por fora: a chave A.T. 1980 do posto abre e revela o terno e a última página do diretor Albano (conquista "Trancado Por Fora, Também").
+- Quem abriu o armário do Albano ouve o Seu Joaquim mudar a despedida no portão: "Agora você sabe o que eu fiz."
+- A palavra "ACORDA": seis letras pintadas pequenas espalhadas nos lugares secretos, com números que dão a ordem.
+- Digitar ACORDA na tela de título faz o Davi gravar, ao vivo, a fita que abre o jogo, com uma frase a mais (conquista "Acorda").
+- O diário da Lia ganha uma página que anota sozinha as esquisitices da noite (andar de costas, chorar no chão, responder ao chamado, etc.).
+- Página escrita a lápis de cor que o Davi "deixou" no diário, com texto diferente a cada 10, 20 e todos os segredos achados.
+- A partir da terceira noite, o Cap. I tem uma página na letra da Lia, datada de hoje, com um erro proposital, que ela não lembra de ter escrito.
+- No Pesadelo, o verso das regras ganha uma oitava regra em letra de criança; lê-la faz o Inspetor vir direto até a Lia (conquista "Regra Oito").
+- Depois do final verdadeiro, o jogador escreve a sua própria oitava regra, que aparece no verso das regras na noite seguinte.
+- A Fita 5 aparece sozinha no começo do próximo mapa quando você cumpre três segredos na mesma noite (conquista "A Fita 5").
+- A Fita 5 conta o plano dos três e por que a Lia não podia ir naquela noite.
+- Depois do final verdadeiro, o jogador deixa uma carta pro Davi (até 140 letras); na noite seguinte o Davi responde na fita de abertura por palavras-chave (conquista "Correio dos Mortos").
+- Ficar dois minutos parada e fora de perigo faz a Lia escorregar pela parede e chorar; mexer de novo faz ela se levantar.
+- Digitar 1503 (o aniversário da Lia) no cofre dos túneis mostra PARABÉNS e solta uma vela de catorze e um curativo (conquista "Parabéns").
+- O cofre responde a combinações bobas (1234, 9999, a data de hoje ao contrário) com falas do Davi, sem contar como erro.
+- Entre março e julho, o rádio-relógio do título solta notícias da Copa de 1994, e num 17 de julho narra a decisão nos pênaltis.
+- A abertura no carro lembra da noite anterior: se você foi embora, se ignorou a carta-corrente, se a carta do Davi adulto está esperando.
+- Quem ainda tem o save da campanha antiga de oito capítulos ouve, uma vez, o rádio dizer "da outra vez eram oito noites, Lia; o prédio encolheu".
+- O final verdadeiro ganha uma linha se você leu as três plaquinhas em braile (o Inspetor sorri pela primeira vez).
+- O final verdadeiro ganha uma linha se você leu o pacto das três crianças ("Lia voltou, como eles combinaram").
+- O final verdadeiro ganha uma linha se você pegou o livro da biblioteca (a ficha ganha data de devolução).
+- O final verdadeiro ganha uma linha se você desenterrou a cápsula do tempo (as cartas do Tomé e do Bento).
+- O final verdadeiro ganha uma linha com a partida do carro, se você tentou dar partida no prólogo.
+- Qualquer final ganha uma linha se você abriu o armário do Albano (o Joaquim também trancou uma porta).
+- Andar de costas pela estrada velha vira uma das esquisitices anotadas no diário.
+- Novas conquistas secretas somam ao acervo, cada uma com a sua dica para quem explora.
+- Todo o texto novo dos segredos entra em roteiro.js (R.lote4), em português do Brasil e com as aspas tipográficas do jogo.
+- As notas secretas não contam no total do diário, então achá-las não "estraga" a contagem de quem só quer a história principal.
+- Ao achar um dos lugares que guardam uma letra, um aviso mostra a letra e o número da ordem, sem dizer pra que servem.
+- No caderno de perguntas dá pra responder clicando na opção, além de apertar 1 a 4.
+- A folha do canhoto aparece espelhada já no próprio diário e só se endireita quando lida diante do espelho, com animação.
+- A primeira plaquinha em braile tem fala própria da Lia ("Ele lia assim. Passando a mão.").
+- O susto da capela no Cap. V tem quatro falas diferentes, uma para cada medo que você marcou no caderno das meninas.
+- Abrir a gaveta da caixa registradora faz barulho e chama a atenção do Inspetor.
+- A Fita 5 chega com um aviso de que há um gravador no chão que não estava ali.
+- O armário da sacristia abre de verdade, com a porta girando, depois de destrancado com a chave certa.
+- Cavar a cápsula do tempo exige a pá e faz o mesmo barulho alto dos túmulos.
+- O caderno do monitor preenche a sua linha com a hora do relógio do jogo e o nome da sala onde você o leu.
+- As cartas retidas da diretoria mudam conforme o final da noite anterior, o capítulo em que você mais caiu e quanto tempo ficou escondida.
+- Reler a folha do colchão depois do Cap. III mostra a resposta do Davi, que antes não estava na margem.
