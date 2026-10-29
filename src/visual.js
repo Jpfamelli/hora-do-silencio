@@ -711,6 +711,7 @@ export function instalarVisual(C) {
   let fovAtual = camera.fov, parado = 0, hbPrev = 0; const ultimo = new THREE.Vector3();
   function cameraCorpo(dt, ativo, S) {
     let alvo = OPT.fov;
+    if (P.zoomFov) alvo = P.zoomFov; // binóculo do posto (src/estrada-segredos.js)
     if (ativo) {
       if (S.hidden) alvo = OPT.fov - (S.hidden.tipo === 'armario' ? 12 : 8); // aperto do esconderijo
       else { if (P.sprinting) alvo += 6; if (S.fear > 70) alvo -= (S.fear - 70) / 30 * 8; } // correndo abre, pânico fecha

@@ -5,6 +5,7 @@ import { extrasEstrada, memoria, lembrar, SPAWN } from './src/estrada-extra.js';
 import { TXT } from './src/estrada-roteiro.js';
 import { mundoEstrada } from './src/estrada-mundo.js';
 import { polirEstrada, tecla, semFlash } from './src/estrada-polimento.js';
+import { segredosEstrada, letrasPlaca } from './src/estrada-segredos.js';
 import { extrasTerreo, extrasSuperior, juntar } from './src/internato.js';
 import { loreTerreo, loreSuperior } from './src/internato-lore.js';
 import { polirTerreo, polirSuperior } from './src/internato-polimento.js';
@@ -105,7 +106,7 @@ function estrada(A, S) {
   muro(A, -30, GZ, -2.3, GZ, 3); muro(A, 2.3, GZ, 30, GZ, 3);
   const gate = portao(A, 0, GZ, 4);
   const cadeado = box(.14, .18, .06, MAT.bronze, 0, 1.12, GZ + .1);
-  placa(A, [{ t: 'INTERNATO SÃO LÁZARO', tam: 40, estilo: 'bold' }, { t: 'propriedade particular · proibida a entrada', tam: 22, estilo: 'italic' }], 6, 2.2, GZ + .25, 3.6, .9, 0);
+  placa(A, [{ t: letrasPlaca(), tam: 40, estilo: 'bold' }, { t: 'propriedade particular · proibida a entrada', tam: 22, estilo: 'italic' }], 6, 2.2, GZ + .25, 3.6, .9, 0);
   // o prédio, logo atrás do muro
   const prd = A.texMat('reboco', 12, 1.2);
   box(70, 8, 10, prd, 0, 4, BZ, A.W.grupo, false);
@@ -216,11 +217,14 @@ function estrada(A, S) {
   itGate.som = 'trancado';
   // Lote 3: atalho do barranco, abertura, retorno das ações, acessibilidade e desempenho (src/estrada-polimento.js)
   const pol = polirEstrada(A, S, { GZ, carro, ex, orelhao, chave, cadeado, gate, arvores: arv, novoVulto: () => vulto(A) });
+  // Lote 4: segredos do carro, da estrada e do posto (src/estrada-segredos.js); `fora` é lido pelo motor a cada quadro (a névoa engrossa na estrada que dá a volta)
+  const fora = { hemi: .55, moon: .75, fog: .055 };
+  segredosEstrada(A, S, { GZ, BZ, carro, ex, pol, fora, luzNeon, neon, farolOn, v, novoVulto: () => vulto(A) });
 
   return {
     nome: 'A Estrada Velha',
     spawns: { titulo: { x: 0, z: GZ + 24, yaw: 0 }, carro: { x: 1.6, z: 9.6, yaw: 0 }, inicio: { x: SPAWN.x, z: SPAWN.z, yaw: SPAWN.yaw } },
-    fora: { hemi: .55, moon: .75, fog: .055 }, dentro: { hemi: .12, moon: .05, fog: .08 },
+    fora, dentro: { hemi: .12, moon: .05, fog: .08 },
     energia: () => !S.flags.luzPostoMorta,
     ruidoMul: () => pol.ruidoMul(),
     inicioCapitulo(cap) { if (cap === 1) A.carregarMapa('terreo', 'inicio'); },

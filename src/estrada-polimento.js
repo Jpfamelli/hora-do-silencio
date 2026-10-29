@@ -517,6 +517,8 @@ export function polirEstrada(A, S, c) {
   const vigia = setInterval(() => { if (!vivo()) { clearInterval(vigia); limparToque(); } }, 700);
 
   return {
+    // Lote 4 (src/estrada-segredos.js): abre a porta do motorista e fecha sozinha depois de `fecha` s (0 = fica como está)
+    porta(abrir, fecha) { cs.doorAlvo = abrir ? 1 : 0; cs.fechaT = abrir ? fecha || 0 : 0; if (abrir) cs.cortesia = 1; },
     // o cascalho dobra o seu ruído em pé (e quase some agachada)
     ruidoMul: () => (bar.dentro ? (P.crouch ? .7 : P.sprinting ? 2.4 : 2) : 1)
   };
