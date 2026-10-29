@@ -13,6 +13,7 @@ import { PG } from './src/progressao.js';
 import { PLAT } from './src/plataforma.js';
 import { criarMonstrosLore } from './src/monstros-lore.js';
 import { criarMonstrosPolimento } from './src/monstros-polimento.js';
+import { criarMonstrosSegredos } from './src/monstros-segredos.js';
 import { instalarAudioMundo } from './src/audio-mundo.js';
 import { instalarAudioPlataforma } from './src/audio-plataforma.js';
 
@@ -689,6 +690,7 @@ function onKey(e) {
   if (ui === 'morte') { if ((e.code === 'KeyE' || e.code === 'Space' || e.code === 'Enter') && !$('#death').hidden) $('#dt-retry').click(); return; }
   if (mode !== 'jogo' || ui || !S || S.dead) return;
   if (JM.tecla(e)) return; // T fone, B rádio
+  if (MS.tecla(e)) return; // lote 4: V (o nome dele, contar junto, a senha, a chamada) e G com o apito dele (src/monstros-segredos.js)
   if (e.code !== 'KeyQ' && e.code !== 'KeyZ' && e.code !== 'KeyX') silencioT = 0;
   switch (e.code) {
     case 'KeyE':
@@ -2546,7 +2548,7 @@ function morrer(quem) {
       unlock(); ui = 'morte'; $('#death').hidden = false; $('#hud').hidden = true; SFX.pararCanto(); SFX.chiadoFita(false); fitaTocando = null; $('#fita-ind').hidden = true;
       const MT = (R.mortes && R.mortes[quem]) || {};
       $('#dt-tit').textContent = MT.titulos ? pick(MT.titulos) : quem === 'inspetor' ? 'ELE TE ENCONTROU' : quem === 'ana' ? 'ELA CONTOU ATÉ DEZ' : 'FORA DA CAMA';
-      $('#death-frase').textContent = ML.fraseMorte(quem) || (MT.frases ? pick(MT.frases) : '');
+      $('#death-frase').textContent = MS.fraseMorte(quem) || ML.fraseMorte(quem) || (MT.frases ? pick(MT.frases) : '');
       UIX.morte(quem); // o que aconteceu, mini-mapa, mortes no capítulo
       dicaMorte(quem, ctx); // dica pela causa exata, quando houver
       PG.telaMorte(quem); // contagem, objetivos que faltavam, penalidade e o modo Uma Vida
@@ -2648,7 +2650,7 @@ function carregarMapa(id, spawn, { salvar = true } = {}) {
   if (salvar) salvarCheckpoint();
   renderObj(); renderInvMini();
   SUST.novoMapa(id);
-  ML.novoMapa(id);
+  ML.novoMapa(id); MS.novoMapa(id);
   VIS.mapa(); VM.mapa();
 }
 function syncLuzes() {
@@ -4267,6 +4269,13 @@ MP = criarMonstrosPolimento({
   get S() { return S; }, get AC() { return AC; }, get perf() { return perf; }, get ui() { return ui; }, get mode() { return mode; },
   saida, env, osc, burst, box, canvasTex, roomAt, visivel, setDoor, tremer, emitNoise, marcarCausa, patrulhar, prendendo, sub, subPequeno, toast, conquista
 });
+// Monstros e IA, lote 4: segredos das entidades (src/monstros-segredos.js)
+const MS = criarMonstrosSegredos({
+  W, P, M, MON, ANA, ANA_G, PROC, MAT, MK, OPT, camera, scene, keys, SX, SFX, ML,
+  get S() { return S; }, get AC() { return AC; }, get alvo() { return alvo; }, get chamado() { return chamadoArmadilha; }, limparChamado: () => { chamadoArmadilha = null; },
+  saida, env, osc, burst, silaba, box, cyl, plano, interact, roomAt, SALA, visivel, linhaLivre, distSalas, centroSala, pontoEm, planejar, patrulhar, collide, emitNoise,
+  sub, subPequeno, toast, conquista, abrirNotaUI, modeloInspetor, ativarInspetor, desativarInspetor, despawnAna, iniciarAlerta, entrarCaca, agarrar, atacar, prendendo
+});
 const JM = criarMundoJogavel({
   THREE, W, P, M, PROC, ANA, keys, R, MAT, OPT, SFX, SX, camera,
   get S() { return S; }, get AC() { return AC; }, get perf() { return perf; }, get alvo() { return alvo; }, get mode() { return mode; }, get ui() { return ui; }, get digitado() { return digitado; },
@@ -4322,7 +4331,7 @@ function frame(dt) {
   } else if (ativo) {
     S.tempo += dt; S.capT += dt; PG.tick(dt);
     updatePlayer(dt); updateLanterna(dt); updateFear(dt);
-    { const dm = dt * JP.ritmo(); if (!congelado(dm)) { updateInspetor(dm); updateAna(dm); updateProcissao(dm); ML.tick(dm); } updateEventos(dm); } updateGarrafas(dt); // ritmo do mundo (acessibilidade): a Lia não fica mais lenta
+    { const dm = dt * JP.ritmo(); if (!congelado(dm)) { updateInspetor(dm); updateAna(dm); updateProcissao(dm); ML.tick(dm); MS.tick(dm); } updateEventos(dm); } updateGarrafas(dt); // ritmo do mundo (acessibilidade): a Lia não fica mais lenta
     updateClima(dt); updateJogabilidade(dt); updateAlvo(); JM.update(dt); updateSegurar(dt); updateFita(dt); updateHUD(); updateSub(dt); updateAudio(dt); H.tick(dt);
   } else if (mundoVivo()) { // cofre, quadro (e no Pesadelo notas e diário): o mundo continua, com o som abafado
     S.tempo += dt; S.capT += dt; P.noiseR = 0; abafar(true);

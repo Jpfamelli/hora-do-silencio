@@ -1,0 +1,126 @@
+# Lote 4 — Monstros e IA
+- Depois de ler a ficha do Moacir (ou a ficha médica, ou ouvir a fita dele), V com o Inspetor a menos de 4 m faz a Lia sussurrar "Moacir..."
+- Chamado pelo nome, ele para por 4 s e pergunta, com a voz do Moacir: "Quem me chama assim?"
+- Enquanto ouve o próprio nome, ele inclina a cabeça de lado e encolhe um pouco, como o menino que era
+- Chamar pelo nome uma segunda vez no mesmo capítulo deixa ele furioso: "Ninguém mais me chama assim. NINGUÉM." e a caçada começa na hora
+- Em plena caçada o nome não funciona, e a Lia avisa: "Ele não ouve nome nenhum agora."
+- Sem ter lido o nome dele em lugar nenhum, a Lia percebe que não sabe como chamá-lo (o segredo premia quem lê)
+- Conquista secreta "Quem Me Chama"
+- Escondida, com ele de costas a menos de 3,5 m, V faz a Lia sussurrar "Boa noite, seu Moacir."
+- Na metade das vezes ele abaixa a cabeça, responde "Boa noite... vá dormir." e segue a ronda sem caçar por 30 s
+- Na outra metade ele vira na hora ("Fora da cama."), já sabe onde você está e vem abrir o esconderijo
+- A chance do boa noite dar certo sobe se você leu a ficha de aluno dele de 1948
+- O boa noite só vale uma vez por capítulo; tentar de novo faz a Lia desistir ("Já dei boa noite uma vez. Não abusa.")
+- Conquista secreta "Educada"
+- Quando ele para numa pausa de memória (reza), chegar por trás em pé mostra "segure E Tocar o ombro dele"
+- Tocar o ombro dele na reza faz ele dizer "Luiz? É você?" e ficar parado mais 8 s, uma janela segura
+- Depois do toque, a Lia percebe sozinha: "Ele achou que era o Luiz. Não se mexe."
+- O toque no ombro funciona uma vez por capítulo
+- Conquista secreta "Ele Achou Que Era o Luiz"
+- O mesmo gesto com ele parado ouvindo (escuta ou emboscada) é morte na hora: ele segura o seu pulso
+- A morte pelo pulso tem frase própria na tela de morte: "Ninguém encosta nele sem ser chamado."
+- Na reza, chegar por trás agachada mostra "segure E Tirar o apito do cinto dele" (2 s)
+- Qualquer passo durante o furto estraga tudo: ele sente a mão no cinto e agarra a Lia
+- Segurar E perto dele, parada, não dispara mais o bote antes da hora (só se mexer dispara)
+- Depois do furto o apito some de verdade do peito dele no modelo
+- Conquista secreta "Mão Leve"
+- Com o apito no bolso e sem garrafas, G sopra o apito dele: um toque longo e metálico, com legenda
+- Ao ouvir o apito, ele larga tudo e marcha até o dormitório (ou a sala mais longe de você) dizendo "Um apito, todos na cama."
+- No caminho até lá, os seus passos não tiram ele da marcha
+- Quando chega e não acha ninguém, procura irritado por 20 s gritando "Quem pegou o meu apito? QUEM?"
+- Depois do furto, ao passar perto, ele leva a mão ao peito e murmura "...cadê o meu apito?"
+- Noite rara (1 em 15) no Capítulo I: ele está sentado no refeitório, comendo de um prato vazio
+- No jantar, a colher bate no prato vazio sem parar e às vezes ele cantarola o hino, com legenda
+- Barulho de passo normal perto da mesa faz ele largar a colher (ela cai tilintando) e a caçada começa com ele já de pé
+- Passar por trás dele enquanto janta e sair do refeitório dá a conquista secreta "Bom Apetite"
+- Em uma a cada três noites, no Capítulo II, ele está encolhido numa carteira de criança na sala de aula, chorando baixinho
+- Na carteira ele repete a tabuada em voz baixa ("sete vezes sete... quarenta e nove...") enquanto você está na sala
+- Ficar 15 s na sala de aula sem barulho leva até "nove vezes nove... oitenta e um." e a conquista secreta "Aula de Castigo"
+- Depois da tabuada, ele enxuga o rosto e vai embora calmo, e a Lia entende o que faziam com ele
+- Barulho na sala de aula faz ele levantar de uma vez gritando "SILÊNCIO NA SALA!": a carteira quebra e os pedaços voam
+- Em uma a cada seis noites, no Capítulo II, ele cochila numa poltrona da biblioteca com o lampião aceso no colo, roncando
+- Perto dele dormindo aparece "segure E Tirar o papel do bolso dele" (3 s); qualquer movimento acorda ele
+- O papel do bolso é a lista de quem ele "guardou" em 1979, com o nome do Davi riscado até rasgar o papel
+- Conquista secreta "O Que Ele Guarda"
+- Acordado no cochilo, o lampião cai no chão e ele pergunta "Quem está mexendo em mim?" antes de vir
+- A Lia comenta baixinho cada cena rara assim que entra na sala (o prato vazio, a carteira, o papel no bolso)
+- As cenas raras só começam com ele longe e fora da sua vista: você chega e ele já está lá
+- Noite rara (1 em 40): no Capítulo I ele não aparece; só passos no andar de cima, portas batendo longe e um apito rachado muito distante
+- Na noite sem ele, quando o gerador liga, ele está parado de pé bem na sua frente, imóvel, de frente para a Lia
+- A Lia percebe: "Ele está aqui. Estava o tempo todo." e o aviso "Noite rara: a noite sem ele." aparece
+- Conquista secreta "A Noite Sem Ele"
+- Escondida durante a Procissão, a Lia conta a fila em sussurro, com legenda ("um... dois... três...")
+- Cada morte da noite acrescenta ao fim da Procissão uma mulher de capa de chuva com uma lanterna apagada (até três)
+- Com essas figuras na fila, a contagem da Lia passa de nove: "...dez? onze?" e a legenda avisa "passos pequenos a mais"
+- A lanterna apagada dela pisca uma vez quando passa diante do seu esconderijo
+- Olhar para a primeira figura faz ela levantar a cabeça e virar o rosto para você: é o rosto da Lia, borrado, de olhos fechados
+- Ela sussurra "volta pro carro." e a Lia pergunta: "Aquela... era eu?"
+- Conquista secreta "A Décima Vela"
+- Ver as três de uma vez dá a conquista secreta "Eu Também Estava Lá" ("Três. Três de mim.")
+- Em uma a cada três Procissões, uma menina descalça vem correndo atrás da fila
+- A menina atrasada para na frente do seu esconderijo, leva o dedo aos lábios e sussurra "shhh..."
+- Prendendo o ar enquanto ela olha, ela puxa a fila embora mais cedo
+- Respirando, ela grita "AQUI! ELA TÁ AQUI!" e a fila inteira para e vira para o seu esconderijo, com os olhos vermelhos na fresta
+- A última criança da fila agora anda meio passo atrás das outras, com a cabeça virada para trás
+- Acompanhar essa criança com o olhar por 3 s, escondida, faz ela levantar o braço e apontar para um armário
+- Depois da fila passar, uma vela acesa aparece na frente do armário apontado, e a Lia entende: "Era o Tomé."
+- O armário da vela ele não abre (uma vez): ele desiste e a vela apaga ("A vela... ele não abriu.")
+- Conquista secreta "O Último da Fila"
+- Noite rara (1 em 25): a Procissão passa de costas, com olhos vermelhos pintados na nuca das crianças
+- Na noite da fila de costas, a Lia sussurra "Eles estão voltando..." e ganha a conquista secreta "A Fila Voltou"
+- Durante a contagem da Ana, V faz a Lia dizer o mesmo número junto com ela, baixinho
+- O número dito junto aparece grande no meio da tela, para quem joga sem som
+- Contar junto ainda é barulho: o Inspetor pode ouvir a Lia contando
+- Errar o número (pular ou adiantar) faz a Ana bater o pé ("Não é assim!") e o próximo número vem mais rápido
+- Contar junto até o nove sem errar faz a Lia dizer o "dez" com ela: a Ana para, diz "Você conta igual ao Davi." e vai embora sem o DEZ
+- Contar junto vale uma vez por noite e dá a conquista secreta "Contando Junto"
+- No Capítulo III, ficar parada de cara para a parede, de lanterna apagada, por 5 s faz a Ana sussurrar "Agora você conta."
+- Na brincadeira ao contrário a tela escurece e a Lia conta de um a dez em voz baixa, com o número grande na tela
+- Enquanto a Lia conta, ouve-se uma risadinha correndo e a Ana se esconde num de três esconderijos próximos
+- Depois do "Pronta!", a risadinha abafada vem do esconderijo certo a cada 4 s, e a legenda diz de que lado ela está
+- Achar a Ana é pôr a luz no esconderijo certo, de perto: "Achou! Agora é sério." e ela não brinca de novo por um bom tempo
+- Pôr a luz no esconderijo errado faz ela respirar na sua nuca e dizer "Perdeu." (dano leve e medo no máximo)
+- Sem achar em 40 s, ela ri atrás de você ("Ninguém me achou...") e volta logo
+- Conquista secreta "Achei Você"
+- Na enfermaria do térreo há uma caixa de fósforos com um dente de leite e o bilhete "pra jogar no telhado quando a mamãe vier"
+- Com o dente no bolso, a Ana solta e na sua frente mostra "E Dar o dente de leite"
+- Entregar o dente faz a Ana parar, dizer "A mamãe não veio." e sumir sem dano
+- Conquista secreta "Dente de Leite"
+- Cada vez que a Ana te pega, um desenho de giz de cera dela aparece na parede do Dormitório D: a Lia com a lanterna, a Ana atrás e o DEZ
+- Os desenhos ficam de uma noite para a outra e são numerados
+- Com dez desenhos, ela escreve na parede, em giz rosa: "você é a melhor de brincar"
+- Mais de 30 s de lanterna no rosto da Ana no Capítulo III viram um desenho nos túneis: a Lia de olhos riscados e "a luz dói"
+- Quase nada de luz no rosto dela vira outro desenho: as duas de mãos dadas, e a Lia percebe o que ele quer dizer
+- O verso da foto de visita de 1978 agora guarda a senha dos irmãos: "Quem é?" — "É o capitão."
+- Com a foto lida, V durante o Chamado faz a Lia perguntar "Quem é?" em vez de responder
+- A voz erra a senha ("Sou eu, Lia. Abre."), vira um grito e some, e aquele Chamado não atrai mais o Inspetor
+- A senha funciona uma vez por capítulo e dá a conquista secreta "Não Era o Capitão"
+- Ignorar três Chamados numa noite faz o seguinte chamar com a voz do Seu Joaquim: "Moça? Moça, aqui, rápido!"
+- Ignorar também a voz do Joaquim dá a conquista secreta "Nem o Joaquim"; ir até lá faz a Lia perceber que "nunca é"
+- Um gato preto magro, o Breu, aparece em algum lugar do térreo e do andar de cima, com o rabo balançando
+- Os olhos do gato brilham verde-amarelo quando a lanterna passa por ele
+- O gato mia baixinho de vez em quando, com legenda
+- Segurar E no gato faz carinho: ele ronrona e o medo da Lia cai
+- No primeiro carinho a Lia acha a plaquinha "BREU — 1979" e ganha a conquista secreta "Sete Vidas"
+- Depois do carinho o gato passa a seguir a Lia de longe
+- Com o Inspetor a menos de 10 m, o gato arrepia o pelo, ergue o rabo e chia (um aviso honesto)
+- Correr perto do gato faz ele miar alto e entregar a sua posição
+- O gato foge um segundo antes da Procissão chegar
+- Se o Inspetor esbarra no gato, ele se abaixa, faz carinho às cegas, diz "Breu... você também não dorme." e fica 10 s parado (uma vez por noite)
+- Cama em que você se escondeu fica desarrumada, com o cobertor amontoado
+- Passando pela cama desfeita, ele para, estica o lençol com cuidado e murmura "...cama feita."
+- Fechar três portas que ele tinha deixado abertas faz ele parar confuso por 8 s: "...eu deixei abertas."
+- Andar devagar ou agachada a maior parte do Capítulo I faz ele murmurar de longe, por extenso, quantos passos você deu
+- A Lia gela ("Ele contou os meus passos. Todos.") e ganha a conquista secreta "Ele Contou"
+- No Capítulo IV, na entrada dos túneis, ele deixou enfileiradas as garrafas que você jogou nos Capítulos I e II, com etiquetas "BARULHO 1", "BARULHO 2"...
+- Se você não jogou nenhuma, há só uma etiqueta na parede: "QUIETA. SUSPEITO.", e a Lia percebe que ele sabe
+- Noite rara (1 em 25): um segundo vulto de chapéu espera imóvel no fim do túnel norte
+- O outro chapéu some com um estalo quando a luz encosta ou quando você chega perto, e a Lia pergunta "...tinha dois?"
+- Conquista secreta "O Outro Chapéu"
+- No Capítulo II, uma vez, ele para no corredor e faz a chamada em voz alta com os nomes das crianças de 1979
+- No fim da chamada ele diz "Lia Moraes." e aparece "V: responder 'presente'"
+- Responder "presente" faz ele dizer "Atrasada quinze anos." e deixar você em paz pelo resto do capítulo, sem Chamados
+- Ficar quieta na chamada faz ele repetir "LIA. MORAES." mais alto e vir procurar onde você está
+- Conquista secreta "Presente"
+- As 21 conquistas secretas novas aparecem como "???" na lista até serem descobertas
+- As cenas raras, a noite sem ele, a fila de costas e o outro chapéu são sorteados uma vez por noite e continuam iguais depois do checkpoint
