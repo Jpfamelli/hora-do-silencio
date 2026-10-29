@@ -87,6 +87,18 @@ T.tudo = async () => {
   const log = [], passo = (nome, ok) => { console.log('[QA] ' + (ok ? 'ok ' : 'FALHOU ') + nome + ' ' + Math.round(performance.now() / 1000) + 's'); log.push((ok ? 'OK  ' : 'FALHOU ') + nome + ' | ' + JSON.stringify({ cap: J.S.chapter, mapa: J.S.mapa })); if (!ok) { console.log('[QA] estado: ' + JSON.stringify(T.estado())); throw new Error(nome); } };
   try {
     localStorage.removeItem('hora-silencio-v2');
+    { // lote 4: códigos do título não disparam dentro do nome/desafio; VELORIO liga e desliga o Velório pelo despachante único
+      const conq = () => JSON.stringify(JSON.parse(localStorage.getItem('hora-silencio-v2-conq') || '{}')), antes = conq();
+      const digitar = (alvo, txt) => { for (const ch of txt) { const ev = { code: (/[0-9]/.test(ch) ? 'Digit' : 'Key') + ch, key: ch.toLowerCase(), bubbles: true, cancelable: true }; alvo.dispatchEvent(new KeyboardEvent('keydown', ev)); alvo.dispatchEvent(new KeyboardEvent('keyup', ev)); } };
+      for (const id of ['o-nome', 'o-desafio']) { const inp = document.getElementById(id); if (!inp) continue; inp.focus(); digitar(inp, 'ANADAVISILENCIONOVE'); inp.blur(); }
+      await new Promise(r => setTimeout(r, 3500));
+      passo('códigos do título ignoram o nome e o desafio', conq() === antes);
+      const opt = () => JSON.parse(localStorage.getItem('hora-silencio-opt') || '{}');
+      document.activeElement && document.activeElement.blur && document.activeElement.blur();
+      digitar(window, 'VELORIO'); const liga = !!opt().velorio; digitar(window, 'VELORIO');
+      passo('VELORIO liga e desliga o Modo Velório', liga && !opt().velorio && !!JSON.parse(localStorage.getItem('hora-silencio-v2-conq') || '{}').segredo_velorio);
+      document.querySelectorAll('.sg-cena,#sg-disco,#sg-manual').forEach(e => e.remove());
+    }
     await T.novo(); passo('novo jogo', J.mode === 'jogo'); passo('portas e lore: estrada', !T.checarMapa().length);
     { // lote 3: TAB (diário) e P (pausa) não abrem durante o agarrão
       const est = J.M.state, uiAntes = J.ui, tecla = (tipo, code) => window.dispatchEvent(new KeyboardEvent(tipo, { code, key: code, bubbles: true, cancelable: true }));

@@ -3,9 +3,11 @@
 // O motor (jogo.js) chama criarInterface(ctx) uma vez e usa os ganchos devolvidos.
 import { criarMundo } from './interface-mundo.js';
 import { criarPolimento } from './interface-polimento.js';
+import { criarSegredos } from './interface-segredos.js';
 export function criarInterface(C) {
   let MU = null; // mundo e história (lote 2): src/interface-mundo.js
   let PL = null; // polimento e plataforma (lote 3): src/interface-polimento.js
+  let SG = null; // segredos e easter eggs (lote 4): src/interface-segredos.js
   const $ = s => document.querySelector(s);
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
   const lerp = (a, b, t) => a + (b - a) * t;
@@ -21,7 +23,7 @@ export function criarInterface(C) {
 
   // Conquistas secretas (aparecem como ??? até serem achadas)
   for (const c of [
-    { id: 'segredo_velorio', nome: 'Velório', desc: 'Escreva a palavra proibida na tela de título.', segredo: true },
+    { id: 'segredo_velorio', nome: 'Velório', desc: 'Escreva o nome do luto (VELORIO) na tela de título.', segredo: true },
     { id: 'segredo_davi', nome: 'Irmã Mais Velha', desc: 'Chame seu irmão pelo nome na tela de título.', segredo: true },
     { id: 'segredo_estatua', nome: 'Estátua', desc: 'Fique imóvel por 20 segundos com o Inspetor a menos de 6 metros, fora do esconderijo.', segredo: true },
     { id: 'segredo_nove', nome: 'Nove Vezes', desc: 'Faça o sino bater nove vezes antes de começar.', segredo: true }
@@ -45,7 +47,7 @@ export function criarInterface(C) {
       { k: 'contraste', nome: 'Cores de alto contraste', tipo: 'sel', ops: SIMNAO },
       { k: 'legTempo', nome: 'Tempo de leitura', tipo: 'sel', ops: [['normal', 'Normal'], ['longo', 'Longo']] },
       { k: 'legSom', nome: 'Legendar sons', tipo: 'sel', ops: [['nao', 'Desligado'], ['importantes', 'Importantes'], ['todos', 'Todos']] },
-      { k: 'somSimb', nome: 'Símbolo nos sons (▲ perigo, ✦ história)', tipo: 'sel', ops: SIMNAO },
+      { k: 'somSimb', nome: 'Símbolo nos sons (▲ perigo, ✦ história, ✶ segredo)', tipo: 'sel', ops: SIMNAO },
       { k: 'descCena', nome: 'Descrição de cena ao entrar numa sala', tipo: 'sel', ops: SIMNAO }
     ]],
     ['Controles', [
@@ -111,6 +113,7 @@ export function criarInterface(C) {
       };
     });
     if (PL) PL.opcoes(box);
+    if (SG) SG.opcoes(box);
     $('#opcoes').hidden = false; focar('#opcoes');
   }
   function fecharOpcoes() { $('#opcoes').hidden = true; if (opcVolta) $(opcVolta).hidden = false; focar(opcVolta); opcVolta = null; }
@@ -211,7 +214,7 @@ export function criarInterface(C) {
       txt += ' ' + dr.txt;
       if (def.insp) seta(dr);
     }
-    const simb = OPT.somSimb && def.cat ? (def.cat === 'p' ? '▲ ' : '✦ ') : '';
+    const simb = OPT.somSimb && def.cat ? (def.cat === 'p' ? '▲ ' : def.cat === 's' ? '✶ ' : '✦ ') : '';
     linhasSom.push({ txt: `${simb}[${txt}]`, cat: def.cat, t: agora + 2.8 }); while (linhasSom.length > 3) linhasSom.shift();
     desenharSom();
     if (def.imp) historico('som', simb + txt);
@@ -223,10 +226,17 @@ export function criarInterface(C) {
   SONS.fitaClique = { t: 'o gravador estala', imp: 0, cd: 3, cat: 'h' };
   for (const [k, c] of Object.entries({ passoMonstro: 'p', estalo: 'p', vidro: 'p', pancada: 'p', risada: 'p', contagem: 'p', chamadoVoz: 'p', sino: 'h', sinoLonge: 'h', badaladas: 'p', estatica: 'p', canto: 'h', procissao: 'p', sussurros: 'h', orelhao: 'h' })) SONS[k].cat = c;
   som.def = SONS; // outros módulos (src/audio-mundo.js) registram legendas aqui
+  // lote 4: legenda avulsa (sem som por trás), para os segredos da interface
+  function legenda(txt, cat) {
+    if (OPT.legSom === 'nao' || C.mode === 'titulo') return;
+    const simb = OPT.somSimb && cat ? (cat === 'p' ? '▲ ' : cat === 's' ? '✶ ' : '✦ ') : '';
+    linhasSom.push({ txt: simb + txt, cat, t: agora + 4 }); while (linhasSom.length > 3) linhasSom.shift();
+    desenharSom(); historico('som', simb + txt.replace(/^\[|\]$/g, ''));
+  }
   let somHtml = '', legBase = '', subTxtAnt = null, subMedidoEm = -99;
   function desenharSom() {
     for (let i = linhasSom.length - 1; i >= 0; i--) if (linhasSom[i].t < agora) linhasSom.splice(i, 1);
-    const h = linhasSom.map(l => `<div class="${l.cat === 'p' ? 'perigo' : l.cat === 'h' ? 'historia' : ''}">${l.txt}</div>`).join('');
+    const h = linhasSom.map(l => `<div class="${l.cat === 'p' ? 'perigo' : l.cat === 'h' ? 'historia' : l.cat === 's' ? 'segredo' : ''}">${l.txt}</div>`).join('');
     const mudou = h !== somHtml;
     if (mudou) { $('#legsom').innerHTML = h; somHtml = h; }
     // revisão do lote 2: com legenda de duas linhas, a legenda de som subia por cima do nome de quem fala
@@ -333,12 +343,14 @@ export function criarInterface(C) {
     morteT = rel(); focar('#death');
     causa = null;
     if (PL) PL.morte(quem);
+    if (SG) SG.morte(quem);
   }
   function aliviar() {
     const cap = C.S.chapter; C.retry();
     C.S.flags.alivio = cap; C.toast('Este trecho ficou um pouco mais leve: ele anda e ouve 10% menos até o fim do capítulo.');
   }
   $('#dt-leve').onclick = aliviar;
+  let mapaT = null;
   function desenharMapaMorte(quem) {
     const cv = $('#death-mapa'), g = cv.getContext('2d'), W = C.W;
     g.clearRect(0, 0, cv.width, cv.height);
@@ -350,6 +362,7 @@ export function criarInterface(C) {
     const k = Math.min((cv.width - 16) / (x1 - x0), (cv.height - 16) / (z1 - z0));
     const ox = (cv.width - (x1 - x0) * k) / 2, oz = (cv.height - (z1 - z0) * k) / 2;
     const sx = x => ox + (x - x0) * k, sz = z => oz + (z1 - z) * k;
+    mapaT = { sx, sz, k }; // lote 4: a fita vermelha dos segredos usa a mesma escala
     g.lineWidth = 1;
     for (const r of W.salas) {
       if (r.x1 < x0 || r.x0 > x1 || r.z1 < z0 || r.z0 > z1) continue;
@@ -438,7 +451,7 @@ export function criarInterface(C) {
   }
   const quando = t => { const S = C.S, d = S ? Math.max(0, S.tempo - t) : 0; return d < 45 ? 'agora' : d < 3600 ? `há ${Math.round(d / 60)} min` : `há ${Math.floor(d / 3600)} h`; };
   function renderOuvido(el) {
-    el.innerHTML = hist.length ? `<p style="color:var(--fraco);margin-bottom:10px">As últimas falas e sons, do mais recente ao mais antigo.</p>` + hist.slice().reverse().map(h => `<div class="ouv"><small class="quando">${quando(h.t)}</small><span>${h.quem === 'som' ? '' : h.quem}</span>${h.quem === 'som' ? `<i>${/^[▲✦] /.test(h.texto) ? h.texto.slice(0, 2) + '[' + h.texto.slice(2) + ']' : '[' + h.texto + ']'}</i>` : h.texto}</div>`).join('') : '<p style="color:var(--fraco)">Silêncio. Por enquanto.</p>';
+    el.innerHTML = hist.length ? `<p style="color:var(--fraco);margin-bottom:10px">As últimas falas e sons, do mais recente ao mais antigo.</p>` + hist.slice().reverse().map(h => `<div class="ouv"><small class="quando">${quando(h.t)}</small><span>${h.quem === 'som' ? '' : h.quem}</span>${h.quem === 'som' ? `<i>${/^[▲✦✶] /.test(h.texto) ? h.texto.slice(0, 2) + '[' + h.texto.slice(2) + ']' : '[' + h.texto + ']'}</i>` : h.texto}</div>`).join('') : '<p style="color:var(--fraco)">Silêncio. Por enquanto.</p>';
   }
 
   // ---------------------------------------------------------------- CRONÔMETRO / VELA / FIM DE CAPÍTULO
@@ -455,6 +468,7 @@ export function criarInterface(C) {
     else { el.textContent = relogio(t); el.className = ''; }
     splitT = 3; el.hidden = false;
     if (!ant || t < ant) { sp[id] = t; caps[c.id] = { ...reg, splits: sp }; C.lsSet(C.CAPS_KEY, caps); }
+    if (SG) SG.split(id); // lote 4: trecho de ouro
   }
   function salvou(inicioCap) {
     const S = C.S; if (S) ultSaveTempo = S.tempo;
@@ -483,6 +497,7 @@ export function criarInterface(C) {
     fimCapT = rel();
     if (MU) MU.fimCap(c);
     if (PL) PL.fimCap(c, rk);
+    if (SG) SG.fimCap(c);
   }
 
   // ---------------------------------------------------------------- SEGREDOS DO TÍTULO
@@ -492,17 +507,24 @@ export function criarInterface(C) {
     h1.innerHTML = h1Orig.split('<br>').map(l => [...l].map((ch, i) => `<span class="gota" style="animation-delay:${(i * .09).toFixed(2)}s">${ch === ' ' ? '&nbsp;' : ch}</span>`).join('')).join('<br>');
     h1.classList.add('sangra'); setTimeout(() => { h1.classList.remove('sangra'); h1.innerHTML = h1Orig; }, 4200);
   }
+  // lote 4: despachante único dos códigos do título (um código, uma cena). SILENCIO ficou só com o modo Uma Vida
+  // (src/progressao.js); o Velório ganhou VELORIO e a Fita Gasta ganhou FITAGASTA (src/historia.js).
+  const CODIGOS = {};
+  const registrarCodigo = (p, fn) => { CODIGOS[p] = fn; };
+  const emCampo = () => { const a = document.activeElement; return !!(a && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)); };
+  registrarCodigo('VELORIO', () => {
+    OPT.velorioLib = true; OPT.velorio = !OPT.velorio; C.salvarOpt(); aplicar(); sangrar(); C.conquista('segredo_velorio');
+    subTitulo(OPT.velorio ? 'Modo Velório. As cores foram enterradas. (digite de novo para desfazer)' : 'As cores voltaram. Por enquanto.');
+  });
+  // DAVI também toca a fita ao contrário (src/progressao3.js): o sino e a frase vêm depois, como uma cena só
+  registrarCodigo('DAVI', () => { setTimeout(() => { C.SFX.sinoLonge(); subTitulo('Lia... eu ainda tô aqui embaixo. Traz o carrinho azul. — D.'); setTimeout(() => C.conquista('segredo_davi'), 1500); }, 1500); });
+  registrarCodigo('NOVE', () => { C.SFX.badaladas(9); h1.classList.add('treme'); setTimeout(() => h1.classList.remove('treme'), 19800); C.conquista('segredo_nove'); subTitulo('Uma. Duas. Nove vezes.'); });
   function teclaTitulo(e) {
+    if (emCampo()) return false; // lote 4: escrever o nome ou o código de desafio não dispara segredo
     const m = /^Key([A-Z])$/.exec(e.code); if (!m) return false;
     digitado = (digitado + m[1]).slice(-12);
     if (PL && PL.teclaTitulo(digitado)) { digitado = ''; return true; }
-    if (digitado.endsWith('SILENCIO')) {
-      digitado = ''; OPT.velorioLib = true; OPT.velorio = !OPT.velorio; C.salvarOpt(); aplicar(); sangrar(); C.conquista('segredo_velorio');
-      subTitulo(OPT.velorio ? 'Modo Velório. As cores foram enterradas. (digite de novo para desfazer)' : 'As cores voltaram. Por enquanto.');
-      return true;
-    }
-    if (digitado.endsWith('DAVI')) { digitado = ''; C.SFX.sinoLonge(); C.conquista('segredo_davi'); subTitulo('Lia... eu ainda tô aqui embaixo. Traz o carrinho azul. — D.'); return true; }
-    if (digitado.endsWith('NOVE')) { digitado = ''; C.SFX.badaladas(9); h1.classList.add('treme'); setTimeout(() => h1.classList.remove('treme'), 19800); C.conquista('segredo_nove'); subTitulo('Uma. Duas. Nove vezes.'); return true; }
+    for (const p in CODIGOS) if (digitado.endsWith(p)) { digitado = ''; try { CODIGOS[p](); } catch (er) { console.warn(er); } return true; }
     return false;
   }
   let subTO;
@@ -513,6 +535,7 @@ export function criarInterface(C) {
     if (sv && R.capitulos[sv.chapter]) el.textContent = `${R.capitulos[sv.chapter].titulo} · ${(C.DIFS[sv.dif] || C.DIFS.normal).nome} · ${mmss(sv.tempo || 0)} jogados`;
     else el.textContent = '';
     if (PL) PL.atualizarTitulo();
+    if (SG) SG.atualizarTitulo();
     $('#o-dif-desc').textContent = DIF_DESC[$('#o-dif').value] || '';
     focar('#title');
   }
@@ -526,11 +549,13 @@ export function criarInterface(C) {
     const c = R.capitulos[S.chapter], o = objAtual();
     $('#p-info').innerHTML = `${c.titulo}${o ? `<br><span>${o.texto.replace(/\s*\(\{n\}\/\d\)/, '')}</span>` : ''}<br><small>${C.D().nome} · ${mmss(S.tempo)} jogados · ponto salvo há ${mmss(Math.max(0, S.tempo - ultSaveTempo))}</small>${MU && MU.lembranca() ? `<br><em class="lembra">${MU.lembranca()}</em>` : ''}`;
     focar('#pause');
+    if (SG) SG.pausa();
   }
 
   // ---------------------------------------------------------------- TECLAS
   function tecla(e) {
     const S = C.S;
+    if (SG && SG.tecla(e)) return true;
     if (PL && PL.tecla(e)) return true;
     if (!$('#confirma').hidden && e.code === 'Escape') { $('#cf-nao').click(); return true; }
     if (!$('#opcoes').hidden && e.code === 'Escape') { fecharOpcoes(); return true; }
@@ -555,7 +580,7 @@ export function criarInterface(C) {
     }
     return false;
   }
-  function soltou(e) { if (e.code === 'KeyC' && OPT.agachar === 'segurar') C.P.crouch = false; }
+  function soltou(e) { if (e.code === 'KeyC' && OPT.agachar === 'segurar') C.P.crouch = false; if (SG) SG.soltou(e); }
 
   // ---------------------------------------------------------------- QUADRO A QUADRO
   let mostrarObjT = 0, panicoT = 0, estatuaT = 0, cronHtml = '';
@@ -564,6 +589,7 @@ export function criarInterface(C) {
     agora += dt;
     if (MU) MU.frame(dt, ativo);
     if (PL) PL.frame(dt, ativo);
+    if (SG) SG.frame(dt, ativo);
     const S = C.S, P = C.P, M = C.M;
     if (S !== Sref) { Sref = S; rastro.length = 0; causa = null; motivoCaca = null; if (S && S.capT < 1 && S.chapter === 0 && S.tempo < 1) { mortesCap = {}; mortesCausa = {}; } }
     $('#cena-pular').hidden = C.mode !== 'cena';
@@ -574,7 +600,7 @@ export function criarInterface(C) {
     const jogo = C.mode === 'jogo' && S && !S.dead;
     // cronômetro
     const cr = $('#cron');
-    if (OPT.cron && jogo) { const h = `${relogio(S.capT)}<small>${relogio(S.tempo)}</small>`; if (h !== cronHtml) { cr.innerHTML = h; cronHtml = h; } cr.hidden = false; } else cr.hidden = true;
+    if (OPT.cron && jogo) { const h = (SG && SG.cron(S)) || `${relogio(S.capT)}<small>${relogio(S.tempo)}</small>`; if (h !== cronHtml) { cr.innerHTML = h; cronHtml = h; } cr.hidden = false; } else cr.hidden = true;
     if (!ativo || !S) return;
     // rastro para o mapa da morte (10 s, a cada 0,5 s)
     rastroT -= dt;
@@ -618,9 +644,10 @@ export function criarInterface(C) {
 
   MU = criarMundo(Object.assign(C, { historico: (q, t) => historico(q, t) }));
   PL = criarPolimento(C, { PAD, GRUPOS, focar, aplicar, subTitulo, objAtual, direcao, lembranca: () => MU && MU.lembranca(), fimCapT: () => fimCapT });
+  try { SG = criarSegredos(C, { PAD, GRUPOS, som, legenda, subTitulo, registrarCodigo, emCampo, focar, mapaMorte: () => mapaT }); } catch (e) { console.warn('[segredos]', e); }
   aplicar();
   $('#b-opc').onclick = () => abrirOpcoes('#title');
   $('#p-opc').onclick = () => abrirOpcoes('#pause');
   atualizarTitulo();
-  return { mundo: MU, papel: (id, m) => MU.papel(id, m), renderTempo: el => MU.renderTempo(el), renderPessoas: el => MU.renderPessoas(el), renderParedes: () => MU.renderParedes(), ondeNota: id => MU.ondeNota(id), marcasAbas: () => MU.marcasAbas(), marcaMapa: r => MU.marcaMapa(r), telaFinal: t => MU.telaFinal(t), tecla, soltou, som, ruido, golpe, morte, objetivo, salvou, fimCap, frame, fala, historico, nomeFalante, renderPistas, renderOuvido, salaMarcada, pausa, atualizarTitulo, antesDeNovoJogo, confirmar, aplicar, mmss, get ultSaveTempo() { return ultSaveTempo; } };
+  return { mundo: MU, papel: (id, m) => MU.papel(id, m), renderTempo: el => MU.renderTempo(el), renderPessoas: el => MU.renderPessoas(el), renderParedes: () => MU.renderParedes(), ondeNota: id => MU.ondeNota(id), marcasAbas: () => { MU.marcasAbas(); if (SG) SG.diario(); }, marcaMapa: r => MU.marcaMapa(r), telaFinal: t => { MU.telaFinal(t); if (SG) SG.telaFinal(t); }, renderAlbum: el => SG ? SG.renderAlbum(el) : (el.innerHTML = ''), renderUltima: el => SG ? SG.renderUltima(el) : (el.innerHTML = ''), tecla, soltou, som, ruido, golpe, morte, objetivo, salvou, fimCap, frame, fala, historico, nomeFalante, renderPistas, renderOuvido, salaMarcada, pausa, atualizarTitulo, antesDeNovoJogo, confirmar, aplicar, mmss, get ultSaveTempo() { return ultSaveTempo; } };
 }

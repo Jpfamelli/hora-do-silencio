@@ -4034,11 +4034,11 @@ function conquista(id) { PG.conquista(id); } // fila, secretas e som: src/progre
 // Diário
 let abaDiario = 'obj';
 function abrirDiario() { if (JP.travado()) { JP.agoraNao(); return; } ui = 'diario'; $('#diario').hidden = false; unlock(); renderDiario(); UIX.marcasAbas(); if (S.dif === 'pesadelo') $('#d-pane').insertAdjacentHTML('afterbegin', '<div class="tarja-tempo">o tempo não para</div>'); }
-const ABAS = ['obj', 'regras', 'inv', 'notas', 'tempo', 'pessoas', 'pistas', 'mapa', 'ouvido'];
+const ABAS = ['obj', 'regras', 'inv', 'notas', 'tempo', 'pessoas', 'pistas', 'mapa', 'ouvido', 'album', 'ultima']; // lote 4: Álbum (0) e Última página
 function irAba(id) { abaDiario = id; document.querySelectorAll('#diario nav .btn').forEach(x => x.classList.toggle('on', x.dataset.tab === id)); renderDiario(); }
 function trocarAba(e) {
-  const i = ABAS.indexOf(abaDiario), m = /^Digit([1-9])$/.exec(e.code);
-  if (m) irAba(ABAS[+m[1] - 1]);
+  const i = ABAS.indexOf(abaDiario), m = /^Digit([0-9])$/.exec(e.code);
+  if (m) irAba(ABAS[(+m[1] + 9) % 10]);
   else if (e.code === 'ArrowRight' || e.code === 'KeyD') irAba(ABAS[(i + 1) % ABAS.length]);
   else if (e.code === 'ArrowLeft' || e.code === 'KeyA') irAba(ABAS[(i - 1 + ABAS.length) % ABAS.length]);
 }
@@ -4094,6 +4094,8 @@ function renderDiario() {
   else if (abaDiario === 'pessoas') UIX.renderPessoas(el);
   else if (abaDiario === 'pistas') UIX.renderPistas(el);
   else if (abaDiario === 'ouvido') UIX.renderOuvido(el);
+  else if (abaDiario === 'album') UIX.renderAlbum(el);
+  else if (abaDiario === 'ultima') UIX.renderUltima(el);
   else {
     const salas = W.salas; if (!salas.length) return;
     const marca = UIX.salaMarcada();
