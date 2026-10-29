@@ -2,7 +2,7 @@
 
 Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/lote*/<área>.md`. Não edite à mão: edite o arquivo da área e gere de novo.
 
-**Total geral: 3913 melhorias**
+**Total geral: 4931 melhorias**
 
 ## Índice
 
@@ -48,6 +48,17 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
   - Progressão e rejogabilidade: 116
   - Plataforma e acessibilidade: 106
   - Revisão antes de publicar: 5
+- [Lote 4](#lote-4) — 1018 melhorias
+  - História e texto: 92
+  - Mapa: prólogo e estrada: 97
+  - Mapa: túneis, cemitério e capela: 96
+  - Monstros e IA: 125
+  - Sustos e eventos: 100
+  - Áudio: 103
+  - Visual e luz: 100
+  - Jogabilidade: 113
+  - Interface: 100
+  - Progressão e rejogabilidade: 92
 
 ## Lote 1
 
@@ -4090,3 +4101,1055 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
 1224. Duas opções diferentes tinham o mesmo nome "Realçar o que dá para usar": a do brilho suave virou "Brilho suave no que dá para usar" e a do contorno virou "Contorno para baixa visão"
 1225. A tela de morte dizia duas vezes como tentar de novo ("E tenta de novo" e "E, ESPAÇO ou ENTER: tentar de novo"), e a segunda linha aparecia até no celular e no controle; agora é uma linha só, que o toque e o controle trocam pelo botão certo
 1226. A legenda de som não mede mais a fala a cada quadro: ler a altura da legenda forçava o navegador a recalcular a página inteira enquanto havia uma legenda de som na tela (cerca de 5 ms por quadro a menos nessas horas)
+
+## Lote 4
+
+1018 melhorias.
+
+### História e texto (92)
+
+1. Final escondido "Não Entrei": no prólogo dá pra voltar ao carro e, girando a chave do motor morto nove vezes, ir embora pela estrada em vez de subir.
+2. Tela própria do final escondido, com texto, tempo que você levou pra ir embora e sussurro de "Lia?" no banco de trás.
+3. O rádio do carro segue o programa da Serra FM até sair do ar (previsão, recado de ouvinte pra Lia, hino, silêncio) se você ficar sentada.
+4. Depois do rádio sair do ar, três batidas no teto bem em cima da cabeça e a Lia é obrigada a sair do carro (conquista "Até o Hino").
+5. Sentar no carro com a porta fechada ganha fala própria da Lia e sair de novo é feito por W/S.
+6. As nove tentativas de partida têm cada uma a sua fala, ficando mais desesperadas até o motor pegar.
+7. Quem achou todos os segredos recebe, na noite seguinte, a carta do Davi adulto presa no limpador do para-brisa.
+8. Seu Joaquim continua respondendo depois da conversa obrigatória, cada vez com menos paciência, ao longo de oito falas novas.
+9. Insistir até o fim faz o Seu Joaquim tirar o chapéu e contar a noite de 1979 (os galões de gasolina) e entregar o fumo de corda (conquista "Prosa Comprida").
+10. Apontar a lanterna na cara do Seu Joaquim por três segundos faz ele reclamar: "Morto não fica cego, fica cansado."
+11. Chegar ao posto em menos de um minuto troca a primeira fala do Joaquim por "Apressada igual o menino."
+12. A gaveta da caixa registradora do posto abre com barulho e esconde a chavinha "A.T. 1980".
+13. Uma caixa de sapatos no posto tem uma carta do Joaquim por ano (1980 a 1993), uma por noite, contando como ele aprendeu cada regra.
+14. A lista de chamada do ônibus ganha uma 38ª linha escrita à mão com o nome que você digitou, com a tinta escorrendo.
+15. Plaquinha em braile do Moacir na casa de máquinas: agachada e no escuro, a Lia lê com os dedos o diário dele em primeira pessoa.
+16. Plaquinha em braile no patamar, com outra página da cabeça do Inspetor.
+17. Terceira plaquinha em braile (túnel norte) só aparece pra quem leu as duas primeiras; é a vez em que ele admite que também está cansado.
+18. O braile aparece na tela como pontinhos e vira letra aos poucos, como se os dedos estivessem lendo.
+19. Gaveta da carteira riscada "D.M." na sala de aula, com cadeado de quatro números: a idade dos dois naquela noite (1214).
+20. A gaveta do Davi guarda um curativo e um bilhete em que ele se diz o mais velho por dentro (conquista "Irmão Mais Novo").
+21. A chamada na lousa da sala de aula ganha risquinhos de giz, um por morte somando todas as noites, agrupados de cinco em cinco.
+22. Chegar à sala de aula sem ter morrido na noite mostra "LIA M. — PRESENTE" em letra de freira (conquista "Presente").
+23. A lousa do castigo tem uma linha escrita a giz molhado que só aparece no clarão do relâmpago, com a luz apagada: a dica dos três segundos do sino.
+24. Na fuga do Cap. V, quem leu a lousa do castigo ganha a fala "Três segundos. O Davi escreveu na lousa. CORRE!".
+25. A pasta da professora tem as redações "O que eu quero ser" do Davi, da Ana e do Moacir criança (conquista "Quando Crescer").
+26. A ficha de empréstimo de "Contos para Dormir" na biblioteca mostra o livro que o Davi pegou em 14/03/1979 e nunca devolveu, com a sua linha de 1994.
+27. O bolo de doze velas do Davi no forno frio da cozinha: dá pra achar, acender as velinhas e soprar, e crianças cantam parabéns no escuro (conquista "O Pedido").
+28. A planta de 1931 no depósito mostra o Dormitório F apagado a lápis e carimbado "NÃO CONSTA", primeira pista da sala que não existe.
+29. O caderno do zelador com "ideias pra assustar os meninos" é um bastidor leve que cita as versões antigas do jogo.
+30. A placa de bronze de 1931 na recepção tem um nome raspado que só aparece em relevo com a lanterna bem de perto e de lado.
+31. Bilhetes na língua do P espalhados no caminho: a Lia os traduz em voz alta depois de alguns segundos olhando.
+32. Um dos bilhetes da língua do P a Lia se recusa a traduzir ("Esse não. Esse eu não quero ler.").
+33. Carta da Lia criança debaixo do colchão D.M. que ganha, ao reler, uma resposta a lápis do Davi conforme quantas vezes você morreu.
+34. Carta-corrente de 1979 debaixo do travesseiro: copiar nove vezes faz a décima linha se escrever sozinha com o nome do Davi.
+35. Se você ignorar a carta-corrente, ela aparece no banco do carro na abertura da noite seguinte.
+36. Folha do Davi escrita ao contrário (ele era canhoto) no dormitório C, que só se lê de verdade diante do espelho do banheiro (conquista "Canhoto").
+37. Ficar escondida dentro do armário do dormitório C revela "J.P. esteve aqui — 2026" riscado na madeira (conquista "Visitante").
+38. Diário de cadeadinho da Ana na sala de brinquedos, aberto forçando com um grampo (estalinhos que o Inspetor pode ouvir); reescreve o medo dela como saudade da mãe.
+39. Caderno do monitor na rouparia com décadas de nomes "fora da cama" e a sua linha com a tinta ainda molhada, hora e sala preenchidas na hora.
+40. Reler o caderno do monitor mais tarde acrescenta uma linha nova: "ainda fora da cama".
+41. Radinho de galena feito pelo Davi no dormitório D: sintonizado, pega a transmissão da própria noite com a voz da Lia (conquista "Lata e Fio").
+42. Caderno de perguntas das meninas no dormitório E: a última pergunta é pra Lia (qual o seu maior medo), respondida apertando 1 a 4.
+43. A resposta do maior medo muda o susto da capela no Cap. V e uma linha do final verdadeiro.
+44. Gibi "Capitão Trovão contra o Homem Cego" feito à mão pelo Davi, com seis quadrinhos que escondem as pistas dos próprios segredos do jogo.
+45. Tijolo solto "L.M." na galeria oeste dos túneis, com a fita em que o Davi canta parabéns pelos catorze anos da Lia (conquista "Catorze").
+46. Ouvir a fita dos catorze anos zera o medo e a Lia chora em silêncio.
+47. O pacto das três crianças escrito a carvão no depósito ("quem sair volta pra buscar os outros"), com a assinatura do Bento borrada.
+48. Cápsula do tempo das três crianças ao lado de uma cruz sem nome no cemitério, cavada com a pá: cartas de 1978 "para abrir em 1994" (conquista "Abrir em 1994").
+49. As cartas da cápsula mudam conforme sua noite: se estava de lanterna acesa, se respondeu ao chamado, quantas vezes caiu.
+50. Cruz de madeira "J. S. — 1979" no canto do cemitério, com o rádio confirmando que o Seu Joaquim morreu ali.
+51. Em algumas noites o Seu Joaquim está de pé ao lado da própria cruz e some quando a Lia se aproxima.
+52. Banco da última fileira da capela com iniciais entalhadas de gerações, incluindo "L.M. 1994" fresco, visível só com a luz de lado (conquista "Já Estive Aqui").
+53. Armário da sacristia trancado por fora: a chave A.T. 1980 do posto abre e revela o terno e a última página do diretor Albano (conquista "Trancado Por Fora, Também").
+54. Quem abriu o armário do Albano ouve o Seu Joaquim mudar a despedida no portão: "Agora você sabe o que eu fiz."
+55. A palavra "ACORDA": seis letras pintadas pequenas espalhadas nos lugares secretos, com números que dão a ordem.
+56. Digitar ACORDA na tela de título faz o Davi gravar, ao vivo, a fita que abre o jogo, com uma frase a mais (conquista "Acorda").
+57. O diário da Lia ganha uma página que anota sozinha as esquisitices da noite (andar de costas, chorar no chão, responder ao chamado, etc.).
+58. Página escrita a lápis de cor que o Davi "deixou" no diário, com texto diferente a cada 10, 20 e todos os segredos achados.
+59. A partir da terceira noite, o Cap. I tem uma página na letra da Lia, datada de hoje, com um erro proposital, que ela não lembra de ter escrito.
+60. No Pesadelo, o verso das regras ganha uma oitava regra em letra de criança; lê-la faz o Inspetor vir direto até a Lia (conquista "Regra Oito").
+61. Depois do final verdadeiro, o jogador escreve a sua própria oitava regra, que aparece no verso das regras na noite seguinte.
+62. A Fita 5 aparece sozinha no começo do próximo mapa quando você cumpre três segredos na mesma noite (conquista "A Fita 5").
+63. A Fita 5 conta o plano dos três e por que a Lia não podia ir naquela noite.
+64. Depois do final verdadeiro, o jogador deixa uma carta pro Davi (até 140 letras); na noite seguinte o Davi responde na fita de abertura por palavras-chave (conquista "Correio dos Mortos").
+65. Ficar dois minutos parada e fora de perigo faz a Lia escorregar pela parede e chorar; mexer de novo faz ela se levantar.
+66. Digitar 1503 (o aniversário da Lia) no cofre dos túneis mostra PARABÉNS e solta uma vela de catorze e um curativo (conquista "Parabéns").
+67. O cofre responde a combinações bobas (1234, 9999, a data de hoje ao contrário) com falas do Davi, sem contar como erro.
+68. Entre março e julho, o rádio-relógio do título solta notícias da Copa de 1994, e num 17 de julho narra a decisão nos pênaltis.
+69. A abertura no carro lembra da noite anterior: se você foi embora, se ignorou a carta-corrente, se a carta do Davi adulto está esperando.
+70. Quem ainda tem o save da campanha antiga de oito capítulos ouve, uma vez, o rádio dizer "da outra vez eram oito noites, Lia; o prédio encolheu".
+71. O final verdadeiro ganha uma linha se você leu as três plaquinhas em braile (o Inspetor sorri pela primeira vez).
+72. O final verdadeiro ganha uma linha se você leu o pacto das três crianças ("Lia voltou, como eles combinaram").
+73. O final verdadeiro ganha uma linha se você pegou o livro da biblioteca (a ficha ganha data de devolução).
+74. O final verdadeiro ganha uma linha se você desenterrou a cápsula do tempo (as cartas do Tomé e do Bento).
+75. O final verdadeiro ganha uma linha com a partida do carro, se você tentou dar partida no prólogo.
+76. Qualquer final ganha uma linha se você abriu o armário do Albano (o Joaquim também trancou uma porta).
+77. Andar de costas pela estrada velha vira uma das esquisitices anotadas no diário.
+78. Novas conquistas secretas somam ao acervo, cada uma com a sua dica para quem explora.
+79. Todo o texto novo dos segredos entra em roteiro.js (R.lote4), em português do Brasil e com as aspas tipográficas do jogo.
+80. As notas secretas não contam no total do diário, então achá-las não "estraga" a contagem de quem só quer a história principal.
+81. Ao achar um dos lugares que guardam uma letra, um aviso mostra a letra e o número da ordem, sem dizer pra que servem.
+82. No caderno de perguntas dá pra responder clicando na opção, além de apertar 1 a 4.
+83. A folha do canhoto aparece espelhada já no próprio diário e só se endireita quando lida diante do espelho, com animação.
+84. A primeira plaquinha em braile tem fala própria da Lia ("Ele lia assim. Passando a mão.").
+85. O susto da capela no Cap. V tem quatro falas diferentes, uma para cada medo que você marcou no caderno das meninas.
+86. Abrir a gaveta da caixa registradora faz barulho e chama a atenção do Inspetor.
+87. A Fita 5 chega com um aviso de que há um gravador no chão que não estava ali.
+88. O armário da sacristia abre de verdade, com a porta girando, depois de destrancado com a chave certa.
+89. Cavar a cápsula do tempo exige a pá e faz o mesmo barulho alto dos túmulos.
+90. O caderno do monitor preenche a sua linha com a hora do relógio do jogo e o nome da sala onde você o leu.
+91. As cartas retidas da diretoria mudam conforme o final da noite anterior, o capítulo em que você mais caiu e quanto tempo ficou escondida.
+92. Reler a folha do colchão depois do Cap. III mostra a resposta do Davi, que antes não estava na margem.
+
+### Mapa: prólogo e estrada (97)
+
+93. Agora dá pra entrar de novo no carro depois de ter saído, com a ação "Entrar no carro".
+94. Sentada no carro a câmera baixa pro banco do motorista e o movimento fica travado, como estar de verdade ali dentro.
+95. Buzina com E no volante, que faz barulho alto e chama a atenção do que anda na estrada.
+96. Três buzinadas curtas fazem uma luz piscar de volta numa janela da torre (conquista secreta "Sinal de Vida").
+97. Repetir as três buzinadas depois faz a buzina tocar sozinha, sem ninguém encostar no volante.
+98. Mais de sete buzinadas seguidas levam uma pancada no teto do carro, com susto e tremor.
+99. Nove buzinadas lentas fazem o ônibus de 1979 responder com buzina rouca que se aproxima nove vezes.
+100. Faróis amarelos surgem na neblina e o ônibus de 1979 passa iluminado, cheio de crianças, com três janelas vazias (conquista "Último Ônibus").
+101. A chave no contato só gira depois de pegar a lanterna; antes disso a Lia avisa que precisa de luz.
+102. Segurar E na chave dá o Final 0 "Ninguém Precisa Chegar Lá": o motor engasga, pega e o carro dá ré pela serra.
+103. No Final 0 um vulto aparece no retrovisor por um único quadro durante a ré.
+104. Ficar sentada no carro por 45 s faz a Lia murmurar que só quer esperar a chuva passar.
+105. Aos 60 s a chuva no teto do carro engrossa, com som procedural novo.
+106. Aos 90 s o rádio vira só chiado, um chiado que parece respiração.
+107. Aos 120 s batem três vezes no vidro do lado da Lia, sem ninguém do lado de fora.
+108. Aos 150 s o porta-luvas abre sozinho com um clique.
+109. Aos 170 s o banco de trás afunda com rangido de couro e a câmera trava olhando pra frente.
+110. Aos 180 s abre o final secreto "Fiquei no Carro": tela preta com "Você não entrou. Então ele saiu."
+111. O retrovisor interno muda entre as noites: 1ª vazio, 2ª cinto afivelado com mãozinha no vidro, 3ª "LIA" escrito por dentro.
+112. Mirar o retrovisor por 2 s revela o reflexo daquela noite e dá medo quando não está vazio.
+113. Segurar Q sentada no carro vira a cabeça pro banco de trás e mostra uma criança encharcada por 0,4 s.
+114. Depois da criança do banco de trás fica o estofado molhado e uma mãozinha marcada no vidro.
+115. Farol alto com F sentada no carro ilumina a neblina bem mais longe.
+116. Na terceira troca de farol alto, três crianças de mãos dadas aparecem paradas no meio da estrada e somem.
+117. Tentar andar sentada no carro mostra um aviso de que é E na porta pra sair.
+118. Uma moeda de cruzeiro fica no cinzeiro do carro pra pegar e usar na máquina de chiclete do posto.
+119. Os finais secretos mostram cartão próprio com o tempo na estrada e avisam que não contam pros três finais.
+120. Andar pra trás na estrada além do carro engrossa a neblina e a estrada dá a volta, trazendo você de volta ao carro.
+121. Na terceira volta há uma Lia de capa sentada no banco, de costas, ouvindo a fita (conquista "Não Tem Volta").
+122. Nas voltas a porta do carro aparece aberta e com mãozinhas no vidro por dentro.
+123. Andar só de ré por 40 m na estrada faz um vulto surgir andando de costas do seu lado.
+124. Virar pro vulto da ré: ele já está de frente (conquista "Ré").
+125. Dá pra piscar a lanterna em S.O.S. (três curtas, três longas, três curtas) apontando pro internato.
+126. Uma janela responde piscando D-A-V-I em código Morse de verdade (conquista "Alguém Respondeu").
+127. A janela que respondeu ao S.O.S. fica acesa até você entrar pelo portão.
+128. Depois do S.O.S. uma pilha extra rola por baixo do portão.
+129. Piscar a lanterna três vezes pra luz do posto faz a lâmpada responder piscando três vezes (conquista "Três Piscadas").
+130. Às vezes o posto responde com quatro piscadas em vez de três, sem explicação.
+131. Um gato magro dorme na bomba do posto; aproximar devagar e fazer carinho dá a conquista "Bichano".
+132. Correr perto do gato o espanta e ele não volta mais naquela noite.
+133. O gato ronrona com som procedural modulado quando recebe carinho.
+134. O gato arrepia e chia virado pro mato quando o vulto está por perto, servindo de radar vivo.
+135. Um pote de balas de goma de 1979 no balcão do posto deixa pegar uma bala pro inventário.
+136. Deixar a bala no banco do ponto de ônibus some com ela e deixa um bilhete no lugar (conquista "Doce").
+137. A máquina de chiclete empoeirada do posto aceita a moeda de cruzeiro do carro.
+138. Girar a manivela solta uma bolinha queimada e um anelzinho com a letra D, do Davi.
+139. Uma profecia sorteada por noite sai da máquina de chiclete (uma frase sobre o perigo da noite).
+140. Poço de tijolo atrás do posto deixa descer e puxar o balde, com rangido de corda.
+141. O balde traz uma coisa diferente a cada noite: bolinha de gude, sapato de criança, bilhete molhado ou só água morna.
+142. Na terceira puxada do balde uma mãozinha solta a alça lá do fundo (conquista "O Que Tinha no Fundo").
+143. Binóculo atrás do posto aperta o campo de visão com zoom e vinheta redonda ao olhar.
+144. Pelo binóculo a janela da torre pisca os quatro dígitos do cofre da noite em grupos separados (conquista "Quem Pisca").
+145. O contador da bomba de gasolina corre de volta até 14,03 ao apertar o gatilho, ligando a data do incêndio.
+146. Caixa de correio do posto com cartas devolvidas pro Davi e uma carta de amanhã escrita pela própria Lia.
+147. O tapete do posto tem a ponta levantada e esconde um alçapão, aberto agachada com E.
+148. No porão o rádio amador do Seu Joaquim, com luz verde, pode ser ligado (conquista "O Porão do Joaquim").
+149. O porão tem um mapa com alfinetes de quem sumiu na serra e quinze recibos dos Correios de famílias diferentes.
+150. O Seu Joaquim comenta cada segredo que você acha (a bala, a luz, o velho, o gato, o S.O.S.).
+151. Um marco "KM 79" caído no mato pode ser levantado, um número que não devia entrar na contagem.
+152. Ao levantar o marco a névoa abre e o internato aparece inteiro e aceso como em 1979, com música de festa (conquista "Quilômetro 79").
+153. Uma criança de pijama atravessa correndo a estrada antes de tudo voltar a ser ruína.
+154. Pegadas pequenas aparecem na lama só no clarão do relâmpago.
+155. A pipa "LIA VOA" presa no poste pode ser puxada devagar pela linha até cair com o mapa do atalho no verso.
+156. Uma manilha de concreto na vala deixa olhar dentro só agachada e revela três mochilas de anos diferentes.
+157. Do fundo escuro da manilha vem uma respiração pequena.
+158. Placas amarelas de "escola" com crianças que vão diminuindo (três, duas, uma) até sobrar um homem alto.
+159. A lanterna apontada pra última placa de escola desfaz o homem e vira placa comum.
+160. Cartaz de campanha de 1978 do diretor Albano no poste, com os dois olhos furados a prego.
+161. No clarão do relâmpago o cartaz mostra "ORDEM DE QUEM?" escrito a carvão por cima.
+162. Uma bicicleta fantasma passa na neblina com a carta batendo no raio, sem ninguém em cima.
+163. O velho do saco atravessa a estrada e some no barranco, num evento raro (cerca de uma noite em vinte).
+164. A placa "INTERNATO SÃO LÁZARO" no portão vai perdendo letras conforme o total de mortes, até sobrar só "LÁ".
+165. Na noite seguinte a um final secreto, o rádio da abertura comenta o que aconteceu na noite anterior.
+166. Nota secreta nova: a carta de 15/03/1994 da Lia adulta, com o aviso sobre o portão.
+167. Nota secreta nova: o mapa com alfinetes do porão do posto.
+168. Nota secreta nova: a tabela de Morse pregada na escada do porão.
+169. Nota secreta nova: o cartaz de campanha do diretor Albano.
+170. Nota secreta nova: a pipa com o mapa do atalho e o bilhete do Tomé na rabiola.
+171. Nota secreta nova: o bilhete e as mochilas da manilha.
+172. Fita secreta nova "TESTE — NÃO GRAVAR POR CIMA", o Davi aos 11 anos testando o gravador.
+173. Falas novas da Lia reagindo a cada segredo encontrado (mais de trinta linhas de contexto).
+174. Quinze conquistas secretas novas só do prólogo, com dicas que não entregam o segredo.
+175. Som procedural novo: a buzina rouca do ônibus de 1979.
+176. Som procedural novo: o motor a diesel do ônibus, com volume que sobe e desce pela distância.
+177. Som procedural novo: o ronronar do gato.
+178. Som procedural novo: o chiado arrepiado do gato.
+179. Som procedural novo: o miado.
+180. Som procedural novo: o couro do banco de trás afundando.
+181. Som procedural novo: as três batidas no vidro do carro.
+182. Som procedural novo: a música de festa ao longe no marco 79.
+183. Som procedural novo: a carta batendo no raio da bicicleta.
+184. Som procedural novo: o motor engasgando e pegando no Final 0.
+185. Som procedural novo: as engrenagens da bomba girando pra trás.
+186. Legendas acessíveis novas pra todos os sons dos segredos, com categoria de perigo ou de história.
+187. A porta do motorista abre e fecha sozinha ao entrar e sair do carro (gancho novo no polimento).
+188. As luzes do internato (torre e janela do S.O.S.) atravessam a névoa pra serem vistas lá da estrada.
+189. A moeda e o anelzinho entram no inventário ligando o prólogo ao final verdadeiro.
+
+### Mapa: túneis, cemitério e capela (96)
+
+190. Na parede da escada dos túneis, a lista "QUEM DESCEU" riscada a prego de 1951 a 1979 ganha uma última linha nova com o nome que o jogador digitou no título e a data de hoje.
+191. Se o jogador não digitou nome, a última linha da lista diz "A IRMÃ", e a Lia reage sozinha ao perceber que desceu hoje.
+192. A Lia estranha em voz alta ver o próprio nome fresco riscado a prego ("como ele sabe esse nome?").
+193. Na coluna do túnel norte há marcas de altura a canivete, com nome e ano, de 1931 a 1979.
+194. A marca "DAVI 79" fica na altura dos olhos da Lia quando ela se agacha; a marca "LIA 94" está na altura dela em pé.
+195. Encostar a mão no risco mostra uma reação muda da Lia, sem fala forçada.
+196. Agachar junto às marcas de altura por um tempo faz o Davi sussurrar do outro lado da parede "...você cresceu" e dá a conquista secreta "Do Tamanho Dele".
+197. Sete nichos de pedra no túnel norte, cada um com um chapéu de feltro, um apito de metal e a placa com ano e inicial dos Inspetores (1931 a 1979 — M.).
+198. O oitavo nicho está vazio, limpo e sem poeira, com a placa já gravada "1994 — L.".
+199. Iluminar o oitavo nicho deixa a Lia muda, sobe o medo e dá a conquista secreta "O Oitavo Nicho".
+200. Uma prateleira no túnel oeste com 37 pares de sapatos de criança etiquetados: 34 secos e 3 molhados de lama (TOMÉ, ANA, DAVI).
+201. No lugar 38 da prateleira há um par de botas de adulto número 36; tocar nelas dá uma pilha, a fala "São as minhas. Eu tô de bota." e a conquista "Trinta e Oito".
+202. Um sapato de criança sai por uma fresta da parede de tijolos de 1951; puxar faz uma mãozinha puxar de volta.
+203. Na terceira puxada o sapato solta, uma voz de menino diz "...Cícero" e revela o nome "CÍCERO — 1951 — fugitivo", com a conquista "O Quadragésimo Primeiro".
+204. Um poço de pedra seco na câmara oeste, cuja lanterna não alcança o fundo.
+205. Jogar uma garrafa no poço faz uma menina contar de nove até um lá embaixo e a garrafa voltar rolando até o pé da Lia, com um bilhete no gargalo; dá a conquista "Fundo do Poço".
+206. O bilhete do poço entra no diário como nota secreta ("não joga lixo no meu quarto").
+207. Jogar uma segunda garrafa no poço faz só uma risadinha vir lá do fundo.
+208. Uma gaiola com um canário vivo pendurada na cisterna, que canta enquanto o Inspetor está longe.
+209. O canário se cala de repente quando o Inspetor chega perto, servindo de detector honesto para quem repara.
+210. A Lia liga o canário à mina ("quando ele cala, é porque vem coisa ruim").
+211. Abrir a portinhola da gaiola solta o canário, que voa e some.
+212. Na cisterna, a tecla V faz a Lia chamar "Davi?" para dentro do poço, e o eco volta três vezes mais fraco.
+213. Na quarta vez o eco volta mais alto que a própria voz, com a voz do Davi ("AQUI NÃO. ELE TÁ OUVINDO."), chama o Inspetor e dá a conquista "Eco Desobediente".
+214. Um tijolo com um "D" riscado na câmara leste; agachada, puxar o tijolo revela o canivete do Davi (D.M.) enrolado num pano.
+215. Nove arranhões de unha na parede do túnel leste, o nono pela metade.
+216. Ficar parada no escuro diante dos arranhões completa o nono sozinho, com som de unha na pedra e a Lia sussurrando "...nove".
+217. Um rato branco de olhos vermelhos aparece no túnel leste e só anda quando a Lia o segue agachada e sem correr.
+218. Iluminar o rato na cara faz ele fugir para o lado errado; segui-lo até o fim o leva a entrar num buraco da parede.
+219. Enfiar a mão no buraco do rato dá uma pilha, o bilhete do Pipoca (nota secreta) e a conquista "Rato de Laboratório".
+220. Uma quarta válvula, de emergência, deitada no fundo da cisterna, só visível agachada com a lanterna apontada para a água.
+221. Girar a válvula de emergência esvazia tudo de uma vez sem seguir a ordem, mas os canos roncam e o Inspetor vem direto; dá a conquista "Válvula do Pedreiro".
+222. A anotação do pedreiro (nota n9) ganha uma linha a lápis sobre a válvula de emergência no fundo da cisterna.
+223. Dar um toque rápido numa válvula faz o cano cantar a nota dela (grave, médio, agudo), com legenda própria.
+224. Acertar a ordem das três válvulas sem errar depois de ouvir as notas dá a conquista "Afinada".
+225. Uma grade baixa e frouxa na parede leste do túnel norte, que só se solta agachada.
+226. Atrás da grade, uma cabana de lençóis com cabos de vassoura, lanterna de pilha, figurinhas, um gibi e uma caixinha de música.
+227. A cabana é uma sala segura: o Inspetor não entra, só fareja do lado de fora ("pano. Só pano velho.") e vai embora.
+228. Dentro da cabana o medo cai até zero e a caixinha de música toca bem baixo; dá a conquista "Debaixo do Lençol".
+229. A cabana só pode ser usada uma vez por noite: ao sair, os lençóis caem e ela deixa de esconder.
+230. Só dá para passar pela grade agachada; em pé a Lia bate a cabeça e um colisor a impede.
+231. A parede de dentro da cabana tem nomes de quem se escondeu ali, com pauzinhos contando as noites, terminando em "LIA — pra quando ela vier".
+232. Ler os nomes da cabana troca a música da caixinha pela cantiga que a Irmã Celeste cantava.
+233. Um mapa de tesouro a lápis dentro da cabana, mostrando duas árvores secas perto do galpão e um X vermelho, assinado D. T. A.
+234. A Lia lê o mapa e entende onde o tesouro dos três está enterrado, no cemitério.
+235. No cemitério, a fase da lua acompanha a fase real pela data do aparelho, mudando a força do luar.
+236. Em noite de lua cheia de verdade, o cemitério fica mais claro (menos sombra para esconder) e surge uma lápide extra "AQUI JAZ O QUE A LUA MOSTROU", com a conquista "Lua Cheia".
+237. A Lia comenta ao chegar numa noite de lua cheia que não há sombra para se esconder.
+238. Uma lápide coberta de musgo no fundo do cemitério; segurar E limpa o musgo devagar.
+239. Limpa, a lápide revela "LIA MORAES · 1967 — 1979 · transferida" (a vaga que não foi dela), a Lia só respira e vem a conquista "Era Eu".
+240. Um canto do cemitério ganha uma lápide pequena "LIA" para cada vez que o jogador morreu nesta noite, cada uma com uma regra quebrada (CORREU, RESPONDEU, etc.).
+241. Vendo três ou mais dessas lápides, a Lia para e diz "Quantas vezes eu já vim aqui?".
+242. Um fogo-fátuo azul que só aparece com a lanterna apagada e foge se o jogador acende a luz.
+243. Seguir o fogo-fátuo no escuro (ele espera quem para) leva a uma lápide caída de criança onde ele entra; a Lia explica "fogo que anda".
+244. Na lápide onde o fogo entrou surge uma bolinha de gude azul do Tomé; pegá-la dá a conquista "Luz de Defunto".
+245. Uma cova antiga com um sininho de segurança e a corda entrando na terra, que toca sozinho de vez em quando.
+246. Puxar a cordinha do sininho faz algo puxar de volta com força, dando um tranco na câmera e a conquista "Ainda Aqui".
+247. Uma cova aberta serve de esconderijo: deitar nela deixa a respiração quase inaudível para o Inspetor.
+248. Depois de 15 s deitada na cova, começa a cair terra de cima (alguém enterrando); aguentar dá a conquista "Sete Palmos", e aos 25 s a tela fecha e força a saída.
+249. Entre duas árvores secas perto do galpão, uma cruz de pedras marca o tesouro enterrado dos três.
+250. Cavar o X com a pá revela uma lata com figurinha, bolinha de gude, o apito do Tomé e a carta dos três (nota secreta).
+251. Ler a carta dos três enche a vida e zera o medo uma vez, com a conquista "Tesouro de Pirata".
+252. Uma poça escura e parada reflete a lápide ao lado; agachada, o reflexo mostra outro nome ("MOACIR DUARTE · 1938 — hoje").
+253. A Lia percebe que a pedra não diz aquilo, só o reflexo na água.
+254. Uma cova sem nome com a terra fofa, mexida há pouco; remexer com a pá revela um cartão de matrícula com o nome do jogador e a data de hoje, com a foto arrancada.
+255. A Lia fecha a cova às pressas em pânico e ganha a conquista "Lugar Reservado".
+256. Um barracão de ferramentas de porta presa por arame; soltar o arame (ou cortá-lo com o canivete do Davi, rápido e sem barulho) abre o barracão.
+257. Dentro do barracão, a pá do coveiro de cabo curto faz os túmulos saírem bem mais rápido quando pega.
+258. Usar o canivete do Davi para abrir o barracão rende uma fala dele e evita o ruído de soltar o arame.
+259. Um anjo de pedra com o braço estendido que aponta para o próximo túmulo a cavar e muda de direção quando ninguém olha.
+260. Na fuga final, o anjo passa a apontar para o portão dos fundos, poupando segundos a quem repara.
+261. Encarar o anjo por muito tempo faz ouvir pedra rangendo atrás do jogador e sobe o medo.
+262. Uma árvore seca no fundo com sapatinhos de criança pendurados pelos cadarços, mais um par de botas de adulto novo número 36.
+263. O par de adulto balança sem vento quando a lanterna passa por ele, e a Lia estranha.
+264. Uma pia batismal de água preta na capela; segurar E põe a mão na água enquanto o medo sobe e algo frio fecha a mão.
+265. A pia devolve um escapulário de pano da Irmã Celeste; na fuga, a Celeste reza e segura o Inspetor um pouco mais ao sair da capela.
+266. No muro dos fundos, um sinal riscado a giz (três curtas, três longas, três curtas) "PRO SEU JOAQUIM VER — D." e uma luzinha amarela do posto ao longe.
+267. Piscar a lanterna no padrão de socorro faz o posto responder piscando de volta e o rádio do Seu Joaquim falar; dá a conquista "Câmbio".
+268. Depois do câmbio, na fuga, uma vela acesa no lado esquerdo do portão faz o Inspetor perder alguns segundos ali.
+269. Um confessionário na capela cuja madeira por dentro tem nomes riscados por crianças, entre eles "LIA — 14/03/79 — guardei teu lugar".
+270. Ler a madeira do confessionário dá a conquista "Lugar Guardado".
+271. Escondida no confessionário por um tempo, uma voz de homem velho do outro lado da grade fala da sua noite (quantas vezes morreu) e dá uma penitência que é uma dica real.
+272. Na segunda vez no confessionário, o outro lado está vazio e a madeira está molhada como se alguém tivesse chorado ali.
+273. Se o canário foi solto nos túneis, ele reaparece pousado na trave do sino da capela.
+274. Tocar o sino com o canário presente faz ele cantar nove notas em vez de fugir, com a conquista "Livre".
+275. Três notas secretas novas no diário (bilhete do poço, bilhete do Pipoca, carta dos três).
+276. Vinte conquistas secretas novas do subterrâneo, com um contador "Segredo do subterrâneo X/20" a cada descoberta.
+277. Vinte legendas de som próprias dos segredos (canário, eco, patinhas, sininho, terra caindo, rádio em código, etc.) para quem joga com legendas ligadas.
+278. Dois sons procedurais novos de canto do canário: o piado curto da gaiola e as nove notas do hino na trave do sino.
+279. Som procedural novo de garrafa rolando de volta, usado no poço seco.
+280. Som procedural novo de ronco dos canos, usado na válvula de emergência.
+281. Som procedural novo de unha raspando a pedra, usado nos arranhões da parede.
+282. Som procedural novo de terra caindo, usado na cova aberta e na cova sem nome.
+283. Som procedural novo de pedra rangendo, usado quando o anjo é encarado demais.
+284. A cabana de lençóis é mantida fora do mapa de caminhos das entidades, para que Inspetor, Procissão e Menina nunca entrem nela.
+285. As garrafas jogadas no poço seco são tratadas por um único gancho sobre o retorno de garrafa, sem quebrar o comportamento normal das garrafas.
+
+### Monstros e IA (125)
+
+286. Depois de ler a ficha do Moacir (ou a ficha médica, ou ouvir a fita dele), V com o Inspetor a menos de 4 m faz a Lia sussurrar "Moacir..."
+287. Chamado pelo nome, ele para por 4 s e pergunta, com a voz do Moacir: "Quem me chama assim?"
+288. Enquanto ouve o próprio nome, ele inclina a cabeça de lado e encolhe um pouco, como o menino que era
+289. Chamar pelo nome uma segunda vez no mesmo capítulo deixa ele furioso: "Ninguém mais me chama assim. NINGUÉM." e a caçada começa na hora
+290. Em plena caçada o nome não funciona, e a Lia avisa: "Ele não ouve nome nenhum agora."
+291. Sem ter lido o nome dele em lugar nenhum, a Lia percebe que não sabe como chamá-lo (o segredo premia quem lê)
+292. Conquista secreta "Quem Me Chama"
+293. Escondida, com ele de costas a menos de 3,5 m, V faz a Lia sussurrar "Boa noite, seu Moacir."
+294. Na metade das vezes ele abaixa a cabeça, responde "Boa noite... vá dormir." e segue a ronda sem caçar por 30 s
+295. Na outra metade ele vira na hora ("Fora da cama."), já sabe onde você está e vem abrir o esconderijo
+296. A chance do boa noite dar certo sobe se você leu a ficha de aluno dele de 1948
+297. O boa noite só vale uma vez por capítulo; tentar de novo faz a Lia desistir ("Já dei boa noite uma vez. Não abusa.")
+298. Conquista secreta "Educada"
+299. Quando ele para numa pausa de memória (reza), chegar por trás em pé mostra "segure E Tocar o ombro dele"
+300. Tocar o ombro dele na reza faz ele dizer "Luiz? É você?" e ficar parado mais 8 s, uma janela segura
+301. Depois do toque, a Lia percebe sozinha: "Ele achou que era o Luiz. Não se mexe."
+302. O toque no ombro funciona uma vez por capítulo
+303. Conquista secreta "Ele Achou Que Era o Luiz"
+304. O mesmo gesto com ele parado ouvindo (escuta ou emboscada) é morte na hora: ele segura o seu pulso
+305. A morte pelo pulso tem frase própria na tela de morte: "Ninguém encosta nele sem ser chamado."
+306. Na reza, chegar por trás agachada mostra "segure E Tirar o apito do cinto dele" (2 s)
+307. Qualquer passo durante o furto estraga tudo: ele sente a mão no cinto e agarra a Lia
+308. Segurar E perto dele, parada, não dispara mais o bote antes da hora (só se mexer dispara)
+309. Depois do furto o apito some de verdade do peito dele no modelo
+310. Conquista secreta "Mão Leve"
+311. Com o apito no bolso e sem garrafas, G sopra o apito dele: um toque longo e metálico, com legenda
+312. Ao ouvir o apito, ele larga tudo e marcha até o dormitório (ou a sala mais longe de você) dizendo "Um apito, todos na cama."
+313. No caminho até lá, os seus passos não tiram ele da marcha
+314. Quando chega e não acha ninguém, procura irritado por 20 s gritando "Quem pegou o meu apito? QUEM?"
+315. Depois do furto, ao passar perto, ele leva a mão ao peito e murmura "...cadê o meu apito?"
+316. Noite rara (1 em 15) no Capítulo I: ele está sentado no refeitório, comendo de um prato vazio
+317. No jantar, a colher bate no prato vazio sem parar e às vezes ele cantarola o hino, com legenda
+318. Barulho de passo normal perto da mesa faz ele largar a colher (ela cai tilintando) e a caçada começa com ele já de pé
+319. Passar por trás dele enquanto janta e sair do refeitório dá a conquista secreta "Bom Apetite"
+320. Em uma a cada três noites, no Capítulo II, ele está encolhido numa carteira de criança na sala de aula, chorando baixinho
+321. Na carteira ele repete a tabuada em voz baixa ("sete vezes sete... quarenta e nove...") enquanto você está na sala
+322. Ficar 15 s na sala de aula sem barulho leva até "nove vezes nove... oitenta e um." e a conquista secreta "Aula de Castigo"
+323. Depois da tabuada, ele enxuga o rosto e vai embora calmo, e a Lia entende o que faziam com ele
+324. Barulho na sala de aula faz ele levantar de uma vez gritando "SILÊNCIO NA SALA!": a carteira quebra e os pedaços voam
+325. Em uma a cada seis noites, no Capítulo II, ele cochila numa poltrona da biblioteca com o lampião aceso no colo, roncando
+326. Perto dele dormindo aparece "segure E Tirar o papel do bolso dele" (3 s); qualquer movimento acorda ele
+327. O papel do bolso é a lista de quem ele "guardou" em 1979, com o nome do Davi riscado até rasgar o papel
+328. Conquista secreta "O Que Ele Guarda"
+329. Acordado no cochilo, o lampião cai no chão e ele pergunta "Quem está mexendo em mim?" antes de vir
+330. A Lia comenta baixinho cada cena rara assim que entra na sala (o prato vazio, a carteira, o papel no bolso)
+331. As cenas raras só começam com ele longe e fora da sua vista: você chega e ele já está lá
+332. Noite rara (1 em 40): no Capítulo I ele não aparece; só passos no andar de cima, portas batendo longe e um apito rachado muito distante
+333. Na noite sem ele, quando o gerador liga, ele está parado de pé bem na sua frente, imóvel, de frente para a Lia
+334. A Lia percebe: "Ele está aqui. Estava o tempo todo." e o aviso "Noite rara: a noite sem ele." aparece
+335. Conquista secreta "A Noite Sem Ele"
+336. Escondida durante a Procissão, a Lia conta a fila em sussurro, com legenda ("um... dois... três...")
+337. Cada morte da noite acrescenta ao fim da Procissão uma mulher de capa de chuva com uma lanterna apagada (até três)
+338. Com essas figuras na fila, a contagem da Lia passa de nove: "...dez? onze?" e a legenda avisa "passos pequenos a mais"
+339. A lanterna apagada dela pisca uma vez quando passa diante do seu esconderijo
+340. Olhar para a primeira figura faz ela levantar a cabeça e virar o rosto para você: é o rosto da Lia, borrado, de olhos fechados
+341. Ela sussurra "volta pro carro." e a Lia pergunta: "Aquela... era eu?"
+342. Conquista secreta "A Décima Vela"
+343. Ver as três de uma vez dá a conquista secreta "Eu Também Estava Lá" ("Três. Três de mim.")
+344. Em uma a cada três Procissões, uma menina descalça vem correndo atrás da fila
+345. A menina atrasada para na frente do seu esconderijo, leva o dedo aos lábios e sussurra "shhh..."
+346. Prendendo o ar enquanto ela olha, ela puxa a fila embora mais cedo
+347. Respirando, ela grita "AQUI! ELA TÁ AQUI!" e a fila inteira para e vira para o seu esconderijo, com os olhos vermelhos na fresta
+348. A última criança da fila agora anda meio passo atrás das outras, com a cabeça virada para trás
+349. Acompanhar essa criança com o olhar por 3 s, escondida, faz ela levantar o braço e apontar para um armário
+350. Depois da fila passar, uma vela acesa aparece na frente do armário apontado, e a Lia entende: "Era o Tomé."
+351. O armário da vela ele não abre (uma vez): ele desiste e a vela apaga ("A vela... ele não abriu.")
+352. Conquista secreta "O Último da Fila"
+353. Noite rara (1 em 25): a Procissão passa de costas, com olhos vermelhos pintados na nuca das crianças
+354. Na noite da fila de costas, a Lia sussurra "Eles estão voltando..." e ganha a conquista secreta "A Fila Voltou"
+355. Durante a contagem da Ana, V faz a Lia dizer o mesmo número junto com ela, baixinho
+356. O número dito junto aparece grande no meio da tela, para quem joga sem som
+357. Contar junto ainda é barulho: o Inspetor pode ouvir a Lia contando
+358. Errar o número (pular ou adiantar) faz a Ana bater o pé ("Não é assim!") e o próximo número vem mais rápido
+359. Contar junto até o nove sem errar faz a Lia dizer o "dez" com ela: a Ana para, diz "Você conta igual ao Davi." e vai embora sem o DEZ
+360. Contar junto vale uma vez por noite e dá a conquista secreta "Contando Junto"
+361. No Capítulo III, ficar parada de cara para a parede, de lanterna apagada, por 5 s faz a Ana sussurrar "Agora você conta."
+362. Na brincadeira ao contrário a tela escurece e a Lia conta de um a dez em voz baixa, com o número grande na tela
+363. Enquanto a Lia conta, ouve-se uma risadinha correndo e a Ana se esconde num de três esconderijos próximos
+364. Depois do "Pronta!", a risadinha abafada vem do esconderijo certo a cada 4 s, e a legenda diz de que lado ela está
+365. Achar a Ana é pôr a luz no esconderijo certo, de perto: "Achou! Agora é sério." e ela não brinca de novo por um bom tempo
+366. Pôr a luz no esconderijo errado faz ela respirar na sua nuca e dizer "Perdeu." (dano leve e medo no máximo)
+367. Sem achar em 40 s, ela ri atrás de você ("Ninguém me achou...") e volta logo
+368. Conquista secreta "Achei Você"
+369. Na enfermaria do térreo há uma caixa de fósforos com um dente de leite e o bilhete "pra jogar no telhado quando a mamãe vier"
+370. Com o dente no bolso, a Ana solta e na sua frente mostra "E Dar o dente de leite"
+371. Entregar o dente faz a Ana parar, dizer "A mamãe não veio." e sumir sem dano
+372. Conquista secreta "Dente de Leite"
+373. Cada vez que a Ana te pega, um desenho de giz de cera dela aparece na parede do Dormitório D: a Lia com a lanterna, a Ana atrás e o DEZ
+374. Os desenhos ficam de uma noite para a outra e são numerados
+375. Com dez desenhos, ela escreve na parede, em giz rosa: "você é a melhor de brincar"
+376. Mais de 30 s de lanterna no rosto da Ana no Capítulo III viram um desenho nos túneis: a Lia de olhos riscados e "a luz dói"
+377. Quase nada de luz no rosto dela vira outro desenho: as duas de mãos dadas, e a Lia percebe o que ele quer dizer
+378. O verso da foto de visita de 1978 agora guarda a senha dos irmãos: "Quem é?" — "É o capitão."
+379. Com a foto lida, V durante o Chamado faz a Lia perguntar "Quem é?" em vez de responder
+380. A voz erra a senha ("Sou eu, Lia. Abre."), vira um grito e some, e aquele Chamado não atrai mais o Inspetor
+381. A senha funciona uma vez por capítulo e dá a conquista secreta "Não Era o Capitão"
+382. Ignorar três Chamados numa noite faz o seguinte chamar com a voz do Seu Joaquim: "Moça? Moça, aqui, rápido!"
+383. Ignorar também a voz do Joaquim dá a conquista secreta "Nem o Joaquim"; ir até lá faz a Lia perceber que "nunca é"
+384. Um gato preto magro, o Breu, aparece em algum lugar do térreo e do andar de cima, com o rabo balançando
+385. Os olhos do gato brilham verde-amarelo quando a lanterna passa por ele
+386. O gato mia baixinho de vez em quando, com legenda
+387. Segurar E no gato faz carinho: ele ronrona e o medo da Lia cai
+388. No primeiro carinho a Lia acha a plaquinha "BREU — 1979" e ganha a conquista secreta "Sete Vidas"
+389. Depois do carinho o gato passa a seguir a Lia de longe
+390. Com o Inspetor a menos de 10 m, o gato arrepia o pelo, ergue o rabo e chia (um aviso honesto)
+391. Correr perto do gato faz ele miar alto e entregar a sua posição
+392. O gato foge um segundo antes da Procissão chegar
+393. Se o Inspetor esbarra no gato, ele se abaixa, faz carinho às cegas, diz "Breu... você também não dorme." e fica 10 s parado (uma vez por noite)
+394. Cama em que você se escondeu fica desarrumada, com o cobertor amontoado
+395. Passando pela cama desfeita, ele para, estica o lençol com cuidado e murmura "...cama feita."
+396. Fechar três portas que ele tinha deixado abertas faz ele parar confuso por 8 s: "...eu deixei abertas."
+397. Andar devagar ou agachada a maior parte do Capítulo I faz ele murmurar de longe, por extenso, quantos passos você deu
+398. A Lia gela ("Ele contou os meus passos. Todos.") e ganha a conquista secreta "Ele Contou"
+399. No Capítulo IV, na entrada dos túneis, ele deixou enfileiradas as garrafas que você jogou nos Capítulos I e II, com etiquetas "BARULHO 1", "BARULHO 2"...
+400. Se você não jogou nenhuma, há só uma etiqueta na parede: "QUIETA. SUSPEITO.", e a Lia percebe que ele sabe
+401. Noite rara (1 em 25): um segundo vulto de chapéu espera imóvel no fim do túnel norte
+402. O outro chapéu some com um estalo quando a luz encosta ou quando você chega perto, e a Lia pergunta "...tinha dois?"
+403. Conquista secreta "O Outro Chapéu"
+404. No Capítulo II, uma vez, ele para no corredor e faz a chamada em voz alta com os nomes das crianças de 1979
+405. No fim da chamada ele diz "Lia Moraes." e aparece "V: responder 'presente'"
+406. Responder "presente" faz ele dizer "Atrasada quinze anos." e deixar você em paz pelo resto do capítulo, sem Chamados
+407. Ficar quieta na chamada faz ele repetir "LIA. MORAES." mais alto e vir procurar onde você está
+408. Conquista secreta "Presente"
+409. As 21 conquistas secretas novas aparecem como "???" na lista até serem descobertas
+410. As cenas raras, a noite sem ele, a fila de costas e o outro chapéu são sorteados uma vez por noite e continuam iguais depois do checkpoint
+
+### Sustos e eventos (100)
+
+411. Noite rara (1 em 12, sorteada pela semente da noite e nunca na primeira): no Cap. II o sino bate uma décima vez, mais perto e mais agudo
+412. Na décima badalada todas as lâmpadas acesas ficam vermelhas por 3 segundos
+413. Na décima badalada a legenda marca [DEZ] e o celular vibra
+414. Depois da décima badalada a Lia diz "Foram dez."
+415. Um minuto depois da décima badalada a Ana aparece num canto da sala onde você está, fora de hora, contando em voz alta até a lanterna pegar nela
+416. Como a décima badalada sai da semente, quem manda o código de desafio para um amigo faz ele ver a mesma noite
+417. Conquista secreta nova "Badalada a Mais" para quem viveu a noite das dez badaladas
+418. Página nova no diário, "Coisas que quase ninguém viu (x/7)", que só aparece depois da primeira ocorrência rara e guarda a data de cada uma
+419. Aviso discreto ("Anotado no diário...") alguns segundos depois de presenciar uma ocorrência rara pela primeira vez
+420. Conquista secreta nova "Quase Ninguém Viu" ao somar três ocorrências raras entre as noites
+421. Rara: às vezes um menino está parado de costas no fim do corredor de cima e só some quando a lanterna fica nele
+422. Rara: em corredores, ele aparece parado no fim do corredor olhando para você por um quadro só, com um chiado
+423. Corredor de cima: olhar para trás nove vezes em menos de 15 segundos faz a Ana estar a um metro de você quando você volta a olhar
+424. A Ana das nove olhadas põe o dedo nos lábios (legenda "shh") e some no próximo piscar da lanterna ou ao olhar para trás de novo
+425. Escondida num armário sem perigo por perto, uma vez por noite, três batidas vêm de trás, de dentro do próprio armário
+426. Olhar para trás depois das batidas mostra só madeira ("Só madeira..."), e a quarta batida vem quando você volta a olhar a fresta, com a legenda [de dentro]
+427. Quem se esconde seis vezes no mesmo armário no mesmo capítulo descobre que já tem alguém lá dentro: respiração de outra pessoa, vibração e o medo sobe
+428. Ficando cinco segundos no armário ocupado, a outra pessoa sussurra o nome de quem morreu ali dentro
+429. Do Cap. II em diante, uma vez por noite, uma pilha brilhante demais aparece numa prateleira; de perto se ouve uma respiração bem baixa (com legenda)
+430. Pegar a pilha que respira: uma menina ri colada em você, você perde 10 de vida, mas fica com a pilha
+431. Conquista secreta nova "Desconfiada" para quem ouviu a respiração perto da pilha e foi embora sem pegar
+432. Nas outras noites a pilha da prateleira é falsa: está quente e molhada, a Lia larga, ela rola para longe e alguém diz "é minha" de dentro da parede
+433. O jogo conta os seus passos somando todas as noites; no passo de número 1979, um passo a mais ecoa logo atrás de você, uma única vez na vida do save
+434. O passo 1979 tem legenda própria ([um passo que não é seu]) e entra nas ocorrências raras
+435. Túnel leste: o túnel devolve cada passo seu 1,5 segundo depois, do mesmo lado
+436. O eco do túnel leste conta como barulho: quem fica testando o eco acaba chamando o Inspetor
+437. Depois de muitos ecos no túnel leste, o eco muda: passos descalços vêm do escuro na sua direção e só param quando a lanterna aponta para eles
+438. Túnel norte: o eco dos seus passos começa a chegar antes do passo, com legenda própria
+439. No fim do eco do túnel norte, uma voz de menino diz "Para de me imitar."
+440. Túneis (Cap. IV): ao entrar no túnel oeste, um menino começa a contar longe, numa sala onde a Ana não está
+441. Chegar ao nicho da câmara oeste antes do dez dá uma pilha e uma lanterninha de brinquedo com bilhete; chegar depois faz o menino dizer "Achei" atrás da sua orelha
+442. Depósito de cima: lâmpada nova de cordinha; puxar acende uma luz forte por 2 segundos que mostra vinte e quatro cadeirinhas viradas para você
+443. Puxar a cordinha de novo: as cadeirinhas estão viradas para a parede
+444. Na terceira puxada a cordinha sobe sozinha e não volta ("Alguém puxou lá de cima")
+445. Rosto raro (2% das aberturas) numa janela do título: passar o mouse faz ele sumir e o rádio chiar "você viu"
+446. Conquista secreta nova "Testemunha" para quem viu o rosto da janela do título
+447. Se o relógio de verdade virar de 20h59 para 21h00 com você jogando, todas as luzes do mapa apagam por 9 segundos e tocam as nove badaladas (nunca durante a Ana, a Procissão ou uma caçada)
+448. Às 21h em ponto de verdade o HUD some por 9 segundos e depois volta como se nada tivesse acontecido
+449. Conquista secreta nova "Pontual" para quem estava jogando às 21h em ponto
+450. Biblioteca: livro novo de capa lisa que, aberto, escreve em tempo real o que você está fazendo
+451. O livro lê o estado do jogo: lanterna acesa ou apagada, seu medo, quantas pilhas você tem, sua vida e onde está o Inspetor
+452. Na terceira página o livro escreve "Ele está na porta agora." — e a porta da biblioteca se abre com ele parado ali até a lanterna pegar nele
+453. Afastar-se do livro no meio da leitura fecha o livro, mas a última frase fica na tela por 2 segundos
+454. Giz na parede da sala onde a Lia mais morreu (somando as noites): "LIA ESTEVE AQUI", com um tracinho por morte
+455. A primeira vez que você vê o giz, a Lia diz "Eu não escrevi isso."
+456. Conquista secreta nova "Lugar Preferido" ao achar o giz da sala onde você mais morreu
+457. Sala de brinquedos: desenho de giz de cera novo que mostra a sua última morte no traço de uma criança (o homem alto e o armário, a menina contando nos dedos, a fila de olhos vermelhos)
+458. Se você nunca morreu, o desenho mostra a Lia saindo pelo portão com "ainda" escrito embaixo; se morreu, vem escrito "a moça perdeu"
+459. Do Cap. IV em diante, uma vez por noite, o diário ganha uma página com letra de criança descrevendo a sua última morte de fora
+460. Cap. III, uma vez por perfil: aparece a conquista "Sobreviveu à Noite" cedo demais, troca para "Ainda Não" e uma voz conta "três" atrás de você
+461. Conquista secreta nova "Cedo Demais", registrada logo depois da conquista que chegou antes da hora
+462. A partir da segunda noite, uma seta de giz com "SEGREDO" no chão aponta para um armário; quem se esconde nele encontra o Inspetor de pé lá dentro, cara a cara
+463. Depois da seta que mente, a Lia percebe: "Essa não foi o Davi que escreveu."
+464. Cap. II: uma criança da Procissão fica para trás num canto da sala e copia a sua postura com 1 segundo de atraso (agacha quando você agacha, inclina quando você espia)
+465. Se você ficar parada cinco segundos, a criança que copia para de copiar e dá um passo na sua direção
+466. Cap. III: um boneco de pano da sala de brinquedos passa a aparecer em cada sala nova, sempre perto da porta por onde você vai sair
+467. Depois de algumas salas, olhar para trás no corredor mostra o boneco no chão, bem atrás de você
+468. Pegar o boneco de pano faz ele parar de aparecer, e a Ana chora longe dizendo que era dela
+469. Sala de brinquedos: prateleira nova com nove bonecas e a placa "NOVE AMIGAS"; cada vez que você tira os olhos e volta, há uma a mais na ponta, cada vez maior
+470. Na terceira volta a décima boneca tem a camisola e o cabelo da Ana; iluminar ela por 3 segundos faz ela cair da prateleira e virar uma boneca comum com um curativo
+471. Dormitório C (Cap. III): boneca de olhos de vidro; apagar a lanterna perto faz soar o clique dos olhos fechando, com legenda
+472. Ao acender a lanterna de novo, a boneca está deitada e mais perto da porta; na terceira vez ela já está no corredor, indo para a sala da Ana
+473. Refeitório: lareira apagada com uma corda pendurada da chaminé; puxar toca o sino da capela no prédio todo, chama o Inspetor e encurta o tempo até a Procissão
+474. A corda da chaminé avisa que "nem toda corda deve ser puxada"; na segunda puxada ela desce inteira com um sapatinho escrito TOMÉ
+475. Cap. II, corredores do térreo: uma vez por noite, alguém anda no andar de cima no mesmo ritmo dos seus passos, com legenda
+476. Se você para, o de cima dá um passo a mais; se você estava correndo, ele para de repente bem em cima de você e cai poeira; agachar faz o eco sumir
+477. Corredor de cima: uma vez por capítulo, passos idênticos aos seus tocam atrás com meio segundo de atraso
+478. Quem não olha para trás nos passos atrasados ouve no fim um "quase" colado na nuca; quem olha faz os passos sumirem
+479. Parada 90 segundos num lugar sem perigo, a Lia cantarola quatro notas e alguém na sala ao lado continua a melodia até o fim
+480. Sexta-feira de lua cheia (calculada pela data do aparelho): no barranco da estrada, um uivo longo e rouco e um vulto de quatro patas grande demais cruzando à sua frente
+481. Conquista secreta nova "Sétimo Filho" para quem passou pelo barranco na sexta de lua cheia
+482. Quaresma (Páscoa calculada pelo algoritmo de Gauss): matracas de madeira estalam junto com a Procissão e a Lia lembra que não se olha para quem encomenda as almas
+483. Junho: o pátio ganha bandeirinhas de papel chamuscadas, uma fogueira apagada e a placa queimada de uma pescaria
+484. Junho: a fogueira acende sozinha, estalando, quando você está de costas para ela, e apaga quando você olha
+485. Conquista secreta nova "Arraiá do São Lázaro" para quem viu a fogueira de junho apagar
+486. Dezembro: o refeitório ganha um pisca-pisca velho de lâmpadas coloridas
+487. Dezembro: o pisca-pisca perde o compasso quando a Procissão vem, virando um aviso a mais
+488. Dezembro: a capela tem um presépio com três crianças de uniforme a mais; cada vez que a lanterna sai e volta, elas estão mais viradas para a Lia, até uma ficar de pé (conquista secreta "Presépio")
+489. A partir da segunda noite, às vezes a troca de mapa mostra "um... dois... três..." em rosa até o "nove..."
+490. No mapa seguinte à contagem rosa, um DEZ sussurrado soa atrás da Lia sem a Ana aparecer
+491. Tela final: dois minutos sem mexer em nada mostram, por um quadro só, a Lia vista de cima na capela com uma figura pequena segurando a mão dela
+492. Depois disso, o subtítulo do título passa a ser "agora são duas" naquela sessão
+493. Conquista secreta nova "Depois do Depois" para quem ficou na tela final até o último susto
+494. Corredor de cima: quem abre todas as portas do corredor vê aparecer uma porta que não estava na planta, com luz quente por baixo, que bate com força quando você chega perto
+495. Cemitério: nos quatro segundos depois do sino, olhar para trás mostra nove crianças paradas em fila no caminho; depois a lanterna pisca e a Lia diz "Eu olhei. Elas também."
+496. Banheiro de cima: bater três vezes na porta do último box e dar três descargas chama a moça do banheiro: as luzes caem e uma mulher de branco aparece atrás da Lia
+497. Se você virar a tempo, a moça some e deixa no chão um bilhete da Irmã Celeste proibindo "essa brincadeira das meninas"; se não virar, a lanterna apaga por 5 segundos com respiração no ouvido
+498. Conquista secreta nova "Três Descargas" para quem chamou a moça do banheiro
+499. Dormitório D: levantar o travesseiro de uma cama mostra um dente de leite e uma moeda de 1979, que dá para pegar
+500. Com a moeda no bolso, a Ana diz "...devolve." baixinho na próxima vez que aparece, e o golpe dela tira 5 a mais ("Ladra.")
+501. Devolver a moeda ao travesseiro faz a Ana sumir rindo e dá a conquista secreta "Fada do Dente"
+502. Dormitório D: três bonecas vigiam a porta; virar as três para a parede deixa a Ana de castigo e longe por 30 segundos (conquista secreta "De Castigo")
+503. Quando o castigo acaba, as bonecas estão viradas de novo para a Lia e uma delas está no meio do corredor
+504. Dormitório A: na primeira vez que a Lia entra embaixo de uma cama, ela sente que "tá quente", passinhos descalços correm para fora e a porta bate
+505. Rouparia: boneco de pano com algo duro dentro; segurar E rasga a costura e sai a chavinha do diário de cadeado da Ana, e o boneco some quando você vira as costas
+506. Sala de brinquedos: teatro de sombras; cada troca de recorte projeta na parede o sino, a fila de crianças e a capela com corrente
+507. No quarto recorte do teatro não há recorte nenhum, mas a parede mostra uma mão adulta vindo na direção da luz; a lanterna falha e a Ana diz "um" atrás de você
+508. Sala de aula: projetor de slides novo; cada E passa um slide da excursão de 1978 desenhado em canvas
+509. A cada slide da excursão, um vulto alto está mais perto da turma
+510. O décimo slide, que não devia existir, mostra a Lia de costas vista de dentro da sala, e uma luz passa a bater atrás de você até a lâmpada do projetor queimar com um estalo
+
+### Áudio (103)
+
+511. Discar 0190 (a delegacia da lista da parede) no telefone da recepção agora atende: uma telefonista de 1979 diz que a viatura já está a caminho
+512. Na ligação para a delegacia, uma sirene vai chegando pelo fone por nove segundos e para de uma vez, sem nunca chegar
+513. Depois da sirene, uma respiração funda e a voz baixa do Inspetor no telefone: "Ninguém vem."
+514. Nova conquista secreta "Ninguém Vem" para quem liga para a delegacia
+515. Ligar de novo para a delegacia na mesma noite toca só a sirene longe, que nunca chega
+516. Discar 2241 (o Bispado da lista) faz um padre cansado atender e mandar a Irmã Celeste "ir dormir", e a Lia entende que ela pediu ajuda
+517. Discar 0037 faz uma criança contar "trinta e cinco, trinta e seis... cadê o trinta e sete?" no telefone
+518. As vozes do telefone passam por um filtro de linha de verdade: banda estreita, chiado e zumbido de 50 Hz no ouvido
+519. A fita escondida do Tomé agora termina com quatro bipes de telefone de verdade (tons DTMF com as duas frequências certas de cada dígito)
+520. Os bipes no fim da fita do Tomé têm legenda própria e a Lia comenta que alguém discou um número enquanto gravava
+521. Discar o número dos bipes no telefone da recepção toca a última ligação da Irmã Celeste em 1979, pedindo socorro com a capela pegando fogo
+522. No fim da ligação da Irmã a linha cai com um estalo e alguém do outro lado continua respirando
+523. Nova conquista secreta "A Última Ligação" para quem decifra os bipes e disca o número
+524. A vitrola riscada do refeitório agora pode ter a agulha empurrada com E: ela arranha alto o disco inteiro
+525. Cada empurrão da agulha faz o disco completar a frase repetida com uma dica real de um segredo do som (seis dicas por noite, depois só silêncio)
+526. O arranhão da agulha é alto o bastante para o Inspetor ouvir: cada dica tem preço
+527. A dica do disco é cantada pela própria vitrola, com o "wow" do vinil, além da legenda
+528. Segurar S e empurrar a agulha gira o disco para trás: o hino do internato toca invertido, uma oitava abaixo, com coro de crianças
+529. O disco ao contrário revela a quarta estrofe do hino, a que foi raspada da moldura, cantada e legendada verso por verso
+530. O hino ao contrário ecoa pelo prédio: o Inspetor ouve de longe e grita "QUEM ESTÁ CANTANDO ISSO?"
+531. Nova conquista secreta "Lado Escondido do Disco"
+532. O rótulo da vitrola riscada ensina discretamente a girar o disco para trás (segure S)
+533. Dar corda na caixinha da Ana segurando S gira a manivela ao contrário: a melodia toca invertida e mais grave
+534. No meio da caixinha ao contrário, uma criança diz "Luiz", o menino do armário de 1952, e a Lia liga os pontos
+535. A manivela ao contrário range alto e se ouve no corredor
+536. Nova conquista secreta "O Nome na Caixinha"
+537. Quem fica perto da caixinha até a última nota ouve uma frase musical nova, que nunca toca na brincadeira
+538. No fim da caixinha, por baixo da música, a voz gravada de uma mulher diz "Dorme, meus três."
+539. Nova conquista secreta "Dorme, Meus Três" para quem ouve a caixinha até o fim
+540. Os rádios de válvula já ouvidos ganham uma ação nova: "Girar o dial até o fim" (uma vez por rádio, por noite, e faz barulho)
+541. Girar o dial faz um som de sintonia de verdade, varrendo o chiado de grave para agudo
+542. No fim do dial do rádio da cozinha, uma menina lê números em grupos de quatro: o código do quadro e os números do cofre da noite (o diário não anota sozinho)
+543. No fim do dial do rádio do quarto da Irmã Celeste toca um capítulo da radionovela "Coração de Serra", que espelha a noite e termina com "e a Lia chegou"
+544. No fim do dial do rádio do cemitério, uma transmissão de 1979 lê a lista dos desaparecidos do incêndio e termina com o nome do jogador
+545. No fim do dial do rádio da sala secreta, o chiado esconde um desenho: "PORÃO" e um rosto, visíveis num app de espectrograma
+546. O chiado desenhado é feito por um banco de osciladores de 2 a 8 kHz lendo uma imagem em canvas, coluna por coluna
+547. A Lia percebe que o chiado da sala secreta "tem forma", sem entregar o segredo
+548. Nova conquista secreta "O Som Tem Desenho"
+549. Ficar parada mais de 12 s perto de um rádio já ouvido faz o locutor interromper e narrar o que a Lia está fazendo
+550. A narração do rádio usa o estado real: a sala onde ela está, se está agachada, de pé ou escondida, e se a lanterna está acesa
+551. Cinco moldes diferentes de narração no rádio, sorteados, e a Lia reage ("O rádio tá falando de mim")
+552. Nova conquista secreta "Notícia de Última Hora"
+553. Na diretoria, parada, um sussurro só no ouvido esquerdo diz o código do quadro de trás para frente
+554. No corredor de cima, um sussurro só no ouvido direito avisa que a Ana não abre porta fechada
+555. No túnel norte, um sussurro com a fase invertida entre os ouvidos diz o primeiro e o último número do cofre: claro no fone, quase some em caixa de som e some no som mono
+556. Com "Legendar sons: Todos", os sussurros de um lado só aparecem escritos e marcados com o lado, para o segredo não depender só do ouvido
+557. Sem fone ou com som mono, quem tem legendas recebe o aviso "[um sussurro que você não pegou]"
+558. Nova conquista secreta "Ouvido Direito" para quem ouve os três sussurros de fone, somando as noites
+559. A nona badalada da Hora tem uma voz grave escondida no fim do decaimento que diz "fique"
+560. A voz dentro do sino ganha legenda só com "Legendar sons: Todos"
+561. Na sala do diretor nos túneis há um gravador de rolo novo, com a luz vermelha piscando: ele está gravando desde que você desceu
+562. O gravador guarda os seus passos, as portas e as garrafas dos túneis (até 60 s) a partir dos ruídos que o motor já registra
+563. Rebobinar o gravador toca a sua noite de volta, com guincho de rebobinar e cada som posicionado em 3D com eco onde aconteceu
+564. Os rolos do gravador giram enquanto ele toca
+565. Em uma de cada duas noites, a fita do gravador tem um passo a mais logo atrás de onde a Lia estava
+566. Quem não vira para trás durante o replay ouve no fim uma voz de menino: "eu tava junto"
+567. Quem vira durante o replay não acha nada, e a Lia fica na dúvida se havia alguém
+568. O gravador tocando faz barulho a cada poucos segundos: ouvir a própria noite atrai o Inspetor
+569. Se você entrou quieta demais, o gravador toca só chiado
+570. Nova conquista secreta "Eu Tava Junto"
+571. Na cisterna dos túneis, o barulho da Lia volta nove segundos depois como eco atrasado (passos, tropeços, garrafas)
+572. O eco da cisterna também chama o Inspetor: uma garrafa jogada ali vira duas distrações
+573. A primeira vez que o eco volta, a Lia percebe que a cisterna repete tudo
+574. Nova conquista secreta "A Casa Repete" para quem engana o Inspetor com o eco de uma garrafa
+575. Segurando B com o Inspetor a menos de 12 m, o rádio do Seu Joaquim capta a respiração dele, filtrada e distorcida
+576. A respiração no rádio fica mais alta e mais frequente quanto mais perto ele está: um radar com o preço do chiado
+577. Na primeira vez, o Seu Joaquim explica pelo rádio que o diretor pôs um rádio de babá no apito dele
+578. Nova conquista secreta "Na Mesma Frequência"
+579. Segurar V por 2 s enquanto o Inspetor cantarola o hino faz a Lia assobiar as mesmas notas, baixinho
+580. No primeiro assobio ele para, vira a cabeça e completa a última nota
+581. No segundo assobio (somando as noites) ele pergunta quem assobia o hino da casa e vem atrás do som
+582. Do terceiro assobio em diante ele assobia junto, lembra do Davi e manda a Lia dormir
+583. Nova conquista secreta "Dueto"
+584. O banheiro do térreo e o de cima ganharam um ralo de ferro no chão
+585. Agachada e parada 5 s sobre o ralo do térreo, o som dos túneis sobe pelo cano: gotas e água correndo com eco
+586. Pelo ralo do térreo, crianças cochicham a ordem das válvulas, uma corrige a outra, e terminam com "shh, ela tá ouvindo"
+587. Pelo ralo de cima, um menino cantarola o hino lá longe e alguém do outro lado encosta o ouvido e respira
+588. Ficar no ralo mais de 8 s depois dos cochichos faz uma gota cair no rosto: a Lia levanta assustada
+589. Nova conquista secreta "Pelo Cano"
+590. A cozinha ganhou sete panelas penduradas numa barra, cada uma com uma nota (e a sexta, rachada, que não canta)
+591. Bater numa panela toca a nota com timbre metálico e a panela balança, mas o barulho se ouve longe
+592. Tocar nas panelas as cinco primeiras notas do hino faz uma colher bater três vezes na mesa e uma cozinheira de outro tempo gritar "Já pra mesa, que esfria!"
+593. O hino nas panelas dá um curativo escondido na última panela
+594. Nova conquista secreta "Já Pra Mesa"
+595. No Dormitório A há uma lata presa na parede por um barbante que atravessa para o Dormitório B
+596. Encostar o ouvido na lata toca uma conversa cochichada de duas crianças de 1979, com som abafado de lata
+597. A segunda escuta da lata traz outra conversa, sobre tocar o sino
+598. Na terceira vez ninguém fala: só uma respiração do outro lado, e a lata treme na parede
+599. Nova conquista secreta "Telefone de Lata"
+600. No cemitério, ficar 40 s parada olhando para a capela faz as gotas nas calhas tocarem o hino, nota por nota
+601. Andar ou desviar o olhar quebra a música da chuva na hora
+602. Nova conquista secreta "A Chuva Lembra"
+603. Segurar ALT enquanto toca a fita do Moacir a deixa em meia velocidade: o som arrasta e aparece uma segunda voz, adulta, "eu ouvi tudo isso também"
+604. Segurar SHIFT no fim da fita do diretor revela uma risada de menina que não existe na velocidade normal
+605. Nova conquista secreta "Rotação Errada"
+606. Ouvir a fita da Irmã Celeste com o volume geral entre 1% e 15% revela uma versão sussurrada: "Aumenta não. Ele tá ouvindo você ouvir."
+607. A fita sussurrada do volume baixo traz uma pista extra: a primeira e a última válvula
+608. Nova conquista secreta "Baixinho"
+609. Da segunda noite em diante, o rádio do posto tem um pedido musical "de um ouvinte do São Lázaro", dedicado ao nome que você digitou
+610. O pedido toca a música da caixinha num piano de caixinha desafinado e chiado
+611. O locutor do pedido muda o recado conforme a noite anterior: se você morreu muito, "ele tá esperando"
+612. Novo contador "Segredo do som (n/29)" a cada segredo de áudio achado, que vale entre as noites
+613. Nova conquista secreta "Ouvido Absoluto" para quem acha todos os segredos do som
+
+### Visual e luz (100)
+
+614. Novo módulo de segredos feitos de luz, sombra e reflexo, sem dar dano nem travar caminho.
+615. Contador "Segredo da luz x de ?" aparece a cada segredo achado, sem nunca revelar o total.
+616. O jogo guarda numa memória própria quais segredos você já viu, entre uma noite e outra.
+617. Legenda de som nova: "a lâmpada zune em ritmo".
+618. Legenda de som nova: "giz raspando na parede".
+619. Legenda de som nova: "alguém respira atrás de você".
+620. Legenda de som nova: "papel de bala amassando".
+621. Conquista secreta "Hoje": ver na poça a lápide que não está no cemitério.
+622. Conquista secreta "Telegrafista": ler a lâmpada em código antes da primeira fita.
+623. Conquista secreta "Teatro de Sombras": fazer o coelho até alguém responder.
+624. Conquista secreta "Não Tinha Esse": ver a sombra a mais no teatrinho de lençol.
+625. Conquista secreta "Exposição Longa": deixar a câmera parada no escuro no modo foto.
+626. Nova opção de Imagem "Lanterna do Davi", que só aparece depois de achar três segredos.
+627. Lanterna do Davi: o círculo de luz ganha uma estrelinha recortada de fita isolante e um tom mais amarelado.
+628. Parede de riscos de giz na sala de aula somando todas as mortes da Lia em todas as noites.
+629. Os riscos vêm agrupados de cinco em cinco, como castigo de escola.
+630. Acima dos riscos, escrito por criança: "VEZES QUE A LIA NÃO VOLTOU".
+631. Com zero mortes, a parede mostra só "AINDA" e a Lia estranha.
+632. Varal escondido atrás do biombo da sala de brinquedos com desenhos a giz de cera das suas mortes.
+633. Desenho de morte no armário: a Lia de palito com a mão vermelha saindo pela fresta.
+634. Desenho de morte na água: a Lia de braços para cima entre linhas de água.
+635. Desenho de morte pelo Inspetor: o vulto alto de venda branca ao lado da Lia.
+636. Desenho de morte pela Ana: a menina de trança e a contagem de 1 a 10 com o dez em vermelho.
+637. Desenho de morte pela Procissão: a fila de cinco vultos com luzinhas.
+638. Cada desenho do varal traz a legenda infantil da causa e a data da morte.
+639. Sem nenhuma morte, o varal mostra um único desenho: "A LIA AINDA NÃO".
+640. Os desenhos do varal balançam com o vento da porta e mais forte quando a Lia passa correndo.
+641. Dá para ler cada desenho do varal de perto, sem tela cheia.
+642. Estrelinhas fosforescentes de plástico no teto do Dormitório E.
+643. Apontar a lanterna para as estrelas carrega o brilho delas aos poucos.
+644. Ao apagar a lanterna, as estrelas brilham verde formando uma seta e um número do cofre, e somem em segundos.
+645. Na estrada, quando a chuva dá uma trégua, a lua aparece entre as nuvens.
+646. Olhar a lua parado faz, por dois quadros, surgir o rosto da Ana — raro, sorteado pela noite.
+647. Ao varrer a lanterna pelos armários, um deles devolve dois pontinhos de reflexo como olhos de gato.
+648. Abrir esse armário: vazio, mas com dois olhos desenhados a giz por dentro.
+649. Lâmpada fraca do corredor do térreo piscando em pontos e traços, como um código.
+650. Decifrar o código antes de ouvir a primeira fita dá a conquista e a fala "Não é defeito. Alguém tá falando."
+651. Uma vela de chama fria por mapa, que só aparece com a lanterna desligada.
+652. Encostar na vela fria acende o caminho que o Davi fez, em pegadas de luz.
+653. Pegadas de luz do Davi que se acendem em sequência pelo chão e depois apagam.
+654. Com a lanterna apagada perto de certas paredes, a luz de emergência projeta a sombra de uma criança.
+655. Depois de alguns segundos no escuro, a sombra da criança levanta o braço e aponta o próximo objetivo.
+656. Prender e soltar o ar colado numa janela fria do dormitório embaça o vidro.
+657. O bafo na janela revela um desenho de dedo de criança (sino, seta ou número de armário).
+658. No vidro do fim do corredor de cima, o reflexo mostra seis portas onde o corredor só tem cinco.
+659. A Lia sussurra "Eram cinco... não eram?" ao ver as seis portas.
+660. No vidro do dormitório, o reflexo é a Lia criança de uniforme seguindo a câmera com atraso.
+661. Se a Lia chega perto, o reflexo da menina põe o dedo na boca e some.
+662. Com a pilha fraca, a luz amarelada revela desenhos nas paredes que a luz cheia apagava.
+663. Um desses desenhos ("QUANDO A LUZ MORRE A GENTE APARECE") aponta uma pilha escondida de verdade.
+664. Círculo no pátio, em lugar diferente a cada noite, onde a chuva não cai.
+665. Duas pegadinhas de criança paradas no meio do círculo seco.
+666. Entrar no círculo seco zera o medo e traz uma vinheta quente, como um abraço.
+667. A chuva some de dentro do círculo seco (as gotas que cairiam ali são tiradas).
+668. No cemitério, uma poça reflete uma lápide que não está lá: "DAVI MORAES · 1967 — 1994".
+669. Ao levantar a cabeça da poça, no lugar vazio da lápide a terra está fresca, recém-cavada.
+670. Foto da turma de 1978 na recepção que muda um pouco a cada capítulo concluído.
+671. Nas noites finais, a Lia adulta de jaqueta aparece sentada na foto da turma.
+672. A Lia comenta a foto da turma de forma diferente conforme a mudança.
+673. Desenho de giz de mãos dadas no Dormitório D com um espaço vazio na ponta.
+674. Ao olhar o resto do quarto e voltar, uma figura adulta de lanterna foi desenhada no espaço, com giz caindo.
+675. A Lia reconhece o desenho completado: "Essa sou eu."
+676. Teatrinho de sombras com lençol esticado e bonecos de papel na sala de brinquedos.
+677. Segurar a lanterna no apoio projeta as figuras de papel (coelho, cachorro) no lençol.
+678. Na terceira troca, surge no lençol uma sombra de homem de chapéu que não está entre os bonecos e vira a cabeça.
+679. No modo foto, virar a câmera para trás revela uma criança colada nas costas da Lia, some na hora da foto mas fica na polaroide.
+680. No modo foto, deixar a câmera parada num corredor escuro faz uma criança atravessar o fundo do quadro.
+681. Iluminar o rosto do Inspetor em reza por um tempo deixa a venda branca translúcida e mostra dois olhos leitosos.
+682. A Lia sussurra "Ele não é cego de tudo." ao ver os olhos sob a venda.
+683. Papel de bala vermelho que, posto na lanterna, tinge o feixe de vermelho.
+684. Sob a luz vermelha aparecem os recados em giz vermelho das crianças, invisíveis na luz branca.
+685. A Menina Que Conta não conta a luz vermelha como iluminada: ela anda mesmo com o feixe nela.
+686. Com a paleta para daltonismo, a luz do papel vira magenta em vez de vermelha.
+687. Iluminar o teclado do cofre bem de perto mostra quatro teclas encardidas de fuligem.
+688. A Lia comenta "Alguém digitou isso muitas vezes." ao ver as teclas gastas.
+689. Monóculo de lembrança no balcão do posto; apontar para a luz abre a foto em tela.
+690. Primeira olhada no monóculo: foto do Davi e da Lia crianças no portão.
+691. Segunda olhada no monóculo: a Lia de agora, de costas na estrada, tirada de cima do carro.
+692. Gibi na cabaninha do depósito que abre em tela cheia, com páginas no traço de criança.
+693. O último quadrinho do gibi é gerado na hora: a Lia de costas na sala onde você está, com um vulto atrás.
+694. A página final do gibi mostra "CONTINUA..." e o vulto olhando para o leitor.
+695. Dentro da capela, no relâmpago, a luz atravessa os vitrais e projeta sete sinos no chão.
+696. Cada sino projetado tem a boca riscada, pista das badaladas abafadas.
+697. Lanterna acesa de frente para uma parede lisa, segurar E desenha a sombra de um coelho com a mão da Lia.
+698. No dormitório, uma segunda mãozinha aparece ao lado e faz um cachorrinho sem ninguém ali.
+699. Na terceira vez, a sombra vira um lobo que não é a mão da Lia, abre a boca e "come" o coelho.
+700. Na biblioteca, a poeira dentro do cone da lanterna se junta num menino sentado lendo.
+701. Passar o feixe pela figura de poeira faz ela apontar para a estante do livro torto.
+702. Numa parede do túnel, a frase "NÃO PARE" só aparece quando a câmera está em movimento.
+703. Ao parar diante da frase, ela some e algo respira atrás da Lia, com o medo subindo.
+704. Quando o relâmpago bate, uma janela do dormitório reflete o quarto arrumado de 1979.
+705. No reflexo de 1979, uma criança dorme de olho aberto encarando a câmera.
+706. Contorno de giz no chão onde a Lia morreu, que brilha fraco quando a lanterna passa por ele.
+707. No teto do Dormitório A, algo escrito só aparece no clarão do relâmpago.
+708. Pintura a óleo na diretoria que mostra a sala por trás da Lia em tempo real.
+709. Quem olha o quadro por tempo demais vê nele uma figura atrás da Lia que não está na sala.
+710. Na qualidade Mínima, o quadro vira uma imagem fixa pintada, sem o espelho em tempo real.
+711. Os efeitos de flash dos segredos respeitam a opção "Reduzir flashes", esmaecendo em vez de piscar.
+712. Todos os objetos e sombras novos são posicionados sem atravessar a mobília que já existe na sala.
+713. Os segredos são sorteados pela semente da noite, então o lugar muda e os amigos discordam de qual é.
+
+### Jogabilidade (113)
+
+714. Bolso de segredos: a tecla U usa o item escondido e Y troca entre eles, com dica no toast
+715. Os itens de segredo (bala, folha, fita, câmera, celofane, soldadinho, apito, lanterninha, pião, pilha roxa) aparecem no inventário da tela
+716. Máquina de escrever na diretoria: entra no modo digitar com tela de perto e cada tecla faz "clac"
+717. Digitar na máquina gera ruído que o Inspetor ouve, e o sininho a cada 14 teclas o atrai
+718. Datilografar muito (40 teclas) faz o Inspetor vir investigar a diretoria
+719. A palavra SOCORRO faz a máquina responder sozinha "NINGUÉM VEM."
+720. A palavra ALBANO faz a máquina escrever uma linha da confissão do diretor
+721. A palavra MOACIR faz a máquina escrever "1951. NOVE ANOS. ARMÁRIO 4."
+722. A palavra DAVI faz a máquina responder e o Davi sussurra "Lia..." do outro lado da parede
+723. Digitar o próprio nome do jogador faz a máquina imprimir a ficha de matrícula dele
+724. Outras palavras secretas (CELESTE, TOME, JOAQUIM, ANA) também fazem a máquina responder
+725. Conquista secreta "Datilógrafa" por fazer a máquina responder três palavras diferentes
+726. A máquina guarda o que foi escrito entre visitas (as últimas seis linhas)
+727. Pote de balas de goma no balcão do posto, que a Lia pega no prólogo
+728. Dar a bala à Ana iluminada e perto faz ela parar de contar e falar "Faz quinze anos que ninguém me dá nada"
+729. Conquista secreta "Doce de Verdade" por entregar a bala à Ana
+730. Relógio de pêndulo da recepção: girar os ponteiros 5 minutos por toque, com tique alto
+731. Adiantar o relógio até as nove badaladas faz a Procissão vir fora de hora como risco escolhido
+732. O fundo do relógio abre e solta um amuleto que reduz o dano da próxima Procissão pela metade
+733. Conquista secreta "Fora de Hora" por adiantar o relógio até as nove
+734. Sapateira na recepção: tirar os sapatos deixa os passos 40% mais baixos
+735. Descalça, o chão duro e os cacos machucam às vezes, com um gemido que faz ruído
+736. Calçar os sapatos de novo leva alguns segundos (segurar E)
+737. No Capítulo II os sapatos deixados reaparecem arrumados, apontando para a escada
+738. Conquista secreta "Como Elas" por passar os Capítulos I e II descalça
+739. Telefone de disco na diretoria com lista de ramais datilografada para ler
+740. Discar um ramal de sala faz o telefone de lá tocar e atrai o Inspetor como isca à distância
+741. Ramal 09 atende com a Irmã Celeste rezando o terço até a linha cair
+742. Ramal 00 ("NÃO DISCAR") toca a própria voz da Lia chegando ao portão agora há pouco
+743. Ramal 26 (fora da lista) atende uma criança respirando e o telefone da diretoria toca de volta 20 s depois
+744. Ramal 37 faz todos os telefones do prédio tocarem e o Inspetor gira sem saber para onde ir
+745. Conquista secreta "Ramal Zero" por discar o ramal proibido
+746. Forno de ferro da cozinha abre com rangido e revela um bolo de doze velas que acendem sozinhas
+747. Soprar as velas (segurar ESPAÇO e soltar) recupera vida e uma voz de criança canta parabéns pela parede
+748. Se demorar, as velas apagam sozinhas, uma por uma, de trás para frente
+749. Conquista secreta "Doze Velas" por soprar o bolo do forno
+750. Duto atrás do fogão que leva à casa de máquinas (e de volta), só agachada, com estrondo de lata
+751. Gaveta trancada da enfermaria abre com um teclado de três números
+752. Uma lâmpada do corredor pisca o número da gaveta em grupos, sem dizer que é código
+753. Olhar para a lâmpada por alguns segundos faz a Lia murmurar que não está piscando à toa
+754. A gaveta guarda uma ampola de adrenalina: na próxima morte do capítulo a Lia levanta com 20 de vida
+755. Conquista secreta "Pisca-Pisca" por abrir a gaveta com o número da lâmpada
+756. Chuveiro do banheiro: abrir solta água que reduz pela metade o ruído dos passos por perto
+757. O Inspetor vai até o chuveiro fechar o registro, abrindo uma janela para passar por trás dele
+758. Abrir o chuveiro uma segunda vez no capítulo faz o Inspetor vir direto até você
+759. O vapor do chuveiro embaça o espelho e revela nele uma seta apontando para o segredo mais próximo
+760. Centrífuga da lavanderia: puxar a alavanca faz um ronco enorme que puxa o Inspetor de longe
+761. Ficar na lavanderia quando ele chega à centrífuga é fatal (ele desliga a máquina com a mão)
+762. A Lia ri de nervoso "Funcionou." quando a centrífuga dá certo como isca
+763. Carteira D.M. da sala de aula guarda uma folha em branco que cheira a limão
+764. Segurar a folha perto de uma luz acesa por alguns segundos revela um mapa de pirata com um X
+765. Revelar a folha exige ficar parada e de mãos ocupadas; o Inspetor perto faz a folha cair
+766. Tijolo solto com X de giz no muro do pátio, que só abre agachada
+767. Dentro do tijolo há a lata do tesouro com bolinhas de gude e a fita "SINO — NÃO GASTAR"
+768. Tocar a fita do sino perto do Inspetor faz ele travar segurando a cabeça (só uma vez)
+769. No fim da fita do sino o Davi fala baixinho "Pra quando você precisar. — D."
+770. Conquista secreta "O X do Mapa" por achar a lata do tesouro
+771. Bolinha de gude que rola sozinha pelo piso torto do corredor oeste até bater no rodapé
+772. Onde a bolinha para há um alçapão pequeno com uma pilha escondida
+773. Atalho de rejogo: tijolo atrás do balcão da recepção até a copa, a partir da segunda noite com o Cap. I completo
+774. Baú de brinquedos com uma câmera instantânea de três cargas na sala de brinquedos
+775. O flash da câmera congela a Ana por alguns segundos e revela crianças que a lanterna não mostra
+776. O clique e o motor da câmera são ruído alto que o Inspetor ouve
+777. Com "Reduzir flashes" ligado, o flash da câmera vira um clarão suave
+778. Papel de bala vermelho que vai e volta da lente da lanterna (usar com U)
+779. Com a luz vermelha aparecem escritas secretas nas paredes (setas do Davi, número do cofre, avisos)
+780. No vermelho a Ana trata a luz como escuro e anda mesmo sendo iluminada
+781. Soldadinho de corda: largado no chão, marcha tocando tambor e vira isca para o Inspetor e para a Ana
+782. Jogo da velha de giz no corredor, com o Davi jogando o O perfeito (nunca perde)
+783. Empatar três vezes no jogo da velha derruba uma pilha e escreve "VOCÊ AINDA JOGA IGUAL"
+784. Perder o jogo da velha escreve "PERDEU. AGORA CONTA" e chama a brincadeira da Ana
+785. Conquista secreta "Velha de Giz" por empatar três vezes com o Davi
+786. Cada jogada do jogo da velha faz barulho de giz que o Inspetor ouve
+787. Papel e lápis no quarto da Celeste para escrever um bilhete para a próxima Lia (até 80 letras)
+788. O bilhete escrito reaparece na noite seguinte com a letra manuscrita e a assinatura "Lia, noite N"
+789. Se a Lia morreu depois de escrever, o bilhete reaparece manchado de fuligem
+790. Conquista secreta "Recado Para Mim" por ler o bilhete deixado numa noite anterior
+791. Apito reserva do Inspetor num prego da rouparia
+792. Soprar o apito faz o Inspetor largar tudo e ir para o pátio em linha reta por 15 s
+793. Soprar o apito perto da Procissão a faz chegar antes como castigo
+794. Conquista secreta "Hora do Recreio" por soprar o apito reserva
+795. Lanterninha de lata do Davi no depósito: não gasta pilha, mas ilumina pouco e prende a Ana só de perto
+796. Pião confiscado nos túneis: largado no chão, zumbe por alguns segundos e prende o Inspetor ouvindo
+797. Pilha roxa de luz negra, uma por noite, num lugar sorteado perto da rota
+798. A luz negra mostra mãos de crianças nas paredes e setas de giz até o próximo objetivo por 40 s
+799. Lanterna da tentativa anterior: no ponto da morte fica a lanterna caída, acesa, apontando de onde a morte veio
+800. Pegar a lanterna caída dá meia pilha e uma frase da Lia; não aparece no modo Uma Vida
+801. Barquinhos de papel do Davi, um por mapa, sempre perto de água, cada um com uma linha de um bilhete
+802. Achar os seis barquinhos revela o bilhete inteiro do Davi e dá a conquista "Frota do Davi"
+803. Piscar a lanterna três vezes para a Ana parada faz os olhos dela piscarem de volta e surgir uma seta de giz
+804. Piscar quatro vezes a Ana entende como deboche e começa a contar na hora
+805. Pedir socorro com a lanterna em S.O.S. (três curtas, três longas, três curtas) de uma janela para fora
+806. O S.O.S. da enfermaria faz o posto piscar de volta e o Seu Joaquim dar uma dica no rádio
+807. O S.O.S. do Dormitório A faz um lampião no morro responder e deixa uma trouxa com pilha e curativo no portão
+808. Conquista secreta "Três Curtas" por pedir socorro com a lanterna
+809. Contar junto com a Ana apertando as teclas 1 a 9 no ritmo dela pula o susto do DEZ uma vez
+810. Errar o ritmo ao contar junto faz a Ana acelerar a contagem
+811. Conquista secreta "Contei Junto" por contar no ritmo da Ana
+812. Bichinho de sombra na parede (segurar E parada perto de uma parede com a lanterna) faz um coelho de sombra
+813. Se a Ana estiver por perto, o bichinho de sombra a faz rir, parar de contar e pedir "De novo!"
+814. Conquista secreta "Teatro de Sombras" por fazer a Ana rir com o coelho de sombra
+815. Deslize agachada: apertar C correndo faz a Lia escorregar, rápido mas com barulho de tecido
+816. O deslize gasta fôlego e é desligado no modo Uma Vida
+817. Garrafa jogada numa lâmpada acesa estoura o bulbo com faíscas e deixa o trecho no escuro de vez
+818. A lâmpada quebrada esconde da Procissão, mas a Ana anda livre no escuro
+819. Garrafa acertada no alto da capela faz uma badalada torta que atrai o Inspetor e adianta a Procissão
+820. Conquista secreta "Badalada Torta" por acertar a garrafa no sino da capela
+821. Na nona troca de pilha da noite, a Lia acha um bilhete do pai no fundo da lanterna sobre o homem do rádio
+822. Se o relógio do aparelho marcar 21h de verdade dentro do internato, o sino bate nove vezes fora do roteiro
+823. Conquista secreta "Na Hora Certa" por estar no internato às nove da noite reais
+824. Escritas secretas da luz negra também aparecem nos túneis ("A ÁGUA ESCUTA")
+825. O Inspetor atraído por uma isca fica parado ouvindo o ponto por um tempo, baixando a audição
+826. As dicas de uso de cada item do bolso aparecem ao pegá-lo e ao trocar com Y
+
+### Interface (100)
+
+827. Nova aba "Álbum" no diário: as figurinhas a giz dos segredos, no estilo de álbum dos anos 80.
+828. No álbum, os segredos que faltam ficam como silhueta numerada, sem dica nenhuma.
+829. Achar um segredo descola uma figurinha que voa até o canto da tela, com som próprio.
+830. Página do álbum completa ganha uma figurinha brilhante com as três crianças de mãos dadas.
+831. Boatos da escola ficam guardados no fim do álbum, para você reler quando quiser.
+832. Nova aba "Última página" do caderno do Davi, onde dá para escrever (ENTER).
+833. Palavras-chave escritas na última página têm resposta na letra do Davi (oi, onde, Ana, Moacir, sino, 1979, seu nome...).
+834. As respostas do Davi na última página mudam conforme o capítulo em que você está.
+835. Palavra que o Davi não entende vira um rabisco de lápis em vez de resposta.
+836. Uma vez por capítulo a última página já vem com um recado escrito antes de você abrir.
+837. A cada segredo achado na noite, surge uma linha nova na última página, na letra do Davi.
+838. Com todos os papéis achados, a última página termina com um desenho dos dois irmãos.
+839. A página de trás (decalque): passar o lápis devagar revela o último recado do Davi para a Lia.
+840. Passar o lápis rápido demais no decalque faz o traço "pular", obrigando a ir com calma.
+841. Margem fosforescente aparece no diário aberto com a lanterna apagada, com uma dica por capítulo.
+842. Com a lanterna acesa, a margem do diário volta a ficar em branco.
+843. Fuligem nos objetivos: uma digital por segredo daquele mapa que ficou para trás.
+844. Passar o mouse (ou focar pelo teclado) numa digital de fuligem mostra uma dica de poucas palavras.
+845. Cabeçalho na aba Notas conta quantos papéis e fitas secretos você achou na noite e no total.
+846. A partir da terceira noite, um rabisco do Davi aparece no mapa do diário perto de um segredo que falta.
+847. O rabisco do mapa tem um recado do Davi no tooltip, assinado "— D.".
+848. Frases que a Lia não lembra de ter escrito aparecem tremidas no diário (no máximo quatro por noite).
+849. Olhar para trás (Q) três vezes seguidas faz surgir "para de olhar pra trás" no diário.
+850. Ficar muito tempo escondida faz surgir "ele sabe onde você fica" no diário.
+851. Riscos de giz no título: um risco por segredo achado, contados como numa parede de cela.
+852. Passar o mouse num grupo de riscos mostra o nome dos segredos daquele grupo.
+853. Com 100% dos segredos, os riscos do título viram o desenho das três crianças de mãos dadas.
+854. Cada código do título deixa um glifo a giz no contorno de uma porta, no canto da tela.
+855. Com todos os códigos achados, a porta de giz fica completa e clicável.
+856. Clicar na porta completa abre a última fita: o Davi agradecendo por você ter procurado tanto.
+857. Texto escondido preto no preto no título, revelado ao selecionar com o mouse ou Ctrl+A.
+858. O texto escondido do título muda a cada vez que você o revela.
+859. O rodapé do título muda conforme o progresso: "1 Lia", "3 Lias", até "volte para a cama".
+860. O rodapé do título mostra o total de mortes como "ocorrências" ao passar o mouse.
+861. Boatos no rádio-relógio do título: chamadas de ouvintes da Serra FM apontando um segredo que falta.
+862. Os boatos do título nunca entregam segredo que você já achou.
+863. Disco de telefone antigo (toque, mouse ou controle) para digitar os códigos sem teclado.
+864. Cinco toques no rádio-relógio do título abrem o disco de telefone.
+865. No controle, apertar Select três vezes abre o disco; setas escolhem o furo, A disca, B desliga.
+866. O disco de telefone tem as letras embaixo de cada furo, como nos aparelhos de 1994.
+867. Discar um segredo no telefone dispara o efeito real daquele código (conquista Linha Direta).
+868. O disco de telefone é acessível: rótulo de diálogo, foco no botão Desligar e número em aria-live.
+869. Código ACORDA: a câmera sobe até a fachada, as janelas acendem e há uma criança por final já visto.
+870. Código SINEIRO: três badaladas e a frase do que o Davi queria ser (conquista Sineiro).
+871. Código TOME: os botões do menu somem um a um, como num esconde-esconde, e voltam.
+872. Código CELESTE: uma vela acende no título e a irmã reza baixinho.
+873. Código ALBANO: uma luz de "gravando" aparece e uma voz gravada avisa sobre as nove horas.
+874. Chamar TOME, CELESTE e ALBANO libera a conquista Chamada Completa.
+875. Correção: os códigos do título agora passam por um despachante único, um código para cada cena.
+876. Correção: SILENCIO deixou de disparar três efeitos ao mesmo tempo (ficou só com o modo Uma Vida).
+877. Correção: o Modo Velório ganhou o código próprio VELORIO (antes brigava com o SILENCIO).
+878. Correção: a Fita Gasta ganhou o código próprio FITAGASTA (antes brigava com o SILENCIO).
+879. Correção: escrever o nome ou o código de desafio não dispara mais os segredos do título.
+880. O código DAVI virou uma cena só (sino, frase e fita ao contrário em sequência), sem sobreposição.
+881. Voltar ao título encolhe a imagem como uma TV antiga desligando, com som de tubo esfriando.
+882. Legendas de som ganham categoria "segredo", marcada com o símbolo ✶ além da cor.
+883. O símbolo ✶ dos segredos também aparece no histórico de sons, na aba Ouvido.
+884. Legenda avulsa (sem som por trás) para avisar os segredos de interface a quem usa legendas.
+885. Achar um segredo avisa por três canais: som de giz, vibração e brilho fraco na borda da tela.
+886. Um selo de giz ✶ risca o canto do HUD quando um segredo é achado.
+887. Com o HUD mínimo, achar um segredo toca só o som, sem o selo nem o brilho.
+888. Ao achar uma nota secreta, surge a frase "você não devia ter achado isso" no diário.
+889. Nova opção Faro para segredos, liberada depois do primeiro final: tom grave perto de um segredo.
+890. O Faro fica desligado no primeiro jogo, para não estragar a descoberta.
+891. Opção "Deixar ele entrar: Não" que não devia estar nas opções; no nono clique vira Sim.
+892. Insistir na opção escondida escurece a tela, bate três vezes na porta e dá a conquista Convite.
+893. "Lia nº N" na tela de morte, contando todas as mortes de todas as noites.
+894. Na 37ª morte somada, a dica vira "agora a lista tá completa" e o mini mapa mostra 37 cruzinhas.
+895. Na 38ª morte aparece "Sobrou uma vaga." embaixo da causa.
+896. Na nona morte da noite, a tela vira barras de TV com tom de 1 kHz (conquista Fora do Ar).
+897. Segurar ESPAÇO por 9 s na tela de morte faz a Lia prender o ar; a tela escurece e vem "...ainda não".
+898. Depois de prender o ar na morte, aparece uma dica rabiscada sobre o segredo mais perto de onde ela caiu.
+899. Fita vermelha desbotada no mini mapa da morte, se a Lia caiu perto de um segredo ainda não achado.
+900. Três mortes no mesmo capítulo fazem surgir "de novo não" (tremido) no diário.
+901. O cronômetro trava por um instante em 09:09.09, em vermelho e tremido, com um sino ao longe.
+902. Passar pelos 09:09.09 com o cronômetro ligado dá a conquista Nove e Nove.
+903. Trechos de ouro: o split do objetivo fica dourado e marcado quando bate o recorde daquele trecho.
+904. No fim do capítulo aparece a "Soma dos melhores trechos" e quanto ainda dá para ganhar.
+905. A pausa mostra quantos segredos você já achou nesta noite.
+906. Deixar o mouse 9 s sobre "Sair para o título" troca o texto por "Você não pode sair".
+907. Depois do "Você não pode sair", a pausa fecha sozinha e um armário se fecha logo atrás da Lia.
+908. Manual do Aluno de 1979 no F1: dez regras, nove falsas e uma verdadeira (conquista Leu o Manual).
+909. A regra verdadeira do manual é mecânica real: andar durante a trovoada é mais seguro.
+910. Apertar O nove vezes rápido faz a Lia dizer "Para de me perguntar, eu também não sei!".
+911. Na décima vez, o rádio chia e o Davi responde pela Lia: "Ela sabe sim. Ela só tá com medo.".
+912. Copiar (Ctrl+C) uma nota do Davi troca a área de transferência por "não me tira daqui. — D.".
+913. Copiar uma nota do Davi pela segunda vez cola "eu disse não.".
+914. Depois de 40 s com uma nota aberta, "alguém lê por cima do seu ombro", com respiração em estéreo.
+915. Ao fechar a nota, por um instante aparece um vulto atrás da Lia (respeita o aviso antes dos sustos).
+916. Num momento calmo, surge a legenda "[alguém lendo as legendas, atrás de você]".
+917. Virar a câmera para trás depois dessa legenda responde "[obrigado por olhar]".
+918. A lata do Davi é desenhada na tela final: objetos achados na noite em cor, os que faltam em contorno.
+919. "E também:" na tela final lista os segredos achados como gente que você lembrou.
+920. Boatos da escola no fim da noite: dois verdadeiros apontam segredos que faltam, um é mentira.
+921. Os boatos verdadeiros e a mentira viram um bilhete recortado para "passar pra frente".
+922. Charada no fim da noite sobre um segredo que ainda falta, escrita para copiar e mandar a alguém.
+923. Tela final mostra o tempo de jogo e o tempo de relógio (com pausas, cargas e cenas) separados.
+924. Sons procedurais novos para os segredos: giz, figurinha descolando, mola do disco, grafite, TV e 1 kHz.
+925. Novas abas do diário entram na navegação por 0-9 e pelas setas, sem quebrar as abas antigas.
+926. O título é redesenhado ao voltar do jogo, atualizando riscos, porta, rodapé e texto escondido.
+
+### Progressão e rejogabilidade (92)
+
+927. Código ACORDA no título libera o modo Noite Espelhada e uma fala nova do Davi.
+928. Código LAMPIÃO equipa a lanterna de lampião, com a luz quente de 1979.
+929. Código RECREIO equipa a lanterna de brinquedo azul do Davi.
+930. Código FOGO liga a Noite de Fumaça.
+931. Código ESCURO liga a Noite Sem Luz.
+932. Código AVESSO vira o título de cabeça para baixo.
+933. Código AIL (Lia ao contrário) espelha o título na horizontal.
+934. Digitar o nome de uma criança de 1979 no título revela a ficha e o destino dela.
+935. A chamada de 1979 traz doze destinos distintos, um por criança.
+936. Conquista "Lista de Chamada" ao chamar dez das crianças pelo nome.
+937. Novo botão "Segredos" no título abre um painel de descobertas com oito abas.
+938. Aba Prateleira mostra os achados da casa; o que falta vira só poeira.
+939. Cada achado da prateleira mostra uma frase curta da Lia.
+940. Aba Cartas reúne as cartas das entidades para comparar os números delas.
+941. Aba Boatos traz o mural de boatos do São Lázaro.
+942. Aba Todas Voltam mostra a parede de riscos das suas mortes.
+943. Aba Ocorrências traz o livro das noites raras com contador.
+944. Aba Chamada guarda as fichas das crianças já chamadas.
+945. Aba Lanternas deixa escolher a lanterna cosmética.
+946. Aba Modos liga e desliga os modos escondidos.
+947. Lanterna comum, a de sempre, selecionável na aba Lanternas.
+948. Lanterna do Davi, luz levemente fria e azulada.
+949. Lanterna de bombeiro, cone amarelo e largo, liberada pelo fio das três crianças.
+950. Lamparina da Irmã Celeste, luz quente que treme, liberada pela fita dela no acervo.
+951. Lanterna do zelador Joaquim, lata amassada, liberada ao reparar em oito lugares.
+952. Lampião de 1979, luz redonda e baixa, liberado pelo código LAMPIÃO.
+953. Lanterna vermelha, só para quem chega a 100% do internato.
+954. A lanterna escolhida tinge a tela com a cor dela durante o jogo.
+955. Carta do Inspetor vira ao sobreviver a uma perseguição dele.
+956. Carta da Menina Que Conta vira ao sobreviver ao jogo da Ana.
+957. Carta da Procissão vira ao se esconder dela.
+958. Carta do Chamado vira ao ignorar a voz e sobreviver.
+959. Carta da Coruja vira ao ouvir o aviso da Procissão.
+960. Carta do Breu vira depois de passar um tempo no escuro.
+961. Carta secreta do menino Moacir, liberada pelo prontuário do quarto dele.
+962. Carta secreta do Davi, liberada ao completar o diário dele.
+963. Cada carta traz uma fraqueza real escrita pelo Davi.
+964. As cartas ficam como "???" enquanto não são viradas.
+965. Conquista "Clube do Silêncio" ao virar todas as cartas das entidades.
+966. Boato "o sino já bateu dez" é marcado ao jogar às nove da noite.
+967. Boato "ele janta sozinho" é marcado ao sobreviver ao Inspetor.
+968. Boato "um andar entre os andares" é marcado ao achar certa nota secreta.
+969. Boato "havia uma quarta criança" é marcado ao chamar o Moacir pelo nome.
+970. Boato "do avesso dá pra ver quem ficou" é marcado na Noite Espelhada.
+971. Boato "quem passa nove horas aqui não sai" é marcado ao somar nove horas.
+972. Os boatos ficam apagados até serem vividos, sem dizer como achar.
+973. Conquista "Todos os Boatos" ao viver os seis.
+974. Ocorrência rara: jogar exatamente às nove da noite.
+975. Ocorrência rara: somar nove horas dentro do internato.
+976. Ocorrência rara: entrar num 14 de março, a noite do fogo.
+977. Ocorrência rara: entrar num 15 de março, aniversário da Lia.
+978. Ocorrência rara: entrar numa sexta-feira 13.
+979. Ocorrência rara: entrar às três da manhã.
+980. Ocorrência rara: terminar um capítulo na Noite Espelhada.
+981. Ocorrência rara: chegar à sua décima terceira noite.
+982. As ocorrências ficam como "???" até serem vistas, mantendo o mistério.
+983. Parede de giz com um risco por morte, somando todas as noites.
+984. Os riscos se agrupam de cinco em cinco, como contagem de prisão.
+985. No risco número 37, a Irmã Celeste escreve o nome do jogador embaixo.
+986. A parede mostra quantas mortes foram por cada entidade.
+987. A parede guarda até 60 riscos, lidos das estatísticas de morte.
+988. Modo Noite Espelhada vira o render do jogo de lado (só visual).
+989. Modo Noite de Fumaça cobre a tela com um véu animado de fuligem.
+990. O véu de fumaça respeita a opção de movimento reduzido.
+991. Modo Noite Sem Luz escurece tudo com uma penumbra a mais.
+992. Os modos avisam que são cosméticos e não valem para o ranking.
+993. As escolhas de lanterna e de modo ficam salvas nas opções entre as noites.
+994. Os modos continuam travados até o código certo ser descoberto.
+995. Bilhete da Lia da noite passada aparece no título, gerado da última morte.
+996. O bilhete muda conforme quem te pegou (Inspetor, Menina ou Procissão).
+997. Colar um código de desafio no campo mostra o recado da lápide do amigo.
+998. Bilhete de criança na tela de pausa, variando por capítulo e mortes.
+999. Mensagem do Seu Joaquim no final de quem não mexeu em nada.
+1000. Contador de medos na tela de morte: "morte X de 4 já vistas".
+1001. Linha especial quando você já morreu de todos os jeitos da casa.
+1002. Conquista secreta "Acorda" ao escrever ACORDA no título.
+1003. Conquista "De Cabeça Para Baixo" ao escrever AVESSO.
+1004. Conquista "Do Outro Lado do Espelho" ao escrever AIL.
+1005. Conquista "Luz de Querosene" ao escrever LAMPIÃO.
+1006. Conquista "Brinquedo do Davi" ao escrever RECREIO.
+1007. Conquista "Fumaça" ao ligar a Noite de Fumaça.
+1008. Conquista "Sem Lâmpada" ao ligar a Noite Sem Luz.
+1009. Conquista "Trinta e Sete" ao acumular 37 mortes.
+1010. Conquista "Hora Cheia" ao somar nove horas dentro do internato.
+1011. Conquista "Treze" ao chegar à sua décima terceira noite.
+1012. Conquista "Não Mexi em Nada" ao terminar a noite sem achar nenhum segredo.
+1013. Conquista "Quem Procura Acha" ao reunir 20 peças do acervo.
+1014. Conquista "Já Morri de Tudo" ao ver todas as cenas de morte da casa.
+1015. Conquista "Doze" ao deixar o Inspetor te pegar doze vezes.
+1016. Conquista "A Prateleira Cheia" ao achar os seis objetos da prateleira.
+1017. As dezoito conquistas novas entram no catálogo e contam para o 100% do internato.
+1018. O título marca sozinho a ocorrência "nove da noite" quando aberto às 21h.
