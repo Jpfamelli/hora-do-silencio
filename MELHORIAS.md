@@ -2,7 +2,7 @@
 
 Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/lote*/<área>.md`. Não edite à mão: edite o arquivo da área e gere de novo.
 
-**Total geral: 5584 melhorias**
+**Total geral: 5588 melhorias**
 
 ## Índice
 
@@ -48,7 +48,7 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
   - Progressão e rejogabilidade: 116
   - Plataforma e acessibilidade: 106
   - Revisão antes de publicar: 5
-- [Lote 4](#lote-4) — 1671 melhorias
+- [Lote 4](#lote-4) — 1675 melhorias
   - História e texto: 92
   - Mapa: prólogo e estrada: 97
   - Mapa: térreo e dormitórios: 92
@@ -61,7 +61,7 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
   - Interface: 100
   - Progressão e rejogabilidade: 182
   - Plataforma e acessibilidade: 94
-  - Revisão antes de publicar: 2
+  - Revisão antes de publicar: 6
 
 ## Lote 1
 
@@ -4107,7 +4107,7 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
 
 ## Lote 4
 
-1671 melhorias.
+1675 melhorias.
 
 ### História e texto (92)
 
@@ -5814,7 +5814,11 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
 1668. Os segredos e a pista do porão só aparecem fora do QA, sem atrapalhar os testes automáticos
 1669. CSS próprio do lote (plataforma4.css) injetado só quando o jogo abre
 
-### Revisão antes de publicar (2)
+### Revisão antes de publicar (6)
 
 1670. Service worker: o cache voltou a ser versionado (`hora-silencio-v6`) em vez de ficar preso no `v5` do Lote 3, então o `activate` limpa o cache antigo e os módulos novos do Lote 4 entram de uma vez na próxima abertura
 1671. Service worker: removida a entrada falsa `'hora-silencio-v6'` da lista `BASE`, que não é arquivo e fazia o `install` buscar um 404 toda vez e o indicador de "pronto para jogar sem internet" nunca fechar em 100%
+1672. Revisão final de jogador-testador: QA de sobrevivência rodado de ponta a ponta (campanha + sobrevivência + plataforma + segredos) terminou em RESULTADO PASSOU, sem erro de JS nem aviso; os cinco mapas foram conferidos por captura — título, estrada, térreo, dormitórios, túneis e cemitério — com texto legível e acentuado, HUD inteiro, nenhuma tela sobreposta e a escuridão sempre com um foco iluminado para dar para jogar
+1673. Confirmado que os oito módulos novos do Lote 4 (`internato-segredos`, `internato-segredos-sup`, `subterraneo-segredos2`, `sustos-segredos2`, `plataforma4`, `plataforma4-extra`, `progressao-lote4b`, `progressao-lote4b-roteiro`) entraram na lista `BASE` do service worker, então o jogo completo com os segredos roda offline
+1674. Caçado o aviso raro de áudio "setValueAtTime não-finito" que aparecera num QA anterior: instrumentei `setValueAtTime` e as rampas para acusar qualquer valor não-finito e rodei a corrida inteira — zero ocorrências, então era um caso isolado e não há `NaN` chegando aos parâmetros de áudio dos segredos
+1675. Conferido que nenhum segredo ou entidade do Lote 4 cita nome ou marca de outro jogo: as referências continuam originais (Inspetor Moacir, a Menina Que Conta, a Procissão, o Clube do Silêncio)
