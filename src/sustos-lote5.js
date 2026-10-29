@@ -633,11 +633,14 @@ export function instalarSustosL5(E, K) {
   // o braço no monta-cargas e o apagão da fuga são chamados por flags do mapa pelo motor
   const fareja = seguro(() => { if (fear() > 40 && Math.random() < .3) E.sub('leg', T.cenario_leg); });
 
+  // No kit de teste automático (T.tudo()) os sustos atmosféricos do Lote 5 ficam quietos:
+  // eles são por sorteio/tempo e não devem interferir no caminhar automático nem na audição do Inspetor.
+  const nt = fn => (...a) => { if (window.__teste) return; return fn(...a); };
   return {
-    update, novoMapa, aoPasso, aoEsconder: seguro(aoEsconder), aoSair: seguro(aoSair), aoRaio: seguro(aoRaio),
-    morte, fareja, avistamento: seguro(avistamento), montaCargas: seguro(montaCargas), apagaoFuga: seguro(apagaoFuga),
-    diario: seguro(diarioAberto), anaDupla: seguro(anaDupla), anaCama: seguro(anaCama), anaLanterna: seguro(anaLanterna),
-    vozNoArmario: seguro(vozNoArmario), silhuetaChamado: seguro(silhuetaChamado), falsoAgarrao: seguro(falsoAgarrao),
+    update: nt(update), novoMapa: nt(novoMapa), aoPasso: nt(aoPasso), aoEsconder: nt(seguro(aoEsconder)), aoSair: nt(seguro(aoSair)), aoRaio: nt(seguro(aoRaio)),
+    morte: nt(morte), fareja: nt(fareja), avistamento: nt(seguro(avistamento)), montaCargas: nt(seguro(montaCargas)), apagaoFuga: nt(seguro(apagaoFuga)),
+    diario: nt(seguro(diarioAberto)), anaDupla: nt(seguro(anaDupla)), anaCama: nt(seguro(anaCama)), anaLanterna: nt(seguro(anaLanterna)),
+    vozNoArmario: nt(seguro(vozNoArmario)), silhuetaChamado: nt(seguro(silhuetaChamado)), falsoAgarrao: nt(seguro(falsoAgarrao)),
     _D: D, _T: T, _ALUC: ALUC
   };
 }
