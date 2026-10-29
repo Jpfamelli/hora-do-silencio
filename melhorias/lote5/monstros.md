@@ -1,0 +1,96 @@
+# Lote 5 — Monstros e IA
+- No Capítulo I o Inspetor anda mais devagar e demora mais a reagir, como quem ainda está aprendendo a casa.
+- No Capítulo II ele entra em modo disciplina e reage mais rápido a qualquer ruído.
+- No Capítulo III ele fica distraído enquanto a Menina domina, e ouve um pouco pior.
+- No Capítulo IV, nos túneis, a água leva cada passo até ele e seu ouvido fica muito mais afiado.
+- No Capítulo V ele está solto, mais rápido, mais curvado e mais agressivo.
+- Depois do sino, no Capítulo V, ele entra em fúria contínua: não reza, não recua, não para.
+- Tocar o sino no clímax paralisa o Inspetor por alguns segundos.
+- Ao ser desligado pelo sino, ele leva as mãos aos ouvidos e tomba a cabeça (pose nova de atordoamento).
+- No toque do sino, a Menina e a Procissão também param e te encaram por um instante.
+- Escuridão que avança: na fuga, as lâmpadas estouram atrás de você conforme ele se aproxima.
+- Faro de sangue: com a vida baixa a Lia ofega e ele passa a te ouvir de mais longe.
+- Ponto cego do cego: parada, muda e exatamente nas costas dele, ele quase não te acha.
+- Rastro de cheiro: correr deixa um caminho quente que ele passa a seguir na procura.
+- Atravessar a água apaga o seu rastro de cheiro na hora.
+- Ficar agachada e parada por alguns segundos esfria e apaga o rastro.
+- Quebrar a linha de visão por três segundos e ficar em silêncio faz a caçada virar procura.
+- Tateio cego: quando ele te perde de vista, para e varre o escuro com os braços à frente.
+- Flanqueio: numa caçada longa ele corta caminho pela saída que você ia tomar.
+- Falsa partida: na caçada ele para de repente, mudo, testando se você entra em pânico.
+- Correr durante a falsa partida entrega você na hora.
+- Ficar imóvel durante a falsa partida faz ele recuar resmungando.
+- No escuro total (lanterna apagada) e parada, ele tateia o lado errado e te perde mais rápido.
+- No trovão/clarão ele cobre o rosto e fica surdo por um instante.
+- Um tique elétrico avisa quando ele chega na sala ao lado.
+- Medidor de paciência: parada tempo demais no armário, ele começa a abrir os armários da sala um por um.
+- Um barulho em outra sala zera a paciência dele e o manda investigar lá.
+- Ele cola o ouvido no armário e conta as batidas do seu coração; ao chegar no cinco, abre.
+- Prender o ar no ritmo certo zera a contagem do coração.
+- Duelo de fôlego: colado no armário, ele também para de respirar esperando você soltar o ar.
+- Dedos tateiam a fresta do armário quando ele fareja, com aviso para prender o ar.
+- Ao desistir de um esconderijo seu, fica a deixa de que ele decorou aquele lugar.
+- No cemitério aberto, correr na linha dele durante o clarão do relâmpago vira caçada.
+- No aberto, a luz da lanterna acesa o atrai de longe.
+- A venda queimada às vezes escorrega e ele "enxerga" um cone curto à frente.
+- Ele sussurra o seu nome (o que você digitou no título) quando está colado no escuro.
+- Numa caçada longa ele conta os seus passos em voz alta.
+- Na patrulha, longe, ele murmura a chamada das camas.
+- Antes de arrombar a porta ele conta grave "três... dois... um...".
+- Entrando caçando na sua sala, ele fecha a porta por onde você entrou.
+- Na patrulha ele vai esperar de pé na frente do armário que você mais usa.
+- No Capítulo III o corpo some e sobram pancadas no teto e na escada.
+- As chaves dele se calam quando ele vai caçar (aviso de leitura).
+- Aviso de legenda quando ele para, imóvel, para ouvir.
+- Aviso de legenda quando ele finge ir embora e fica de emboscada.
+- Aviso de texto quando ele entra em caçada.
+- Ele cheira o ar ao entrar numa sala nova durante a procura.
+- Aviso "[ele está furioso]" quando a fúria dele sobe.
+- Na caçada, quando ele vira a cabeça depressa, o pescoço estica além do humano.
+- Aviso "[ele virou para você]" quando a cabeça dele trava na sua direção.
+- Ele estala a língua duas vezes quando trava a cabeça na sua direção na caçada.
+- Sopro de respiração na sua nuca quando ele está colado no seu esconderijo.
+- A cantiga que mente: raramente, na caçada, a caixinha continua tocando, só mais rápida.
+- No clímax ele caça mais de quatro, com o corpo caído para a frente.
+- A escuta total: uma vez por capítulo ele ergue a mão e todo o som some por três segundos; qualquer ruído vira caçada.
+- Ele mede o seu fôlego: depois de dois esconderijos na noite, espera mais tempo antes de desistir do armário.
+- Na caçada ele apaga a lâmpada bem à frente ao passar por ela.
+- Fora da caçada ele às vezes fica parado, de costas, no meio de um corredor.
+- No Capítulo III, com a Menina contando, ele repete os números baixinho em dueto.
+- A luz acesa quando a Procissão passa perto faz uma criança apontar e chamar o Inspetor.
+- Casaco com fuligem e cinzas a partir do Capítulo III.
+- Rachaduras de brasa pulsando no corpo dele no Capítulo V.
+- A venda vai queimando e escurecendo do Capítulo IV ao V.
+- Fiapo de fumaça subindo do casaco a partir do Capítulo IV.
+- Mãos queimadas a partir do Capítulo IV.
+- A Menina fica encardida e molhada nos túneis e no cemitério.
+- A Menina cresce e a voz engrossa a cada captura na mesma noite.
+- Encarada tempo demais, a cabeça da Menina gira além do humano.
+- No Pesadelo a Menina também te ouve: correr a puxa para perto mesmo no escuro.
+- Perto do Inspetor, no fim da contagem, a Menina aponta e te entrega a ele.
+- Gotas pingam do teto marcando o ponto exato onde a Menina vai cair.
+- Bem perto, no fim da conta, os últimos números da Menina estouram rápido.
+- O medo alto da Lia acelera a contagem da Menina.
+- Quando a Procissão para no seu esconderijo, os olhos vermelhos ficam cravados na fresta.
+- Novas falas do Inspetor no Capítulo I, no tom de "funcionário" que ainda ensina.
+- Novas falas do Inspetor no Capítulo II, sobre o ritmo das badaladas.
+- Novas falas do Inspetor no Capítulo III, em dueto com a Menina.
+- Novas falas do Inspetor no Capítulo IV, sobre a água que denuncia.
+- Novas falas do Inspetor no Capítulo V, de quem não reza mais e arromba tudo.
+- Falas novas de dor quando o sino o atordoa.
+- Falas novas de quando ele "leu o seu nome na ficha".
+- Falas novas de quando ele fareja o seu rastro.
+- Falas novas de quando ele te perde no ponto cego.
+- Falas novas de quando a venda escorrega ("Eu te VEJO").
+- Falas novas durante a varredura paciente dos armários.
+- Dica da Lia explicando o ponto cego nas costas dele.
+- Dica da Lia explicando que correr deixa rastro de cheiro.
+- Dica da Lia explicando que quebrar a esquina e calar a boca despista.
+- Dica da Lia sobre esfriar a paciência dele com um barulho em outra sala.
+- Dica da Lia sobre prender o ar no ritmo das batidas do coração.
+- Dica da Lia sobre ficar parada atrás da pedra no clarão do relâmpago.
+- Dica da Lia sobre a surdez dele no trovão.
+- Dica da Lia sobre ele rondar o armário preferido e a precisar variar.
+- Dica da Lia sobre a escuta total, de não respirar enquanto o mundo para.
+- Dica da Lia quando a Menina ouve como ele no Pesadelo.
+- Conquista secreta ao desligar o Inspetor com o sino.

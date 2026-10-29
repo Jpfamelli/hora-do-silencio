@@ -410,11 +410,11 @@ window.ROTEIRO = {
       // O motor junta estas falas às de caça do capítulo, então o tom de cada capítulo é o que ele mais diz.
       porCapitulo: {
         0: ["Lá fora não é hora de passear, menina.", "Volta pro carro. A estrada guarda gente."],
-        1: ["Tem alguém novo na casa.", "Hora de dormir, crianças. Já é tarde.", "Eu só quero que você durma. É só isso."],
-        2: ["Nove badaladas. Todos na cama.", "Um apito, todos na cama. Dois, ninguém respira.", "Fica na fila. Fica quietinha na fila que eu não castigo."],
-        3: ["A menina não vai te ajudar.", "Conta comigo. Um... dois...", "Você é igual à outra. A que contava alto demais.", "Eu guardo todas. Guardo você também."],
-        4: ["A água me conta onde você pisa.", "Ninguém desce aqui. Ninguém.", "Aqui embaixo é onde eu durmo. Você acordou a casa toda.", "Não... não é hora... não é hora..."],
-        5: ["O sino é MEU.", "Saia daí. Eu sei que você está atrás da pedra.", "SILÊN... cio. Silêncio. SILÊNCIO.", "(um rosnado) ...cama... cama... cama...", "Não toca. NÃO TOCA no sino.", "(as palavras não saem mais inteiras) ...vol-ta... dor-mir..."]
+        1: ["Tem alguém novo na casa.", "Hora de dormir, crianças. Já é tarde.", "Eu só quero que você durma. É só isso.", "Devagar. Eu ainda estou aprendendo o seu cheiro.", "Fica na cama que eu nem preciso vir aqui."],
+        2: ["Nove badaladas. Todos na cama.", "Um apito, todos na cama. Dois, ninguém respira.", "Fica na fila. Fica quietinha na fila que eu não castigo.", "Entre os sinos eu ando. No sino eu paro. Igual você devia."],
+        3: ["A menina não vai te ajudar.", "Conta comigo. Um... dois...", "Você é igual à outra. A que contava alto demais.", "Eu guardo todas. Guardo você também.", "Ela conta. Eu acho. A gente combina bem."],
+        4: ["A água me conta onde você pisa.", "Ninguém desce aqui. Ninguém.", "Aqui embaixo é onde eu durmo. Você acordou a casa toda.", "Não... não é hora... não é hora...", "Ploc. Cada gota é você."],
+        5: ["O sino é MEU.", "Saia daí. Eu sei que você está atrás da pedra.", "SILÊN... cio. Silêncio. SILÊNCIO.", "(um rosnado) ...cama... cama... cama...", "Não toca. NÃO TOCA no sino.", "(as palavras não saem mais inteiras) ...vol-ta... dor-mir...", "Hoje eu não rezo. Hoje eu só vou.", "Não adianta o armário. Hoje eu arrombo tudo."]
       }
     },
     ana: { nome: "A Menina Que Conta", contagem: ["um...", "dois...", "três...", "quatro...", "cinco...", "seis...", "sete...", "oito...", "nove...", "DEZ."] },
@@ -430,7 +430,13 @@ window.ROTEIRO = {
       calor: ["Está quente aqui...", "Que calor é esse no meu rosto?", "O facho esquenta. Você tá me olhando de perto."],
       favorito: ["Sempre o mesmo lugar...", "Você gosta desse armário, não gosta?", "Terceira vez nesse canto. Vou guardar o endereço."],
       truque: ["Truque velho.", "De novo a garrafa? Truque de criança.", "Jogou longe de novo. Eu ensinei esse truque pra eles."],
-      volta: ["Achou que eu tinha ido embora?", "Eu nunca vou embora.", "Eu só fui deixar a ronda em dia."]
+      volta: ["Achou que eu tinha ido embora?", "Eu nunca vou embora.", "Eu só fui deixar a ronda em dia."],
+      sino: ["O sino... não. Não toca. NÃO TOCA.", "Esse som... dentro da minha cabeça...", "Para. Para com esse barulho."],
+      nome: ["Eu li o seu nome na ficha.", "Eu sei como você se chama.", "Você está na lista da chamada. Eu li."],
+      rastro: ["Seu cheiro ficou no chão.", "Você passou por aqui. Eu sigo.", "Pés quentes deixam rastro, menina."],
+      pontocego: ["Cadê... eu jurava que era aqui...", "Sumiu. Sumiu bem debaixo do meu nariz."],
+      enxergo: ["Eu te VEJO.", "A Hora me devolveu os olhos. Por um instante.", "Hoje eu enxergo você."],
+      paciencia: ["Eu tenho a noite toda.", "Um por um. Eu abro todos.", "Não precisa ter pressa. Eu abro cada porta."]
     },
     chamado: {
       davi: ["Lia, achei a fita... vem ver.", "Lia, tá doendo... vem cá.", "Lia? Eu tô aqui. Aqui do lado.", "Lia... por que você não vem?", "Lia, tá escuro aqui. Vem comigo.", "Lia... ele não me vê se você vier agora."],
@@ -582,6 +588,7 @@ window.ROTEIRO = {
     { id: "ana", nome: "Não Pisque", desc: "Sobreviva à brincadeira da Ana." },
     { id: "garrafa", nome: "Ventríloqua", desc: "Distraia o Inspetor com uma garrafa." },
     { id: "folego", nome: "Sem Respirar", desc: "Prenda a respiração com o Inspetor do lado do armário." },
+    { id: "l5_sino", nome: "O Sino Te Desliga", desc: "Atordoe o Inspetor com o sino no clímax." },
     { id: "arqueologa", nome: "Arqueóloga", desc: "Encontre todas as notas, páginas e fitas (somando todas as noites)." },
     { id: "intocada", nome: "Intocada", desc: "Termine um capítulo sem ser ferida." },
     { id: "final_comum", nome: "Só o Começo", desc: "Chegue ao final comum." },
