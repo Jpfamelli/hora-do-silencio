@@ -6,6 +6,7 @@
 import { instalarPlat2 } from './plataforma2.js';
 import { instalarPlat3 } from './plataforma3.js';
 import { instalarPlat4 } from './plataforma4.js';
+import { instalarPlat5 } from './plataforma-lote5.js';
 
 const KEY = 'hora-silencio-plat';
 const AUTO_KEY = 'hora-silencio-v3-auto';
@@ -26,7 +27,12 @@ const PADRAO = {
   tqTam: 'm', tqOpac: .85, tqCanhoto: false, tqSens: 1,
   dalt: 'nao', avisoVisual: false, vibMundo: true, menuLeve: true,
   // lote 3
-  giroTec: false, giroVel: 1, mouseCru: true, arrastar: false, cheiaJogo: true, giro: false, giroSens: 1, sacudir: true, tqLimpo: false, ritmo: '1', clipe: false, plateiaModo: 'atrapalha'
+  giroTec: false, giroVel: 1, mouseCru: true, arrastar: false, cheiaJogo: true, giro: false, giroSens: 1, sacudir: true, tqLimpo: false, ritmo: '1', clipe: false, plateiaModo: 'atrapalha',
+  // lote 5
+  respInsp: true, respEstalos: true, respVol: 1, respSoCaca: false, nevoaDir: false, nevoaDist: 6, capEstado: true, capSoPerigo: false, legSomCaixa: false, legSomTam: 'm', contraste: false,
+  miraCaca: false, indicSoCaca: false, indicInsp: false, coracaoForca: 1, invX: false, sensV: 1, vibForca: 1, vibSoPerigo: false, semGrao: false, semChuva: false, semSombra: false, descanso: false, tqFixo: false,
+  legSomDist: true, legSomDir: true, legSomDur: 1, teto45: false, vinhetaFraca: false, vermFraco: false, tqOlharDz: false, padLinear: false,
+  hapEntidade: true, hapSoCaca: false
 };
 const ler = () => { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } };
 const O = { ...PADRAO, ...ler() };
@@ -53,6 +59,7 @@ let P3 = { antes: () => 1, depois() {}, toqueFrame() {}, mapa() {}, opcoes() {},
 let corte = 0, corteT = 0; // escada de cortes quando a resolução já está no mínimo
 let P2 = { fecharLapide() {}, abrirLapide() {}, morreu() {}, frame() {}, mapa() {}, opcoes() {} }; // trocado em instalar() pelo módulo do lote 2
 let P4 = { frame() {}, mapa() {}, aoFim() {} }; // lote 4: segredos e easter eggs
+let P5 = { antes() {}, depois() {}, opcoes() {}, mapa() {}, montarOpcoes() {} }; // trocado em instalar() pelo módulo do lote 5
 let prAtual = 1, tetoPR = 1;
 let fogAplicada = -1;
 let ultimoQuadro = 0;
@@ -168,11 +175,16 @@ function legenda(id, texto, pos, intervalo = 2.5) {
   const agora = performance.now() / 1000; if (ultimaLeg[id] && agora - ultimaLeg[id] < intervalo) return; ultimaLeg[id] = agora;
   const el = $('#legsom'); if (!el) return;
   const d = document.createElement('div');
-  let dist = '';
-  if (pos && pos.x !== undefined) { const dd = Math.hypot(pos.x - C.P.pos.x, pos.z - C.P.pos.z); dist = (dd < 4 ? ' — perto' : dd > 12 ? ' — longe' : '') ; texto += ' ' + nomeDir(direcao(pos.x, pos.z)) + dist; }
+  if (pos && pos.x !== undefined) {
+    const dd = Math.hypot(pos.x - C.P.pos.x, pos.z - C.P.pos.z);
+    const dir = O.legSomDir === false ? '' : ' ' + nomeDir(direcao(pos.x, pos.z));
+    const dist = O.legSomDist === false ? '' : (dd < 4 ? ' — perto' : dd > 12 ? ' — longe' : '');
+    texto += dir + dist;
+  }
   d.textContent = '[' + texto + ']'; el.appendChild(d);
   while (el.children.length > 3) el.firstChild.remove();
-  setTimeout(() => { d.style.opacity = 0; setTimeout(() => d.remove(), 600); }, 2600);
+  const dur = 2600 * clamp(O.legSomDur == null ? 1 : +O.legSomDur, .5, 2.5);
+  setTimeout(() => { d.style.opacity = 0; setTimeout(() => d.remove(), 600); }, dur);
 }
 function embrulharSons() {
   const S = C.SOM;
@@ -198,14 +210,15 @@ function embrulharSons() {
 }
 function atualizarIndicadores() {
   const box = $('#indic'); if (!box) return;
-  const ligado = O.indic && C.mode === 'jogo' && !C.ui && C.S && !C.S.dead;
+  let ligado = O.indic && C.mode === 'jogo' && !C.ui && C.S && !C.S.dead;
+  if (ligado && O.indicSoCaca && !(C.M.ativo && C.M.state === 'caca')) ligado = false; // lote 5: só aparece na caçada
   box.hidden = !ligado; if (!ligado) return;
   const ents = [];
   // com paleta de daltonismo, os arcos usam pares que não se confundem
   const pal = O.dalt === 'tritan' ? ['#ff3b5c', '#e6e6e6', '#38d6c8', '#ff9fd0'] : O.dalt !== 'nao' ? ['#ff4fd8', '#4fa3ff', '#e6e6e6', '#ffd84a'] : ['#c0392b', '#b38b6d', '#a9b6c9', '#e0c070'];
   if (C.M.ativo) ents.push([C.M.pos, 14, C.M.state === 'caca' ? pal[0] : pal[1]]);
-  if (C.ANA.ativa) ents.push([C.ANA.pos, 10, pal[2]]);
-  if (C.PROC.fase === 'passando') ents.push([C.PROC.pos, 12, pal[3]]);
+  if (!O.indicInsp && C.ANA.ativa) ents.push([C.ANA.pos, 10, pal[2]]); // lote 5: opção de mostrar só o Inspetor
+  if (!O.indicInsp && C.PROC.fase === 'passando') ents.push([C.PROC.pos, 12, pal[3]]);
   const els = box.children;
   for (let i = 0; i < els.length; i++) {
     const e = ents[i], el = els[i];
@@ -266,6 +279,9 @@ let antesB = [], padSet = {}, eixoNav = 0;
 const fake = code => ({ code, preventDefault() {} });
 function vibrar(forte, fraco, ms) {
   if (!O.vibrar) return;
+  const vf = clamp(O.vibForca == null ? 1 : +O.vibForca, 0, 1.5); // lote 5: intensidade geral da vibração
+  if (vf <= 0) return;
+  forte = clamp(forte * vf, 0, 1); fraco = clamp(fraco * vf, 0, 1);
   const g = padAtual;
   try { if (padAtivo && g && g.vibrationActuator && g.vibrationActuator.playEffect) g.vibrationActuator.playEffect('dual-rumble', { duration: ms, strongMagnitude: forte, weakMagnitude: fraco }).catch(() => {}); } catch (e) {}
   try { if (toque && navigator.vibrate) navigator.vibrate(ms); else if (toque) P3.pulsoVisual(ms, forte); } catch (e) {}
@@ -274,7 +290,8 @@ function setPad(on) { if (padAtivo === on) return; padAtivo = on; document.body.
 function olhar(dx, dy) { // radianos
   const P = C.P, S = C.S;
   const sm = P.sensMul || 1; // jogabilidade (lote 3): mais fino escondida/mirando e atrito sobre o que dá para usar
-  P.yaw -= dx * sm; P.pitch = clamp(P.pitch - dy * sm * (C.OPT.invY ? -1 : 1), -1.45, 1.45);
+  const sv = clamp(O.sensV == null ? 1 : +O.sensV, .2, 3); // lote 5: sensibilidade vertical própria e inverter a horizontal
+  P.yaw -= dx * sm * (O.invX ? -1 : 1); P.pitch = clamp(P.pitch - dy * sm * sv * (C.OPT.invY ? -1 : 1), -1.45, 1.45);
   if (S && S.hidden) { const cama = S.hidden.tipo === 'cama', base = Math.atan2(-S.hidden.face[0], -S.hidden.face[1]); let d = P.yaw - base; d = Math.atan2(Math.sin(d), Math.cos(d)); P.yaw = base + clamp(d, cama ? -1.1 : -.75, cama ? 1.1 : .75); P.pitch = clamp(P.pitch, cama ? -.45 : -.35, cama ? .22 : .35); } // embaixo da cama: os mesmos limites do mouse
 }
 function pad(dt) {
@@ -317,7 +334,7 @@ function pad(dt) {
     if (novo(B.START)) { soltarTodosPad(); C.unlock(); C.abrirPausa(); }
     const rx = ax(2), ry = ax(3), s = 2.8 * O.padSens * dt;
     if (agarrada) puxar((Math.abs(rx - (antesB.rx || 0)) + Math.abs(ry - (antesB.ry || 0))) * 350); // sacudir o analógico também solta
-    if (rx || ry) olhar(rx * Math.abs(rx) * s, ry * Math.abs(ry) * s * .75);
+    if (rx || ry) { if (O.padLinear) olhar(rx * s, ry * s * .75); else olhar(rx * Math.abs(rx) * s, ry * Math.abs(ry) * s * .75); }
     antesB.rx = rx; antesB.ry = ry;
   } else {
     // na nota: X lê em voz alta, Y vira a folha das regras
@@ -352,7 +369,7 @@ function mostrarSoltura() {
   const k = clamp(AG.sacode / 1400, 0, 1); el.hidden = false; el.firstChild.style.width = (k * 100).toFixed(0) + '%';
 }
 function dicaAgarrao() {
-  const t = toque ? 'Toque em Usar sem parar (ou arraste o dedo) para se soltar!' : padAtivo ? 'Aperte A sem parar (ou sacuda o analógico) para se soltar!' : O.soltar === 'tecla' ? 'Aperte E sem parar para se soltar!' : 'Sacuda o mouse para se soltar!';
+  const t = toque ? (O.soltar === 'segurar' ? 'Segure o botão Usar para se soltar!' : 'Toque em Usar sem parar (ou arraste o dedo) para se soltar!') : padAtivo ? (O.soltar === 'segurar' ? 'Segure A para se soltar!' : 'Aperte A sem parar (ou sacuda o analógico) para se soltar!') : O.soltar === 'segurar' ? 'Segure E (ou Usar) para se soltar!' : O.soltar === 'tecla' ? 'Aperte E sem parar para se soltar!' : 'Sacuda o mouse para se soltar!';
   C.toast(t);
 }
 const TELAS = ['#lapide', '#portal', '#calibra', '#plat-opcoes', '#opcoes', '#keypad', '#note', '#painel', '#pause', '#death', '#escolha', '#ending', '#diario', '#title', '#aviso-mobile'];
@@ -429,14 +446,18 @@ function montarToque() {
   });
   aplicarToqueOpcoes(); P3.montarToque(el);
   const zA = $('#tq-zona-andar'), zO = $('#tq-zona-olhar'), base = $('#tq-base'), pino = $('#tq-pino');
-  zA.addEventListener('touchstart', e => { e.preventDefault(); const t = e.changedTouches[0]; stick = { id: t.identifier, x: t.clientX, y: t.clientY, dx: 0, dy: 0 }; base.style.left = t.clientX + 'px'; base.style.top = t.clientY + 'px'; base.classList.add('on'); }, { passive: false });
+  zA.addEventListener('touchstart', e => { e.preventDefault(); const t = e.changedTouches[0];
+    if (O.tqFixo) { base.style.left = ''; base.style.top = ''; const r = base.getBoundingClientRect(); stick = { id: t.identifier, x: r.left + r.width / 2, y: r.top + r.height / 2, dx: 0, dy: 0 }; } // manche fixo: mede o empurrão a partir do lugar do manche, não de onde o dedo tocou
+    else { stick = { id: t.identifier, x: t.clientX, y: t.clientY, dx: 0, dy: 0 }; base.style.left = t.clientX + 'px'; base.style.top = t.clientY + 'px'; }
+    base.classList.add('on'); }, { passive: false });
   zO.addEventListener('touchstart', e => { e.preventDefault(); const t = e.changedTouches[0]; olho = { id: t.identifier, x: t.clientX, y: t.clientY }; }, { passive: false });
   addEventListener('touchmove', e => {
     for (const t of e.changedTouches) {
       if (stick && t.identifier === stick.id) { const R = 52; let dx = t.clientX - stick.x, dy = t.clientY - stick.y; const l = Math.hypot(dx, dy); if (l > R) { dx = dx / l * R; dy = dy / l * R; } stick.dx = dx / R; stick.dy = dy / R; stick.l = Math.min(1, l / R); pino.style.transform = `translate(${dx}px,${dy}px)`; }
       if (olho && t.identifier === olho.id) {
-        const dx = t.clientX - olho.x, dy = t.clientY - olho.y, k = .0042 * (+O.tqSens || 1);
+        let dx = t.clientX - olho.x, dy = t.clientY - olho.y; const k = .0042 * (+O.tqSens || 1);
         if (C.M && C.M.state === 'agarra') puxar((Math.abs(dx) + Math.abs(dy)) * 1.5); // arrastar o dedo também solta do agarrão
+        if (O.tqOlharDz) { if (Math.abs(dx) < 1.5) dx = 0; if (Math.abs(dy) < 1.5) dy = 0; } // ignora o tremor fino do dedo
         olhar(dx * k, dy * k); olho.x = t.clientX; olho.y = t.clientY;
       }
     }
@@ -593,7 +614,7 @@ const LINHAS = [
   ['menuLeve', 'Menus leves (desenha menos na pausa)', 'chk'],
   ['Controles'],
   ['acoes', 'Ações longas (forçar, cavar, sino...)', 'sel', [['segurar', 'Segurar a tecla'], ['tocar', 'Tocar para começar e parar']]],
-  ['soltar', 'Soltar do agarrão', 'sel', [['mouse', 'Sacudir o mouse'], ['tecla', 'Apertar E várias vezes']]],
+  ['soltar', 'Soltar do agarrão', 'sel', [['mouse', 'Sacudir o mouse'], ['tecla', 'Apertar E várias vezes'], ['segurar', 'Segurar o botão (acessível)']]],
   ['setas', 'Setas também andam', 'chk'],
   ['giroTec', 'Girar a câmera pelo teclado (J L, I K)', 'chk'],
   ['giroVel', 'Velocidade do giro pelo teclado', 'rng', [.4, 2.5, .1]],
@@ -625,7 +646,43 @@ const LINHAS = [
   ['Som'],
   ['fone', 'Estou de fone (som 3D)', 'chk'],
   ['mono', 'Som mono (um ouvido só)', 'chk'],
-  ['indic', 'Indicador visual de perigo', 'chk']
+  ['indic', 'Indicador visual de perigo', 'chk'],
+  ['respInsp', 'Respiração 3D do Inspetor (gira no fone)', 'chk'],
+  ['respEstalos', 'Estalos das juntas dele', 'chk'],
+  ['respVol', 'Volume da respiração do Inspetor', 'rng', [0, 1.5, .1]],
+  ['respSoCaca', 'Respiração do Inspetor só na caçada', 'chk'],
+  ['Legendas de som'],
+  ['capEstado', 'Legendas de estado (caçada, coração, fôlego...)', 'chk'],
+  ['capSoPerigo', 'Legendas de estado só as de perigo', 'chk'],
+  ['legSomCaixa', 'Fundo escuro nas legendas de som', 'chk'],
+  ['legSomTam', 'Tamanho das legendas de som', 'sel', [['p', 'Pequenas'], ['m', 'Médias'], ['g', 'Grandes']]],
+  ['legSomDir', 'Legendas de som com a direção (setas)', 'chk'],
+  ['legSomDist', 'Legendas de som com a distância (perto/longe)', 'chk'],
+  ['legSomDur', 'Tempo das legendas de som na tela', 'rng', [.5, 2.5, .1]],
+  ['Mais acessibilidade e conforto'],
+  ['contraste', 'Alto contraste no HUD', 'chk'],
+  ['nevoaDir', 'Névoa de direção na caçada (quem não ouve)', 'chk'],
+  ['nevoaDist', 'Alcance da névoa de direção (m)', 'rng', [3, 9, .5]],
+  ['miraCaca', 'A mira avermelha quando ele caça', 'chk'],
+  ['indicSoCaca', 'Indicador de perigo só na caçada', 'chk'],
+  ['indicInsp', 'Indicador só para o Inspetor', 'chk'],
+  ['coracaoForca', 'Força da vinheta do coração', 'rng', [0, 1, .1]],
+  ['vinhetaFraca', 'Vinheta das bordas mais fraca', 'chk'],
+  ['vermFraco', 'Flashes vermelhos mais fracos', 'chk'],
+  ['invX', 'Inverter o olhar na horizontal', 'chk'],
+  ['sensV', 'Sensibilidade vertical (olhar)', 'rng', [.4, 2.5, .1]],
+  ['vibForca', 'Intensidade da vibração', 'rng', [0, 1.5, .1]],
+  ['vibSoPerigo', 'Vibrar só em perigo (sem o batimento)', 'chk'],
+  ['hapEntidade', 'Vibração por entidade (cada um tem um tranco próprio)', 'chk'],
+  ['hapSoCaca', 'Vibração do Inspetor só na caçada (sem a patrulha)', 'chk'],
+  ['descanso', 'Lembrete de descanso (a cada 40 min)', 'chk'],
+  ['padLinear', 'Olhar do controle sem curva (linear)', 'chk'],
+  ['tqFixo', 'Toque: manche de andar fixo no lugar', 'chk'],
+  ['tqOlharDz', 'Toque: ignorar tremores do dedo ao olhar', 'chk'],
+  ['teto45', 'Limitar a 45 quadros (equilíbrio)', 'chk'],
+  ['semGrao', 'Desligar o grão de filme', 'chk'],
+  ['semChuva', 'Desligar a chuva (alivia o computador)', 'chk'],
+  ['semSombra', 'Desligar a sombra da lanterna', 'chk']
 ];
 function montarOpcoes() {
   const el = document.createElement('div'); el.id = 'plat-opcoes'; el.className = 'screen painel'; el.hidden = true;
@@ -675,6 +732,7 @@ function aplicarOpcoes(id) {
     if (!id || id === 'acoes') soltarTrava();
     if (!id || id === 'qual') { corte = 0; corteT = 0; aplicarCorte(); }
     P3.opcoes(id);
+    P5.opcoes(id);
   }
   if (!id || id.startsWith('tq')) aplicarToqueOpcoes();
   const f = $('#fps'); if (f) f.hidden = !O.fps;
@@ -827,14 +885,14 @@ export const PLAT = {
   fone: () => !!O.fone,
   clarao: () => C && +C.OPT.vFlash ? .35 : 1,
   pulso: () => pulsoV,
-  grao: () => Q().grao,
+  grao: () => O.semGrao ? 900 : Q().grao,
   semMouse: () => toque || padAtivo || P3.semTrava(),
   semTrava: () => P3.semTrava(),
   travaOpcoes: () => P3.travaOpcoes(),
   pular(now) {
     // nos menus parados (pausa, diário, nota, morte, opções) o jogo desenha só 20 quadros por segundo: o notebook esfria
     if (P3.pular()) return true; // a janela da plateia não desenha o jogo
-    let alvo = O.lim30 ? 30 : 0;
+    let alvo = O.lim30 ? 30 : O.teto45 ? 45 : 0;
     if (O.menuLeve && C && !robo && !window.__teste && (['pausa', 'diario', 'nota', 'teclado', 'morte'].includes(C.ui) || !$('#plat-opcoes').hidden) && !P3.foto) alvo = 48;
     if (!alvo) return false; if (now - ultimoQuadro < alvo) return true; ultimoQuadro = now; return false;
   },
@@ -842,13 +900,13 @@ export const PLAT = {
   aoMorrer() {
     fila.length = 0; limparTeclas(); vibrar(1, 1, 700);
     // a dica da morte pelo agarrão fala do jeito de se soltar que você está usando
-    try { const dc = C.R.entidades.dicas_ctx; if (dc) dc.agarrao = toque ? 'Quando ele te agarrar, toque em Usar sem parar (ou arraste o dedo pela tela) para se soltar.' : padAtivo ? 'Quando ele te agarrar, aperte A sem parar ou sacuda o analógico direito para se soltar.' : O.soltar === 'tecla' ? 'Quando ele te agarrar, aperte E sem parar para se soltar.' : 'Quando ele te agarrar, sacuda o mouse com força para se soltar. (Em Desempenho > Controles dá para trocar por apertar E.)'; } catch (e) {}
+    try { const dc = C.R.entidades.dicas_ctx; if (dc) dc.agarrao = toque ? (O.soltar === 'segurar' ? 'Quando ele te agarrar, segure o botão Usar para se soltar.' : 'Quando ele te agarrar, toque em Usar sem parar (ou arraste o dedo pela tela) para se soltar.') : padAtivo ? (O.soltar === 'segurar' ? 'Quando ele te agarrar, segure A para se soltar.' : 'Quando ele te agarrar, aperte A sem parar ou sacuda o analógico direito para se soltar.') : O.soltar === 'segurar' ? 'Quando ele te agarrar, segure E (ou o botão Usar) sem largar para se soltar.' : O.soltar === 'tecla' ? 'Quando ele te agarrar, aperte E sem parar para se soltar.' : 'Quando ele te agarrar, sacuda o mouse com força para se soltar. (Em Desempenho > Controles dá para trocar por apertar ou segurar.)'; } catch (e) {}
     P2.morreu();
   },
   aoCarregar() { fila.length = 0; graca = 0; limparTeclas(); calmaT = 0; },
   antes(dt) {
     if (!C) return dt;
-    pad(dt); toqueFrame(dt); travaFrame();
+    pad(dt); toqueFrame(dt); travaFrame(); P5.antes(dt);
     // agarrão: dica do jeito certo de se soltar e a barra de soltura
     const agarrado = C.M && C.M.state === 'agarra' && emJogoAtivo();
     if (agarrado && !estavaAgarrada) { setTimeout(dicaAgarrao, 0); vibrar(1, .8, 500); }
@@ -877,8 +935,8 @@ export const PLAT = {
     if (ativo && S && S.fear > 60) {
       const bpm = 55 + 95 * S.fear / 100, f0 = hbFase; hbFase = (hbFase + dt * bpm / 60) % 1;
       const p = Math.pow(Math.max(0, Math.sin(hbFase * Math.PI * 2)), 6);
-      pulsoV = p * .14 * (S.fear - 60) / 40;
-      if (hbFase < f0 && S.fear > 70) vibrar(.25 * (S.fear - 60) / 40, .1, 70);
+      pulsoV = p * .14 * (S.fear - 60) / 40 * (O.coracaoForca == null ? 1 : +O.coracaoForca);
+      if (hbFase < f0 && S.fear > 70 && !O.vibSoPerigo) vibrar(.25 * (S.fear - 60) / 40, .1, 70);
     } else pulsoV = Math.max(0, pulsoV - dt);
     // dano: vibração
     if (S) { if (S.health < vidaAnt - 4 && !S.dead) vibrar(.9, .6, 380); vidaAnt = S.health; }
@@ -886,7 +944,7 @@ export const PLAT = {
     if (ativo && S && !S.dead) {
       const dM = C.M.ativo ? Math.hypot(C.M.pos.x - C.P.pos.x, C.M.pos.z - C.P.pos.z) : 99;
       coracaoT -= dt;
-      if (dM < 5 && coracaoT <= 0 && !(S.fear > 70)) { coracaoT = .55 + dM * .12; vibrarMundo(.18 + (5 - dM) * .05, .08, 60); setTimeout(() => vibrarMundo(.12, .05, 50), 160); }
+      if (dM < 5 && coracaoT <= 0 && !(S.fear > 70) && !O.vibSoPerigo) { coracaoT = .55 + dM * .12; vibrarMundo(.18 + (5 - dM) * .05, .08, 60); setTimeout(() => vibrarMundo(.12, .05, 50), 160); }
       const pf = C.PROC.fase;
       if (pf === 'aviso' && procAnt !== 'aviso') { procPulso = 0; }
       if (pf === 'aviso') { procPulso -= dt; if (procPulso <= 0) { procPulso = 1.6; vibrarMundo(.6, .3, 90); setTimeout(() => vibrarMundo(.6, .3, 90), 200); borda(null, .45); } }
@@ -900,8 +958,9 @@ export const PLAT = {
     const cs = $('#tq-pular'); if (cs) cs.hidden = C.mode !== 'cena';
     PLAT._fpsT = (PLAT._fpsT || 0) - dt;
     if (O.fps && PLAT._fpsT <= 0) { PLAT._fpsT = .5; const f = $('#fps'); if (f) f.textContent = Math.round(1000 / mediaMs) + ' qps · ' + mediaMs.toFixed(1) + ' ms · ' + prAtual.toFixed(2) + 'x · ' + Q().nome + (C.renderer.info ? ' · ' + C.renderer.info.render.calls + ' desenhos · ' + C.renderer.info.memory.geometries + ' geom. · ' + C.renderer.info.memory.textures + ' text.' : '') + (P3.poolInfo() ? ' · ' + P3.poolInfo() : '') + (corte ? ' · corte ' + corte + '/3' : ''); }
-    if (C.W.grupo !== grupoAnt) { grupoAnt = C.W.grupo; P2.mapa(); P3.mapa(); try { P4.mapa(); } catch (e) {} }
+    if (C.W.grupo !== grupoAnt) { grupoAnt = C.W.grupo; P2.mapa(); P3.mapa(); try { P4.mapa(); } catch (e) {} P5.mapa(); }
     P3.depois(dt, ativo);
+    P5.depois(dt, ativo);
     P2.frame(dt, ativo);
     try { P4.frame(dt, ativo); } catch (e) {}
     PLAT._tabT = (PLAT._tabT || 0) - dt; if (PLAT._tabT <= 0) { PLAT._tabT = .5; tituloAba(); }
@@ -912,6 +971,7 @@ export const PLAT = {
     // acessibilidade dos textos
     const aria = (s, a, v) => { const e = $(s); if (e) e.setAttribute(a, v); };
     aria('#sub', 'aria-live', 'polite'); aria('#toast', 'role', 'status'); aria('#dialogo', 'aria-live', 'polite'); aria('#c', 'aria-label', 'Visão do jogo');
+    aria('#obj', 'aria-live', 'polite'); aria('#obj', 'aria-label', 'Objetivos'); // leitores de tela anunciam a troca de objetivo
     // elementos novos do HUD
     const hud = $('#hud');
     if (hud) {
@@ -951,6 +1011,8 @@ export const PLAT = {
     P3 = instalarPlat3(C, { O, salvar, vibrar, aviso, copiar, feedback, olhar, puxar, apertarTecla, soltarTecla, volume, aplicarQual, aplicarOpcoes, syncOpcoes, emJogoAtivo, robo, qual: () => O.qual || 'alta', get toque() { return toque; }, get padAtivo() { return padAtivo; }, get stick() { return stick; } });
     P3.montarOpcoes($('#plat-opcoes .wrap'));
     try { P4 = instalarPlat4(C, { O, salvar, vibrar, copiar, feedback, robo, get padAtivo() { return padAtivo; }, get toque() { return toque; }, qual: () => O.qual || 'alta' }); } catch (e) {}
+    P5 = instalarPlat5(C, { O, salvar, vibrar, aviso, emJogoAtivo, legenda, direcao, nomeDir, aplicarQual, qual: () => O.qual || 'alta', robo, get toque() { return toque; }, get padAtivo() { return padAtivo; } });
+    P5.montarOpcoes($('#plat-opcoes .wrap'));
     if (P3.plateia) { const pt = $('#portal'); if (pt) pt.hidden = true; }
     const dm = $('#dt-menu'); if (dm) { const lb = document.createElement('button'); lb.className = 'btn'; lb.id = 'dt-lapide'; lb.textContent = 'Guardar lápide'; dm.before(lb); lb.onclick = () => P2.abrirLapide('morte'); }
     const tcl = $('#death .teclas'); if (tcl && !/lápide/.test(tcl.textContent)) tcl.textContent += ' · L guarda a lápide';

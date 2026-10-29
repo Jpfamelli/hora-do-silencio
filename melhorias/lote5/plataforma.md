@@ -1,0 +1,104 @@
+# Lote 5 — Plataforma e acessibilidade
+- A respiração do Inspetor agora sai de uma fonte de som 3D presa à cabeça dele, que acompanha a posição dele a cada quadro
+- De fone, a respiração dá a volta na sua cabeça (HRTF): dá para achar o Inspetor de olhos fechados, só pelo som
+- Sem fone, ou com "Som mono" ligado, a respiração vira pan simples (equalpower), e a troca acontece na hora se você mudar a opção
+- A respiração fica ofegante e mais rápida quando ele caça, e lenta e baixa na patrulha
+- Quanto mais perto ele está, mais alta a respiração; ela some suave quando ele recua ou desaparece, sem cortar seco
+- A respiração enfraquece com a distância de forma natural (modelo de distância do áudio)
+- Estalos secos das juntas dele, também em 3D, pontuam o silêncio quando ele está a menos de 8 metros
+- Os estalos ficam mais frequentes na caçada e mais espaçados na patrulha
+- A respiração 3D desce junto na pausa e segue o volume geral (passa pelo mesmo barramento de som)
+- A respiração só toca com você viva e dentro do jogo: nada no título, no diário ou depois de morrer
+- A camada de áudio 3D só é criada quando o Inspetor entra em cena, para não pesar antes
+- A camada de áudio 3D desliga sozinha, sem erro, em navegadores sem WebAudio
+- Nova opção "Respiração 3D do Inspetor" para ligar ou desligar a camada
+- Nova opção "Estalos das juntas dele", separada da respiração
+- Nova barra "Volume da respiração do Inspetor" (de mudo a 1,5x)
+- Nova opção "Respiração do Inspetor só na caçada", para quem acha a respiração constante demais
+- Legenda de som "a respiração dele", com a direção, quando as legendas de som estão ligadas
+- Novo botão "Ouvir a respiração" nas opções: uma demonstração que dá a volta na sua cabeça
+- O "Ouvir a respiração" inicia o som se ele ainda não tiver começado e respeita na hora se você está de fone ou no mono
+- Nova opção de acessibilidade "Névoa de direção na caçada": uma borda avermelhada aponta de que lado está o Inspetor
+- A névoa só aparece quando ele caça fora do seu campo de visão e some quando ele entra na sua frente
+- A borda da névoa fica mais forte quanto mais perto ele está, até o alcance escolhido
+- A borda troca de lado em tempo real conforme você gira a câmera (esquerda, direita ou atrás)
+- A névoa vem desligada por padrão e, no Pesadelo, nunca liga (não entrega o Inspetor de graça)
+- Nova barra "Alcance da névoa de direção" (de 3 a 9 metros)
+- A cor da névoa acompanha a paleta de daltonismo (fica rosa no modo Tritan)
+- Com "menos movimento" do sistema, a névoa fica estável, sem pulsar
+- Se a vibração estiver ligada, a névoa também dá um tranco leve do lado dele, para quem não ouve
+- A névoa some fora do jogo (título, modo foto, pausa)
+- Nova forma de se soltar do agarrão: "Segurar o botão", para quem não consegue sacudir o mouse
+- No modo segurar, manter E (ou Usar/A) pressionado enche a mesma barra de soltura, na mesma janela de tempo
+- A dica do agarrão na tela se adapta: fala em segurar, apertar ou sacudir conforme a sua escolha
+- A dica da morte por agarrão também explica a forma de soltura que você escolheu
+- Nova opção "Legendas de estado": avisos de texto para o que o som já conta, para quem não ouve
+- Legenda "o Inspetor começou a caçar" quando a caçada começa
+- Legenda "ele parou de caçar" quando a caçada acaba
+- Legenda "ele está bem atrás de você" quando ele caça colado às suas costas
+- Legenda "ele parou para escutar" quando ele fica em alerta
+- Legenda "ele vasculha o armário" quando ele revista o seu esconderijo
+- Legenda "a menina apareceu" quando a Ana surge
+- Legenda "a Procissão está vindo (luzes piscando)" no aviso dela
+- Legenda "a Procissão está passando" quando ela atravessa as salas
+- Legenda "alguém chama de outra sala" quando o Chamado começa
+- Legenda "a lanterna apagou" quando a pilha zera
+- Legenda "a lanterna fraqueja" quando a pilha está quase no fim
+- Legenda "você levou um golpe" quando você perde vida de repente
+- Legenda "coração disparado" quando o medo passa do limite
+- Legenda "sem fôlego" quando você fica tempo demais sem respirar
+- Legenda "passos na água" quando você anda na água
+- Cada legenda de estado tem o seu próprio intervalo, para não repetir sem parar
+- Nova opção "Legendas de estado só as de perigo" (esconde coração, fôlego e água, mantém as ameaças)
+- As legendas de ameaça (caçada e Procissão vindo) dão um tranco de vibração, para quem joga de vibração
+- Nova opção "Fundo escuro nas legendas de som", para ler melhor por cima da cena
+- Nova opção "Tamanho das legendas de som" (pequenas, médias, grandes)
+- Nova opção "Legendas de som com a direção" (ligar ou desligar as setas)
+- Nova opção "Legendas de som com a distância" (ligar ou desligar o perto/longe)
+- Nova barra "Tempo das legendas de som na tela" (de metade a 2,5x do tempo)
+- Nova opção "Alto contraste no HUD": contorno preto reforçado nos textos
+- O alto contraste também engrossa a mira e põe um fundo escuro atrás do objetivo
+- Nova opção "A mira avermelha quando ele caça" (aviso lido pela cor e pela forma)
+- Nova barra "Força da vinheta do coração" (até desligar o pulso vermelho do batimento)
+- Nova opção "Vinheta das bordas mais fraca"
+- Nova opção "Flashes vermelhos mais fracos" (para fotossensibilidade)
+- Nova opção "Indicador de perigo só na caçada"
+- Nova opção "Indicador só para o Inspetor" (sem a menina nem a Procissão)
+- Nova opção "Inverter o olhar na horizontal"
+- Nova barra "Sensibilidade vertical" separada da horizontal, valendo para mouse, controle, toque e giroscópio
+- Nova barra "Intensidade da vibração" (de 0, que desliga tudo, até 1,5x), valendo para controle e celular
+- Com a intensidade da vibração em 0, a vibração do celular e o tremor visual da tela também ficam desligados
+- Nova opção "Vibrar só em perigo": corta o tranco do batimento do coração perto do Inspetor
+- Nova opção "Olhar do controle sem curva (linear)", para quem prefere resposta direta
+- Nova opção "Manche de andar fixo no lugar" no toque (não surge onde o dedo encosta)
+- Nova opção "Ignorar tremores do dedo ao olhar" no toque (zona morta contra o micro-tremor)
+- Nova opção "Limitar a 45 quadros" (um meio-termo entre os 30 e sem limite)
+- Nova opção "Desligar o grão de filme" (e o jogo para de regerar o ruído a cada quadro)
+- Nova opção "Desligar a chuva", para aliviar o computador
+- Nova opção "Desligar a sombra da lanterna"
+- As camadas novas (áudio 3D e névoa de direção) atualizam em 15 Hz na qualidade Baixa e ~10 Hz na Mínima
+- Novo botão "Medir desempenho" que mostra os quadros por segundo, o tempo por quadro e a qualidade atual
+- As opções mostram o nome da placa de vídeo, o que ajuda a saber se a aceleração de hardware está ligada
+- Novo lembrete opcional de descanso a cada 40 minutos de jogo
+- Botão "Instalar o jogo" aparece no título quando o navegador oferece a instalação (PWA)
+- Depois de instalar, o convite some e o jogo avisa que dá para abrir sem internet
+- O link compartilhado agora leva imagem (og:image e twitter:image apontando para o ícone do jogo)
+- Nova linha no título anunciando os recursos de acessibilidade do jogo
+- O objetivo ganhou aria-live: leitores de tela anunciam quando ele muda
+- O módulo novo entra no cache para jogar sem internet, e a versão do cache subiu para v7
+- Todas as opções novas ficam salvas junto das outras de Desempenho (chave hora-silencio-plat)
+- O botão "Restaurar padrão" das opções também devolve as opções novas ao estado inicial
+- Nova opção "Vibração por entidade": no controle e no celular, cada entidade tem o seu próprio tranco, para sentir quem está perto sem olhar a tela
+- O Inspetor virou um pulso grave e lento, com um segundo baque menor logo atrás, o peso do passo dele
+- O pulso do Inspetor fica mais forte quanto mais perto ele está de você
+- Na caçada o pulso do Inspetor acelera e sobe de intensidade; na patrulha fica lento e baixo
+- A Ana virou estalidos curtos e nervosos enquanto a menina está por perto
+- Os estalidos da Ana ficam mais fortes conforme ela se aproxima e, de vez em quando, soltam um eco curto
+- A Procissão virou uma onda de vibração que cresce no aviso e na passagem, como uma maré chegando
+- Nova opção "Vibração do Inspetor só na caçada", para esconder o tranco da patrulha
+- Com "Vibrar só em perigo" ligado, a patrulha do Inspetor some, mas a caçada, a Ana e a Procissão continuam avisando
+- A vibração por entidade respeita a intensidade geral e só toca com você viva e dentro do jogo (nada no título, na pausa ou na morte)
+- Novo botão "Sentir cada um" nas opções: toca os três padrões em sequência dizendo de quem é cada um
+- Novo botão "Testar a vibração" nas opções, com um toque na intensidade que você escolheu
+- Nova nota nas opções explicando o padrão de haptic de cada entidade (Inspetor, Ana e Procissão)
+- A linha de acessibilidade do título agora cita a vibração por entidade
