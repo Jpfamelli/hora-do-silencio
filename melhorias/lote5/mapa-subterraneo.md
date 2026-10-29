@@ -1,0 +1,92 @@
+# Lote 5 — Mapa: túneis, cemitério e capela
+- Pegadas de lama molhadas surgem no chão quando o Inspetor anda pelos túneis.
+- As pegadas dele brilham quando a sua lanterna bate nelas.
+- As pegadas vão desbotando e somem sozinhas com o tempo.
+- Pegadas feitas na água duram mais do que as feitas em chão seco.
+- As pegadas ficam viradas na direção em que ele seguiu.
+- Pegadas ainda escorrendo avisam que ele acabou de passar ali.
+- O Inspetor larga o lampião aceso parado no centro de uma sala, como isca.
+- Ele escolhe uma sala longe de você e perto dele para largar a isca.
+- Ao largar a isca, ele se afasta mudo para o escuro.
+- Um corpo de lamparina de verdade fica largado no chão, aceso.
+- O lampião-isca tremeluz como lamparina de verdade.
+- Entrar no alcance do lampião faz ele voltar correndo do escuro, caçando.
+- Um grito e um tranco de medo quando você morde a isca.
+- Na primeira vez, a Lia avisa que o lampião parado é armadilha.
+- Se você não cai na isca, ele volta buscar o lampião e a Lia percebe a espera.
+- A isca do lampião só acontece no Capítulo IV (variação por capítulo).
+- Em medo alto, mãozinhas das crianças brotam da parede de terra.
+- As mãos se recolhem quando a lanterna as ilumina.
+- No escuro, parada colada nelas, as mãos esticam mais e dão um susto.
+- Até três mãos por vez, em paredes diferentes ao seu redor.
+- Um sussurro de criança acompanha o surgimento das mãos.
+- Fala da Lia: as crianças foram enterradas de pé, na parede.
+- A voz do Chamado "anda" pelos canos, saindo de uma boca e sumindo em outra.
+- A ordem das bocas de cano que falam é sorteada a cada vez.
+- A última boca de cano fica muda — seguir essa é o caminho seguro.
+- Chegar perto de um cano que falou atrai o Inspetor pelo ruído.
+- Dica da Lia: o cano que cala é o certo.
+- Submergir na água abafa o mundo de cima e alivia um pouco o medo.
+- Aviso ao submergir de que só resta a sua respiração.
+- Submersa, com ele por cima, sobem bolhas da superfície.
+- Na caçada em água funda, cada passo seu vira respingo que o guia.
+- Dica para procurar o chão seco e correr sem denunciar.
+- O Inspetor dentro da água mostra os olhos à flor d'água.
+- Os olhos dele refletem a luz da lanterna em azul quando você o encara.
+- O lampião dele brilha através da água, só no Capítulo IV.
+- Os passos dele viram baques abafados quando está na água.
+- A luz e os olhos submersos somem quando ele sai da água ou se afasta.
+- Seu rastro molhado é farejável: ao sair da água você pinga e deixa pegadas.
+- O Inspetor segue as suas pegadas molhadas quando não está em caçada.
+- A mureta de pedras soltas desaba quando você passa correndo por ela.
+- A mureta derrubada atrasa a caçada do Inspetor, que tem de contornar.
+- Toast avisando que as pedras desabaram atrás de você.
+- Na fuga do cofre, o lampião dele varre o túnel atrás de você como holofote.
+- Na fuga do cofre, você fica mais lenta ao atravessar a água.
+- Na fuga do cofre, você faz mais barulho ao atravessar a água.
+- Fala da Lia na fuga: a água está subindo, corra para a escotilha.
+- Ponte de pranchas soltas atravessando a cisterna.
+- As pranchas afundam e balançam conforme você pisa.
+- Correr na ponte denuncia você com barulho alto e range das tábuas.
+- Atravessar agachada deixa a prancha firme e silenciosa (contra-jogo).
+- Correr apressada com medo alto faz você escorregar e cair da ponte.
+- A queda na ponte levanta respingos de água.
+- Cair da ponte pode trazer a Ana encharcada atrás de você.
+- As pranchas voltam ao lugar quando você sai de cima delas.
+- Aviso da ponte: pranchas soltas, vá devagar.
+- A Ana aparece encharcada e pingando nos túneis, com poça sob os pés.
+- A poça acompanha a Ana enquanto ela se move molhada.
+- Fala da Lia: a Ana desceu atrás dela pela água.
+- Variação por capítulo: fora do Capítulo IV ele não acende o lampião na água.
+- A Procissão sai das covas: mãos saem de três covas perto de você.
+- Crianças sobem das covas abertas.
+- Velas de defunto azuladas acendem nas covas que se abrem.
+- Um coro abafado vindo de baixo anuncia o evento.
+- A terra treme e a Lia comenta o coro vindo do chão.
+- As crianças sobem mais rápido quando você NÃO está olhando para elas.
+- Encarar as crianças que sobem aperta ainda mais o medo.
+- As mãos e as crianças afundam de volta e as velas se apagam no fim.
+- Caça a céu aberto: o lampião aceso do Inspetor denuncia a posição dele de longe.
+- O lampião dele brilha mais forte quando está caçando.
+- O portão dos fundos vira um farol quente, visível de longe depois do sino.
+- Um lampião pendurado pisca no portão, marcando o ponto de fuga.
+- O farol do portão fica mais forte conforme você se aproxima.
+- Nos últimos metros perto do portão, o Inspetor dá um arranque com grito e ruído.
+- Colado no portão ele ganha um empurrão extra, contra o travão de perto.
+- O Inspetor ruge de tempos em tempos na fuga, marcando a direção dele.
+- Uma prancha sobre a cova aberta cruza o caminho central da fuga.
+- A cova aberta aparece como um buraco escuro no caminho.
+- Correr na prancha quase te derruba dentro da cova.
+- Ir devagar demais na prancha deixa o Inspetor encostar.
+- Aviso de equilíbrio na prancha: firme, sem correr.
+- A cova aberta e a prancha só aparecem depois que o sino toca.
+- A Ana sai da terra no cemitério, com barro na boca.
+- A Ana deixa pegadas de barro pelo campo.
+- Esconderijo atrás das lápides: dica ensina a usar os túmulos como abrigo.
+- As velas do altar se agitam quando o Inspetor se aproxima da capela.
+- A neblina rasteira se abre por onde ele passa.
+- O coro das covas volta baixinho durante a fuga do sino.
+- Procissão reversa: uma fila de crianças com velas vista pela porta da capela.
+- A fila reversa vem do lado do cemitério, direção invertida em relação ao internato.
+- Quando a fila reversa aparece, o coro soa e as velas do altar disparam.
+- O Inspetor ouve de mais longe no campo aberto depois do sino.
