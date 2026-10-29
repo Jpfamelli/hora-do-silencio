@@ -1,0 +1,92 @@
+# Lote 5 — História e texto
+- No prólogo o Inspetor ganha falas próprias da estrada, ainda quase um homem avisando ("Volta pro carro. A estrada guarda gente.").
+- No Capítulo I ele soa mais humano ("Hora de dormir, crianças", "Eu só quero que você durma. É só isso.").
+- No Capítulo II ele cobra a fila e o apito da Hora do Silêncio ("Fica quietinha na fila que eu não castigo.").
+- No Capítulo III ele te confunde com outra aluna ("Você é igual à outra. A que contava alto demais.").
+- No Capítulo IV ele soa perturbado por acordarem o lugar onde ele dorme ("Não... não é hora... não é hora...").
+- No Capítulo V as frases dele se quebram em rosnados e sílabas ("SILÊN... cio", "...vol-ta... dor-mir...").
+- O conjunto desumaniza o Inspetor ao longo da noite: começa homem e termina monstro.
+- Mais falas de caça do Inspetor, com menos repetição ("Você treme. O chão me conta que você treme.").
+- Novas falas de quando ele te perde de vista ("Eu tenho a noite inteira. Você não.").
+- Nova fala dele ao ouvir vidro quebrado ("Caco no chão. Agora você pisa com cuidado, né?").
+- Nova fala dele ao ouvir uma porta ("A dobradiça canta pra mim. Sempre cantou.").
+- Nova fala dele ao ouvir corrida ("Passo de corrida. Joelho no chão vem depois.").
+- Nova fala dele ao ouvir passos na água ("A poça devolve o seu passo pra mim, dobrado.").
+- Nova fala dele ao ouvir a respiração presa ("Segura o ar. Eu espero você soltar.").
+- Nova fala dele ao ouvir a luz/gerador ("A luz zune. Eu ouço a luz, menina.").
+- Nova fala dele ao sentir o calor do facho no rosto ("O facho esquenta. Você tá me olhando de perto.").
+- Nova fala dele ao notar o esconderijo repetido ("Terceira vez nesse canto. Vou guardar o endereço.").
+- Nova fala dele ao cair no truque da garrafa ("Eu ensinei esse truque pra eles.").
+- Nova fala dele ao voltar depois de sumir ("Eu só fui deixar a ronda em dia.").
+- A tela de morte revela, morte a morte, uma linha numerada da ficha do Inspetor Moacir.
+- As oito linhas montam a história dele: o menino trancado, as "medidas permanentes", a cegueira e o incêndio de 1979.
+- Ao reunir a ficha inteira, uma linha final nega o alívio ("saber não o deixa mais devagar").
+- A ficha persiste entre as noites: o dossiê se completa ao longo de várias partidas.
+- Conquista secreta "Dossiê 1979" por completar a ficha.
+- Na tela de morte, uma lousa de giz conta suas quedas da noite ("LIA: n").
+- A lousa risca uma marca diferente por tipo de morte (reto do Inspetor, torto da Ana, cruzado da Procissão).
+- Com muitas quedas, a lousa endurece a frase: "não aprende".
+- No começo do capítulo seguinte, o Inspetor comenta quantas vezes já te pegou na noite.
+- As provocações escalam a cada morte ("A terceira vez hoje, menina... você não cansa?").
+- Depois de muitas quedas, a provocação vira desprezo ("Fica caída então. É mais quieto assim.").
+- Em caçadas longas, o Inspetor solta falas que parecem vir de todo lado ("Corre que eu gosto.").
+- Em caçadas longas, a Lia narra aparências perturbadoras dele (cabeça pendendo, pés fora do chão, dedos contando no ar).
+- Ele colado na fresta do esconderijo sussurra o pior tipo de perto ("eu ouço a sua barriga subir e descer").
+- Um quase-agarrão arranca da Lia um "passou raspando... senti o frio da mão dele".
+- Ao te perder, o Inspetor resmunga uma volta pra ronda ("Eu sempre volto.").
+- Ao escapar de uma caçada longa, a Lia solta um alívio ofegante.
+- Conquista secreta "O Fôlego Comprido" por sobreviver a uma caçada longa sem se esconder nem apanhar.
+- Em caçada longa, surge uma dica para cortar o som virando numa porta.
+- A Lia reconhece o Inspetor na primeira caçada da noite ("É ele. É o homem da fita.").
+- O primeiro esconderijo da noite, com ele caçando, cheira a castigo ("Cheira a criança trancada aqui dentro.").
+- No fim de uma fuga vitoriosa, o Inspetor aparece no limite da luz e tira o chapéu, devagar.
+- Conquista secreta "Ele Tirou o Chapéu" por ver esse fecho de noite.
+- Ignorar um Chamado parada no escuro por oito segundos faz a voz falsa chorar e se desfazer.
+- Depois disso, o Davi de verdade sussurra uma dica real do caminho.
+- A dica sussurrada muda conforme o capítulo (fusíveis, quadro de chaves, engrenagem, válvulas, sino).
+- Conquista secreta "Surda e Imóvel" por obedecer à regra do silêncio.
+- Na ronda, o Inspetor às vezes imita a voz do Davi pra te atrair.
+- A Lia percebe a cilada ("Esse não é o Davi. O Davi nunca me chamou assim.").
+- A imitação é limitada a duas vezes por noite, pra continuar rara e assustadora.
+- Nas pausas de reza, o Inspetor fala baixinho como o homem que foi ("dorme, menino. Amanhã tem aula.").
+- Na ronda ele chama pelos nomes das crianças que já levou (Rosa, Luiz, João, Maria das Dores, Tomé).
+- No dormitório (Cap III) ele conta as camas e sente que falta uma menina ("Trinta e sete camas. Trinta e seis cheias.").
+- De perto, com a lanterna acesa, enquanto ele reza, a Lia lê "DAVI?" arranhado sob o crachá.
+- Nos túneis a Lia encontra e lê um bilhete que explica por que o Inspetor teme o sino.
+- O bilhete prepara o contra-jogo do final antes de você precisar dele.
+- Ao chegar ao cemitério, um aviso lembra que a lanterna não basta e o sino é o único contra-jogo.
+- Final verdadeiro ganha epílogo secreto: quem fez gestos de compaixão vê o menino Moacir erguer-se do altar e sair pela porta sem medo.
+- Quem furtou o apito e chamou o Inspetor pelo nome desbloqueia a "mercê": a Lia dá boa-noite e ele dorme de verdade.
+- Conquista secreta "Boa Noite, Moacir" por conceder essa última mercê.
+- A Menina Que Conta ganha fala própria no Capítulo III ("Eu contei três vezes esperando você.").
+- A Menina ganha fala própria no Capítulo V, pedindo pra ir junto ("aqui fora é frio, me leva junto").
+- A Lia nota a Menina pela primeira vez quando ela aparece no corredor.
+- A Lia entra em pânico quando a contagem da Menina chega perto do dez ("Ela tá quase no dez. Não pisca.").
+- A Procissão ganha variação no Capítulo II: uma menina nova na fila vira o rosto pra sua fresta.
+- A Procissão ganha variação no Capítulo V: a fila anda mais devagar, como se soubesse ser a última noite.
+- A Lia avisa quando a Procissão começa ("As luzes... some agora.").
+- Escondida enquanto a Procissão passa, a Lia conta os passos baixinho até eles sumirem.
+- Ao entrar no internato (Cap I), a Lia lê o lugar: passos devagar, cheiro de pó e cânfora.
+- Ao entrar no Capítulo II, a Lia nota o relógio da torre quase nas nove.
+- Ao entrar no Capítulo III, risinhos de criança que não existe.
+- Ao entrar no Capítulo IV, o ar parado de onde ele dorme.
+- Ao entrar no Capítulo V, o cemitério aberto e o sino à espera.
+- Novos títulos de tela de morte do Inspetor ("O SILÊNCIO TE PEGOU", "HORA DE DORMIR").
+- Novas últimas falas do Inspetor na morte ("Eu te achei pela respiração. Sempre acho.").
+- Novos títulos e falas da Ana na morte ("DEZ — ACHEI VOCÊ", "Ninguém pisca pra sempre.").
+- Novos títulos e falas da Procissão na morte ("A FILA TE ENGOLIU", "A fila ficou um pouquinho mais comprida.").
+- Nova dica de morte do Inspetor sobre caçadas longas (virar numa porta e cortar o som).
+- Nova dica de morte do Inspetor sobre não repetir o esconderijo quando ele já te achou muito.
+- Nova dica de morte da Ana sobre não deixar a contagem chegar a dez.
+- Nova dica de morte da Procissão: ela não abre portas nem te procura, basta sumir de vista.
+- Nova dica dos túneis: ali ele acorda mais bravo, erre menos.
+- Nova dica do cemitério: a lanterna não basta, toque o sino.
+- Novas vozes do Davi no Chamado, mais desesperadas ("Lia, tá escuro aqui. Vem comigo.").
+- No Pesadelo, o Inspetor fica mais cruel durante a caçada ("Hoje eu não deixo você levantar.").
+- O final comum ganha uma coda de monstro: um chapéu no acostamento, visto no retrovisor.
+- O final silêncio ganha uma coda de monstro: entre as badaladas, a voz dele contando "um... dois...".
+- A lousa de mortes cresce de uma queda pra outra na mesma noite, como castigo acumulado.
+- As falas de caça de cada capítulo se misturam ao tom do capítulo, então cada parte da noite soa diferente.
+- O epílogo do menino Moacir só aparece com compaixão o bastante, dando peso de rejogo ao final verdadeiro.
+- A silhueta que tira o chapéu encerra tanto a fuga comum quanto a do silêncio.
+- A dica do sussurro honesto do Davi recompensa só quem de fato obedece e fica imóvel.

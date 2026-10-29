@@ -404,34 +404,36 @@ window.ROTEIRO = {
   entidades: {
     inspetor: {
       nome: "O Inspetor",
-      falas_caca: ["Silêncio...", "Quem está fora da cama?", "Eu ouvi você.", "A hora não acabou.", "Respira. Respira pra mim.", "Pequena. Eu ouço o seu coração bater.", "Ninguém corre na Hora."],
-      falas_perdeu: ["Volte para a cama.", "Eu vou achar você.", "Todos voltam.", "Eu ouço o seu coração.", "Pode ficar quieta. Eu espero.", "O armário é bom pra pensar."],
-      // falas extras que só aparecem em certos capítulos
+      falas_caca: ["Silêncio...", "Quem está fora da cama?", "Eu ouvi você.", "A hora não acabou.", "Respira. Respira pra mim.", "Pequena. Eu ouço o seu coração bater.", "Ninguém corre na Hora.", "Fica parada que dói menos.", "Eu conheço esse passo. Eu conheço todos.", "Você treme. O chão me conta que você treme.", "Não adianta prender o ar pra sempre, menina."],
+      falas_perdeu: ["Volte para a cama.", "Eu vou achar você.", "Todos voltam.", "Eu ouço o seu coração.", "Pode ficar quieta. Eu espero.", "O armário é bom pra pensar.", "Eu tenho a noite inteira. Você não.", "Some, então. A casa é pequena.", "Vou contar até você se cansar."],
+      // Lote 5 — a noite desumaniza o homem: no começo ainda há o Inspetor que cuida; no fim, quase só o monstro.
+      // O motor junta estas falas às de caça do capítulo, então o tom de cada capítulo é o que ele mais diz.
       porCapitulo: {
-        1: ["Tem alguém novo na casa."],
-        2: ["Nove badaladas. Todos na cama.", "Um apito, todos na cama. Dois, ninguém respira."],
-        3: ["A menina não vai te ajudar.", "Conta comigo. Um... dois..."],
-        4: ["A água me conta onde você pisa.", "Ninguém desce aqui. Ninguém."],
-        5: ["O sino é MEU.", "Saia daí. Eu sei que você está atrás da pedra."]
+        0: ["Lá fora não é hora de passear, menina.", "Volta pro carro. A estrada guarda gente."],
+        1: ["Tem alguém novo na casa.", "Hora de dormir, crianças. Já é tarde.", "Eu só quero que você durma. É só isso."],
+        2: ["Nove badaladas. Todos na cama.", "Um apito, todos na cama. Dois, ninguém respira.", "Fica na fila. Fica quietinha na fila que eu não castigo."],
+        3: ["A menina não vai te ajudar.", "Conta comigo. Um... dois...", "Você é igual à outra. A que contava alto demais.", "Eu guardo todas. Guardo você também."],
+        4: ["A água me conta onde você pisa.", "Ninguém desce aqui. Ninguém.", "Aqui embaixo é onde eu durmo. Você acordou a casa toda.", "Não... não é hora... não é hora..."],
+        5: ["O sino é MEU.", "Saia daí. Eu sei que você está atrás da pedra.", "SILÊN... cio. Silêncio. SILÊNCIO.", "(um rosnado) ...cama... cama... cama...", "Não toca. NÃO TOCA no sino.", "(as palavras não saem mais inteiras) ...vol-ta... dor-mir..."]
       }
     },
     ana: { nome: "A Menina Que Conta", contagem: ["um...", "dois...", "três...", "quatro...", "cinco...", "seis...", "sete...", "oito...", "nove...", "DEZ."] },
     procissao: { nome: "A Procissão", canto: "silêncio... silêncio... silêncio..." },
     // Lote 1 (Monstros e IA): falas por tipo de barulho, voz do Chamado e dicas de morte por situação
     falas_tipo: {
-      vidro: ["Vidro... as crianças também quebravam as coisas.", "Vidro quebrado. Eu sei que não foi o vento.", "Mais vidro? Quem está brincando comigo?"],
-      porta: ["Quem abriu?", "Ouvi a porta. Porta não abre sozinha.", "Fecha a porta quando sair, menina."],
-      corrida: ["Não corre.", "Nos corredores não se corre.", "Corre, corre. Eu gosto quando correm."],
-      agua: ["Tá molhada, menina?", "A água conta tudo pra mim.", "Ploc, ploc. Eu escuto cada passo."],
-      respira: ["Respira pra mim.", "Eu ouvi você respirar.", "Tem alguém aí dentro. Tem sim."],
-      luz: ["Quem acendeu a luz? Luz não é hora.", "Você ligou o meu gerador?"],
-      calor: ["Está quente aqui...", "Que calor é esse no meu rosto?"],
-      favorito: ["Sempre o mesmo lugar...", "Você gosta desse armário, não gosta?"],
-      truque: ["Truque velho.", "De novo a garrafa? Truque de criança."],
-      volta: ["Achou que eu tinha ido embora?", "Eu nunca vou embora."]
+      vidro: ["Vidro... as crianças também quebravam as coisas.", "Vidro quebrado. Eu sei que não foi o vento.", "Mais vidro? Quem está brincando comigo?", "Caco no chão. Agora você pisa com cuidado, né?"],
+      porta: ["Quem abriu?", "Ouvi a porta. Porta não abre sozinha.", "Fecha a porta quando sair, menina.", "A dobradiça canta pra mim. Sempre cantou."],
+      corrida: ["Não corre.", "Nos corredores não se corre.", "Corre, corre. Eu gosto quando correm.", "Passo de corrida. Joelho no chão vem depois."],
+      agua: ["Tá molhada, menina?", "A água conta tudo pra mim.", "Ploc, ploc. Eu escuto cada passo.", "A poça devolve o seu passo pra mim, dobrado."],
+      respira: ["Respira pra mim.", "Eu ouvi você respirar.", "Tem alguém aí dentro. Tem sim.", "Segura o ar. Eu espero você soltar."],
+      luz: ["Quem acendeu a luz? Luz não é hora.", "Você ligou o meu gerador?", "A luz zune. Eu ouço a luz, menina."],
+      calor: ["Está quente aqui...", "Que calor é esse no meu rosto?", "O facho esquenta. Você tá me olhando de perto."],
+      favorito: ["Sempre o mesmo lugar...", "Você gosta desse armário, não gosta?", "Terceira vez nesse canto. Vou guardar o endereço."],
+      truque: ["Truque velho.", "De novo a garrafa? Truque de criança.", "Jogou longe de novo. Eu ensinei esse truque pra eles."],
+      volta: ["Achou que eu tinha ido embora?", "Eu nunca vou embora.", "Eu só fui deixar a ronda em dia."]
     },
     chamado: {
-      davi: ["Lia, achei a fita... vem ver.", "Lia, tá doendo... vem cá.", "Lia? Eu tô aqui. Aqui do lado.", "Lia... por que você não vem?"],
+      davi: ["Lia, achei a fita... vem ver.", "Lia, tá doendo... vem cá.", "Lia? Eu tô aqui. Aqui do lado.", "Lia... por que você não vem?", "Lia, tá escuro aqui. Vem comigo.", "Lia... ele não me vê se você vier agora."],
       lia: ["Davi? Tô aqui! Vem!", "Eu tô chegando, Davi.", "Davi, é você?"],
       mae: "Lia, vem jantar. A comida tá esfriando."
     },
@@ -521,9 +523,9 @@ window.ROTEIRO = {
 
   // Telas de morte: títulos e a última coisa que se ouve
   mortes: {
-    inspetor: { titulos: ["ELE TE ENCONTROU", "VOLTE PARA A CAMA", "ELE OUVIU VOCÊ"], frases: ["\"Volte para a cama.\"", "\"Shhh. Agora sim. Silêncio.\"", "\"Todos voltam.\""] },
-    ana: { titulos: ["ELA CONTOU ATÉ DEZ", "VOCÊ PISCOU", "AGORA VOCÊ CONTA"], frases: ["\"Achei.\"", "\"Agora você fica comigo.\"", "\"Você parou de olhar.\""] },
-    procissao: { titulos: ["FORA DA CAMA", "ELES TE LEVARAM", "VOCÊ NÃO ESTAVA NA CAMA"], frases: ["silêncio... silêncio... silêncio...", "Mãos pequenas e frias seguraram as suas.", "Agora você marcha com eles."] },
+    inspetor: { titulos: ["ELE TE ENCONTROU", "VOLTE PARA A CAMA", "ELE OUVIU VOCÊ", "O SILÊNCIO TE PEGOU", "HORA DE DORMIR"], frases: ["\"Volte para a cama.\"", "\"Shhh. Agora sim. Silêncio.\"", "\"Todos voltam.\"", "\"Pronto. Agora você é quietinha.\"", "\"Eu te achei pela respiração. Sempre acho.\""] },
+    ana: { titulos: ["ELA CONTOU ATÉ DEZ", "VOCÊ PISCOU", "AGORA VOCÊ CONTA", "DEZ — ACHEI VOCÊ"], frases: ["\"Achei.\"", "\"Agora você fica comigo.\"", "\"Você parou de olhar.\"", "\"Ninguém pisca pra sempre.\""] },
+    procissao: { titulos: ["FORA DA CAMA", "ELES TE LEVARAM", "VOCÊ NÃO ESTAVA NA CAMA", "A FILA TE ENGOLIU"], frases: ["silêncio... silêncio... silêncio...", "Mãos pequenas e frias seguraram as suas.", "Agora você marcha com eles.", "A fila ficou um pouquinho mais comprida."] },
     voltou: "Você voltou {n} vezes.",
     pesadelo: "No Pesadelo, um toque basta."
   },
@@ -561,15 +563,15 @@ window.ROTEIRO = {
   },
 
   dicas_morte: {
-    inspetor: ["Correr faz barulho. Ande ou agache (C) quando ele estiver perto.", "Ele não vê, ele escuta. Jogue uma garrafa (G) para mandá-lo para longe.", "No armário, segure ESPAÇO para prender a respiração quando ele chegar perto.", "Água e vidro no chão fazem barulho. Olhe onde pisa.", "Ele estala a língua para se localizar. Se o estalo está rápido, ele está caçando.", "Fitas tocando fazem barulho. Aperte E de novo no gravador para parar a fita."],
-    ana: ["Regra quatro: mantenha a luz nela. Ela só anda quando você não está olhando.", "Ande de costas e não perca a menina de vista.", "Feche uma porta entre vocês. Ela não gosta de portas.", "Pilha fraca faz a lanterna piscar. Cada piscada é um passo dela."],
-    procissao: ["Regra três: quando as luzes piscarem e o rádio chiar, esconda-se rápido.", "Armários e camas protegem da Procissão. O corredor não.", "Assim que as luzes piscarem, pare de explorar: o primeiro armário serve."],
+    inspetor: ["Correr faz barulho. Ande ou agache (C) quando ele estiver perto.", "Ele não vê, ele escuta. Jogue uma garrafa (G) para mandá-lo para longe.", "No armário, segure ESPAÇO para prender a respiração quando ele chegar perto.", "Água e vidro no chão fazem barulho. Olhe onde pisa.", "Ele estala a língua para se localizar. Se o estalo está rápido, ele está caçando.", "Fitas tocando fazem barulho. Aperte E de novo no gravador para parar a fita.", "Numa caçada longa, vire numa porta e corte o som: ele segue o barulho, não você.", "Se ele já te achou várias vezes hoje, ele chega mais rápido. Não repita o mesmo esconderijo."],
+    ana: ["Regra quatro: mantenha a luz nela. Ela só anda quando você não está olhando.", "Ande de costas e não perca a menina de vista.", "Feche uma porta entre vocês. Ela não gosta de portas.", "Pilha fraca faz a lanterna piscar. Cada piscada é um passo dela.", "Quando ela diz DEZ, já é tarde: não deixe a contagem chegar lá."],
+    procissao: ["Regra três: quando as luzes piscarem e o rádio chiar, esconda-se rápido.", "Armários e camas protegem da Procissão. O corredor não.", "Assim que as luzes piscarem, pare de explorar: o primeiro armário serve.", "A fila não abre portas nem te procura: some de vista e espere passar."],
     // dicas específicas do lugar (mapa)
     porMapa: {
       terreo: ["No térreo, a recepção e a enfermaria têm esconderijos perto do caminho."],
       superior: ["Cada dormitório tem camas: debaixo delas ninguém te vê."],
-      tuneis: ["Nos túneis, cada passo na água ecoa. Andar agachada faz menos barulho.", "Girar uma válvula faz barulho: olhe em volta antes de começar."],
-      cemiterio: ["No cemitério não há armários: as lápides cortam o som. Agache atrás delas.", "Cavar faz barulho. Pare de cavar quando ouvir os estalos dele perto."]
+      tuneis: ["Nos túneis, cada passo na água ecoa. Andar agachada faz menos barulho.", "Girar uma válvula faz barulho: olhe em volta antes de começar.", "Aqui embaixo é onde ele dorme: ele acorda mais bravo. Erre menos."],
+      cemiterio: ["No cemitério não há armários: as lápides cortam o som. Agache atrás delas.", "Cavar faz barulho. Pare de cavar quando ouvir os estalos dele perto.", "Aqui a lanterna não basta: o sino é o único contra-jogo. Toque-o."]
     }
   },
 
@@ -598,7 +600,12 @@ window.ROTEIRO = {
     { id: "desenho", nome: "Feliz Aniversário", desc: "Ache o presente que nunca chegou.", secreta: true },
     { id: "nove_cliques", nome: "Nove Badaladas", desc: "Toque o sino do título nove vezes, sem pressa.", secreta: true },
     { id: "fita_gasta", nome: "Fita Gasta", desc: "Diga a palavra proibida na tela de título.", secreta: true },
-    { id: "confissao", nome: "A Gaveta Falsa", desc: "Descubra o que o diretor guardava embaixo.", secreta: true }
+    { id: "confissao", nome: "A Gaveta Falsa", desc: "Descubra o que o diretor guardava embaixo.", secreta: true },
+    { id: "ficha_moacir", nome: "Dossiê 1979", desc: "Reúna, morte a morte, a ficha inteira do Inspetor Moacir.", secreta: true },
+    { id: "surda_imovel", nome: "Surda e Imóvel", desc: "Ignore um Chamado parada no escuro até a voz falsa chorar.", secreta: true },
+    { id: "chapeu", nome: "Ele Tirou o Chapéu", desc: "Fuja da noite e veja o Inspetor se despedir no limite da luz.", secreta: true },
+    { id: "boa_noite", nome: "Boa Noite, Moacir", desc: "Dê boa-noite ao menino que ficou preso no homem.", secreta: true },
+    { id: "perseguicao", nome: "O Fôlego Comprido", desc: "Sobreviva a uma caçada longa sem se esconder nem apanhar.", secreta: true }
   ]
 };
 
@@ -1578,6 +1585,132 @@ window.ROTEIRO.progressao = {
     esqCab: "(com a letra da Lia, mas ela não lembra de ter escrito)"
   };
 })(window.ROTEIRO);
+
+// LOTE 5 — MONSTROS: como as entidades aparecem, lembram e perseguem no texto. Lido por src/historia-lote5.js.
+window.ROTEIRO.lote5 = {
+  // Ficha do Inspetor: uma linha revelada a cada morte, na tela de morte (morrer deixa de ser só frustração).
+  ficha: {
+    titulo: "FICHA DO INTERNATO — M. DUARTE",
+    linhas: [
+      "1. Moacir Duarte, admitido aos sete anos. Órfão. 'Criança quieta demais', diz o registro.",
+      "2. Castigo favorito dos padres: o armário fechado. Uma hora por palavra dita. Ele aprendeu a não falar.",
+      "3. Aos dezenove virou inspetor de disciplina. A mesma letra do castigo, agora assinando as fichas.",
+      "4. 1971: pedido de autorização para 'medidas permanentes de silêncio no dormitório'. Deferido.",
+      "5. Perdeu a visão num inverno. Passou a reconhecer cada criança pela voz, pelo passo, pela respiração.",
+      "6. 14 de março de 1979: um incêndio na capela, na Hora do Silêncio. Trinta e sete crianças. Nenhuma gritou.",
+      "7. O corpo dele nunca foi achado. Só o chaveiro, derretido no badalo do sino.",
+      "8. Última anotação, letra tremida: 'Eu só queria que eles dormissem. Agora ninguém acorda.'"
+    ],
+    completa: "FICHA COMPLETA — você já sabe quem caça você. Saber não o deixa mais devagar."
+  },
+  // Ele lembra as suas mortes: comentário no começo do capítulo seguinte, cada vez mais pesado.
+  lembra: [
+    "",
+    "Você de novo. Levanta rápido, menina.",
+    "Duas vezes hoje. O chão já conhece o seu joelho.",
+    "A terceira vez hoje, menina... você não cansa?",
+    "Quantas foi já? Eu perdi a conta. Eu nunca perco a conta.",
+    "Cada vez que eu te acho, eu te acho mais rápido. Reparou?"
+  ],
+  lembraTeto: "Fica caída então. É mais quieto assim.",
+  // Perseguição memorável: falas de uma caçada longa e o alívio de ter escapado inteira.
+  cacaLonga: [
+    "(a voz vem de todo lado) Corre. Corre que eu gosto.",
+    "O seu coração tá alto demais. Eu sigo ele no escuro.",
+    "Você respira pela boca quando cansa. Igualzinho ao menino."
+  ],
+  sobreviveuCaca: "(a Lia, ofegante) Ele parou... o fôlego dele acabou antes do meu.",
+  // Aparências mais perturbadoras, narradas quando ele está perto por muito tempo.
+  aparencia: [
+    "A cabeça dele pende pro lado, como quem escuta debaixo d'água.",
+    "Os pés dele mal encostam no chão; ele desliza um palmo acima.",
+    "A boca continua se mexendo um tempo depois que a voz para.",
+    "Onde deviam estar os olhos, o latão do crachá reflete a sua lanterna.",
+    "Os dedos dele contam no ar enquanto anda. Um, dois. Sempre contando."
+  ],
+  // Silhueta que tira o chapéu: o fecho da fuga vitoriosa.
+  chapeu: "No limite da luz, o Inspetor está parado. Ele leva a mão à aba do chapéu e o tira, devagar, como quem dá boa-noite. O escuro o cobre antes que você veja o rosto.",
+  // Silêncio premiado no Chamado: a voz falsa chora e o Davi de verdade sussurra o caminho.
+  chamadoChora: "(a voz que te chamava afina, vira choro de criança e se desfaz) ...não era eu... não era eu...",
+  chamadoDavi: {
+    1: "...boa menina. A caixa de fusíveis tá na enfermaria. Rápido, Lia.",
+    2: "...o quadro de chaves fica atrás do balcão. Não corre.",
+    3: "...a engrenagem tá no dormitório da ponta. A Ana não gosta de luz: mantém a luz nela.",
+    4: "...as válvulas na ordem da fita, Lia. Se errar, ele acorda.",
+    5: "...o sino. Só o sino cala ele. Toca comigo."
+  },
+  chamadoDaviGen: "...sou eu de verdade dessa vez. Não responde em voz alta. Só segue a minha voz.",
+  // Lousa / marcas de giz que contam suas mortes por tipo, na tela de morte.
+  lousa: {
+    conta: "Numa lousa de giz, riscos aparecem sozinhos, um a um — LIA: {n}.",
+    muito: "O giz risca mais fundo — LIA: {n}. Embaixo, miúdo: 'não aprende'.",
+    tipos: {
+      inspetor: "| um risco reto por vez que ele te achou",
+      ana: "/ um risco torto por vez que você piscou",
+      procissao: "+ um risco cruzado por vez que saiu da cama"
+    }
+  },
+  // Bilhete do sino: por que ele teme o sino, encontrado no caminho dos túneis.
+  bilheteSino: {
+    lia: "Um papel dobrado no bolso de um casaco de criança, pregado perto do caminho. A letra é do Davi.",
+    davi: "...o inspetor tem medo do sino. Pra ele o sino é a mão que abria o armário do castigo. Se ele vier atrás de você, Lia: toca o sino. — D."
+  },
+  // Epílogos secretos do Moacir, recompensa de quem entendeu a tragédia dele.
+  epilogoMenino: "\n\nQuando o sino cala, não é o homem alto que se ergue do altar. É um menino de sete anos, de uniforme grande demais. Ele olha pra você, acena com a cabeça e sai pela porta antes de você — sem pressa, pela primeira vez sem medo do escuro.",
+  epilogoMerce: "\n\nVocê se abaixa ao lado dele e diz, baixinho, o que ninguém nunca disse: 'Boa noite, seu Moacir.' O homem alto deita no degrau do altar, dobra as mãos e dorme. De verdade. A casa inteira solta o ar junto com ele.",
+  // Nome sob o crachá e variações das outras entidades por capítulo.
+  cracha: "(a Lia, baixinho) Embaixo do latão tem outro nome arranhado... 'DAVI?'. Ele guardou o nome do meu irmão.",
+  anaPorCap: {
+    3: "...você demorou. Eu contei três vezes esperando você.",
+    5: "...aqui fora é frio. Me leva junto dessa vez?"
+  },
+  procPorCap: {
+    2: "(na fila passa uma menina que não estava antes; ela vira o rosto pra sua fresta)",
+    5: "(a fila anda mais devagar hoje, como se soubesse que é a última noite)"
+  },
+  // Dicas sentidas pelo jogador, no momento certo.
+  dicaPerseguido: "Numa caçada longa não corra em linha reta: vire numa porta e corte o som. Ele segue o barulho, não você.",
+  dicaSino: "Lanterna e armário não bastam mais aqui. O sino é o único contra-jogo: toque-o.",
+  // Primeiro encontro da noite: a Lia reconhece o homem da fita.
+  primeiroCaca: ["(a Lia, baixinho) É ele. É o homem da fita.", "(a Lia) O chapéu... é ele. Não corre, não corre, não corre."],
+  // Ele colado na fresta do esconderijo: o pior tipo de perto.
+  pertoEscondida: ["(colado na fresta) ...eu ouço a sua barriga subir e descer.", "(bem baixinho) ...sai daí que eu prometo que é rápido.", "(um fungar comprido) ...cheiro de criança nova."],
+  // Quase-agarrão: passou raspando.
+  quaseFio: "(a Lia, sem ar) Passou raspando. Eu senti o frio da mão dele.",
+  // Ele desiste e volta pra ronda, resmungando.
+  rondaVolta: ["Tá bom. Volto depois. Eu sempre volto.", "Sumiu de novo. A noite é comprida, menina.", "Um... dois... fica pra próxima."],
+  // Atmosfera de monstro ao entrar em cada capítulo (a Lia lê o lugar).
+  entradaCap: {
+    1: "(a Lia) A porta range e cheira a pó e cânfora. Tem alguém andando lá dentro, devagar.",
+    2: "(a Lia) O relógio da torre tá quase nas nove. Quando bater, ninguém pode estar de pé.",
+    3: "(a Lia) Lá em cima tem risinho de criança. Não tem criança nenhuma viva aqui.",
+    4: "(a Lia) O ar embaixo é parado. É onde ele dorme. Pisa leve.",
+    5: "(a Lia) O cemitério tá aberto e o sino espera. Essa é a última vez."
+  },
+  // A Menina e a Procissão, no primeiro instante em que aparecem.
+  anaPrimeira: "(a Lia) Uma menina. Parada no fim do corredor. Ela não estava ali agora.",
+  procPrimeira: "(a Lia) As luzes... eles estão vindo. Some. Some agora.",
+  // O homem de verdade, baixinho, nas pausas de memória.
+  reza: ["...dorme, menino. Amanhã tem aula.", "...eu só tranquei a porta pra proteger. Foi pra proteger.", "...quietos... ficam quietos que o padre não vem."],
+  // Ele imita a voz do seu irmão pra te atrair.
+  imitaDavi: "(com uma voz que tenta ser a do Davi) ...Lia? Vem cá, Lia. Achei uma coisa.",
+  imitaDaviLia: "(a Lia, gelada) Esse não é o Davi. O Davi nunca me chamou assim.",
+  // A Menina perto do dez: pânico.
+  anaQuase: "(a Lia, sem respirar) Ela tá quase no dez. Não pisca. NÃO pisca.",
+  // Escondida enquanto a Procissão passa.
+  procPassa: "(a Lia, bem baixinho) ...conta um, dois, três... passa logo... passa logo...",
+  // Na ronda, ele chama pelos nomes das crianças que já levou.
+  chamaCriancas: ["Rosa? De volta pra cama, Rosa.", "Luiz, larga esse pião.", "João, pára de rolar essa bolinha.", "Maria das Dores, cabeça na almofada.", "Tomé? Tira esse capacete de papel."],
+  // Ele conta as camas do dormitório e sente que falta alguém (Cap III).
+  contaCamas: "Trinta e sete camas. Trinta e seis cheias. Tem uma menina fora da cama.",
+  // Primeiro esconderijo da noite, com ele caçando: o cheiro do castigo.
+  primeiroEsconde: "(a Lia, por dentro do armário) Cheira a criança trancada aqui dentro. Fica quieta, Lia. Fica quieta.",
+  // No Pesadelo, ele é mais cruel.
+  pesadeloCaca: ["Hoje eu não deixo você levantar.", "Esquece o armário. Eu sei todos eles."],
+  // Codas de monstro nos finais de fuga.
+  comumCoda: "\n\nNo retrovisor, por um segundo, um chapéu no acostamento. Depois só a estrada.",
+  silencioCoda: "\n\nE, entre uma badalada e outra, bem baixinho, a voz dele contando: um... dois..."
+};
 
 // Aspas tipográficas: a fonte desenha a aspa reta como a de fechar, então as falas abrem com “ e fecham com ”.
 (function curvar(o) {
