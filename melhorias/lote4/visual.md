@@ -1,0 +1,101 @@
+# Lote 4 — Visual e luz
+- Novo módulo de segredos feitos de luz, sombra e reflexo, sem dar dano nem travar caminho.
+- Contador "Segredo da luz x de ?" aparece a cada segredo achado, sem nunca revelar o total.
+- O jogo guarda numa memória própria quais segredos você já viu, entre uma noite e outra.
+- Legenda de som nova: "a lâmpada zune em ritmo".
+- Legenda de som nova: "giz raspando na parede".
+- Legenda de som nova: "alguém respira atrás de você".
+- Legenda de som nova: "papel de bala amassando".
+- Conquista secreta "Hoje": ver na poça a lápide que não está no cemitério.
+- Conquista secreta "Telegrafista": ler a lâmpada em código antes da primeira fita.
+- Conquista secreta "Teatro de Sombras": fazer o coelho até alguém responder.
+- Conquista secreta "Não Tinha Esse": ver a sombra a mais no teatrinho de lençol.
+- Conquista secreta "Exposição Longa": deixar a câmera parada no escuro no modo foto.
+- Nova opção de Imagem "Lanterna do Davi", que só aparece depois de achar três segredos.
+- Lanterna do Davi: o círculo de luz ganha uma estrelinha recortada de fita isolante e um tom mais amarelado.
+- Parede de riscos de giz na sala de aula somando todas as mortes da Lia em todas as noites.
+- Os riscos vêm agrupados de cinco em cinco, como castigo de escola.
+- Acima dos riscos, escrito por criança: "VEZES QUE A LIA NÃO VOLTOU".
+- Com zero mortes, a parede mostra só "AINDA" e a Lia estranha.
+- Varal escondido atrás do biombo da sala de brinquedos com desenhos a giz de cera das suas mortes.
+- Desenho de morte no armário: a Lia de palito com a mão vermelha saindo pela fresta.
+- Desenho de morte na água: a Lia de braços para cima entre linhas de água.
+- Desenho de morte pelo Inspetor: o vulto alto de venda branca ao lado da Lia.
+- Desenho de morte pela Ana: a menina de trança e a contagem de 1 a 10 com o dez em vermelho.
+- Desenho de morte pela Procissão: a fila de cinco vultos com luzinhas.
+- Cada desenho do varal traz a legenda infantil da causa e a data da morte.
+- Sem nenhuma morte, o varal mostra um único desenho: "A LIA AINDA NÃO".
+- Os desenhos do varal balançam com o vento da porta e mais forte quando a Lia passa correndo.
+- Dá para ler cada desenho do varal de perto, sem tela cheia.
+- Estrelinhas fosforescentes de plástico no teto do Dormitório E.
+- Apontar a lanterna para as estrelas carrega o brilho delas aos poucos.
+- Ao apagar a lanterna, as estrelas brilham verde formando uma seta e um número do cofre, e somem em segundos.
+- Na estrada, quando a chuva dá uma trégua, a lua aparece entre as nuvens.
+- Olhar a lua parado faz, por dois quadros, surgir o rosto da Ana — raro, sorteado pela noite.
+- Ao varrer a lanterna pelos armários, um deles devolve dois pontinhos de reflexo como olhos de gato.
+- Abrir esse armário: vazio, mas com dois olhos desenhados a giz por dentro.
+- Lâmpada fraca do corredor do térreo piscando em pontos e traços, como um código.
+- Decifrar o código antes de ouvir a primeira fita dá a conquista e a fala "Não é defeito. Alguém tá falando."
+- Uma vela de chama fria por mapa, que só aparece com a lanterna desligada.
+- Encostar na vela fria acende o caminho que o Davi fez, em pegadas de luz.
+- Pegadas de luz do Davi que se acendem em sequência pelo chão e depois apagam.
+- Com a lanterna apagada perto de certas paredes, a luz de emergência projeta a sombra de uma criança.
+- Depois de alguns segundos no escuro, a sombra da criança levanta o braço e aponta o próximo objetivo.
+- Prender e soltar o ar colado numa janela fria do dormitório embaça o vidro.
+- O bafo na janela revela um desenho de dedo de criança (sino, seta ou número de armário).
+- No vidro do fim do corredor de cima, o reflexo mostra seis portas onde o corredor só tem cinco.
+- A Lia sussurra "Eram cinco... não eram?" ao ver as seis portas.
+- No vidro do dormitório, o reflexo é a Lia criança de uniforme seguindo a câmera com atraso.
+- Se a Lia chega perto, o reflexo da menina põe o dedo na boca e some.
+- Com a pilha fraca, a luz amarelada revela desenhos nas paredes que a luz cheia apagava.
+- Um desses desenhos ("QUANDO A LUZ MORRE A GENTE APARECE") aponta uma pilha escondida de verdade.
+- Círculo no pátio, em lugar diferente a cada noite, onde a chuva não cai.
+- Duas pegadinhas de criança paradas no meio do círculo seco.
+- Entrar no círculo seco zera o medo e traz uma vinheta quente, como um abraço.
+- A chuva some de dentro do círculo seco (as gotas que cairiam ali são tiradas).
+- No cemitério, uma poça reflete uma lápide que não está lá: "DAVI MORAES · 1967 — 1994".
+- Ao levantar a cabeça da poça, no lugar vazio da lápide a terra está fresca, recém-cavada.
+- Foto da turma de 1978 na recepção que muda um pouco a cada capítulo concluído.
+- Nas noites finais, a Lia adulta de jaqueta aparece sentada na foto da turma.
+- A Lia comenta a foto da turma de forma diferente conforme a mudança.
+- Desenho de giz de mãos dadas no Dormitório D com um espaço vazio na ponta.
+- Ao olhar o resto do quarto e voltar, uma figura adulta de lanterna foi desenhada no espaço, com giz caindo.
+- A Lia reconhece o desenho completado: "Essa sou eu."
+- Teatrinho de sombras com lençol esticado e bonecos de papel na sala de brinquedos.
+- Segurar a lanterna no apoio projeta as figuras de papel (coelho, cachorro) no lençol.
+- Na terceira troca, surge no lençol uma sombra de homem de chapéu que não está entre os bonecos e vira a cabeça.
+- No modo foto, virar a câmera para trás revela uma criança colada nas costas da Lia, some na hora da foto mas fica na polaroide.
+- No modo foto, deixar a câmera parada num corredor escuro faz uma criança atravessar o fundo do quadro.
+- Iluminar o rosto do Inspetor em reza por um tempo deixa a venda branca translúcida e mostra dois olhos leitosos.
+- A Lia sussurra "Ele não é cego de tudo." ao ver os olhos sob a venda.
+- Papel de bala vermelho que, posto na lanterna, tinge o feixe de vermelho.
+- Sob a luz vermelha aparecem os recados em giz vermelho das crianças, invisíveis na luz branca.
+- A Menina Que Conta não conta a luz vermelha como iluminada: ela anda mesmo com o feixe nela.
+- Com a paleta para daltonismo, a luz do papel vira magenta em vez de vermelha.
+- Iluminar o teclado do cofre bem de perto mostra quatro teclas encardidas de fuligem.
+- A Lia comenta "Alguém digitou isso muitas vezes." ao ver as teclas gastas.
+- Monóculo de lembrança no balcão do posto; apontar para a luz abre a foto em tela.
+- Primeira olhada no monóculo: foto do Davi e da Lia crianças no portão.
+- Segunda olhada no monóculo: a Lia de agora, de costas na estrada, tirada de cima do carro.
+- Gibi na cabaninha do depósito que abre em tela cheia, com páginas no traço de criança.
+- O último quadrinho do gibi é gerado na hora: a Lia de costas na sala onde você está, com um vulto atrás.
+- A página final do gibi mostra "CONTINUA..." e o vulto olhando para o leitor.
+- Dentro da capela, no relâmpago, a luz atravessa os vitrais e projeta sete sinos no chão.
+- Cada sino projetado tem a boca riscada, pista das badaladas abafadas.
+- Lanterna acesa de frente para uma parede lisa, segurar E desenha a sombra de um coelho com a mão da Lia.
+- No dormitório, uma segunda mãozinha aparece ao lado e faz um cachorrinho sem ninguém ali.
+- Na terceira vez, a sombra vira um lobo que não é a mão da Lia, abre a boca e "come" o coelho.
+- Na biblioteca, a poeira dentro do cone da lanterna se junta num menino sentado lendo.
+- Passar o feixe pela figura de poeira faz ela apontar para a estante do livro torto.
+- Numa parede do túnel, a frase "NÃO PARE" só aparece quando a câmera está em movimento.
+- Ao parar diante da frase, ela some e algo respira atrás da Lia, com o medo subindo.
+- Quando o relâmpago bate, uma janela do dormitório reflete o quarto arrumado de 1979.
+- No reflexo de 1979, uma criança dorme de olho aberto encarando a câmera.
+- Contorno de giz no chão onde a Lia morreu, que brilha fraco quando a lanterna passa por ele.
+- No teto do Dormitório A, algo escrito só aparece no clarão do relâmpago.
+- Pintura a óleo na diretoria que mostra a sala por trás da Lia em tempo real.
+- Quem olha o quadro por tempo demais vê nele uma figura atrás da Lia que não está na sala.
+- Na qualidade Mínima, o quadro vira uma imagem fixa pintada, sem o espelho em tempo real.
+- Os efeitos de flash dos segredos respeitam a opção "Reduzir flashes", esmaecendo em vez de piscar.
+- Todos os objetos e sombras novos são posicionados sem atravessar a mobília que já existe na sala.
+- Os segredos são sorteados pela semente da noite, então o lugar muda e os amigos discordam de qual é.

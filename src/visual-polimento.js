@@ -249,7 +249,7 @@ export function instalarPolimento(C, V) {
   function lanterna(dt, ativo, S, t) {
     if (!S) return;
     const chove = C.chuvaMat && C.chuvaMat.opacity > .05 && P.room && P.room.fora && (W.mapa === 'estrada' || W.mapa === 'cemiterio');
-    const mapa = chove ? COOKIE_CHUVA : COOKIE; if (flash.map !== mapa) flash.map = mapa;
+    const mapa = (V.mapaLanterna && V.mapaLanterna(chove)) || (chove ? COOKIE_CHUVA : COOKIE); if (flash.map !== mapa) flash.map = mapa; // lote 4: lanterna do Davi (src/visual-segredos.js)
     // morte: a lanterna cai da mão, o feixe despenca girando e pisca ao bater no chão
     if (S.dead) {
       L.mortoT += dt; const k = clamp(L.mortoT / .75, 0, 1), e = k * k;

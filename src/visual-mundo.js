@@ -562,7 +562,7 @@ export function instalarMundoVisual(C) {
           else if (lado === 2) { pt.position.set(r.x0 + dentro, .013, c); pt.rotation.z = -PI / 2; } else { pt.position.set(r.x1 - dentro, .013, c); pt.rotation.z = PI / 2; }
           W.grupo.add(pt);
           if (cortina) for (const s of [-1, 1]) { const ct = naParede(r, lado, c, 1.6, .42, 1.7, cortina, OFF + .05, g); desloca(ct, lado, s * .66); G.cortinas.push({ m: ct, f: rand(0, 6), r0: ct.rotation.x }); }
-          G.janelas.push({ x: pt.position.x, z: pt.position.z }); n++;
+          G.janelas.push({ x: pt.position.x, z: pt.position.z, r, lado, c }); n++; // r/lado/c: vidro (lote 4, src/visual-segredos.js)
         }
       }
     }
@@ -1120,7 +1120,7 @@ export function instalarMundoVisual(C) {
     const teto = decal(TX_FUL_TETO, { color: 0x000000, side: THREE.DoubleSide });
     for (const id of ['hall', 'cw', 'ce', 'refeit', 'aula']) { const r = W.salas.find(s => s.id === id); if (!r) continue; for (let k = 0; k < 2; k++) { const s = rand(2.2, 4), m = new THREE.Mesh(new THREE.PlaneGeometry(s, s), teto); m.rotation.x = PI / 2; m.position.set(rand(r.x0 + 1, r.x1 - 1), (r.h || 3.2) - .012, rand(r.z0 + 1, r.z1 - 1)); W.grupo.add(m); } }
   }
-  const api = { update, depois, mapa, capitulo, vela, memoria, forcarRaio: () => C.raio && C.raio() };
+  const api = { update, depois, mapa, capitulo, vela, memoria, forcarRaio: () => C.raio && C.raio(), get janelas() { return G ? G.janelas : []; } };
   window.__visualMundo = api;
   return api;
 }
