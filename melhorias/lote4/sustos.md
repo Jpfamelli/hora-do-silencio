@@ -1,0 +1,101 @@
+# Lote 4 — Sustos e eventos
+- Noite rara (1 em 12, sorteada pela semente da noite e nunca na primeira): no Cap. II o sino bate uma décima vez, mais perto e mais agudo
+- Na décima badalada todas as lâmpadas acesas ficam vermelhas por 3 segundos
+- Na décima badalada a legenda marca [DEZ] e o celular vibra
+- Depois da décima badalada a Lia diz "Foram dez."
+- Um minuto depois da décima badalada a Ana aparece num canto da sala onde você está, fora de hora, contando em voz alta até a lanterna pegar nela
+- Como a décima badalada sai da semente, quem manda o código de desafio para um amigo faz ele ver a mesma noite
+- Conquista secreta nova "Badalada a Mais" para quem viveu a noite das dez badaladas
+- Página nova no diário, "Coisas que quase ninguém viu (x/7)", que só aparece depois da primeira ocorrência rara e guarda a data de cada uma
+- Aviso discreto ("Anotado no diário...") alguns segundos depois de presenciar uma ocorrência rara pela primeira vez
+- Conquista secreta nova "Quase Ninguém Viu" ao somar três ocorrências raras entre as noites
+- Rara: às vezes um menino está parado de costas no fim do corredor de cima e só some quando a lanterna fica nele
+- Rara: em corredores, ele aparece parado no fim do corredor olhando para você por um quadro só, com um chiado
+- Corredor de cima: olhar para trás nove vezes em menos de 15 segundos faz a Ana estar a um metro de você quando você volta a olhar
+- A Ana das nove olhadas põe o dedo nos lábios (legenda "shh") e some no próximo piscar da lanterna ou ao olhar para trás de novo
+- Escondida num armário sem perigo por perto, uma vez por noite, três batidas vêm de trás, de dentro do próprio armário
+- Olhar para trás depois das batidas mostra só madeira ("Só madeira..."), e a quarta batida vem quando você volta a olhar a fresta, com a legenda [de dentro]
+- Quem se esconde seis vezes no mesmo armário no mesmo capítulo descobre que já tem alguém lá dentro: respiração de outra pessoa, vibração e o medo sobe
+- Ficando cinco segundos no armário ocupado, a outra pessoa sussurra o nome de quem morreu ali dentro
+- Do Cap. II em diante, uma vez por noite, uma pilha brilhante demais aparece numa prateleira; de perto se ouve uma respiração bem baixa (com legenda)
+- Pegar a pilha que respira: uma menina ri colada em você, você perde 10 de vida, mas fica com a pilha
+- Conquista secreta nova "Desconfiada" para quem ouviu a respiração perto da pilha e foi embora sem pegar
+- Nas outras noites a pilha da prateleira é falsa: está quente e molhada, a Lia larga, ela rola para longe e alguém diz "é minha" de dentro da parede
+- O jogo conta os seus passos somando todas as noites; no passo de número 1979, um passo a mais ecoa logo atrás de você, uma única vez na vida do save
+- O passo 1979 tem legenda própria ([um passo que não é seu]) e entra nas ocorrências raras
+- Túnel leste: o túnel devolve cada passo seu 1,5 segundo depois, do mesmo lado
+- O eco do túnel leste conta como barulho: quem fica testando o eco acaba chamando o Inspetor
+- Depois de muitos ecos no túnel leste, o eco muda: passos descalços vêm do escuro na sua direção e só param quando a lanterna aponta para eles
+- Túnel norte: o eco dos seus passos começa a chegar antes do passo, com legenda própria
+- No fim do eco do túnel norte, uma voz de menino diz "Para de me imitar."
+- Túneis (Cap. IV): ao entrar no túnel oeste, um menino começa a contar longe, numa sala onde a Ana não está
+- Chegar ao nicho da câmara oeste antes do dez dá uma pilha e uma lanterninha de brinquedo com bilhete; chegar depois faz o menino dizer "Achei" atrás da sua orelha
+- Depósito de cima: lâmpada nova de cordinha; puxar acende uma luz forte por 2 segundos que mostra vinte e quatro cadeirinhas viradas para você
+- Puxar a cordinha de novo: as cadeirinhas estão viradas para a parede
+- Na terceira puxada a cordinha sobe sozinha e não volta ("Alguém puxou lá de cima")
+- Rosto raro (2% das aberturas) numa janela do título: passar o mouse faz ele sumir e o rádio chiar "você viu"
+- Conquista secreta nova "Testemunha" para quem viu o rosto da janela do título
+- Se o relógio de verdade virar de 20h59 para 21h00 com você jogando, todas as luzes do mapa apagam por 9 segundos e tocam as nove badaladas (nunca durante a Ana, a Procissão ou uma caçada)
+- Às 21h em ponto de verdade o HUD some por 9 segundos e depois volta como se nada tivesse acontecido
+- Conquista secreta nova "Pontual" para quem estava jogando às 21h em ponto
+- Biblioteca: livro novo de capa lisa que, aberto, escreve em tempo real o que você está fazendo
+- O livro lê o estado do jogo: lanterna acesa ou apagada, seu medo, quantas pilhas você tem, sua vida e onde está o Inspetor
+- Na terceira página o livro escreve "Ele está na porta agora." — e a porta da biblioteca se abre com ele parado ali até a lanterna pegar nele
+- Afastar-se do livro no meio da leitura fecha o livro, mas a última frase fica na tela por 2 segundos
+- Giz na parede da sala onde a Lia mais morreu (somando as noites): "LIA ESTEVE AQUI", com um tracinho por morte
+- A primeira vez que você vê o giz, a Lia diz "Eu não escrevi isso."
+- Conquista secreta nova "Lugar Preferido" ao achar o giz da sala onde você mais morreu
+- Sala de brinquedos: desenho de giz de cera novo que mostra a sua última morte no traço de uma criança (o homem alto e o armário, a menina contando nos dedos, a fila de olhos vermelhos)
+- Se você nunca morreu, o desenho mostra a Lia saindo pelo portão com "ainda" escrito embaixo; se morreu, vem escrito "a moça perdeu"
+- Do Cap. IV em diante, uma vez por noite, o diário ganha uma página com letra de criança descrevendo a sua última morte de fora
+- Cap. III, uma vez por perfil: aparece a conquista "Sobreviveu à Noite" cedo demais, troca para "Ainda Não" e uma voz conta "três" atrás de você
+- Conquista secreta nova "Cedo Demais", registrada logo depois da conquista que chegou antes da hora
+- A partir da segunda noite, uma seta de giz com "SEGREDO" no chão aponta para um armário; quem se esconde nele encontra o Inspetor de pé lá dentro, cara a cara
+- Depois da seta que mente, a Lia percebe: "Essa não foi o Davi que escreveu."
+- Cap. II: uma criança da Procissão fica para trás num canto da sala e copia a sua postura com 1 segundo de atraso (agacha quando você agacha, inclina quando você espia)
+- Se você ficar parada cinco segundos, a criança que copia para de copiar e dá um passo na sua direção
+- Cap. III: um boneco de pano da sala de brinquedos passa a aparecer em cada sala nova, sempre perto da porta por onde você vai sair
+- Depois de algumas salas, olhar para trás no corredor mostra o boneco no chão, bem atrás de você
+- Pegar o boneco de pano faz ele parar de aparecer, e a Ana chora longe dizendo que era dela
+- Sala de brinquedos: prateleira nova com nove bonecas e a placa "NOVE AMIGAS"; cada vez que você tira os olhos e volta, há uma a mais na ponta, cada vez maior
+- Na terceira volta a décima boneca tem a camisola e o cabelo da Ana; iluminar ela por 3 segundos faz ela cair da prateleira e virar uma boneca comum com um curativo
+- Dormitório C (Cap. III): boneca de olhos de vidro; apagar a lanterna perto faz soar o clique dos olhos fechando, com legenda
+- Ao acender a lanterna de novo, a boneca está deitada e mais perto da porta; na terceira vez ela já está no corredor, indo para a sala da Ana
+- Refeitório: lareira apagada com uma corda pendurada da chaminé; puxar toca o sino da capela no prédio todo, chama o Inspetor e encurta o tempo até a Procissão
+- A corda da chaminé avisa que "nem toda corda deve ser puxada"; na segunda puxada ela desce inteira com um sapatinho escrito TOMÉ
+- Cap. II, corredores do térreo: uma vez por noite, alguém anda no andar de cima no mesmo ritmo dos seus passos, com legenda
+- Se você para, o de cima dá um passo a mais; se você estava correndo, ele para de repente bem em cima de você e cai poeira; agachar faz o eco sumir
+- Corredor de cima: uma vez por capítulo, passos idênticos aos seus tocam atrás com meio segundo de atraso
+- Quem não olha para trás nos passos atrasados ouve no fim um "quase" colado na nuca; quem olha faz os passos sumirem
+- Parada 90 segundos num lugar sem perigo, a Lia cantarola quatro notas e alguém na sala ao lado continua a melodia até o fim
+- Sexta-feira de lua cheia (calculada pela data do aparelho): no barranco da estrada, um uivo longo e rouco e um vulto de quatro patas grande demais cruzando à sua frente
+- Conquista secreta nova "Sétimo Filho" para quem passou pelo barranco na sexta de lua cheia
+- Quaresma (Páscoa calculada pelo algoritmo de Gauss): matracas de madeira estalam junto com a Procissão e a Lia lembra que não se olha para quem encomenda as almas
+- Junho: o pátio ganha bandeirinhas de papel chamuscadas, uma fogueira apagada e a placa queimada de uma pescaria
+- Junho: a fogueira acende sozinha, estalando, quando você está de costas para ela, e apaga quando você olha
+- Conquista secreta nova "Arraiá do São Lázaro" para quem viu a fogueira de junho apagar
+- Dezembro: o refeitório ganha um pisca-pisca velho de lâmpadas coloridas
+- Dezembro: o pisca-pisca perde o compasso quando a Procissão vem, virando um aviso a mais
+- Dezembro: a capela tem um presépio com três crianças de uniforme a mais; cada vez que a lanterna sai e volta, elas estão mais viradas para a Lia, até uma ficar de pé (conquista secreta "Presépio")
+- A partir da segunda noite, às vezes a troca de mapa mostra "um... dois... três..." em rosa até o "nove..."
+- No mapa seguinte à contagem rosa, um DEZ sussurrado soa atrás da Lia sem a Ana aparecer
+- Tela final: dois minutos sem mexer em nada mostram, por um quadro só, a Lia vista de cima na capela com uma figura pequena segurando a mão dela
+- Depois disso, o subtítulo do título passa a ser "agora são duas" naquela sessão
+- Conquista secreta nova "Depois do Depois" para quem ficou na tela final até o último susto
+- Corredor de cima: quem abre todas as portas do corredor vê aparecer uma porta que não estava na planta, com luz quente por baixo, que bate com força quando você chega perto
+- Cemitério: nos quatro segundos depois do sino, olhar para trás mostra nove crianças paradas em fila no caminho; depois a lanterna pisca e a Lia diz "Eu olhei. Elas também."
+- Banheiro de cima: bater três vezes na porta do último box e dar três descargas chama a moça do banheiro: as luzes caem e uma mulher de branco aparece atrás da Lia
+- Se você virar a tempo, a moça some e deixa no chão um bilhete da Irmã Celeste proibindo "essa brincadeira das meninas"; se não virar, a lanterna apaga por 5 segundos com respiração no ouvido
+- Conquista secreta nova "Três Descargas" para quem chamou a moça do banheiro
+- Dormitório D: levantar o travesseiro de uma cama mostra um dente de leite e uma moeda de 1979, que dá para pegar
+- Com a moeda no bolso, a Ana diz "...devolve." baixinho na próxima vez que aparece, e o golpe dela tira 5 a mais ("Ladra.")
+- Devolver a moeda ao travesseiro faz a Ana sumir rindo e dá a conquista secreta "Fada do Dente"
+- Dormitório D: três bonecas vigiam a porta; virar as três para a parede deixa a Ana de castigo e longe por 30 segundos (conquista secreta "De Castigo")
+- Quando o castigo acaba, as bonecas estão viradas de novo para a Lia e uma delas está no meio do corredor
+- Dormitório A: na primeira vez que a Lia entra embaixo de uma cama, ela sente que "tá quente", passinhos descalços correm para fora e a porta bate
+- Rouparia: boneco de pano com algo duro dentro; segurar E rasga a costura e sai a chavinha do diário de cadeado da Ana, e o boneco some quando você vira as costas
+- Sala de brinquedos: teatro de sombras; cada troca de recorte projeta na parede o sino, a fila de crianças e a capela com corrente
+- No quarto recorte do teatro não há recorte nenhum, mas a parede mostra uma mão adulta vindo na direção da luz; a lanterna falha e a Ana diz "um" atrás de você
+- Sala de aula: projetor de slides novo; cada E passa um slide da excursão de 1978 desenhado em canvas
+- A cada slide da excursão, um vulto alto está mais perto da turma
+- O décimo slide, que não devia existir, mostra a Lia de costas vista de dentro da sala, e uma luz passa a bater atrás de você até a lâmpada do projetor queimar com um estalo
