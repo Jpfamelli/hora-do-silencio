@@ -1,0 +1,93 @@
+# Lote 4 — Mapa: térreo e dormitórios
+- Cada segredo escondido do internato agora conta num marcador próprio "Achado escondido N/28" ao ser descoberto.
+- A foto da turma lembra entre noites o que você já achou, salvando o progresso dos segredos no navegador.
+- Oito notas secretas novas entram no diário, mas só aparecem depois que você acha o esconderijo de cada uma.
+- Vinte e uma conquistas secretas novas premiam quem explora os cantos do internato.
+- Fala especial da Lia ao achar dez segredos, e outra ao achar todos os do internato.
+- Um véu de escuridão nas bordas da tela acompanha tosse, sonho e apagão, feito em tempo real sem imagem externa.
+- A medalha de São Lázaro esquenta na sua mão (e vibra no celular) pouco antes da Procissão chegar, nos dois andares.
+- A lousa da sala de aula tem um jogo da velha jogável: você marca um X mirando a casa.
+- O giz responde sozinho com um O, com som de giz rangendo sem ninguém na sala.
+- A primeira vez que o giz se mexe sozinho sobe o medo e arranca uma fala baixinha da Lia.
+- A jogada do fantasma é imbatível, com um erro de propósito que o bilhete do Davi ensina a explorar.
+- Empatar escreve "EMPATE. DE NOVO AMANHÃ" e deixa cair uma pilha do apagador.
+- Vencer escreve "GANHOU. COMO ELE ENSINOU.", dá pilha, conquista e o Davi ri ao longe.
+- Perder escreve "PERDEU, <seu nome>", apaga a lanterna, escurece a sala e sobe o medo.
+- Um bilhete do Davi colado embaixo da lousa ensina a jogada que vence o fantasma.
+- O relógio de pêndulo da recepção virou interativo: segure E para girar os ponteiros.
+- Acertar em sequência 21h04, 21h31 e 21h50 traz uma fala do Tomé, da Ana e do Davi.
+- Completar a sequência derruba o pêndulo e revela uma pilha, a medalha de São Lázaro e uma nota.
+- Pôr o relógio em 21h00 faz uma badalada alta que atrai o Inspetor: uma armadilha.
+- Acertar a hora errada no meio da sequência a zera, com uma badalada alta fora de hora.
+- Cada toque no ponteiro faz um tique que vira ruído para o Inspetor ouvir.
+- A foto da turma de 1979 é lida de perto, sem tela cheia; olhar quatro segundos revela uma mulher de capa no fundo: você.
+- Os rostos riscados a caneta na foto vão sendo desriscados conforme você acha cada segredo.
+- Com todos os segredos achados, surge na foto uma menina a mais de mão dada com o Davi.
+- Uma chave geral na casa de máquinas apaga o prédio inteiro de propósito (segure E, com barulho).
+- Com o apagão, as lâmpadas do mapa realmente se apagam, respeitando a chave geral.
+- No escuro total, mãozinhas fosforescentes aparecem nas paredes formando um caminho até a lavanderia.
+- Uma gaveta emperrada da lavanderia só abre durante o apagão: dá um curativo e a nota "O Escuro Era Nosso".
+- A chave geral volta sozinha depois de quarenta segundos, ou você empurra de volta na mão.
+- Puxar a chave geral faz barulho que chama o Inspetor para a casa de máquinas.
+- A cabine "OCUPADO" do banheiro responde cada batida sua com uma batida a mais por dentro.
+- Bater nove vezes (fazendo ruído) destranca a cabine do clube, com um curativo e a ata dos sócios.
+- Dá para sentar na carteira riscada "L. MORAES" e ouvir uma freira em eco fazer a chamada dos alunos.
+- Ficar calada na chamada abre a tampa da carteira (curativo e um uniforme do seu tamanho de criança) e dá a conquista "Ausente".
+- Responder "presente" (V) quebra a regra cinco: a sala apaga e o barulho chama o Inspetor.
+- Uma portinhola embaixo da escada da recepção (só agachada) abre o cubículo onde o Inspetor dorme.
+- O cubículo guarda um crachá de visitante por noite já jogada, com a data e quantas vezes você caiu.
+- Uma cantiga de ninar vaza da fresta do cubículo quando você chega perto.
+- Um estojo de lata "D.M." na sala de aula guarda a cola do Davi, com o código do quadro de chaves.
+- Uma chave embaixo do vaso da varanda deixa entrar pela porta principal sem arrombar nada.
+- Entrar sem barulho adia o despertar do Inspetor e dá a conquista "Visita Educada".
+- A caixa "ACHADOS" da recepção sorteia um objeto diferente por noite, cada um com uma fala e um efeito.
+- A única lâmpada que não acende com o gerador balança no refeitório; olhar pra ela a acende em vermelho e some.
+- Um ladrilho solto embaixo dela esconde um envelope com as fotos 3x4 das três crianças.
+- O bebedouro de ferro solta água preta de fuligem no primeiro gole (tosse e tela escura) e água limpa no segundo.
+- Uma placa de bronze da pedra fundamental só é legível com a lanterna em cima, e traz quem construiu o internato.
+- A sopa de letrinhas fria da cozinha arruma as letras sob a lanterna e manda olhar atrás do fogão.
+- Um pote de doce de leite escondido pelo Davi ("NÃO MEXE") recupera vida, zera o medo e arranca a primeira risada da Lia.
+- Dá para riscar o dia 15 de março de 1979 no calendário da cozinha, com a conquista "Dia Seguinte".
+- O passa-pratos da copa troca um item seu por outro, com um bilhete de criança junto.
+- Jogar uma garrafa no poço do pátio faz ela voltar voando com um bilhete do Tomé dentro.
+- Jogar de novo faz a garrafa voltar quebrada, com uma risada de menino subindo pelo poço.
+- Na terceira vez, uma mão pequena aparece na borda e a voz passa a chamar "Lia" de dentro do poço.
+- Um pedido da cozinha preso na copa dá a pista do botão sem número do monta-cargas.
+- Estrelas fosforescentes no teto do Dormitório B carregam quando a lanterna aponta pra cima.
+- No escuro, as estrelas formam uma seta e o desenho de um armário.
+- O armário que as estrelas apontam tem fundo falso com uma pilha e um bilhete do Davi.
+- Uma porta de giz no corredor de cima só abre para quem chega de costas (segurando Q).
+- Atrás dela há o dormitório de 1979 intacto, com a cama "LIA MORAES".
+- Deitar na cama (E) cura a vida toda, zera o medo e dá a conquista "A Vaga Era Minha".
+- Ao sair, a porta de giz some para o resto da noite.
+- A lousa da sala de brinquedos responde ao jogo da velha de baixo, com "DAVI. VOCÊ DEMOROU." em letra de criança.
+- Uma bolinha de gude rola sozinha pelo corredor de cima e para diante de uma tábua solta.
+- Sob a tábua está o álbum de figurinhas do clube, com uma 38ª figurinha da irmã que nunca chegou.
+- Puxar uma descarga do banheiro de cima faz todas as outras responderem em fila, cada vez mais perto.
+- Um alçapão no forro do Dormitório C se revela quando a lanterna aponta pra cima.
+- Lá em cima fica o esconderijo seguro dos três (o Inspetor não sobe), com pilha, curativo e o placar dos jogos.
+- Ao descer do forro, a escadinha range e o Inspetor vem conferir.
+- A calha de roupa suja da rouparia (agachada e com a lanterna apagada) desce direto ao depósito: um atalho.
+- Um interruptor sem placa no patamar acende um quarto gradeado inalcançável.
+- A pessoa de costas dentro do quarto se aproxima a cada liga e desliga; parar na segunda dá a conquista "Não Ligue de Novo".
+- Um botão raspado do monta-cargas para o elevador numa copa de 1979 intacta, com luz quente.
+- Na copa, o lugar da Lia está posto, com um guardanapo bordado e um dente de leite guardado pelo Davi.
+- A caixa de memória do diretor na sala de brinquedos repete uma sequência de luzes coloridas que cresce.
+- Errar a sequência de luzes toca uma campainha alta que chama o Inspetor.
+- Vencer a caixa de luzes abre um fundo falso com a ordem das válvulas e a nota do diretor.
+- Uma das bonecas do Dormitório D vira sozinha para o lado de um segredo que você ainda não achou.
+- Quando não sobra mais nada escondido, as três bonecas passam a olhar para a Lia.
+- Salas escondidas (Dormitório F, copa de 1979) ficam fora da planta e só entram no mundo enquanto você está dentro.
+- Teleporte com fundido suave leva e traz você das salas escondidas sem deixar nada pela metade se o jogo pausar.
+- Uma biblioteca nova de sons procedurais (giz, tique, sino, baque, água, splash, campainha, cantiga) dá voz aos segredos.
+- Os dois novos módulos de segredos entram no cache offline do jogo (service worker), para jogar sem internet.
+- A inscrição "L. MORAES" na tampa da carteira só aparece quando a lanterna bate nela ou você senta.
+- A fresta embaixo da portinhola do cubículo acende quando a lanterna aponta pra ela.
+- A chave do vaso troca o texto da porta principal para "Destrancar com a chave do vaso", sem o barulho de arrombar.
+- Os objetos sorteados na caixa "ACHADOS" têm efeitos próprios: o ioiô e os óculos do Davi acalmam o medo, a presilha da Ana cura, o apito esconde uma garrafa.
+- O brilho das estrelas do teto some aos poucos depois que a lanterna sai, dando pouco tempo pra achar o armário.
+- A chamada na carteira acelera nome a nome, e Davi, Ana, Tomé e "Duarte" ficam em silêncio.
+- O relógio tem uma fala extra ao bater 21h00 ("A Hora. Ele ouviu isso do prédio inteiro") e outra em 21h58.
+- A caixa "ACHADOS" revela mais crachás de noite em noite no cubículo, lembrando quantas vezes você já morreu antes.
+- A garrafa jogada no poço nunca some do inventário: ela sempre volta pra sua mão.
+- Perder, responder a chamada ou errar as luzes fazem a lanterna apagar por um instante e voltar sozinha.
