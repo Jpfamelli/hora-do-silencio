@@ -1,0 +1,91 @@
+# Lote 5 — Jogabilidade
+- Prender o ar (ESPAÇO) agora escurece as bordas da tela, cada vez mais forte conforme o fôlego vai acabando
+- O escurecimento das bordas pulsa, e pulsa mais rápido quanto mais o ar aperta
+- Esse escurecimento só começa a pesar depois de cerca de um segundo e meio de ar gasto, não assim que você prende o ar
+- A opção "reduzir flashes" (acessibilidade) suaviza bastante o escurecimento do fôlego
+- A Lia ganhou um batimento cardíaco em som novo, que você escuta quando o Inspetor está por perto
+- A batida do coração acelera quanto mais perto o Inspetor está, e dispara bem rápido quando ele está colado
+- A batida do coração também acelera conforme o seu medo sobe
+- A batida fica mais forte e grave quando o fôlego está quase no fim
+- Prender o ar segura e desacelera a batida do coração
+- Colado nele, a batida forte do coração chega a tremer a sua mão de leve na tela
+- O coração para junto quando você abre um menu ou morre, e fica mudo com o volume desligado
+- Escondida no coração cheio sobe a batida: os nervos a todo alimentam o ritmo dentro do armário
+- Escondida e colada no Inspetor, os nervos cheios sem prender o ar viram um fio de ruído que ele pode captar
+- Quanto mais cheios os nervos escondida, mais alto é esse fio de ruído do coração
+- Aviso na tela "seu coração está alto demais" quando ele está a menos de dois metros do esconderijo
+- Nervos estourando escondida e perto dele agora fazem a Lia tossir alto, um ruído que ele escuta
+- Prender a respiração na hora em que os nervos estouram segura a tosse
+- A tosse esvazia parte dos nervos e tem recarga, para nunca virar repetição
+- A tosse ainda sobe o seu próprio medo (o susto de ter feito barulho)
+- Fala da Lia depois de tossir ("engoli a tosse tarde demais")
+- No Pesadelo a tosse vem com os nervos mais baixos; no Fácil, a janela é bem mais folgada
+- Escondida e colada, a tosse pode fazer o Inspetor te achar e partir para vasculhar o armário
+- Nova defesa "virar estátua": imóvel, agachada, no escuro e encostada numa parede, a Lia some nas sombras
+- Virando estátua, o Inspetor em plena caça passa rente sem dar o bote e segue adiante
+- Qualquer movimento de câmera acima de um limiar quebra a estátua e vira um fio de ruído que pode te entregar
+- Prender o ar ao mesmo tempo faz você virar estátua mais rápido
+- Enquanto está de estátua, a câmera firma e o tremor do medo quase some
+- De sangue-frio na estátua, o seu medo cede um pouco a cada segundo
+- Aviso discreto "imóvel — ele não te vê" enquanto a estátua dura, e "fique imóvel..." enquanto você ainda vira sombra
+- Dica na primeira vez que a estátua segura ele por perto
+- Virar estátua não vale na fuga final: ali ele te enxerga de qualquer jeito
+- Colada nele, parada e sem esconderijo à mão, a Lia tapa a boca sozinha e abafa o arquejo de pânico
+- A mão na boca corta o ofego automático do medo alto enquanto dura
+- Abafar com a mão cansa e gasta o fôlego mais rápido
+- Ao tirar a mão da boca, a Lia solta um suspiro baixo
+- Fala baixa da Lia na primeira vez que tapa a boca
+- Segurar Z e X juntos fecha os olhos da Lia: a tela escurece quase por completo
+- De olhos fechados, a Ana para de se aproximar — ela fica travada onde está enquanto você não a vê
+- De olhos fechados você fica cega ao Inspetor e ao caminho, troca de risco pura
+- Dica na primeira vez que você fecha os olhos
+- Apagar a lanterna (F) no instante do bote faz o Inspetor mirar o calor errado e passar reto
+- A esquiva pela luz custa só um arranhão, no lugar do agarrão, e ainda rende a câmera lenta do "por um fio"
+- Depois de errar pela luz apagada, o Inspetor se reposiciona e continua a caçada por perto
+- A esquiva pela luz também conta como a conquista de esquiva
+- Dica na primeira vez explicando que ele caça o calor da luz
+- A esquiva pela luz não vale na fuga final
+- Segurar E encostada numa parede, sem nada para interagir, faz a Lia bater de leve: uma isca sonora sem gastar garrafa
+- O barulho da batida sai um pouco à frente, na parede, e puxa o Inspetor para investigar aquele ponto
+- O tom da batida muda conforme o piso da sala: seco na madeira, cavo no concreto, abafado no tapete
+- Abusar da batida (três em pouco tempo) faz o Inspetor desconfiar e vir até a SUA posição
+- Fala do Inspetor ao desconfiar da batida repetida ("...de novo essa batida. É você.")
+- A batida na parede tem recarga de alguns segundos
+- A batida só sai parada e encostada na parede; andando, a Lia não bate
+- A batida na parede também faz a Ana parar de contar por um instante
+- Dica na primeira vez que você bate na parede
+- Nova ação (tecla K): a Lia assobia baixo e cria um ponto de ruído na própria posição
+- De longe o assobio serve de isca; colado no Inspetor, é ruído suicida e ele vem na hora
+- O assobio tem som próprio e recarga de alguns segundos
+- O assobio também prende a atenção da Ana por um instante
+- Assobiar não funciona escondida (só fora do esconderijo)
+- Dica na primeira vez que você assobia
+- Na fuga final, olhar para trás (Q) reduz a sua velocidade — quem resiste ao impulso corre melhor
+- O custo de olhar para trás só pesa na fuga, não no resto do jogo
+- Dica na primeira vez que olhar para trás te atrasa na fuga
+- Durante a Procissão, o barulho dela abafa os seus passos: o ouvido do Inspetor cai enquanto ela passa
+- Na fuga final, o sino da capela badalando também abafa os seus passos
+- Fala da Lia ao perceber que o barulho da Procissão cobre os passos dela
+- Soltar o ar segurando ALT sai quase sem barulho, mesmo com o peito queimando
+- Soltar o ar de supetão com pouco fôlego continua denunciando a sua posição
+- Dica na primeira vez sobre soltar o ar devagar
+- Prender o ar (ESPAÇO) correndo corta o arquejo do medo por alguns segundos, saída de emergência na fuga
+- Essa emergência gasta fôlego rápido, então não dá para abusar
+- Dica na primeira vez que você prende o ar correndo
+- Jogar a garrafa agachada, escondida na sombra, fixa o olhar do Inspetor no ponto onde ela cai por mais tempo
+- Encarar o Inspetor de frente e de perto faz os seus nervos subirem rápido
+- Desviar o olhar dele acalma os nervos mais depressa
+- Encarar pela fresta do esconderijo também conta: ver o rosto dele enche os nervos
+- Aviso "não encare ele" quando você está encarando o Inspetor colado com os nervos altos
+- Parar de repente depois de correr faz a Lia derrapar: um passo arrastado que o Inspetor escuta
+- A derrapada tem recarga, para não soar a cada freada
+- Respiro fundo: agachada e parada, sem ameaça por perto, a Lia enche o fôlego mais rápido
+- Respiro fundo: nessas condições o medo também cede mais rápido
+- Apontar a lanterna bem para o chão com a luz acesa faz o medo do escuro ceder um pouco
+- Alívio: quando o Inspetor finalmente se afasta do esconderijo, a Lia solta o ar e os nervos caem de uma vez
+- O estágio de respiração no HUD mostra "[seu coração dispara]" quando ele está colado e os nervos estão altos
+- A Lia registra "assobio", "batida", "tosse", "coração", "derrapa" e "estátua" como causas de ruído próprias
+- Um selo único e discreto no rodapé mostra o estado atual (imóvel, mão na boca, olhos fechados)
+- O escurecimento das bordas fica atrás dos medidores do HUD, sem cobrir a barra de fôlego
+- O novo contra-jogo do corpo roda dentro de uma proteção: um erro nele nunca derruba o quadro do jogo
+- Service worker atualizado para a versão v7, com o novo módulo de jogabilidade entrando no cache para jogar sem internet

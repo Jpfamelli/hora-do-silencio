@@ -9,6 +9,7 @@ import * as JG from './src/jogabilidade.js';
 import { criarMundoJogavel } from './src/jogabilidade-mundo.js';
 import { criarPolimento } from './src/jogabilidade-polimento.js';
 import { criarSegredos } from './src/jogabilidade-segredos.js';
+import { criarJogabilidadeL5 } from './src/jogabilidade-lote5.js';
 import { criarInterface } from './src/interface.js';
 import { PG } from './src/progressao.js';
 import { PLAT } from './src/plataforma.js';
@@ -715,7 +716,9 @@ function onKey(e) {
       if (S.battery <= 0) { toast(S.inv.pilhas ? `Sem pilha. ${JP.t('KeyR')} para trocar.` : `Sem pilha. Segure ${JP.t('KeyR')} para sacudir a lanterna.`); SFX.clique(); break; }
       if (perf - ultimoF < .45 && S.battery < 25 && consertoT <= 0) { consertoT = 20; toast('Você bateu na lanterna. A luz firmou por um tempo.'); emitNoise(P.pos.x, P.pos.z, 4, true); SFX.trancado(); }
       ultimoF = perf;
-      S.flashOn = !S.flashOn; SFX.interruptor(S.flashOn); emitNoise(P.pos.x, P.pos.z, 1.2); SUST.aoLanterna(); SEG.piscou(); break;
+      S.flashOn = !S.flashOn; SFX.interruptor(S.flashOn); emitNoise(P.pos.x, P.pos.z, 1.2); SUST.aoLanterna(); SEG.piscou();
+      if (!S.flashOn && M.ativo && M.state === 'bote') JGL5.boteLuz(); // lote 5: apagar a luz no bote faz ele errar
+      break;
     case 'KeyV': { const c = chamadoArmadilha; SUST.responder(); if (c && !chamadoArmadilha) H.respondeu(); } break;
     case 'KeyR': if (S.inv.lanterna && S.inv.pilhas <= 0 && S.battery < 15) P.sacudirT = .001; else trocarPilha(); break;
     case 'KeyH': iniciarCurativo(); break;
@@ -724,6 +727,7 @@ function onKey(e) {
     case 'KeyC': if (!S.hidden) { if (P.sentada) { levantar(); break; } P.crouch = OPT.agachar === 'segurar' ? true : !P.crouch; if (P.crouch) dicaAgachar(); } break;
     case 'ShiftLeft': case 'ShiftRight': if (OPT.correr) P.correrTrava = !P.correrTrava; break;
     case 'Space': if (OPT.resp) P.arTrava = !P.arTrava; break;
+    case 'KeyK': JGL5.assobiar(); break; // lote 5: assobiar (isca na própria posição)
   }
 }
 function onKeyUp(e) {
@@ -805,7 +809,7 @@ function jogarGarrafa() {
   S.inv.garrafas--; PG.garrafa(); renderInvMini();
   const { fim } = alvoGarrafa();
   const m = MK.garrafa(); m.position.copy(camera.position); W.grupo.add(m);
-  garrafasVoando.push({ m, ini: camera.position.clone(), fim, t: 0, dur: clamp(fim.distanceTo(camera.position) / 14, .2, .9), grupo: W.grupo });
+  garrafasVoando.push({ m, ini: camera.position.clone(), fim, t: 0, dur: clamp(fim.distanceTo(camera.position) / 14, .2, .9), grupo: W.grupo, agachada: P.crouch });
   SFX.arremesso();
 }
 const mira = new THREE.Group(); mira.visible = false; scene.add(mira);
@@ -836,6 +840,8 @@ function updateGarrafas(dt) {
       if (SUST.garrafaVolta(g.fim)) continue;
       if (SEG.garrafa(g)) continue; // garrafa que estoura a lâmpada (src/jogabilidade-segredos.js)
       const sup = superficie(g.fim.x, g.fim.z);
+      // lote 5: jogar a garrafa agachada (na sombra) fixa o olhar do Inspetor no ponto por mais tempo
+      if (g.agachada && M.ativo && M.state === 'caca') { M.olhar = new THREE.Vector3(g.fim.x, 0, g.fim.z); M.olharT = Math.max(M.olharT || 0, 1.8); }
       const antes = M.ativo ? M.state : null;
       if (sup.tipo === 'agua') { SFX.passo(1, 'pedra', false, true); criarOnda(g.fim.x, g.fim.z); emitNoise(g.fim.x, g.fim.z, 7, false, true); }
       else if (sup.tipo === 'terra') { JP.som.terra(g.fim.x, g.fim.z); emitNoise(g.fim.x, g.fim.z, 7, false, true); if (!S.flags.dicaGarrafaTerra) { S.flags.dicaGarrafaTerra = true; toast('Na terra a garrafa não quebra. Quase não faz barulho.'); } }
@@ -919,7 +925,13 @@ function updateRespiracao(dt, perto, dM) {
     S.ar = Math.max(0, S.ar - gasto * dt);
     if (S.ar <= 0) { P.prende = false; P.semAr = true; P.arTrava = false; emitNoise(P.pos.x, P.pos.z, 6, true); marcarCausa('respirou'); SFX.ofego(); toast('Você puxou o ar alto demais!'); P.pulso = 30; }
   } else {
-    if (prendia && !P.semAr) { if (S.ar < 10) { emitNoise(P.pos.x, P.pos.z, 6, true); marcarCausa('respirou'); SFX.ofego(); } else if (S.ar < 30) { emitNoise(P.pos.x, P.pos.z, 1.5, true); SFX.ofego(); } }
+    // lote 5: soltar o ar DEVAGAR (segurando ALT) sai quase sem barulho; soltar de supetão com o peito queimando denuncia
+    const devagar = !!(keys.AltLeft || keys.AltRight);
+    if (prendia && !P.semAr) {
+      if (devagar) { if (S.ar < 30) { SFX.ofego(); if (!S.flags.dicaSoltar) { S.flags.dicaSoltar = true; toast('Soltando o ar devagar (ALT), você não faz barulho.'); } } }
+      else if (S.ar < 10) { emitNoise(P.pos.x, P.pos.z, 6, true); marcarCausa('respirou'); SFX.ofego(); }
+      else if (S.ar < 30) { emitNoise(P.pos.x, P.pos.z, 1.5, true); SFX.ofego(); }
+    }
     S.ar = Math.min(100, S.ar + (S.hidden ? 9 : 22) * dt);
   }
   const fator = (S.dif === 'facil' ? .7 : S.dif === 'pesadelo' ? 1.3 : 1) * (Math.abs(P.espiar) > .3 ? 1.4 : 1);
@@ -934,7 +946,7 @@ function hudRespiracao(perto, dM) {
   if (!perto) return;
   $('#b-breath').style.setProperty('--v', S.ar + '%');
   const bp = $('#b-pulso'); if (bp) bp.style.setProperty('--v', P.pulso + '%');
-  const be = $('#b-estagio'); if (be) be.textContent = (teste ? '[ele parou na porta] · ' : '') + (dM < 2 ? 'ele está do seu lado' : dM < 3.6 ? 'ele está perto' : 'ele está no quarto') + (S.ar < 25 ? ' · [seu peito queima]' : '');
+  const be = $('#b-estagio'); if (be) be.textContent = (teste ? '[ele parou na porta] · ' : '') + (dM < 2 ? 'ele está do seu lado' : dM < 3.6 ? 'ele está perto' : 'ele está no quarto') + (S.ar < 25 ? ' · [seu peito queima]' : '') + (dM < 2.2 && !P.prende && P.pulso > 70 ? ' · [seu coração dispara]' : ''); // lote 5
   br.classList.toggle('queima', S.ar < 25);
 }
 let holdProprio = false;
@@ -1112,11 +1124,19 @@ function updatePlayer(dt) {
   if (Math.abs(P.incl) > .3) spd *= .55;
   if (P.ofegoT > 0) spd *= .9;
   if (P.tropecoT > 0) spd *= .3;
+  // lote 5: na fuga final, olhar para trás (Q) custa terreno — quem resiste ao impulso corre melhor
+  if (fuga && keys.KeyQ) { spd *= .82; if (!S.flags.dicaOlharFuga) { S.flags.dicaOlharFuga = true; toast('Olhar para trás te atrasa. Corra sem olhar.'); } }
   if (P.sprinting) S.stamina = Math.max(0, S.stamina - (fuga ? 8 : 21) * dt);
   else S.stamina = Math.min(100, S.stamina + (moving ? 8 : 14) * dt);
   // correr até zerar o fôlego cobra caro: ela ofega alto por alguns segundos
   if (P.sprinting && S.stamina <= 1 && !fuga) { P.ofegoT = 4; P.ofegoRuidoT = 0; if (!S.flags.dicaOfego) { S.flags.dicaOfego = true; toast('Sem fôlego. Ela ofega alto por alguns segundos, e ele pode ouvir.'); } }
-  if (P.ofegoT > 0) { P.ofegoT -= dt; P.ofegoRuidoT -= dt; if (P.ofegoRuidoT <= 0) { P.ofegoRuidoT = 1.1; SFX.ofego(); emitNoise(P.pos.x, P.pos.z, 4.5, true); marcarCausa('correu'); } }
+  if (P.ofegoT > 0) {
+    P.ofegoT -= dt; P.ofegoRuidoT -= dt;
+    // lote 5: prender o ar (ESPAÇO) corta o ofego do medo por alguns segundos, gastando fôlego — saída de emergência na fuga
+    const prendeEmerg = segurandoAr() && !P.semAr && S.ar > 0;
+    if (prendeEmerg) { S.ar = Math.max(0, S.ar - 24 * dt); if (!S.flags.dicaPrendeCorrendo) { S.flags.dicaPrendeCorrendo = true; toast('Prenda o ar (ESPAÇO) para cortar o arquejo — mas gasta fôlego rápido.'); } }
+    else if (P.ofegoRuidoT <= 0) { P.ofegoRuidoT = 1.1; SFX.ofego(); emitNoise(P.pos.x, P.pos.z, 4.5, true); marcarCausa('correu'); }
+  }
   // correr durante a Hora ecoa pelo prédio inteiro
   if (P.sprinting && !fuga && S.chapter >= 2 && S.chapter <= 4 && M.ativo && !P.room.fora) {
     P.corridaT += dt;
@@ -1171,7 +1191,7 @@ function updatePlayer(dt) {
   const bobY = (Math.abs(Math.sin(P.bob * 2)) * 2 - 1) * (moving ? (P.sprinting ? .055 : .03) : 0) * manca;
   const folego = (100 - S.stamina) / 100, resp = moving ? 0 : Math.sin(perf * (1.5 + folego * 2.6)) * (.004 + folego * .012) * (P.prende ? .2 : 1);
   P.rollLado = lerp(P.rollLado, moving ? -st * (P.sprinting ? .018 : .01) : 0, Math.min(1, dt * 6)); // inclina de leve para o lado em que anda
-  const firme = P.prende ? .3 : 1; // prender o ar firma o corpo contra o tremor do medo
+  const firme = P.prende ? .3 : (P.estatua ? .45 : 1); // prender o ar (ou virar estátua) firma o corpo contra o tremor do medo
   const sh = P.shake + (S.fear > 70 ? (S.fear - 70) / 30 * .015 * firme : 0);
   camera.position.set(hx + rand(-sh, sh), P.h + bobY + resp + rand(-sh, sh) - (P.naAgua ? .12 : 0) - Math.abs(P.incl) * .04, hz + rand(-sh, sh));
   // sair do esconderijo também tem gesto: a câmera desliza para fora em vez de pular
@@ -2017,7 +2037,10 @@ function updateInspetor(dt) {
     if (M.boteT <= 0) {
       const dir = new THREE.Vector3(P.pos.x - M.pos.x, 0, P.pos.z - M.pos.z); if (dir.length() > .01) { dir.normalize(); M.pos.addScaledVector(dir, .5); collide(M.pos, .3); }
       const d2 = M.pos.distanceTo(P.pos);
+      // lote 5: apagar a lanterna no instante do bote faz ele mirar o calor errado e passar reto (só um arranhão)
+      const esquivaLuz = JGL5.esquivouPelaLuz() && !fuga && !S.hidden;
       if (S.hidden || (P.room.seguro && !fuga)) { M.state = 'procura'; M.searchT = 3; }
+      else if (esquivaLuz) { M.state = 'caca'; M.cool = 1.4; SX.arrastoAr(M.pos); conquista('esquiva'); JP.porUmFio(); if (!S.flags.dicaBoteLuz) { S.flags.dicaBoteLuz = true; toast('Ele caça o calor da luz. Apagada na hora certa, você some do bote.'); } if (d2 < 2.2) arranhao(); planejar(M, P.pos.x + rand(-2, 2), P.pos.z + rand(-2, 2)); }
       else if (d2 < 1.6) {
         if (M.boteAgachou && P.noiseR === 0 && M.cacaT < 2.5 && !fuga) { M.state = 'procura'; M.searchT = 4; M.cool = 2.5; SX.arrastoAr(M.pos); toast('A mão dele passou por cima da sua cabeça.'); conquista('esquiva'); JP.porUmFio(); }
         else agarrar();
@@ -2091,7 +2114,7 @@ function updateInspetor(dt) {
     else if (M.state === 'patrulha' && M.recuo <= 0) { SX.cantarola(M.pos); M.somT = rand(6, 10); }
     else M.somT = 1.5;
   }
-  if (!S.dead && M.cool <= 0 && !S.hidden && !submersa && !(P.room.seguro && !fuga) && !['bote', 'agarra', 'fareja', 'vasculha', 'alerta'].includes(M.state) && d < (M.state === 'caca' ? 2.3 : 1.2) && !(MP && MP.portaGraca())) iniciarBote();
+  if (!S.dead && M.cool <= 0 && !S.hidden && !submersa && !(P.room.seguro && !fuga) && !['bote', 'agarra', 'fareja', 'vasculha', 'alerta'].includes(M.state) && d < (M.state === 'caca' ? 2.3 : 1.2) && !(MP && MP.portaGraca()) && !(P.estatua && !fuga)) iniciarBote(); // lote 5: virar estátua segura o bote
   if (!S.dead && M.cool <= 0 && S.hidden && M.achou && d < 2.4 && !['vasculha', 'agarra', 'fareja'].includes(M.state)) iniciarVasculha();
   if (!S.hidden || d > 4) { M.achou = false; M.certo = false; }
   // Corpo
@@ -3628,6 +3651,7 @@ function mascaraSom(x, z) {
   let k = 1;
   if (AC && AC.currentTime > AUD.trovaoIni && AC.currentTime < AUD.trovaoAte) k *= .3;
   if (AMB.ger && Math.hypot(x - AMB.ger.pos.x, z - AMB.ger.pos.z) < 8) k *= .5;
+  k *= JGL5.mascara(); // lote 5: o barulho da Procissão e o sino da fuga cobrem os passos
   return k;
 }
 function silenciarContinuos() {
@@ -4307,6 +4331,11 @@ const SEG = criarSegredos({ THREE, W, P, M, ANA, ANA_G, PROC, R, OPT, SFX, keys,
   get S() { return S; }, get AC() { return AC; }, get perf() { return perf; }, get alvo() { return alvo; }, get mode() { return mode; }, get ui() { return ui; },
   interact, box, cyl, addCollider, textoTex, roomAt, SALA, planejar, collide, emitNoise, marcarCausa, renderInvMini, toast, sub, subPequeno, conquista, abrirNotaUI, abrirTeclado, fade, spawnAna,
   somTecido: v => JP.som.tecido(v) });
+// Jogabilidade, lote 5: contra-jogo do corpo e do silêncio (src/jogabilidade-lote5.js)
+const JGL5 = criarJogabilidadeL5({
+  THREE, P, M, ANA, PROC, W, keys, camera, OPT, SFX, emitNoise, marcarCausa, toast, sub, subPequeno,
+  audio: { saida: (...a) => saida(...a), osc: (...a) => osc(...a), env: (...a) => env(...a), burst: (...a) => burst(...a) },
+  get S() { return S; }, get perf() { return perf; }, get AC() { return AC; }, get mode() { return mode; }, get ui() { return ui; }, get alvo() { return alvo; } });
 const VIS = instalarVisual({ THREE, scene, camera, renderer, canvas, flash, flashFill, MON, ANA, ANA_G, PROC, M, P, W, MAT, OPT, OPT_KEY, lsSet, R, ROLOS, keys, roomAt, visivel, collide, salasAlcancaveis, distSalas, D, MAOS, MAT_CACO, chuvaMat, chuvaGeo, SFX, sub, toast, conquista, interact, item, MK, legendas: UIX.som.def, get alvo() { return alvo; },
   get S() { return S; }, get mode() { return mode; }, get ui() { return ui; }, get flashPisca() { return flashPisca; }, get hbT() { return AUD.hbT; }, get raioI() { return raioI; }, get fita() { return fitaTocando; }, get perf() { return perf; } });
 const VM = instalarMundoVisual({ THREE, scene, camera, renderer, flash, hemi, moon, W, P, M, ANA, ANA_G, PROC, MON, MAT, MK, OPT, R, TX, chuvaMat, respingos, interact, sub, SFX, DOOR, collide, raio: () => { raioT = 0; },
@@ -4359,7 +4388,7 @@ function frame(dt) {
     S.tempo += dt; S.capT += dt; PG.tick(dt);
     updatePlayer(dt); updateLanterna(dt); updateFear(dt);
     { const dm = dt * JP.ritmo(); if (!congelado(dm)) { updateInspetor(dm); updateAna(dm); updateProcissao(dm); ML.tick(dm); MS.tick(dm); } updateEventos(dm); } updateGarrafas(dt); // ritmo do mundo (acessibilidade): a Lia não fica mais lenta
-    updateClima(dt); updateJogabilidade(dt); updateAlvo(); JM.update(dt); SEG.update(dt); updateSegurar(dt); updateFita(dt); updateHUD(); updateSub(dt); updateAudio(dt); H.tick(dt);
+    updateClima(dt); updateJogabilidade(dt); updateAlvo(); JM.update(dt); SEG.update(dt); JGL5.update(dt); updateSegurar(dt); updateFita(dt); updateHUD(); updateSub(dt); updateAudio(dt); H.tick(dt);
   } else if (mundoVivo()) { // cofre, quadro (e no Pesadelo notas e diário): o mundo continua, com o som abafado
     S.tempo += dt; S.capT += dt; P.noiseR = 0; abafar(true);
     updateLanterna(dt); updateFear(dt);
