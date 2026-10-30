@@ -5,6 +5,8 @@
 import { MUNDO } from './progressao-mundo.js'; // Lote 2: mundo e história (acervo, noites que lembram, datas, jornal...)
 import { P3 } from './progressao3.js'; // Lote 3: polimento (reinício na hora, 100%, Noite da Semana, segredos do título...)
 import { L4 } from './progressao-lote4.js'; // Lote 4: segredos e easter eggs (códigos, modos, cartas, boatos, parede das Lias...)
+import { L5 as _L5REAL } from './progressao-lote5.js'; // Lote 5: monstros (temperamento por noite, bestiário vivo, "te ouviu", modo Caçada, contra-jogo)
+const L5 = window.__L5OFF ? { ligar(){}, difKey(){return '';}, difMod(){}, novoJogo(){}, tick(){}, titulo(){}, morte(){}, telaMorte(){}, pausa(){return '';}, fimCap(){return [];}, final(){}, statsLinhas(){return [];}, difExtra(){return '';} } : _L5REAL;
 const LORE_KEY = 'hora-silencio-v3-acervo';
 const STATS_KEY = 'hora-silencio-stats';
 const ULTIMA_KEY = 'hora-silencio-ultima';
@@ -179,6 +181,7 @@ function painelStats() {
     , ...MUNDO.linhasStats()
   ];
   L.push(...P3.statsLinhas());
+  L.push(...L5.statsLinhas());
   abrirPainel('Estatísticas', P3.statsTopo() + L.map(([a, b]) => `<div class="it"><div><b>${a}</b></div><span class="rank" style="font-size:20px">${b}</span></div>`).join(''));
   P3.depoisStats(L);
 }
@@ -209,13 +212,14 @@ function titulo() {
   MUNDO.titulo();
   P3.titulo();
   L4.titulo();
+  L5.titulo();
   // ele lembra de quem morreu muito
   try {
     const sp = C.W.def && C.W.def.spawns && C.W.def.spawns.titulo;
     if (sp && (s.mortes || 0) >= 20) { const y = sp.yaw || 0; C.MON.g.visible = true; C.MON.g.position.set(sp.x - Math.sin(y) * 30, 0, sp.z - Math.cos(y) * 30); C.MON.g.rotation.y = y; }
   } catch (e) {}
 }
-function difDesc() { const el = $('#o-dif-desc'); if (el) el.textContent = ((RP().dificuldades || {})[$('#o-dif').value] || '') + P3.difExtra($('#o-dif').value); }
+function difDesc() { const el = $('#o-dif-desc'); if (el) el.textContent = ((RP().dificuldades || {})[$('#o-dif').value] || '') + P3.difExtra($('#o-dif').value) + L5.difExtra(); }
 function teclaTitulo(e) {
   if (!C || C.mode !== 'titulo' || $('#title').hidden || (document.activeElement && document.activeElement.tagName === 'INPUT')) return;
   const k = e.key && e.key.length === 1 ? e.key.toLowerCase() : '';
@@ -238,6 +242,7 @@ export const PG = {
     MUNDO.ligar(ctx, { conquista, ls, stats, acervo, fmtC, fmt, abrirPainel, somaStat });
     P3.ligar(ctx, { conquista, ls, stats, acervo, fmtC, fmt, abrirPainel, somaStat, calcRank });
     L4.ligar(ctx, { conquista, ls, stats, acervo, fmtC, fmt, abrirPainel, somaStat, lerCodigo });
+    L5.ligar(ctx, { conquista, ls, stats, acervo, fmtC, fmt, abrirPainel, somaStat });
     addEventListener('keydown', e => {
       teclaTitulo(e);
       if (C.ui === 'morte' && (e.code === 'Enter' || e.code === 'KeyE' || e.code === 'NumpadEnter') && !$('#dt-retry').hidden && !$('#death').hidden) $('#dt-retry').click();
@@ -270,12 +275,13 @@ export const PG = {
     somaStat(s => { s.partidas = (s.partidas || 0) + 1; });
     MUNDO.novoJogo(S);
     P3.novoJogo(S);
+    L5.novoJogo(S);
   },
   // dificuldade efetiva: base + amuletos + ajuda invisível
   dif(S, DIFS) {
     const base = DIFS[S && S.dif] || DIFS.normal;
     if (!S) return base;
-    const aj = S.ajuda || 0, mods = S.mods || [], k = (S.dif || '') + aj + mods.join() + MUNDO.difKey();
+    const aj = S.ajuda || 0, mods = S.mods || [], k = (S.dif || '') + aj + mods.join() + MUNDO.difKey() + L5.difKey(S);
     if (PG._k === k && PG._v) return PG._v;
     const v = { ...base };
     if (mods.includes('pilha')) v.pilha *= 2;
@@ -283,6 +289,7 @@ export const PG = {
     if (mods.includes('passos')) v.vel *= 1.12;
     if (mods.includes('aviso')) v.aviso = Math.max(2, v.aviso - 3);
     MUNDO.difMod(v, S);
+    L5.difMod(v, S); // Lote 5: humor do Inspetor por noite + modo Caçada
     if (aj) { v.vel *= 1 - aj; v.ouvido *= 1 - aj; v.aviso += aj >= .2 ? 3 : 2; }
     PG._k = k; PG._v = v; return v;
   },
@@ -292,6 +299,7 @@ export const PG = {
     MUNDO.tick(dt);
     P3.tick(dt);
     L4.tick(dt);
+    L5.tick(dt);
     S.capRuido = (S.capRuido || 0) + (P.noiseR || 0) * dt;
     if (P.sprinting && !S.flags.sino) { S.capCorreu = (S.capCorreu || 0) + dt; S.correu = (S.correu || 0) + dt; }
     if (S.flashOn) S.capLuzT = (S.capLuzT || 0) + dt;
@@ -372,6 +380,7 @@ export const PG = {
     linhas.push(...P3.fimCap(c, r)); // antes do MUNDO: a rota do recorde anterior ainda está guardada
     linhas.push(...MUNDO.fimCap(c, ant));
     linhas.push(...L4.fimCap(c, r));
+    linhas.push(...L5.fimCap(c, r));
     if ($('#fc-falta')) $('#fc-falta').innerHTML = linhas.join('<br>');
   },
   zerarCap() { const S = C.S; Object.assign(S, { capMortes: 0, capRuido: 0, capCorreu: 0, capLuzT: 0, capLore: 0, capGarrafas: 0, semObjT: 0, procTipo: null, dicaSala: null }); PG._perto = null; },
@@ -416,6 +425,7 @@ export const PG = {
     MUNDO.morte(quem);
     P3.morte(quem);
     L4.morte(quem);
+    L5.morte(quem);
     if (S.modo && S.modo.umaVida) { try { localStorage.removeItem(C.KEYS.SAVE_KEY); } catch (e) {} }
   },
   escondidaAntes() { PG._escT = performance.now(); },
@@ -429,12 +439,13 @@ export const PG = {
       : `morte nº ${S.capMortes || 1} neste capítulo · ${S.mortes} na noite · ${faltam ? `faltava${faltam > 1 ? 'm' : ''} ${faltam} objetivo${faltam > 1 ? 's' : ''}` : 'o capítulo estava quase no fim'} · +15s no cronômetro do capítulo<br><small>E ou ENTER para tentar de novo</small>`;
     P3.telaMorte();
     L4.telaMorte();
+    L5.telaMorte();
   },
   // pausa
   pausa() {
     const S = C.S, el = $('#p-info'); if (!el || !S) return;
     const am = (S.mods || []).map(id => ((RP().amuletos || []).find(a => a.id === id) || {}).nome).filter(Boolean);
-    el.innerHTML = `${window.ROTEIRO.capitulos[S.chapter].titulo} · ${fmtC(S.capT)} neste capítulo · ${fmtC(S.tempo)} na noite · ${S.mortes} ${S.mortes === 1 ? 'morte' : 'mortes'}<br>${C.D().nome}${am.length ? ' · ' + am.join(', ') : ''}${S.modo && S.modo.umaVida ? ' · Uma Vida' : ''} · código de desafio ${codigoDesafio(S)}${MUNDO.pausaExtra()}${P3.pausa()}${L4.pausa()}`;
+    el.innerHTML = `${window.ROTEIRO.capitulos[S.chapter].titulo} · ${fmtC(S.capT)} neste capítulo · ${fmtC(S.tempo)} na noite · ${S.mortes} ${S.mortes === 1 ? 'morte' : 'mortes'}<br>${C.D().nome}${am.length ? ' · ' + am.join(', ') : ''}${S.modo && S.modo.umaVida ? ' · Uma Vida' : ''} · código de desafio ${codigoDesafio(S)}${MUNDO.pausaExtra()}${P3.pausa()}${L4.pausa()}${L5.pausa()}`;
   },
   // final
   loreFinal() {
@@ -459,6 +470,7 @@ export const PG = {
     MUNDO.final(tipo);
     P3.final(tipo);
     L4.final(tipo);
+    L5.final(tipo);
   },
   telaFinal(tipo) {
     const S = C.S, R = window.ROTEIRO, st = stats();

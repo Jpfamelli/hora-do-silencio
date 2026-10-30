@@ -1,0 +1,94 @@
+# Lote 5 — Progressão e rejogabilidade
+- O Inspetor ganha um humor diferente a cada noite, sorteado pela semente, mudando como ele caça
+- Humor Farejador: ele ouve um pouco mais e acelera quando você está sangrando
+- Humor Ouvinte: a audição dele alcança quase a casa inteira a noite toda
+- Humor Guardião: a ronda fica mais curta e ele volta mais rápido ao que é dele
+- No Pesadelo o humor da noite vem sempre intensificado
+- A Lia sente o humor da noite e comenta numa fala no começo do capítulo
+- Um aviso em texto nomeia o humor da noite, legível por leitor de tela
+- Um toque de sino marca o momento em que você percebe o humor do Inspetor
+- O humor atual aparece na tela de pausa
+- O humor atual aparece na ficha do Inspetor no bestiário enquanto você joga
+- A descrição da dificuldade avisa que o humor dele muda a cada noite
+- Conquista "Três Humores" por sobreviver a uma noite de cada humor
+- A tela de título lembra qual era o humor dele na última noite
+- Novo botão "Bestiário" na tela de título
+- Painel do bestiário com uma ficha para cada entidade do jogo
+- Cada comportamento começa oculto ("???") e só aparece quando você o presencia
+- Cada comportamento revelado traz uma dica de contra-jogo
+- Barra de progresso mostra quantos comportamentos você já viu
+- Aviso de "comportamento novo registrado" quando você descobre um
+- Som sutil de papel ao registrar um comportamento inédito
+- Conquista "Caderno Cheio" ao revelar todos os comportamentos
+- A ficha mostra quantas vezes cada entidade já te pegou
+- A entidade fica escondida atrás de "???" até o primeiro encontro
+- Bestiário registra a Caçada do Inspetor (o apito que abre a caça)
+- Bestiário registra o Bote do Inspetor
+- Bestiário registra a Emboscada (quando ele espera parado no escuro)
+- Bestiário registra o Faro de sangue
+- Bestiário registra a Escuta na parede
+- Bestiário registra o Vasculho dos armários
+- Bestiário registra a Pausa de Memória (quando ele reza)
+- Bestiário registra a Falsa Partida (ele finge ir e volta)
+- Bestiário registra o DEZ da Menina Que Conta
+- Bestiário registra que a Menina anda no escuro
+- Bestiário registra o Aviso da Procissão (luzes e rádio)
+- Bestiário registra a Marcha da Procissão
+- Bestiário registra a Voz Vizinha do Chamado
+- Contador de quantas vezes o Inspetor te ouviu durante a noite
+- O contador de "ele te ouviu" aparece na tela de morte
+- O contador de "ele te ouviu" aparece na pausa
+- Contagem separada de quantas vezes ele te ouviu em cada capítulo
+- O fim do capítulo mostra quantas vezes ele te ouviu ali
+- Conquista "Capítulo Mudo" por passar um capítulo sem ele te ouvir
+- O jogo guarda a melhor noite (a com menos vezes ouvida) entre partidas
+- Final secreto: um epílogo quando você atravessa a campanha sem nunca ser ouvida
+- Conquista secreta "A Noite Toda em Silêncio" por esse feito
+- Linha extra nas estatísticas do final quando você passou sem ser ouvida
+- Novo botão "Rejogo" na tela de título
+- Painel de Rejogo com o modo Caçada Limpa
+- Modo Caçada Limpa: o Inspetor ouve bem mais longe
+- Modo Caçada Limpa: ele quase não recua, a ronda fica agressiva
+- O modo Caçada Limpa fica trancado até você terminar a campanha uma vez
+- Aviso na tela ao ligar e ao desligar o modo Caçada Limpa
+- Placar do melhor tempo sobrevivido no modo Caçada Limpa
+- O modo Caçada Limpa aparece indicado na pausa
+- Conquista "Cinco Minutos" por aguentar cinco minutos na Caçada Limpa
+- Conquista "Zelador Cego" por vencer o Capítulo I no modo Caçada Limpa
+- Conquista "Surda por uma Noite" por terminar a campanha na Caçada Limpa
+- Conquista secreta "A Noite Cega" por terminar um capítulo sem acender a lanterna
+- Linha no fim do capítulo quando você joga sem a lanterna uma vez
+- Conquista secreta "Nunca na Cama" por uma noite sem usar nenhum esconderijo
+- O jogo passa a rastrear se você usou algum esconderijo na noite
+- Conquista "Boa Noite, Moacir" por um capítulo sem correr e sem luz perto dele
+- O jogo rastreia quando você acende a luz a menos de 5 m do Inspetor
+- Conquista "Sem Rastro" por um capítulo sem sangrar perto do Inspetor
+- O jogo rastreia quando você sofre dano perto do Inspetor
+- Linha no fim do capítulo quando você não deixa rastro de sangue para ele
+- Conquista "Boa Noite, Todos" por fazer os três gestos de compaixão numa só noite
+- Conquista "Pela Hora" por cruzar três salas com ele parado no Capítulo II
+- Nova dica de morte quando você cai na emboscada: "Ele nunca tinha ido embora."
+- Nova dica de morte na falsa partida: "Você saiu cedo demais."
+- Nova dica de morte pelo faro de sangue
+- Nova dica de morte quando você se mexe no meio da reza dele
+- A dica de morte conta qual era o humor do Inspetor naquela noite
+- O jogo guarda o esconderijo que você mais usou na noite
+- O Inspetor murmura "De novo aqui." quando você repete cedo o esconderijo favorito
+- Conquista "Nunca o Mesmo Canto" por uma noite sem repetir o esconderijo favorito da anterior
+- Estatística nova: comportamentos vistos no bestiário
+- Estatística nova: humores do Inspetor já enfrentados
+- Estatística nova: mais tempo sobrevivido no modo Caçada Limpa
+- Estatística nova: noite com menos vezes ouvida
+- A pausa mostra uma dica rotativa sobre o comportamento das entidades
+- As conquistas novas entram na lista geral e contam no total do jogo
+- O botão Bestiário na tela de título mostra o progresso (vistos/total)
+- O botão Bestiário vira "Bestiário ★" quando você revela tudo
+- Toast especial "ficha nova aberta" na primeira vez que você vê uma entidade
+- Rodapé do bestiário conta quantas fichas estão completas
+- O painel Rejogo mostra quantas conquistas de monstro você já tem
+- Nova estatística: conquistas de monstro (Lote 5) conquistadas
+- O fim do capítulo mostra o tempo sobrevivido na Caçada Limpa até ali
+- O rádio do título sussurra sobre a noite em silêncio quando você conquista o feito
+- Duas novas dicas de comportamento (a Menina na luz, a escuta na parede) giram na pausa
+- Os textos e arquivos do Lote 5 entram no cache offline (PWA) pelo service worker
+- Tudo do Lote 5 é passivo e à prova de erro: não trava o jogo nem o QA
