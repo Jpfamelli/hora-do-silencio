@@ -1,0 +1,92 @@
+# Lote 6 — Mapa: térreo e dormitórios
+- Galão de gasolina nasce numa prateleira sorteada da despensa a cada noite, pela semente
+- Caixa de fusíveis nasce numa maca sorteada da enfermaria a cada noite
+- Nota da recepção muda de canto por noite, dentro da mesma sala
+- Nota da cozinha muda de canto por noite
+- Nota da enfermaria muda de canto por noite
+- Nota da sala de aula muda de canto por noite
+- Pilhas da sala de aula aparecem em ponto sorteado
+- Pilhas do banheiro aparecem em ponto sorteado
+- Pilhas do refeitório aparecem em ponto sorteado
+- Curativo da enfermaria aparece em prateleira sorteada
+- Curativo da cozinha aparece em prateleira sorteada
+- Garrafa do refeitório aparece em ponto sorteado
+- Garrafa da cozinha aparece em ponto sorteado
+- Garrafa do banheiro aparece em ponto sorteado
+- Engrenagem da caixinha nasce numa cama sorteada do Dormitório E
+- Página 2 do diário muda de canto no quarto da Irmã Celeste
+- Página 3 do diário muda de canto na sala de brinquedos
+- Nota da sala de brinquedos aparece em ponto sorteado
+- Nota da rouparia aparece em ponto sorteado
+- Pilhas do Dormitório C em ponto sorteado
+- Pilhas do depósito em ponto sorteado
+- Pilhas da rouparia em ponto sorteado
+- Curativo do banheiro de cima em ponto sorteado
+- Curativo do Dormitório D em ponto sorteado
+- Garrafa do banheiro de cima em ponto sorteado
+- Garrafa do depósito em ponto sorteado
+- Garrafa do Dormitório A em ponto sorteado
+- Refeitório remonta sozinho: cadeiras em volta da mesa, viradas de costas ou empilhadas num canto, por noite
+- Cozinha com panelas penduradas em ganchos diferentes a cada noite
+- Enfermaria com o biombo em uma de três posições por noite
+- Sala de aula com as carteiras alinhadas, tombadas ou de esguelha por noite
+- Biblioteca com uma pilha de livros caídos num canto sorteado
+- Lavanderia com os lençóis do varal em configuração sorteada
+- Recepção com a cadeira do porteiro de pé ou tombada por noite
+- Foto da turma de 1979 na recepção; na segunda jogada falta uma criança e dá para olhar de perto
+- Quadro de chaves com as etiquetas reescritas e embaralhadas pela semente (só leitura; o código continua o seu)
+- Porta pregada no corredor oeste que só na segunda jogada pode ser arrancada, revelando um nicho com um bilhete do Davi
+- Painel com os desenhos do menino Moacir no hall, visível só na segunda jogada
+- Marca de giz do Davi apontando um atalho de serviço, só na rejogada
+- Um armário por noite está podre: a Lia avisa que não se esconderia ali
+- Luminária piscando num corredor sorteado, dando sensação de casa viva
+- Poça refletindo no chão de uma sala sorteada
+- Torneira pingando nos banheiros, ponto e ritmo sorteados
+- Relógio da recepção parado numa hora sorteada por noite
+- Na segunda jogada, o lema da fachada aparece com "MENTIRA" raspado por baixo
+- Bilhete dobrado sorteado entre dois cantos do hall, para o acervo não cair no automático
+- Parede com marcas de giz contando quantas noites você já passou no internato
+- Lousa da sala de aula com uma frase de giz sorteada por noite
+- Fogão da cozinha com a chama piloto acesa num bico sorteado
+- Despensa com sacos empilhados em arranjo sorteado
+- Diretoria com uma gaveta deixada aberta num móvel sorteado
+- Pátio com um galho caído em ponto sorteado
+- Qual lâmpada do corredor já está acesa num canto seguro muda por noite
+- Uma porta range sozinha ao chegar ao térreo, escolhida pela semente
+- Contador de mortes no térreo guardado entre as noites
+- Recorde de tempo do Capítulo I guardado e anunciado ao ligar o gerador
+- Recorde de tempo do Capítulo II guardado ao subir para os dormitórios
+- Fechar o Capítulo I sem levar dano conta como noite perfeita e avisa
+- Ao entrar, o jogo diz em que noite você está no internato
+- Aviso de casa trocada quando a noite usa uma semente de desafio
+- Camas: qual está virada ou desarrumada muda de dormitório a cada noite
+- Sala de brinquedos com os brinquedos espalhados em arranjo sorteado
+- Rouparia com as prateleiras arrumadas ou reviradas por noite
+- Quadro da chamada no corredor de cima; na segunda jogada falta uma criança e dá para contar
+- Um armário por noite está ocupado: a Ana avisa "Esse é meu. Acha outro."
+- Portinha lacrada da rouparia que só abre na segunda jogada, com carta do Davi e um retrato riscado
+- Marca de giz apontando um atalho até o depósito, só na rejogada
+- Janela batendo num dormitório sorteado, com vento e pancada
+- Brinquedo de cavalinho que gira sozinho num ponto sorteado
+- Relógio do andar parado numa hora sorteada
+- Recado da Irmã Celeste sorteado entre dois cantos do quarto
+- Risadinha vinda de um dormitório sorteado ao passar perto
+- Espelho do banheiro embaçado com uma palavra sorteada, só na segunda jogada
+- Parede com marcas de giz contando as noites no andar
+- Depósito com caixas empilhadas em arranjo sorteado
+- Urso de pano aparece numa cama sorteada
+- Chamada do corredor com número de presentes e de faltas sorteado
+- Vela do quarto da Irmã Celeste acesa ou apagada por noite
+- Torneira pingando no banheiro de cima, ponto sorteado
+- Rouparia com luz piscando e mariposa por noite
+- Desenho de giz no chão da sala de brinquedos, sorteado
+- Contador de mortes no andar guardado entre as noites
+- Recorde de tempo do Capítulo III guardado ao fim da brincadeira da Ana
+- Atravessar o andar sem levar dano conta como noite perfeita e avisa
+- Aviso de noite trocada ao entrar no andar quando a semente é de desafio
+- Conquista "Veterana do Internato" ao entrar pela quinta noite
+- Conquista secreta "Decorou?" ao fechar o Capítulo I numa noite de volta embaralhada
+- Conquista secreta "O Que Pregaram" ao abrir a porta ou a portinha lacrada da segunda jogada
+- Conquista secreta "Falta Um" ao reparar na criança que sumiu da foto ou da chamada
+- Conquista "Pé Ligeiro" ao bater o seu próprio recorde de tempo num capítulo
+- Conquista secreta "Quarto do Castigo" ao ler os desenhos do Moacir na segunda jogada
