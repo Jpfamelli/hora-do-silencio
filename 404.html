@@ -17,6 +17,8 @@
   p{color:#857a63;max-width:420px;line-height:1.5;margin:0}
   a{color:#8e8060;text-decoration:underline}
   small{color:#4a4336}
+  .dica{opacity:0;transition:opacity 1.2s;font-size:11px;letter-spacing:1px}
+  .wrap:hover .dica{opacity:.6}
 </style>
 </head>
 <body>
@@ -26,8 +28,14 @@
   <p>Ou existia, até 1979. A porta que você procurava foi pregada por dentro.</p>
   <a href="./">voltar para a cama</a>
   <small>São Lázaro — ala interditada</small>
+  <small class="dica">quem conhece a casa entra por #porao, #1978 ou #presente</small>
 </div>
 <script>
+  // nome de uma sala interditada sorteado a cada visita
+  try {
+    var salas = ['Enfermaria', 'Dormitório E', 'Casa de Máquinas', 'Capela', 'Despensa', 'Sala do Diretor', 'Lavanderia', 'Refeitório'];
+    var sm = document.querySelector('small'); if (sm) sm.textContent = 'São Lázaro — ' + salas[Math.floor(Math.random() * salas.length)] + ' (interditada)';
+  } catch (e) {}
   // nove badaladas procedurais ao primeiro toque (WebAudio, sem assets)
   let tocou = false;
   document.getElementById('w').addEventListener('click', e => {

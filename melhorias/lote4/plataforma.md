@@ -93,3 +93,92 @@
 - O link da v1 abre a primeira versão do internato numa aba nova (Arqueologia)
 - Os segredos e a pista do porão só aparecem fora do QA, sem atrapalhar os testes automáticos
 - CSS próprio do lote (plataforma4.css) injetado só quando o jogo abre
+- Marcador #coro no endereço: o hino do internato começa a ensaiar sozinho no título
+- Marcador #joaquim: o subtítulo vira o lamento do porteiro morto, com sino longe
+- Marcador #luiz: um nome aparece riscado no muro do título
+- Marcador #tome: o subtítulo mostra a ocorrência das 21h04 com sussurro
+- Marcador #celeste: a cozinheira reza baixinho no título
+- Marcador #vela: uma vela acesa, com chama tremeluzente, fica no canto do título
+- Marcador #corvo: um corvo pousa perto do sino do título
+- Marcador #neblina: a neblina do pátio sobe por cima do título
+- Marcador #relampago: relâmpagos ocasionais iluminam o título (respeita Reduzir flashes)
+- Marcador #apagada: o título apaga e só o que você aponta com o cursor aparece
+- Marcador #vinil: a vitrola da sala dos professores começa a chiar no título
+- Marcador #sino: as nove badaladas tocam ao abrir o título
+- Marcador #moacir: o bedel assovia lá do fundo do pátio
+- Marcador #fita: a imagem do título treme como fita velha, com linhas de varredura
+- Marcador #ladob: você "vira a fita" pro lado B, com clique e chiado
+- Marcador #fogo: por três segundos o internato pega fogo de novo no título
+- Comando de console moacir(): a ficha do bedel cego
+- Comando de console ana(): ela conta de um a dez, com o dez em branco
+- Comando de console procissao(): as nove badaladas da Procissão
+- Comando de console joaquim(): o bilhete do porteiro, com sino longe
+- Comando de console sino(): toca as nove badaladas
+- Comando de console presente(): a dica das letras mais fortes dos créditos
+- Comando de console turma(): os nomes da turma de 1979, um sem nome
+- Comando de console celeste(): a reza da cozinheira
+- Comando de console tome(): a ocorrência das 21h04
+- Comando de console silencio(): limpa o console e escreve só um ponto
+- O comando ajuda() do console agora lista também os comandos novos
+- Novo código digitado no título: GAVETA, achado em cifra no código-fonte, dá a conquista Quem Abriu a Minha Gaveta
+- Link ?selo= mostra no título "fulano achou o X. Você não." sem dizer onde fica
+- Link ?f= deixa um recado de giz pronto riscado no chão do título, assinado
+- Link ?pega= dispara um susto preparado por um amigo no prólogo, com o crédito dele
+- Link ?col= compara a sua coleção de segredos com a de um amigo
+- Link ?vela= acende no seu título a vela que um amigo mandou
+- Link ?x= desenha um X de giz vermelho com o nome de quem caiu ali
+- Link ?pista= entrega uma dica vaga de onde fica um segredo, confirmando antes pra não estragar
+- Botão "Deixar recado de giz (frase pronta)" no fim do capítulo, com 10 frases prontas
+- Botão "Preparar um susto para alguém" no fim do capítulo, com 5 sustos à escolha
+- Botão "Copiar meu código de colecionador" no fim do capítulo
+- Código de colecionador compacto (base36) com os marcadores e o número de segredos
+- Filtro de nome e recado dos links: só letras e números, com limite de tamanho
+- A pegadinha de amigo nunca acontece no modo Uma Vida nem no Desafio e respeita Reduzir flashes
+- Opção "Recusar pegadinhas de amigos" na tela Desempenho
+- A pegadinha recebida mostra "Pegadinha de fulano" e dá a conquista Pegadinha
+- Tabela de senhas de pista (GATO7, SINO9, POCO3, LOUSA, PORAO) com dicas sem spoiler
+- Com a bateria do aparelho abaixo de 15% fora da tomada, a Lia avisa e a pilha dela enfraquece
+- Ao ligar o carregador, a Lia agradece e a luz volta ao normal
+- Opção "Ignorar a bateria do aparelho" para quem não quer o efeito de pilha fraca
+- Opção "Guardar clipes (F9)" grava os últimos 15 s da tela, para quem faz live
+- Os clipes usam um buffer circular de vídeo do canvas somado ao áudio do jogo
+- F9 baixa um .webm dos últimos segundos e dá a conquista Diretor
+- Botão "Baixar os últimos 15 s" aparece na tela de morte quando os clipes estão ligados
+- Opção "Baixar o clipe ao morrer" guarda sozinho os segundos finais
+- No controle, os dois analógicos para baixo fazem a Lia tampar a boca com as duas mãos
+- Se o controle cai no meio da caçada, a tela mostra em giz "ele não vai esperar"
+- Ao reconectar o controle durante o jogo, ele vibra nove batidas curtas
+- Opção "Pulso no controle": ele bate junto com o coração da Lia
+- O Pulso fica mais rápido e mais forte conforme o medo sobe
+- Opção "Microfone: chamar pelo nome" (só aparece se o navegador tiver reconhecimento de voz)
+- Dizer um nome em voz alta no escuro faz alguém responder e dá a conquista Chamei Pelo Nome
+- O título da aba ganha uma estrela quando você tem seis ou mais segredos
+- Em noite de lua cheia de verdade, o título da aba ganha uma lua
+- Contador discreto de segredos achados no rodapé do título
+- Clicar nove vezes rápido no título toca as nove badaladas
+- Ficar trinta segundos parado no título faz a Lia sussurrar que elas estão esperando
+- Opção "Legendas de segredo em alto contraste" com contorno escuro atrás do giz
+- Opção "Texto dos segredos maior" para os recados e cartazes
+- Opção "Esconder a pista do porão" tira o aviso de obra do rodapé
+- Opção "Parar os efeitos do título" congela cinzas, chuva, vela e corvo
+- Opção "Narrar os segredos achados" anuncia por leitor de tela (aria-live)
+- Opção "Segredos sem vibração" tira a vibração dos easter eggs
+- Opção "Vibrar a inicial da sala em Morse" bate a letra do segredo no controle/celular
+- A vela do título agora pode ser clicada para soprar e acender de novo
+- Botão "Instalar para jogar sem internet" aparece no título quando o navegador permite
+- Ao instalar o jogo, a Lia avisa que agora dá pra jogar sem internet
+- Novo comentário no código-fonte com a cifra PJENCJ que decifra em GAVETA
+- Comentário no código-fonte listando os marcadores novos pra mandar a um amigo
+- Comentário no código-fonte listando os links de amigo (?pega=, ?f=, ?col=, ?vela=, ?selo=)
+- Meta tag og:image:type para o preview do link ficar certo
+- Meta tags og:image:width e og:image:height para o preview dimensionar a imagem
+- Meta tag twitter:image:alt descrevendo o sino rachado
+- A página 404 mostra, ao passar o mouse, a dica dos marcadores (#porao, #1978, #presente)
+- A dica da 404 aparece com uma transição suave
+- A 404 sorteia o nome de uma sala interditada diferente a cada visita
+- O service worker guarda o plataforma4b.js para jogar sem internet
+- O service worker guarda o plataforma4b.css para jogar sem internet
+- O cache do service worker subiu para v8 para entregar os arquivos novos offline
+- T.segredos() do kit de teste agora confere as conquistas da segunda rodada
+- T.segredos() confere os comandos de console novos e o ana() com o dez em branco
+- T.segredos() carrega e verifica o módulo plataforma4b

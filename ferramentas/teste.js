@@ -202,6 +202,11 @@ T.segredos = async () => {
   ok('ajuda() lista os comandos', typeof window.__segredos.ajuda() === 'string');
   // módulo pesado carrega sob demanda
   try { const m = await import('../src/plataforma4-extra.js'); ok('módulo das salas secretas carrega', typeof m.criarExtra === 'function'); } catch (e) { ok('módulo das salas secretas carrega (' + e.message + ')', false); }
+  // 2ª rodada do lote 4
+  ok('conquistas da 2ª rodada registradas', ['s4b_coro', 's4b_pega', 's4b_coletor', 's4b_gaveta'].every(id => (R.conquistas || []).some(c => c.id === id)));
+  ok('comandos de console novos existem', !!(window.__segredos && typeof window.__segredos.moacir === 'function' && typeof window.__segredos.ana === 'function'));
+  ok('ana() conta até dez com o dez em branco', /___/.test(String(window.__segredos.ana())));
+  try { const m = await import('../src/plataforma4b.js'); ok('módulo plataforma4b carrega', typeof m.instalarPlat4b === 'function'); } catch (e) { ok('módulo plataforma4b carrega (' + e.message + ')', false); }
   return falhas;
 };
 T.itens = () => J.W.items.filter(i => i.mesh.visible).map(i => { const p = T.pos(i.it); return `${i.key} ${p.x.toFixed(1)},${p.y.toFixed(2)},${p.z.toFixed(1)}`; });
