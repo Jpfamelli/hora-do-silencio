@@ -2,7 +2,7 @@
 
 Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/lote*/<área>.md`. Não edite à mão: edite o arquivo da área e gere de novo.
 
-**Total geral: 6612 melhorias**
+**Total geral: 6785 melhorias**
 
 ## Índice
 
@@ -48,7 +48,7 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
   - Progressão e rejogabilidade: 116
   - Plataforma e acessibilidade: 106
   - Revisão antes de publicar: 5
-- [Lote 4](#lote-4) — 1675 melhorias
+- [Lote 4](#lote-4) — 1848 melhorias
   - História e texto: 92
   - Mapa: prólogo e estrada: 97
   - Mapa: térreo e dormitórios: 92
@@ -58,9 +58,9 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
   - Áudio: 103
   - Visual e luz: 191
   - Jogabilidade: 203
-  - Interface: 100
-  - Progressão e rejogabilidade: 182
-  - Plataforma e acessibilidade: 94
+  - Interface: 91
+  - Progressão e rejogabilidade: 275
+  - Plataforma e acessibilidade: 183
   - Revisão antes de publicar: 6
 - [Lote 5](#lote-5) — 1024 melhorias
   - História e texto: 91
@@ -4120,7 +4120,7 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
 
 ## Lote 4
 
-1675 melhorias.
+1848 melhorias.
 
 ### História e texto (92)
 
@@ -5442,399 +5442,572 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
 1292. O disco da recepção volta devagar, com um tique que o Inspetor pode ouvir
 1293. Usar o olho de vidro ainda frio avisa quantos segundos faltam para recarregar
 
-### Interface (100)
+### Interface (91)
 
-1294. Nova aba "Álbum" no diário: as figurinhas a giz dos segredos, no estilo de álbum dos anos 80.
-1295. No álbum, os segredos que faltam ficam como silhueta numerada, sem dica nenhuma.
-1296. Achar um segredo descola uma figurinha que voa até o canto da tela, com som próprio.
-1297. Página do álbum completa ganha uma figurinha brilhante com as três crianças de mãos dadas.
-1298. Boatos da escola ficam guardados no fim do álbum, para você reler quando quiser.
-1299. Nova aba "Última página" do caderno do Davi, onde dá para escrever (ENTER).
-1300. Palavras-chave escritas na última página têm resposta na letra do Davi (oi, onde, Ana, Moacir, sino, 1979, seu nome...).
-1301. As respostas do Davi na última página mudam conforme o capítulo em que você está.
-1302. Palavra que o Davi não entende vira um rabisco de lápis em vez de resposta.
-1303. Uma vez por capítulo a última página já vem com um recado escrito antes de você abrir.
-1304. A cada segredo achado na noite, surge uma linha nova na última página, na letra do Davi.
-1305. Com todos os papéis achados, a última página termina com um desenho dos dois irmãos.
-1306. A página de trás (decalque): passar o lápis devagar revela o último recado do Davi para a Lia.
-1307. Passar o lápis rápido demais no decalque faz o traço "pular", obrigando a ir com calma.
-1308. Margem fosforescente aparece no diário aberto com a lanterna apagada, com uma dica por capítulo.
-1309. Com a lanterna acesa, a margem do diário volta a ficar em branco.
-1310. Fuligem nos objetivos: uma digital por segredo daquele mapa que ficou para trás.
-1311. Passar o mouse (ou focar pelo teclado) numa digital de fuligem mostra uma dica de poucas palavras.
-1312. Cabeçalho na aba Notas conta quantos papéis e fitas secretos você achou na noite e no total.
-1313. A partir da terceira noite, um rabisco do Davi aparece no mapa do diário perto de um segredo que falta.
-1314. O rabisco do mapa tem um recado do Davi no tooltip, assinado "— D.".
-1315. Frases que a Lia não lembra de ter escrito aparecem tremidas no diário (no máximo quatro por noite).
-1316. Olhar para trás (Q) três vezes seguidas faz surgir "para de olhar pra trás" no diário.
-1317. Ficar muito tempo escondida faz surgir "ele sabe onde você fica" no diário.
-1318. Riscos de giz no título: um risco por segredo achado, contados como numa parede de cela.
-1319. Passar o mouse num grupo de riscos mostra o nome dos segredos daquele grupo.
-1320. Com 100% dos segredos, os riscos do título viram o desenho das três crianças de mãos dadas.
-1321. Cada código do título deixa um glifo a giz no contorno de uma porta, no canto da tela.
-1322. Com todos os códigos achados, a porta de giz fica completa e clicável.
-1323. Clicar na porta completa abre a última fita: o Davi agradecendo por você ter procurado tanto.
-1324. Texto escondido preto no preto no título, revelado ao selecionar com o mouse ou Ctrl+A.
-1325. O texto escondido do título muda a cada vez que você o revela.
-1326. O rodapé do título muda conforme o progresso: "1 Lia", "3 Lias", até "volte para a cama".
-1327. O rodapé do título mostra o total de mortes como "ocorrências" ao passar o mouse.
-1328. Boatos no rádio-relógio do título: chamadas de ouvintes da Serra FM apontando um segredo que falta.
-1329. Os boatos do título nunca entregam segredo que você já achou.
-1330. Disco de telefone antigo (toque, mouse ou controle) para digitar os códigos sem teclado.
-1331. Cinco toques no rádio-relógio do título abrem o disco de telefone.
-1332. No controle, apertar Select três vezes abre o disco; setas escolhem o furo, A disca, B desliga.
-1333. O disco de telefone tem as letras embaixo de cada furo, como nos aparelhos de 1994.
-1334. Discar um segredo no telefone dispara o efeito real daquele código (conquista Linha Direta).
-1335. O disco de telefone é acessível: rótulo de diálogo, foco no botão Desligar e número em aria-live.
-1336. Código ACORDA: a câmera sobe até a fachada, as janelas acendem e há uma criança por final já visto.
-1337. Código SINEIRO: três badaladas e a frase do que o Davi queria ser (conquista Sineiro).
-1338. Código TOME: os botões do menu somem um a um, como num esconde-esconde, e voltam.
-1339. Código CELESTE: uma vela acende no título e a irmã reza baixinho.
-1340. Código ALBANO: uma luz de "gravando" aparece e uma voz gravada avisa sobre as nove horas.
-1341. Chamar TOME, CELESTE e ALBANO libera a conquista Chamada Completa.
-1342. Correção: os códigos do título agora passam por um despachante único, um código para cada cena.
-1343. Correção: SILENCIO deixou de disparar três efeitos ao mesmo tempo (ficou só com o modo Uma Vida).
-1344. Correção: o Modo Velório ganhou o código próprio VELORIO (antes brigava com o SILENCIO).
-1345. Correção: a Fita Gasta ganhou o código próprio FITAGASTA (antes brigava com o SILENCIO).
-1346. Correção: escrever o nome ou o código de desafio não dispara mais os segredos do título.
-1347. O código DAVI virou uma cena só (sino, frase e fita ao contrário em sequência), sem sobreposição.
-1348. Voltar ao título encolhe a imagem como uma TV antiga desligando, com som de tubo esfriando.
-1349. Legendas de som ganham categoria "segredo", marcada com o símbolo ✶ além da cor.
-1350. O símbolo ✶ dos segredos também aparece no histórico de sons, na aba Ouvido.
-1351. Legenda avulsa (sem som por trás) para avisar os segredos de interface a quem usa legendas.
-1352. Achar um segredo avisa por três canais: som de giz, vibração e brilho fraco na borda da tela.
-1353. Um selo de giz ✶ risca o canto do HUD quando um segredo é achado.
-1354. Com o HUD mínimo, achar um segredo toca só o som, sem o selo nem o brilho.
-1355. Ao achar uma nota secreta, surge a frase "você não devia ter achado isso" no diário.
-1356. Nova opção Faro para segredos, liberada depois do primeiro final: tom grave perto de um segredo.
-1357. O Faro fica desligado no primeiro jogo, para não estragar a descoberta.
-1358. Opção "Deixar ele entrar: Não" que não devia estar nas opções; no nono clique vira Sim.
-1359. Insistir na opção escondida escurece a tela, bate três vezes na porta e dá a conquista Convite.
-1360. "Lia nº N" na tela de morte, contando todas as mortes de todas as noites.
-1361. Na 37ª morte somada, a dica vira "agora a lista tá completa" e o mini mapa mostra 37 cruzinhas.
-1362. Na 38ª morte aparece "Sobrou uma vaga." embaixo da causa.
-1363. Na nona morte da noite, a tela vira barras de TV com tom de 1 kHz (conquista Fora do Ar).
-1364. Segurar ESPAÇO por 9 s na tela de morte faz a Lia prender o ar; a tela escurece e vem "...ainda não".
-1365. Depois de prender o ar na morte, aparece uma dica rabiscada sobre o segredo mais perto de onde ela caiu.
-1366. Fita vermelha desbotada no mini mapa da morte, se a Lia caiu perto de um segredo ainda não achado.
-1367. Três mortes no mesmo capítulo fazem surgir "de novo não" (tremido) no diário.
-1368. O cronômetro trava por um instante em 09:09.09, em vermelho e tremido, com um sino ao longe.
-1369. Passar pelos 09:09.09 com o cronômetro ligado dá a conquista Nove e Nove.
-1370. Trechos de ouro: o split do objetivo fica dourado e marcado quando bate o recorde daquele trecho.
-1371. No fim do capítulo aparece a "Soma dos melhores trechos" e quanto ainda dá para ganhar.
-1372. A pausa mostra quantos segredos você já achou nesta noite.
-1373. Deixar o mouse 9 s sobre "Sair para o título" troca o texto por "Você não pode sair".
-1374. Depois do "Você não pode sair", a pausa fecha sozinha e um armário se fecha logo atrás da Lia.
-1375. Manual do Aluno de 1979 no F1: dez regras, nove falsas e uma verdadeira (conquista Leu o Manual).
-1376. A regra verdadeira do manual é mecânica real: andar durante a trovoada é mais seguro.
-1377. Apertar O nove vezes rápido faz a Lia dizer "Para de me perguntar, eu também não sei!".
-1378. Na décima vez, o rádio chia e o Davi responde pela Lia: "Ela sabe sim. Ela só tá com medo.".
-1379. Copiar (Ctrl+C) uma nota do Davi troca a área de transferência por "não me tira daqui. — D.".
-1380. Copiar uma nota do Davi pela segunda vez cola "eu disse não.".
-1381. Depois de 40 s com uma nota aberta, "alguém lê por cima do seu ombro", com respiração em estéreo.
-1382. Ao fechar a nota, por um instante aparece um vulto atrás da Lia (respeita o aviso antes dos sustos).
-1383. Num momento calmo, surge a legenda "[alguém lendo as legendas, atrás de você]".
-1384. Virar a câmera para trás depois dessa legenda responde "[obrigado por olhar]".
-1385. A lata do Davi é desenhada na tela final: objetos achados na noite em cor, os que faltam em contorno.
-1386. "E também:" na tela final lista os segredos achados como gente que você lembrou.
-1387. Boatos da escola no fim da noite: dois verdadeiros apontam segredos que faltam, um é mentira.
-1388. Os boatos verdadeiros e a mentira viram um bilhete recortado para "passar pra frente".
-1389. Charada no fim da noite sobre um segredo que ainda falta, escrita para copiar e mandar a alguém.
-1390. Tela final mostra o tempo de jogo e o tempo de relógio (com pausas, cargas e cenas) separados.
-1391. Sons procedurais novos para os segredos: giz, figurinha descolando, mola do disco, grafite, TV e 1 kHz.
-1392. Novas abas do diário entram na navegação por 0-9 e pelas setas, sem quebrar as abas antigas.
-1393. O título é redesenhado ao voltar do jogo, atualizando riscos, porta, rodapé e texto escondido.
+1294. Novo módulo de segredos de interface (interface-segredos2.js), passivo e à prova de erro, ligado por gancho curto.
+1295. Código LAZARO no título: acende uma vela e fala do padroeiro dos esquecidos (conquista São Lázaro).
+1296. Código JOAQUIM no título: faróis de carro varrem a tela e o Davi conta que o velho já estava morto em 1979.
+1297. Código BENEDITO no título: três batidas e a história do primeiro menino do túnel.
+1298. Código LUIZ no título: uma vela e o recado da pedra sem nome onde o Davi deixa flor.
+1299. Código TUFAO no título: um latido e a lembrança do cachorro que espera no portão.
+1300. Código SOCORRO no título: a tela pisca como relâmpago e o Davi diz "eu também gritei, ninguém veio".
+1301. Código MAE no título: o recado do Davi pedindo pra dizer que ele não chorou.
+1302. Código HINO no título: toca o sino e lembra do hino cantado torto de propósito.
+1303. Código GATO no título: dois olhos amarelos piscam num canto e avisam pra não correr lá em cima.
+1304. Código PORTAO no título: o rangido do portão e "ele abre pra fora, a gente só nunca pôde usar".
+1305. Código APITO no título: um apito agudo e a fala do apito que o Inspetor guarda no bolso.
+1306. Código REZA no título: uma vela, um sussurro e a oração da irmã Celeste.
+1307. Código LILI no título: o apelido que só o Davi usava com a irmã.
+1308. Código AMEM no título: um sino e a capela trancada onde rezavam do lado de fora.
+1309. Código CELA no título: a tela escurece e fala do quarto de castigo sem janela.
+1310. Código CARRINHO no título: "traz o azul, Lia; o vermelho não é o meu".
+1311. Código QUINZE no título: uma vela e o aniversário que o Davi ia fazer com a Lia.
+1312. Código CHUVA no título: som de chuva e a regra de que o trovão cobre o barulho dos pés.
+1313. Código TROVAO no título: um relâmpago que por um segundo mostra quem está no corredor.
+1314. Código ESPELHO no título: o logo espelha por um instante e avisa pra não contar em voz alta.
+1315. Código LATA no título: lista os papéis secretos que você já achou, como o conteúdo da lata do Davi.
+1316. Código DORME no título: o sussurro da irmã dizendo que fica acordada por você (ela nunca ficou).
+1317. Código SINETA no título: a sineta do refeitório que tocava três vezes.
+1318. Código COBERTOR no título: a regra de dobrar o cobertor em quatro, que o Davi sempre errava.
+1319. Código QUADRO no título: a conta pela metade que ninguém apagou do quadro-negro.
+1320. Código NOVENA no título: nove badaladas suaves e os nove dias de reza contados no dedo.
+1321. Código VISITA no título: uma vela e o dia de visita em que ninguém vinha.
+1322. Código FOSFORO no título: acende uma vela curta e avisa que o fósforo só dura uma linha.
+1323. Código COVA no título: a tela escurece e fala da cova aberta no fundo do cemitério.
+1324. Código LANTERNA no título: um lampejo e a lembrança da lanterna recolhida às oito.
+1325. Rodapé do título clicável: cada clique revela uma ocorrência de 1979 do internato.
+1326. Conquista secreta "Quem Lê o Rodapé" por ler todas as ocorrências escondidas no rodapé.
+1327. Três cliques no subtítulo do título revelam uma frase sussurrada escondida.
+1328. O rádio-relógio do título passa a mostrar a hora de verdade do seu computador.
+1329. Nova opção na Interface para desligar a hora real do rádio-relógio (fica fixa em 20:47).
+1330. Passar o mouse no rádio-relógio o leva para 21:00, a Hora do Silêncio, e solta ao sair.
+1331. A dica do botão "Novo jogo" muda conforme quantas Lias já morreram.
+1332. A dica do botão "Continuar" vira uma frase do Inspetor com o capítulo onde você parou.
+1333. Em 2 de novembro (Finados) o título acende velas e ganha um subtítulo próprio.
+1334. Em 15 de março o título dá um relâmpago e fala que o cheiro de fumaça não sai.
+1335. Numa sexta-feira dia 13 o título ganha um subtítulo ("o Inspetor gosta").
+1336. Segurar o mouse sobre o logo por 6 s troca SILÊNCIO por SILÊNCIA, como ele chama a Lia.
+1337. Ficar parado 40 s na tela de título faz um sussurro "...ainda tá aí?" e dá a conquista Insone.
+1338. O logo do título treme de leve quando você já achou todos os papéis e fitas secretos.
+1339. Legenda rara no título: "[alguém sintoniza a Serra FM, bem baixinho, num quarto ao lado]".
+1340. O título da aba do navegador pisca "ELE TE ENCONTROU" quando a Lia morre.
+1341. O título da aba do navegador vira "— FIM —" na tela de final.
+1342. Reabrir a mesma nota do Davi pela terceira vez na noite acrescenta "você de novo. — D.".
+1343. Na 13ª morte somada, a frase de morte vira "Treze. O número que ninguém quer na chamada.".
+1344. Na 21ª morte somada, a frase de morte diz que o Inspetor já decorou o seu nome.
+1345. Na 79ª morte somada (o ano), a frase de morte vira "Setenta e nove. O ano não acaba nunca.".
+1346. Na 7ª morte da noite, a dica de morte ganha "O Tomé riria de você. Ele nunca é pego.".
+1347. A cada 5ª morte somada, a tela de morte ganha um boato sussurrado da escola.
+1348. Morrer à meia-noite do relógio real acrescenta "Meia-noite. A hora dele." na dica.
+1349. A 9ª pausa da noite acrescenta "Nove pausas. Ele não pausa, sabia?" no quadro da pausa.
+1350. Cada pausa mostra uma regra do internato: várias falsas e, de vez em quando, uma verdadeira.
+1351. Opção-piada no fim das opções: "Avisar quando ele estiver atrás de você", botão "Tarde demais".
+1352. Na tela de final, um recado preto no preto do Davi aparece ao selecionar com o mouse.
+1353. Clicar três vezes no título do final o troca para a letra de criança do Davi.
+1354. Legenda rara em jogo, num momento calmo: "[o giz range no quadro-negro, sozinho]".
+1355. Conquista secreta "Lista de Chamada" por chamar no título o Benedito, o Luiz e o Seu Joaquim.
+1356. Conquista secreta "São Lázaro" por dizer o nome do santo no título.
+1357. Conquista secreta "A Lata do Davi" por pedir a lata do Davi no título.
+1358. Resposta nova da última página do diário para "tufao" (o cachorro do portão).
+1359. Resposta nova da última página para "joaquim" (o velho morto em 1979).
+1360. Resposta nova da última página para "benedito" (o primeiro menino do túnel).
+1361. Resposta nova da última página para "luiz" (a pedra sem nome).
+1362. Resposta nova da última página para "gato" (o gato preto de quem anda devagar).
+1363. Resposta nova da última página para "portao" (o portão que abre pra fora).
+1364. Resposta nova da última página para "fresta" (o olho do outro lado do armário).
+1365. Resposta nova da última página para "hino" (o hino cantado torto).
+1366. Resposta nova da última página para "reza" (a irmã rezando baixinho).
+1367. Resposta nova da última página para "frio" (o frio que é ele passando perto).
+1368. Resposta nova da última página para "chuva" (correr quando o trovão cobre os passos).
+1369. Resposta nova da última página para "apito" (o apito que não assopra sozinho).
+1370. Resposta nova da última página para "cracha" (o crachá que diz MOACIR).
+1371. Resposta nova da última página para "agua" (bater três vezes na parede da água).
+1372. Resposta nova da última página para "lazaro" (o santo que voltou e ninguém voltou).
+1373. Resposta nova da última página para "cela" (o quarto de castigo sem janela).
+1374. Resposta nova da última página para "visita" (o portão e a visita que não vinha).
+1375. Resposta nova da última página para "amem" (a capela trancada).
+1376. Resposta nova da última página para "dorme" (um de nós sempre ficava de olho).
+1377. Resposta nova da última página para "cobertor" (dobrar em quatro, sempre errado).
+1378. Três novos textos escondidos preto no preto do título (rodapé, chamada e ficar parado).
+1379. Três novos boatos-mentira para a tela de fim de noite.
+1380. Mais cidades da região nas chamadas de ouvinte do rádio-relógio (Lorena, Guará, Aparecida).
+1381. Três novos rabiscos do Davi no mapa do diário (o Tomé, contar nove, a parede mais fina).
+1382. Duas novas linhas do Davi que surgem na última página ao achar um segredo.
+1383. Uma linha a mais no decalque da página arrancada: "não olha pra trás, promete".
+1384. interface-segredos2.js entrou no sw.js para o jogo seguir funcionando offline.
 
-### Progressão e rejogabilidade (182)
+### Progressão e rejogabilidade (275)
 
-1394. Código ACORDA no título libera o modo Noite Espelhada e uma fala nova do Davi.
-1395. Código LAMPIÃO equipa a lanterna de lampião, com a luz quente de 1979.
-1396. Código RECREIO equipa a lanterna de brinquedo azul do Davi.
-1397. Código FOGO liga a Noite de Fumaça.
-1398. Código ESCURO liga a Noite Sem Luz.
-1399. Código AVESSO vira o título de cabeça para baixo.
-1400. Código AIL (Lia ao contrário) espelha o título na horizontal.
-1401. Digitar o nome de uma criança de 1979 no título revela a ficha e o destino dela.
-1402. A chamada de 1979 traz doze destinos distintos, um por criança.
-1403. Conquista "Lista de Chamada" ao chamar dez das crianças pelo nome.
-1404. Novo botão "Segredos" no título abre um painel de descobertas com oito abas.
-1405. Aba Prateleira mostra os achados da casa; o que falta vira só poeira.
-1406. Cada achado da prateleira mostra uma frase curta da Lia.
-1407. Aba Cartas reúne as cartas das entidades para comparar os números delas.
-1408. Aba Boatos traz o mural de boatos do São Lázaro.
-1409. Aba Todas Voltam mostra a parede de riscos das suas mortes.
-1410. Aba Ocorrências traz o livro das noites raras com contador.
-1411. Aba Chamada guarda as fichas das crianças já chamadas.
-1412. Aba Lanternas deixa escolher a lanterna cosmética.
-1413. Aba Modos liga e desliga os modos escondidos.
-1414. Lanterna comum, a de sempre, selecionável na aba Lanternas.
-1415. Lanterna do Davi, luz levemente fria e azulada.
-1416. Lanterna de bombeiro, cone amarelo e largo, liberada pelo fio das três crianças.
-1417. Lamparina da Irmã Celeste, luz quente que treme, liberada pela fita dela no acervo.
-1418. Lanterna do zelador Joaquim, lata amassada, liberada ao reparar em oito lugares.
-1419. Lampião de 1979, luz redonda e baixa, liberado pelo código LAMPIÃO.
-1420. Lanterna vermelha, só para quem chega a 100% do internato.
-1421. A lanterna escolhida tinge a tela com a cor dela durante o jogo.
-1422. Carta do Inspetor vira ao sobreviver a uma perseguição dele.
-1423. Carta da Menina Que Conta vira ao sobreviver ao jogo da Ana.
-1424. Carta da Procissão vira ao se esconder dela.
-1425. Carta do Chamado vira ao ignorar a voz e sobreviver.
-1426. Carta da Coruja vira ao ouvir o aviso da Procissão.
-1427. Carta do Breu vira depois de passar um tempo no escuro.
-1428. Carta secreta do menino Moacir, liberada pelo prontuário do quarto dele.
-1429. Carta secreta do Davi, liberada ao completar o diário dele.
-1430. Cada carta traz uma fraqueza real escrita pelo Davi.
-1431. As cartas ficam como "???" enquanto não são viradas.
-1432. Conquista "Clube do Silêncio" ao virar todas as cartas das entidades.
-1433. Boato "o sino já bateu dez" é marcado ao jogar às nove da noite.
-1434. Boato "ele janta sozinho" é marcado ao sobreviver ao Inspetor.
-1435. Boato "um andar entre os andares" é marcado ao achar certa nota secreta.
-1436. Boato "havia uma quarta criança" é marcado ao chamar o Moacir pelo nome.
-1437. Boato "do avesso dá pra ver quem ficou" é marcado na Noite Espelhada.
-1438. Boato "quem passa nove horas aqui não sai" é marcado ao somar nove horas.
-1439. Os boatos ficam apagados até serem vividos, sem dizer como achar.
-1440. Conquista "Todos os Boatos" ao viver os seis.
-1441. Ocorrência rara: jogar exatamente às nove da noite.
-1442. Ocorrência rara: somar nove horas dentro do internato.
-1443. Ocorrência rara: entrar num 14 de março, a noite do fogo.
-1444. Ocorrência rara: entrar num 15 de março, aniversário da Lia.
-1445. Ocorrência rara: entrar numa sexta-feira 13.
-1446. Ocorrência rara: entrar às três da manhã.
-1447. Ocorrência rara: terminar um capítulo na Noite Espelhada.
-1448. Ocorrência rara: chegar à sua décima terceira noite.
-1449. As ocorrências ficam como "???" até serem vistas, mantendo o mistério.
-1450. Parede de giz com um risco por morte, somando todas as noites.
-1451. Os riscos se agrupam de cinco em cinco, como contagem de prisão.
-1452. No risco número 37, a Irmã Celeste escreve o nome do jogador embaixo.
-1453. A parede mostra quantas mortes foram por cada entidade.
-1454. A parede guarda até 60 riscos, lidos das estatísticas de morte.
-1455. Modo Noite Espelhada vira o render do jogo de lado (só visual).
-1456. Modo Noite de Fumaça cobre a tela com um véu animado de fuligem.
-1457. O véu de fumaça respeita a opção de movimento reduzido.
-1458. Modo Noite Sem Luz escurece tudo com uma penumbra a mais.
-1459. Os modos avisam que são cosméticos e não valem para o ranking.
-1460. As escolhas de lanterna e de modo ficam salvas nas opções entre as noites.
-1461. Os modos continuam travados até o código certo ser descoberto.
-1462. Bilhete da Lia da noite passada aparece no título, gerado da última morte.
-1463. O bilhete muda conforme quem te pegou (Inspetor, Menina ou Procissão).
-1464. Colar um código de desafio no campo mostra o recado da lápide do amigo.
-1465. Bilhete de criança na tela de pausa, variando por capítulo e mortes.
-1466. Mensagem do Seu Joaquim no final de quem não mexeu em nada.
-1467. Contador de medos na tela de morte: "morte X de 4 já vistas".
-1468. Linha especial quando você já morreu de todos os jeitos da casa.
-1469. Conquista secreta "Acorda" ao escrever ACORDA no título.
-1470. Conquista "De Cabeça Para Baixo" ao escrever AVESSO.
-1471. Conquista "Do Outro Lado do Espelho" ao escrever AIL.
-1472. Conquista "Luz de Querosene" ao escrever LAMPIÃO.
-1473. Conquista "Brinquedo do Davi" ao escrever RECREIO.
-1474. Conquista "Fumaça" ao ligar a Noite de Fumaça.
-1475. Conquista "Sem Lâmpada" ao ligar a Noite Sem Luz.
-1476. Conquista "Trinta e Sete" ao acumular 37 mortes.
-1477. Conquista "Hora Cheia" ao somar nove horas dentro do internato.
-1478. Conquista "Treze" ao chegar à sua décima terceira noite.
-1479. Conquista "Não Mexi em Nada" ao terminar a noite sem achar nenhum segredo.
-1480. Conquista "Quem Procura Acha" ao reunir 20 peças do acervo.
-1481. Conquista "Já Morri de Tudo" ao ver todas as cenas de morte da casa.
-1482. Conquista "Doze" ao deixar o Inspetor te pegar doze vezes.
-1483. Conquista "A Prateleira Cheia" ao achar os seis objetos da prateleira.
-1484. As dezoito conquistas novas entram no catálogo e contam para o 100% do internato.
-1485. O título marca sozinho a ocorrência "nove da noite" quando aberto às 21h.
-1486. Código VELA no título liga a Noite da Vela, com a tela em calor curto e trêmulo de vela.
-1487. Código MARCO no título liga a Noite da Lembrança, com tudo em tom de foto de 1979.
-1488. Código FESTA no título liga a Noite de Festa, com calor de lampião junino por cima de tudo.
-1489. Código CORVO no título libera a lanterna fria do Corvo, azul de petróleo.
-1490. Código ONIBUS no título libera o Farol do ônibus, branco-azulado e de cone largo.
-1491. Código DEZ no título revela a Hora Dobrada e faz o sino bater dez vezes.
-1492. Noite da Vela aparece como modo ligável no painel Modos.
-1493. Noite da Lembrança aparece como modo ligável no painel Modos.
-1494. Noite de Festa aparece como modo ligável no painel Modos.
-1495. Os três novos modos de luz se excluem entre si ao serem ligados.
-1496. Os véus de vela e de festa respeitam a opção de movimento reduzido.
-1497. As escolhas dos novos modos ficam salvas nas opções entre as noites.
-1498. Lanterna do Corvo entra na lista de lanternas, com vidro escuro e luz azul.
-1499. Farol do ônibus entra na lista de lanternas, com cone largo de estrada.
-1500. A lanterna do Corvo e o Farol tingem o feixe com a cor própria durante o jogo.
-1501. Nova aba Telefones no painel Segredos com a lista telefônica da noite.
-1502. Telefone do Posto Serra, que atende só com chiado quando a pista é achada.
-1503. Telefone da secretaria do bispo, que desliga na cara da Lia.
-1504. Telefone da casa da mãe da Lia, que deixou a luz acesa esperando.
-1505. Telefone dos Correios, com a encomenda devolvida do Davi em 1979.
-1506. Telefone sem dono, que só respira no mesmo compasso que você.
-1507. O número sem dono só atende tarde da noite, entre nove e dez horas.
-1508. Discar um número toca um chiado procedural e revela a gravação.
-1509. Conquista "Lista Telefônica" ao discar os cinco números.
-1510. Nova aba Álbum no painel Segredos com as figurinhas do Davi.
-1511. Cada figurinha cola sozinha quando você acha a lore daquele capítulo.
-1512. Figurinha do ônibus velho, do Prólogo.
-1513. Figurinha da lâmpada apagada, do Capítulo I.
-1514. Figurinha do sino, do capítulo da capela.
-1515. Figurinha da amarelinha, do capítulo da Menina.
-1516. Figurinha da válvula, dos túneis.
-1517. Figurinha da cruz de giz, do cemitério.
-1518. Figurinha dourada que só aparece com o álbum completo.
-1519. Página final do álbum revela as quatro crianças e uma sombra alta atrás.
-1520. Conquista "A Lata Inteira" ao completar o álbum do Davi.
-1521. Nova aba Caça no painel Segredos com a caça ao tesouro do verso do gibi.
-1522. Versinho rimado da estrada, sobre o motor que não recusa.
-1523. Versinho rimado do térreo, sobre escutar o corredor inteiro.
-1524. Versinho rimado da capela, sobre contar até nove e não mais um.
-1525. Versinho rimado da Menina, sobre pular a casa e não a linha.
-1526. Versinho rimado dos túneis, sobre a gaveta que grita.
-1527. Versinho rimado do cemitério, sobre o nome que ninguém quis.
-1528. Cada versinho é riscado quando o segredo correspondente é achado.
-1529. Conquista "Caça ao Tesouro" ao riscar os seis versinhos.
-1530. Nova aba Mapa no painel Segredos com a planta de giz dos segredos.
-1531. Uma janelinha acesa por lore achada em cada ala do internato.
-1532. Gastar um fósforo abre uma charada para uma ala ainda escura.
-1533. Cada ala tem a sua charada própria, na linguagem do Davi.
-1534. Conquista "A Planta Inteira" ao acender todas as janelinhas da planta.
-1535. Nova aba Visitas no painel Segredos, uma linha por noite que você passou.
-1536. Na nona noite, o Davi assina embaixo do livro com letra de criança.
-1537. Conquista "Quem Volta" ao assinar o livro na sua nona noite.
-1538. Carteirinha do Clube do Silêncio na tela de final, com número de sócio.
-1539. O número de sócio vem da lore achada naquela noite, não de repetição.
-1540. Conquista "Sócia do Clube" ao ganhar a carteirinha num final.
-1541. Mapa de giz do internato desenhado no capô do carro na tela de final.
-1542. Selo de explorador no fim do capítulo, com casinhas de giz por segredo.
-1543. Casinhas cheias para a lore achada e vazias para a que falta.
-1544. Quando falta algo, uma única palavra de dica aponta a ala.
-1545. Conquista "Olho Vivo" ao achar toda a lore de um mapa numa passada só.
-1546. Placa de bronze no título depois do final verdadeiro, com o nome do jogador.
-1547. Linha "Lugares que não existem" no título, contando a lore sem revelar o resto.
-1548. Conquista "Primeira Noite" ao terminar a campanha uma vez.
-1549. Conquista "Dez Noites" ao começar dez noites no São Lázaro.
-1550. Conquista "Maratona" ao somar cinco horas dentro do internato.
-1551. Conquista "Três Caminhos" ao ver os três finais.
-1552. Conquista "Antes da Hora" ao tocar o sino do Capítulo V bem rápido.
-1553. Conquista "Igual à Mãe" ao bater seu recorde de tempo total.
-1554. Conquista "Calendário" ao jogar em três datas marcadas diferentes.
-1555. Ocorrência rara: entrar no Dia das Crianças, 12 de outubro.
-1556. Ocorrência rara: entrar na noite de São João, 24 de junho.
-1557. Ocorrência rara: entrar na véspera ou no dia de Natal.
-1558. Ocorrência rara: entrar na virada do ano.
-1559. Ocorrência rara: entrar no Dia de Finados, 2 de novembro.
-1560. Boato novo: "à luz de vela, a casa fica mansa — por engano."
-1561. Boato novo: "teve festa junina na noite do fogo."
-1562. Boato novo: "o último ônibus das nove ainda passa."
-1563. Boato novo: "um corvo entrega lanternas a quem fica."
-1564. Bilhete de pausa novo: "conta comigo até nove."
-1565. Bilhete de pausa novo: "a vela dura menos que a coragem."
-1566. Bilhete de pausa novo: "ninguém some de vez, só muda de andar."
-1567. Linha nova na tela de morte na primeira morte: "a primeira vez a gente nunca esquece."
-1568. Linha nova na tela de morte nas seguintes: "mais uma pra parede, a Celeste anotou."
-1569. A Hora Dobrada também marca a ocorrência das nove e o boato do sino que bate dez.
-1570. Cada código novo toca um som próprio ao ser digitado no título.
-1571. As vinte conquistas novas entram no catálogo e contam para o 100% do internato.
-1572. As cinco ocorrências por data entram no livro das noites raras do painel.
-1573. Os quatro boatos novos entram no mural de boatos do painel.
-1574. O painel Segredos passa a ter treze abas, cinco delas novas.
-1575. O novo módulo entra no cache offline do service worker para jogar sem internet.
+1385. Código ACORDA no título libera o modo Noite Espelhada e uma fala nova do Davi.
+1386. Código LAMPIÃO equipa a lanterna de lampião, com a luz quente de 1979.
+1387. Código RECREIO equipa a lanterna de brinquedo azul do Davi.
+1388. Código FOGO liga a Noite de Fumaça.
+1389. Código ESCURO liga a Noite Sem Luz.
+1390. Código AVESSO vira o título de cabeça para baixo.
+1391. Código AIL (Lia ao contrário) espelha o título na horizontal.
+1392. Digitar o nome de uma criança de 1979 no título revela a ficha e o destino dela.
+1393. A chamada de 1979 traz doze destinos distintos, um por criança.
+1394. Conquista "Lista de Chamada" ao chamar dez das crianças pelo nome.
+1395. Novo botão "Segredos" no título abre um painel de descobertas com oito abas.
+1396. Aba Prateleira mostra os achados da casa; o que falta vira só poeira.
+1397. Cada achado da prateleira mostra uma frase curta da Lia.
+1398. Aba Cartas reúne as cartas das entidades para comparar os números delas.
+1399. Aba Boatos traz o mural de boatos do São Lázaro.
+1400. Aba Todas Voltam mostra a parede de riscos das suas mortes.
+1401. Aba Ocorrências traz o livro das noites raras com contador.
+1402. Aba Chamada guarda as fichas das crianças já chamadas.
+1403. Aba Lanternas deixa escolher a lanterna cosmética.
+1404. Aba Modos liga e desliga os modos escondidos.
+1405. Lanterna comum, a de sempre, selecionável na aba Lanternas.
+1406. Lanterna do Davi, luz levemente fria e azulada.
+1407. Lanterna de bombeiro, cone amarelo e largo, liberada pelo fio das três crianças.
+1408. Lamparina da Irmã Celeste, luz quente que treme, liberada pela fita dela no acervo.
+1409. Lanterna do zelador Joaquim, lata amassada, liberada ao reparar em oito lugares.
+1410. Lampião de 1979, luz redonda e baixa, liberado pelo código LAMPIÃO.
+1411. Lanterna vermelha, só para quem chega a 100% do internato.
+1412. A lanterna escolhida tinge a tela com a cor dela durante o jogo.
+1413. Carta do Inspetor vira ao sobreviver a uma perseguição dele.
+1414. Carta da Menina Que Conta vira ao sobreviver ao jogo da Ana.
+1415. Carta da Procissão vira ao se esconder dela.
+1416. Carta do Chamado vira ao ignorar a voz e sobreviver.
+1417. Carta da Coruja vira ao ouvir o aviso da Procissão.
+1418. Carta do Breu vira depois de passar um tempo no escuro.
+1419. Carta secreta do menino Moacir, liberada pelo prontuário do quarto dele.
+1420. Carta secreta do Davi, liberada ao completar o diário dele.
+1421. Cada carta traz uma fraqueza real escrita pelo Davi.
+1422. As cartas ficam como "???" enquanto não são viradas.
+1423. Conquista "Clube do Silêncio" ao virar todas as cartas das entidades.
+1424. Boato "o sino já bateu dez" é marcado ao jogar às nove da noite.
+1425. Boato "ele janta sozinho" é marcado ao sobreviver ao Inspetor.
+1426. Boato "um andar entre os andares" é marcado ao achar certa nota secreta.
+1427. Boato "havia uma quarta criança" é marcado ao chamar o Moacir pelo nome.
+1428. Boato "do avesso dá pra ver quem ficou" é marcado na Noite Espelhada.
+1429. Boato "quem passa nove horas aqui não sai" é marcado ao somar nove horas.
+1430. Os boatos ficam apagados até serem vividos, sem dizer como achar.
+1431. Conquista "Todos os Boatos" ao viver os seis.
+1432. Ocorrência rara: jogar exatamente às nove da noite.
+1433. Ocorrência rara: somar nove horas dentro do internato.
+1434. Ocorrência rara: entrar num 14 de março, a noite do fogo.
+1435. Ocorrência rara: entrar num 15 de março, aniversário da Lia.
+1436. Ocorrência rara: entrar numa sexta-feira 13.
+1437. Ocorrência rara: entrar às três da manhã.
+1438. Ocorrência rara: terminar um capítulo na Noite Espelhada.
+1439. Ocorrência rara: chegar à sua décima terceira noite.
+1440. As ocorrências ficam como "???" até serem vistas, mantendo o mistério.
+1441. Parede de giz com um risco por morte, somando todas as noites.
+1442. Os riscos se agrupam de cinco em cinco, como contagem de prisão.
+1443. No risco número 37, a Irmã Celeste escreve o nome do jogador embaixo.
+1444. A parede mostra quantas mortes foram por cada entidade.
+1445. A parede guarda até 60 riscos, lidos das estatísticas de morte.
+1446. Modo Noite Espelhada vira o render do jogo de lado (só visual).
+1447. Modo Noite de Fumaça cobre a tela com um véu animado de fuligem.
+1448. O véu de fumaça respeita a opção de movimento reduzido.
+1449. Modo Noite Sem Luz escurece tudo com uma penumbra a mais.
+1450. Os modos avisam que são cosméticos e não valem para o ranking.
+1451. As escolhas de lanterna e de modo ficam salvas nas opções entre as noites.
+1452. Os modos continuam travados até o código certo ser descoberto.
+1453. Bilhete da Lia da noite passada aparece no título, gerado da última morte.
+1454. O bilhete muda conforme quem te pegou (Inspetor, Menina ou Procissão).
+1455. Colar um código de desafio no campo mostra o recado da lápide do amigo.
+1456. Bilhete de criança na tela de pausa, variando por capítulo e mortes.
+1457. Mensagem do Seu Joaquim no final de quem não mexeu em nada.
+1458. Contador de medos na tela de morte: "morte X de 4 já vistas".
+1459. Linha especial quando você já morreu de todos os jeitos da casa.
+1460. Conquista secreta "Acorda" ao escrever ACORDA no título.
+1461. Conquista "De Cabeça Para Baixo" ao escrever AVESSO.
+1462. Conquista "Do Outro Lado do Espelho" ao escrever AIL.
+1463. Conquista "Luz de Querosene" ao escrever LAMPIÃO.
+1464. Conquista "Brinquedo do Davi" ao escrever RECREIO.
+1465. Conquista "Fumaça" ao ligar a Noite de Fumaça.
+1466. Conquista "Sem Lâmpada" ao ligar a Noite Sem Luz.
+1467. Conquista "Trinta e Sete" ao acumular 37 mortes.
+1468. Conquista "Hora Cheia" ao somar nove horas dentro do internato.
+1469. Conquista "Treze" ao chegar à sua décima terceira noite.
+1470. Conquista "Não Mexi em Nada" ao terminar a noite sem achar nenhum segredo.
+1471. Conquista "Quem Procura Acha" ao reunir 20 peças do acervo.
+1472. Conquista "Já Morri de Tudo" ao ver todas as cenas de morte da casa.
+1473. Conquista "Doze" ao deixar o Inspetor te pegar doze vezes.
+1474. Conquista "A Prateleira Cheia" ao achar os seis objetos da prateleira.
+1475. As dezoito conquistas novas entram no catálogo e contam para o 100% do internato.
+1476. O título marca sozinho a ocorrência "nove da noite" quando aberto às 21h.
+1477. Código VELA no título liga a Noite da Vela, com a tela em calor curto e trêmulo de vela.
+1478. Código MARCO no título liga a Noite da Lembrança, com tudo em tom de foto de 1979.
+1479. Código FESTA no título liga a Noite de Festa, com calor de lampião junino por cima de tudo.
+1480. Código CORVO no título libera a lanterna fria do Corvo, azul de petróleo.
+1481. Código ONIBUS no título libera o Farol do ônibus, branco-azulado e de cone largo.
+1482. Código DEZ no título revela a Hora Dobrada e faz o sino bater dez vezes.
+1483. Noite da Vela aparece como modo ligável no painel Modos.
+1484. Noite da Lembrança aparece como modo ligável no painel Modos.
+1485. Noite de Festa aparece como modo ligável no painel Modos.
+1486. Os três novos modos de luz se excluem entre si ao serem ligados.
+1487. Os véus de vela e de festa respeitam a opção de movimento reduzido.
+1488. As escolhas dos novos modos ficam salvas nas opções entre as noites.
+1489. Lanterna do Corvo entra na lista de lanternas, com vidro escuro e luz azul.
+1490. Farol do ônibus entra na lista de lanternas, com cone largo de estrada.
+1491. A lanterna do Corvo e o Farol tingem o feixe com a cor própria durante o jogo.
+1492. Nova aba Telefones no painel Segredos com a lista telefônica da noite.
+1493. Telefone do Posto Serra, que atende só com chiado quando a pista é achada.
+1494. Telefone da secretaria do bispo, que desliga na cara da Lia.
+1495. Telefone da casa da mãe da Lia, que deixou a luz acesa esperando.
+1496. Telefone dos Correios, com a encomenda devolvida do Davi em 1979.
+1497. Telefone sem dono, que só respira no mesmo compasso que você.
+1498. O número sem dono só atende tarde da noite, entre nove e dez horas.
+1499. Discar um número toca um chiado procedural e revela a gravação.
+1500. Conquista "Lista Telefônica" ao discar os cinco números.
+1501. Nova aba Álbum no painel Segredos com as figurinhas do Davi.
+1502. Cada figurinha cola sozinha quando você acha a lore daquele capítulo.
+1503. Figurinha do ônibus velho, do Prólogo.
+1504. Figurinha da lâmpada apagada, do Capítulo I.
+1505. Figurinha do sino, do capítulo da capela.
+1506. Figurinha da amarelinha, do capítulo da Menina.
+1507. Figurinha da válvula, dos túneis.
+1508. Figurinha da cruz de giz, do cemitério.
+1509. Figurinha dourada que só aparece com o álbum completo.
+1510. Página final do álbum revela as quatro crianças e uma sombra alta atrás.
+1511. Conquista "A Lata Inteira" ao completar o álbum do Davi.
+1512. Nova aba Caça no painel Segredos com a caça ao tesouro do verso do gibi.
+1513. Versinho rimado da estrada, sobre o motor que não recusa.
+1514. Versinho rimado do térreo, sobre escutar o corredor inteiro.
+1515. Versinho rimado da capela, sobre contar até nove e não mais um.
+1516. Versinho rimado da Menina, sobre pular a casa e não a linha.
+1517. Versinho rimado dos túneis, sobre a gaveta que grita.
+1518. Versinho rimado do cemitério, sobre o nome que ninguém quis.
+1519. Cada versinho é riscado quando o segredo correspondente é achado.
+1520. Conquista "Caça ao Tesouro" ao riscar os seis versinhos.
+1521. Nova aba Mapa no painel Segredos com a planta de giz dos segredos.
+1522. Uma janelinha acesa por lore achada em cada ala do internato.
+1523. Gastar um fósforo abre uma charada para uma ala ainda escura.
+1524. Cada ala tem a sua charada própria, na linguagem do Davi.
+1525. Conquista "A Planta Inteira" ao acender todas as janelinhas da planta.
+1526. Nova aba Visitas no painel Segredos, uma linha por noite que você passou.
+1527. Na nona noite, o Davi assina embaixo do livro com letra de criança.
+1528. Conquista "Quem Volta" ao assinar o livro na sua nona noite.
+1529. Carteirinha do Clube do Silêncio na tela de final, com número de sócio.
+1530. O número de sócio vem da lore achada naquela noite, não de repetição.
+1531. Conquista "Sócia do Clube" ao ganhar a carteirinha num final.
+1532. Mapa de giz do internato desenhado no capô do carro na tela de final.
+1533. Selo de explorador no fim do capítulo, com casinhas de giz por segredo.
+1534. Casinhas cheias para a lore achada e vazias para a que falta.
+1535. Quando falta algo, uma única palavra de dica aponta a ala.
+1536. Conquista "Olho Vivo" ao achar toda a lore de um mapa numa passada só.
+1537. Placa de bronze no título depois do final verdadeiro, com o nome do jogador.
+1538. Linha "Lugares que não existem" no título, contando a lore sem revelar o resto.
+1539. Conquista "Primeira Noite" ao terminar a campanha uma vez.
+1540. Conquista "Dez Noites" ao começar dez noites no São Lázaro.
+1541. Conquista "Maratona" ao somar cinco horas dentro do internato.
+1542. Conquista "Três Caminhos" ao ver os três finais.
+1543. Conquista "Antes da Hora" ao tocar o sino do Capítulo V bem rápido.
+1544. Conquista "Igual à Mãe" ao bater seu recorde de tempo total.
+1545. Conquista "Calendário" ao jogar em três datas marcadas diferentes.
+1546. Ocorrência rara: entrar no Dia das Crianças, 12 de outubro.
+1547. Ocorrência rara: entrar na noite de São João, 24 de junho.
+1548. Ocorrência rara: entrar na véspera ou no dia de Natal.
+1549. Ocorrência rara: entrar na virada do ano.
+1550. Ocorrência rara: entrar no Dia de Finados, 2 de novembro.
+1551. Boato novo: "à luz de vela, a casa fica mansa — por engano."
+1552. Boato novo: "teve festa junina na noite do fogo."
+1553. Boato novo: "o último ônibus das nove ainda passa."
+1554. Boato novo: "um corvo entrega lanternas a quem fica."
+1555. Bilhete de pausa novo: "conta comigo até nove."
+1556. Bilhete de pausa novo: "a vela dura menos que a coragem."
+1557. Bilhete de pausa novo: "ninguém some de vez, só muda de andar."
+1558. Linha nova na tela de morte na primeira morte: "a primeira vez a gente nunca esquece."
+1559. Linha nova na tela de morte nas seguintes: "mais uma pra parede, a Celeste anotou."
+1560. A Hora Dobrada também marca a ocorrência das nove e o boato do sino que bate dez.
+1561. Cada código novo toca um som próprio ao ser digitado no título.
+1562. As vinte conquistas novas entram no catálogo e contam para o 100% do internato.
+1563. As cinco ocorrências por data entram no livro das noites raras do painel.
+1564. Os quatro boatos novos entram no mural de boatos do painel.
+1565. O painel Segredos passa a ter treze abas, cinco delas novas.
+1566. O novo módulo entra no cache offline do service worker para jogar sem internet.
+1567. Código NÉVOA no título libera a Noite de Névoa, com neblina fria no fundo da tela.
+1568. Código FRIO no título libera a Noite de Inverno, com um azul gelado por cima de tudo.
+1569. Código BRASA no título libera a Noite de Brasa e equipa a lanterna de brasa.
+1570. Código TROCADA no título conta o boato das regras dos monstros invertidas.
+1571. Código MANHÃ no título antecipa a porta da manhã que abre quando não sobra segredo.
+1572. Código SETE no título revela a lenda da vez em que o relógio bateu só sete.
+1573. Código FAÍSCA no título libera a carta do gato do internato.
+1574. Código GIRASSOL no título conta o girassol que aponta onde falta segredo.
+1575. Código SINO no título equipa a lanterna dourada da badalada.
+1576. O seletor de Modos ganha três modos de luz novos que se excluem entre si.
+1577. Nova lanterna cosmética de giz, branca-azulada, liberada pelo selo de explorador.
+1578. Nova lanterna cosmética de brasa, laranja viva, liberada pelo código BRASA.
+1579. Nova lanterna cosmética do sino, dourada, liberada pelo final verdadeiro ou pelo SINO.
+1580. Nova lanterna cosmética do porão, esverdeada, liberada ao reunir quinze peças do acervo.
+1581. Nova aba Pertences no painel Segredos: a lata de biscoito do Davi, com seis encaixes.
+1582. Nova aba Placar no painel Segredos: o fliperama empoeirado do posto.
+1583. Nova aba Recordes no painel Segredos: melhor rank e tempo de cada capítulo.
+1584. Nova aba Raras no painel Segredos: oito ocorrências raras para marcar.
+1585. Nova aba Lendas no painel Segredos: seis lendas da serra para viver.
+1586. Pertence escondido: a figurinha, encaixe do térreo na lata do Davi.
+1587. Pertence escondido: o pião, encaixe do andar de cima na lata do Davi.
+1588. Pertence escondido: o soldadinho, encaixe dos túneis na lata do Davi.
+1589. Pertence escondido: o dente de leite, encaixe do quarto da Irmã na lata do Davi.
+1590. Pertence escondido: a bolinha de gude, encaixe do térreo na lata do Davi.
+1591. Pertence escondido: a estrela de lata, encaixe da sala secreta na lata do Davi.
+1592. Com a lata cheia, o final ganha a cena do Davi devolvendo a figurinha para a Lia.
+1593. O placar do posto já vem com DAV, ANA e TOM pré-carregados no topo.
+1594. O placar guarda a sua melhor noite (peças de acervo achadas) entre as partidas.
+1595. Superar o DAV faz o placar mostrar a linha VOCÊ GANHOU DE MIM.
+1596. A aba Recordes mostra ainda não jogado nos capítulos que você não terminou.
+1597. Ocorrência rara: terminar um capítulo inteiro sem acender a lanterna.
+1598. Ocorrência rara: terminar um capítulo sem correr uma vez sequer.
+1599. Ocorrência rara: achar cinco peças do acervo numa só noite.
+1600. Ocorrência rara: morrer três vezes no mesmo capítulo e ainda assim passar.
+1601. Ocorrência rara: entrar no São Lázaro às três da manhã.
+1602. Ocorrência rara: entrar no São Lázaro à meia-noite em ponto.
+1603. Ocorrência rara: passar um capítulo sem dano e sem morrer.
+1604. Ocorrência rara: contar sete relâmpagos numa mesma noite.
+1605. Lenda da serra: o gato preto que some quando a lanterna encosta nele.
+1606. Lenda da serra: a foto da turma com menos rostos riscados a cada noite.
+1607. Lenda da serra: o girassol que cresce de novo todo março no pátio.
+1608. Lenda da serra: a vez em que o relógio da recepção bateu só sete.
+1609. Lenda da serra: o fogo de 1979 que ainda aquece a parede dos fundos.
+1610. Lenda da serra: quem acha tudo vê o São Lázaro de dia, uma vez só.
+1611. Carta nova da casa: Faísca, o gato, com a fraqueza anotada pelo Davi.
+1612. Carta nova da casa: o Diretor Albano, que enxergava e trancava tudo.
+1613. A tela de morte agora conta sete jeitos diferentes de morrer (antes eram quatro).
+1614. Novo jeito de morte catalogado: o Breu, a morte no escuro total.
+1615. Novo jeito de morte catalogado: a queda.
+1616. Novo jeito de morte catalogado: o DEZ da Menina Que Conta.
+1617. A tela de morte avisa quando foi uma morte inédita, com o contador X de 7.
+1618. A tela de morte reconhece quando você já tinha caído naquele capítulo.
+1619. No título, a foto da turma de 1979 conta quantos rostos já se lembram de você.
+1620. Cinco bilhetes novos de criança no pé da página, alternando na tela de pausa.
+1621. No final, a lata do Davi mostra quantos pertences ainda faltam achar.
+1622. No final, a lata cheia ganha a frase da boneca... digo, da figurinha no carona.
+1623. No final, fechar o Capítulo V num fôlego só ganha a linha da Hora atrasada.
+1624. No final, rank S em tudo anuncia a porta nova da manhã no título.
+1625. No final, uma nova melhor noite avisa que o DAV está começando a suar no placar.
+1626. O fim de capítulo avisa quando a lanterna de giz acabou de ser liberada.
+1627. Terminar um capítulo com um modo de luz novo ligado dá a conquista Luz Estranha.
+1628. Criança nova na Chamada de 1979: Moacir, com ficha própria e nome digitável.
+1629. Criança nova na Chamada de 1979: Luiz, o melhor amigo do Davi.
+1630. Criança nova na Chamada de 1979: Sueli, que tinha medo do escuro.
+1631. Criança nova na Chamada de 1979: Gilberto, o mais velho da turma.
+1632. Criança nova na Chamada de 1979: Marta, que desenhava o pátio de dia.
+1633. Criança nova na Chamada de 1979: Elias, que cantava o hino desafinado.
+1634. Criança nova na Chamada de 1979: Dalva, que guardava doce sob o colchão.
+1635. Criança nova na Chamada de 1979: Raul, que colecionava figurinhas.
+1636. Criança nova na Chamada de 1979: Zuleide, a segunda caçula.
+1637. Criança nova na Chamada de 1979: Benedito, que carregava os baldes do poço.
+1638. Criança nova na Chamada de 1979: Aparecida, que rezava por todos.
+1639. Criança nova na Chamada de 1979: João, que perdeu o sapato com o Cícero.
+1640. Criança nova na Chamada de 1979: Terezinha, que bordava iniciais erradas.
+1641. Criança nova na Chamada de 1979: Sebastião, que ouvia o sino antes de todos.
+1642. Criança nova na Chamada de 1979: Neusa, a última da fila da chamada.
+1643. Nova conquista secreta Neblina, por ligar a Noite de Névoa.
+1644. Nova conquista secreta Inverno, por ligar a Noite de Inverno.
+1645. Nova conquista secreta Brasa, por ligar a Noite de Brasa.
+1646. Nova conquista secreta Regras Trocadas, pelo código TROCADA.
+1647. Nova conquista secreta A Manhã, pelo código MANHÃ.
+1648. Nova conquista secreta Sete Badaladas, pelo código SETE.
+1649. Nova conquista secreta O Gato Faísca, pelo código FAÍSCA.
+1650. Nova conquista secreta Cresceu, pelo código GIRASSOL.
+1651. Nova conquista secreta A Badalada, pelo código SINO.
+1652. Nova conquista secreta A Lata Inteira, por encher a lata do Davi.
+1653. Nova conquista secreta Recorde do Irmão, por superar o DAV no placar.
+1654. Nova conquista secreta Coisa Rara, por marcar as oito ocorrências raras.
+1655. Nova conquista secreta Toda Lenda, por viver as seis lendas da serra.
+1656. Nova conquista secreta A Casa Toda, por chegar a rank S em todos os capítulos.
+1657. Nova conquista secreta Colecionadora de Medos, por ver sete jeitos de morrer.
+1658. Nova conquista secreta Chamada Inteira, por chamar todas as crianças de 1979.
+1659. Os dois módulos novos entram no cache offline do service worker para jogar sem internet.
 
-### Plataforma e acessibilidade (94)
+### Plataforma e acessibilidade (183)
 
-1576. Sistema de marcadores no endereço que aplica o segredo e limpa o # (pra mandar o link a um amigo)
-1577. #davi no endereço: o Davi reescreve o subtítulo do título e o sino toca longe
-1578. #ana no endereço: a Ana sussurra "agora você tá do lado de cá" no título
-1579. #1979 (ou #cinzas): chuva de cinzas caindo sobre o título
-1580. #14031979: chuva de cinzas com o lembrete do aniversário, 14 de março
-1581. #silencio: deixa o título mudo
-1582. #breu: o título fica quase no escuro, como se o prédio todo tivesse apagado
-1583. #espelho: o título vira espelhado (com os botões e o campo de texto corrigidos)
-1584. #apito: um apito do Inspetor, longe, no título
-1585. #chuva: a tempestade do título fica muito mais forte
-1586. #festa: liga a Lanterna de Festa, cosmética
-1587. #porao (ou #bastidores): abre a Sala de Testes escondida
-1588. #1978: abre a visita ao internato de 1978, antes da ruína
-1589. #presente: abre a Galeria das entidades
-1590. Digitar PORAO ou BASTIDORES no título também abre a Sala de Testes
-1591. Digitar PRESENTE no título também abre a Galeria
-1592. Digitar FESTA no título liga a Lanterna de Festa
-1593. Digitar ENTRANHAS no título dá um aviso do Seu Joaquim e a conquista Por Baixo do Papel
-1594. Digitar ARQUEOLOGIA (ou V1) revela o link da primeira versão e a conquista Arqueologia
-1595. Teclado de giz no título: um alfabeto de giz para digitar os códigos sem teclado físico
-1596. O teclado de giz mostra, em letra de giz, o que você já escreveu
-1597. Navegação do teclado de giz pelas setas do teclado
-1598. Navegação do teclado de giz pelo analógico e pela direcional do controle
-1599. Navegação do teclado de giz pelo toque, cada letra clicável
-1600. O teclado de giz abre segurando o título por 2 segundos (toque ou mouse)
-1601. O teclado de giz abre apertando LB e RB juntos no controle
-1602. O teclado de giz reaproveita todos os códigos que já existiam (SILENCIO, DAVI, NOVE, MOACIR, os nomes)
-1603. Som de giz ao escolher cada letra; ESC fecha o teclado de giz
-1604. Opção "Teclado de giz grande" para enxergar melhor as letras no controle ou no celular
-1605. Segurar os dois gatilhos no título por 9 segundos: o controle bate em código e a conquista Do Outro Lado do Controle
-1606. Vibração ritmada do controle enquanto você segura os dois gatilhos
-1607. Virar o celular de cabeça para baixo no título por 3 segundos: o título inverte, a Ana fala e vem a conquista Do Lado de Cá
-1608. O título volta ao normal assim que o celular é desvirado
-1609. Comando __segredos.ajuda() no console lista todos os comandos secretos
-1610. Comando lia() no console vira a câmera, sussurra e imprime a ficha de matrícula de 1979
-1611. Comando davi() no console entrega o número do cofre e dá a conquista Por Baixo do Papel
-1612. Comando cofre() no console dá a dica do número do cofre
-1613. Comando regras() no console imprime as regras com a sétima no fim
-1614. Comando quem() no console lista os nomes das crianças, com um em branco
-1615. Comando luz() no console responde "não." e apaga a lanterna por 1 segundo
-1616. Comando ouvir() no console toca os sussurros
-1617. Dica discreta no console convidando quem fuça a digitar __segredos.ajuda()
-1618. Caps Lock ligado durante o jogo faz a Lia sussurrar "[para de gritar comigo]"
-1619. Scroll Lock (ou Insert) trava o tempo por 2 segundos, apaga o som e deixa "[alguém empurrou você]" + conquista Tecla Errada
-1620. Copiar o texto de uma nota cola junto a linha escondida "(eu vi o que você copiou. — A.)"
-1621. Dar zoom no navegador revela a frase miúda escondida e dá a conquista Lupa
-1622. Entrar em tela cheia no Capítulo III faz a Ana sussurrar "agora não tem pra onde ir"
-1623. Jogar exatamente às 21h00 do relógio real: as badaladas tocam fora do roteiro e vem a conquista Ao Vivo
-1624. Às 21h04 do relógio real: o eco do Tomé e uma linha de giz "eu só falei..."
-1625. Abrir o jogo num dia de semana entre 7h e 12h: "Você não deveria estar na aula, Lia?" + conquista Matando Aula
-1626. Cálculo da fase da lua pela data do aparelho, sem internet
-1627. Numa noite de lua cheia de verdade: uma lua desenhada atrás do sino no título + conquista Lua Cheia no São Lázaro
-1628. Carta do Davi gravada no armazenamento do navegador (chave davi_bilhete) para quem abre as ferramentas do navegador
-1629. Apagar a carta do Davi e recarregar: o título responde "Obrigado por me soltar." + conquista
-1630. Depois do final verdadeiro, o ícone do jogo vira um sino rachado
-1631. Depois do final verdadeiro, o título da aba vira "A Hora do Silêncio — acabou?"
-1632. Nome do amigo no link de desafio (&de=): o título mostra "{nome} te desafiou"
-1633. Recado de giz no link de desafio (&r=): aparece escrito no portão, assinado por quem mandou
-1634. Filtro do recado do link: só letras e números, até 40 caracteres, sem links
-1635. Conquista Correio Interno para quem abre um link com recado de amigo
-1636. Botão "Desafiar com recado" no fim do capítulo que monta o link com nome e recado
-1637. Os segredos achados ficam guardados num selo para o compartilhamento
-1638. Sala de Testes: sala cinza, cubos sem textura e placas "TESTE DE LUZ 01" e "COLISÃO OK"
-1639. Na Sala de Testes o Inspetor fica de manequim; quando o mouse sai da tela a luz apaga e ele cola em você
-1640. Conquista Bastidores ao entrar na Sala de Testes
-1641. Galeria: silhuetas das entidades girando, com uma lanterna que segue o mouse
-1642. Fichas do Inspetor, da Ana, da Procissão e do Breu dentro da Galeria
-1643. Na Galeria, parar de mexer o mouse faz o Inspetor virar a cabeça para você
-1644. Conquista Visitação ao abrir a Galeria
-1645. Visita de 1978: o térreo de dia, cores quentes e a lousa com "14 de março — festa!"
-1646. Na visita de 1978, às 21h o sino toca e tudo corta para a ruína
-1647. Botão VOLTAR e tecla ESC fecham qualquer sala secreta
-1648. Pista discreta no rodapé do título: "obra — acesso ao PORÃO restrito"
-1649. Bilhete do Davi escondido num comentário do código-fonte (patamar, terceira tábua)
-1650. Frase cifrada (cada letra andou 9 casas) no código-fonte que decifra em ENTRANHAS
-1651. Comentário no código-fonte listando os códigos e os marcadores para quem fuça
-1652. Página 404 do internato: porta rachada em CSS e o texto "Esta sala não existe. Ou existia, até 1979."
-1653. A página 404 toca as nove badaladas procedurais ao primeiro toque
-1654. A página 404 entra no cache para funcionar sem internet
-1655. Meta tags de imagem para o link do jogo aparecer melhor quando compartilhado (og:image e twitter:image)
-1656. O módulo pesado dos segredos carrega só quando precisa (no ocioso), sem pesar a abertura do jogo
-1657. Os arquivos novos entram no cache offline, com a versão do cache atualizada para v6
-1658. Opção Modo Streamer: legendas maiores para quem transmite
-1659. Opção "Legendas no topo" para as legendas não ficarem atrás da webcam
-1660. Opção "Mostrar área da webcam" com um retângulo no canto para não cobrir o jogo
-1661. Opção "Segredos sem flashes" para respeitar quem é sensível a piscas
-1662. Fieldset "Segredos e acessibilidade" na tela Desempenho, com tudo salvo entre sessões
-1663. Lanterna de Festa: uma luz que muda de cor devagar no título, com a conquista Luz de Festa
-1664. 14 conquistas secretas novas registradas sem mexer no roteiro compartilhado
-1665. T.segredos() no kit de teste confere as conquistas, o console e a carga do módulo das salas secretas
-1666. O QA passa a rodar os segredos (T.segredos dentro de T.plataforma) para eles não quebrarem em silêncio
-1667. O link da v1 abre a primeira versão do internato numa aba nova (Arqueologia)
-1668. Os segredos e a pista do porão só aparecem fora do QA, sem atrapalhar os testes automáticos
-1669. CSS próprio do lote (plataforma4.css) injetado só quando o jogo abre
+1660. Sistema de marcadores no endereço que aplica o segredo e limpa o # (pra mandar o link a um amigo)
+1661. #davi no endereço: o Davi reescreve o subtítulo do título e o sino toca longe
+1662. #ana no endereço: a Ana sussurra "agora você tá do lado de cá" no título
+1663. #1979 (ou #cinzas): chuva de cinzas caindo sobre o título
+1664. #14031979: chuva de cinzas com o lembrete do aniversário, 14 de março
+1665. #silencio: deixa o título mudo
+1666. #breu: o título fica quase no escuro, como se o prédio todo tivesse apagado
+1667. #espelho: o título vira espelhado (com os botões e o campo de texto corrigidos)
+1668. #apito: um apito do Inspetor, longe, no título
+1669. #chuva: a tempestade do título fica muito mais forte
+1670. #festa: liga a Lanterna de Festa, cosmética
+1671. #porao (ou #bastidores): abre a Sala de Testes escondida
+1672. #1978: abre a visita ao internato de 1978, antes da ruína
+1673. #presente: abre a Galeria das entidades
+1674. Digitar PORAO ou BASTIDORES no título também abre a Sala de Testes
+1675. Digitar PRESENTE no título também abre a Galeria
+1676. Digitar FESTA no título liga a Lanterna de Festa
+1677. Digitar ENTRANHAS no título dá um aviso do Seu Joaquim e a conquista Por Baixo do Papel
+1678. Digitar ARQUEOLOGIA (ou V1) revela o link da primeira versão e a conquista Arqueologia
+1679. Teclado de giz no título: um alfabeto de giz para digitar os códigos sem teclado físico
+1680. O teclado de giz mostra, em letra de giz, o que você já escreveu
+1681. Navegação do teclado de giz pelas setas do teclado
+1682. Navegação do teclado de giz pelo analógico e pela direcional do controle
+1683. Navegação do teclado de giz pelo toque, cada letra clicável
+1684. O teclado de giz abre segurando o título por 2 segundos (toque ou mouse)
+1685. O teclado de giz abre apertando LB e RB juntos no controle
+1686. O teclado de giz reaproveita todos os códigos que já existiam (SILENCIO, DAVI, NOVE, MOACIR, os nomes)
+1687. Som de giz ao escolher cada letra; ESC fecha o teclado de giz
+1688. Opção "Teclado de giz grande" para enxergar melhor as letras no controle ou no celular
+1689. Segurar os dois gatilhos no título por 9 segundos: o controle bate em código e a conquista Do Outro Lado do Controle
+1690. Vibração ritmada do controle enquanto você segura os dois gatilhos
+1691. Virar o celular de cabeça para baixo no título por 3 segundos: o título inverte, a Ana fala e vem a conquista Do Lado de Cá
+1692. O título volta ao normal assim que o celular é desvirado
+1693. Comando __segredos.ajuda() no console lista todos os comandos secretos
+1694. Comando lia() no console vira a câmera, sussurra e imprime a ficha de matrícula de 1979
+1695. Comando davi() no console entrega o número do cofre e dá a conquista Por Baixo do Papel
+1696. Comando cofre() no console dá a dica do número do cofre
+1697. Comando regras() no console imprime as regras com a sétima no fim
+1698. Comando quem() no console lista os nomes das crianças, com um em branco
+1699. Comando luz() no console responde "não." e apaga a lanterna por 1 segundo
+1700. Comando ouvir() no console toca os sussurros
+1701. Dica discreta no console convidando quem fuça a digitar __segredos.ajuda()
+1702. Caps Lock ligado durante o jogo faz a Lia sussurrar "[para de gritar comigo]"
+1703. Scroll Lock (ou Insert) trava o tempo por 2 segundos, apaga o som e deixa "[alguém empurrou você]" + conquista Tecla Errada
+1704. Copiar o texto de uma nota cola junto a linha escondida "(eu vi o que você copiou. — A.)"
+1705. Dar zoom no navegador revela a frase miúda escondida e dá a conquista Lupa
+1706. Entrar em tela cheia no Capítulo III faz a Ana sussurrar "agora não tem pra onde ir"
+1707. Jogar exatamente às 21h00 do relógio real: as badaladas tocam fora do roteiro e vem a conquista Ao Vivo
+1708. Às 21h04 do relógio real: o eco do Tomé e uma linha de giz "eu só falei..."
+1709. Abrir o jogo num dia de semana entre 7h e 12h: "Você não deveria estar na aula, Lia?" + conquista Matando Aula
+1710. Cálculo da fase da lua pela data do aparelho, sem internet
+1711. Numa noite de lua cheia de verdade: uma lua desenhada atrás do sino no título + conquista Lua Cheia no São Lázaro
+1712. Carta do Davi gravada no armazenamento do navegador (chave davi_bilhete) para quem abre as ferramentas do navegador
+1713. Apagar a carta do Davi e recarregar: o título responde "Obrigado por me soltar." + conquista
+1714. Depois do final verdadeiro, o ícone do jogo vira um sino rachado
+1715. Depois do final verdadeiro, o título da aba vira "A Hora do Silêncio — acabou?"
+1716. Nome do amigo no link de desafio (&de=): o título mostra "{nome} te desafiou"
+1717. Recado de giz no link de desafio (&r=): aparece escrito no portão, assinado por quem mandou
+1718. Filtro do recado do link: só letras e números, até 40 caracteres, sem links
+1719. Conquista Correio Interno para quem abre um link com recado de amigo
+1720. Botão "Desafiar com recado" no fim do capítulo que monta o link com nome e recado
+1721. Os segredos achados ficam guardados num selo para o compartilhamento
+1722. Sala de Testes: sala cinza, cubos sem textura e placas "TESTE DE LUZ 01" e "COLISÃO OK"
+1723. Na Sala de Testes o Inspetor fica de manequim; quando o mouse sai da tela a luz apaga e ele cola em você
+1724. Conquista Bastidores ao entrar na Sala de Testes
+1725. Galeria: silhuetas das entidades girando, com uma lanterna que segue o mouse
+1726. Fichas do Inspetor, da Ana, da Procissão e do Breu dentro da Galeria
+1727. Na Galeria, parar de mexer o mouse faz o Inspetor virar a cabeça para você
+1728. Conquista Visitação ao abrir a Galeria
+1729. Visita de 1978: o térreo de dia, cores quentes e a lousa com "14 de março — festa!"
+1730. Na visita de 1978, às 21h o sino toca e tudo corta para a ruína
+1731. Botão VOLTAR e tecla ESC fecham qualquer sala secreta
+1732. Pista discreta no rodapé do título: "obra — acesso ao PORÃO restrito"
+1733. Bilhete do Davi escondido num comentário do código-fonte (patamar, terceira tábua)
+1734. Frase cifrada (cada letra andou 9 casas) no código-fonte que decifra em ENTRANHAS
+1735. Comentário no código-fonte listando os códigos e os marcadores para quem fuça
+1736. Página 404 do internato: porta rachada em CSS e o texto "Esta sala não existe. Ou existia, até 1979."
+1737. A página 404 toca as nove badaladas procedurais ao primeiro toque
+1738. A página 404 entra no cache para funcionar sem internet
+1739. Meta tags de imagem para o link do jogo aparecer melhor quando compartilhado (og:image e twitter:image)
+1740. O módulo pesado dos segredos carrega só quando precisa (no ocioso), sem pesar a abertura do jogo
+1741. Os arquivos novos entram no cache offline, com a versão do cache atualizada para v6
+1742. Opção Modo Streamer: legendas maiores para quem transmite
+1743. Opção "Legendas no topo" para as legendas não ficarem atrás da webcam
+1744. Opção "Mostrar área da webcam" com um retângulo no canto para não cobrir o jogo
+1745. Opção "Segredos sem flashes" para respeitar quem é sensível a piscas
+1746. Fieldset "Segredos e acessibilidade" na tela Desempenho, com tudo salvo entre sessões
+1747. Lanterna de Festa: uma luz que muda de cor devagar no título, com a conquista Luz de Festa
+1748. 14 conquistas secretas novas registradas sem mexer no roteiro compartilhado
+1749. T.segredos() no kit de teste confere as conquistas, o console e a carga do módulo das salas secretas
+1750. O QA passa a rodar os segredos (T.segredos dentro de T.plataforma) para eles não quebrarem em silêncio
+1751. O link da v1 abre a primeira versão do internato numa aba nova (Arqueologia)
+1752. Os segredos e a pista do porão só aparecem fora do QA, sem atrapalhar os testes automáticos
+1753. CSS próprio do lote (plataforma4.css) injetado só quando o jogo abre
+1754. Marcador #coro no endereço: o hino do internato começa a ensaiar sozinho no título
+1755. Marcador #joaquim: o subtítulo vira o lamento do porteiro morto, com sino longe
+1756. Marcador #luiz: um nome aparece riscado no muro do título
+1757. Marcador #tome: o subtítulo mostra a ocorrência das 21h04 com sussurro
+1758. Marcador #celeste: a cozinheira reza baixinho no título
+1759. Marcador #vela: uma vela acesa, com chama tremeluzente, fica no canto do título
+1760. Marcador #corvo: um corvo pousa perto do sino do título
+1761. Marcador #neblina: a neblina do pátio sobe por cima do título
+1762. Marcador #relampago: relâmpagos ocasionais iluminam o título (respeita Reduzir flashes)
+1763. Marcador #apagada: o título apaga e só o que você aponta com o cursor aparece
+1764. Marcador #vinil: a vitrola da sala dos professores começa a chiar no título
+1765. Marcador #sino: as nove badaladas tocam ao abrir o título
+1766. Marcador #moacir: o bedel assovia lá do fundo do pátio
+1767. Marcador #fita: a imagem do título treme como fita velha, com linhas de varredura
+1768. Marcador #ladob: você "vira a fita" pro lado B, com clique e chiado
+1769. Marcador #fogo: por três segundos o internato pega fogo de novo no título
+1770. Comando de console moacir(): a ficha do bedel cego
+1771. Comando de console ana(): ela conta de um a dez, com o dez em branco
+1772. Comando de console procissao(): as nove badaladas da Procissão
+1773. Comando de console joaquim(): o bilhete do porteiro, com sino longe
+1774. Comando de console sino(): toca as nove badaladas
+1775. Comando de console presente(): a dica das letras mais fortes dos créditos
+1776. Comando de console turma(): os nomes da turma de 1979, um sem nome
+1777. Comando de console celeste(): a reza da cozinheira
+1778. Comando de console tome(): a ocorrência das 21h04
+1779. Comando de console silencio(): limpa o console e escreve só um ponto
+1780. O comando ajuda() do console agora lista também os comandos novos
+1781. Novo código digitado no título: GAVETA, achado em cifra no código-fonte, dá a conquista Quem Abriu a Minha Gaveta
+1782. Link ?selo= mostra no título "fulano achou o X. Você não." sem dizer onde fica
+1783. Link ?f= deixa um recado de giz pronto riscado no chão do título, assinado
+1784. Link ?pega= dispara um susto preparado por um amigo no prólogo, com o crédito dele
+1785. Link ?col= compara a sua coleção de segredos com a de um amigo
+1786. Link ?vela= acende no seu título a vela que um amigo mandou
+1787. Link ?x= desenha um X de giz vermelho com o nome de quem caiu ali
+1788. Link ?pista= entrega uma dica vaga de onde fica um segredo, confirmando antes pra não estragar
+1789. Botão "Deixar recado de giz (frase pronta)" no fim do capítulo, com 10 frases prontas
+1790. Botão "Preparar um susto para alguém" no fim do capítulo, com 5 sustos à escolha
+1791. Botão "Copiar meu código de colecionador" no fim do capítulo
+1792. Código de colecionador compacto (base36) com os marcadores e o número de segredos
+1793. Filtro de nome e recado dos links: só letras e números, com limite de tamanho
+1794. A pegadinha de amigo nunca acontece no modo Uma Vida nem no Desafio e respeita Reduzir flashes
+1795. Opção "Recusar pegadinhas de amigos" na tela Desempenho
+1796. A pegadinha recebida mostra "Pegadinha de fulano" e dá a conquista Pegadinha
+1797. Tabela de senhas de pista (GATO7, SINO9, POCO3, LOUSA, PORAO) com dicas sem spoiler
+1798. Com a bateria do aparelho abaixo de 15% fora da tomada, a Lia avisa e a pilha dela enfraquece
+1799. Ao ligar o carregador, a Lia agradece e a luz volta ao normal
+1800. Opção "Ignorar a bateria do aparelho" para quem não quer o efeito de pilha fraca
+1801. Opção "Guardar clipes (F9)" grava os últimos 15 s da tela, para quem faz live
+1802. Os clipes usam um buffer circular de vídeo do canvas somado ao áudio do jogo
+1803. F9 baixa um .webm dos últimos segundos e dá a conquista Diretor
+1804. Botão "Baixar os últimos 15 s" aparece na tela de morte quando os clipes estão ligados
+1805. Opção "Baixar o clipe ao morrer" guarda sozinho os segundos finais
+1806. No controle, os dois analógicos para baixo fazem a Lia tampar a boca com as duas mãos
+1807. Se o controle cai no meio da caçada, a tela mostra em giz "ele não vai esperar"
+1808. Ao reconectar o controle durante o jogo, ele vibra nove batidas curtas
+1809. Opção "Pulso no controle": ele bate junto com o coração da Lia
+1810. O Pulso fica mais rápido e mais forte conforme o medo sobe
+1811. Opção "Microfone: chamar pelo nome" (só aparece se o navegador tiver reconhecimento de voz)
+1812. Dizer um nome em voz alta no escuro faz alguém responder e dá a conquista Chamei Pelo Nome
+1813. O título da aba ganha uma estrela quando você tem seis ou mais segredos
+1814. Em noite de lua cheia de verdade, o título da aba ganha uma lua
+1815. Contador discreto de segredos achados no rodapé do título
+1816. Clicar nove vezes rápido no título toca as nove badaladas
+1817. Ficar trinta segundos parado no título faz a Lia sussurrar que elas estão esperando
+1818. Opção "Legendas de segredo em alto contraste" com contorno escuro atrás do giz
+1819. Opção "Texto dos segredos maior" para os recados e cartazes
+1820. Opção "Esconder a pista do porão" tira o aviso de obra do rodapé
+1821. Opção "Parar os efeitos do título" congela cinzas, chuva, vela e corvo
+1822. Opção "Narrar os segredos achados" anuncia por leitor de tela (aria-live)
+1823. Opção "Segredos sem vibração" tira a vibração dos easter eggs
+1824. Opção "Vibrar a inicial da sala em Morse" bate a letra do segredo no controle/celular
+1825. A vela do título agora pode ser clicada para soprar e acender de novo
+1826. Botão "Instalar para jogar sem internet" aparece no título quando o navegador permite
+1827. Ao instalar o jogo, a Lia avisa que agora dá pra jogar sem internet
+1828. Novo comentário no código-fonte com a cifra PJENCJ que decifra em GAVETA
+1829. Comentário no código-fonte listando os marcadores novos pra mandar a um amigo
+1830. Comentário no código-fonte listando os links de amigo (?pega=, ?f=, ?col=, ?vela=, ?selo=)
+1831. Meta tag og:image:type para o preview do link ficar certo
+1832. Meta tags og:image:width e og:image:height para o preview dimensionar a imagem
+1833. Meta tag twitter:image:alt descrevendo o sino rachado
+1834. A página 404 mostra, ao passar o mouse, a dica dos marcadores (#porao, #1978, #presente)
+1835. A dica da 404 aparece com uma transição suave
+1836. A 404 sorteia o nome de uma sala interditada diferente a cada visita
+1837. O service worker guarda o plataforma4b.js para jogar sem internet
+1838. O service worker guarda o plataforma4b.css para jogar sem internet
+1839. O cache do service worker subiu para v8 para entregar os arquivos novos offline
+1840. T.segredos() do kit de teste agora confere as conquistas da segunda rodada
+1841. T.segredos() confere os comandos de console novos e o ana() com o dez em branco
+1842. T.segredos() carrega e verifica o módulo plataforma4b
 
 ### Revisão antes de publicar (6)
 
-1670. Service worker: o cache voltou a ser versionado (`hora-silencio-v6`) em vez de ficar preso no `v5` do Lote 3, então o `activate` limpa o cache antigo e os módulos novos do Lote 4 entram de uma vez na próxima abertura
-1671. Service worker: removida a entrada falsa `'hora-silencio-v6'` da lista `BASE`, que não é arquivo e fazia o `install` buscar um 404 toda vez e o indicador de "pronto para jogar sem internet" nunca fechar em 100%
-1672. Revisão final de jogador-testador: QA de sobrevivência rodado de ponta a ponta (campanha + sobrevivência + plataforma + segredos) terminou em RESULTADO PASSOU, sem erro de JS nem aviso; os cinco mapas foram conferidos por captura — título, estrada, térreo, dormitórios, túneis e cemitério — com texto legível e acentuado, HUD inteiro, nenhuma tela sobreposta e a escuridão sempre com um foco iluminado para dar para jogar
-1673. Confirmado que os oito módulos novos do Lote 4 (`internato-segredos`, `internato-segredos-sup`, `subterraneo-segredos2`, `sustos-segredos2`, `plataforma4`, `plataforma4-extra`, `progressao-lote4b`, `progressao-lote4b-roteiro`) entraram na lista `BASE` do service worker, então o jogo completo com os segredos roda offline
-1674. Caçado o aviso raro de áudio "setValueAtTime não-finito" que aparecera num QA anterior: instrumentei `setValueAtTime` e as rampas para acusar qualquer valor não-finito e rodei a corrida inteira — zero ocorrências, então era um caso isolado e não há `NaN` chegando aos parâmetros de áudio dos segredos
-1675. Conferido que nenhum segredo ou entidade do Lote 4 cita nome ou marca de outro jogo: as referências continuam originais (Inspetor Moacir, a Menina Que Conta, a Procissão, o Clube do Silêncio)
+1843. Service worker: o cache voltou a ser versionado (`hora-silencio-v6`) em vez de ficar preso no `v5` do Lote 3, então o `activate` limpa o cache antigo e os módulos novos do Lote 4 entram de uma vez na próxima abertura
+1844. Service worker: removida a entrada falsa `'hora-silencio-v6'` da lista `BASE`, que não é arquivo e fazia o `install` buscar um 404 toda vez e o indicador de "pronto para jogar sem internet" nunca fechar em 100%
+1845. Revisão final de jogador-testador: QA de sobrevivência rodado de ponta a ponta (campanha + sobrevivência + plataforma + segredos) terminou em RESULTADO PASSOU, sem erro de JS nem aviso; os cinco mapas foram conferidos por captura — título, estrada, térreo, dormitórios, túneis e cemitério — com texto legível e acentuado, HUD inteiro, nenhuma tela sobreposta e a escuridão sempre com um foco iluminado para dar para jogar
+1846. Confirmado que os oito módulos novos do Lote 4 (`internato-segredos`, `internato-segredos-sup`, `subterraneo-segredos2`, `sustos-segredos2`, `plataforma4`, `plataforma4-extra`, `progressao-lote4b`, `progressao-lote4b-roteiro`) entraram na lista `BASE` do service worker, então o jogo completo com os segredos roda offline
+1847. Caçado o aviso raro de áudio "setValueAtTime não-finito" que aparecera num QA anterior: instrumentei `setValueAtTime` e as rampas para acusar qualquer valor não-finito e rodei a corrida inteira — zero ocorrências, então era um caso isolado e não há `NaN` chegando aos parâmetros de áudio dos segredos
+1848. Conferido que nenhum segredo ou entidade do Lote 4 cita nome ou marca de outro jogo: as referências continuam originais (Inspetor Moacir, a Menina Que Conta, a Procissão, o Clube do Silêncio)
 
 ## Lote 5
 
