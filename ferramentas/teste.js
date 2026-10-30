@@ -188,6 +188,19 @@ T.plataforma = async () => {
     semPausa(); J.S.hidden = null; J.P.bloqueado = false; const x0 = J.P.pos.x, z0 = J.P.pos.z; J.P.mover = { x: .7, y: -.7, l: 1 }; T.passo(.3); J.P.mover = null;
     ok('analógico anda na diagonal contínua', Math.hypot(J.P.pos.x - x0, J.P.pos.z - z0) > .1);
   }
+  // lote 5 (2ª leva): Modo Cego liga/desliga as ajudas e devolve tudo; intensidade dos monstros é separada
+  try {
+    const b = P.P5 && P.P5.teste && P.P5.teste.b;
+    if (b) {
+      P.O.respInsp = true; P.O.hapEntidade = true; P.O.modoCego = true; b.aplicarCego(true);
+      ok('Modo Cego desliga as ajudas de leitura', !P.O.respInsp && !P.O.hapEntidade);
+      P.O.modoCego = false; b.aplicarCego(false);
+      ok('desligar o Modo Cego devolve as ajudas', P.O.respInsp === true && P.O.hapEntidade === true);
+      P.O.agressMon = 'cruel'; const fc = b.fatorAgress(); ok('intensidade Cruel aperta a reação', !!fc && fc.ouv > 1);
+      P.O.agressMon = 'brando'; const fb = b.fatorAgress(); ok('intensidade Branda alivia', !!fb && fb.vel < 1);
+      P.O.agressMon = 'normal'; ok('intensidade Normal não mexe nas entidades', b.fatorAgress() === null);
+    }
+  } catch (e) { falhas.push('plataforma lote 5 (' + e.message + ')'); }
   try { for (const f of (await T.segredos())) falhas.push(f); } catch (e) { falhas.push('segredos (' + e.message + ')'); }
   localStorage.removeItem('hora-silencio-v3-auto');
   return falhas;

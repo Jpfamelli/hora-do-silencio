@@ -32,7 +32,10 @@ const PADRAO = {
   respInsp: true, respEstalos: true, respVol: 1, respSoCaca: false, nevoaDir: false, nevoaDist: 6, capEstado: true, capSoPerigo: false, legSomCaixa: false, legSomTam: 'm', contraste: false,
   miraCaca: false, indicSoCaca: false, indicInsp: false, coracaoForca: 1, invX: false, sensV: 1, vibForca: 1, vibSoPerigo: false, semGrao: false, semChuva: false, semSombra: false, descanso: false, tqFixo: false,
   legSomDist: true, legSomDir: true, legSomDur: 1, teto45: false, vinhetaFraca: false, vermFraco: false, tqOlharDz: false, padLinear: false,
-  hapEntidade: true, hapSoCaca: false
+  hapEntidade: true, hapSoCaca: false,
+  // lote 5 (2ª leva): os monstros — desafio e leitura tátil
+  modoCego: false, agressMon: 'normal', vibDir: true, nuca: true, nucaForca: 1, sinoHaptic: true, hapAcao: false,
+  hapPilha: false, hapEsconde: false
 };
 const ler = () => { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } };
 const O = { ...PADRAO, ...ler() };
@@ -682,7 +685,17 @@ const LINHAS = [
   ['teto45', 'Limitar a 45 quadros (equilíbrio)', 'chk'],
   ['semGrao', 'Desligar o grão de filme', 'chk'],
   ['semChuva', 'Desligar a chuva (alivia o computador)', 'chk'],
-  ['semSombra', 'Desligar a sombra da lanterna', 'chk']
+  ['semSombra', 'Desligar a sombra da lanterna', 'chk'],
+  ['Os monstros (desafio e leitura tátil)'],
+  ['modoCego', 'Modo Cego: sem leitura do perigo, entidades mais agressivas', 'chk'],
+  ['agressMon', 'Intensidade dos monstros (separada da dificuldade)', 'sel', [['brando', 'Brando'], ['normal', 'Normal'], ['cruel', 'Cruel']]],
+  ['vibDir', 'Vibração direcional do caçador (o lado que vibra = de onde ele vem)', 'chk'],
+  ['nuca', 'Realce de "atrás e acima" no fone (nuca)', 'chk'],
+  ['nucaForca', 'Força do realce de nuca', 'rng', [0, 1.5, .1]],
+  ['sinoHaptic', 'Duelo do sino no toque/controle (empurrão a cada badalada)', 'chk'],
+  ['hapAcao', 'Pulso tátil nas ações longas (forçar, cavar, dar corda...)', 'chk'],
+  ['hapPilha', 'Tique tátil quando a pilha está acabando', 'chk'],
+  ['hapEsconde', 'Pulso tátil ao se esconder e ao sair', 'chk']
 ];
 function montarOpcoes() {
   const el = document.createElement('div'); el.id = 'plat-opcoes'; el.className = 'screen painel'; el.hidden = true;
@@ -807,6 +820,8 @@ function montarPortal() {
 function fecharPortal() { const el = $('#portal'); if (!el || el.hidden) return; el.hidden = true; C.iniciarAudio(); aplicarMono();
   // atalho "Continuar a noite" do aplicativo instalado
   if (/[?&]continuar=1/.test(location.search) && !$('#b-cont').hidden) { setTimeout(() => $('#b-cont').click(), 60); return; }
+  // atalho "Desempenho e acessibilidade" do aplicativo instalado
+  if (/[?&]opcoes=1/.test(location.search)) { setTimeout(abrirOpcoes, 80); return; }
   setTimeout(() => { if (padAtivo || toque) { const b = $('#b-cont').hidden ? $('#b-novo') : $('#b-cont'); b.focus(); } }, 30); }
 
 // =====================================================================
@@ -1024,6 +1039,6 @@ export const PLAT = {
     addEventListener('resize', () => { const t = Math.min(devicePixelRatio || 1, Q().pr); if (t !== tetoPR) { tetoPR = t; prAtual = Math.min(prAtual, t); C.renderer.setPixelRatio(prAtual); } });
     requestAnimationFrame(medir);
     if ('serviceWorker' in navigator && !robo && location.protocol !== 'file:') { const reg = () => navigator.serviceWorker.register('sw.js').catch(() => {}); if (document.readyState === 'complete') reg(); else addEventListener('load', reg); }
-    window.__plat = { O, aplicarOpcoes, salvarAuto, autoValido, textoResultado, agenda, fila, pad, limparTeclas, get graca() { return graca; }, get prAtual() { return prAtual; }, simularOculto() { if (emJogoAtivo()) C.abrirPausa(); volume(0, .2); }, forcarCalma() { calmaT = 99; }, semPad() { setPad(false); }, get P2() { return P2; }, get trava() { return trava; }, travaFrame, puxar, soltarTodosPad, segPad, get AG() { return C.AG; }, get P3() { return P3; }, get corte() { return corte; } };
+    window.__plat = { O, aplicarOpcoes, salvarAuto, autoValido, textoResultado, agenda, fila, pad, limparTeclas, get graca() { return graca; }, get prAtual() { return prAtual; }, simularOculto() { if (emJogoAtivo()) C.abrirPausa(); volume(0, .2); }, forcarCalma() { calmaT = 99; }, semPad() { setPad(false); }, get P2() { return P2; }, get trava() { return trava; }, travaFrame, puxar, soltarTodosPad, segPad, get AG() { return C.AG; }, get P3() { return P3; }, get P5() { return P5; }, get corte() { return corte; } };
   }
 };

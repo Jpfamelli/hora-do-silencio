@@ -322,3 +322,6 @@ body.pl5-contraste #obj{background:rgba(0,0,0,.4);padding:6px 10px;border-radius
 /* vinheta das bordas mais fraca e flashes vermelhos mais fracos (fotossensibilidade) */
 body.pl5-vinheta-fraca #fx-vignette{opacity:.4}
 body.pl5-verm-fraco #fx-red{filter:opacity(.45)}
+/* Modo Cego: um selo discreto no título (nunca no HUD, para não virar "ajuda") */
+#pl5b-cego-selo{display:none;position:fixed;left:12px;bottom:10px;z-index:40;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#7a2b26;opacity:.75;pointer-events:none;font-family:inherit}
+body.pl5-cego #pl5b-cego-selo{display:block}

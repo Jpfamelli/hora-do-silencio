@@ -4,6 +4,8 @@
 // alto contraste, opções de conforto/controle e um punhado de ajustes de desempenho e compartilhamento.
 // Instalado por src/plataforma.js (instalarPlat5). Fala com o motor só pelo contexto C e pelos ajudantes U.
 
+import { instalarPlat5b } from './plataforma-lote5b.js';
+
 const $ = s => document.querySelector(s);
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 
@@ -13,14 +15,17 @@ export function instalarPlat5(C, U) {
   const menosMov = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
   const emJogo = () => U.emJogoAtivo();
   const qual = () => U.qual();
+  const cego = () => !!O.modoCego; // Modo Cego: desliga as ajudas de leitura do perigo (ver plataforma-lote5b.js)
+  let P5b = { antes() {}, depois() {}, opcoes() {}, mapa() {}, montarOpcoes() {}, teste: {} };
 
   // ===================================================================
   // 1. ÁUDIO 3D DO INSPETOR: respiração e estalos que giram em volta de você
   //    A respiração sai de uma fonte posicionada na cabeça do Inspetor e passa pelo PannerNode:
   //    de fone, dá a volta na sua cabeça (HRTF); sem fone ou no mono, vira pan simples.
   // ===================================================================
-  let AC = null, panner = null, noise = null, bgain = null, cgain = null, montado = false, falhou = false;
+  let AC = null, panner = null, noise = null, bgain = null, cgain = null, nucaF = null, montado = false, falhou = false;
   let fase = 0, creakT = 2.5, respVol = 0;
+  const nucaForca = () => clamp(O.nucaForca == null ? 1 : +O.nucaForca, 0, 1.5);
   const temAC = () => C.AC && C.master;
   const panModelo = () => (O.mono || !O.fone) ? 'equalpower' : 'HRTF';
   function pos3(p, x, y, z) { try { if (p.positionX) { p.positionX.value = x; p.positionY.value = y; p.positionZ.value = z; } else p.setPosition(x, y, z); } catch (e) {} }
@@ -35,9 +40,11 @@ export function instalarPlat5(C, U) {
       bgain = AC.createGain(); bgain.gain.value = 0;
       const cf = AC.createBiquadFilter(); cf.type = 'bandpass'; cf.frequency.value = 1500; cf.Q.value = 1.6;
       cgain = AC.createGain(); cgain.gain.value = 0;
+      // realce de nuca: um peaking que reforça a banda de "atrás e acima" (~4,2 kHz) quando ele está nas suas costas
+      nucaF = AC.createBiquadFilter(); nucaF.type = 'peaking'; nucaF.frequency.value = 4200; nucaF.Q.value = 1.1; nucaF.gain.value = 0;
       panner = AC.createPanner(); panner.panningModel = panModelo(); panner.distanceModel = 'inverse'; panner.refDistance = 1.6; panner.rolloffFactor = 1.1;
-      noise.connect(bf); bf.connect(bgain); bgain.connect(panner);
-      noise.connect(cf); cf.connect(cgain); cgain.connect(panner);
+      noise.connect(bf); bf.connect(bgain); bgain.connect(nucaF); nucaF.connect(panner);
+      noise.connect(cf); cf.connect(cgain); cgain.connect(nucaF);
       panner.connect(C.master);
       noise.start();
       montado = true;
@@ -54,7 +61,11 @@ export function instalarPlat5(C, U) {
     const t = AC.currentTime;
     if (!quer) { if (bgain.gain.value > .0002) bgain.gain.setTargetAtTime(0, t, .3); return; }
     const cam = C.camera.position, dx = M.pos.x - cam.x, dz = M.pos.z - cam.z, d = Math.hypot(dx, dz);
-    pos3(panner, M.pos.x, 1.6, M.pos.z);
+    // realce de nuca (atrás e acima): quando ele está nas suas costas, ergue a fonte e reforça a banda alta
+    const atras = Math.abs(U.direcao(M.pos.x, M.pos.z)) > Math.PI * .6;
+    const elev = (O.nuca && atras) ? .55 * nucaForca() : 0;
+    pos3(panner, M.pos.x, 1.6 + elev, M.pos.z);
+    if (nucaF) nucaF.gain.setTargetAtTime(O.nuca ? (atras ? 5.5 * nucaForca() : -1.5) : 0, AC.currentTime, .12);
     const taxa = caca ? .62 : (M.state === 'procura' || M.state === 'investiga' ? .4 : .25);
     fase = (fase + dt * taxa) % 1;
     const env = Math.pow(Math.max(0, Math.sin(fase * Math.PI * 2)), 2); // inala/exala
@@ -84,20 +95,47 @@ export function instalarPlat5(C, U) {
       const bf = ac.createBiquadFilter(); bf.type = 'bandpass'; bf.frequency.value = 470; bf.Q.value = .8;
       const g = ac.createGain(); g.gain.value = 0;
       const p = ac.createPanner(); p.panningModel = panModelo(); p.distanceModel = 'inverse'; p.refDistance = 1.6;
-      src.connect(bf); bf.connect(g); g.connect(p); p.connect(C.master);
+      let no = null; if (O.nuca) { no = ac.createBiquadFilter(); no.type = 'peaking'; no.frequency.value = 4200; no.Q.value = 1.1; no.gain.value = 0; }
+      if (no) { src.connect(bf); bf.connect(no); no.connect(g); } else { src.connect(bf); bf.connect(g); }
+      g.connect(p); p.connect(C.master);
       src.start();
       const ini = performance.now(); let ph = 0, raf = 0;
       const passo = () => {
         const dt = .016, el = (performance.now() - ini) / 1000;
         if (el > 4) { g.gain.setTargetAtTime(0, ac.currentTime, .1); setTimeout(() => { try { src.stop(); src.disconnect(); } catch (e) {} }, 300); return; }
         const a = el / 4 * Math.PI * 2;
-        pos3(p, lx + Math.sin(a) * 2.2, ly, lz + Math.cos(a) * 2.2);
+        const atras = Math.cos(a) > 0; // z+ fica atrás da escuta
+        pos3(p, lx + Math.sin(a) * 2.2, ly + (no && atras ? .5 * nucaForca() : 0), lz + Math.cos(a) * 2.2);
+        if (no) no.gain.setTargetAtTime(atras ? 5.5 * nucaForca() : -1.5, ac.currentTime, .1);
         ph = (ph + dt * .5) % 1; const env = Math.pow(Math.max(0, Math.sin(ph * Math.PI * 2)), 2);
         g.gain.setTargetAtTime(.14 * (.2 + env), ac.currentTime, .05);
         raf = requestAnimationFrame(passo);
       };
       passo();
       C.toast('Feche os olhos: a respiração dá a volta na sua cabeça (melhor de fone).');
+    } catch (e) {}
+  }
+  // botão "Realce de nuca": a respiração fica parada ATRÁS e ACIMA, para calibrar o realce de fone
+  function ouvirNuca() {
+    try { if (C.iniciarAudio) C.iniciarAudio(); } catch (e) {}
+    if (!temAC()) { C.toast('O som ainda não começou. Clique na tela primeiro.'); return; }
+    try {
+      const ac = C.AC, L = ac.listener;
+      const lx = L.positionX ? L.positionX.value : 0, ly = L.positionY ? L.positionY.value : 1.6, lz = L.positionZ ? L.positionZ.value : 0;
+      const buf = ac.createBuffer(1, Math.floor(ac.sampleRate), ac.sampleRate), d = buf.getChannelData(0);
+      for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+      const src = ac.createBufferSource(); src.buffer = buf; src.loop = true;
+      const bf = ac.createBiquadFilter(); bf.type = 'bandpass'; bf.frequency.value = 470; bf.Q.value = .8;
+      const nk = ac.createBiquadFilter(); nk.type = 'peaking'; nk.frequency.value = 4200; nk.Q.value = 1.1; nk.gain.value = 5.5 * nucaForca();
+      const g = ac.createGain(); g.gain.value = 0;
+      const p = ac.createPanner(); p.panningModel = panModelo(); p.distanceModel = 'inverse'; p.refDistance = 1.6;
+      src.connect(bf); bf.connect(nk); nk.connect(g); g.connect(p); p.connect(C.master);
+      pos3(p, lx, ly + .55, lz + 1.8); // logo atrás da nuca e um pouco acima (z+ é atrás da escuta)
+      src.start();
+      const ini = performance.now(); let ph = 0;
+      const passo = () => { const el = (performance.now() - ini) / 1000; if (el > 4) { g.gain.setTargetAtTime(0, ac.currentTime, .1); setTimeout(() => { try { src.stop(); src.disconnect(); } catch (e) {} }, 300); return; } ph = (ph + .016 * .5) % 1; const env = Math.pow(Math.max(0, Math.sin(ph * Math.PI * 2)), 2); g.gain.setTargetAtTime(.15 * (.2 + env), ac.currentTime, .05); requestAnimationFrame(passo); };
+      passo();
+      C.toast('A respiração fica atrás e acima da sua nuca. Ajuste a força até sentir "em cima".');
     } catch (e) {}
   }
 
@@ -134,10 +172,10 @@ export function instalarPlat5(C, U) {
     if (!(O.legSom && O.capEstado) || !emJogo()) return;
     const S = C.S, P = C.P, M = C.M, so = !!O.capSoPerigo; // so = só as de perigo
     const caca = !!(M && M.ativo && (M.state === 'caca' || M.state === 'bote'));
-    if (caca && !prev.caca) { U.legenda('caca-ini', 'o Inspetor começou a caçar', null, 1); perigoVibra(); }
+    if (caca && !prev.caca) { const lado = U.nomeDir(U.direcao(M.pos.x, M.pos.z)); U.legenda('caca-ini', 'o Inspetor começou a caçar (' + lado + ')', null, 1); perigoVibra(); }
     else if (!caca && prev.caca && M && M.ativo) U.legenda('caca-fim', 'ele parou de caçar', null, 1);
     prev.caca = caca;
-    if (caca) { const a = U.direcao(M.pos.x, M.pos.z), d = Math.hypot(M.pos.x - C.P.pos.x, M.pos.z - C.P.pos.z); if (d < 2.6 && Math.abs(a) > Math.PI * .6) U.legenda('atras-ins', 'ele está bem atrás de você', null, 2); }
+    if (caca) { const a = U.direcao(M.pos.x, M.pos.z), d = Math.hypot(M.pos.x - C.P.pos.x, M.pos.z - C.P.pos.z); if (d < 2.6 && Math.abs(a) > Math.PI * .6) { U.legenda('atras-ins', 'ele está bem atrás de você', null, 2); if (O.vibDir && O.vibrar) U.vibrar(.45, .2, 130); } }
     const esc = !!(M && M.ativo && (M.state === 'alerta' || M.state === 'escuta')); if (esc && !prev.esc) U.legenda('escuta', 'ele parou para escutar', null, 1); prev.esc = esc;
     const vasc = !!(M && M.state === 'vasculha'); if (vasc && !prev.vasc) U.legenda('vasc', 'ele vasculha o armário', null, 1); prev.vasc = vasc;
     const ana = !!(C.ANA && C.ANA.ativa); if (ana && !prev.ana) U.legenda('ana-ap', 'a menina apareceu', null, 1); prev.ana = ana;
@@ -259,7 +297,7 @@ export function instalarPlat5(C, U) {
   function blurbTitulo() {
     const t = $('#title'); if (!t || $('#pl5-acess')) return;
     const d = document.createElement('div'); d.id = 'pl5-acess'; d.className = 'ctrl';
-    d.textContent = 'Acessível: legendas de som e de estado · daltonismo · alto contraste · teclas, controle e toque · soltar do agarrão por segurar · névoa de direção na caçada · vibração por entidade';
+    d.textContent = 'Acessível: legendas de som e de estado · daltonismo · alto contraste · teclas, controle e toque · soltar do agarrão por segurar · névoa de direção na caçada · vibração por entidade e direcional · realce de nuca no fone · Modo Cego para o terror puro';
     const ult = t.querySelector('.ctrl:last-of-type'); if (ult) ult.after(d); else t.appendChild(d);
   }
 
@@ -269,10 +307,24 @@ export function instalarPlat5(C, U) {
   function gpuNome() {
     try { const gl = C.renderer.getContext(), ext = gl.getExtension('WEBGL_debug_renderer_info'); return String(gl.getParameter(ext ? ext.UNMASKED_RENDERER_WEBGL : gl.RENDERER) || '').slice(0, 80); } catch (e) { return ''; }
   }
+  let ultMed = null;
   function medirAgora() {
-    let n = 0, soma = 0, ult = 0;
-    const f = t => { if (ult) { soma += t - ult; n++; } ult = t; if (n < 45) requestAnimationFrame(f); else { const ms = soma / n; C.toast('Desempenho: ' + Math.round(1000 / ms) + ' quadros por segundo (' + ms.toFixed(1) + ' ms por quadro · qualidade ' + qual() + ').'); } };
+    let n = 0, soma = 0, ult = 0, pior = 0;
+    const f = t => { if (ult) { const d = t - ult; soma += d; n++; if (d > pior) pior = d; } ult = t; if (n < 60) requestAnimationFrame(f); else { const ms = soma / n; ultMed = { fps: Math.round(1000 / ms), ms, pior: Math.round(pior), qual: qual() }; C.toast('Desempenho: ' + ultMed.fps + ' quadros por segundo (' + ms.toFixed(1) + ' ms · pior quadro ' + ultMed.pior + ' ms · qualidade ' + qual() + ').' + (ultMed.fps < 40 && qual() !== 'minima' ? ' Está pesado: experimente uma qualidade menor em Imagem.' : '')); } };
     requestAnimationFrame(f);
+  }
+  // relatório técnico para quem quer reportar travamento (copia para a área de transferência)
+  function copiarRelatorio() {
+    const linhas = [
+      'A Hora do Silêncio — relatório técnico',
+      'Placa: ' + (gpuNome() || '?'),
+      'Núcleos: ' + (navigator.hardwareConcurrency || '?') + (navigator.deviceMemory ? (' · memória ' + navigator.deviceMemory + ' GB') : ''),
+      'Qualidade: ' + qual() + ' · tela ' + innerWidth + 'x' + innerHeight + ' @' + (window.devicePixelRatio || 1),
+      'Modos: ' + (O.modoCego ? 'Cego · ' : '') + 'intensidade ' + (O.agressMon || 'normal'),
+      'Desempenho medido: ' + (ultMed ? (ultMed.fps + ' fps · ' + ultMed.ms.toFixed(1) + ' ms · pior ' + ultMed.pior + ' ms') : '(use Medir desempenho antes)'),
+      'Navegador: ' + navigator.userAgent
+    ].join('\n');
+    try { navigator.clipboard.writeText(linhas).then(() => C.toast('Relatório técnico copiado. Cole num recado para a gente.'), () => C.toast('Não deu para copiar aqui.')); } catch (e) { C.toast('Não deu para copiar aqui.'); }
   }
 
   // ===================================================================
@@ -281,11 +333,12 @@ export function instalarPlat5(C, U) {
   function montarOpcoes(wrap) {
     if (!wrap || $('#pl5-extra')) return;
     const sec = document.createElement('div'); sec.id = 'pl5-extra';
-    sec.innerHTML = '<h3>Som 3D e desempenho</h3><p class="pl-nota">A respiração do Inspetor sai de onde ele está. Melhor de fone.</p><div class="op-bts"><button class="btn" id="pl5-ouvir">Ouvir a respiração</button><button class="btn" id="pl5-medir">Medir desempenho</button></div><p class="pl-nota">Vibração por entidade: o Inspetor é um pulso grave e lento, a Ana são estalidos curtos, a Procissão é uma onda que cresce.</p><div class="op-bts"><button class="btn" id="pl5-haptic">Sentir cada um</button><button class="btn" id="pl5-vibtest">Testar a vibração</button></div><div class="pl-nota" id="pl5-gpu"></div>';
+    sec.innerHTML = '<h3>Som 3D e desempenho</h3><p class="pl-nota">A respiração do Inspetor sai de onde ele está. Melhor de fone.</p><div class="op-bts"><button class="btn" id="pl5-ouvir">Ouvir a respiração</button><button class="btn" id="pl5-nuca">Realce de nuca</button><button class="btn" id="pl5-medir">Medir desempenho</button></div><p class="pl-nota">Vibração por entidade: o Inspetor é um pulso grave e lento, a Ana são estalidos curtos, a Procissão é uma onda que cresce.</p><div class="op-bts"><button class="btn" id="pl5-haptic">Sentir cada um</button><button class="btn" id="pl5-vibtest">Testar a vibração</button></div><div class="pl-nota" id="pl5-gpu"></div><div class="op-bts"><button class="btn" id="pl5-perfcop">Copiar relatório técnico</button></div>';
     const fim = wrap.querySelector(':scope > .op-bts'); if (fim) wrap.insertBefore(sec, fim); else wrap.appendChild(sec);
-    $('#pl5-ouvir').onclick = ouvirResp; $('#pl5-medir').onclick = medirAgora;
+    $('#pl5-ouvir').onclick = ouvirResp; $('#pl5-nuca').onclick = ouvirNuca; $('#pl5-medir').onclick = medirAgora;
     $('#pl5-haptic').onclick = sentirPadroes; $('#pl5-vibtest').onclick = testarVibra;
-    const g = $('#pl5-gpu'), nome = gpuNome(); if (g) g.textContent = nome ? ('Placa de vídeo: ' + nome) : '';
+    $('#pl5-perfcop').onclick = copiarRelatorio;
+    const g = $('#pl5-gpu'), nome = gpuNome(); if (g) g.textContent = (nome ? ('Placa de vídeo: ' + nome + ' · ') : '') + (navigator.hardwareConcurrency || '?') + ' núcleos' + (navigator.deviceMemory ? (' · ' + navigator.deviceMemory + ' GB') : '');
   }
   function aplicarClasses() {
     const b = document.body;
@@ -308,24 +361,27 @@ export function instalarPlat5(C, U) {
   // os elementos próprios do HUD/título
   if (!$('#pl5-nevoa')) { const n = document.createElement('div'); n.id = 'pl5-nevoa'; document.body.appendChild(n); }
   aplicarClasses(); blurbTitulo();
+  try { P5b = instalarPlat5b(C, U); } catch (e) {}
 
   let acc = 0;
   const hz = () => { const q = qual(); return q === 'minima' ? 10 : q === 'baixa' ? 15 : 60; };
 
   return {
-    montarOpcoes, opcoes,
+    montarOpcoes(wrap) { montarOpcoes(wrap); try { P5b.montarOpcoes(wrap); } catch (e) {} },
+    opcoes(id) { opcoes(id); try { P5b.opcoes(id); } catch (e) {} },
     antes(dt) {
       // soltar do agarrão segurando o botão (acessibilidade para motricidade reduzida)
       if (O.soltar === 'segurar' && C.M && C.M.state === 'agarra' && emJogo() && C.AG && C.keys.KeyE) C.AG.sacode += 1700 * dt;
+      P5b.antes(dt);
     },
     depois(dt, ativo) {
       // camadas pesadas (áudio 3D e névoa) em passo reduzido na Baixa/Mínima; o resto é barato e roda sempre
       acc += dt; const per = 1 / hz();
       if (acc >= per) { respFrame(acc); nevoaFrame(); acc = 0; }
-      capFrame(); vivoFrame(dt); hapFrame(dt);
+      capFrame(); vivoFrame(dt); hapFrame(dt); P5b.depois(dt, ativo);
     },
-    mapa() { creakT = 2; },
+    mapa() { creakT = 2; P5b.mapa(); },
     // para testes
-    teste: { get montado() { return montado; }, respFrame, nevoaFrame, gpuNome, panModelo, ouvirResp, hapFrame, sentirPadroes, testarVibra }
+    teste: { get montado() { return montado; }, respFrame, nevoaFrame, gpuNome, panModelo, ouvirResp, hapFrame, sentirPadroes, testarVibra, get b() { return P5b.teste; } }
   };
 }
