@@ -2,7 +2,7 @@
 
 Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/lote*/<área>.md`. Não edite à mão: edite o arquivo da área e gere de novo.
 
-**Total geral: 6785 melhorias**
+**Total geral: 6791 melhorias**
 
 ## Índice
 
@@ -48,7 +48,7 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
   - Progressão e rejogabilidade: 116
   - Plataforma e acessibilidade: 106
   - Revisão antes de publicar: 5
-- [Lote 4](#lote-4) — 1848 melhorias
+- [Lote 4](#lote-4) — 1854 melhorias
   - História e texto: 92
   - Mapa: prólogo e estrada: 97
   - Mapa: térreo e dormitórios: 92
@@ -61,7 +61,7 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
   - Interface: 91
   - Progressão e rejogabilidade: 275
   - Plataforma e acessibilidade: 183
-  - Revisão antes de publicar: 6
+  - Revisão antes de publicar: 12
 - [Lote 5](#lote-5) — 1024 melhorias
   - História e texto: 91
   - Mapa: prólogo e estrada: 91
@@ -4120,7 +4120,7 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
 
 ## Lote 4
 
-1848 melhorias.
+1854 melhorias.
 
 ### História e texto (92)
 
@@ -6000,7 +6000,7 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
 1841. T.segredos() confere os comandos de console novos e o ana() com o dez em branco
 1842. T.segredos() carrega e verifica o módulo plataforma4b
 
-### Revisão antes de publicar (6)
+### Revisão antes de publicar (12)
 
 1843. Service worker: o cache voltou a ser versionado (`hora-silencio-v6`) em vez de ficar preso no `v5` do Lote 3, então o `activate` limpa o cache antigo e os módulos novos do Lote 4 entram de uma vez na próxima abertura
 1844. Service worker: removida a entrada falsa `'hora-silencio-v6'` da lista `BASE`, que não é arquivo e fazia o `install` buscar um 404 toda vez e o indicador de "pronto para jogar sem internet" nunca fechar em 100%
@@ -6008,6 +6008,12 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
 1846. Confirmado que os oito módulos novos do Lote 4 (`internato-segredos`, `internato-segredos-sup`, `subterraneo-segredos2`, `sustos-segredos2`, `plataforma4`, `plataforma4-extra`, `progressao-lote4b`, `progressao-lote4b-roteiro`) entraram na lista `BASE` do service worker, então o jogo completo com os segredos roda offline
 1847. Caçado o aviso raro de áudio "setValueAtTime não-finito" que aparecera num QA anterior: instrumentei `setValueAtTime` e as rampas para acusar qualquer valor não-finito e rodei a corrida inteira — zero ocorrências, então era um caso isolado e não há `NaN` chegando aos parâmetros de áudio dos segredos
 1848. Conferido que nenhum segredo ou entidade do Lote 4 cita nome ou marca de outro jogo: as referências continuam originais (Inspetor Moacir, a Menina Que Conta, a Procissão, o Clube do Silêncio)
+1849. Revisão da 2ª/3ª rodada do Lote 4 (segredos de interface, progressão e plataforma): QA de sobrevivência rodado de ponta a ponta na branch `main` (`node ferramentas/qa.mjs . --sobrevivencia`) terminou em RESULTADO PASSOU, sem erro de JS nem aviso, cobrindo campanha, plataforma, segredos e a corrida de sobrevivência com o Inspetor solto
+1850. Conferidos os três módulos novos desta rodada (`interface-segredos2`, `progressao-lote4c`, `progressao-lote4c-roteiro` e `plataforma4b`) por `node --check` e pela integração: sintaxe limpa, cada um ligado por gancho curto e todo o corpo embrulhado em try/catch, sem mexer no caminho obrigatório
+1851. Confirmado que os módulos novos entraram no service worker (cache subiu para `hora-silencio-v8` e `interface-segredos2`, `progressao-lote4c`/`-roteiro`, `plataforma4b` e `plataforma4b.css` estão na lista `BASE`), então o jogo com os segredos novos continua rodando offline
+1852. Conferido que os easter eggs novos de plataforma (`plataforma4b`: correio por link, pegadinha de amigo, pilha do aparelho, microfone, clipe F9) ficam fora do QA e do caminho de quem não procura (`navigator.webdriver`), sem pesar a abertura nem a caçada
+1853. Capturas dos cinco mapas conferidas na build da `main` — título, estrada, térreo, dormitórios, túneis e cemitério — com HUD inteiro, objetivos e legendas acentuados e legíveis, nenhuma tela preta sem foco de luz e sem sobreposição que atrapalhe o jogo; o rádio-relógio ao vivo e as reações de madrugada do título funcionam sem travar
+1854. Conferido que os textos e segredos novos (modos Névoa/Frio/Brasa, lanternas de giz/brasa/sino/porão, cartas do gato Faísca e do diretor Albano, Chamada de 1979 ampliada) seguem originais e em português do Brasil correto, com acentuação íntegra e sem citar nome ou marca de outro jogo
 
 ## Lote 5
 
