@@ -94,3 +94,94 @@
 - Dica da Lia sobre a escuta total, de não respirar enquanto o mundo para.
 - Dica da Lia quando a Menina ouve como ele no Pesadelo.
 - Conquista secreta ao desligar o Inspetor com o sino.
+- O Inspetor congela de súbito ao ouvir seu último ruído de perto e espera: qualquer passo seu vira bote imediato.
+- Duelo de imobilidade: ficar parada em estátua perto dele enche um medidor e ele acaba desistindo da ronda.
+- A garrafa vai perdendo efeito na noite: na segunda o desvio encurta e na terceira ele ignora e vem reto, com fala.
+- Depois de cansar da garrafa ele vai até a origem do arremesso e fica lá, mudo, de emboscada.
+- Na fúria do Cap V ele ganha um respiro: a cada ~12 s leva as mãos aos ouvidos por 2 s, sua janela de fuga.
+- Na fúria, se o bote erra e você ainda está perto, ele emenda um segundo bote rápido, cego de raiva.
+- Pós-sino o bote vira quase instantâneo: só virar estátua segura.
+- No instante em que ele compromete o bote cai um tilintar seco de chave, sua deixa para reagir.
+- Finta de dois tempos no Cap IV-V: ele ergue os braços, segura e só então avança; esquivar cedo joga você no golpe.
+- Na caçada longa ele sincroniza o passo com o seu e some na sua pisada; quando você para, sobra um passo atrás.
+- Colado na fúria, um tapa apaga sua lanterna por alguns segundos.
+- Fora da caça ele planta numa porta entre você e a saída e fica parado, mudo, guardando a passagem.
+- Nos túneis ele dorme em pé: passar devagar e agachada é seguro; ruído o acorda em bote.
+- Numa caçada longa (Cap I-IV) ele para para tossir encatarrado, abrindo uma janela de ~2 s.
+- Nos túneis as ondas que você fez continuam chegando nele mesmo parada: sair da água é o certo.
+- Pisar fundo na água sem agachar gera um splash que ele persegue de muito longe.
+- Na ronda ele abre um armário aleatório, confere e o deixa entreaberto, marcando por onde passou.
+- Colado no esconderijo, no fim do fareja ele conta grave de dez a zero: silêncio até o zero e ele vai embora.
+- Na vasculha ele às vezes conta errado e abre no dois, pegando quem relaxa cedo.
+- Ao abrir um armário vazio na procura ele murmura quantos alunos faltam.
+- Duelo de fôlego invertido: enquanto o ar dele está preso há silêncio; quando ele solta, é a sua janela segura.
+- No Cap I ele chama Tem alguém aí? e espera: ruído confirma, silêncio o faz duvidar e voltar.
+- No Cap I ele encosta na parede e descansa com respiração humana; ruído o sobressalta.
+- Recém-desperto no começo da noite, ele esbarra na mobília às cegas e se trai com o barulho, murmurando algo humano.
+- A primeira caçada do jogo é mais lenta e ele desiste cedo, ensinando a se esconder sem matar.
+- As pausas de reza ficam mais curtas a cada capítulo e somem no Cap V, quando ele não ajoelha mais.
+- No Cap IV em diante, fazer barulho perto dele durante a reza o joga direto em caça, não em investigação.
+- Às vezes ele se ajoelha e reza bem na frente do seu esconderijo, prendendo você ali por segundos.
+- Durante a reza, se você passa perto, a cabeça dele gira devagar te seguindo, mesmo sem sair do lugar.
+- No Cap IV em diante parte dos recuos é mentira: ele dá dois passos e volta correndo em ~2 s.
+- Parada e muda tempo demais, ele chuta um móvel de propósito para te fazer reagir de susto.
+- A cada três armários ou portas vazios ele urra de frustração e fica mais rápido e agressivo por um tempo.
+- No clímax, a cada badalada do sino ele conta um número grave junto; na nona leva as mãos aos ouvidos e tomba.
+- Se a caçada se arrasta no Cap V ele apita e um coro distante responde, adiantando a Procissão para fechar o cerco.
+- No Cap V ele às vezes apita de onde estava, já tendo se movido: o apito mente a distância.
+- Do Cap II em diante, um apito significa todos parados: mover-se nesse instante te denuncia.
+- Medo alto por tempo demais guia a próxima procura dele direto para a sua ala.
+- Medo alto afia o ouvido dele, separado do faro de sangue da vida baixa.
+- Lanterna apagada tempo demais na caça deixa ele mais rápido e com ouvido melhor: no breu o cego está em casa.
+- Tempo demais sem nenhum encontro faz a paciência dele acabar e a caça apertar.
+- A postura dele se curva ao longo da noite e, no Cap V em fúria, ele baixa quase ao chão para caçar rastejando.
+- A mandíbula desencaixa além do humano quando ele escuta parado.
+- No Cap V em fúria a mandíbula desce num grito longo e desumano.
+- Ao ouvir algo exatamente atrás na ronda, a cabeça gira 180 graus sobre os ombros com um estalo de vértebra.
+- Depois de te perder, o corpo anda mas a cabeça fica travada para o último som.
+- No Cap V, perdido, ele gira a cabeça e anda de costas por alguns passos.
+- No Cap V surge de relance uma segunda cabeça pálida nas costas dele, que te encara e some na luz.
+- A respiração dele vira fumacinha branca visível no frio do Cap V e nos túneis.
+- No clarão do Cap IV em diante a órbita vazia e costurada por baixo da venda pisca por um quadro.
+- No Cap V a venda queimada escorre fuligem preta pelo rosto.
+- Quando ele se curva para farejar ou caçar, aparecem nas costas os vergões antigos de surra.
+- No Cap I ele carrega uma lanterna fraca e amarelada que vai falhando e apaga de vez no Cap III.
+- Esta noite tem um traço único sorteado para o Inspetor, anunciado no começo como Noite do Ouvido Afiado e afins.
+- Noite do Ouvido Afiado: o alcance de escuta dele sobe bastante.
+- Noite do Passo Apressado: ele anda mais rápido, porém reage um tanto mais devagar.
+- Noite do Gigante Lento: mais lento no passo, mas com ouvido mais apurado.
+- Noite do Faro: o ouvido dele vira faro e ele te sente melhor logo depois de você se mover.
+- Noite do Teimoso: ele vasculha a mesma sala por mais tempo e gravita para as salas distantes.
+- Na Noite do Faro ele refaz o caminho que você pisou na procura, seguindo a trilha de passos.
+- Cap III em diante com a Ana ativa: em vez de perseguir reto ele corta para o lado, te empurrando na direção dela.
+- No Cap V pós-sino ele entra na sala e rasga todos os armários em sequência rápida.
+- Dois apitos significam ninguém respira: respirar nesse instante te denuncia.
+- Com o gerador ligado os passos e as chaves dele somem e ele chega colado sem aviso sonoro.
+- De uma sala vizinha ele usa um eco da sua própria voz pedindo socorro para te puxar ao bote.
+- O Chamado dele passa a usar o nome que você digitou no título, com a voz quebrada.
+- Na caça ele conta seus passos em voz baixa.
+- Cap III: a Menina aponta dos ombros dele e, enquanto aponta, ele vem reto até você.
+- Cap V: aviso de prensa quando a Procissão vem de frente e o Inspetor caça por trás.
+- No Pesadelo, uma vez por capítulo, ele entra numa caça totalmente muda por alguns segundos.
+- Na procura ele checa primeiro os esconderijos que você mais usou na noite.
+- Cap V com a venda caída: um facho direto na cara dele o faz avançar reto.
+- Fechar a porta na cara dele na caça só o atrasa: ele arranha e escancara em ~2 s, com fala.
+- No Cap V, solto, ele vaga sempre na sua direção geral, acelerando longe e desacelerando colado.
+- Na patrulha ele às vezes para e escuta longo, de cabeça pendida, abrindo uma janela de passagem.
+- Parado na procura ele bate a bengala e lê o eco: num canto pequeno e fechado o eco o vira para você.
+- Do Cap IV em diante, às vezes o vulto no corredor não some na luz: vira a cabeça para você e só então se desfaz.
+- Raríssimo, colado no escuro, ele sussurra aqui com a sua própria voz.
+- Usar o curativo deixa um cheiro de sangue por ~6 s: na mesma ala ele vira para a sua direção.
+- Numa caça longa ele conta seus passos e para de súbito num número; parar junto o faz recuar, dar mais um passo o faz virar.
+- No Cap III, quando o corpo some, uma fungada longa desce a escada.
+- Cap III: ele anda sonâmbulo, lento e desatento, mas a luz nele o acorda furioso em caça imediata.
+- Com a venda caída (Cap IV-V), agachar tira você da linha dos olhos dele.
+- Mercê no clímax: pós-sino, absolutamente imóvel e sem respirar a menos de 1 m, há uma chance rara dele te poupar.
+- Cap III em diante: prender o ar perto da Ana a faz reparar, apontar e chamar o Inspetor.
+- Iluminada a Ana para, mas cada apagão da lanterna a faz avançar um passo mesmo sob luz piscada.
+- Quando a Ana e o Inspetor estão na mesma ala, a contagem dela acelera para te entregar mais rápido.
+- Longe de você a Ana mexe os lábios contando sem som; o número volta de repente quando ela chega perto.
+- No escuro total só os olhos da Ana aparecem, piscando.
+- Do Cap IV em diante a Ana ganha olhos de giz desenhados por cima dos reais.
+- Cap III: barulho durante a contagem faz os dois pularem números juntos, encurtando o tempo até o dez.
+- Na ronda do Cap III-IV ele às vezes imita a contagem da Menina de uma sala errada, com a voz desafinada.
