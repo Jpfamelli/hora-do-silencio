@@ -163,6 +163,253 @@ export function instalarMonstrosVisual(C) {
   const _a = new THREE.Vector3(), _b = new THREE.Vector3(), _c = new THREE.Vector3();
   function olhaParaMim(obj, lim = .55) { try { obj.getWorldPosition(_a); const dir = _b.set(0, 0, 1).applyQuaternion(obj.getWorldQuaternion(new THREE.Quaternion())); _c.copy(camera.position).sub(_a).setY(0).normalize(); return dir.setY(0).normalize().dot(_c); } catch (e) { return 0; } }
 
+  // =====================================================================
+  // LOTE 5 (2a rodada) — mais desumanização, brasa, sombra e perseguição
+  // =====================================================================
+  // rosto calmo do menino Moacir (revelado num quadro quando o sino o atordoa)
+  const meninoTex = faceTex(128, 160, (g) => {
+    g.fillStyle = '#d8cdbe'; g.beginPath(); g.ellipse(64, 80, 40, 52, 0, 0, 7); g.fill();
+    g.fillStyle = 'rgba(150,130,110,.35)'; g.beginPath(); g.ellipse(64, 86, 34, 44, 0, 0, 7); g.fill();
+    g.strokeStyle = '#3a2c22'; g.lineWidth = 3; g.lineCap = 'round'; // olhos fechados (cílios)
+    for (const sx of [-1, 1]) { const cx = 64 + sx * 18; g.beginPath(); g.moveTo(cx - 10, 72); g.quadraticCurveTo(cx, 78, cx + 10, 72); g.stroke(); }
+    g.lineWidth = 2; g.strokeStyle = 'rgba(120,90,80,.7)'; g.beginPath(); g.moveTo(54, 112); g.quadraticCurveTo(64, 116, 74, 112); g.stroke();
+  });
+  const mMenino = inspFace(meninoTex, .14, .151, 0); mMenino.scale.set(1.1, 1.1, 1);
+  // olhos de brasa apagada sob a venda (Cap V): dois pontos laranja que pulsam
+  const brasaOlhos = []; for (const sx of [-1, 1]) { const m = new THREE.Mesh(new THREE.SphereGeometry(.016, 6, 6), new THREE.MeshBasicMaterial({ color: 0xff5a1e, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false })); m.position.set(sx * .05, .15, .146); MON.cabeca.add(m); brasaOlhos.push(m); }
+  // rachaduras de brasa no peito, pulsam no compasso da fúria; abrem no fareja/inspira
+  const brasaTex = faceTex(96, 128, (g) => { g.strokeStyle = 'rgba(255,90,30,.9)'; g.lineCap = 'round'; for (let i = 0; i < 8; i++) { g.lineWidth = rand(1, 3); g.beginPath(); let x = rand(20, 76), y = rand(16, 24); g.moveTo(x, y); for (let k = 0; k < 6; k++) { x += rand(-14, 14); y += rand(10, 18); g.lineTo(x, y); } g.stroke(); } });
+  const mBrasaPeito = new THREE.Mesh(new THREE.PlaneGeometry(.34, .46), new THREE.MeshBasicMaterial({ map: brasaTex, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide }));
+  mBrasaPeito.position.set(0, 2.5, .26); MON.g.add(mBrasaPeito);
+  // brilho do peito feito só com plano aditivo (sem luz dinâmica nova, para não pesar no render por software)
+  const mBrasaGlow = new THREE.Mesh(new THREE.PlaneGeometry(.5, .5), new THREE.MeshBasicMaterial({ color: 0xff4a14, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide })); mBrasaGlow.position.set(0, 2.5, .27); MON.g.add(mBrasaGlow);
+  // rostos de criança pulsando sob a pele do pescoço/rosto (Cap IV+)
+  const criancaTex = faceTex(128, 96, (g) => { for (let i = 0; i < 4; i++) { const cx = rand(24, 104), cy = rand(26, 70), r = rand(10, 16); g.fillStyle = 'rgba(180,170,160,.5)'; g.beginPath(); g.ellipse(cx, cy, r * .8, r, 0, 0, 7); g.fill(); g.fillStyle = 'rgba(10,8,8,.8)'; g.beginPath(); g.arc(cx - r * .3, cy - 2, 2.2, 0, 7); g.fill(); g.beginPath(); g.arc(cx + r * .3, cy - 2, 2.2, 0, 7); g.fill(); } });
+  const mCrianca = inspFace(criancaTex, -.02, .139, 0); mCrianca.scale.set(1.4, 1.1, 1);
+  // fuligem/veias escuras que sobem pelo rosto por capítulo
+  const fuligemFaceTex = faceTex(96, 128, (g) => { g.strokeStyle = 'rgba(8,6,6,.75)'; g.lineCap = 'round'; for (let i = 0; i < 7; i++) { g.lineWidth = rand(1, 2.5); let x = rand(20, 76), y = 124; g.beginPath(); g.moveTo(x, y); for (let k = 0; k < 5; k++) { x += rand(-10, 10); y -= rand(16, 24); g.lineTo(x, y); } g.stroke(); } });
+  const mFuligem = inspFace(fuligemFaceTex, .05, .14, 0);
+  // sombra que chega antes dele: silhueta com braços a mais, mais alta e torta
+  let sombraInsp = null;
+  try {
+    const sTex = faceTex(128, 200, (g) => {
+      g.fillStyle = '#000'; g.beginPath();
+      g.ellipse(64, 34, 20, 24, 0, 0, 7); g.fill(); // cabeça pendida
+      g.fillRect(44, 54, 40, 120); // tronco
+      // braços reais + extras, longos
+      const braco = (x0, ang, larg) => { g.save(); g.translate(x0, 70); g.rotate(ang); g.fillRect(-larg / 2, 0, larg, 110); g.restore(); };
+      braco(50, .25, 13); braco(78, -.25, 13); braco(46, .8, 9); braco(82, -.8, 9); braco(58, 1.3, 7);
+    });
+    sombraInsp = new THREE.Mesh(new THREE.PlaneGeometry(1.1, 2.4), new THREE.MeshBasicMaterial({ map: sTex, transparent: true, opacity: 0, depthWrite: false, side: THREE.DoubleSide }));
+    sombraInsp.position.y = 1.2; scene.add(sombraInsp);
+  } catch (e) {}
+  // bengala branca de cego (Cap I-II), tateia; some no Cap III
+  let bengala = null; try { bengala = new THREE.Mesh(new THREE.CylinderGeometry(.012, .012, 1.4, 5), new THREE.MeshStandardMaterial({ color: 0xd8d2c4, roughness: .7 })); bengala.position.set(.14, -1.4, .2); bengala.rotation.x = .5; const ponta = new THREE.Mesh(new THREE.CylinderGeometry(.02, .02, .08, 6), new THREE.MeshStandardMaterial({ color: 0x9a2a1a, roughness: .6 })); ponta.position.y = -.74; bengala.add(ponta); if (MON.maos[1]) MON.maos[1].add(bengala); } catch (e) {}
+  // chapéu de funcionário que amassa e some no Cap V
+  let chapeu = null; try { chapeu = new THREE.Group(); const aba = new THREE.Mesh(new THREE.CylinderGeometry(.2, .22, .02, 14), new THREE.MeshStandardMaterial({ color: 0x15130f, roughness: .95 })); const copa = new THREE.Mesh(new THREE.CylinderGeometry(.13, .15, .16, 14), aba.material); copa.position.y = .08; chapeu.add(aba, copa); chapeu.position.set(0, .34, .02); MON.cabeca.add(chapeu); } catch (e) {}
+  // lanterninha morta de outra criança presa ao cinto; acende um instante na caça
+  let lanterninha = null, lanternaLuz = null;
+  try { lanterninha = new THREE.Mesh(new THREE.CylinderGeometry(.03, .035, .12, 8), new THREE.MeshStandardMaterial({ color: 0x3a3a3c, roughness: .5 })); lanterninha.position.set(-.18, 2.2, .2); lanterninha.rotation.z = .4; MON.g.add(lanterninha); lanternaLuz = new THREE.Mesh(new THREE.CircleGeometry(.04, 8), new THREE.MeshBasicMaterial({ color: 0xffe6a0, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false })); lanternaLuz.position.set(-.2, 2.2, .26); MON.g.add(lanternaLuz); } catch (e) {}
+  // rastro de brasa no chão (Cap V): discos quentes que esfriam e somem
+  const brasaPool = []; for (let i = 0; i < 16; i++) { const m = new THREE.Mesh(new THREE.PlaneGeometry(.28, .28), new THREE.MeshBasicMaterial({ color: 0xff5a1e, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false })); m.rotation.x = -R2D; m.visible = false; scene.add(m); brasaPool.push({ m, t: 0 }); } let brasaI = 0, brasaCd = 0;
+  // Ana: rosto que se apaga no Cap V (só a boca contando num borrão)
+  const anaSemRostoTex = faceTex(96, 110, (g) => { g.strokeStyle = 'rgba(40,36,36,.5)'; g.lineWidth = 6; g.lineCap = 'round'; g.beginPath(); g.moveTo(30, 78); g.quadraticCurveTo(48, 90, 66, 78); g.stroke(); g.fillStyle = 'rgba(120,116,110,.18)'; g.beginPath(); g.ellipse(48, 48, 26, 20, 0, 0, 7); g.fill(); });
+  // Ana: olhos pintados na nuca
+  let mAnaNuca = null; try { if (anaCab) { mAnaNuca = new THREE.Mesh(new THREE.PlaneGeometry(.18, .14), new THREE.MeshBasicMaterial({ map: faceNuca, transparent: true, opacity: 0, depthWrite: false, side: THREE.DoubleSide })); mAnaNuca.position.set(0, .02, -.12); mAnaNuca.rotation.y = Math.PI; anaCab.add(mAnaNuca); } } catch (e) {}
+  // Ana: rachaduras de porcelana que se acumulam a cada captura na noite
+  const rachaTex = faceTex(96, 110, (g) => { g.strokeStyle = 'rgba(20,18,18,.85)'; g.lineCap = 'round'; for (let i = 0; i < 10; i++) { g.lineWidth = rand(.6, 1.8); let x = rand(16, 80), y = rand(10, 100); g.beginPath(); g.moveTo(x, y); for (let k = 0; k < 4; k++) { x += rand(-16, 16); y += rand(-16, 16); g.lineTo(x, y); } g.stroke(); } });
+  let mAnaRacha = null; try { if (anaCab) { mAnaRacha = new THREE.Mesh(new THREE.PlaneGeometry(.2, .24), new THREE.MeshBasicMaterial({ map: rachaTex, transparent: true, opacity: 0, depthWrite: false, side: THREE.DoubleSide })); mAnaRacha.position.set(0, .01, .123); anaCab.add(mAnaRacha); } } catch (e) {}
+  // boca costurada que descose ponto a ponto por capítulo
+  function bocaCosturaTex(cap) { const pts = Math.max(1, 7 - cap); return faceTex(64, 40, (g) => { g.strokeStyle = '#140b08'; g.lineWidth = 2; g.beginPath(); g.moveTo(8, 20); g.lineTo(56, 20); g.stroke(); for (let i = 0; i < pts; i++) { const x = 10 + i * (46 / pts); g.beginPath(); g.moveTo(x, 12); g.lineTo(x, 28); g.stroke(); } }); }
+  const BOCA_COST = [0, 1, 2, 3, 4, 5].map(bocaCosturaTex);
+  // dentes/boca que pegam um resíduo de luz no breu quando ele caça perto
+  const mBocaLuz = new THREE.Mesh(new THREE.PlaneGeometry(.08, .1), new THREE.MeshBasicMaterial({ color: 0x4a4038, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide })); mBocaLuz.position.set(0, -.06, .138); MON.cabeca.add(mBocaLuz);
+  // mancha de fuligem escorrendo pela bochecha por capítulo
+  const bochechaTex = faceTex(64, 96, (g) => { const gr = g.createLinearGradient(0, 10, 0, 90); gr.addColorStop(0, 'rgba(10,8,8,.0)'); gr.addColorStop(.3, 'rgba(10,8,8,.7)'); gr.addColorStop(1, 'rgba(10,8,8,0)'); g.fillStyle = gr; g.fillRect(24, 10, 16, 80); });
+  const mBochecha = inspFace(bochechaTex, .02, .141, 0); mBochecha.scale.set(.9, 1.2, 1);
+  // fiapo de fumaça subindo das órbitas de brasa (Cap V)
+  const fumacaOlho = []; for (let i = 0; i < 4; i++) { const m = new THREE.Mesh(new THREE.PlaneGeometry(.04, .04), new THREE.MeshBasicMaterial({ color: 0x6a6a6a, transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending })); m.visible = false; scene.add(m); fumacaOlho.push({ m, t: 0 }); } let fumacaI = 0, fumacaCd = 0;
+  // Ana: feixes fracos que saem dos olhos no escuro e varrem a parede
+  const anaFeixe = []; try { if (anaCab) for (const sx of [-1, 1]) { const m = new THREE.Mesh(new THREE.ConeGeometry(.06, .5, 8, 1, true), new THREE.MeshBasicMaterial({ color: 0x9fb0b8, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide })); m.position.set(sx * .035, .02, .36); m.rotation.x = R2D; anaCab.add(m); anaFeixe.push(m); } } catch (e) {}
+  // Procissão: mãozinhas que se erguem para a frente quando a fila para
+  const procMaos = []; try { PROC.filhos.forEach((s) => { const par = new THREE.Group(); for (const sx of [-1, 1]) { const br = new THREE.Mesh(new THREE.CylinderGeometry(.015, .012, .3, 5), new THREE.MeshStandardMaterial({ color: 0x6a5c4e, roughness: .9 })); br.position.set(sx * .1, .9, .1); br.rotation.x = -R2D; par.add(br); } par.visible = false; s.add(par); procMaos.push(par); }); } catch (e) {}
+  // estado da 2a rodada
+  let l5stunAnt = 0, meninoCd = 0, capturas = 0, estadoAnt = '', leanInsp = 0, bengalaFase = 0, brasaBorda = 0, breu = 0, insDesce = 0, vendaCaida = 0, anaRachaN = 0, anaVistaAnt2 = false, bocaCapAp = -1, anaPegCd = 0, afogada = 0, procParada2 = 0, procPosAnt2 = new THREE.Vector3(), mapaBrasa = '', insPosAnt = new THREE.Vector3();
+  const POSES_CAP = [0, .04, .1, .2, .34, .5]; // inclinação do tronco para a frente por capítulo
+
+  function tickExtra(dt, st, cap, pf, reduz) {
+    const furia = M.furia || 0;
+    // --- INSPETOR ---
+    if (M.ativo && MON.g.visible) {
+      const head = MON.cabeca.getWorldPosition(_a); const d = head.distanceTo(camera.position);
+      const noFeixe = st.flashOn && !pisca() && d < 14;
+      let foco = 0; if (noFeixe) { const fw = camera.getWorldDirection(_b); foco = clamp((fw.dot(head.clone().sub(camera.position).normalize()) - .9) / .1, 0, 1); }
+      const perto = foco * (1 - d / 14);
+      const caca = M.state === 'caca', bote = M.state === 'bote' || M.state === 'agarra';
+
+      // POSTURA que desumaniza por capítulo: tronco cai para a frente, corpo cresce um pouco
+      leanInsp = lerp(leanInsp, POSES_CAP[clamp(cap, 0, 5)] + (caca ? .12 : 0) + (bote ? .2 : 0), Math.min(1, dt * 3));
+      MON.g.rotation.x = lerp(MON.g.rotation.x, leanInsp, Math.min(1, dt * 4));
+      const alvoEsc = .8 * (1 + cap * .03); MON.g.scale.setScalar(lerp(MON.g.scale.x, alvoEsc, Math.min(1, dt * 2)));
+      // braços cada vez mais longos; no Cap V quase arrastam
+      const bracoLongo = 1 + cap * .06 + (caca ? .05 : 0); MON.armL.scale.y = MON.armR.scale.y = lerp(MON.armL.scale.y || 1, bracoLongo, Math.min(1, dt * 2));
+      // unhas crescem por capítulo
+      for (const u of unhas) u.scale.setScalar(lerp(u.scale.x || 1, 1 + cap * .25 + (bote ? .6 : 0), Math.min(1, dt * 4)));
+
+      // MANDÍBULA desencaixa mais a cada capítulo mesmo fora da caça; fica pendida no Cap V
+      if (MON.boca) { const base = 1 + cap * .25; MON.boca.scale.y = Math.max(MON.boca.scale.y, lerp(MON.boca.scale.y, base, Math.min(1, dt * 2))); if (cap >= 5) MON.boca.position.y = lerp(MON.boca.position.y, -.11, Math.min(1, dt * 2)); }
+
+      // OLHOS DE BRASA apagada no Cap V; brilham mais no bote
+      const brasaOn = cap >= 5 ? (.25 + Math.sin(pf * 2) * .12 + (bote ? .6 : 0) + Math.min(.5, furia * .1)) : 0;
+      for (const m of brasaOlhos) m.material.opacity = lerp(m.material.opacity, brasaOn, Math.min(1, dt * 5));
+
+      // RACHADURAS DE BRASA no peito (Cap V), pulsam com a fúria e abrem no fareja
+      if (cap >= 5) {
+        const inspira = M.state === 'fareja' || M.state === 'vasculha';
+        const pulso = .3 + Math.sin(pf * (3 + furia)) * .18 + (inspira ? .4 : 0) + Math.min(.4, furia * .08);
+        mBrasaPeito.material.opacity = lerp(mBrasaPeito.material.opacity, clamp(pulso, 0, 1), Math.min(1, dt * 5));
+        mBrasaGlow.material.opacity = lerp(mBrasaGlow.material.opacity, (inspira ? .5 : .18) * clamp(1 - d / 10, 0, 1), Math.min(1, dt * 4));
+      } else { mBrasaPeito.material.opacity = Math.max(0, mBrasaPeito.material.opacity - dt * 2); mBrasaGlow.material.opacity = Math.max(0, mBrasaGlow.material.opacity - dt * 2); }
+
+      // ROSTINHOS sob a pele a partir do Cap IV, iluminados de perto
+      mCrianca.material.opacity = lerp(mCrianca.material.opacity, cap >= 4 && perto > .12 ? (.4 + Math.sin(pf * 3) * .18) : 0, Math.min(1, dt * 4));
+      // FULIGEM subindo pelo rosto por capítulo
+      mFuligem.material.opacity = lerp(mFuligem.material.opacity, perto > .1 ? clamp(cap / 5 * .7, 0, .7) : 0, Math.min(1, dt * 5));
+
+      // PESCOÇO pendido para trás na escuta (rosto ao teto, boca à mostra)
+      const escuta = M.state === 'escuta' || M.state === 'emboscada';
+      MON.cabeca.rotation.x = lerp(MON.cabeca.rotation.x, escuta ? -.9 : 0, Math.min(1, dt * 3));
+      // PESCOÇO travado de lado no Cap V na caça, com estalo seco ao entrar
+      if (cap >= 5 && caca) MON.cabeca.rotation.z = lerp(MON.cabeca.rotation.z, 1.4, Math.min(1, dt * 3));
+      if (caca && estadoAnt !== 'caca' && cap >= 5) { try { C.SX && C.SX.estalo && C.SX.estalo(M.pos, .6); } catch (e) {} }
+
+      // CABEÇA acompanha você além do humano na passagem (sem te ter ouvido)
+      if (!caca && !bote && visivel(M.pos, 2, 12)) { const al = olhaParaMim(MON.cabeca); if (al > -1) MON.cabeca.rotation.y = lerp(MON.cabeca.rotation.y, clamp(-Math.atan2(camera.position.x - head.x, camera.position.z - head.z) + MON.g.rotation.y, -2.2, 2.2), Math.min(1, dt * 1.5)); }
+
+      // PÉS que deixam de tocar o chão no Cap V em plena caça
+      insDesce = lerp(insDesce, cap >= 5 && caca ? .06 : 0, Math.min(1, dt * 2));
+      MON.g.position.y += insDesce;
+      if (cap >= 5 && caca) { MON.legL.rotation.x = lerp(MON.legL.rotation.x, 0, Math.min(1, dt * 3)); MON.legR.rotation.x = lerp(MON.legR.rotation.x, 0, Math.min(1, dt * 3)); }
+
+      // CEGUEIRA DE DOR: facho forte de perto no Cap V faz a cabeça tombar e as mãos subirem
+      if (cap >= 5 && foco > .75 && d < 3) { MON.cabeca.rotation.x = lerp(MON.cabeca.rotation.x, -.7, Math.min(1, dt * 4)); MON.armL.rotation.x = lerp(MON.armL.rotation.x, -1.8, Math.min(1, dt * 5)); MON.armR.rotation.x = lerp(MON.armR.rotation.x, -1.8, Math.min(1, dt * 5)); for (const m of brasaOlhos) m.material.opacity = Math.min(1, m.material.opacity + .4); }
+
+      // VENDA cai de vez no clímax (Cap V em fúria/sino): órbitas o tempo todo
+      if (cap >= 5 && (st.flags && st.flags.sino || furia > 2)) vendaCaida = Math.min(1, vendaCaida + dt * .4);
+      if (vendaCaida > 0) { mVenda.material.opacity = Math.min(mVenda.material.opacity, 1 - vendaCaida * .7); mOrbitas.material.opacity = Math.max(mOrbitas.material.opacity, vendaCaida); }
+
+      // A VENDA RESPIRA: leve jitter dos fios quando iluminada de perto
+      if (perto > .2) mVenda.position.y = .17 + Math.sin(pf * 5) * .003; else mVenda.position.y = .17;
+
+      // DENTES/VENDA brilham fraco no escuro total quando ele está perto e caçando
+      const breuPerto = !st.flashOn && caca && d < 5;
+      mBocaLuz.material.opacity = lerp(mBocaLuz.material.opacity, breuPerto ? .25 + Math.sin(pf * 10) * .05 : 0, Math.min(1, dt * 4));
+      if (breuPerto) for (const m of brasaOlhos) if (cap < 5) m.material.opacity = Math.max(m.material.opacity, .12);
+      // fiapos do casaco pegam cor de brasa no Cap V
+      if (cap >= 5) for (const f of fiosPool) if (f.m.visible && f.m.material.color) f.m.material.color.setHex(0x5a2410);
+
+      // SOMBRA que chega antes dele: projetada à frente, mais alta e com braços a mais
+      if (sombraInsp) {
+        const lit = (st.flashOn && !pisca() && d < 12) || caca;
+        const ang = MON.g.rotation.y;
+        sombraInsp.position.set(M.pos.x + Math.sin(ang) * 1.3, 1.2 + cap * .12, M.pos.z + Math.cos(ang) * 1.3);
+        sombraInsp.lookAt(camera.position.x, 1.2, camera.position.z);
+        sombraInsp.scale.set(1 + cap * .12, 1 + cap * .18, 1);
+        sombraInsp.material.opacity = lerp(sombraInsp.material.opacity, lit && !reduz ? clamp(.35 + cap * .06, 0, .6) : 0, Math.min(1, dt * 3));
+      }
+
+      // BENGALA de cego tateia nos Cap I-II; some do Cap III em diante
+      bengalaFase += dt * 3;
+      if (bengala) { const mostra = cap <= 1; bengala.visible = mostra; if (mostra) { bengala.rotation.z = Math.sin(bengalaFase) * .5; } }
+      // CHAPÉU amassa e some no Cap V
+      if (chapeu) { chapeu.scale.setScalar(lerp(chapeu.scale.x, cap >= 5 ? 0 : 1 - cap * .08, Math.min(1, dt * 2))); chapeu.children[1] && (chapeu.children[1].scale.y = 1 - cap * .12); }
+
+      // LANTERNINHA morta no cinto pisca um instante na caça (isca cruel)
+      if (lanternaLuz) { if (caca && Math.random() < dt * .4) lanternaLuz.material.opacity = .9; lanternaLuz.material.opacity = Math.max(0, lanternaLuz.material.opacity - dt * 2.5); }
+
+      // CASACO pinga o mesmo breu do cabelo da Ana (Cap IV+)
+      if (cap >= 4 && !reduz && Math.random() < dt * 1.1) soltarDecal(M.pos.x + rand(-.15, .15), M.pos.z + rand(-.15, .15), .3, 0x0a0a0c, 16);
+
+      // RASTRO DE BRASA quente no chão no Cap V (esfria e some)
+      if (cap >= 5 && (caca || M.state === 'investiga') && !reduz && (brasaCd -= dt) <= 0) { brasaCd = .25; const b = brasaPool[brasaI++ % brasaPool.length]; const ang = MON.g.rotation.y; b.m.visible = true; b.t = 2.5; b.m.position.set(M.pos.x - Math.sin(ang) * .2, .04, M.pos.z - Math.cos(ang) * .2); b.m.scale.setScalar(rand(.6, 1)); }
+
+      // DEDOS que alongam no bote (garras por um instante)
+      if (bote) for (const u of unhas) u.scale.setScalar(u.scale.x + dt * 2);
+
+      // MANCHA de fuligem na bochecha, cresce por capítulo quando iluminada
+      mBochecha.material.opacity = lerp(mBochecha.material.opacity, perto > .12 ? clamp(cap / 5 * .8, 0, .8) : 0, Math.min(1, dt * 4));
+      // REZA: cabeça baixa e braços se juntam em frente
+      if (M.state === 'reza') { MON.cabeca.rotation.x = lerp(MON.cabeca.rotation.x, .5, Math.min(1, dt * 3)); MON.armL.rotation.x = lerp(MON.armL.rotation.x, -1.2, Math.min(1, dt * 4)); MON.armR.rotation.x = lerp(MON.armR.rotation.x, -1.2, Math.min(1, dt * 4)); }
+      // ESPREITA: parado (procura/emboscada), o pescoço estica mais para cima devagar
+      const insParado = M.pos.distanceTo(insPosAnt) < .01; insPosAnt.copy(M.pos);
+      if ((M.state === 'procura' || M.state === 'emboscada') && insParado && neckBase !== null) { MON.cabeca.position.y = lerp(MON.cabeca.position.y, neckBase + .1, Math.min(1, dt * 2)); }
+      // SORRISO DE GIZ pinga giz branco quando ele caça por muito tempo
+      if (M.state === 'caca' && mSorriso.material.opacity > .5 && !reduz && Math.random() < dt * .8) soltarDecal(M.pos.x + rand(-.1, .1), M.pos.z + rand(-.1, .1), .25, 0xcfc7b4, 14);
+      // OLHOS DE GIZ acompanham você mesmo com a cabeça parada
+      try { if (mGiz.material.opacity > .1) { const a = -Math.atan2(camera.position.x - head.x, camera.position.z - head.z) + MON.g.rotation.y; mGiz.rotation.z = clamp(a * .15, -.3, .3); } } catch (e) {}
+      // GARRAS raspam a parede num corredor na caça do Cap IV+ (risco efêmero)
+      if (!reduz && caca && cap >= 4 && Math.random() < dt * 1.2) soltarDecal(M.pos.x, M.pos.z - .35, .4, 0x0a0806, 10, true);
+      // FUMAÇA fina sobe das órbitas de brasa no Cap V
+      if (cap >= 5 && (fumacaCd -= dt) <= 0 && !reduz) { fumacaCd = .4; const fo = fumacaOlho[fumacaI++ % fumacaOlho.length]; fo.m.visible = true; fo.t = 1.4; MON.cabeca.getWorldPosition(_c); fo.m.position.copy(_c).add(_b.set(rand(-.03, .03), .05, 0)); }
+      // BOCA COSTURADA descose ponto a ponto por capítulo
+      if (bocaCapAp !== cap && BOCA_COST[clamp(cap, 0, 5)]) { bocaCapAp = cap; try { mCostura.material.map = BOCA_COST[clamp(cap, 0, 5)]; mCostura.material.needsUpdate = true; } catch (e) {} }
+      // OLHAR que não bate com a cabeça: os pontos úmidos seguem você mesmo com a cara virada
+      try { const alvo = _b.copy(camera.position).sub(head).setY(0); const off = clamp(alvo.x * .02, -.02, .02); for (const m of umido) m.position.z = .145 + Math.abs(off) * 2; } catch (e) {}
+
+      estadoAnt = M.state;
+    } else { if (sombraInsp) sombraInsp.material.opacity = Math.max(0, sombraInsp.material.opacity - dt * 3); for (const m of brasaOlhos) m.material.opacity = 0; mBrasaPeito.material.opacity = 0; mBrasaGlow.material.opacity = 0; mCrianca.material.opacity = 0; mFuligem.material.opacity = 0; mMenino.material.opacity = Math.max(0, mMenino.material.opacity - dt * 4); if (lanternaLuz) lanternaLuz.material.opacity = 0; mBocaLuz.material.opacity = 0; mBochecha.material.opacity = 0; }
+
+    // ROSTO DO MENINO no atordoamento do sino (l5stun sobe): um quadro e volta
+    meninoCd -= dt;
+    if ((M.l5stun || 0) > l5stunAnt + .05 && meninoCd <= 0 && !reduz) { mMenino.material.opacity = 1; mVenda.material.opacity = .2; meninoCd = 6; }
+    l5stunAnt = M.l5stun || 0;
+    if (mMenino.material.opacity > 0) mMenino.material.opacity = Math.max(0, mMenino.material.opacity - dt * 3);
+
+    // contagem de capturas da noite: molho de dentes cresce
+    if (M.state === 'agarra' && estadoAnt !== 'agarra') { capturas++; }
+    mDentes.scale.setScalar(lerp(mDentes.scale.x || 1, 1 + capturas * .08 + (S().chapter | 0) * .03, Math.min(1, dt * 3)));
+
+    // brasas do chão esfriam
+    for (const b of brasaPool) if (b.m.visible) { b.t -= dt; const k = clamp(b.t / 2.5, 0, 1); b.m.material.opacity = k * .5; b.m.material.color.setRGB(1, .35 * k, .1 * k); if (b.t <= 0) b.m.visible = false; }
+    if (mapaBrasa !== W.mapa) { mapaBrasa = W.mapa; for (const b of brasaPool) { b.m.visible = false; b.t = 0; } for (const fo of fumacaOlho) { fo.m.visible = false; fo.t = 0; } }
+    // fumaça das órbitas de brasa sobe e some
+    for (const fo of fumacaOlho) if (fo.m.visible) { fo.t -= dt; fo.m.position.y += dt * .3; fo.m.scale.setScalar(1 + (1.4 - fo.t)); fo.m.lookAt(camera.position); fo.m.material.opacity = clamp(fo.t / 1.4, 0, 1) * .12; if (fo.t <= 0) fo.m.visible = false; }
+
+    // VULTO: cabeça tombada num ângulo impossível, que o corpo real não tem
+    try { if (VULTO.g.visible && VULTO.cabeca) VULTO.cabeca.rotation.z = lerp(VULTO.cabeca.rotation.z, 1.1, Math.min(1, dt * 2)); } catch (e) {}
+
+    // --- ANA: rosto que se apaga no Cap V, nuca que olha, porcelana que racha ---
+    if (ANA.ativa && ANA_G.visible && anaCab) {
+      if (cap >= 5 && mAnaFace) { mAnaFace.material.map = anaSemRostoTex; mAnaFace.material.needsUpdate = true; }
+      // olhos na nuca aparecem quando ela está de costas na sua luz
+      if (mAnaNuca) { const costas = olhaParaMim(anaCab) < -.2; const ver = st.flashOn && !pisca() && ANA.pos.distanceTo(camera.position) < 10; mAnaNuca.material.opacity = lerp(mAnaNuca.material.opacity, costas && ver ? .85 : 0, Math.min(1, dt * 4)); }
+      // porcelana racha a cada captura (DEZ) da noite — some ao reaparecer novinha? não: fica
+      if (mAnaRacha) mAnaRacha.material.opacity = lerp(mAnaRacha.material.opacity, Math.min(.9, anaRachaN * .18), Math.min(1, dt * 3));
+      if (ANA.vista && !anaVistaAnt2 && (ANA.conta || 0) >= 9) anaRachaN++;
+      anaVistaAnt2 = ANA.vista;
+      // AFOGADA nos túneis: surge inclinada como se boiasse e se ergue devagar na luz
+      afogada = lerp(afogada, (W.mapa === 'tuneis' && !ANA.vista) ? 1 : 0, Math.min(1, dt * 1.5));
+      ANA_G.rotation.x = lerp(ANA_G.rotation.x, afogada * .55, Math.min(1, dt * 2));
+      // MARCAS molhadas de mão/pé por onde ela passou
+      if ((anaPegCd -= dt) <= 0 && !ANA.vista && !reduz) { anaPegCd = .5; soltarDecal(ANA.pos.x + rand(-.15, .15), ANA.pos.z + rand(-.15, .15), .3, 0x0c1614, 30); }
+      // FEIXES fracos dos olhos varrem o escuro enquanto ela conta
+      const contaEsc = !ANA.vista && (ANA.conta || 0) > 0 && !naLuz(ANA.pos);
+      for (const f of anaFeixe) f.material.opacity = lerp(f.material.opacity, contaEsc ? .12 + Math.sin(pf * 3) * .05 : 0, Math.min(1, dt * 3));
+    } else { if (mAnaNuca) mAnaNuca.material.opacity = 0; for (const f of anaFeixe) f.material.opacity = 0; }
+
+    // --- PROCISSÃO: mãozinhas que se erguem para a frente quando a fila para ---
+    if (PROC.g && PROC.g.visible) {
+      const parada = PROC.pos.distanceTo(procPosAnt2) < .003; procPosAnt2.copy(PROC.pos); procParada2 = parada ? procParada2 + dt : 0;
+      const erguer = procParada2 > .5;
+      procMaos.forEach((par) => { if (par) par.visible = erguer; });
+    } else { for (const par of procMaos) if (par) par.visible = false; }
+
+    // --- borda de brasa na caça do Cap V (overlay suave) ---
+    brasaBorda = lerp(brasaBorda, (M.ativo && M.state === 'caca' && (S().chapter | 0) >= 5) ? 1 : 0, Math.min(1, dt * 2));
+    // --- penumbra: ele traz o breu junto quando cola de perto no escuro ---
+    if (M.ativo && MON.g.visible) { const d2 = M.pos.distanceTo(camera.position); breu = lerp(breu, (!st.flashOn && d2 < 3.5 && M.state === 'caca') ? clamp(1 - d2 / 3.5, 0, .6) : 0, Math.min(1, dt * 3)); } else breu = lerp(breu, 0, Math.min(1, dt * 3));
+  }
+
   function tick(dt) {
     const st = S(); if (!st) return;
     const cap = st.chapter | 0, pf = perf(), reduz = !!OPT.vFlash;
@@ -316,6 +563,9 @@ export function instalarMonstrosVisual(C) {
     // raríssimo: um instante "pelos olhos" dele durante a caça
     if (M.ativo && M.state === 'caca' && olhoDele <= 0 && Math.random() < dt * .03 && !reduz) olhoDele = .45;
 
+    // ===== 2a rodada do Lote 5 =====
+    try { tickExtra(dt, st, cap, pf, reduz); } catch (e) {}
+
     // ===== overlay de tela =====
     desenharOverlay(dt, st, pf, reduz);
   }
@@ -343,6 +593,18 @@ export function instalarMonstrosVisual(C) {
     if (olhoDele > 0) { olhoDele -= dt; octx.fillStyle = 'rgba(6,8,10,.75)'; octx.fillRect(0, 0, w, h); octx.globalAlpha = .5; for (let i = 0; i < 400; i++) { octx.fillStyle = '#2a3a44'; octx.fillRect(Math.random() * w, Math.random() * h, 1, 1); } octx.globalAlpha = 1; }
     // luzes de emergência vermelhas na fuga final, com o recorte dele por um quadro
     if (flashEmerg > 0 && !reduz) { flashEmerg -= dt; if (Math.sin(pf * 10) > 0) { octx.fillStyle = 'rgba(120,0,0,.22)'; octx.fillRect(0, 0, w, h); } }
+    // borda de brasa pulsando na caça do Cap V (por cima do vermelho de perigo)
+    if (brasaBorda > .02 && !reduz) { const a = brasaBorda * (.14 + Math.sin(pf * 5) * .06); const g = octx.createRadialGradient(w / 2, h / 2, h * .3, w / 2, h / 2, h * .72); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, `rgba(255,70,20,${clamp(a, 0, .3).toFixed(3)})`); octx.fillStyle = g; octx.fillRect(0, 0, w, h); }
+    // penumbra: ele traz o breu quando cola de perto no escuro, mais forte do lado dele
+    if (breu > .02) { let sx = .5; try { _c.set(M.pos.x, 1.4, M.pos.z).project(camera); sx = clamp(_c.x * .5 + .5, .15, .85); } catch (e) {} const g = octx.createRadialGradient(sx * w, h / 2, h * .15, sx * w, h / 2, h * .9); g.addColorStop(0, `rgba(0,0,0,${(breu * .5).toFixed(3)})`); g.addColorStop(1, 'rgba(0,0,0,0)'); octx.fillStyle = g; octx.fillRect(0, 0, w, h); }
+    // tênue matiz da ameaça MAIS PRÓXIMA no lado de onde ela vem (vermelho Inspetor, azul Ana, âmbar Procissão)
+    if (!reduz) {
+      let melhor = null, dMin = 7, cor = null;
+      if (M.ativo && MON.g.visible) { const dd = M.pos.distanceTo(camera.position); if (dd < dMin) { dMin = dd; melhor = M.pos; cor = '255,40,30'; } }
+      if (ANA.ativa && ANA_G.visible) { const dd = ANA.pos.distanceTo(camera.position); if (dd < dMin) { dMin = dd; melhor = ANA.pos; cor = '70,120,210'; } }
+      if (PROC.g && PROC.g.visible) { const dd = PROC.pos.distanceTo(camera.position); if (dd < dMin) { dMin = dd; melhor = PROC.pos; cor = '220,150,40'; } }
+      if (melhor && cor) { let sx = .5; try { _c.set(melhor.x, 1.4, melhor.z).project(camera); sx = clamp(_c.x * .5 + .5, 0, 1); } catch (e) {} const a = clamp((1 - dMin / 7) * .12, 0, .12) * (.6 + Math.sin(pf * 3) * .4); const g = octx.createLinearGradient(sx < .5 ? 0 : w, 0, sx < .5 ? w * .5 : w * .5, 0); g.addColorStop(0, `rgba(${cor},${a.toFixed(3)})`); g.addColorStop(1, `rgba(${cor},0)`); octx.fillStyle = g; octx.fillRect(0, 0, w, h); }
+    }
   }
 
   // gancho para a pós-imagem do vulto (chamado quando o vulto some na luz)
