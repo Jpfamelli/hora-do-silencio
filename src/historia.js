@@ -6,6 +6,7 @@ import { instalarMundo } from './historia-mundo.js';
 import { instalarPolimento } from './historia-polimento.js';
 import { instalarSegredos } from './historia-segredos.js';
 import { instalarHistoriaL5 } from './historia-lote5.js';
+import { instalarHistoriaL5b } from './historia-lote5b.js';
 
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
@@ -68,6 +69,8 @@ export function instalarHistoria(c) {
   const SEG = instalarSegredos(c, { falarLinhas, conqs, nomeJogador });
   // Lote 5: monstros — a ficha do Inspetor revelada por morte, caçadas longas, o chapéu na fuga e os epílogos do Moacir
   const L5M = instalarHistoriaL5(c, { conqs });
+  // Lote 5 (2ª rodada): desumanização por capítulo, trégua falsa, chamado pelo nome, sílabas do sino, epílogos de mestria
+  const L5B = instalarHistoriaL5b(c, { conqs, nomeJogador });
 
   // ------------------------------------------------------------------
   // Mapas: embrulhos que acrescentam segredos sem mexer em mapas.js
@@ -122,6 +125,7 @@ export function instalarHistoria(c) {
     const St = S(); if (!St) return;
     if (St !== ultimoS) reset(St);
     try { L5M.tick(dt); } catch (e) {}
+    try { L5B.tick(dt); } catch (e) {}
     const P = c.P, M = c.M, W = c.W;
     // nomes revelados: "???" vira "O Inspetor" depois que você o vê; "Menina" vira "Ana" depois da brincadeira
     R.personagens.inspetor.nome = St.flags.avist ? R.personagens.inspetor.nomeRevelado : nomesBase.inspetor;
@@ -215,6 +219,7 @@ export function instalarHistoria(c) {
   // ------------------------------------------------------------------
   function vozChamado() {
     try { L5M.vozChamado(); } catch (e) {}
+    try { L5B.vozChamado(); } catch (e) {}
     const St = S(), esp = MUN.chamadoEspecial(St); if (esp) return esp;
     const nm = POL.chamadoNome(St); if (nm) return nm; // uma vez por capítulo, o Chamado diz o nome digitado no título
     const l = (R.chamados && R.chamados[St.chapter]) || R.falas.chamado;
@@ -223,6 +228,7 @@ export function instalarHistoria(c) {
   }
   function respondeu() {
     try { L5M.respondeu(); } catch (e) {}
+    try { L5B.respondeu(); } catch (e) {}
     const St = S(); St.flags.respondeu = (St.flags.respondeu || 0) + 1;
     setTimeout(() => c.falar('respondeu'), 2200);
   }
@@ -273,7 +279,8 @@ export function instalarHistoria(c) {
     const St = S(); let t = F.texto;
     if (tipo === 'verdadeiro') { if (St.flags.carrinhoAzul && F.extraCarrinho) t += '\n\n' + F.extraCarrinho; if (St.notes.n13 && F.extraDesenho) t += '\n\n' + F.extraDesenho; }
     let l5 = ''; try { l5 = L5M.extrasFinal(tipo) || ''; } catch (e) {}
-    return t + MUN.extrasFinal(tipo, F) + SEG.extrasFinal(tipo) + l5;
+    let l5b = ''; try { l5b = L5B.extrasFinal(tipo) || ''; } catch (e) {}
+    return t + MUN.extrasFinal(tipo, F) + SEG.extrasFinal(tipo) + l5 + l5b;
   }
   function aoFinal(tipo) {
     const St = S();
@@ -309,7 +316,7 @@ export function instalarHistoria(c) {
     if (tocouNove || !ehNove()) return; tocouNove = true;
     c.iniciarAudio(); c.SFX.badaladas(9);
   }
-  function aoComecar(St) { if (ehNove()) { c.conquista('nove_horas'); St.flags.nove = true; } POL.aoComecar(St); SEG.aoComecar(St); try { L5M.aoComecar(St); } catch (e) {} }
+  function aoComecar(St) { if (ehNove()) { c.conquista('nove_horas'); St.flags.nove = true; } POL.aoComecar(St); SEG.aoComecar(St); try { L5M.aoComecar(St); } catch (e) {} try { L5B.aoComecar(St); } catch (e) {} }
   // nome do jogador (opcional): fica só neste navegador
   const inp = $('#o-nome');
   if (inp) { inp.addEventListener('input', () => lsSet(NOME_KEY, inp.value.replace(/[<>]/g, '').slice(0, 16))); inp.addEventListener('keydown', e => e.stopPropagation()); }

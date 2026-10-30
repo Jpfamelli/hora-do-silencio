@@ -612,7 +612,10 @@ window.ROTEIRO = {
     { id: "surda_imovel", nome: "Surda e Imóvel", desc: "Ignore um Chamado parada no escuro até a voz falsa chorar.", secreta: true },
     { id: "chapeu", nome: "Ele Tirou o Chapéu", desc: "Fuja da noite e veja o Inspetor se despedir no limite da luz.", secreta: true },
     { id: "boa_noite", nome: "Boa Noite, Moacir", desc: "Dê boa-noite ao menino que ficou preso no homem.", secreta: true },
-    { id: "perseguicao", nome: "O Fôlego Comprido", desc: "Sobreviva a uma caçada longa sem se esconder nem apanhar.", secreta: true }
+    { id: "perseguicao", nome: "O Fôlego Comprido", desc: "Sobreviva a uma caçada longa sem se esconder nem apanhar.", secreta: true },
+    { id: "mao_leve", nome: "A Noite Sem Caçada", desc: "Atravesse a noite inteira sem nunca fazer o Inspetor correr atrás de você.", secreta: true },
+    { id: "misericordia", nome: "Misericórdia", desc: "Chame o Inspetor pelo nome e nunca o faça virar bicho.", secreta: true },
+    { id: "nome_errado", nome: "O Nome do Irmão", desc: "Ouça o Inspetor te confundir com o Davi.", secreta: true }
   ]
 };
 
@@ -1717,6 +1720,165 @@ window.ROTEIRO.lote5 = {
   // Codas de monstro nos finais de fuga.
   comumCoda: "\n\nNo retrovisor, por um segundo, um chapéu no acostamento. Depois só a estrada.",
   silencioCoda: "\n\nE, entre uma badalada e outra, bem baixinho, a voz dele contando: um... dois..."
+};
+
+// LOTE 5 (2ª rodada) — MONSTROS: a noite desumaniza o homem, capítulo a capítulo.
+// Texto novo lido por src/historia-lote5b.js. Nada aqui muda o fluxo ou rótulos de interação;
+// é tudo fala/narração/nota que aparece no momento certo.
+window.ROTEIRO.lote5b = {
+  // ===== Monólogo de desumanização: uma fala comprida por capítulo. A linguagem vai caindo. =====
+  // Cap I: frases inteiras de funcionário. Cap V: só verbos soltos e grunhido.
+  monologoCap: {
+    1: "Menina, essa não é hora de visita. O internato fechou faz muito tempo. Eu ainda faço a ronda porque alguém tem que fazer. Volta pro carro antes que eu precise te levar pela mão.",
+    2: "Vai bater a hora. Quando o sino bate, todo mundo deita. Essa é a regra, sempre foi. Eu não escrevi a regra. Eu só... faço ela acontecer. Deita, menina. Deita que é melhor.",
+    3: "Tanta criança fora da cama hoje. Tanta. Eu conto, eu conto e some uma. Some sempre uma. Fica quieta que eu acho. Eu sempre acho. Depois eu tranco. Depois ninguém chora.",
+    4: "Lá embaixo é meu. Aqui ninguém me vê torto. Aqui eu durmo em pé igual cavalo velho. Não acorda o seu Moacir, menina. Quando eu acordo... eu não lembro de ser gente.",
+    5: "Cava. Deita. Cala. ...achar. ...prender. ...dormir. Dormir. DORMIR."
+  },
+  // ===== Ele te chama pelo nome errado: um nome de criança de 1979 por capítulo. =====
+  // Reconhece de leve, cada vez mais quebrado. No Cap V te chama de "Davi".
+  nomeErrado: {
+    1: "Rosa? Não... você é mais nova. Volta pro dormitório, seja lá quem for.",
+    2: "Luiz, é você outra vez? Larga esse sino em paz, menino.",
+    3: "...Maria? Maria das Dores, cabeça na almofada. Não... você não é a Maria.",
+    4: "Tomé? Tira esse capacete... não. Não é o Tomé. Quem é que anda na minha casa?",
+    5: "...Davi. Davi, meu bem. Você voltou pra mim. Vem cá, Davi. Vem pro colo do seu Moacir."
+  },
+  nomeErradoLia: "(a Lia, gelada) Ele me chamou de Davi. Ele achou que eu era o meu irmão.",
+  // ===== Troca de irmãos: na caçada ele confunde os dois, e piora a cada capítulo. =====
+  trocaIrmaos: {
+    3: "Davi... não, a menina. A Lia. Volta pra cama, você dois.",
+    4: "Lia? Davi? ...qual que tá fora da cama? Os dois? Os dois fora da cama de novo?",
+    5: "DaviLiaDaviLia... vem. Vem que hoje eu junto vocês dois na mesma cova."
+  },
+  // ===== Cap IV: o Inspetor dorme em pé. Murmúrios do homem que foi. =====
+  sonolento: [
+    "(dormindo em pé) ...só mais um pouco... depois eu faço a ronda...",
+    "(num sonho) ...deixa eu dormir, Luiz... o padre já foi embora...",
+    "(a cabeça pende) ...tão quentinho hoje... não precisa trancar ninguém...",
+    "(baixinho) ...boa noite, meninos... boa noite..."
+  ],
+  sonolentoLia: "(a Lia, bem quieta) Ele dorme em pé. A voz dele agora é de gente. Não acorda ele, Lia.",
+  acordouGrunhido: "(o sono quebra num grunhido fundo) ...QUEM. Quem anda aí?!",
+  acordouLia: "(a Lia) Acordei ele. O homem sumiu de novo. Voltou o bicho.",
+  // ===== Cap IV: a trégua falsa. Obedecer é emboscada. =====
+  treguaFalsa: "(a voz vem mansa, da sala do lado) Larga isso, menina. Larga e eu te levo pra cama, sem castigo. Prometo. Só vem devagar até a minha voz.",
+  treguaLia: "(a Lia hesita) ...a voz tá tão calma. Será que... não. Não, Lia. Segue o teu caminho.",
+  treguaDicaMorte: "A voz mansa dele é isca. Quem para e se agacha perto dele some. Continue o objetivo: a bondade some junto com o resto.",
+  // ===== Habituação às iscas: quando ele aprende um truque e vem direto. Uma por tipo. =====
+  habituacao: {
+    garrafa: "De novo a garrafa? Eu ensinei esse truque pra eles. Caía toda vez.",
+    assobio: "Esse assobio... é sempre você. Nenhuma criança assobiava tão errado.",
+    batida: "Bate quanto quiser na parede. Eu sei de onde vem o barulho, menina.",
+    armario: "Sempre o armário. Vocês acham que eu não conheço o cheiro de porta fechada?",
+    pedra: "Jogou a pedrinha pro outro lado. Bonitinho. Eu não caio mais nisso."
+  },
+  // ===== Bilhete do terço (Irmã Celeste): prepara o contra-jogo antes de precisar. =====
+  tercoBilhete: "(numa estampa de santa, letra miúda de freira) 'Ele para quando ouve o meu terço. Foi a única coisa do internato que ele nunca quebrou. Se o encontrarem, filhas: rezem alto. — Irmã Celeste.'",
+  tercoLia: "(a Lia) Um terço... e um bilhete. A freira diz que o som do terço segura ele.",
+  // ===== Ocorrências da virada: ele vira monstro AO LONGO desta noite, não só em 1979. =====
+  virada: {
+    1: "(pregado na parede, letra firme) 'Ronda das 23h — tudo em ordem. Uma visitante na estrada. Vou mandar a menina voltar pro carro. M.D.'",
+    3: "(mais adiante, a mesma letra, agora tremida) 'a menina não volta. ela sobe. elas sempre sobem. eu conto as camas e some uma. some sempre uma'",
+    5: "(no fim do corredor, mal é letra: garranchos fundos no reboco) 'ACHAR CALAR DORMIR — nao é castigo é cuidado é cuidado é CUIDADO'"
+  },
+  viradaLia: {
+    1: "(a Lia) A letra do bilhete é cuidadosa. Ainda é um homem escrevendo.",
+    3: "(a Lia) A mesma letra... só que agora ela treme. Alguma coisa tá virando nele essa noite.",
+    5: "(a Lia) Isso não é mais letra. É unha na parede."
+  },
+  // ===== Chamado final (Cap V): a voz do Davi usa o nome que você digitou. =====
+  // {nome} é trocado pelo nome do jogador (ou "Lia" se vazio).
+  nomeFinalChama: "(na voz do Davi, puxada e errada) ...{nome}? {nome}, responde pra mim. Só uma vez. Eu preciso ouvir a tua voz, {nome}...",
+  nomeFinalResponde: "(ele para de imitar e sorri com a boca do Moacir) Quem responde, fica. Você mesma disse o teu nome, menina.",
+  nomeFinalLia: "(a Lia, mordendo a língua) Ele sabe o meu nome. Não responde. Se eu responder, eu fico aqui pra sempre.",
+  // ===== O Chamado ganha corpo no Cap V: o vulto pequeno do Davi caminha até você. =====
+  daviVulto: "(no meio do cemitério, um vulto pequeno de uniforme grande demais caminha devagar na sua direção, ainda chamando) ...Lia...",
+  daviVultoLia: "(a Lia, com a voz presa) Davi... é você mesmo dessa vez. Eu vim. Eu vim te buscar.",
+  // ===== As sílabas arrancadas pelo sino: a cada badalada o Inspetor perde uma sílaba. =====
+  sinoSilabas: ["A HO-RA É M…", "…é m…", "…é…", "…"],
+  sinoMudo: "(a última badalada arranca o resto; ele abre a boca e não sai nada)",
+  // ===== A venda que cai: o que ela tapava, narrado conforme ela se solta por capítulo. =====
+  venda: {
+    1: "(a Lia) A venda dele tá limpa, bem amarrada. Como quem veste farda.",
+    3: "(a Lia) A venda escorregou pro lado. Embaixo não tem cicatriz de queimadura nenhuma. Ele não é cego de nascença.",
+    5: "(a Lia) A venda caiu. Ele fechou os olhos por conta própria. Ele não quer ver o que fez."
+  },
+  // ===== Mais aparências perturbadoras (pool extra da caçada longa). =====
+  aparencia2: [
+    "As costas dele estalam a cada passo, como madeira velha esfriando.",
+    "Ele anda rente às paredes, com a mão espalmada no reboco, lendo a casa pelo tato.",
+    "A respiração dele entra num ritmo que não é o seu nem o meu. É de muita gente ao mesmo tempo.",
+    "Do pescoço dele pende um apito que ele nunca sopra — só aperta, até os nós dos dedos ficarem brancos.",
+    "A sombra dele chega na parede antes dele, e demora a ir embora depois que ele passa."
+  ],
+  // ===== Mais falas de caçada longa. =====
+  cacaLonga2: [
+    "Comprido, esse esconde-esconde. Eu tenho a noite toda, menina. Você tem?",
+    "Para de fugir que cansa nós dois. Eu só quero te pôr na cama.",
+    "Tá ouvindo o sino lá fora? Ainda não. Quando bater, acabou a brincadeira."
+  ],
+  // ===== Mais falas de "colado na fresta" do esconderijo. =====
+  pertoEscondida2: [
+    "(a voz raspa a madeira) ...o seu silêncio é alto, menina. Eu ouço ele.",
+    "(um sorriso na voz) ...pode prender o ar. Eu espero. Eu sempre espero."
+  ],
+  // ===== Mais resmungos quando ele desiste e volta pra ronda. =====
+  rondaVolta2: [
+    "Dorme onde você tá, então. Amanhã eu te acho na chamada.",
+    "Some. Some que nem os outros sumiram. Volta sempre, no fim."
+  ],
+  // ===== Leitura do perigo: a Lia lê o estado do caçador (sentido, não HUD). =====
+  leituraPerigo: {
+    investiga: "(a Lia, baixíssimo) Ele ouviu alguma coisa. Tá vindo ver.",
+    procura: "(a Lia) Ele sabe que tem alguém. Tá rodando a sala.",
+    reza: "(a Lia) Ele parou pra rezar. É agora que dá pra passar.",
+    patrulha: "(a Lia) A ronda dele é lenta de novo. Ele não sabe que eu tô aqui."
+  },
+  // ===== Epílogos secretos novos (recompensa de mestria). =====
+  // Nunca empurrou o Inspetor pra caça a noite toda: ele continua homem.
+  epilogoHumano: "\n\nEstranho: a noite inteira ele nunca correu atrás de você. Nem uma vez. No fim, o seu Moacir está sentado no degrau do altar, de venda no colo, olhos fechados, só um velho cansado. Ele ouve você passar e não se levanta. 'Vai, menina', ele diz. 'Vai enquanto eu ainda sou gente.' E você vai. Ele continua homem até o amanhecer.",
+  epilogoHumanoConq: "mao_leve",
+  // Misericórdia: nunca caçou E chamou pelo nome.
+  epilogoMisericordia: "\n\nVocê chamou ele pelo nome e nunca o fez virar bicho. Então ele não vira. O homem alto se ajoelha sozinho, a venda cai, e você vê: ele estava chorando esse tempo todo, por baixo do pano. 'Eu só queria que eles dormissem', ele soluça. 'Me perdoa.' O sino não precisa bater essa noite.",
+  epilogoMisericordiaConq: "misericordia",
+  // ===== Linhas extras da ficha do Inspetor (quando a ficha base já foi toda vista). =====
+  fichaExtra: [
+    "Anexo A: três crianças deram falta na chamada de 1978. O inspetor assinou 'transferidas'. Não há registro de transferência.",
+    "Anexo B: a Irmã Celeste pediu demissão e sumiu em fevereiro de 1979. Deixou só o terço.",
+    "Anexo C: o laudo do incêndio diz 'origem no altar'. O sino caiu na mesma hora. Ninguém explica por quê."
+  ],
+  // ===== A aparência do Inspetor piora capítulo a capítulo (a Lia narra ao vê-lo de perto). =====
+  aparenciaCap: {
+    1: "(a Lia) De perto ele quase parece um homem comum. Farda velha, chapéu, uma venda. Só os ombros é que estão altos demais.",
+    2: "(a Lia) A pele do pescoço dele tá cinza, de quem não vê o sol há anos. E não sobe e desce quando ele respira.",
+    3: "(a Lia) Os dedos dele dobram pro lado errado quando conta. Parou de ser mão. Virou gancho.",
+    4: "(a Lia) A boca dele foi ficando comprida. Agora o sorriso passa da orelha. Não olha muito, Lia.",
+    5: "(a Lia) Já não dá pra chamar de gente. É uma coisa alta, de chapéu, que lembra vagamente um homem que existiu."
+  },
+  // ===== O grito de "achei" quando ele te avista: escala por capítulo. =====
+  achei: {
+    1: "Aí está você. Devagar, menina, devagar. Vem comigo.",
+    2: "Te achei. Antes do sino. Bom.",
+    3: "ACHEI. Uma fora da cama. Sempre tem uma.",
+    4: "te-a-chei. te-a-chei. não corre que é pior.",
+    5: "ACHEI ACHEI ACHEI — VEM VEM VEM"
+  },
+  acheiLia: "(a Lia, prendendo o ar) Ele me viu. Ou me ouviu. Dá no mesmo. Corre pro escuro.",
+  // ===== Mais falas humanas nas pausas de reza (complementa as falas do Moacir). =====
+  rezaHumana2: [
+    "...o terço da Irmã Celeste... onde é que ela guardou...",
+    "...eu fechava a porta devagar pra não assustar. Devagar. Sempre devagar.",
+    "...se eu rezar direito talvez eles me deixem dormir também..."
+  ],
+  // ===== Novas crueldades no Pesadelo. =====
+  pesadelo2: [
+    "Hoje nenhum armário te guarda. Eu arrombo todos antes de você chegar.",
+    "Corre à vontade. Eu já tranquei todas as saídas quando você nasceu."
+  ],
+  // ===== A Menina e a Procissão: mais um fio cada. =====
+  anaSombra: "(a Lia) A sombra da menina tá no teto, não na parede. Tá de cabeça pra baixo, me olhando.",
+  procFileira: "(a Lia, bem quieta) Na fila tem um lugar vazio do meu tamanho. Eles abriram espaço. Pra mim."
 };
 
 // Aspas tipográficas: a fonte desenha a aspa reta como a de fechar, então as falas abrem com “ e fecham com ”.

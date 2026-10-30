@@ -90,3 +90,95 @@
 - O epílogo do menino Moacir só aparece com compaixão o bastante, dando peso de rejogo ao final verdadeiro.
 - A silhueta que tira o chapéu encerra tanto a fuga comum quanto a do silêncio.
 - A dica do sussurro honesto do Davi recompensa só quem de fato obedece e fica imóvel.
+- Novo bloco de texto `R.lote5b` no roteiro e novo módulo `historia-lote5b.js`, ligados por poucas linhas em `historia.js`, sem mexer no fluxo dos capítulos.
+- Monólogo de desumanização do Inspetor no Capítulo I: fala comprida e inteira de funcionário.
+- Monólogo de desumanização no Capítulo II: ainda articulado, mas já falando da "regra" do sino.
+- Monólogo de desumanização no Capítulo III: a linguagem começa a repetir e travar ("some sempre uma").
+- Monólogo de desumanização no Capítulo IV: ele admite que ao acordar não lembra de ser gente.
+- Monólogo de desumanização no Capítulo V: só verbos soltos e grunhido ("Cava. Deita. Cala.").
+- No Capítulo I o Inspetor te chama pelo nome de uma criança morta (Rosa) e se corrige.
+- No Capítulo II ele te confunde com o Luiz perto do sino.
+- No Capítulo III ele te chama de Maria das Dores antes de desistir.
+- No Capítulo IV ele te chama de Tomé e se assusta por não reconhecer quem anda na casa.
+- No Capítulo V ele te chama de "Davi" e te chama pro colo, reconhecendo tarde demais.
+- Fala da Lia, gelada, ao ser chamada de Davi, com a conquista secreta "O Nome do Irmão".
+- Na caçada do Capítulo III ele embaralha Davi e Lia ("volta pra cama, você dois").
+- No Capítulo IV a confusão piora ("qual que tá fora da cama? Os dois?").
+- No Capítulo V ele junta os nomes num borrão e ameaça pôr os dois na mesma cova.
+- No Capítulo IV o Inspetor dorme em pé e solta murmúrios de sonho ("só mais um pouco... depois eu faço a ronda").
+- Murmúrio de sonho com o nome do Luiz ("deixa eu dormir, Luiz... o padre já foi").
+- Murmúrio de sonho dizendo que não precisa trancar ninguém hoje.
+- Murmúrio de sonho dando boa-noite aos meninos.
+- Fala da Lia avisando para não acordar o homem que ressurge no sono dele.
+- Acordá-lo troca na hora o sussurro humano por um grunhido fundo de caça.
+- Fala da Lia ao perceber que acordou o bicho de novo.
+- Trégua falsa no Capítulo IV: ele fala manso de uma sala vizinha prometendo "sem castigo".
+- A Lia hesita diante da trégua e se obriga a seguir o caminho.
+- Dica na tela/aviso de que a voz mansa é isca: parar perto dele é emboscada.
+- Fala de habituação quando ele aprende o truque da garrafa.
+- Fala de habituação ao assobio ("é sempre você").
+- Fala de habituação à batida na parede.
+- Fala de habituação ao esconderijo no armário.
+- Fala de habituação à pedra jogada pro outro lado.
+- Bilhete do terço da Irmã Celeste, que ensina o contra-jogo do som do terço antes de precisar.
+- Fala da Lia ao achar o terço e o bilhete.
+- Ocorrência da virada no Capítulo I: bilhete de ronda com letra firme e cuidadosa.
+- Ocorrência da virada no Capítulo III: a mesma letra, agora tremida e repetitiva.
+- Ocorrência da virada no Capítulo V: garranchos fundos no reboco, já quase sem letra.
+- A Lia comenta a letra ainda cuidadosa na ocorrência do Capítulo I.
+- A Lia comenta a letra tremida na ocorrência do Capítulo III.
+- A Lia comenta "isso não é mais letra, é unha na parede" na ocorrência do Capítulo V.
+- No Capítulo I a Lia nota a venda dele limpa e bem amarrada, como farda.
+- No Capítulo III a venda escorrega e revela que não há cicatriz de queimadura: ele não é cego de nascença.
+- No Capítulo V a venda cai e ele mantém os olhos fechados por conta própria, para não ver o que fez.
+- No clímax (Capítulo V) o Chamado usa o nome que o jogador digitou no título para fazê-la responder.
+- Fala da Lia resistindo a responder ao próprio nome na voz falsa.
+- Se o jogador responde no Capítulo V, o Inspetor larga a imitação: "Quem responde, fica."
+- O vulto pequeno do Davi caminha devagar até você no cemitério, ainda chamando "Lia...".
+- Fala da Lia reconhecendo o Davi de verdade e dizendo que veio buscá-lo.
+- Durante a fuga, cada badalada do sino arranca uma sílaba da fala do Inspetor (quatro fragmentos).
+- Quando o sino termina de atordoá-lo, ele abre a boca e não sai mais nada (fecho mudo).
+- A Lia lê, só pelo sentido, quando o Inspetor está investigando.
+- A Lia lê quando ele está procurando ("tá rodando a sala").
+- A Lia lê quando ele parou pra rezar ("é agora que dá pra passar").
+- A Lia lê quando a ronda dele está lenta e ele não sabe que você está ali.
+- Nova fala de caçada longa ("comprido, esse esconde-esconde. Eu tenho a noite toda").
+- Nova fala de caçada longa ("para de fugir que cansa nós dois").
+- Nova fala de caçada longa sobre o sino que ainda não bateu.
+- Nova narração de aparência: as costas dele estalam feito madeira esfriando.
+- Nova narração de aparência: ele anda rente à parede lendo a casa pelo tato.
+- Nova narração de aparência: a respiração dele é de muita gente ao mesmo tempo.
+- Nova narração de aparência: o apito que ele aperta sem nunca soprar.
+- Nova narração de aparência: a sombra que chega antes dele e demora a ir embora.
+- Nova fala colado na fresta ("o seu silêncio é alto, menina").
+- Nova fala colado na fresta ("pode prender o ar, eu espero").
+- Novo resmungo ao desistir ("dorme onde você tá, amanhã eu te acho na chamada").
+- Novo resmungo ao desistir ("some que nem os outros sumiram").
+- A aparência do Inspetor piora capítulo a capítulo, narrada pela Lia ao vê-lo de perto no Capítulo I.
+- Aparência piorando narrada no Capítulo II (pele cinza, respiração que não sobe e desce).
+- Aparência piorando no Capítulo III (os dedos viram gancho).
+- Aparência piorando no Capítulo IV (a boca ficando comprida demais).
+- Aparência piorando no Capítulo V (já não dá pra chamar de gente).
+- Grito de "achei" quando ele te avista, no Capítulo I (ainda manso).
+- Grito de "achei" escalando no Capítulo II.
+- Grito de "achei" no Capítulo III ("uma fora da cama, sempre tem uma").
+- Grito de "achei" quebrado no Capítulo IV.
+- Grito de "achei" puro frenesi no Capítulo V.
+- Fala da Lia prendendo o ar quando é avistada.
+- Nova fala humana na reza procurando o terço da Irmã Celeste.
+- Nova fala humana na reza lembrando que fechava a porta devagar para não assustar.
+- Nova fala humana na reza pedindo para também poder dormir.
+- Nova crueldade no Pesadelo: ele arromba todos os armários antes de você chegar.
+- Nova crueldade no Pesadelo: ele diz ter trancado as saídas quando você nasceu.
+- Nova visão da Menina de cabeça pra baixo no teto, te olhando.
+- Nova narração da Procissão abrindo um lugar vazio do seu tamanho na fila.
+- Epílogo humano secreto: atravessar a noite inteira sem nunca fazer o Inspetor caçar você deixa ele homem até o amanhecer.
+- Conquista secreta "A Noite Sem Caçada" para quem fecha o jogo sem nenhuma caçada.
+- Epílogo da misericórdia no final verdadeiro: chamar pelo nome e nunca virar bicho faz a venda cair e ele chorar pedindo perdão.
+- Conquista secreta "Misericórdia" para esse epílogo.
+- Anexo A da ficha na tela de morte: três crianças "transferidas" em 1978 sem registro de transferência.
+- Anexo B da ficha: a Irmã Celeste sumiu em fevereiro de 1979 e deixou só o terço.
+- Anexo C da ficha: o laudo do incêndio aponta "origem no altar" e o sino caiu na mesma hora.
+- Ficha do Inspetor e a nova conquista de história entram no acervo com descrição própria.
+- O novo módulo de texto entra no cache offline (sw.js), para a noite rodar sem internet.
+- A Lia lê o perigo só pelo sentido e sem HUD, respeitando o grupo "Leitura do perigo" (ajudas discretas).
