@@ -1,92 +1,91 @@
 # Lote 5 — Mapa: prólogo e estrada
-- Novo monstro no prólogo: o batedor de 1979, a silhueta do Seu Joaquim morto parada ao longe na estrada
-- O batedor só avança quando você para de andar; enquanto você caminha, ele congela no lugar
-- Ele se move em passadas secas e isoladas, não deslizando, para parecer teletransporte entre instantes
-- As passadas do batedor ficam mais rápidas conforme ele chega perto de você
-- O salto de cada passada é maior quando ele está longe e menor quando está perto
-- Som de passo pesado a cada avanço do batedor
-- Vibração do controle/celular quando o batedor dá um passo por perto
-- O batedor vira o rosto para você o tempo todo
-- Fala da Lia ao avistar o batedor pela primeira vez
-- Fala de aviso quando o batedor chega a cerca de 26 metros
-- Fala de aviso quando o batedor chega a cerca de 11 metros, ensinando a continuar andando
-- O medo sobe quanto mais perto o batedor chega
-- Se o batedor encostar em você estando parada, há um sobressalto com estalo, relâmpago e tremor
-- No Pesadelo, esse encontro com o batedor custa 15 de vida
-- Depois do sobressalto, o batedor recua para longe e recomeça a aproximação
-- Chegar perto do portão encerra o batedor com uma fala de reconhecimento
-- Um sino distante soa quando o batedor é encerrado no portão
-- No Pesadelo o batedor começa mais perto (40 m em vez de 46)
-- No Fácil o batedor anda mais devagar e dá passadas menores
-- Contra-jogo: apontar a lanterna no batedor trava o próximo passo dele
-- Um chiado/estalo enquanto você mantém a lanterna no batedor
-- Respiração ofegante do batedor quando ele está a menos de 15 metros
-- Sussurro de contagem (o eco de 1979) enquanto o batedor avança
-- Os passos do batedor soam mais alto quando ele está atrás de você, fora da visão
-- Estalo duplo quando o batedor vira para você ao ser avistado
-- Os olhos do batedor ardem mais forte conforme ele se aproxima
-- A aparência do batedor varia pela semente da noite (sem rosto ou sombra)
-- O batedor fica registrado na memória da estrada depois de visto
-- Novo monstro: o acompanhante que anda pela borda da mata no seu passo
-- O acompanhante segue o seu z com atraso, colado na beira do mato
-- Quando você para, o acompanhante vira o rosto para você devagar
-- Passos do acompanhante no seu ritmo de caminhada
-- Fala da Lia ao perceber o acompanhante
-- Fala e sussurro quando você para e olha para o acompanhante
-- Em noites repetidas o acompanhante aparece mais cedo
-- O lado (esquerda ou direita) do acompanhante é escolhido pela semente
-- O acompanhante aparece de costas, com a cabeça virada para você
-- Estalo de galho no mato quando o acompanhante surge
-- Contra-jogo: correr sem parar deixa o acompanhante para trás e ele some
-- O acompanhante se abaixa junto quando você se agacha
-- Apontar a lanterna no acompanhante o empurra para dentro do mato e baixa o seu medo
-- No Pesadelo, encarar o acompanhante parada por tempo demais o faz dar um passo para a estrada
-- Estalo seco quando o acompanhante avança no Pesadelo
-- Em noites repetidas o acompanhante causa mais medo
-- Novo momento na abertura: um vulto na estrada diante dos faróis
-- O vulto da abertura congela na luz dos faróis do carro
-- O vulto da abertura avança no escuro, quando os faróis apagam
-- A cabeça do vulto da abertura treme ao andar no escuro
-- Fala ensinando a mecânica central ("na luz congela, no escuro anda") ao fim da abertura
-- O vulto da abertura some quando a cena mata os faróis
-- Uma aparição perturbadora por noite, sempre no caminho da estrada
-- O tipo da aparição é sorteado pela semente e pela noite
-- A aparição surge na beira da estrada, fora do centro da sua visão
-- A aparição some quando você olha direto para ela, ou depois de alguns segundos
-- Estalo, medo e vibração quando a aparição é vista
-- Fala específica da Lia para cada tipo de aparição
-- Som de ambiente próprio de cada tipo de aparição ao surgir
-- Aparência nova "encharcado": material molhado e escuro, pingando
-- Gotas d'água animadas caindo do vulto encharcado
-- Aparência nova "criança": do tamanho da Ana, de pé no acostamento
-- Som de caixinha de música na aparência criança
-- Aparência nova "alto demais": a cabeça passa da copa das árvores
-- Trovão ao surgir a aparência alta
-- Aparência nova "sem rosto": um oval claro e liso no lugar do rosto
-- Os olhos vermelhos somem na aparência sem rosto
-- Aparência nova "de costas": corpo virado, cabeça olhando para você
-- A aparição de costas gira de repente para te encarar antes de sumir, com um susto
-- Os olhos de todas as aparições ardem conforme a distância
-- Perseguição do portão com momentos novos (sem alterar o perseguidor original)
-- Buzina do carro soando sozinha atrás de você durante a perseguição, chamando ele
-- Fala da Lia sobre a buzina do carro
-- Batimento cardíaco que acelera conforme você chega ao portão na perseguição
-- Sussurros que ficam mais frequentes perto do portão na perseguição
-- Parar no meio da perseguição é punido com um sussurro extra e mais medo
-- Um segundo vulto, alto, corta na sua frente entre você e o portão
-- Relâmpago no instante em que o vulto corta sua frente
-- Fala da Lia sobre o vulto que cortou o caminho
-- O vulto que cortou se dissolve, deixando o portão passável (sem travar a fuga)
-- Animação do vulto que cortou o caminho
-- Um sopro de respiração perto demais, uma única vez, perto do portão
-- Fala do momento "quase" com vibração forte perto do portão
-- Novo: a silhueta do Seu Joaquim aparece na estrada no instante em que o rádio diz que ele morreu
-- Relâmpago e medo no momento da revelação do Seu Joaquim
-- A silhueta do Seu Joaquim vira o rosto para você e some no clarão seguinte
-- Os vultos do Lote 5 são próprios e não interferem nos vultos do prólogo já existentes
-- Cada sistema de monstro tem sua própria instância de vulto, sem dois sistemas brigarem pelo mesmo mesh
-- Agenda própria dos monstros que para junto com a pausa e morre ao trocar de mapa
-- A decisão "parado × andando" usa a velocidade suavizada do jogador, sem travar o teste automático
-- Todos os vultos do lote se escondem fora do jogo e fora da cena, sem sobra na tela
-- Semente estável por sessão que varia as aparências e os lados dos monstros a cada noite
-- Dificuldade afeta os monstros do prólogo (Fácil mais brando, Pesadelo mais agressivo e com dano)
+- O batedor morto ganha mais caras: em algumas noites surge com o pescoço quebrado num ângulo impossível.
+- Nova aparência "quebrado" entrou no sorteio de vultos da noite na estrada.
+- A cabeça quebrada balança pendurada enquanto o vulto está parado.
+- O afogado agora tem a cabeça tombada mais forte pro lado.
+- O vulto gigante ergue um braço esticado na direção da Lia.
+- O vulto sem rosto tem uma costura de pontos onde seria a boca.
+- A sombra virou um recorte fino de papel preto, com os olhos quase apagados.
+- Os olhos dos vultos piscam de vez em quando: somem por um instante e voltam.
+- Todos os vultos respiram de leve parados (a cabeça sobe e desce), nunca 100% imóveis.
+- Manter o facho em cima do batedor agora o trava de verdade, muito mais do que só andar.
+- Segurar a luz nele gasta a pilha fraca do prólogo rápido: decisão entre luz e passo.
+- A Lia avisa a troca luz-contra-passo quando você segura o facho tempo demais.
+- Quando a carga cai demais segurando o facho, ele deixa de travar e a Lia percebe que só resta andar.
+- Sob a sua luz, a cabeça do batedor range rápido de um lado pro outro.
+- O batedor acende um facho falso igual ao seu no acostamento oposto, pra te desviar.
+- O facho falso tremeluz como uma lanterna de pilha fraca.
+- Apontar a sua luz no facho falso revela que ele avançou muito mais perto no escuro.
+- Quando você não olha pra ele e está parado, o batedor encosta sem você perceber.
+- O batedor manca: um passo longo arrastado, outro curto (o pé que não obedece).
+- O passo curto do batedor soa mais baixo que o passo longo.
+- No Pesadelo, parado e perto, o batedor dá um bote de dois passos secos.
+- Encará-lo sem luz já atrasa o passo dele (olhar também segura, menos que a luz).
+- Passar correndo raspando no batedor dá um sopro na nuca e um estalo, sem travar o jogo.
+- A contagem do batedor chega no "um" colado em você quando ele encosta.
+- A contagem fica mais frequente quanto mais perto ele está.
+- Em noites repetidas o batedor já começa mais perto do portão.
+- Em noites repetidas o batedor dá o passo mais cedo (mais rápido).
+- Na segunda noite em diante a Lia reconhece: "outra vez essa estrada, e ele já começa mais perto".
+- Ao te alcançar parado, em noites repetidas o batedor recua menos.
+- Enquanto o batedor está em cena, o medo tem um piso mínimo (a estrada não deixa respirar).
+- Um brilho vermelho fraco sai dos olhos do batedor no escuro e some na sua luz.
+- O relâmpago revela o batedor mais perto: um clarão enquanto você não olha e ele saltou.
+- Ao chegar no portão, o batedor some com um sussurro de despedida e um alívio no medo.
+- Vibração contínua de perto: o controle treme quanto mais o batedor encosta parado.
+- Os faróis do carro abandonado acendem sozinhos uma vez, cedo no prólogo.
+- No clarão dos faróis sozinhos aparece a silhueta do batedor parada bem à frente.
+- Quando os faróis sozinhos se apagam, vem o susto e o rádio chia junto.
+- Em noites repetidas os faróis sozinhos gaguejam, revelando o vulto em stop-motion.
+- Olhar para trás (Q) perto do carro revela o Seu Joaquim parado uns metros atrás, imóvel.
+- Virar pra frente e voltar o olhar: ele sumiu.
+- A cada vez que você olha para trás, o vulto está um pouco mais perto.
+- Uma vez por noite, o batedor aparece sentado no banco de trás, o rosto virado pra Lia.
+- Nova silhueta sentada no banco de trás, com olhos vermelhos.
+- Se você demora olhando o banco de trás, ela bate no vidro de dentro com a unha.
+- O carro ganhou a porta do motorista, que começa fechada.
+- Antes da lanterna, um clarão mostra uma silhueta alta sentada no banco de trás.
+- Depois do clarão, a porta do motorista abre sozinha, com um rangido.
+- A porta do motorista fica aberta dali em diante (você não abriu essa porta).
+- No clarão, os olhos da silhueta sentada acendem e o carro afunda na suspensão.
+- Na perseguição, os faróis acendem atrás e varrem a estrada: sua sombra corre sozinha na frente.
+- Passos ganhando atrás de você no cascalho durante a fuga.
+- Uma voz chama "Lia" dos dois lados ao mesmo tempo, pra te tirar do portão.
+- O portão chacoalha sozinho conforme você se aproxima na fuga.
+- Olhar para trás (Q) na fuga revela um rosto colado no seu, uma vez.
+- Vibração contínua que sobe conforme você chega perto do portão.
+- Ao abrir o portão com ele quase em cima, um último baque e empurrão.
+- Infra-som que cresce conforme o vulto mais próximo se aproxima (sentido antes de ser visto).
+- Galhos estalam na mata enquanto o batedor anda no escuro, perto de você.
+- Um coração surdo bate quando o medo transborda fora da perseguição.
+- A tela treme de leve, pulsando, quando uma presença encosta de verdade (menos de 4 m).
+- O acompanhante da mata se dissolve se você segura o facho nele por alguns segundos.
+- O acompanhante atira um graveto do mato pra te fazer parar e virar o rosto.
+- O passo do acompanhante acelera junto quando você corre.
+- Em noites repetidas, um segundo vulto espreita do lado oposto do mato.
+- A criança do acostamento ri e solta a caixinha de música ao ser vista.
+- O vulto gigante cresce ainda mais (e vem um trovão) ao ser visto.
+- O afogado raspa mais forte e pinga ao sumir.
+- O vulto sem rosto solta um sussurro ao ser visto.
+- Cada aparência surge a uma distância própria: o afogado encosta, o gigante fica longe.
+- Em noites repetidas, uma segunda aparição acontece mais adiante na estrada.
+- A sombra tem um sussurro próprio ao aparecer; o quebrado estala como osso.
+- Novas falas da Lia para a sombra e para o vulto de pescoço quebrado.
+- No instante em que o rádio diz que ele morreu, o Seu Joaquim dá um passo pra trás pro escuro.
+- Depois do "morreu em 1979", um rosto aparece na janela da loja do posto, no lugar dele.
+- O rosto na janela da loja some com um estalo quando você o encara.
+- Algo anda no cascalho do pátio do posto e para quando você para.
+- Pegadas molhadas saem do carro pro mato nas noites do afogado, brilhando na lanterna.
+- Nova fala do batedor quando o facho falso te engana e ele reaparece mais perto.
+- Nova fala quando a pilha morre no meio da parada ("agora só me resta andar").
+- Nova fala quando ele cresce no escuro às suas costas.
+- Novas falas da perseguição: a luz atrás, os passos no cascalho, o chamado e o rosto colado.
+- Novas falas do olhar para trás: o Joaquim no retrovisor e o sumiço ao virar.
+- Novas falas do banco de trás: a silhueta sentada e a batida no vidro.
+- Novas falas do clarão e da porta do motorista aberta sozinha.
+- Nova fala dos faróis que acendem sozinhos no prólogo.
+- Nova fala do segundo vulto do acompanhante em noites repetidas.
+- Nova fala do rosto na janela da loja e dos passos no pátio do posto.
+- A isca (facho falso) do batedor some ao fim da perseguição e ao trocar de tela.
+- O brilho vermelho dos olhos do batedor é desligado pela sua lanterna.
+- A segunda aparição em noites repetidas surge mais adiante, longe da primeira marca.
