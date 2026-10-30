@@ -2,7 +2,7 @@
 
 Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/lote*/<área>.md`. Não edite à mão: edite o arquivo da área e gere de novo.
 
-**Total geral: 7306 melhorias**
+**Total geral: 7308 melhorias**
 
 ## Índice
 
@@ -62,7 +62,7 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
   - Progressão e rejogabilidade: 275
   - Plataforma e acessibilidade: 183
   - Revisão antes de publicar: 12
-- [Lote 5](#lote-5) — 1539 melhorias
+- [Lote 5](#lote-5) — 1541 melhorias
   - História e texto: 183
   - Mapa: prólogo e estrada: 90
   - Mapa: térreo e dormitórios: 183
@@ -75,7 +75,7 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
   - Interface: 94
   - Progressão e rejogabilidade: 93
   - Plataforma e acessibilidade: 90
-  - Revisão: 1
+  - Revisão: 3
 
 ## Lote 1
 
@@ -6018,7 +6018,7 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
 
 ## Lote 5
 
-1539 melhorias.
+1541 melhorias.
 
 ### História e texto (183)
 
@@ -7594,6 +7594,8 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
 1537. Novo grupo de opções "Os monstros (desafio e leitura tátil)"
 1538. Kit de teste passa a cobrir o Modo Cego e a intensidade dos monstros
 
-### Revisão (1)
+### Revisão (3)
 
 1539. O aviso "não encare ele" (e os outros selos do contra-jogo do corpo) ficava fixo em `bottom:16%` e cobria a fala/legenda em `bottom:12%`; agora o selo some enquanto houver fala ou legenda na tela, voltando sozinho quando o diálogo sai, sem sobreposição de texto
+1540. O Capítulo I não trava mais num beco sem saída: se a luz já voltou mas o escape do gerador foi cancelado (morte durante a fuga e recarga do checkpoint com a energia ligada), o objetivo do gerador fecha sozinho assim que a Lia está viva, em vez de deixar o capítulo sem como avançar
+1541. Com o Inspetor do lote 5 bem mais agressivo, o escape do gerador no Capítulo I (que o jogo pede para passar escondida) cansava a caçada e esticava tanto a espera do escape automático que a jogada automática de teste (que ficava parada no meio da sala) não fechava o capítulo a tempo; o kit de teste agora se esconde no armário durante o escape, como o jogo manda, e sai dele depois — a revisão automática volta a terminar com RESULTADO: PASSOU

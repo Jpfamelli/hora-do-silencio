@@ -109,7 +109,9 @@ T.tudo = async () => {
     await T.ate(() => J.S.inv.chaves.portao, 20); T.usar(/cadeado/);
     passo('prólogo', await T.cap(1) && J.S.mapa === 'terreo'); passo('portas e lore: térreo', !T.checarMapa().length);
     T.usar(/Forçar a porta/); T.usar(/galão/); T.usar(/caixa de fusíveis/); T.usar(/Ligar o gerador/);
+    T.usar(/Esconder (no armário|embaixo da cama)/); // o gerador acorda o Inspetor: a Lia se esconde, como o jogo manda (a caçada do lote 5 estica tanto o escape que a espera de 20 s não fecha a tempo parada no meio da sala)
     passo('cap I', await T.cap(2));
+    if (J.S.hidden) T.usar(/Sair (do armário|de baixo da cama)/); // sai do esconderijo para seguir o capítulo II
     await T.semFita(); T.usar(/Fita 1/); await T.ate(() => J.S.fitas.f1, 120);
     T.usar(/página 1/); T.dlg();
     T.usar(/código do quadro/); for (const d of J.S.quadro) T.tecla('Digit' + d); T.tecla('Enter');

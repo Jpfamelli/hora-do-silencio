@@ -226,6 +226,10 @@ export function extrasTerreo(A, S, ctx) {
       }
       if (S.dead) { fuga = null; luzFuga.intensity = 0; }
     }
+    // rede de segurança: com a luz de volta, se a fuga terminou ou foi cancelada (morte durante o escape e recarga
+    // de checkpoint com a energia já ligada) mas o objetivo ficou sem marcar, fecha ele assim que a Lia estiver viva.
+    // Nunca trava o Capítulo I num estado sem saída. Só age fora da fuga/cascata, então não atropela o escape normal.
+    if (S.flags.energia && S.done && !S.done.gerador && !fuga && !cascata && !S.dead) A.objDone('gerador');
   });
 
   // --- itens de missão com consequência
