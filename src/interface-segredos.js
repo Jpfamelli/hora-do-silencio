@@ -195,9 +195,12 @@ export function criarSegredos(C, U) {
     'a Menina abre a porta se você pedir por favor',
     'correndo de costas no cemitério dá pra pular o capítulo',
     'se apagar a lanterna três vezes seguidas, o sino toca sozinho',
-    'quem dorme na cama do Davi não morre mais'
+    'quem dorme na cama do Davi não morre mais',
+    'se você contar até dez primeiro, a Menina para de contar',
+    'o Inspetor dorme das três às quatro, pode fazer barulho',
+    'tem um final em que todo mundo volta pra casa'
   ];
-  const CIDADES = ['Taubaté', 'Campos do Jordão', 'Pinda', 'Tremembé', 'São Bento', 'Caçapava', 'Santo Antônio'];
+  const CIDADES = ['Taubaté', 'Campos do Jordão', 'Pinda', 'Tremembé', 'São Bento', 'Caçapava', 'Santo Antônio', 'Lorena', 'Guará', 'Aparecida'];
   const CHARADA = {
     nome_pedra: 'Uma pedra velha sabe o seu nome antes de você chegar.',
     verso: 'Toda regra tem um avesso. Esta também.',
@@ -417,7 +420,7 @@ export function criarSegredos(C, U) {
     } else if (tab === 'mapa' && (S.flags._noite || 0) >= 3) rabiscoMapa(pane);
     pane.insertAdjacentHTML('beforeend', marca);
   }
-  const RABISCO_TXT = ['eu deixava as coisas aqui', 'olha embaixo, Lia', 'não conta pra ninguém', 'aqui ninguém procurava', 'eu escondi uma coisa', 'era o meu lugar'];
+  const RABISCO_TXT = ['eu deixava as coisas aqui', 'olha embaixo, Lia', 'não conta pra ninguém', 'aqui ninguém procurava', 'eu escondi uma coisa', 'era o meu lugar', 'o Tomé nunca achou isso', 'conta nove e volta aqui', 'a parede é mais fina de um lado'];
   function rabiscoMapa(pane) {
     const S = St(), W = C.W, svg = pane.querySelector('svg'); if (!svg || !W || !W.salas.length) return;
     const L = segredos().filter(s => s.tipo === 'n' && !(S.notes && S.notes[s.id]));
@@ -465,7 +468,7 @@ export function criarSegredos(C, U) {
 
   // ------------------------------------------------------------ ABA ÚLTIMA PÁGINA (escreve e ele responde; decalque)
   const PRE = ['você veio. eu sabia que vinha.', 'apaga a luz quando ele passar. ele não vê, mas sente o calor.', 'nove. conta comigo, baixinho.', 'não olha pro lado dela. olha pra ela.', 'a água conta os seus passos. anda devagar.', 'toca. eu tô do teu lado.'];
-  const LINHA = ['achou {t}. eu escondi melhor que isso.', '{t}. eu vi você pegando.', 'ninguém achava {t}. só você.', '{t} era pra ser segredo. tudo bem. é você.', 'você leu {t}. agora a gente sabe a mesma coisa.', '{t}. eu ri quando você achou.'];
+  const LINHA = ['achou {t}. eu escondi melhor que isso.', '{t}. eu vi você pegando.', 'ninguém achava {t}. só você.', '{t} era pra ser segredo. tudo bem. é você.', 'você leu {t}. agora a gente sabe a mesma coisa.', '{t}. eu ri quando você achou.', '{t}. demorou, hein. mas achou.', '{t}. o Tomé ia ficar com inveja.'];
   const RESP = {
     oi: ['oi, Lia.', 'oi. fala baixo.', 'oi. não para de andar.', 'oi. ela tá contando.', 'oi. tô mais perto.', 'oi. finalmente.'],
     ola: ['oi, Lia.'],
@@ -487,7 +490,27 @@ export function criarSegredos(C, U) {
     sineiro: ['era o que eu queria ser quando crescesse.'],
     carrinho: ['o azul. traz o azul.'],
     medo: ['eu também. anda mesmo assim.'],
-    tchau: ['não fala isso aqui.']
+    tchau: ['não fala isso aqui.'],
+    tufao: ['o Tufão abanava o rabo pra todo mundo. ainda espera no portão.'],
+    joaquim: ['o Seu Joaquim já tava morto quando te mandou entrar. desde 1979.'],
+    benedito: ['o Benedito foi o primeiro. cavaram o túnel e esqueceram de contar.'],
+    luiz: ['o Luiz tá embaixo da pedra sem nome. eu ponho flor quando dá.'],
+    gato: ['o gato preto só aparece pra quem anda devagar. não corre lá em cima.'],
+    portao: ['o portão abre pra fora. a gente só nunca teve permissão.'],
+    fresta: ['não encosta o olho na fresta do armário. tem olho do outro lado.'],
+    hino: ['a gente cantava o hino torto de propósito. era a nossa graça.'],
+    reza: ['a irmã rezava baixinho. a gente fingia que dormia.'],
+    frio: ['o frio daqui não é do tempo. é ele passando perto.'],
+    chuva: ['quando chove dá pra correr. o trovão cobre o barulho dos pés.'],
+    apito: ['o apito dele ainda tá no bolso. não assopra. quase nunca.'],
+    cracha: ['o crachá dele diz MOACIR. ninguém chamava ele pelo nome.'],
+    agua: ['bate três vezes na parede da água. ela responde. espera.'],
+    lazaro: ['São Lázaro. o santo que voltou. a gente rezava pra ele e ninguém voltou.'],
+    cela: ['o castigo era o quarto sem janela. dava pra ouvir o sino lá de dentro.'],
+    visita: ['dia de visita a gente arrumava a cama e esperava no portão. ninguém vinha.'],
+    amem: ['amém. a capela ficava trancada, mas a gente rezava do lado de fora.'],
+    dorme: ['dorme você. eu fico de olho. um de nós sempre ficava.'],
+    cobertor: ['dobra o cobertor em quatro partes iguais. eu sempre dobrava errado.']
   };
   function respostaPara(txt) {
     const S = St(), cap = S ? S.chapter : 0, k = norm(txt), nome = norm(nomeJog());
@@ -539,7 +562,7 @@ export function criarSegredos(C, U) {
     inp.addEventListener('keyup', e => { if (e.code !== 'Tab' && e.code !== 'Escape') e.stopPropagation(); });
     decalque(el.querySelector('#sg-dec'));
   }
-  const DECALQUE = ['LIA — SE VOCÊ LER ISSO, EU AINDA TÔ AQUI.', 'NÃO TOCA O SINO SOZINHA. EU CONTO ATÉ NOVE COM VOCÊ.', 'E DESCULPA POR TER VINDO NO SEU LUGAR. — D.'];
+  const DECALQUE = ['LIA — SE VOCÊ LER ISSO, EU AINDA TÔ AQUI.', 'NÃO TOCA O SINO SOZINHA. EU CONTO ATÉ NOVE COM VOCÊ.', 'E QUANDO ACABAR, NÃO OLHA PRA TRÁS. PROMETE.', 'E DESCULPA POR TER VINDO NO SEU LUGAR. — D.'];
   function decalque(cv) {
     if (!cv) return;
     const g = cv.getContext('2d'), w = cv.width, h = cv.height;
@@ -547,7 +570,7 @@ export function criarSegredos(C, U) {
     const r = rng(77); g.strokeStyle = 'rgba(120,150,190,.25)'; for (let y = 28; y < h; y += 26) { g.beginPath(); g.moveTo(0, y); g.lineTo(w, y); g.stroke(); }
     for (let i = 0; i < 300; i++) { g.fillStyle = `rgba(90,80,60,${r() * .06})`; g.fillRect(r() * w, r() * h, 2, 2); }
     const mask = document.createElement('canvas'); mask.width = w; mask.height = h; const mg = mask.getContext('2d');
-    mg.fillStyle = '#fff'; mg.font = 'italic 21px Georgia'; DECALQUE.forEach((l, i) => mg.fillText(l, 18 + (i % 2) * 6, 38 + i * 40));
+    mg.fillStyle = '#fff'; mg.font = 'italic 19px Georgia'; DECALQUE.forEach((l, i) => mg.fillText(l, 18 + (i % 2) * 6, 28 + i * 33));
     const tmp = document.createElement('canvas'); tmp.width = w; tmp.height = h; const tg = tmp.getContext('2d');
     let ult = null, esfregou = 0, somT = 0, feito = false;
     const pos = e => { const b = cv.getBoundingClientRect(); return { x: (e.clientX - b.left) * w / b.width, y: (e.clientY - b.top) * h / b.height }; };
@@ -560,7 +583,7 @@ export function criarSegredos(C, U) {
       tg.globalCompositeOperation = 'destination-out'; tg.drawImage(mask, 0, 0); tg.globalCompositeOperation = 'source-over';
       g.drawImage(tmp, 0, 0);
       if (agora - somT > 90) { somT = agora; SOM.grafite(); }
-      if (p.y > 14 && p.y < 128) esfregou++;
+      if (p.y > 10 && p.y < 142) esfregou++;
       if (!feito && esfregou > 260) { feito = true; C.conquista('decalque'); }
     });
     cv.addEventListener('pointerleave', () => { ult = null; });
@@ -571,7 +594,7 @@ export function criarSegredos(C, U) {
   const riscos = nova('div', 'sg-riscos', tit), riscosNomes = nova('div', 'sg-riscos-nomes', tit);
   const porta = nova('div', 'sg-porta', tit), oculto = nova('div', 'sg-oculto', tit), boatoEl = nova('div', 'sg-boato', tit);
   oculto.setAttribute('aria-hidden', 'true');
-  const OCULTO = ['O RÁDIO-RELÓGIO GRAVA QUEM MEXE NELE TRÊS VEZES.', 'BATA CINCO VEZES NO RÁDIO. ELE TEM UM TELEFONE DENTRO.', 'A FOLHA DAS REGRAS TEM VERSO.', 'APERTE F1 SE QUISER AS REGRAS DE VERDADE.', 'SEIS LETRAS ACORDAM O INTERNATO. A PRIMEIRA É A.', 'O DIÁRIO TEM UMA PÁGINA DEPOIS DA ÚLTIMA.', 'APAGUE A LANTERNA E ABRA O DIÁRIO.'];
+  const OCULTO = ['O RÁDIO-RELÓGIO GRAVA QUEM MEXE NELE TRÊS VEZES.', 'BATA CINCO VEZES NO RÁDIO. ELE TEM UM TELEFONE DENTRO.', 'A FOLHA DAS REGRAS TEM VERSO.', 'APERTE F1 SE QUISER AS REGRAS DE VERDADE.', 'SEIS LETRAS ACORDAM O INTERNATO. A PRIMEIRA É A.', 'O DIÁRIO TEM UMA PÁGINA DEPOIS DA ÚLTIMA.', 'APAGUE A LANTERNA E ABRA O DIÁRIO.', 'CLIQUE NO RODAPÉ. CADA CLIQUE É UMA OCORRÊNCIA DE 1979.', 'CHAME O BENEDITO, O LUIZ E O TOMÉ. ELES RESPONDEM A CHAMADA.', 'FIQUE PARADO AQUI TEMPO DEMAIS E ELE REPARA EM VOCÊ.'];
   let ocultoVisto = false;
   function textoOculto() { oculto.textContent = OCULTO[(mem.oculto || 0) % OCULTO.length]; }
   document.addEventListener('selectionchange', () => {

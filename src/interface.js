@@ -4,11 +4,13 @@
 import { criarMundo } from './interface-mundo.js';
 import { criarPolimento } from './interface-polimento.js';
 import { criarSegredos } from './interface-segredos.js';
+import { criarSegredos2 } from './interface-segredos2.js';
 import { criarInterfaceMonstros } from './interface-monstros.js';
 export function criarInterface(C) {
   let MU = null; // mundo e história (lote 2): src/interface-mundo.js
   let PL = null; // polimento e plataforma (lote 3): src/interface-polimento.js
   let SG = null; // segredos e easter eggs (lote 4): src/interface-segredos.js
+  let SG2 = null; // segredos e easter eggs (lote 4, 2ª leva): src/interface-segredos2.js
   let MM = null; // leitura do perigo (lote 5): src/interface-monstros.js
   const $ = s => document.querySelector(s);
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
@@ -116,6 +118,7 @@ export function criarInterface(C) {
     });
     if (PL) PL.opcoes(box);
     if (SG) SG.opcoes(box);
+    if (SG2) SG2.opcoes(box);
     $('#opcoes').hidden = false; focar('#opcoes');
   }
   function fecharOpcoes() { $('#opcoes').hidden = true; if (opcVolta) $(opcVolta).hidden = false; focar(opcVolta); opcVolta = null; }
@@ -656,6 +659,7 @@ export function criarInterface(C) {
   MU = criarMundo(Object.assign(C, { historico: (q, t) => historico(q, t) }));
   PL = criarPolimento(C, { PAD, GRUPOS, focar, aplicar, subTitulo, objAtual, direcao, lembranca: () => MU && MU.lembranca(), fimCapT: () => fimCapT });
   try { SG = criarSegredos(C, { PAD, GRUPOS, som, legenda, subTitulo, registrarCodigo, emCampo, focar, mapaMorte: () => mapaT }); } catch (e) { console.warn('[segredos]', e); }
+  try { SG2 = criarSegredos2(C, { PAD, GRUPOS, som, legenda, subTitulo, registrarCodigo, emCampo, focar }); } catch (e) { console.warn('[segredos2]', e); }
   try { MM = criarInterfaceMonstros(C, { PAD, GRUPOS, direcao, legenda, focar, historico: (q, t) => historico(q, t) }); } catch (e) { console.warn('[monstros-ui]', e); }
   aplicar();
   $('#b-opc').onclick = () => abrirOpcoes('#title');
