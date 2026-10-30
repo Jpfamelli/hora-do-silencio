@@ -90,3 +90,94 @@
 - A fila reversa vem do lado do cemitério, direção invertida em relação ao internato.
 - Quando a fila reversa aparece, o coro soa e as velas do altar disparam.
 - O Inspetor ouve de mais longe no campo aberto depois do sino.
+- Anéis de onda surgem na água a cada movimento seu.
+- A onda tem ruído próprio: ele sente seu movimento mesmo sem você fazer passo.
+- Ficar parada 3-4 s na água acalma a superfície e ele perde o rastro da onda.
+- Subir na mureta ou na soleira (ilha seca) tira o respingo do seu rastro.
+- O reflexo do Inspetor na água aparece na curva um instante antes do corpo.
+- Um V de espuma corta a superfície quando ele vem submerso na caçada.
+- Bolhas sobem cerca de 1,5 s antes de ele emergir perto de você.
+- Na cisterna funda ele hesita na borda e tateia, sem entrar.
+- Ficar parada no refúgio da água funda acaba chamando a Ana.
+- Gotas escuras pingam do casaco do Inspetor enquanto ele anda.
+- As gotas dele viram poças pequenas no chão que somem em cerca de 15 s.
+- Uma marca de mão molhada escorre na parede e forma o contorno de um rosto de criança.
+- Uma mão comprida sai de um ralo e recolhe quando a lanterna bate nela.
+- Há um nicho onde o Inspetor dorme em pé, de olhos abertos.
+- Um gotejamento marca o raio do nicho onde ele dorme.
+- Respingar na poça perto do nicho acorda o Inspetor e começa a caçada.
+- O lampião dele cresce no ciclo e abre um cone de luz curto à frente.
+- No cone do lampião ele te acha ignorando o silêncio; é preciso sair do facho.
+- Na caçada ele anda colado na parede; cortar reto pelo meio o perde por um instante.
+- Ele some dentro de um cano largo durante a procura.
+- O tilintar das chaves corre pela tubulação e sai por outra boca de cano.
+- Lamaçais atrasam o Inspetor, que patina e se agarra na parede.
+- Numa ladeira de lama a Lia escorrega e perde o controle do passo.
+- Escorregar na ladeira faz barulho que pode te denunciar.
+- Num trecho o teto baixa e você precisa agachar correndo, mais lenta.
+- No afunilamento o Inspetor rasteja atrás com os braços longos.
+- O duto dos ratos vira rota de fuga: ele não cabe e fica do lado de fora.
+- Dentro do duto ele bate na parede e sussurra enquanto você rasteja no escuro.
+- No Capítulo IV a Menina caça pela visão e o Inspetor pelo som, ao mesmo tempo.
+- Mergulhar de propósito escurece a tela conforme o fôlego vai acabando.
+- Submersa de propósito, o ar acaba mais rápido.
+- A água na cintura deixa a Lia mais lenta: quanto mais fundo, mais devagar.
+- Quanto mais fundo na água, mais barulho o seu passo faz.
+- Na ilha seca e no refúgio o seu ruído cai bastante.
+- Entrar e sair da água faz um splash alto; parada na água corrente o passo some.
+- Mãos de criança seguram seus tornozelos se você ficar parada na água rasa.
+- O eco da cisterna joga a voz dele para um ponto errado da água.
+- A Lia aprende a confiar no chapinhar dos passos dele, não no eco.
+- Ruído forte junto de uma parede dura às vezes desvia o Inspetor para a parede.
+- Um ponto de piso podre cede sob o Inspetor se você correr colada por cima.
+- Aviso do piso podre: rápido demais ele desaba, devagar o chão aguenta os dois.
+- Aviso de que a água está subindo na caçada; é hora de buscar a parte alta.
+- Pontos fixos de gotejamento do teto fazem anéis na superfície da água.
+- Reflexos tremidos do lampião dele dançam no teto quando ele está na água.
+- Ratos fogem quando você se aproxima, dando vida ao túnel.
+- Um zumbido grave cresce enquanto você está submersa.
+- A lanterna tremula um instante quando ele está colado em você na água.
+- A água fica turva num véu escuro quando o Inspetor está submerso perto.
+- Submersa, girar a câmera faz ondulação que o entrega; ficar imóvel salva.
+- Uma gota d'água escorre na tela ao passar sob um ponto de gotejamento.
+- Marcas de mão molhada escorrem pelas paredes dos túneis.
+- Bolhas sobem na borda do refúgio quando o Inspetor passa por fora.
+- Ficar muito tempo submersa vai apertando o medo aos poucos.
+- Cada túmulo cavado faz um ruído alto que denuncia sua posição.
+- Cavar os túmulos sobe a fúria do Inspetor.
+- Dica: cave os túmulos só quando ele estiver longe.
+- Ao tocar o sino, braços lentos brotam das três covas abertas.
+- Os braços avançam e apertam o medo quando você passa perto deles.
+- Um coro grave acompanha os braços subindo da terra.
+- Pisar nos montes de terra fresca que você não cava prende seu pé por cerca de 1 s.
+- Presa pelas mãos de terra, a Lia quase para no lugar.
+- No campo aberto, correr reto na frente dele faz o Inspetor te alcançar.
+- Zigue-zaguear entre as lápides quebra a vantagem dele no aberto.
+- Ele te empurra em arco rumo à cova aberta central, cortando o lado seguro.
+- Depois do sino, a Procissão sai das covas e avança em fila pelo campo.
+- As lápides e a capela viram abrigo real contra a fila que avança.
+- Exposto à frente da fila, longe de abrigo, você leva dano leve que te empurra ao abrigo.
+- No clímax, Inspetor, Menina e a fila convergem para o átrio da capela.
+- Na fuga do sino, portas são arrombadas um segundo atrás de você, cada vez mais rápido.
+- Na capela ele bloqueia a porta e avança devagar, inevitável.
+- Os bancos da capela tombam em dominó atrás de você durante a fuga.
+- A fumaça do incêndio carrega seu cheiro: a favor do vento esconde, contra entrega.
+- No apagão da fuga, só o apito dele no estéreo diz para onde correr.
+- Na fuga, pedaços do teto desabam atrás, estreitando o caminho sempre para a frente.
+- Na subida do campanário os degraus estalam e cedem atrás; só dá para subir.
+- Aviso de prensa: fila de um lado, Inspetor do outro, hora de encolher e prender o ar.
+- O coro das covas cresce conforme a fila se aproxima de você.
+- O Inspetor ergue a cara e fareja o vento no campo aberto.
+- A terra fresca afunda sob os pés com um som abafado perto das covas.
+- A fila deixa um rastro de velas apagadas por onde passa.
+- Corvos levantam voo quando você corre no aberto, e o barulho te denuncia.
+- A terra treme um instante antes de os braços saírem das covas.
+- O vento uiva mais forte quando você está longe de qualquer abrigo.
+- Os set-pieces do clímax reiniciam ao reentrar no capítulo.
+- Uma névoa rasteira corre na direção do vento, mostrando para onde o cheiro vai.
+- A Lia deixa pegadas de lama no campo que o Inspetor fareja e segue.
+- As lápides racham com um estalo quando os braços sobem da terra.
+- O sino balança sozinho de leve antes de você tocar.
+- O grito distante do Inspetor ecoa pelo campo na fuga, marcando a direção dele.
+- Um bafo frio sobe das covas abertas quando você passa perto.
+- Um corvo pousado numa lápide levanta voo quando você chega perto, num susto calado.
