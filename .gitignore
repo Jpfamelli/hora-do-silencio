@@ -5,3 +5,4 @@ serve.js
 qa.log
 
 qa2.log
+qa*.log

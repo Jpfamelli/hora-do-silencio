@@ -21,7 +21,12 @@ export function criarJogabilidadeL5(C) {
     // selo de "imóvel" / olhos fechados / mão na boca: um aviso discreto, não um ícone berrante
     selo = mk('l5-selo', 'position:fixed;left:50%;bottom:16%;transform:translateX(-50%);z-index:12;pointer-events:none;opacity:0;transition:opacity .2s;font:600 13px/1.4 Georgia,serif;letter-spacing:.14em;color:#cdbf9e;text-shadow:0 1px 3px #000;text-align:center');
   }
-  function mostrarSelo(txt) { if (!selo) return; selo.textContent = txt; selo.style.opacity = txt ? '.8' : '0'; }
+  function mostrarSelo(txt) {
+    if (!selo) return;
+    // o aviso fica logo acima da fala (bottom:12%); enquanto houver legenda/fala na tela ele some para não sobrepor o diálogo
+    if (txt) { try { const sb = document.getElementById('sub'); if (sb && sb.textContent.trim()) txt = ''; } catch (e) {} }
+    selo.textContent = txt; selo.style.opacity = txt ? '.8' : '0';
+  }
 
   // --- sons procedurais curtos reaproveitando o sintetizador do motor
   function bater(freq, dur, peak, tipo = 'triangle') {

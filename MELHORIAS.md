@@ -2,7 +2,7 @@
 
 Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/lote*/<área>.md`. Não edite à mão: edite o arquivo da área e gere de novo.
 
-**Total geral: 6611 melhorias**
+**Total geral: 6612 melhorias**
 
 ## Índice
 
@@ -62,7 +62,7 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
   - Progressão e rejogabilidade: 182
   - Plataforma e acessibilidade: 94
   - Revisão antes de publicar: 6
-- [Lote 5](#lote-5) — 1023 melhorias
+- [Lote 5](#lote-5) — 1024 melhorias
   - História e texto: 91
   - Mapa: prólogo e estrada: 91
   - Mapa: térreo e dormitórios: 91
@@ -74,6 +74,7 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
   - Jogabilidade: 90
   - Interface: 94
   - Plataforma e acessibilidade: 103
+  - Revisão: 1
 
 ## Lote 1
 
@@ -5837,7 +5838,7 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
 
 ## Lote 5
 
-1023 melhorias.
+1024 melhorias.
 
 ### História e texto (91)
 
@@ -6894,3 +6895,7 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
 1021. Novo botão "Testar a vibração" nas opções, com um toque na intensidade que você escolheu
 1022. Nova nota nas opções explicando o padrão de haptic de cada entidade (Inspetor, Ana e Procissão)
 1023. A linha de acessibilidade do título agora cita a vibração por entidade
+
+### Revisão (1)
+
+1024. O aviso "não encare ele" (e os outros selos do contra-jogo do corpo) ficava fixo em `bottom:16%` e cobria a fala/legenda em `bottom:12%`; agora o selo some enquanto houver fala ou legenda na tela, voltando sozinho quando o diálogo sai, sem sobreposição de texto
