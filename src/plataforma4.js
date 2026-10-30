@@ -3,6 +3,8 @@
 // Ligado por uma linha em plataforma.js: instalarPlat4(C, bag). Coisa pesada (galeria, sala de testes, visita de 1978)
 // vem em src/plataforma4-extra.js carregado só quando precisa (import() no ocioso), para não pesar a abertura.
 
+import { instalarPlat4b } from './plataforma4b.js';
+
 const $ = s => document.querySelector(s);
 const K_SEG = 'hora-silencio-seg';        // marcadores/segredos já vistos (não é save)
 const STATS_KEY = 'hora-silencio-stats';  // só leitura: finais vistos
@@ -34,6 +36,7 @@ export function instalarPlat4(C, bag) {
   const conq = id => { try { C.conquista(id); } catch (e) {} };
   const noTitulo = () => C.mode === 'titulo' && $('#title') && !$('#title').hidden;
   const vibrar = bag.vibrar || (() => {});
+  const _hash0 = (() => { try { return location.hash || ''; } catch (e) { return ''; } })(); // capturado antes de lerHash() limpar
 
   // registra as conquistas deste lote (sem editar roteiro.js)
   try {
@@ -344,14 +347,19 @@ export function instalarPlat4(C, bag) {
   // preload do módulo pesado quando a máquina estiver ociosa
   if (!robo) { const ric = window.requestIdleCallback || (f => setTimeout(f, 2500)); ric(() => extra()); }
 
+  // 2ª rodada do lote 4 (mais segredos/acessibilidade), ligada aqui por uma linha
+  let P4B = { frame() {}, mapa() {}, aoFim() {} };
+  try { P4B = instalarPlat4b(C, { O, salvar, vibrar, copiar: bag.copiar, feedback: bag.feedback, robo, hash0: _hash0, sub, sfx, conq, noTitulo, emJogo }) || P4B; } catch (e) {}
+
   // API para o motor/qa
   let recadoFeito = false;
   return {
-    frame() { /* leve: quando a tela de fim aparece, monta o botão de recado uma vez */
-      if (recadoFeito) return; try { if ($('#e-menu')) { montarRecado(); recadoFeito = true; } } catch (e) {}
+    frame(dt, ativo) { /* leve: quando a tela de fim aparece, monta o botão de recado uma vez */
+      if (!recadoFeito) { try { if ($('#e-menu')) { montarRecado(); recadoFeito = true; } } catch (e) {} }
+      try { P4B.frame(dt, ativo); } catch (e) {}
     },
-    mapa() { recadoFeito = false; },
-    aoFim() { montarRecado(); lerRecadoDoLink(); },
+    mapa() { recadoFeito = false; try { P4B.mapa(); } catch (e) {} },
+    aoFim() { montarRecado(); lerRecadoDoLink(); try { P4B.aoFim(); } catch (e) {} },
     abrirGiz, aplicarMarcador, ligarFesta,
     // para o kit de teste (T.segredos)
     _teste: { CONQ4, temConq: () => CONQ4.every(c => (window.ROTEIRO.conquistas || []).some(x => x.id === c.id)), temConsole: () => !!(window.__segredos && typeof window.__segredos.davi === 'function'), faseLua, filtra, gizCodigos: GIZ }

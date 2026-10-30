@@ -1,0 +1,71 @@
+/* A HORA DO SILÊNCIO — Lote 4 (2ª rodada): estilos dos segredos novos de plataforma.
+   Tudo cosmético e à prova de leitor de tela; não entra no caminho de quem não procura. */
+
+/* nome riscado no muro do título (#luiz) */
+#s4b-muro { position: fixed; left: 7%; top: 30%; z-index: 14; font: clamp(28px, 7vw, 64px) "Special Elite", monospace; color: rgba(150,30,22,.5); transform: rotate(-6deg); letter-spacing: 4px; pointer-events: none; text-shadow: 0 1px 0 rgba(0,0,0,.6); }
+
+/* vela acesa no canto do título (#vela / ?vela=) */
+#s4b-vela { position: fixed; right: 9%; bottom: 16%; width: 18px; height: 54px; z-index: 13; background: linear-gradient(#e8e0cc, #cabb94); border-radius: 3px; pointer-events: none; box-shadow: 0 0 40px 18px rgba(255,190,90,.18); }
+#s4b-vela .chama { position: absolute; left: 50%; top: -16px; width: 10px; height: 20px; transform: translateX(-50%); background: radial-gradient(circle at 50% 70%, #fff1c0, #ff9a2e 55%, transparent 75%); border-radius: 50% 50% 50% 50% / 70% 70% 40% 40%; animation: s4b-chama 1.1s ease-in-out infinite alternate; }
+@keyframes s4b-chama { from { transform: translateX(-50%) scaleY(1) skewX(-3deg); opacity: .9; } to { transform: translateX(-52%) scaleY(1.18) skewX(4deg); opacity: 1; } }
+
+/* corvo no sino do título (#corvo) */
+#s4b-corvo { position: fixed; left: 50%; top: 7%; margin-left: 40px; z-index: 13; opacity: .85; pointer-events: none; }
+
+/* relâmpago do título (#relampago) */
+#s4b-rel { position: fixed; inset: 0; z-index: 5; background: rgba(210,225,255,.9); opacity: 0; transition: opacity .06s; pointer-events: none; mix-blend-mode: screen; }
+
+/* neblina do título (#neblina) */
+.s4b-neblina #title::after { content: ""; position: fixed; inset: 0; z-index: 4; pointer-events: none; background: linear-gradient(0deg, rgba(200,205,210,.22), transparent 55%); }
+
+/* título apagado, só a lanterna do ponteiro revela (#apagada) */
+.s4b-apagada #title { position: relative; }
+.s4b-apagada #title::before { content: ""; position: absolute; inset: 0; z-index: 12; pointer-events: none; background: radial-gradient(circle 180px at var(--lx,50%) var(--ly,42%), transparent, rgba(2,2,2,.97) 60%); }
+
+/* cartaz de desafio e giz no chão (links de amigo) */
+#s4b-cartaz { position: fixed; left: 50%; top: 68%; transform: translateX(-50%) rotate(-1.5deg); z-index: 15; max-width: 82vw; text-align: center; font: clamp(14px, 3vw, 22px) "Special Elite", monospace; color: rgba(222,214,190,.8); pointer-events: none; line-height: 1.35; }
+#s4b-giz-chao { position: fixed; left: 50%; top: 74%; transform: translateX(-50%) rotate(1deg); z-index: 15; max-width: 82vw; text-align: center; font: clamp(16px, 3.4vw, 26px) "Special Elite", monospace; color: rgba(226,222,208,.82); letter-spacing: 1px; pointer-events: none; text-shadow: 0 1px 0 rgba(0,0,0,.6); }
+#s4b-giz-chao small { display: block; margin-top: 4px; font-size: .58em; color: rgba(180,170,140,.7); letter-spacing: 2px; }
+
+/* pegadinha preparada por um amigo (rosto que aparece 1 vez) */
+#s4b-pega { position: fixed; inset: 0; z-index: 97; pointer-events: none; background: rgba(0,0,0,.55); display: flex; align-items: center; justify-content: center; }
+#s4b-pega .rosto { width: min(60vw, 420px); height: min(60vw, 420px); border-radius: 50%; background: radial-gradient(circle at 50% 40%, rgba(20,18,16,.96), rgba(6,5,5,.99)); box-shadow: inset 0 0 120px #000, 0 0 60px rgba(140,20,16,.3); }
+#s4b-pega.some { transition: opacity .5s; opacity: 0; }
+
+/* "ele não vai esperar" quando o controle cai na caçada */
+#s4b-semcontrole { position: fixed; left: 50%; top: 46%; transform: translateX(-50%); z-index: 96; font: clamp(18px, 4vw, 30px) "Special Elite", monospace; color: rgba(150,30,22,.85); letter-spacing: 1px; pointer-events: none; text-shadow: 0 0 18px rgba(150,30,22,.4); }
+
+/* opções novas na tela Desempenho (herdam o estilo de #s4-opc) */
+#s4b-opc-add label { display: flex; align-items: center; gap: 8px; margin: 6px 0; font: 14px "IM Fell English", Georgia, serif; color: #b8ad90; cursor: pointer; }
+#s4b-opc-add small { display: block; color: #7f755e; font-size: 12px; margin: 2px 0 8px 24px; }
+
+/* X de giz vermelho onde o amigo caiu (?x=) */
+#s4b-x { position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(-8deg); z-index: 14; font: clamp(40px, 10vw, 90px) "Special Elite", monospace; color: rgba(150,30,22,.55); text-align: center; pointer-events: none; line-height: 1; }
+#s4b-x small { display: block; font-size: .22em; letter-spacing: 2px; color: rgba(180,170,140,.7); margin-top: 6px; transform: rotate(8deg); }
+
+/* contador de segredos no rodapé do título */
+#s4b-contador { position: fixed; right: 10px; bottom: 8px; z-index: 20; font: 11px "Special Elite", monospace; color: rgba(120,110,92,.33); letter-spacing: .5px; pointer-events: none; user-select: none; }
+
+/* alto contraste das legendas de segredo */
+body.s4b-contraste #s4-recado, body.s4b-contraste #s4b-giz-chao, body.s4b-contraste #s4b-cartaz, body.s4b-contraste #t-sub.segredo { text-shadow: 0 0 2px #000, 0 0 2px #000, 0 1px 0 #000, 0 -1px 0 #000, 1px 0 0 #000, -1px 0 0 #000; }
+
+/* texto dos segredos maior */
+body.s4b-grande #s4-recado, body.s4b-grande #s4b-giz-chao, body.s4b-grande #s4b-cartaz { font-size: clamp(22px, 5vw, 36px) !important; }
+
+/* parar os efeitos do título (acessibilidade) */
+body.s4b-semfx #s4-fx, body.s4b-semfx #s4b-rel { display: none !important; }
+body.s4b-semfx #s4b-vela .chama { animation: none !important; }
+
+/* fita velha no título (#fita) */
+.s4b-fita #title { filter: saturate(.7) contrast(1.15); }
+.s4b-fita #title::after { content: ""; position: fixed; inset: 0; z-index: 4; pointer-events: none; background: repeating-linear-gradient(0deg, rgba(255,255,255,.03) 0 2px, transparent 2px 4px); animation: s4b-scan 6s linear infinite; }
+@keyframes s4b-scan { from { background-position: 0 0; } to { background-position: 0 100px; } }
+
+/* o incêndio que volta por 3 s (#fogo) */
+.s4b-fogo #title { animation: s4b-fogo 3s ease-out; }
+@keyframes s4b-fogo { 0% { filter: none; } 30% { filter: sepia(1) hue-rotate(-28deg) brightness(1.4) saturate(2); } 100% { filter: none; } }
+
+/* botão de instalar PWA no título */
+#s4b-instalar { position: fixed; left: 50%; bottom: 14%; transform: translateX(-50%); z-index: 18; }
+
+@media (prefers-reduced-motion: reduce) { #s4b-vela .chama, .s4b-fita #title::after, .s4b-fogo #title { animation: none; } }
