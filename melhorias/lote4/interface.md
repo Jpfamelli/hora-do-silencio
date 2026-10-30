@@ -1,101 +1,92 @@
 # Lote 4 — Interface
-- Nova aba "Álbum" no diário: as figurinhas a giz dos segredos, no estilo de álbum dos anos 80.
-- No álbum, os segredos que faltam ficam como silhueta numerada, sem dica nenhuma.
-- Achar um segredo descola uma figurinha que voa até o canto da tela, com som próprio.
-- Página do álbum completa ganha uma figurinha brilhante com as três crianças de mãos dadas.
-- Boatos da escola ficam guardados no fim do álbum, para você reler quando quiser.
-- Nova aba "Última página" do caderno do Davi, onde dá para escrever (ENTER).
-- Palavras-chave escritas na última página têm resposta na letra do Davi (oi, onde, Ana, Moacir, sino, 1979, seu nome...).
-- As respostas do Davi na última página mudam conforme o capítulo em que você está.
-- Palavra que o Davi não entende vira um rabisco de lápis em vez de resposta.
-- Uma vez por capítulo a última página já vem com um recado escrito antes de você abrir.
-- A cada segredo achado na noite, surge uma linha nova na última página, na letra do Davi.
-- Com todos os papéis achados, a última página termina com um desenho dos dois irmãos.
-- A página de trás (decalque): passar o lápis devagar revela o último recado do Davi para a Lia.
-- Passar o lápis rápido demais no decalque faz o traço "pular", obrigando a ir com calma.
-- Margem fosforescente aparece no diário aberto com a lanterna apagada, com uma dica por capítulo.
-- Com a lanterna acesa, a margem do diário volta a ficar em branco.
-- Fuligem nos objetivos: uma digital por segredo daquele mapa que ficou para trás.
-- Passar o mouse (ou focar pelo teclado) numa digital de fuligem mostra uma dica de poucas palavras.
-- Cabeçalho na aba Notas conta quantos papéis e fitas secretos você achou na noite e no total.
-- A partir da terceira noite, um rabisco do Davi aparece no mapa do diário perto de um segredo que falta.
-- O rabisco do mapa tem um recado do Davi no tooltip, assinado "— D.".
-- Frases que a Lia não lembra de ter escrito aparecem tremidas no diário (no máximo quatro por noite).
-- Olhar para trás (Q) três vezes seguidas faz surgir "para de olhar pra trás" no diário.
-- Ficar muito tempo escondida faz surgir "ele sabe onde você fica" no diário.
-- Riscos de giz no título: um risco por segredo achado, contados como numa parede de cela.
-- Passar o mouse num grupo de riscos mostra o nome dos segredos daquele grupo.
-- Com 100% dos segredos, os riscos do título viram o desenho das três crianças de mãos dadas.
-- Cada código do título deixa um glifo a giz no contorno de uma porta, no canto da tela.
-- Com todos os códigos achados, a porta de giz fica completa e clicável.
-- Clicar na porta completa abre a última fita: o Davi agradecendo por você ter procurado tanto.
-- Texto escondido preto no preto no título, revelado ao selecionar com o mouse ou Ctrl+A.
-- O texto escondido do título muda a cada vez que você o revela.
-- O rodapé do título muda conforme o progresso: "1 Lia", "3 Lias", até "volte para a cama".
-- O rodapé do título mostra o total de mortes como "ocorrências" ao passar o mouse.
-- Boatos no rádio-relógio do título: chamadas de ouvintes da Serra FM apontando um segredo que falta.
-- Os boatos do título nunca entregam segredo que você já achou.
-- Disco de telefone antigo (toque, mouse ou controle) para digitar os códigos sem teclado.
-- Cinco toques no rádio-relógio do título abrem o disco de telefone.
-- No controle, apertar Select três vezes abre o disco; setas escolhem o furo, A disca, B desliga.
-- O disco de telefone tem as letras embaixo de cada furo, como nos aparelhos de 1994.
-- Discar um segredo no telefone dispara o efeito real daquele código (conquista Linha Direta).
-- O disco de telefone é acessível: rótulo de diálogo, foco no botão Desligar e número em aria-live.
-- Código ACORDA: a câmera sobe até a fachada, as janelas acendem e há uma criança por final já visto.
-- Código SINEIRO: três badaladas e a frase do que o Davi queria ser (conquista Sineiro).
-- Código TOME: os botões do menu somem um a um, como num esconde-esconde, e voltam.
-- Código CELESTE: uma vela acende no título e a irmã reza baixinho.
-- Código ALBANO: uma luz de "gravando" aparece e uma voz gravada avisa sobre as nove horas.
-- Chamar TOME, CELESTE e ALBANO libera a conquista Chamada Completa.
-- Correção: os códigos do título agora passam por um despachante único, um código para cada cena.
-- Correção: SILENCIO deixou de disparar três efeitos ao mesmo tempo (ficou só com o modo Uma Vida).
-- Correção: o Modo Velório ganhou o código próprio VELORIO (antes brigava com o SILENCIO).
-- Correção: a Fita Gasta ganhou o código próprio FITAGASTA (antes brigava com o SILENCIO).
-- Correção: escrever o nome ou o código de desafio não dispara mais os segredos do título.
-- O código DAVI virou uma cena só (sino, frase e fita ao contrário em sequência), sem sobreposição.
-- Voltar ao título encolhe a imagem como uma TV antiga desligando, com som de tubo esfriando.
-- Legendas de som ganham categoria "segredo", marcada com o símbolo ✶ além da cor.
-- O símbolo ✶ dos segredos também aparece no histórico de sons, na aba Ouvido.
-- Legenda avulsa (sem som por trás) para avisar os segredos de interface a quem usa legendas.
-- Achar um segredo avisa por três canais: som de giz, vibração e brilho fraco na borda da tela.
-- Um selo de giz ✶ risca o canto do HUD quando um segredo é achado.
-- Com o HUD mínimo, achar um segredo toca só o som, sem o selo nem o brilho.
-- Ao achar uma nota secreta, surge a frase "você não devia ter achado isso" no diário.
-- Nova opção Faro para segredos, liberada depois do primeiro final: tom grave perto de um segredo.
-- O Faro fica desligado no primeiro jogo, para não estragar a descoberta.
-- Opção "Deixar ele entrar: Não" que não devia estar nas opções; no nono clique vira Sim.
-- Insistir na opção escondida escurece a tela, bate três vezes na porta e dá a conquista Convite.
-- "Lia nº N" na tela de morte, contando todas as mortes de todas as noites.
-- Na 37ª morte somada, a dica vira "agora a lista tá completa" e o mini mapa mostra 37 cruzinhas.
-- Na 38ª morte aparece "Sobrou uma vaga." embaixo da causa.
-- Na nona morte da noite, a tela vira barras de TV com tom de 1 kHz (conquista Fora do Ar).
-- Segurar ESPAÇO por 9 s na tela de morte faz a Lia prender o ar; a tela escurece e vem "...ainda não".
-- Depois de prender o ar na morte, aparece uma dica rabiscada sobre o segredo mais perto de onde ela caiu.
-- Fita vermelha desbotada no mini mapa da morte, se a Lia caiu perto de um segredo ainda não achado.
-- Três mortes no mesmo capítulo fazem surgir "de novo não" (tremido) no diário.
-- O cronômetro trava por um instante em 09:09.09, em vermelho e tremido, com um sino ao longe.
-- Passar pelos 09:09.09 com o cronômetro ligado dá a conquista Nove e Nove.
-- Trechos de ouro: o split do objetivo fica dourado e marcado quando bate o recorde daquele trecho.
-- No fim do capítulo aparece a "Soma dos melhores trechos" e quanto ainda dá para ganhar.
-- A pausa mostra quantos segredos você já achou nesta noite.
-- Deixar o mouse 9 s sobre "Sair para o título" troca o texto por "Você não pode sair".
-- Depois do "Você não pode sair", a pausa fecha sozinha e um armário se fecha logo atrás da Lia.
-- Manual do Aluno de 1979 no F1: dez regras, nove falsas e uma verdadeira (conquista Leu o Manual).
-- A regra verdadeira do manual é mecânica real: andar durante a trovoada é mais seguro.
-- Apertar O nove vezes rápido faz a Lia dizer "Para de me perguntar, eu também não sei!".
-- Na décima vez, o rádio chia e o Davi responde pela Lia: "Ela sabe sim. Ela só tá com medo.".
-- Copiar (Ctrl+C) uma nota do Davi troca a área de transferência por "não me tira daqui. — D.".
-- Copiar uma nota do Davi pela segunda vez cola "eu disse não.".
-- Depois de 40 s com uma nota aberta, "alguém lê por cima do seu ombro", com respiração em estéreo.
-- Ao fechar a nota, por um instante aparece um vulto atrás da Lia (respeita o aviso antes dos sustos).
-- Num momento calmo, surge a legenda "[alguém lendo as legendas, atrás de você]".
-- Virar a câmera para trás depois dessa legenda responde "[obrigado por olhar]".
-- A lata do Davi é desenhada na tela final: objetos achados na noite em cor, os que faltam em contorno.
-- "E também:" na tela final lista os segredos achados como gente que você lembrou.
-- Boatos da escola no fim da noite: dois verdadeiros apontam segredos que faltam, um é mentira.
-- Os boatos verdadeiros e a mentira viram um bilhete recortado para "passar pra frente".
-- Charada no fim da noite sobre um segredo que ainda falta, escrita para copiar e mandar a alguém.
-- Tela final mostra o tempo de jogo e o tempo de relógio (com pausas, cargas e cenas) separados.
-- Sons procedurais novos para os segredos: giz, figurinha descolando, mola do disco, grafite, TV e 1 kHz.
-- Novas abas do diário entram na navegação por 0-9 e pelas setas, sem quebrar as abas antigas.
-- O título é redesenhado ao voltar do jogo, atualizando riscos, porta, rodapé e texto escondido.
+- Novo módulo de segredos de interface (interface-segredos2.js), passivo e à prova de erro, ligado por gancho curto.
+- Código LAZARO no título: acende uma vela e fala do padroeiro dos esquecidos (conquista São Lázaro).
+- Código JOAQUIM no título: faróis de carro varrem a tela e o Davi conta que o velho já estava morto em 1979.
+- Código BENEDITO no título: três batidas e a história do primeiro menino do túnel.
+- Código LUIZ no título: uma vela e o recado da pedra sem nome onde o Davi deixa flor.
+- Código TUFAO no título: um latido e a lembrança do cachorro que espera no portão.
+- Código SOCORRO no título: a tela pisca como relâmpago e o Davi diz "eu também gritei, ninguém veio".
+- Código MAE no título: o recado do Davi pedindo pra dizer que ele não chorou.
+- Código HINO no título: toca o sino e lembra do hino cantado torto de propósito.
+- Código GATO no título: dois olhos amarelos piscam num canto e avisam pra não correr lá em cima.
+- Código PORTAO no título: o rangido do portão e "ele abre pra fora, a gente só nunca pôde usar".
+- Código APITO no título: um apito agudo e a fala do apito que o Inspetor guarda no bolso.
+- Código REZA no título: uma vela, um sussurro e a oração da irmã Celeste.
+- Código LILI no título: o apelido que só o Davi usava com a irmã.
+- Código AMEM no título: um sino e a capela trancada onde rezavam do lado de fora.
+- Código CELA no título: a tela escurece e fala do quarto de castigo sem janela.
+- Código CARRINHO no título: "traz o azul, Lia; o vermelho não é o meu".
+- Código QUINZE no título: uma vela e o aniversário que o Davi ia fazer com a Lia.
+- Código CHUVA no título: som de chuva e a regra de que o trovão cobre o barulho dos pés.
+- Código TROVAO no título: um relâmpago que por um segundo mostra quem está no corredor.
+- Código ESPELHO no título: o logo espelha por um instante e avisa pra não contar em voz alta.
+- Código LATA no título: lista os papéis secretos que você já achou, como o conteúdo da lata do Davi.
+- Código DORME no título: o sussurro da irmã dizendo que fica acordada por você (ela nunca ficou).
+- Código SINETA no título: a sineta do refeitório que tocava três vezes.
+- Código COBERTOR no título: a regra de dobrar o cobertor em quatro, que o Davi sempre errava.
+- Código QUADRO no título: a conta pela metade que ninguém apagou do quadro-negro.
+- Código NOVENA no título: nove badaladas suaves e os nove dias de reza contados no dedo.
+- Código VISITA no título: uma vela e o dia de visita em que ninguém vinha.
+- Código FOSFORO no título: acende uma vela curta e avisa que o fósforo só dura uma linha.
+- Código COVA no título: a tela escurece e fala da cova aberta no fundo do cemitério.
+- Código LANTERNA no título: um lampejo e a lembrança da lanterna recolhida às oito.
+- Rodapé do título clicável: cada clique revela uma ocorrência de 1979 do internato.
+- Conquista secreta "Quem Lê o Rodapé" por ler todas as ocorrências escondidas no rodapé.
+- Três cliques no subtítulo do título revelam uma frase sussurrada escondida.
+- O rádio-relógio do título passa a mostrar a hora de verdade do seu computador.
+- Nova opção na Interface para desligar a hora real do rádio-relógio (fica fixa em 20:47).
+- Passar o mouse no rádio-relógio o leva para 21:00, a Hora do Silêncio, e solta ao sair.
+- A dica do botão "Novo jogo" muda conforme quantas Lias já morreram.
+- A dica do botão "Continuar" vira uma frase do Inspetor com o capítulo onde você parou.
+- Em 2 de novembro (Finados) o título acende velas e ganha um subtítulo próprio.
+- Em 15 de março o título dá um relâmpago e fala que o cheiro de fumaça não sai.
+- Numa sexta-feira dia 13 o título ganha um subtítulo ("o Inspetor gosta").
+- Segurar o mouse sobre o logo por 6 s troca SILÊNCIO por SILÊNCIA, como ele chama a Lia.
+- Ficar parado 40 s na tela de título faz um sussurro "...ainda tá aí?" e dá a conquista Insone.
+- O logo do título treme de leve quando você já achou todos os papéis e fitas secretos.
+- Legenda rara no título: "[alguém sintoniza a Serra FM, bem baixinho, num quarto ao lado]".
+- O título da aba do navegador pisca "ELE TE ENCONTROU" quando a Lia morre.
+- O título da aba do navegador vira "— FIM —" na tela de final.
+- Reabrir a mesma nota do Davi pela terceira vez na noite acrescenta "você de novo. — D.".
+- Na 13ª morte somada, a frase de morte vira "Treze. O número que ninguém quer na chamada.".
+- Na 21ª morte somada, a frase de morte diz que o Inspetor já decorou o seu nome.
+- Na 79ª morte somada (o ano), a frase de morte vira "Setenta e nove. O ano não acaba nunca.".
+- Na 7ª morte da noite, a dica de morte ganha "O Tomé riria de você. Ele nunca é pego.".
+- A cada 5ª morte somada, a tela de morte ganha um boato sussurrado da escola.
+- Morrer à meia-noite do relógio real acrescenta "Meia-noite. A hora dele." na dica.
+- A 9ª pausa da noite acrescenta "Nove pausas. Ele não pausa, sabia?" no quadro da pausa.
+- Cada pausa mostra uma regra do internato: várias falsas e, de vez em quando, uma verdadeira.
+- Opção-piada no fim das opções: "Avisar quando ele estiver atrás de você", botão "Tarde demais".
+- Na tela de final, um recado preto no preto do Davi aparece ao selecionar com o mouse.
+- Clicar três vezes no título do final o troca para a letra de criança do Davi.
+- Legenda rara em jogo, num momento calmo: "[o giz range no quadro-negro, sozinho]".
+- Conquista secreta "Lista de Chamada" por chamar no título o Benedito, o Luiz e o Seu Joaquim.
+- Conquista secreta "São Lázaro" por dizer o nome do santo no título.
+- Conquista secreta "A Lata do Davi" por pedir a lata do Davi no título.
+- Resposta nova da última página do diário para "tufao" (o cachorro do portão).
+- Resposta nova da última página para "joaquim" (o velho morto em 1979).
+- Resposta nova da última página para "benedito" (o primeiro menino do túnel).
+- Resposta nova da última página para "luiz" (a pedra sem nome).
+- Resposta nova da última página para "gato" (o gato preto de quem anda devagar).
+- Resposta nova da última página para "portao" (o portão que abre pra fora).
+- Resposta nova da última página para "fresta" (o olho do outro lado do armário).
+- Resposta nova da última página para "hino" (o hino cantado torto).
+- Resposta nova da última página para "reza" (a irmã rezando baixinho).
+- Resposta nova da última página para "frio" (o frio que é ele passando perto).
+- Resposta nova da última página para "chuva" (correr quando o trovão cobre os passos).
+- Resposta nova da última página para "apito" (o apito que não assopra sozinho).
+- Resposta nova da última página para "cracha" (o crachá que diz MOACIR).
+- Resposta nova da última página para "agua" (bater três vezes na parede da água).
+- Resposta nova da última página para "lazaro" (o santo que voltou e ninguém voltou).
+- Resposta nova da última página para "cela" (o quarto de castigo sem janela).
+- Resposta nova da última página para "visita" (o portão e a visita que não vinha).
+- Resposta nova da última página para "amem" (a capela trancada).
+- Resposta nova da última página para "dorme" (um de nós sempre ficava de olho).
+- Resposta nova da última página para "cobertor" (dobrar em quatro, sempre errado).
+- Três novos textos escondidos preto no preto do título (rodapé, chamada e ficar parado).
+- Três novos boatos-mentira para a tela de fim de noite.
+- Mais cidades da região nas chamadas de ouvinte do rádio-relógio (Lorena, Guará, Aparecida).
+- Três novos rabiscos do Davi no mapa do diário (o Tomé, contar nove, a parede mais fina).
+- Duas novas linhas do Davi que surgem na última página ao achar um segredo.
+- Uma linha a mais no decalque da página arrancada: "não olha pra trás, promete".
+- interface-segredos2.js entrou no sw.js para o jogo seguir funcionando offline.
