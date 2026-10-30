@@ -2872,6 +2872,7 @@ function proxDialogo() {
   if (!l) { $('#dialogo').hidden = true; ui = null; const cb = dialogoCb; dialogoCb = null; cb && cb(); return; }
   const p = R.personagens[l.quem] || { nome: l.quem, cor: '#fff' };
   $('#dialogo .quem').textContent = p.nome; $('#dialogo .quem').style.color = p.cor;
+  if (l.quem && typeof VOZ !== 'undefined') VOZ.tocar(l.quem, l.texto);
   const txt = codTxt(l.texto), el = $('#dialogo .txt'); let i = 0; el.textContent = ''; clearInterval(dialogoDig);
   dialogoDig = setInterval(() => { i += 2; el.textContent = txt.slice(0, i); if (i >= txt.length) { clearInterval(dialogoDig); dialogoDig = null; } }, 22);
   dialogoTxt = txt; SFX.clique();
@@ -4098,8 +4099,73 @@ function proxSub() {
   el.innerHTML = `<span class="quem" style="color:${p.cor}">${UIX.nomeFalante(f.quem, p)}</span><span style="color:${p.cor}">${fmtFala(txt)}</span>`;
   if (!f.curta) UIX.fala(f.quem, txt);
   subT = f.curta ? 1.2 : 2.4 + f.texto.length * (OPT.legTempo === 'longo' ? .085 : .055);
+  if (f.quem) VOZ.tocar(f.quem, f.texto);
 }
 function updateSub(dt) { if (subT > 0) { subT -= dt; if (subT <= 0) proxSub(); } }
+
+// --- VOZES: toca o clipe dublado (audio/<hash>.mp3) com efeito ao vivo por personagem
+function vozHash(s) { let h = 5381; for (let i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) >>> 0; return h.toString(36); }
+const VOZ = (() => {
+  const cache = new Map(); let atuais = []; let curva, curvaL, imp, ruido;
+  const TAPE = { davi: 1, tome: 1, celeste: 1, diretor: 1, moacir: 1, voz: 1 };
+  function distCurve(k) { const n = 2048, c = new Float32Array(n); for (let i = 0; i < n; i++) { const x = i * 2 / n - 1; c[i] = (3 + k) * x * .5 / (1 + k * Math.abs(x)); } return c; }
+  function impulse(dur, dec) { const r = AC.sampleRate, len = r * dur | 0, b = AC.createBuffer(2, len, r); for (let ch = 0; ch < 2; ch++) { const d = b.getChannelData(ch); for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, dec); } return b; }
+  function noiseBuf() { const len = AC.sampleRate * 2 | 0, b = AC.createBuffer(1, len, AC.sampleRate), d = b.getChannelData(0); for (let i = 0; i < len; i++) d[i] = Math.random() * 2 - 1; return b; }
+  function parar() { for (const n of atuais) { try { n.stop ? n.stop() : n.disconnect(); } catch (e) {} } atuais = []; }
+  function bufferDe(chave) {
+    if (cache.has(chave)) return cache.get(chave);
+    const pr = fetch('audio/' + chave + '.mp3').then(r => r.ok ? r.arrayBuffer() : Promise.reject(0)).then(a => AC.decodeAudioData(a)).catch(() => null);
+    cache.set(chave, pr); return pr;
+  }
+  function tocar(quem, texto) {
+    if (!AC || (typeof OPT !== 'undefined' && OPT.vozes === false)) return;
+    const chave = vozHash(quem + '|' + texto);
+    Promise.resolve(bufferDe(chave)).then(buf => {
+      if (!buf || !AC) return;
+      parar();
+      if (!curva) { curva = distCurve(5); curvaL = distCurve(2); imp = impulse(2.6, 1.9); ruido = noiseBuf(); }
+      const out = AC.createGain(); out.gain.value = 1; out.connect(master || AC.destination); atuais.push({ disconnect: () => out.disconnect() });
+      const vol = quem === 'inspetor' ? .95 : TAPE[quem] ? .85 : .9;
+      const grupo = quem === 'inspetor' ? 'inspetor' : quem === 'radio' ? 'radio' : TAPE[quem] ? 'fita' : 'limpo';
+      const bus = AC.createGain(); bus.gain.value = vol;
+      const taxas = grupo === 'inspetor' ? [.80, .74] : [1];
+      for (const taxa of taxas) { const s = AC.createBufferSource(); s.buffer = buf; s.playbackRate.value = taxa; s.connect(bus); s.start(); atuais.push(s); }
+      let dur = buf.duration / (grupo === 'inspetor' ? .74 : 1);
+      if (grupo === 'limpo') { bus.connect(out); }
+      else if (grupo === 'radio') {
+        const hp = AC.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 520;
+        const lp = AC.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 3100;
+        const pk = AC.createBiquadFilter(); pk.type = 'peaking'; pk.frequency.value = 1600; pk.gain.value = 6; pk.Q.value = 1.2;
+        const ws = AC.createWaveShaper(); ws.curve = curva;
+        bus.connect(hp); hp.connect(lp); lp.connect(pk); pk.connect(ws); ws.connect(out);
+        const ns = AC.createBufferSource(); ns.buffer = ruido; ns.loop = true; const nf = AC.createBiquadFilter(); nf.type = 'bandpass'; nf.frequency.value = 1800; const ng = AC.createGain(); ng.gain.value = .03; ns.connect(nf); nf.connect(ng); ng.connect(out); ns.start(); ns.stop(AC.currentTime + dur + .2);
+        atuais.push(ns, { disconnect: () => { hp.disconnect(); lp.disconnect(); pk.disconnect(); ws.disconnect(); nf.disconnect(); ng.disconnect(); } });
+      } else if (grupo === 'fita') {
+        const hp = AC.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 300;
+        const lp = AC.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 3400;
+        const ws = AC.createWaveShaper(); ws.curve = curvaL;
+        bus.connect(hp); hp.connect(lp); lp.connect(ws); ws.connect(out);
+        const ns = AC.createBufferSource(); ns.buffer = ruido; ns.loop = true; const ng = AC.createGain(); ng.gain.value = .02; ns.connect(ng); ng.connect(out); ns.start(); ns.stop(AC.currentTime + dur + .2);
+        atuais.push(ns, { disconnect: () => { hp.disconnect(); lp.disconnect(); ws.disconnect(); ng.disconnect(); } });
+      } else { // inspetor: efeito 5
+        const lp = AC.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 2000;
+        const ws = AC.createWaveShaper(); ws.curve = curva;
+        bus.connect(lp); lp.connect(ws);
+        const dry = AC.createGain(); dry.gain.value = .5; const rm = AC.createGain(); rm.gain.value = 0;
+        const osc = AC.createOscillator(); osc.frequency.value = 38; osc.connect(rm.gain); osc.start();
+        const rg = AC.createGain(); rg.gain.value = .7; ws.connect(dry); ws.connect(rm); rm.connect(rg);
+        const mix = AC.createGain(); dry.connect(mix); rg.connect(mix);
+        const tg = AC.createGain(); tg.gain.value = .6; const lfo = AC.createOscillator(); lfo.frequency.value = 4.5; const lg = AC.createGain(); lg.gain.value = .4; lfo.connect(lg); lg.connect(tg.gain); lfo.start(); mix.connect(tg);
+        const d2 = AC.createGain(); d2.gain.value = .8; tg.connect(d2); d2.connect(out);
+        const cv = AC.createConvolver(); cv.buffer = imp; const wg = AC.createGain(); wg.gain.value = .9; tg.connect(cv); cv.connect(wg); wg.connect(out);
+        osc.stop(AC.currentTime + dur + .3); lfo.stop(AC.currentTime + dur + .3);
+        atuais.push(osc, lfo, { disconnect: () => { lp.disconnect(); ws.disconnect(); dry.disconnect(); rm.disconnect(); rg.disconnect(); mix.disconnect(); tg.disconnect(); lg.disconnect(); d2.disconnect(); cv.disconnect(); wg.disconnect(); } });
+      }
+      if (dur > 0 && subAtual && subAtual.quem === quem) subT = Math.max(subT, dur + .5);
+    });
+  }
+  return { tocar, parar };
+})();
 let toastT;
 let toastUlt = '', toastQuando = 0;
 function toast(t) { const agora = performance.now(); if (t === toastUlt && agora - toastQuando < 3000) return; toastUlt = t; toastQuando = agora; const el = $('#toast'); el.textContent = t; el.style.opacity = 1; clearTimeout(toastT); UIX.historico('nota', t); toastT = setTimeout(() => el.style.opacity = 0, Math.max(2800, t.length * 65) * (OPT.legTempo === 'longo' ? 1.6 : 1)); }
