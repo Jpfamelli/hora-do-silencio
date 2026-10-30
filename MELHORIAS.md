@@ -2,7 +2,7 @@
 
 Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/lote*/<área>.md`. Não edite à mão: edite o arquivo da área e gere de novo.
 
-**Total geral: 6791 melhorias**
+**Total geral: 7306 melhorias**
 
 ## Índice
 
@@ -62,18 +62,19 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
   - Progressão e rejogabilidade: 275
   - Plataforma e acessibilidade: 183
   - Revisão antes de publicar: 12
-- [Lote 5](#lote-5) — 1024 melhorias
-  - História e texto: 91
-  - Mapa: prólogo e estrada: 91
-  - Mapa: térreo e dormitórios: 91
-  - Mapa: túneis, cemitério e capela: 91
-  - Monstros e IA: 95
+- [Lote 5](#lote-5) — 1539 melhorias
+  - História e texto: 183
+  - Mapa: prólogo e estrada: 90
+  - Mapa: térreo e dormitórios: 183
+  - Mapa: túneis, cemitério e capela: 182
+  - Monstros e IA: 186
   - Sustos e eventos: 93
   - Áudio: 90
-  - Visual e luz: 94
+  - Visual e luz: 164
   - Jogabilidade: 90
   - Interface: 94
-  - Plataforma e acessibilidade: 103
+  - Progressão e rejogabilidade: 93
+  - Plataforma e acessibilidade: 90
   - Revisão: 1
 
 ## Lote 1
@@ -6017,9 +6018,9 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
 
 ## Lote 5
 
-1024 melhorias.
+1539 melhorias.
 
-### História e texto (91)
+### História e texto (183)
 
 1. No prólogo o Inspetor ganha falas próprias da estrada, ainda quase um homem avisando ("Volta pro carro. A estrada guarda gente.").
 2. No Capítulo I ele soa mais humano ("Hora de dormir, crianças", "Eu só quero que você durma. É só isso.").
@@ -6112,969 +6113,1487 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
 89. O epílogo do menino Moacir só aparece com compaixão o bastante, dando peso de rejogo ao final verdadeiro.
 90. A silhueta que tira o chapéu encerra tanto a fuga comum quanto a do silêncio.
 91. A dica do sussurro honesto do Davi recompensa só quem de fato obedece e fica imóvel.
+92. Novo bloco de texto `R.lote5b` no roteiro e novo módulo `historia-lote5b.js`, ligados por poucas linhas em `historia.js`, sem mexer no fluxo dos capítulos.
+93. Monólogo de desumanização do Inspetor no Capítulo I: fala comprida e inteira de funcionário.
+94. Monólogo de desumanização no Capítulo II: ainda articulado, mas já falando da "regra" do sino.
+95. Monólogo de desumanização no Capítulo III: a linguagem começa a repetir e travar ("some sempre uma").
+96. Monólogo de desumanização no Capítulo IV: ele admite que ao acordar não lembra de ser gente.
+97. Monólogo de desumanização no Capítulo V: só verbos soltos e grunhido ("Cava. Deita. Cala.").
+98. No Capítulo I o Inspetor te chama pelo nome de uma criança morta (Rosa) e se corrige.
+99. No Capítulo II ele te confunde com o Luiz perto do sino.
+100. No Capítulo III ele te chama de Maria das Dores antes de desistir.
+101. No Capítulo IV ele te chama de Tomé e se assusta por não reconhecer quem anda na casa.
+102. No Capítulo V ele te chama de "Davi" e te chama pro colo, reconhecendo tarde demais.
+103. Fala da Lia, gelada, ao ser chamada de Davi, com a conquista secreta "O Nome do Irmão".
+104. Na caçada do Capítulo III ele embaralha Davi e Lia ("volta pra cama, você dois").
+105. No Capítulo IV a confusão piora ("qual que tá fora da cama? Os dois?").
+106. No Capítulo V ele junta os nomes num borrão e ameaça pôr os dois na mesma cova.
+107. No Capítulo IV o Inspetor dorme em pé e solta murmúrios de sonho ("só mais um pouco... depois eu faço a ronda").
+108. Murmúrio de sonho com o nome do Luiz ("deixa eu dormir, Luiz... o padre já foi").
+109. Murmúrio de sonho dizendo que não precisa trancar ninguém hoje.
+110. Murmúrio de sonho dando boa-noite aos meninos.
+111. Fala da Lia avisando para não acordar o homem que ressurge no sono dele.
+112. Acordá-lo troca na hora o sussurro humano por um grunhido fundo de caça.
+113. Fala da Lia ao perceber que acordou o bicho de novo.
+114. Trégua falsa no Capítulo IV: ele fala manso de uma sala vizinha prometendo "sem castigo".
+115. A Lia hesita diante da trégua e se obriga a seguir o caminho.
+116. Dica na tela/aviso de que a voz mansa é isca: parar perto dele é emboscada.
+117. Fala de habituação quando ele aprende o truque da garrafa.
+118. Fala de habituação ao assobio ("é sempre você").
+119. Fala de habituação à batida na parede.
+120. Fala de habituação ao esconderijo no armário.
+121. Fala de habituação à pedra jogada pro outro lado.
+122. Bilhete do terço da Irmã Celeste, que ensina o contra-jogo do som do terço antes de precisar.
+123. Fala da Lia ao achar o terço e o bilhete.
+124. Ocorrência da virada no Capítulo I: bilhete de ronda com letra firme e cuidadosa.
+125. Ocorrência da virada no Capítulo III: a mesma letra, agora tremida e repetitiva.
+126. Ocorrência da virada no Capítulo V: garranchos fundos no reboco, já quase sem letra.
+127. A Lia comenta a letra ainda cuidadosa na ocorrência do Capítulo I.
+128. A Lia comenta a letra tremida na ocorrência do Capítulo III.
+129. A Lia comenta "isso não é mais letra, é unha na parede" na ocorrência do Capítulo V.
+130. No Capítulo I a Lia nota a venda dele limpa e bem amarrada, como farda.
+131. No Capítulo III a venda escorrega e revela que não há cicatriz de queimadura: ele não é cego de nascença.
+132. No Capítulo V a venda cai e ele mantém os olhos fechados por conta própria, para não ver o que fez.
+133. No clímax (Capítulo V) o Chamado usa o nome que o jogador digitou no título para fazê-la responder.
+134. Fala da Lia resistindo a responder ao próprio nome na voz falsa.
+135. Se o jogador responde no Capítulo V, o Inspetor larga a imitação: "Quem responde, fica."
+136. O vulto pequeno do Davi caminha devagar até você no cemitério, ainda chamando "Lia...".
+137. Fala da Lia reconhecendo o Davi de verdade e dizendo que veio buscá-lo.
+138. Durante a fuga, cada badalada do sino arranca uma sílaba da fala do Inspetor (quatro fragmentos).
+139. Quando o sino termina de atordoá-lo, ele abre a boca e não sai mais nada (fecho mudo).
+140. A Lia lê, só pelo sentido, quando o Inspetor está investigando.
+141. A Lia lê quando ele está procurando ("tá rodando a sala").
+142. A Lia lê quando ele parou pra rezar ("é agora que dá pra passar").
+143. A Lia lê quando a ronda dele está lenta e ele não sabe que você está ali.
+144. Nova fala de caçada longa ("comprido, esse esconde-esconde. Eu tenho a noite toda").
+145. Nova fala de caçada longa ("para de fugir que cansa nós dois").
+146. Nova fala de caçada longa sobre o sino que ainda não bateu.
+147. Nova narração de aparência: as costas dele estalam feito madeira esfriando.
+148. Nova narração de aparência: ele anda rente à parede lendo a casa pelo tato.
+149. Nova narração de aparência: a respiração dele é de muita gente ao mesmo tempo.
+150. Nova narração de aparência: o apito que ele aperta sem nunca soprar.
+151. Nova narração de aparência: a sombra que chega antes dele e demora a ir embora.
+152. Nova fala colado na fresta ("o seu silêncio é alto, menina").
+153. Nova fala colado na fresta ("pode prender o ar, eu espero").
+154. Novo resmungo ao desistir ("dorme onde você tá, amanhã eu te acho na chamada").
+155. Novo resmungo ao desistir ("some que nem os outros sumiram").
+156. A aparência do Inspetor piora capítulo a capítulo, narrada pela Lia ao vê-lo de perto no Capítulo I.
+157. Aparência piorando narrada no Capítulo II (pele cinza, respiração que não sobe e desce).
+158. Aparência piorando no Capítulo III (os dedos viram gancho).
+159. Aparência piorando no Capítulo IV (a boca ficando comprida demais).
+160. Aparência piorando no Capítulo V (já não dá pra chamar de gente).
+161. Grito de "achei" quando ele te avista, no Capítulo I (ainda manso).
+162. Grito de "achei" escalando no Capítulo II.
+163. Grito de "achei" no Capítulo III ("uma fora da cama, sempre tem uma").
+164. Grito de "achei" quebrado no Capítulo IV.
+165. Grito de "achei" puro frenesi no Capítulo V.
+166. Fala da Lia prendendo o ar quando é avistada.
+167. Nova fala humana na reza procurando o terço da Irmã Celeste.
+168. Nova fala humana na reza lembrando que fechava a porta devagar para não assustar.
+169. Nova fala humana na reza pedindo para também poder dormir.
+170. Nova crueldade no Pesadelo: ele arromba todos os armários antes de você chegar.
+171. Nova crueldade no Pesadelo: ele diz ter trancado as saídas quando você nasceu.
+172. Nova visão da Menina de cabeça pra baixo no teto, te olhando.
+173. Nova narração da Procissão abrindo um lugar vazio do seu tamanho na fila.
+174. Epílogo humano secreto: atravessar a noite inteira sem nunca fazer o Inspetor caçar você deixa ele homem até o amanhecer.
+175. Conquista secreta "A Noite Sem Caçada" para quem fecha o jogo sem nenhuma caçada.
+176. Epílogo da misericórdia no final verdadeiro: chamar pelo nome e nunca virar bicho faz a venda cair e ele chorar pedindo perdão.
+177. Conquista secreta "Misericórdia" para esse epílogo.
+178. Anexo A da ficha na tela de morte: três crianças "transferidas" em 1978 sem registro de transferência.
+179. Anexo B da ficha: a Irmã Celeste sumiu em fevereiro de 1979 e deixou só o terço.
+180. Anexo C da ficha: o laudo do incêndio aponta "origem no altar" e o sino caiu na mesma hora.
+181. Ficha do Inspetor e a nova conquista de história entram no acervo com descrição própria.
+182. O novo módulo de texto entra no cache offline (sw.js), para a noite rodar sem internet.
+183. A Lia lê o perigo só pelo sentido e sem HUD, respeitando o grupo "Leitura do perigo" (ajudas discretas).
 
-### Mapa: prólogo e estrada (91)
+### Mapa: prólogo e estrada (90)
 
-92. Novo monstro no prólogo: o batedor de 1979, a silhueta do Seu Joaquim morto parada ao longe na estrada
-93. O batedor só avança quando você para de andar; enquanto você caminha, ele congela no lugar
-94. Ele se move em passadas secas e isoladas, não deslizando, para parecer teletransporte entre instantes
-95. As passadas do batedor ficam mais rápidas conforme ele chega perto de você
-96. O salto de cada passada é maior quando ele está longe e menor quando está perto
-97. Som de passo pesado a cada avanço do batedor
-98. Vibração do controle/celular quando o batedor dá um passo por perto
-99. O batedor vira o rosto para você o tempo todo
-100. Fala da Lia ao avistar o batedor pela primeira vez
-101. Fala de aviso quando o batedor chega a cerca de 26 metros
-102. Fala de aviso quando o batedor chega a cerca de 11 metros, ensinando a continuar andando
-103. O medo sobe quanto mais perto o batedor chega
-104. Se o batedor encostar em você estando parada, há um sobressalto com estalo, relâmpago e tremor
-105. No Pesadelo, esse encontro com o batedor custa 15 de vida
-106. Depois do sobressalto, o batedor recua para longe e recomeça a aproximação
-107. Chegar perto do portão encerra o batedor com uma fala de reconhecimento
-108. Um sino distante soa quando o batedor é encerrado no portão
-109. No Pesadelo o batedor começa mais perto (40 m em vez de 46)
-110. No Fácil o batedor anda mais devagar e dá passadas menores
-111. Contra-jogo: apontar a lanterna no batedor trava o próximo passo dele
-112. Um chiado/estalo enquanto você mantém a lanterna no batedor
-113. Respiração ofegante do batedor quando ele está a menos de 15 metros
-114. Sussurro de contagem (o eco de 1979) enquanto o batedor avança
-115. Os passos do batedor soam mais alto quando ele está atrás de você, fora da visão
-116. Estalo duplo quando o batedor vira para você ao ser avistado
-117. Os olhos do batedor ardem mais forte conforme ele se aproxima
-118. A aparência do batedor varia pela semente da noite (sem rosto ou sombra)
-119. O batedor fica registrado na memória da estrada depois de visto
-120. Novo monstro: o acompanhante que anda pela borda da mata no seu passo
-121. O acompanhante segue o seu z com atraso, colado na beira do mato
-122. Quando você para, o acompanhante vira o rosto para você devagar
-123. Passos do acompanhante no seu ritmo de caminhada
-124. Fala da Lia ao perceber o acompanhante
-125. Fala e sussurro quando você para e olha para o acompanhante
-126. Em noites repetidas o acompanhante aparece mais cedo
-127. O lado (esquerda ou direita) do acompanhante é escolhido pela semente
-128. O acompanhante aparece de costas, com a cabeça virada para você
-129. Estalo de galho no mato quando o acompanhante surge
-130. Contra-jogo: correr sem parar deixa o acompanhante para trás e ele some
-131. O acompanhante se abaixa junto quando você se agacha
-132. Apontar a lanterna no acompanhante o empurra para dentro do mato e baixa o seu medo
-133. No Pesadelo, encarar o acompanhante parada por tempo demais o faz dar um passo para a estrada
-134. Estalo seco quando o acompanhante avança no Pesadelo
-135. Em noites repetidas o acompanhante causa mais medo
-136. Novo momento na abertura: um vulto na estrada diante dos faróis
-137. O vulto da abertura congela na luz dos faróis do carro
-138. O vulto da abertura avança no escuro, quando os faróis apagam
-139. A cabeça do vulto da abertura treme ao andar no escuro
-140. Fala ensinando a mecânica central ("na luz congela, no escuro anda") ao fim da abertura
-141. O vulto da abertura some quando a cena mata os faróis
-142. Uma aparição perturbadora por noite, sempre no caminho da estrada
-143. O tipo da aparição é sorteado pela semente e pela noite
-144. A aparição surge na beira da estrada, fora do centro da sua visão
-145. A aparição some quando você olha direto para ela, ou depois de alguns segundos
-146. Estalo, medo e vibração quando a aparição é vista
-147. Fala específica da Lia para cada tipo de aparição
-148. Som de ambiente próprio de cada tipo de aparição ao surgir
-149. Aparência nova "encharcado": material molhado e escuro, pingando
-150. Gotas d'água animadas caindo do vulto encharcado
-151. Aparência nova "criança": do tamanho da Ana, de pé no acostamento
-152. Som de caixinha de música na aparência criança
-153. Aparência nova "alto demais": a cabeça passa da copa das árvores
-154. Trovão ao surgir a aparência alta
-155. Aparência nova "sem rosto": um oval claro e liso no lugar do rosto
-156. Os olhos vermelhos somem na aparência sem rosto
-157. Aparência nova "de costas": corpo virado, cabeça olhando para você
-158. A aparição de costas gira de repente para te encarar antes de sumir, com um susto
-159. Os olhos de todas as aparições ardem conforme a distância
-160. Perseguição do portão com momentos novos (sem alterar o perseguidor original)
-161. Buzina do carro soando sozinha atrás de você durante a perseguição, chamando ele
-162. Fala da Lia sobre a buzina do carro
-163. Batimento cardíaco que acelera conforme você chega ao portão na perseguição
-164. Sussurros que ficam mais frequentes perto do portão na perseguição
-165. Parar no meio da perseguição é punido com um sussurro extra e mais medo
-166. Um segundo vulto, alto, corta na sua frente entre você e o portão
-167. Relâmpago no instante em que o vulto corta sua frente
-168. Fala da Lia sobre o vulto que cortou o caminho
-169. O vulto que cortou se dissolve, deixando o portão passável (sem travar a fuga)
-170. Animação do vulto que cortou o caminho
-171. Um sopro de respiração perto demais, uma única vez, perto do portão
-172. Fala do momento "quase" com vibração forte perto do portão
-173. Novo: a silhueta do Seu Joaquim aparece na estrada no instante em que o rádio diz que ele morreu
-174. Relâmpago e medo no momento da revelação do Seu Joaquim
-175. A silhueta do Seu Joaquim vira o rosto para você e some no clarão seguinte
-176. Os vultos do Lote 5 são próprios e não interferem nos vultos do prólogo já existentes
-177. Cada sistema de monstro tem sua própria instância de vulto, sem dois sistemas brigarem pelo mesmo mesh
-178. Agenda própria dos monstros que para junto com a pausa e morre ao trocar de mapa
-179. A decisão "parado × andando" usa a velocidade suavizada do jogador, sem travar o teste automático
-180. Todos os vultos do lote se escondem fora do jogo e fora da cena, sem sobra na tela
-181. Semente estável por sessão que varia as aparências e os lados dos monstros a cada noite
-182. Dificuldade afeta os monstros do prólogo (Fácil mais brando, Pesadelo mais agressivo e com dano)
+184. O batedor morto ganha mais caras: em algumas noites surge com o pescoço quebrado num ângulo impossível.
+185. Nova aparência "quebrado" entrou no sorteio de vultos da noite na estrada.
+186. A cabeça quebrada balança pendurada enquanto o vulto está parado.
+187. O afogado agora tem a cabeça tombada mais forte pro lado.
+188. O vulto gigante ergue um braço esticado na direção da Lia.
+189. O vulto sem rosto tem uma costura de pontos onde seria a boca.
+190. A sombra virou um recorte fino de papel preto, com os olhos quase apagados.
+191. Os olhos dos vultos piscam de vez em quando: somem por um instante e voltam.
+192. Todos os vultos respiram de leve parados (a cabeça sobe e desce), nunca 100% imóveis.
+193. Manter o facho em cima do batedor agora o trava de verdade, muito mais do que só andar.
+194. Segurar a luz nele gasta a pilha fraca do prólogo rápido: decisão entre luz e passo.
+195. A Lia avisa a troca luz-contra-passo quando você segura o facho tempo demais.
+196. Quando a carga cai demais segurando o facho, ele deixa de travar e a Lia percebe que só resta andar.
+197. Sob a sua luz, a cabeça do batedor range rápido de um lado pro outro.
+198. O batedor acende um facho falso igual ao seu no acostamento oposto, pra te desviar.
+199. O facho falso tremeluz como uma lanterna de pilha fraca.
+200. Apontar a sua luz no facho falso revela que ele avançou muito mais perto no escuro.
+201. Quando você não olha pra ele e está parado, o batedor encosta sem você perceber.
+202. O batedor manca: um passo longo arrastado, outro curto (o pé que não obedece).
+203. O passo curto do batedor soa mais baixo que o passo longo.
+204. No Pesadelo, parado e perto, o batedor dá um bote de dois passos secos.
+205. Encará-lo sem luz já atrasa o passo dele (olhar também segura, menos que a luz).
+206. Passar correndo raspando no batedor dá um sopro na nuca e um estalo, sem travar o jogo.
+207. A contagem do batedor chega no "um" colado em você quando ele encosta.
+208. A contagem fica mais frequente quanto mais perto ele está.
+209. Em noites repetidas o batedor já começa mais perto do portão.
+210. Em noites repetidas o batedor dá o passo mais cedo (mais rápido).
+211. Na segunda noite em diante a Lia reconhece: "outra vez essa estrada, e ele já começa mais perto".
+212. Ao te alcançar parado, em noites repetidas o batedor recua menos.
+213. Enquanto o batedor está em cena, o medo tem um piso mínimo (a estrada não deixa respirar).
+214. Um brilho vermelho fraco sai dos olhos do batedor no escuro e some na sua luz.
+215. O relâmpago revela o batedor mais perto: um clarão enquanto você não olha e ele saltou.
+216. Ao chegar no portão, o batedor some com um sussurro de despedida e um alívio no medo.
+217. Vibração contínua de perto: o controle treme quanto mais o batedor encosta parado.
+218. Os faróis do carro abandonado acendem sozinhos uma vez, cedo no prólogo.
+219. No clarão dos faróis sozinhos aparece a silhueta do batedor parada bem à frente.
+220. Quando os faróis sozinhos se apagam, vem o susto e o rádio chia junto.
+221. Em noites repetidas os faróis sozinhos gaguejam, revelando o vulto em stop-motion.
+222. Olhar para trás (Q) perto do carro revela o Seu Joaquim parado uns metros atrás, imóvel.
+223. Virar pra frente e voltar o olhar: ele sumiu.
+224. A cada vez que você olha para trás, o vulto está um pouco mais perto.
+225. Uma vez por noite, o batedor aparece sentado no banco de trás, o rosto virado pra Lia.
+226. Nova silhueta sentada no banco de trás, com olhos vermelhos.
+227. Se você demora olhando o banco de trás, ela bate no vidro de dentro com a unha.
+228. O carro ganhou a porta do motorista, que começa fechada.
+229. Antes da lanterna, um clarão mostra uma silhueta alta sentada no banco de trás.
+230. Depois do clarão, a porta do motorista abre sozinha, com um rangido.
+231. A porta do motorista fica aberta dali em diante (você não abriu essa porta).
+232. No clarão, os olhos da silhueta sentada acendem e o carro afunda na suspensão.
+233. Na perseguição, os faróis acendem atrás e varrem a estrada: sua sombra corre sozinha na frente.
+234. Passos ganhando atrás de você no cascalho durante a fuga.
+235. Uma voz chama "Lia" dos dois lados ao mesmo tempo, pra te tirar do portão.
+236. O portão chacoalha sozinho conforme você se aproxima na fuga.
+237. Olhar para trás (Q) na fuga revela um rosto colado no seu, uma vez.
+238. Vibração contínua que sobe conforme você chega perto do portão.
+239. Ao abrir o portão com ele quase em cima, um último baque e empurrão.
+240. Infra-som que cresce conforme o vulto mais próximo se aproxima (sentido antes de ser visto).
+241. Galhos estalam na mata enquanto o batedor anda no escuro, perto de você.
+242. Um coração surdo bate quando o medo transborda fora da perseguição.
+243. A tela treme de leve, pulsando, quando uma presença encosta de verdade (menos de 4 m).
+244. O acompanhante da mata se dissolve se você segura o facho nele por alguns segundos.
+245. O acompanhante atira um graveto do mato pra te fazer parar e virar o rosto.
+246. O passo do acompanhante acelera junto quando você corre.
+247. Em noites repetidas, um segundo vulto espreita do lado oposto do mato.
+248. A criança do acostamento ri e solta a caixinha de música ao ser vista.
+249. O vulto gigante cresce ainda mais (e vem um trovão) ao ser visto.
+250. O afogado raspa mais forte e pinga ao sumir.
+251. O vulto sem rosto solta um sussurro ao ser visto.
+252. Cada aparência surge a uma distância própria: o afogado encosta, o gigante fica longe.
+253. Em noites repetidas, uma segunda aparição acontece mais adiante na estrada.
+254. A sombra tem um sussurro próprio ao aparecer; o quebrado estala como osso.
+255. Novas falas da Lia para a sombra e para o vulto de pescoço quebrado.
+256. No instante em que o rádio diz que ele morreu, o Seu Joaquim dá um passo pra trás pro escuro.
+257. Depois do "morreu em 1979", um rosto aparece na janela da loja do posto, no lugar dele.
+258. O rosto na janela da loja some com um estalo quando você o encara.
+259. Algo anda no cascalho do pátio do posto e para quando você para.
+260. Pegadas molhadas saem do carro pro mato nas noites do afogado, brilhando na lanterna.
+261. Nova fala do batedor quando o facho falso te engana e ele reaparece mais perto.
+262. Nova fala quando a pilha morre no meio da parada ("agora só me resta andar").
+263. Nova fala quando ele cresce no escuro às suas costas.
+264. Novas falas da perseguição: a luz atrás, os passos no cascalho, o chamado e o rosto colado.
+265. Novas falas do olhar para trás: o Joaquim no retrovisor e o sumiço ao virar.
+266. Novas falas do banco de trás: a silhueta sentada e a batida no vidro.
+267. Novas falas do clarão e da porta do motorista aberta sozinha.
+268. Nova fala dos faróis que acendem sozinhos no prólogo.
+269. Nova fala do segundo vulto do acompanhante em noites repetidas.
+270. Nova fala do rosto na janela da loja e dos passos no pátio do posto.
+271. A isca (facho falso) do batedor some ao fim da perseguição e ao trocar de tela.
+272. O brilho vermelho dos olhos do batedor é desligado pela sua lanterna.
+273. A segunda aparição em noites repetidas surge mais adiante, longe da primeira marca.
 
-### Mapa: térreo e dormitórios (91)
+### Mapa: térreo e dormitórios (183)
 
-183. O Inspetor agora deixa marcas de garra na parede do corredor sempre que caça por ali.
-184. As marcas de garra são desenhadas em canvas, com sulcos irregulares e curvos.
-185. Cada marca pode ter 3, 4 ou 5 sulcos, sorteados para não ficarem idênticas.
-186. As marcas variam de tamanho e altura, como arranhões reais de alguém em movimento.
-187. Cada sulco tem uma lasca de madeira clara ao lado, que pega a luz da lanterna.
-188. Um arranhão audível acompanha o surgimento de cada nova marca.
-189. As marcas ficam na parede pelo resto do capítulo: o corredor guarda a memória da caçada.
-190. Um corredor muito arranhado avisa, uma vez, que "ele caça muito por aqui" (ler o perigo pelo mundo).
-191. No Capítulo II o Inspetor caça mais: as marcas aparecem mais rápido que no Capítulo I.
-192. A cadência das marcas tem tempo mínimo entre elas para não poluir a parede.
-193. No andar de cima o Inspetor também marca a parede do corredor quando caça.
-194. Silhueta do Inspetor aparece numa janela da fachada, iluminada por um relâmpago no pátio.
-195. A cabeça da silhueta acompanha a Lia enquanto o relâmpago dura.
-196. A silhueta some no escuro seguinte, quando o clarão apaga.
-197. A aparição da janela acontece no máximo uma vez por capítulo.
-198. Um sussurro acompanha a aparição na janela.
-199. Um trovão reforça o susto da silhueta na janela.
-200. Ver a silhueta na janela aumenta o medo da Lia.
-201. A Lia comenta "Tem alguém na janela." ao avistar a silhueta.
-202. No Capítulo II, ao entrar o corredor leste, as portas das salas começam a bater fechando em sequência.
-203. As portas fecham da entrada para o fundo, logo atrás da Lia (perseguição de mão única).
-204. Cada porta que fecha solta uma pancada seca.
-205. Cada batida de porta faz a tela tremer.
-206. Cada batida emite ruído que atrai o Inspetor.
-207. Um estalo de língua do Inspetor vem da entrada do corredor ao disparar a sequência.
-208. O Inspetor desperta e avança logo atrás quando a sequência de portas começa.
-209. A Lia grita "As portas... estão fechando sozinhas!" no disparo.
-210. A porta da diretoria nunca é fechada pela sequência (não atrapalha o objetivo do capítulo).
-211. Uma pancada seca final marca o fim da sequência de portas.
-212. A Lia comenta "Saí bem antes da última." ao fim da perseguição das portas.
-213. A sequência das portas reinicia no começo do Capítulo II (pode repetir em nova tentativa).
-214. A escada da recepção agora range alto se a Lia sobe ou desce correndo.
-215. Descer a escada devagar ou agachada mantém o silêncio.
-216. O ruído dos degraus atrai o Inspetor, proporcional à velocidade.
-217. Correr nos degraus solta um estalo de tábua além do rangido.
-218. Um aviso ensina, uma vez, que devagar os degraus ficam quietos.
-219. A troca de andar virou uma decisão de ritmo durante a caçada (rápido = barulho, devagar = ele encosta).
-220. Quando o Inspetor caça a menos de 6,5 m, ouve-se a respiração pesada dele.
-221. Um sussurro extra surge quando ele está muito perto (menos de 3,5 m) caçando.
-222. Estalos de língua marcam a posição dele quando está procurando por perto.
-223. Ele inspira audível de vez em quando enquanto investiga a menos de 12 m.
-224. No Capítulo I, um estalo distante e solitário soa pouco depois de entrar (ele recém-desperto).
-225. No Capítulo II, uma pancada seca ecoa no corredor leste ao começar o capítulo.
-226. No andar de cima, um rosto pálido aparece do lado de fora da janela do corredor.
-227. O rosto na janela acompanha a Lia pela fachada enquanto ela anda.
-228. O rosto some quando a Lia para de andar.
-229. O rosto some quando a Lia olha direto para ele.
-230. O rosto tem olhos pretos afundados, sem brilho (aparência perturbadora).
-231. Um sussurro acompanha o sumiço do rosto.
-232. Ver o rosto na janela aumenta o medo da Lia.
-233. O rosto na janela não dá dano: é presságio.
-234. O rosto na janela aparece no máximo uma vez por capítulo.
-235. Set-piece do Capítulo III: uma figura do Inspetor desce a fileira de camas de um dormitório alisando lençol por lençol.
-236. A rotina dele avança em batidas, com pausa de memória a cada cama.
-237. Um som de arrastar lençol acompanha cada cama alisada.
-238. Cada cama alisada emite um ruído baixo.
-239. A figura tem a mão estendida em direção ao lençol.
-240. Contra-jogo: ficar sempre à frente da rotina dele é seguro; na cama que ele vai alisar enche o medo.
-241. Um aviso ensina o contra-jogo das camas ("fique sempre à frente da rotina dele").
-242. A Lia comenta "Ele está passando a mão em cada cama. Uma por uma." ao disparar a cena.
-243. A Lia solta um alívio ("não olhou pra mim") quando ele termina a fileira.
-244. A figura das camas olha para a Lia enquanto avança pela fileira.
-245. A cena das camas aumenta o medo ao disparar.
-246. Set-piece do Capítulo III: tábuas do teto desabam em pontos marcados do corredor de cima.
-247. O desvio é por rota (correr para o lado certo), não por apertar botão na hora.
-248. Cada queda dispara quando a Lia se aproxima do ponto marcado.
-249. Um rangido avisa antes de cada tábua cair.
-250. As tábuas caem com gravidade e giro, não somem instantaneamente.
-251. O impacto de cada tábua solta pancada, estalo de madeira e ruído alto.
-252. O impacto das tábuas faz a tela tremer.
-253. Encostar numa tábua que cai tira vida e atrasa a Lia.
-254. Os escombros não criam colisor: nunca travam o caminho (sem backtracking forçado).
-255. O estrondo do desabamento prende o Inspetor atrás por um tempo.
-256. A Lia grita "O teto está vindo abaixo! Corre!" no início do desabamento.
-257. A Lia comenta "O corredor inteiro veio abaixo atrás de mim." ao escapar.
-258. Os pontos de queda alternam de lado, obrigando a Lia a ziguezaguear.
-259. Na descida pelo monta-cargas, a mão do Inspetor entra pelas frestas do teto.
-260. O braço do Inspetor tem palma e quatro dedos modelados, agarrando a grade.
-261. A grade do monta-cargas sacode enquanto a plataforma desce.
-262. A tela treme no ritmo dos arranhões durante a descida.
-263. Arranhões na grade soam durante a descida.
-264. A Lia grita "A mão dele entrou pela grade! Desce, desce logo!" na descida.
-265. Uma pancada seca marca o momento em que a plataforma encosta embaixo.
-266. A transição para os túneis, que antes era só um corte, virou um momento de impotência tensa.
-267. A descida do monta-cargas é automática: basta aguentar, sem comando novo.
-268. A escada do andar dos dormitórios também range se a Lia desce correndo.
-269. Descer a escada dos dormitórios devagar mantém o silêncio.
-270. Correr na escada dos dormitórios emite ruído que atrai o Inspetor.
-271. Um aviso ensina, uma vez, o silêncio da escada dos dormitórios.
-272. Flags próprias do lote (prefixo l5) para os eventos não dispararem fora de hora nem repetirem errado.
-273. O novo módulo de monstros do internato entrou na lista de cache offline (sw.js).
+274. O Inspetor agora deixa marcas de garra na parede do corredor sempre que caça por ali.
+275. As marcas de garra são desenhadas em canvas, com sulcos irregulares e curvos.
+276. Cada marca pode ter 3, 4 ou 5 sulcos, sorteados para não ficarem idênticas.
+277. As marcas variam de tamanho e altura, como arranhões reais de alguém em movimento.
+278. Cada sulco tem uma lasca de madeira clara ao lado, que pega a luz da lanterna.
+279. Um arranhão audível acompanha o surgimento de cada nova marca.
+280. As marcas ficam na parede pelo resto do capítulo: o corredor guarda a memória da caçada.
+281. Um corredor muito arranhado avisa, uma vez, que "ele caça muito por aqui" (ler o perigo pelo mundo).
+282. No Capítulo II o Inspetor caça mais: as marcas aparecem mais rápido que no Capítulo I.
+283. A cadência das marcas tem tempo mínimo entre elas para não poluir a parede.
+284. No andar de cima o Inspetor também marca a parede do corredor quando caça.
+285. Silhueta do Inspetor aparece numa janela da fachada, iluminada por um relâmpago no pátio.
+286. A cabeça da silhueta acompanha a Lia enquanto o relâmpago dura.
+287. A silhueta some no escuro seguinte, quando o clarão apaga.
+288. A aparição da janela acontece no máximo uma vez por capítulo.
+289. Um sussurro acompanha a aparição na janela.
+290. Um trovão reforça o susto da silhueta na janela.
+291. Ver a silhueta na janela aumenta o medo da Lia.
+292. A Lia comenta "Tem alguém na janela." ao avistar a silhueta.
+293. No Capítulo II, ao entrar o corredor leste, as portas das salas começam a bater fechando em sequência.
+294. As portas fecham da entrada para o fundo, logo atrás da Lia (perseguição de mão única).
+295. Cada porta que fecha solta uma pancada seca.
+296. Cada batida de porta faz a tela tremer.
+297. Cada batida emite ruído que atrai o Inspetor.
+298. Um estalo de língua do Inspetor vem da entrada do corredor ao disparar a sequência.
+299. O Inspetor desperta e avança logo atrás quando a sequência de portas começa.
+300. A Lia grita "As portas... estão fechando sozinhas!" no disparo.
+301. A porta da diretoria nunca é fechada pela sequência (não atrapalha o objetivo do capítulo).
+302. Uma pancada seca final marca o fim da sequência de portas.
+303. A Lia comenta "Saí bem antes da última." ao fim da perseguição das portas.
+304. A sequência das portas reinicia no começo do Capítulo II (pode repetir em nova tentativa).
+305. A escada da recepção agora range alto se a Lia sobe ou desce correndo.
+306. Descer a escada devagar ou agachada mantém o silêncio.
+307. O ruído dos degraus atrai o Inspetor, proporcional à velocidade.
+308. Correr nos degraus solta um estalo de tábua além do rangido.
+309. Um aviso ensina, uma vez, que devagar os degraus ficam quietos.
+310. A troca de andar virou uma decisão de ritmo durante a caçada (rápido = barulho, devagar = ele encosta).
+311. Quando o Inspetor caça a menos de 6,5 m, ouve-se a respiração pesada dele.
+312. Um sussurro extra surge quando ele está muito perto (menos de 3,5 m) caçando.
+313. Estalos de língua marcam a posição dele quando está procurando por perto.
+314. Ele inspira audível de vez em quando enquanto investiga a menos de 12 m.
+315. No Capítulo I, um estalo distante e solitário soa pouco depois de entrar (ele recém-desperto).
+316. No Capítulo II, uma pancada seca ecoa no corredor leste ao começar o capítulo.
+317. No andar de cima, um rosto pálido aparece do lado de fora da janela do corredor.
+318. O rosto na janela acompanha a Lia pela fachada enquanto ela anda.
+319. O rosto some quando a Lia para de andar.
+320. O rosto some quando a Lia olha direto para ele.
+321. O rosto tem olhos pretos afundados, sem brilho (aparência perturbadora).
+322. Um sussurro acompanha o sumiço do rosto.
+323. Ver o rosto na janela aumenta o medo da Lia.
+324. O rosto na janela não dá dano: é presságio.
+325. O rosto na janela aparece no máximo uma vez por capítulo.
+326. Set-piece do Capítulo III: uma figura do Inspetor desce a fileira de camas de um dormitório alisando lençol por lençol.
+327. A rotina dele avança em batidas, com pausa de memória a cada cama.
+328. Um som de arrastar lençol acompanha cada cama alisada.
+329. Cada cama alisada emite um ruído baixo.
+330. A figura tem a mão estendida em direção ao lençol.
+331. Contra-jogo: ficar sempre à frente da rotina dele é seguro; na cama que ele vai alisar enche o medo.
+332. Um aviso ensina o contra-jogo das camas ("fique sempre à frente da rotina dele").
+333. A Lia comenta "Ele está passando a mão em cada cama. Uma por uma." ao disparar a cena.
+334. A Lia solta um alívio ("não olhou pra mim") quando ele termina a fileira.
+335. A figura das camas olha para a Lia enquanto avança pela fileira.
+336. A cena das camas aumenta o medo ao disparar.
+337. Set-piece do Capítulo III: tábuas do teto desabam em pontos marcados do corredor de cima.
+338. O desvio é por rota (correr para o lado certo), não por apertar botão na hora.
+339. Cada queda dispara quando a Lia se aproxima do ponto marcado.
+340. Um rangido avisa antes de cada tábua cair.
+341. As tábuas caem com gravidade e giro, não somem instantaneamente.
+342. O impacto de cada tábua solta pancada, estalo de madeira e ruído alto.
+343. O impacto das tábuas faz a tela tremer.
+344. Encostar numa tábua que cai tira vida e atrasa a Lia.
+345. Os escombros não criam colisor: nunca travam o caminho (sem backtracking forçado).
+346. O estrondo do desabamento prende o Inspetor atrás por um tempo.
+347. A Lia grita "O teto está vindo abaixo! Corre!" no início do desabamento.
+348. A Lia comenta "O corredor inteiro veio abaixo atrás de mim." ao escapar.
+349. Os pontos de queda alternam de lado, obrigando a Lia a ziguezaguear.
+350. Na descida pelo monta-cargas, a mão do Inspetor entra pelas frestas do teto.
+351. O braço do Inspetor tem palma e quatro dedos modelados, agarrando a grade.
+352. A grade do monta-cargas sacode enquanto a plataforma desce.
+353. A tela treme no ritmo dos arranhões durante a descida.
+354. Arranhões na grade soam durante a descida.
+355. A Lia grita "A mão dele entrou pela grade! Desce, desce logo!" na descida.
+356. Uma pancada seca marca o momento em que a plataforma encosta embaixo.
+357. A transição para os túneis, que antes era só um corte, virou um momento de impotência tensa.
+358. A descida do monta-cargas é automática: basta aguentar, sem comando novo.
+359. A escada do andar dos dormitórios também range se a Lia desce correndo.
+360. Descer a escada dos dormitórios devagar mantém o silêncio.
+361. Correr na escada dos dormitórios emite ruído que atrai o Inspetor.
+362. Um aviso ensina, uma vez, o silêncio da escada dos dormitórios.
+363. Flags próprias do lote (prefixo l5) para os eventos não dispararem fora de hora nem repetirem errado.
+364. O novo módulo de monstros do internato entrou na lista de cache offline (sw.js).
+365. No Capítulo I, antes do primeiro encontro, o vulto do Inspetor desliza pelas janelas da fachada do térreo.
+366. Esse vulto da fachada acompanha o movimento da Lia, sempre um pouco à frente dela.
+367. O vulto da fachada some quando a Lia chega ao fundo do hall, com um estalo de língua.
+368. A aparição do vulto na fachada aumenta o medo e vem acompanhada de um sussurro.
+369. Novo set-piece: o Inspetor derruba as mesas do refeitório no encalço da Lia (Cap I/II).
+370. Cada mesa do refeitório tomba com estrondo, tranco de tela e ruído que o próprio Inspetor ouve.
+371. As mesas tombam uma a uma, em sequência, afunilando a rota para a saída.
+372. As mesas caídas nunca criam colisor: a saída do refeitório jamais trava.
+373. Ao disparar o set-piece das mesas, o Inspetor desperta dentro do refeitório.
+374. A Lia comenta a perseguição das mesas e o alívio ao passar pela bagunça.
+375. Contra-jogo novo: atrair o Inspetor ao quadro de fusíveis e bater a chave solta um arco que o atordoa.
+376. O quadro de fusíveis avisa, uma vez, o contra-jogo do arco quando a Lia chega perto.
+377. O arco elétrico atordoa o Inspetor por alguns segundos, deixando-o caído.
+378. O arco do quadro faz muito barulho e apaga a luz da ala.
+379. A Procissão deixa uma faixa de cera gelada no chão do corredor no Capítulo II.
+380. Atravessar a faixa de cera gela a Lia e rouba fôlego dela.
+381. O frio da cera deixa a Lia mais lenta por um instante, atrapalhando a fuga.
+382. Correr sobre a cera durante a Procissão chama a atenção da fila e assusta mais.
+383. Um aviso ensina a atravessar a cera devagar para não ser notada pela Procissão.
+384. Fora da caça, o Inspetor tranca uma porta à frente da Lia, com som de chave girando.
+385. A porta que o Inspetor tranca bate sozinha e assusta, forçando um desvio sem backtracking.
+386. Um coração-bússola acelera conforme o Inspetor se aproxima na caça (térreo).
+387. Um zumbido no ouvido surge quando o Inspetor fica a poucos metros (térreo).
+388. No Capítulo II o Inspetor bate o cassetete nas grades enquanto caça.
+389. No Capítulo I o Inspetor manca, com um passo arrastado e irregular (ainda meio humano).
+390. No primeiro avistamento do Capítulo I, o Inspetor hesita, como se lembrasse de ser gente.
+391. No primeiro avistamento do Capítulo II, o Inspetor vem direto, sem hesitar (contraste).
+392. No Capítulo I o Inspetor ainda resmunga uma frase humana na primeira caçada.
+393. O estalo de língua do Inspetor fica mais seco e rachado a partir do Capítulo II.
+394. Correr no corredor em caça no Capítulo II enfurece o Inspetor (ele fica mais agressivo).
+395. Deixar o gerador roncando atrai o Inspetor para a casa de máquinas.
+396. Um aviso explica que o ronco do gerador abafa os passos da Lia, mas é o ronco que o traz.
+397. Perto do vão da janela quebrada, a corrente de ar desvia o faro e o Inspetor fareja na direção errada.
+398. O cheiro de parafina e cinza avisa quando o Inspetor está do outro lado da parede.
+399. Pegadas de fuligem no chão marcam por onde o Inspetor andou (térreo).
+400. As pegadas de fuligem esmaecem com o tempo, virando pista do caminho dele.
+401. Durante a caça surge, de vez em quando, um arranhão comprido e luminoso na parede.
+402. Os ratos fogem fazendo barulho na frente do Inspetor.
+403. Ao perder a pista, o Inspetor arrasta o cassetete pela parede, num rangido contínuo.
+404. Ponto cego: imóvel, agachada e sem luz no corredor, às vezes o Inspetor passa reto.
+405. A Ana sussurra "Fica quietinha. Ele passa reto." quando o ponto cego funciona.
+406. Um aviso ensina, uma vez, o contra-jogo do ponto cego no corredor.
+407. Com o medo no limite na caça, o Inspetor sussurra "Eu te vejo" na direção da Lia (térreo).
+408. A Lia prende o fôlego sozinha quando o Inspetor passa colado ao esconderijo (térreo).
+409. O relógio da recepção "trava" quando o Inspetor entra o hall.
+410. Segunda aparição da silhueta no pátio, no Capítulo II, maior e mais perto do vidro.
+411. A segunda aparição no pátio vem com trovão, um gemido e um susto de medo maior.
+412. Novo flanqueio visível: o Inspetor corre por fora, janela a janela, mais rápido que a Lia.
+413. Os passos do Inspetor soam do lado de fora, acompanhando pela fachada no flanqueio.
+414. No flanqueio, o Inspetor "entra por uma porta à frente" para cortar o caminho e some.
+415. Ao cortar o caminho pelo flanqueio, o Inspetor passa a procurar a Lia a partir daquela porta.
+416. Uma cama de ferro tomba sozinha com estrondo atrás da Lia no dormitório.
+417. O estrondo da cama que tomba atrai o Inspetor de verdade (sair rápido é a leitura certa).
+418. Manchas de fuligem no ar marcam por onde o Inspetor passou nos dormitórios.
+419. A fuligem do ar esmaece aos poucos, apagando o rastro.
+420. A fuligem também escurece o batente da porta mais próxima que o Inspetor tocou.
+421. Pegadas de fuligem no chão do corredor marcam o rumo do Inspetor (superior).
+422. Um degrau cede sob o pé da Lia durante a fuga pela escada dos dormitórios.
+423. Nova fuga: o Inspetor pula do patamar bem na frente da Lia para cortar a subida.
+424. Ao descer a escada em caça, a silhueta do Inspetor aparece no topo por um instante.
+425. Coração-bússola acelera conforme o Inspetor se aproxima na caça (superior).
+426. Zumbido no ouvido quando o Inspetor fica muito perto (superior).
+427. A respiração do Inspetor vaza pela parede/porta quando ele está por perto (superior).
+428. O rosto na janela agora pisca os olhos.
+429. O rosto na janela "respira", esticando de leve na vertical (mais perturbador).
+430. Ao sumir, o rosto deixa uma marca de mão embaçada no vidro.
+431. Se a Lia fica parada na fileira dele, o Inspetor vira a cabeça e quase a percebe.
+432. Lençóis farfalham em sequência conforme a figura das camas avança pela fileira.
+433. O Inspetor soca o vidro da janela acompanhando a Lia pela sala.
+434. Um aviso descreve a tensão do soco no vidro (o vidro aguenta, por ora).
+435. Um brinquedo range e dá corda sozinho quando o Inspetor passa pela sala de brinquedos.
+436. Uma risadinha infantil se adianta quando o Inspetor patrulha a sala de brinquedos.
+437. A caixinha de música desafina quando o Inspetor está por perto.
+438. A bailarina da caixinha para de girar quando o Inspetor entra a sala de brinquedos.
+439. Um brinquedo rola pelo corredor na frente da Lia durante a fuga.
+440. Na descida do monta-cargas, agachar no fundo mantém a mão do Inspetor fora do alcance.
+441. Um aviso manda agachar durante a descida do monta-cargas.
+442. Se a Lia não agachar, a mão do Inspetor roça o cabelo dela (tranco e medo, sem morte).
+443. Poeira sobe dos escombros quando o corredor desaba.
+444. O Inspetor rosna e soca do outro lado dos escombros enquanto a Lia foge.
+445. Ponto cego nos dormitórios: imóvel entre as camas, no escuro, o Inspetor passa reto.
+446. Um aviso ensina o ponto cego dos dormitórios.
+447. Com o medo no limite, o Inspetor sussurra "Tá na hora de dormir" na caça (superior).
+448. A Lia prende o fôlego perto do Inspetor no esconderijo (superior).
+449. As portas de armário rangem abrindo quando o Inspetor entra um dormitório.
+450. Marcas de garra também aparecem nas portas dos dormitórios por onde o Inspetor passou.
+451. O Inspetor arranha o teto (passos acima) quando está no depósito, sobre a sala de brinquedos.
+452. Um quadro cai da parede quando o Inspetor passa correndo pelo corredor em caça.
+453. Marcas de garra também aparecem nas portas do corredor por onde o Inspetor caça (térreo).
+454. Ao desistir da caça, o Inspetor solta um suspiro grave de frustração.
+455. A grade do monta-cargas chacoalha sozinha quando a Lia entra o depósito (presságio).
+456. Um estalo ritmado ecoa pelo corredor dos dormitórios quando o Inspetor caça ali.
 
-### Mapa: túneis, cemitério e capela (91)
+### Mapa: túneis, cemitério e capela (182)
 
-274. Pegadas de lama molhadas surgem no chão quando o Inspetor anda pelos túneis.
-275. As pegadas dele brilham quando a sua lanterna bate nelas.
-276. As pegadas vão desbotando e somem sozinhas com o tempo.
-277. Pegadas feitas na água duram mais do que as feitas em chão seco.
-278. As pegadas ficam viradas na direção em que ele seguiu.
-279. Pegadas ainda escorrendo avisam que ele acabou de passar ali.
-280. O Inspetor larga o lampião aceso parado no centro de uma sala, como isca.
-281. Ele escolhe uma sala longe de você e perto dele para largar a isca.
-282. Ao largar a isca, ele se afasta mudo para o escuro.
-283. Um corpo de lamparina de verdade fica largado no chão, aceso.
-284. O lampião-isca tremeluz como lamparina de verdade.
-285. Entrar no alcance do lampião faz ele voltar correndo do escuro, caçando.
-286. Um grito e um tranco de medo quando você morde a isca.
-287. Na primeira vez, a Lia avisa que o lampião parado é armadilha.
-288. Se você não cai na isca, ele volta buscar o lampião e a Lia percebe a espera.
-289. A isca do lampião só acontece no Capítulo IV (variação por capítulo).
-290. Em medo alto, mãozinhas das crianças brotam da parede de terra.
-291. As mãos se recolhem quando a lanterna as ilumina.
-292. No escuro, parada colada nelas, as mãos esticam mais e dão um susto.
-293. Até três mãos por vez, em paredes diferentes ao seu redor.
-294. Um sussurro de criança acompanha o surgimento das mãos.
-295. Fala da Lia: as crianças foram enterradas de pé, na parede.
-296. A voz do Chamado "anda" pelos canos, saindo de uma boca e sumindo em outra.
-297. A ordem das bocas de cano que falam é sorteada a cada vez.
-298. A última boca de cano fica muda — seguir essa é o caminho seguro.
-299. Chegar perto de um cano que falou atrai o Inspetor pelo ruído.
-300. Dica da Lia: o cano que cala é o certo.
-301. Submergir na água abafa o mundo de cima e alivia um pouco o medo.
-302. Aviso ao submergir de que só resta a sua respiração.
-303. Submersa, com ele por cima, sobem bolhas da superfície.
-304. Na caçada em água funda, cada passo seu vira respingo que o guia.
-305. Dica para procurar o chão seco e correr sem denunciar.
-306. O Inspetor dentro da água mostra os olhos à flor d'água.
-307. Os olhos dele refletem a luz da lanterna em azul quando você o encara.
-308. O lampião dele brilha através da água, só no Capítulo IV.
-309. Os passos dele viram baques abafados quando está na água.
-310. A luz e os olhos submersos somem quando ele sai da água ou se afasta.
-311. Seu rastro molhado é farejável: ao sair da água você pinga e deixa pegadas.
-312. O Inspetor segue as suas pegadas molhadas quando não está em caçada.
-313. A mureta de pedras soltas desaba quando você passa correndo por ela.
-314. A mureta derrubada atrasa a caçada do Inspetor, que tem de contornar.
-315. Toast avisando que as pedras desabaram atrás de você.
-316. Na fuga do cofre, o lampião dele varre o túnel atrás de você como holofote.
-317. Na fuga do cofre, você fica mais lenta ao atravessar a água.
-318. Na fuga do cofre, você faz mais barulho ao atravessar a água.
-319. Fala da Lia na fuga: a água está subindo, corra para a escotilha.
-320. Ponte de pranchas soltas atravessando a cisterna.
-321. As pranchas afundam e balançam conforme você pisa.
-322. Correr na ponte denuncia você com barulho alto e range das tábuas.
-323. Atravessar agachada deixa a prancha firme e silenciosa (contra-jogo).
-324. Correr apressada com medo alto faz você escorregar e cair da ponte.
-325. A queda na ponte levanta respingos de água.
-326. Cair da ponte pode trazer a Ana encharcada atrás de você.
-327. As pranchas voltam ao lugar quando você sai de cima delas.
-328. Aviso da ponte: pranchas soltas, vá devagar.
-329. A Ana aparece encharcada e pingando nos túneis, com poça sob os pés.
-330. A poça acompanha a Ana enquanto ela se move molhada.
-331. Fala da Lia: a Ana desceu atrás dela pela água.
-332. Variação por capítulo: fora do Capítulo IV ele não acende o lampião na água.
-333. A Procissão sai das covas: mãos saem de três covas perto de você.
-334. Crianças sobem das covas abertas.
-335. Velas de defunto azuladas acendem nas covas que se abrem.
-336. Um coro abafado vindo de baixo anuncia o evento.
-337. A terra treme e a Lia comenta o coro vindo do chão.
-338. As crianças sobem mais rápido quando você NÃO está olhando para elas.
-339. Encarar as crianças que sobem aperta ainda mais o medo.
-340. As mãos e as crianças afundam de volta e as velas se apagam no fim.
-341. Caça a céu aberto: o lampião aceso do Inspetor denuncia a posição dele de longe.
-342. O lampião dele brilha mais forte quando está caçando.
-343. O portão dos fundos vira um farol quente, visível de longe depois do sino.
-344. Um lampião pendurado pisca no portão, marcando o ponto de fuga.
-345. O farol do portão fica mais forte conforme você se aproxima.
-346. Nos últimos metros perto do portão, o Inspetor dá um arranque com grito e ruído.
-347. Colado no portão ele ganha um empurrão extra, contra o travão de perto.
-348. O Inspetor ruge de tempos em tempos na fuga, marcando a direção dele.
-349. Uma prancha sobre a cova aberta cruza o caminho central da fuga.
-350. A cova aberta aparece como um buraco escuro no caminho.
-351. Correr na prancha quase te derruba dentro da cova.
-352. Ir devagar demais na prancha deixa o Inspetor encostar.
-353. Aviso de equilíbrio na prancha: firme, sem correr.
-354. A cova aberta e a prancha só aparecem depois que o sino toca.
-355. A Ana sai da terra no cemitério, com barro na boca.
-356. A Ana deixa pegadas de barro pelo campo.
-357. Esconderijo atrás das lápides: dica ensina a usar os túmulos como abrigo.
-358. As velas do altar se agitam quando o Inspetor se aproxima da capela.
-359. A neblina rasteira se abre por onde ele passa.
-360. O coro das covas volta baixinho durante a fuga do sino.
-361. Procissão reversa: uma fila de crianças com velas vista pela porta da capela.
-362. A fila reversa vem do lado do cemitério, direção invertida em relação ao internato.
-363. Quando a fila reversa aparece, o coro soa e as velas do altar disparam.
-364. O Inspetor ouve de mais longe no campo aberto depois do sino.
+457. Pegadas de lama molhadas surgem no chão quando o Inspetor anda pelos túneis.
+458. As pegadas dele brilham quando a sua lanterna bate nelas.
+459. As pegadas vão desbotando e somem sozinhas com o tempo.
+460. Pegadas feitas na água duram mais do que as feitas em chão seco.
+461. As pegadas ficam viradas na direção em que ele seguiu.
+462. Pegadas ainda escorrendo avisam que ele acabou de passar ali.
+463. O Inspetor larga o lampião aceso parado no centro de uma sala, como isca.
+464. Ele escolhe uma sala longe de você e perto dele para largar a isca.
+465. Ao largar a isca, ele se afasta mudo para o escuro.
+466. Um corpo de lamparina de verdade fica largado no chão, aceso.
+467. O lampião-isca tremeluz como lamparina de verdade.
+468. Entrar no alcance do lampião faz ele voltar correndo do escuro, caçando.
+469. Um grito e um tranco de medo quando você morde a isca.
+470. Na primeira vez, a Lia avisa que o lampião parado é armadilha.
+471. Se você não cai na isca, ele volta buscar o lampião e a Lia percebe a espera.
+472. A isca do lampião só acontece no Capítulo IV (variação por capítulo).
+473. Em medo alto, mãozinhas das crianças brotam da parede de terra.
+474. As mãos se recolhem quando a lanterna as ilumina.
+475. No escuro, parada colada nelas, as mãos esticam mais e dão um susto.
+476. Até três mãos por vez, em paredes diferentes ao seu redor.
+477. Um sussurro de criança acompanha o surgimento das mãos.
+478. Fala da Lia: as crianças foram enterradas de pé, na parede.
+479. A voz do Chamado "anda" pelos canos, saindo de uma boca e sumindo em outra.
+480. A ordem das bocas de cano que falam é sorteada a cada vez.
+481. A última boca de cano fica muda — seguir essa é o caminho seguro.
+482. Chegar perto de um cano que falou atrai o Inspetor pelo ruído.
+483. Dica da Lia: o cano que cala é o certo.
+484. Submergir na água abafa o mundo de cima e alivia um pouco o medo.
+485. Aviso ao submergir de que só resta a sua respiração.
+486. Submersa, com ele por cima, sobem bolhas da superfície.
+487. Na caçada em água funda, cada passo seu vira respingo que o guia.
+488. Dica para procurar o chão seco e correr sem denunciar.
+489. O Inspetor dentro da água mostra os olhos à flor d'água.
+490. Os olhos dele refletem a luz da lanterna em azul quando você o encara.
+491. O lampião dele brilha através da água, só no Capítulo IV.
+492. Os passos dele viram baques abafados quando está na água.
+493. A luz e os olhos submersos somem quando ele sai da água ou se afasta.
+494. Seu rastro molhado é farejável: ao sair da água você pinga e deixa pegadas.
+495. O Inspetor segue as suas pegadas molhadas quando não está em caçada.
+496. A mureta de pedras soltas desaba quando você passa correndo por ela.
+497. A mureta derrubada atrasa a caçada do Inspetor, que tem de contornar.
+498. Toast avisando que as pedras desabaram atrás de você.
+499. Na fuga do cofre, o lampião dele varre o túnel atrás de você como holofote.
+500. Na fuga do cofre, você fica mais lenta ao atravessar a água.
+501. Na fuga do cofre, você faz mais barulho ao atravessar a água.
+502. Fala da Lia na fuga: a água está subindo, corra para a escotilha.
+503. Ponte de pranchas soltas atravessando a cisterna.
+504. As pranchas afundam e balançam conforme você pisa.
+505. Correr na ponte denuncia você com barulho alto e range das tábuas.
+506. Atravessar agachada deixa a prancha firme e silenciosa (contra-jogo).
+507. Correr apressada com medo alto faz você escorregar e cair da ponte.
+508. A queda na ponte levanta respingos de água.
+509. Cair da ponte pode trazer a Ana encharcada atrás de você.
+510. As pranchas voltam ao lugar quando você sai de cima delas.
+511. Aviso da ponte: pranchas soltas, vá devagar.
+512. A Ana aparece encharcada e pingando nos túneis, com poça sob os pés.
+513. A poça acompanha a Ana enquanto ela se move molhada.
+514. Fala da Lia: a Ana desceu atrás dela pela água.
+515. Variação por capítulo: fora do Capítulo IV ele não acende o lampião na água.
+516. A Procissão sai das covas: mãos saem de três covas perto de você.
+517. Crianças sobem das covas abertas.
+518. Velas de defunto azuladas acendem nas covas que se abrem.
+519. Um coro abafado vindo de baixo anuncia o evento.
+520. A terra treme e a Lia comenta o coro vindo do chão.
+521. As crianças sobem mais rápido quando você NÃO está olhando para elas.
+522. Encarar as crianças que sobem aperta ainda mais o medo.
+523. As mãos e as crianças afundam de volta e as velas se apagam no fim.
+524. Caça a céu aberto: o lampião aceso do Inspetor denuncia a posição dele de longe.
+525. O lampião dele brilha mais forte quando está caçando.
+526. O portão dos fundos vira um farol quente, visível de longe depois do sino.
+527. Um lampião pendurado pisca no portão, marcando o ponto de fuga.
+528. O farol do portão fica mais forte conforme você se aproxima.
+529. Nos últimos metros perto do portão, o Inspetor dá um arranque com grito e ruído.
+530. Colado no portão ele ganha um empurrão extra, contra o travão de perto.
+531. O Inspetor ruge de tempos em tempos na fuga, marcando a direção dele.
+532. Uma prancha sobre a cova aberta cruza o caminho central da fuga.
+533. A cova aberta aparece como um buraco escuro no caminho.
+534. Correr na prancha quase te derruba dentro da cova.
+535. Ir devagar demais na prancha deixa o Inspetor encostar.
+536. Aviso de equilíbrio na prancha: firme, sem correr.
+537. A cova aberta e a prancha só aparecem depois que o sino toca.
+538. A Ana sai da terra no cemitério, com barro na boca.
+539. A Ana deixa pegadas de barro pelo campo.
+540. Esconderijo atrás das lápides: dica ensina a usar os túmulos como abrigo.
+541. As velas do altar se agitam quando o Inspetor se aproxima da capela.
+542. A neblina rasteira se abre por onde ele passa.
+543. O coro das covas volta baixinho durante a fuga do sino.
+544. Procissão reversa: uma fila de crianças com velas vista pela porta da capela.
+545. A fila reversa vem do lado do cemitério, direção invertida em relação ao internato.
+546. Quando a fila reversa aparece, o coro soa e as velas do altar disparam.
+547. O Inspetor ouve de mais longe no campo aberto depois do sino.
+548. Anéis de onda surgem na água a cada movimento seu.
+549. A onda tem ruído próprio: ele sente seu movimento mesmo sem você fazer passo.
+550. Ficar parada 3-4 s na água acalma a superfície e ele perde o rastro da onda.
+551. Subir na mureta ou na soleira (ilha seca) tira o respingo do seu rastro.
+552. O reflexo do Inspetor na água aparece na curva um instante antes do corpo.
+553. Um V de espuma corta a superfície quando ele vem submerso na caçada.
+554. Bolhas sobem cerca de 1,5 s antes de ele emergir perto de você.
+555. Na cisterna funda ele hesita na borda e tateia, sem entrar.
+556. Ficar parada no refúgio da água funda acaba chamando a Ana.
+557. Gotas escuras pingam do casaco do Inspetor enquanto ele anda.
+558. As gotas dele viram poças pequenas no chão que somem em cerca de 15 s.
+559. Uma marca de mão molhada escorre na parede e forma o contorno de um rosto de criança.
+560. Uma mão comprida sai de um ralo e recolhe quando a lanterna bate nela.
+561. Há um nicho onde o Inspetor dorme em pé, de olhos abertos.
+562. Um gotejamento marca o raio do nicho onde ele dorme.
+563. Respingar na poça perto do nicho acorda o Inspetor e começa a caçada.
+564. O lampião dele cresce no ciclo e abre um cone de luz curto à frente.
+565. No cone do lampião ele te acha ignorando o silêncio; é preciso sair do facho.
+566. Na caçada ele anda colado na parede; cortar reto pelo meio o perde por um instante.
+567. Ele some dentro de um cano largo durante a procura.
+568. O tilintar das chaves corre pela tubulação e sai por outra boca de cano.
+569. Lamaçais atrasam o Inspetor, que patina e se agarra na parede.
+570. Numa ladeira de lama a Lia escorrega e perde o controle do passo.
+571. Escorregar na ladeira faz barulho que pode te denunciar.
+572. Num trecho o teto baixa e você precisa agachar correndo, mais lenta.
+573. No afunilamento o Inspetor rasteja atrás com os braços longos.
+574. O duto dos ratos vira rota de fuga: ele não cabe e fica do lado de fora.
+575. Dentro do duto ele bate na parede e sussurra enquanto você rasteja no escuro.
+576. No Capítulo IV a Menina caça pela visão e o Inspetor pelo som, ao mesmo tempo.
+577. Mergulhar de propósito escurece a tela conforme o fôlego vai acabando.
+578. Submersa de propósito, o ar acaba mais rápido.
+579. A água na cintura deixa a Lia mais lenta: quanto mais fundo, mais devagar.
+580. Quanto mais fundo na água, mais barulho o seu passo faz.
+581. Na ilha seca e no refúgio o seu ruído cai bastante.
+582. Entrar e sair da água faz um splash alto; parada na água corrente o passo some.
+583. Mãos de criança seguram seus tornozelos se você ficar parada na água rasa.
+584. O eco da cisterna joga a voz dele para um ponto errado da água.
+585. A Lia aprende a confiar no chapinhar dos passos dele, não no eco.
+586. Ruído forte junto de uma parede dura às vezes desvia o Inspetor para a parede.
+587. Um ponto de piso podre cede sob o Inspetor se você correr colada por cima.
+588. Aviso do piso podre: rápido demais ele desaba, devagar o chão aguenta os dois.
+589. Aviso de que a água está subindo na caçada; é hora de buscar a parte alta.
+590. Pontos fixos de gotejamento do teto fazem anéis na superfície da água.
+591. Reflexos tremidos do lampião dele dançam no teto quando ele está na água.
+592. Ratos fogem quando você se aproxima, dando vida ao túnel.
+593. Um zumbido grave cresce enquanto você está submersa.
+594. A lanterna tremula um instante quando ele está colado em você na água.
+595. A água fica turva num véu escuro quando o Inspetor está submerso perto.
+596. Submersa, girar a câmera faz ondulação que o entrega; ficar imóvel salva.
+597. Uma gota d'água escorre na tela ao passar sob um ponto de gotejamento.
+598. Marcas de mão molhada escorrem pelas paredes dos túneis.
+599. Bolhas sobem na borda do refúgio quando o Inspetor passa por fora.
+600. Ficar muito tempo submersa vai apertando o medo aos poucos.
+601. Cada túmulo cavado faz um ruído alto que denuncia sua posição.
+602. Cavar os túmulos sobe a fúria do Inspetor.
+603. Dica: cave os túmulos só quando ele estiver longe.
+604. Ao tocar o sino, braços lentos brotam das três covas abertas.
+605. Os braços avançam e apertam o medo quando você passa perto deles.
+606. Um coro grave acompanha os braços subindo da terra.
+607. Pisar nos montes de terra fresca que você não cava prende seu pé por cerca de 1 s.
+608. Presa pelas mãos de terra, a Lia quase para no lugar.
+609. No campo aberto, correr reto na frente dele faz o Inspetor te alcançar.
+610. Zigue-zaguear entre as lápides quebra a vantagem dele no aberto.
+611. Ele te empurra em arco rumo à cova aberta central, cortando o lado seguro.
+612. Depois do sino, a Procissão sai das covas e avança em fila pelo campo.
+613. As lápides e a capela viram abrigo real contra a fila que avança.
+614. Exposto à frente da fila, longe de abrigo, você leva dano leve que te empurra ao abrigo.
+615. No clímax, Inspetor, Menina e a fila convergem para o átrio da capela.
+616. Na fuga do sino, portas são arrombadas um segundo atrás de você, cada vez mais rápido.
+617. Na capela ele bloqueia a porta e avança devagar, inevitável.
+618. Os bancos da capela tombam em dominó atrás de você durante a fuga.
+619. A fumaça do incêndio carrega seu cheiro: a favor do vento esconde, contra entrega.
+620. No apagão da fuga, só o apito dele no estéreo diz para onde correr.
+621. Na fuga, pedaços do teto desabam atrás, estreitando o caminho sempre para a frente.
+622. Na subida do campanário os degraus estalam e cedem atrás; só dá para subir.
+623. Aviso de prensa: fila de um lado, Inspetor do outro, hora de encolher e prender o ar.
+624. O coro das covas cresce conforme a fila se aproxima de você.
+625. O Inspetor ergue a cara e fareja o vento no campo aberto.
+626. A terra fresca afunda sob os pés com um som abafado perto das covas.
+627. A fila deixa um rastro de velas apagadas por onde passa.
+628. Corvos levantam voo quando você corre no aberto, e o barulho te denuncia.
+629. A terra treme um instante antes de os braços saírem das covas.
+630. O vento uiva mais forte quando você está longe de qualquer abrigo.
+631. Os set-pieces do clímax reiniciam ao reentrar no capítulo.
+632. Uma névoa rasteira corre na direção do vento, mostrando para onde o cheiro vai.
+633. A Lia deixa pegadas de lama no campo que o Inspetor fareja e segue.
+634. As lápides racham com um estalo quando os braços sobem da terra.
+635. O sino balança sozinho de leve antes de você tocar.
+636. O grito distante do Inspetor ecoa pelo campo na fuga, marcando a direção dele.
+637. Um bafo frio sobe das covas abertas quando você passa perto.
+638. Um corvo pousado numa lápide levanta voo quando você chega perto, num susto calado.
 
-### Monstros e IA (95)
+### Monstros e IA (186)
 
-365. No Capítulo I o Inspetor anda mais devagar e demora mais a reagir, como quem ainda está aprendendo a casa.
-366. No Capítulo II ele entra em modo disciplina e reage mais rápido a qualquer ruído.
-367. No Capítulo III ele fica distraído enquanto a Menina domina, e ouve um pouco pior.
-368. No Capítulo IV, nos túneis, a água leva cada passo até ele e seu ouvido fica muito mais afiado.
-369. No Capítulo V ele está solto, mais rápido, mais curvado e mais agressivo.
-370. Depois do sino, no Capítulo V, ele entra em fúria contínua: não reza, não recua, não para.
-371. Tocar o sino no clímax paralisa o Inspetor por alguns segundos.
-372. Ao ser desligado pelo sino, ele leva as mãos aos ouvidos e tomba a cabeça (pose nova de atordoamento).
-373. No toque do sino, a Menina e a Procissão também param e te encaram por um instante.
-374. Escuridão que avança: na fuga, as lâmpadas estouram atrás de você conforme ele se aproxima.
-375. Faro de sangue: com a vida baixa a Lia ofega e ele passa a te ouvir de mais longe.
-376. Ponto cego do cego: parada, muda e exatamente nas costas dele, ele quase não te acha.
-377. Rastro de cheiro: correr deixa um caminho quente que ele passa a seguir na procura.
-378. Atravessar a água apaga o seu rastro de cheiro na hora.
-379. Ficar agachada e parada por alguns segundos esfria e apaga o rastro.
-380. Quebrar a linha de visão por três segundos e ficar em silêncio faz a caçada virar procura.
-381. Tateio cego: quando ele te perde de vista, para e varre o escuro com os braços à frente.
-382. Flanqueio: numa caçada longa ele corta caminho pela saída que você ia tomar.
-383. Falsa partida: na caçada ele para de repente, mudo, testando se você entra em pânico.
-384. Correr durante a falsa partida entrega você na hora.
-385. Ficar imóvel durante a falsa partida faz ele recuar resmungando.
-386. No escuro total (lanterna apagada) e parada, ele tateia o lado errado e te perde mais rápido.
-387. No trovão/clarão ele cobre o rosto e fica surdo por um instante.
-388. Um tique elétrico avisa quando ele chega na sala ao lado.
-389. Medidor de paciência: parada tempo demais no armário, ele começa a abrir os armários da sala um por um.
-390. Um barulho em outra sala zera a paciência dele e o manda investigar lá.
-391. Ele cola o ouvido no armário e conta as batidas do seu coração; ao chegar no cinco, abre.
-392. Prender o ar no ritmo certo zera a contagem do coração.
-393. Duelo de fôlego: colado no armário, ele também para de respirar esperando você soltar o ar.
-394. Dedos tateiam a fresta do armário quando ele fareja, com aviso para prender o ar.
-395. Ao desistir de um esconderijo seu, fica a deixa de que ele decorou aquele lugar.
-396. No cemitério aberto, correr na linha dele durante o clarão do relâmpago vira caçada.
-397. No aberto, a luz da lanterna acesa o atrai de longe.
-398. A venda queimada às vezes escorrega e ele "enxerga" um cone curto à frente.
-399. Ele sussurra o seu nome (o que você digitou no título) quando está colado no escuro.
-400. Numa caçada longa ele conta os seus passos em voz alta.
-401. Na patrulha, longe, ele murmura a chamada das camas.
-402. Antes de arrombar a porta ele conta grave "três... dois... um...".
-403. Entrando caçando na sua sala, ele fecha a porta por onde você entrou.
-404. Na patrulha ele vai esperar de pé na frente do armário que você mais usa.
-405. No Capítulo III o corpo some e sobram pancadas no teto e na escada.
-406. As chaves dele se calam quando ele vai caçar (aviso de leitura).
-407. Aviso de legenda quando ele para, imóvel, para ouvir.
-408. Aviso de legenda quando ele finge ir embora e fica de emboscada.
-409. Aviso de texto quando ele entra em caçada.
-410. Ele cheira o ar ao entrar numa sala nova durante a procura.
-411. Aviso "[ele está furioso]" quando a fúria dele sobe.
-412. Na caçada, quando ele vira a cabeça depressa, o pescoço estica além do humano.
-413. Aviso "[ele virou para você]" quando a cabeça dele trava na sua direção.
-414. Ele estala a língua duas vezes quando trava a cabeça na sua direção na caçada.
-415. Sopro de respiração na sua nuca quando ele está colado no seu esconderijo.
-416. A cantiga que mente: raramente, na caçada, a caixinha continua tocando, só mais rápida.
-417. No clímax ele caça mais de quatro, com o corpo caído para a frente.
-418. A escuta total: uma vez por capítulo ele ergue a mão e todo o som some por três segundos; qualquer ruído vira caçada.
-419. Ele mede o seu fôlego: depois de dois esconderijos na noite, espera mais tempo antes de desistir do armário.
-420. Na caçada ele apaga a lâmpada bem à frente ao passar por ela.
-421. Fora da caçada ele às vezes fica parado, de costas, no meio de um corredor.
-422. No Capítulo III, com a Menina contando, ele repete os números baixinho em dueto.
-423. A luz acesa quando a Procissão passa perto faz uma criança apontar e chamar o Inspetor.
-424. Casaco com fuligem e cinzas a partir do Capítulo III.
-425. Rachaduras de brasa pulsando no corpo dele no Capítulo V.
-426. A venda vai queimando e escurecendo do Capítulo IV ao V.
-427. Fiapo de fumaça subindo do casaco a partir do Capítulo IV.
-428. Mãos queimadas a partir do Capítulo IV.
-429. A Menina fica encardida e molhada nos túneis e no cemitério.
-430. A Menina cresce e a voz engrossa a cada captura na mesma noite.
-431. Encarada tempo demais, a cabeça da Menina gira além do humano.
-432. No Pesadelo a Menina também te ouve: correr a puxa para perto mesmo no escuro.
-433. Perto do Inspetor, no fim da contagem, a Menina aponta e te entrega a ele.
-434. Gotas pingam do teto marcando o ponto exato onde a Menina vai cair.
-435. Bem perto, no fim da conta, os últimos números da Menina estouram rápido.
-436. O medo alto da Lia acelera a contagem da Menina.
-437. Quando a Procissão para no seu esconderijo, os olhos vermelhos ficam cravados na fresta.
-438. Novas falas do Inspetor no Capítulo I, no tom de "funcionário" que ainda ensina.
-439. Novas falas do Inspetor no Capítulo II, sobre o ritmo das badaladas.
-440. Novas falas do Inspetor no Capítulo III, em dueto com a Menina.
-441. Novas falas do Inspetor no Capítulo IV, sobre a água que denuncia.
-442. Novas falas do Inspetor no Capítulo V, de quem não reza mais e arromba tudo.
-443. Falas novas de dor quando o sino o atordoa.
-444. Falas novas de quando ele "leu o seu nome na ficha".
-445. Falas novas de quando ele fareja o seu rastro.
-446. Falas novas de quando ele te perde no ponto cego.
-447. Falas novas de quando a venda escorrega ("Eu te VEJO").
-448. Falas novas durante a varredura paciente dos armários.
-449. Dica da Lia explicando o ponto cego nas costas dele.
-450. Dica da Lia explicando que correr deixa rastro de cheiro.
-451. Dica da Lia explicando que quebrar a esquina e calar a boca despista.
-452. Dica da Lia sobre esfriar a paciência dele com um barulho em outra sala.
-453. Dica da Lia sobre prender o ar no ritmo das batidas do coração.
-454. Dica da Lia sobre ficar parada atrás da pedra no clarão do relâmpago.
-455. Dica da Lia sobre a surdez dele no trovão.
-456. Dica da Lia sobre ele rondar o armário preferido e a precisar variar.
-457. Dica da Lia sobre a escuta total, de não respirar enquanto o mundo para.
-458. Dica da Lia quando a Menina ouve como ele no Pesadelo.
-459. Conquista secreta ao desligar o Inspetor com o sino.
+639. No Capítulo I o Inspetor anda mais devagar e demora mais a reagir, como quem ainda está aprendendo a casa.
+640. No Capítulo II ele entra em modo disciplina e reage mais rápido a qualquer ruído.
+641. No Capítulo III ele fica distraído enquanto a Menina domina, e ouve um pouco pior.
+642. No Capítulo IV, nos túneis, a água leva cada passo até ele e seu ouvido fica muito mais afiado.
+643. No Capítulo V ele está solto, mais rápido, mais curvado e mais agressivo.
+644. Depois do sino, no Capítulo V, ele entra em fúria contínua: não reza, não recua, não para.
+645. Tocar o sino no clímax paralisa o Inspetor por alguns segundos.
+646. Ao ser desligado pelo sino, ele leva as mãos aos ouvidos e tomba a cabeça (pose nova de atordoamento).
+647. No toque do sino, a Menina e a Procissão também param e te encaram por um instante.
+648. Escuridão que avança: na fuga, as lâmpadas estouram atrás de você conforme ele se aproxima.
+649. Faro de sangue: com a vida baixa a Lia ofega e ele passa a te ouvir de mais longe.
+650. Ponto cego do cego: parada, muda e exatamente nas costas dele, ele quase não te acha.
+651. Rastro de cheiro: correr deixa um caminho quente que ele passa a seguir na procura.
+652. Atravessar a água apaga o seu rastro de cheiro na hora.
+653. Ficar agachada e parada por alguns segundos esfria e apaga o rastro.
+654. Quebrar a linha de visão por três segundos e ficar em silêncio faz a caçada virar procura.
+655. Tateio cego: quando ele te perde de vista, para e varre o escuro com os braços à frente.
+656. Flanqueio: numa caçada longa ele corta caminho pela saída que você ia tomar.
+657. Falsa partida: na caçada ele para de repente, mudo, testando se você entra em pânico.
+658. Correr durante a falsa partida entrega você na hora.
+659. Ficar imóvel durante a falsa partida faz ele recuar resmungando.
+660. No escuro total (lanterna apagada) e parada, ele tateia o lado errado e te perde mais rápido.
+661. No trovão/clarão ele cobre o rosto e fica surdo por um instante.
+662. Um tique elétrico avisa quando ele chega na sala ao lado.
+663. Medidor de paciência: parada tempo demais no armário, ele começa a abrir os armários da sala um por um.
+664. Um barulho em outra sala zera a paciência dele e o manda investigar lá.
+665. Ele cola o ouvido no armário e conta as batidas do seu coração; ao chegar no cinco, abre.
+666. Prender o ar no ritmo certo zera a contagem do coração.
+667. Duelo de fôlego: colado no armário, ele também para de respirar esperando você soltar o ar.
+668. Dedos tateiam a fresta do armário quando ele fareja, com aviso para prender o ar.
+669. Ao desistir de um esconderijo seu, fica a deixa de que ele decorou aquele lugar.
+670. No cemitério aberto, correr na linha dele durante o clarão do relâmpago vira caçada.
+671. No aberto, a luz da lanterna acesa o atrai de longe.
+672. A venda queimada às vezes escorrega e ele "enxerga" um cone curto à frente.
+673. Ele sussurra o seu nome (o que você digitou no título) quando está colado no escuro.
+674. Numa caçada longa ele conta os seus passos em voz alta.
+675. Na patrulha, longe, ele murmura a chamada das camas.
+676. Antes de arrombar a porta ele conta grave "três... dois... um...".
+677. Entrando caçando na sua sala, ele fecha a porta por onde você entrou.
+678. Na patrulha ele vai esperar de pé na frente do armário que você mais usa.
+679. No Capítulo III o corpo some e sobram pancadas no teto e na escada.
+680. As chaves dele se calam quando ele vai caçar (aviso de leitura).
+681. Aviso de legenda quando ele para, imóvel, para ouvir.
+682. Aviso de legenda quando ele finge ir embora e fica de emboscada.
+683. Aviso de texto quando ele entra em caçada.
+684. Ele cheira o ar ao entrar numa sala nova durante a procura.
+685. Aviso "[ele está furioso]" quando a fúria dele sobe.
+686. Na caçada, quando ele vira a cabeça depressa, o pescoço estica além do humano.
+687. Aviso "[ele virou para você]" quando a cabeça dele trava na sua direção.
+688. Ele estala a língua duas vezes quando trava a cabeça na sua direção na caçada.
+689. Sopro de respiração na sua nuca quando ele está colado no seu esconderijo.
+690. A cantiga que mente: raramente, na caçada, a caixinha continua tocando, só mais rápida.
+691. No clímax ele caça mais de quatro, com o corpo caído para a frente.
+692. A escuta total: uma vez por capítulo ele ergue a mão e todo o som some por três segundos; qualquer ruído vira caçada.
+693. Ele mede o seu fôlego: depois de dois esconderijos na noite, espera mais tempo antes de desistir do armário.
+694. Na caçada ele apaga a lâmpada bem à frente ao passar por ela.
+695. Fora da caçada ele às vezes fica parado, de costas, no meio de um corredor.
+696. No Capítulo III, com a Menina contando, ele repete os números baixinho em dueto.
+697. A luz acesa quando a Procissão passa perto faz uma criança apontar e chamar o Inspetor.
+698. Casaco com fuligem e cinzas a partir do Capítulo III.
+699. Rachaduras de brasa pulsando no corpo dele no Capítulo V.
+700. A venda vai queimando e escurecendo do Capítulo IV ao V.
+701. Fiapo de fumaça subindo do casaco a partir do Capítulo IV.
+702. Mãos queimadas a partir do Capítulo IV.
+703. A Menina fica encardida e molhada nos túneis e no cemitério.
+704. A Menina cresce e a voz engrossa a cada captura na mesma noite.
+705. Encarada tempo demais, a cabeça da Menina gira além do humano.
+706. No Pesadelo a Menina também te ouve: correr a puxa para perto mesmo no escuro.
+707. Perto do Inspetor, no fim da contagem, a Menina aponta e te entrega a ele.
+708. Gotas pingam do teto marcando o ponto exato onde a Menina vai cair.
+709. Bem perto, no fim da conta, os últimos números da Menina estouram rápido.
+710. O medo alto da Lia acelera a contagem da Menina.
+711. Quando a Procissão para no seu esconderijo, os olhos vermelhos ficam cravados na fresta.
+712. Novas falas do Inspetor no Capítulo I, no tom de "funcionário" que ainda ensina.
+713. Novas falas do Inspetor no Capítulo II, sobre o ritmo das badaladas.
+714. Novas falas do Inspetor no Capítulo III, em dueto com a Menina.
+715. Novas falas do Inspetor no Capítulo IV, sobre a água que denuncia.
+716. Novas falas do Inspetor no Capítulo V, de quem não reza mais e arromba tudo.
+717. Falas novas de dor quando o sino o atordoa.
+718. Falas novas de quando ele "leu o seu nome na ficha".
+719. Falas novas de quando ele fareja o seu rastro.
+720. Falas novas de quando ele te perde no ponto cego.
+721. Falas novas de quando a venda escorrega ("Eu te VEJO").
+722. Falas novas durante a varredura paciente dos armários.
+723. Dica da Lia explicando o ponto cego nas costas dele.
+724. Dica da Lia explicando que correr deixa rastro de cheiro.
+725. Dica da Lia explicando que quebrar a esquina e calar a boca despista.
+726. Dica da Lia sobre esfriar a paciência dele com um barulho em outra sala.
+727. Dica da Lia sobre prender o ar no ritmo das batidas do coração.
+728. Dica da Lia sobre ficar parada atrás da pedra no clarão do relâmpago.
+729. Dica da Lia sobre a surdez dele no trovão.
+730. Dica da Lia sobre ele rondar o armário preferido e a precisar variar.
+731. Dica da Lia sobre a escuta total, de não respirar enquanto o mundo para.
+732. Dica da Lia quando a Menina ouve como ele no Pesadelo.
+733. Conquista secreta ao desligar o Inspetor com o sino.
+734. O Inspetor congela de súbito ao ouvir seu último ruído de perto e espera: qualquer passo seu vira bote imediato.
+735. Duelo de imobilidade: ficar parada em estátua perto dele enche um medidor e ele acaba desistindo da ronda.
+736. A garrafa vai perdendo efeito na noite: na segunda o desvio encurta e na terceira ele ignora e vem reto, com fala.
+737. Depois de cansar da garrafa ele vai até a origem do arremesso e fica lá, mudo, de emboscada.
+738. Na fúria do Cap V ele ganha um respiro: a cada ~12 s leva as mãos aos ouvidos por 2 s, sua janela de fuga.
+739. Na fúria, se o bote erra e você ainda está perto, ele emenda um segundo bote rápido, cego de raiva.
+740. Pós-sino o bote vira quase instantâneo: só virar estátua segura.
+741. No instante em que ele compromete o bote cai um tilintar seco de chave, sua deixa para reagir.
+742. Finta de dois tempos no Cap IV-V: ele ergue os braços, segura e só então avança; esquivar cedo joga você no golpe.
+743. Na caçada longa ele sincroniza o passo com o seu e some na sua pisada; quando você para, sobra um passo atrás.
+744. Colado na fúria, um tapa apaga sua lanterna por alguns segundos.
+745. Fora da caça ele planta numa porta entre você e a saída e fica parado, mudo, guardando a passagem.
+746. Nos túneis ele dorme em pé: passar devagar e agachada é seguro; ruído o acorda em bote.
+747. Numa caçada longa (Cap I-IV) ele para para tossir encatarrado, abrindo uma janela de ~2 s.
+748. Nos túneis as ondas que você fez continuam chegando nele mesmo parada: sair da água é o certo.
+749. Pisar fundo na água sem agachar gera um splash que ele persegue de muito longe.
+750. Na ronda ele abre um armário aleatório, confere e o deixa entreaberto, marcando por onde passou.
+751. Colado no esconderijo, no fim do fareja ele conta grave de dez a zero: silêncio até o zero e ele vai embora.
+752. Na vasculha ele às vezes conta errado e abre no dois, pegando quem relaxa cedo.
+753. Ao abrir um armário vazio na procura ele murmura quantos alunos faltam.
+754. Duelo de fôlego invertido: enquanto o ar dele está preso há silêncio; quando ele solta, é a sua janela segura.
+755. No Cap I ele chama Tem alguém aí? e espera: ruído confirma, silêncio o faz duvidar e voltar.
+756. No Cap I ele encosta na parede e descansa com respiração humana; ruído o sobressalta.
+757. Recém-desperto no começo da noite, ele esbarra na mobília às cegas e se trai com o barulho, murmurando algo humano.
+758. A primeira caçada do jogo é mais lenta e ele desiste cedo, ensinando a se esconder sem matar.
+759. As pausas de reza ficam mais curtas a cada capítulo e somem no Cap V, quando ele não ajoelha mais.
+760. No Cap IV em diante, fazer barulho perto dele durante a reza o joga direto em caça, não em investigação.
+761. Às vezes ele se ajoelha e reza bem na frente do seu esconderijo, prendendo você ali por segundos.
+762. Durante a reza, se você passa perto, a cabeça dele gira devagar te seguindo, mesmo sem sair do lugar.
+763. No Cap IV em diante parte dos recuos é mentira: ele dá dois passos e volta correndo em ~2 s.
+764. Parada e muda tempo demais, ele chuta um móvel de propósito para te fazer reagir de susto.
+765. A cada três armários ou portas vazios ele urra de frustração e fica mais rápido e agressivo por um tempo.
+766. No clímax, a cada badalada do sino ele conta um número grave junto; na nona leva as mãos aos ouvidos e tomba.
+767. Se a caçada se arrasta no Cap V ele apita e um coro distante responde, adiantando a Procissão para fechar o cerco.
+768. No Cap V ele às vezes apita de onde estava, já tendo se movido: o apito mente a distância.
+769. Do Cap II em diante, um apito significa todos parados: mover-se nesse instante te denuncia.
+770. Medo alto por tempo demais guia a próxima procura dele direto para a sua ala.
+771. Medo alto afia o ouvido dele, separado do faro de sangue da vida baixa.
+772. Lanterna apagada tempo demais na caça deixa ele mais rápido e com ouvido melhor: no breu o cego está em casa.
+773. Tempo demais sem nenhum encontro faz a paciência dele acabar e a caça apertar.
+774. A postura dele se curva ao longo da noite e, no Cap V em fúria, ele baixa quase ao chão para caçar rastejando.
+775. A mandíbula desencaixa além do humano quando ele escuta parado.
+776. No Cap V em fúria a mandíbula desce num grito longo e desumano.
+777. Ao ouvir algo exatamente atrás na ronda, a cabeça gira 180 graus sobre os ombros com um estalo de vértebra.
+778. Depois de te perder, o corpo anda mas a cabeça fica travada para o último som.
+779. No Cap V, perdido, ele gira a cabeça e anda de costas por alguns passos.
+780. No Cap V surge de relance uma segunda cabeça pálida nas costas dele, que te encara e some na luz.
+781. A respiração dele vira fumacinha branca visível no frio do Cap V e nos túneis.
+782. No clarão do Cap IV em diante a órbita vazia e costurada por baixo da venda pisca por um quadro.
+783. No Cap V a venda queimada escorre fuligem preta pelo rosto.
+784. Quando ele se curva para farejar ou caçar, aparecem nas costas os vergões antigos de surra.
+785. No Cap I ele carrega uma lanterna fraca e amarelada que vai falhando e apaga de vez no Cap III.
+786. Esta noite tem um traço único sorteado para o Inspetor, anunciado no começo como Noite do Ouvido Afiado e afins.
+787. Noite do Ouvido Afiado: o alcance de escuta dele sobe bastante.
+788. Noite do Passo Apressado: ele anda mais rápido, porém reage um tanto mais devagar.
+789. Noite do Gigante Lento: mais lento no passo, mas com ouvido mais apurado.
+790. Noite do Faro: o ouvido dele vira faro e ele te sente melhor logo depois de você se mover.
+791. Noite do Teimoso: ele vasculha a mesma sala por mais tempo e gravita para as salas distantes.
+792. Na Noite do Faro ele refaz o caminho que você pisou na procura, seguindo a trilha de passos.
+793. Cap III em diante com a Ana ativa: em vez de perseguir reto ele corta para o lado, te empurrando na direção dela.
+794. No Cap V pós-sino ele entra na sala e rasga todos os armários em sequência rápida.
+795. Dois apitos significam ninguém respira: respirar nesse instante te denuncia.
+796. Com o gerador ligado os passos e as chaves dele somem e ele chega colado sem aviso sonoro.
+797. De uma sala vizinha ele usa um eco da sua própria voz pedindo socorro para te puxar ao bote.
+798. O Chamado dele passa a usar o nome que você digitou no título, com a voz quebrada.
+799. Na caça ele conta seus passos em voz baixa.
+800. Cap III: a Menina aponta dos ombros dele e, enquanto aponta, ele vem reto até você.
+801. Cap V: aviso de prensa quando a Procissão vem de frente e o Inspetor caça por trás.
+802. No Pesadelo, uma vez por capítulo, ele entra numa caça totalmente muda por alguns segundos.
+803. Na procura ele checa primeiro os esconderijos que você mais usou na noite.
+804. Cap V com a venda caída: um facho direto na cara dele o faz avançar reto.
+805. Fechar a porta na cara dele na caça só o atrasa: ele arranha e escancara em ~2 s, com fala.
+806. No Cap V, solto, ele vaga sempre na sua direção geral, acelerando longe e desacelerando colado.
+807. Na patrulha ele às vezes para e escuta longo, de cabeça pendida, abrindo uma janela de passagem.
+808. Parado na procura ele bate a bengala e lê o eco: num canto pequeno e fechado o eco o vira para você.
+809. Do Cap IV em diante, às vezes o vulto no corredor não some na luz: vira a cabeça para você e só então se desfaz.
+810. Raríssimo, colado no escuro, ele sussurra aqui com a sua própria voz.
+811. Usar o curativo deixa um cheiro de sangue por ~6 s: na mesma ala ele vira para a sua direção.
+812. Numa caça longa ele conta seus passos e para de súbito num número; parar junto o faz recuar, dar mais um passo o faz virar.
+813. No Cap III, quando o corpo some, uma fungada longa desce a escada.
+814. Cap III: ele anda sonâmbulo, lento e desatento, mas a luz nele o acorda furioso em caça imediata.
+815. Com a venda caída (Cap IV-V), agachar tira você da linha dos olhos dele.
+816. Mercê no clímax: pós-sino, absolutamente imóvel e sem respirar a menos de 1 m, há uma chance rara dele te poupar.
+817. Cap III em diante: prender o ar perto da Ana a faz reparar, apontar e chamar o Inspetor.
+818. Iluminada a Ana para, mas cada apagão da lanterna a faz avançar um passo mesmo sob luz piscada.
+819. Quando a Ana e o Inspetor estão na mesma ala, a contagem dela acelera para te entregar mais rápido.
+820. Longe de você a Ana mexe os lábios contando sem som; o número volta de repente quando ela chega perto.
+821. No escuro total só os olhos da Ana aparecem, piscando.
+822. Do Cap IV em diante a Ana ganha olhos de giz desenhados por cima dos reais.
+823. Cap III: barulho durante a contagem faz os dois pularem números juntos, encurtando o tempo até o dez.
+824. Na ronda do Cap III-IV ele às vezes imita a contagem da Menina de uma sala errada, com a voz desafinada.
 
 ### Sustos e eventos (93)
 
-460. Dedos compridos do Inspetor entram pela fresta do armário quando ele caça perto; prender o ar e ficar em silêncio afasta, fazer barulho arromba.
-461. Variação na cama: um braço comprido varre o escuro embaixo do colchão; encolher no canto e não respirar salva.
-462. Ficar tempo demais (mais de 25 s) embaixo de uma cama faz mãos surgirem do escuro, obrigando a trocar de esconderijo.
-463. Quase-encontro: ao prender o ar escondida, o Inspetor passa rente, encosta a mão na porta, respira fundo e segue sem abrir.
-464. Emboscada da parede: quando ele "desiste", às vezes fica parado em silêncio ao lado do armário em vez de ir embora.
-465. Falsa retirada: os passos somem, mas ele espera parado na única saída da sala.
-466. O armário favorito da noite pode já estar ocupado pelo rosto dele; susto forte e corrida sem morte.
-467. Falso agarrão ao sair do esconderijo com ele perto: as mãos entram, a tela pisca e tudo some, sem dano.
-468. A voz do Davi conta de dentro do seu próprio armário, junto com a sua respiração presa.
-469. Uma mão sai de um armário vazio e bate a porta, marcando aquele esconderijo como inseguro na noite.
-470. A cama pode "já ter alguém" (o Davi, presença fria): a Lia se recusa a deitar e o esconderijo fica inseguro.
-471. A Ana se deita do outro lado da cama e estende a mão até quase te tocar; a luz na cara dela a faz recuar.
-472. Alucinação: um rosto sorrindo bem atrás de você aparece no vidro por um instante.
-473. Alucinação: a Ana parada no limite da sua visão quando você gira a câmera.
-474. Alucinação: o corredor estica (efeito dolly) e a porta do fim foge; respeita "menos movimento".
-475. Alucinação: as paredes da sala incham e recuam, respirando, por alguns segundos.
-476. Alucinação: uma mancha de escuro em formato de boca no vão da porta, de onde o Chamado vem.
-477. Alucinação: um vulto pequeno de criança cruza o fundo do corredor rindo.
-478. Alucinação: a sombra do Inspetor atravessa o teto de cabeça para baixo, arranhando a madeira.
-479. Alucinação: ele aparece parado onde ninguém caberia (enfiado na parede, de ponta-cabeça, no chão) e some com a luz.
-480. Alucinação: pegadas molhadas surgem uma a uma atrás de você e param quando você para.
-481. Alucinação: o reflexo dele aparece um passo mais perto do que ele realmente está.
-482. Alucinação: um vulto no fundo repete o seu último movimento com atraso.
-483. Alucinação: um casaco no cabide infla devagar, como se respirasse.
-484. Alucinação: uma cadeira de balanço range e balança sozinha.
-485. Alucinação: o colchão de uma cama afunda no canto do olho, como se alguém tivesse deitado.
-486. Alucinação: nove pares de sapatinhos de criança enfileirados no chão ao entrar numa sala.
-487. Alucinação: nas rouparias, um dos "manequins" não era manequim e vira quando você passa de costas.
-488. Alucinação: por um quadro, o seu reflexo vira a cabeça sozinho.
-489. Alucinação: o seu reflexo demora meio segundo a te acompanhar no vidro.
-490. Alucinação: uma mãozinha de criança vem do escuro ao lado da cama; a luz ou prender o ar a recolhe.
-491. Alucinação: um vidro embaça sozinho e surge a marca de uma mão por dentro quando ele está perto.
-492. Alucinação: um Inspetor falso que NÃO some com a luz; só desaparece ao piscar (Z) ou passar por ele.
-493. Alucinação: ele está encarapitado no vão do teto e desce devagar quando você passa por baixo.
-494. Alucinação: o cobertor de uma cama sobe e desce, como se alguém respirasse embaixo.
-495. Alucinação: uma porta que você fechou range e se abre de novo sozinha.
-496. Alucinação: a sombra dele cruza, longa e torta, a parede iluminada.
-497. Alucinação: uma risada de criança desliza pela sala, de um lado para o outro.
-498. Alucinação: no escuro, uma mãozinha fria segura a sua.
-499. Ambiente: uma lâmpada estoura bem quando você passa por baixo dela.
-500. Alucinação: ele aparece parado no vão de uma porta ao fundo do corredor.
-501. Alucinação: dois olhos vermelhos piscam no escuro atrás de você.
-502. Alucinação: um choro de criança vem de dentro da parede.
-503. Os passos do Inspetor imitam o seu compasso na procura; a Lia percebe ("Ele para quando eu paro").
-504. A beira da tela pulsa com uma respiração que não é a sua, mais forte do lado de onde a ameaça vem.
-505. Sopro frio na nuca em corredores "seguros", com um sussurro atrás da câmera e nada ao virar.
-506. Deixar o diário aberto demais com ele por perto faz a cantiga dele parar lá fora.
-507. Quando o Inspetor fareja, uma legenda avisa que o ar (cortinas, velas, poeira) é puxado na direção dele.
-508. O Inspetor bate três vezes na parede, chamando, no instante em que te perde (sai da caça).
-509. O estalo de língua dele fica mais rápido e mais alto conforme ele se aproxima na caça.
-510. A respiração dele fica audível quando está colado (menos de 2 m) fora da caça.
-511. Falso "boa noite, crianças": tudo se acalma, as luzes voltam e, 8 s depois, ele volta de repente.
-512. Perseguição na chuva: cada relâmpago no cemitério congela a silhueta dele mais perto de você.
-513. Relâmpago que aproxima: fora da caça, o vulto reaparece mais perto quando você não está olhando.
-514. Cara a cara: com a lanterna apagada e ele colado, um relâmpago revela o rosto dele por um quadro.
-515. Reveal lento do primeiro vulto: ele se materializa devagar do breu antes do primeiro estalo.
-516. O braço comprido entra pela boca do poço do monta-cargas (fim do Cap III); agachar no fundo salva.
-517. Chamado em estéreo: a mesma voz chama de duas salas opostas ao mesmo tempo.
-518. Chamado por bilhete (Cap IV): um papel de criança desliza por baixo da porta com "vem".
-519. O Chamado pode se disfarçar de uma fita tocando sozinha numa sala vizinha.
-520. Silhueta idêntica à Lia na sala do Chamado: ao se aproximar, ela vira e é o rosto da venda.
-521. Fuga final (Cap V): as lâmpadas estouram em cadeia atrás de você conforme corre.
-522. Fuga final: estrondos de desabamento atrás, com tremor e poeira, empurrando sempre para a frente.
-523. Fuga final: um apagão curto no meio da corrida, guiada só pelo apito dele.
-524. A Ana dupla: duas meninas contam em estéreo; a falsa some com a luz, a verdadeira não.
-525. A Ana imita a sua lanterna com um facho falso à frente; apontar para ele revela a Ana real atrás.
-526. Dar as costas de propósito para a Ana (Cap III) a faz se aproximar e sussurrar na nuca.
-527. Procissão: ofegar fora do esconderijo apaga a vela da criança mais perto, que vira para o escuro.
-528. Procissão: uma vela ergue e ilumina o seu rosto pela fresta; prender o ar evita que a fila vire.
-529. Procissão: uma criança tropeça, a fila para por 2 s e uma delas vira a cabeça para o seu esconderijo.
-530. Standoff no batente: você e ele dos dois lados de uma porta entreaberta, a maçaneta girando.
-531. Calmaria enganosa: um período seguro e silencioso é plantado logo antes de um susto.
-532. Fingir de morta na cama: imóvel e com o ar preso, ele te cobre com o lençol murmurando "dorme" e vai.
-533. O apito furtado pode ser respondido por um segundo apito rachado, muito longe.
-534. Ele chega antes: raramente, no lugar de uma morte da Ana ou da Procissão, o Inspetor "recolhe" você.
-535. Ao voltar de uma morte, o Inspetor pode estar parado segurando a lanterna caída, apontando pro lado errado.
-536. A chamada de 1979 no cemitério: a cada nome, uma lápide responde; no fim chamam "Lia Moraes".
-537. O chão que cede (Cap IV): em plena caça, um tranco forte de susto nos túneis.
-538. Perseguição vertical (Cap IV, noite rara): ele some num buraco do teto e cai à sua frente.
-539. O jantar que olha de volta: no refeitório, um relâmpago mostra as cadeiras ocupadas por um quadro.
-540. Morte específica no armário do castigo: a vista vira de dentro, com três batidas e respiração de menino.
-541. Os vultos do Lote 5 ganham um par de olhos vermelhos brilhando sob a venda, mais perturbadores.
-542. Eco de um passo que não é seu, atrás de você, durante a procura do Inspetor.
-543. Estalo de língua colado na fresta do esconderijo quando o Inspetor passa rente a você.
-544. Passos falsos que se afastam logo antes da emboscada, para te fazer correr cedo demais.
-545. Silhueta de uma criança parada na janela, revelada por um relâmpago.
-546. A beira da tela fica vermelha e pulsa quando o Inspetor está colado em plena caça.
-547. A cantiga grave do Inspetor sobe de tom conforme ele se aproxima.
-548. Brasa e fuligem sobem atrás de você na fuga final, o incêndio de 1979 que volta.
-549. A última da fila da Procissão (a freira) para e encara o seu esconderijo por um instante.
-550. Morte pela Procissão: muitas mãos pequenas tomam a tela por um instante.
-551. O armário "ocupado" e os sustos raros são sorteados pela semente da noite, dando cara própria a cada noite.
-552. Todos os sustos novos respeitam "reduzir flashes" e "menos movimento" e nunca bloqueiam o caminho.
+825. Dedos compridos do Inspetor entram pela fresta do armário quando ele caça perto; prender o ar e ficar em silêncio afasta, fazer barulho arromba.
+826. Variação na cama: um braço comprido varre o escuro embaixo do colchão; encolher no canto e não respirar salva.
+827. Ficar tempo demais (mais de 25 s) embaixo de uma cama faz mãos surgirem do escuro, obrigando a trocar de esconderijo.
+828. Quase-encontro: ao prender o ar escondida, o Inspetor passa rente, encosta a mão na porta, respira fundo e segue sem abrir.
+829. Emboscada da parede: quando ele "desiste", às vezes fica parado em silêncio ao lado do armário em vez de ir embora.
+830. Falsa retirada: os passos somem, mas ele espera parado na única saída da sala.
+831. O armário favorito da noite pode já estar ocupado pelo rosto dele; susto forte e corrida sem morte.
+832. Falso agarrão ao sair do esconderijo com ele perto: as mãos entram, a tela pisca e tudo some, sem dano.
+833. A voz do Davi conta de dentro do seu próprio armário, junto com a sua respiração presa.
+834. Uma mão sai de um armário vazio e bate a porta, marcando aquele esconderijo como inseguro na noite.
+835. A cama pode "já ter alguém" (o Davi, presença fria): a Lia se recusa a deitar e o esconderijo fica inseguro.
+836. A Ana se deita do outro lado da cama e estende a mão até quase te tocar; a luz na cara dela a faz recuar.
+837. Alucinação: um rosto sorrindo bem atrás de você aparece no vidro por um instante.
+838. Alucinação: a Ana parada no limite da sua visão quando você gira a câmera.
+839. Alucinação: o corredor estica (efeito dolly) e a porta do fim foge; respeita "menos movimento".
+840. Alucinação: as paredes da sala incham e recuam, respirando, por alguns segundos.
+841. Alucinação: uma mancha de escuro em formato de boca no vão da porta, de onde o Chamado vem.
+842. Alucinação: um vulto pequeno de criança cruza o fundo do corredor rindo.
+843. Alucinação: a sombra do Inspetor atravessa o teto de cabeça para baixo, arranhando a madeira.
+844. Alucinação: ele aparece parado onde ninguém caberia (enfiado na parede, de ponta-cabeça, no chão) e some com a luz.
+845. Alucinação: pegadas molhadas surgem uma a uma atrás de você e param quando você para.
+846. Alucinação: o reflexo dele aparece um passo mais perto do que ele realmente está.
+847. Alucinação: um vulto no fundo repete o seu último movimento com atraso.
+848. Alucinação: um casaco no cabide infla devagar, como se respirasse.
+849. Alucinação: uma cadeira de balanço range e balança sozinha.
+850. Alucinação: o colchão de uma cama afunda no canto do olho, como se alguém tivesse deitado.
+851. Alucinação: nove pares de sapatinhos de criança enfileirados no chão ao entrar numa sala.
+852. Alucinação: nas rouparias, um dos "manequins" não era manequim e vira quando você passa de costas.
+853. Alucinação: por um quadro, o seu reflexo vira a cabeça sozinho.
+854. Alucinação: o seu reflexo demora meio segundo a te acompanhar no vidro.
+855. Alucinação: uma mãozinha de criança vem do escuro ao lado da cama; a luz ou prender o ar a recolhe.
+856. Alucinação: um vidro embaça sozinho e surge a marca de uma mão por dentro quando ele está perto.
+857. Alucinação: um Inspetor falso que NÃO some com a luz; só desaparece ao piscar (Z) ou passar por ele.
+858. Alucinação: ele está encarapitado no vão do teto e desce devagar quando você passa por baixo.
+859. Alucinação: o cobertor de uma cama sobe e desce, como se alguém respirasse embaixo.
+860. Alucinação: uma porta que você fechou range e se abre de novo sozinha.
+861. Alucinação: a sombra dele cruza, longa e torta, a parede iluminada.
+862. Alucinação: uma risada de criança desliza pela sala, de um lado para o outro.
+863. Alucinação: no escuro, uma mãozinha fria segura a sua.
+864. Ambiente: uma lâmpada estoura bem quando você passa por baixo dela.
+865. Alucinação: ele aparece parado no vão de uma porta ao fundo do corredor.
+866. Alucinação: dois olhos vermelhos piscam no escuro atrás de você.
+867. Alucinação: um choro de criança vem de dentro da parede.
+868. Os passos do Inspetor imitam o seu compasso na procura; a Lia percebe ("Ele para quando eu paro").
+869. A beira da tela pulsa com uma respiração que não é a sua, mais forte do lado de onde a ameaça vem.
+870. Sopro frio na nuca em corredores "seguros", com um sussurro atrás da câmera e nada ao virar.
+871. Deixar o diário aberto demais com ele por perto faz a cantiga dele parar lá fora.
+872. Quando o Inspetor fareja, uma legenda avisa que o ar (cortinas, velas, poeira) é puxado na direção dele.
+873. O Inspetor bate três vezes na parede, chamando, no instante em que te perde (sai da caça).
+874. O estalo de língua dele fica mais rápido e mais alto conforme ele se aproxima na caça.
+875. A respiração dele fica audível quando está colado (menos de 2 m) fora da caça.
+876. Falso "boa noite, crianças": tudo se acalma, as luzes voltam e, 8 s depois, ele volta de repente.
+877. Perseguição na chuva: cada relâmpago no cemitério congela a silhueta dele mais perto de você.
+878. Relâmpago que aproxima: fora da caça, o vulto reaparece mais perto quando você não está olhando.
+879. Cara a cara: com a lanterna apagada e ele colado, um relâmpago revela o rosto dele por um quadro.
+880. Reveal lento do primeiro vulto: ele se materializa devagar do breu antes do primeiro estalo.
+881. O braço comprido entra pela boca do poço do monta-cargas (fim do Cap III); agachar no fundo salva.
+882. Chamado em estéreo: a mesma voz chama de duas salas opostas ao mesmo tempo.
+883. Chamado por bilhete (Cap IV): um papel de criança desliza por baixo da porta com "vem".
+884. O Chamado pode se disfarçar de uma fita tocando sozinha numa sala vizinha.
+885. Silhueta idêntica à Lia na sala do Chamado: ao se aproximar, ela vira e é o rosto da venda.
+886. Fuga final (Cap V): as lâmpadas estouram em cadeia atrás de você conforme corre.
+887. Fuga final: estrondos de desabamento atrás, com tremor e poeira, empurrando sempre para a frente.
+888. Fuga final: um apagão curto no meio da corrida, guiada só pelo apito dele.
+889. A Ana dupla: duas meninas contam em estéreo; a falsa some com a luz, a verdadeira não.
+890. A Ana imita a sua lanterna com um facho falso à frente; apontar para ele revela a Ana real atrás.
+891. Dar as costas de propósito para a Ana (Cap III) a faz se aproximar e sussurrar na nuca.
+892. Procissão: ofegar fora do esconderijo apaga a vela da criança mais perto, que vira para o escuro.
+893. Procissão: uma vela ergue e ilumina o seu rosto pela fresta; prender o ar evita que a fila vire.
+894. Procissão: uma criança tropeça, a fila para por 2 s e uma delas vira a cabeça para o seu esconderijo.
+895. Standoff no batente: você e ele dos dois lados de uma porta entreaberta, a maçaneta girando.
+896. Calmaria enganosa: um período seguro e silencioso é plantado logo antes de um susto.
+897. Fingir de morta na cama: imóvel e com o ar preso, ele te cobre com o lençol murmurando "dorme" e vai.
+898. O apito furtado pode ser respondido por um segundo apito rachado, muito longe.
+899. Ele chega antes: raramente, no lugar de uma morte da Ana ou da Procissão, o Inspetor "recolhe" você.
+900. Ao voltar de uma morte, o Inspetor pode estar parado segurando a lanterna caída, apontando pro lado errado.
+901. A chamada de 1979 no cemitério: a cada nome, uma lápide responde; no fim chamam "Lia Moraes".
+902. O chão que cede (Cap IV): em plena caça, um tranco forte de susto nos túneis.
+903. Perseguição vertical (Cap IV, noite rara): ele some num buraco do teto e cai à sua frente.
+904. O jantar que olha de volta: no refeitório, um relâmpago mostra as cadeiras ocupadas por um quadro.
+905. Morte específica no armário do castigo: a vista vira de dentro, com três batidas e respiração de menino.
+906. Os vultos do Lote 5 ganham um par de olhos vermelhos brilhando sob a venda, mais perturbadores.
+907. Eco de um passo que não é seu, atrás de você, durante a procura do Inspetor.
+908. Estalo de língua colado na fresta do esconderijo quando o Inspetor passa rente a você.
+909. Passos falsos que se afastam logo antes da emboscada, para te fazer correr cedo demais.
+910. Silhueta de uma criança parada na janela, revelada por um relâmpago.
+911. A beira da tela fica vermelha e pulsa quando o Inspetor está colado em plena caça.
+912. A cantiga grave do Inspetor sobe de tom conforme ele se aproxima.
+913. Brasa e fuligem sobem atrás de você na fuga final, o incêndio de 1979 que volta.
+914. A última da fila da Procissão (a freira) para e encara o seu esconderijo por um instante.
+915. Morte pela Procissão: muitas mãos pequenas tomam a tela por um instante.
+916. O armário "ocupado" e os sustos raros são sorteados pela semente da noite, dando cara própria a cada noite.
+917. Todos os sustos novos respeitam "reduzir flashes" e "menos movimento" e nunca bloqueiam o caminho.
 
 ### Áudio (90)
 
-553. Um grave abaixo de 40 Hz treme a tela no instante exato em que o Inspetor decide caçar.
-554. Um zumbido grave cresce quando o Inspetor divide a sala com você, invisível no escuro.
-555. Um fio de zumbido agudo soa quando o Inspetor vira a cara para a sua direção.
-556. A respiração rasgada dele vaza pela fresta quando ele espera do outro lado de uma porta.
-557. A respiração rasgada dele vaza abafada pela parede quando ele está na sala ao lado.
-558. Escondida colada nele, dá para ouvir o ar entrando e saindo pelos dentes dele.
-559. O Inspetor passa a tatear o chão com uma bengala, em ritmo que acelera conforme o estado.
-560. A bengala muda de tom ao bater num móvel.
-561. A bengala ecoa mais molhada e longa nos túneis.
-562. Um sub-grave quase inaudível avisa quando o molho de chaves dele cala de repente.
-563. Uma legenda avisa quando o gerador está abafando os seus passos.
-564. Perto e sem ver, o Inspetor tem a assinatura sonora de uma corda grave arranhada.
-565. Perto e sem ver, a Ana tem a assinatura sonora de uma caixinha desafinada.
-566. Perto e sem ver, a Procissão tem a assinatura sonora de um coro de crianças.
-567. Perto e sem ver, o Chamado tem a assinatura sonora de uma voz ao contrário.
-568. Na nona badalada tudo congela e silencia: a Hora do Silêncio.
-569. Fazer barulho durante a Hora do Silêncio vira um ruído enorme que as entidades captam.
-570. Com medo alto, o próprio coração vaza durante a Hora do Silêncio e pode te entregar.
-571. Com ele muito perto, um segundo batimento soa do lado de onde ele vem, como bússola.
-572. Com ele a menos de 3 m, um segundo coração grave bate junto com o seu.
-573. Do Capítulo III em diante, a Ana completa a cantiga da caixinha de outro canto.
-574. Na caçada durante a Procissão, o coro da fila vira a voz rachada do Inspetor.
-575. O coro da Procissão sobe e desce de volume conforme a fila se aproxima ou se afasta.
-576. Vozes de criança sobem onde você fica parada tempo demais, empurrando você a se mexer.
-577. Um sussurro ao contrário cresce um instante antes de ele entrar na sala onde você está.
-578. Um choro de menino anda pelas salas e puxa você para o lado errado.
-579. A Ana reproduz o clique da sua lanterna de outra direção para te fazer olhar errado.
-580. Ao passar por armários vazios, ouve-se uma respiração infantil presa, às vezes um soluço.
-581. Perto do Inspetor em pausa de memória, o batimento que se ouve é de uma criança assustada.
-582. Na caçada, por baixo do chiado dele, ouve-se o menino Moacir chorando.
-583. Nos túneis, uma batida corre pelos canos vindo de longe.
-584. A respiração dele passa a servir de régua contínua de distância.
-585. Essa respiração-régua é binaural: vem do lado exato de onde ele está.
-586. Quando o Inspetor entra em escuta, o mundo cala de repente como aviso.
-587. Todo o som é cortado por um instante logo antes do bote.
-588. Nos túneis, um estalo-eco chega do lado oposto para enganar a sua audição.
-589. Na procura, o Inspetor chama pelos nomes das crianças de 1979, errando o seu.
-590. Nas pausas de memória, o hino cantarolado serve de radar: some conforme ele se afasta.
-591. Perto da Ana com medo alto, o coração sincroniza e acelera com a contagem dela.
-592. Colado atrás de você no escuro, a respiração dele vem claramente de trás.
-593. Na reza, a voz dele oscila do chiado do monstro para a de um menino cansado.
-594. Depois de fazer carinho no gato Breu, um Chamado às vezes imita o miado dele.
-595. Raramente, na caçada, o apito soa do lado oposto de onde ele realmente está.
-596. Ignorar o Chamado por muito tempo faz duas vozes chamarem de lados opostos ao mesmo tempo.
-597. Nos capítulos finais, um interfone antigo às vezes toca numa sala.
-598. Numa emboscada, ele às vezes reproduz o seu último barulho vindo de uma sala errada.
-599. O jogo passa a guardar o seu último barulho para ele poder imitá-lo.
-600. Uma trilha de caça pulsante sobe de volume e andamento conforme ele chega perto.
-601. Os passos dele ganham eco longo em salas grandes como o refeitório e a capela.
-602. Nos túneis, a sua respiração volta distorcida pelos canos ao prender e soltar o ar.
-603. O coro da Procissão muda de timbre por andar (térreo, superior, túneis, cemitério).
-604. No cemitério, quando a procissão do caixão para perto, todo o som some até sobrar a respiração.
-605. Prender o ar perto dele faz o seu coração desacelerar e perder o compasso.
-606. Quem ouviu a fita 2 ganha a reza da Celeste como radar, que sobe quando ele se aproxima do esconderijo.
-607. O Chamado às vezes imita o gerador, o telefone, a fita ou a sineta vindo de uma sala errada.
-608. Na caçada, ele sincroniza os passos com os seus por um momento e quebra de propósito.
-609. O fio de zumbido da venda também cresce com o medo alto.
-610. Com medo acima de 90 e ele colado, a tela pulsa no ritmo do seu coração.
-611. Um realce na cantiga marca o momento em que a fúria do Inspetor cresce.
-612. O apito dele sobe meio-tom por capítulo e racha mais com a fúria quando a caça começa.
-613. O estalo de língua fica mais abafado quando ele está atrás da sua cabeça.
-614. O estalo de língua fica mais seco e metálico a cada capítulo.
-615. A cantiga que ele cantarola acelera e sobe de tom conforme a fúria aumenta.
-616. O sino do fim soa em subgrave e faz o chão tremer junto.
-617. A respiração rasgada dele fica mais encatarrada a cada capítulo.
-618. A fungada dele fica mais doente e grave nos capítulos finais.
-619. O chiado do bote ganha um subgrave de impacto.
-620. A inspiração funda dele fica mais longa e trêmula quando está furioso.
-621. O arranhar de unhas sobe de intensidade conforme ele chega perto.
-622. Os passos dele ecoam na nave da capela e no cemitério.
-623. Caçando e colado em você, a rajada de estalos de língua fica mais longa e aguda.
-624. Nos capítulos finais, a contagem da Ana desafina para baixo.
-625. O "silêncio..." sussurrado da Ana ganha cauda longa e encharcada nos túneis.
-626. Os pés da Ana pisam na água nos túneis.
-627. Furioso, o Inspetor chacoalha a maçaneta mais vezes e mais forte.
-628. O grito do Inspetor desce de tom a cada capítulo, ficando mais monstruoso.
-629. No cemitério, o sino distante soa abafado pela chuva e um tom abaixo.
-630. Furtado o apito, o assopro dele passa a sair ferido, só chiado.
-631. A corrente dele chacoalha com eco longo nos túneis.
-632. O sopro de criança colado na sua nuca passa de um ouvido ao outro.
-633. A pancada dele na porta ecoa pela galeria e pela nave.
-634. O arrastar do ar dele fica mais longo e sedento quando está furioso.
-635. Na caçada, a bengala dele vira um arrastão contínuo no chão.
-636. No cemitério, o estalo de língua dele também ecoa pela nave.
-637. Quando a Procissão vira na sua direção, o som some de repente.
-638. Um zumbido grave também cresce quando a Ana divide a sala com você, invisível.
-639. A fila da Procissão sussurra "silêncio... silêncio..." enquanto passa.
-640. A cantiga da caixinha vira tom menor quando ele caça ou a Ana se aproxima.
-641. Furioso, ele esmurra o armário onde você se esconde com um subgrave.
-642. A batida dele ressoa pela galeria nos túneis.
+918. Um grave abaixo de 40 Hz treme a tela no instante exato em que o Inspetor decide caçar.
+919. Um zumbido grave cresce quando o Inspetor divide a sala com você, invisível no escuro.
+920. Um fio de zumbido agudo soa quando o Inspetor vira a cara para a sua direção.
+921. A respiração rasgada dele vaza pela fresta quando ele espera do outro lado de uma porta.
+922. A respiração rasgada dele vaza abafada pela parede quando ele está na sala ao lado.
+923. Escondida colada nele, dá para ouvir o ar entrando e saindo pelos dentes dele.
+924. O Inspetor passa a tatear o chão com uma bengala, em ritmo que acelera conforme o estado.
+925. A bengala muda de tom ao bater num móvel.
+926. A bengala ecoa mais molhada e longa nos túneis.
+927. Um sub-grave quase inaudível avisa quando o molho de chaves dele cala de repente.
+928. Uma legenda avisa quando o gerador está abafando os seus passos.
+929. Perto e sem ver, o Inspetor tem a assinatura sonora de uma corda grave arranhada.
+930. Perto e sem ver, a Ana tem a assinatura sonora de uma caixinha desafinada.
+931. Perto e sem ver, a Procissão tem a assinatura sonora de um coro de crianças.
+932. Perto e sem ver, o Chamado tem a assinatura sonora de uma voz ao contrário.
+933. Na nona badalada tudo congela e silencia: a Hora do Silêncio.
+934. Fazer barulho durante a Hora do Silêncio vira um ruído enorme que as entidades captam.
+935. Com medo alto, o próprio coração vaza durante a Hora do Silêncio e pode te entregar.
+936. Com ele muito perto, um segundo batimento soa do lado de onde ele vem, como bússola.
+937. Com ele a menos de 3 m, um segundo coração grave bate junto com o seu.
+938. Do Capítulo III em diante, a Ana completa a cantiga da caixinha de outro canto.
+939. Na caçada durante a Procissão, o coro da fila vira a voz rachada do Inspetor.
+940. O coro da Procissão sobe e desce de volume conforme a fila se aproxima ou se afasta.
+941. Vozes de criança sobem onde você fica parada tempo demais, empurrando você a se mexer.
+942. Um sussurro ao contrário cresce um instante antes de ele entrar na sala onde você está.
+943. Um choro de menino anda pelas salas e puxa você para o lado errado.
+944. A Ana reproduz o clique da sua lanterna de outra direção para te fazer olhar errado.
+945. Ao passar por armários vazios, ouve-se uma respiração infantil presa, às vezes um soluço.
+946. Perto do Inspetor em pausa de memória, o batimento que se ouve é de uma criança assustada.
+947. Na caçada, por baixo do chiado dele, ouve-se o menino Moacir chorando.
+948. Nos túneis, uma batida corre pelos canos vindo de longe.
+949. A respiração dele passa a servir de régua contínua de distância.
+950. Essa respiração-régua é binaural: vem do lado exato de onde ele está.
+951. Quando o Inspetor entra em escuta, o mundo cala de repente como aviso.
+952. Todo o som é cortado por um instante logo antes do bote.
+953. Nos túneis, um estalo-eco chega do lado oposto para enganar a sua audição.
+954. Na procura, o Inspetor chama pelos nomes das crianças de 1979, errando o seu.
+955. Nas pausas de memória, o hino cantarolado serve de radar: some conforme ele se afasta.
+956. Perto da Ana com medo alto, o coração sincroniza e acelera com a contagem dela.
+957. Colado atrás de você no escuro, a respiração dele vem claramente de trás.
+958. Na reza, a voz dele oscila do chiado do monstro para a de um menino cansado.
+959. Depois de fazer carinho no gato Breu, um Chamado às vezes imita o miado dele.
+960. Raramente, na caçada, o apito soa do lado oposto de onde ele realmente está.
+961. Ignorar o Chamado por muito tempo faz duas vozes chamarem de lados opostos ao mesmo tempo.
+962. Nos capítulos finais, um interfone antigo às vezes toca numa sala.
+963. Numa emboscada, ele às vezes reproduz o seu último barulho vindo de uma sala errada.
+964. O jogo passa a guardar o seu último barulho para ele poder imitá-lo.
+965. Uma trilha de caça pulsante sobe de volume e andamento conforme ele chega perto.
+966. Os passos dele ganham eco longo em salas grandes como o refeitório e a capela.
+967. Nos túneis, a sua respiração volta distorcida pelos canos ao prender e soltar o ar.
+968. O coro da Procissão muda de timbre por andar (térreo, superior, túneis, cemitério).
+969. No cemitério, quando a procissão do caixão para perto, todo o som some até sobrar a respiração.
+970. Prender o ar perto dele faz o seu coração desacelerar e perder o compasso.
+971. Quem ouviu a fita 2 ganha a reza da Celeste como radar, que sobe quando ele se aproxima do esconderijo.
+972. O Chamado às vezes imita o gerador, o telefone, a fita ou a sineta vindo de uma sala errada.
+973. Na caçada, ele sincroniza os passos com os seus por um momento e quebra de propósito.
+974. O fio de zumbido da venda também cresce com o medo alto.
+975. Com medo acima de 90 e ele colado, a tela pulsa no ritmo do seu coração.
+976. Um realce na cantiga marca o momento em que a fúria do Inspetor cresce.
+977. O apito dele sobe meio-tom por capítulo e racha mais com a fúria quando a caça começa.
+978. O estalo de língua fica mais abafado quando ele está atrás da sua cabeça.
+979. O estalo de língua fica mais seco e metálico a cada capítulo.
+980. A cantiga que ele cantarola acelera e sobe de tom conforme a fúria aumenta.
+981. O sino do fim soa em subgrave e faz o chão tremer junto.
+982. A respiração rasgada dele fica mais encatarrada a cada capítulo.
+983. A fungada dele fica mais doente e grave nos capítulos finais.
+984. O chiado do bote ganha um subgrave de impacto.
+985. A inspiração funda dele fica mais longa e trêmula quando está furioso.
+986. O arranhar de unhas sobe de intensidade conforme ele chega perto.
+987. Os passos dele ecoam na nave da capela e no cemitério.
+988. Caçando e colado em você, a rajada de estalos de língua fica mais longa e aguda.
+989. Nos capítulos finais, a contagem da Ana desafina para baixo.
+990. O "silêncio..." sussurrado da Ana ganha cauda longa e encharcada nos túneis.
+991. Os pés da Ana pisam na água nos túneis.
+992. Furioso, o Inspetor chacoalha a maçaneta mais vezes e mais forte.
+993. O grito do Inspetor desce de tom a cada capítulo, ficando mais monstruoso.
+994. No cemitério, o sino distante soa abafado pela chuva e um tom abaixo.
+995. Furtado o apito, o assopro dele passa a sair ferido, só chiado.
+996. A corrente dele chacoalha com eco longo nos túneis.
+997. O sopro de criança colado na sua nuca passa de um ouvido ao outro.
+998. A pancada dele na porta ecoa pela galeria e pela nave.
+999. O arrastar do ar dele fica mais longo e sedento quando está furioso.
+1000. Na caçada, a bengala dele vira um arrastão contínuo no chão.
+1001. No cemitério, o estalo de língua dele também ecoa pela nave.
+1002. Quando a Procissão vira na sua direção, o som some de repente.
+1003. Um zumbido grave também cresce quando a Ana divide a sala com você, invisível.
+1004. A fila da Procissão sussurra "silêncio... silêncio..." enquanto passa.
+1005. A cantiga da caixinha vira tom menor quando ele caça ou a Ana se aproxima.
+1006. Furioso, ele esmurra o armário onde você se esconde com um subgrave.
+1007. A batida dele ressoa pela galeria nos túneis.
 
-### Visual e luz (94)
+### Visual e luz (164)
 
-643. A venda do Inspetor virou um pano com trama e costura desenhado em canvas, no lugar da faixa lisa.
-644. A venda fica visivelmente mais suja e torta a partir do Capítulo III.
-645. No Capítulo V a venda está encharcada e caída, deixando ver o vinco das órbitas costuradas sob o pano.
-646. Iluminar o rosto dele bem de perto (menos de 1,5 m) revela, uma vez por jogo, as pálpebras costuradas com linha preta.
-647. A Lia reage a essa revelação com uma fala: "As pálpebras dele... estão costuradas."
-648. Essa revelação destrava uma conquista escondida.
-649. Depois da revelação, a venda volta ao lugar aos poucos, sem corte seco.
-650. No bote e no agarrão de pertinho, a venda escorrega e aparecem as órbitas vazias costuradas com linha grossa.
-651. Dois pontos úmidos brilham sob a venda quando o facho acha o rosto, como se a luz achasse os olhos cegos.
-652. O brilho desses olhos cresce conforme o facho fica mais centrado no rosto.
-653. No modo caçada surge, por baixo da venda, um risco de sorriso largo pintado.
-654. O sorriso da caçada entra e sai suavemente conforme ele muda de estado.
-655. Com a fúria alta, um escorrido vermelho desce pela venda.
-656. A partir do Capítulo III, dois olhos de giz de criança aparecem desenhados por cima da venda.
-657. Os olhos de giz só aparecem quando a luz está mesmo no rosto dele, de perto.
-658. Encarar o rosto dele no facho por mais de 4 s faz piscar, por frações de segundo, a cara queimada de 1979.
-659. Quanto mais tempo a luz fica nele, mais frequente volta o flash queimado.
-660. No medo acima de 95, com ele no feixe, o rosto também "troca" pela versão queimada por alguns quadros.
-661. Na reza, e do Capítulo IV em diante, um filete escuro escorre da venda como lágrima preta.
-662. Esse escorrido vira uma gota que cresce e pinga, marcando o chão onde ele parou.
-663. A venda fica translúcida por um instante no facho forte, deixando ver que atrás não há olhos.
-664. Quando ele grita no bote e no agarrão, a mandíbula desencaixa bem além do humano e a boca vira um vão escuro.
-665. Cada mão do Inspetor ganhou um dedo a mais.
-666. Os dedos dele ficaram mais compridos, menos humanos de perto.
-667. As pontas dos dedos ganharam unhas pretas e compridas.
-668. O molho na cintura, iluminado de perto, mostra que não são chaves: são dentes de leite num cordão.
-669. A Lia percebe isso com uma fala: "Aquilo não são chaves..."
-670. O corpo e o casaco dele escurecem com fuligem a cada capítulo que passa.
-671. A cabeça dele pende mais torta conforme a noite avança.
-672. No Capítulo V o corpo dele fica translúcido e fuliginoso: a luz atravessa as bordas.
-673. O pescoço dele estica alguns centímetros para cima quando ele para para escutar.
-674. Na caçada ele solta fiapos e poeira do casaco, que caem no chão por onde corre.
-675. No frio dos túneis e do cemitério, o hálito dele vira vapor branco que sobe antes de aparecer o corpo.
-676. Na caçada os dedos arranham o chão e deixam riscos finos que somem devagar.
-677. No cemitério ele deixa pegadas de terra úmida por onde passou.
-678. Nos capítulos finais ele deixa pegadas de fuligem fria.
-679. Nos túneis ele deixa marcas de mão molhada na parede, guiando-se por ela.
-680. Esses rastros de chão e parede somem com o tempo e são limpos ao trocar de mapa.
-681. O vulto dele no escuro tem braços longuíssimos, que recolhem ao normal quando ele vai dar o bote.
-682. Quando o vulto some ao tocar a luz, fica uma silhueta "queimada" na tela por um instante, no lugar exato onde ele estava.
-683. O rosto da Ana troca a cada vez que ela reaparece, e nunca é o mesmo duas vezes seguidas.
-684. Variação de rosto da Ana: sorriso largo demais.
-685. Variação de rosto da Ana: sem boca.
-686. Variação de rosto da Ana: olhos deslocados e boca no lugar errado.
-687. Variação de rosto da Ana: a boca no lugar dos olhos.
-688. Fiapos de cabelo sempre cruzam o rosto da Ana, então ele nunca se monta inteiro.
-689. O rosto da Ana fica mais forte quando ela está na sua luz e desbota no escuro.
-690. Quando as luzes piscam perto da Ana, o rosto vira o de sorriso rasgado por um ou dois quadros.
-691. Encará-la por tempo demais faz a cabeça da Ana girar devagar além do humano, com um estalo de ossos.
-692. Quando a cabeça dela entorta muito, o cabelo cai para a frente e cobre o rosto.
-693. Encarar a Ana vai apodrecendo a pele dela em estágios: pálida, acinzentada, encharcada e escura.
-694. Parada e encarada, a Ana flutua cerca de 2 cm do chão, sem pés.
-695. A sombra da Ana no chão sempre aponta para a posição da Lia.
-696. A sombra dela se projeta um passo à frente do corpo, avisando para onde ela vai.
-697. No escuro, quando a Ana se move sem ser vista, os olhos dela deixam um leve rastro luminoso.
-698. O cabelo molhado da Ana pinga e deixa marcas escuras no chão.
-699. Os olhos pretos da Ana acendem num brilho fraco enquanto ela conta no escuro.
-700. As crianças da Procissão agora têm rosto, revelado pela luz das velas.
-701. Os rostos das crianças estão marcados pelo fogo de 1979.
-702. As crianças da Procissão não têm boca.
-703. Quando a fila para e vira o rosto, as crianças flutuam cerca de 2 cm do chão, sem pés.
-704. Olhos pintados na nuca das crianças piscam quando a sua luz passa por trás da fila.
-705. As nove velas da fila funcionam como cronômetro: apagam uma a uma durante a passagem.
-706. Quando a última vela apaga, a passagem terminou — um relógio visual honesto dentro do esconderijo.
-707. Na caçada a vinheta escura fecha nas bordas, como visão em túnel de pânico.
-708. Com o medo alto, essa mesma vinheta de pânico aperta mesmo fora da caçada.
-709. Na caçada o grão de filme fica mais forte.
-710. A borda da tela ganha um chuvisco quando a cabeça do Inspetor está apontada para você.
-711. O chuvisco da borda some quando ele desvia o rosto.
-712. Com vida abaixo de 30, uma vinheta vermelha pulsa nas bordas no ritmo do batimento.
-713. Quanto menor a vida, mais forte e rápido fica o pulso vermelho.
-714. Com a Ana muito perto e você em pânico, a "visão" dela invade a tela em tons de giz, com a contagem sobreposta.
-715. Na fuga final, depois do sino, luzes de emergência vermelhas piscam na tela.
-716. Num susto raro durante a caçada, a tela vira por meio segundo o "ponto de vista" cego dele, em negativo de ruído.
-717. A Ana na periferia da visão aparece como um borrão escuro, que some quando você centraliza a mira nela.
-718. Pares de olhos piscam no fundo das salas escuras e somem quando a luz chega perto.
-719. Esses olhos no escuro reaparecem em pontos diferentes a cada vez.
-720. Se a lanterna ou uma lâmpada acesa os alcança, os olhos somem na hora.
-721. Todos os efeitos fortes (flash queimado, estática de borda, sorriso rasgado, grão, susto do ponto de vista) respeitam a opção "reduzir flashes".
-722. A vinheta vermelha de vida baixa e a visão da Ana entram suavizadas com "reduzir flashes" ligado.
-723. A Ana e o Inspetor param de piscar efeitos agressivos quando a acessibilidade pede.
-724. Os decalques de rastro usam um conjunto reaproveitado de peças, sem pesar na memória.
-725. Novo módulo de visual e luz das entidades (src/monstros-visual.js), ligado ao motor por poucas linhas de gancho.
-726. O novo módulo entrou na lista do Service Worker para o jogo continuar abrindo sem internet.
-727. A boca do Inspetor é uma linha costurada de pontos escuros que se rasga escancarada no grito e volta a costurar na ronda.
-728. A costura da boca aparece nítida de perto e mais fraca de longe.
-729. A mandíbula volta a fechar sozinha quando ele se acalma.
-730. A gota da venda reinicia depois de pingar, voltando a escorrer devagar.
-731. O rosto queimado volta ao normal sozinho quando você tira a luz do rosto dele.
-732. Os fiapos de casaco caem, perdem força e desaparecem no chão.
-733. O vapor do hálito sobe, cresce e se dissipa aos poucos.
-734. Os efeitos de tela desligam na tela de morte e fora da partida.
-735. As partículas e decalques são limpos ao trocar de mapa para não vazarem entre capítulos.
-736. O texto de cada rosto, venda e rastro é 100% canvas e som procedural: nenhum arquivo externo novo.
+1008. A venda do Inspetor virou um pano com trama e costura desenhado em canvas, no lugar da faixa lisa.
+1009. A venda fica visivelmente mais suja e torta a partir do Capítulo III.
+1010. No Capítulo V a venda está encharcada e caída, deixando ver o vinco das órbitas costuradas sob o pano.
+1011. Iluminar o rosto dele bem de perto (menos de 1,5 m) revela, uma vez por jogo, as pálpebras costuradas com linha preta.
+1012. A Lia reage a essa revelação com uma fala: "As pálpebras dele... estão costuradas."
+1013. Essa revelação destrava uma conquista escondida.
+1014. Depois da revelação, a venda volta ao lugar aos poucos, sem corte seco.
+1015. No bote e no agarrão de pertinho, a venda escorrega e aparecem as órbitas vazias costuradas com linha grossa.
+1016. Dois pontos úmidos brilham sob a venda quando o facho acha o rosto, como se a luz achasse os olhos cegos.
+1017. O brilho desses olhos cresce conforme o facho fica mais centrado no rosto.
+1018. No modo caçada surge, por baixo da venda, um risco de sorriso largo pintado.
+1019. O sorriso da caçada entra e sai suavemente conforme ele muda de estado.
+1020. Com a fúria alta, um escorrido vermelho desce pela venda.
+1021. A partir do Capítulo III, dois olhos de giz de criança aparecem desenhados por cima da venda.
+1022. Os olhos de giz só aparecem quando a luz está mesmo no rosto dele, de perto.
+1023. Encarar o rosto dele no facho por mais de 4 s faz piscar, por frações de segundo, a cara queimada de 1979.
+1024. Quanto mais tempo a luz fica nele, mais frequente volta o flash queimado.
+1025. No medo acima de 95, com ele no feixe, o rosto também "troca" pela versão queimada por alguns quadros.
+1026. Na reza, e do Capítulo IV em diante, um filete escuro escorre da venda como lágrima preta.
+1027. Esse escorrido vira uma gota que cresce e pinga, marcando o chão onde ele parou.
+1028. A venda fica translúcida por um instante no facho forte, deixando ver que atrás não há olhos.
+1029. Quando ele grita no bote e no agarrão, a mandíbula desencaixa bem além do humano e a boca vira um vão escuro.
+1030. Cada mão do Inspetor ganhou um dedo a mais.
+1031. Os dedos dele ficaram mais compridos, menos humanos de perto.
+1032. As pontas dos dedos ganharam unhas pretas e compridas.
+1033. O molho na cintura, iluminado de perto, mostra que não são chaves: são dentes de leite num cordão.
+1034. A Lia percebe isso com uma fala: "Aquilo não são chaves..."
+1035. O corpo e o casaco dele escurecem com fuligem a cada capítulo que passa.
+1036. A cabeça dele pende mais torta conforme a noite avança.
+1037. No Capítulo V o corpo dele fica translúcido e fuliginoso: a luz atravessa as bordas.
+1038. O pescoço dele estica alguns centímetros para cima quando ele para para escutar.
+1039. Na caçada ele solta fiapos e poeira do casaco, que caem no chão por onde corre.
+1040. No frio dos túneis e do cemitério, o hálito dele vira vapor branco que sobe antes de aparecer o corpo.
+1041. Na caçada os dedos arranham o chão e deixam riscos finos que somem devagar.
+1042. No cemitério ele deixa pegadas de terra úmida por onde passou.
+1043. Nos capítulos finais ele deixa pegadas de fuligem fria.
+1044. Nos túneis ele deixa marcas de mão molhada na parede, guiando-se por ela.
+1045. Esses rastros de chão e parede somem com o tempo e são limpos ao trocar de mapa.
+1046. O vulto dele no escuro tem braços longuíssimos, que recolhem ao normal quando ele vai dar o bote.
+1047. Quando o vulto some ao tocar a luz, fica uma silhueta "queimada" na tela por um instante, no lugar exato onde ele estava.
+1048. O rosto da Ana troca a cada vez que ela reaparece, e nunca é o mesmo duas vezes seguidas.
+1049. Variação de rosto da Ana: sorriso largo demais.
+1050. Variação de rosto da Ana: sem boca.
+1051. Variação de rosto da Ana: olhos deslocados e boca no lugar errado.
+1052. Variação de rosto da Ana: a boca no lugar dos olhos.
+1053. Fiapos de cabelo sempre cruzam o rosto da Ana, então ele nunca se monta inteiro.
+1054. O rosto da Ana fica mais forte quando ela está na sua luz e desbota no escuro.
+1055. Quando as luzes piscam perto da Ana, o rosto vira o de sorriso rasgado por um ou dois quadros.
+1056. Encará-la por tempo demais faz a cabeça da Ana girar devagar além do humano, com um estalo de ossos.
+1057. Quando a cabeça dela entorta muito, o cabelo cai para a frente e cobre o rosto.
+1058. Encarar a Ana vai apodrecendo a pele dela em estágios: pálida, acinzentada, encharcada e escura.
+1059. Parada e encarada, a Ana flutua cerca de 2 cm do chão, sem pés.
+1060. A sombra da Ana no chão sempre aponta para a posição da Lia.
+1061. A sombra dela se projeta um passo à frente do corpo, avisando para onde ela vai.
+1062. No escuro, quando a Ana se move sem ser vista, os olhos dela deixam um leve rastro luminoso.
+1063. O cabelo molhado da Ana pinga e deixa marcas escuras no chão.
+1064. Os olhos pretos da Ana acendem num brilho fraco enquanto ela conta no escuro.
+1065. As crianças da Procissão agora têm rosto, revelado pela luz das velas.
+1066. Os rostos das crianças estão marcados pelo fogo de 1979.
+1067. As crianças da Procissão não têm boca.
+1068. Quando a fila para e vira o rosto, as crianças flutuam cerca de 2 cm do chão, sem pés.
+1069. Olhos pintados na nuca das crianças piscam quando a sua luz passa por trás da fila.
+1070. As nove velas da fila funcionam como cronômetro: apagam uma a uma durante a passagem.
+1071. Quando a última vela apaga, a passagem terminou — um relógio visual honesto dentro do esconderijo.
+1072. Na caçada a vinheta escura fecha nas bordas, como visão em túnel de pânico.
+1073. Com o medo alto, essa mesma vinheta de pânico aperta mesmo fora da caçada.
+1074. Na caçada o grão de filme fica mais forte.
+1075. A borda da tela ganha um chuvisco quando a cabeça do Inspetor está apontada para você.
+1076. O chuvisco da borda some quando ele desvia o rosto.
+1077. Com vida abaixo de 30, uma vinheta vermelha pulsa nas bordas no ritmo do batimento.
+1078. Quanto menor a vida, mais forte e rápido fica o pulso vermelho.
+1079. Com a Ana muito perto e você em pânico, a "visão" dela invade a tela em tons de giz, com a contagem sobreposta.
+1080. Na fuga final, depois do sino, luzes de emergência vermelhas piscam na tela.
+1081. Num susto raro durante a caçada, a tela vira por meio segundo o "ponto de vista" cego dele, em negativo de ruído.
+1082. A Ana na periferia da visão aparece como um borrão escuro, que some quando você centraliza a mira nela.
+1083. Pares de olhos piscam no fundo das salas escuras e somem quando a luz chega perto.
+1084. Esses olhos no escuro reaparecem em pontos diferentes a cada vez.
+1085. Se a lanterna ou uma lâmpada acesa os alcança, os olhos somem na hora.
+1086. Todos os efeitos fortes (flash queimado, estática de borda, sorriso rasgado, grão, susto do ponto de vista) respeitam a opção "reduzir flashes".
+1087. A vinheta vermelha de vida baixa e a visão da Ana entram suavizadas com "reduzir flashes" ligado.
+1088. A Ana e o Inspetor param de piscar efeitos agressivos quando a acessibilidade pede.
+1089. Os decalques de rastro usam um conjunto reaproveitado de peças, sem pesar na memória.
+1090. Novo módulo de visual e luz das entidades (src/monstros-visual.js), ligado ao motor por poucas linhas de gancho.
+1091. O novo módulo entrou na lista do Service Worker para o jogo continuar abrindo sem internet.
+1092. A boca do Inspetor é uma linha costurada de pontos escuros que se rasga escancarada no grito e volta a costurar na ronda.
+1093. A costura da boca aparece nítida de perto e mais fraca de longe.
+1094. A mandíbula volta a fechar sozinha quando ele se acalma.
+1095. A gota da venda reinicia depois de pingar, voltando a escorrer devagar.
+1096. O rosto queimado volta ao normal sozinho quando você tira a luz do rosto dele.
+1097. Os fiapos de casaco caem, perdem força e desaparecem no chão.
+1098. O vapor do hálito sobe, cresce e se dissipa aos poucos.
+1099. Os efeitos de tela desligam na tela de morte e fora da partida.
+1100. As partículas e decalques são limpos ao trocar de mapa para não vazarem entre capítulos.
+1101. O texto de cada rosto, venda e rastro é 100% canvas e som procedural: nenhum arquivo externo novo.
+1102. A postura do Inspetor cai cada vez mais para a frente a cada capítulo, quase de quatro no Capítulo V.
+1103. Ele se inclina ainda mais na caçada.
+1104. E se dobra mais ainda no instante do bote.
+1105. O corpo dele cresce aos poucos por capítulo, ocupando mais o vão da porta.
+1106. Os braços alongam por capítulo até quase arrastarem no chão no Capítulo V.
+1107. Os braços esticam mais durante a caçada.
+1108. As unhas das mãos crescem por capítulo.
+1109. As unhas disparam para a frente no instante do bote, como garras.
+1110. A mandíbula já nasce mais desencaixada a cada capítulo, mesmo fora da caça.
+1111. No Capítulo V a mandíbula fica pendida, caída.
+1112. No Capítulo V, sob a venda, dois olhos de brasa apagada pulsam no lugar dos olhos.
+1113. Essas brasas brilham mais forte no instante do bote.
+1114. E brilham mais conforme a fúria sobe.
+1115. No Capítulo V, rachaduras de brasa pulsam no peito dele no compasso da fúria.
+1116. As rachaduras de brasa se abrem mais quando ele fareja ou inspira.
+1117. Uma luz de brasa curta vaza do peito quando ele inspira no Capítulo V.
+1118. A partir do Capítulo IV, rostinhos de criança pulsam sob a pele quando iluminado de perto.
+1119. Esses rostinhos pulsam como se estivessem presos vivos sob a pele.
+1120. Veias de fuligem sobem pelo rosto dele, mais fortes a cada capítulo.
+1121. Na escuta, o pescoço tomba para trás e o rosto varre o teto com a boca à mostra.
+1122. No Capítulo V, ao entrar na caça, o pescoço trava de lado num ângulo quebrado.
+1123. Esse travar do pescoço vem com um estalo seco de osso.
+1124. Na passagem, a cabeça dele gira para acompanhar você além do humano, mesmo sem ter ouvido.
+1125. No clímax do Capítulo V (sino ou fúria alta) a venda cai de vez e as órbitas ficam à mostra o tempo todo.
+1126. Iluminada de perto, a venda respira num leve tremor dos fios.
+1127. No escuro total, perto e caçando, os dentes e a venda dele pegam um resíduo de luz.
+1128. A boca costurada vai descosendo ponto a ponto a cada capítulo.
+1129. Os pontos úmidos sob a venda seguem você mesmo quando a cabeça dele está virada para outro lado.
+1130. No instante em que o sino o atordoa, o rosto calmo do menino Moacir aparece por um quadro no lugar do monstro.
+1131. A venda clareia junto nesse único quadro do menino.
+1132. No Capítulo V, em plena caça, os pés dele flutuam alguns centímetros.
+1133. E as pernas quase param: ele arrasta sem dar o passo.
+1134. O facho forte de perto no Capítulo V faz a cabeça dele tombar para trás, de dor.
+1135. Nessa cegueira de dor as mãos sobem ao rosto.
+1136. E as brasas dos olhos ardem mais forte nesse instante.
+1137. Uma sombra dele, mais alta e com braços a mais, chega à frente antes do corpo.
+1138. Essa sombra cresce e entorta mais a cada capítulo.
+1139. Nos Capítulos I e II ele anda com uma bengala branca de cego que tateia o chão.
+1140. A bengala some a partir do Capítulo III, quando ele troca o tatear pelas mãos de fera.
+1141. Ele usa um chapéu de funcionário que vai amassando por capítulo.
+1142. O chapéu se perde de vez no Capítulo V.
+1143. Uma lanterninha morta presa ao cinto pisca um instante na caça, como outra criança perdida chamando.
+1144. Do Capítulo IV em diante o casaco dele pinga o mesmo breu escuro que escorre do cabelo da Ana.
+1145. No Capítulo V ele deixa um rastro de brasa quente no chão por onde passa.
+1146. Esse rastro de brasa esfria de laranja vivo a cinza apagado.
+1147. O molho de dentes de leite na cintura ganha mais dentes a cada captura da noite.
+1148. No Capítulo V o rosto da Ana se apaga: resta só a boca contando num borrão pálido.
+1149. Dois olhos pintados na nuca da Ana aparecem quando ela está de costas na sua luz.
+1150. O rosto de porcelana da Ana racha mais a cada captura (DEZ) da noite.
+1151. Nos túneis a Ana surge inclinada, como se boiasse afogada na água.
+1152. E se ergue devagar quando a luz da lanterna passa por ela.
+1153. A Ana deixa marcas molhadas de mão e pé por onde passou.
+1154. Dois feixes fracos saem dos olhos da Ana e varrem o escuro enquanto ela conta.
+1155. As mãozinhas das crianças da Procissão se erguem para a frente quando a fila para.
+1156. Na caça do Capítulo V, uma borda de brasa alaranjada pulsa nas bordas da tela.
+1157. Quando ele cola de perto no escuro, a tela escurece do lado em que ele está: ele traz o breu junto.
+1158. Um matiz tênue da ameaça mais próxima tinge o lado de onde ela vem (vermelho o Inspetor, azul a Ana, âmbar a Procissão).
+1159. Esse matiz da ameaça pulsa de leve.
+1160. Os fiapos do casaco pegam cor de brasa no Capítulo V.
+1161. O vulto dele mantém a cabeça tombada num ângulo que o corpo real não tem.
+1162. Todos os efeitos novos fortes (brasa, menino, sombra, borda) respeitam a opção reduzir flashes.
+1163. O rastro de brasa no chão também é limpo ao trocar de mapa, sem vazar entre capítulos.
+1164. Nenhum arquivo externo novo: menino, brasa, bengala, chapéu, nuca e rachaduras são 100% canvas.
+1165. Uma mancha de fuligem escorre pela bochecha dele, crescendo a cada capítulo.
+1166. Na reza, a cabeça dele baixa e os braços se juntam em frente.
+1167. Parado à espreita, o pescoço dele estica mais para cima, devagar.
+1168. O sorriso de giz pinga giz branco no chão quando ele caça por muito tempo.
+1169. Os olhos de giz acompanham você mesmo com a cabeça dele parada.
+1170. Na caça do Capítulo IV em diante, as garras raspam a parede e deixam riscos efêmeros.
+1171. No Capítulo V, um fiapo de fumaça sobe das órbitas de brasa dele.
 
 ### Jogabilidade (90)
 
-737. Prender o ar (ESPAÇO) agora escurece as bordas da tela, cada vez mais forte conforme o fôlego vai acabando
-738. O escurecimento das bordas pulsa, e pulsa mais rápido quanto mais o ar aperta
-739. Esse escurecimento só começa a pesar depois de cerca de um segundo e meio de ar gasto, não assim que você prende o ar
-740. A opção "reduzir flashes" (acessibilidade) suaviza bastante o escurecimento do fôlego
-741. A Lia ganhou um batimento cardíaco em som novo, que você escuta quando o Inspetor está por perto
-742. A batida do coração acelera quanto mais perto o Inspetor está, e dispara bem rápido quando ele está colado
-743. A batida do coração também acelera conforme o seu medo sobe
-744. A batida fica mais forte e grave quando o fôlego está quase no fim
-745. Prender o ar segura e desacelera a batida do coração
-746. Colado nele, a batida forte do coração chega a tremer a sua mão de leve na tela
-747. O coração para junto quando você abre um menu ou morre, e fica mudo com o volume desligado
-748. Escondida no coração cheio sobe a batida: os nervos a todo alimentam o ritmo dentro do armário
-749. Escondida e colada no Inspetor, os nervos cheios sem prender o ar viram um fio de ruído que ele pode captar
-750. Quanto mais cheios os nervos escondida, mais alto é esse fio de ruído do coração
-751. Aviso na tela "seu coração está alto demais" quando ele está a menos de dois metros do esconderijo
-752. Nervos estourando escondida e perto dele agora fazem a Lia tossir alto, um ruído que ele escuta
-753. Prender a respiração na hora em que os nervos estouram segura a tosse
-754. A tosse esvazia parte dos nervos e tem recarga, para nunca virar repetição
-755. A tosse ainda sobe o seu próprio medo (o susto de ter feito barulho)
-756. Fala da Lia depois de tossir ("engoli a tosse tarde demais")
-757. No Pesadelo a tosse vem com os nervos mais baixos; no Fácil, a janela é bem mais folgada
-758. Escondida e colada, a tosse pode fazer o Inspetor te achar e partir para vasculhar o armário
-759. Nova defesa "virar estátua": imóvel, agachada, no escuro e encostada numa parede, a Lia some nas sombras
-760. Virando estátua, o Inspetor em plena caça passa rente sem dar o bote e segue adiante
-761. Qualquer movimento de câmera acima de um limiar quebra a estátua e vira um fio de ruído que pode te entregar
-762. Prender o ar ao mesmo tempo faz você virar estátua mais rápido
-763. Enquanto está de estátua, a câmera firma e o tremor do medo quase some
-764. De sangue-frio na estátua, o seu medo cede um pouco a cada segundo
-765. Aviso discreto "imóvel — ele não te vê" enquanto a estátua dura, e "fique imóvel..." enquanto você ainda vira sombra
-766. Dica na primeira vez que a estátua segura ele por perto
-767. Virar estátua não vale na fuga final: ali ele te enxerga de qualquer jeito
-768. Colada nele, parada e sem esconderijo à mão, a Lia tapa a boca sozinha e abafa o arquejo de pânico
-769. A mão na boca corta o ofego automático do medo alto enquanto dura
-770. Abafar com a mão cansa e gasta o fôlego mais rápido
-771. Ao tirar a mão da boca, a Lia solta um suspiro baixo
-772. Fala baixa da Lia na primeira vez que tapa a boca
-773. Segurar Z e X juntos fecha os olhos da Lia: a tela escurece quase por completo
-774. De olhos fechados, a Ana para de se aproximar — ela fica travada onde está enquanto você não a vê
-775. De olhos fechados você fica cega ao Inspetor e ao caminho, troca de risco pura
-776. Dica na primeira vez que você fecha os olhos
-777. Apagar a lanterna (F) no instante do bote faz o Inspetor mirar o calor errado e passar reto
-778. A esquiva pela luz custa só um arranhão, no lugar do agarrão, e ainda rende a câmera lenta do "por um fio"
-779. Depois de errar pela luz apagada, o Inspetor se reposiciona e continua a caçada por perto
-780. A esquiva pela luz também conta como a conquista de esquiva
-781. Dica na primeira vez explicando que ele caça o calor da luz
-782. A esquiva pela luz não vale na fuga final
-783. Segurar E encostada numa parede, sem nada para interagir, faz a Lia bater de leve: uma isca sonora sem gastar garrafa
-784. O barulho da batida sai um pouco à frente, na parede, e puxa o Inspetor para investigar aquele ponto
-785. O tom da batida muda conforme o piso da sala: seco na madeira, cavo no concreto, abafado no tapete
-786. Abusar da batida (três em pouco tempo) faz o Inspetor desconfiar e vir até a SUA posição
-787. Fala do Inspetor ao desconfiar da batida repetida ("...de novo essa batida. É você.")
-788. A batida na parede tem recarga de alguns segundos
-789. A batida só sai parada e encostada na parede; andando, a Lia não bate
-790. A batida na parede também faz a Ana parar de contar por um instante
-791. Dica na primeira vez que você bate na parede
-792. Nova ação (tecla K): a Lia assobia baixo e cria um ponto de ruído na própria posição
-793. De longe o assobio serve de isca; colado no Inspetor, é ruído suicida e ele vem na hora
-794. O assobio tem som próprio e recarga de alguns segundos
-795. O assobio também prende a atenção da Ana por um instante
-796. Assobiar não funciona escondida (só fora do esconderijo)
-797. Dica na primeira vez que você assobia
-798. Na fuga final, olhar para trás (Q) reduz a sua velocidade — quem resiste ao impulso corre melhor
-799. O custo de olhar para trás só pesa na fuga, não no resto do jogo
-800. Dica na primeira vez que olhar para trás te atrasa na fuga
-801. Durante a Procissão, o barulho dela abafa os seus passos: o ouvido do Inspetor cai enquanto ela passa
-802. Na fuga final, o sino da capela badalando também abafa os seus passos
-803. Fala da Lia ao perceber que o barulho da Procissão cobre os passos dela
-804. Soltar o ar segurando ALT sai quase sem barulho, mesmo com o peito queimando
-805. Soltar o ar de supetão com pouco fôlego continua denunciando a sua posição
-806. Dica na primeira vez sobre soltar o ar devagar
-807. Prender o ar (ESPAÇO) correndo corta o arquejo do medo por alguns segundos, saída de emergência na fuga
-808. Essa emergência gasta fôlego rápido, então não dá para abusar
-809. Dica na primeira vez que você prende o ar correndo
-810. Jogar a garrafa agachada, escondida na sombra, fixa o olhar do Inspetor no ponto onde ela cai por mais tempo
-811. Encarar o Inspetor de frente e de perto faz os seus nervos subirem rápido
-812. Desviar o olhar dele acalma os nervos mais depressa
-813. Encarar pela fresta do esconderijo também conta: ver o rosto dele enche os nervos
-814. Aviso "não encare ele" quando você está encarando o Inspetor colado com os nervos altos
-815. Parar de repente depois de correr faz a Lia derrapar: um passo arrastado que o Inspetor escuta
-816. A derrapada tem recarga, para não soar a cada freada
-817. Respiro fundo: agachada e parada, sem ameaça por perto, a Lia enche o fôlego mais rápido
-818. Respiro fundo: nessas condições o medo também cede mais rápido
-819. Apontar a lanterna bem para o chão com a luz acesa faz o medo do escuro ceder um pouco
-820. Alívio: quando o Inspetor finalmente se afasta do esconderijo, a Lia solta o ar e os nervos caem de uma vez
-821. O estágio de respiração no HUD mostra "[seu coração dispara]" quando ele está colado e os nervos estão altos
-822. A Lia registra "assobio", "batida", "tosse", "coração", "derrapa" e "estátua" como causas de ruído próprias
-823. Um selo único e discreto no rodapé mostra o estado atual (imóvel, mão na boca, olhos fechados)
-824. O escurecimento das bordas fica atrás dos medidores do HUD, sem cobrir a barra de fôlego
-825. O novo contra-jogo do corpo roda dentro de uma proteção: um erro nele nunca derruba o quadro do jogo
-826. Service worker atualizado para a versão v7, com o novo módulo de jogabilidade entrando no cache para jogar sem internet
+1172. Prender o ar (ESPAÇO) agora escurece as bordas da tela, cada vez mais forte conforme o fôlego vai acabando
+1173. O escurecimento das bordas pulsa, e pulsa mais rápido quanto mais o ar aperta
+1174. Esse escurecimento só começa a pesar depois de cerca de um segundo e meio de ar gasto, não assim que você prende o ar
+1175. A opção "reduzir flashes" (acessibilidade) suaviza bastante o escurecimento do fôlego
+1176. A Lia ganhou um batimento cardíaco em som novo, que você escuta quando o Inspetor está por perto
+1177. A batida do coração acelera quanto mais perto o Inspetor está, e dispara bem rápido quando ele está colado
+1178. A batida do coração também acelera conforme o seu medo sobe
+1179. A batida fica mais forte e grave quando o fôlego está quase no fim
+1180. Prender o ar segura e desacelera a batida do coração
+1181. Colado nele, a batida forte do coração chega a tremer a sua mão de leve na tela
+1182. O coração para junto quando você abre um menu ou morre, e fica mudo com o volume desligado
+1183. Escondida no coração cheio sobe a batida: os nervos a todo alimentam o ritmo dentro do armário
+1184. Escondida e colada no Inspetor, os nervos cheios sem prender o ar viram um fio de ruído que ele pode captar
+1185. Quanto mais cheios os nervos escondida, mais alto é esse fio de ruído do coração
+1186. Aviso na tela "seu coração está alto demais" quando ele está a menos de dois metros do esconderijo
+1187. Nervos estourando escondida e perto dele agora fazem a Lia tossir alto, um ruído que ele escuta
+1188. Prender a respiração na hora em que os nervos estouram segura a tosse
+1189. A tosse esvazia parte dos nervos e tem recarga, para nunca virar repetição
+1190. A tosse ainda sobe o seu próprio medo (o susto de ter feito barulho)
+1191. Fala da Lia depois de tossir ("engoli a tosse tarde demais")
+1192. No Pesadelo a tosse vem com os nervos mais baixos; no Fácil, a janela é bem mais folgada
+1193. Escondida e colada, a tosse pode fazer o Inspetor te achar e partir para vasculhar o armário
+1194. Nova defesa "virar estátua": imóvel, agachada, no escuro e encostada numa parede, a Lia some nas sombras
+1195. Virando estátua, o Inspetor em plena caça passa rente sem dar o bote e segue adiante
+1196. Qualquer movimento de câmera acima de um limiar quebra a estátua e vira um fio de ruído que pode te entregar
+1197. Prender o ar ao mesmo tempo faz você virar estátua mais rápido
+1198. Enquanto está de estátua, a câmera firma e o tremor do medo quase some
+1199. De sangue-frio na estátua, o seu medo cede um pouco a cada segundo
+1200. Aviso discreto "imóvel — ele não te vê" enquanto a estátua dura, e "fique imóvel..." enquanto você ainda vira sombra
+1201. Dica na primeira vez que a estátua segura ele por perto
+1202. Virar estátua não vale na fuga final: ali ele te enxerga de qualquer jeito
+1203. Colada nele, parada e sem esconderijo à mão, a Lia tapa a boca sozinha e abafa o arquejo de pânico
+1204. A mão na boca corta o ofego automático do medo alto enquanto dura
+1205. Abafar com a mão cansa e gasta o fôlego mais rápido
+1206. Ao tirar a mão da boca, a Lia solta um suspiro baixo
+1207. Fala baixa da Lia na primeira vez que tapa a boca
+1208. Segurar Z e X juntos fecha os olhos da Lia: a tela escurece quase por completo
+1209. De olhos fechados, a Ana para de se aproximar — ela fica travada onde está enquanto você não a vê
+1210. De olhos fechados você fica cega ao Inspetor e ao caminho, troca de risco pura
+1211. Dica na primeira vez que você fecha os olhos
+1212. Apagar a lanterna (F) no instante do bote faz o Inspetor mirar o calor errado e passar reto
+1213. A esquiva pela luz custa só um arranhão, no lugar do agarrão, e ainda rende a câmera lenta do "por um fio"
+1214. Depois de errar pela luz apagada, o Inspetor se reposiciona e continua a caçada por perto
+1215. A esquiva pela luz também conta como a conquista de esquiva
+1216. Dica na primeira vez explicando que ele caça o calor da luz
+1217. A esquiva pela luz não vale na fuga final
+1218. Segurar E encostada numa parede, sem nada para interagir, faz a Lia bater de leve: uma isca sonora sem gastar garrafa
+1219. O barulho da batida sai um pouco à frente, na parede, e puxa o Inspetor para investigar aquele ponto
+1220. O tom da batida muda conforme o piso da sala: seco na madeira, cavo no concreto, abafado no tapete
+1221. Abusar da batida (três em pouco tempo) faz o Inspetor desconfiar e vir até a SUA posição
+1222. Fala do Inspetor ao desconfiar da batida repetida ("...de novo essa batida. É você.")
+1223. A batida na parede tem recarga de alguns segundos
+1224. A batida só sai parada e encostada na parede; andando, a Lia não bate
+1225. A batida na parede também faz a Ana parar de contar por um instante
+1226. Dica na primeira vez que você bate na parede
+1227. Nova ação (tecla K): a Lia assobia baixo e cria um ponto de ruído na própria posição
+1228. De longe o assobio serve de isca; colado no Inspetor, é ruído suicida e ele vem na hora
+1229. O assobio tem som próprio e recarga de alguns segundos
+1230. O assobio também prende a atenção da Ana por um instante
+1231. Assobiar não funciona escondida (só fora do esconderijo)
+1232. Dica na primeira vez que você assobia
+1233. Na fuga final, olhar para trás (Q) reduz a sua velocidade — quem resiste ao impulso corre melhor
+1234. O custo de olhar para trás só pesa na fuga, não no resto do jogo
+1235. Dica na primeira vez que olhar para trás te atrasa na fuga
+1236. Durante a Procissão, o barulho dela abafa os seus passos: o ouvido do Inspetor cai enquanto ela passa
+1237. Na fuga final, o sino da capela badalando também abafa os seus passos
+1238. Fala da Lia ao perceber que o barulho da Procissão cobre os passos dela
+1239. Soltar o ar segurando ALT sai quase sem barulho, mesmo com o peito queimando
+1240. Soltar o ar de supetão com pouco fôlego continua denunciando a sua posição
+1241. Dica na primeira vez sobre soltar o ar devagar
+1242. Prender o ar (ESPAÇO) correndo corta o arquejo do medo por alguns segundos, saída de emergência na fuga
+1243. Essa emergência gasta fôlego rápido, então não dá para abusar
+1244. Dica na primeira vez que você prende o ar correndo
+1245. Jogar a garrafa agachada, escondida na sombra, fixa o olhar do Inspetor no ponto onde ela cai por mais tempo
+1246. Encarar o Inspetor de frente e de perto faz os seus nervos subirem rápido
+1247. Desviar o olhar dele acalma os nervos mais depressa
+1248. Encarar pela fresta do esconderijo também conta: ver o rosto dele enche os nervos
+1249. Aviso "não encare ele" quando você está encarando o Inspetor colado com os nervos altos
+1250. Parar de repente depois de correr faz a Lia derrapar: um passo arrastado que o Inspetor escuta
+1251. A derrapada tem recarga, para não soar a cada freada
+1252. Respiro fundo: agachada e parada, sem ameaça por perto, a Lia enche o fôlego mais rápido
+1253. Respiro fundo: nessas condições o medo também cede mais rápido
+1254. Apontar a lanterna bem para o chão com a luz acesa faz o medo do escuro ceder um pouco
+1255. Alívio: quando o Inspetor finalmente se afasta do esconderijo, a Lia solta o ar e os nervos caem de uma vez
+1256. O estágio de respiração no HUD mostra "[seu coração dispara]" quando ele está colado e os nervos estão altos
+1257. A Lia registra "assobio", "batida", "tosse", "coração", "derrapa" e "estátua" como causas de ruído próprias
+1258. Um selo único e discreto no rodapé mostra o estado atual (imóvel, mão na boca, olhos fechados)
+1259. O escurecimento das bordas fica atrás dos medidores do HUD, sem cobrir a barra de fôlego
+1260. O novo contra-jogo do corpo roda dentro de uma proteção: um erro nele nunca derruba o quadro do jogo
+1261. Service worker atualizado para a versão v7, com o novo módulo de jogabilidade entrando no cache para jogar sem internet
 
 ### Interface (94)
 
-827. Novo grupo de opções "Leitura do perigo" reunindo todas as ajudas para ler os monstros.
-828. Todas as ajudas de acessibilidade do perigo vêm desligadas por padrão (só a borda de faro, atmosférica, vem ligada).
-829. Nova bússola de ameaças opcional: setas finas na borda apontando cada monstro ativo.
-830. A bússola tem três modos: desligada, só no Fácil ou sempre ligada.
-831. Seta vermelha aponta o Inspetor.
-832. Seta rosa aponta a Menina Que Conta.
-833. Seta âmbar aponta a Procissão quando ela está atravessando.
-834. Seta azul aponta a sala de onde o Chamado está chamando.
-835. Ícone de forma própria na borda (◆ Inspetor, 9 Menina, † Procissão, ♪ Chamado) para distinguir sem depender da cor.
-836. Opção para desligar o ícone e deixar só a cor na bússola.
-837. A seta clareia quando o monstro está perto e some aos poucos quando ele está longe.
-838. A seta some de vez quando o monstro passa de cerca de 24 metros.
-839. A seta ganha brilho pulsante no instante em que aquele monstro entra em caçada.
-840. Na caçada, a seta nunca fica apagada demais, para você não perder o caçador de vista.
-841. Marcador mais grosso e largo quando o monstro está logo atrás de você.
-842. As setas da bússola param de pulsar com "reduzir movimento" ligado.
-843. A bússola some inteira quando não há nenhum monstro ativo.
-844. Modo opcional da bússola que mostra só a ameaça mais próxima, para poluir menos a tela.
-845. Contador "⚠ N ameaças" no alto da tela quando há duas ou mais ativas ao mesmo tempo.
-846. Novo pulso vermelho nas bordas quando o Inspetor está colado nas suas costas (opção).
-847. O pulso só liga quando ele está fora do seu campo de visão, de fato atrás de você.
-848. O pulso bate no ritmo do coração.
-849. O pulso cresce quanto mais perto ele está.
-850. O pulso some assim que ele se afasta ou sai de trás de você.
-851. Com "reduzir flashes" ligado, o pulso fica mais suave.
-852. Nova vinheta de presença: a borda escurece do lado onde o Inspetor está quando ele chega perto (opção).
-853. A vinheta acompanha a direção dele em volta da tela.
-854. A vinheta escurece mais quanto mais perto ele está.
-855. A vinheta também responde à Procissão quando ela passa perto.
-856. A vinheta direcional fica desligada no Pesadelo.
-857. Borda cor de terra, pulsante, quando o Inspetor está fuçando ou seguindo o seu rastro (opção, ligada por padrão).
-858. A borda de faro para de pulsar com "reduzir movimento".
-859. Aviso "▿ rastro" no canto quando você está deixando cheiro com ele por perto.
-860. O aviso de rastro vira "rastro sumindo na água" quando você está dentro d'água.
-861. Indicador opcional da postura do Inspetor no canto: rondando, ouvindo, procurando ou caçando.
-862. Bolinha colorida (verde → vermelho) acompanha a postura do Inspetor.
-863. Símbolo por postura ao lado do texto (· rondando, ◠ ouvindo, ◉ procurando, ‼ caçando).
-864. Ícone de ouvido perto da mira que enche conforme o seu som chega de fato ao Inspetor (opção).
-865. O quanto chega considera porta fechada, parede e distância, não o barulho bruto.
-866. O ícone de ouvido escreve "ele te ouve" quando o seu som chega forte a ele.
-867. Opção para o anel do seu barulho encolher atrás de porta ou parede, mostrando o que chega nele.
-868. O seu próprio barulho (ofegar, coração) agora sai em azul nas legendas, separado do perigo.
-869. O barulho dos monstros sai em vermelho e em negrito, destacado do seu.
-870. Símbolo "›" marca o seu barulho nas legendas, diferente do ▲ de perigo.
-871. Nova legenda "[sua respiração]" quando você respira escondida com ele perto.
-872. Nova legenda "[seus passos ecoam]" ao correr e "[você faz barulho]" ao se mover alto.
-873. Legenda opcional "[passos dele: perto / médio / longe]" para quem joga sem som.
-874. Legenda "[ele te ouviu — à direita/esquerda/atrás]" no instante em que o seu barulho o alerta.
-875. Legenda "[ele perdeu o seu rastro]" quando ele desiste e volta a rondar.
-876. Legenda "[ele está fuçando os esconderijos]" quando ele começa a vasculhar.
-877. Legenda "[ele está bem atrás de você]" quando ele cola nas suas costas.
-878. Legenda "[a Procissão vem aí — as luzes falham]" no aviso da Procissão.
-879. Legenda "[ela chegou a nove]" quando a contagem da Menina chega a nove.
-880. Legenda "[ela está no teto]" quando a Menina sobe no teto.
-881. Legenda "[as duas te acharam]" quando a Menina e o Inspetor caçam juntos no capítulo da brincadeira.
-882. Legenda de alívio "[silêncio — eles sumiram]" quando todo o perigo passa.
-883. O olho da Menina ao lado da mira fica vermelho e pulsa enquanto ela está contando.
-884. Nova aba "Monstros" no diário: o caderno de comportamentos.
-885. O caderno se preenche sozinho conforme você sobrevive a cada comportamento, nunca por coleta.
-886. Cada comportamento aprendido mostra a dica de contra-jogo logo abaixo.
-887. Comportamento ainda não visto aparece como "???" ou "algo que você ainda não viu", sem spoiler.
-888. Cada ficha conta quantos comportamentos você já descobriu (ex.: 4/7).
-889. Quatro fichas, uma por entidade, cada uma na sua cor.
-890. Entidade ainda não encontrada mostra a ficha velada ("ainda não encontrada").
-891. Seis comportamentos do Inspetor catalogados (ouve, estala, investiga, caça, fuça, desiste).
-892. Quatro comportamentos da Menina (conta, só no escuro, não abre porta, espera no teto).
-893. Dois comportamentos da Procissão (aviso das luzes, atravessa as salas).
-894. Um comportamento do Chamado (chama pelo nome — é isca).
-895. Cada comportamento no caderno guarda e mostra aos quantos minutos você o viu pela primeira vez.
-896. Linha "Última vez que o Inspetor foi ouvido: <sala>" no topo do caderno, para quem joga sem som.
-897. Aviso discreto no toast quando um comportamento novo entra no caderno.
-898. Esse aviso nunca aparece durante o perigo (caçada, bote, Procissão).
-899. O aviso do caderno respeita um intervalo mínimo para não encher a tela.
-900. A aba de Regras agora aponta para o caderno completo na aba Monstros.
-901. A pausa passou a listar as ameaças ativas e o que cada uma está fazendo.
-902. Na pausa, cada ameaça aparece na cor da sua entidade.
-903. Sem nenhuma ameaça, a pausa diz "Ninguém por perto agora. Respire.".
-904. A tela de morte lembra o contra-jogo específico de quem te pegou, com o nome da entidade.
-905. Novo módulo da interface entra no cache offline (service worker) para jogar sem internet.
-906. Reposicionamento dos novos avisos de canto (postura, rastro, contador) em telas estreitas de celular.
-907. A bússola, o pulso, a vinheta e o faro usam o mesmo cálculo honesto de direção já existente, sem inventar posição.
-908. Pulso, vinheta e faro surgem e somem com suavização, sem piscar de um quadro para o outro.
-909. Os avisos de canto (postura, rastro, ouvido) somem durante a caçada para não disputar atenção com o essencial.
-910. O indicador de postura anuncia a mudança de estado para leitores de tela (aria-live).
-911. As legendas novas de perigo já aparecem no modo "Importantes", sem exigir o modo "Todos".
-912. O olho vermelho da Menina também respeita "reduzir movimento" e para de pulsar.
-913. A borda de faro só acende com o Inspetor fuçando ou seguindo o rastro, nunca durante a ronda comum.
-914. A bússola e o contador de ameaças continuam visíveis com o HUD mínimo, por serem informação de perigo.
-915. As setas da bússola giram com transição suave, acompanhando o monstro sem "pular" de um lado a outro.
-916. Todos os novos elementos de HUD nascem escondidos e só aparecem quando a opção correspondente está ligada.
-917. O caderno de comportamentos fica salvo no progresso da noite e reabre preenchido.
-918. A leitura do perigo calcula a direção de cada ameaça só uma vez por quadro, deixando o jogo mais leve na caçada.
-919. O HUD de leitura do perigo só mexe na tela quando algo muda, acabando com o engasgo durante a pausa e o fim de capítulo.
-920. Qualquer tropeço na leitura do perigo não trava mais o quadro do jogo: o erro é contido e a ação continua.
+1262. Novo grupo de opções "Leitura do perigo" reunindo todas as ajudas para ler os monstros.
+1263. Todas as ajudas de acessibilidade do perigo vêm desligadas por padrão (só a borda de faro, atmosférica, vem ligada).
+1264. Nova bússola de ameaças opcional: setas finas na borda apontando cada monstro ativo.
+1265. A bússola tem três modos: desligada, só no Fácil ou sempre ligada.
+1266. Seta vermelha aponta o Inspetor.
+1267. Seta rosa aponta a Menina Que Conta.
+1268. Seta âmbar aponta a Procissão quando ela está atravessando.
+1269. Seta azul aponta a sala de onde o Chamado está chamando.
+1270. Ícone de forma própria na borda (◆ Inspetor, 9 Menina, † Procissão, ♪ Chamado) para distinguir sem depender da cor.
+1271. Opção para desligar o ícone e deixar só a cor na bússola.
+1272. A seta clareia quando o monstro está perto e some aos poucos quando ele está longe.
+1273. A seta some de vez quando o monstro passa de cerca de 24 metros.
+1274. A seta ganha brilho pulsante no instante em que aquele monstro entra em caçada.
+1275. Na caçada, a seta nunca fica apagada demais, para você não perder o caçador de vista.
+1276. Marcador mais grosso e largo quando o monstro está logo atrás de você.
+1277. As setas da bússola param de pulsar com "reduzir movimento" ligado.
+1278. A bússola some inteira quando não há nenhum monstro ativo.
+1279. Modo opcional da bússola que mostra só a ameaça mais próxima, para poluir menos a tela.
+1280. Contador "⚠ N ameaças" no alto da tela quando há duas ou mais ativas ao mesmo tempo.
+1281. Novo pulso vermelho nas bordas quando o Inspetor está colado nas suas costas (opção).
+1282. O pulso só liga quando ele está fora do seu campo de visão, de fato atrás de você.
+1283. O pulso bate no ritmo do coração.
+1284. O pulso cresce quanto mais perto ele está.
+1285. O pulso some assim que ele se afasta ou sai de trás de você.
+1286. Com "reduzir flashes" ligado, o pulso fica mais suave.
+1287. Nova vinheta de presença: a borda escurece do lado onde o Inspetor está quando ele chega perto (opção).
+1288. A vinheta acompanha a direção dele em volta da tela.
+1289. A vinheta escurece mais quanto mais perto ele está.
+1290. A vinheta também responde à Procissão quando ela passa perto.
+1291. A vinheta direcional fica desligada no Pesadelo.
+1292. Borda cor de terra, pulsante, quando o Inspetor está fuçando ou seguindo o seu rastro (opção, ligada por padrão).
+1293. A borda de faro para de pulsar com "reduzir movimento".
+1294. Aviso "▿ rastro" no canto quando você está deixando cheiro com ele por perto.
+1295. O aviso de rastro vira "rastro sumindo na água" quando você está dentro d'água.
+1296. Indicador opcional da postura do Inspetor no canto: rondando, ouvindo, procurando ou caçando.
+1297. Bolinha colorida (verde → vermelho) acompanha a postura do Inspetor.
+1298. Símbolo por postura ao lado do texto (· rondando, ◠ ouvindo, ◉ procurando, ‼ caçando).
+1299. Ícone de ouvido perto da mira que enche conforme o seu som chega de fato ao Inspetor (opção).
+1300. O quanto chega considera porta fechada, parede e distância, não o barulho bruto.
+1301. O ícone de ouvido escreve "ele te ouve" quando o seu som chega forte a ele.
+1302. Opção para o anel do seu barulho encolher atrás de porta ou parede, mostrando o que chega nele.
+1303. O seu próprio barulho (ofegar, coração) agora sai em azul nas legendas, separado do perigo.
+1304. O barulho dos monstros sai em vermelho e em negrito, destacado do seu.
+1305. Símbolo "›" marca o seu barulho nas legendas, diferente do ▲ de perigo.
+1306. Nova legenda "[sua respiração]" quando você respira escondida com ele perto.
+1307. Nova legenda "[seus passos ecoam]" ao correr e "[você faz barulho]" ao se mover alto.
+1308. Legenda opcional "[passos dele: perto / médio / longe]" para quem joga sem som.
+1309. Legenda "[ele te ouviu — à direita/esquerda/atrás]" no instante em que o seu barulho o alerta.
+1310. Legenda "[ele perdeu o seu rastro]" quando ele desiste e volta a rondar.
+1311. Legenda "[ele está fuçando os esconderijos]" quando ele começa a vasculhar.
+1312. Legenda "[ele está bem atrás de você]" quando ele cola nas suas costas.
+1313. Legenda "[a Procissão vem aí — as luzes falham]" no aviso da Procissão.
+1314. Legenda "[ela chegou a nove]" quando a contagem da Menina chega a nove.
+1315. Legenda "[ela está no teto]" quando a Menina sobe no teto.
+1316. Legenda "[as duas te acharam]" quando a Menina e o Inspetor caçam juntos no capítulo da brincadeira.
+1317. Legenda de alívio "[silêncio — eles sumiram]" quando todo o perigo passa.
+1318. O olho da Menina ao lado da mira fica vermelho e pulsa enquanto ela está contando.
+1319. Nova aba "Monstros" no diário: o caderno de comportamentos.
+1320. O caderno se preenche sozinho conforme você sobrevive a cada comportamento, nunca por coleta.
+1321. Cada comportamento aprendido mostra a dica de contra-jogo logo abaixo.
+1322. Comportamento ainda não visto aparece como "???" ou "algo que você ainda não viu", sem spoiler.
+1323. Cada ficha conta quantos comportamentos você já descobriu (ex.: 4/7).
+1324. Quatro fichas, uma por entidade, cada uma na sua cor.
+1325. Entidade ainda não encontrada mostra a ficha velada ("ainda não encontrada").
+1326. Seis comportamentos do Inspetor catalogados (ouve, estala, investiga, caça, fuça, desiste).
+1327. Quatro comportamentos da Menina (conta, só no escuro, não abre porta, espera no teto).
+1328. Dois comportamentos da Procissão (aviso das luzes, atravessa as salas).
+1329. Um comportamento do Chamado (chama pelo nome — é isca).
+1330. Cada comportamento no caderno guarda e mostra aos quantos minutos você o viu pela primeira vez.
+1331. Linha "Última vez que o Inspetor foi ouvido: <sala>" no topo do caderno, para quem joga sem som.
+1332. Aviso discreto no toast quando um comportamento novo entra no caderno.
+1333. Esse aviso nunca aparece durante o perigo (caçada, bote, Procissão).
+1334. O aviso do caderno respeita um intervalo mínimo para não encher a tela.
+1335. A aba de Regras agora aponta para o caderno completo na aba Monstros.
+1336. A pausa passou a listar as ameaças ativas e o que cada uma está fazendo.
+1337. Na pausa, cada ameaça aparece na cor da sua entidade.
+1338. Sem nenhuma ameaça, a pausa diz "Ninguém por perto agora. Respire.".
+1339. A tela de morte lembra o contra-jogo específico de quem te pegou, com o nome da entidade.
+1340. Novo módulo da interface entra no cache offline (service worker) para jogar sem internet.
+1341. Reposicionamento dos novos avisos de canto (postura, rastro, contador) em telas estreitas de celular.
+1342. A bússola, o pulso, a vinheta e o faro usam o mesmo cálculo honesto de direção já existente, sem inventar posição.
+1343. Pulso, vinheta e faro surgem e somem com suavização, sem piscar de um quadro para o outro.
+1344. Os avisos de canto (postura, rastro, ouvido) somem durante a caçada para não disputar atenção com o essencial.
+1345. O indicador de postura anuncia a mudança de estado para leitores de tela (aria-live).
+1346. As legendas novas de perigo já aparecem no modo "Importantes", sem exigir o modo "Todos".
+1347. O olho vermelho da Menina também respeita "reduzir movimento" e para de pulsar.
+1348. A borda de faro só acende com o Inspetor fuçando ou seguindo o rastro, nunca durante a ronda comum.
+1349. A bússola e o contador de ameaças continuam visíveis com o HUD mínimo, por serem informação de perigo.
+1350. As setas da bússola giram com transição suave, acompanhando o monstro sem "pular" de um lado a outro.
+1351. Todos os novos elementos de HUD nascem escondidos e só aparecem quando a opção correspondente está ligada.
+1352. O caderno de comportamentos fica salvo no progresso da noite e reabre preenchido.
+1353. A leitura do perigo calcula a direção de cada ameaça só uma vez por quadro, deixando o jogo mais leve na caçada.
+1354. O HUD de leitura do perigo só mexe na tela quando algo muda, acabando com o engasgo durante a pausa e o fim de capítulo.
+1355. Qualquer tropeço na leitura do perigo não trava mais o quadro do jogo: o erro é contido e a ação continua.
 
-### Plataforma e acessibilidade (103)
+### Progressão e rejogabilidade (93)
 
-921. A respiração do Inspetor agora sai de uma fonte de som 3D presa à cabeça dele, que acompanha a posição dele a cada quadro
-922. De fone, a respiração dá a volta na sua cabeça (HRTF): dá para achar o Inspetor de olhos fechados, só pelo som
-923. Sem fone, ou com "Som mono" ligado, a respiração vira pan simples (equalpower), e a troca acontece na hora se você mudar a opção
-924. A respiração fica ofegante e mais rápida quando ele caça, e lenta e baixa na patrulha
-925. Quanto mais perto ele está, mais alta a respiração; ela some suave quando ele recua ou desaparece, sem cortar seco
-926. A respiração enfraquece com a distância de forma natural (modelo de distância do áudio)
-927. Estalos secos das juntas dele, também em 3D, pontuam o silêncio quando ele está a menos de 8 metros
-928. Os estalos ficam mais frequentes na caçada e mais espaçados na patrulha
-929. A respiração 3D desce junto na pausa e segue o volume geral (passa pelo mesmo barramento de som)
-930. A respiração só toca com você viva e dentro do jogo: nada no título, no diário ou depois de morrer
-931. A camada de áudio 3D só é criada quando o Inspetor entra em cena, para não pesar antes
-932. A camada de áudio 3D desliga sozinha, sem erro, em navegadores sem WebAudio
-933. Nova opção "Respiração 3D do Inspetor" para ligar ou desligar a camada
-934. Nova opção "Estalos das juntas dele", separada da respiração
-935. Nova barra "Volume da respiração do Inspetor" (de mudo a 1,5x)
-936. Nova opção "Respiração do Inspetor só na caçada", para quem acha a respiração constante demais
-937. Legenda de som "a respiração dele", com a direção, quando as legendas de som estão ligadas
-938. Novo botão "Ouvir a respiração" nas opções: uma demonstração que dá a volta na sua cabeça
-939. O "Ouvir a respiração" inicia o som se ele ainda não tiver começado e respeita na hora se você está de fone ou no mono
-940. Nova opção de acessibilidade "Névoa de direção na caçada": uma borda avermelhada aponta de que lado está o Inspetor
-941. A névoa só aparece quando ele caça fora do seu campo de visão e some quando ele entra na sua frente
-942. A borda da névoa fica mais forte quanto mais perto ele está, até o alcance escolhido
-943. A borda troca de lado em tempo real conforme você gira a câmera (esquerda, direita ou atrás)
-944. A névoa vem desligada por padrão e, no Pesadelo, nunca liga (não entrega o Inspetor de graça)
-945. Nova barra "Alcance da névoa de direção" (de 3 a 9 metros)
-946. A cor da névoa acompanha a paleta de daltonismo (fica rosa no modo Tritan)
-947. Com "menos movimento" do sistema, a névoa fica estável, sem pulsar
-948. Se a vibração estiver ligada, a névoa também dá um tranco leve do lado dele, para quem não ouve
-949. A névoa some fora do jogo (título, modo foto, pausa)
-950. Nova forma de se soltar do agarrão: "Segurar o botão", para quem não consegue sacudir o mouse
-951. No modo segurar, manter E (ou Usar/A) pressionado enche a mesma barra de soltura, na mesma janela de tempo
-952. A dica do agarrão na tela se adapta: fala em segurar, apertar ou sacudir conforme a sua escolha
-953. A dica da morte por agarrão também explica a forma de soltura que você escolheu
-954. Nova opção "Legendas de estado": avisos de texto para o que o som já conta, para quem não ouve
-955. Legenda "o Inspetor começou a caçar" quando a caçada começa
-956. Legenda "ele parou de caçar" quando a caçada acaba
-957. Legenda "ele está bem atrás de você" quando ele caça colado às suas costas
-958. Legenda "ele parou para escutar" quando ele fica em alerta
-959. Legenda "ele vasculha o armário" quando ele revista o seu esconderijo
-960. Legenda "a menina apareceu" quando a Ana surge
-961. Legenda "a Procissão está vindo (luzes piscando)" no aviso dela
-962. Legenda "a Procissão está passando" quando ela atravessa as salas
-963. Legenda "alguém chama de outra sala" quando o Chamado começa
-964. Legenda "a lanterna apagou" quando a pilha zera
-965. Legenda "a lanterna fraqueja" quando a pilha está quase no fim
-966. Legenda "você levou um golpe" quando você perde vida de repente
-967. Legenda "coração disparado" quando o medo passa do limite
-968. Legenda "sem fôlego" quando você fica tempo demais sem respirar
-969. Legenda "passos na água" quando você anda na água
-970. Cada legenda de estado tem o seu próprio intervalo, para não repetir sem parar
-971. Nova opção "Legendas de estado só as de perigo" (esconde coração, fôlego e água, mantém as ameaças)
-972. As legendas de ameaça (caçada e Procissão vindo) dão um tranco de vibração, para quem joga de vibração
-973. Nova opção "Fundo escuro nas legendas de som", para ler melhor por cima da cena
-974. Nova opção "Tamanho das legendas de som" (pequenas, médias, grandes)
-975. Nova opção "Legendas de som com a direção" (ligar ou desligar as setas)
-976. Nova opção "Legendas de som com a distância" (ligar ou desligar o perto/longe)
-977. Nova barra "Tempo das legendas de som na tela" (de metade a 2,5x do tempo)
-978. Nova opção "Alto contraste no HUD": contorno preto reforçado nos textos
-979. O alto contraste também engrossa a mira e põe um fundo escuro atrás do objetivo
-980. Nova opção "A mira avermelha quando ele caça" (aviso lido pela cor e pela forma)
-981. Nova barra "Força da vinheta do coração" (até desligar o pulso vermelho do batimento)
-982. Nova opção "Vinheta das bordas mais fraca"
-983. Nova opção "Flashes vermelhos mais fracos" (para fotossensibilidade)
-984. Nova opção "Indicador de perigo só na caçada"
-985. Nova opção "Indicador só para o Inspetor" (sem a menina nem a Procissão)
-986. Nova opção "Inverter o olhar na horizontal"
-987. Nova barra "Sensibilidade vertical" separada da horizontal, valendo para mouse, controle, toque e giroscópio
-988. Nova barra "Intensidade da vibração" (de 0, que desliga tudo, até 1,5x), valendo para controle e celular
-989. Com a intensidade da vibração em 0, a vibração do celular e o tremor visual da tela também ficam desligados
-990. Nova opção "Vibrar só em perigo": corta o tranco do batimento do coração perto do Inspetor
-991. Nova opção "Olhar do controle sem curva (linear)", para quem prefere resposta direta
-992. Nova opção "Manche de andar fixo no lugar" no toque (não surge onde o dedo encosta)
-993. Nova opção "Ignorar tremores do dedo ao olhar" no toque (zona morta contra o micro-tremor)
-994. Nova opção "Limitar a 45 quadros" (um meio-termo entre os 30 e sem limite)
-995. Nova opção "Desligar o grão de filme" (e o jogo para de regerar o ruído a cada quadro)
-996. Nova opção "Desligar a chuva", para aliviar o computador
-997. Nova opção "Desligar a sombra da lanterna"
-998. As camadas novas (áudio 3D e névoa de direção) atualizam em 15 Hz na qualidade Baixa e ~10 Hz na Mínima
-999. Novo botão "Medir desempenho" que mostra os quadros por segundo, o tempo por quadro e a qualidade atual
-1000. As opções mostram o nome da placa de vídeo, o que ajuda a saber se a aceleração de hardware está ligada
-1001. Novo lembrete opcional de descanso a cada 40 minutos de jogo
-1002. Botão "Instalar o jogo" aparece no título quando o navegador oferece a instalação (PWA)
-1003. Depois de instalar, o convite some e o jogo avisa que dá para abrir sem internet
-1004. O link compartilhado agora leva imagem (og:image e twitter:image apontando para o ícone do jogo)
-1005. Nova linha no título anunciando os recursos de acessibilidade do jogo
-1006. O objetivo ganhou aria-live: leitores de tela anunciam quando ele muda
-1007. O módulo novo entra no cache para jogar sem internet, e a versão do cache subiu para v7
-1008. Todas as opções novas ficam salvas junto das outras de Desempenho (chave hora-silencio-plat)
-1009. O botão "Restaurar padrão" das opções também devolve as opções novas ao estado inicial
-1010. Nova opção "Vibração por entidade": no controle e no celular, cada entidade tem o seu próprio tranco, para sentir quem está perto sem olhar a tela
-1011. O Inspetor virou um pulso grave e lento, com um segundo baque menor logo atrás, o peso do passo dele
-1012. O pulso do Inspetor fica mais forte quanto mais perto ele está de você
-1013. Na caçada o pulso do Inspetor acelera e sobe de intensidade; na patrulha fica lento e baixo
-1014. A Ana virou estalidos curtos e nervosos enquanto a menina está por perto
-1015. Os estalidos da Ana ficam mais fortes conforme ela se aproxima e, de vez em quando, soltam um eco curto
-1016. A Procissão virou uma onda de vibração que cresce no aviso e na passagem, como uma maré chegando
-1017. Nova opção "Vibração do Inspetor só na caçada", para esconder o tranco da patrulha
-1018. Com "Vibrar só em perigo" ligado, a patrulha do Inspetor some, mas a caçada, a Ana e a Procissão continuam avisando
-1019. A vibração por entidade respeita a intensidade geral e só toca com você viva e dentro do jogo (nada no título, na pausa ou na morte)
-1020. Novo botão "Sentir cada um" nas opções: toca os três padrões em sequência dizendo de quem é cada um
-1021. Novo botão "Testar a vibração" nas opções, com um toque na intensidade que você escolheu
-1022. Nova nota nas opções explicando o padrão de haptic de cada entidade (Inspetor, Ana e Procissão)
-1023. A linha de acessibilidade do título agora cita a vibração por entidade
+1356. O Inspetor ganha um humor diferente a cada noite, sorteado pela semente, mudando como ele caça
+1357. Humor Farejador: ele ouve um pouco mais e acelera quando você está sangrando
+1358. Humor Ouvinte: a audição dele alcança quase a casa inteira a noite toda
+1359. Humor Guardião: a ronda fica mais curta e ele volta mais rápido ao que é dele
+1360. No Pesadelo o humor da noite vem sempre intensificado
+1361. A Lia sente o humor da noite e comenta numa fala no começo do capítulo
+1362. Um aviso em texto nomeia o humor da noite, legível por leitor de tela
+1363. Um toque de sino marca o momento em que você percebe o humor do Inspetor
+1364. O humor atual aparece na tela de pausa
+1365. O humor atual aparece na ficha do Inspetor no bestiário enquanto você joga
+1366. A descrição da dificuldade avisa que o humor dele muda a cada noite
+1367. Conquista "Três Humores" por sobreviver a uma noite de cada humor
+1368. A tela de título lembra qual era o humor dele na última noite
+1369. Novo botão "Bestiário" na tela de título
+1370. Painel do bestiário com uma ficha para cada entidade do jogo
+1371. Cada comportamento começa oculto ("???") e só aparece quando você o presencia
+1372. Cada comportamento revelado traz uma dica de contra-jogo
+1373. Barra de progresso mostra quantos comportamentos você já viu
+1374. Aviso de "comportamento novo registrado" quando você descobre um
+1375. Som sutil de papel ao registrar um comportamento inédito
+1376. Conquista "Caderno Cheio" ao revelar todos os comportamentos
+1377. A ficha mostra quantas vezes cada entidade já te pegou
+1378. A entidade fica escondida atrás de "???" até o primeiro encontro
+1379. Bestiário registra a Caçada do Inspetor (o apito que abre a caça)
+1380. Bestiário registra o Bote do Inspetor
+1381. Bestiário registra a Emboscada (quando ele espera parado no escuro)
+1382. Bestiário registra o Faro de sangue
+1383. Bestiário registra a Escuta na parede
+1384. Bestiário registra o Vasculho dos armários
+1385. Bestiário registra a Pausa de Memória (quando ele reza)
+1386. Bestiário registra a Falsa Partida (ele finge ir e volta)
+1387. Bestiário registra o DEZ da Menina Que Conta
+1388. Bestiário registra que a Menina anda no escuro
+1389. Bestiário registra o Aviso da Procissão (luzes e rádio)
+1390. Bestiário registra a Marcha da Procissão
+1391. Bestiário registra a Voz Vizinha do Chamado
+1392. Contador de quantas vezes o Inspetor te ouviu durante a noite
+1393. O contador de "ele te ouviu" aparece na tela de morte
+1394. O contador de "ele te ouviu" aparece na pausa
+1395. Contagem separada de quantas vezes ele te ouviu em cada capítulo
+1396. O fim do capítulo mostra quantas vezes ele te ouviu ali
+1397. Conquista "Capítulo Mudo" por passar um capítulo sem ele te ouvir
+1398. O jogo guarda a melhor noite (a com menos vezes ouvida) entre partidas
+1399. Final secreto: um epílogo quando você atravessa a campanha sem nunca ser ouvida
+1400. Conquista secreta "A Noite Toda em Silêncio" por esse feito
+1401. Linha extra nas estatísticas do final quando você passou sem ser ouvida
+1402. Novo botão "Rejogo" na tela de título
+1403. Painel de Rejogo com o modo Caçada Limpa
+1404. Modo Caçada Limpa: o Inspetor ouve bem mais longe
+1405. Modo Caçada Limpa: ele quase não recua, a ronda fica agressiva
+1406. O modo Caçada Limpa fica trancado até você terminar a campanha uma vez
+1407. Aviso na tela ao ligar e ao desligar o modo Caçada Limpa
+1408. Placar do melhor tempo sobrevivido no modo Caçada Limpa
+1409. O modo Caçada Limpa aparece indicado na pausa
+1410. Conquista "Cinco Minutos" por aguentar cinco minutos na Caçada Limpa
+1411. Conquista "Zelador Cego" por vencer o Capítulo I no modo Caçada Limpa
+1412. Conquista "Surda por uma Noite" por terminar a campanha na Caçada Limpa
+1413. Conquista secreta "A Noite Cega" por terminar um capítulo sem acender a lanterna
+1414. Linha no fim do capítulo quando você joga sem a lanterna uma vez
+1415. Conquista secreta "Nunca na Cama" por uma noite sem usar nenhum esconderijo
+1416. O jogo passa a rastrear se você usou algum esconderijo na noite
+1417. Conquista "Boa Noite, Moacir" por um capítulo sem correr e sem luz perto dele
+1418. O jogo rastreia quando você acende a luz a menos de 5 m do Inspetor
+1419. Conquista "Sem Rastro" por um capítulo sem sangrar perto do Inspetor
+1420. O jogo rastreia quando você sofre dano perto do Inspetor
+1421. Linha no fim do capítulo quando você não deixa rastro de sangue para ele
+1422. Conquista "Boa Noite, Todos" por fazer os três gestos de compaixão numa só noite
+1423. Conquista "Pela Hora" por cruzar três salas com ele parado no Capítulo II
+1424. Nova dica de morte quando você cai na emboscada: "Ele nunca tinha ido embora."
+1425. Nova dica de morte na falsa partida: "Você saiu cedo demais."
+1426. Nova dica de morte pelo faro de sangue
+1427. Nova dica de morte quando você se mexe no meio da reza dele
+1428. A dica de morte conta qual era o humor do Inspetor naquela noite
+1429. O jogo guarda o esconderijo que você mais usou na noite
+1430. O Inspetor murmura "De novo aqui." quando você repete cedo o esconderijo favorito
+1431. Conquista "Nunca o Mesmo Canto" por uma noite sem repetir o esconderijo favorito da anterior
+1432. Estatística nova: comportamentos vistos no bestiário
+1433. Estatística nova: humores do Inspetor já enfrentados
+1434. Estatística nova: mais tempo sobrevivido no modo Caçada Limpa
+1435. Estatística nova: noite com menos vezes ouvida
+1436. A pausa mostra uma dica rotativa sobre o comportamento das entidades
+1437. As conquistas novas entram na lista geral e contam no total do jogo
+1438. O botão Bestiário na tela de título mostra o progresso (vistos/total)
+1439. O botão Bestiário vira "Bestiário ★" quando você revela tudo
+1440. Toast especial "ficha nova aberta" na primeira vez que você vê uma entidade
+1441. Rodapé do bestiário conta quantas fichas estão completas
+1442. O painel Rejogo mostra quantas conquistas de monstro você já tem
+1443. Nova estatística: conquistas de monstro (Lote 5) conquistadas
+1444. O fim do capítulo mostra o tempo sobrevivido na Caçada Limpa até ali
+1445. O rádio do título sussurra sobre a noite em silêncio quando você conquista o feito
+1446. Duas novas dicas de comportamento (a Menina na luz, a escuta na parede) giram na pausa
+1447. Os textos e arquivos do Lote 5 entram no cache offline (PWA) pelo service worker
+1448. Tudo do Lote 5 é passivo e à prova de erro: não trava o jogo nem o QA
+
+### Plataforma e acessibilidade (90)
+
+1449. Novo perfil "Modo Cego" nas opções de Desempenho, para o terror sem muletas
+1450. Modo Cego desliga a respiração 3D do Inspetor de uma vez
+1451. Modo Cego desliga os estalos das juntas dele
+1452. Modo Cego desliga a névoa de direção na caçada
+1453. Modo Cego desliga as legendas de estado (caçada, coração, fôlego)
+1454. Modo Cego desliga as legendas de som
+1455. Modo Cego desliga a mira avermelhada da caça
+1456. Modo Cego desliga o indicador visual de perigo
+1457. Modo Cego desliga o indicador que aponta só o Inspetor
+1458. Modo Cego desliga a vibração por entidade
+1459. Modo Cego desliga a vibração direcional do caçador
+1460. Modo Cego desliga o aviso visual de sons na borda da tela
+1461. Modo Cego desliga a bússola de ameaças
+1462. Modo Cego desliga o pulso de proximidade
+1463. Modo Cego desliga a vinheta de presença
+1464. Modo Cego desliga a borda de faro
+1465. Modo Cego desliga a postura do Inspetor no canto
+1466. Modo Cego desliga o arco da audição dele
+1467. Modo Cego desliga a legenda de distância dos passos
+1468. Modo Cego deixa as entidades mais agressivas automaticamente
+1469. Desligar o Modo Cego devolve cada ajuda exatamente como estava antes
+1470. O Modo Cego fica salvo entre sessões
+1471. Aviso explicando o que muda ao ligar e ao desligar o Modo Cego
+1472. Selo guardado quando você passa de capítulo com o Modo Cego ligado
+1473. Aviso quando você passa de capítulo às cegas
+1474. Selo discreto "às cegas" no canto enquanto o Modo Cego está ligado
+1475. Nota no painel lembrando que você já venceu um capítulo às cegas
+1476. Nova opção "Intensidade dos monstros" (Brando/Normal/Cruel), separada da dificuldade
+1477. Cruel: o Inspetor reage mais rápido ao som
+1478. Cruel: o Inspetor fica mais veloz na caça
+1479. Brando: reação e velocidade do Inspetor reduzidas
+1480. A intensidade dos monstros não mexe na vida nem nos tempos de puzzle
+1481. Aviso ao escolher a intensidade Cruel
+1482. Aviso ao escolher a intensidade Branda
+1483. Nova opção "Vibração direcional do caçador"
+1484. Vibração direcional: à esquerda, um toque longo
+1485. Vibração direcional: à direita, dois toques
+1486. Vibração direcional: atrás, três toques
+1487. A vibração direcional só dispara quando ele caça fora do seu campo de visão
+1488. A vibração direcional não dispara enquanto você está escondida
+1489. A vibração direcional fica mais frequente conforme ele se aproxima
+1490. No Cruel e no Modo Cego o aviso tátil direcional fica mais nervoso
+1491. No celular a vibração direcional usa um padrão nativo, mais nítido
+1492. Botão "Sentir as direções" para treinar o padrão de pulsos
+1493. Um tranco direcional reforçado quando ele cola bem atrás de você
+1494. Nova opção "Realce de nuca (atrás e acima)" no fone
+1495. A respiração ganha reforço de agudos quando ele está nas suas costas
+1496. A fonte da respiração sobe de altura quando ele está atrás (sensação de "acima")
+1497. Nova barra "Força do realce de nuca"
+1498. Botão "Realce de nuca" para calibrar o som atrás e acima
+1499. A demonstração "Ouvir a respiração" também aplica o realce de nuca
+1500. Nova opção "Duelo do sino no toque/controle"
+1501. Empurrão tátil a cada badalada enquanto você segura o sino
+1502. Pulso mais forte de "puxa agora" perto do fim do sino
+1503. Legenda "puxa — agora" no clímax do sino
+1504. Badalada final do sino com um tranco mais forte
+1505. O duelo do sino funciona no toque, no controle e no teclado
+1506. Nova opção "Pulso tátil nas ações longas" (forçar, cavar, dar corda)
+1507. Botão "Sentir o sino" para treinar o clímax
+1508. Nova opção "Tique tátil quando a pilha está acabando"
+1509. Nova opção "Pulso tátil ao se esconder e ao sair"
+1510. Batida de boas-vindas no controle assim que ele conecta
+1511. A legenda de início de caça agora diz de que lado ele apareceu
+1512. O medidor de desempenho usa mais quadros e mostra o pior quadro
+1513. O medidor sugere baixar a qualidade quando o jogo está pesado
+1514. O painel mostra o número de núcleos do processador
+1515. O painel mostra a memória do aparelho quando disponível
+1516. Novo botão "Copiar relatório técnico" para reportar travamentos
+1517. O relatório técnico inclui os modos ligados (Cego e intensidade)
+1518. Botão "Compartilhar o jogo" no título (compartilhar nativo ou copiar o link)
+1519. Removida a meta og:image duplicada no compartilhamento
+1520. Adicionada og:image:secure_url para a prévia do link em https
+1521. Adicionada a meta author do jogo
+1522. Adicionada a meta application-name do jogo
+1523. Adicionada a meta robots para indexação do link
+1524. Preconnect ao servidor do Three.js (unpkg) para abrir mais rápido
+1525. dns-prefetch do unpkg
+1526. Preconnect ao servidor reserva (jsdelivr)
+1527. Pré-carregamento do Three.js (modulepreload)
+1528. Manifest: direção de texto declarada (dir ltr)
+1529. Manifest: display_override para melhor tela cheia no app instalado
+1530. Manifest: ícone maskable para instalar bonito no celular
+1531. Manifest: atalho "Desempenho e acessibilidade" no ícone instalado
+1532. Atalho ?opcoes=1 abre o painel de opções direto
+1533. Novo módulo entra no cache para jogar offline (plataforma-lote5b)
+1534. Cache offline atualizado para a versão do Lote 5 (v9)
+1535. O anúncio de acessibilidade no título cita Modo Cego, vibração direcional e realce de nuca
+1536. Nova seção no painel: "Os monstros: desafio e leitura tátil"
+1537. Novo grupo de opções "Os monstros (desafio e leitura tátil)"
+1538. Kit de teste passa a cobrir o Modo Cego e a intensidade dos monstros
 
 ### Revisão (1)
 
-1024. O aviso "não encare ele" (e os outros selos do contra-jogo do corpo) ficava fixo em `bottom:16%` e cobria a fala/legenda em `bottom:12%`; agora o selo some enquanto houver fala ou legenda na tela, voltando sozinho quando o diálogo sai, sem sobreposição de texto
+1539. O aviso "não encare ele" (e os outros selos do contra-jogo do corpo) ficava fixo em `bottom:16%` e cobria a fala/legenda em `bottom:12%`; agora o selo some enquanto houver fala ou legenda na tela, voltando sozinho quando o diálogo sai, sem sobreposição de texto
