@@ -90,3 +90,95 @@
 - Um aviso ensina, uma vez, o silêncio da escada dos dormitórios.
 - Flags próprias do lote (prefixo l5) para os eventos não dispararem fora de hora nem repetirem errado.
 - O novo módulo de monstros do internato entrou na lista de cache offline (sw.js).
+- No Capítulo I, antes do primeiro encontro, o vulto do Inspetor desliza pelas janelas da fachada do térreo.
+- Esse vulto da fachada acompanha o movimento da Lia, sempre um pouco à frente dela.
+- O vulto da fachada some quando a Lia chega ao fundo do hall, com um estalo de língua.
+- A aparição do vulto na fachada aumenta o medo e vem acompanhada de um sussurro.
+- Novo set-piece: o Inspetor derruba as mesas do refeitório no encalço da Lia (Cap I/II).
+- Cada mesa do refeitório tomba com estrondo, tranco de tela e ruído que o próprio Inspetor ouve.
+- As mesas tombam uma a uma, em sequência, afunilando a rota para a saída.
+- As mesas caídas nunca criam colisor: a saída do refeitório jamais trava.
+- Ao disparar o set-piece das mesas, o Inspetor desperta dentro do refeitório.
+- A Lia comenta a perseguição das mesas e o alívio ao passar pela bagunça.
+- Contra-jogo novo: atrair o Inspetor ao quadro de fusíveis e bater a chave solta um arco que o atordoa.
+- O quadro de fusíveis avisa, uma vez, o contra-jogo do arco quando a Lia chega perto.
+- O arco elétrico atordoa o Inspetor por alguns segundos, deixando-o caído.
+- O arco do quadro faz muito barulho e apaga a luz da ala.
+- A Procissão deixa uma faixa de cera gelada no chão do corredor no Capítulo II.
+- Atravessar a faixa de cera gela a Lia e rouba fôlego dela.
+- O frio da cera deixa a Lia mais lenta por um instante, atrapalhando a fuga.
+- Correr sobre a cera durante a Procissão chama a atenção da fila e assusta mais.
+- Um aviso ensina a atravessar a cera devagar para não ser notada pela Procissão.
+- Fora da caça, o Inspetor tranca uma porta à frente da Lia, com som de chave girando.
+- A porta que o Inspetor tranca bate sozinha e assusta, forçando um desvio sem backtracking.
+- Um coração-bússola acelera conforme o Inspetor se aproxima na caça (térreo).
+- Um zumbido no ouvido surge quando o Inspetor fica a poucos metros (térreo).
+- No Capítulo II o Inspetor bate o cassetete nas grades enquanto caça.
+- No Capítulo I o Inspetor manca, com um passo arrastado e irregular (ainda meio humano).
+- No primeiro avistamento do Capítulo I, o Inspetor hesita, como se lembrasse de ser gente.
+- No primeiro avistamento do Capítulo II, o Inspetor vem direto, sem hesitar (contraste).
+- No Capítulo I o Inspetor ainda resmunga uma frase humana na primeira caçada.
+- O estalo de língua do Inspetor fica mais seco e rachado a partir do Capítulo II.
+- Correr no corredor em caça no Capítulo II enfurece o Inspetor (ele fica mais agressivo).
+- Deixar o gerador roncando atrai o Inspetor para a casa de máquinas.
+- Um aviso explica que o ronco do gerador abafa os passos da Lia, mas é o ronco que o traz.
+- Perto do vão da janela quebrada, a corrente de ar desvia o faro e o Inspetor fareja na direção errada.
+- O cheiro de parafina e cinza avisa quando o Inspetor está do outro lado da parede.
+- Pegadas de fuligem no chão marcam por onde o Inspetor andou (térreo).
+- As pegadas de fuligem esmaecem com o tempo, virando pista do caminho dele.
+- Durante a caça surge, de vez em quando, um arranhão comprido e luminoso na parede.
+- Os ratos fogem fazendo barulho na frente do Inspetor.
+- Ao perder a pista, o Inspetor arrasta o cassetete pela parede, num rangido contínuo.
+- Ponto cego: imóvel, agachada e sem luz no corredor, às vezes o Inspetor passa reto.
+- A Ana sussurra "Fica quietinha. Ele passa reto." quando o ponto cego funciona.
+- Um aviso ensina, uma vez, o contra-jogo do ponto cego no corredor.
+- Com o medo no limite na caça, o Inspetor sussurra "Eu te vejo" na direção da Lia (térreo).
+- A Lia prende o fôlego sozinha quando o Inspetor passa colado ao esconderijo (térreo).
+- O relógio da recepção "trava" quando o Inspetor entra o hall.
+- Segunda aparição da silhueta no pátio, no Capítulo II, maior e mais perto do vidro.
+- A segunda aparição no pátio vem com trovão, um gemido e um susto de medo maior.
+- Novo flanqueio visível: o Inspetor corre por fora, janela a janela, mais rápido que a Lia.
+- Os passos do Inspetor soam do lado de fora, acompanhando pela fachada no flanqueio.
+- No flanqueio, o Inspetor "entra por uma porta à frente" para cortar o caminho e some.
+- Ao cortar o caminho pelo flanqueio, o Inspetor passa a procurar a Lia a partir daquela porta.
+- Uma cama de ferro tomba sozinha com estrondo atrás da Lia no dormitório.
+- O estrondo da cama que tomba atrai o Inspetor de verdade (sair rápido é a leitura certa).
+- Manchas de fuligem no ar marcam por onde o Inspetor passou nos dormitórios.
+- A fuligem do ar esmaece aos poucos, apagando o rastro.
+- A fuligem também escurece o batente da porta mais próxima que o Inspetor tocou.
+- Pegadas de fuligem no chão do corredor marcam o rumo do Inspetor (superior).
+- Um degrau cede sob o pé da Lia durante a fuga pela escada dos dormitórios.
+- Nova fuga: o Inspetor pula do patamar bem na frente da Lia para cortar a subida.
+- Ao descer a escada em caça, a silhueta do Inspetor aparece no topo por um instante.
+- Coração-bússola acelera conforme o Inspetor se aproxima na caça (superior).
+- Zumbido no ouvido quando o Inspetor fica muito perto (superior).
+- A respiração do Inspetor vaza pela parede/porta quando ele está por perto (superior).
+- O rosto na janela agora pisca os olhos.
+- O rosto na janela "respira", esticando de leve na vertical (mais perturbador).
+- Ao sumir, o rosto deixa uma marca de mão embaçada no vidro.
+- Se a Lia fica parada na fileira dele, o Inspetor vira a cabeça e quase a percebe.
+- Lençóis farfalham em sequência conforme a figura das camas avança pela fileira.
+- O Inspetor soca o vidro da janela acompanhando a Lia pela sala.
+- Um aviso descreve a tensão do soco no vidro (o vidro aguenta, por ora).
+- Um brinquedo range e dá corda sozinho quando o Inspetor passa pela sala de brinquedos.
+- Uma risadinha infantil se adianta quando o Inspetor patrulha a sala de brinquedos.
+- A caixinha de música desafina quando o Inspetor está por perto.
+- A bailarina da caixinha para de girar quando o Inspetor entra a sala de brinquedos.
+- Um brinquedo rola pelo corredor na frente da Lia durante a fuga.
+- Na descida do monta-cargas, agachar no fundo mantém a mão do Inspetor fora do alcance.
+- Um aviso manda agachar durante a descida do monta-cargas.
+- Se a Lia não agachar, a mão do Inspetor roça o cabelo dela (tranco e medo, sem morte).
+- Poeira sobe dos escombros quando o corredor desaba.
+- O Inspetor rosna e soca do outro lado dos escombros enquanto a Lia foge.
+- Ponto cego nos dormitórios: imóvel entre as camas, no escuro, o Inspetor passa reto.
+- Um aviso ensina o ponto cego dos dormitórios.
+- Com o medo no limite, o Inspetor sussurra "Tá na hora de dormir" na caça (superior).
+- A Lia prende o fôlego perto do Inspetor no esconderijo (superior).
+- As portas de armário rangem abrindo quando o Inspetor entra um dormitório.
+- Marcas de garra também aparecem nas portas dos dormitórios por onde o Inspetor passou.
+- O Inspetor arranha o teto (passos acima) quando está no depósito, sobre a sala de brinquedos.
+- Um quadro cai da parede quando o Inspetor passa correndo pelo corredor em caça.
+- Marcas de garra também aparecem nas portas do corredor por onde o Inspetor caça (térreo).
+- Ao desistir da caça, o Inspetor solta um suspiro grave de frustração.
+- A grade do monta-cargas chacoalha sozinha quando a Lia entra o depósito (presságio).
+- Um estalo ritmado ecoa pelo corredor dos dormitórios quando o Inspetor caça ali.
