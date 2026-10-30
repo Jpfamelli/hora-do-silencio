@@ -181,3 +181,96 @@
 - Os quatro boatos novos entram no mural de boatos do painel.
 - O painel Segredos passa a ter treze abas, cinco delas novas.
 - O novo módulo entra no cache offline do service worker para jogar sem internet.
+- Código NÉVOA no título libera a Noite de Névoa, com neblina fria no fundo da tela.
+- Código FRIO no título libera a Noite de Inverno, com um azul gelado por cima de tudo.
+- Código BRASA no título libera a Noite de Brasa e equipa a lanterna de brasa.
+- Código TROCADA no título conta o boato das regras dos monstros invertidas.
+- Código MANHÃ no título antecipa a porta da manhã que abre quando não sobra segredo.
+- Código SETE no título revela a lenda da vez em que o relógio bateu só sete.
+- Código FAÍSCA no título libera a carta do gato do internato.
+- Código GIRASSOL no título conta o girassol que aponta onde falta segredo.
+- Código SINO no título equipa a lanterna dourada da badalada.
+- O seletor de Modos ganha três modos de luz novos que se excluem entre si.
+- Nova lanterna cosmética de giz, branca-azulada, liberada pelo selo de explorador.
+- Nova lanterna cosmética de brasa, laranja viva, liberada pelo código BRASA.
+- Nova lanterna cosmética do sino, dourada, liberada pelo final verdadeiro ou pelo SINO.
+- Nova lanterna cosmética do porão, esverdeada, liberada ao reunir quinze peças do acervo.
+- Nova aba Pertences no painel Segredos: a lata de biscoito do Davi, com seis encaixes.
+- Nova aba Placar no painel Segredos: o fliperama empoeirado do posto.
+- Nova aba Recordes no painel Segredos: melhor rank e tempo de cada capítulo.
+- Nova aba Raras no painel Segredos: oito ocorrências raras para marcar.
+- Nova aba Lendas no painel Segredos: seis lendas da serra para viver.
+- Pertence escondido: a figurinha, encaixe do térreo na lata do Davi.
+- Pertence escondido: o pião, encaixe do andar de cima na lata do Davi.
+- Pertence escondido: o soldadinho, encaixe dos túneis na lata do Davi.
+- Pertence escondido: o dente de leite, encaixe do quarto da Irmã na lata do Davi.
+- Pertence escondido: a bolinha de gude, encaixe do térreo na lata do Davi.
+- Pertence escondido: a estrela de lata, encaixe da sala secreta na lata do Davi.
+- Com a lata cheia, o final ganha a cena do Davi devolvendo a figurinha para a Lia.
+- O placar do posto já vem com DAV, ANA e TOM pré-carregados no topo.
+- O placar guarda a sua melhor noite (peças de acervo achadas) entre as partidas.
+- Superar o DAV faz o placar mostrar a linha VOCÊ GANHOU DE MIM.
+- A aba Recordes mostra ainda não jogado nos capítulos que você não terminou.
+- Ocorrência rara: terminar um capítulo inteiro sem acender a lanterna.
+- Ocorrência rara: terminar um capítulo sem correr uma vez sequer.
+- Ocorrência rara: achar cinco peças do acervo numa só noite.
+- Ocorrência rara: morrer três vezes no mesmo capítulo e ainda assim passar.
+- Ocorrência rara: entrar no São Lázaro às três da manhã.
+- Ocorrência rara: entrar no São Lázaro à meia-noite em ponto.
+- Ocorrência rara: passar um capítulo sem dano e sem morrer.
+- Ocorrência rara: contar sete relâmpagos numa mesma noite.
+- Lenda da serra: o gato preto que some quando a lanterna encosta nele.
+- Lenda da serra: a foto da turma com menos rostos riscados a cada noite.
+- Lenda da serra: o girassol que cresce de novo todo março no pátio.
+- Lenda da serra: a vez em que o relógio da recepção bateu só sete.
+- Lenda da serra: o fogo de 1979 que ainda aquece a parede dos fundos.
+- Lenda da serra: quem acha tudo vê o São Lázaro de dia, uma vez só.
+- Carta nova da casa: Faísca, o gato, com a fraqueza anotada pelo Davi.
+- Carta nova da casa: o Diretor Albano, que enxergava e trancava tudo.
+- A tela de morte agora conta sete jeitos diferentes de morrer (antes eram quatro).
+- Novo jeito de morte catalogado: o Breu, a morte no escuro total.
+- Novo jeito de morte catalogado: a queda.
+- Novo jeito de morte catalogado: o DEZ da Menina Que Conta.
+- A tela de morte avisa quando foi uma morte inédita, com o contador X de 7.
+- A tela de morte reconhece quando você já tinha caído naquele capítulo.
+- No título, a foto da turma de 1979 conta quantos rostos já se lembram de você.
+- Cinco bilhetes novos de criança no pé da página, alternando na tela de pausa.
+- No final, a lata do Davi mostra quantos pertences ainda faltam achar.
+- No final, a lata cheia ganha a frase da boneca... digo, da figurinha no carona.
+- No final, fechar o Capítulo V num fôlego só ganha a linha da Hora atrasada.
+- No final, rank S em tudo anuncia a porta nova da manhã no título.
+- No final, uma nova melhor noite avisa que o DAV está começando a suar no placar.
+- O fim de capítulo avisa quando a lanterna de giz acabou de ser liberada.
+- Terminar um capítulo com um modo de luz novo ligado dá a conquista Luz Estranha.
+- Criança nova na Chamada de 1979: Moacir, com ficha própria e nome digitável.
+- Criança nova na Chamada de 1979: Luiz, o melhor amigo do Davi.
+- Criança nova na Chamada de 1979: Sueli, que tinha medo do escuro.
+- Criança nova na Chamada de 1979: Gilberto, o mais velho da turma.
+- Criança nova na Chamada de 1979: Marta, que desenhava o pátio de dia.
+- Criança nova na Chamada de 1979: Elias, que cantava o hino desafinado.
+- Criança nova na Chamada de 1979: Dalva, que guardava doce sob o colchão.
+- Criança nova na Chamada de 1979: Raul, que colecionava figurinhas.
+- Criança nova na Chamada de 1979: Zuleide, a segunda caçula.
+- Criança nova na Chamada de 1979: Benedito, que carregava os baldes do poço.
+- Criança nova na Chamada de 1979: Aparecida, que rezava por todos.
+- Criança nova na Chamada de 1979: João, que perdeu o sapato com o Cícero.
+- Criança nova na Chamada de 1979: Terezinha, que bordava iniciais erradas.
+- Criança nova na Chamada de 1979: Sebastião, que ouvia o sino antes de todos.
+- Criança nova na Chamada de 1979: Neusa, a última da fila da chamada.
+- Nova conquista secreta Neblina, por ligar a Noite de Névoa.
+- Nova conquista secreta Inverno, por ligar a Noite de Inverno.
+- Nova conquista secreta Brasa, por ligar a Noite de Brasa.
+- Nova conquista secreta Regras Trocadas, pelo código TROCADA.
+- Nova conquista secreta A Manhã, pelo código MANHÃ.
+- Nova conquista secreta Sete Badaladas, pelo código SETE.
+- Nova conquista secreta O Gato Faísca, pelo código FAÍSCA.
+- Nova conquista secreta Cresceu, pelo código GIRASSOL.
+- Nova conquista secreta A Badalada, pelo código SINO.
+- Nova conquista secreta A Lata Inteira, por encher a lata do Davi.
+- Nova conquista secreta Recorde do Irmão, por superar o DAV no placar.
+- Nova conquista secreta Coisa Rara, por marcar as oito ocorrências raras.
+- Nova conquista secreta Toda Lenda, por viver as seis lendas da serra.
+- Nova conquista secreta A Casa Toda, por chegar a rank S em todos os capítulos.
+- Nova conquista secreta Colecionadora de Medos, por ver sete jeitos de morrer.
+- Nova conquista secreta Chamada Inteira, por chamar todas as crianças de 1979.
+- Os dois módulos novos entram no cache offline do service worker para jogar sem internet.

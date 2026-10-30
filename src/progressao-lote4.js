@@ -6,6 +6,7 @@
 // Ligado por src/progressao.js (PG); o texto mora em src/progressao-lote4-roteiro.js.
 import './progressao-lote4-roteiro.js';
 import { L4B } from './progressao-lote4b.js'; // segunda rodada de segredos (códigos, telefones, álbum, caça, mapa, visitas...)
+import { L4C } from './progressao-lote4c.js'; // terceira rodada (modos de luz, lanternas, Pertences/Placar/Recordes/Raras/Lendas)
 
 const K = 'hora-silencio-l4';
 const $ = s => document.querySelector(s);
@@ -69,7 +70,7 @@ function lanternaLiberada(id) {
     case 'lampiao': return !!c.lampiao;
     case 'vermelha': return !!q.internato_inteiro;
   }
-  return L4B.lanternaLiberada(id);
+  return L4B.lanternaLiberada(id) || L4C.lanternaLiberada(id);
 }
 function corLanterna() {
   const id = C.OPT.l4lanterna || 'padrao';
@@ -142,6 +143,7 @@ function recalcPrateleira() { if (PRAT.every(p => ac()[p.id])) conq('l4_pratelei
 let acc = 0;
 function tick(dt) {
   try { L4B.tick(dt); } catch (e) {}
+  try { L4C.tick(dt); } catch (e) {}
   try {
     if (C.S && !C.S.flashOn && emJogo()) darkT += dt; // tempo no breu
     overlaysTick();
@@ -197,6 +199,7 @@ function titulo() {
     recalcBoatos();
   } catch (e) {}
   try { L4B.titulo(); } catch (e) {}
+  try { L4C.titulo(); } catch (e) {}
 }
 function botaoSegredos() {
   if ($('#b-l4') || !$('#b-stats')) return;
@@ -207,14 +210,14 @@ function botaoSegredos() {
 
 // ---------------------------------------------------------------- painel Segredos (abas)
 const ABAS = [['prateleira', 'Prateleira'], ['cartas', 'Cartas'], ['boatos', 'Boatos'], ['parede', 'Todas Voltam'], ['ocorrencias', 'Ocorrências'], ['chamada', 'Chamada'], ['lanternas', 'Lanternas'], ['modos', 'Modos']];
-function todasAbas() { let extra = []; try { extra = L4B.tabs() || []; } catch (e) {} return ABAS.concat(extra); }
+function todasAbas() { let extra = [], extra2 = []; try { extra = L4B.tabs() || []; } catch (e) {} try { extra2 = L4C.tabs() || []; } catch (e) {} return ABAS.concat(extra, extra2); }
 function abrirSeg(aba) {
   const abas = todasAbas();
   const barra = `<div class="l4-tabs">${abas.map(([k, n]) => `<button class="btn${k === aba ? ' on' : ''}" data-aba="${k}">${n}</button>`).join('')}</div>`;
   let corpo = '';
   try {
     const fn = { prateleira: tabPrateleira, cartas: tabCartas, boatos: tabBoatos, parede: tabParede, ocorrencias: tabOcorrencias, chamada: tabChamada, lanternas: tabLanternas, modos: tabModos }[aba];
-    corpo = fn ? fn() : (L4B.render(aba) || tabPrateleira());
+    corpo = fn ? fn() : (L4B.render(aba) || L4C.render(aba) || tabPrateleira());
   } catch (e) { corpo = '<p class="l4-aviso">—</p>'; }
   A.abrirPainel('Segredos', barra + corpo);
   $('#pn-lista').querySelectorAll('[data-aba]').forEach(x => x.onclick = () => abrirSeg(x.dataset.aba));
@@ -258,19 +261,21 @@ function tabLanternas() {
 function tabModos() {
   const T = TX().modos, c = mem().codes || {};
   const linha = (id, on, chave, nome, desc) => `<label class="${chave ? '' : 'off'}"><input type="checkbox" data-modo="${id}" ${on ? 'checked' : ''} ${chave ? '' : 'disabled'}> ${esc(nome)} — <small>${chave ? esc(desc) : esc(T.trancado)}</small></label>`;
-  let extra = ''; try { extra = L4B.modosExtra() || ''; } catch (e) {}
+  let extra = '', extra2 = ''; try { extra = L4B.modosExtra() || ''; } catch (e) {} try { extra2 = L4C.modosExtra() || ''; } catch (e) {}
   return `<p class="l4-aviso">${esc(T.aviso)}</p><div class="l4-modo">
     ${linha('espelho', !!C.OPT.l4espelho, !!c.acorda, T.espelhada, T.espelhadaDesc)}
     ${linha('fumaca', !!C.OPT.l4fumaca, !!c.fogo, T.fumaca, T.fumacaDesc)}
     ${linha('escuro', !!C.OPT.l4escuro, !!c.escuro, T.escuro, T.escuroDesc)}
     ${extra}
+    ${extra2}
   </div>`;
 }
 function ligarControles(aba) {
   const lista = $('#pn-lista'); if (!lista) return;
   if (aba === 'lanternas') lista.querySelectorAll('input[name="l4lant"]').forEach(r => r.onchange = () => { if (r.checked) { C.OPT.l4lanterna = r.value; try { C.salvarOpt(); } catch (e) {} } });
-  if (aba === 'modos') { lista.querySelectorAll('[data-modo]').forEach(cb => cb.onchange = () => { C.OPT['l4' + cb.dataset.modo] = cb.checked; try { C.salvarOpt(); } catch (e) {} }); try { L4B.modosControles(lista); } catch (e) {} }
+  if (aba === 'modos') { lista.querySelectorAll('[data-modo]').forEach(cb => cb.onchange = () => { C.OPT['l4' + cb.dataset.modo] = cb.checked; try { C.salvarOpt(); } catch (e) {} }); try { L4B.modosControles(lista); } catch (e) {} try { L4C.modosControles(lista); } catch (e) {} }
   try { L4B.ligarControles(aba, lista); } catch (e) {}
+  try { L4C.ligarControles(aba, lista); } catch (e) {}
 }
 
 // ---------------------------------------------------------------- códigos digitados no título
@@ -300,6 +305,7 @@ function tecla(buf) {
       }
     }
     if (L4B.tecla(buf)) return true;
+    if (L4C.tecla(buf)) return true;
   } catch (e) {}
   return false;
 }
@@ -313,6 +319,7 @@ function morte(quem) {
     const S = C.S, id = (S && S.flags && S.flags.sino) ? 'fuga' : quem;
     if (MEDOS.includes(id)) { marcar('medos', id); if (MEDOS.every(x => tem('medos', x))) conq('l4_medos'); }
   } catch (e) {}
+  try { L4C.morte(quem); } catch (e) {}
 }
 function telaMorte() {
   try {
@@ -320,6 +327,7 @@ function telaMorte() {
     if (el) { const extra = n >= tot ? T.todas : T.titulo.replace('{n}', n).replace('{t}', tot); el.innerHTML = (el.innerHTML ? el.innerHTML + '<br>' : '') + '<small style="color:#857a63">' + esc(extra) + '</small>'; }
   } catch (e) {}
   try { L4B.telaMorte(); } catch (e) {}
+  try { L4C.telaMorte(); } catch (e) {}
 }
 
 // ---------------------------------------------------------------- fim de capítulo / final
@@ -327,6 +335,7 @@ function fimCap(c, r) {
   let linhas = [];
   try { if (espUsada) marcar('occ', 'espelhada'); } catch (e) {}
   try { linhas = L4B.fimCap(c, r) || []; } catch (e) {}
+  try { linhas = linhas.concat(L4C.fimCap(c, r) || []); } catch (e) {}
   return linhas;
 }
 function final(tipo) {
@@ -335,11 +344,12 @@ function final(tipo) {
     if (!mexeuNoite) { conq('l4_nao_mexi'); const el = $('#e-stats'); if (el) el.innerHTML += '<br>' + esc(TX().naoMexi); }
   } catch (e) {}
   try { L4B.final(tipo); } catch (e) {}
+  try { L4C.final(tipo); } catch (e) {}
 }
 
 // ---------------------------------------------------------------- API
 export const L4 = {
-  ligar(ctx, api) { C = ctx; A = api; try { css(); cssAvesso(); } catch (e) {} try { L4B.ligar(ctx, Object.assign({}, api, { abrirSeg }), { marcar, tem, conta, som }); } catch (e) {} },
+  ligar(ctx, api) { C = ctx; A = api; try { css(); cssAvesso(); } catch (e) {} try { L4B.ligar(ctx, Object.assign({}, api, { abrirSeg }), { marcar, tem, conta, som }); } catch (e) {} try { L4C.ligar(ctx, Object.assign({}, api, { abrirSeg }), { marcar, tem, conta, som }); } catch (e) {} },
   tick, titulo, tecla, morte, telaMorte, fimCap, final,
-  pausa() { try { let base = ''; const L = TX().pausa || []; if (L.length && C.S) { const i = Math.abs((C.S.capMortes || 0) + (C.S.chapter || 0)) % L.length; base = '<br>' + esc(L[i]); } let extra = ''; try { extra = L4B.pausa() || ''; } catch (e) {} return base + extra; } catch (e) { return ''; } }
+  pausa() { try { let base = ''; const L = TX().pausa || []; if (L.length && C.S) { const i = Math.abs((C.S.capMortes || 0) + (C.S.chapter || 0)) % L.length; base = '<br>' + esc(L[i]); } let extra = '', extra2 = ''; try { extra = L4B.pausa() || ''; } catch (e) {} try { extra2 = L4C.pausa() || ''; } catch (e) {} return base + extra + extra2; } catch (e) { return ''; } }
 };
