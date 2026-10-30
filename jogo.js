@@ -70,9 +70,9 @@ scene.add(hemi);
 const moon = new THREE.DirectionalLight(0x9aaad8, .9);
 moon.position.set(-20, 30, 30);
 scene.add(moon);
-let luzBase = 1, ambFora = { hemi: .7, moon: .9, fog: .045 }, ambDentro = { hemi: .1, moon: .05, fog: .095 };
+let luzBase = 1, ambFora = { hemi: .82, moon: 1, fog: .04 }, ambDentro = { hemi: .26, moon: .14, fog: .08 };
 
-const flash = new THREE.SpotLight(0xfff0d2, 30, 22, 0.4, 0.5, 0.9);
+const flash = new THREE.SpotLight(0xfff0d2, 42, 27, 0.45, 0.5, 0.9);
 flash.position.set(0.22, -0.18, 0);
 flash.castShadow = true;
 flash.shadow.mapSize.set(1024, 1024);
@@ -616,13 +616,13 @@ let S;
 function perm3() { const a = [1, 2, 3]; for (let i = 2; i > 0; i--) { const j = Math.random() * (i + 1) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; }
 function novoEstado(dif) {
   return PG.novo({
-    dif, chapter: 0, done: {}, picked: {}, flags: {}, notes: {}, fitas: {}, visited: {}, doorsOpen: {},
+    dif, chapter: 0, done: {}, picked: {}, flags: { guiaOff: (() => { try { return localStorage.getItem('ths_guia') === '1'; } catch (e) { return false; } })() }, notes: {}, fitas: {}, visited: {}, doorsOpen: {},
     inv: { lanterna: false, galao: false, fusiveis: 0, pilhas: 0, kits: 0, garrafas: 0, engrenagens: 0, chaves: {}, reliquias: 0, pa: false },
     placed: 0, valv: [], tumulos: {},
     code: [1 + (Math.random() * 9 | 0), Math.random() * 10 | 0, 1 + (Math.random() * 9 | 0), Math.random() * 10 | 0],
     quadro: [1 + (Math.random() * 9 | 0), Math.random() * 10 | 0, Math.random() * 10 | 0],
     ordem: perm3(),
-    health: 100, stamina: 100, ar: 100, battery: 55, fear: 0, flashOn: false,
+    health: 100, stamina: 100, ar: 100, battery: 100, fear: 0, flashOn: false,
     mapa: 'estrada', pos: [0, 0], yaw: 0, hidden: null,
     mortes: 0, tempo: 0, capT: 0, capDano: 0, capVisto: 0,
     timers: { procissao: 9999, ana: 9999, chamado: 9999 }
@@ -679,6 +679,7 @@ document.addEventListener('pointerlockchange', () => {
 });
 canvas.addEventListener('click', () => { if ((mode === 'jogo' || mode === 'cena') && !ui) lockPointer(); });
 $('#clique').addEventListener('click', () => lockPointer());
+$('#guia-btn').addEventListener('click', e => { e.stopPropagation(); toggleGuia(); });
 function lockPointer() { if (PLAT.semTrava && PLAT.semTrava()) return; try { const op = PLAT.travaOpcoes && PLAT.travaOpcoes(); const p = op ? canvas.requestPointerLock(op) : canvas.requestPointerLock(); if (p && p.catch) p.catch(() => { if (op) { try { const q = canvas.requestPointerLock(); if (q && q.catch) q.catch(() => {}); } catch (e2) {} } }); } catch (e) {} }
 const unlock = () => { if (document.pointerLockElement) document.exitPointerLock(); };
 
@@ -731,6 +732,7 @@ function onKey(e) {
     case 'ShiftLeft': case 'ShiftRight': if (OPT.correr) P.correrTrava = !P.correrTrava; break;
     case 'Space': if (OPT.resp) P.arTrava = !P.arTrava; break;
     case 'KeyK': JGL5.assobiar(); break; // lote 5: assobiar (isca na própria posição)
+    case 'KeyL': toggleGuia(); break; // ocultar/mostrar a dica de como passar
   }
 }
 function onKeyUp(e) {
@@ -1219,7 +1221,7 @@ let flashPisca = false, piscaRaj = 0, piscaProx = 3, flashVis = 0;
 let flashFalhaLonga = false, flickT = 1, flickDur = 0, flickIni = 0, falhaT = 0, consertoT = 0, ultimoF = -9, avisoPisca = false;
 function updateLanterna(dt) {
   if (!S.inv.lanterna) S.flashOn = false;
-  if (S.flashOn) { S.battery = Math.max(0, S.battery - .55 * D().pilha * dt); if (S.battery <= 0) { S.flashOn = false; toast(S.inv.pilhas ? 'A lanterna apagou. R para trocar a pilha.' : 'A lanterna apagou. Segure R para sacudir.'); SFX.clique(); } }
+  if (S.flashOn) { S.battery = Math.max(0, S.battery - .24 * D().pilha * dt); if (S.battery <= 0) { S.flashOn = false; toast(S.inv.pilhas ? 'A lanterna apagou. R para trocar a pilha.' : 'A lanterna apagou. Segure R para sacudir.'); SFX.clique(); } }
   const low = S.battery < 18;
   consertoT = Math.max(0, consertoT - dt);
   if (S.chapter === 3 && ANA.ativa && ANA.conta >= 3 && S.flashOn && !S.flags.falhaLanterna) { S.flags.falhaLanterna = true; falhaT = 4; SFX.clique(); toast('A lanterna falhou! Aperte F para bater nela.'); }
@@ -2252,7 +2254,7 @@ function updateAna(dt) {
   ANA_G.userData.olhoMat.color.setHex(ANA.olhoT > 0 ? 0xd6e6ff : 0x000000);
   if (ANA.vida <= 0) { despawnAna(); return; }
   // Encarar a menina cobra: gasta pilha, ela cantarola, e depois de muito tempo a lanterna falha
-  if (ANA.vista && luzLanterna) { ANA.encaraT += dt; S.battery = Math.max(0, S.battery - .55 * 1.5 * D().pilha * dt); } else ANA.encaraT = 0;
+  if (ANA.vista && luzLanterna) { ANA.encaraT += dt; S.battery = Math.max(0, S.battery - .24 * 1.5 * D().pilha * dt); } else ANA.encaraT = 0;
   if (ANA.encaraT > 6 && !AMBX.hum) SX.anaHum(true, { x: ANA.pos.x, y: 1.2, z: ANA.pos.z });
   if (AMBX.hum && !ANA.vista) SX.anaHum(false);
   if (ANA.encaraT > 8 && !ML.anaOlhada()) { ANA.encaraT = 0; ANA.falhaT = .6; SFX.clique(); SX.anaHum(false); anaAvancar(2); ANA.pose = 5; }
@@ -4036,8 +4038,28 @@ function renderObj() {
   }).join('');
   objAnim.iniciado = true;
   if (html !== objHtml) { $('#obj-list').innerHTML = html; objHtml = html; }
+  renderGuia(c);
 }
-let objAnim = {}, objHtml = '';
+let objAnim = {}, objHtml = '', guiaTxt = '';
+function renderGuia(c) {
+  const g = $('#guia'); if (!g) return;
+  const atual = c.objetivos.find(o => !S.done[o.id]);
+  const txt = atual ? (atual.dica || atual.texto.replace('{n}', contagem(atual.id) ?? 0)) : '';
+  if (txt !== guiaTxt) { $('#guia-txt').textContent = txt; guiaTxt = txt; }
+  g.hidden = !txt;
+  const off = !!S.flags.guiaOff;
+  if (g.classList.contains('off') !== off) {
+    g.classList.toggle('off', off);
+    const b = $('#guia-btn'); if (b) b.textContent = off ? 'mostrar dica (L)' : 'ocultar dica (L)';
+  }
+}
+function toggleGuia() {
+  const g = $('#guia'); if (!g) return;
+  S.flags.guiaOff = !S.flags.guiaOff;
+  g.classList.toggle('off', S.flags.guiaOff);
+  const b = $('#guia-btn'); if (b) b.textContent = S.flags.guiaOff ? 'mostrar dica (L)' : 'ocultar dica (L)';
+  try { localStorage.setItem('ths_guia', S.flags.guiaOff ? '1' : '0'); } catch (e) {}
+}
 function renderInvMini() {
   if (!S) return;
   const p = [];

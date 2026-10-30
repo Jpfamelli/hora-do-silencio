@@ -64,6 +64,12 @@
   #obj-list li.ok{color:var(--fraco);text-decoration:line-through;opacity:.55}
   #obj-list li.ok::before{background:var(--fraco);border-color:var(--fraco)}
   #obj-list li.futuro{display:none}
+  #guia{margin-top:12px;max-width:380px;border-left:2px solid var(--ui);padding:8px 0 4px 12px;opacity:.95}
+  #guia.off #guia-txt{display:none}
+  #guia-txt{font-family:"IM Fell English SC",Georgia,serif;font-size:16px;line-height:1.5;color:#e8e2d4;font-style:italic;margin-bottom:6px}
+  #guia-txt::before{content:"como passar: ";font-style:normal;letter-spacing:.1em;font-size:12px;color:var(--fraco);display:block;margin-bottom:2px}
+  #guia-btn{background:none;border:1px solid var(--ui);color:var(--fraco);font:inherit;font-size:12px;letter-spacing:.08em;padding:3px 10px;cursor:pointer;opacity:.7;border-radius:2px}
+  #guia-btn:hover{opacity:1}
   #cross{position:absolute;left:50%;top:50%;width:4px;height:4px;margin:-2px;border-radius:50%;background:rgba(220,210,190,.5)}
   #prompt{position:absolute;left:50%;top:calc(50% + 34px);transform:translateX(-50%);font-size:19px;white-space:nowrap;text-shadow:0 0 10px #000,0 0 4px #000;text-align:center}
   #prompt b{font-family:"Special Elite","Courier New",monospace;border:1px solid var(--ui);padding:0 6px;margin-right:7px;font-weight:normal;font-size:15px}
@@ -761,7 +767,7 @@
 <div id="cena-pular" hidden>ENTER ou ESC pula a abertura</div>
 
 <div id="hud" hidden>
-  <div id="obj"><div id="obj-cap"></div><ul id="obj-list"></ul></div>
+  <div id="obj"><div id="obj-cap"></div><ul id="obj-list"></ul><div id="guia"><div id="guia-txt"></div><button id="guia-btn" type="button">ocultar dica (L)</button></div></div>
   <div id="ruido" hidden></div>
   <div id="somdir" hidden></div>
   <div id="m-faro" hidden></div>
