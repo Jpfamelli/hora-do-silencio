@@ -1,0 +1,97 @@
+# Lote 6 — História e texto
+- Depois de ver um final, a casa inteira entra em "Segunda Vigília": todo o texto novo abaixo só aparece na volta.
+- Ao recomeçar já tendo visto um final, um aviso de "SEGUNDA VIGÍLIA — a noite lembra de você" abre a noite.
+- A Lia sente a casa reconhecê-la ao começar a volta ("A casa range diferente hoje. Como quem reconhece um passo.").
+- No prólogo da volta, o Davi sussurra pelo rádio do carro que sabia que você voltaria.
+- Segunda variação do sussurro do Davi no rádio ("de novo essa estrada. Então você também não consegue parar.").
+- Terceira variação do sussurro do Davi ("dessa vez você já sabe o caminho. Então anda mais devagar.").
+- Na nona noite, a Lia comenta a volta ao sair do carro ("perdi a conta de quantas vezes atravessei esse portão").
+- Na décima terceira noite, a Lia comenta a repetição ("A estrada já me conhece. Para antes de eu frear.").
+- Na vigésima quinta noite, a Lia duvida de si mesma ("ainda estou tentando sair, ou só vim visitar?").
+- Na décima terceira noite, um envelope lacrado com o seu nome espera no banco do carona.
+- O envelope da 13ª noite traz um recado seu sobre por que o São Lázaro te prende.
+- A saudação do prólogo muda quando você digitou um nome no título ("{nome} de novo. A gente se encontra toda noite").
+- Na quinta noite, a abertura ganha um tom de quem já decorou a estrada.
+- Na nona noite, a abertura sugere que é a Lia que volta, não a casa que chama.
+- Na vigésima noite, a Lia diz que virou parte da estrada, igual ao Seu Joaquim.
+- A chamada de 1979 passa a ler, no meio dos mortos, o nome que você digitou no título.
+- Ao reentrar no Prólogo já vencido, a Lia reconhece a estrada ("meus pés já sabem o caminho sem eu mandar").
+- Ao reentrar no Capítulo I já vencido, a Lia reconhece a porta e o cheiro de cânfora.
+- Ao reentrar no Capítulo II já vencido, a Lia já sabe em que armário se enfiar antes do sino.
+- Ao reentrar no Capítulo III já vencido, a Lia promete não tirar a luz da Ana dessa vez.
+- Ao reentrar no Capítulo IV já vencido, a Lia diz fazer as válvulas de olhos fechados.
+- Ao reentrar no Capítulo V já vencido, a Lia pergunta quantas vezes já tocou aquele sino.
+- Na entrada de cada capítulo já vencido, um X de giz na parede cita o seu melhor tempo e provoca.
+- Segunda variação da provocação de recorde a giz ("mais devagar que ontem não vale").
+- Depois do final verdadeiro, o Davi comenta o hall ("Foi aqui que me pegaram fora da cama").
+- Depois do final verdadeiro, o Davi comenta a diretoria e as cartas que nunca chegaram em casa.
+- Depois do final verdadeiro, o Davi comenta a sala de brinquedos e a Ana contando até dez.
+- Depois do final verdadeiro, o Davi comenta o quarto da Celeste e a luz que ela deixava para a Ana.
+- Depois do final verdadeiro, o Davi comenta a capela ("aqui a gente ainda vai, toda noite que você volta").
+- Depois do final verdadeiro, o Davi comenta os túneis e os números escritos na água com as mãos tremendo.
+- Na volta, setas fracas de giz do Davi apontam para um canto não revistado quando ainda falta um segredo.
+- Segunda variação das setas de giz ("some quando você olha direto. Tem coisa por ali").
+- Terceira variação das setas de giz ("uma seta e um ponto de interrogação. Falta alguma coisa").
+- Quando não falta mais nenhum segredo, as setas somem com um recado do Davi ("você achou tudo o que eu queria te mostrar").
+- Se você já calou o Inspetor com o sino antes, ele te reconhece na caça ("Eu lembro do seu passo, menina").
+- Segunda fala de reconhecimento do Inspetor ("Hoje eu chego antes dele tocar").
+- Terceira fala de reconhecimento do Inspetor ("O mesmo armário de sempre? Você não aprende, ou aprende demais").
+- Na volta, o Chamado às vezes é o Davi guiando de verdade ("vem pela esquerda; a direita é onde ele dorme").
+- Segunda fala do Davi que guia ("Conta até três comigo e anda").
+- Terceira fala do Davi que guia ("o que você procura ficou pra trás, na sala que você pulou").
+- Na volta, o Chamado às vezes é a voz mentindo ("vem cá, é seguro agora. confia em mim").
+- Segunda fala da voz que mente ("corre que dá tempo", com a voz sorrindo).
+- Terceira fala da voz que mente ("entra nesse armário. Esse aqui ele nunca abre").
+- Depois de uma fala suspeita do Chamado, a Lia desconfia ("A voz sabe demais pra ser o Davi. Ou de menos").
+- Diário do Retorno: a cada noite rejogada, uma linha nova surge como pensamento da Lia.
+- Diário do Retorno, 1ª linha ("Eu disse que não voltava e voltei").
+- Diário do Retorno, 2ª linha (ela já sabe para onde ele vira a cabeça).
+- Diário do Retorno, 3ª linha (ela sonha o sino acordada).
+- Diário do Retorno, 4ª linha (o Davi não envelhece; ela sim, e ele reparou).
+- Diário do Retorno, 5ª linha (ela decorou até os silêncios entre as badaladas).
+- Diário do Retorno, 6ª linha ("não vim pra sair; vim porque lá fora também é escuro").
+- Diário do Retorno, 7ª linha (a Celeste reza o nome dela).
+- Diário do Retorno, 8ª linha ("Estou ficando boa nisso. Nisso de quê, mesmo?").
+- Diário do Retorno, 9ª linha ("acho que eu também fiquei. Alguém tinha que ficar com ele").
+- Conquista secreta "Quem Sempre Volta" por completar as nove linhas do Diário do Retorno.
+- Na volta, a Lia solta pensamentos de quem já viveu a noite ("De novo não. Mas de novo sim").
+- Segundo pensamento da Segunda Vigília ("Já sei quem tá nesse armário. Acho outro").
+- Terceiro pensamento da Segunda Vigília ("Não corro pro posto. Da última vez isso me custou caro").
+- Quarto pensamento da Segunda Vigília (os pés dela esqueceram o medo do caminho).
+- Quando o Inspetor começa a caçar na volta, a Lia antecipa o perigo ("A próxima porta ele vem. Eu lembro").
+- Segunda fala de domínio da Lia ("Esse canto eu já morri. Hoje não").
+- Terceira fala de domínio da Lia ("Ele vai fingir que foi embora. Não cai dessa vez").
+- Nova nota só da segunda jogada: carta do Davi "pra quem voltar", no hall do térreo.
+- Nova nota só da segunda jogada: bilhete da Irmã Celeste atrás do quadro, no quarto dela.
+- Nova nota só da segunda jogada: confissão do Albano na gaveta de baixo da diretoria.
+- Nova nota só da segunda jogada: recado "da noite passada", na sua letra, citando o que você fez de errado.
+- O recado da noite passada muda de texto conforme a sua última morte (piscou, ficou fora da cama, correu, garrafa demais).
+- Nova nota só depois do final verdadeiro: a sala murada dos túneis, com a despedida do Davi na voz dele.
+- Conquista secreta "Com a Voz Dele" por ler a despedida na sala murada.
+- Nova nota só depois do final verdadeiro: o quarto em paz, com a carta das crianças agradecendo a volta.
+- Conquista secreta "O Quarto em Paz" por entrar no quarto que só abre depois da Hora acabar.
+- Novo coletável: um brinquedo do Davi escondido no caminho, um por noite rejogada.
+- Cada brinquedo mostra quantos faltam para completar os nove ("Faltam {f} pra completar os nove").
+- Juntar os nove brinquedos revela um bilhete final do Davi ("agora a gente pode brincar de novo").
+- Conquista secreta "Os Nove Brinquedos" por juntar os nove ao longo de várias noites.
+- A redação do Tomé ganha uma segunda leitura depois do final verdadeiro ("ele conseguiu. o carrinho tem rodinha nova").
+- A lista de castigos ganha uma linha nova na volta ("você decide voltar SEMPRE. os dois teimosos").
+- O recorte de jornal ganha uma releitura na volta (agora você sabe quem segurava a corda do sino).
+- No final, quando você já viu dois finais, um jornal da cidade resume as suas noites reais.
+- O jornal do epílogo cita o seu número de noites, de mortes e o seu melhor tempo até o portão.
+- Quando já viu os três finais, o final ganha o prenúncio de uma quarta saída que te deixa ficar.
+- Depois de concluir três campanhas, o final ganha a coda do ciclo (você parou de contar noites e começou a contar perdões do sino).
+- No final comum, a última folha do diário do Davi reage àquele desfecho ("Fiquei feliz, mesmo sabendo que você ia voltar").
+- No final silêncio, a folha do Davi reage ("aprendi a gostar do som").
+- No final verdadeiro, a folha do Davi reage ("o homem alto virou menino e dormiu").
+- Se você já viu o final da Quarta Criança, a folha do Davi revela que a quarta criança era você.
+- No final verdadeiro, com os três finais vistos, o diário do Davi se declara completo ("quando você ler a última, a gente dorme junto").
+- No epílogo verdadeiro, o Davi recebe uma resposta escolhida pelo que você guardou: se achou o desenho, ele fala de si mesmo.
+- Se você pegou o carrinho azul, o epílogo do Davi fala do Tomé bombeiro de rodinhas novas.
+- Sem esses itens, o epílogo do Davi fala da Ana que parou de contar ao ouvir o próprio nome.
+- Conquista secreta "Um Nome na Boca" por fazer o Davi responder no epílogo verdadeiro.
+- O título ganha um subtítulo novo quando você viu os três finais ("Falta a que ninguém escolhe").
+- O título ganha um subtítulo novo quando você achou a Quarta Criança ("Eram três nomes riscados. Sempre foram quatro").
+- O título ganha um subtítulo de ciclo após três campanhas, com a contagem de noites ("Noite {n}. A estrada velha te traz de volta").
+- No título, uma linha discreta provoca o seu melhor tempo ("Da última vez você chegou ao fim em {t}").
+- Conquista secreta "Segunda Vigília" por voltar ao São Lázaro depois de já ter visto um final.
