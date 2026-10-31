@@ -1,165 +1,93 @@
 # Lote 5 — Visual e luz
-- A venda do Inspetor virou um pano com trama e costura desenhado em canvas, no lugar da faixa lisa.
-- A venda fica visivelmente mais suja e torta a partir do Capítulo III.
-- No Capítulo V a venda está encharcada e caída, deixando ver o vinco das órbitas costuradas sob o pano.
-- Iluminar o rosto dele bem de perto (menos de 1,5 m) revela, uma vez por jogo, as pálpebras costuradas com linha preta.
-- A Lia reage a essa revelação com uma fala: "As pálpebras dele... estão costuradas."
-- Essa revelação destrava uma conquista escondida.
-- Depois da revelação, a venda volta ao lugar aos poucos, sem corte seco.
-- No bote e no agarrão de pertinho, a venda escorrega e aparecem as órbitas vazias costuradas com linha grossa.
-- Dois pontos úmidos brilham sob a venda quando o facho acha o rosto, como se a luz achasse os olhos cegos.
-- O brilho desses olhos cresce conforme o facho fica mais centrado no rosto.
-- No modo caçada surge, por baixo da venda, um risco de sorriso largo pintado.
-- O sorriso da caçada entra e sai suavemente conforme ele muda de estado.
-- Com a fúria alta, um escorrido vermelho desce pela venda.
-- A partir do Capítulo III, dois olhos de giz de criança aparecem desenhados por cima da venda.
-- Os olhos de giz só aparecem quando a luz está mesmo no rosto dele, de perto.
-- Encarar o rosto dele no facho por mais de 4 s faz piscar, por frações de segundo, a cara queimada de 1979.
-- Quanto mais tempo a luz fica nele, mais frequente volta o flash queimado.
-- No medo acima de 95, com ele no feixe, o rosto também "troca" pela versão queimada por alguns quadros.
-- Na reza, e do Capítulo IV em diante, um filete escuro escorre da venda como lágrima preta.
-- Esse escorrido vira uma gota que cresce e pinga, marcando o chão onde ele parou.
-- A venda fica translúcida por um instante no facho forte, deixando ver que atrás não há olhos.
-- Quando ele grita no bote e no agarrão, a mandíbula desencaixa bem além do humano e a boca vira um vão escuro.
-- Cada mão do Inspetor ganhou um dedo a mais.
-- Os dedos dele ficaram mais compridos, menos humanos de perto.
-- As pontas dos dedos ganharam unhas pretas e compridas.
-- O molho na cintura, iluminado de perto, mostra que não são chaves: são dentes de leite num cordão.
-- A Lia percebe isso com uma fala: "Aquilo não são chaves..."
-- O corpo e o casaco dele escurecem com fuligem a cada capítulo que passa.
-- A cabeça dele pende mais torta conforme a noite avança.
-- No Capítulo V o corpo dele fica translúcido e fuliginoso: a luz atravessa as bordas.
-- O pescoço dele estica alguns centímetros para cima quando ele para para escutar.
-- Na caçada ele solta fiapos e poeira do casaco, que caem no chão por onde corre.
-- No frio dos túneis e do cemitério, o hálito dele vira vapor branco que sobe antes de aparecer o corpo.
-- Na caçada os dedos arranham o chão e deixam riscos finos que somem devagar.
-- No cemitério ele deixa pegadas de terra úmida por onde passou.
-- Nos capítulos finais ele deixa pegadas de fuligem fria.
-- Nos túneis ele deixa marcas de mão molhada na parede, guiando-se por ela.
-- Esses rastros de chão e parede somem com o tempo e são limpos ao trocar de mapa.
-- O vulto dele no escuro tem braços longuíssimos, que recolhem ao normal quando ele vai dar o bote.
-- Quando o vulto some ao tocar a luz, fica uma silhueta "queimada" na tela por um instante, no lugar exato onde ele estava.
-- O rosto da Ana troca a cada vez que ela reaparece, e nunca é o mesmo duas vezes seguidas.
-- Variação de rosto da Ana: sorriso largo demais.
-- Variação de rosto da Ana: sem boca.
-- Variação de rosto da Ana: olhos deslocados e boca no lugar errado.
-- Variação de rosto da Ana: a boca no lugar dos olhos.
-- Fiapos de cabelo sempre cruzam o rosto da Ana, então ele nunca se monta inteiro.
-- O rosto da Ana fica mais forte quando ela está na sua luz e desbota no escuro.
-- Quando as luzes piscam perto da Ana, o rosto vira o de sorriso rasgado por um ou dois quadros.
-- Encará-la por tempo demais faz a cabeça da Ana girar devagar além do humano, com um estalo de ossos.
-- Quando a cabeça dela entorta muito, o cabelo cai para a frente e cobre o rosto.
-- Encarar a Ana vai apodrecendo a pele dela em estágios: pálida, acinzentada, encharcada e escura.
-- Parada e encarada, a Ana flutua cerca de 2 cm do chão, sem pés.
-- A sombra da Ana no chão sempre aponta para a posição da Lia.
-- A sombra dela se projeta um passo à frente do corpo, avisando para onde ela vai.
-- No escuro, quando a Ana se move sem ser vista, os olhos dela deixam um leve rastro luminoso.
-- O cabelo molhado da Ana pinga e deixa marcas escuras no chão.
-- Os olhos pretos da Ana acendem num brilho fraco enquanto ela conta no escuro.
-- As crianças da Procissão agora têm rosto, revelado pela luz das velas.
-- Os rostos das crianças estão marcados pelo fogo de 1979.
-- As crianças da Procissão não têm boca.
-- Quando a fila para e vira o rosto, as crianças flutuam cerca de 2 cm do chão, sem pés.
-- Olhos pintados na nuca das crianças piscam quando a sua luz passa por trás da fila.
-- As nove velas da fila funcionam como cronômetro: apagam uma a uma durante a passagem.
-- Quando a última vela apaga, a passagem terminou — um relógio visual honesto dentro do esconderijo.
-- Na caçada a vinheta escura fecha nas bordas, como visão em túnel de pânico.
-- Com o medo alto, essa mesma vinheta de pânico aperta mesmo fora da caçada.
-- Na caçada o grão de filme fica mais forte.
-- A borda da tela ganha um chuvisco quando a cabeça do Inspetor está apontada para você.
-- O chuvisco da borda some quando ele desvia o rosto.
-- Com vida abaixo de 30, uma vinheta vermelha pulsa nas bordas no ritmo do batimento.
-- Quanto menor a vida, mais forte e rápido fica o pulso vermelho.
-- Com a Ana muito perto e você em pânico, a "visão" dela invade a tela em tons de giz, com a contagem sobreposta.
-- Na fuga final, depois do sino, luzes de emergência vermelhas piscam na tela.
-- Num susto raro durante a caçada, a tela vira por meio segundo o "ponto de vista" cego dele, em negativo de ruído.
-- A Ana na periferia da visão aparece como um borrão escuro, que some quando você centraliza a mira nela.
-- Pares de olhos piscam no fundo das salas escuras e somem quando a luz chega perto.
-- Esses olhos no escuro reaparecem em pontos diferentes a cada vez.
-- Se a lanterna ou uma lâmpada acesa os alcança, os olhos somem na hora.
-- Todos os efeitos fortes (flash queimado, estática de borda, sorriso rasgado, grão, susto do ponto de vista) respeitam a opção "reduzir flashes".
-- A vinheta vermelha de vida baixa e a visão da Ana entram suavizadas com "reduzir flashes" ligado.
-- A Ana e o Inspetor param de piscar efeitos agressivos quando a acessibilidade pede.
-- Os decalques de rastro usam um conjunto reaproveitado de peças, sem pesar na memória.
-- Novo módulo de visual e luz das entidades (src/monstros-visual.js), ligado ao motor por poucas linhas de gancho.
-- O novo módulo entrou na lista do Service Worker para o jogo continuar abrindo sem internet.
-- A boca do Inspetor é uma linha costurada de pontos escuros que se rasga escancarada no grito e volta a costurar na ronda.
-- A costura da boca aparece nítida de perto e mais fraca de longe.
-- A mandíbula volta a fechar sozinha quando ele se acalma.
-- A gota da venda reinicia depois de pingar, voltando a escorrer devagar.
-- O rosto queimado volta ao normal sozinho quando você tira a luz do rosto dele.
-- Os fiapos de casaco caem, perdem força e desaparecem no chão.
-- O vapor do hálito sobe, cresce e se dissipa aos poucos.
-- Os efeitos de tela desligam na tela de morte e fora da partida.
-- As partículas e decalques são limpos ao trocar de mapa para não vazarem entre capítulos.
-- O texto de cada rosto, venda e rastro é 100% canvas e som procedural: nenhum arquivo externo novo.
-- A postura do Inspetor cai cada vez mais para a frente a cada capítulo, quase de quatro no Capítulo V.
-- Ele se inclina ainda mais na caçada.
-- E se dobra mais ainda no instante do bote.
-- O corpo dele cresce aos poucos por capítulo, ocupando mais o vão da porta.
-- Os braços alongam por capítulo até quase arrastarem no chão no Capítulo V.
-- Os braços esticam mais durante a caçada.
-- As unhas das mãos crescem por capítulo.
-- As unhas disparam para a frente no instante do bote, como garras.
-- A mandíbula já nasce mais desencaixada a cada capítulo, mesmo fora da caça.
-- No Capítulo V a mandíbula fica pendida, caída.
-- No Capítulo V, sob a venda, dois olhos de brasa apagada pulsam no lugar dos olhos.
-- Essas brasas brilham mais forte no instante do bote.
-- E brilham mais conforme a fúria sobe.
-- No Capítulo V, rachaduras de brasa pulsam no peito dele no compasso da fúria.
-- As rachaduras de brasa se abrem mais quando ele fareja ou inspira.
-- Uma luz de brasa curta vaza do peito quando ele inspira no Capítulo V.
-- A partir do Capítulo IV, rostinhos de criança pulsam sob a pele quando iluminado de perto.
-- Esses rostinhos pulsam como se estivessem presos vivos sob a pele.
-- Veias de fuligem sobem pelo rosto dele, mais fortes a cada capítulo.
-- Na escuta, o pescoço tomba para trás e o rosto varre o teto com a boca à mostra.
-- No Capítulo V, ao entrar na caça, o pescoço trava de lado num ângulo quebrado.
-- Esse travar do pescoço vem com um estalo seco de osso.
-- Na passagem, a cabeça dele gira para acompanhar você além do humano, mesmo sem ter ouvido.
-- No clímax do Capítulo V (sino ou fúria alta) a venda cai de vez e as órbitas ficam à mostra o tempo todo.
-- Iluminada de perto, a venda respira num leve tremor dos fios.
-- No escuro total, perto e caçando, os dentes e a venda dele pegam um resíduo de luz.
-- A boca costurada vai descosendo ponto a ponto a cada capítulo.
-- Os pontos úmidos sob a venda seguem você mesmo quando a cabeça dele está virada para outro lado.
-- No instante em que o sino o atordoa, o rosto calmo do menino Moacir aparece por um quadro no lugar do monstro.
-- A venda clareia junto nesse único quadro do menino.
-- No Capítulo V, em plena caça, os pés dele flutuam alguns centímetros.
-- E as pernas quase param: ele arrasta sem dar o passo.
-- O facho forte de perto no Capítulo V faz a cabeça dele tombar para trás, de dor.
-- Nessa cegueira de dor as mãos sobem ao rosto.
-- E as brasas dos olhos ardem mais forte nesse instante.
-- Uma sombra dele, mais alta e com braços a mais, chega à frente antes do corpo.
-- Essa sombra cresce e entorta mais a cada capítulo.
-- Nos Capítulos I e II ele anda com uma bengala branca de cego que tateia o chão.
-- A bengala some a partir do Capítulo III, quando ele troca o tatear pelas mãos de fera.
-- Ele usa um chapéu de funcionário que vai amassando por capítulo.
-- O chapéu se perde de vez no Capítulo V.
-- Uma lanterninha morta presa ao cinto pisca um instante na caça, como outra criança perdida chamando.
-- Do Capítulo IV em diante o casaco dele pinga o mesmo breu escuro que escorre do cabelo da Ana.
-- No Capítulo V ele deixa um rastro de brasa quente no chão por onde passa.
-- Esse rastro de brasa esfria de laranja vivo a cinza apagado.
-- O molho de dentes de leite na cintura ganha mais dentes a cada captura da noite.
-- No Capítulo V o rosto da Ana se apaga: resta só a boca contando num borrão pálido.
-- Dois olhos pintados na nuca da Ana aparecem quando ela está de costas na sua luz.
-- O rosto de porcelana da Ana racha mais a cada captura (DEZ) da noite.
-- Nos túneis a Ana surge inclinada, como se boiasse afogada na água.
-- E se ergue devagar quando a luz da lanterna passa por ela.
-- A Ana deixa marcas molhadas de mão e pé por onde passou.
-- Dois feixes fracos saem dos olhos da Ana e varrem o escuro enquanto ela conta.
-- As mãozinhas das crianças da Procissão se erguem para a frente quando a fila para.
-- Na caça do Capítulo V, uma borda de brasa alaranjada pulsa nas bordas da tela.
-- Quando ele cola de perto no escuro, a tela escurece do lado em que ele está: ele traz o breu junto.
-- Um matiz tênue da ameaça mais próxima tinge o lado de onde ela vem (vermelho o Inspetor, azul a Ana, âmbar a Procissão).
-- Esse matiz da ameaça pulsa de leve.
-- Os fiapos do casaco pegam cor de brasa no Capítulo V.
-- O vulto dele mantém a cabeça tombada num ângulo que o corpo real não tem.
-- Todos os efeitos novos fortes (brasa, menino, sombra, borda) respeitam a opção reduzir flashes.
-- O rastro de brasa no chão também é limpo ao trocar de mapa, sem vazar entre capítulos.
-- Nenhum arquivo externo novo: menino, brasa, bengala, chapéu, nuca e rachaduras são 100% canvas.
-- Uma mancha de fuligem escorre pela bochecha dele, crescendo a cada capítulo.
-- Na reza, a cabeça dele baixa e os braços se juntam em frente.
-- Parado à espreita, o pescoço dele estica mais para cima, devagar.
-- O sorriso de giz pinga giz branco no chão quando ele caça por muito tempo.
-- Os olhos de giz acompanham você mesmo com a cabeça dele parada.
-- Na caça do Capítulo IV em diante, as garras raspam a parede e deixam riscos efêmeros.
-- No Capítulo V, um fiapo de fumaça sobe das órbitas de brasa dele.
+- O couro cabeludo queimado do Inspetor fica à mostra no alto da cabeça quando o chapéu some no Capítulo V.
+- Mãozinhas de criança empurram por dentro do tecido do casaco a partir do Capítulo IV.
+- Um rosto sem boca surge na gola do casaco por um instante nos capítulos finais.
+- O casaco infla e murcha quando ele respira e trava quando ele espera parado na emboscada.
+- A pele do rosto fica mais rachada e encardida a cada capítulo.
+- Rachaduras de brasa se abrem nas laterais do tronco no Capítulo V.
+- O casaco pinga gotas escuras enquanto ele anda nos túneis.
+- Veias pretas sobem pelas laterais do pescoço, mais fortes a cada capítulo.
+- Uma cicatriz de queimadura aparece no pescoço quando o facho o pega de perto.
+- Dois braços-sombra translúcidos acompanham os braços reais na fúria do Capítulo V.
+- Um sopro de brasa escapa da boca quando ele expira no Capítulo V.
+- As pontas das unhas escurecem e ficam sangrentas a cada capítulo.
+- Os ombros se encolhem perto de parede na caça do Capítulo V, como se ele quase não coubesse.
+- Os botões de bronze do casaco enferrujam e vão sumindo de capítulo em capítulo.
+- Ele carrega o breu: uma penumbra ao redor dele escurece o ambiente quando cola de perto no escuro.
+- Uma pós-imagem queimada do corpo fica no ar por um instante quando o facho forte sai dele.
+- A sombra dele na parede faz um gesto atrasado, diferente do corpo real.
+- Um disco de brasa pulsa no chão sob ele no Capítulo V.
+- Poeira presa no ar revela o rastro recente dele quando o facho cruza por onde ele passou.
+- Um filete de fumaça sobe do piso por onde ele acabou de caçar no Capítulo V.
+- Cinza e brasa sobem do chão ao redor dele durante a caça no Capítulo V.
+- Ao expirar perto, uma lufada de poeira corre rente ao chão da posição dele até você.
+- O bafo dele fica mais denso e frequente quanto mais perto ele está.
+- Um relâmpago revela as órbitas costuradas por um único quadro no cemitério do Capítulo V.
+- A névoa fica mais densa e pesada em volta dele no Capítulo V.
+- Pingos de chuva viram vapor ao tocar o corpo de brasa dele no Capítulo V.
+- A chuva e o relâmpago quase param no instante de alerta antes do bote.
+- No Capítulo V e no cemitério, o facho da lanterna vira um feixe volumétrico na fumaça.
+- No clímax do sino, a silhueta dele é revelada em lampejos como um estroboscópio.
+- Cada clarão do relâmpago o mostra um passo mais perto no clímax.
+- De muito perto, no lugar dos olhos da Menina há só riscos de contagem.
+- O vestido da Ana encharca e escurece quando ela está nos túneis.
+- A Ana deixa marcas de mãozinha molhada na parede dos túneis.
+- Poeira cai do teto quando a Procissão para.
+- As faces queimadas da Procissão piscam no clarão do relâmpago.
+- Uma fresta de brasa se abre na venda no Capítulo V.
+- As pontas dos dedos ganham um brilho de brasa no Capítulo V.
+- Um filete de brasa escorre do canto da boca na caça do Capítulo V.
+- Uma corcunda nas costas cresce de capítulo em capítulo.
+- Um halo de calor paira ao redor da cabeça no Capítulo V.
+- Faíscas saltam do chão sob ele na caça do Capítulo V.
+- Pegadas chamuscadas em forma de pé ficam no chão por onde ele passa no Capítulo V.
+- Ele deixa pegadas molhadas no chão dos túneis.
+- Poeira cai do teto no caminho dele quando ele corre.
+- Cinzas esfarelam das barras do casaco quando ele corre.
+- Uma sombra adiantada dobra a esquina antes do corpo dele.
+- Um clarão laranja curto acompanha o bote dele no Capítulo V.
+- A chuva escorre pelo corpo dele em riscos quando ele está perto a céu aberto no Capítulo V.
+- A Ana balança de leve como se estivesse boiando na água dos túneis.
+- De muito perto, a Ana mostra os dentes num sorriso rachado.
+- As pálpebras da Ana piscam em contratempo enquanto ela conta.
+- Gotas escorrem do vestido encharcado da Ana nos túneis.
+- A fila da Procissão projeta mais sombras no chão do que há crianças.
+- Os rostos da Procissão choram tinta preta quando a sua luz passa.
+- O Vulto pisca entre duas poses por um instante.
+- A sujeira do casaco muda por mapa: teia no térreo, giz nos dormitórios, limo nos túneis, lama no cemitério.
+- Giz branco de criança aparece nas mãos dele no andar dos dormitórios.
+- Centelhas sobem da boca quando ele range os dentes na caça do Capítulo V.
+- O disco de brasa no chão esquenta quanto mais tempo ele caça.
+- Fumaça preta sobe da corcunda das costas no Capítulo V.
+- A brasa do corpo ilumina o teto logo acima dele no Capítulo V.
+- A Ana projeta um reflexo esticado no chão molhado dos túneis.
+- O vestido da Ana ganha novos rasgos a cada captura da noite.
+- A Ana deixa um rastro de água escura por onde arrasta o vestido.
+- A Procissão pinga cera de vela no chão por onde passa.
+- Fiapos de fumaça sobem pelo cemitério no Capítulo V.
+- Pingos de brasa caem das mãos dele no Capítulo V.
+- Vapor sobe das poças quando ele passa nos túneis.
+- Um brilho molhado de suor escorre sobre a venda quando ela é iluminada.
+- As barras do casaco esvoaçam quando ele corre.
+- Rachaduras de brasa abrem no pescoço dele no Capítulo V.
+- Marcadores de brasa acendem no rastro de cheiro que ele acabou de farejar.
+- O Vulto deixa uma trilha de fumaça ao deslizar.
+- Faíscas saltam quando as garras dele raspam a parede na caça.
+- A silhueta dele "come" a luz: um recorte escuro se abre no facho quando ele aponta para ela.
+- O relâmpago joga a sombra gigante e torta dele na parede por um quadro.
+- O relâmpago revela a Procissão inteira por um quadro mesmo no escuro.
+- O modelo dele treme no pico do relâmpago.
+- No começo da noite (Capítulos I-II) o rosto dele ainda parece de homem, com venda limpa.
+- O queixo treme de leve quando ele fareja o ar.
+- Os ombros sobem e descem visivelmente com a respiração dele.
+- Uma marca de mão queimada fica no chão onde ele se apoia no Capítulo V.
+- As barras do casaco queimam e escurecem nas pontas a cada capítulo.
+- A lanterna ganha uma mancha de fuligem nos cantos quando ele está muito perto.
+- A Ana perde a cor e fica cinza-azulada no Capítulo V.
+- Um tremor sacode a borda da tela quando ele dá o bote colado em você.
+- O chão molhado reflete a brasa dele num borrão laranja no Capítulo V.
+- A boca escancarada na caça mostra um interior em brasa no Capítulo V.
+- Ao desistir da caça, ele solta um longo sopro de vapor.
+- A cada badalada do sino, a brasa do corpo dele pulsa forte no clímax.
+- As velas da Procissão tingem o alto da tela de âmbar quando ela está perto.
+- O hálito dele vira cristais de gelo suspensos no ar gelado dos túneis.
