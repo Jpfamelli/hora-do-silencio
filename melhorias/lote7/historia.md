@@ -1,0 +1,91 @@
+# Lote 7 — História e texto
+- A casa agora conta a história pelo ouvido: um módulo novo (historia-lote7) tece som, voz e texto no jogo sem telas para ler.
+- A reza da Irmã Celeste atrás da porta muda de capítulo em capítulo e você acompanha a história só pelo áudio.
+- No Prólogo, a reza pede em paz: "protege ela do que mora aqui".
+- No Capítulo I, a reza baixa de tom e ainda defende: "ainda dá tempo dela voltar".
+- No Capítulo II, a voz hesita pela primeira vez entre proteger e prender você.
+- No Capítulo III, a reza troca de dono: "ninguém vai sentir falta".
+- No Capítulo IV, a reza praticamente te entrega: "a casa tem fome".
+- No Capítulo V, a mesma voz que te defendia agora te vende, fria: "entrega ela pra Hora".
+- Ouvir a reza nos capítulos finais desbloqueia a conquista secreta "A Reza Virou".
+- Uma criança lê as regras da casa num canto, em voz baixinha e filtrada.
+- A leitura das regras para na sílaba exata em que o seu olhar cruza a fonte e recomeça quando você desvia.
+- São sete regras da casa, lidas uma a uma só enquanto você fica parada e sem perigo por perto.
+- Regra um: não corra nos corredores (dita pela voz de criança).
+- Regra dois: não acenda luz depois das nove.
+- Regra três: não responda quando chamarem seu nome.
+- Regra quatro: não abra a gaveta do Inspetor.
+- Regra cinco: não deixe a Hora te achar acordada.
+- Regra seis: quem foge uma vez, foge pra sempre.
+- Regra sete: o sino manda em todos nós.
+- Ouvir uma regra inteira sem olhar para a fonte rende a conquista secreta "A Regra Inteira".
+- A chegada do Inspetor interrompe na hora a leitura das regras.
+- A Hora do Silêncio escapa da tela: se o relógio REAL do computador vira uma hora cheia, raramente soam nove badaladas bem distantes e abafadas.
+- As nove badaladas do relógio real acontecem no máximo uma vez por sessão e nunca durante uma caçada.
+- Quem joga com "sustos suaves" não recebe o susto das badaladas do relógio real.
+- Numa sala distante, uma menina ensaia a chamada e tropeça no seu nome como se fosse novo.
+- A chamada usa o nome que você digitou no título: ela erra ("...Moraes? Lia...") e depois acerta.
+- A voz que ensaia a chamada é sintetizada sílaba a sílaba, baixinho, vinda de longe.
+- Acertar o seu nome na chamada vira um momento marcado na legenda: "a chamada tropeça no seu nome e acerta".
+- Com o medo muito alto, um rádio de válvula interrompe a transmissão e fala com você em tom de conforto.
+- O rádio tem três falas de conforto diferentes ("respira, menina", "fecha os olhos", "deita"), erradas e arrepiantes.
+- Assim que o medo baixa, a transmissão do rádio volta ao normal como se nada tivesse acontecido.
+- Ficar parada numa sala faz emergir uma memória sussurrada que avança a lore, sem nota para ler nem backtracking.
+- Cada sala solta no máximo uma memória por noite, para não virar repetição.
+- Memória da estrada: o ônibus escolar que nunca chegou na noite do incêndio.
+- Memória da estrada: o Seu Joaquim abrindo o portão, a última coisa boa que ele fez vivo.
+- Memória do térreo: a porta da frente trancada por fora, a chave no bolso de um casaco.
+- Memória do térreo: o gerador que morreu às nove e nunca mais foi consertado de propósito.
+- Memória dos dormitórios: a Ana contando até dez e ninguém acordando na última noite.
+- Memória dos dormitórios: a Irmã Celeste fechando cada cama com um beijo e não voltando.
+- Memória dos túneis: a passagem cavada para fugir do fogo que só levava mais fundo.
+- Memória dos túneis: o "QUEM ABRIU A MINHA GAVETA" escrito na parede com a própria unha.
+- Memória do cemitério: três covas pequenas com nomes raspados.
+- Memória da capela: o sino que tocou a noite inteira e amanheceu com a corda quente e vazia.
+- Cada criança morta tem um som-assinatura que toca fraquinho só na sala onde ela morreu.
+- Som do Tomé: as rodinhas do carrinho rolando no assoalho, no térreo.
+- Som da Ana: a caixinha de música batendo a mesma nota sem fechar, nos dormitórios.
+- Som do Davi: um radinho de pilha chiando uma estação morta, nos túneis.
+- Som do Luiz: o zumbido de um pião girando sem cair, no cemitério.
+- O último som da vítima vem de um ponto deslocado da sala, com direção na legenda, para você aprender a planta pelo ouvido.
+- Raríssimo, numa sala vazia e quieta, a casa "suspira" o nome que você digitou, grave, como se a parede falasse.
+- O suspiro do nome é feito com formantes graves sobre o ambiente, sem nenhuma entidade aparecer.
+- Ouvir a casa suspirar o seu nome rende a conquista secreta "A Casa Sabe Meu Nome".
+- Parada, calada e no escuro, uma vozinha de criança faz uma pergunta que nunca se repete na mesma noite.
+- Pergunta no escuro: "você também fugiu?".
+- Pergunta no escuro: "você veio buscar alguém? eu posso ir junto?".
+- Pergunta no escuro: "por que você não envelhece, moça?".
+- Pergunta no escuro: "se o sino parar, a gente pode ir pra casa?".
+- Pergunta no escuro: "você promete que não me deixa aqui de novo?".
+- A pergunta no escuro é falada por uma voz de criança sintetizada, além da legenda.
+- Com a lanterna apagada e sem perigo, a ambiência inteira "vira" 1979 por alguns segundos e depois volta ao presente.
+- A noite do incêndio é contada só pelo clima: chuva mais forte, o sino dobrando, muitas vozes de criança e a madeira estalando como fogo.
+- Na capela, ficar parada no ponto certo faz a nave "cantar" sozinha a quarta estrofe raspada do hino, nota por nota.
+- A estrofe perdida revela a letra escondida: "quando o sino parar de vez, a gente fala outra vez".
+- Fazer a capela cantar a estrofe rende a conquista secreta "A Estrofe Perdida".
+- No internato, de muito longe, as cinco notas do assobio do velho Joaquim voltam fora de ordem e param no meio, como memória quebrada.
+- Depois do final verdadeiro, re-ouvir uma fita ganha um chiado de fita gasta que cresce a cada reprodução.
+- A partir da quarta reprodução, a fita fica quase inaudível sob o ruído: a verdade se apagando com o tempo.
+- O contador de reproduções de cada fita fica salvo entre sessões, para o chiado continuar crescendo.
+- Cada final fecha a noite com um acorde-assinatura próprio no último quadro.
+- Final comum: um acorde menor e oco que não resolve.
+- Final do silêncio: uma única nota que fica no ar sem nunca resolver.
+- Final verdadeiro: um acorde maior, enfim resolvido, fechando a Hora.
+- Cada capítulo abre com um motivo de três notas tocado baixíssimo, como caixa de música muito longe.
+- O motivo do Prólogo e de cada capítulo tem notas próprias, virando assinatura sonora do capítulo.
+- No capítulo da Ana, o motivo de abertura é a melodia dela, com uma nota desafinada.
+- Em momentos-chave, a Lia pensa alto um pensamento curtíssimo, sussurrado no centro da cabeça, sem HUD.
+- Pensamento da Lia ao ficar sem fôlego: "não respira agora".
+- Pensamento da Lia com o Inspetor colado: "fica quieta. fica quieta".
+- Pensamento da Lia na beira da morte: "não hoje. não aqui".
+- Pensamento da Lia escondida com o perigo rondando: "conta até dez. ele vai embora".
+- Os pensamentos da Lia saem num barramento de corpo, secos e raros, para não cansar.
+- Uma música procedural de tensão nasce quando o Inspetor passa a investigar ou procurar você.
+- Enquanto ele caça, um pulso grave aperta a trilha, mais rápido e agudo no instante da caçada.
+- Quando o Inspetor perde o seu rastro, um acorde de alívio desfaz a tensão.
+- Silêncio como arma: caçada em curso com você prendendo o ar faz um sub-bass pesar sobre o silêncio total.
+- A legenda "[silêncio pesado. é assim que ele gosta.]" marca o momento em que o silêncio vira ameaça.
+- Nova personagem de legenda "uma criança" para as vozes que leem regras, ensaiam a chamada e perguntam no escuro.
+- Todas as novas camadas de som ganham legendas próprias (perigo ou história) no registro de sons, com direção quando têm posição.
+- Quatro conquistas secretas novas entram no acervo pelo caminho de quem escuta a casa.
+- O service worker passou para a versão v11 e guarda o módulo de som novo para jogar offline.

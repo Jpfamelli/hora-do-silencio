@@ -27,6 +27,7 @@ import { instalarAudioSegredos } from './src/audio-segredos.js';
 import { instalarAudioLote5 } from './src/audio-lote5.js';
 import { criarMonstrosLote6 } from './src/monstros-lote6.js';
 import { instalarAudioLote6 } from './src/audio-lote6.js';
+import { instalarHistoriaLote7 } from './src/historia-lote7.js';
 
 const R = window.ROTEIRO;
 const $ = s => document.querySelector(s);
@@ -2833,6 +2834,8 @@ function tocarFita(fid) {
   fitaTocando = f; fitaFila = f.linhas.map(l => ({ ...l, texto: codTxt(l.texto) })); fitaT = .8; fitaPausada = false; fitaPos = P.pos.clone();
   $('#fita-ind').textContent = `${f.titulo} · 0/${f.linhas.length}`; $('#fita-ind').hidden = false;
   SFX.fitaClique(); SFX.chiadoFita(true);
+  // lote 7: depois do final verdadeiro, a fita re-ouvida range mais a cada reprodução (a verdade se apaga)
+  try { if (L7 && S.fitas[fid] && lsGet(CONQ_KEY, {}).final_verdadeiro) { const m = lsGet('hora-silencio-l7-repr', {}); m[fid] = (m[fid] || 0) + 1; lsSet('hora-silencio-l7-repr', m); L7.chiadoFita(m[fid]); } } catch (e) {}
   emitNoise(P.pos.x, P.pos.z, 7);
 }
 function pararFitaOuvida() { fitaFila = []; fitaT = 0; fitaPausada = false; SFX.fitaClique(); }
@@ -2988,6 +2991,7 @@ let AUDP = null; // src/audio-plataforma.js: menus que soam, som que cai, fone q
 let AUDS = null; // src/audio-segredos.js (Lote 4): telefone, bipes, sussurros num ouvido só, gravador, cisterna, panelas, lata, ralos
 let AUDL6 = null; // src/audio-lote6.js: rejogabilidade pelo ouvido (clima da noite, tema que evolui, boletim do rádio, sino de recorde, trilha-fantasma, segredos da 2ª jogada)
 let AUDL5 = null; // src/audio-lote5.js: os monstros pelo ouvido (respiração por parede/porta, bengala, leitmotifs, infra-som, Hora do Silêncio, coração-bússola)
+let L7 = null; // src/historia-lote7.js: a história pelo som e pela atmosfera (reza da Celeste por capítulo, cochicho das regras, chamada com o seu nome, rádio que fala com o medo, memórias por sala, último som das vítimas, suspiro do nome, incêndio de 1979, estrofe perdida, acorde de cada final, motivo de capítulo, pensamento da Lia, música de tensão)
 const AUD = { sils: [], trovaoIni: 0, trovaoAte: 0, coracaoN: 0, hbT: 0, resp: 0, prendia: false, ultStinger: [], stingerT: -99, dezAte: 0, estPrev: null, anaPrev: null, procT: 0, evT: 28, cacaT: 0, cacaSemi: 0, posCacaT: 0, percT: 0, pulsoT: 0, lampT: 0, ocT: 0, flashPrev: false, tiqueT: 0, avisouCoracao: false, cordaT: -9, cordaN: 0, sala: null, zumbidoAte: 0, pausado: false, erroAvisado: false,
   vozes: [], limVoz: 24, zumbidoIni: 0, zumbidoFim: 0, clusterOn: false, calmaT: 0, calmaAlvo: 300, pausaT: 0, pe: 1, crouchPrev: false, corriaPrev: false, agarraPrev: false, mortoPrev: false, grupoPrev: null };
 for (const [k, v] of Object.entries({ vAmb: 1, vSfx: 1, vEnt: 1, vVoz: 1, mono: 0, noturno: 0, falada: 0 })) if (OPT[k] === undefined) OPT[k] = v;
@@ -4349,6 +4353,7 @@ function final(tipo) {
   conquista('final_' + tipo); if (S.dif === 'pesadelo') conquista('pesadelo'); if (tipo === 'verdadeiro') L6.registrarVitoria(); H.aoFinal(tipo); // lote 6: sobe a Vigília (NG+)
   PG.final(tipo);
   if (AUDL6) AUDL6.fecharNoite(); // salva o log de sons da noite e avança a cantiga da Ana (src/audio-lote6.js)
+  if (L7) L7.final(tipo); // lote 7: acorde-assinatura de cada final (src/historia-lote7.js)
   $('#fx-black').style.opacity = 1; SFX.pararCanto();
   if (F.antes) setTimeout(() => cartao(F.antes.texto, 3), 300);
   try { localStorage.removeItem(SAVE_KEY); } catch (e) {}
@@ -4545,6 +4550,12 @@ AUDL6 = instalarAudioLote6({
   SOM, SFX, BUS, AUD, AMB, OPT, THREE, R, P, M, ANA, PROC, W, camera, legendas: UIX.som.def, som: (k, a) => { try { UIX.som(k, a); } catch (e) {} },
   saida, env, osc, burst, ruido, curvaDist, roomAt, salaAdj, emitNoise, abafarMundo, rand, pick, clamp, sub, subPequeno, toast, conquista, lsGet, lsSet, KEYS: { CAPS_KEY, SAVE_KEY, CONQ_KEY }
 });
+// Lote 7: a história pelo som e pela atmosfera (src/historia-lote7.js)
+L7 = instalarHistoriaLote7({
+  get AC() { return AC; }, get S() { return S; }, get mode() { return mode; }, get ui() { return ui; }, get perf() { return perf; },
+  SOM, OPT, P, M, ANA, PROC, W, camera, legendas: UIX.som.def, som: (k, a) => { try { UIX.som(k, a); } catch (e) {} },
+  silaba, saida, env, osc, burst, ruido, sub, subPequeno, toast, conquista, rand, pick, clamp, lsGet
+});
 carregarTitulo();
 const grain = $('#fx-grain').getContext('2d'), grainImg = grain.createImageData(160, 90);
 let last = performance.now(), grainT = 0;
@@ -4566,7 +4577,7 @@ function frame(dt) {
     S.tempo += dt; S.capT += dt; PG.tick(dt);
     updatePlayer(dt); updateLanterna(dt); updateFear(dt);
     { const dm = dt * JP.ritmo(); if (!congelado(dm)) { updateInspetor(dm); updateAna(dm); updateProcissao(dm); ML.tick(dm); MS.tick(dm); L5.tick(dm); L5B.tick(dm); L6.tick(dm); } updateEventos(dm); } updateGarrafas(dt); // ritmo do mundo (acessibilidade): a Lia não fica mais lenta
-    updateClima(dt); updateJogabilidade(dt); updateAlvo(); JM.update(dt); SEG.update(dt); JGL5.update(dt); JGL6.update(dt); updateSegurar(dt); updateFita(dt); updateHUD(); updateSub(dt); updateAudio(dt); H.tick(dt); MVIS.tick(dt); // lote 5: visual e luz das entidades · lote 6: rejogabilidade
+    updateClima(dt); updateJogabilidade(dt); updateAlvo(); JM.update(dt); SEG.update(dt); JGL5.update(dt); JGL6.update(dt); updateSegurar(dt); updateFita(dt); updateHUD(); updateSub(dt); updateAudio(dt); H.tick(dt); MVIS.tick(dt); if (L7) L7.tick(dt); // lote 5: visual e luz das entidades · lote 6: rejogabilidade · lote 7: história pelo som
   } else if (mundoVivo()) { // cofre, quadro (e no Pesadelo notas e diário): o mundo continua, com o som abafado
     S.tempo += dt; S.capT += dt; P.noiseR = 0; abafar(true);
     updateLanterna(dt); updateFear(dt);
