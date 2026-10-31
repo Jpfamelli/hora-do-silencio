@@ -111,10 +111,10 @@ export function rejogoEstrada(A, S, c) {
 
   // =================================================================== 3) O ACHADO DO BALCÃO
   // por semente, um objeto diferente aparece no balcão da loja: bilhete, foto velha ou pilha de reserva.
-  const achadoTipo = ['bilhete', 'foto', 'pilha'][(seed >> 2) % 3];
+  const achadoTipo = ['bilhete', 'foto', 'pilha'][(seed >>> 2) % 3];
   (function achadoBalcao() {
     const spots = [{ x: 15.4, y: 1.08, z: -16.2 }, { x: 16.8, y: 1.08, z: -18.4 }, { x: 13.9, y: 1.08, z: -15.0 }];
-    const pos = spots[(seed >> 5) % spots.length]; // o achado troca de canto do posto pela semente
+    const pos = spots[(seed >>> 5) % spots.length]; // o achado troca de canto do posto pela semente
     let mesh, label, onPick;
     if (achadoTipo === 'bilhete') {
       mesh = box(.12, .005, .09, new THREE.MeshStandardMaterial({ color: 0xd8ccae, roughness: .95 }), 0, 0, 0, new THREE.Group());
@@ -180,7 +180,7 @@ export function rejogoEstrada(A, S, c) {
   function tickNota(dt) {
     if (nota.feito || !S.flags.saiuCarro || !S.inv.lanterna) return;
     nota.t += dt; if (nota.t < 12) return; nota.feito = true;
-    falar(['est6_noite_a', 'est6_noite_b', 'est6_noite_c'][(seed >> 10) % 3]);
+    falar(['est6_noite_a', 'est6_noite_b', 'est6_noite_c'][(seed >>> 10) % 3]);
   }
   if (rejogo()) { try { S.flags.placarLia = true; } catch (e) {} marcarVar('o placar do fliperama já marca LIA'); }
 
@@ -191,7 +191,7 @@ export function rejogoEstrada(A, S, c) {
     { id: 'semBuzina', txt: 'Desafio da noite: chegue ao portão sem buzinar o carro.' },
     { id: 'rapida', txt: 'Desafio da noite: chegue ao portão em menos de 90 s.' }
   ];
-  const desafio = DESAFIOS[(seed >> 4) % DESAFIOS.length];
+  const desafio = DESAFIOS[(seed >>> 4) % DESAFIOS.length];
   const des = { mostrado: false, t: 0, luzUsada: false, buzinou: false };
   function tickDesafio(dt) {
     if (!des.mostrado && S.flags.saiuCarro) { des.mostrado = true; agenda(3.5, () => A.toast(desafio.txt)); }
@@ -236,7 +236,7 @@ export function rejogoEstrada(A, S, c) {
   (function portaFundos() {
     if (!rejogo()) return; // só existe na segunda jogada em diante
     const quartinho = verdadeiro();
-    const mat = A.texMat ? A.texMat('madeiraEsc', 1, 1) : new THREE.MeshStandardMaterial({ color: 0x241b12, roughness: .9 });
+    const mat = A.texMat ? A.texMat('madeira', 1, 1, { color: 0x2a1d14 }) : new THREE.MeshStandardMaterial({ color: 0x241b12, roughness: .9 });
     const porta = box(.9, 2.0, .08, mat, 18, 1.0, -21.36, grupo, false);           // fundo da loja (dentro do pátio)
     box(.12, .16, .05, MAT.bronze, 18.3, 1.0, -21.33, grupo, false);               // maçaneta
     if (quartinho) { // número gravado na madeira
@@ -335,7 +335,7 @@ export function rejogoEstrada(A, S, c) {
     if (!rejogo()) return;
     if (bus.fase === 0) {
       if (!bus.armado && S.flags.saiuCarro && P.room && P.room.id === 'estrada' && P.pos.z < 0) bus.armado = true;
-      if (bus.armado && P.pos.z < -20 && !S.flags.perseguicao) { bus.fase = 1; bus.g = montarBus(); bus.lane = [-2.4, -2.8, -3.4][(seed >> 12) % 3]; bus.z = 92; bus.g.position.set(bus.lane, 0, bus.z); bus.g.visible = true; bus.g.userData.luz.intensity = 22; falar('est6_onibus'); medo(14); marcarVar('o último ônibus ao fundo'); }
+      if (bus.armado && P.pos.z < -20 && !S.flags.perseguicao) { bus.fase = 1; bus.g = montarBus(); bus.lane = [-2.4, -2.8, -3.4][(seed >>> 12) % 3]; bus.z = 92; bus.g.position.set(bus.lane, 0, bus.z); bus.g.visible = true; bus.g.userData.luz.intensity = 22; falar('est6_onibus'); medo(14); marcarVar('o último ônibus ao fundo'); }
       return;
     }
     if (bus.fase === 1) {
@@ -388,7 +388,7 @@ export function rejogoEstrada(A, S, c) {
 
   // =================================================================== 15) O PRESSÁGIO DA NOITE (som)
   // um som único, sorteado, logo depois de sair do carro: cães ao longe, um sino, vento forte ou uma buzina.
-  const presTipo = ['caes', 'sino', 'vento', 'buzina'][(seed >> 6) % 4];
+  const presTipo = ['caes', 'sino', 'vento', 'buzina'][(seed >>> 6) % 4];
   const pres = { feito: false, t: 0 };
   function tickPressagio(dt) {
     if (pres.feito || !S.flags.saiuCarro) return;
@@ -456,7 +456,7 @@ export function rejogoEstrada(A, S, c) {
   // uma lampadinha de cor sorteada no poste do letreiro do posto, para o posto nunca ter a mesma cara.
   (function luzPiloto() {
     const cores = [0xff5020, 0x30c0ff, 0xffd040, 0x40ff80];
-    const cor = cores[(seed >> 8) % cores.length];
+    const cor = cores[(seed >>> 8) % cores.length];
     const bulbo = new THREE.Mesh(new THREE.SphereGeometry(.05, 8, 6), new THREE.MeshBasicMaterial({ color: cor })); bulbo.position.set(7.6, 4.3, -7.5); grupo.add(bulbo);
     const luz = new THREE.PointLight(cor, 1.2, 4, 2); luz.position.set(7.6, 4.3, -7.5); grupo.add(luz);
     A.W.tick.push(() => { if (!vivo()) return; const on = Math.random() > .06; luz.intensity = on ? 1.2 : .2; bulbo.material.color.setHex(on ? cor : 0x201810); });

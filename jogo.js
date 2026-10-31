@@ -4463,6 +4463,7 @@ const L6 = criarMonstrosLote6({
   THREE, W, P, M, ANA, PROC, MON, scene, SX, SFX,
   get S() { return S; }, get perf() { return perf; }, get mode() { return mode; }, get ui() { return ui; },
   roomAt, SALA, salaAdj, salasAlcancaveis, distSalas, pontoEm, centroSala, planejar, subPequeno, toast, conquista, falaInspetor
+});
 // Monstros e IA, lote 5: visual e luz das entidades (src/monstros-visual.js)
 const MVIS = instalarMonstrosVisual({
   THREE, scene, camera, MON, VULTO, ANA, ANA_G, PROC, M, P, W, MAT, OPT, canvasTex, rand, pick, clamp, lerp, naLuz, visivel, subPequeno, conquista, SX,
