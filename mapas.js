@@ -7,6 +7,7 @@ import { mundoEstrada } from './src/estrada-mundo.js';
 import { polirEstrada, tecla, semFlash } from './src/estrada-polimento.js';
 import { segredosEstrada, letrasPlaca } from './src/estrada-segredos.js';
 import { monstrosEstrada } from './src/estrada-monstros.js';
+import { rejogoEstrada } from './src/estrada-lote6.js';
 import { extrasTerreo, extrasSuperior, juntar } from './src/internato.js';
 import { loreTerreo, loreSuperior } from './src/internato-lore.js';
 import { polirTerreo, polirSuperior } from './src/internato-polimento.js';
@@ -230,6 +231,9 @@ function estrada(A, S) {
   // Lote 5: monstros do prólogo — o batedor de 1979, o acompanhante da mata, o vulto dos faróis,
   // aparições perturbadoras e os momentos a mais da perseguição (src/estrada-monstros.js)
   monstrosEstrada(A, S, { GZ, BZ, carro, farolOn, gate, ex, v, novoVulto: () => vulto(A) });
+  // Lote 6: rejogabilidade — variações sorteadas por semente, segredos só da segunda jogada,
+  // recordes e selos do prólogo (src/estrada-lote6.js)
+  rejogoEstrada(A, S, { GZ, BZ, carro, gate, cadeado, chave, orelhao, joaquim, velho, farolOn, ex, pol, fora, novoVulto: () => vulto(A) });
 
   return {
     nome: 'A Estrada Velha',
