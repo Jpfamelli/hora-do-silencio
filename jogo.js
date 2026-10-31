@@ -10,6 +10,7 @@ import { criarMundoJogavel } from './src/jogabilidade-mundo.js';
 import { criarPolimento } from './src/jogabilidade-polimento.js';
 import { criarSegredos } from './src/jogabilidade-segredos.js';
 import { criarJogabilidadeL5 } from './src/jogabilidade-lote5.js';
+import { criarJogabilidadeL6 } from './src/jogabilidade-lote6.js';
 import { criarInterface } from './src/interface.js';
 import { PG } from './src/progressao.js';
 import { PLAT } from './src/plataforma.js';
@@ -666,7 +667,7 @@ document.addEventListener('visibilitychange', () => {
 addEventListener('mousemove', e => {
   if (!locked || mode !== 'jogo' || ui || !S || S.dead || P.bloqueado) return;
   const k = .0022 * OPT.sens * (P.sensMul || 1); // mais fino escondida e mirando a garrafa; atrito sobre o que dá para usar (src/jogabilidade-polimento.js)
-  P.yaw -= e.movementX * k; P.pitch = clamp(P.pitch - e.movementY * k * (OPT.invY ? -1 : 1), -1.45, 1.45);
+  P.yaw -= e.movementX * k * (P.mira6 || 1); P.pitch = clamp(P.pitch - e.movementY * k * (OPT.invY ? -1 : 1), -1.45, 1.45); // lote 6: Mira Espelhada inverte o eixo X
   if (S.hidden) {
     const cama = S.hidden.tipo === 'cama', base = Math.atan2(-S.hidden.face[0], -S.hidden.face[1]); let d = P.yaw - base; d = Math.atan2(Math.sin(d), Math.cos(d));
     P.yaw = base + clamp(d, cama ? -1.1 : -.75, cama ? 1.1 : .75); P.pitch = clamp(P.pitch, cama ? -.45 : -.35, cama ? .22 : .35);
@@ -697,6 +698,7 @@ function onKey(e) {
   if (mode !== 'jogo' || ui || !S || S.dead) return;
   if (SEG.tecla(e)) return; // lote 4: U usa e Y troca o item do bolso, contar junto com a Ana (src/jogabilidade-segredos.js)
   if (JM.tecla(e)) return; // T fone, B rádio
+  if (JGL6.tecla(e)) return; // lote 6: deslize (agachar correndo)
   if (MS.tecla(e)) return; // lote 4: V (o nome dele, contar junto, a senha, a chamada) e G com o apito dele (src/monstros-segredos.js)
   if (e.code !== 'KeyQ' && e.code !== 'KeyZ' && e.code !== 'KeyX') silencioT = 0;
   switch (e.code) {
@@ -869,7 +871,7 @@ function updateGarrafas(dt) {
 }
 const quiques = [];
 // os cacos da garrafa ficam no chão por dez minutos: você pode criar o seu próprio campo minado
-function quebrarGarrafa(p, r) { SFX.vidro(p.x, p.z); emitNoise(p.x, p.z, r, false, true); criarCacos(p.x, p.z, 600); }
+function quebrarGarrafa(p, r) { r *= (P.garrafa6 || 1); SFX.vidro(p.x, p.z); emitNoise(p.x, p.z, r, false, true); criarCacos(p.x, p.z, 600); } // lote 6: Garrafa Barulhenta
 // cacos de vidro no chão: quem pisa faz barulho (agachada não)
 const MAT_CACO = new THREE.MeshStandardMaterial({ color: 0x9fb4a8, roughness: .08, metalness: .8, emissive: 0x0c1410, emissiveIntensity: .7 });
 MAT_CACO.userData.compartilhado = true;
@@ -1075,6 +1077,7 @@ function pisarTabua() {
 
 function updatePlayer(dt) {
   holdProprio = false;
+  JGL6.antes(dt); // lote 6: mutadores que mexem no movimento/teclas antes de ler o input
   if (alvo) { P.alvoAnt = alvo; P.alvoAntEm = perf; }
   // E apertado um instante antes de o esconderijo (ou o item) entrar na mira ainda vale
   if (P.eBuf > 0) { P.eBuf -= dt; if (alvo && !alvo.hold && !alvo.porta && !S.hidden && (ehEsconderijo(alvo) || W.items.some(i => i.it === alvo))) { P.eBuf = 0; alvo.act(); } }
@@ -1110,7 +1113,7 @@ function updatePlayer(dt) {
   P.sombra = 0;
   if (P.bloqueado) { P.camK = 1; P.vx = P.vz = 0; $('#breath').hidden = true; camera.position.set(P.pos.x, P.h, P.pos.z); camera.rotation.set(P.pitch, P.yaw, 0); return; }
   const an = P.mover && P.mover.l > .05 ? P.mover : null; // analógico do toque e do controle (src/plataforma3.js): direção contínua
-  const fw = an ? -an.y : (keys.KeyW ? 1 : 0) - (keys.KeyS ? 1 : 0), st = an ? an.x : (keys.KeyD ? 1 : 0) - (keys.KeyA ? 1 : 0);
+  const fw = an ? -an.y : (keys.KeyW ? 1 : 0) - (keys.KeyS ? 1 : 0), st = (an ? an.x : (keys.KeyD ? 1 : 0) - (keys.KeyA ? 1 : 0)) * (P.troca6 || 1); // lote 6: Controles Trocados invertem o passo lateral
   const anK = an ? Math.min(1, .4 + .6 * an.l / .9) : 1;
   const moving = fw || st;
   const fuga = S.flags.sino;
@@ -1142,7 +1145,7 @@ function updatePlayer(dt) {
     else if (P.ofegoRuidoT <= 0) { P.ofegoRuidoT = 1.1; SFX.ofego(); emitNoise(P.pos.x, P.pos.z, 4.5, true); marcarCausa('correu'); }
   }
   // correr durante a Hora ecoa pelo prédio inteiro
-  if (P.sprinting && !fuga && S.chapter >= 2 && S.chapter <= 4 && M.ativo && !P.room.fora) {
+  if (P.sprinting && !fuga && ((S.chapter >= 2 && S.chapter <= 4) || P.ecoSempre6) && M.ativo && !P.room.fora) { // lote 6: Corrida Que Ecoa estende o eco a todos os capítulos
     P.corridaT += dt;
     if (P.corridaT >= 4) { P.corridaT = 0; emitNoise(P.pos.x, P.pos.z, 30, true); marcarCausa('correu'); if (!S.flags.dicaEco) { S.flags.dicaEco = true; toast('Seus passos ecoam pelo prédio inteiro.'); } }
   } else P.corridaT = 0;
@@ -1166,6 +1169,7 @@ function updatePlayer(dt) {
   if (W.def.ruidoMul) P.noiseR *= W.def.ruidoMul();
   P.noiseR *= anK;
   P.noiseR *= SEG.ruidoMul(); // descalça e o chuveiro aberto (src/jogabilidade-segredos.js)
+  P.noiseR *= (P.ruido6 || 1); // lote 6: Passos Pesados
   const moved = Math.min(andou, vel * dt);
   // o som do passo cai exatamente quando a cabeça desce no balanço
   P.bob += moved * (P.sprinting ? 2 : 2.9);
@@ -1280,6 +1284,7 @@ function updateTeste(dt) {
   if (teste.t <= 0) { teste = null; sub('inspetor', 'Volte para a cama.'); M.recuo = 12; M.searchT = 0; patrulhar(); conquista('volte_cama'); }
 }
 function entrarEsconderijo(L) {
+  if (JGL6.bloqueiaEsconderijo(L)) return; // lote 6: Sem Esconderijo (e aviso do Esconderijo Podre)
   const dM = M.ativo ? M.pos.distanceTo(P.pos) : 99;
   // o jeito de entrar faz diferença: devagar (ALT) ou agachada é metade do barulho; correndo, a porta do armário bate
   const jeito = (P.devagar || P.crouch || keys.AltLeft || keys.AltRight) ? .5 : (P.sprinting || perf - correuEm < .4) ? 1.8 : 1;
@@ -2595,6 +2600,7 @@ function morrer(quem) {
       UIX.morte(quem); // o que aconteceu, mini-mapa, mortes no capítulo
       dicaMorte(quem, ctx); // dica pela causa exata, quando houver
       PG.telaMorte(quem); // contagem, objetivos que faltavam, penalidade e o modo Uma Vida
+      JGL6.telaMorte(); // lote 6: semente da noite, copiar e refazer esta noite exata
       $('#dt-diag').hidden = true; $('#death-info').hidden = true; // a causa e a contagem já aparecem acima
       $('#death-conta').textContent = [S.mortes > 1 && R.mortes ? R.mortes.voltou.replace('{n}', S.mortes - 1) : '', S.dif === 'pesadelo' && R.mortes ? R.mortes.pesadelo : ''].filter(Boolean).join(' · ');
     }, rapido ? 500 : 700);
@@ -2696,6 +2702,7 @@ function carregarMapa(id, spawn, { salvar = true } = {}) {
   SUST.novoMapa(id);
   ML.novoMapa(id); MS.novoMapa(id);
   VIS.mapa(); VM.mapa();
+  JGL6.mapa(id); // lote 6: Caçada, Esconderijo Podre e economia da noite
 }
 function syncLuzes() {
   const ligada = W.def && W.def.energia ? W.def.energia() : false;
@@ -4272,6 +4279,7 @@ function novoJogo() {
   iniciarAudio();
   S = novoEstado($('#o-dif').value); mortesNoPonto = 0;
   PG.novoJogo(S);
+  JGL6.novoJogo(S); // lote 6: aplica os modos escolhidos à noite
   carregarMapa('estrada', 'carro'); H.aoComecar(S);
   salvarCheckpoint(true);
   $('#title').hidden = true;
@@ -4369,6 +4377,13 @@ const JGL5 = criarJogabilidadeL5({
   THREE, P, M, ANA, PROC, W, keys, camera, OPT, SFX, emitNoise, marcarCausa, toast, sub, subPequeno,
   audio: { saida: (...a) => saida(...a), osc: (...a) => osc(...a), env: (...a) => env(...a), burst: (...a) => burst(...a) },
   get S() { return S; }, get perf() { return perf; }, get AC() { return AC; }, get mode() { return mode; }, get ui() { return ui; }, get alvo() { return alvo; } });
+// Jogabilidade, lote 6: rejogabilidade — modos, mutadores, Regra da Noite, recordes e conquistas de modo (src/jogabilidade-lote6.js)
+const JGL6 = criarJogabilidadeL6({
+  THREE, P, M, ANA, PROC, W, keys, camera, OPT, SFX, flash, D,
+  emitNoise, marcarCausa, toast, sub, subPequeno, conquista, lsGet, lsSet, salvarOpt: () => lsSet(OPT_KEY, OPT),
+  ativarInspetor, salasAlcancaveis, pontoEm, distSalas, roomAt, collide,
+  get S() { return S; }, get perf() { return perf; }, get mode() { return mode; }, get ui() { return ui; }, get alvo() { return alvo; } });
+JGL6.ligar();
 const VIS = instalarVisual({ THREE, scene, camera, renderer, canvas, flash, flashFill, MON, ANA, ANA_G, PROC, M, P, W, MAT, OPT, OPT_KEY, lsSet, R, ROLOS, keys, roomAt, visivel, collide, salasAlcancaveis, distSalas, D, MAOS, MAT_CACO, chuvaMat, chuvaGeo, SFX, sub, toast, conquista, interact, item, MK, legendas: UIX.som.def, get alvo() { return alvo; },
   get S() { return S; }, get mode() { return mode; }, get ui() { return ui; }, get flashPisca() { return flashPisca; }, get hbT() { return AUD.hbT; }, get raioI() { return raioI; }, get fita() { return fitaTocando; }, get perf() { return perf; } });
 const VM = instalarMundoVisual({ THREE, scene, camera, renderer, flash, hemi, moon, W, P, M, ANA, ANA_G, PROC, MON, MAT, MK, OPT, R, TX, chuvaMat, respingos, interact, sub, SFX, DOOR, collide, raio: () => { raioT = 0; },
@@ -4411,7 +4426,7 @@ const grain = $('#fx-grain').getContext('2d'), grainImg = grain.createImageData(
 let last = performance.now(), grainT = 0;
 function loop(now) { requestAnimationFrame(loop); if (PLAT.pular(now)) return; const dt = Math.min(.05, (now - last) / 1000); last = now; frame(dt); }
 function frame(dt) {
-  { const r = PLAT.antes(Math.min(.05, dt)); dt = Math.min(VIS.tempo(r), SUST.escala(r), JP.tempo(r)); } // congelamentos curtos do golpe e câmera lenta do "por um fio" (src/visual-polimento.js, src/sustos-plataforma.js, src/jogabilidade-polimento.js): cada um corre sobre o dt real e vale o mais forte
+  { const r = PLAT.antes(Math.min(.05, dt)); dt = Math.min(VIS.tempo(r), SUST.escala(r), JP.tempo(r)) * JGL6.tempoMul(); } // lote 6: Relâmpago acelera a noite inteira // congelamentos curtos do golpe e câmera lenta do "por um fio" (src/visual-polimento.js, src/sustos-plataforma.js, src/jogabilidade-polimento.js): cada um corre sobre o dt real e vale o mais forte
   perf += dt;
   const jogando = mode === 'jogo' && !ui && S && !S.dead && !S.fim;
   const ativo = jogando && (locked || window.__teste || PLAT.semMouse());
@@ -4427,7 +4442,7 @@ function frame(dt) {
     S.tempo += dt; S.capT += dt; PG.tick(dt);
     updatePlayer(dt); updateLanterna(dt); updateFear(dt);
     { const dm = dt * JP.ritmo(); if (!congelado(dm)) { updateInspetor(dm); updateAna(dm); updateProcissao(dm); ML.tick(dm); MS.tick(dm); L5.tick(dm); } updateEventos(dm); } updateGarrafas(dt); // ritmo do mundo (acessibilidade): a Lia não fica mais lenta
-    updateClima(dt); updateJogabilidade(dt); updateAlvo(); JM.update(dt); SEG.update(dt); JGL5.update(dt); updateSegurar(dt); updateFita(dt); updateHUD(); updateSub(dt); updateAudio(dt); H.tick(dt); MVIS.tick(dt); // lote 5: visual e luz das entidades
+    updateClima(dt); updateJogabilidade(dt); updateAlvo(); JM.update(dt); SEG.update(dt); JGL5.update(dt); JGL6.update(dt); updateSegurar(dt); updateFita(dt); updateHUD(); updateSub(dt); updateAudio(dt); H.tick(dt); MVIS.tick(dt); // lote 5: visual e luz das entidades · lote 6: rejogabilidade
   } else if (mundoVivo()) { // cofre, quadro (e no Pesadelo notas e diário): o mundo continua, com o som abafado
     S.tempo += dt; S.capT += dt; P.noiseR = 0; abafar(true);
     updateLanterna(dt); updateFear(dt);
