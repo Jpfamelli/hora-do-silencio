@@ -1,0 +1,91 @@
+# Lote 6 — Plataforma e acessibilidade
+- Novo botão "Rejogar / Desafios" no título, logo depois da Noite da Semana
+- Painel próprio "Rejogar" que fecha com ESC ou botão Voltar
+- A dica do botão mostra o melhor tempo da Noite do Dia de hoje
+- Seção "Noite do Dia" com o nome gerado da noite em destaque
+- Semente do dia determinística pela data: a mesma noite para todo mundo no mesmo dia
+- 2 a 3 pactos fixos do dia, iguais o dia inteiro (sorteados pela data)
+- Texto explica em linguagem simples quais pactos estão ligados hoje
+- A Noite do Dia é sempre no Normal, para a comparação ser justa
+- Placar local mostra quantas tentativas você já fez hoje
+- Placar local mostra o seu melhor tempo de hoje
+- Botão "Jogar a Noite do Dia" começa a noite exata do dia
+- Botão "Copiar código" da Noite do Dia para mandar a amigos
+- Conta mais uma tentativa toda vez que você começa a Noite do Dia
+- Registra o seu tempo ao terminar a Noite do Dia
+- Aviso "Novo recorde da Noite do Dia" quando você bate o seu tempo
+- O placar do dia zera sozinho quando vira o dia
+- Botão "Surpreenda-me" sorteia uma semente nova com 1 a 2 pactos e já começa
+- Botão "Noite da Casa" sorteia uma noite bem tensa, com 3 pactos
+- A Noite Surpresa e a da Casa ficam no Normal, variando só os pactos
+- Toda noite ganha um nome gerado ("Noite da Névoa Faminta", etc.)
+- Gerador de nomes com 16 adjetivos e 16 núcleos, sempre o mesmo para a mesma semente
+- Campo para colar o link ou o código da noite de outra pessoa
+- O campo aceita tanto o link inteiro quanto só o código
+- Botão "Jogar essa noite" começa a noite colada
+- Aviso quando o código colado não é entendido
+- O jogo lê "#n=CODIGO" no carregamento e já preenche o campo Desafio
+- O link carrega também a dificuldade embutida
+- Troca de link na barra (hashchange) atualiza a noite sem recarregar
+- Prévia no título: "fulano te desafia para esta noite" com o nome da noite
+- A prévia mostra o tempo e as mortes do desafiante quando o link traz
+- Link sem resultado mostra "Noite compartilhada" com o nome da noite
+- A prévia é anunciada por leitores de tela (aria-live)
+- Botão "★ Favoritar" no fim da noite guarda a noite exata
+- Lista de favoritas no painel, até 12 noites
+- Favoritar a mesma noite não duplica; a mais recente fica no topo
+- Cada favorita mostra o nome gerado e o código
+- Botão "Jogar" rejoga a favorita igualzinha
+- Botão "Copiar" pega o link da favorita
+- Botão "Tirar" remove a favorita da lista
+- Contador de quantas favoritas no título da seção
+- Mensagem quando ainda não há favoritas
+- Botão "De novo, igual" no fim reabre a mesma semente, dificuldade e pactos
+- A tela de morte ganha "Recomeçar a noite do zero" (além do tentar de novo do trecho)
+- O jogo guarda a configuração da noite que começou, para rejogar sem reconfigurar
+- Botão "Copiar link da noite" no fim da partida
+- O link embute semente, dificuldade e pactos (a mesma noite exata)
+- O link usa o compartilhamento do sistema (navigator.share) quando existe
+- Sem share, o link cai para a área de transferência
+- O link de desafio embute o seu tempo e as suas mortes para o veredito
+- Veredito no fim: "você venceu fulano por X" quando foi mais rápido
+- Veredito no fim: "você perdeu para fulano por X" quando foi mais lento
+- Veredito de empate no relógio
+- O veredito também compara o número de mortes
+- Botão "Cartão da noite (imagem)" gera um PNG do boletim
+- O cartão é desenhado em canvas e baixa como arquivo
+- O cartão traz os ranks de cada capítulo
+- O cartão traz tempo, mortes e segredos
+- O cartão traz o código da noite para quem quiser rejogar
+- Etiqueta estilo cartucho antigo com a semente como "nº da fita"
+- O cartão não entrega o final (só o nome da noite)
+- Botão "Perfil de corrida" em Desempenho
+- O perfil de corrida liga o cronômetro num clique
+- O perfil de corrida troca o relógio para tempo real
+- O perfil de corrida desliga os avisos lentos
+- O perfil confirma por texto o que mudou
+- Opção "Repetir sempre a última semente no Novo jogo"
+- Com a semente fixa, o campo Desafio já vem com a última noite
+- A semente fixa não atropela um código que você já colou
+- A preferência de semente fixa fica salva
+- Opção de sensibilidade horizontal do toque
+- Opção de sensibilidade vertical do toque
+- O olhar por toque passa a respeitar as duas sensibilidades por eixo
+- As sensibilidades de toque ficam salvas
+- Botão "Legenda de cores (daltônicos)" em Desempenho
+- Quadro explica o que cada cor avisa, descrevendo também a forma, não só a cor
+- A legenda aponta a paleta de daltonismo e as legendas de som do jogo
+- A legenda de cores fecha com ESC ou botão
+- Selo "corrida assistida" no fim quando há ajudas ligadas, sem bloquear recordes ou conquistas
+- O selo detecta dificuldade fácil, avisos antecipados, ajuda invisível e conforto
+- Os códigos usam o mesmo formato do campo Desafio que já existia
+- O link aponta para o próprio endereço do jogo (funciona instalado e no GitHub Pages)
+- Se a cópia falhar, o botão mostra o código/link na tela para copiar à mão
+- Novo módulo plataforma-lote6.js ligado por um gancho curto no plataforma.js
+- Estilo próprio injetado pelo módulo, sem mexer na folha de estilo compartilhada
+- O módulo entra no BASE do service worker para jogar sem internet
+- Nova versão de cache (v8) para pegar os arquivos novos
+- Todo o módulo é silenciado no QA (navigator.webdriver): a UI nova não roda no teste
+- Todo o corpo fica em try/catch e nunca toca no caminho obrigatório dos capítulos
+- "De novo, igual" e o link escondem as telas de fim antes de começar a nova noite
+- O botão de começar a noite reaproveita o fluxo do "Novo jogo" (nada de código paralelo)
