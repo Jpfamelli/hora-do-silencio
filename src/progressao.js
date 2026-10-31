@@ -6,7 +6,7 @@ import { MUNDO } from './progressao-mundo.js'; // Lote 2: mundo e história (ace
 import { P3 } from './progressao3.js'; // Lote 3: polimento (reinício na hora, 100%, Noite da Semana, segredos do título...)
 import { L4 } from './progressao-lote4.js'; // Lote 4: segredos e easter eggs (códigos, modos, cartas, boatos, parede das Lias...)
 import { L5 as _L5REAL } from './progressao-lote5.js'; // Lote 5: monstros (temperamento por noite, bestiário vivo, "te ouviu", modo Caçada, contra-jogo)
-const L5 = window.__L5OFF ? { ligar(){}, difKey(){return '';}, difMod(){}, novoJogo(){}, tick(){}, titulo(){}, morte(){}, telaMorte(){}, pausa(){return '';}, fimCap(){return [];}, final(){}, statsLinhas(){return [];}, difExtra(){return '';} } : _L5REAL;
+const L5 = window.__L5OFF ? { ligar(){}, difKey(){return '';}, difMod(){}, novoJogo(){}, tick(){}, titulo(){}, morte(){}, telaMorte(){}, pausa(){return '';}, fimCap(){return [];}, final(){}, statsLinhas(){return [];}, difExtra(){return '';}, copiar(){return '';} } : _L5REAL;
 const LORE_KEY = 'hora-silencio-v3-acervo';
 const STATS_KEY = 'hora-silencio-stats';
 const ULTIMA_KEY = 'hora-silencio-ultima';
@@ -490,7 +490,7 @@ function copiarResultado() {
   const S = C.S; if (!S) return;
   const R = window.ROTEIRO, F = R.finais[PG._tipoFinal] || {};
   const ranks = R.capitulos.map(c => (S.ranks || {})[c.id] || '–').join(' ');
-  const txt = `A Hora do Silêncio · ${C.D().nome} · desafio ${codigoDesafio(S)} · ${fmtC(S.tempo)} · ranks ${ranks} · mortes ${S.mortes} · ${C.loreAchado()}/${C.totalLore()} lore · ${(F.titulo || '').replace('FINAL: ', '').toLowerCase()}${S.flags._noite ? ` · noite nº ${S.flags._noite}` : ''}${P3.copiar()}\n${location.href.split('#')[0]}`;
+  const txt = `A Hora do Silêncio · ${C.D().nome} · desafio ${codigoDesafio(S)} · ${fmtC(S.tempo)} · ranks ${ranks} · mortes ${S.mortes} · ${C.loreAchado()}/${C.totalLore()} lore · ${(F.titulo || '').replace('FINAL: ', '').toLowerCase()}${S.flags._noite ? ` · noite nº ${S.flags._noite}` : ''}${P3.copiar()}${L5.copiar ? L5.copiar() : ''}\n${location.href.split('#')[0]}`;
   const ok = () => { const b = $('#e-copiar'); b.textContent = 'Copiado!'; setTimeout(() => b.textContent = 'Copiar resultado', 1800); };
   try { navigator.clipboard.writeText(txt).then(ok, () => fallback()); } catch (e) { fallback(); }
   function fallback() { const t = document.createElement('textarea'); t.value = txt; document.body.appendChild(t); t.select(); try { document.execCommand('copy'); ok(); } catch (e) {} t.remove(); }
