@@ -738,6 +738,77 @@
   @keyframes objNovoFade{0%,100%{opacity:0}15%,75%{opacity:1}}
   body.menos-mov #chapter{transition:opacity 1.4s}
   @media (max-width:700px){#bpm{left:16px}#p-fita,#dt-fita{left:12px;top:10px;font-size:13px}}
+  /* ---- Interface (lote 6): rejogabilidade ---- */
+  .l6-mini{pointer-events:auto;font-family:"Special Elite","Courier New",monospace;font-size:11px;letter-spacing:.06em;color:var(--fraco);background:#0c0b09;border:1px solid #2c2720;cursor:pointer;padding:2px 7px;margin-left:6px}
+  .l6-mini:hover{color:#fff;border-color:var(--fraco)}
+  #l6-meta{font-family:"Special Elite";font-size:13px;color:#8a6f5a;margin:-18px 0 22px;text-align:center;min-height:1em;padding:0 16px;max-width:620px;line-height:1.5}
+  #l6-meta .rot{font-family:"IM Fell English SC";color:var(--sangue);letter-spacing:.14em;font-size:11px;margin-right:6px;text-transform:uppercase}
+  #l6 .wrap{width:min(760px,94vw)}
+  #l6 .l6-dica{font-style:italic;color:var(--fraco);margin-bottom:14px;text-align:center}
+  #l6 .l6-topo{font-family:"Special Elite";font-size:14px;color:#bdb29a;text-align:center;margin-bottom:16px;line-height:1.7}
+  #l6 .l6-topo b{color:#c9a75a;font-weight:normal}
+  #l6 .l6-foot{text-align:center;margin-top:16px}
+  .l6-rec{border:1px solid #2c2720;background:#0e0c0a;padding:10px 14px;margin-bottom:8px}
+  .l6-rec-h{display:flex;justify-content:space-between;align-items:center}
+  .l6-rec-h b{font-family:"IM Fell English SC";font-weight:normal;letter-spacing:.08em;font-size:18px}
+  .l6-rec-h .rk{font-family:"IM Fell English SC";font-size:26px;color:#c9a75a}
+  .l6-rec-h .rk-S{color:#e8c76a;text-shadow:0 0 14px rgba(232,199,106,.5)}
+  .l6-rec-h .rk-C{color:var(--sangue)}
+  .l6-rec-t{font-family:"Special Elite";font-size:12px;color:var(--fraco);margin-top:3px}
+  .l6-splits{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:8px;font-family:"Special Elite";font-size:11px;color:#6d6452}
+  .l6-splits b{color:#bdb29a;font-weight:normal}
+  .l6-modo{border:1px solid #2c2720;background:#0e0c0a;padding:10px 14px;margin-bottom:8px}
+  .l6-modo.trava{opacity:.55}
+  .l6-modo b{font-family:"IM Fell English SC";font-weight:normal;letter-spacing:.08em;font-size:17px;color:#cfc3a6}
+  .l6-modo p{font-size:15px;margin:4px 0 2px;color:var(--ui)}
+  .l6-modo small{font-family:"Special Elite";font-size:11px;color:var(--fraco)}
+  .l6-cadeado{font-family:"Special Elite";font-style:normal;font-size:11px;color:var(--sangue);margin-left:8px}
+  .l6-baralho{margin-top:20px;border-top:1px solid #2c2720;padding-top:14px}
+  .l6-baralho h3{font-family:"IM Fell English SC";font-weight:normal;color:var(--sangue);letter-spacing:.14em;font-size:14px;margin-bottom:10px}
+  .l6-cartas{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px}
+  .l6-carta{pointer-events:auto;cursor:pointer;border:1px solid #2c2720;background:#0c0b09;padding:9px 11px;display:block}
+  .l6-carta.on{border-color:#7a6236;box-shadow:0 0 12px rgba(201,167,90,.2);background:#15120c}
+  .l6-carta b{font-family:"IM Fell English SC";font-weight:normal;font-size:15px;color:#c9a75a;display:block}
+  .l6-carta span{font-size:13px;color:var(--fraco)}
+  .l6-cod{margin-top:14px;font-family:"Special Elite";font-size:14px;color:var(--fraco);text-align:center}
+  .l6-cod b{color:#c9a75a;font-weight:normal;letter-spacing:.14em}
+  .l6-add{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap;margin-bottom:8px}
+  .l6-add input{background:#000;color:var(--ui);border:1px solid #333;font-family:"Special Elite";padding:4px 8px;width:min(280px,70vw);text-transform:uppercase}
+  .l6-tab{width:100%;border-collapse:collapse;font-family:"Special Elite";font-size:14px}
+  .l6-tab th{color:var(--fraco);font-weight:normal;text-align:left;padding:6px 8px;border-bottom:1px solid #2c2720;font-size:12px}
+  .l6-tab td{padding:7px 8px;border-bottom:1px solid #1c1915;color:var(--ui)}
+  .l6-tab tr.eu td{color:#c9a75a}
+  .l6-tab .rks{letter-spacing:.18em;color:#bdb29a}
+  .l6-tab .bom{color:#7fbf6a}.l6-tab .ruim{color:#d0584a}
+  .l6-modo .l6-best{display:block;color:#c9a75a;margin-top:3px}
+  #l6-fc-splits{color:#6d6452;line-height:1.7;max-width:640px;margin:2px auto 0}
+  #l6-fc-splits .bom{color:#7fbf6a}#l6-fc-splits .ruim{color:#d0584a}#l6-fc-splits .pior{color:#e08a3a}
+  #l6-sem-hoje{font-family:"Special Elite";font-size:11px;color:#5d5546;text-align:center;margin-top:4px}
+  .l6-x{pointer-events:auto;background:none;border:none;color:var(--fraco);cursor:pointer;font-size:16px}
+  .l6-x:hover{color:var(--sangue)}
+  .l6-noite{border:1px solid #2c2720;background:#0e0c0a;padding:9px 14px;margin-bottom:7px;display:flex;align-items:center;flex-wrap:wrap;gap:4px 10px}
+  .l6-noite .m{color:#c9a75a;font-size:18px}
+  .l6-noite b{font-family:"IM Fell English SC";font-weight:normal;letter-spacing:.06em;font-size:16px}
+  .l6-noite small{font-family:"Special Elite";font-size:11px;color:var(--fraco);flex-basis:100%}
+  .l6-heat{display:flex;align-items:center;gap:10px;margin-bottom:7px}
+  .l6-heat .cap{font-family:"IM Fell English SC";font-size:14px;color:var(--ui);width:160px;flex:0 0 160px;letter-spacing:.06em}
+  .l6-heat i{display:block;height:12px;background:linear-gradient(90deg,#6a120d,#c0392b);min-width:2px;transition:width .4s}
+  .l6-heat em{font-family:"Special Elite";font-style:normal;font-size:12px;color:var(--fraco)}
+  .l6-cartela-pre{font-family:"Special Elite";font-size:20px;letter-spacing:.3em;color:#c9a75a;text-align:center;margin:10px 0}
+  #l6-ghost{position:absolute;right:28px;top:168px;font-family:"Special Elite";font-size:15px;text-shadow:0 0 6px #000;color:var(--ui)}
+  #l6-ghost.bom{color:#7fbf6a}#l6-ghost.ruim{color:#d0584a}
+  body.l6-cron-prec #cron,body.l6-cron-prec #crono{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+  #l6-pausa{font-family:"Special Elite";font-size:12px;color:#6d6452;margin:-10px 0 16px;line-height:1.6;max-width:560px}
+  #l6-pausa b{color:#c9a75a;font-weight:normal;letter-spacing:.1em}
+  #l6-pausa .carta{display:inline-block;border:1px solid #3a3228;padding:1px 7px;margin:2px 3px;color:#bdb29a}
+  #l6-morte-best{font-family:"Special Elite";font-size:13px;color:#8a6f5a;margin:-8px auto 16px;max-width:620px;min-height:1px}
+  #l6-record-flash{position:absolute;left:50%;top:132px;transform:translateX(-50%);font-family:"IM Fell English SC";letter-spacing:.14em;font-size:17px;color:#e8c76a;text-shadow:0 0 14px rgba(232,199,106,.6);opacity:0}
+  #l6-record-flash.on{animation:l6rec 1.6s ease-out}
+  @keyframes l6rec{0%{opacity:0;transform:translate(-50%,6px)}18%{opacity:1;transform:translate(-50%,0)}80%{opacity:1}100%{opacity:0}}
+  .l6-trofeus{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .l6-trofeu{font-family:"IM Fell English SC";font-size:12px;letter-spacing:.06em;border:1px solid #3a3228;padding:3px 9px;color:#5d5546}
+  .l6-trofeu.on{color:#c9a75a;border-color:#7a6236;box-shadow:0 0 12px rgba(201,167,90,.18)}
+  @media (max-width:700px){#l6-ghost{right:16px}.l6-heat .cap{width:110px;flex-basis:110px;font-size:12px}}
 </style>
 <link rel="stylesheet" href="src/plataforma.css">
 <script>
@@ -810,6 +881,8 @@
   <div id="cron" hidden></div>
   <div id="crono" hidden></div>
   <div id="split" hidden></div>
+  <div id="l6-ghost" hidden></div>
+  <div id="l6-record-flash"></div>
   <div id="vela" hidden></div>
   <div id="toast"></div>
   <div id="conq"></div>
@@ -833,6 +906,11 @@
     <button class="btn" id="b-caps">Capítulos</button>
     <button class="btn" id="b-conq">Conquistas</button>
     <button class="btn" id="b-fitas" hidden>Fitas ouvidas</button>
+    <button class="btn" id="b-l6-modos">Modos e desafios</button>
+    <button class="btn" id="b-l6-recordes">Recordes</button>
+    <button class="btn" id="b-l6-noites">Hall das noites</button>
+    <button class="btn" id="b-l6-placar">Placar da casa</button>
+    <button class="btn" id="b-l6-mortes">Onde você mais cai</button>
     <button class="btn" id="b-opc">Opções</button>
     <button class="btn" id="b-stats">Estatísticas</button>
   </div>
@@ -895,6 +973,7 @@
   <h2>Pausa</h2>
   <div id="p-info"></div>
   <div id="p-ameacas"></div>
+  <div id="l6-pausa"></div>
   <button class="btn" id="p-voltar">Voltar ao jogo (ESC)</button>
   <button class="btn" id="p-check">Recomeçar do último ponto salvo</button>
   <button class="btn" id="p-cap">Recomeçar o capítulo</button>
@@ -916,6 +995,7 @@
   <canvas id="death-mapa" width="340" height="200" hidden></canvas>
   <p id="death-dica"></p>
   <p id="death-best" hidden></p>
+  <div id="l6-morte-best"></div>
   <div class="conta" id="death-conta"></div>
   <div class="info" id="death-info"></div>
   <div class="stats" id="dt-stats"></div>
@@ -934,6 +1014,7 @@
   <div class="stats" id="fc-stats"></div>
   <div class="stats" id="fc-falta"></div>
   <div class="stats" id="fc-mundo"></div>
+  <div class="stats" id="l6-fc-splits"></div>
   <div class="gancho" id="fc-gancho"></div>
   <div class="recado" id="fc-recado"></div>
   <div id="fc-pular">E ou ENTER para seguir</div>
@@ -965,6 +1046,8 @@
 </div>
 
 <div id="confirma" class="screen" hidden><p id="cf-txt"></p><button class="btn" id="cf-sim">Sim</button><button class="btn" id="cf-nao">Não</button></div>
+
+<div id="l6" class="screen painel" hidden><div class="wrap"><h2 id="l6-tit"></h2><div id="l6-corpo"></div><div style="text-align:center;margin-top:18px"><button class="btn" id="l6-voltar">Voltar (ESC)</button></div></div></div>
 
 <div id="girar">Deite o celular para jogar.</div>
 <div id="aviso-mobile" hidden>Este jogo precisa de teclado e mouse.<br>Abra no computador.</div>

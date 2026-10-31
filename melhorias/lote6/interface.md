@@ -1,0 +1,94 @@
+# Lote 6 — Interface
+- Campo "Semente" no título: digite qualquer palavra (PIZZA, ESCOLA, um nome) e jogue a mesma noite que todo mundo que digitar igual
+- Qualquer texto digitado vira um código estável de 6 caracteres, então a mesma palavra sempre dá a mesma noite
+- Um código puro de 4 a 7 caracteres também é aceito direto no campo Semente
+- Botão de dado ao lado da semente sorteia uma semente nova na hora
+- Botão "copiar" ao lado da semente copia o código da noite para mandar a um amigo
+- Botão "Noite de hoje" preenche a semente do dia, igual para o mundo todo naquele dia
+- Linha fixa embaixo do campo mostra a semente de hoje
+- Ao clicar no campo Semente, o subtítulo explica para que serve
+- Um código escrito à mão no campo Desafio vira dica no campo Semente
+- Botão de menu "Repetir a última noite" refaz a noite anterior sem passar por menus
+- A última noite jogada (semente, dificuldade, mutadores e Uma Vida) fica guardada para repetir
+- "Repetir a última noite" remarca a caixa Uma Vida se a noite anterior era Uma Vida
+- Aviso na tela confirma a semente ao repetir uma noite
+- Linha "próxima meta" no título mostra a conquista não destravada mais perto, com dica
+- A próxima meta troca sozinha a cada poucos segundos
+- Sem metas pendentes, o título mostra quantos finais e conquistas ainda faltam
+- Nova opção "Mostrar a próxima meta no título" (liga/desliga)
+- Botão de menu "Modos e desafios"
+- Botão de menu "Recordes"
+- Botão de menu "Hall das noites"
+- Botão de menu "Placar da casa"
+- Botão de menu "Onde você mais cai"
+- Nova tela "Modos e desafios" reúne todos os modos num lugar só
+- Cada modo com descrição de uma linha
+- Cada modo diz como ativar
+- Cada modo mostra se está travado ou livre
+- Modos aplicáveis mostram o seu melhor resultado
+- Baralho de regras com 4 cartas de mutador, cada uma com o efeito escrito
+- Clicar numa carta liga ou desliga o mutador, com destaque dourado
+- O código da noite montada aparece ao vivo conforme você escolhe as cartas
+- Botão copiar o código montado no baralho
+- Botão "jogar esta noite" começa com a combinação montada
+- Botão "Jogar a Noite de hoje" na tela de modos
+- Botão "Copiar a semente de hoje" na tela de modos
+- Estante de troféus na tela de modos com marcos (10 noites, 3 finais, S em tudo, noite sem morte, todos os finais)
+- Nova tela "Caderno de Recordes"
+- Melhor tempo por capítulo no caderno
+- Melhor rank por capítulo, com cor própria de S e de C
+- Menos mortes por capítulo quando houver registro
+- Splits do recorde por objetivo de cada capítulo
+- Melhor tempo somado no topo do caderno
+- Finais vistos / total no topo do caderno
+- "Coração de gelo" (menos mortes numa noite concluída) no topo do caderno
+- Partidas, noites concluídas e capítulos com rank S no topo
+- Botão copiar todos os recordes de uma vez
+- Nova tela "Placar da Casa" para comparar com amigos
+- Campo para colar o código de resultado de um amigo
+- O placar decodifica ranks, mortes e tempo do código colado
+- O placar inclui o seu próprio resultado para comparar
+- O placar ordena todos por pontuação e depois por tempo
+- Coluna "vs você" mostra a diferença de tempo de cada amigo
+- Botão × remove um código do placar
+- O placar guarda até 5 códigos de amigos
+- Nova tela "Hall das Noites" com o histórico das últimas 20 noites
+- Cada noite é registrada ao terminar e ao morrer
+- Carimbo de final (bandeira) ou de morte (cruz) em cada noite
+- Número da noite em cada linha do hall
+- Data, tempo, mortes, dificuldade e semente em cada noite
+- Botão "repetir esta noite" em cada linha do hall
+- Botão "copiar semente" em cada linha do hall
+- Topo do hall com total de noites, primeira registrada e melhor noite concluída
+- Nova tela "Onde você mais cai" com as mortes por capítulo
+- Barras proporcionais mostram onde você morre mais
+- Destaque do capítulo que mais te pega
+- Total de mortes acumuladas
+- Botão "Zerar o mapa" de mortes
+- Cada morte é contada por capítulo
+- Botão "Copiar cartela" no fim da noite gera uma grade de símbolos por capítulo
+- A cartela de símbolos aparece na própria tela final
+- Cada capítulo vira um símbolo conforme o rank (S/A/B/C)
+- A cartela copiada inclui o final alcançado
+- A cartela copiada inclui a semente da noite
+- Botão "Jogar esta noite de novo" na tela final
+- Botão "De novo, a mesma noite do zero" na tela de morte
+- Linha "seu melhor neste capítulo" com rank e tempo na tela de morte
+- Fantasma do recorde por objetivo no HUD: verde se adiantado, vermelho se atrasado
+- Nova opção "Comparar cada objetivo com o recorde" (liga o fantasma)
+- Aviso "recorde!" pisca na hora em que um objetivo bate o tempo recorde
+- Nova opção "Cronômetro de precisão" deixa os dígitos de largura fixa, bom para gravar
+- A precisão vale tanto para o cronômetro da interface quanto para o da progressão
+- Resumo de parciais no fim do capítulo: quanto durou cada objetivo
+- O trecho em que você mais demorou aparece destacado em laranja no fim do capítulo
+- Cada parcial do fim do capítulo mostra seta de adiantado/atrasado contra o recorde
+- Cartão na pausa mostra a semente/código da noite atual
+- O cartão da pausa lista os mutadores ativos como cartõezinhos
+- O cartão da pausa mostra o modo Uma Vida quando ligado
+- Nova tela genérica do lote com título, corpo e botão Voltar
+- ESC e Backspace fecham as telas novas
+- As telas novas entram na navegação por teclado (setas e Tab)
+- A semente do dia é a mesma no mundo todo, baseada na data
+- O novo módulo entrou na lista de arquivos para jogar sem internet (service worker)
+- O cronômetro de precisão só mexe no estilo da tela quando liga ou desliga, sem custo por quadro
+- Guardar a noite para repetir virou uma comparação leve por quadro, sem montar texto JSON toda hora
