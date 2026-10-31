@@ -14,6 +14,7 @@ import { polirTerreo, polirSuperior } from './src/internato-polimento.js';
 import { segredosTerreo } from './src/internato-segredos.js';
 import { segredosSuperior } from './src/internato-segredos-sup.js';
 import { monstrosTerreo, monstrosSuperior } from './src/monstros-internato.js';
+import { rejogoTerreo, rejogoSuperior } from './src/internato-rejogo.js'; // lote 6: rejogabilidade (semente, 2ª jogada, recordes)
 import * as SUB from './src/subterraneo.js';
 import * as SUBL from './src/subterraneo-lore.js';
 import * as SUBP from './src/subterraneo-polimento.js';
@@ -294,6 +295,7 @@ function terreo(A, S) {
   ];
   A.construirSalas(salas, portas);
   { const k = A.W.links.findIndex(l => l.a === 'copa' && l.b === 'lavand'); if (k >= 0) A.W.links.splice(k, 1); }
+  const RJ = rejogoTerreo(A, S, {}); const rj = RJ._rj; // lote 6: semente da noite, 2ª jogada, recordes e decoração sorteada
   piso(-60, 60, -60, 60, 'grama', 4, -.01);
   piso(-14, 14, 0, 16, 'terra', 3, .002);
   // pátio fechado
@@ -375,19 +377,19 @@ function terreo(A, S) {
   ITENS.gravador('f1', spot('diret', 'mesa', 0));
   // primeira página do diário do Davi fica no caminho obrigatório (ao lado da fita)
   ITENS.nota('p1', spot('diret', 'mesa', 1));
-  // notas
-  ITENS.nota('n2', spot('hall', 'mesa', 0));
-  ITENS.nota('n3', spot('cozinha', 'mesa', 2));
-  ITENS.nota('n4', spot('enferm', 'mesa', 1));
-  ITENS.nota('n5', spot('aula', 'mesa', 3));
-  // itens de missão
-  const itGalao = item('galao', spot('despensa', 'mesa', 1), MK.galao(), 'Pegar galão de gasolina', () => { S.inv.galao = true; A.objDone('galao'); A.falar('galao'); X.galaoPego(); });
+  // notas — o canto de cada lembrança é sorteado pela semente da noite, dentro da MESMA sala (sem backtracking)
+  ITENS.nota('n2', spot('hall', 'mesa', rj.i('n2')));
+  ITENS.nota('n3', spot('cozinha', 'mesa', 2 + rj.i('n3')));
+  ITENS.nota('n4', spot('enferm', 'mesa', 1 + rj.i('n4')));
+  ITENS.nota('n5', spot('aula', 'mesa', 3 + rj.i('n5')));
+  // itens de missão — a prateleira do galão e a maca dos fusíveis mudam a cada noite (decorar o lugar deixa de resolver)
+  const itGalao = item('galao', spot('despensa', 'mesa', rj.i('galao')), MK.galao(), 'Pegar galão de gasolina', () => { S.inv.galao = true; A.objDone('galao'); A.falar('galao'); X.galaoPego(); });
   // uma caixa só, com os três fusíveis (nada de caça a três peças)
-  const itFus = item('fusiveis', spot('enferm', 'mesa', 0), MK.fusivel(), 'Pegar a caixa de fusíveis reserva', () => { S.inv.fusiveis = 3; A.progresso(); X.fusiveisPegos(); });
-  // recursos (poucos de propósito)
-  ITENS.pilha('p1', spot('aula', 'mesa', 6)); ITENS.pilha('p2', spot('banh', 'mesa', 1)); ITENS.pilha('p3', spot('refeit', 'mesa', 3));
-  ITENS.kit('k1', spot('enferm', 'prateleira', 1)); ITENS.kit('k2', spot('cozinha', 'prateleira', 2));
-  ITENS.garrafa('g1', spot('refeit', 'mesa', 0)); ITENS.garrafa('g2', spot('cozinha', 'mesa', 0)); ITENS.garrafa('g3', spot('banh', 'mesa', 2));
+  const itFus = item('fusiveis', spot('enferm', 'mesa', rj.i('fus')), MK.fusivel(), 'Pegar a caixa de fusíveis reserva', () => { S.inv.fusiveis = 3; A.progresso(); X.fusiveisPegos(); });
+  // recursos (poucos de propósito) — também em pontos sorteados, pra não decorar onde reabastecer
+  ITENS.pilha('p1', spot('aula', 'mesa', 6 + rj.i('rp1'))); ITENS.pilha('p2', spot('banh', 'mesa', 1 + rj.i('rp2'))); ITENS.pilha('p3', spot('refeit', 'mesa', 3 + rj.i('rp3')));
+  ITENS.kit('k1', spot('enferm', 'prateleira', 1 + rj.i('rk1'))); ITENS.kit('k2', spot('cozinha', 'prateleira', 2 + rj.i('rk2')));
+  ITENS.garrafa('g1', spot('refeit', 'mesa', rj.i('rg1'))); ITENS.garrafa('g2', spot('cozinha', 'mesa', rj.i('rg2'))); ITENS.garrafa('g3', spot('banh', 'mesa', 2 + rj.i('rg3')));
   // rabiscos
   plano(4, 4, new THREE.MeshStandardMaterial({ map: A.TX.rabisco, transparent: true }), -6.12, 1.6, -17.6, -Math.PI / 2); // longe da porta da copa
   plano(3, 3, new THREE.MeshStandardMaterial({ map: A.TX.rabisco, transparent: true }), 16, 1.5, -25.85);
@@ -401,7 +403,7 @@ function terreo(A, S) {
   const SG = segredosTerreo(A, S, {}); // Lote 4: segredos e salas escondidas
   const M5 = monstrosTerreo(A, S, { vulto, EX }); // Lote 5: comportamentos, perseguições e marcas do Inspetor
 
-  return juntar(juntar(juntar(juntar(juntar({
+  return juntar(juntar(juntar(juntar(juntar(juntar({
     nome: 'Térreo do internato',
     ruidoMul: () => Z.ruidoMul(),
     spawns: { inicio: { x: 0, z: 13, yaw: 0 }, escada: { x: EX, z: -7.6, yaw: Math.PI }, porao: { x: 27, z: -21.5, yaw: Math.PI } },
@@ -427,7 +429,7 @@ function terreo(A, S) {
       }
     },
     fitaOuvida(id) { if (id === 'f1' && S.chapter >= 2) A.objDone('fita_diretor'); }
-  }, X), Y), Z), SG), M5);
+  }, X), Y), Z), SG), M5), RJ);
 }
 
 // =====================================================================
@@ -460,6 +462,7 @@ function superior(A, S) {
     P('dE', 'dormE', 3, -45.14, { nome: 'porta do dormitório E' }), P('so', 'sotao', 3, -54, { nome: 'porta do depósito' })
   ];
   A.construirSalas(salas, portas);
+  const RJ = rejogoSuperior(A, S, {}); const rj = RJ._rj; // lote 6: semente da noite, 2ª jogada, recordes e decoração sorteada
   // escada para baixo
   for (let i = 0; i < 6; i++) box(2.6, .1, .45, MAT.madeiraEsc, 0, .05 - i * .02, 4 + i * .3, A.W.grupo, false);
   const desce = box(3, .05, 2, MAT.preto, 0, .02, 5, A.W.grupo, false);
@@ -487,7 +490,7 @@ function superior(A, S) {
   itCaixa.hold = 2; itCaixa.pode = () => !S.done.caixinha && S.inv.engrenagens >= 3 && S.chapter >= 3;
   // engrenagens
   // uma engrenagem só, no dormitório do fundo: obriga a atravessar o corredor com ela contando
-  const itEng = item('eng0', spot('dormE', 'cama', 2), MK.engrenagem(), 'Pegar a engrenagem da caixinha', () => { S.inv.engrenagens = 3; A.progresso(); SFX.risada(8, -31); X.engrenagemPega(); }, () => S.chapter >= 3);
+  const itEng = item('eng0', spot('dormE', 'cama', 2 + rj.i('eng')), MK.engrenagem(), 'Pegar a engrenagem da caixinha', () => { S.inv.engrenagens = 3; A.progresso(); SFX.risada(8, -31); X.engrenagemPega(); }, () => S.chapter >= 3);
   // chave da Celeste (deixada pela menina)
   const itChC = item('chaveCeleste', spot('brinq', 'chao', 2), MK.chave(), 'Pegar a chave da Irmã Celeste', () => { S.inv.chaves.celeste = 'Chave do quarto da Irmã Celeste'; }, () => !!S.done.ana);
   // quarto da Celeste
@@ -495,7 +498,7 @@ function superior(A, S) {
   ITENS.nota('n8', spot('celeste', 'prateleira', 0));
   const itChP = item('chavePorao', spot('celeste', 'mesa', 1), MK.chave(), 'Pegar a chave do monta-cargas', () => { S.inv.chaves.porao = 'Chave do monta-cargas (porão)'; A.falar('chave_porao'); }, () => !!S.fitas.f2);
   // diário do Davi: as páginas ficam no caminho da história (p1 no térreo, p2 e p3 aqui, p4 nos túneis)
-  ITENS.nota('p2', spot('celeste', 'cama', 0)); ITENS.nota('p3', spot('brinq', 'chao', 0));
+  ITENS.nota('p2', spot('celeste', 'cama', rj.i('p2'))); ITENS.nota('p3', spot('brinq', 'chao', rj.i('p3')));
   // monta-cargas no depósito: desce direto para os túneis (sem voltar ao térreo)
   const poco = new THREE.Group(); poco.position.set(11.6, 0, -56.2); A.W.grupo.add(poco);
   box(1.6, 2.6, .08, MAT.ferrugem, 0, 1.3, -.8, poco, false); box(.08, 2.6, 1.6, MAT.ferrugem, -.8, 1.3, 0, poco, false); box(.08, 2.6, 1.6, MAT.ferrugem, .8, 1.3, 0, poco, false);
@@ -510,11 +513,11 @@ function superior(A, S) {
     if (M5 && M5.cenaMontaCargas) M5.cenaMontaCargas(900); // Lote 5: a mão do Inspetor desce com a plataforma
     A.fade(true, () => { A.carregarMapa('tuneis', 'entrada'); A.fade(false); }, 900);
   });
-  ITENS.nota('n6', spot('brinq', 'mesa', 1)); ITENS.nota('n7', spot('roup', 'mesa', 0));
-  // recursos
-  ITENS.pilha('p1', spot('dormC', 'cama', 0)); ITENS.pilha('p2', spot('sotao', 'mesa', 0)); ITENS.pilha('p3', spot('roup', 'prateleira', 0));
-  ITENS.kit('k1', spot('banhS', 'mesa', 0)); ITENS.kit('k2', spot('dormD', 'cama', 3));
-  ITENS.garrafa('g1', spot('banhS', 'mesa', 2)); ITENS.garrafa('g2', spot('sotao', 'mesa', 2)); ITENS.garrafa('g3', spot('dormA', 'cama', 3));
+  ITENS.nota('n6', spot('brinq', 'mesa', 1 + rj.i('n6'))); ITENS.nota('n7', spot('roup', 'mesa', rj.i('n7')));
+  // recursos — pontos sorteados pela semente, dentro da mesma sala (sem backtracking)
+  ITENS.pilha('p1', spot('dormC', 'cama', rj.i('rp1'))); ITENS.pilha('p2', spot('sotao', 'mesa', rj.i('rp2'))); ITENS.pilha('p3', spot('roup', 'prateleira', rj.i('rp3')));
+  ITENS.kit('k1', spot('banhS', 'mesa', rj.i('rk1'))); ITENS.kit('k2', spot('dormD', 'cama', 3 + rj.i('rk2')));
+  ITENS.garrafa('g1', spot('banhS', 'mesa', 2 + rj.i('rg1'))); ITENS.garrafa('g2', spot('sotao', 'mesa', 2 + rj.i('rg2'))); ITENS.garrafa('g3', spot('dormA', 'cama', 3 + rj.i('rg3')));
   // sustos
   gatilho('brinquedo', 3, 15, -38, -24, () => { if (!S.done.caixinha) SFX.risada(12, -36); });
   gatilho('corredorFim', -3, 3, -58, -46, () => { SFX.pancada(8, -54); A.sustos.espiaQuina(); });
@@ -525,7 +528,7 @@ function superior(A, S) {
   const SG = segredosSuperior(A, S, {}); // Lote 4: segredos e salas escondidas
   const M5 = monstrosSuperior(A, S, { vulto }); // Lote 5: rosto na janela, camas que viram, corredor que desaba, monta-cargas
 
-  return juntar(juntar(juntar(juntar(juntar({
+  return juntar(juntar(juntar(juntar(juntar(juntar({
     nome: 'Andar dos dormitórios',
     ruidoMul: () => Z.ruidoMul(),
     spawns: { escada: { x: 0, z: 3, yaw: 0 }, inicio: { x: 0, z: 3, yaw: 0 } },
@@ -545,7 +548,7 @@ function superior(A, S) {
       if (cap === 3 && !S.flags.supIntro) { S.flags.supIntro = true; A.falar('superior_inicio'); }
     },
     fitaOuvida(id) { if (id === 'f2') { A.objDone('fita_celeste'); A.syncWorld(); } }
-  }, X), Y), Z), SG), M5);
+  }, X), Y), Z), SG), M5), RJ);
 }
 
 // =====================================================================
