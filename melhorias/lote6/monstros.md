@@ -1,0 +1,96 @@
+# Lote 6 — Monstros e IA
+- O Inspetor ganha um temperamento sorteado por noite, estável pela semente, que muda como ele caça.
+- Humor Paciente: ele abre cada armário com calma e fica mais tempo procurando.
+- Humor Nervoso: reage a qualquer barulho, mas larga a pista mais cedo.
+- Humor Metódico: ronda sempre na mesma ordem, ficando previsível.
+- Humor Surdo: ouve mal de um dos lados, premiando quem foge pelo flanco certo.
+- Humor Faminto: avança mais rápido do que o normal e quase não desiste.
+- Humor Teimoso: quando acha que ouviu algo, não larga mais o osso.
+- A Lia telegrafa de leve o humor da noite, sem nunca dizer o nome dele.
+- O humor muda a velocidade de perseguição do Inspetor naquela noite.
+- O humor muda o quanto o Inspetor ouve naquela noite.
+- Humores disciplinados esticam o tempo de procura; os afobados encurtam.
+- Humores afobados esfriam o recuo e voltam à caça mais cedo.
+- No humor Surdo, estar do lado ruim dele derruba de verdade a audição conforme o ângulo.
+- O humor muda a frequência com que ele revista os armários na procura.
+- Mania da noite: o Inspetor fixa numa sala e ronda mais por ali.
+- A distração da garrafa dura mais ou menos conforme a noite.
+- O tempo do bote do Inspetor varia de noite para noite.
+- A sensibilidade dele ao calor da lanterna no rosto muda por noite.
+- A teimosia dele na procura (quanto tempo insiste) varia por noite.
+- A frequência com que ele finge ir embora e espera parado varia por noite.
+- Ele cansa do truque da garrafa quando você repete demais na mesma noite.
+- Quem abusou da garrafa em noites passadas encontra um Inspetor que cansa mais cedo do truque.
+- A Lia comenta quando percebe que a garrafa não engana mais o Inspetor.
+- O jogo grava entre noites os esconderijos que você mais usa em cada mapa.
+- O jogo grava entre noites as salas por onde você mais anda.
+- Da segunda jogada em diante, ele já começa a noite checando primeiro seus esconderijos preferidos.
+- Da segunda jogada em diante, a ronda dele pesa para as salas por onde você mais passa.
+- A Lia percebe, assustada, quando ele vai direto no canto onde você sempre se esconde.
+- A Lia percebe quando ele está rondando justo por onde você mais passa.
+- Um vulto vermelho aparece no ponto exato onde o Inspetor te pegou da última vez naquele mapa.
+- O vulto da última morte some quando você o ilumina, com a Lia reconhecendo o lugar.
+- Da segunda jogada em diante, ele dá mais voltas pela sala onde te pegou na última vez.
+- Novo recorde pessoal: maior tempo "na cola" do Inspetor sem ser pega, salvo entre sessões.
+- Conquista secreta Dança Macabra: um minuto inteiro na cola dele sem ser achada.
+- O ritmo da contagem da Menina Que Conta varia por noite, da lenta e manhosa à rápida e nervosa.
+- Às vezes a Menina já começa a contagem adiantada, quebrando o timing decorado.
+- A Menina tem um número da sorte por noite: ao batê-lo, ela muda de pose e fala.
+- O passo da Menina Que Conta fica mais rápido ou mais lento conforme a noite.
+- A chance de a Menina esperar grudada no teto varia por noite.
+- A Procissão entra por um lado diferente a cada noite, sorteado pela semente.
+- A janela de aviso até a Procissão passar varia de leve por noite (sempre dando tempo de esconder).
+- A voz do Chamado (Davi, a mãe ou a sua própria) é sorteada pela semente da noite.
+- Evento raro: o Inspetor finge desistir, com passos se afastando e nenhum som de porta.
+- Evento raro de Caçada Relâmpago: numa noite marcada, uma caçada acaba bem antes do normal.
+- Evento raro de presença errante: uma porta bate sozinha numa sala distante, sem dano.
+- Evento raro de Noite Surda: ele "não ouve" por um instante e dá o bote de surpresa.
+- Código VIGIA no título liga o modo Vigia Eterno.
+- Código CACADOR liga o Caçador Implacável.
+- Código FUROR liga o Inspetor Enfurecido.
+- Código FARO liga o modo Faro.
+- Código CEDO liga a Noite Adiantada.
+- Código PERSEGUE liga a Perseguição Eterna.
+- Código SEMPAUSA liga o modo Sem Pausas.
+- Código DOBRO liga a Lua Cheia permanente.
+- Código APRESSA liga a Contagem Apressada da Menina.
+- Código PACTO liga o perfil mais duro do Inspetor.
+- Código NORMAL desliga todos os modos extras.
+- Modo Vigia Eterno: a procura do Inspetor nunca expira sozinha.
+- Modo Caçador Implacável: ele anda devagar, mas reaproxima sua direção geral de tempos em tempos.
+- Modo Faro: o Inspetor fica com o ouvido ampliado o tempo todo.
+- Modo Noite Adiantada: ele já começa a campanha mais rápido e mais atento.
+- Modo Inspetor Enfurecido: cada capítulo começa com ele já procurando.
+- Modo Perseguição Eterna: depois do primeiro contato, ele nunca mais se acalma no capítulo.
+- Modo Sem Pausas: ele nunca mais reza nem para para lembrar, eliminando a janela segura.
+- Modo Lua Cheia: toda noite ele carrega dois temperamentos somados.
+- Mutador Contagem Apressada: a Menina conta bem mais rápido.
+- Pacto: Inspetor mais rápido, com audição e revista reforçadas.
+- O ponto de onde o Inspetor começa a patrulha é sorteado por noite, mudando o primeiro encontro.
+- Vigília (Novo Jogo +): a cada final verdadeiro, o Inspetor te conhece melhor na campanha seguinte.
+- Na Vigília, a audição-base do Inspetor sobe a cada vitória acumulada.
+- Na Vigília, ele perde menos tempo no alerta e parte para a caça mais rápido.
+- Na Vigília, ele sussurra o nome que você digitou quando chega perto no bote.
+- Na Vigília, ao te pegar, ele murmura um número crescente de quantas vezes já te pegou.
+- Aviso de Vigília na abertura da campanha, com conquista Ele Lembra de Você.
+- A primeira Vigília avisa que ele sabe o seu nome e não vai esquecer.
+- Lenda rara Noite Mansa: ele quase não te procura (e dá arrepio de desconfiança).
+- Lenda rara Noite Implacável: ele quase nunca recua.
+- Na Noite Implacável, o recuo dele encolhe aos poucos, dando menos trégua de verdade.
+- Lenda rara Lua: ele carrega dois temperamentos somados numa única noite.
+- As lendas da noite são telegrafadas de leve pela Lia antes de pesarem.
+- Conquista secreta Noite de Lenda por sobreviver a uma noite lendária.
+- Conquista secreta Lua Cheia por presenciar a noite dos dois temperamentos.
+- Maestro anti-enrolação: ficar parada tempo demais no mesmo cômodo deixa o Inspetor mais atento.
+- A Lia avisa quando você ficou tempo demais parada e ele começou a prestar atenção naquele canto.
+- Notoriedade entre noites: fazer barulho e morrer deixa fama, e a próxima noite começa mais tensa.
+- A fama (notoriedade) esfria um pouco a cada nova campanha começada.
+- A estreia do Inspetor na sessão é mais longa e assustadora, com uma fala só dela.
+- Conquista secreta Nunca No Mesmo Canto: passar um capítulo sem repetir o mesmo tipo de esconderijo.
+- Conquista secreta Rota Nova: zerar um capítulo sem usar o esconderijo que ele vigia.
+- Ser pega no esconderijo que ele vigia é registrado e bloqueia a conquista Rota Nova naquele capítulo.
+- Morrer três vezes perto do mesmo ponto na noite deixa um recado dele no chão.
+- Conquista secreta Eu Te Conheço: presenciar todos os humores do Inspetor ao longo das noites.
+- O jogo passou a contar quantas noites você já viveu, para alimentar os segredos de rejogo.
+- O controle de esconderijos usados zera a cada capítulo, para as conquistas valerem por capítulo.
+- Todo o sistema de rejogabilidade é passivo e à prova de erro: nenhum subsistema derruba o quadro.
