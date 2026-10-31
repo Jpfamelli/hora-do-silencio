@@ -1,0 +1,97 @@
+# Lote 6 — Visual e luz
+- A semente da noite agora sorteia um clima fixo para a campanha inteira (temporal, garoa, neblina ou noite seca).
+- No temporal a chuva cai mais densa e opaca, mascarando o que você vê e ouve.
+- No temporal os relâmpagos ficam bem mais frequentes.
+- No temporal a força do feixe da lanterna cai e o alcance aparente encurta com a água no ar.
+- Na garoa a chuva fica fina e com poucos respingos, numa noite quase quieta.
+- Na neblina fechada a névoa engrossa e você enxerga bem menos à frente.
+- Na neblina a força do feixe cai e o alcance aparente da lanterna encurta de propósito.
+- Na noite seca não cai chuva nenhuma e o ar fica nítido.
+- Na noite seca os relâmpagos ficam raros e secos, deixando o silêncio mais pesado.
+- Na noite seca o feixe alcança um pouco mais longe e o mundo fica mais contrastado.
+- Um aviso curto no começo de cada capítulo conta qual é o clima daquela noite.
+- O jogo guarda quais climas você já viu entre as partidas.
+- Conquista secreta "Todo tipo de noite" ao jogar sob os quatro climas.
+- A densidade base da névoa muda conforme o clima da noite.
+- A exposição da imagem (brilho geral) muda conforme o clima.
+- A cor dos respingos de chuva no chão muda conforme o clima.
+- A cor e a opacidade dos riscos de chuva mudam conforme o clima.
+- A força do vento que inclina a chuva muda conforme o clima.
+- A semente também sorteia a paleta de cor da noite (lua azulada, verde doente, âmbar, luto cinza, calor doente).
+- A paleta da noite tinge a cor da névoa.
+- A paleta da noite tinge o céu e o fundo da cena.
+- A paleta da noite tinge a luz da lua e a luz ambiente.
+- A paleta da noite recolore os halos das lâmpadas.
+- A paleta da noite recolore o brilho dos bulbos das lâmpadas.
+- "A casa te conhece": a cada noite acumulada a névoa vai ficando um nada mais fria e esverdeada.
+- A combinação de clima e paleta faz com que duas noites nunca pareçam idênticas logo de cara.
+- O número de lampejos de cada rajada de relâmpago agora é sorteado pela semente.
+- A intensidade dos lampejos é sorteada pela semente.
+- Os intervalos entre relâmpagos ficam deslocados por semente, para o susto da luz nunca cair no mesmo ponto decorado.
+- No temporal o clarão faz a chuva brilhar mais forte.
+- O clarão do relâmpago passou a tingir a luz pela paleta da noite.
+- O relâmpago forte ao ar livre pode revelar uma silhueta por um instante (banco de aparições sorteado).
+- As aparições do clarão variam: o batedor rígido de pé, um vulto qualquer ou só a janela vazia.
+- O jogo registra quais aparições você já flagrou no clarão entre partidas.
+- Conquista secreta "O que o clarão mostra" ao flagrar três aparições diferentes.
+- Ilhas de luz sorteadas: um subconjunto das lâmpadas de cada mapa fica apagado nesta semente.
+- As lâmpadas apagadas pela semente continuam apagadas mesmo quando a energia volta.
+- Uma queda breve de energia (piscada geral das lâmpadas) acontece num horário sorteado por semente.
+- Nova camada de lente de rejogo que repinta o render inteiro, alternada pela tecla I.
+- Lente Negativo: o mundo em cores invertidas.
+- Lente Fita de 1979: sépia, grão e bordas de fita velha.
+- Lente Sonho: cores lavadas, bordas moles e imagem macia.
+- Lente Memória da Lia: imagem quente e desbotada, como lembrança.
+- Lente Noite de 1979: cores limpas e quentes do internato de antes.
+- Lente Projetor 16mm: cintilação e varredura de projetor.
+- Lente TV de tubo: linhas de varredura e cor saturada.
+- Lente Super-8: grão quente e cor forte de filme caseiro.
+- Lente Raio-X do medo: alto contraste quase invertido.
+- Lente Termovisão: silhuetas quentes sobre o escuro.
+- Lente Sonar: tudo em pulsos azulados que respiram.
+- Lente Olho do Moacir: o mundo como mancha de calor, não de luz.
+- Novas lentes vão sendo liberadas conforme o número de noites e capítulos jogados.
+- O nome da lente aparece num aviso ao alternar com a tecla I.
+- A lente escolhida fica salva entre partidas.
+- A granulação e as linhas da lente Fita aumentam conforme o número de noites jogadas (fita que se gasta).
+- A cor do feixe da lanterna muda sutilmente conforme o clima da noite.
+- Depois de terminar a campanha, o feixe ganha um tom dourado permanente (Selo de Mestre).
+- Ao escapar de uma caçada do Inspetor, o feixe dá um pulso dourado por um instante.
+- A luz de preenchimento perto das mãos acompanha a cor cosmética do feixe.
+- Marcas de giz aparecem no chão exatamente onde você morreu na vez anterior naquele mapa.
+- As marcas de giz das mortes se acumulam entre noites.
+- Quanto mais vezes você morre num mapa, mais densas ficam as marcas de giz (até um limite).
+- As marcas de giz alternam entre um "x" e uma setinha riscados à mão.
+- As marcas das mortes só aparecem a partir da segunda vez que você joga aquele mapa.
+- A cena do título ganhou uma prateleira de troféus em 3D à frente da câmera.
+- O troféu do sino aparece conforme você avança.
+- O troféu do lampião aceso aparece com o progresso.
+- O troféu da cruz de giz aparece com o progresso.
+- O troféu da engrenagem aparece com o progresso.
+- O troféu do carrinho azul aparece com o progresso.
+- Os troféus do título vão enchendo em silêncio conforme você joga mais capítulos.
+- Um troféu extra só aparece depois de terminar a campanha ao menos uma vez.
+- A fase real da lua clareia um tiquinho o céu do prólogo na estrada.
+- Um tinte de estação pelo mês real dá uma cara ligeiramente diferente ao prólogo (frio no inverno, âmbar no outono).
+- Marca d'água de giz no canto mostra semente, clima e lente ativos na partida (para quem grava vídeo).
+- A marca da run só aparece quando há uma lente ou um mutador ativo, discreta e sem atrapalhar.
+- Conquista secreta "Colecionadora de lentes" ao experimentar oito lentes diferentes.
+- O feixe da lanterna fica levemente mais azulado no temporal.
+- O feixe fica mais branco e frio na noite seca.
+- Os respingos ficam mais azulados no temporal.
+- A névoa do interior respeita o clima da noite, ficando mais fechada na neblina.
+- O vento das rajadas quase some na noite seca, deixando a chuva (quando há) mais reta.
+- As conquistas novas do lote entram no acervo do painel sem quebrar a contagem.
+- O sistema todo é passivo e seguro: nada disso interfere no teste automático nem no fluxo dos capítulos.
+- A silhueta do clarão aparece sempre à frente do seu olhar, para ser vista de relance e sumir.
+- A silhueta do clarão some sozinha quando o brilho do relâmpago acaba.
+- O apagão breve do gerador toca um clique seco de energia caindo.
+- As lâmpadas apagadas pela semente também somem do brilho do bulbo, não só da luz.
+- A cor dos riscos de chuva do temporal puxa mais para o azul-aço.
+- A paleta "verde doente" dá um ar de mofo à noite inteira.
+- A paleta "âmbar abafado" deixa a noite com um calor doentio.
+- A paleta "luto cinza" lava a cor do mundo quase ao preto e branco.
+- Cada capítulo jogado numa semente é lembrado para fazer os troféus crescerem.
+- Terminar a campanha também conta mais uma noite para o resfriamento da paleta e o desgaste da fita.
+- A lente pode ser trocada tanto no título quanto durante o jogo, sem pausar.
+- A tecla I é ignorada enquanto você digita em qualquer campo, para não atrapalhar os códigos do título.

@@ -18,6 +18,7 @@ import { criarMonstrosPolimento } from './src/monstros-polimento.js';
 import { criarMonstrosSegredos } from './src/monstros-segredos.js';
 import { criarMonstrosLote5 } from './src/monstros-lote5.js';
 import { instalarMonstrosVisual } from './src/monstros-visual.js';
+import { instalarVisualLote6 } from './src/visual-lote6.js';
 import { instalarAudioMundo } from './src/audio-mundo.js';
 import { instalarAudioPlataforma } from './src/audio-plataforma.js';
 import { instalarAudioSegredos } from './src/audio-segredos.js';
@@ -2695,11 +2696,11 @@ function carregarMapa(id, spawn, { salvar = true } = {}) {
   renderObj(); renderInvMini();
   SUST.novoMapa(id);
   ML.novoMapa(id); MS.novoMapa(id);
-  VIS.mapa(); VM.mapa();
+  VIS.mapa(); VM.mapa(); L6V.mapa(); // lote 6: clima/paleta por semente, giz das mortes, ilhas de luz, troféus
 }
 function syncLuzes() {
   const ligada = W.def && W.def.energia ? W.def.energia() : false;
-  for (const L of W.lampadas) { const on = (L.sempre || ligada) && !L.estourada; L.ligada = on; L.luz.intensity = on ? L.base : 0; L.bulbo.material.emissiveIntensity = on ? 2 : 0; }
+  for (const L of W.lampadas) { const on = (L.sempre || ligada) && !L.estourada && !L.l6off; L.ligada = on; L.luz.intensity = on ? L.base : 0; L.bulbo.material.emissiveIntensity = on ? 2 : 0; }
 }
 function syncWorld() {
   for (const it of W.items) it.mesh.visible = !S.picked[it.key] && (!it.cond || it.cond());
@@ -3958,17 +3959,18 @@ function novoRaio() { // 1 a 3 clarões seguidos; com "reduzir flashes", um só,
   for (let i = 0; i < n; i++) { raioSeq.push({ t, i: i === 0 ? rand(.7, 1) : rand(.4, 1) }); t += rand(.07, .22); }
 }
 function updateClima(dt) {
+  const CL = L6V.clima; // lote 6: clima sorteado pela semente (temporal/garoa/neblina/seca) muda chuva, névoa, relâmpago e alcance do feixe
   const fora = !!(P.room && P.room.fora);
-  chuva.visible = respingos.visible = fora;
+  chuva.visible = respingos.visible = fora && CL.chuvaOp > .001;
   if (fora) {
-    ventoT -= dt; if (ventoT <= 0) { ventoT = rand(2, 6); vento = rand(-3.5, 3.5); } // rajadas de vento inclinam a chuva
+    ventoT -= dt; if (ventoT <= 0) { ventoT = rand(2, 6); vento = rand(-3.5, 3.5) * CL.vento; } // rajadas de vento inclinam a chuva
     ventoAtual = lerp(ventoAtual, vento, Math.min(1, dt * .8));
     chuva.position.set(camera.position.x, 0, camera.position.z); respingos.position.copy(chuva.position);
     const a = chuvaPos, r = resPos;
     for (let i = 0; i < NCH; i++) {
       const o = i * 6; a[o + 1] -= chuvaVel[i] * dt; a[o] += ventoAtual * dt;
       if (a[o + 1] < 0) {
-        if (Math.random() < .35) { const k = resI++ % NRES; r[k * 3] = a[o]; r[k * 3 + 1] = .03; r[k * 3 + 2] = a[o + 2]; resVida[k] = .12; }
+        if (Math.random() < .35 * CL.resp) { const k = resI++ % NRES; r[k * 3] = a[o]; r[k * 3 + 1] = .03; r[k * 3 + 2] = a[o + 2]; resVida[k] = .12; }
         a[o + 1] = 14; a[o] = rand(-20, 20); a[o + 2] = rand(-20, 20);
       }
       a[o + 3] = a[o] - ventoAtual * .022; a[o + 4] = a[o + 1] + .34; a[o + 5] = a[o + 2];
@@ -3977,7 +3979,7 @@ function updateClima(dt) {
     chuvaGeo.attributes.position.needsUpdate = true; resGeo.attributes.position.needsUpdate = true;
   }
   raioT -= dt;
-  if (raioT <= 0 && W.mapa !== 'tuneis') { raioT = rand(14, 38); novoRaio(); SFX.trovao(); SUST.aoRaio(); if (S && P.room && !P.room.fora) S.fear = Math.min(100, S.fear + 4); }
+  if (raioT <= 0 && W.mapa !== 'tuneis') { raioT = rand(14, 38) * CL.raio; novoRaio(); SFX.trovao(); SUST.aoRaio(); if (S && P.room && !P.room.fora) S.fear = Math.min(100, S.fear + 4); }
   raioClock += dt;
   if (OPT.vFlash) raioI = raioClock < .3 ? .35 * raioClock / .3 : raioClock < 3 ? .35 * Math.exp(-(raioClock - .3) * 3) : 0;
   else { raioI = 0; for (const p of raioSeq) if (raioClock >= p.t) raioI = Math.max(raioI, p.i * Math.exp(-(raioClock - p.t) * 9)); if (raioClock > 3) raioSeq = []; }
@@ -3985,10 +3987,11 @@ function updateClima(dt) {
   luzBase = lerp(luzBase, fora ? 1 : 0, Math.min(1, dt * 2));
   moon.intensity = lerp(ambDentro.moon, ambFora.moon, luzBase) + fl * 3;
   hemi.intensity = lerp(ambDentro.hemi, ambFora.hemi, luzBase) + fl * .7;
-  scene.fog.density = lerp(ambDentro.fog, ambFora.fog, luzBase);
+  scene.fog.density = lerp(ambDentro.fog, ambFora.fog, luzBase) * CL.fog;
   // o clarão tinge o céu e a névoa de azul e faz a chuva brilhar
   scene.background.copy(CEU0).lerp(CEU1, fl * .7 * luzBase); scene.fog.color.copy(NEV0).lerp(NEV1, fl * .8 * luzBase);
-  chuvaMat.opacity = .3 + fl * .5;
+  chuvaMat.opacity = (.3 + fl * .5) * CL.chuvaOp;
+  L6V.posClima(); // lote 6: tinte da paleta da noite na névoa e no céu
   const perto = M.ativo ? M.pos : null;
   if (!PROC.fase) for (const L of W.lampadas) {
     if (!L.ligada) continue;
@@ -4373,6 +4376,10 @@ const VIS = instalarVisual({ THREE, scene, camera, renderer, canvas, flash, flas
   get S() { return S; }, get mode() { return mode; }, get ui() { return ui; }, get flashPisca() { return flashPisca; }, get hbT() { return AUD.hbT; }, get raioI() { return raioI; }, get fita() { return fitaTocando; }, get perf() { return perf; } });
 const VM = instalarMundoVisual({ THREE, scene, camera, renderer, flash, hemi, moon, W, P, M, ANA, ANA_G, PROC, MON, MAT, MK, OPT, R, TX, chuvaMat, respingos, interact, sub, SFX, DOOR, collide, raio: () => { raioT = 0; },
   get S() { return S; }, get perf() { return perf; }, get raioI() { return raioI; }, get raioClock() { return raioClock; } }); // mundo e história pela luz (src/visual-mundo.js)
+// Lote 6: rejogabilidade visual — clima e paleta por semente, variações de relâmpago, ilhas de luz, lentes de rejogo, giz das mortes, troféus (src/visual-lote6.js)
+const L6V = instalarVisualLote6({
+  THREE, scene, camera, renderer, canvas, flash, flashFill, hemi, moon, chuva, chuvaMat, respingos, W, P, MAT, OPT, SFX, toast, conquista, canvasTex, rand, pick, clamp, lerp,
+  get S() { return S; }, get M() { return M; }, get mode() { return mode; }, get raioI() { return raioI; }, perf: () => perf });
 PG.ligar({
   get S() { return S; }, setS: v => { S = v; }, get ui() { return ui; }, get mode() { return mode; },
   KEYS: { SAVE_KEY, CAPS_KEY, CONQ_KEY, OPT_KEY }, OPT, salvarOpt: () => lsSet(OPT_KEY, OPT), saveExterno: true, dicaExterna: true, ajudaExterna: true,
@@ -4438,7 +4445,7 @@ function frame(dt) {
   for (const d of W.doors) { d.ang = lerp(d.ang, d.target, Math.min(1, dt * (d.vel || 7))); d.pivot.rotation.y = d.ang + (d.qOff || 0); } // velocidade conforme o passo e quique no batente
   grainT -= dt;
   if (grainT <= 0) { grainT = PLAT.grao(); const d = grainImg.data; for (let i = 0; i < d.length; i += 4) { const v = Math.random() * 255; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = 255; } grain.putImageData(grainImg, 0, 0); }
-  VIS.update(dt, ativo); VM.update(dt, ativo); SEG.depois(); // cor da lanterna: papel vermelho, luz negra, lanterninha
+  VIS.update(dt, ativo); VM.update(dt, ativo); L6V.tick(dt); SEG.depois(); // lote 6: cosméticos de feixe, clarão, lente de rejogo, troféus; cor da lanterna: papel vermelho, luz negra, lanterninha
   PLAT.depois(dt, ativo);
   const cortados = cortarNevoa(); renderer.render(scene, camera); for (const o of cortados) o.layers.enable(0); VM.depois(); VIS.depois(); // VIS.depois: a mão da Lia por cima
 }
