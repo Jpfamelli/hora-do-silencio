@@ -324,15 +324,27 @@ window.ROTEIRO = {
     { id: "n2", titulo: "Livro de ocorrências", texto: "14/03/1979 — 21h04. Aluno Tomé R. falou durante a Hora. Armário.\n14/03/1979 — 21h31. Aluna Ana L. P. chorou durante a Hora. Armário.\n14/03/1979 — 21h50. Aluno Davi M. foi pego fora da cama, perto da capela.\nO Inspetor Moacir pede autorização para \"medidas permanentes\".\nAutorizado. — A." },
     { id: "n3", titulo: "Caderno da cozinheira", texto: "Sopa para 37.\nSexta: 37 pratos. Sábado: 37.\nDomingo de manhã serviram 34. Ninguém me disse nada.\nO Moacir comeu sozinho na cozinha, de olhos fechados, ouvindo a colher bater no prato." },
     { id: "n4", titulo: "Ficha médica — M. Duarte", texto: "Paciente: Moacir Duarte, 41 anos. Inspetor de disciplina.\nPerda de visão progressiva, ambos os olhos.\nRelata audição \"aguçada demais\". Diz ouvir as crianças respirando dentro dos armários.\nDiz que o sino da capela \"desliga\" a cabeça dele.\nRecomendação: afastamento. Diretor recusou." },
-    { id: "n5", titulo: "Redação do Tomé", texto: "MEU SONHO — Tomé Ribeiro, 4ª série\nQuando eu crescer quero ser bombeiro pra tirar todo mundo do fogo.\nE quero um carrinho azul de verdade, igual o meu de brinquedo.\nO Davi disse que vai tocar o sino e a gente vai poder falar de noite de novo." },
+    { id: "n5", titulo: "Redação do Tomé", texto: "MEU SONHO — Tomé Ribeiro, 4ª série\nQuando eu crescer quero ser bombeiro pra tirar todo mundo do fogo.\nE quero um carrinho azul de verdade, igual o meu de brinquedo.\nO Davi disse que vai tocar o sino e a gente vai poder falar de noite de novo.",
+      textoDepois: "MEU SONHO — Tomé Ribeiro, 4ª série\n\n(você já sabe que o fogo veio. A redação agora parece outra coisa.)\nQuando eu crescer quero ser bombeiro pra tirar todo mundo do fogo.\nE quero um carrinho azul de verdade.\n\n(na margem, numa letra que não é de criança) ele conseguiu. o carrinho tem rodinha nova." },
     { id: "n6", titulo: "Bilhete da Ana", texto: "Brincadeira da Hora:\nEu conto até dez. Quem eu não estiver vendo SOME.\nEntão eu nunca paro de olhar.\nSe você brincar comigo, olha pra mim também, tá bom? Senão eu fico sozinha." },
-    { id: "n7", titulo: "Lista de castigos", texto: "HORA DO SILÊNCIO — 21h até o sino.\nFalar: 1 hora no armário.\nChorar: 2 horas no armário.\nCorrer: o Inspetor decide.\nSair da cama: o Inspetor decide.\n\n(embaixo, letra de criança) ele decide SEMPRE a mesma coisa" },
+    { id: "n7", titulo: "Lista de castigos", texto: "HORA DO SILÊNCIO — 21h até o sino.\nFalar: 1 hora no armário.\nChorar: 2 horas no armário.\nCorrer: o Inspetor decide.\nSair da cama: o Inspetor decide.\n\n(embaixo, letra de criança) ele decide SEMPRE a mesma coisa",
+      textoDepois: "HORA DO SILÊNCIO — 21h até o sino.\nFalar: 1 hora no armário.\nChorar: 2 horas no armário.\nCorrer: o Inspetor decide.\nSair da cama: o Inspetor decide.\n\n(embaixo, letra de criança) ele decide SEMPRE a mesma coisa\n\n(numa tinta mais nova, por cima de tudo) e você decide voltar SEMPRE. os dois teimosos." },
     { id: "n8", titulo: "Diário da Irmã Celeste", texto: "Ele não vê mais nada. Ontem passou do meu lado com a lanterna apontada para o rosto e não piscou.\nMas virou a cabeça quando meu terço bateu na mesa.\nAs crianças chamam de 'o Inspetor' como quem fala de um bicho.\nTenho medo de que tenham razão." },
     { id: "n9", titulo: "Anotação do pedreiro", texto: "Túneis de drenagem — São Lázaro.\nTrês válvulas controlam o nível. Ordem errada inunda tudo de novo.\nO diretor pediu uma sala seca embaixo da diretoria. Pagou em dinheiro. Disse para eu esquecer que ela existe." },
     { id: "n10", titulo: "Carta do Diretor ao bispo", texto: "Excelência,\no incêndio será tratado como acidente. As três crianças constarão como fugitivas.\nO Inspetor Moacir não será encontrado. A capela será lacrada e o sino, silenciado.\nSugiro acrescentar às regras dos funcionários: ninguém entra na capela. Ninguém toca o sino.\n— Albano" },
     { id: "n11", titulo: "Lápide rachada", texto: "AQUI JAZEM OS QUE NÃO FALARAM\n\n(riscado na pedra, por cima)\naqui jazem os que não DEIXARAM falar" },
-    { id: "n12", titulo: "Recorte de jornal", texto: "INCÊNDIO NO INTERNATO SÃO LÁZARO — 1979\nBombeiros encontram a capela trancada por fora.\nO sino estava tocando quando chegaram. Ninguém estava puxando a corda.\nVizinhos dizem ouvir nove badaladas toda noite às 21h.\n\n(na margem, a caneta) se ligar às nove, o sino responde." },
-    { id: "n13", titulo: "Desenho do Davi", secreta: true, texto: "(um desenho de giz de cera, dobrado em quatro: duas crianças de mãos dadas na frente de uma casa com um sino)\n\n(embaixo, letra caprichada)\nFELIZ ANIVERSÁRIO LIA (14!)\nquando eu sair daqui a gente toca o sino junto\n— Davi, 1979\n\nP.S. não foi culpa sua eu ter vindo. eu que pedi." }
+    { id: "n12", titulo: "Recorte de jornal", texto: "INCÊNDIO NO INTERNATO SÃO LÁZARO — 1979\nBombeiros encontram a capela trancada por fora.\nO sino estava tocando quando chegaram. Ninguém estava puxando a corda.\nVizinhos dizem ouvir nove badaladas toda noite às 21h.\n\n(na margem, a caneta) se ligar às nove, o sino responde.",
+      textoDepois: "INCÊNDIO NO INTERNATO SÃO LÁZARO — 1979\nBombeiros encontram a capela trancada por fora.\nO sino estava tocando quando chegaram. Ninguém estava puxando a corda.\n\n(agora você sabe quem segurava a corda. E sabe que ninguém a soltou desde então.)\n(na margem, a caneta) se ligar às nove, o sino responde. e você sempre liga." },
+    { id: "n13", titulo: "Desenho do Davi", secreta: true, texto: "(um desenho de giz de cera, dobrado em quatro: duas crianças de mãos dadas na frente de uma casa com um sino)\n\n(embaixo, letra caprichada)\nFELIZ ANIVERSÁRIO LIA (14!)\nquando eu sair daqui a gente toca o sino junto\n— Davi, 1979\n\nP.S. não foi culpa sua eu ter vindo. eu que pedi." },
+    // ---- Lote 6: notas que só aparecem na segunda jogada (depois de ver um final). onde6 = [mapa, sala, tipo de spot].
+    // O motor (src/historia-lote6.js) só as coloca quando o save marca um final já visto.
+    { id: "n6a", secreta: true, onde6: ["terreo", "hall", "mesa"], titulo: "Carta do Davi — pra quem voltar", texto: "(uma folha nova, dobrada, que não estava aqui na primeira noite. A letra é do Davi, mas firme.)\n\nLia, se você está lendo isso é porque já viu o fim uma vez e voltou mesmo assim.\nEntão para de procurar o jeito de me salvar. Já salvou. Dessa vez olha pra casa com calma: tem coisa que só aparece pra quem não está mais com pressa de sair.\nFica um pouco. — D." },
+    { id: "n6b", secreta: true, onde6: ["superior", "celeste", "prateleira"], titulo: "Bilhete da Irmã Celeste (atrás do quadro)", texto: "(dobrado atrás de um santinho na parede; o papel só caiu quando você voltou outra noite)\n\nSe alguém ler isto um dia: a menina do armário de 1962 não tinha nome na ficha porque era eu quem a escondia das 'medidas' do Inspetor.\nEla se chamava como a irmã mais nova do Davi. A mãe cancelou a vaga a tempo. Rezei por isso todas as noites.\n— Celeste" },
+    { id: "n6c", secreta: true, onde6: ["terreo", "diret", "mesa"], titulo: "Confissão do Albano (gaveta de baixo)", texto: "(a gaveta que não abria na primeira noite agora cede. Dentro, uma folha amassada.)\n\nEu tranquei a capela por fora. Não para castigar: para que o fogo não se espalhasse para os dormitórios. Escolhi trinta e sete por duzentos.\nContei essa mentira tantas vezes que virou verdade até pra mim.\nQuando o armário se fechar sobre mim um dia, eu vou saber por quê.\n— A." },
+    { id: "n6d", secreta: true, onde6: ["terreo", "enferm", "mesa"], titulo: "Recado da noite passada", texto: "(um papel rabiscado às pressas, na sua própria letra, como se você tivesse deixado na última vez)\n\nLia de amanhã:\nontem eu {acao}. Não repete.\nse o giz na parede disser que faltou alguma coisa, é porque faltou mesmo. Volta nos cantos.\n— você de ontem" },
+    { id: "n6e", secreta: true, so: "verdadeiro", conquista: "tchau_davi", onde6: ["tuneis", "secreta", "mesa"], titulo: "A sala murada", texto: "(uma fresta contornada a giz de sangue, aberta só porque a Hora já acabou uma vez. Dentro, um casaco de criança e um papel.)\n\n(a letra do Davi, inteira, sem tremer)\nVocê conseguiu, Lia. O homem alto dorme. Eu posso ir agora.\nSó queria te dar tchau com a minha voz, não com a dele.\nTchau. E obrigado por ter voltado até dar certo." },
+    { id: "n6f", secreta: true, so: "verdadeiro", conquista: "quarto_paz", onde6: ["superior", "dormE", "mesa"], titulo: "O quarto em paz", texto: "(a porta que sempre emperrou cedeu. Camas arrumadas, um fio de sol pela janela. Numa delas, uma carta.)\n\n(letra caprichada de criança)\nBoa noite, Lia. A gente dormiu.\nVocê também pode dormir agora.\nObrigada por ter voltado tantas vezes só pra ter certeza.\n— Ana, Tomé e Davi" },
+    { id: "n6g", secreta: true, brinquedo: true, onde6: ["terreo", "despensa", "mesa"], titulo: "Um brinquedo do Davi", texto: "(um brinquedo de criança, deixado no seu caminho, como quem conta que esteve aqui)\n\n(no fundo, riscado com prego) ERA DA TURMA\n\nO Davi esconde um a cada noite que você volta. Nove no total." }
   ],
 
   // Páginas do diário do Davi (cada uma tem um número do cofre)
@@ -615,7 +627,13 @@ window.ROTEIRO = {
     { id: "perseguicao", nome: "O Fôlego Comprido", desc: "Sobreviva a uma caçada longa sem se esconder nem apanhar.", secreta: true },
     { id: "mao_leve", nome: "A Noite Sem Caçada", desc: "Atravesse a noite inteira sem nunca fazer o Inspetor correr atrás de você.", secreta: true },
     { id: "misericordia", nome: "Misericórdia", desc: "Chame o Inspetor pelo nome e nunca o faça virar bicho.", secreta: true },
-    { id: "nome_errado", nome: "O Nome do Irmão", desc: "Ouça o Inspetor te confundir com o Davi.", secreta: true }
+    { id: "nome_errado", nome: "O Nome do Irmão", desc: "Ouça o Inspetor te confundir com o Davi.", secreta: true },
+    { id: "segunda_vigilia", nome: "Segunda Vigília", desc: "Volte ao São Lázaro depois de já ter visto um final.", secreta: true },
+    { id: "quarto_paz", nome: "O Quarto em Paz", desc: "Entre na sala que só abre depois que a Hora acaba uma vez.", secreta: true },
+    { id: "tchau_davi", nome: "Com a Voz Dele", desc: "Ouça a despedida do Davi na sala murada dos túneis.", secreta: true },
+    { id: "nove_brinquedos", nome: "Os Nove Brinquedos", desc: "Junte, noite após noite, os nove brinquedos do Davi.", secreta: true },
+    { id: "diario_retorno", nome: "Quem Sempre Volta", desc: "Complete as nove linhas do Diário do Retorno.", secreta: true },
+    { id: "resposta_davi", nome: "Um Nome na Boca", desc: "Responda ao Davi no epílogo verdadeiro.", secreta: true }
   ]
 };
 
@@ -1879,6 +1897,212 @@ window.ROTEIRO.lote5b = {
   // ===== A Menina e a Procissão: mais um fio cada. =====
   anaSombra: "(a Lia) A sombra da menina tá no teto, não na parede. Tá de cabeça pra baixo, me olhando.",
   procFileira: "(a Lia, bem quieta) Na fila tem um lugar vazio do meu tamanho. Eles abriram espaço. Pra mim."
+};
+
+// =====================================================================
+// LOTE 6 — REJOGABILIDADE (história e texto): o internato lembra que você já esteve aqui.
+// Falas, notas, finais e segredos que só aparecem na segunda jogada (depois de ver um final),
+// nos marcos de muitas noites, e para quem persegue todos os finais. Lido por src/historia-lote6.js.
+// Nada aqui muda o fluxo dos capítulos nem rótulos de interação; só acrescenta texto no momento certo.
+// =====================================================================
+window.ROTEIRO.lote6 = {
+  // Subtítulos da tela de título por marco de rejogada (o mais forte vence)
+  subtitulos: {
+    tresFinais: "Você viu as três saídas. Falta a que ninguém escolhe. · 1994",
+    quarta: "Eram três nomes riscados. Sempre foram quatro. · 1994",
+    loop: "Noite {n}. A estrada velha te traz de volta toda vez. · 1994"
+  },
+  // Provocação do relógio do título: cita o seu melhor tempo até um final (só se já houver recorde)
+  provocaRecorde: "Da última vez você chegou ao fim em {t}. O relógio da torre ainda conta.",
+  // Prólogo, a partir da segunda jogada: o Davi sabe que você voltou (sussurro no rádio do carro)
+  daviVoltou: [
+    "(um chiado no rádio, e no meio dele uma voz de menino) ...você voltou. Eu sabia que você voltava, Lia.",
+    "(baixinho, por baixo da estática) ...de novo essa estrada. Então você também não consegue parar.",
+    "(a voz some quando você presta atenção) ...dessa vez você já sabe o caminho. Então anda mais devagar."
+  ],
+  // A Lia reconhece a repetição ao entrar em cada capítulo que já venceu uma vez
+  entradaRejogada: {
+    0: "(a Lia, baixinho) Essa estrada de novo. Meus pés já sabem o caminho sem eu mandar.",
+    1: "(a Lia) Eu lembro dessa porta. Lembro do cheiro de cânfora. De novo, então.",
+    2: "(a Lia) O sino vai bater nove vezes. Eu já sei em que armário me enfiar.",
+    3: "(a Lia) Lá em cima a menina espera. Dessa vez eu não tiro a luz dela, Ana.",
+    4: "(a Lia) A água fria até o joelho. Essas válvulas eu faço de olhos fechados.",
+    5: "(a Lia) O cemitério outra vez. Quantas vezes já é que eu toco esse sino?"
+  },
+  // Marcos de muitas noites: a Lia comenta a volta (ao sair do carro)
+  noiteMarco: {
+    9: "(a Lia) Nove noites. Eu perdi a conta de quantas vezes atravessei esse portão. Ou não perdi: foram nove.",
+    13: "(a Lia) Treze. A estrada já me conhece. Para antes de eu frear.",
+    25: "(a Lia, cansada) Vinte e cinco noites. Será que eu ainda estou tentando sair, ou só vim visitar?"
+  },
+  // Envelope lacrado da décima terceira noite (abertura do carro, só nessa noite)
+  envelope13: {
+    lia: "(a Lia) Um envelope no banco do carona. Lacrado. Tem o meu nome, na minha letra. Eu não escrevi isso.",
+    texto: "Pra você, que voltou treze vezes.\nO São Lázaro não te prende pelo portão. Prende porque você ainda acha que dá pra consertar a noite de 1979.\nNão dá. Mas a gente pode fazer companhia pro Davi mais uma vez.\n— você"
+  },
+  // Chamado do Davi na segunda jogada: às vezes guia de verdade, às vezes mente
+  chamadoRejogada: {
+    guia: [
+      "...vem pela esquerda dessa vez, Lia. A direita é onde ele dorme.",
+      "...não corre agora. Conta até três comigo e anda.",
+      "...o que você procura ficou pra trás, na sala que você pulou."
+    ],
+    mente: [
+      "...vem cá, é seguro agora. ...confia em mim.",
+      "...corre, Lia, corre que dá tempo. (a voz sorri)",
+      "...entra nesse armário. Esse aqui ele nunca abre."
+    ],
+    liaDesconfia: "(a Lia, gelada) A voz sabe demais pra ser o Davi. Ou de menos."
+  },
+  // Carta de você pra você: no primeiro final verdadeiro você escreve uma linha; ela volta como nota
+  cartaVoce: {
+    pergunta: "Deixe um recado para quem voltar a esta noite:",
+    placeholder: "o que a próxima Lia precisa saber",
+    padrao: "não corra. ele ouve a pressa antes de ouvir você.",
+    notaLia: "(na mesa da diretoria, um bilhete dobrado com a sua letra)",
+    conquista: "nome revelado só ao reler o próprio recado"
+  },
+  // Diário do Retorno: um caderno que só se escreve nas rejogadas, uma linha por noite repetida
+  diarioRetorno: {
+    titulo: "DIÁRIO DO RETORNO",
+    rubrica: "(uma letra sua, cada vez mais firme, numa folha que não estava aqui antes)",
+    linhas: [
+      "Noite de novo. Eu disse que não voltava e voltei.",
+      "Já sei onde ele vira a cabeça. Isso devia me assustar menos do que assusta.",
+      "Sonhei com o sino acordada. Será que é sonho se eu escolho vir?",
+      "O Davi não envelhece. Eu, sim. Ele reparou.",
+      "Decorei a casa inteira. Decorei até os silêncios entre as badaladas.",
+      "Hoje não vim pra sair. Vim porque lá fora também é escuro.",
+      "A Celeste rezou meu nome. Como ela sabe meu nome?",
+      "Estou ficando boa nisso. Nisso de quê, mesmo?",
+      "Nona volta. Acho que eu também fiquei. Alguém tinha que ficar com ele."
+    ],
+    conquistaNona: "quem rejoga nove vezes e lê a nona linha"
+  },
+  // Finais que somam: textos destravados por quantos finais você já viu
+  finalTres: "\n\nVocê já viu as três saídas desta noite. Nenhuma fechou a porta. Em algum lugar entre elas, há uma quarta, e ela não te deixa ir embora — ela te deixa ficar.",
+  finalLoop: "\n\nA estrada velha te trouxe de novo, e de novo, e de novo. Em algum ponto você parou de contar as noites e começou a contar as vezes que o sino te perdoou.",
+  // Epílogo que soma as suas noites (jornal do dia seguinte, com os seus números reais)
+  epilogoJornal: {
+    cab: "\n\n(SERRA EM FOCO — edição da semana)",
+    corpo: "Em {n} madrugadas, uma mesma moça foi vista na estrada velha do São Lázaro. {mortes} vezes não voltou; sempre voltava na noite seguinte. Diz a lenda que ela conhece o internato melhor que os mortos. Seu melhor tempo até o portão: {tempo}.",
+    semTempo: "Em {n} madrugadas, uma mesma moça foi vista na estrada velha do São Lázaro. Ninguém soube dizer quantas vezes ela entrou. Só que, toda vez, o sino parecia esperá-la."
+  },
+  // Página extra do diário do Davi, uma por final distinto já alcançado (completa a história dele)
+  diarioDaviPorFinal: {
+    titulo: "DIÁRIO DO DAVI — a última folha",
+    intro: "(a letra do Davi, agora sem pressa, como quem teve tempo)",
+    comum: "Você saiu pela primeira vez. Eu te vi atravessar o portão. Fiquei feliz, mesmo sabendo que você ia voltar. A gente sempre volta.",
+    silencio: "Você foi embora e me deixou tocando. Tudo bem, Lia. Alguém tinha que segurar a corda. Eu aprendi a gostar do som.",
+    verdadeiro: "Você voltou pra dentro e tocou comigo. O homem alto virou menino e dormiu. Pela primeira vez a casa ficou quieta de verdade. Obrigado.",
+    quarta: "Tinha uma quarta criança, Lia. Você. Sempre teve. Por isso você nunca consegue ir embora de vez.",
+    completa: "Agora o diário tem todas as folhas. Toda noite que você vê é uma folha a mais da minha. Quando você ler a última, a gente dorme junto."
+  },
+  // Notas da segunda jogada (texto; o motor as coloca só depois de um final — campo onde6)
+  // (os objetos de nota ficam em R.notas com onde6 e secreta:true)
+  // Prenúncios da segunda volta: frases que ganham um segundo sentido para quem já viu o fim
+  // (ligados aos campos textoDepois das notas; aqui ficam avisos de contexto da Lia)
+  releituraLia: [
+    "(a Lia, relendo) Isso eu li na primeira noite e achei bobagem. Agora sei do que eles estavam falando.",
+    "(a Lia) Essa frase não era inocente. Eu que ainda não sabia o fim."
+  ],
+  // Setas de giz do Davi: apontam, na rejogada, para um segredo que ainda falta (nunca entregam qual)
+  setaSegredo: [
+    "Uma seta fraca de giz na parede aponta pra um canto que você nunca revistou nesta casa.",
+    "O Davi riscou uma seta no rodapé. Ela some quando você olha direto. Tem coisa por ali.",
+    "Giz fresco: uma seta e um ponto de interrogação. Falta alguma coisa nesse corredor."
+  ],
+  setaNada: "As setas de giz do Davi sumiram. Você já achou tudo o que ele queria te mostrar.",
+  // Provocação de recorde escrita a giz na entrada do capítulo (só se já houver tempo salvo)
+  gizRecorde: [
+    "Riscado na parede, na sua letra: \"{t}. Tenta ser mais rápida dessa vez, Lia.\"",
+    "Um X de giz e um número: \"{t}\". Embaixo: \"mais devagar que ontem não vale.\""
+  ],
+  // Sala do Depois: a porta emperrada do dormitório abre numa noite após o final verdadeiro
+  salaDepois: {
+    porta: "A porta que sempre emperrou cede. Atrás dela, um quarto em paz: camas arrumadas, um fio de sol pela janela.",
+    carta: "(na cama da ponta, uma carta das crianças, letra caprichada) Boa noite, Lia. A gente dormiu. Você também pode. Obrigada por ter voltado tantas vezes só pra ter certeza. — Ana, Tomé e Davi",
+    conquista: "ler a carta do quarto em paz"
+  },
+  // Sala murada dos túneis que só se abre depois do final verdadeiro (o giz da Lia marca a fresta)
+  salaMurada: {
+    fresta: "Uma parede rachada que o giz de sangue da Lia contornou. Depois da Hora ter acabado uma vez, a fresta virou passagem.",
+    davi: "(a voz do Davi, inteira pela primeira vez) Você conseguiu, Lia. Eu posso ir agora. Só queria te dar tchau com a minha voz, não com a dele. Tchau.",
+    conquista: "a despedida do Davi na sala murada"
+  },
+  // O Inspetor te reconhece, se o save diz que você já o enganou/derrotou
+  inspetorReconhece: [
+    "De novo você. Eu lembro do seu passo, menina. Fino, apressado quando tem medo.",
+    "Você já me calou uma vez com o sino. Hoje eu chego antes dele tocar.",
+    "O mesmo armário de sempre, Lia? Você não aprende, ou aprende demais."
+  ],
+  // Os nove brinquedos do Davi: um por noite, no trajeto; juntar os nove revela um bilhete
+  brinquedos: {
+    nomes: ["um pião lascado", "uma bolinha de gude", "um carrinho sem roda", "um soldadinho de chumbo", "uma peteca murcha", "um ioiô sem corda", "um cavalo de pau", "uma boneca de pano", "um apito de lata"],
+    pegar: "No caminho, o Davi deixou {o}. Faltam {f} pra completar os nove.",
+    completo: "(o Davi) Os nove brinquedos. Eram da turma toda. Agora que você juntou, a gente pode brincar de novo, uma última vez. Obrigado por voltar tanto.",
+    conquista: "juntar os nove brinquedos do Davi"
+  },
+  // Pergunta do Davi no epílogo verdadeiro (resposta digitada muda uma linha do fim)
+  perguntaDavi: {
+    texto: "(o Davi, antes de dormir) Me fala um nome: qual criança você não deixou pra trás?",
+    placeholder: "um nome",
+    ana: "\n\n(o Davi sorri) A Ana parou de contar quando ouviu o nome dela. Ela dormiu primeiro.",
+    tome: "\n\n(o Davi) O Tomé pegou o carrinho azul e foi ser bombeiro em sonho. Rodinhas novas.",
+    davi: "\n\n(o Davi) Eu? Você veio por mim. Então fui o primeiro a dormir em paz.",
+    outro: "\n\n(o Davi) Esse nome não é daqui. Mas tudo bem: agora é. Mais um que a gente não deixa no escuro.",
+    conquista: "responder ao Davi no epílogo"
+  },
+  // A chamada de 1979 passa a guardar os nomes digitados e os lê de volta
+  chamadaNomes: {
+    intro: "(na chamada de 1979, no meio dos mortos, a voz do Inspetor lê nomes novos)",
+    linha: "{nome}? ...{nome} está na cama?"
+  },
+  // Toast de boas-vindas da rejogada (uma vez por noite, logo no começo)
+  reconhece: {
+    casa: "A casa range diferente hoje. Como quem reconhece um passo.",
+    primeira: "SEGUNDA VIGÍLIA — a noite lembra de você. Procure o que ficou pra trás.",
+    semViagem: "O São Lázaro te espera há {n} noites. Hoje o que muda é só você."
+  },
+  // Comentário do Davi (modo narrado, só depois do final verdadeiro): contexto curto por sala
+  comentarioDavi: {
+    hall: "(o Davi, baixinho) Foi aqui que me pegaram fora da cama. Eu estava indo pro sino.",
+    diret: "(o Davi) O diretor guardava as cartas da gente nessa sala. Nenhuma chegou em casa.",
+    brinq: "(o Davi) A Ana contava até dez naquele canto. Eu contava junto pra ela não ficar só.",
+    celeste: "(o Davi) A Irmã Celeste rezava aqui. Era a única que deixava a luz acesa pra Ana.",
+    capela: "(o Davi) Aqui a gente ia tocar o sino. Aqui a gente ainda vai, toda noite que você volta.",
+    tuneis: "(o Davi) Escrevi os números na água, embaixo. Minhas mãos tremiam. As suas também?"
+  },
+  // Cofre que lembra os dígitos já achados (a partir da segunda vez)
+  cofreLembra: "O cofre mostra os dígitos que você já tinha achado de outras noites: {d}. Só falta o resto.",
+  // A última carta do Davi, só na terceira campanha concluída (fecha a palavra que liga tudo)
+  terceiraCampanha: {
+    lia: "(a Lia) Mais uma carta. A letra do Davi, bem pequena, como quem guardou o fim pro final.",
+    davi: "(o Davi) Três vezes você fechou a noite. Então leia a palavra inteira: a gente não estava preso aqui. A gente estava esperando você ter coragem de voltar sem precisar salvar ninguém. Pode vir só pra ficar. — D."
+  },
+  // Falas de domínio: na volta, quando ele começa a caçar, a Lia antecipa o perigo que já conhece
+  dominio: [
+    "(a Lia, baixinho) A próxima porta ele vem. Eu lembro.",
+    "(a Lia) Esse canto eu já morri. Hoje não.",
+    "(a Lia) Ele vai fingir que foi embora. Não cai dessa vez."
+  ],
+  // Ambiente da Segunda Vigília: pensamentos de quem já viveu a noite, pingados durante o capítulo
+  vigia: [
+    "(a Lia) De novo não. Mas de novo sim.",
+    "(a Lia) Já sei quem tá nesse armário. Acho outro.",
+    "(a Lia) Não corro pro posto. Da última vez isso me custou caro.",
+    "(a Lia) Cada passo daqui eu já dei. Só os meus pés é que esqueceram o medo."
+  ],
+  // Nova Lia: trocar o nome muda a saudação no prólogo (reusa o nome digitado no título)
+  saudacaoNome: "(a Lia, pra si mesma) {nome} de novo. A gente se encontra toda noite nessa estrada.",
+  // Abertura que muda com as noites: o tom da Lia por marco de repetição
+  aberturaNoite: {
+    5: "(a Lia) Quinta vez. Eu já dirijo essa curva de olhos fechados.",
+    9: "(a Lia) Nona vez. Começo a achar que não é a casa que me chama. Sou eu que venho.",
+    20: "(a Lia) Vigésima. Eu virei parte da estrada. Igual ao Seu Joaquim."
+  },
+  // Quando não falta mais nenhum segredo, as setas do Davi somem (recompensa de quem achou tudo)
+  setaNada: "(num canto, a giz) não falta mais nada, Lia. você achou tudo o que eu queria te mostrar."
 };
 
 // Aspas tipográficas: a fonte desenha a aspa reta como a de fechar, então as falas abrem com “ e fecham com ”.

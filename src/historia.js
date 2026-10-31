@@ -7,6 +7,7 @@ import { instalarPolimento } from './historia-polimento.js';
 import { instalarSegredos } from './historia-segredos.js';
 import { instalarHistoriaL5 } from './historia-lote5.js';
 import { instalarHistoriaL5b } from './historia-lote5b.js';
+import { instalarHistoriaL6 } from './historia-lote6.js';
 
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
@@ -71,6 +72,8 @@ export function instalarHistoria(c) {
   const L5M = instalarHistoriaL5(c, { conqs });
   // Lote 5 (2ª rodada): desumanização por capítulo, trégua falsa, chamado pelo nome, sílabas do sino, epílogos de mestria
   const L5B = instalarHistoriaL5b(c, { conqs, nomeJogador });
+  // Lote 6: rejogabilidade — a noite lembra de você (falas, notas, finais e segredos só na volta)
+  const L6M = instalarHistoriaL6(c, { conqs, nomeJogador });
 
   // ------------------------------------------------------------------
   // Mapas: embrulhos que acrescentam segredos sem mexer em mapas.js
@@ -113,6 +116,37 @@ export function instalarHistoria(c) {
   });
 
   // ------------------------------------------------------------------
+  // Lote 6: notas da segunda jogada (só depois de um final) e releituras
+  // ------------------------------------------------------------------
+  // base das notas que ganham um segundo sentido na volta (prenúncio da segunda volta)
+  const relerIds = ['n5', 'n7', 'n12'];
+  const relerBase = {}; for (const id of relerIds) { const n = R.notas.find(x => x.id === id); if (n) relerBase[id] = n.texto; }
+  // notas novas por mapa (campo onde6), colocadas só quando o save libera (L6M.notaLiberada)
+  const porMapa6 = {}; for (const n of R.notas) if (n.onde6) (porMapa6[n.onde6[0]] = porMapa6[n.onde6[0]] || []).push(n);
+  let brinqNoite = false; // um brinquedo por noite
+  for (const id of ['estrada', 'terreo', 'superior', 'tuneis', 'cemiterio']) {
+    embrulhar(id, (A, St) => {
+      // releitura: quem já viu o fim lê a versão "depois" de algumas notas
+      const zerou = L6M.jaZerou();
+      for (const nid of relerIds) { const n = R.notas.find(x => x.id === nid); if (n && n.textoDepois) n.texto = (zerou ? n.textoDepois : relerBase[nid]); }
+    }, (A, St) => {
+      brinqNoite = false;
+      for (const n of (porMapa6[id] || [])) {
+        try {
+          if (!L6M.notaLiberada(n)) continue;
+          const p = A.spot(n.onde6[1], n.onde6[2], 2) || A.spot(n.onde6[1], n.onde6[2], 0);
+          if (!p) { console.info('[l6] sem lugar para', n.id); continue; }
+          if (n.id === 'n6g') { if (!L6M.brinquedoDaNoite()) continue; } // nove já juntos: não aparece mais
+          const texto = L6M.textoNota(n); if (texto && texto !== n.texto) n.texto = texto; // recado dinâmico
+          const it = A.ITENS.nota(n.id, p);
+          if (n.brinquedo) { const base = it.act; it.act = () => { base(); if (!brinqNoite) { brinqNoite = true; L6M.pegouBrinquedo(); } }; }
+          else if (n.conquista) { const base = it.act; it.act = () => { base(); c.conquista(n.conquista); }; }
+        } catch (e) { console.info('[l6]', n.id, e && e.message); }
+      }
+    });
+  }
+
+  // ------------------------------------------------------------------
   // Estado acompanhado entre quadros (para falar na hora certa)
   // ------------------------------------------------------------------
   let ultimoS = null, prev = {}, tParado = 0, doneN = 0, salaAnt = null, olharT = 0, foraT = 0, escuroT = 0, guiaT = 0, capAnt = -1;
@@ -126,6 +160,7 @@ export function instalarHistoria(c) {
     if (St !== ultimoS) reset(St);
     try { L5M.tick(dt); } catch (e) {}
     try { L5B.tick(dt); } catch (e) {}
+    try { L6M.tick(dt); } catch (e) {}
     const P = c.P, M = c.M, W = c.W;
     // nomes revelados: "???" vira "O Inspetor" depois que você o vê; "Menina" vira "Ana" depois da brincadeira
     R.personagens.inspetor.nome = St.flags.avist ? R.personagens.inspetor.nomeRevelado : nomesBase.inspetor;
@@ -222,6 +257,7 @@ export function instalarHistoria(c) {
     try { L5B.vozChamado(); } catch (e) {}
     const St = S(), esp = MUN.chamadoEspecial(St); if (esp) return esp;
     const nm = POL.chamadoNome(St); if (nm) return nm; // uma vez por capítulo, o Chamado diz o nome digitado no título
+    try { const l6 = L6M.chamado(St); if (l6) return l6; } catch (e) {} // na volta, o Davi guia ou mente
     const l = (R.chamados && R.chamados[St.chapter]) || R.falas.chamado;
     const k = 'nChamados' + St.chapter, n = St.flags[k] = (St.flags[k] || 0) + 1;
     return l[Math.min(n - 1, l.length - 1)] || R.falas.chamado[0];
@@ -280,7 +316,8 @@ export function instalarHistoria(c) {
     if (tipo === 'verdadeiro') { if (St.flags.carrinhoAzul && F.extraCarrinho) t += '\n\n' + F.extraCarrinho; if (St.notes.n13 && F.extraDesenho) t += '\n\n' + F.extraDesenho; }
     let l5 = ''; try { l5 = L5M.extrasFinal(tipo) || ''; } catch (e) {}
     let l5b = ''; try { l5b = L5B.extrasFinal(tipo) || ''; } catch (e) {}
-    return t + MUN.extrasFinal(tipo, F) + SEG.extrasFinal(tipo) + l5 + l5b;
+    let l6 = ''; try { l6 = L6M.extrasFinal(tipo) || ''; } catch (e) {}
+    return t + MUN.extrasFinal(tipo, F) + SEG.extrasFinal(tipo) + l5 + l5b + l6;
   }
   function aoFinal(tipo) {
     const St = S();
@@ -310,13 +347,14 @@ export function instalarHistoria(c) {
     document.body.classList.toggle('fita-gasta', !!lsGet(GASTA_KEY, false));
     POL.titulo();
     SEG.titulo();
+    try { L6M.titulo(); } catch (e) {}
   }
   let tocouNove = false;
   function primeiroToque() {
     if (tocouNove || !ehNove()) return; tocouNove = true;
     c.iniciarAudio(); c.SFX.badaladas(9);
   }
-  function aoComecar(St) { if (ehNove()) { c.conquista('nove_horas'); St.flags.nove = true; } POL.aoComecar(St); SEG.aoComecar(St); try { L5M.aoComecar(St); } catch (e) {} try { L5B.aoComecar(St); } catch (e) {} }
+  function aoComecar(St) { if (ehNove()) { c.conquista('nove_horas'); St.flags.nove = true; } POL.aoComecar(St); SEG.aoComecar(St); try { L5M.aoComecar(St); } catch (e) {} try { L5B.aoComecar(St); } catch (e) {} try { L6M.aoComecar(St); } catch (e) {} }
   // nome do jogador (opcional): fica só neste navegador
   const inp = $('#o-nome');
   if (inp) { inp.addEventListener('input', () => lsSet(NOME_KEY, inp.value.replace(/[<>]/g, '').slice(0, 16))); inp.addEventListener('keydown', e => e.stopPropagation()); }
