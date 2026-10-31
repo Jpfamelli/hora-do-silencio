@@ -1,0 +1,93 @@
+# Lote 6 — Mapa: prólogo e estrada
+- O prólogo agora tem uma Semente da Noite própria (por noite e dificuldade) que faz cada descida da estrada ser diferente
+- Clima sorteado da noite: chuva fina, com mais névoa, céu mais fechado e lua mais fraca
+- Clima sorteado da noite: serração densa, que fecha a estrada de neblina
+- Clima sorteado da noite: noite seca, com menos névoa e lua bem clara
+- O clima da noite fica gravado como prenúncio: a observadora atenta lê antecipado o jeito da noite
+- A lua do prólogo ganha uma leve variação pela semente, então o céu nunca é idêntico
+- O tom da lataria do carro muda de uma noite para outra pela semente
+- Em noite seca, vaga-lumes piscam e flutuam perto do posto
+- Em noite de serração, faixas de bruma baixa rastejam pela estrada
+- Em noite de chuva, poças escuras refletem a luz no asfalto
+- Um "achado da noite" aparece no balcão do posto, sorteado pela semente (micro-colecionável de rejogo)
+- O achado troca de canto do posto pela semente (balcão, prateleira ou outro canto)
+- Achado possível: um bilhete amassado com "não deixa a menina entrar — J."
+- Achado possível: uma foto velha de três crianças de mãos dadas no portão
+- Achado possível: uma pilha de reserva (dá uma pilha de verdade)
+- O jogo lembra, entre noites, quais achados você já pegou
+- Conquista secreta "Lembrancinhas da Serra" ao achar os três tipos de achado em noites diferentes
+- A Lia comenta quando percebe que já achou de tudo naquele balcão
+- O boato da noite vem com um estalo de estática do rádio do carro
+- Boato da noite no rádio, uma vez, com dica velada do clima de chuva
+- Boato da noite no rádio com dica velada da serração
+- Boato da noite no rádio com dica velada da noite seca
+- A silhueta do Seu Joaquim morto aparece num de quatro pontos sorteados da estrada, para o susto não ser decorável
+- Essa silhueta só aparece quando você não está olhando e some no relance seguinte
+- Fala da Lia ao ver o morto na estrada, com uma fala diferente nas revisitas
+- Na serração o morto surge mais perto; em noite seca, de mais longe
+- O morto sussurra uma contagem (o eco de 1979) enquanto fica de pé perto de você
+- Por semente, o morto aparece encharcado em vez de só uma sombra
+- Pensamento da noite sorteado pela semente (uma frase de sabor da Lia, uma vez)
+- A noite propõe um desafio opcional sorteado, mostrado como um aviso leve
+- Desafio opcional: atravessar a estrada sem acender a lanterna
+- Desafio opcional: chegar ao portão sem buzinar o carro
+- Desafio opcional: chegar ao portão em menos de 90 segundos
+- Cronômetro de travessia do prólogo, do carro até o portão
+- O melhor tempo de travessia fica gravado entre as noites, com fala quando você bate o recorde
+- Conquista secreta "Travessia Rápida" por chegar ao portão em menos de 90 s
+- Conquista secreta "No Escuro e Calada" por atravessar sem acender a lanterna, com fala
+- Os desafios cumpridos deixam selos guardados entre as noites
+- Ao chegar ao portão, um resumo diz o que mudou nesta noite (clima, achado, segredos, recorde)
+- O resumo também conta quantos selos de desafio você já juntou
+- O prólogo conta quantas noites você já desceu a estrada
+- Conquista secreta "Estrada de Cor" ao jogar o prólogo cinco vezes, com fala
+- O jogo lembra quais climas você já pegou entre as noites
+- Conquista secreta "Meteorologista da Serra" por jogar na chuva, na serração e na seca, com fala
+- Conquista secreta "Tríade da Estrada" por cumprir os três desafios da travessia, com fala
+- A partir da segunda jogada, uma porta nova aparece nos fundos do Posto Serra
+- Depois de ver o final verdadeiro, essa porta mostra o número 1979 gravado na madeira
+- Depois do final verdadeiro, a porta abre com o código do epílogo (teclado) e leva ao quartinho de infância do Moacir
+- Falas da Lia ao achar a porta nova e ao reconhecer o código do epílogo
+- Vinheta muda do quartinho: três cartões (barquinhos na parede, giz de cera, "MOACIR, 6 ANOS")
+- Conquista secreta "O Quarto do Menino" por entrar no quartinho depois do final verdadeiro
+- Na rejogada (sem o verdadeiro ainda), a mesma porta revela a sala do zelador atrás do posto
+- A sala do zelador mostra um mapa de giz com as rondas do Inspetor, risco por risco, com as horas
+- Conquista secreta "Mapa de Giz" por achar a sala do zelador
+- Na rejogada, o porta-luvas do carro vira um cofre que abre com o ano (teclado)
+- Falas da Lia com a dica do ano (calendário e rádio) e de código errado
+- Dentro do porta-luvas: um bilhete da mãe e uma lanterna nova cosmética
+- A lanterna cosmética do porta-luvas fica marcada em S.flags para o acervo
+- Conquista secreta "Cofrinho da Veterana" por abrir o porta-luvas
+- Na rejogada, o carro de 1979 aparece parado no acostamento, com o capô amassado num tronco
+- O carro de 1979 tem colisão de verdade e janelas escurecidas
+- Olhar o carro de 1979 por fora e depois por dentro revela a fita e o carrinho azul no banco de trás
+- Conquista secreta "A Curva de 1979" por achar o carro parado
+- Na rejogada, o último ônibus de 1979 cruza o fundo da estrada, puro clima, sem bloquear
+- O ônibus passa com janelas acesas, silhuetas de crianças sentadas e o farol
+- O ônibus some na serração com estática e um relâmpago
+- O ônibus passa por uma faixa da estrada sorteada pela semente
+- Por semente, o ônibus solta uma buzina grave ao passar
+- Falas da Lia ao avistar o ônibus e quando ele passa
+- Conquista secreta "Linha Encerrada" por ver o último ônibus numa rejogada
+- Na rejogada, a Lia é lembrada, uma vez, de que o barranco corta caminho até o portão
+- Na rejogada, a Lia reconhece a estrada ao descer dela
+- A partir da terceira noite, ela tem uma fala diferente sobre a estrada que muda sozinha
+- Na rejogada, o Seu Joaquim solta uma fala de reencontro logo depois da conversa
+- O portão às vezes aparece acorrentado (sorteado) em vez de só com cadeado
+- A corrente do portão cai quando o portão é aberto
+- Presságio sonoro da noite, sorteado: cães ao longe, um sino, vento forte ou uma buzina distante
+- Em noite seca o presságio soa mais longe (os sons viajam mais)
+- Uma plaquinha de giz perto do portão mostra o melhor tempo de travessia e o número da noite
+- A plaquinha do recorde pode ser lida de perto, sem tela cheia
+- Na rejogada, um desenho de criança fica pregado na parede do posto
+- O desenho ganha mais elementos a cada noite: o sol, as três figuras e, por fim, o aviso "não deixa ela entrar"
+- O desenho pode ser lido de perto e reagido ao tocar
+- Na rejogada, uma vela acesa fica no muro do portão, com a chama tremeluzindo
+- Na rejogada, uma luz piloto colorida (cor sorteada) pisca no poste do letreiro do posto
+- Na rejogada, uma trilha de pegadas secas aponta da estrada para a cerca caída do barranco
+- Na rejogada, o placar do fliperama do posto já marca LIA em primeiro lugar
+- Novas falas do Lote 6 entram em window.ROTEIRO.falas sem conflitar com o roteiro existente
+- Novas conquistas do Lote 6 entram em window.ROTEIRO.conquistas (nomeadas no painel)
+- Módulo novo src/estrada-lote6.js ligado por gancho curto em estrada(), depois de monstrosEstrada()
+- Arquivos novos entram no sw.js para o jogo rodar offline, com o cache subindo para a versão v8
+- Nada do Lote 6 bloqueia o caminho obrigatório nem muda o fluxo da chave e do portão
