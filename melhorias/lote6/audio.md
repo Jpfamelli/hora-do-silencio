@@ -1,0 +1,93 @@
+# Lote 6 — Áudio
+- A semente da noite sorteia um clima sonoro entre cinco (tempestade, garoa, vento, cigarras, quietude), e a casa nunca soa igual duas noites
+- Na tempestade uma camada de chuva pesada cobre a base e deixa tudo mais denso
+- Na garoa cai uma chuva fina e discreta sobre o telhado
+- No clima de vento, uma camada de vento seco corre pelos corredores com o filtro oscilando
+- No clima de cigarras, um canto agudo e tremulado vem de fora
+- Na quietude, um sibilo quase inaudível domina e faz tudo parecer exposto
+- O clima soa mais forte ao ar livre e abafa quando você está dentro da casa
+- O clima quase some no subsolo, onde o mundo lá de fora não chega
+- Uma legenda avisa qual é o clima da noite assim que ela começa
+- A tempestade abafa de verdade os seus passos: o Inspetor te ouve menos
+- A quietude expõe os seus passos: o Inspetor te ouve mais
+- Vento e garoa ficam no meio-termo de quanto o ambiente mascara o seu som
+- A tempestade solta trovões graves ocasionais quando você está ao ar livre
+- As cigarras calam quase por completo quando o Inspetor entra em caçada
+- O sibilo da quietude sobe conforme o seu medo aumenta
+- O filtro da chuva muda por clima: a tempestade soa mais grave, a garoa mais aguda
+- Cada noite ganha um tema procedural de três ou quatro notas sorteado pela semente
+- A transposição (altura) do tema é definida pela semente da noite
+- O andamento do tema é definido pela semente da noite
+- A mesma semente sempre soa igual entre amigos; sementes diferentes soam distintas
+- O tema da noite toca de leve nos momentos calmos, quando não há perigo
+- O tema ganha uma voz (oitava) a mais a cada duas noites que você sobrevive
+- O tema fica mais grave conforme sobe o número da sua noite
+- No modo Uma Vida o tema desce ainda mais de tom
+- No rejogo o tema desafina de leve
+- No rejogo o tema também soa mais arrastado
+- Uma legenda avisa quando o tema está mais grave porque a noite é especial
+- A hora em que a noite começa é sorteada entre 20h, 21h e 23h
+- Uma legenda avisa quando a noite não começa às 21h, com mais badaladas pela frente
+- Depois do final verdadeiro, as nove badaladas da Hora marcam um ritmo que soletra um número
+- O número soletrado pelas badaladas é fixo pela semente, reconhecível ao rejogar a mesma
+- No rejogo do capítulo II, um sino-presságio nervoso bate fora de hora, em horário sorteado
+- Ao bater o seu recorde de tempo de um capítulo, um sino quente e baixo marca o momento
+- Ao bater o recorde de tempo total da noite, o sino celebra mais cheio
+- O sino de recorde cala o mundo por um instante, como um respiro
+- Com o cronômetro ligado, um grave sobe quando você está à frente do seu melhor tempo
+- O mesmo grave esvazia e fica oco quando você está atrás do seu tempo
+- A frequência desse grave sobe quando você está na frente e desce quando está atrás
+- Uma legenda avisa quando você passa a estar à frente do seu fantasma
+- Uma legenda avisa quando o fantasma te ultrapassa
+- Passos-fantasma macios ecoam de leve marcando a rota da sua melhor corrida
+- Conquista "Correndo Contra Si" ao fechar um capítulo à frente do fantasma
+- No prólogo, o rádio do carro monta um boletim da Serra FM a partir das suas estatísticas
+- O boletim vem precedido de estática, como uma sintonia que se resolve
+- O boletim cita o clima sorteado da noite
+- O boletim cita o seu recorde de tempo total
+- O boletim cita quantas noites você já começou
+- O boletim cita quantos finais você já viu e qual foi o último
+- Na primeira noite o rádio dá boas-vindas em vez de citar recordes
+- Depois do final verdadeiro, o rádio cochicha quanto ainda falta no acervo
+- O boletim sorteia uma linha extra de sabor pela semente
+- O boletim tem falas próprias da segunda, terceira, quinta e nona noite
+- Depois da fala, o tema da noite fecha o boletim como assinatura sonora
+- Só na rejogada, uma estação secreta de folclore aparece ao fundo na estrada
+- No rejogo, o Davi comenta baixinho ao trocar de sala ("aqui eu me escondia", "não vai pela esquerda")
+- Depois do final verdadeiro, um leitmotif do Davi assombra salas que antes eram caladas
+- Depois de vencer, os ecos de 1979 ganham legenda que revela que eram frases
+- Depois de vencer, as fitas já ouvidas ganham uma camada de respiração por baixo
+- Ao entrar numa sala, você pode ouvir baixinho um som da sua noite anterior naquele ponto
+- O eco da noite anterior acontece no máximo uma vez por noite e nunca em perigo
+- O jogo grava um pequeno log de sons por sala para reproduzir na noite seguinte
+- O log de sons da noite é salvo ao terminar a partida
+- O eco da noite anterior distingue corrida, passo e clique de lanterna
+- A caixinha da Ana ganha uma nota a mais a cada noite concluída, guardada entre partidas
+- Uma legenda avisa quando a caixinha ganhou uma nota nova desde a última noite
+- Completar a melodia da Ana ao longo das noites abre a conquista "A Caixinha Inteira"
+- A cantiga da Ana toca perto dela usando a escala sorteada da noite
+- Detecta quando você joga um capítulo inteiro com o mundo quase mudo
+- Conquista "De Olhos Fechados" por terminar um capítulo guiada só pelo som do perigo
+- Mensagem "[silêncio total. ele gosta assim.]" ao vencer o capítulo no mundo mudo
+- Um medidor de estresse escondido soma o seu medo e as caçadas ao longo do capítulo
+- Conquista "Nervos de Aço" ao atravessar um capítulo inteiro com o coração calmo
+- Um batimento que se assenta marca o momento em que você ganha os Nervos de Aço
+- O hino do internato volta de leve nos momentos calmos da casa
+- O hino desafina mais a cada noite que você joga
+- A partir da quarta noite o hino ganha uma voz grave por baixo
+- Na nona noite o hino ganha micro-desafinações além da voz grave
+- Na segunda jogada, um sussurro num ouvido só diz um número de código falso, para enganar
+- Onde você morreu em noites anteriores, uma nota baixa assombra o lugar
+- Os pontos onde você morreu são guardados por mapa entre as noites
+- Quanto mais vezes você morreu no mesmo ponto, mais forte fica a nota que assombra ali
+- O boletim do rádio não toca durante o teste automático, para não atrapalhar o QA
+- Os ecos, comentários e sustos proativos ficam calados no teste automático
+- O eco da noite anterior some de vez quando você entra numa sala em perigo
+- A trilha-fantasma só liga quando há cronômetro ou modo de corrida ativo
+- O leitmotif do Davi e os ecos de 1979 só existem para quem já viu o final verdadeiro
+- O código das badaladas só soa para quem chegou ao final verdadeiro
+- O boletim de boas-vindas muda de texto conforme o clima sorteado da noite
+- O tema da noite usa a escala de dó menor para soar sempre melancólico
+- As novas camadas de clima são nós contínuos próprios, sem mexer na ambiência base
+- Todas as novas pistas sonoras têm legenda registrada, respeitando o filtro perigo/história
+- O módulo registra três conquistas secretas novas no acervo do jogo
