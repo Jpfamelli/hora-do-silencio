@@ -270,7 +270,45 @@
   #m-narina{position:absolute;left:28px;top:182px;font-family:"IM Fell English SC",Georgia,serif;font-size:13px;letter-spacing:.06em;color:#b08a5a;text-shadow:0 0 6px #000;opacity:.85}
   #m-contador{position:absolute;left:50%;top:84px;transform:translateX(-50%);font-family:"IM Fell English SC",Georgia,serif;font-size:15px;letter-spacing:.1em;color:#d9a092;text-shadow:0 0 7px #000}
   #hud.panico #m-postura,#hud.panico #m-narina,#hud.panico #m-ouvido{opacity:0}
-  @media (max-width:700px){#m-postura{top:120px}#m-narina{top:148px}#m-contador{top:62px}}
+  /* ---- Lote 5 (2ª rodada): leitura do perigo avançada ---- */
+  #m-coracao{position:absolute;inset:0;pointer-events:none;opacity:0;box-shadow:inset 0 0 110px 26px rgba(150,20,16,.5);transition:opacity .06s}
+  #m-calor{position:absolute;inset:0;pointer-events:none;opacity:0;box-shadow:inset 0 0 100px 22px var(--cc,rgba(90,120,170,.5));transition:opacity .5s,box-shadow .6s}
+  #m-brasa{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .5s;background:radial-gradient(120% 110% at var(--bx,50%) var(--by,50%),transparent 42%,rgba(150,36,14,.5) 100%)}
+  body:not(.menos-mov) #m-brasa.vivo{animation:brasaResp 1.9s ease-in-out infinite}
+  @keyframes brasaResp{0%,100%{filter:brightness(.82)}50%{filter:brightness(1.18)}}
+  #m-nevoa{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .6s;background:radial-gradient(130% 120% at var(--nx,50%) var(--ny,50%),transparent 46%,rgba(40,34,28,.72) 100%)}
+  #m-vapor{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .7s;box-shadow:inset 0 0 120px 30px rgba(205,220,230,.3)}
+  body:not(.menos-mov) #m-vapor.vivo{animation:vaporResp 3.4s ease-in-out infinite}
+  @keyframes vaporResp{0%,100%{opacity:var(--vo,.3)}50%{opacity:calc(var(--vo,.3) * .5)}}
+  #m-folego{position:absolute;left:50%;top:50%;width:60px;height:60px;transform:translate(-50%,-50%);pointer-events:none;opacity:0;transition:opacity .2s}
+  #m-folego svg{width:100%;height:100%;transform:rotate(-90deg)}
+  #m-folego circle{fill:none;stroke-width:2.4}
+  body:not(.menos-mov) #m-folego.baixo #m-folego-arc{animation:folegoPisca .4s steps(2) infinite}
+  @keyframes folegoPisca{to{opacity:.3}}
+  #m-setasom{position:absolute;left:50%;top:50%;width:0;height:0;pointer-events:none;transition:transform .18s linear,opacity .3s;opacity:0}
+  #m-setasom::before{content:"»";position:absolute;left:-10px;top:-30vh;font-size:26px;color:#d8c27a;text-shadow:0 0 6px #000;transform:translateX(-50%)}
+  #m-brisa{position:absolute;left:28px;top:214px;pointer-events:none;color:#9fb6c9;font-size:16px;text-shadow:0 0 6px #000;opacity:.8}
+  #m-brisa span{display:inline-block;transition:transform .4s}
+  #m-leitura{position:absolute;left:28px;top:118px;pointer-events:none;font-size:22px;text-shadow:0 0 7px #000;opacity:.9}
+  #m-leitura b{color:var(--lc,#9c9)}
+  #m-pino{position:absolute;left:50%;top:106px;transform:translateX(-50%);pointer-events:none;font-family:"Special Elite",monospace;font-size:13px;color:#c9a75a;text-shadow:0 0 6px #000;opacity:.85}
+  #m-selo{position:absolute;left:50%;bottom:7%;transform:translateX(-50%);pointer-events:none;font-family:"IM Fell English SC",Georgia,serif;font-size:14px;letter-spacing:.08em;color:#c9a75a;text-shadow:0 0 7px #000;padding:3px 12px;border:1px solid rgba(201,167,90,.35);border-radius:3px;background:rgba(10,8,6,.4)}
+  body:not(.menos-mov) #m-selo.fora{animation:seloFora .5s infinite alternate}
+  @keyframes seloFora{to{color:#d9524a;border-color:rgba(217,82,74,.6)}}
+  #m-bengala{position:absolute;left:28px;top:246px;pointer-events:none;font-family:"IM Fell English SC",Georgia,serif;font-size:13px;letter-spacing:.06em;color:#b0a58a;text-shadow:0 0 6px #000;opacity:.82}
+  #m-arco{position:absolute;left:0;right:0;bottom:0;height:120px;pointer-events:none;opacity:0;transition:opacity .35s;background:radial-gradient(120% 150% at var(--ax,50%) 140%,rgba(150,30,20,.6),transparent 60%)}
+  #m-bussola.l5-cap4 .seta::before{filter:blur(.4px) hue-rotate(150deg)}
+  #m-bussola.l5-cap5 .seta::before{filter:blur(.4px) saturate(1.5) brightness(1.2)}
+  #m-silencio{position:absolute;right:28px;top:118px;pointer-events:none;font-family:"IM Fell English SC",Georgia,serif;font-size:13px;letter-spacing:.06em;color:#8fa98c;text-shadow:0 0 6px #000;opacity:.8}
+  #hud.panico #m-leitura,#hud.panico #m-brisa,#hud.panico #m-bengala,#hud.panico #m-pino,#hud.panico #m-silencio{opacity:0}
+  #diario .apito{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:10px 0 4px;font-size:15px}
+  #diario .apito b{color:#c9a75a;font-family:"Special Elite",monospace}
+  #diario .desum{display:flex;gap:4px;margin:8px 0 2px}
+  #diario .desum i{flex:1;height:9px;border:1px solid rgba(156,44,34,.4);background:rgba(0,0,0,.3);font-style:normal}
+  #diario .desum i.on{background:linear-gradient(90deg,#6d7a3a,#9c2c22)}
+  #diario .caca-mapa{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+  #diario .caca-mapa span{padding:2px 8px;border-radius:3px;font-size:13px;background:rgba(0,0,0,.3);border:1px solid rgba(201,167,90,.2)}
+  @media (max-width:700px){#m-postura{top:120px}#m-narina{top:148px}#m-contador{top:62px}#m-leitura{top:92px}#m-brisa{top:176px}#m-bengala{top:204px}}
   #legsom div.eu{color:#9fb6c9}
   #legsom div.dele{color:#d9a092;font-weight:bold}
   #diario .best{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
@@ -791,6 +829,20 @@
   <div id="m-ouvido" hidden title="quanto do seu som chega ao Inspetor">ꔷ<i></i></div>
   <div id="m-narina" hidden title="você está deixando rastro de cheiro">▿ rastro</div>
   <div id="m-contador" hidden></div>
+  <div id="m-coracao" hidden></div>
+  <div id="m-calor" hidden></div>
+  <div id="m-brasa" hidden></div>
+  <div id="m-nevoa" hidden></div>
+  <div id="m-vapor" hidden></div>
+  <div id="m-folego" hidden><svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="25" stroke="rgba(200,120,40,.25)"/><circle id="m-folego-arc" cx="30" cy="30" r="25" stroke="#d88a2a" stroke-dasharray="157.1" stroke-dashoffset="0"/></svg></div>
+  <div id="m-setasom" hidden></div>
+  <div id="m-brisa" hidden title="de onde sopra o vento"><span>↟</span></div>
+  <div id="m-leitura" hidden aria-live="polite"><b></b></div>
+  <div id="m-pino" hidden title="último barulho que ele ouviu de você">◴ <i></i></div>
+  <div id="m-selo" hidden aria-live="polite"></div>
+  <div id="m-bengala" hidden></div>
+  <div id="m-arco" hidden></div>
+  <div id="m-silencio" hidden></div>
   <div id="cross"></div>
   <svg id="hold" viewBox="0 0 54 54" hidden><circle cx="27" cy="27" r="22" stroke="rgba(255,255,255,.15)"/><circle id="hold-arc" cx="27" cy="27" r="22" stroke="#e9dfc8" stroke-dasharray="138.2" stroke-dashoffset="138.2"/></svg>
   <div id="prompt"></div>

@@ -6,12 +6,14 @@ import { criarPolimento } from './interface-polimento.js';
 import { criarSegredos } from './interface-segredos.js';
 import { criarSegredos2 } from './interface-segredos2.js';
 import { criarInterfaceMonstros } from './interface-monstros.js';
+import { criarInterfaceMonstros2 } from './interface-monstros2.js';
 export function criarInterface(C) {
   let MU = null; // mundo e história (lote 2): src/interface-mundo.js
   let PL = null; // polimento e plataforma (lote 3): src/interface-polimento.js
   let SG = null; // segredos e easter eggs (lote 4): src/interface-segredos.js
   let SG2 = null; // segredos e easter eggs (lote 4, 2ª leva): src/interface-segredos2.js
   let MM = null; // leitura do perigo (lote 5): src/interface-monstros.js
+  let MM2 = null; // leitura do perigo avançada (lote 5, 2ª rodada): src/interface-monstros2.js
   const $ = s => document.querySelector(s);
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
   const lerp = (a, b, t) => a + (b - a) * t;
@@ -604,6 +606,7 @@ export function criarInterface(C) {
     if (PL) PL.frame(dt, ativo);
     if (SG) SG.frame(dt, ativo);
     if (MM) try { MM.frame(dt, ativo); } catch (e) {}
+    if (MM2) try { MM2.frame(dt, ativo); } catch (e) {}
     const S = C.S, P = C.P, M = C.M;
     if (S !== Sref) { Sref = S; rastro.length = 0; causa = null; motivoCaca = null; if (S && S.capT < 1 && S.chapter === 0 && S.tempo < 1) { mortesCap = {}; mortesCausa = {}; } }
     $('#cena-pular').hidden = C.mode !== 'cena';
@@ -661,9 +664,10 @@ export function criarInterface(C) {
   try { SG = criarSegredos(C, { PAD, GRUPOS, som, legenda, subTitulo, registrarCodigo, emCampo, focar, mapaMorte: () => mapaT }); } catch (e) { console.warn('[segredos]', e); }
   try { SG2 = criarSegredos2(C, { PAD, GRUPOS, som, legenda, subTitulo, registrarCodigo, emCampo, focar }); } catch (e) { console.warn('[segredos2]', e); }
   try { MM = criarInterfaceMonstros(C, { PAD, GRUPOS, direcao, legenda, focar, historico: (q, t) => historico(q, t) }); } catch (e) { console.warn('[monstros-ui]', e); }
+  try { MM2 = criarInterfaceMonstros2(C, { PAD, GRUPOS, direcao, legenda, focar, historico: (q, t) => historico(q, t) }); } catch (e) { console.warn('[monstros-ui2]', e); }
   aplicar();
   $('#b-opc').onclick = () => abrirOpcoes('#title');
   $('#p-opc').onclick = () => abrirOpcoes('#pause');
   atualizarTitulo();
-  return { mundo: MU, papel: (id, m) => MU.papel(id, m), renderTempo: el => MU.renderTempo(el), renderPessoas: el => MU.renderPessoas(el), renderParedes: () => MU.renderParedes(), ondeNota: id => MU.ondeNota(id), marcasAbas: () => { MU.marcasAbas(); if (SG) SG.diario(); }, marcaMapa: r => MU.marcaMapa(r), telaFinal: t => { MU.telaFinal(t); if (SG) SG.telaFinal(t); }, renderAlbum: el => SG ? SG.renderAlbum(el) : (el.innerHTML = ''), renderUltima: el => SG ? SG.renderUltima(el) : (el.innerHTML = ''), renderMonstros: el => MM ? MM.renderMonstros(el) : (el.innerHTML = ''), tecla, soltou, som, ruido, golpe, morte, objetivo, salvou, fimCap, frame, fala, historico, nomeFalante, renderPistas, renderOuvido, salaMarcada, pausa, atualizarTitulo, antesDeNovoJogo, confirmar, aplicar, mmss, get ultSaveTempo() { return ultSaveTempo; } };
+  return { mundo: MU, papel: (id, m) => MU.papel(id, m), renderTempo: el => MU.renderTempo(el), renderPessoas: el => MU.renderPessoas(el), renderParedes: () => MU.renderParedes(), ondeNota: id => MU.ondeNota(id), marcasAbas: () => { MU.marcasAbas(); if (SG) SG.diario(); }, marcaMapa: r => MU.marcaMapa(r), telaFinal: t => { MU.telaFinal(t); if (SG) SG.telaFinal(t); }, renderAlbum: el => SG ? SG.renderAlbum(el) : (el.innerHTML = ''), renderUltima: el => SG ? SG.renderUltima(el) : (el.innerHTML = ''), renderMonstros: el => { if (MM) MM.renderMonstros(el); else el.innerHTML = ''; if (MM2) try { MM2.render(el); } catch (e) {} }, tecla, soltou, som, ruido, golpe, morte, objetivo, salvou, fimCap, frame, fala, historico, nomeFalante, renderPistas, renderOuvido, salaMarcada, pausa, atualizarTitulo, antesDeNovoJogo, confirmar, aplicar, mmss, get ultSaveTempo() { return ultSaveTempo; } };
 }
