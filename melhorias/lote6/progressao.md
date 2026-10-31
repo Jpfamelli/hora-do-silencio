@@ -1,0 +1,97 @@
+# Lote 6 — Progressão e rejogabilidade
+- Nova conquista "A Hora Perfeita": zerar a noite no Pesadelo sem morrer e sem dano.
+- Nova conquista "Noite Cheia": cumprir os seis desafios secretos numa só noite.
+- Nova conquista secreta "Nunca Ouvida": chegar ao final sem o Inspetor caçar uma vez.
+- Nova conquista secreta "A Primeira Hora": atravessar a campanha quase sem acender a lanterna.
+- Nova conquista "Noite Perfeita": S em todos os capítulos, sem morte e final verdadeiro na mesma noite.
+- Nova conquista secreta "Mão Cheia": vencer com cinco Regras da Casa ligadas.
+- Nova conquista "Três Pesos": vencer com três Regras da Casa ligadas.
+- Nova conquista "A Noite em Quarenta": chegar a um final em menos de quarenta minutos.
+- Nova conquista secreta "A Noite em Trinta": chegar a um final em menos de trinta minutos.
+- Nova conquista secreta "A Noite em Vinte": chegar a um final em menos de vinte minutos.
+- Nova conquista "Saída Rápida": terminar o Prólogo em menos de dois minutos.
+- Nova conquista "Pele Intacta": terminar um capítulo sem levar dano.
+- Nova conquista "Três Sem Toque": três capítulos sem dano na mesma noite.
+- Nova conquista secreta "Noite Sem Toque": a noite inteira sem um arranhão.
+- Nova conquista "Por Um Triz": escapar dez vezes do Inspetor a um passo.
+- Nova conquista "Nervos de Aço": trinta escapadas rente ao Inspetor.
+- Nova conquista secreta "Dança da Morte": sessenta escapadas rente ao Inspetor.
+- Nova conquista "Veterana da Casa": começar dez noites no internato.
+- Nova conquista "Insone": começar vinte e cinco noites no internato.
+- Nova conquista "No Breu": terminar um capítulo sem acender a lanterna.
+- Nova conquista "Sem Buraco": terminar um capítulo sem usar nenhum esconderijo.
+- Nova conquista "Barulhenta e Viva": sobreviver a um capítulo mesmo fazendo muito barulho.
+- Nova conquista secreta "Fantasma de Verdade": terminar um capítulo em silêncio quase absoluto.
+- Nova conquista "Tempo de Ouro": bater o tempo de ouro do autor num capítulo.
+- Nova conquista "Capítulo Impecável": rank S, sem dano e sem morte no mesmo capítulo.
+- Nova conquista "Regras da Casa": vencer uma noite com ao menos uma regra ligada.
+- Nova conquista secreta "A Casa Toda Contra Você": vencer com todas as Regras da Casa ligadas.
+- Nova conquista "Noite do Dia": completar a Noite do Dia.
+- Nova conquista "Ofensiva": jogar a Noite do Dia em três dias diferentes.
+- Nova conquista "Caçadora de Pontos": mais de quarenta mil pontos numa noite.
+- Nova conquista secreta "Lenda da Noite": mais de oitenta mil pontos numa noite.
+- Nova conquista secreta "Marca de Ouro": fechar um capítulo com rank SS.
+- Nova conquista "Uma Noite Só": atravessar a campanha inteira sem morrer.
+- Nova conquista "Três Limpos": encadear três capítulos sem morrer.
+- Nova conquista "Cinco Limpos": encadear cinco capítulos sem morrer.
+- Nova conquista "Dados Lançados": vencer uma Noite Surpresa.
+- Nova conquista secreta "Palavra de Poder": jogar até o fim uma semente de palavra marcada.
+- Nova conquista secreta "Tudo Numa Noite": juntar final verdadeiro, nunca caçada, capítulo sem esconderijo e sem morte na mesma noite.
+- Nova conquista secreta "A Casa Toda": destravar tudo (conquistas, finais e acervo completos).
+- Regra da Casa "Passo Pesado": o Inspetor anda 12% mais rápido.
+- Regra da Casa "Ouvido de Morcego": ele ouve metade mais longe.
+- Regra da Casa "Pilha Seca": a lanterna gasta mais que o dobro.
+- Regra da Casa "Procissão Súbita": o aviso da Procissão quase some.
+- Regra da Casa "Implacável": ele desiste mais devagar e volta mais rápido.
+- Regra da Casa "Carne Viva": todo toque machuca muito mais.
+- Regras da Casa empilháveis, cada uma soma um multiplicador no placar da noite.
+- Multiplicador de placar das regras mostrado na aba e na tela final.
+- As Regras da Casa só se liberam depois do seu primeiro final.
+- As regras ligadas ficam salvas entre sessões.
+- As regras endurecem de verdade a dificuldade da noite (velocidade, audição, pilha, dano).
+- Botão "Sortear regras" que arma um combo aleatório de Regras da Casa.
+- Novo botão "Rejogo" no menu do título.
+- Noite do Dia: uma semente igual para todo mundo, que zera à meia-noite.
+- Botão para jogar a Noite do Dia direto do painel.
+- Noite do Dia mostra seu melhor tempo de hoje.
+- Noite do Dia conta quantos dias seguidos você jogou (ofensiva).
+- A Noite do Dia sorteia uma "regra de hoje" fixa, anunciada antes de começar.
+- Noite Surpresa: a casa escolhe a semente e sorteia de uma a três regras.
+- Campo para digitar uma semente por palavra e jogar a mesma noite de um amigo.
+- Sementes de palavra marcadas guardam uma surpresa própria.
+- Quadro de Recordes com o melhor tempo e rank de cada capítulo.
+- Medalhas de ouro, prata e bronze por capítulo no quadro.
+- "Corrida teórica perfeita": soma dos seus melhores tempos de cada capítulo.
+- Quadro guarda a noite mais silenciosa (menor ruído médio).
+- Quadro guarda a noite com menos mortes.
+- Quadro guarda a data da última Noite Perfeita.
+- Quadro guarda o melhor placar por dificuldade.
+- Hall da Fama com as cinco melhores noites (tempo, dificuldade, final e pontos).
+- Caça aos Finais: lista dos três finais com dica sem spoiler para os que faltam.
+- Comparar: colar o código de desafio de um amigo monta a mesma noite.
+- Pontuação da noite: um número único para cada campanha.
+- Pontuação soma o rank de cada capítulo.
+- Pontuação premia o acervo de lore encontrado.
+- Pontuação premia terminar rápido.
+- Pontuação premia a noite silenciosa.
+- Pontuação desconta por cada morte.
+- Pontuação multiplicada pelas Regras da Casa ligadas.
+- Pontos mostrados na tela final, com aviso de novo recorde de pontos.
+- Botão "Copiar em giz" na tela final gera um resumo compartilhável.
+- O resumo em giz traz ranks, lore, pontos e a semente da noite.
+- "O que mudou esta noite" na tela final: código do quadro, ordem das válvulas e números do cofre.
+- Checklist "Tudo numa noite" na tela final marcando os feitos de maestria.
+- Faixa no título mostra o recorde de capítulos limpos seguidos.
+- Faixa no título mostra a completude ("você já viu X% do que a casa esconde").
+- Medidor de completude detalhado no painel (conquistas, finais e acervo).
+- Rank SS, o degrau de ouro acima do S, no fim de capítulo.
+- Medalha de tempo do capítulo exibida no fim de capítulo.
+- Escapadas rente ao Inspetor são registradas a cada fuga por um fio.
+- Pausa mostra as regras ativas e o multiplicador da noite.
+- Pausa avisa quando é Noite do Dia, Noite Surpresa ou semente marcada.
+- Estatísticas ganham a linha de completude ("quanto da casa você já viu").
+- Estatísticas mostram as escapadas rente ao Inspetor.
+- Estatísticas mostram o melhor placar de uma noite.
+- Estatísticas mostram o recorde de capítulos limpos seguidos.
+- Estatísticas mostram a noite mais silenciosa.
+- Módulo de rejogabilidade adicionado ao cache offline (sw.js), jogável sem internet.
