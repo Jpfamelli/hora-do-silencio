@@ -1,0 +1,92 @@
+# Lote 6 — Mapa: túneis, cemitério e capela
+- Marca de giz com a ordem das válvulas aparece numa parede sorteada pela Semente da Noite.
+- A parede onde o giz da ordem surge muda a cada semente (cinco pontos possíveis).
+- O giz da ordem só aparece depois de ouvir a fita 2, ou na dificuldade Fácil (ajuda honesta).
+- O giz da ordem aparece e some conforme você chega perto com a lanterna acesa.
+- Na segunda jogada, errar uma válvula faz o estouro d'água chamar o Inspetor até o cano.
+- Com o Inspetor já ativo, errar a válvula aumenta a fúria dele e encurta o descanso.
+- Erros seguidos nas válvulas empilham cada vez mais a fúria do Inspetor.
+- Aviso na tela quando o estouro do cano chama o Inspetor para o túnel.
+- Em Pesadelo ou com mutadores, nasce uma quarta válvula-isca no puzzle.
+- A posição da válvula-isca é sorteada entre dois pontos pela semente.
+- A placa da válvula-isca mostra um "4" gasto e riscado, parecendo tentadora.
+- Girar a válvula-isca solta vapor barulhento e não baixa a água.
+- O vapor da válvula-isca chama o Inspetor e aumenta o medo.
+- Nova conquista "Não Era Essa" por terminar os túneis sem girar a válvula-isca.
+- Recorde de tempo para abrir as três válvulas, guardado entre partidas.
+- Aviso de novo recorde das válvulas na hora em que a água baixa.
+- Nova conquista "Mão Firme" por abrir as três válvulas sem errar nenhuma vez.
+- Nova conquista "Pé no Seco" por chegar ao cofre sem precisar afundar na água.
+- Caçada relâmpago sorteada (cerca de 45% das noites de rejogo): a água volta de uma vez.
+- Válvula mestra surge na cisterna e precisa ser segurada contra o tempo na caçada.
+- Barra de contagem no HUD durante a caçada relâmpago.
+- O Inspetor desce em caça assim que a água volta na caçada relâmpago.
+- Segurar a válvula mestra a tempo trava a água e acalma o Inspetor.
+- Falhar a caçada relâmpago enche os túneis de novo e faz muito barulho.
+- Nova conquista "Contra o Relógio" por vencer a caçada relâmpago.
+- A caçada relâmpago dá mais tempo na dificuldade Fácil.
+- Nicho escondido na cisterna que abre forçando um tijolo solto na parede.
+- O colecionável do nicho muda por semente (apito, carretel de linha ou dentadura de leite).
+- A posição do nicho da cisterna muda por semente entre três pontos.
+- Nova conquista "Fundo da Cisterna" por achar o nicho escondido.
+- Câmara selada atrás do depósito que só abre na segunda jogada (o internato "lembra").
+- O cosmético dentro da câmara muda por semente (lanterna, crachá raspado ou caderno de 1979).
+- A frase de giz no fundo da câmara é sorteada ("A HORA É SUA", "VOCÊ VOLTOU", "AINDA DÁ TEMPO").
+- A laje da câmara selada desliza devagar ao abrir, com rangido.
+- Um sussurro curto denuncia a câmara selada antes de você abri-la.
+- Fala em fita velha (áudio procedural) ao abrir a câmara selada.
+- Nova conquista "O Que Ficou Selado" por abrir a câmara.
+- Na segunda jogada, a Lia reconhece o túnel ao entrar ("meu corpo lembra do caminho").
+- Dois pontos sorteados soltam bolhas antes de a respiração vir de lá, telegrafando o susto da água.
+- Os pontos de respiração na água mudam por semente.
+- Giz vermelho com a pista do cofre ("4 números = cofre") numa parede sorteada.
+- Lâmpada de emergência piscando vermelha num ponto sorteado, mais forte durante o apagão.
+- Recorde de travessia dos túneis, da entrada à escotilha, guardado entre partidas.
+- A cor da tela de submersão na água varia por semente.
+- Pingo d'água ambiente com ritmo sorteado pela semente perto do túnel norte.
+- Acorde de confirmação das válvulas com a raiz sorteada pela semente.
+- Na segunda jogada, um aviso lembra seu recorde das válvulas ao entrar nos túneis.
+- No cemitério, um dos três túmulos é sorteado como "fundo" pela semente.
+- Ao terminar de cavar o túmulo fundo, uma mão sai da terra e agarra a pá.
+- É preciso largar a pá recuando (sair do lugar) em cerca de 1,1s, senão você toma dano e faz barulho.
+- Nova conquista "Reflexo Rápido" por soltar a pá a tempo no túmulo fundo.
+- Qual túmulo é o fundo muda por semente, então a ordem de cavar vira uma decisão.
+- Nova conquista "Coveira Silenciosa" por cavar os três túmulos sem o Inspetor entrar em caça.
+- Quarto túmulo, a Quarta Criança, aparece fora da fileira só na segunda jogada.
+- O quarto túmulo tem vela própria acesa e um objeto em cima da cova.
+- Cavar o quarto túmulo revela uma mecha de cabelo e um bilhete sem assinatura, com fala da Lia.
+- A vela do quarto túmulo apaga sozinha quando ele é cavado.
+- Nova conquista secreta "A Quarta Criança".
+- A cova que cede fica uma pá mais funda a cada morte sua no cemitério (memória entre partidas).
+- Qual cova se aprofunda é sorteada por semente.
+- Ao chegar ao fundo, depois de três mortes, a cova revela uma fita com o seu nome gravado.
+- Nova conquista "Cada Noite Mais Fundo" por chegar ao fundo da cova.
+- No Dia de Finados (2 de novembro de verdade) velas se acendem entre as cruzes.
+- No Dia de Finados aparece uma lápide a mais, "TODAS AS OUTRAS".
+- No Dia de Finados a Lia comenta as velas acesas em todas as covas.
+- Nova conquista "Dia de Finados" por jogar o cemitério nessa data.
+- Confessionário do diretor Albano na capela, aberto na segunda jogada ou da terceira noite em diante.
+- Abrir o confessionário toca a confissão gravada (áudio procedural) com três falas do Albano.
+- Nova conquista "A Confissão" por ouvir a confissão no confessionário.
+- Um caminho de velas leva da porta da capela até o confessionário quando ele está disponível.
+- Recorde de tempo entre colocar o terceiro objeto no altar e tocar o sino.
+- Aviso de novo recorde do sino depois da fuga.
+- Nova conquista "Dobre Logo" por tocar o sino em até oito segundos depois do terceiro objeto.
+- Marca de giz no portão com a ordem sugerida de cavar, sorteada pela semente.
+- A marca de cavar some e aparece conforme a lanterna se aproxima do portão.
+- Na segunda jogada, a Lia comenta que já sabe onde cada criança está enterrada.
+- Em cerca de 40% das sementes a neblina do cemitério fica mais densa.
+- Nessas sementes mais pesadas o fog do cemitério também aumenta.
+- A cor da neblina do cemitério muda por semente (cinza, esverdeada ou azulada de defunto).
+- Fogo-fátuo azul nasce num ponto sorteado e vaga até uma cova específica.
+- A cor do fogo-fátuo muda por semente (azul, esverdeado ou lilás).
+- O fogo-fátuo só aparece no escuro e some se você acender a lanterna de perto.
+- Seguir o fogo-fátuo até o fim revela o seu sobrenome raspado numa cova sem cruz.
+- Corvo pousado numa árvore seca sorteada levanta voo grasnando quando você chega perto.
+- O corvo some subindo depois de voar, com um susto leve.
+- Um segundo corvo aparece em cerca de 35% das sementes, em ponto sorteado.
+- Na segunda jogada, um aviso lembra seu recorde do sino ao entrar no cemitério.
+- Semente da Noite agora comanda todas essas variações do subterrâneo: repete na mesma semente, muda entre sementes.
+- Recordes do subterrâneo (válvulas, travessia e sino) ficam guardados em memória própria entre partidas.
+- Os conteúdos de "segunda jogada" só aparecem para quem já terminou o capítulo antes.
+- As treze conquistas novas do subterrâneo já aparecem na lista do acervo mesmo antes de serem ganhas.
