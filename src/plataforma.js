@@ -7,6 +7,7 @@ import { instalarPlat2 } from './plataforma2.js';
 import { instalarPlat3 } from './plataforma3.js';
 import { instalarPlat4 } from './plataforma4.js';
 import { instalarPlat5 } from './plataforma-lote5.js';
+import { instalarPlat6 } from './plataforma-lote6.js';
 
 const KEY = 'hora-silencio-plat';
 const AUTO_KEY = 'hora-silencio-v3-auto';
@@ -63,6 +64,7 @@ let corte = 0, corteT = 0; // escada de cortes quando a resolução já está no
 let P2 = { fecharLapide() {}, abrirLapide() {}, morreu() {}, frame() {}, mapa() {}, opcoes() {} }; // trocado em instalar() pelo módulo do lote 2
 let P4 = { frame() {}, mapa() {}, aoFim() {} }; // lote 4: segredos e easter eggs
 let P5 = { antes() {}, depois() {}, opcoes() {}, mapa() {}, montarOpcoes() {} }; // trocado em instalar() pelo módulo do lote 5
+let P6 = { montarOpcoes() {}, aoFim() {}, aoMorte() {}, aoNovaNoite() {}, escalaToque() { return 1; } }; // trocado em instalar() pelo módulo do lote 6
 let prAtual = 1, tetoPR = 1;
 let fogAplicada = -1;
 let ultimoQuadro = 0;
@@ -461,7 +463,8 @@ function montarToque() {
         let dx = t.clientX - olho.x, dy = t.clientY - olho.y; const k = .0042 * (+O.tqSens || 1);
         if (C.M && C.M.state === 'agarra') puxar((Math.abs(dx) + Math.abs(dy)) * 1.5); // arrastar o dedo também solta do agarrão
         if (O.tqOlharDz) { if (Math.abs(dx) < 1.5) dx = 0; if (Math.abs(dy) < 1.5) dy = 0; } // ignora o tremor fino do dedo
-        olhar(dx * k, dy * k); olho.x = t.clientX; olho.y = t.clientY;
+        let ex = 1, ey = 1; try { ex = P6.escalaToque('x'); ey = P6.escalaToque('y'); } catch (e) {} // lote 6: sensibilidade de toque por eixo
+        olhar(dx * k * ex, dy * k * ey); olho.x = t.clientX; olho.y = t.clientY;
       }
     }
   }, { passive: true });
@@ -854,6 +857,7 @@ function prepararFinal() {
   const l = document.createElement('button'); l.className = 'btn'; l.id = 'e-lapide'; l.textContent = 'Guardar lápide';
   menu.before(b, l); l.onclick = () => P2.abrirLapide('final');
   try { P4.aoFim(); } catch (e) {}
+  try { P6.aoFim(); } catch (e) {}
   b.onclick = async () => {
     const r = textoResultado();
     if (navigator.share) { try { await navigator.share({ title: 'A Hora do Silêncio', text: r.texto, url: r.url }); return; } catch (e) { if (e && e.name === 'AbortError') return; } }
@@ -917,6 +921,7 @@ export const PLAT = {
     // a dica da morte pelo agarrão fala do jeito de se soltar que você está usando
     try { const dc = C.R.entidades.dicas_ctx; if (dc) dc.agarrao = toque ? (O.soltar === 'segurar' ? 'Quando ele te agarrar, segure o botão Usar para se soltar.' : 'Quando ele te agarrar, toque em Usar sem parar (ou arraste o dedo pela tela) para se soltar.') : padAtivo ? (O.soltar === 'segurar' ? 'Quando ele te agarrar, segure A para se soltar.' : 'Quando ele te agarrar, aperte A sem parar ou sacuda o analógico direito para se soltar.') : O.soltar === 'segurar' ? 'Quando ele te agarrar, segure E (ou o botão Usar) sem largar para se soltar.' : O.soltar === 'tecla' ? 'Quando ele te agarrar, aperte E sem parar para se soltar.' : 'Quando ele te agarrar, sacuda o mouse com força para se soltar. (Em Desempenho > Controles dá para trocar por apertar ou segurar.)'; } catch (e) {}
     P2.morreu();
+    try { P6.aoMorte(); } catch (e) {}
   },
   aoCarregar() { fila.length = 0; graca = 0; limparTeclas(); calmaT = 0; },
   antes(dt) {
@@ -1028,6 +1033,8 @@ export const PLAT = {
     try { P4 = instalarPlat4(C, { O, salvar, vibrar, copiar, feedback, robo, get padAtivo() { return padAtivo; }, get toque() { return toque; }, qual: () => O.qual || 'alta' }); } catch (e) {}
     P5 = instalarPlat5(C, { O, salvar, vibrar, aviso, emJogoAtivo, legenda, direcao, nomeDir, aplicarQual, qual: () => O.qual || 'alta', robo, get toque() { return toque; }, get padAtivo() { return padAtivo; } });
     P5.montarOpcoes($('#plat-opcoes .wrap'));
+    try { P6 = instalarPlat6(C, { O, salvar, vibrar, aviso, copiar, feedback, robo, qual: () => O.qual || 'alta', get toque() { return toque; }, get padAtivo() { return padAtivo; } }); P6.montarOpcoes($('#plat-opcoes .wrap')); } catch (e) {}
+    const bnv = $('#b-novo'); if (bnv) bnv.addEventListener('click', () => setTimeout(() => { try { P6.aoNovaNoite(); } catch (e) {} }, 0), false);
     if (P3.plateia) { const pt = $('#portal'); if (pt) pt.hidden = true; }
     const dm = $('#dt-menu'); if (dm) { const lb = document.createElement('button'); lb.className = 'btn'; lb.id = 'dt-lapide'; lb.textContent = 'Guardar lápide'; dm.before(lb); lb.onclick = () => P2.abrirLapide('morte'); }
     const tcl = $('#death .teclas'); if (tcl && !/lápide/.test(tcl.textContent)) tcl.textContent += ' · L guarda a lápide';
