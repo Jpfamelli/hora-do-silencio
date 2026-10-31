@@ -35,7 +35,11 @@ const PADRAO = {
   hapEntidade: true, hapSoCaca: false,
   // lote 5 (2ª leva): os monstros — desafio e leitura tátil
   modoCego: false, agressMon: 'normal', vibDir: true, nuca: true, nucaForca: 1, sinoHaptic: true, hapAcao: false,
-  hapPilha: false, hapEsconde: false
+  hapPilha: false, hapEsconde: false,
+  // lote 5 (3ª leva): sentir os monstros — leitura tátil, desempenho na caça, muletas opt-in e desafio
+  corTatil: false, anaTatil: false, procTatil: false, arTatil: false, estatuaTatil: false, ouviuTatil: false,
+  tatilForcaMon: 1, toqueAr: false, resCaca: false, sombraMon: false, chuvaCaca: false,
+  distMon: false, setaMon: false, corMon: false, temaCap: true
 };
 const ler = () => { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } };
 const O = { ...PADRAO, ...ler() };
@@ -695,7 +699,23 @@ const LINHAS = [
   ['sinoHaptic', 'Duelo do sino no toque/controle (empurrão a cada badalada)', 'chk'],
   ['hapAcao', 'Pulso tátil nas ações longas (forçar, cavar, dar corda...)', 'chk'],
   ['hapPilha', 'Tique tátil quando a pilha está acabando', 'chk'],
-  ['hapEsconde', 'Pulso tátil ao se esconder e ao sair', 'chk']
+  ['hapEsconde', 'Pulso tátil ao se esconder e ao sair', 'chk'],
+  ['Sentir os monstros (tátil, desempenho e desafio)'],
+  ['corTatil', 'Coração-bússola tátil: na caça o toque acelera conforme ele chega', 'chk'],
+  ['anaTatil', 'Contagem da Ana no controle (um tique por número, três no dez)', 'chk'],
+  ['procTatil', 'Onda tátil da Procissão (cresce no aviso, baque quando passa)', 'chk'],
+  ['arTatil', 'Tremor tátil enquanto você prende o ar (cresce; alívio ao soltar)', 'chk'],
+  ['estatuaTatil', 'Zumbido tátil ao virar estátua (enquanto segura o bote dele)', 'chk'],
+  ['ouviuTatil', 'Toque seco e duplo quando ele te ouve', 'chk'],
+  ['tatilForcaMon', 'Força dos pulsos dos monstros', 'rng', [0, 1.5, .1]],
+  ['toqueAr', 'Celular: botão "prenda o ar" na tela durante a caça', 'chk'],
+  ['resCaca', 'Baixar a resolução na caça (se a dinâmica estiver desligada)', 'chk'],
+  ['sombraMon', 'Desligar a sombra da lanterna quando há 2+ entidades', 'chk'],
+  ['chuvaCaca', 'Menos chuva na caça (alivia o aparelho na hora do aperto)', 'chk'],
+  ['distMon', 'Distância da ameaça em metros (muleta visual)', 'chk'],
+  ['setaMon', 'Seta na borda apontando a ameaça fora da tela (muleta visual)', 'chk'],
+  ['corMon', 'Cor segura (âmbar) nas muletas de perigo (daltonismo)', 'chk'],
+  ['temaCap', 'A cor da aba escurece a cada capítulo', 'chk']
 ];
 function montarOpcoes() {
   const el = document.createElement('div'); el.id = 'plat-opcoes'; el.className = 'screen painel'; el.hidden = true;

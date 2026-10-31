@@ -89,3 +89,61 @@
 - Nova seção no painel: "Os monstros: desafio e leitura tátil"
 - Novo grupo de opções "Os monstros (desafio e leitura tátil)"
 - Kit de teste passa a cobrir o Modo Cego e a intensidade dos monstros
+- Nova seção no painel de Desempenho: "Sentir os monstros (tátil, desempenho e desafio)"
+- Novo grupo de opções "Sentir os monstros" com todas as leituras táteis novas
+- Coração-bússola tátil: na caçada, o toque pulsa no ritmo da distância do Inspetor
+- Coração-bússola: mais perto, batimento mais rápido e mais forte
+- Coração-bússola: batida reforçada quando ele está colado atrás de você
+- Contagem da Ana no tato: um tique a cada número que ela conta
+- Contagem da Ana: o dez vem como um tranco triplo
+- Onda tátil da Procissão que cresce durante o aviso das luzes
+- Baque tátil forte quando a Procissão começa a passar
+- Tremor tátil enquanto você prende o ar
+- O tremor do ar fica mais forte conforme o peito queima
+- Pulso de alívio no tato quando você solta o ar
+- Zumbido tátil grave e firme enquanto você vira estátua
+- Pulso de confirmação ao sair da estátua
+- Toque seco e duplo quando o Inspetor te ouve e parte para procurar
+- Nova barra "Força dos pulsos dos monstros"
+- Botão "Sentir o coração-bússola" para treinar o padrão
+- Botão "Sentir a contagem da Ana" para treinar o padrão
+- Todos os pulsos dos monstros respeitam a Vibração geral e a força própria
+- Os pulsos dos monstros só disparam dentro do jogo, nunca no menu
+- Celular: botão "prenda o ar" aparece na tela durante a caça
+- O botão de prender o ar some fora da caça e quando você está escondida
+- Segurar o botão de toque prende o ar de verdade, como o ESPAÇO
+- O botão de prender o ar vibra de leve ao apertar, confirmando o toque
+- Ao pausar o jogo, o botão de prender o ar solta o ar sozinho
+- Nova opção "Baixar a resolução na caça" (desempenho)
+- A resolução volta ao normal assim que ele para de caçar
+- A queda de resolução só age se a resolução dinâmica estiver desligada, sem brigar com o motor
+- Nova opção "Desligar a sombra da lanterna quando há 2+ entidades"
+- A sombra da lanterna volta sozinha quando a cena esvazia
+- Nova opção "Menos chuva na caça"
+- A chuva volta ao normal assim que a caçada termina
+- Ao trocar de mapa, a qualidade é recomposta e nada fica baixado por engano
+- Desligar qualquer ajuste de desempenho da caça recompõe a qualidade na hora
+- Nova muleta visual: distância da ameaça em metros no topo da tela
+- A distância mostra quem é a ameaça mais perto (o Inspetor ou a menina)
+- Nova muleta visual: seta na borda apontando a ameaça que está fora da tela
+- A seta da ameaça só aparece quando ela está fora da sua frente
+- A seta gira para a direção real da ameaça
+- Nova opção "Cor segura (âmbar)" nas muletas de perigo, para daltonismo
+- O Modo Cego também desliga a distância e a seta da ameaça
+- Nova opção "A cor da aba escurece a cada capítulo" (ligada por padrão)
+- A cor da aba fica mais escura do prólogo ao capítulo final
+- Desligar o tema por capítulo devolve a cor padrão da aba
+- Dicas giram na tela de carregamento (como caçar, esconder, prender o ar)
+- As dicas de carregamento cedem lugar ao aviso de internet lenta
+- Botão "Compartilhar desafio dos monstros" no painel de Desempenho
+- Botão "Desafiar um amigo" no título
+- O link de desafio já abre com a intensidade dos monstros escolhida
+- O link de desafio carrega o Modo Cego, se estiver ligado
+- Abrir pelo link de desafio aplica a intensidade e avisa o jogador
+- O aviso do desafio lembra que dá para mudar tudo em Desempenho
+- O anúncio de acessibilidade no título cita o coração-bússola e a contagem da Ana no tato
+- Botão "Restaurar padrão" também zera os novos ajustes dos monstros
+- Novo módulo plataforma-lote5c entra no cache para jogar offline
+- Cache offline atualizado para a 3ª leva do Lote 5 (v10)
+- Estilos próprios das muletas e do botão de toque injetados sem mexer na CSS compartilhada
+- Novo módulo plataforma-lote5c isolado, ligado ao jogo por poucas linhas de gancho

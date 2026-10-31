@@ -20,7 +20,7 @@ export function instalarPlat5b(C, U) {
   //    mira na caça, vibração por entidade) e sobe a agressividade das entidades.
   //    Guarda o que estava ligado para devolver tudo ao desligar. Selo próprio no fim.
   // ===================================================================
-  const CHAVES_MINHAS = ['respInsp', 'respEstalos', 'nevoaDir', 'capEstado', 'miraCaca', 'indic', 'indicInsp', 'hapEntidade', 'avisoVisual', 'vibDir', 'legSom'];
+  const CHAVES_MINHAS = ['respInsp', 'respEstalos', 'nevoaDir', 'capEstado', 'miraCaca', 'indic', 'indicInsp', 'hapEntidade', 'avisoVisual', 'vibDir', 'legSom', 'distMon', 'setaMon'];
   // as ajudas de "Leitura do perigo" vivem no OPT do motor (src/interface-monstros.js)
   const CHAVES_LEITURA = ['bussola', 'pulsoProx', 'vinheta', 'faroBorda', 'posturaUI', 'arcoOuvido', 'legDist'];
   let snapMinhas = null, snapLeitura = null;
