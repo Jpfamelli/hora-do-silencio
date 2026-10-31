@@ -5,11 +5,13 @@ import { criarMundo } from './interface-mundo.js';
 import { criarPolimento } from './interface-polimento.js';
 import { criarSegredos } from './interface-segredos.js';
 import { criarInterfaceMonstros } from './interface-monstros.js';
+import { criarInterfaceLote6 } from './interface-lote6.js';
 export function criarInterface(C) {
   let MU = null; // mundo e história (lote 2): src/interface-mundo.js
   let PL = null; // polimento e plataforma (lote 3): src/interface-polimento.js
   let SG = null; // segredos e easter eggs (lote 4): src/interface-segredos.js
   let MM = null; // leitura do perigo (lote 5): src/interface-monstros.js
+  let L6 = null; // rejogabilidade (lote 6): src/interface-lote6.js
   const $ = s => document.querySelector(s);
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
   const lerp = (a, b, t) => a + (b - a) * t;
@@ -151,7 +153,7 @@ export function criarInterface(C) {
   }
 
   // ---------------------------------------------------------------- NAVEGAÇÃO POR TECLADO
-  const TELAS = ['#confirma', '#brilho', '#opcoes', '#comojogar', '#painel', '#keypad', '#pause', '#death', '#escolha', '#ending', '#title'];
+  const TELAS = ['#confirma', '#brilho', '#opcoes', '#comojogar', '#painel', '#keypad', '#l6', '#pause', '#death', '#escolha', '#ending', '#title'];
   const telaAtiva = () => TELAS.map(s => $(s)).find(el => el && !el.hidden);
   const focaveis = el => [...el.querySelectorAll('button.btn, select, input[type=range]')].filter(b => !b.disabled && !b.hidden && b.offsetParent !== null && !b.closest('[hidden]'));
   function focar(sel) { setTimeout(() => { const el = sel ? $(sel) : telaAtiva(); if (!el || el.hidden) return; const f = focaveis(el); if (f.length && !el.contains(document.activeElement)) f[0].focus({ preventScroll: false }); }, 30); }
@@ -353,6 +355,7 @@ export function criarInterface(C) {
     if (PL) PL.morte(quem);
     if (SG) SG.morte(quem);
     if (MM) try { MM.morte(quem); } catch (e) {}
+    if (L6) try { L6.morte(quem); } catch (e) {}
   }
   function aliviar() {
     const cap = C.S.chapter; C.retry();
@@ -478,6 +481,7 @@ export function criarInterface(C) {
     splitT = 3; el.hidden = false;
     if (!ant || t < ant) { sp[id] = t; caps[c.id] = { ...reg, splits: sp }; C.lsSet(C.CAPS_KEY, caps); }
     if (SG) SG.split(id); // lote 4: trecho de ouro
+    if (L6) try { L6.splitPB(id, ant, t); } catch (e) {} // lote 6: fantasma do recorde por objetivo
   }
   function salvou(inicioCap) {
     const S = C.S; if (S) ultSaveTempo = S.tempo;
@@ -507,6 +511,7 @@ export function criarInterface(C) {
     if (MU) MU.fimCap(c);
     if (PL) PL.fimCap(c, rk);
     if (SG) SG.fimCap(c);
+    if (L6) try { L6.fimCap(c, rk, ant); } catch (e) {}
   }
 
   // ---------------------------------------------------------------- SEGREDOS DO TÍTULO
@@ -545,6 +550,7 @@ export function criarInterface(C) {
     else el.textContent = '';
     if (PL) PL.atualizarTitulo();
     if (SG) SG.atualizarTitulo();
+    if (L6) try { L6.atualizarTitulo(); } catch (e) {}
     $('#o-dif-desc').textContent = DIF_DESC[$('#o-dif').value] || '';
     focar('#title');
   }
@@ -565,6 +571,7 @@ export function criarInterface(C) {
   // ---------------------------------------------------------------- TECLAS
   function tecla(e) {
     const S = C.S;
+    if (L6) { try { if (L6.tecla(e)) return true; } catch (er) {} }
     if (SG && SG.tecla(e)) return true;
     if (PL && PL.tecla(e)) return true;
     if (!$('#confirma').hidden && e.code === 'Escape') { $('#cf-nao').click(); return true; }
@@ -601,6 +608,7 @@ export function criarInterface(C) {
     if (PL) PL.frame(dt, ativo);
     if (SG) SG.frame(dt, ativo);
     if (MM) try { MM.frame(dt, ativo); } catch (e) {}
+    if (L6) try { L6.frame(dt, ativo); } catch (e) {}
     const S = C.S, P = C.P, M = C.M;
     if (S !== Sref) { Sref = S; rastro.length = 0; causa = null; motivoCaca = null; if (S && S.capT < 1 && S.chapter === 0 && S.tempo < 1) { mortesCap = {}; mortesCausa = {}; } }
     $('#cena-pular').hidden = C.mode !== 'cena';
@@ -657,9 +665,10 @@ export function criarInterface(C) {
   PL = criarPolimento(C, { PAD, GRUPOS, focar, aplicar, subTitulo, objAtual, direcao, lembranca: () => MU && MU.lembranca(), fimCapT: () => fimCapT });
   try { SG = criarSegredos(C, { PAD, GRUPOS, som, legenda, subTitulo, registrarCodigo, emCampo, focar, mapaMorte: () => mapaT }); } catch (e) { console.warn('[segredos]', e); }
   try { MM = criarInterfaceMonstros(C, { PAD, GRUPOS, direcao, legenda, focar, historico: (q, t) => historico(q, t) }); } catch (e) { console.warn('[monstros-ui]', e); }
+  try { L6 = criarInterfaceLote6(C, { PAD, GRUPOS, focar, subTitulo }); } catch (e) { console.warn('[rejogo-ui]', e); }
   aplicar();
   $('#b-opc').onclick = () => abrirOpcoes('#title');
   $('#p-opc').onclick = () => abrirOpcoes('#pause');
   atualizarTitulo();
-  return { mundo: MU, papel: (id, m) => MU.papel(id, m), renderTempo: el => MU.renderTempo(el), renderPessoas: el => MU.renderPessoas(el), renderParedes: () => MU.renderParedes(), ondeNota: id => MU.ondeNota(id), marcasAbas: () => { MU.marcasAbas(); if (SG) SG.diario(); }, marcaMapa: r => MU.marcaMapa(r), telaFinal: t => { MU.telaFinal(t); if (SG) SG.telaFinal(t); }, renderAlbum: el => SG ? SG.renderAlbum(el) : (el.innerHTML = ''), renderUltima: el => SG ? SG.renderUltima(el) : (el.innerHTML = ''), renderMonstros: el => MM ? MM.renderMonstros(el) : (el.innerHTML = ''), tecla, soltou, som, ruido, golpe, morte, objetivo, salvou, fimCap, frame, fala, historico, nomeFalante, renderPistas, renderOuvido, salaMarcada, pausa, atualizarTitulo, antesDeNovoJogo, confirmar, aplicar, mmss, get ultSaveTempo() { return ultSaveTempo; } };
+  return { mundo: MU, papel: (id, m) => MU.papel(id, m), renderTempo: el => MU.renderTempo(el), renderPessoas: el => MU.renderPessoas(el), renderParedes: () => MU.renderParedes(), ondeNota: id => MU.ondeNota(id), marcasAbas: () => { MU.marcasAbas(); if (SG) SG.diario(); }, marcaMapa: r => MU.marcaMapa(r), telaFinal: t => { MU.telaFinal(t); if (SG) SG.telaFinal(t); if (L6) try { L6.registrarFinal(t); L6.telaFinal(t); } catch (e) {} }, renderAlbum: el => SG ? SG.renderAlbum(el) : (el.innerHTML = ''), renderUltima: el => SG ? SG.renderUltima(el) : (el.innerHTML = ''), renderMonstros: el => MM ? MM.renderMonstros(el) : (el.innerHTML = ''), tecla, soltou, som, ruido, golpe, morte, objetivo, salvou, fimCap, frame, fala, historico, nomeFalante, renderPistas, renderOuvido, salaMarcada, pausa, atualizarTitulo, antesDeNovoJogo, confirmar, aplicar, mmss, get ultSaveTempo() { return ultSaveTempo; } };
 }
