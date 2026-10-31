@@ -89,3 +89,93 @@
 - A cantiga da caixinha vira tom menor quando ele caça ou a Ana se aproxima.
 - Furioso, ele esmurra o armário onde você se esconde com um subgrave.
 - A batida dele ressoa pela galeria nos túneis.
+- O ar cala de repente por cerca de 2 segundos quando o Inspetor entra na sua sala.
+- Um sub-grave de inspiração e um vácuo seco surgem cerca de meio segundo antes do bote.
+- A respiração rasgada dele trava de repente no instante em que ele te ouve de verdade.
+- Na procura, há trechos em que os passos dele somem de vez por um tempo, para você não confiar no silêncio.
+- A ambiência inteira se cala um instante antes de uma ameaça chegar perto, como aviso instintivo.
+- A cantiga de ninar dele vai perdendo notas de capítulo em capítulo.
+- A cantiga afina cada vez pior conforme os capítulos avançam.
+- O timbre da cantiga troca por capítulo, de uma senoide morna até uma serra raspada.
+- No Capítulo IV em diante, a cantiga já tem só um fiapo de ruído por baixo.
+- A cantiga escorrega para um meio-tom dissonante quando ele está na mesma sala que você.
+- O apito dele ganha um padrão curto que significa "parar".
+- Dois apitos curtos significam "ninguém respira".
+- Um apito longo significa "voltar para a cama".
+- O padrão do apito depende do estado dele (caça, procura ou investigação).
+- No Capítulo V, o apito range a melodia da Hora do Silêncio.
+- O apito da Hora do Silêncio racha mais conforme a fúria dele sobe.
+- Na procura, ele recita a chamada dos mortos de 1979 e encaixa o seu nome no meio.
+- Um sussurro procedural do seu nome acompanha a chamada.
+- O coro da Procissão intercala o seu nome na ladainha, bem baixinho.
+- Nos túneis, quando ele fareja, o seu nome ecoa distorcido de vários pontos das paredes.
+- Vozes de crianças pedindo para sair soam por baixo do chiado dele quando você está colada, e somem quando ele se afasta.
+- As vozes das crianças dentro dele ganham legenda própria.
+- Um infra-som apertado cresce conforme a fúria do Inspetor aumenta.
+- O infra-som da fúria some de repente quando o sino o atordoa.
+- Com a fúria ativa, a respiração dele vira um ronco molhado audível a duas salas de distância.
+- A partir do Capítulo IV ele manqueja: um passo seco seguido de um arrasto molhado.
+- Fora da caça, a mão dele arrasta pela parede com um chiado contínuo e direcional.
+- Nos túneis, a bengala guincha pelo cano e o tom sobe conforme ele se aproxima.
+- O couro do casaco dele range colado no seu armário.
+- Nos capítulos de água, a venda encharcada dele pinga na madeira do esconderijo.
+- A mandíbula dele range quando ele fareja o seu esconderijo.
+- A respiração dele troca de ouvido conforme ele contorna o móvel em que você se escondeu.
+- O coração-bússola bate mais forte no lado de onde o Inspetor vem.
+- Dois corações batem em ritmos diferentes, de dois lados, quando duas ameaças estão perto.
+- No Capítulo V, muito perto dele, uma batida fantasma vem do lado errado.
+- O seu coração ganha um eco dobrado na nave da capela.
+- A sua respiração ecoa oco dentro ou ao lado de uma cova aberta, e prender o ar corta o eco.
+- Perto de uma cova aberta, um grave quase inaudível aperta o peito e some quando você se afasta.
+- Na caçada, o passo dele some sob o seu e continua meio passo depois que você para.
+- Uma tábua range no caminho dele antes de ele entrar na sala vizinha à sua.
+- O molho de chaves tilinta de uma sala onde ele não está, como isca.
+- O tilintar das chaves dele vai sendo abafado de capítulo em capítulo.
+- Ele imita o tilintar de um ponto seguro numa sala errada, para te atrair.
+- Na patrulha do cemitério, ele lê os nomes das lápides em voz baixa e rachada.
+- Na patrulha, ele resmunga a lista de castigos do internato.
+- Na patrulha, ele chama "aqui!" para outra criança que não existe.
+- Um leitmotif de três notas graves cresce conforme ele se aproxima.
+- O intervalo das três notas fica dissonante na caça e claro na procura.
+- O filtro do leitmotif abafa ou abre conforme o estado dele.
+- No Capítulo III em diante, ele entra meio-tom abaixo e atrasado da contagem da Ana, criando um bater dissonante.
+- Quando a Ana chega ao "dez", ele e ela gritam em uníssono.
+- No Capítulo III, os passos dele e os passinhos dela batem no mesmo compasso.
+- Quando ele reza ou dorme em pé, um ronco lento e rítmico serve de régua de distância.
+- O rádio ou o gerador estoura em estática quando o Inspetor chega perto dele.
+- A respiração da Lia acelera em camadas conforme a ameaça real mais próxima se aproxima.
+- Quando ele entra em escuta, o seu coração e a sua respiração sobem no vácuo de som.
+- Prender o ar colado nele faz o sangue bater nos seus ouvidos.
+- Quando ele fareja ou vasculha o seu armário, o mundo abafa num filtro grave.
+- No duelo de fôlego colado no armário, a respiração dele some e sobra só o seu coração.
+- Escondida, um coração errado e lento do monstro acelera pouco antes de ele abrir o esconderijo.
+- O coração-bússola perde o compasso (arritmia) quando ele caça colado em você.
+- Quando a Ana não está ativa, ele imita a contagem dela de uma sala vazia para te enganar.
+- Raramente, ao soltar o ar, a respiração da Lia sai com o tom do Inspetor.
+- O Chamado às vezes imita a voz da Lia pedindo socorro de outra sala.
+- O Chamado às vezes usa a voz da mãe e erra o seu nome.
+- Nos túneis, a voz dele às vezes sai de uma sala vizinha errada.
+- A bengala bate num móvel quando ele esbarra na mobília fora da caça.
+- Uma expiração grave de frustração sai quando ele perde o seu rastro.
+- Uma inspiração rápida e aguda marca o momento em que ele acha o seu rastro.
+- Um alívio grave sobe quando ele desiste e os passos diminuem.
+- Estalos dos dedos dele soam no instante do bote.
+- Unhas arranham a madeira quando ele vasculha o seu armário.
+- Ele solta um "shhh" pedindo silêncio quando você faz barulho na patrulha.
+- O crachá dele tilinta no peito ao andar nos primeiros capítulos, e some com o tempo.
+- O lampião dele chia e pinga óleo quando ele está perto nos capítulos iniciais.
+- Ele tosse encatarrado de vez em quando, e a tosse piora a cada capítulo.
+- O pescoço dele estala quando ele vira a cabeça na sua direção.
+- A bota dele range quando ele agacha para olhar embaixo da cama.
+- No Capítulo I, ele assobia baixo e desafinado na patrulha.
+- Um relógio dá a hora cheia abafado ao longe, com mais badaladas a cada capítulo.
+- A respiração dele ecoa diferente por ala: abafada nos túneis, brilhante na capela.
+- A partir do Capítulo IV, gotas escorrem do casaco encharcado quando ele para perto de você.
+- O assoalho range sob o peso dele quando ele fica parado do outro lado da parede.
+- Ele murmura uma oração às avessas quando reza.
+- Um baque surdo do corpo dele contra a porta soa quando ele te agarra escondida.
+- No Capítulo V, o apito dele sai molhado e engasgado durante a caça.
+- Nos túneis, o eco do seu próprio passo volta atrasado e do lado errado.
+- Um clique metálico do lampião dele soa ao acender ou apagar perto de você.
+- Nos capítulos iniciais, a bengala muda de timbre com o piso (madeira, pedra, água).
+- Cada badalada do sino abre uma janela curta de silêncio para você se mover.
