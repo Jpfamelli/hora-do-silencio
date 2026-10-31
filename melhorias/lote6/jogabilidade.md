@@ -1,0 +1,92 @@
+# Lote 6 — Jogabilidade
+- Novo mutador Pilha Única: a lanterna tem uma carga só, sem pilhas reservas nem recarga a noite inteira.
+- Novo mutador Luz Faminta: a lanterna consome a pilha mais rápido, encarecendo cada segundo acesa.
+- Novo mutador Lanterna Fraca: o feixe mal alcança à frente, deixando o jogador quase no breu.
+- Novo mutador Luz Piscante: mau contato faz a luz falhar em instantes aleatórios.
+- Novo mutador Lanterna Curta: a lanterna apaga sozinha depois de alguns segundos acesa de cada vez.
+- Novo mutador No Escuro: sem lanterna a noite toda, só relâmpagos e som.
+- Novo mutador A Luz Chama: andar de lanterna acesa perto do Inspetor passa a fazer barulho.
+- Novo mutador Fôlego Curto: prender o ar acaba bem mais rápido.
+- Novo mutador Sem Prender o Ar: o jogador não consegue segurar a respiração.
+- Novo mutador Coração Exposto: com o medo no alto, o batimento vira ruído que o Inspetor escuta.
+- Novo mutador Pavor Fácil: o medo sobe sozinho no escuro.
+- Novo mutador Pânico no Escuro: no breu o terror dispara e trava a respiração até você achar luz.
+- Novo mutador Frio na Espinha: parada no escuro, o calafrio faz um barulho baixinho que denuncia.
+- Novo mutador Mãos Trêmulas: a câmera treme mais, sobretudo com medo.
+- Novo mutador Corpo Frágil: o jogador aguenta muito menos dano antes de cair.
+- Novo mutador Fadiga: o fôlego de corrida fica curto e se recupera devagar.
+- Novo mutador Eco de Passos: o Inspetor volta ao seu último ponto 2 s depois de você parar.
+- Novo mutador Rastro Quente: o Inspetor fareja a trilha e vai atrás de onde você passou.
+- Novo mutador Presença Delatora: mesmo parada, a casa denuncia sua posição de vez em quando.
+- Novo mutador Passos Pesados: cada passo soa mais alto, valorizando andar devagar e agachar.
+- Novo mutador Corrida Que Ecoa: correr ecoa pelo prédio inteiro em qualquer capítulo.
+- Novo mutador Relâmpago: a noite inteira roda mais rápido (jogador, Inspetor, Ana).
+- Novo mutador Pernas Pesadas: SHIFT não corre mais; tudo vira leitura de rota.
+- Novo mutador Sem Pé Ante Pé: o jogador não consegue andar devagar (ALT).
+- Novo mutador Sem Agachar: os joelhos não dobram, nada de abafar o passo agachando.
+- Novo mutador Controles Trocados: esquerda e direita do movimento invertidas.
+- Novo mutador Mira Espelhada: o eixo horizontal do mouse vira ao contrário.
+- Novo mutador Sem Olhar pra Trás: a tecla Q de olhar para trás deixa de funcionar.
+- Novo mutador Sem Espiar: escondida, não dá para espiar pela fresta (Z/X).
+- Novo mutador Mãos Vazias: sem garrafa, curativo nem pilha a noite inteira.
+- Novo mutador Sem Garrafa: a garrafa some do inventário, sem distrair o Inspetor.
+- Novo mutador Pele Dura: sem curativo, a vida perdida não volta.
+- Novo mutador Só Uma Garrafa: o jogador carrega no máximo uma garrafa por vez.
+- Novo mutador Só Um Curativo: no máximo um curativo guardado de cada vez.
+- Novo mutador Garrafa Barulhenta: a garrafa estoura muito mais alto.
+- Novo mutador Truque Velho: o Inspetor quase não cai mais na distração da garrafa.
+- Novo mutador Sem Esconderijo: armários e camas ficam pregados a noite toda.
+- Novo mutador Esconderijo Podre: a semente apodrece um esconderijo que range e te entrega.
+- Novo mutador Caçada: a noite já começa com o Inspetor te caçando, sem preparação.
+- Novo mutador Água Traiçoeira: na água o medo sobe e o movimento espalha barulho.
+- Novo preset Regras da Casa: pilha única, sem esconderijo e passos pesados num clique.
+- Novo preset De Mãos Limpas: mãos vazias somadas a uma pilha só.
+- Novo preset Corrida às Cegas: coração exposto com passos pesados.
+- Novo preset Noite Cega: no escuro, coração exposto e passos pesados juntos.
+- Novo modo Regra da Noite: a semente fixa uma regra da casa, com conquista ao cumprir.
+- Regra da Noite "não corra": correr quebra a regra daquele capítulo.
+- Regra da Noite "não acenda a lanterna muito tempo": luz acesa demais quebra a regra.
+- Regra da Noite "não jogue garrafa": gastar uma garrafa quebra a regra.
+- Regra da Noite "não fique parada demais": parar tempo demais quebra a regra.
+- Regra da Noite "não se esconda": entrar em armário ou cama quebra a regra.
+- Regra da Noite "não deixe o pavor te dominar": deixar o medo estourar quebra a regra.
+- Quebrar a Regra da Noite solta um ruído que atrai o Inspetor como castigo.
+- Novo modo Economia da Noite: a semente decide a fartura ou a escassez da noite.
+- Economia da Noite "seca": a noite começa com um curativo a menos.
+- Economia da Noite "cheia": a noite começa com uma garrafa a mais.
+- Economia da Noite "pilha contada": sem pilhas reservas naquela noite.
+- Botão Me Surpreenda: sorteia um combo de mutadores, a dificuldade e às vezes uma regra, e já começa a noite.
+- Nova tech Deslize: agachar correndo faz a Lia escorregar e abaixar o perfil por um instante.
+- Dica do Deslize aparece na primeira vez que ele é usado.
+- Contador de noites jogadas guardado entre partidas.
+- Lampejo de déjà-vu da Lia no prólogo a partir da segunda noite jogada.
+- Nova conquista secreta Nó Cego: terminar um capítulo sem usar esconderijo.
+- Nova conquista secreta De Mãos Vazias: terminar um capítulo de mãos vazias.
+- Nova conquista secreta Mão Trocada: terminar um capítulo com os controles trocados.
+- Nova conquista secreta Num Piscar: terminar um capítulo no modo Relâmpago.
+- Nova conquista secreta Coração à Mostra: terminar um capítulo com o coração exposto.
+- Nova conquista secreta Sem Trégua: terminar um capítulo com o Inspetor caçando desde o início.
+- Nova conquista secreta À Pilha Contada: terminar um capítulo com uma pilha só.
+- Nova conquista secreta Casa em Ordem: cumprir a Regra da Noite por um capítulo inteiro.
+- Nova conquista secreta O Que a Noite Mandar: terminar um capítulo numa noite do Me Surpreenda.
+- Nova conquista secreta Raiz: terminar um capítulo no preset Regras da Casa.
+- Nova conquista secreta No Breu: terminar um capítulo sem lanterna.
+- Nova conquista secreta Por Um Fio: terminar um capítulo inteiro de Corpo Frágil.
+- Recorde próprio do capítulo mais longe alcançado em cada desafio.
+- Recorde próprio de menor tempo até avançar em cada desafio.
+- Painel mostra seus recordes e quantas noites de desafio você já jogou.
+- Painel mostra quantas conquistas de modo você já destravou.
+- Novo botão "Modos" na tela de título.
+- Nova tela "Modos & Desafios" com presets, regras, mutadores e recordes.
+- Mutadores do painel agrupados por categoria (Luz, Corpo, Passos, Controle, Itens...) com descrição em cada um.
+- A seleção de mutadores e modos fica salva entre sessões.
+- Botão "Limpar tudo" zera os modos escolhidos de uma vez.
+- Painel mostra o código legível do desafio montado.
+- Presets podem ser jogados direto do painel, já iniciando a noite.
+- Aviso no começo de cada capítulo lista os modos, a regra ou a economia ativos.
+- A semente da noite passa a aparecer na tela de morte.
+- Botão "Copiar semente" na tela de morte, para desafiar um amigo com a mesma noite.
+- Botão "Refazer esta noite" na tela de morte, recomeçando com a mesma semente exata.
+- Os modos ativos da noite aparecem listados na tela de morte.
+- Os mutadores escolhidos seguem firmes nos checkpoints, nas mortes e na noite refeita.
+- Módulo de rejogabilidade adicionado ao cache offline para o jogo rodar sem internet.
