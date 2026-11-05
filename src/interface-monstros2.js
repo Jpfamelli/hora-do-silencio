@@ -91,7 +91,7 @@ export function criarInterfaceMonstros2(C, U) {
     garantir();
     const S = C.S, P = C.P, M = C.M;
     const jogo = C.mode === 'jogo' && S && !S.dead && !S.fim;
-    if (!jogo || C.ui || !ativo) { esconder(); drone(false); return; }
+    if (!jogo || C.ui || !ativo || document.body.classList.contains('pl5-cego')) { esconder(); drone(false); return; } // Modo Cego: nenhuma ajuda de leitura
     escondido = false;
     const cap = S.chapter | 0, dif = S.dif;
     const dIns = (M && M.ativo && P.pos) ? M.pos.distanceTo(P.pos) : 999;
@@ -398,11 +398,11 @@ export function criarInterfaceMonstros2(C, U) {
     for (const a of APITO) h += `<b>${a.sinal}</b><span>${ap[a.id] ? a.diz : '— ainda não ouvido'}</span>`;
     h += '</div>';
     if (OPT.desumDiario) {
-      const cap = S ? (S.chapter | 0) : 0;
+      const cap = S ? (S.chapter | 0) - 1 : -1; // capítulos I a V = Funcionário a Fera (o prólogo ainda não tem Inspetor)
       h += '<h4 style="color:#c9a75a;margin:14px 0 2px">O Inspetor: homem → fera</h4>';
       h += '<div class="desum">';
       for (let i = 0; i < 5; i++) h += `<i class="${i <= cap ? 'on' : ''}" title="${DESUM[i]}"></i>`;
-      h += `</div><p style="color:#d9a092;font-size:13px;margin:2px 0 0">Esta noite ele já é: <b>${DESUM[Math.min(5, cap)]}</b>.</p>`;
+      h += `</div><p style="color:#d9a092;font-size:13px;margin:2px 0 0">${cap >= 0 ? `Esta noite ele já é: <b>${DESUM[Math.min(4, cap)]}</b>.` : 'Ele ainda não apareceu: a noite mal começou.'}</p>`;
       // mapa de calor da caçada: salas onde ele mais caçou nesta noite
       const hc = (S && S.flags && S.flags.cacaHeat) || {};
       const salas = Object.keys(hc).sort((a, b) => hc[b] - hc[a]).slice(0, 6);

@@ -309,6 +309,72 @@
   #diario .caca-mapa{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
   #diario .caca-mapa span{padding:2px 8px;border-radius:3px;font-size:13px;background:rgba(0,0,0,.3);border:1px solid rgba(201,167,90,.2)}
   @media (max-width:700px){#m-postura{top:120px}#m-narina{top:148px}#m-contador{top:62px}#m-leitura{top:92px}#m-brisa{top:176px}#m-bengala{top:204px}}
+  /* ---- Lote 5 (3ª rodada): painel de bordo, cartões da Lia, cerco, retratos ---- */
+  #m3-col{position:absolute;right:28px;top:176px;display:flex;flex-direction:column;align-items:flex-end;gap:3px;pointer-events:none;font-family:"IM Fell English SC",Georgia,serif;font-size:14px;letter-spacing:.06em;color:#cfc3a6;text-shadow:0 0 6px #000,0 0 2px #000}
+  #m3-col .lin{opacity:.88;padding:1px 8px;border-right:2px solid rgba(201,167,90,.45);background:linear-gradient(270deg,rgba(0,0,0,.35),transparent)}
+  #m3-col .lin[data-k=contra]{color:#e6c98a;border-right-color:#c9a75a}
+  #m3-col .lin[data-k=caca],#m3-col .lin[data-k=fila]{color:#e07a6c;border-right-color:#9c2c22}
+  #m3-col .lin[data-k=folga]{color:#8fbf9a;border-right-color:#5d7a3a}
+  #m3-col .lin[data-k=sala]{color:#d9a092}
+  body.contraste #m3-col{color:#fff}
+  body.contraste #m3-col .lin{background:rgba(0,0,0,.7)}
+  #m3-ultimo,#m3-rastro{position:absolute;left:50%;top:50%;width:0;height:0;pointer-events:none;transition:transform .18s linear,opacity .3s}
+  #m3-ultimo::before{content:"✕";position:absolute;left:-9px;top:-27vh;font-size:22px;color:#c9a75a;text-shadow:0 0 6px #000;transform:translateX(-50%)}
+  #m3-rastro::before{content:"▿";position:absolute;left:0;top:-24vh;font-size:20px;color:#b08a5a;text-shadow:0 0 6px #000;transform:translateX(-50%)}
+  #m3-fio{position:absolute;left:30%;right:30%;top:14px;height:3px;background:rgba(255,255,255,.08);pointer-events:none;border-radius:2px;overflow:hidden}
+  #m3-fio i{display:block;height:100%;width:0;transition:width .25s linear}
+  #m3-cerco{position:absolute;inset:0;pointer-events:none;opacity:0;background:radial-gradient(ellipse at center,transparent 38%,rgba(40,4,2,.55) 78%,rgba(8,0,0,.88) 100%);transition:opacity .6s}
+  #m3-cartao{position:absolute;left:50%;bottom:19%;width:min(520px,88vw);transform:translate(-50%,10px);opacity:0;pointer-events:none;padding:10px 16px 12px;background:rgba(10,8,6,.78);border:1px solid rgba(201,167,90,.35);border-left:3px solid #9c2c22;text-shadow:0 0 6px #000;transition:opacity .45s,transform .45s}
+  #m3-cartao.on{opacity:1;transform:translate(-50%,0)}
+  #m3-cartao b{display:block;font-family:"IM Fell English SC",Georgia,serif;font-weight:normal;letter-spacing:.12em;color:#c9a75a;font-size:15px;margin-bottom:3px}
+  #m3-cartao span{display:block;font-family:"IM Fell English",Georgia,serif;font-style:italic;color:#d8cdb2;font-size:16px;line-height:1.4}
+  body.menos-mov #m3-cartao{transition:opacity .2s;transform:translate(-50%,0)}
+  body.contraste #m3-cartao{background:#000;border-color:#fff}
+  #hud.panico #m3-col .lin:not([data-k=caca]):not([data-k=contra]),#hud.panico #m3-cartao{opacity:0}
+  #fc-l5{font-family:"Special Elite",monospace;font-size:13px;color:#a79c82;line-height:1.7}
+  #death-retrato{display:block;margin:0 auto 12px;border:1px solid #3a2a22;filter:contrast(1.1);opacity:.92}
+  #death-l5{font-style:normal;font-family:"IM Fell English",Georgia,serif;font-size:16px;color:#bfae8a;max-width:600px;margin:0 auto 16px;line-height:1.55}
+  #death-l5 b{color:#d9a092;font-family:"IM Fell English SC",Georgia,serif;letter-spacing:.08em;font-weight:normal}
+  #p-ameacas .l5-p{color:#8f866f;font-family:"Special Elite",monospace;font-size:12px;letter-spacing:.04em}
+  #opcoes .op .op-desc{flex-basis:100%;order:9;margin-top:-4px;font-family:"Special Elite",monospace;font-size:12px;color:#857a63;line-height:1.4}
+  #opcoes .op:has(.op-desc){flex-wrap:wrap}
+  #opcoes h3 .op-cont{font-style:normal;font-family:"Special Elite",monospace;font-size:11px;letter-spacing:.04em;color:#857a63;margin-left:10px}
+  #opcoes .op-leitura-nota{margin:0 0 8px}
+  #opcoes .op-leitura-nota p{font-size:14px;color:var(--fraco);margin:0 0 6px;line-height:1.5}
+  #opcoes .op-leitura-nota .btn{margin:2px 6px 2px 0;padding:4px 10px;font-size:14px}
+  #diario .l5-nav{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 6px}
+  #diario .l5-nav .btn{padding:3px 10px;font-size:13px}
+  #diario .l5-prog{height:4px;background:rgba(255,255,255,.07);margin:0 0 12px;border-radius:2px;overflow:hidden}
+  #diario .l5-prog i{display:block;height:100%;background:linear-gradient(90deg,#6d7a3a,#9c2c22)}
+  #diario .l5-hr{border:none;border-top:1px solid rgba(201,167,90,.18);margin:16px 0}
+  #diario .l5-h{color:#c9a75a;margin:16px 0 4px;font-family:"IM Fell English SC",Georgia,serif;font-weight:normal;letter-spacing:.08em}
+  #diario .l5-est{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+  #diario .l5-est canvas{flex:0 0 120px;border:1px solid #2c2720}
+  #diario .l5-est ol{flex:1;min-width:220px;margin:0;padding-left:20px;font-size:14.5px;line-height:1.5}
+  #diario .l5-est li{padding:3px 0;color:var(--ui)}
+  #diario .l5-est li.x{color:#4a443a;font-style:italic}
+  #diario .l5-est li.agora b{color:#d9a092}
+  #diario .l5-grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;margin:6px 0}
+  #diario .l5-grade div{background:#141210;border:1px solid #2c2720;padding:6px 10px}
+  #diario .l5-grade small{display:block;font-family:"Special Elite",monospace;font-size:11px;color:var(--fraco)}
+  #diario .l5-grade b{font-size:20px;color:#cfc3a6;font-weight:normal}
+  #diario .l5-fino{color:var(--fraco);font-size:13px;margin:6px 0}
+  #diario .l5-novos,#diario .l5-notas{list-style:none;margin:6px 0;padding:0;font-size:14px;line-height:1.5}
+  #diario .l5-novos li,#diario .l5-notas li{padding:4px 0;border-top:1px solid #221f1a}
+  #diario .l5-novos li.x{color:#4a443a;font-style:italic}
+  #diario .l5-novos .cj{display:block;color:var(--fraco);font-style:italic;font-size:12.5px}
+  #diario .l5-notas b{color:#c9a75a;font-weight:normal;font-family:"IM Fell English SC",Georgia,serif}
+  #diario .l5-escuta{display:grid;grid-template-columns:auto 1fr;gap:3px 18px;font-size:14px;margin:6px 0}
+  #diario .l5-escuta em{font-style:normal;color:#d9a092;font-family:"Special Elite",monospace;font-size:13px}
+  body.leg-G #m3-col,body.leg-GG #m3-col{font-size:16px}
+  body.leg-P #m3-col{font-size:12px}
+  body.leg-G #m3-cartao span,body.leg-GG #m3-cartao span{font-size:19px}
+  body.leg-GG #m3-cartao{width:min(640px,92vw)}
+  #diario .best .ficha.agora{border-color:#7a2a22;box-shadow:0 0 0 1px rgba(156,44,34,.4)}
+  #diario .best .ficha.agora .cont::after{content:" · por perto agora";color:#d9a092}
+  #legsom div.dele{text-shadow:0 0 8px #000,0 0 14px rgba(120,20,14,.55);letter-spacing:.02em}
+  @media (max-width:700px){#m3-col{top:140px;right:14px;font-size:12px}#m3-cartao{bottom:24%}#fc-l5{font-size:12px}}
+  @media (prefers-reduced-motion:reduce){#m3-cartao,#m3-cerco,#m3-fio i{transition:none}}
   #legsom div.eu{color:#9fb6c9}
   #legsom div.dele{color:#d9a092;font-weight:bold}
   #diario .best{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
@@ -843,6 +909,12 @@
   <div id="m-bengala" hidden></div>
   <div id="m-arco" hidden></div>
   <div id="m-silencio" hidden></div>
+  <div id="m3-cerco" hidden></div>
+  <div id="m3-ultimo" hidden></div>
+  <div id="m3-rastro" hidden></div>
+  <div id="m3-fio" hidden><i></i></div>
+  <div id="m3-col" hidden role="status" aria-live="off"></div>
+  <div id="m3-cartao" hidden role="status" aria-live="polite"><b></b><span></span></div>
   <div id="cross"></div>
   <svg id="hold" viewBox="0 0 54 54" hidden><circle cx="27" cy="27" r="22" stroke="rgba(255,255,255,.15)"/><circle id="hold-arc" cx="27" cy="27" r="22" stroke="#e9dfc8" stroke-dasharray="138.2" stroke-dashoffset="138.2"/></svg>
   <div id="prompt"></div>
@@ -968,11 +1040,14 @@
   <canvas id="death-mapa" width="340" height="200" hidden></canvas>
   <p id="death-dica"></p>
   <p id="death-best" hidden></p>
+  <canvas id="death-retrato" width="120" height="120" hidden aria-hidden="true"></canvas>
+  <p id="death-l5" hidden></p>
   <div class="conta" id="death-conta"></div>
   <div class="info" id="death-info"></div>
   <div class="stats" id="dt-stats"></div>
   <button class="btn" id="dt-retry">Tentar de novo</button>
   <button class="btn" id="dt-leve" hidden>Tentar de novo com este trecho mais leve</button>
+  <button class="btn" id="dt-ajuda" hidden>Ligar as leituras essenciais do perigo (Opções)</button>
   <button class="btn" id="dt-menu">Menu principal</button>
   <div class="teclas">E, ESPAÇO ou ENTER tenta de novo · M menu</div>
 </div>
@@ -986,6 +1061,7 @@
   <div class="stats" id="fc-stats"></div>
   <div class="stats" id="fc-falta"></div>
   <div class="stats" id="fc-mundo"></div>
+  <div class="stats" id="fc-l5" hidden></div>
   <div class="gancho" id="fc-gancho"></div>
   <div class="recado" id="fc-recado"></div>
   <div id="fc-pular">E ou ENTER para seguir</div>

@@ -89,3 +89,95 @@
 - Posicionamento responsivo dos novos indicadores de leitura no celular.
 - Novos overlays de leitura do perigo adicionados ao HUD (todos começam ocultos).
 - Módulo registrado no service worker para funcionar com o jogo offline.
+- Painel de bordo opcional no canto direito (grupo "Leitura do perigo — painel de bordo"), todo desligado por padrão.
+- Painel: diz se ele está na sua sala, na sala ao lado ou longe, sem mostrar a posição exata.
+- Painel: mostra até quantos metros o seu barulho chega agora.
+- Painel: estima quão quente está o seu rastro de cheiro (quente, morno, esfriando, frio ou parado).
+- Painel: barra de tensão dele; quando enche, ele recua por um tempo.
+- Painel: contagem dos segundos de folga que a noite te dá depois que ele recua.
+- Painel: contagem regressiva até a fila da Procissão chegar.
+- Painel: o número em que a Menina Que Conta está, grande e claro.
+- Painel: cronômetro da caçada em curso.
+- Painel: uma frase com o contra-jogo certo para o momento (esconda-se, agache, prenda o ar, luz nela).
+- Marcador ✕ na borda apontando o último barulho que ele ouviu, para onde ele vai investigar.
+- Seta ▿ na borda apontando o seu rastro mais fresco, para decidir por onde não voltar.
+- Fio de paciência no alto da tela: enche durante a caçada e esvazia enquanto ele procura.
+- No pânico da caçada o painel esconde tudo menos o cronômetro e o contra-jogo.
+- Nova opção de legendas para os comportamentos que faltavam, desligada por padrão.
+- Legenda "[ele recuou — a noite dá uma folga curta]" quando a tensão dele estoura.
+- Legenda "[a folga acabou — ele voltou a rondar]" quando o recuo termina.
+- Legenda "[ele esmurra a porta]" a cada soco numa porta.
+- Legenda "[ele ficou calado — não espere os estalos]" quando ele para de estalar a língua.
+- Legenda "[ele está atordoado]" quando ele fica tonto.
+- Legenda "[ele tropeçou correndo atrás de você]" quando ele cai na caçada.
+- Legenda "[a garrafa o distraiu]" quando ele morde a isca da garrafa.
+- Legenda "[ele espera atrás da porta]" na emboscada.
+- Legenda "[ele volta para conferir o lugar do barulho]" quando ele retorna.
+- Legenda "[ele prende a respiração para escutar]" quando ele para de vez.
+- Legenda "[o bote errou — a mão dele passou]" quando você escapa do bote.
+- Legenda "[o Inspetor, esta noite: Guarda]" na virada de cada capítulo, com o estágio dele.
+- Cartões da Lia na primeira vez que algo novo acontece: uma frase curta na parte de baixo da tela, uma vez só na vida.
+- Cartão "Ele": o Inspetor é cego e caça pelo som.
+- Cartão "Os estalos": o que o estalar de língua dele diz sobre a distância.
+- Cartão "Ele fareja": o que fazer dentro do esconderijo quando ele fuça.
+- Cartão "O bote": agachada e parada, a mão pode passar por cima.
+- Cartão "Ele recuou": a folga da noite existe, use sem correr.
+- Cartão "Ele parou": a reza dele é uma janela para se afastar.
+- Cartão "Atrás da porta": escute antes de entrar numa sala escura demais.
+- Cartão "Ela conta": luz na Menina e andar de costas.
+- Cartão "A fila": esconda-se assim que a luz falhar e o rádio chiar.
+- Cartão "A voz": o Chamado é isca e atrai o Inspetor.
+- Cartão "Correr": o barulho da corrida vai longe.
+- Cartão "Ele ouviu": reparar no que você acabou de fazer quando ele muda de passo.
+- Cartão de estágio ao começar cada capítulo: Funcionário, Guarda, Vigia, Carcereiro e Fera, cada um com a sua frase.
+- Os cartões somem no pânico, esperam a caçada passar, respeitam "tempo de leitura longo" e crescem com o tamanho da legenda.
+- "Anotações da Lia" no caderno: relê os cartões que já apareceram.
+- Ao escapar de uma caçada, aviso "você aguentou N segundos de caçada" (opção ligada por padrão).
+- Nova conquista "Fôlego de ferro" para quem aguenta uma caçada de 45 segundos ou mais.
+- Cerco da caçada longa: a borda escurece devagar, sem piscar, conforme a perseguição se arrasta.
+- Recordes entre noites no caderno: maior caçada, total de escapadas e sequência de escapadas sem ser pega.
+- Uma descrição de uma linha embaixo de cada opção de Leitura do perigo, dizendo o que ela faz.
+- Cada grupo de Leitura do perigo mostra "N de M ligadas" no título.
+- Atalhos nas opções: Desligar tudo, Só o essencial, Sem som e Tudo.
+- Nota no começo da Leitura do perigo explicando que tudo é opcional e nunca entrega a posição de longe.
+- Depois de três mortes no mesmo capítulo a tela de morte oferece, num clique, as leituras essenciais.
+- Retrato do monstro que te pegou na tela de morte (Inspetor, Menina, Procissão e Chamado).
+- O retrato do Inspetor piora a cada capítulo: venda mais suja, mais costuras, boca mais aberta, rachadura.
+- Na morte pelo Inspetor aparece o estágio dele e a frase do estágio.
+- Na morte pelo Inspetor aparece quantos segundos durou a caçada.
+- Na morte pelo Inspetor aparece em que sala ele ouviu você pela última vez.
+- Dica de morte própria de cada capítulo para o Inspetor.
+- Dicas de morte próprias para a Menina, a Procissão e o Chamado.
+- Contador "já te pegou N vezes" por entidade, guardado entre noites.
+- Pausa: mostra o estágio do Inspetor na noite.
+- Pausa: mostra quantas vezes ele já te ouviu nesta noite.
+- Pausa: mostra a sua maior caçada de todas as noites.
+- Pausa: "na hora:" lembra o contra-jogo da situação enquanto você respira.
+- Fim de capítulo: o estágio do Inspetor e para qual ele vai.
+- Fim de capítulo: quantas caçadas houve e a duração da maior.
+- Fim de capítulo: quantas escapadas (e quantas escondida) e quantas vezes ele te ouviu.
+- Fim de capítulo: quantos esconderijos você usou.
+- Aba Monstros: botões de atalho no topo (cada ficha, Estágios, Esta noite, Como ele ouve, Anotações).
+- Aba Monstros: barra de progresso dos comportamentos descobertos.
+- Aba Monstros: "O Inspetor, estágio por estágio", só até o capítulo em que você está, com retrato.
+- Aba Monstros: "Esta noite" em seis caixas (caçadas, escapadas, escondida, esconderijos, maior caçada, vezes ouvida).
+- Aba Monstros: dez comportamentos novos do Inspetor que se preenchem ao vivê-los, nunca por coleta.
+- Aba Monstros: tabela "Como ele ouve" com o alcance de cada ação (parada, agachada, correndo, água, garrafa…).
+- Aba Monstros: a ficha da entidade que está por perto agora ganha destaque.
+- A linha do save no título agora diz "ele já é: Vigia", o estágio do Inspetor naquele ponto.
+- Como jogar: nova regra "Ele recua. Não é sorte."
+- Como jogar: nova regra "A cada capítulo ele é menos homem."
+- Como jogar: nova regra "Difícil de ler?" apontando a Leitura do perigo.
+- A descrição do Pesadelo no título avisa que a Leitura do perigo continua disponível.
+- Corrigido: o medidor "homem → fera" estava deslocado um capítulo e o Carcereiro nunca aparecia.
+- O medidor "homem → fera" no prólogo fica vazio e diz que ele ainda não apareceu.
+- O Modo Cego agora desliga também a leitura avançada (coração, brasa, névoa, vapor, setas, drone, legendas).
+- A legenda do seu barulho agora diz até quantos metros ele chega.
+- A legenda dos passos dele agora diz de que lado eles vêm.
+- Legendas das ameaças ganham um halo vermelho para ler melhor sobre cenas claras.
+- O painel de bordo acompanha o tamanho da legenda (pequeno, grande, enorme).
+- Cartões, cerco e fio respeitam "reduzir movimento" e a preferência do sistema.
+- Layout de celular para o painel, os cartões e o fim de capítulo.
+- Painel e cartões em alto contraste quando a opção está ligada.
+- Cartões e painel anunciados para leitores de tela (regiões de estado).
+- Módulo novo registrado no service worker para jogar sem internet.
