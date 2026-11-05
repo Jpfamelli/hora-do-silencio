@@ -100,7 +100,7 @@
   #fita-ind{position:absolute;right:28px;top:24px;font-family:"Special Elite","Courier New",monospace;font-size:14px;color:#c9a75a;text-shadow:0 0 6px #000}
   #fita-ind::before{content:"● ";color:var(--sangue);animation:pisca 1s infinite}
   @keyframes pisca{50%{opacity:0}}
-  #toast{position:absolute;left:50%;top:18%;transform:translateX(-50%);font-size:20px;font-style:italic;text-shadow:0 0 10px #000;opacity:0;transition:opacity .5s;text-align:center;width:min(700px,90vw)}
+  #toast{position:absolute;left:50%;top:18%;transform:translateX(-50%);font-size:20px;font-style:italic;text-shadow:0 0 10px #000;opacity:0;transition:opacity .5s;text-align:center;width:min(clamp(320px,calc(100vw - 880px),700px),90vw)}
   #conq{position:absolute;right:28px;top:60px;background:rgba(10,8,6,.85);border:1px solid #3a3228;padding:10px 16px;font-family:"IM Fell English SC",Georgia,serif;letter-spacing:.08em;opacity:0;transition:opacity .6s,transform .6s;transform:translateX(20px)}
   #conq.on{opacity:1;transform:none}
   #conq small{display:block;font-family:"IM Fell English";font-style:italic;letter-spacing:0;color:var(--fraco)}
@@ -324,7 +324,7 @@
   #m3-fio{position:absolute;left:30%;right:30%;top:14px;height:3px;background:rgba(255,255,255,.08);pointer-events:none;border-radius:2px;overflow:hidden}
   #m3-fio i{display:block;height:100%;width:0;transition:width .25s linear}
   #m3-cerco{position:absolute;inset:0;pointer-events:none;opacity:0;background:radial-gradient(ellipse at center,transparent 38%,rgba(40,4,2,.55) 78%,rgba(8,0,0,.88) 100%);transition:opacity .6s}
-  #m3-cartao{position:absolute;left:50%;bottom:19%;width:min(520px,88vw);transform:translate(-50%,10px);opacity:0;pointer-events:none;padding:10px 16px 12px;background:rgba(10,8,6,.78);border:1px solid rgba(201,167,90,.35);border-left:3px solid #9c2c22;text-shadow:0 0 6px #000;transition:opacity .45s,transform .45s}
+  #m3-cartao{position:absolute;left:50%;top:27%;width:min(520px,88vw);transform:translate(-50%,10px);opacity:0;pointer-events:none;padding:10px 16px 12px;background:rgba(10,8,6,.78);border:1px solid rgba(201,167,90,.35);border-left:3px solid #9c2c22;text-shadow:0 0 6px #000;transition:opacity .45s,transform .45s}
   #m3-cartao.on{opacity:1;transform:translate(-50%,0)}
   #m3-cartao b{display:block;font-family:"IM Fell English SC",Georgia,serif;font-weight:normal;letter-spacing:.12em;color:#c9a75a;font-size:15px;margin-bottom:3px}
   #m3-cartao span{display:block;font-family:"IM Fell English",Georgia,serif;font-style:italic;color:#d8cdb2;font-size:16px;line-height:1.4}
@@ -373,7 +373,9 @@
   #diario .best .ficha.agora{border-color:#7a2a22;box-shadow:0 0 0 1px rgba(156,44,34,.4)}
   #diario .best .ficha.agora .cont::after{content:" · por perto agora";color:#d9a092}
   #legsom div.dele{text-shadow:0 0 8px #000,0 0 14px rgba(120,20,14,.55);letter-spacing:.02em}
-  @media (max-width:700px){#m3-col{top:140px;right:14px;font-size:12px}#m3-cartao{bottom:24%}#fc-l5{font-size:12px}}
+  @media (max-width:700px){#m3-col{top:140px;right:14px;font-size:12px}#m3-cartao{top:30%}#fc-l5{font-size:12px}}
+  body.leg-alto #m3-cartao{top:auto;bottom:19%}
+  @media (max-width:1100px){#toast{top:30%}}
   @media (prefers-reduced-motion:reduce){#m3-cartao,#m3-cerco,#m3-fio i{transition:none}}
   #legsom div.eu{color:#9fb6c9}
   #legsom div.dele{color:#d9a092;font-weight:bold}
