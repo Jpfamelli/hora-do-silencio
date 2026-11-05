@@ -5,6 +5,7 @@
 // contra-jogo e o epílogo da noite toda em silêncio. Tudo passivo e à prova de erro (não trava o jogo nem o QA).
 // Ligado por src/progressao.js (PG); o texto mora em src/progressao-lote5-roteiro.js.
 import './progressao-lote5-roteiro.js';
+import { L5B } from './progressao-lote5b.js'; // 2ª rodada: modos de rejogo, memória entre noites, placar de contra-jogos, recordes, noites por humor
 
 const K = 'hora-silencio-l5';
 const $ = s => document.querySelector(s);
@@ -26,17 +27,18 @@ function tempId(S) {
 }
 // chave de cache para PG.dif (muda quando muda o humor, o modo ou o sangue para o farejador)
 function difKey(S) {
-  try { if (!S) return ''; const t = tempId(S); return t[0] + ((S.modo && S.modo.cacada) ? 'C' : '') + ((t === 'farejador' && (S.capDano || 0) > 0) ? 'B' : ''); } catch (e) { return ''; }
+  try { if (!S) return ''; const t = tempId(S); let k = t[0] + ((S.modo && S.modo.cacada) ? 'C' : '') + ((t === 'farejador' && (S.capDano || 0) > 0) ? 'B' : ''); try { k += L5B.difKey(S); } catch (e) {} return k; } catch (e) { return ''; }
 }
 // altera a dificuldade efetiva do Inspetor conforme o humor da noite e o modo Caçada
 function difMod(v, S) {
   try {
-    if (!S || !v) return;
+    if (!S || !v || window.__teste) return; // no QA o jogo roda sozinho: humor/modos não mexem na dificuldade (silêncio do L5 previsto no GUIA)
     const t = tempId(S), pes = S.dif === 'pesadelo' ? 1.08 : 1;
     if (t === 'farejador') { v.ouvido *= 1.06 * pes; if ((S.capDano || 0) > 0) { v.vel *= 1.12; v.ouvido *= 1.1; } }
     else if (t === 'ouvinte') { v.ouvido *= 1.22 * pes; v.aviso = Math.max(2, v.aviso - 1); }
     else if (t === 'guardiao') { v.vel *= 1.05 * pes; if (v.intervalo) v.intervalo *= 0.84; }
     if (S.modo && S.modo.cacada) { v.ouvido *= 1.3; if (v.intervalo) v.intervalo *= 0.68; v.vel *= 1.05; }
+    try { L5B.difMod(v, S); } catch (e) {}
   } catch (e) {}
 }
 
@@ -78,7 +80,7 @@ const ESTADO_COMP = { caca: 'caca', alerta: 'caca', bote: 'bote', agarra: 'bote'
 function tick(dt) {
   try {
     const S = C.S, M = C.M, P = C.P;
-    if (!S || C.mode !== 'jogo' || S.dead || S.fim) return;
+    if (!S || C.mode !== 'jogo' || S.dead || S.fim || window.__teste) return; // L5 silenciado no QA (previsto no GUIA): progressão passiva não interfere na jogada automática
     const n = night(); if (!n) return;
     const cp = capN();
     // humor percebido: uma fala por noite, depois que a cena de abertura assentou
@@ -117,6 +119,7 @@ function tick(dt) {
     if (chAgora > (n._cham || 0)) { n._cham = chAgora; marcarComp('chamado', 'voz'); }
     // Boa Noite, Todos: três gestos de compaixão numa noite
     detectCompassao(n);
+    try { L5B.tick(dt); } catch (e) {}
   } catch (e) {}
 }
 function deNovoAqui(tp) {
@@ -207,6 +210,7 @@ function titulo() {
       if (m.melhorOuviu === 0 && TX().memoria.radioSilencio) bits.push(TX().memoria.radioSilencio);
       if (bits.length) el.textContent = (el.textContent ? el.textContent + ' · ' : '') + bits.join(' · ');
     }
+    try { L5B.titulo(); } catch (e) {}
   } catch (e) {}
 }
 
@@ -224,6 +228,7 @@ function morte(quem) {
     }
     _mdiag = d; _mtemp = n ? n.temp : null;
     recordCacada();
+    try { L5B.morte(quem); } catch (e) {}
   } catch (e) {}
 }
 function telaMorte() {
@@ -234,6 +239,7 @@ function telaMorte() {
     if (extra) bits.push('<small style="color:#857a63">' + esc(extra) + '</small>');
     if (n) bits.push('<small style="color:#6d6452">' + esc(n.ouviu ? T.ouviu.morte.replace('{n}', n.ouviu) : T.ouviu.morteZero) + '</small>');
     if (bits.length) el.innerHTML = (el.innerHTML ? el.innerHTML + '<br>' : '') + bits.join('<br>');
+    try { L5B.telaMorte(); } catch (e) {}
   } catch (e) {}
 }
 
@@ -247,10 +253,11 @@ function pausa() {
     if (S.modo && S.modo.cacada) partes.push('Caçada Limpa');
     let out = partes.length ? '<br>' + esc(partes.join(' · ')) : '';
     const dicas = T.pausa || []; if (dicas.length) out += '<br>' + esc(dicas[Math.abs((S.capMortes || 0) + (S.chapter || 0)) % dicas.length]);
+    try { out += L5B.pausa(); } catch (e) {}
     return out;
   } catch (e) { return ''; }
 }
-function difExtra() { try { return ' ' + (TX().difLinha || ''); } catch (e) { return ''; } }
+function difExtra() { try { return ' ' + (TX().difLinha || '') + L5B.difExtra(); } catch (e) { return ''; } }
 
 // ---------------------------------------------------------------- fim de capítulo
 function fimCap(c, r) {
@@ -267,6 +274,7 @@ function fimCap(c, r) {
     if (cp) { if (!cp.ouviu && (S.capT || 0) > 45) { conq('l5_cap_mudo'); out.push(TX().ouviu.capMudo); } else if (cp.ouviu) out.push(TX().ouviu.capOuviu.replace('{n}', cp.ouviu)); }
     if (n) { const T = TX().temperamentos[n.temp]; if (T) out.push(TX().diagnostico.humorFim.replace('{nome}', T.nome)); }
     if (S.modo && S.modo.cacada && n && TX().modo.tempoCap) out.push(TX().modo.tempoCap.replace('{t}', A.fmtC(Math.floor(n.cacadaT || 0))));
+    try { out.push(...L5B.fimCap(c, r)); } catch (e) {}
   } catch (e) {}
   return out;
 }
@@ -290,6 +298,7 @@ function final(tipo) {
       const favAnt = mem().favAnt; if (favAnt && !n.favContagem[favAnt]) conq('l5_variou');
     }
     const fav = favOf(n.favContagem); if (fav) mudar(x => { x.favAnt = fav; });
+    try { L5B.final(tipo); } catch (e) {}
   } catch (e) {}
 }
 
@@ -303,14 +312,16 @@ function statsLinhas() {
     const best = mem().placarCacada || 0; if (best) out.push(['Mais tempo na Caçada Limpa', A.fmtC(best)]);
     const ms = mem().melhorOuviu; if (ms != null) out.push(['Noite com menos vezes ouvida', ms]);
     const lc = l5Conq(); out.push(['Conquistas de monstro', `${lc.feitas}/${lc.total}`]);
+    try { out.push(...L5B.statsLinhas()); } catch (e) {}
     return out;
   } catch (e) { return []; }
 }
 
 // ---------------------------------------------------------------- API
 export const L5 = {
-  ligar(ctx, api) { C = ctx; A = api; try { css(); } catch (e) {} try { const R = window.ROTEIRO; for (const c of (TX().conquistas || [])) if (!R.conquistas.some(x => x.id === c.id)) R.conquistas.push(c); } catch (e) {} },
+  ligar(ctx, api) { C = ctx; A = api; try { css(); } catch (e) {} try { const R = window.ROTEIRO; for (const c of (TX().conquistas || [])) if (!R.conquistas.some(x => x.id === c.id)) R.conquistas.push(c); } catch (e) {} try { L5B.ligar(ctx, api); } catch (e) {} },
   difKey, difMod,
-  novoJogo(S) { try { S.modo = S.modo || {}; S.modo.cacada = !!(C.OPT.l5cacada && unlocked()); } catch (e) {} },
-  tick, titulo, morte, telaMorte, pausa, fimCap, final, statsLinhas, difExtra
+  novoJogo(S) { try { S.modo = S.modo || {}; S.modo.cacada = !!(C.OPT.l5cacada && unlocked()); } catch (e) {} try { L5B.novoJogo(S); } catch (e) {} },
+  tick, titulo, morte, telaMorte, pausa, fimCap, final, statsLinhas, difExtra,
+  copiar() { try { return L5B.copiar(); } catch (e) { return ''; } }
 };

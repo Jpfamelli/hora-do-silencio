@@ -92,3 +92,95 @@
 - Duas novas dicas de comportamento (a Menina na luz, a escuta na parede) giram na pausa
 - Os textos e arquivos do Lote 5 entram no cache offline (PWA) pelo service worker
 - Tudo do Lote 5 é passivo e à prova de erro: não trava o jogo nem o QA
+- Novo painel "Modos da caça" no título, com três modos de rejogo desbloqueáveis
+- Modo Vigília: o Inspetor nunca recua nem vai embora, a pressão de base nunca cede
+- Na Vigília o ouvido dele sobe e ele deixa de se acalmar com o tempo
+- Modo Perseguição: ele fica mais rápido e com ronda curtíssima, gato-e-rato o capítulo todo
+- Na Perseguição o intervalo entre rondas cai para 60% e a velocidade sobe 14%
+- Modo Caçador Único: o cérebro do Inspetor fica todo ligado o tempo inteiro
+- No Caçador Único o ouvido sobe bastante e o aviso antes do bote encurta
+- Os três modos da caça podem ser combinados entre si na mesma noite
+- Cada modo mostra um aviso próprio quando é ligado
+- Os modos só liberam depois de terminar a campanha uma vez (cadeado no painel)
+- A descrição da dificuldade no título mostra quais modos de caça estão ligados
+- A pausa mostra quais modos de caça estão ativos na noite
+- Recorde de tempo aguentado no modo Perseguição, guardado no painel dos modos
+- Ligar/desligar um modo salva junto com as outras opções do jogo
+- Se você morreu num lugar, ao recomeçar o capítulo ele avisa que está rondando lá
+- Morrer duas vezes na mesma sala acrescenta na tela de morte que ele voltou ao mesmo canto
+- Se você abusou de um tipo de esconderijo, na noite seguinte a Lia avisa que ele ronda esses
+- A dica do canto favorito muda conforme o tipo (armário, cama ou canto) que você repetiu
+- No Caçador Único, uma nota diz que ele aprendeu o seu caminho de ontem
+- O jogo guarda entre as noites o tipo de esconderijo que você mais repetiu
+- Morrer três vezes no mesmo lugar faz aparecer uma frase manuscrita do Davi sobre o canto
+- A carta do Davi muda conforme você insiste em morrer no mesmo ponto
+- O jogo passa a contar as mortes por sala de cada capítulo no save
+- Novo placar de contra-jogos: conta quantas defesas diferentes você usou na noite
+- Sete defesas rastreadas: esconderijo, prender o ar, estátua, garrafa, luz apagada, agachar e ponto cego
+- A pausa mostra quantas defesas de quantas você já usou nesta noite
+- Recorde de defesas diferentes numa só noite, guardado no painel
+- Conquista "Caderno de Defesas" por usar todas as defesas numa só noite
+- O painel lista cada defesa com uma dica curta de como usá-la
+- Virar estátua (imóvel, agachada, no escuro) conta como defesa no placar
+- Apagar a lanterna perto dele conta como defesa
+- Jogar a garrafa conta como defesa no placar
+- Agachar e andar devagar perto dele conta como defesa
+- Recorde de tempo colada no Inspetor sem morrer (fresta do armário, à queima-roupa)
+- Recorde da maior caçada sobrevivida sem se esconder
+- Recorde de mais tempo prendendo o ar durante uma caçada
+- Conquista "Pele e Osso" por aguentar dez segundos colada nele sem morrer
+- Os três recordes de bravura aparecem no painel "Noites e defesas"
+- As linhas de recordes de bravura entram também nas Estatísticas
+- Novo painel "Noites e defesas" com os humores do Inspetor que você já venceu
+- Cada humor vira um selo nomeado (Ouvido no Chão, Ouvido Afiado, Que Não Larga)
+- O painel conta quantas noites de cada humor você já sobreviveu
+- Conquista "Colecionador de Noites" por sobreviver a três noites de cada humor
+- As Estatísticas mostram quantos humores você já dominou (três noites cada)
+- Conquista secreta "Pelas Costas do Cego" por atravessar colada atrás dele no ponto cego
+- Detecta o ponto cego pela direção do rosto do Inspetor: colada atrás, ele não te ouve
+- Conquista secreta "Ele Sabe Meu Nome" por ficar imóvel até ele sussurrar seu nome e desistir
+- Quando você fica imóvel e prendendo o ar perto dele, ele sussurra o seu nome ao desistir
+- Conquista secreta "A Noite Sem Um Pio" por passar um capítulo sem ele chegar a caçar
+- Conquista secreta "Ninar o Monstro" por passar pelo nicho do Cap. IV sem acordá-lo
+- Conquista secreta "A Última Badalada" por vencer o sino sem soltar a corda nem levar o bote
+- Conquista secreta "Só Camas e Estátua" por terminar um capítulo sem usar nenhum armário
+- Conquista secreta "Caçador Silencioso" por terminar um capítulo sem disparar uma caça
+- Conquista secreta "Nunca Mordi a Isca" por passar o Cap. IV sem cair no lampião-isca
+- Conquista secreta "Nervos de Aço" por enganar a falsa partida imóvel três vezes na noite
+- Enganar a falsa partida ficando imóvel (em vez de correr em pânico) é reconhecido e premiado
+- Conquista secreta "Sem Trégua" por vencer um capítulo no modo Vigília
+- Conquista secreta "Fôlego de Corredor" por aguentar três minutos na Perseguição
+- Conquista secreta "Duelo Limpo" por terminar a campanha no modo Caçador Único
+- Fim de capítulo elogia quando ele não te caçou uma vez sequer
+- Fim de capítulo elogia o capítulo feito só de camas e cantos, sem armário
+- Fim de capítulo registra ter passado pelo nicho sem acordá-lo (Cap. IV)
+- Fim de capítulo registra não ter mordido o lampião-isca (Cap. IV)
+- Fim de capítulo registra ter atravessado salas nas costas dele
+- Fim de capítulo registra o capítulo vencido na Vigília
+- Fim de capítulo mostra o tempo que você aguentou colada nele
+- A tela de final mostra quantas defesas você usou na noite
+- A tela de final mostra o seu tempo colada nele, quando foi longo
+- O jogo conta capítulos vencidos em cada modo da caça
+- As Estatísticas mostram capítulos vencidos na Vigília, na Perseguição e no Caçador Único
+- Tela de morte explica que na Vigília ele nunca ia embora
+- Tela de morte explica que na Perseguição parar é morrer
+- Tela de morte avisa quando ele voltou ao lugar onde já tinha te pego
+- A lápide compartilhável passa a estampar quem mais te pegou, com ícone e contagem
+- O título lembra do corredor onde ele te pegou
+- O título lembra da sua melhor noite de defesas diferentes
+- Dois botões novos no título: "Modos da caça" e "Noites e defesas"
+- Cinco dicas novas de monstro giram na pausa (ponto cego, ronda da morte, falsa partida, defesas, nicho)
+- O humor da noite é calculado pela semente para contar as noites por humor
+- Os modos da caça entram no código de dificuldade e recalculam o cérebro do Inspetor
+- A conquista "Nervos de Aço" exige três blefes vencidos na mesma noite, não só um
+- A caçada sem esconderijo zera o recorde se você levar dano no meio
+- O tempo colada zera quando você se afasta, então o recorde é de um aperto só
+- O ponto cego vai sumindo quando você sai de trás dele, exigindo ficar colada de verdade
+- Os novos textos e arquivos entram no cache offline (PWA) pelo service worker
+- Todo o conteúdo da 2ª rodada é passivo e à prova de erro: não trava o jogo nem o QA
+- O painel dos modos mostra "Nenhuma perseguição aguentada ainda" até você jogar o modo
+- O painel das noites mostra o seu recorde de defesas diferentes no topo da lista
+- Cada humor ainda não vencido aparece esmaecido no painel das noites
+- A memória entre noites fica num espaço de save próprio, sem mexer nos saves antigos
+- A imobilidade é medida pela velocidade real da jogadora quadro a quadro, sem falso positivo ao esconder
+- O recorde de perseguição e os de bravura também valem fora dos modos, na campanha normal
