@@ -7,6 +7,8 @@ import { criarSegredos } from './interface-segredos.js';
 import { criarSegredos2 } from './interface-segredos2.js';
 import { criarInterfaceMonstros } from './interface-monstros.js';
 import { criarInterfaceLote6 } from './interface-lote6.js';
+import { criarInterfaceMonstros2 } from './interface-monstros2.js';
+import { criarInterfaceMonstros3 } from './interface-monstros3.js';
 export function criarInterface(C) {
   let MU = null; // mundo e história (lote 2): src/interface-mundo.js
   let PL = null; // polimento e plataforma (lote 3): src/interface-polimento.js
@@ -14,6 +16,8 @@ export function criarInterface(C) {
   let SG2 = null; // segredos e easter eggs (lote 4, 2ª leva): src/interface-segredos2.js
   let MM = null; // leitura do perigo (lote 5): src/interface-monstros.js
   let L6 = null; // rejogabilidade (lote 6): src/interface-lote6.js
+  let MM3 = null; // leitura do perigo, 3ª rodada (lote 5): src/interface-monstros3.js
+  let MM2 = null; // leitura do perigo avançada (lote 5, 2ª rodada): src/interface-monstros2.js
   const $ = s => document.querySelector(s);
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
   const lerp = (a, b, t) => a + (b - a) * t;
@@ -121,6 +125,7 @@ export function criarInterface(C) {
     if (PL) PL.opcoes(box);
     if (SG) SG.opcoes(box);
     if (SG2) SG2.opcoes(box);
+    if (MM3) MM3.opcoes(box);
     $('#opcoes').hidden = false; focar('#opcoes');
   }
   function fecharOpcoes() { $('#opcoes').hidden = true; if (opcVolta) $(opcVolta).hidden = false; focar(opcVolta); opcVolta = null; }
@@ -359,6 +364,7 @@ export function criarInterface(C) {
     if (SG) SG.morte(quem);
     if (MM) try { MM.morte(quem); } catch (e) {}
     if (L6) try { L6.morte(quem); } catch (e) {}
+    if (MM3) try { MM3.morte(quem); } catch (e) {}
   }
   function aliviar() {
     const cap = C.S.chapter; C.retry();
@@ -515,6 +521,7 @@ export function criarInterface(C) {
     if (PL) PL.fimCap(c, rk);
     if (SG) SG.fimCap(c);
     if (L6) try { L6.fimCap(c, rk, ant); } catch (e) {}
+    if (MM3) try { MM3.fimCap(c); } catch (e) {}
   }
 
   // ---------------------------------------------------------------- SEGREDOS DO TÍTULO
@@ -546,10 +553,10 @@ export function criarInterface(C) {
   }
   let subTO;
   function subTitulo(t) { const el = $('#t-sub'), orig = R.subtitulo; el.textContent = t; el.classList.add('segredo'); clearTimeout(subTO); subTO = setTimeout(() => { el.textContent = orig; el.classList.remove('segredo'); }, 6500); }
-  const DIF_DESC = { facil: 'Ele anda mais devagar e ouve menos. Golpes doem menos. Dicas da Lia e anel de barulho ligados.', normal: 'O medo como foi pensado. Dois golpes e acabou.', pesadelo: 'Ele ouve mais longe e um golpe mata. Sem anel de barulho, sem dicas.' };
+  const DIF_DESC = { facil: 'Ele anda mais devagar e ouve menos. Golpes doem menos. Dicas da Lia e anel de barulho ligados.', normal: 'O medo como foi pensado. Dois golpes e acabou.', pesadelo: 'Ele ouve mais longe e um golpe mata. Sem anel de barulho, sem dicas. A Leitura do perigo (Opções) segue disponível para quem precisa.' };
   function atualizarTitulo() {
     const sv = C.lsGet(C.SAVE_KEY, null), el = $('#t-save');
-    if (sv && R.capitulos[sv.chapter]) el.textContent = `${R.capitulos[sv.chapter].titulo} · ${(C.DIFS[sv.dif] || C.DIFS.normal).nome} · ${mmss(sv.tempo || 0)} jogados`;
+    if (sv && R.capitulos[sv.chapter]) el.textContent = `${R.capitulos[sv.chapter].titulo} · ${(C.DIFS[sv.dif] || C.DIFS.normal).nome} · ${mmss(sv.tempo || 0)} jogados${sv.chapter >= 1 && MM3 ? ` · ele já é: ${MM3.nomeEstagio(sv.chapter)}` : ''}`;
     else el.textContent = '';
     if (PL) PL.atualizarTitulo();
     if (SG) SG.atualizarTitulo();
@@ -569,6 +576,7 @@ export function criarInterface(C) {
     focar('#pause');
     if (SG) SG.pausa();
     if (MM) try { MM.pausa(); } catch (e) {}
+    if (MM3) try { MM3.pausa(); } catch (e) {}
   }
 
   // ---------------------------------------------------------------- TECLAS
@@ -612,6 +620,8 @@ export function criarInterface(C) {
     if (SG) SG.frame(dt, ativo);
     if (MM) try { MM.frame(dt, ativo); } catch (e) {}
     if (L6) try { L6.frame(dt, ativo); } catch (e) {}
+    if (MM2) try { MM2.frame(dt, ativo); } catch (e) {}
+    if (MM3) try { MM3.frame(dt, ativo); } catch (e) {}
     const S = C.S, P = C.P, M = C.M;
     if (S !== Sref) { Sref = S; rastro.length = 0; causa = null; motivoCaca = null; if (S && S.capT < 1 && S.chapter === 0 && S.tempo < 1) { mortesCap = {}; mortesCausa = {}; } }
     $('#cena-pular').hidden = C.mode !== 'cena';
@@ -670,9 +680,11 @@ export function criarInterface(C) {
   try { SG2 = criarSegredos2(C, { PAD, GRUPOS, som, legenda, subTitulo, registrarCodigo, emCampo, focar }); } catch (e) { console.warn('[segredos2]', e); }
   try { MM = criarInterfaceMonstros(C, { PAD, GRUPOS, direcao, legenda, focar, historico: (q, t) => historico(q, t) }); } catch (e) { console.warn('[monstros-ui]', e); }
   try { L6 = criarInterfaceLote6(C, { PAD, GRUPOS, focar, subTitulo }); } catch (e) { console.warn('[rejogo-ui]', e); }
+  try { MM2 = criarInterfaceMonstros2(C, { PAD, GRUPOS, direcao, legenda, focar, historico: (q, t) => historico(q, t) }); } catch (e) { console.warn('[monstros-ui2]', e); }
+  try { MM3 = criarInterfaceMonstros3(C, { PAD, GRUPOS, direcao, legenda, focar, aplicar, historico: (q, t) => historico(q, t) }); } catch (e) { console.warn('[monstros-ui3]', e); }
   aplicar();
   $('#b-opc').onclick = () => abrirOpcoes('#title');
   $('#p-opc').onclick = () => abrirOpcoes('#pause');
   atualizarTitulo();
-  return { mundo: MU, papel: (id, m) => MU.papel(id, m), renderTempo: el => MU.renderTempo(el), renderPessoas: el => MU.renderPessoas(el), renderParedes: () => MU.renderParedes(), ondeNota: id => MU.ondeNota(id), marcasAbas: () => { MU.marcasAbas(); if (SG) SG.diario(); }, marcaMapa: r => MU.marcaMapa(r), telaFinal: t => { MU.telaFinal(t); if (SG) SG.telaFinal(t); if (L6) try { L6.registrarFinal(t); L6.telaFinal(t); } catch (e) {} }, renderAlbum: el => SG ? SG.renderAlbum(el) : (el.innerHTML = ''), renderUltima: el => SG ? SG.renderUltima(el) : (el.innerHTML = ''), renderMonstros: el => MM ? MM.renderMonstros(el) : (el.innerHTML = ''), tecla, soltou, som, ruido, golpe, morte, objetivo, salvou, fimCap, frame, fala, historico, nomeFalante, renderPistas, renderOuvido, salaMarcada, pausa, atualizarTitulo, antesDeNovoJogo, confirmar, aplicar, mmss, get ultSaveTempo() { return ultSaveTempo; } };
+  return { mundo: MU, papel: (id, m) => MU.papel(id, m), renderTempo: el => MU.renderTempo(el), renderPessoas: el => MU.renderPessoas(el), renderParedes: () => MU.renderParedes(), ondeNota: id => MU.ondeNota(id), marcasAbas: () => { MU.marcasAbas(); if (SG) SG.diario(); }, marcaMapa: r => MU.marcaMapa(r), telaFinal: t => { MU.telaFinal(t); if (SG) SG.telaFinal(t); if (L6) try { L6.registrarFinal(t); L6.telaFinal(t); } catch (e) {} }, renderAlbum: el => SG ? SG.renderAlbum(el) : (el.innerHTML = ''), renderUltima: el => SG ? SG.renderUltima(el) : (el.innerHTML = ''), renderMonstros: el => { if (MM) MM.renderMonstros(el); else el.innerHTML = ''; if (MM2) try { MM2.render(el); } catch (e) {} if (MM3) try { MM3.render(el); } catch (e) {} }, tecla, soltou, som, ruido, golpe, morte, objetivo, salvou, fimCap, frame, fala, historico, nomeFalante, renderPistas, renderOuvido, salaMarcada, pausa, atualizarTitulo, antesDeNovoJogo, confirmar, aplicar, mmss, get ultSaveTempo() { return ultSaveTempo; } };
 }

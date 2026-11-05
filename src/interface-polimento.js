@@ -237,6 +237,8 @@ export function criarPolimento(C, U) {
     ouve: '<svg viewBox="0 0 80 60"><path d="M10 50 Q20 20 30 50" stroke="#cfc3a6" fill="none" stroke-width="2"/><circle cx="20" cy="18" r="6" fill="none" stroke="#cfc3a6" stroke-width="2"/><path d="M48 30a10 10 0 0 1 0 0M45 22q8 8 0 16M52 16q14 14 0 28M59 10q20 20 0 40" stroke="#8e1b14" fill="none" stroke-width="2"/></svg>',
     anda: '<svg viewBox="0 0 80 60"><path d="M6 30 L30 18 L30 42 Z" fill="#d8c27a" opacity=".7"/><circle cx="58" cy="20" r="6" fill="none" stroke="#cfc3a6" stroke-width="2"/><path d="M52 52 L58 28 L64 52" stroke="#cfc3a6" fill="none" stroke-width="2"/><path d="M40 8 L44 14 M70 8 L66 14" stroke="#8e1b14" stroke-width="2"/></svg>',
     luzes: '<svg viewBox="0 0 80 60"><circle cx="18" cy="16" r="7" fill="#d8c27a" opacity=".3"/><circle cx="40" cy="16" r="7" fill="#d8c27a"/><circle cx="62" cy="16" r="7" fill="#d8c27a" opacity=".2"/><rect x="28" y="30" width="24" height="26" fill="none" stroke="#cfc3a6" stroke-width="2"/><path d="M33 36h14M33 40h14" stroke="#cfc3a6"/></svg>',
+    folga: '<svg viewBox="0 0 80 60"><circle cx="24" cy="30" r="9" fill="none" stroke="#cfc3a6" stroke-width="2"/><path d="M60 18 L44 30 L60 42" stroke="#8e1b14" fill="none" stroke-width="3"/><path d="M66 12 L66 48" stroke="#cfc3a6" stroke-dasharray="3 4"/></svg>',
+    fera: '<svg viewBox="0 0 80 60"><ellipse cx="22" cy="30" rx="9" ry="12" fill="#cfc3a6" opacity=".8"/><ellipse cx="44" cy="30" rx="10" ry="13" fill="#8e8470" opacity=".85"/><ellipse cx="66" cy="30" rx="11" ry="15" fill="#3a2a22"/><path d="M13 24h18M34 24h20M55 24h22" stroke="#000" stroke-width="4"/></svg>',
     chama: '<svg viewBox="0 0 80 60"><text x="10" y="26" fill="#cfc3a6" font-size="14" font-family="IM Fell English" font-style="italic">"Lia..."</text><path d="M20 44 L60 44" stroke="#cfc3a6" stroke-width="2"/><path d="M30 36 L50 52 M50 36 L30 52" stroke="#8e1b14" stroke-width="3"/></svg>'
   };
   function montarComo() {
@@ -249,6 +251,9 @@ export function criarPolimento(C, U) {
       <div class="regra">${DESENHO.anda}<p><b>Ela anda quando você não vê.</b> A Menina só se mexe no escuro ou pelas suas costas. Luz nela (${T.luz}) e ande de costas.</p></div>
       <div class="regra">${DESENHO.luzes}<p><b>As luzes piscam: esconda-se.</b> Quando a luz falha e o rádio chia, a Procissão vem. Armário ou cama (${T.usar}), já.</p></div>
       <div class="regra">${DESENHO.chama}<p><b>O chamado: não vá.</b> Se alguém chamar seu nome da sala ao lado, não é quem você pensa.</p></div>
+      <div class="regra">${DESENHO.folga}<p><b>Ele recua. Não é sorte.</b> Quando a tensão dele enche, a noite dá uma folga. Aproveite para avançar, sem correr: o barulho ainda conta.</p></div>
+      <div class="regra">${DESENHO.fera}<p><b>A cada capítulo ele é menos homem.</b> Ele começa quase humano e vira fera. O caderno (TAB, aba Monstros) guarda o que você descobre sobre ele.</p></div>
+      <div class="regra">${DESENHO.ouve}<p><b>Difícil de ler?</b> Em Opções, a Leitura do perigo mostra o que você já ouviria: legendas, bordas e um painel. Tudo começa desligado e nunca entrega onde ele está de longe.</p></div>
       <small class="como-teclas">${tq || pad ? '' : 'WASD andar · SHIFT correr · ALT devagar · C agachar · ESPAÇO prender o ar · Z/X espiar · Q olhar atrás · E usar · F lanterna · R pilha · H curativo · G garrafa · TAB diário · O objetivo · F8 marca o momento'}</small>
       <div style="text-align:center;margin-top:12px"><button class="btn" id="cj-voltar">Voltar${tq ? '' : ' (ESC)'}</button></div></div>`;
     $('#cj-voltar').onclick = fecharComo;

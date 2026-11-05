@@ -195,14 +195,14 @@ export function criarInterfaceMonstros(C, U) {
     // -------- legenda da distância dos passos dele (sem som)
     legDistT -= dt;
     if (OPT.legDist && M && M.ativo && legDistT <= 0 && P.pos) {
-      const d = M.pos.distanceTo(P.pos); if (d < 20) { legDistT = 2.2; legenda(`[passos dele: ${d < 4 ? 'perto' : d < 9 ? 'médio' : 'longe'}]`, 'dele'); } else legDistT = 1;
+      const d = M.pos.distanceTo(P.pos); if (d < 20) { legDistT = 2.2; { const dr = direita(M.pos), lado = dr.txt ? dr.txt.split(',')[0] : ''; legenda(`[passos dele: ${d < 4 ? 'perto' : d < 9 ? 'médio' : 'longe'}${lado ? ' — ' + lado : ''}]`, 'dele'); } } else legDistT = 1;
     }
 
     // -------- o seu barulho (separado do dele)
     legEuT -= dt;
     if (OPT.legEu && legEuT <= 0 && OPT.legSom !== 'nao') {
       if (S.hidden && !C.keys.Space && M && M.ativo && M.pos.distanceTo(P.pos) < 5.5) { legEuT = 2.6; legenda('[sua respiração]', 'eu'); }
-      else if (!S.hidden && P.noiseR >= 5) { legEuT = 2.2; legenda(P.sprinting ? '[seus passos ecoam]' : '[você faz barulho]', 'eu'); }
+      else if (!S.hidden && P.noiseR >= 5) { legEuT = 2.2; legenda((P.sprinting ? '[seus passos ecoam' : '[você faz barulho') + ' — chega a ' + Math.round(P.noiseR) + ' m]', 'eu'); }
     }
 
     // -------- "ele te ouviu" / perdeu o rastro: a mudança de estado por SUA causa
