@@ -2,7 +2,7 @@
 
 Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/lote*/<área>.md`. Não edite à mão: edite o arquivo da área e gere de novo.
 
-**Total geral: 9054 melhorias**
+**Total geral: 9056 melhorias**
 
 ## Índice
 
@@ -62,7 +62,7 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
   - Progressão e rejogabilidade: 275
   - Plataforma e acessibilidade: 183
   - Revisão antes de publicar: 12
-- [Lote 5](#lote-5) — 2253 melhorias
+- [Lote 5](#lote-5) — 2255 melhorias
   - História e texto: 183
   - Mapa: prólogo e estrada: 90
   - Mapa: térreo e dormitórios: 183
@@ -75,7 +75,7 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
   - Interface: 276
   - Progressão e rejogabilidade: 185
   - Plataforma e acessibilidade: 148
-  - Revisão: 3
+  - Revisão: 5
 - [Lote 6](#lote-6) — 1034 melhorias
   - História e texto: 96
   - Mapa: prólogo e estrada: 92
@@ -6031,7 +6031,7 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
 
 ## Lote 5
 
-2253 melhorias.
+2255 melhorias.
 
 ### História e texto (183)
 
@@ -8319,11 +8319,13 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
 2249. Estilos próprios das muletas e do botão de toque injetados sem mexer na CSS compartilhada
 2250. Novo módulo plataforma-lote5c isolado, ligado ao jogo por poucas linhas de gancho
 
-### Revisão (3)
+### Revisão (5)
 
 2251. O aviso "não encare ele" (e os outros selos do contra-jogo do corpo) ficava fixo em `bottom:16%` e cobria a fala/legenda em `bottom:12%`; agora o selo some enquanto houver fala ou legenda na tela, voltando sozinho quando o diálogo sai, sem sobreposição de texto
 2252. O Capítulo I não trava mais num beco sem saída: se a luz já voltou mas o escape do gerador foi cancelado (morte durante a fuga e recarga do checkpoint com a energia ligada), o objetivo do gerador fecha sozinho assim que a Lia está viva, em vez de deixar o capítulo sem como avançar
 2253. Com o Inspetor do lote 5 bem mais agressivo, o escape do gerador no Capítulo I (que o jogo pede para passar escondida) cansava a caçada e esticava tanto a espera do escape automático que a jogada automática de teste (que ficava parada no meio da sala) não fechava o capítulo a tempo; o kit de teste agora se esconde no armário durante o escape, como o jogo manda, e sai dele depois — a revisão automática volta a terminar com RESULTADO: PASSOU
+2254. As legendas próprias dos monstros ("ele está caçando", "um apito curto e rachado", "o gato chia: ele está perto" e as da vida das entidades) eram fixas em alturas diferentes e caíam por cima da pilha de legendas de som, ficando ilegíveis uma sobre a outra; um arquivo novo (src/legendas-pilha.js) reposiciona as que estão na tela para logo acima da pilha, empilhadas sem sobreposição
+2255. O cache offline foi para hora-silencio-v12 e o módulo novo entrou na lista do sw.js, para quem já jogou receber a correção das legendas
 
 ## Lote 6
 

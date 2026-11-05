@@ -30,6 +30,7 @@ import { instalarAudioLote5 } from './src/audio-lote5.js';
 import { criarMonstrosLote6 } from './src/monstros-lote6.js';
 import { instalarAudioLote6 } from './src/audio-lote6.js';
 import { instalarAudioLote5b } from './src/audio-lote5b.js';
+import './src/legendas-pilha.js'; // revisão do lote 5: legendas próprias dos monstros sobem para cima da pilha de legendas de som
 
 const R = window.ROTEIRO;
 const $ = s => document.querySelector(s);
