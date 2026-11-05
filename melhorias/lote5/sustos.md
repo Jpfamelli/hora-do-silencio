@@ -92,3 +92,100 @@
 - Morte pela Procissão: muitas mãos pequenas tomam a tela por um instante.
 - O armário "ocupado" e os sustos raros são sorteados pela semente da noite, dando cara própria a cada noite.
 - Todos os sustos novos respeitam "reduzir flashes" e "menos movimento" e nunca bloqueiam o caminho.
+- Sob a porta, duas pernas cortam a luz e a maçaneta começa a girar antes dele entrar.
+- Iluminado de longe, a cabeça do Inspetor gira 180 graus por um quadro e te encara, sem parar de andar.
+- Um dos retratos do corredor é o próprio Inspetor, imóvel como pintura, que vira a cabeça quando você lhe dá as costas.
+- Preso de cabeça para baixo no vão da escada, ele só desce quando você passa por baixo.
+- Passos pesados surgem ao seu lado, no seu compasso, numa sala que você sabia vazia, e param quando você para.
+- Uma mão fria toca a sua nuca com um tremor seco e, ao virar, não há ninguém.
+- No quadro-negro, 'NÃO SE CORRE' repetido vira, ao voltar a luz, 'EU TE OUVI ENTRAR'.
+- A venda branca dele flutua atrás do seu reflexo no vidro e some num piscar.
+- Passos pequenos correm no teto acompanhando o seu trajeto e param quando você para.
+- Um casaco de inspetor no cabideiro dá um passo para a porta quando você não está olhando.
+- Por um quadro, o rosto dele olha de volta de dentro de um balde ou poça d'água parada.
+- Nos túneis, o reflexo na água mostra ele de pé bem atrás de você; ao virar, não há nada.
+- De costas e ao longe, o Inspetor mexe os dedos compridos como quem conta as crianças devagar.
+- Um berço de ferro range e balança sozinho ao fundo; ao olhar de novo, parou — mais perto.
+- A boneca da Ana reaparece cada vez mais perto do seu caminho ao longo do Capítulo III.
+- O reflexo da Ana conta baixinho numa poça ou vidraça mesmo com o corpo dela fora de vista.
+- Um passo ecoa atrás de você sem ninguém e, segundos depois, a sombra dele cruza a porta ao fundo.
+- Pegadas molhadas surgem uma a uma vindo de uma porta escura até você e param a dois passos.
+- Uma mão comprida sai de entre as prateleiras de uma estante e tateia o ar na sua direção.
+- Num corredor de vidros, o reflexo dele aparece em vários ao mesmo tempo e só um é o verdadeiro.
+- No reflexo, ele está sempre um passo adiantado e com a cabeça virada para você.
+- No escuro total, um facho fraco igual ao seu acende ao longe e te chama para o lado errado.
+- Escondida no armário, um olho surge pela fresta de cima olhando para baixo.
+- Dentro do armário, a fresta de luz desliza como se ele estivesse sendo arrastado; prender o ar faz parar.
+- Uma mão fecha a porta do seu armário por fora e segura por três segundos, com a respiração do outro lado.
+- Um papel de criança desliza por baixo da porta do seu esconderijo com 'achei', 'eu sei' ou 'sai'.
+- Depois que ele desiste, o seu esconderijo range sozinho como se fosse abrir, induzindo você a sair cedo.
+- O armário ao lado respira no seu ritmo; soltar o ar antes dele faz a sua própria porta ranger.
+- Tempo demais sob a cama faz o colchão afundar a centímetros do seu rosto, respirando lento; encolher salva.
+- A Ana pode já estar dentro do armário que você abre, sussurra 'achei primeiro' e marca aquele esconderijo inseguro na noite.
+- Raríssimo: o rosto do Inspetor já está dentro do armário e ele te agarra (nunca no armário protegido).
+- Sob a cama, quando ele se abaixa, um 'não se mexa' pede para você segurar o ar — mexer fecha a mão no seu tornozelo.
+- A porta do armário vizinho abre, um braço tateia lá dentro, não acha nada, fecha e vem para o seu.
+- Entrar num armário pode revelar só um sussurro 'Lia...' e um estalo alto que atrai o Inspetor.
+- Na caça, ele apoia o peso na porta do armário: um 'segure E' curto; soltar cedo range e te entrega.
+- Fingindo dormir, ele pode virar o colchão inteiro num tranco antes do agarrão.
+- Ficar demais sob a cama na caça faz uma mão subir pelo colchão e te empurrar para fora, te expondo.
+- Ao perder a caça, ele bate uma porta longe com estrondo e espera mudo perto de você.
+- Uma vez por noite, a pausa de 'oração' do Inspetor é fingimento: chegar perto dispara o bote.
+- Na caça, as lâmpadas à sua frente estouram uma a uma, te empurrando para o escuro desconhecido.
+- Quando ele ronda do outro lado, a respiração dele atravessa a parede ou a porta perto de você.
+- O Chamado pode se afastar andando, convidando você a segui-lo pela rota exata da patrulha.
+- Quando ele arromba uma porta são três investidas: a madeira trinca mais a cada baque até escancarar.
+- Uma porta à sua frente incha e racha em pulsos como se ele empurrasse; às vezes entra, às vezes é só blefe.
+- Na procura, ele bate de leve num armário vazio imitando alguém lá dentro, para ver se você reage.
+- Ele abre um armário vazio, suspira e relaxa os ombros num falso alívio que ensina a ler o gesto.
+- Ao reaparecer de uma morte, o rosto dele pode estar colado por um único quadro e sumir antes de você reagir.
+- Esquivar o bote faz a mão dele bater na parede com estrondo e deixar uma marca de mão preta.
+- Na fuga, uma vez, ele te derruba em vez de matar: a câmera vai ao chão e você se levanta sozinho depois de uns segundos.
+- No Capítulo V, colado às costas, ele sopra um ar gélido que apaga a sua lanterna por cerca de dois segundos.
+- Se você assobia com ele colado, ele responde assobiando igualzinho bem na sua nuca.
+- Na Procissão, uma figura ao fundo mantém o rosto sempre virado para você, acompanhando o esconderijo.
+- Uma criança sai da fila, encosta o rosto sem boca na sua fresta e, se você se mexer ou ofegar, a fila inteira vira.
+- A última da fila larga a vela acesa no chão e dá um passo lento até a sua fresta.
+- Varrer a Procissão com a lanterna faz as cabeças virarem em onda na direção do feixe.
+- Quando a fila passa rente, uma vela tremula e apaga como se sentisse o seu ar; prender o ar evita.
+- Uma criança da fila estende a mão e a Ana a segura, entrando na Procissão por um instante.
+- As presenças respiram no mesmo compasso; casar o seu fôlego ao do coro passa, quebrar o ritmo denuncia.
+- Fazer barulho durante a Procissão faz uma criança quebrar o passo e te encarar com os olhos vermelhos.
+- Acender a lanterna no instante da fila faz a Procissão parar e uma criança empurrar a sua porta numa fresta.
+- No Capítulo V a Procissão passa com as velas apagadas, da capela para os quartos: você a ouve, não a vê.
+- Raro: a Procissão se divide em dois ramos e entra na sala por duas portas ao mesmo tempo, fechando o cerco.
+- Ficar na luz das velas durante a Procissão projeta a sua sombra no caminho e uma criança vira e aponta.
+- A Ana às vezes se esconde; se a sua lanterna a encontra no esconderijo dela, ela grita e alerta o Inspetor.
+- A Ana pode aparecer agarrada às costas do Inspetor, apontando para você.
+- Uma caixinha de música toca sozinha num canto como isca; aproximar dispara a contagem e ela aparece atrás.
+- Quando a Ana te observa muito, o giz no chão passa a desenhar uma menina com uma lanterna: você.
+- No Capítulo III, raramente no 'dez' quem aparece atrás de você é o Inspetor, não a Ana.
+- Nos últimos números, a Ana às vezes conta usando a sua própria voz, não a dela.
+- A Ana pode contar errado, pulando ou repetindo um número, quebrando a sua noção de quando vem o dez.
+- Por tempo curto a Ana inverte a regra e avança enquanto você está parada, avisada por uma fala da Lia.
+- Na capela, um corpo imóvel entre os defuntos se levanta devagar e sem som quando você passa perto.
+- Na descida do monta-cargas, as mãos da Ana entram pelas frestas; manter a luz nelas as segura.
+- A cama do castigo prende a Lia por alguns segundos com três batidas e a respiração de um menino colada.
+- No refeitório, sob um relâmpago as cadeiras ocupadas se levantam e, no escuro, só a cabeceira fica — com ele sentado.
+- No Capítulo II, cada degrau racha e cai logo atrás do seu pé: não dá para parar.
+- No Capítulo IV ele abre uma comporta e a enxurrada toma o túnel, apagando o seu rastro mas te empurrando.
+- Numa ponte sobre a cisterna as tábuas cedem atrás de você (sem retorno) e ele rosna da margem, sem atravessar a água funda.
+- Na fuga final o teto desaba atrás e vem baixando, forçando você a agachar e correr ao mesmo tempo.
+- Na caça do Capítulo V as paredes de um corredor fecham um palmo de cada vez atrás de você.
+- No cemitério, cada relâmpago mostra mais uma cova aberta e vazia; no último clarão, a sua.
+- No Capítulo V, um relâmpago mostra os bancos da capela lotados de crianças de costas, vazios no escuro seguinte.
+- No Capítulo IV, perto de onde ele dorme, um coro de crianças implora 'não acorda ele' quando você faz barulho.
+- Num espelho, por um quadro, o reflexo é o homem que ele foi em 1979, sem venda, chorando.
+- Contar junto errado com a Ana faz o Inspetor próximo repetir o número errado em dueto e hesitar confuso.
+- Num portão de ferro dos túneis, segurar E resiste e ganha terreno; soltar cedo demais ele arromba.
+- Às vezes o Chamado vem de trás de uma porta trancada que você não consegue abrir: puro psicológico, nunca armadilha.
+- O Chamado pode usar a voz do Inspetor ('pode sair, acabou, filha'); obedecer te joga na caçada.
+- No Capítulo IV o Chamado vem de dentro de um ralo; chegar perto faz a água subir e o respingo atrai o Inspetor.
+- Lanterna apagada e parada por mais de dez segundos faz um apito rachado soar a um palmo de você.
+- Ele encosta uma lata no batente de uma porta; esbarrar depois a derruba com estrondo e o denuncia.
+- Depois do sino, ele pode fingir atordoado com as mãos nos ouvidos e disparar o bote se você se aproxima.
+- Numa porta com visor, a mão dele encosta no vidro e desliza; se você se mexer, ele arromba na hora.
+- Na fuga final, um quase-agarrão pelo capuz pede para martelar ESPAÇO: você se solta deixando o capuz na mão dele.
+- Fora da caça, um choro de menino vem de dentro de um armário fechado como isca para você abrir.
+- Os vultos clonados do Inspetor ganham um par de olhos vermelhos brilhando sob a venda.
+- Toda a segunda leva de sustos é sorteada pela semente da noite, respeita 'menos movimento' e 'reduzir flashes', e some no kit de teste automático.
