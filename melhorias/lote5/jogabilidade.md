@@ -89,3 +89,104 @@
 - O escurecimento das bordas fica atrás dos medidores do HUD, sem cobrir a barra de fôlego
 - O novo contra-jogo do corpo roda dentro de uma proteção: um erro nele nunca derruba o quadro do jogo
 - Service worker atualizado para a versão v7, com o novo módulo de jogabilidade entrando no cache para jogar sem internet
+- Nova ação de descalçar e calçar os sapatos (tecla crase), fora do esconderijo
+- Descalça, a Lia pisa quase sem som no piso duro, mas correndo os sapatos fazem falta e o barulho volta
+- Descalça no tapete ou na grama não faz diferença, com aviso da Lia
+- Descalça, a Lia anda um pouco mais devagar
+- Descalça, o caco de vidro corta o pé e tira vida, mesmo agachada, com tremor de tela e arfada
+- Som de tirar e de calçar os sapatos
+- Dica ao descalçar a primeira vez, e fala ao calçar de novo
+- Calçar os sapatos colada no Inspetor faz um barulho que ele pode ouvir
+- Atravessar a água enlameia a Lia por um tempo
+- Enlameada, o barro abafa os passos para o faro do Inspetor
+- Enlameada, a Lia anda um tiquinho mais devagar
+- Véu de barro escurece as bordas da tela enquanto a Lia está enlameada
+- Parada no seco, o barro seca e cai, e o passo volta ao normal (com falas da Lia)
+- Entrar na água em movimento faz um splash que abafa os próximos passos
+- Andando agachada e devagar com ele caçando perto, o passo some no eco dos passos dele
+- Agachada e devagar ao mesmo tempo contém ainda mais o barulho do passo
+- O Inspetor que pisa num caco de vidro em plena caça cambaleia e trava por um instante
+- Pisando no vidro, ele perde o estalo de caça por um momento
+- O estouro do vidro sob o pé dele denuncia a posição dele a você, com fala da Lia
+- Usar o curativo perto dele abre o faro dele por alguns segundos (o efeito agora dura em vez de sumir em um quadro)
+- Curar dentro da água não deixa cheiro de sangue
+- Aviso para soltar o ar devagar quando o fôlego acaba e ele está por perto
+- Fala da Lia quando você solta o ar de supetão com o fôlego baixo
+- Apontar a lanterna bem para o chão esfria mais rápido o calor que ele caça no seu rosto
+- Colada numa parede com ele do outro lado, um baque surdo marca a presença dele
+- O barulho da Procissão mascara o ofego do medo alto
+- O ronco do gerador também mascara o ofego do medo alto
+- Aviso na tela marcando a janela do trovão para agir barulhento sem ser ouvido
+- Piscar a lanterna no mesmo ritmo da Menina a faz recuar um passo
+- Som e fala da Menina ao imitar a sua luz, com dica ensinando o jogo de piscar
+- Nova defesa: imóvel e colada numa parede no escuro, você some e segura o bote
+- A estátua na parede vale agachada ou em pé, encolhida numa quina escura
+- Em pé, a estátua é mais frágil: se ele colar a menos de 1,5 m, a sombra não engana
+- Aviso "fique imóvel..." enquanto você ainda está virando sombra
+- Virar estátua na parede custa fôlego
+- De estátua, o medo cede aos poucos
+- De estátua, a câmera firma contra o tremor do medo
+- Barra de firmeza que esvazia ao segurar a estátua tempo demais
+- Aviso para se mexer e fala da Lia quando a firmeza está no fim
+- A firmeza se recupera quando você sai da pose
+- Ao sair da pose de estátua, a Lia solta o ar preso num suspiro
+- Parada, agachada e prendendo o ar sem ameaça, os nervos caem bem mais rápido
+- Encarar o chão agachada e no escuro acalma os nervos mais rápido
+- Agachada e parada dentro da água, a Lia respira sem fazer barulho e recupera o ar
+- Aviso para mexer o mouse com força durante o agarrão
+- Nova ação de deitar e se fingir de morta (parada, agachada, no escuro, com o ar preso)
+- Deitada e imóvel, o Inspetor tateia por cima com a bengala e erra o bote
+- Segurar o bote deitada conta como esquiva (conquista)
+- Mensagem da bengala raspando por cima ao esquivar deitada
+- Deitada, o medo cede aos poucos
+- Aviso "deitada e imóvel — ele tateia por cima"
+- Dica ensinando o fingir de morta
+- Encostar o ouvido numa parede, agachada e no escuro, marca de que lado ele vem
+- O baque de leitura pela parede é mais agudo quando ele está caçando
+- Escutar pela parede prende a Lia ali: é preciso parar para ouvir
+- Olhar para trás correndo na caça faz a Lia perder o fôlego num arquejo
+- Olhar para trás (Q) durante a caça deixa a Lia mais lenta: saber onde ele está custa distância
+- Palma de pânico (segurar E e C parada): um barulho lá na frente que puxa o Inspetor
+- A palma de pânico sobe a fúria do Inspetor
+- A palma de pânico tem recarga para não virar muleta
+- Dica ensinando a palma de pânico
+- Acender a lanterna colado nele vira a cabeça dele para a sua direção
+- Acender a lanterna colado nele faz um ponto de ruído que ele ouve
+- Com "Leitura do perigo" ligada, aviso quando o Inspetor para para escutar ("ele está ouvindo — não se mexa")
+- Com "Leitura do perigo" ligada, aviso quando ele reza ("passe agora, calada") ou vai conferir uma sala
+- Com "Leitura do perigo" ligada, aviso quando ele tateia perto, tropeça ou entra em fúria
+- Jogar a garrafa numa lâmpada acesa ao lado dele o cega e ensurda por quase dois segundos
+- Dica ensinando a lâmpada que estoura na cara dele
+- Jogar a garrafa enquanto ele está parado escutando faz ele farejar o truque e olhar para você
+- Garrafa estourando nas costas dele durante a caça o trava por um segundo e vira a cabeça dele
+- O truque das costas tem recarga e só funciona do lado oposto ao seu: errar o lado não ajuda
+- Garrafa jogada na água afunda quase sem barulho e não atrai ninguém
+- Dica explicando que a garrafa na água não faz barulho
+- Segurar E depois de fechar a porta escora a porta com o corpo contra os socos dele
+- A porta escorada aguenta cerca de quatro socos antes de ceder, em vez de três
+- Cada soco na porta escorada gasta o seu fôlego e sacode a tela
+- Barra de força na tela mostra quanto a porta ainda aguenta
+- Quando a força zera a porta cede de vez, a Lia se assusta e ele arromba
+- Dica ensinando a escorar a porta
+- Nova ação de jogar a lanterna acesa (tecla N) como isca de luz
+- A lanterna no chão acesa puxa o Inspetor com um ruído a cada poucos segundos
+- Jogada apagada, a lanterna vira só uma isca sonora mais fraca
+- Com a lanterna no chão, apertar F avisa onde ela está e a que distância
+- Passar por cima da lanterna a pega de volta com um som e uma fala
+- Se ele pisar na lanterna acesa, a luz morre e ele para um instante
+- A lanterna jogada volta ao bolso se a Lia sair da área
+- Dica ensinando a jogar a lanterna e a buscar de volta
+- Jogar a lanterna colada numa parede não deixa: avisa que não há onde jogar
+- Virar estátua demais na mesma noite faz ele aprender: depois de várias vezes a pose deixa de segurar o bote
+- Aviso de que ele aprendeu o truque da estátua e que é preciso alternar os contra-jogos
+- Passar agachada, calada e devagar por trás dele enquanto reza não o desperta
+- Nova conquista secreta "Pelas Costas do Que Reza" por passar por trás dele rezando
+- Depois de uma caça longa que ele perde, o diretor de tensão o afasta por um bom tempo (respiro merecido)
+- Mensagem de que ele perdeu o rastro e vai demorar a voltar
+- O clique de trocar a pilha perto dele vira a cabeça dele para o seu lado
+- Agachada, devagar e sem respirar (ESPAÇO), os passos ficam quase mudos para atravessar dois metros críticos
+- Andar sem respirar gasta o fôlego bem mais rápido
+- Fala da Lia sobre o ar acabando rápido ao andar sem respirar
+- Prender o ar corta o drone do ambiente e deixa os passos dele muito mais nítidos
+- Os avisos de tela somem enquanto há fala ou legenda, para não cobrir o diálogo
+- O véu de lama e os avisos de tela ficam invisíveis para leitores de tela (aria-hidden)
