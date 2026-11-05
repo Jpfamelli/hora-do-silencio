@@ -939,6 +939,19 @@
     else if (e.target && e.target.tagName === 'SCRIPT') { erro('A conexão caiu no meio do caminho e o internato não carregou.'); trocarServidor(); }
     else if (m) erro('Algo deu errado ao abrir o jogo. Tente de novo.');
   }, true);
+  // dicas que giram enquanto carrega: o internato (e seus monstros) vão chegando
+  (function () {
+    var t = el && el.querySelector('.cg-txt'); if (!t) return;
+    var dicas = [
+      'carregando o internato...',
+      'o Inspetor é cego: ele caça pelo som. Agache e prenda o ar.',
+      'imóvel, agachada e no escuro contra a parede, você vira sombra.',
+      'a Menina só anda quando você não a vê iluminada.',
+      'luzes piscando e rádio chiando: a Procissão está vindo. Esconda-se.',
+      'de fone, no escuro: a respiração dele aponta de onde ele está.'
+    ];
+    var i = 0, t0 = Date.now(), iv = setInterval(function () { if (window.__jogo || !el || el.classList.contains('falhou') || Date.now() - t0 > 4600) { clearInterval(iv); return; } i = (i + 1) % dicas.length; t.textContent = dicas[i]; }, 2600);
+  })();
   setTimeout(function () { if (window.__jogo || !el) return; var t = el.querySelector('.cg-txt'); if (t) t.textContent = 'a internet está lenta... o internato ainda está chegando.'; }, 5000);
   setTimeout(function () { if (window.__jogo) return; erro('A conexão está lenta ou caiu. O internato ainda não abriu.'); trocarServidor(); }, 14000);
 })();

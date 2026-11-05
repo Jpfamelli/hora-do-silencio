@@ -5,6 +5,7 @@
 // Instalado por src/plataforma.js (instalarPlat5). Fala com o motor só pelo contexto C e pelos ajudantes U.
 
 import { instalarPlat5b } from './plataforma-lote5b.js';
+import { instalarPlat5c } from './plataforma-lote5c.js';
 
 const $ = s => document.querySelector(s);
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
@@ -17,6 +18,7 @@ export function instalarPlat5(C, U) {
   const qual = () => U.qual();
   const cego = () => !!O.modoCego; // Modo Cego: desliga as ajudas de leitura do perigo (ver plataforma-lote5b.js)
   let P5b = { antes() {}, depois() {}, opcoes() {}, mapa() {}, montarOpcoes() {}, teste: {} };
+  let P5c = { depois() {}, opcoes() {}, mapa() {}, montarOpcoes() {}, teste: {} };
 
   // ===================================================================
   // 1. ÁUDIO 3D DO INSPETOR: respiração e estalos que giram em volta de você
@@ -297,7 +299,7 @@ export function instalarPlat5(C, U) {
   function blurbTitulo() {
     const t = $('#title'); if (!t || $('#pl5-acess')) return;
     const d = document.createElement('div'); d.id = 'pl5-acess'; d.className = 'ctrl';
-    d.textContent = 'Acessível: legendas de som e de estado · daltonismo · alto contraste · teclas, controle e toque · soltar do agarrão por segurar · névoa de direção na caçada · vibração por entidade e direcional · realce de nuca no fone · Modo Cego para o terror puro';
+    d.textContent = 'Acessível: legendas de som e de estado · daltonismo · alto contraste · teclas, controle e toque · soltar do agarrão por segurar · névoa de direção na caçada · vibração por entidade e direcional · coração-bússola e contagem da Ana no tato · realce de nuca no fone · Modo Cego para o terror puro';
     const ult = t.querySelector('.ctrl:last-of-type'); if (ult) ult.after(d); else t.appendChild(d);
   }
 
@@ -362,13 +364,14 @@ export function instalarPlat5(C, U) {
   if (!$('#pl5-nevoa')) { const n = document.createElement('div'); n.id = 'pl5-nevoa'; document.body.appendChild(n); }
   aplicarClasses(); blurbTitulo();
   try { P5b = instalarPlat5b(C, U); } catch (e) {}
+  try { P5c = instalarPlat5c(C, U, P5b); } catch (e) {}
 
   let acc = 0;
   const hz = () => { const q = qual(); return q === 'minima' ? 10 : q === 'baixa' ? 15 : 60; };
 
   return {
-    montarOpcoes(wrap) { montarOpcoes(wrap); try { P5b.montarOpcoes(wrap); } catch (e) {} },
-    opcoes(id) { opcoes(id); try { P5b.opcoes(id); } catch (e) {} },
+    montarOpcoes(wrap) { montarOpcoes(wrap); try { P5b.montarOpcoes(wrap); } catch (e) {} try { P5c.montarOpcoes(wrap); } catch (e) {} },
+    opcoes(id) { opcoes(id); try { P5b.opcoes(id); } catch (e) {} try { P5c.opcoes(id); } catch (e) {} },
     antes(dt) {
       // soltar do agarrão segurando o botão (acessibilidade para motricidade reduzida)
       if (O.soltar === 'segurar' && C.M && C.M.state === 'agarra' && emJogo() && C.AG && C.keys.KeyE) C.AG.sacode += 1700 * dt;
@@ -378,9 +381,9 @@ export function instalarPlat5(C, U) {
       // camadas pesadas (áudio 3D e névoa) em passo reduzido na Baixa/Mínima; o resto é barato e roda sempre
       acc += dt; const per = 1 / hz();
       if (acc >= per) { respFrame(acc); nevoaFrame(); acc = 0; }
-      capFrame(); vivoFrame(dt); hapFrame(dt); P5b.depois(dt, ativo);
+      capFrame(); vivoFrame(dt); hapFrame(dt); P5b.depois(dt, ativo); try { P5c.depois(dt, ativo); } catch (e) {}
     },
-    mapa() { creakT = 2; P5b.mapa(); },
+    mapa() { creakT = 2; P5b.mapa(); try { P5c.mapa(); } catch (e) {} },
     // para testes
     teste: { get montado() { return montado; }, respFrame, nevoaFrame, gpuNome, panModelo, ouvirResp, hapFrame, sentirPadroes, testarVibra, get b() { return P5b.teste; } }
   };
