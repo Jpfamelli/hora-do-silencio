@@ -21,6 +21,7 @@ import { criarMonstrosLote5 } from './src/monstros-lote5.js';
 import { criarMonstrosLote5B } from './src/monstros-lote5b.js';
 import { instalarMonstrosVisual } from './src/monstros-visual.js';
 import { instalarVisualLote6 } from './src/visual-lote6.js';
+import { instalarMonstrosVisual2 } from './src/monstros-visual2.js';
 import { instalarAudioMundo } from './src/audio-mundo.js';
 import { instalarAudioPlataforma } from './src/audio-plataforma.js';
 import { instalarAudioSegredos } from './src/audio-segredos.js';
@@ -4471,6 +4472,11 @@ const MVIS = instalarMonstrosVisual({
   THREE, scene, camera, MON, VULTO, ANA, ANA_G, PROC, M, P, W, MAT, OPT, canvasTex, rand, pick, clamp, lerp, naLuz, visivel, subPequeno, conquista, SX,
   get S() { return S; }, get perf() { return perf; }, get flashPisca() { return flashPisca; }, get mode() { return mode; }
 });
+// Monstros e IA, lote 5 (2a rodada de visual/luz): src/monstros-visual2.js
+const MVIS2 = instalarMonstrosVisual2({
+  THREE, scene, camera, MON, VULTO, ANA, ANA_G, PROC, M, P, W, MAT, OPT, canvasTex, rand, clamp, lerp, naLuz, visivel, SX, chuvaMat, hemi, moon,
+  get S() { return S; }, get perf() { return perf; }, get flashPisca() { return flashPisca; }, get mode() { return mode; }, get raioI() { return raioI; }
+});
 const JM = criarMundoJogavel({
   THREE, W, P, M, PROC, ANA, keys, R, MAT, OPT, SFX, SX, camera,
   get S() { return S; }, get AC() { return AC; }, get perf() { return perf; }, get alvo() { return alvo; }, get mode() { return mode; }, get ui() { return ui; }, get digitado() { return digitado; },
@@ -4574,7 +4580,7 @@ function frame(dt) {
     S.tempo += dt; S.capT += dt; PG.tick(dt);
     updatePlayer(dt); updateLanterna(dt); updateFear(dt);
     { const dm = dt * JP.ritmo(); if (!congelado(dm)) { updateInspetor(dm); updateAna(dm); updateProcissao(dm); ML.tick(dm); MS.tick(dm); L5.tick(dm); L5B.tick(dm); L6.tick(dm); } updateEventos(dm); } updateGarrafas(dt); // ritmo do mundo (acessibilidade): a Lia não fica mais lenta
-    updateClima(dt); updateJogabilidade(dt); updateAlvo(); JM.update(dt); SEG.update(dt); JGL5.update(dt); JGL6.update(dt); updateSegurar(dt); updateFita(dt); updateHUD(); updateSub(dt); updateAudio(dt); H.tick(dt); MVIS.tick(dt); // lote 5: visual e luz das entidades · lote 6: rejogabilidade
+    updateClima(dt); updateJogabilidade(dt); updateAlvo(); JM.update(dt); SEG.update(dt); JGL5.update(dt); JGL6.update(dt); updateSegurar(dt); updateFita(dt); updateHUD(); updateSub(dt); updateAudio(dt); H.tick(dt); MVIS.tick(dt); MVIS2.tick(dt); // lote 5: visual e luz das entidades (2 rodadas) · lote 6: rejogabilidade
   } else if (mundoVivo()) { // cofre, quadro (e no Pesadelo notas e diário): o mundo continua, com o som abafado
     S.tempo += dt; S.capT += dt; P.noiseR = 0; abafar(true);
     updateLanterna(dt); updateFear(dt);
