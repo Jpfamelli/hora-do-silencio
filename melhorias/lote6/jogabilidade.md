@@ -90,3 +90,137 @@
 - Os modos ativos da noite aparecem listados na tela de morte.
 - Os mutadores escolhidos seguem firmes nos checkpoints, nas mortes e na noite refeita.
 - Módulo de rejogabilidade adicionado ao cache offline para o jogo rodar sem internet.
+- Novo mutador Rota de Silêncio: no escuro os passos soam pela metade e, com a lanterna acesa, em dobro.
+- Novo mutador Orçamento de Ruído: uma barra de ruído por capítulo, no HUD, vai sendo gasta a cada passo barulhento.
+- Quando o Orçamento de Ruído zera, o Inspetor sabe onde você está por 10 s, com aviso na tela.
+- Novo mutador Sapatilhas de Lã: passos 30% mais baixos em qualquer chão, mas correr cobra o dobro de fôlego.
+- Novo mutador Meias de Lã: passos 35% mais baixos, mas a lanterna gasta 25% mais pilha.
+- Novo mutador Cobertura do Trovão: correr até 2 s depois de um trovão soa como andar.
+- Novo mutador Silêncio Absoluto: um barulho de corrida derruba o selo do capítulo e acende uma fresta vermelha na tela.
+- O Silêncio Absoluto guarda a "noite mais quieta" de cada capítulo no painel de recordes.
+- Novo mutador Dobradiças Ruidosas: toda porta mexida perto de você range alto e chama o Inspetor.
+- Novo mutador Portas Traiçoeiras: as portas que você abre fecham sozinhas e batem depois de alguns segundos.
+- Novo mutador Lanterna de Manivela: a lanterna nunca gasta pilha, mas só acende enquanto você segura R.
+- A manivela faz um barulhinho a cada volta, e F avisa como acender a luz.
+- Novo mutador Fome de Pilha: metade das pilhas que você pega estão gastas e viram pó na mão.
+- Novo mutador Dois Bolsos: só cabem dois consumíveis de cada vez, com aviso quando o excesso fica para trás.
+- Novo mutador Trouxinha Caída: ao morrer, o que você carregava fica numa trouxinha no ponto da queda.
+- Pegar a trouxinha devolve até dois itens de cada tipo.
+- Novo jeito Corredora: 50% mais fôlego de corrida, mas correr faz 30% mais barulho.
+- Novo jeito Silenciosa: passos 35% mais baixos, mas o fôlego de corrida fica curto.
+- Novo jeito Observadora: a lanterna fica 30% mais forte, mas gasta 60% mais pilha.
+- Novo mutador Ouvido Fino: o Inspetor ouve 25% mais longe a noite inteira.
+- Novo mutador Inspetor Apressado: o Inspetor anda 15% mais rápido.
+- Novo mutador Cicatrizes: cada morte deixa uma cicatriz sorteada até o fim da noite.
+- Cicatriz mão trêmula: a câmera passa a tremer o tempo todo.
+- Cicatriz manqueira: os passos ficam 25% mais barulhentos.
+- Cicatriz olho turvo: as bordas da visão escurecem permanentemente.
+- Cicatriz fôlego curto: o fôlego máximo de corrida cai 12 pontos a cada uma.
+- Cicatriz pilha fraca: a lanterna gasta mais pilha.
+- A tela de morte lista as cicatrizes acumuladas da noite.
+- Novo mutador Escada do Medo: capítulo sem morrer sobe um degrau (ouvido, velocidade e ruído); cada morte desce um.
+- Termômetro de degraus da Escada do Medo no HUD.
+- Novo mutador Contagem da Casa: a cada 10 minutos reais a casa acorda mais um nível, com aviso e sino.
+- Aos 45 minutos de noite a Contagem da Casa vira caçada permanente.
+- Novo mutador Contrarrelógio das Badaladas: um sino a cada 6 minutos de capítulo deixa o Inspetor mais rápido e atento (até 9).
+- Contagem regressiva da próxima badalada no HUD.
+- Terminar o capítulo antes da terceira badalada dá o selo dourado.
+- Novo equipamento Apito de Lata (tecla 4): desvia o Inspetor como a garrafa, mas é reutilizável, com recarga de 75 s.
+- Faixa de equipamentos no HUD mostra as teclas, as cargas e a recarga.
+- Novo equipamento Barbante com Guizo (segure 5): pendura um guizo numa porta em 1,5 s, com porcentagem na tela.
+- Quando o Inspetor ou a Ana passam pelo guizo, ele toca, uma legenda avisa e o Inspetor vira a cabeça para lá.
+- O guizo é limitado a dois por capítulo.
+- Novo equipamento Cadeira (segure 6): escora a porta junto de você em 2 s, com barulho.
+- O Inspetor perde 3 s batendo na porta escorada e arromba com barulho alto.
+- Cada porta aceita só uma cadeira por noite.
+- Abrir a porta escorada puxa a cadeira de volta.
+- Novo equipamento Giz da Lia (tecla 0): risca seta, X ou círculo no chão, alternando.
+- O giz rende 6 marcas por capítulo.
+- As marcas de giz continuam no lugar depois que você morre na mesma noite.
+- O Inspetor apaga as marcas que pisa, com um estalinho na legenda.
+- Novo equipamento Isca de Bolso: sem garrafa, G arremessa uma moeda que tilinta ao longe (3 por capítulo).
+- Novo mutador Imersão Total: some todo o HUD, as dicas e os avisos de objetivo.
+- Novo mutador Noite sem Bússola: o objetivo aparece só no começo do capítulo e depois vira "a Lia não lembra".
+- Novo pertence do prólogo: três de quatro objetos são sorteados pela semente e você leva um (teclas 1 a 3).
+- Pertence Cobertor: agachada, seus passos fazem metade do barulho.
+- Pertence Apito do Joaquim (tecla 4): uma vez por capítulo desvia o Inspetor para o lado.
+- Pertence Caixa de Fósforos: com a pilha acabada, F risca um fósforo e dá uma luz curta, uma vez por capítulo.
+- Pertence Sineta da Celeste (tecla 4): uma vez por capítulo faz a Ana perder 4 s de contagem.
+- Novas Dádivas da Hora: a cada capítulo, três cartas sorteadas pela semente, cada uma com bênção e custo escrito.
+- Dádiva Meias de Lã: passos 35% mais baixos, mas a lanterna gasta 25% mais.
+- Dádiva Garrafa Extra: uma garrafa a mais, mas o Inspetor ouve 12% mais longe.
+- Dádiva Chaveiro do Davi: na primeira morte do capítulo você cai com 1 de vida e ele recua, mas o chaveiro tilinta se você ficar parada 40 s.
+- Dádiva Fita Rebobinada: uma vez por noite o golpe fatal te devolve 20 s no tempo, com a tela chiando.
+- Dádiva Pilha Cheia: carga total e uma pilha a mais, mas a luz forte faz ele ouvir mais com a lanterna acesa.
+- Dádiva Coração de Ferro: o medo sobe 40% mais devagar, mas o fôlego preso acaba mais rápido.
+- Dádiva Pé Leve: 50% mais fôlego de corrida, mas os passos soam 20% mais altos.
+- Dádiva Mão Firme: a câmera quase não treme, mas a vida máxima cai para 85.
+- Dádiva Sorte do Albano: a vida volta devagar até 70, mas o Inspetor anda 6% mais rápido.
+- Sem escolher em 22 s, a noite escolhe a primeira dádiva por você.
+- As cartas ativas e o contrato do capítulo ficam listados no HUD.
+- As cartas oferecidas de cada capítulo ficam salvas e não mudam se você morrer.
+- Novos Contratos de risco: três por capítulo, recusar é grátis (teclas 7 a 9).
+- Contrato Nenhuma garrafa: usar uma garrafa quebra o contrato.
+- Contrato Sem curativo: usar um curativo quebra o contrato.
+- Contrato Sem correr: correr quebra o contrato.
+- Contrato Sem prender o ar: prender a respiração quebra o contrato.
+- Contrato Sem esconderijo: entrar em armário ou cama quebra o contrato.
+- Contrato Lanterna avarenta: passar de 90 s de lanterna acesa quebra o contrato.
+- Contrato Sete minutos: passar de 7 minutos no capítulo quebra o contrato.
+- Contrato Um item só: carregar mais de um consumível quebra o contrato.
+- Contrato cumprido dá selo, multiplicador ×1,25 e aviso; contrato quebrado avisa na hora.
+- Pontos de rejogo ao fim de cada capítulo, com multiplicador por mutadores, Ascensão, contratos e regras do amigo.
+- Nova Ascensão 1 (depois do primeiro final): o Inspetor anda 5% mais rápido.
+- Ascensão 2: o Inspetor ouve 8% mais longe.
+- Ascensão 3: a lanterna gasta 20% mais pilha.
+- Ascensão 4: no máximo duas garrafas no bolso.
+- Ascensão 5: o fôlego de corrida chega só a 85.
+- Ascensão 6: o medo sobe 20% mais depressa.
+- Ascensão 7: o Inspetor ganha mais 5% de velocidade.
+- Ascensão 8: a vida máxima cai para 85.
+- Ascensão 9: o Inspetor ouve mais 10% longe.
+- Ascensão 10: correr ecoa pelo prédio em todos os capítulos.
+- Seletor de Ascensão no painel de Modos, bloqueado até o primeiro final, e aviso da regra no começo do capítulo.
+- Nova técnica Fechar os olhos (segure M): a tela fica preta e o medo sobe bem mais devagar.
+- De olhos fechados, uma seta azul aponta para onde o Inspetor está se ele estiver a menos de 22 m.
+- Depois de 3 s de olhos fechados o coração denuncia: o Inspetor ouve a batida.
+- Passou de 5 s, os olhos ardem, abrem sozinhos com ruído e ficam bloqueados por 6 s.
+- Nova técnica Coração no compasso: ao prender o ar, o HUD pulsa o batimento.
+- Soltar o ar no pico do batimento dá um fôlego de ouro de +12 de ar.
+- Soltar o ar fora do tempo faz um sopro audível que o Inspetor escuta.
+- Nova técnica Apagão perfeito: apagar a lanterna quando ele vira o rosto faz ele perder o rastro por 2 s.
+- Nova técnica Sangue-frio: medidor que sobe ao passar perto dele em silêncio e multiplica os pontos.
+- O sangue-frio zera na hora em que ele te ouve e entra em alerta ou caçada.
+- Novo Fantasma da melhor corrida: o jogo grava a sua rota a cada 0,2 s e guarda a mais rápida de cada capítulo sem morrer.
+- Opção Correr contra mim: uma silhueta azul translúcida repete a melhor rota.
+- Diferença de tempo para o fantasma aparece discreta no HUD ("+4 s").
+- Botão para copiar o código do seu fantasma e importar o de um amigo, que aparece em vermelho.
+- Novo modo Passa o Controle: a cada morte ou fim de capítulo, tela preta com o nome do próximo jogador e ENTER para seguir.
+- Passa o Controle guarda nomes digitados, tempo, mortes e capítulos de cada jogador, com placar na tela de morte.
+- Novo modo Amanhecer: arena no térreo de meia-noite às 6h em 12 minutos, sem objetivos, com relógio no HUD.
+- No Amanhecer, 1h deixa o Inspetor ouvir melhor, 2h traz a Ana, 3h a Procissão, 4h o apagão geral e 5h a caçada sem pausa.
+- Novo modo Noite Sem Fim: badaladas a cada 45 s, cada uma sobe a pressão e troca a ameaça (Ana, Procissão, caçada).
+- Entre as badaladas da Noite Sem Fim cai um item (pilha, curativo ou garrafa) em outra sala.
+- Novo modo Até o Canto do Galo: dez minutos de sobrevivência com pressão que sobe a cada minuto.
+- No Canto do Galo, um item surge a cada 90 s e some em 30 s.
+- Fim das arenas com resultado, recorde, botões De novo e Menu; morrer na arena não reinicia o capítulo.
+- As arenas nunca gravam checkpoint e não mexem no save da campanha.
+- Novas Regras do Amigo: quem assiste escolhe até 3 de 6 regras e o jogo vigia cada uma.
+- Quebrar uma regra do amigo avisa na hora e carimba o capítulo e a tela de morte.
+- Novo botão Me Surpreenda II no painel de Modos sorteia mutadores novos e já começa a noite.
+- Painel de Modos ganha seções dos mutadores novos, cartas, Ascensão, fantasma, passa o controle, arenas e recordes II.
+- Tela de morte mostra o tempo do capítulo contra o seu melhor e lembra que ENTER reinicia.
+- Início do capítulo mostra o seu melhor tempo limpo.
+- Aviso no começo da noite lista os mutadores novos ativos.
+- Nova conquista Fôlego de Ouro: dez acertos seguidos no Coração no compasso.
+- Nova conquista Sangue-Frio: chegue a x10 no medidor.
+- Nova conquista Apagão Perfeito.
+- Nova conquista Vi com os Ouvidos: deixe o Inspetor passar a menos de 4 m de olhos fechados.
+- Nova conquista Noite Mais Quieta: termine um capítulo com o Silêncio Absoluto intacto.
+- Nova conquista Selo Dourado: termine antes da terceira badalada.
+- Nova conquista Palavra Dada: cumpra três contratos.
+- Novas conquistas O Sino das Seis, Décima Badalada e Canto do Galo, uma por arena.
+- Nova conquista Mais Rápida que Eu: vença o seu fantasma.
+- Nova conquista Ascensão V: termine um capítulo na Ascensão 5 ou mais.
+- Novas conquistas Marcas de Guerra, Dois no Sofá, Porta Escorada e Alarme de Lata.
+- Módulo jogabilidade-lote6b no cache offline do jogo.
