@@ -94,3 +94,121 @@
 - O jogo passou a contar quantas noites você já viveu, para alimentar os segredos de rejogo.
 - O controle de esconderijos usados zera a cada capítulo, para as conquistas valerem por capítulo.
 - Todo o sistema de rejogabilidade é passivo e à prova de erro: nenhum subsistema derruba o quadro.
+- Na segunda jogada em diante o Inspetor usa um calçado sorteado por noite: bota, chinelo, meia ou tamanco.
+- De bota ferrada, os passos dele ficam mais altos, com uma batida metálica que se ouve de longe.
+- De chinelo, ele anda mais fraco e arrasta um estalo a cada passo.
+- De meia, os passos quase somem e só as chaves dele avisam que está perto.
+- De tamanco, cada passo é uma batida oca de madeira que ecoa alto no piso de madeira e some no tapete.
+- A bota perde força quando ele pisa em tapete.
+- A Lia comenta o calçado do dia na primeira vez que ele passa por perto.
+- Conquista secreta De Olhos Fechados por reconhecer o Inspetor nos quatro calçados, noite após noite.
+- A Ana sorteia uma regra de brincadeira por capítulo (seis regras) e a diz com a própria voz na primeira aparição.
+- Brincadeira curta: a Ana conta só até oito, e o clímax chega antes do esperado.
+- Brincadeira longa: a Ana conta até doze, bem devagar, e o ritmo decorado do DEZ não serve mais.
+- Brincadeira da luz: a Ana só anda e conta com a lanterna acesa, e congela no escuro.
+- Ana invertida: ela só anda enquanto você olha para ela, o oposto da regra aprendida, e fica de frente para você.
+- Ana que se enrola: no meio da contagem ela volta três números ou pula dois, com um estalo seco como pista e um murmúrio de erro.
+- Ana Dupla (a partir da quinta noite): uma segunda menina de mentira aparece parada na mesma sala.
+- A isca não faz sombra e não faz barulho de passo, a pista para distinguir qual é a verdadeira.
+- A isca conta números fora de ordem, o que denuncia a mentira para quem escuta.
+- Iluminar a isca a faz virar fumaça subindo pelo ar.
+- Quem ilumina a isca paga: a lanterna falha por um instante e perde pilha.
+- Conquista secreta Quem É Quem por desfazer a Ana de mentira com a luz.
+- A Lia nota que a outra menina não fez nenhum barulho.
+- A Ana cresce um pouco a cada noite jogada (até 20% mais alta).
+- Da sexta noite em diante a Ana conta um número a menos em qualquer brincadeira.
+- A noite sem Ana: em alguns capítulos ela não faz aparições ocasionais nos dois primeiros minutos.
+- Durante a noite sem Ana a Lia fica inquieta e pergunta onde ela está.
+- Quando a Ana finalmente aparece depois da ausência, ela diz "Cheguei."
+- A cantiga da Ana aprende com você: ela canta um verso sobre a causa da sua última morte (agarrão, armário, bote, pilha, Inspetor, Ana ou Procissão).
+- Duelo de assombrações: se a Ana e o Inspetor ficam perto um do outro, ela o congela por 8 segundos e some quase em seguida.
+- Durante o duelo a Lia comenta "eles se conhecem" e a Ana diz "Não é a sua vez."
+- A Procissão passa a ter de 5 a 9 figuras, sorteadas a cada passagem na segunda jogada.
+- Uma das crianças da fila é bem mais baixa que as outras.
+- Outra criança carrega um terço pendurado na frente do corpo.
+- Uma criança anda fora do alinhamento e vira o rosto para a Lia enquanto a fila passa.
+- A Lia percebe quando uma delas está olhando direto para ela.
+- Conquista secreta Fila Torta por ficar imóvel, de fôlego preso e escondida, enquanto a criança fora da fila olha.
+- Encarar a criança fora da fila por mais de 2,5 s faz barulho, dá medo e a Lia se arrepende.
+- O aviso da Procissão às vezes atrasa de 12 a 20 s: as luzes piscam e a fila só passa depois (nunca em Fácil nem na primeira noite).
+- No atraso a Lia sussurra que passou o tempo e ainda não acabou.
+- Às vezes uma segunda Procissão volta 38 s depois da primeira, com um aviso 40% mais curto.
+- A segunda Procissão sai exatamente de onde a primeira terminou.
+- A Lia lembra "ainda não acabou" quando a Procissão volta.
+- Uma criança atrasada passa sozinha cerca de 6 s depois do fim da fila, andando pelo mesmo caminho.
+- Quem sai do esconderijo cedo e cruza com a criança atrasada leva um susto: medo no máximo e barulho que chama atenção.
+- Escondida, a criança atrasada para na frente do esconderijo e vira o rosto para ele.
+- Se você não prender o ar quando ela olha para o esconderijo, ela denuncia o lugar com ruído e fala "Você está aí dentro."
+- A criança atrasada tem passos descalços próprios, mais leves que os da fila.
+- Antes da fila passar, um sussurro pede um comportamento: não respire, não olhe, não faça luz ou não pare.
+- Obedecer ao sussurro na hora em que a fila chega salva do golpe mesmo fora de esconderijo.
+- "Não respire": prender o ar com ESPAÇO enquanto a fila passa conta como cumprir a regra.
+- "Não olhe": manter a câmera baixa, de olhos no chão, cumpre a regra.
+- "Não faça luz": estar com a lanterna apagada cumpre a regra.
+- "Não pare": continuar andando enquanto a fila passa cumpre a regra.
+- Conquista secreta Fila Indiana por passar pela Procissão cumprindo o sussurro, sem se esconder.
+- Depois de passar cumprindo a regra, a Lia diz que fez o que mandaram.
+- Da terceira noite em diante, a última criança da fila sussurra o nome digitado no título quando passa perto.
+- O Chamado às vezes é verdadeiro: em uma voz a cada quatro, quem chama é mesmo o Davi.
+- A voz verdadeira respira antes de falar, e a legenda traz "Lia... aqui." ou "Lia. Vem. Rápido."
+- Seguir a voz verdadeira dá uma pilha, acalma o medo e faz o Inspetor recuar.
+- Conquista secreta A Voz Verdadeira por seguir o chamado certo.
+- O Chamado falso agora chia no ouvido esquerdo, o sinal que dá para aprender de noite em noite.
+- A Lia explica o chiado na primeira vez que ouve o falso.
+- Se a voz verdadeira passa sem você ir, a Lia lamenta ter ignorado quem respirou antes de chamar.
+- Em uma noite a cada quatro o Inspetor começa o Capítulo I dormindo numa sala vizinha, e dá para ouvir o ronco.
+- O ronco do Inspetor soa de tempos em tempos, de longe, e vira medidor: ele acorda se o seu barulho passar do limite.
+- Passar agachada e em silêncio ao lado dele rende uma pilha tirada do casaco.
+- Conquista secreta Sono Leve por tirar a pilha sem acordá-lo.
+- O Inspetor acorda sozinho quando o gerador liga, o que impede de passar o capítulo inteiro com ele dormindo.
+- Ao acordar ele diz "Quem...?" e fica mais rápido por 100 s.
+- Acordar com você perto dá um susto de verdade: tremor de câmera e medo.
+- A Lia lê o ronco como um aviso, na primeira vez que chega perto.
+- Inspetor Mascarado (a partir da quarta noite): ele aparece com uma máscara pálida de olhos furados.
+- O Mascarado quase não ouve passos e sons.
+- O Mascarado reage à lanterna acesa a até 6,5 m e parte para a caça, a cada 7 s no máximo.
+- A Lia explica a regra do Mascarado: andar no escuro.
+- Conquista secreta No Escuro por terminar um capítulo contra o Mascarado sem ele partir para a caça.
+- Inspetor Faro (a partir da terceira noite): ele ouve muito pouco, mas segue o seu rastro de cheiro.
+- No Faro ele vai atrás dos lugares por onde você passou de 6 a 24 s antes.
+- Atravessar a água quebra o rastro dele; a Lia avisa e ganha a conquista Rastro Frio.
+- A Lia explica o faro na primeira vez que ele o usa.
+- A fúria do Inspetor sobe 20 pontos a cada capítulo que você termina sem tomar dano e é lembrada entre noites.
+- Cada morte tira 15 pontos de fúria.
+- A fúria muda a velocidade dele: de 9% mais lento com fúria baixa até 21% mais rápido com fúria alta.
+- Com fúria alta a Lia diz que ele está de mau humor hoje.
+- Com fúria baixa a Lia nota que ele está mais manso.
+- Com fúria alta ele resmunga ("Quem foi... quem foi...") ao partir para a caça.
+- O jogo mede a ferramenta que você mais usou em cada capítulo (garrafa, esconderijo, prender o ar, correr).
+- Contramedida da garrafa: no capítulo seguinte a distração da garrafa dura metade.
+- Contramedida do esconderijo: ele passa a revistar os armários 50% mais vezes.
+- Contramedida do fôlego: na fareja ele espera mais tempo e o seu ar precisa durar mais.
+- Contramedida da corrida: ele escuta você correr de 22% mais longe.
+- A Lia diz "ele mudou" para a contramedida do capítulo, sem nunca dizer qual.
+- Se você usa o mesmo tipo de esconderijo três vezes seguidas, ele confere esse tipo primeiro na procura.
+- A Lia nota quando ele passa a vigiar o seu tipo de esconderijo.
+- O armário mais usado da campanha é lacrado com fita preta em X e um cadeado, e não dá mais para entrar nele.
+- A Lia comenta o lacre na primeira tentativa, e o lacre cede durante a Procissão para sempre sobrar uma saída.
+- Quando ele patrulha a sala por onde você mais passou na noite, ele diz "Você passou aqui antes."
+- O Falso Inspetor: uma silhueta idêntica a ele aparece parada no fundo de um corredor, sem chaves e sem respiração.
+- O verdadeiro ronda por trás enquanto você olha para o falso.
+- Encarar o falso por mais de 2 s faz barulho que o verdadeiro escuta.
+- O falso some se você chegar perto sem encará-lo, e rende a conquista O Outro.
+- A Lia reage de um jeito diferente a cada vez e na terceira já não sabe qual é o verdadeiro.
+- Passos de Inspetor soam numa sala distante enquanto você está escondida, mas ele não está lá.
+- Sair do esconderijo depois do eco falso dá tontura: o mundo abafa, o medo sobe e a Lia lamenta (sem dano).
+- A Seguidora (a partir da terceira noite, Capítulos III e IV): uma menina pálida repete os seus passos com 20 s de atraso.
+- Pegadas azuis brilham adiantadas no caminho que ela vai fazer.
+- A Seguidora tem passos molhados que dá para ouvir.
+- Se ela alcança você, causa 14 de dano, grito e medo máximo.
+- Se ela perde o rastro ou o tempo acaba sem te alcançar, a Lia comenta e vale a conquista Rastro Frio.
+- O cão farejador (a partir da quarta noite, Capítulos II a IV): ele ignora som e segue o seu rastro de passos.
+- O cão late antes do bote, um aviso claro de 0,9 s.
+- Atravessar a água quebra o rastro do cão.
+- Uma porta fechada atrás de você também barra o cão.
+- Escondida, o cão fareja a porta do esconderijo e, se você não prender o ar, late e atrai o Inspetor.
+- Se o cão te alcança, o bote causa 15 de dano e ele foge.
+- Cada monstro passa a ser contado: o que mais te matou vira a sua Nêmesis depois de 3 mortes.
+- A tela de morte conta "Ele te pegou N vezes" (ou "Ela", "Elas") para a sua Nêmesis.
+- A Nêmesis te recebe com uma fala só dela ("De novo você.") ao te ver na noite.
+- Vencer um capítulo sem tomar dano alivia a Nêmesis, a Lia comenta e vale a conquista Fim do Ciclo.
