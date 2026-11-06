@@ -46,10 +46,10 @@ T.cap1 = async () => { T.usar(/Forçar a porta/); T.usar(/galão/); T.usar(/caix
 T.ok = () => { if (J.ui === 'pausa') document.getElementById('p-voltar').click(); T.dlg(); };
 T.ate = async (cond, seg = 60, deus = true) => {
   const r = J.renderer, orig = r.render; r.render = () => {};
-  const fim = performance.now() + seg * 1000;
+  const ini = performance.now(), fim = ini + seg * 1000, teto = ini + seg * 6000; let sim = 0; // máquina lenta (vários QAs juntos): só desiste depois de simular o dobro do tempo pedido, com teto de 6x em tempo real
   try {
-    while (!cond() && performance.now() < fim) {
-      for (let i = 0; i < 6; i++) { if (deus && J.S) { J.S.health = 1000; J.S.dead = false; } J.frame(1 / 30); }
+    while (!cond() && (performance.now() < fim || (sim < seg * 2 && performance.now() < teto))) {
+      for (let i = 0; i < 6; i++) { if (deus && J.S) { J.S.health = 1000; J.S.dead = false; } J.frame(1 / 30); sim += 1 / 30; }
       T.ok(); await new Promise(res => setTimeout(res, 5));
     }
   } finally { r.render = orig; if (J.S) J.S.health = Math.min(J.S.health, 100); }
