@@ -2,7 +2,7 @@
 
 Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/lote*/<área>.md`. Não edite à mão: edite o arquivo da área e gere de novo.
 
-**Total geral: 9056 melhorias**
+**Total geral: 10291 melhorias**
 
 ## Índice
 
@@ -76,17 +76,18 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
   - Progressão e rejogabilidade: 185
   - Plataforma e acessibilidade: 148
   - Revisão: 5
-- [Lote 6](#lote-6) — 1034 melhorias
-  - História e texto: 96
-  - Mapa: prólogo e estrada: 92
-  - Mapa: térreo e dormitórios: 91
-  - Mapa: túneis, cemitério e capela: 91
-  - Monstros e IA: 95
-  - Áudio: 92
-  - Visual e luz: 96
-  - Jogabilidade: 91
-  - Interface: 93
-  - Progressão e rejogabilidade: 96
+- [Lote 6](#lote-6) — 2269 melhorias
+  - História e texto: 206
+  - Mapa: prólogo e estrada: 202
+  - Mapa: térreo e dormitórios: 193
+  - Mapa: túneis, cemitério e capela: 196
+  - Monstros e IA: 213
+  - Sustos e eventos: 92
+  - Áudio: 189
+  - Visual e luz: 225
+  - Jogabilidade: 225
+  - Interface: 199
+  - Progressão e rejogabilidade: 228
   - Plataforma e acessibilidade: 90
   - revisão (jogador crítico / QA antes de publicar): 11
 
@@ -8329,9 +8330,9 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
 
 ## Lote 6
 
-1034 melhorias.
+2269 melhorias.
 
-### História e texto (96)
+### História e texto (206)
 
 1. Depois de ver um final, a casa inteira entra em "Segunda Vigília": todo o texto novo abaixo só aparece na volta.
 2. Ao recomeçar já tendo visto um final, um aviso de "SEGUNDA VIGÍLIA — a noite lembra de você" abre a noite.
@@ -8429,974 +8430,2212 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
 94. O título ganha um subtítulo de ciclo após três campanhas, com a contagem de noites ("Noite {n}. A estrada velha te traz de volta").
 95. No título, uma linha discreta provoca o seu melhor tempo ("Da última vez você chegou ao fim em {t}").
 96. Conquista secreta "Segunda Vigília" por voltar ao São Lázaro depois de já ter visto um final.
+97. Cada noite a semente sorteia quem realmente soltou o fogo de 1979: Albano, Celeste ou Joaquim.
+98. A nota n2 ganha, na margem e a lápis, uma pista que aponta para o culpado da noite.
+99. A nota n8 ganha uma anotação riscada que aponta para o culpado da noite.
+100. A nota n10 ganha uma frase na margem que acusa o culpado da noite.
+101. A página 4 do diário do Davi ganha um P.S. diferente conforme o culpado da noite.
+102. A fita 1 ganha uma linha do diretor que muda conforme o culpado da noite.
+103. A fita 2 ganha uma linha final que muda conforme o culpado da noite.
+104. A lápide do Albano no cemitério ganha giz fraco com "foi ele" quando ele é o culpado.
+105. A lápide da Irmã Celeste ganha cera derretida em volta do terço quando ela é a culpada.
+106. O texto do final cita quem a casa insistiu ser o culpado naquela noite e avisa que amanhã conta de outro jeito.
+107. No fim da noite abre a tela "Quem soltou o fogo?" com um botão para cada suspeito.
+108. A tela de acusação lista as pistas que você realmente leu naquela noite.
+109. Acertar o culpado faz a Lia falar e mostra a frase que explica o fogo daquele nome.
+110. Acertar o culpado dá a conquista Detetive do São Lázaro.
+111. Errar faz o Inspetor repetir o nome errado que você escolheu, três vezes, de longe.
+112. Errar faz o Inspetor desmentir: "Não foi ele, menina. Eu estava lá."
+113. Acertar os três culpados em três noites diferentes dá a conquista Os Três Nomes.
+114. Quem acerta os três ouve que nenhum acendeu sozinho: o fogo precisou da vela, do fogão e da mão que tranca.
+115. No térreo, o eco do Albano conta o incêndio e culpa a Celeste pela porta trancada.
+116. No térreo, o eco da Celeste conta o incêndio e diz que a chave estava no bolso do Joaquim.
+117. No térreo, o eco do Joaquim conta o incêndio e diz que quem trancou foi o diretor.
+118. Cada noite o eco que toca é o do narrador que você ainda não ouviu, então as três versões pedem noites diferentes.
+119. Depois de ouvir duas versões o Davi sussurra que falta alguém contar a outra volta da chave.
+120. Depois de ouvir as três versões uma quarta nota (a quarta versão) aparece numa mesa do refeitório.
+121. Ao abrir a quarta versão surge o aviso "Uma quarta nota se abriu: a versão que ninguém contou."
+122. A quarta nota revela que a chave deu duas voltas e que a de dentro foi do Davi, para segurar o fogo longe dos outros.
+123. Ler a quarta versão dá a conquista As Quatro Versões.
+124. O jogo passa a lembrar, entre noites, em que sala você morreu e quem te matou.
+125. Ao entrar numa sala onde uma Lia anterior morreu para o Inspetor, aparece um aviso arranhado no reboco.
+126. Ao entrar numa sala onde uma Lia anterior morreu para a Ana, aparece um aviso escrito com o dedo na poeira.
+127. Ao entrar numa sala onde uma Lia anterior morreu para a Procissão, aparece um aviso torto a giz.
+128. Há também avisos genéricos de letra tremida, como "não entre aqui. eu entrei."
+129. Os avisos citam quantos minutos a Lia anterior durou antes de morrer.
+130. A casa mostra no máximo dois testemunhos por capítulo, para não virar enrolação.
+131. Ler cinco avisos das Lias que morreram dá a conquista Letra Tremida.
+132. Morrer três vezes no mesmo capítulo faz a Lia achar um papel dobrado no bolso com a própria letra tremida.
+133. O papel traz um conselho que muda conforme o monstro que te matou e cita o nome da sala.
+134. A semente decide se o conselho do papel é verdadeiro ou falso, e você nunca sabe qual.
+135. Quando o conselho é verdadeiro, a Lia reconhece o próprio medo na letra.
+136. Quando o conselho é falso, a Lia estranha o "g" e pergunta quem escreveu aquilo.
+137. Na tela de morte surge um campo para deixar um recado de até 40 letras para a próxima Lia.
+138. Na tela do final surge o mesmo campo de recado para a próxima Lia.
+139. Na tela de título há um campo para escrever ou rever o recado antes de começar.
+140. O campo de recado oferece vinte frases prontas ("ele está atrás da porta", "não confie na voz"...).
+141. O recado é limpo de símbolos, links e arrobas e cortado em 40 letras.
+142. Na noite seguinte o recado aparece no banco do carona, na letra do Davi com as suas palavras.
+143. O mesmo recado aparece como nota escondida numa mesa da sala de aula do térreo.
+144. A cada noite a casa troca uma palavra a mais do seu recado, e uma frase como "não confie no armário" vai virando o contrário.
+145. A troca usa antônimos de verdade (não/sim, esquerda/direita, corra/pare, luz/escuro...).
+146. Quando uma palavra foi trocada, a Lia diz que não escreveu assim ou que a casa trocou uma palavra.
+147. Quando duas ou mais palavras mudam, a Lia reclama e o Davi jura que não foi ele, só copia a letra.
+148. A nota do recado ganha o rodapé "(embaixo, a lápis) alguém mexeu aqui." depois de corrompida.
+149. Ler o recado depois de três palavras trocadas dá a conquista Ninguém Escreveu Isso.
+150. Nas noites de volta, uma das regras do papel do internato aparece riscada a caneta e reescrita (4 regras possíveis).
+151. A regra reescrita muda de verdade: "Nunca responda" vira "Responda uma única vez".
+152. As regras no diário mostram o trecho velho riscado e a frase nova ao lado.
+153. O verso do papel guarda a versão antiga da regra, a lápis, no pé da folha.
+154. Quando você relê o papel, a Lia comenta "alguém mexeu no papel" e cita qual regra mudou.
+155. Perceber a regra rasurada dá a conquista Letra de Outra Mão.
+156. Se você volta poucos minutos depois de sair, o Davi diz "de novo? você acabou de sair".
+157. Se você volta entre 18 e 40 horas depois, a Lia encosta no capô e o acha ainda quente.
+158. Se você volta depois de 3 a 6 dias, a Lia sente cheiro de fechado e poeira no painel.
+159. Se você volta depois de 2 dias ou mais, o Davi diz "demorou, Lia. Eu contei N dias no escuro."
+160. Se você volta depois de uma semana ou mais, a Lia diz "faz N dias, a casa não contou o tempo."
+161. Se você volta depois de dois meses, o Davi diz que achou que você tinha desistido.
+162. Um calendário de papel preso ao painel do carro mostra um fragmento de lore diferente para cada dia do mês (31 textos novos).
+163. O fragmento do dia aparece uma vez por dia real, espelhando a data do aparelho.
+164. Abrir o calendário nos 31 dias do mês revela a trigésima segunda página e a conquista O Mês Inteiro.
+165. O Davi cita no rádio a data real de hoje (dia da semana, número e mês) e diz que ainda é a mesma noite.
+166. O Davi acrescenta uma frase própria para cada dia da semana.
+167. O Davi comenta o seu jeito de jogar da noite anterior: discreta, destruidora ou apressada, cada um com tom e fala próprios.
+168. O rádio do carro passa um folhetim da Serra FM em sete boletins de 1979, um por noite jogada, em ordem.
+169. O sétimo boletim revela que o Moacir não fugiu e que as crianças pediam para ele tocar o sino.
+170. Quem ouviu os sete boletins ganha a conquista Serra FM, Sete Noites e uma fala nova do Inspetor no final verdadeiro.
+171. Na trigésima noite a Lia fala com a casa como com uma velha amiga.
+172. Na quinquagésima noite o Inspetor aparece cansado e arrasta o pé na entrada.
+173. Na centésima noite o portão está aberto e há uma cadeira de balanço esperando no pátio.
+174. Novo final secreto "Com Nome": devolver o apito e o crachá ao Moacir, que diz o próprio nome e para o sino antes da hora.
+175. Novo final secreto "A Substituta": tirar o apito do cinto dele e assoprar três vezes, e a Lia vira a vigia cega do internato.
+176. Novo final secreto "A Quarta da Fila": depois de responder três chamados e brincar com a Ana, a Lia entra na fila da Procissão.
+177. Novo final secreto "A Hora Compartilhada": tocar o sino junto com o Moacir, sem fuga e sem monstro.
+178. O apito, o crachá e a lamparina do pedreiro ficam guardados entre noites, então as relíquias podem ser juntadas em noites diferentes.
+179. A escolha do portão ganha um botão extra para cada final alternativo que você liberou.
+180. Quando só a saída alternativa está liberada, o portão abre mesmo sem as atitudes do final verdadeiro.
+181. Cada final alternativo tem título próprio na tela do final e um subtítulo novo na tela de título para sempre.
+182. Cada final alternativo dá uma conquista secreta própria (Com Nome, A Substituta, A Quarta da Fila, A Hora Compartilhada).
+183. O epílogo muda conforme o estilo da noite: escondida, corredora, exploradora, sobrevivente ou furtiva (duas linhas cada).
+184. Repetir o mesmo estilo duas noites seguidas acrescenta "o internato já aprendeu o seu ritmo".
+185. O céu do epílogo muda com o tempo total: madrugada com lua alta, dia clareando ou sol alto na rua cheia.
+186. O epílogo termina com a hora da noite escrita a giz na última parede.
+187. A cada final, o jornal do dia seguinte lista os nomes dos seus amigos entre os visitantes da noite.
+188. O título ganha um campo para até cinco nomes de amigos, salvo só no navegador.
+189. Na chamada de 1979, a voz do Inspetor passa a chamar os nomes dos seus amigos.
+190. O Chamado às vezes diz o nome de um amigo seu ("fulano me falou de você. Vem cá.").
+191. Depois do primeiro final a Lia fala mais cansada nas pausas da noite.
+192. Depois do segundo final a Lia fala irônica sobre a casa.
+193. Depois do terceiro final a Lia fala quase afetuosa com a casa.
+194. Depois do final verdadeiro, cinco cartas do enfermeiro Moacir aparecem, uma por capítulo, e a voz dele degrada até o desenho do apito.
+195. Ler as cinco cartas do Moacir dá a conquista O Enfermeiro.
+196. Cada final visto deixa uma carta da mãe da Lia no porta-luvas da noite seguinte, com tom diferente (preocupada, magoada, em paz).
+197. Ler as três cartas libera uma quarta folha da mãe e a conquista Quatro Páginas da Mãe.
+198. Na recepção aparece o cartão de um visitante fictício a cada noite concluída (12 cartões, o último com a sua letra e a data de hoje).
+199. Na terceira noite o toca-fitas do carro toca a Lia aos seis anos cantando uma cantiga que muda a leitura do final.
+200. Essa fita dá a conquista Cantiga de Seis Anos.
+201. Depois dos créditos aparece uma de sete cenas curtas (carro vazio, rádio com a data, cavalinho girando...), sem repetir até ver todas.
+202. Ver as sete cenas libera uma oitava, com a cadeira de balanço e o chapéu do Inspetor, e a conquista Depois dos Créditos.
+203. Depois do final verdadeiro, as notas n2, n3, n4, n8 e n10 ganham um carimbo "LIDO DE NOVO" e trechos em caneta vermelha que revelam o que o diário omitia.
+204. Em cada noite de volta uma das notas n2, n3, n4 ou n8 é mentirosa, com um detalhe trocado (hora, número de crianças, idade, piscar).
+205. No final a casa revela qual nota mentia, o que ela dizia e o certo, e avisa quando você nem a leu.
+206. Nas notas que você já leu aparecem anotações a lápis na letra da Lia anterior, metade conselho, metade armadilha.
 
-### Mapa: prólogo e estrada (92)
+### Mapa: prólogo e estrada (202)
 
-97. O prólogo agora tem uma Semente da Noite própria (por noite e dificuldade) que faz cada descida da estrada ser diferente
-98. Clima sorteado da noite: chuva fina, com mais névoa, céu mais fechado e lua mais fraca
-99. Clima sorteado da noite: serração densa, que fecha a estrada de neblina
-100. Clima sorteado da noite: noite seca, com menos névoa e lua bem clara
-101. O clima da noite fica gravado como prenúncio: a observadora atenta lê antecipado o jeito da noite
-102. A lua do prólogo ganha uma leve variação pela semente, então o céu nunca é idêntico
-103. O tom da lataria do carro muda de uma noite para outra pela semente
-104. Em noite seca, vaga-lumes piscam e flutuam perto do posto
-105. Em noite de serração, faixas de bruma baixa rastejam pela estrada
-106. Em noite de chuva, poças escuras refletem a luz no asfalto
-107. Um "achado da noite" aparece no balcão do posto, sorteado pela semente (micro-colecionável de rejogo)
-108. O achado troca de canto do posto pela semente (balcão, prateleira ou outro canto)
-109. Achado possível: um bilhete amassado com "não deixa a menina entrar — J."
-110. Achado possível: uma foto velha de três crianças de mãos dadas no portão
-111. Achado possível: uma pilha de reserva (dá uma pilha de verdade)
-112. O jogo lembra, entre noites, quais achados você já pegou
-113. Conquista secreta "Lembrancinhas da Serra" ao achar os três tipos de achado em noites diferentes
-114. A Lia comenta quando percebe que já achou de tudo naquele balcão
-115. O boato da noite vem com um estalo de estática do rádio do carro
-116. Boato da noite no rádio, uma vez, com dica velada do clima de chuva
-117. Boato da noite no rádio com dica velada da serração
-118. Boato da noite no rádio com dica velada da noite seca
-119. A silhueta do Seu Joaquim morto aparece num de quatro pontos sorteados da estrada, para o susto não ser decorável
-120. Essa silhueta só aparece quando você não está olhando e some no relance seguinte
-121. Fala da Lia ao ver o morto na estrada, com uma fala diferente nas revisitas
-122. Na serração o morto surge mais perto; em noite seca, de mais longe
-123. O morto sussurra uma contagem (o eco de 1979) enquanto fica de pé perto de você
-124. Por semente, o morto aparece encharcado em vez de só uma sombra
-125. Pensamento da noite sorteado pela semente (uma frase de sabor da Lia, uma vez)
-126. A noite propõe um desafio opcional sorteado, mostrado como um aviso leve
-127. Desafio opcional: atravessar a estrada sem acender a lanterna
-128. Desafio opcional: chegar ao portão sem buzinar o carro
-129. Desafio opcional: chegar ao portão em menos de 90 segundos
-130. Cronômetro de travessia do prólogo, do carro até o portão
-131. O melhor tempo de travessia fica gravado entre as noites, com fala quando você bate o recorde
-132. Conquista secreta "Travessia Rápida" por chegar ao portão em menos de 90 s
-133. Conquista secreta "No Escuro e Calada" por atravessar sem acender a lanterna, com fala
-134. Os desafios cumpridos deixam selos guardados entre as noites
-135. Ao chegar ao portão, um resumo diz o que mudou nesta noite (clima, achado, segredos, recorde)
-136. O resumo também conta quantos selos de desafio você já juntou
-137. O prólogo conta quantas noites você já desceu a estrada
-138. Conquista secreta "Estrada de Cor" ao jogar o prólogo cinco vezes, com fala
-139. O jogo lembra quais climas você já pegou entre as noites
-140. Conquista secreta "Meteorologista da Serra" por jogar na chuva, na serração e na seca, com fala
-141. Conquista secreta "Tríade da Estrada" por cumprir os três desafios da travessia, com fala
-142. A partir da segunda jogada, uma porta nova aparece nos fundos do Posto Serra
-143. Depois de ver o final verdadeiro, essa porta mostra o número 1979 gravado na madeira
-144. Depois do final verdadeiro, a porta abre com o código do epílogo (teclado) e leva ao quartinho de infância do Moacir
-145. Falas da Lia ao achar a porta nova e ao reconhecer o código do epílogo
-146. Vinheta muda do quartinho: três cartões (barquinhos na parede, giz de cera, "MOACIR, 6 ANOS")
-147. Conquista secreta "O Quarto do Menino" por entrar no quartinho depois do final verdadeiro
-148. Na rejogada (sem o verdadeiro ainda), a mesma porta revela a sala do zelador atrás do posto
-149. A sala do zelador mostra um mapa de giz com as rondas do Inspetor, risco por risco, com as horas
-150. Conquista secreta "Mapa de Giz" por achar a sala do zelador
-151. Na rejogada, o porta-luvas do carro vira um cofre que abre com o ano (teclado)
-152. Falas da Lia com a dica do ano (calendário e rádio) e de código errado
-153. Dentro do porta-luvas: um bilhete da mãe e uma lanterna nova cosmética
-154. A lanterna cosmética do porta-luvas fica marcada em S.flags para o acervo
-155. Conquista secreta "Cofrinho da Veterana" por abrir o porta-luvas
-156. Na rejogada, o carro de 1979 aparece parado no acostamento, com o capô amassado num tronco
-157. O carro de 1979 tem colisão de verdade e janelas escurecidas
-158. Olhar o carro de 1979 por fora e depois por dentro revela a fita e o carrinho azul no banco de trás
-159. Conquista secreta "A Curva de 1979" por achar o carro parado
-160. Na rejogada, o último ônibus de 1979 cruza o fundo da estrada, puro clima, sem bloquear
-161. O ônibus passa com janelas acesas, silhuetas de crianças sentadas e o farol
-162. O ônibus some na serração com estática e um relâmpago
-163. O ônibus passa por uma faixa da estrada sorteada pela semente
-164. Por semente, o ônibus solta uma buzina grave ao passar
-165. Falas da Lia ao avistar o ônibus e quando ele passa
-166. Conquista secreta "Linha Encerrada" por ver o último ônibus numa rejogada
-167. Na rejogada, a Lia é lembrada, uma vez, de que o barranco corta caminho até o portão
-168. Na rejogada, a Lia reconhece a estrada ao descer dela
-169. A partir da terceira noite, ela tem uma fala diferente sobre a estrada que muda sozinha
-170. Na rejogada, o Seu Joaquim solta uma fala de reencontro logo depois da conversa
-171. O portão às vezes aparece acorrentado (sorteado) em vez de só com cadeado
-172. A corrente do portão cai quando o portão é aberto
-173. Presságio sonoro da noite, sorteado: cães ao longe, um sino, vento forte ou uma buzina distante
-174. Em noite seca o presságio soa mais longe (os sons viajam mais)
-175. Uma plaquinha de giz perto do portão mostra o melhor tempo de travessia e o número da noite
-176. A plaquinha do recorde pode ser lida de perto, sem tela cheia
-177. Na rejogada, um desenho de criança fica pregado na parede do posto
-178. O desenho ganha mais elementos a cada noite: o sol, as três figuras e, por fim, o aviso "não deixa ela entrar"
-179. O desenho pode ser lido de perto e reagido ao tocar
-180. Na rejogada, uma vela acesa fica no muro do portão, com a chama tremeluzindo
-181. Na rejogada, uma luz piloto colorida (cor sorteada) pisca no poste do letreiro do posto
-182. Na rejogada, uma trilha de pegadas secas aponta da estrada para a cerca caída do barranco
-183. Na rejogada, o placar do fliperama do posto já marca LIA em primeiro lugar
-184. Novas falas do Lote 6 entram em window.ROTEIRO.falas sem conflitar com o roteiro existente
-185. Novas conquistas do Lote 6 entram em window.ROTEIRO.conquistas (nomeadas no painel)
-186. Módulo novo src/estrada-lote6.js ligado por gancho curto em estrada(), depois de monstrosEstrada()
-187. Arquivos novos entram no sw.js para o jogo rodar offline, com o cache subindo para a versão v8
-188. Nada do Lote 6 bloqueia o caminho obrigatório nem muda o fluxo da chave e do portão
+207. O prólogo agora tem uma Semente da Noite própria (por noite e dificuldade) que faz cada descida da estrada ser diferente
+208. Clima sorteado da noite: chuva fina, com mais névoa, céu mais fechado e lua mais fraca
+209. Clima sorteado da noite: serração densa, que fecha a estrada de neblina
+210. Clima sorteado da noite: noite seca, com menos névoa e lua bem clara
+211. O clima da noite fica gravado como prenúncio: a observadora atenta lê antecipado o jeito da noite
+212. A lua do prólogo ganha uma leve variação pela semente, então o céu nunca é idêntico
+213. O tom da lataria do carro muda de uma noite para outra pela semente
+214. Em noite seca, vaga-lumes piscam e flutuam perto do posto
+215. Em noite de serração, faixas de bruma baixa rastejam pela estrada
+216. Em noite de chuva, poças escuras refletem a luz no asfalto
+217. Um "achado da noite" aparece no balcão do posto, sorteado pela semente (micro-colecionável de rejogo)
+218. O achado troca de canto do posto pela semente (balcão, prateleira ou outro canto)
+219. Achado possível: um bilhete amassado com "não deixa a menina entrar — J."
+220. Achado possível: uma foto velha de três crianças de mãos dadas no portão
+221. Achado possível: uma pilha de reserva (dá uma pilha de verdade)
+222. O jogo lembra, entre noites, quais achados você já pegou
+223. Conquista secreta "Lembrancinhas da Serra" ao achar os três tipos de achado em noites diferentes
+224. A Lia comenta quando percebe que já achou de tudo naquele balcão
+225. O boato da noite vem com um estalo de estática do rádio do carro
+226. Boato da noite no rádio, uma vez, com dica velada do clima de chuva
+227. Boato da noite no rádio com dica velada da serração
+228. Boato da noite no rádio com dica velada da noite seca
+229. A silhueta do Seu Joaquim morto aparece num de quatro pontos sorteados da estrada, para o susto não ser decorável
+230. Essa silhueta só aparece quando você não está olhando e some no relance seguinte
+231. Fala da Lia ao ver o morto na estrada, com uma fala diferente nas revisitas
+232. Na serração o morto surge mais perto; em noite seca, de mais longe
+233. O morto sussurra uma contagem (o eco de 1979) enquanto fica de pé perto de você
+234. Por semente, o morto aparece encharcado em vez de só uma sombra
+235. Pensamento da noite sorteado pela semente (uma frase de sabor da Lia, uma vez)
+236. A noite propõe um desafio opcional sorteado, mostrado como um aviso leve
+237. Desafio opcional: atravessar a estrada sem acender a lanterna
+238. Desafio opcional: chegar ao portão sem buzinar o carro
+239. Desafio opcional: chegar ao portão em menos de 90 segundos
+240. Cronômetro de travessia do prólogo, do carro até o portão
+241. O melhor tempo de travessia fica gravado entre as noites, com fala quando você bate o recorde
+242. Conquista secreta "Travessia Rápida" por chegar ao portão em menos de 90 s
+243. Conquista secreta "No Escuro e Calada" por atravessar sem acender a lanterna, com fala
+244. Os desafios cumpridos deixam selos guardados entre as noites
+245. Ao chegar ao portão, um resumo diz o que mudou nesta noite (clima, achado, segredos, recorde)
+246. O resumo também conta quantos selos de desafio você já juntou
+247. O prólogo conta quantas noites você já desceu a estrada
+248. Conquista secreta "Estrada de Cor" ao jogar o prólogo cinco vezes, com fala
+249. O jogo lembra quais climas você já pegou entre as noites
+250. Conquista secreta "Meteorologista da Serra" por jogar na chuva, na serração e na seca, com fala
+251. Conquista secreta "Tríade da Estrada" por cumprir os três desafios da travessia, com fala
+252. A partir da segunda jogada, uma porta nova aparece nos fundos do Posto Serra
+253. Depois de ver o final verdadeiro, essa porta mostra o número 1979 gravado na madeira
+254. Depois do final verdadeiro, a porta abre com o código do epílogo (teclado) e leva ao quartinho de infância do Moacir
+255. Falas da Lia ao achar a porta nova e ao reconhecer o código do epílogo
+256. Vinheta muda do quartinho: três cartões (barquinhos na parede, giz de cera, "MOACIR, 6 ANOS")
+257. Conquista secreta "O Quarto do Menino" por entrar no quartinho depois do final verdadeiro
+258. Na rejogada (sem o verdadeiro ainda), a mesma porta revela a sala do zelador atrás do posto
+259. A sala do zelador mostra um mapa de giz com as rondas do Inspetor, risco por risco, com as horas
+260. Conquista secreta "Mapa de Giz" por achar a sala do zelador
+261. Na rejogada, o porta-luvas do carro vira um cofre que abre com o ano (teclado)
+262. Falas da Lia com a dica do ano (calendário e rádio) e de código errado
+263. Dentro do porta-luvas: um bilhete da mãe e uma lanterna nova cosmética
+264. A lanterna cosmética do porta-luvas fica marcada em S.flags para o acervo
+265. Conquista secreta "Cofrinho da Veterana" por abrir o porta-luvas
+266. Na rejogada, o carro de 1979 aparece parado no acostamento, com o capô amassado num tronco
+267. O carro de 1979 tem colisão de verdade e janelas escurecidas
+268. Olhar o carro de 1979 por fora e depois por dentro revela a fita e o carrinho azul no banco de trás
+269. Conquista secreta "A Curva de 1979" por achar o carro parado
+270. Na rejogada, o último ônibus de 1979 cruza o fundo da estrada, puro clima, sem bloquear
+271. O ônibus passa com janelas acesas, silhuetas de crianças sentadas e o farol
+272. O ônibus some na serração com estática e um relâmpago
+273. O ônibus passa por uma faixa da estrada sorteada pela semente
+274. Por semente, o ônibus solta uma buzina grave ao passar
+275. Falas da Lia ao avistar o ônibus e quando ele passa
+276. Conquista secreta "Linha Encerrada" por ver o último ônibus numa rejogada
+277. Na rejogada, a Lia é lembrada, uma vez, de que o barranco corta caminho até o portão
+278. Na rejogada, a Lia reconhece a estrada ao descer dela
+279. A partir da terceira noite, ela tem uma fala diferente sobre a estrada que muda sozinha
+280. Na rejogada, o Seu Joaquim solta uma fala de reencontro logo depois da conversa
+281. O portão às vezes aparece acorrentado (sorteado) em vez de só com cadeado
+282. A corrente do portão cai quando o portão é aberto
+283. Presságio sonoro da noite, sorteado: cães ao longe, um sino, vento forte ou uma buzina distante
+284. Em noite seca o presságio soa mais longe (os sons viajam mais)
+285. Uma plaquinha de giz perto do portão mostra o melhor tempo de travessia e o número da noite
+286. A plaquinha do recorde pode ser lida de perto, sem tela cheia
+287. Na rejogada, um desenho de criança fica pregado na parede do posto
+288. O desenho ganha mais elementos a cada noite: o sol, as três figuras e, por fim, o aviso "não deixa ela entrar"
+289. O desenho pode ser lido de perto e reagido ao tocar
+290. Na rejogada, uma vela acesa fica no muro do portão, com a chama tremeluzindo
+291. Na rejogada, uma luz piloto colorida (cor sorteada) pisca no poste do letreiro do posto
+292. Na rejogada, uma trilha de pegadas secas aponta da estrada para a cerca caída do barranco
+293. Na rejogada, o placar do fliperama do posto já marca LIA em primeiro lugar
+294. Novas falas do Lote 6 entram em window.ROTEIRO.falas sem conflitar com o roteiro existente
+295. Novas conquistas do Lote 6 entram em window.ROTEIRO.conquistas (nomeadas no painel)
+296. Módulo novo src/estrada-lote6.js ligado por gancho curto em estrada(), depois de monstrosEstrada()
+297. Arquivos novos entram no sw.js para o jogo rodar offline, com o cache subindo para a versão v8
+298. Nada do Lote 6 bloqueia o caminho obrigatório nem muda o fluxo da chave e do portão
+299. Antes de sair do carro, a mala mostra três objetos sorteados pela semente (garrafa, pilha, curativo, fósforos ou mapa riscado) e a Lia leva só um
+300. Garrafa extra da mala: quem a escolhe joga a noite mais ofensivo, com barulho longe para desviar o Inspetor
+301. Curativo da mala: quem o leva aguenta o primeiro erro da noite
+302. Fósforos da mala: um acendimento a mais para as charadas do internato
+303. Mapa riscado da mala: dá a dica do galão na despensa e dos fusíveis na enfermaria
+304. Pilha reserva da mala: mais uma troca de lanterna logo no começo
+305. Quem se afasta do carro sem pegar nada fecha a mala (sem voltar) e a Lia comenta as mãos vazias
+306. Conquista secreta "Mãos Vazias" por seguir para o posto sem levar nada da mala
+307. Conquista secreta "Bolso Pequeno" por escolher um objeto da mala em cinco noites diferentes
+308. A Lia avisa, ao chegar perto do carro, que só cabe um objeto no bolso
+309. Herança: perto do portão, na rejogada, um monte de terra deixa a Lia enterrar um item (pilha, curativo ou garrafa) para a próxima noite
+310. O item enterrado reaparece em cima do carro na noite seguinte, sem tirar a escolha da mala; o novo enterro substitui o antigo
+311. Moeda da sorte no capô do carro: com E ela é jogada; cara dá uma pilha
+312. Coroa na moeda faz os faróis piscarem sozinhos e o medo subir
+313. O resultado da moeda depende da semente e do número de jogadas da noite, então não dá para repetir até acertar
+314. O porta-malas guarda um colecionável que muda a cada noite a partir da terceira (ursinho do Davi, gravador sem fita, sapatinho molhado), cada um com fala própria
+315. Conquista secreta "Enxoval do Porta-Malas" ao ver os três objetos do porta-malas
+316. Hodômetro novo no painel do carro: ganha 3 km por noite jogada e fica guardado entre sessões
+317. Na 3ª noite o hodômetro trava em 1979, o ano e não a distância
+318. Na 7ª noite o hodômetro roda ao contrário até zero
+319. Na 10ª noite o hodômetro mostra o nome DAVI no lugar dos números
+320. O retrovisor mostra o banco de trás e ganha um acessório novo a cada noite (jaqueta, chinelos, boneca)
+321. A partir da 4ª noite um vulto sentado aparece no espelho e, a cada noite, fica mais perto do banco da frente
+322. Na 5ª noite o vulto aparece no reflexo por cerca de 1 segundo, uma vez só
+323. Da 9ª noite em diante a silhueta do banco de trás vira e olha para a Lia, com dois pontos de olho e uma respiração atrás do pescoço
+324. A silhueta sentada do banco de trás também existe em 3D dentro do carro, para quem vira a cabeça na hora certa
+325. Riscos de giz no capô: uma marca por noite já jogada, agrupadas de cinco em cinco
+326. Marcos redondos de noite (5, 10, 25 e 50) ganham uma fala única da Lia na primeira vez
+327. A partir da 3ª noite o carro amanhece fora do lugar, torto e com a porta do motorista aberta
+328. Quando o carro está fora do lugar, o rádio toca baixinho uma melodia de caixinha de música e a Lia estranha
+329. A pane do carro muda por noite: pneu murchando, com chiado de ar saindo
+330. A pane pode ser um cano de água estourado, com vapor branco subindo do capô
+331. A pane pode ser a bateria arriada, com os faróis piscando sozinhos de tempos em tempos
+332. A pane pode ser o tanque seco, com poça escura de gasolina no chão e cheiro avisado pela Lia
+333. Cada causa de pane tem a sua fala de abertura, então a primeira cena deixa de ser decorada
+334. Em noites raras, um carro idêntico ao seu está parado perto do portão, com o porta-malas aberto
+335. Dentro do carro de quem veio antes, um gravador lê um relatório frio da sua noite anterior, com os números reais das suas estatísticas
+336. Conquista secreta "Caso Encerrado" por ouvir o relatório do gravador do carro de quem veio antes
+337. Nova estação do rádio, a Estação do Davi (pirata): em frequência sorteada pela semente, entrega a posição da chave, o clima, onde o velho está sentado ou o desafio do dia
+338. Nova estação do rádio, a radionovela da Serra FM: nove capítulos que avançam a cada noite, todos terminando em gancho
+339. Conquista secreta "Ouvinte Fiel" por ouvir os nove capítulos da radionovela
+340. Nova estação do rádio, a estação Você: narra a causa da sua última morte, com a voz fria do locutor
+341. Boletim da Serra FM sorteado pela semente: 70% de chance de ser verdadeiro e 30% de ser falso, e a Lia confere no portão se o rádio mentiu
+342. Estação do rádio com o código do dia: uma transmissão de 1979 repete quatro números que mudam a cada dia do calendário
+343. Charada do Davi pelo rádio: a resposta se dá em buzinadas curtas perto do carro, e acertar rende um curativo
+344. Conquista secreta "Buzina do Davi" por acertar a charada em buzinadas
+345. Armário de ferramentas no pátio do posto, aberto pelo código do dia ouvido no rádio, que entrega uma pilha ou uma caixa de fósforos conforme o dia
+346. O armário também revela uma nota de lore do dia da semana e um recado de fita sorteado
+347. Conquista secreta "Código do Dia" por abrir o armário de ferramentas
+348. A chave do portão passa a ficar em um de quatro pontos do posto (prego, balcão, bolso do casaco ou bomba), sorteado pela semente na rejogada
+349. A chave no bolso do casaco ganha um casaco pendurado na parede, e a chave na bomba ganha a mangueira onde ela pende
+350. Seu Joaquim aponta, em tom vago, o lugar onde a chave está naquela noite
+351. Seu Joaquim ganha uma fala extra por noite, sorteada pela semente e pelo número de noites, e cada uma esconde uma dica real do internato
+352. Na 20ª noite o Seu Joaquim comenta que a estrada ficou mais curta
+353. Depois de ver o final verdadeiro, o velho do posto aparece já frio e morto, com luz mais fria na cadeira, e diz "você voltou"
+354. Noite do posto vazio: em uma de cada cinco noites o Seu Joaquim não está lá, a luz está acesa e a xícara solta vapor
+355. No posto vazio, um gravador no balcão explica o que fazer e entrega as regras, e a chave fica embaixo do balcão
+356. No posto vazio, o rádio chia o nome da Lia de tempos em tempos e a Lia comenta que ele devia estar ali
+357. Cartaz de procurada no posto: "Desaparecida há N noites", onde N é o seu contador real de partidas
+358. Da décima noite em diante o cartaz troca o retrato da Lia pelo de Ana
+359. Cliente fantasma: em noites sorteadas uma silhueta senta de costas no banco do posto e some quando a lanterna a toca
+360. Se a lanterna ficar apagada por 5 segundos olhando para o cliente fantasma, ele se vira de frente
+361. Conquista secreta "Freguês Constante" por encarar o cliente fantasma até ele sumir
+362. Máquina de refrigerante da sorte no pátio, com três botões cujo resultado a semente embaralha
+363. Um botão da máquina enche o fôlego e baixa o medo
+364. Outro botão da máquina solta uma pilha
+365. O terceiro botão faz a lata estourar alto e chama a atenção da casa
+366. Cardápio de desafios no balcão do posto: três cartões sorteados entre cinco (sem lanterna no pátio, sem correr, chegar em 100 s, sem perder vida, sem passar de 60 de medo)
+367. Cumprir o desafio aceito rende uma pilha no portão, e falhar avisa na hora com uma fala da Lia
+368. Conquista secreta "Freguesa do Cardápio" por cumprir um desafio do cardápio
+369. A janela acesa do internato, vista do posto, muda de cor por noite
+370. As placas de quilômetro da estrada passam a contar as noites: SÃO LÁZARO 9 km, 8 km, 7 km a cada rejogada
+371. Na 3ª noite a placa de quilômetro mostra 1979 km
+372. Na 10ª noite a placa diz JÁ CHEGOU e fica vermelha, e na 11ª diz BEM-VINDA
+373. Na 20ª noite a placa de quilômetro marca zero
+374. Da 10ª noite em diante, ler a placa de quilômetro (E) rende uma fala da Lia dizendo que chegou, mas o portão ainda está lá na frente
+375. Placa de destinos com três nomes sorteados, em que só SÃO LÁZARO é verdadeiro
+376. Ler uma placa de destino falsa dá um estalo sonoro e um pequeno susto, sem dano
+377. Obstáculo sorteado da descida: um tronco caído que obriga a contornar pela mata
+378. Obstáculo sorteado da descida: uma poça funda cujos passos fazem chape que o Inspetor pode ouvir e deixam pegadas molhadas
+379. Obstáculo sorteado da descida: arame farpado que pode ser afastado com E, fazendo barulho
+380. Quem usou o atalho do barranco numa noite encontra-o fechado por lama na seguinte, com placa de LAMA · FECHADO
+381. Placar na entrada do portão com o melhor tempo por caminho, estrada e barranco
+382. Conquista secreta "As Duas Estradas" por fazer a travessia pela estrada e pelo barranco
+383. A Lia comenta a primeira vez em cada rota e quando bate o recorde de um dos caminhos
+384. Em noites de neblina, pegadas de lama seguem o trajeto da sua partida anterior e terminam numa pilha escondida
+385. Corvos enfileirados na cerca voam todos de uma vez quando você chega perto
+386. Grilos cantam na noite seca e se calam quando algo se aproxima, e a Lia avisa quando eles param
+387. Sapos coaxam ao longe nas noites de chuva
+388. Evento de noite: serração viva, uma parede de névoa que vem de trás engolindo a estrada e apaga a lanterna por 2 segundos se te alcançar
+389. Conquista secreta "Sem a Névoa Me Alcançar" por chegar ao portão antes da serração
+390. Evento de noite: a Estrada Escura, em que os postes apagam de trás para a frente e parar mais de 4 segundos deixa o escuro te alcançar
+391. Evento de noite: luzinhas amarelas e risadas de criança entre as árvores, que levam a uma pilha ou a uma emboscada conforme a semente
+392. Evento de noite: a mula sem cabeça cruza a pista com chamas azuis; quem fica no meio da estrada perde a lanterna por 5 segundos
+393. Evento de noite: um redemoinho de poeira com assobio vem pela pista e apaga a lanterna por 3 segundos
+394. Evento de noite: uma forma quase reconhecível (mão, árvore ou criança) aparece na névoa e some ao chegar perto
+395. Evento de noite: um caroneiro de costas no acostamento pede carona e dá uma pista verdadeira, uma falsa ou nada
+396. Se o caroneiro for ignorado, ele segue o carro de longe e deixa pegadas encharcadas no portão
+397. Evento de noite: um ponto de ônibus onde esperar 25 segundos paga uma pilha, mas um vulto vem se aproximando devagar
+398. Levantar do ponto de ônibus antes do tempo não dá nada, e esperar demais custa um susto
+399. Conquista secreta "Paciência de Ponto" por esperar o banco do ponto de ônibus pagar a espera
+400. Evento de noite: um cervo de olhos humanos para na pista e foge ao se aproximar
+401. Evento de noite: uma mulher cruza a estrada com um lampião e não deixa sombra
+402. Evento de noite: um caminhão sem motorista desce a estrada com os faróis acesos e buzina
+403. Evento de noite: uma criança de capa para no meio da pista e deixa só a capa vazia no chão
+404. Evento de noite: o rádio avisa que algo vai acontecer, e nada acontece, e a espera é o susto
+405. Conquista secreta "Susto da Espera" por aguentar o evento em que nada acontece
+406. No portão, a Lia lista um resumo do que mudou naquela noite (chave, obstáculo, evento, mala, moeda e o resto)
+407. Correção: o achado do balcão do posto não flutua mais fora do balcão
+408. Correção: os faróis que acendem sozinhos na perseguição do batedor não quebram mais por função inexistente
 
-### Mapa: térreo e dormitórios (91)
+### Mapa: térreo e dormitórios (193)
 
-189. Galão de gasolina nasce numa prateleira sorteada da despensa a cada noite, pela semente
-190. Caixa de fusíveis nasce numa maca sorteada da enfermaria a cada noite
-191. Nota da recepção muda de canto por noite, dentro da mesma sala
-192. Nota da cozinha muda de canto por noite
-193. Nota da enfermaria muda de canto por noite
-194. Nota da sala de aula muda de canto por noite
-195. Pilhas da sala de aula aparecem em ponto sorteado
-196. Pilhas do banheiro aparecem em ponto sorteado
-197. Pilhas do refeitório aparecem em ponto sorteado
-198. Curativo da enfermaria aparece em prateleira sorteada
-199. Curativo da cozinha aparece em prateleira sorteada
-200. Garrafa do refeitório aparece em ponto sorteado
-201. Garrafa da cozinha aparece em ponto sorteado
-202. Garrafa do banheiro aparece em ponto sorteado
-203. Engrenagem da caixinha nasce numa cama sorteada do Dormitório E
-204. Página 2 do diário muda de canto no quarto da Irmã Celeste
-205. Página 3 do diário muda de canto na sala de brinquedos
-206. Nota da sala de brinquedos aparece em ponto sorteado
-207. Nota da rouparia aparece em ponto sorteado
-208. Pilhas do Dormitório C em ponto sorteado
-209. Pilhas do depósito em ponto sorteado
-210. Pilhas da rouparia em ponto sorteado
-211. Curativo do banheiro de cima em ponto sorteado
-212. Curativo do Dormitório D em ponto sorteado
-213. Garrafa do banheiro de cima em ponto sorteado
-214. Garrafa do depósito em ponto sorteado
-215. Garrafa do Dormitório A em ponto sorteado
-216. Refeitório remonta sozinho: cadeiras em volta da mesa, viradas de costas ou empilhadas num canto, por noite
-217. Cozinha com panelas penduradas em ganchos diferentes a cada noite
-218. Enfermaria com o biombo em uma de três posições por noite
-219. Sala de aula com as carteiras alinhadas, tombadas ou de esguelha por noite
-220. Biblioteca com uma pilha de livros caídos num canto sorteado
-221. Lavanderia com os lençóis do varal em configuração sorteada
-222. Recepção com a cadeira do porteiro de pé ou tombada por noite
-223. Foto da turma de 1979 na recepção; na segunda jogada falta uma criança e dá para olhar de perto
-224. Quadro de chaves com as etiquetas reescritas e embaralhadas pela semente (só leitura; o código continua o seu)
-225. Porta pregada no corredor oeste que só na segunda jogada pode ser arrancada, revelando um nicho com um bilhete do Davi
-226. Painel com os desenhos do menino Moacir no hall, visível só na segunda jogada
-227. Marca de giz do Davi apontando um atalho de serviço, só na rejogada
-228. Um armário por noite está podre: a Lia avisa que não se esconderia ali
-229. Luminária piscando num corredor sorteado, dando sensação de casa viva
-230. Poça refletindo no chão de uma sala sorteada
-231. Torneira pingando nos banheiros, ponto e ritmo sorteados
-232. Relógio da recepção parado numa hora sorteada por noite
-233. Na segunda jogada, o lema da fachada aparece com "MENTIRA" raspado por baixo
-234. Bilhete dobrado sorteado entre dois cantos do hall, para o acervo não cair no automático
-235. Parede com marcas de giz contando quantas noites você já passou no internato
-236. Lousa da sala de aula com uma frase de giz sorteada por noite
-237. Fogão da cozinha com a chama piloto acesa num bico sorteado
-238. Despensa com sacos empilhados em arranjo sorteado
-239. Diretoria com uma gaveta deixada aberta num móvel sorteado
-240. Pátio com um galho caído em ponto sorteado
-241. Qual lâmpada do corredor já está acesa num canto seguro muda por noite
-242. Uma porta range sozinha ao chegar ao térreo, escolhida pela semente
-243. Contador de mortes no térreo guardado entre as noites
-244. Recorde de tempo do Capítulo I guardado e anunciado ao ligar o gerador
-245. Recorde de tempo do Capítulo II guardado ao subir para os dormitórios
-246. Fechar o Capítulo I sem levar dano conta como noite perfeita e avisa
-247. Ao entrar, o jogo diz em que noite você está no internato
-248. Aviso de casa trocada quando a noite usa uma semente de desafio
-249. Camas: qual está virada ou desarrumada muda de dormitório a cada noite
-250. Sala de brinquedos com os brinquedos espalhados em arranjo sorteado
-251. Rouparia com as prateleiras arrumadas ou reviradas por noite
-252. Quadro da chamada no corredor de cima; na segunda jogada falta uma criança e dá para contar
-253. Um armário por noite está ocupado: a Ana avisa "Esse é meu. Acha outro."
-254. Portinha lacrada da rouparia que só abre na segunda jogada, com carta do Davi e um retrato riscado
-255. Marca de giz apontando um atalho até o depósito, só na rejogada
-256. Janela batendo num dormitório sorteado, com vento e pancada
-257. Brinquedo de cavalinho que gira sozinho num ponto sorteado
-258. Relógio do andar parado numa hora sorteada
-259. Recado da Irmã Celeste sorteado entre dois cantos do quarto
-260. Risadinha vinda de um dormitório sorteado ao passar perto
-261. Espelho do banheiro embaçado com uma palavra sorteada, só na segunda jogada
-262. Parede com marcas de giz contando as noites no andar
-263. Depósito com caixas empilhadas em arranjo sorteado
-264. Urso de pano aparece numa cama sorteada
-265. Chamada do corredor com número de presentes e de faltas sorteado
-266. Vela do quarto da Irmã Celeste acesa ou apagada por noite
-267. Torneira pingando no banheiro de cima, ponto sorteado
-268. Rouparia com luz piscando e mariposa por noite
-269. Desenho de giz no chão da sala de brinquedos, sorteado
-270. Contador de mortes no andar guardado entre as noites
-271. Recorde de tempo do Capítulo III guardado ao fim da brincadeira da Ana
-272. Atravessar o andar sem levar dano conta como noite perfeita e avisa
-273. Aviso de noite trocada ao entrar no andar quando a semente é de desafio
-274. Conquista "Veterana do Internato" ao entrar pela quinta noite
-275. Conquista secreta "Decorou?" ao fechar o Capítulo I numa noite de volta embaralhada
-276. Conquista secreta "O Que Pregaram" ao abrir a porta ou a portinha lacrada da segunda jogada
-277. Conquista secreta "Falta Um" ao reparar na criança que sumiu da foto ou da chamada
-278. Conquista "Pé Ligeiro" ao bater o seu próprio recorde de tempo num capítulo
-279. Conquista secreta "Quarto do Castigo" ao ler os desenhos do Moacir na segunda jogada
+409. Galão de gasolina nasce numa prateleira sorteada da despensa a cada noite, pela semente
+410. Caixa de fusíveis nasce numa maca sorteada da enfermaria a cada noite
+411. Nota da recepção muda de canto por noite, dentro da mesma sala
+412. Nota da cozinha muda de canto por noite
+413. Nota da enfermaria muda de canto por noite
+414. Nota da sala de aula muda de canto por noite
+415. Pilhas da sala de aula aparecem em ponto sorteado
+416. Pilhas do banheiro aparecem em ponto sorteado
+417. Pilhas do refeitório aparecem em ponto sorteado
+418. Curativo da enfermaria aparece em prateleira sorteada
+419. Curativo da cozinha aparece em prateleira sorteada
+420. Garrafa do refeitório aparece em ponto sorteado
+421. Garrafa da cozinha aparece em ponto sorteado
+422. Garrafa do banheiro aparece em ponto sorteado
+423. Engrenagem da caixinha nasce numa cama sorteada do Dormitório E
+424. Página 2 do diário muda de canto no quarto da Irmã Celeste
+425. Página 3 do diário muda de canto na sala de brinquedos
+426. Nota da sala de brinquedos aparece em ponto sorteado
+427. Nota da rouparia aparece em ponto sorteado
+428. Pilhas do Dormitório C em ponto sorteado
+429. Pilhas do depósito em ponto sorteado
+430. Pilhas da rouparia em ponto sorteado
+431. Curativo do banheiro de cima em ponto sorteado
+432. Curativo do Dormitório D em ponto sorteado
+433. Garrafa do banheiro de cima em ponto sorteado
+434. Garrafa do depósito em ponto sorteado
+435. Garrafa do Dormitório A em ponto sorteado
+436. Refeitório remonta sozinho: cadeiras em volta da mesa, viradas de costas ou empilhadas num canto, por noite
+437. Cozinha com panelas penduradas em ganchos diferentes a cada noite
+438. Enfermaria com o biombo em uma de três posições por noite
+439. Sala de aula com as carteiras alinhadas, tombadas ou de esguelha por noite
+440. Biblioteca com uma pilha de livros caídos num canto sorteado
+441. Lavanderia com os lençóis do varal em configuração sorteada
+442. Recepção com a cadeira do porteiro de pé ou tombada por noite
+443. Foto da turma de 1979 na recepção; na segunda jogada falta uma criança e dá para olhar de perto
+444. Quadro de chaves com as etiquetas reescritas e embaralhadas pela semente (só leitura; o código continua o seu)
+445. Porta pregada no corredor oeste que só na segunda jogada pode ser arrancada, revelando um nicho com um bilhete do Davi
+446. Painel com os desenhos do menino Moacir no hall, visível só na segunda jogada
+447. Marca de giz do Davi apontando um atalho de serviço, só na rejogada
+448. Um armário por noite está podre: a Lia avisa que não se esconderia ali
+449. Luminária piscando num corredor sorteado, dando sensação de casa viva
+450. Poça refletindo no chão de uma sala sorteada
+451. Torneira pingando nos banheiros, ponto e ritmo sorteados
+452. Relógio da recepção parado numa hora sorteada por noite
+453. Na segunda jogada, o lema da fachada aparece com "MENTIRA" raspado por baixo
+454. Bilhete dobrado sorteado entre dois cantos do hall, para o acervo não cair no automático
+455. Parede com marcas de giz contando quantas noites você já passou no internato
+456. Lousa da sala de aula com uma frase de giz sorteada por noite
+457. Fogão da cozinha com a chama piloto acesa num bico sorteado
+458. Despensa com sacos empilhados em arranjo sorteado
+459. Diretoria com uma gaveta deixada aberta num móvel sorteado
+460. Pátio com um galho caído em ponto sorteado
+461. Qual lâmpada do corredor já está acesa num canto seguro muda por noite
+462. Uma porta range sozinha ao chegar ao térreo, escolhida pela semente
+463. Contador de mortes no térreo guardado entre as noites
+464. Recorde de tempo do Capítulo I guardado e anunciado ao ligar o gerador
+465. Recorde de tempo do Capítulo II guardado ao subir para os dormitórios
+466. Fechar o Capítulo I sem levar dano conta como noite perfeita e avisa
+467. Ao entrar, o jogo diz em que noite você está no internato
+468. Aviso de casa trocada quando a noite usa uma semente de desafio
+469. Camas: qual está virada ou desarrumada muda de dormitório a cada noite
+470. Sala de brinquedos com os brinquedos espalhados em arranjo sorteado
+471. Rouparia com as prateleiras arrumadas ou reviradas por noite
+472. Quadro da chamada no corredor de cima; na segunda jogada falta uma criança e dá para contar
+473. Um armário por noite está ocupado: a Ana avisa "Esse é meu. Acha outro."
+474. Portinha lacrada da rouparia que só abre na segunda jogada, com carta do Davi e um retrato riscado
+475. Marca de giz apontando um atalho até o depósito, só na rejogada
+476. Janela batendo num dormitório sorteado, com vento e pancada
+477. Brinquedo de cavalinho que gira sozinho num ponto sorteado
+478. Relógio do andar parado numa hora sorteada
+479. Recado da Irmã Celeste sorteado entre dois cantos do quarto
+480. Risadinha vinda de um dormitório sorteado ao passar perto
+481. Espelho do banheiro embaçado com uma palavra sorteada, só na segunda jogada
+482. Parede com marcas de giz contando as noites no andar
+483. Depósito com caixas empilhadas em arranjo sorteado
+484. Urso de pano aparece numa cama sorteada
+485. Chamada do corredor com número de presentes e de faltas sorteado
+486. Vela do quarto da Irmã Celeste acesa ou apagada por noite
+487. Torneira pingando no banheiro de cima, ponto sorteado
+488. Rouparia com luz piscando e mariposa por noite
+489. Desenho de giz no chão da sala de brinquedos, sorteado
+490. Contador de mortes no andar guardado entre as noites
+491. Recorde de tempo do Capítulo III guardado ao fim da brincadeira da Ana
+492. Atravessar o andar sem levar dano conta como noite perfeita e avisa
+493. Aviso de noite trocada ao entrar no andar quando a semente é de desafio
+494. Conquista "Veterana do Internato" ao entrar pela quinta noite
+495. Conquista secreta "Decorou?" ao fechar o Capítulo I numa noite de volta embaralhada
+496. Conquista secreta "O Que Pregaram" ao abrir a porta ou a portinha lacrada da segunda jogada
+497. Conquista secreta "Falta Um" ao reparar na criança que sumiu da foto ou da chamada
+498. Conquista "Pé Ligeiro" ao bater o seu próprio recorde de tempo num capítulo
+499. Conquista secreta "Quarto do Castigo" ao ler os desenhos do Moacir na segunda jogada
+500. O relógio de pêndulo da recepção marca a hora real do computador, com ponteiros, segundos e pêndulo balançando
+501. À meia-noite real o relógio dá uma batida a mais e deixa um bilhete do Davi preso embaixo dele
+502. Às 03:07 reais toca uma conquista secreta e a Lia diz o horário em voz alta
+503. A lousa da sala de aula escreve um relatório macabro da Lia com números reais: esconderijos, segundos correndo, mortes e noites
+504. A lousa ganha uma lição de casa, uma conta sorteada entre 24 pela semente, que abre uma gaveta por teclado
+505. Errar a lição três vezes quebra o giz com estalo e um barulho que o Inspetor ouve
+506. A gaveta da lição rende uma pilha ou um curativo, sorteado pela semente
+507. O refeitório amanhece com uma mesa posta: um prato para cada noite que você já jogou, com a colher virada
+508. Cada morte antiga acrescenta um prato escuro e vazio na ponta da mesa
+509. A recepção ganha uma vitrine de troféus com medalhas de ouro, prata ou bronze por capítulo, conforme os seus tempos
+510. A vitrine tem a placa da "Aluna Lia" com a soma dos seus três melhores tempos
+511. Uma caneca acende na vitrine para cada final que você já alcançou
+512. Selos dourados de atenção se acumulam na vitrine a cada erro achado na rejogada
+513. Uma galeria de desenhos do menino Moacir cresce na parede do corredor oeste: um desenho novo por noite jogada, cada um com uma fala da Lia
+514. O 12º desenho mostra uma menina com uma lanterna e o nome da Lia escrito errado
+515. Depois do primeiro final, uma porta no fundo do corredor leste devolve a Lia ao início do mesmo corredor
+516. Na segunda travessia os retratos do corredor leste aparecem de costas
+517. Na terceira travessia as portas do corredor leste sangram
+518. Também na terceira travessia surge um relógio que anda para trás
+519. Na quarta passagem a porta do fundo abre numa nota secreta do Davi e uma conquista
+520. Uma sala-evento sorteada pela semente (biblioteca, lavanderia ou banheiros) acontece por cerca de 26 segundos quando você entra
+521. Evento de dança: uma música de caixinha sobe e quatro vultos giram em volta do centro da sala
+522. Evento das carteiras: seis vultos sentados viram a cabeça devagar para onde a Lia está
+523. Evento das brasas: brasas no chão, luz laranja tremendo e estalos de madeira
+524. Ficar quieta até o evento acabar rende uma pilha ou um curativo; correr lá dentro chama o Inspetor
+525. Uma sala lateral sorteada vem interditada com fita zebrada cruzando a porta
+526. Dentro da sala interditada há uma polaroide rara com uma pista do final verdadeiro, mais uma pilha extra
+527. Passar por baixo da fita faz barulho e a Lia avisa que ele vai ficar sabendo
+528. Uma porta lateral amanhece emperrada por semente, com arranhões fundos na madeira, e dá para arrombar segurando E
+529. A casa lembra: a porta que você arrombou fica aberta nas noites seguintes, com marca de pó no chão
+530. Em metade das noites uma estante caída fecha o corredor oeste: dá para empurrar com barulho ou contornar pelo refeitório
+531. Três poças de goteira por noite pingam audivelmente e aumentam o ruído dos seus passos se você pisar nelas
+532. Uma sala por noite é de eco, com piso de azulejo claro, e dobra o ruído de tudo o que você faz ali
+533. Outra sala por noite é abafada, com tapete vermelho, e corta o ruído pela metade
+534. A diretoria ganha uma parede de quatro monitores de vigilância com imagem de tubo, estática e luz de gravação
+535. As imagens dos monitores chegam com dois segundos de atraso: dá para espiar onde o Inspetor estava
+536. Às vezes um monitor mostra a Lia de costas em um corredor onde ela ainda não esteve
+537. O cuco da recepção aponta com uma seta para o lado onde fica o armário abençoado da noite
+538. O armário abençoado acalma quem se esconde nele: o medo cai e o faro do Inspetor se desfaz
+539. Partículas violeta de lavanda sobem em volta do armário abençoado e o rótulo avisa do cheiro
+540. Um dado de osso do Tomé aparece em duas salas fora do caminho, escolhidas pela semente
+541. O dado tem seis resultados: pilha, curativo, calma, barulho, lanterna apagada por 3 s ou o Inspetor desperto
+542. Nos banheiros, de lanterna apagada, chamar por ela nos três espelhos em sequência invoca a Loira, uma vez por capítulo
+543. Quando a Loira ajuda, um sussurro conta em que sala o Inspetor está agora
+544. Quando a Loira castiga, cai algodão molhado da torneira, ouve-se uma risada e o medo sobe
+545. A Loira lembra a vez passada: a Lia comenta quando o resultado se repete
+546. Um papel pregado na porta da despensa traz uma regra sorteada: não acenda a luz, não feche a porta, não corra ou não olhe para trás
+547. Obedecer a regra por 7 segundos revela um maço de pilhas atrás das latas
+548. Quebrar a regra do papel faz o Inspetor ouvir (sem dano) e sobe o medo
+549. Na rejogada, quatro quadros do corredor oeste viram um jogo de sete erros: um deles mudou (está torto e tem olhos novos)
+550. Apontar o quadro certo dá uma pilha, um selo de atenção e uma conquista
+551. Apontar um quadro errado faz uma pancada que ecoa e atrai o Inspetor
+552. Na rejogada, as placas das portas da sala de aula e da biblioteca trocam de nome e a Lia comenta
+553. A campainha da recepção abre um desafio: 60 segundos sem correr, com avisos aos 40 e aos 20
+554. Correr durante o desafio faz a campainha tocar sozinha, bem alto, e o Inspetor ouve
+555. Vencer o desafio dá uma pilha, uma conquista e conta em um placar permanente
+556. As três portas laterais ganham placas em braile desenhadas em canvas, e a biblioteca tem a tabela que diz qual está emperrada, interditada ou em festa
+557. Uma lâmpada do corredor oeste pisca em grupos de 1 a 4 vezes: é o código de uma gaveta, diferente a cada noite
+558. A gaveta do código rende um curativo e uma conquista
+559. Em um terço das noites a foto da turma ganha um rosto a mais, com os olhos mexendo
+560. Encarar o rosto extra por 4 segundos apaga as luzes do prédio por 2 segundos
+561. Um cartaz na recepção mostra uma matrícula sorteada pela semente, que abre o fichário da secretaria na diretoria
+562. O fichário rende uma pilha e uma ficha de matrícula da Lia, lida como nota
+563. Nas noites 2, 3, 5, 7, 10 e 13 a Lia comenta em voz alta há quantas noites está ali
+564. A cada cinco noites jogadas o internato ganha mais manchas de mofo nas paredes
+565. Na vigésima noite a foto da turma aparece virada para a parede
+566. Um bilhete do dia aparece na ala leste em dias pares e na oeste em dias ímpares, pelo calendário real
+567. Pegar o bilhete do dia solta um susto calado: sussurros e passos no forro
+568. Perto do dia 24 de junho (calendário real) o pátio ganha bandeirinhas e uma fogueira baixa com luz tremendo
+569. Pular a fogueira baixa rende uma pilha
+570. Um livro de visitas na recepção lista as datas e horas reais das suas últimas noites
+571. A conquista Casa Dobrada premia terminar o Capítulo I com o corredor livre e com a estante caída
+572. Doze conquistas novas, várias secretas, entram na lista: Três e Sete, Lição Feita, Sete Erros, Sala 13 e outras
+573. O relógio da recepção ganha uma placa parada na hora real da sua última morte: "parou quando você parou"
+574. No corredor dos dormitórios uma chamada de giz risca um nome por noite, e a cama dele é a que o Inspetor nunca fareja
+575. Uma cama de cada dormitório ganha plaqueta com nome e número
+576. A cama do nome riscado é segura: esconder-se nela derruba o medo e desfaz o faro do Inspetor
+577. Partículas de lavanda sobem em volta da cama intocada
+578. Quatro dormitórios ganham um volume suspeito sob o lençol
+579. Um dos volumes respira de verdade, sobe e desce, e sussurra quando você se aproxima devagar
+580. Levantar o lençol da cama certa dá uma pilha ou um curativo e uma conquista secreta
+581. Levantar o lençol de um volume falso faz um estalo seco que o Inspetor ouve
+582. Correr perto da cama que respira faz a criança sumir deixando só um lençol vazio
+583. Na rejogada os números das plaquetas das camas embaralham
+584. Andar 10 segundos de lanterna apagada e em silêncio pelo corredor revela uma porta sem número com luz fraca
+585. Atrás da porta sem número há o cômodo fantasma, uma sala que não existe na planta, com cama, cadeira de balanço e luz fraca
+586. O cômodo fantasma tem quatro fotografias do internato, cada uma com sua fala
+587. A cadeira de balanço do cômodo fantasma balança sozinha
+588. Na rejogada, em duas noites de cada três, atravessar o corredor dos dormitórios de lanterna acesa devolve ao início, até três vezes
+589. A cada volta do corredor que não acaba aparece um detalhe: um retrato, uma porta entreaberta, marcas de mãos de criança
+590. Atravessar de lanterna apagada escapa da repetição, e a Lia sugere isso na primeira volta
+591. Na terceira volta um bilhete do Davi explica o corredor e uma conquista toca
+592. Um dormitório sorteado vem interditado com fita zebrada
+593. Dentro da ala interditada há um curativo e, atrás da parede, a risada da Ana
+594. As poças de goteira e as salas de eco e abafada também sorteiam no andar de cima
+595. No quarto da Celeste, um tabuleiro de sessão tem uma plaqueta que se move e responde
+596. O tabuleiro responde três perguntas verdadeiras: onde ele está, qual cama é segura e o que falta fazer
+597. Cada pergunta ao tabuleiro custa medo e faz um ruído que chama atenção
+598. Na rouparia, três lençóis de varal balançam e roçam em quem passa
+599. Às vezes uma silhueta cruza do outro lado dos lençóis do varal
+600. Na rejogada as placas de dois pares de dormitórios trocam de nome e a Lia comenta
+601. O mofo da casa também cresce nas paredes do corredor dos dormitórios a cada cinco noites
 
-### Mapa: túneis, cemitério e capela (91)
+### Mapa: túneis, cemitério e capela (196)
 
-280. Marca de giz com a ordem das válvulas aparece numa parede sorteada pela Semente da Noite.
-281. A parede onde o giz da ordem surge muda a cada semente (cinco pontos possíveis).
-282. O giz da ordem só aparece depois de ouvir a fita 2, ou na dificuldade Fácil (ajuda honesta).
-283. O giz da ordem aparece e some conforme você chega perto com a lanterna acesa.
-284. Na segunda jogada, errar uma válvula faz o estouro d'água chamar o Inspetor até o cano.
-285. Com o Inspetor já ativo, errar a válvula aumenta a fúria dele e encurta o descanso.
-286. Erros seguidos nas válvulas empilham cada vez mais a fúria do Inspetor.
-287. Aviso na tela quando o estouro do cano chama o Inspetor para o túnel.
-288. Em Pesadelo ou com mutadores, nasce uma quarta válvula-isca no puzzle.
-289. A posição da válvula-isca é sorteada entre dois pontos pela semente.
-290. A placa da válvula-isca mostra um "4" gasto e riscado, parecendo tentadora.
-291. Girar a válvula-isca solta vapor barulhento e não baixa a água.
-292. O vapor da válvula-isca chama o Inspetor e aumenta o medo.
-293. Nova conquista "Não Era Essa" por terminar os túneis sem girar a válvula-isca.
-294. Recorde de tempo para abrir as três válvulas, guardado entre partidas.
-295. Aviso de novo recorde das válvulas na hora em que a água baixa.
-296. Nova conquista "Mão Firme" por abrir as três válvulas sem errar nenhuma vez.
-297. Nova conquista "Pé no Seco" por chegar ao cofre sem precisar afundar na água.
-298. Caçada relâmpago sorteada (cerca de 45% das noites de rejogo): a água volta de uma vez.
-299. Válvula mestra surge na cisterna e precisa ser segurada contra o tempo na caçada.
-300. Barra de contagem no HUD durante a caçada relâmpago.
-301. O Inspetor desce em caça assim que a água volta na caçada relâmpago.
-302. Segurar a válvula mestra a tempo trava a água e acalma o Inspetor.
-303. Falhar a caçada relâmpago enche os túneis de novo e faz muito barulho.
-304. Nova conquista "Contra o Relógio" por vencer a caçada relâmpago.
-305. A caçada relâmpago dá mais tempo na dificuldade Fácil.
-306. Nicho escondido na cisterna que abre forçando um tijolo solto na parede.
-307. O colecionável do nicho muda por semente (apito, carretel de linha ou dentadura de leite).
-308. A posição do nicho da cisterna muda por semente entre três pontos.
-309. Nova conquista "Fundo da Cisterna" por achar o nicho escondido.
-310. Câmara selada atrás do depósito que só abre na segunda jogada (o internato "lembra").
-311. O cosmético dentro da câmara muda por semente (lanterna, crachá raspado ou caderno de 1979).
-312. A frase de giz no fundo da câmara é sorteada ("A HORA É SUA", "VOCÊ VOLTOU", "AINDA DÁ TEMPO").
-313. A laje da câmara selada desliza devagar ao abrir, com rangido.
-314. Um sussurro curto denuncia a câmara selada antes de você abri-la.
-315. Fala em fita velha (áudio procedural) ao abrir a câmara selada.
-316. Nova conquista "O Que Ficou Selado" por abrir a câmara.
-317. Na segunda jogada, a Lia reconhece o túnel ao entrar ("meu corpo lembra do caminho").
-318. Dois pontos sorteados soltam bolhas antes de a respiração vir de lá, telegrafando o susto da água.
-319. Os pontos de respiração na água mudam por semente.
-320. Giz vermelho com a pista do cofre ("4 números = cofre") numa parede sorteada.
-321. Lâmpada de emergência piscando vermelha num ponto sorteado, mais forte durante o apagão.
-322. Recorde de travessia dos túneis, da entrada à escotilha, guardado entre partidas.
-323. A cor da tela de submersão na água varia por semente.
-324. Pingo d'água ambiente com ritmo sorteado pela semente perto do túnel norte.
-325. Acorde de confirmação das válvulas com a raiz sorteada pela semente.
-326. Na segunda jogada, um aviso lembra seu recorde das válvulas ao entrar nos túneis.
-327. No cemitério, um dos três túmulos é sorteado como "fundo" pela semente.
-328. Ao terminar de cavar o túmulo fundo, uma mão sai da terra e agarra a pá.
-329. É preciso largar a pá recuando (sair do lugar) em cerca de 1,1s, senão você toma dano e faz barulho.
-330. Nova conquista "Reflexo Rápido" por soltar a pá a tempo no túmulo fundo.
-331. Qual túmulo é o fundo muda por semente, então a ordem de cavar vira uma decisão.
-332. Nova conquista "Coveira Silenciosa" por cavar os três túmulos sem o Inspetor entrar em caça.
-333. Quarto túmulo, a Quarta Criança, aparece fora da fileira só na segunda jogada.
-334. O quarto túmulo tem vela própria acesa e um objeto em cima da cova.
-335. Cavar o quarto túmulo revela uma mecha de cabelo e um bilhete sem assinatura, com fala da Lia.
-336. A vela do quarto túmulo apaga sozinha quando ele é cavado.
-337. Nova conquista secreta "A Quarta Criança".
-338. A cova que cede fica uma pá mais funda a cada morte sua no cemitério (memória entre partidas).
-339. Qual cova se aprofunda é sorteada por semente.
-340. Ao chegar ao fundo, depois de três mortes, a cova revela uma fita com o seu nome gravado.
-341. Nova conquista "Cada Noite Mais Fundo" por chegar ao fundo da cova.
-342. No Dia de Finados (2 de novembro de verdade) velas se acendem entre as cruzes.
-343. No Dia de Finados aparece uma lápide a mais, "TODAS AS OUTRAS".
-344. No Dia de Finados a Lia comenta as velas acesas em todas as covas.
-345. Nova conquista "Dia de Finados" por jogar o cemitério nessa data.
-346. Confessionário do diretor Albano na capela, aberto na segunda jogada ou da terceira noite em diante.
-347. Abrir o confessionário toca a confissão gravada (áudio procedural) com três falas do Albano.
-348. Nova conquista "A Confissão" por ouvir a confissão no confessionário.
-349. Um caminho de velas leva da porta da capela até o confessionário quando ele está disponível.
-350. Recorde de tempo entre colocar o terceiro objeto no altar e tocar o sino.
-351. Aviso de novo recorde do sino depois da fuga.
-352. Nova conquista "Dobre Logo" por tocar o sino em até oito segundos depois do terceiro objeto.
-353. Marca de giz no portão com a ordem sugerida de cavar, sorteada pela semente.
-354. A marca de cavar some e aparece conforme a lanterna se aproxima do portão.
-355. Na segunda jogada, a Lia comenta que já sabe onde cada criança está enterrada.
-356. Em cerca de 40% das sementes a neblina do cemitério fica mais densa.
-357. Nessas sementes mais pesadas o fog do cemitério também aumenta.
-358. A cor da neblina do cemitério muda por semente (cinza, esverdeada ou azulada de defunto).
-359. Fogo-fátuo azul nasce num ponto sorteado e vaga até uma cova específica.
-360. A cor do fogo-fátuo muda por semente (azul, esverdeado ou lilás).
-361. O fogo-fátuo só aparece no escuro e some se você acender a lanterna de perto.
-362. Seguir o fogo-fátuo até o fim revela o seu sobrenome raspado numa cova sem cruz.
-363. Corvo pousado numa árvore seca sorteada levanta voo grasnando quando você chega perto.
-364. O corvo some subindo depois de voar, com um susto leve.
-365. Um segundo corvo aparece em cerca de 35% das sementes, em ponto sorteado.
-366. Na segunda jogada, um aviso lembra seu recorde do sino ao entrar no cemitério.
-367. Semente da Noite agora comanda todas essas variações do subterrâneo: repete na mesma semente, muda entre sementes.
-368. Recordes do subterrâneo (válvulas, travessia e sino) ficam guardados em memória própria entre partidas.
-369. Os conteúdos de "segunda jogada" só aparecem para quem já terminou o capítulo antes.
-370. As treze conquistas novas do subterrâneo já aparecem na lista do acervo mesmo antes de serem ganhas.
+602. Marca de giz com a ordem das válvulas aparece numa parede sorteada pela Semente da Noite.
+603. A parede onde o giz da ordem surge muda a cada semente (cinco pontos possíveis).
+604. O giz da ordem só aparece depois de ouvir a fita 2, ou na dificuldade Fácil (ajuda honesta).
+605. O giz da ordem aparece e some conforme você chega perto com a lanterna acesa.
+606. Na segunda jogada, errar uma válvula faz o estouro d'água chamar o Inspetor até o cano.
+607. Com o Inspetor já ativo, errar a válvula aumenta a fúria dele e encurta o descanso.
+608. Erros seguidos nas válvulas empilham cada vez mais a fúria do Inspetor.
+609. Aviso na tela quando o estouro do cano chama o Inspetor para o túnel.
+610. Em Pesadelo ou com mutadores, nasce uma quarta válvula-isca no puzzle.
+611. A posição da válvula-isca é sorteada entre dois pontos pela semente.
+612. A placa da válvula-isca mostra um "4" gasto e riscado, parecendo tentadora.
+613. Girar a válvula-isca solta vapor barulhento e não baixa a água.
+614. O vapor da válvula-isca chama o Inspetor e aumenta o medo.
+615. Nova conquista "Não Era Essa" por terminar os túneis sem girar a válvula-isca.
+616. Recorde de tempo para abrir as três válvulas, guardado entre partidas.
+617. Aviso de novo recorde das válvulas na hora em que a água baixa.
+618. Nova conquista "Mão Firme" por abrir as três válvulas sem errar nenhuma vez.
+619. Nova conquista "Pé no Seco" por chegar ao cofre sem precisar afundar na água.
+620. Caçada relâmpago sorteada (cerca de 45% das noites de rejogo): a água volta de uma vez.
+621. Válvula mestra surge na cisterna e precisa ser segurada contra o tempo na caçada.
+622. Barra de contagem no HUD durante a caçada relâmpago.
+623. O Inspetor desce em caça assim que a água volta na caçada relâmpago.
+624. Segurar a válvula mestra a tempo trava a água e acalma o Inspetor.
+625. Falhar a caçada relâmpago enche os túneis de novo e faz muito barulho.
+626. Nova conquista "Contra o Relógio" por vencer a caçada relâmpago.
+627. A caçada relâmpago dá mais tempo na dificuldade Fácil.
+628. Nicho escondido na cisterna que abre forçando um tijolo solto na parede.
+629. O colecionável do nicho muda por semente (apito, carretel de linha ou dentadura de leite).
+630. A posição do nicho da cisterna muda por semente entre três pontos.
+631. Nova conquista "Fundo da Cisterna" por achar o nicho escondido.
+632. Câmara selada atrás do depósito que só abre na segunda jogada (o internato "lembra").
+633. O cosmético dentro da câmara muda por semente (lanterna, crachá raspado ou caderno de 1979).
+634. A frase de giz no fundo da câmara é sorteada ("A HORA É SUA", "VOCÊ VOLTOU", "AINDA DÁ TEMPO").
+635. A laje da câmara selada desliza devagar ao abrir, com rangido.
+636. Um sussurro curto denuncia a câmara selada antes de você abri-la.
+637. Fala em fita velha (áudio procedural) ao abrir a câmara selada.
+638. Nova conquista "O Que Ficou Selado" por abrir a câmara.
+639. Na segunda jogada, a Lia reconhece o túnel ao entrar ("meu corpo lembra do caminho").
+640. Dois pontos sorteados soltam bolhas antes de a respiração vir de lá, telegrafando o susto da água.
+641. Os pontos de respiração na água mudam por semente.
+642. Giz vermelho com a pista do cofre ("4 números = cofre") numa parede sorteada.
+643. Lâmpada de emergência piscando vermelha num ponto sorteado, mais forte durante o apagão.
+644. Recorde de travessia dos túneis, da entrada à escotilha, guardado entre partidas.
+645. A cor da tela de submersão na água varia por semente.
+646. Pingo d'água ambiente com ritmo sorteado pela semente perto do túnel norte.
+647. Acorde de confirmação das válvulas com a raiz sorteada pela semente.
+648. Na segunda jogada, um aviso lembra seu recorde das válvulas ao entrar nos túneis.
+649. No cemitério, um dos três túmulos é sorteado como "fundo" pela semente.
+650. Ao terminar de cavar o túmulo fundo, uma mão sai da terra e agarra a pá.
+651. É preciso largar a pá recuando (sair do lugar) em cerca de 1,1s, senão você toma dano e faz barulho.
+652. Nova conquista "Reflexo Rápido" por soltar a pá a tempo no túmulo fundo.
+653. Qual túmulo é o fundo muda por semente, então a ordem de cavar vira uma decisão.
+654. Nova conquista "Coveira Silenciosa" por cavar os três túmulos sem o Inspetor entrar em caça.
+655. Quarto túmulo, a Quarta Criança, aparece fora da fileira só na segunda jogada.
+656. O quarto túmulo tem vela própria acesa e um objeto em cima da cova.
+657. Cavar o quarto túmulo revela uma mecha de cabelo e um bilhete sem assinatura, com fala da Lia.
+658. A vela do quarto túmulo apaga sozinha quando ele é cavado.
+659. Nova conquista secreta "A Quarta Criança".
+660. A cova que cede fica uma pá mais funda a cada morte sua no cemitério (memória entre partidas).
+661. Qual cova se aprofunda é sorteada por semente.
+662. Ao chegar ao fundo, depois de três mortes, a cova revela uma fita com o seu nome gravado.
+663. Nova conquista "Cada Noite Mais Fundo" por chegar ao fundo da cova.
+664. No Dia de Finados (2 de novembro de verdade) velas se acendem entre as cruzes.
+665. No Dia de Finados aparece uma lápide a mais, "TODAS AS OUTRAS".
+666. No Dia de Finados a Lia comenta as velas acesas em todas as covas.
+667. Nova conquista "Dia de Finados" por jogar o cemitério nessa data.
+668. Confessionário do diretor Albano na capela, aberto na segunda jogada ou da terceira noite em diante.
+669. Abrir o confessionário toca a confissão gravada (áudio procedural) com três falas do Albano.
+670. Nova conquista "A Confissão" por ouvir a confissão no confessionário.
+671. Um caminho de velas leva da porta da capela até o confessionário quando ele está disponível.
+672. Recorde de tempo entre colocar o terceiro objeto no altar e tocar o sino.
+673. Aviso de novo recorde do sino depois da fuga.
+674. Nova conquista "Dobre Logo" por tocar o sino em até oito segundos depois do terceiro objeto.
+675. Marca de giz no portão com a ordem sugerida de cavar, sorteada pela semente.
+676. A marca de cavar some e aparece conforme a lanterna se aproxima do portão.
+677. Na segunda jogada, a Lia comenta que já sabe onde cada criança está enterrada.
+678. Em cerca de 40% das sementes a neblina do cemitério fica mais densa.
+679. Nessas sementes mais pesadas o fog do cemitério também aumenta.
+680. A cor da neblina do cemitério muda por semente (cinza, esverdeada ou azulada de defunto).
+681. Fogo-fátuo azul nasce num ponto sorteado e vaga até uma cova específica.
+682. A cor do fogo-fátuo muda por semente (azul, esverdeado ou lilás).
+683. O fogo-fátuo só aparece no escuro e some se você acender a lanterna de perto.
+684. Seguir o fogo-fátuo até o fim revela o seu sobrenome raspado numa cova sem cruz.
+685. Corvo pousado numa árvore seca sorteada levanta voo grasnando quando você chega perto.
+686. O corvo some subindo depois de voar, com um susto leve.
+687. Um segundo corvo aparece em cerca de 35% das sementes, em ponto sorteado.
+688. Na segunda jogada, um aviso lembra seu recorde do sino ao entrar no cemitério.
+689. Semente da Noite agora comanda todas essas variações do subterrâneo: repete na mesma semente, muda entre sementes.
+690. Recordes do subterrâneo (válvulas, travessia e sino) ficam guardados em memória própria entre partidas.
+691. Os conteúdos de "segunda jogada" só aparecem para quem já terminou o capítulo antes.
+692. As treze conquistas novas do subterrâneo já aparecem na lista do acervo mesmo antes de serem ganhas.
+693. Uma régua de maré aparece na parede da entrada dos túneis e outra na cisterna, mostrando se a água está subindo ou descendo.
+694. A água dos túneis agora respira em ciclos de 70 a 110 segundos, com o ritmo sorteado pela semente da noite.
+695. Na maré alta os seus passos na água ficam 30% mais barulhentos.
+696. Na maré baixa os passos na água ficam 15% mais discretos.
+697. Na maré alta a Lia anda 10% mais devagar dentro d'água.
+698. O nível visual da água acompanha a maré: sobe e desce de verdade nas salas baixas.
+699. O cano range cinco segundos antes de a maré subir, com legenda de som e um aviso na primeira vez.
+700. A Lia comenta, na primeira vez que a água sobe sozinha, que parece que ela respira.
+701. Cada noite a cisterna sai seca, normal ou cheia, sorteada pela semente.
+702. Cisterna seca: a água baixa abafa menos e os passos soam 12% mais baixos.
+703. Cisterna cheia: a água chega mais alto e cada passo ecoa 12% mais.
+704. Um aviso na tela diz como está a cisterna nesta noite, sem precisar adivinhar.
+705. Ao chegar no cruzamento central a Lia fala sobre o nível da água daquela noite.
+706. Um dos três ramais dos túneis fica alagado a cada noite, sorteado pela semente.
+707. Uma faixa de limo escuro marca a boca do ramal alagado, nas duas paredes.
+708. No ramal alagado os passos fazem 25% mais barulho e a Lia fica 15% mais lenta.
+709. O ramal vizinho ao alagado fica mais discreto: o barulho da água esconde parte dos seus passos.
+710. Perto do ramal alagado dá para ouvir o gotejar e as bolhas antes de entrar, com legenda.
+711. Na segunda jogada um cano assobia fininho nos túneis, e a legenda de som avisa de onde vem.
+712. O registro que faz o cano assobiar muda de lugar a cada semente (três pontos possíveis).
+713. Girar o registro prende a maré em baixa por dois minutos, e a régua da parede fica azulada enquanto durar.
+714. Depois de girar o registro a Lia comenta quem o deixou ali para quem soubesse ouvir.
+715. Na segunda jogada há uma barra de ferro e um cano mestre com a placa NÃO BATER no depósito.
+716. Quebrar o cano mestre baixa a água de uma vez, sem seguir a ordem das válvulas.
+717. A semente decide se o cano mestre resiste 3 ou 5 segundos de pancadas.
+718. O estrondo do cano mestre é ouvido por todos os túneis e chama o Inspetor para lá.
+719. O jogo salva um checkpoint depois que o cano mestre racha, para você não perder o que fez.
+720. Em noites sorteadas da segunda jogada, uma sala dos túneis fica cheia de ruídos falsos: passos, respiração e um "Lia" no escuro.
+721. Ao sair do corredor dos ruídos falsos aparece "Nada aqui era real. Quase." e a Lia fala do que ouviu.
+722. O ossuário do depósito ganhou 16 caveiras de verdade na mesa e dá para escutá-las.
+723. As caveiras cochicham qual dos três túmulos é o fundo daquela noite, a pista honesta da mão que sai da terra.
+724. Chegar perto do ossuário já dispara um cochicho sozinho, com legenda.
+725. Atrás da mesa do diretor existe uma gaveta de baixo, que abre com o seu número de noites, de mortes e de finais.
+726. Dentro da gaveta de baixo está a última fotografia do Davi, e o Davi comenta.
+727. Uma placa MELHOR com o seu melhor tempo dos túneis surge no giz da parede quando você chega com a lanterna.
+728. Durante a corrida o jogo avisa se você está à frente ou atrás da sua melhor passagem em cada sala principal.
+729. Terminar os túneis mais rápido grava a nova melhor corrida e avisa com o tempo.
+730. Com sete mortes, o depósito ganha sete espelhos, um para cada vez que a Lia não voltou.
+731. Cada espelho mostra a data, o capítulo e quem pegou a Lia naquela morte, e se foi dentro d'água.
+732. O último espelho mostra o que ela tinha na mão: a lanterna que você tem agora, ou a mão vazia.
+733. Entrar no depósito com os espelhos avisa o que está na parede do fundo.
+734. As suas mortes ficam gravadas entre noites (capítulo, causa, data e se foi na água), para alimentar espelhos e cruzes.
+735. Dez legendas de som novas descrevem assobio, maré, gotejar, ruído falso, pancada, batida, poço, ritmo, sino torto e cochicho.
+736. O cemitério ganha uma cruz de madeira para cada morte sua, até 30, em duas fileiras na frente do portão.
+737. A cruz de hoje é de madeira clara, já na primeira vez em que você morre ali.
+738. Cada cruz tem uma faixa de cor pela causa da morte: vermelha, azul ou branca.
+739. Ler uma cruz mostra a data, o capítulo e a causa daquela morte, sem tela cheia.
+740. Mortes antigas sem registro viram cruzes de data apagada pela chuva.
+741. Ler cruzes sobe um pouco o medo da Lia.
+742. Na primeira cruz lida a Lia fala em voz baixa o que sentiu naquela morte.
+743. Passar entre as cruzes pela primeira vez sussurra e faz a Lia dizer que é pior do que a fuga.
+744. Com dez mortes nasce uma seção D no fundo do cemitério, com oito lápides que nunca estiveram no mapa.
+745. A última pedra da seção D leva o nome digitado da jogadora e a data de hoje.
+746. Ler a pedra da seção D assusta, a Lia comenta e vale a conquista A Seção Que Nunca Existiu.
+747. Ao cavar a primeira cova, uma placa de HOJE aparece caída no túmulo com a data e o seu número de mortes.
+748. A placa mostra "ainda não" para quem nunca morreu e "de novo" para quem passou de 20 mortes.
+749. A Lia responde de um jeito diferente à placa de acordo com o seu número de mortes.
+750. A ordem de cavar os três túmulos agora é sorteada pela semente da noite.
+751. Uma tábua riscada junto ao portão diz a ordem em objetos: a fita, a roda e a folha.
+752. Cavar fora da ordem do portão faz a terra gritar e o Inspetor ouvir (na segunda jogada).
+753. Cavar os três na ordem certa dá uma fala da Lia e a conquista Na Ordem Deles.
+754. Na segunda jogada ou nas dificuldades altas, duas covas falsas aparecem com uma pá cravada e uma vela, sorteadas pela semente.
+755. Cova falsa vazia: só terra fria e um susto calado.
+756. Cova falsa com pilha: um pequeno prêmio escondido na terra.
+757. Cova falsa com mão: algo puxa o tornozelo da Lia, tira fôlego e faz barulho, sem matar.
+758. Cavar uma cova falsa leva tempo e faz um barulho que cresce enquanto a pá afunda.
+759. Cavar os três túmulos certos sem abrir nenhuma falsa dá a conquista Pá Certeira.
+760. Na terceira cova da segunda jogada, uma pá cravada aceita ser batida e a terra responde.
+761. A Lia lembra que o Davi batia curto, curto e um longo na parede do dormitório.
+762. Acertar curto, curto, longo faz três batidas responderem de dentro da cova e empurrarem uma garrafa para cima.
+763. Errar o padrão fecha a terra sobre a pá e o Inspetor ouve a pancada.
+764. Um poço seco aparece no cemitério e aceita uma garrafa, uma pilha ou um curativo seu.
+765. Depois de soltar o item há três segundos de silêncio antes da resposta do poço.
+766. O poço pode abençoar: o medo cai e seus passos ficam mais discretos pelo resto da noite.
+767. O poço pode ficar mudo, sem bênção nem praga.
+768. O poço pode amaldiçoar: susto, ruído e passos mais altos até o fim da noite.
+769. A resposta do poço depende da semente e do item, então o grupo de amigos compara se o poço amou cada um.
+770. O primeiro banco da capela deixa a Lia esperar dez segundos em silêncio total para o Inspetor esquecer a caçada (uma vez por noite).
+771. Uma barra IMÓVEL com progresso aparece enquanto a Lia espera no banco.
+772. Ao esperar no banco o sino toca longe aos 4 segundos e passos se aproximam aos 7, o preço de arriscar.
+773. Mexer, correr ou fazer barulho no banco range a madeira, interrompe a espera e faz ruído.
+774. Esperar no banco rende a conquista Quieta no Banco.
+775. Um vitral novo na parede leste da capela mostra a cada noite um anjo, uma ave ou uma criança, e cada símbolo conta quantos toques o sino pede.
+776. O vitral brilha mais com os relâmpagos.
+777. O sino da capela agora pede um ritmo de 3 a 5 toques, sorteado pela semente.
+778. O ritmo aparece como pontos de giz na parede do fundo, com os pontos perto ou longe um do outro.
+779. As velas do altar piscam o ritmo quando a Lia se aproxima, para quem joga sem som.
+780. A corda do sino é puxada em toques curtos, com um contador de 0 a 5 no rótulo.
+781. Errar o ritmo faz o sino soar torto, com legenda, tremor e o Inspetor vem investigar.
+782. Na dificuldade Fácil a janela do ritmo é mais generosa.
+783. Acertar o ritmo de primeira vale a conquista Ouvido de Sineiro.
+784. A Lia explica os riscos de giz como o compasso do sino na primeira vez que puxa a corda.
+785. Uma tigela das lembranças na capela troca as notas e fitas que você achou por vantagem na fuga.
+786. Com três achados o sino demora mais para o Inspetor ouvir; com seis surge uma vela extra no corredor de saída; com nove os passos da fuga abafam.
+787. Cada final já alcançado planta um canteiro na frente da capela: flor branca, cruz com flor azul e flor vermelha.
+788. A quarta criança deixa uma cruzinha com fita vermelha no canteiro.
+789. Com três canteiros uma palavra de giz, VOLTE, aparece no chão.
+790. Passar pela palavra VOLTE vale a conquista Canteiro Completo.
+791. Depois de ver um final, a capela volta de cabeça para baixo: a cruz invertida e as velas apagadas até o sino tocar.
+792. A Lia estranha a capela torta, como se a casa soubesse que ela já viu o fim.
+793. Depois do sino um relógio discreto conta a fuga até o portão.
+794. A fuga recebe medalha de ouro, prata ou bronze pelo tempo e pela vida perdida.
+795. O melhor tempo de fuga fica salvo e o aviso diz quando você o bateu.
+796. Fuga em ouro vale a conquista Fuga de Ouro.
+797. Dezesseis conquistas secretas novas do subterrâneo entram na lista do acervo.
 
-### Monstros e IA (95)
+### Monstros e IA (213)
 
-371. O Inspetor ganha um temperamento sorteado por noite, estável pela semente, que muda como ele caça.
-372. Humor Paciente: ele abre cada armário com calma e fica mais tempo procurando.
-373. Humor Nervoso: reage a qualquer barulho, mas larga a pista mais cedo.
-374. Humor Metódico: ronda sempre na mesma ordem, ficando previsível.
-375. Humor Surdo: ouve mal de um dos lados, premiando quem foge pelo flanco certo.
-376. Humor Faminto: avança mais rápido do que o normal e quase não desiste.
-377. Humor Teimoso: quando acha que ouviu algo, não larga mais o osso.
-378. A Lia telegrafa de leve o humor da noite, sem nunca dizer o nome dele.
-379. O humor muda a velocidade de perseguição do Inspetor naquela noite.
-380. O humor muda o quanto o Inspetor ouve naquela noite.
-381. Humores disciplinados esticam o tempo de procura; os afobados encurtam.
-382. Humores afobados esfriam o recuo e voltam à caça mais cedo.
-383. No humor Surdo, estar do lado ruim dele derruba de verdade a audição conforme o ângulo.
-384. O humor muda a frequência com que ele revista os armários na procura.
-385. Mania da noite: o Inspetor fixa numa sala e ronda mais por ali.
-386. A distração da garrafa dura mais ou menos conforme a noite.
-387. O tempo do bote do Inspetor varia de noite para noite.
-388. A sensibilidade dele ao calor da lanterna no rosto muda por noite.
-389. A teimosia dele na procura (quanto tempo insiste) varia por noite.
-390. A frequência com que ele finge ir embora e espera parado varia por noite.
-391. Ele cansa do truque da garrafa quando você repete demais na mesma noite.
-392. Quem abusou da garrafa em noites passadas encontra um Inspetor que cansa mais cedo do truque.
-393. A Lia comenta quando percebe que a garrafa não engana mais o Inspetor.
-394. O jogo grava entre noites os esconderijos que você mais usa em cada mapa.
-395. O jogo grava entre noites as salas por onde você mais anda.
-396. Da segunda jogada em diante, ele já começa a noite checando primeiro seus esconderijos preferidos.
-397. Da segunda jogada em diante, a ronda dele pesa para as salas por onde você mais passa.
-398. A Lia percebe, assustada, quando ele vai direto no canto onde você sempre se esconde.
-399. A Lia percebe quando ele está rondando justo por onde você mais passa.
-400. Um vulto vermelho aparece no ponto exato onde o Inspetor te pegou da última vez naquele mapa.
-401. O vulto da última morte some quando você o ilumina, com a Lia reconhecendo o lugar.
-402. Da segunda jogada em diante, ele dá mais voltas pela sala onde te pegou na última vez.
-403. Novo recorde pessoal: maior tempo "na cola" do Inspetor sem ser pega, salvo entre sessões.
-404. Conquista secreta Dança Macabra: um minuto inteiro na cola dele sem ser achada.
-405. O ritmo da contagem da Menina Que Conta varia por noite, da lenta e manhosa à rápida e nervosa.
-406. Às vezes a Menina já começa a contagem adiantada, quebrando o timing decorado.
-407. A Menina tem um número da sorte por noite: ao batê-lo, ela muda de pose e fala.
-408. O passo da Menina Que Conta fica mais rápido ou mais lento conforme a noite.
-409. A chance de a Menina esperar grudada no teto varia por noite.
-410. A Procissão entra por um lado diferente a cada noite, sorteado pela semente.
-411. A janela de aviso até a Procissão passar varia de leve por noite (sempre dando tempo de esconder).
-412. A voz do Chamado (Davi, a mãe ou a sua própria) é sorteada pela semente da noite.
-413. Evento raro: o Inspetor finge desistir, com passos se afastando e nenhum som de porta.
-414. Evento raro de Caçada Relâmpago: numa noite marcada, uma caçada acaba bem antes do normal.
-415. Evento raro de presença errante: uma porta bate sozinha numa sala distante, sem dano.
-416. Evento raro de Noite Surda: ele "não ouve" por um instante e dá o bote de surpresa.
-417. Código VIGIA no título liga o modo Vigia Eterno.
-418. Código CACADOR liga o Caçador Implacável.
-419. Código FUROR liga o Inspetor Enfurecido.
-420. Código FARO liga o modo Faro.
-421. Código CEDO liga a Noite Adiantada.
-422. Código PERSEGUE liga a Perseguição Eterna.
-423. Código SEMPAUSA liga o modo Sem Pausas.
-424. Código DOBRO liga a Lua Cheia permanente.
-425. Código APRESSA liga a Contagem Apressada da Menina.
-426. Código PACTO liga o perfil mais duro do Inspetor.
-427. Código NORMAL desliga todos os modos extras.
-428. Modo Vigia Eterno: a procura do Inspetor nunca expira sozinha.
-429. Modo Caçador Implacável: ele anda devagar, mas reaproxima sua direção geral de tempos em tempos.
-430. Modo Faro: o Inspetor fica com o ouvido ampliado o tempo todo.
-431. Modo Noite Adiantada: ele já começa a campanha mais rápido e mais atento.
-432. Modo Inspetor Enfurecido: cada capítulo começa com ele já procurando.
-433. Modo Perseguição Eterna: depois do primeiro contato, ele nunca mais se acalma no capítulo.
-434. Modo Sem Pausas: ele nunca mais reza nem para para lembrar, eliminando a janela segura.
-435. Modo Lua Cheia: toda noite ele carrega dois temperamentos somados.
-436. Mutador Contagem Apressada: a Menina conta bem mais rápido.
-437. Pacto: Inspetor mais rápido, com audição e revista reforçadas.
-438. O ponto de onde o Inspetor começa a patrulha é sorteado por noite, mudando o primeiro encontro.
-439. Vigília (Novo Jogo +): a cada final verdadeiro, o Inspetor te conhece melhor na campanha seguinte.
-440. Na Vigília, a audição-base do Inspetor sobe a cada vitória acumulada.
-441. Na Vigília, ele perde menos tempo no alerta e parte para a caça mais rápido.
-442. Na Vigília, ele sussurra o nome que você digitou quando chega perto no bote.
-443. Na Vigília, ao te pegar, ele murmura um número crescente de quantas vezes já te pegou.
-444. Aviso de Vigília na abertura da campanha, com conquista Ele Lembra de Você.
-445. A primeira Vigília avisa que ele sabe o seu nome e não vai esquecer.
-446. Lenda rara Noite Mansa: ele quase não te procura (e dá arrepio de desconfiança).
-447. Lenda rara Noite Implacável: ele quase nunca recua.
-448. Na Noite Implacável, o recuo dele encolhe aos poucos, dando menos trégua de verdade.
-449. Lenda rara Lua: ele carrega dois temperamentos somados numa única noite.
-450. As lendas da noite são telegrafadas de leve pela Lia antes de pesarem.
-451. Conquista secreta Noite de Lenda por sobreviver a uma noite lendária.
-452. Conquista secreta Lua Cheia por presenciar a noite dos dois temperamentos.
-453. Maestro anti-enrolação: ficar parada tempo demais no mesmo cômodo deixa o Inspetor mais atento.
-454. A Lia avisa quando você ficou tempo demais parada e ele começou a prestar atenção naquele canto.
-455. Notoriedade entre noites: fazer barulho e morrer deixa fama, e a próxima noite começa mais tensa.
-456. A fama (notoriedade) esfria um pouco a cada nova campanha começada.
-457. A estreia do Inspetor na sessão é mais longa e assustadora, com uma fala só dela.
-458. Conquista secreta Nunca No Mesmo Canto: passar um capítulo sem repetir o mesmo tipo de esconderijo.
-459. Conquista secreta Rota Nova: zerar um capítulo sem usar o esconderijo que ele vigia.
-460. Ser pega no esconderijo que ele vigia é registrado e bloqueia a conquista Rota Nova naquele capítulo.
-461. Morrer três vezes perto do mesmo ponto na noite deixa um recado dele no chão.
-462. Conquista secreta Eu Te Conheço: presenciar todos os humores do Inspetor ao longo das noites.
-463. O jogo passou a contar quantas noites você já viveu, para alimentar os segredos de rejogo.
-464. O controle de esconderijos usados zera a cada capítulo, para as conquistas valerem por capítulo.
-465. Todo o sistema de rejogabilidade é passivo e à prova de erro: nenhum subsistema derruba o quadro.
+798. O Inspetor ganha um temperamento sorteado por noite, estável pela semente, que muda como ele caça.
+799. Humor Paciente: ele abre cada armário com calma e fica mais tempo procurando.
+800. Humor Nervoso: reage a qualquer barulho, mas larga a pista mais cedo.
+801. Humor Metódico: ronda sempre na mesma ordem, ficando previsível.
+802. Humor Surdo: ouve mal de um dos lados, premiando quem foge pelo flanco certo.
+803. Humor Faminto: avança mais rápido do que o normal e quase não desiste.
+804. Humor Teimoso: quando acha que ouviu algo, não larga mais o osso.
+805. A Lia telegrafa de leve o humor da noite, sem nunca dizer o nome dele.
+806. O humor muda a velocidade de perseguição do Inspetor naquela noite.
+807. O humor muda o quanto o Inspetor ouve naquela noite.
+808. Humores disciplinados esticam o tempo de procura; os afobados encurtam.
+809. Humores afobados esfriam o recuo e voltam à caça mais cedo.
+810. No humor Surdo, estar do lado ruim dele derruba de verdade a audição conforme o ângulo.
+811. O humor muda a frequência com que ele revista os armários na procura.
+812. Mania da noite: o Inspetor fixa numa sala e ronda mais por ali.
+813. A distração da garrafa dura mais ou menos conforme a noite.
+814. O tempo do bote do Inspetor varia de noite para noite.
+815. A sensibilidade dele ao calor da lanterna no rosto muda por noite.
+816. A teimosia dele na procura (quanto tempo insiste) varia por noite.
+817. A frequência com que ele finge ir embora e espera parado varia por noite.
+818. Ele cansa do truque da garrafa quando você repete demais na mesma noite.
+819. Quem abusou da garrafa em noites passadas encontra um Inspetor que cansa mais cedo do truque.
+820. A Lia comenta quando percebe que a garrafa não engana mais o Inspetor.
+821. O jogo grava entre noites os esconderijos que você mais usa em cada mapa.
+822. O jogo grava entre noites as salas por onde você mais anda.
+823. Da segunda jogada em diante, ele já começa a noite checando primeiro seus esconderijos preferidos.
+824. Da segunda jogada em diante, a ronda dele pesa para as salas por onde você mais passa.
+825. A Lia percebe, assustada, quando ele vai direto no canto onde você sempre se esconde.
+826. A Lia percebe quando ele está rondando justo por onde você mais passa.
+827. Um vulto vermelho aparece no ponto exato onde o Inspetor te pegou da última vez naquele mapa.
+828. O vulto da última morte some quando você o ilumina, com a Lia reconhecendo o lugar.
+829. Da segunda jogada em diante, ele dá mais voltas pela sala onde te pegou na última vez.
+830. Novo recorde pessoal: maior tempo "na cola" do Inspetor sem ser pega, salvo entre sessões.
+831. Conquista secreta Dança Macabra: um minuto inteiro na cola dele sem ser achada.
+832. O ritmo da contagem da Menina Que Conta varia por noite, da lenta e manhosa à rápida e nervosa.
+833. Às vezes a Menina já começa a contagem adiantada, quebrando o timing decorado.
+834. A Menina tem um número da sorte por noite: ao batê-lo, ela muda de pose e fala.
+835. O passo da Menina Que Conta fica mais rápido ou mais lento conforme a noite.
+836. A chance de a Menina esperar grudada no teto varia por noite.
+837. A Procissão entra por um lado diferente a cada noite, sorteado pela semente.
+838. A janela de aviso até a Procissão passar varia de leve por noite (sempre dando tempo de esconder).
+839. A voz do Chamado (Davi, a mãe ou a sua própria) é sorteada pela semente da noite.
+840. Evento raro: o Inspetor finge desistir, com passos se afastando e nenhum som de porta.
+841. Evento raro de Caçada Relâmpago: numa noite marcada, uma caçada acaba bem antes do normal.
+842. Evento raro de presença errante: uma porta bate sozinha numa sala distante, sem dano.
+843. Evento raro de Noite Surda: ele "não ouve" por um instante e dá o bote de surpresa.
+844. Código VIGIA no título liga o modo Vigia Eterno.
+845. Código CACADOR liga o Caçador Implacável.
+846. Código FUROR liga o Inspetor Enfurecido.
+847. Código FARO liga o modo Faro.
+848. Código CEDO liga a Noite Adiantada.
+849. Código PERSEGUE liga a Perseguição Eterna.
+850. Código SEMPAUSA liga o modo Sem Pausas.
+851. Código DOBRO liga a Lua Cheia permanente.
+852. Código APRESSA liga a Contagem Apressada da Menina.
+853. Código PACTO liga o perfil mais duro do Inspetor.
+854. Código NORMAL desliga todos os modos extras.
+855. Modo Vigia Eterno: a procura do Inspetor nunca expira sozinha.
+856. Modo Caçador Implacável: ele anda devagar, mas reaproxima sua direção geral de tempos em tempos.
+857. Modo Faro: o Inspetor fica com o ouvido ampliado o tempo todo.
+858. Modo Noite Adiantada: ele já começa a campanha mais rápido e mais atento.
+859. Modo Inspetor Enfurecido: cada capítulo começa com ele já procurando.
+860. Modo Perseguição Eterna: depois do primeiro contato, ele nunca mais se acalma no capítulo.
+861. Modo Sem Pausas: ele nunca mais reza nem para para lembrar, eliminando a janela segura.
+862. Modo Lua Cheia: toda noite ele carrega dois temperamentos somados.
+863. Mutador Contagem Apressada: a Menina conta bem mais rápido.
+864. Pacto: Inspetor mais rápido, com audição e revista reforçadas.
+865. O ponto de onde o Inspetor começa a patrulha é sorteado por noite, mudando o primeiro encontro.
+866. Vigília (Novo Jogo +): a cada final verdadeiro, o Inspetor te conhece melhor na campanha seguinte.
+867. Na Vigília, a audição-base do Inspetor sobe a cada vitória acumulada.
+868. Na Vigília, ele perde menos tempo no alerta e parte para a caça mais rápido.
+869. Na Vigília, ele sussurra o nome que você digitou quando chega perto no bote.
+870. Na Vigília, ao te pegar, ele murmura um número crescente de quantas vezes já te pegou.
+871. Aviso de Vigília na abertura da campanha, com conquista Ele Lembra de Você.
+872. A primeira Vigília avisa que ele sabe o seu nome e não vai esquecer.
+873. Lenda rara Noite Mansa: ele quase não te procura (e dá arrepio de desconfiança).
+874. Lenda rara Noite Implacável: ele quase nunca recua.
+875. Na Noite Implacável, o recuo dele encolhe aos poucos, dando menos trégua de verdade.
+876. Lenda rara Lua: ele carrega dois temperamentos somados numa única noite.
+877. As lendas da noite são telegrafadas de leve pela Lia antes de pesarem.
+878. Conquista secreta Noite de Lenda por sobreviver a uma noite lendária.
+879. Conquista secreta Lua Cheia por presenciar a noite dos dois temperamentos.
+880. Maestro anti-enrolação: ficar parada tempo demais no mesmo cômodo deixa o Inspetor mais atento.
+881. A Lia avisa quando você ficou tempo demais parada e ele começou a prestar atenção naquele canto.
+882. Notoriedade entre noites: fazer barulho e morrer deixa fama, e a próxima noite começa mais tensa.
+883. A fama (notoriedade) esfria um pouco a cada nova campanha começada.
+884. A estreia do Inspetor na sessão é mais longa e assustadora, com uma fala só dela.
+885. Conquista secreta Nunca No Mesmo Canto: passar um capítulo sem repetir o mesmo tipo de esconderijo.
+886. Conquista secreta Rota Nova: zerar um capítulo sem usar o esconderijo que ele vigia.
+887. Ser pega no esconderijo que ele vigia é registrado e bloqueia a conquista Rota Nova naquele capítulo.
+888. Morrer três vezes perto do mesmo ponto na noite deixa um recado dele no chão.
+889. Conquista secreta Eu Te Conheço: presenciar todos os humores do Inspetor ao longo das noites.
+890. O jogo passou a contar quantas noites você já viveu, para alimentar os segredos de rejogo.
+891. O controle de esconderijos usados zera a cada capítulo, para as conquistas valerem por capítulo.
+892. Todo o sistema de rejogabilidade é passivo e à prova de erro: nenhum subsistema derruba o quadro.
+893. Na segunda jogada em diante o Inspetor usa um calçado sorteado por noite: bota, chinelo, meia ou tamanco.
+894. De bota ferrada, os passos dele ficam mais altos, com uma batida metálica que se ouve de longe.
+895. De chinelo, ele anda mais fraco e arrasta um estalo a cada passo.
+896. De meia, os passos quase somem e só as chaves dele avisam que está perto.
+897. De tamanco, cada passo é uma batida oca de madeira que ecoa alto no piso de madeira e some no tapete.
+898. A bota perde força quando ele pisa em tapete.
+899. A Lia comenta o calçado do dia na primeira vez que ele passa por perto.
+900. Conquista secreta De Olhos Fechados por reconhecer o Inspetor nos quatro calçados, noite após noite.
+901. A Ana sorteia uma regra de brincadeira por capítulo (seis regras) e a diz com a própria voz na primeira aparição.
+902. Brincadeira curta: a Ana conta só até oito, e o clímax chega antes do esperado.
+903. Brincadeira longa: a Ana conta até doze, bem devagar, e o ritmo decorado do DEZ não serve mais.
+904. Brincadeira da luz: a Ana só anda e conta com a lanterna acesa, e congela no escuro.
+905. Ana invertida: ela só anda enquanto você olha para ela, o oposto da regra aprendida, e fica de frente para você.
+906. Ana que se enrola: no meio da contagem ela volta três números ou pula dois, com um estalo seco como pista e um murmúrio de erro.
+907. Ana Dupla (a partir da quinta noite): uma segunda menina de mentira aparece parada na mesma sala.
+908. A isca não faz sombra e não faz barulho de passo, a pista para distinguir qual é a verdadeira.
+909. A isca conta números fora de ordem, o que denuncia a mentira para quem escuta.
+910. Iluminar a isca a faz virar fumaça subindo pelo ar.
+911. Quem ilumina a isca paga: a lanterna falha por um instante e perde pilha.
+912. Conquista secreta Quem É Quem por desfazer a Ana de mentira com a luz.
+913. A Lia nota que a outra menina não fez nenhum barulho.
+914. A Ana cresce um pouco a cada noite jogada (até 20% mais alta).
+915. Da sexta noite em diante a Ana conta um número a menos em qualquer brincadeira.
+916. A noite sem Ana: em alguns capítulos ela não faz aparições ocasionais nos dois primeiros minutos.
+917. Durante a noite sem Ana a Lia fica inquieta e pergunta onde ela está.
+918. Quando a Ana finalmente aparece depois da ausência, ela diz "Cheguei."
+919. A cantiga da Ana aprende com você: ela canta um verso sobre a causa da sua última morte (agarrão, armário, bote, pilha, Inspetor, Ana ou Procissão).
+920. Duelo de assombrações: se a Ana e o Inspetor ficam perto um do outro, ela o congela por 8 segundos e some quase em seguida.
+921. Durante o duelo a Lia comenta "eles se conhecem" e a Ana diz "Não é a sua vez."
+922. A Procissão passa a ter de 5 a 9 figuras, sorteadas a cada passagem na segunda jogada.
+923. Uma das crianças da fila é bem mais baixa que as outras.
+924. Outra criança carrega um terço pendurado na frente do corpo.
+925. Uma criança anda fora do alinhamento e vira o rosto para a Lia enquanto a fila passa.
+926. A Lia percebe quando uma delas está olhando direto para ela.
+927. Conquista secreta Fila Torta por ficar imóvel, de fôlego preso e escondida, enquanto a criança fora da fila olha.
+928. Encarar a criança fora da fila por mais de 2,5 s faz barulho, dá medo e a Lia se arrepende.
+929. O aviso da Procissão às vezes atrasa de 12 a 20 s: as luzes piscam e a fila só passa depois (nunca em Fácil nem na primeira noite).
+930. No atraso a Lia sussurra que passou o tempo e ainda não acabou.
+931. Às vezes uma segunda Procissão volta 38 s depois da primeira, com um aviso 40% mais curto.
+932. A segunda Procissão sai exatamente de onde a primeira terminou.
+933. A Lia lembra "ainda não acabou" quando a Procissão volta.
+934. Uma criança atrasada passa sozinha cerca de 6 s depois do fim da fila, andando pelo mesmo caminho.
+935. Quem sai do esconderijo cedo e cruza com a criança atrasada leva um susto: medo no máximo e barulho que chama atenção.
+936. Escondida, a criança atrasada para na frente do esconderijo e vira o rosto para ele.
+937. Se você não prender o ar quando ela olha para o esconderijo, ela denuncia o lugar com ruído e fala "Você está aí dentro."
+938. A criança atrasada tem passos descalços próprios, mais leves que os da fila.
+939. Antes da fila passar, um sussurro pede um comportamento: não respire, não olhe, não faça luz ou não pare.
+940. Obedecer ao sussurro na hora em que a fila chega salva do golpe mesmo fora de esconderijo.
+941. "Não respire": prender o ar com ESPAÇO enquanto a fila passa conta como cumprir a regra.
+942. "Não olhe": manter a câmera baixa, de olhos no chão, cumpre a regra.
+943. "Não faça luz": estar com a lanterna apagada cumpre a regra.
+944. "Não pare": continuar andando enquanto a fila passa cumpre a regra.
+945. Conquista secreta Fila Indiana por passar pela Procissão cumprindo o sussurro, sem se esconder.
+946. Depois de passar cumprindo a regra, a Lia diz que fez o que mandaram.
+947. Da terceira noite em diante, a última criança da fila sussurra o nome digitado no título quando passa perto.
+948. O Chamado às vezes é verdadeiro: em uma voz a cada quatro, quem chama é mesmo o Davi.
+949. A voz verdadeira respira antes de falar, e a legenda traz "Lia... aqui." ou "Lia. Vem. Rápido."
+950. Seguir a voz verdadeira dá uma pilha, acalma o medo e faz o Inspetor recuar.
+951. Conquista secreta A Voz Verdadeira por seguir o chamado certo.
+952. O Chamado falso agora chia no ouvido esquerdo, o sinal que dá para aprender de noite em noite.
+953. A Lia explica o chiado na primeira vez que ouve o falso.
+954. Se a voz verdadeira passa sem você ir, a Lia lamenta ter ignorado quem respirou antes de chamar.
+955. Em uma noite a cada quatro o Inspetor começa o Capítulo I dormindo numa sala vizinha, e dá para ouvir o ronco.
+956. O ronco do Inspetor soa de tempos em tempos, de longe, e vira medidor: ele acorda se o seu barulho passar do limite.
+957. Passar agachada e em silêncio ao lado dele rende uma pilha tirada do casaco.
+958. Conquista secreta Sono Leve por tirar a pilha sem acordá-lo.
+959. O Inspetor acorda sozinho quando o gerador liga, o que impede de passar o capítulo inteiro com ele dormindo.
+960. Ao acordar ele diz "Quem...?" e fica mais rápido por 100 s.
+961. Acordar com você perto dá um susto de verdade: tremor de câmera e medo.
+962. A Lia lê o ronco como um aviso, na primeira vez que chega perto.
+963. Inspetor Mascarado (a partir da quarta noite): ele aparece com uma máscara pálida de olhos furados.
+964. O Mascarado quase não ouve passos e sons.
+965. O Mascarado reage à lanterna acesa a até 6,5 m e parte para a caça, a cada 7 s no máximo.
+966. A Lia explica a regra do Mascarado: andar no escuro.
+967. Conquista secreta No Escuro por terminar um capítulo contra o Mascarado sem ele partir para a caça.
+968. Inspetor Faro (a partir da terceira noite): ele ouve muito pouco, mas segue o seu rastro de cheiro.
+969. No Faro ele vai atrás dos lugares por onde você passou de 6 a 24 s antes.
+970. Atravessar a água quebra o rastro dele; a Lia avisa e ganha a conquista Rastro Frio.
+971. A Lia explica o faro na primeira vez que ele o usa.
+972. A fúria do Inspetor sobe 20 pontos a cada capítulo que você termina sem tomar dano e é lembrada entre noites.
+973. Cada morte tira 15 pontos de fúria.
+974. A fúria muda a velocidade dele: de 9% mais lento com fúria baixa até 21% mais rápido com fúria alta.
+975. Com fúria alta a Lia diz que ele está de mau humor hoje.
+976. Com fúria baixa a Lia nota que ele está mais manso.
+977. Com fúria alta ele resmunga ("Quem foi... quem foi...") ao partir para a caça.
+978. O jogo mede a ferramenta que você mais usou em cada capítulo (garrafa, esconderijo, prender o ar, correr).
+979. Contramedida da garrafa: no capítulo seguinte a distração da garrafa dura metade.
+980. Contramedida do esconderijo: ele passa a revistar os armários 50% mais vezes.
+981. Contramedida do fôlego: na fareja ele espera mais tempo e o seu ar precisa durar mais.
+982. Contramedida da corrida: ele escuta você correr de 22% mais longe.
+983. A Lia diz "ele mudou" para a contramedida do capítulo, sem nunca dizer qual.
+984. Se você usa o mesmo tipo de esconderijo três vezes seguidas, ele confere esse tipo primeiro na procura.
+985. A Lia nota quando ele passa a vigiar o seu tipo de esconderijo.
+986. O armário mais usado da campanha é lacrado com fita preta em X e um cadeado, e não dá mais para entrar nele.
+987. A Lia comenta o lacre na primeira tentativa, e o lacre cede durante a Procissão para sempre sobrar uma saída.
+988. Quando ele patrulha a sala por onde você mais passou na noite, ele diz "Você passou aqui antes."
+989. O Falso Inspetor: uma silhueta idêntica a ele aparece parada no fundo de um corredor, sem chaves e sem respiração.
+990. O verdadeiro ronda por trás enquanto você olha para o falso.
+991. Encarar o falso por mais de 2 s faz barulho que o verdadeiro escuta.
+992. O falso some se você chegar perto sem encará-lo, e rende a conquista O Outro.
+993. A Lia reage de um jeito diferente a cada vez e na terceira já não sabe qual é o verdadeiro.
+994. Passos de Inspetor soam numa sala distante enquanto você está escondida, mas ele não está lá.
+995. Sair do esconderijo depois do eco falso dá tontura: o mundo abafa, o medo sobe e a Lia lamenta (sem dano).
+996. A Seguidora (a partir da terceira noite, Capítulos III e IV): uma menina pálida repete os seus passos com 20 s de atraso.
+997. Pegadas azuis brilham adiantadas no caminho que ela vai fazer.
+998. A Seguidora tem passos molhados que dá para ouvir.
+999. Se ela alcança você, causa 14 de dano, grito e medo máximo.
+1000. Se ela perde o rastro ou o tempo acaba sem te alcançar, a Lia comenta e vale a conquista Rastro Frio.
+1001. O cão farejador (a partir da quarta noite, Capítulos II a IV): ele ignora som e segue o seu rastro de passos.
+1002. O cão late antes do bote, um aviso claro de 0,9 s.
+1003. Atravessar a água quebra o rastro do cão.
+1004. Uma porta fechada atrás de você também barra o cão.
+1005. Escondida, o cão fareja a porta do esconderijo e, se você não prender o ar, late e atrai o Inspetor.
+1006. Se o cão te alcança, o bote causa 15 de dano e ele foge.
+1007. Cada monstro passa a ser contado: o que mais te matou vira a sua Nêmesis depois de 3 mortes.
+1008. A tela de morte conta "Ele te pegou N vezes" (ou "Ela", "Elas") para a sua Nêmesis.
+1009. A Nêmesis te recebe com uma fala só dela ("De novo você.") ao te ver na noite.
+1010. Vencer um capítulo sem tomar dano alivia a Nêmesis, a Lia comenta e vale a conquista Fim do Ciclo.
 
-### Áudio (92)
+### Sustos e eventos (92)
 
-466. A semente da noite sorteia um clima sonoro entre cinco (tempestade, garoa, vento, cigarras, quietude), e a casa nunca soa igual duas noites
-467. Na tempestade uma camada de chuva pesada cobre a base e deixa tudo mais denso
-468. Na garoa cai uma chuva fina e discreta sobre o telhado
-469. No clima de vento, uma camada de vento seco corre pelos corredores com o filtro oscilando
-470. No clima de cigarras, um canto agudo e tremulado vem de fora
-471. Na quietude, um sibilo quase inaudível domina e faz tudo parecer exposto
-472. O clima soa mais forte ao ar livre e abafa quando você está dentro da casa
-473. O clima quase some no subsolo, onde o mundo lá de fora não chega
-474. Uma legenda avisa qual é o clima da noite assim que ela começa
-475. A tempestade abafa de verdade os seus passos: o Inspetor te ouve menos
-476. A quietude expõe os seus passos: o Inspetor te ouve mais
-477. Vento e garoa ficam no meio-termo de quanto o ambiente mascara o seu som
-478. A tempestade solta trovões graves ocasionais quando você está ao ar livre
-479. As cigarras calam quase por completo quando o Inspetor entra em caçada
-480. O sibilo da quietude sobe conforme o seu medo aumenta
-481. O filtro da chuva muda por clima: a tempestade soa mais grave, a garoa mais aguda
-482. Cada noite ganha um tema procedural de três ou quatro notas sorteado pela semente
-483. A transposição (altura) do tema é definida pela semente da noite
-484. O andamento do tema é definido pela semente da noite
-485. A mesma semente sempre soa igual entre amigos; sementes diferentes soam distintas
-486. O tema da noite toca de leve nos momentos calmos, quando não há perigo
-487. O tema ganha uma voz (oitava) a mais a cada duas noites que você sobrevive
-488. O tema fica mais grave conforme sobe o número da sua noite
-489. No modo Uma Vida o tema desce ainda mais de tom
-490. No rejogo o tema desafina de leve
-491. No rejogo o tema também soa mais arrastado
-492. Uma legenda avisa quando o tema está mais grave porque a noite é especial
-493. A hora em que a noite começa é sorteada entre 20h, 21h e 23h
-494. Uma legenda avisa quando a noite não começa às 21h, com mais badaladas pela frente
-495. Depois do final verdadeiro, as nove badaladas da Hora marcam um ritmo que soletra um número
-496. O número soletrado pelas badaladas é fixo pela semente, reconhecível ao rejogar a mesma
-497. No rejogo do capítulo II, um sino-presságio nervoso bate fora de hora, em horário sorteado
-498. Ao bater o seu recorde de tempo de um capítulo, um sino quente e baixo marca o momento
-499. Ao bater o recorde de tempo total da noite, o sino celebra mais cheio
-500. O sino de recorde cala o mundo por um instante, como um respiro
-501. Com o cronômetro ligado, um grave sobe quando você está à frente do seu melhor tempo
-502. O mesmo grave esvazia e fica oco quando você está atrás do seu tempo
-503. A frequência desse grave sobe quando você está na frente e desce quando está atrás
-504. Uma legenda avisa quando você passa a estar à frente do seu fantasma
-505. Uma legenda avisa quando o fantasma te ultrapassa
-506. Passos-fantasma macios ecoam de leve marcando a rota da sua melhor corrida
-507. Conquista "Correndo Contra Si" ao fechar um capítulo à frente do fantasma
-508. No prólogo, o rádio do carro monta um boletim da Serra FM a partir das suas estatísticas
-509. O boletim vem precedido de estática, como uma sintonia que se resolve
-510. O boletim cita o clima sorteado da noite
-511. O boletim cita o seu recorde de tempo total
-512. O boletim cita quantas noites você já começou
-513. O boletim cita quantos finais você já viu e qual foi o último
-514. Na primeira noite o rádio dá boas-vindas em vez de citar recordes
-515. Depois do final verdadeiro, o rádio cochicha quanto ainda falta no acervo
-516. O boletim sorteia uma linha extra de sabor pela semente
-517. O boletim tem falas próprias da segunda, terceira, quinta e nona noite
-518. Depois da fala, o tema da noite fecha o boletim como assinatura sonora
-519. Só na rejogada, uma estação secreta de folclore aparece ao fundo na estrada
-520. No rejogo, o Davi comenta baixinho ao trocar de sala ("aqui eu me escondia", "não vai pela esquerda")
-521. Depois do final verdadeiro, um leitmotif do Davi assombra salas que antes eram caladas
-522. Depois de vencer, os ecos de 1979 ganham legenda que revela que eram frases
-523. Depois de vencer, as fitas já ouvidas ganham uma camada de respiração por baixo
-524. Ao entrar numa sala, você pode ouvir baixinho um som da sua noite anterior naquele ponto
-525. O eco da noite anterior acontece no máximo uma vez por noite e nunca em perigo
-526. O jogo grava um pequeno log de sons por sala para reproduzir na noite seguinte
-527. O log de sons da noite é salvo ao terminar a partida
-528. O eco da noite anterior distingue corrida, passo e clique de lanterna
-529. A caixinha da Ana ganha uma nota a mais a cada noite concluída, guardada entre partidas
-530. Uma legenda avisa quando a caixinha ganhou uma nota nova desde a última noite
-531. Completar a melodia da Ana ao longo das noites abre a conquista "A Caixinha Inteira"
-532. A cantiga da Ana toca perto dela usando a escala sorteada da noite
-533. Detecta quando você joga um capítulo inteiro com o mundo quase mudo
-534. Conquista "De Olhos Fechados" por terminar um capítulo guiada só pelo som do perigo
-535. Mensagem "[silêncio total. ele gosta assim.]" ao vencer o capítulo no mundo mudo
-536. Um medidor de estresse escondido soma o seu medo e as caçadas ao longo do capítulo
-537. Conquista "Nervos de Aço" ao atravessar um capítulo inteiro com o coração calmo
-538. Um batimento que se assenta marca o momento em que você ganha os Nervos de Aço
-539. O hino do internato volta de leve nos momentos calmos da casa
-540. O hino desafina mais a cada noite que você joga
-541. A partir da quarta noite o hino ganha uma voz grave por baixo
-542. Na nona noite o hino ganha micro-desafinações além da voz grave
-543. Na segunda jogada, um sussurro num ouvido só diz um número de código falso, para enganar
-544. Onde você morreu em noites anteriores, uma nota baixa assombra o lugar
-545. Os pontos onde você morreu são guardados por mapa entre as noites
-546. Quanto mais vezes você morreu no mesmo ponto, mais forte fica a nota que assombra ali
-547. O boletim do rádio não toca durante o teste automático, para não atrapalhar o QA
-548. Os ecos, comentários e sustos proativos ficam calados no teste automático
-549. O eco da noite anterior some de vez quando você entra numa sala em perigo
-550. A trilha-fantasma só liga quando há cronômetro ou modo de corrida ativo
-551. O leitmotif do Davi e os ecos de 1979 só existem para quem já viu o final verdadeiro
-552. O código das badaladas só soa para quem chegou ao final verdadeiro
-553. O boletim de boas-vindas muda de texto conforme o clima sorteado da noite
-554. O tema da noite usa a escala de dó menor para soar sempre melancólico
-555. As novas camadas de clima são nós contínuos próprios, sem mexer na ambiência base
-556. Todas as novas pistas sonoras têm legenda registrada, respeitando o filtro perigo/história
-557. O módulo registra três conquistas secretas novas no acervo do jogo
+1011. Baralho de 24 sustos calados e sem dano: cada noite a casa sorteia 1 ou 2 deles para você, em salas que combinam com a cena.
+1012. O baralho tem memória de 30 noites: o susto que você nunca viu pesa muito e os das últimas 10 noites quase não saem de novo.
+1013. A sorte de cada noite vem de um código guardado só no seu aparelho, então a sua noite 5 não é a noite 5 de outra pessoa (e a mesma noite se repete igual ao recarregar).
+1014. Aviso depois do susto: "sustos novos nesta noite, vistos até agora X de Y", para dar meta de colecionadora.
+1015. Susto repetido muda de forma: da segunda vez ele pode vir dobrado (acontece duas vezes).
+1016. Susto repetido muda de forma: ou vem só o aviso (estalo e chiado) e nada acontece.
+1017. Susto repetido muda de forma: ou vem atrasado, com um estalo antes, quebrando a memória de quem decorou.
+1018. Conquista secreta "Sem Repetir" por ver três sustos diferentes do baralho.
+1019. Conquista secreta "Colecionadora de Sustos" por ver o baralho inteiro.
+1020. O susto que ninguém viu ainda: só depois de 20 noites, alguém esperava sentado num canto da sala e some quando a lanterna o encontra.
+1021. Cadeira que gira sozinha no escuro quando você a encara e some quando você chega perto.
+1022. Vulto que acena lá do fundo do corredor e desfaz na luz da lanterna.
+1023. Passos no teto que acompanham você e param no instante em que você para.
+1024. Lâmpada que pisca soletrando um nome, com a Lia soletrando "L... I... A...".
+1025. Goteira em ritmo que no fim vira um sussurro.
+1026. O corredor que respira ao seu redor por alguns segundos.
+1027. Uma porta que não estava ali aparece na parede e some quando você se aproxima (da segunda noite em diante).
+1028. Entidade fora do roteiro: a Ana conta até dez duas vezes seguidas ou a Procissão ecoa ao contrário (da terceira noite), com a conquista "Fora do Roteiro".
+1029. Figura alta demais, parada no fundo do corredor só observando (da quarta noite), com a conquista "O Alto".
+1030. Objeto fora do lugar: uma banqueta que "não estava aqui ontem" (ou "sumiu"), com a Lia reparando em voz alta.
+1031. Boneca de pano de costas no chão que, quando você olha, está virada para a porta.
+1032. Vulto lendário, ainda mais alto, que só aparece para quem já viu três finais.
+1033. Sombra comprida que desliza por uma parede da sala e some.
+1034. Vela que se acende sozinha perto de você, tingindo a luz de laranja.
+1035. Criança que corre pelo corredor e some na parede (da terceira noite).
+1036. Nome rabiscado na parede (LIA, DAVI, TOMÉ, ANA ou LUIZ) que dá pra ler sem abrir tela cheia.
+1037. Respiração do outro lado de uma porta fechada perto de você.
+1038. Risadinhas de criança que se afastam.
+1039. Passos atrás de você que param no instante em que você vira para olhar.
+1040. Silêncio Total: todo som do mundo cai a zero (inclusive seus passos) e o HUD some, até uma única batida de porta vir de trás.
+1041. O Silêncio Total dura mais quando você está calma, e dá a conquista "Silêncio Total".
+1042. Vulto que repete o seu caminho: uma silhueta refaz os seus passos de 8 s atrás, parando onde você parou, e some na luz (conquista "Seus Próprios Passos").
+1043. Coro de crianças cantando baixinho ao longe, em três vozes.
+1044. Aviso sem susto: luzes piscam, o rádio chia, passos se aproximam e não vem nada, e o susto de verdade chega depois, longe do aviso.
+1045. Noite Vazia (1 em 20, a partir da terceira): sem sustos de cenário, só ele parado a 3 m de você, no escuro, em até 12 momentos.
+1046. No fim do capítulo da Noite Vazia o jogo mostra o replay "ele ficou parado a 3 m de você em N momentos", com a conquista "Ele Estava Lá".
+1047. Noite Mansa (1 em 12): a casa fica calma demais, os sustos ambiente se espaçam e a Lia estranha o silêncio (conquista "Noite Mansa").
+1048. Queda geral de energia a meio capítulo numa noite sorteada: todas as luzes morrem de uma vez por 20 s.
+1049. Madrugada Cruel (1 em 10): três sustos encadeados em 20 s, seguidos de uma calmaria longa e falsa, com a conquista "Três em Fila".
+1050. Calmaria Falsa: um capítulo passa 5 minutos sem nenhum evento e então a casa cobra a conta com dois sustos juntos.
+1051. Onze badaladas numa noite marcada (da terceira noite): o sino bate uma a mais que a décima, e a Lia diz "Foram onze" (conquista "Mais Uma").
+1052. Depois da noite das onze, a Ana às vezes conta até onze fora de hora.
+1053. Susto-assinatura da noite: a semente escolhe um golpe marcante e o prenuncia cedo com um estalo e um vulto rápido.
+1054. O susto-assinatura paga mais forte no fim do capítulo.
+1055. Da terceira noite em diante o prenúncio da assinatura às vezes vem só no som, sem o vulto.
+1056. Pegadinha do veterano: às vezes o golpe da assinatura finge e some.
+1057. Hábito de olhar para trás (Q): depois de três olhadas na mesma noite, na próxima algo está no fundo atrás de você, e a Lia diz "eu sempre faço isso".
+1058. Hábito de correr no corredor: depois de uns 8 s de corrida o chão estala alto na sua frente.
+1059. Hábito da lanterna sempre acesa: com um estalo de aviso, a luz morre por um instante (dá para bater nela para voltar).
+1060. Hábito do armário favorito: com 3 usos na noite, um dedo aparece pela fresta e arranha a porta, e a Lia comenta.
+1061. Os hábitos de cada noite ficam guardados e a noite seguinte usa o dominante: o gatilho fica mais cedo para quem tem aquele vício.
+1062. Conquista secreta "Piloto Automático" por ver a casa quebrar um hábito seu de propósito.
+1063. Armário ocupado: numa noite sorteada o armário que você mais usa tem alguém dentro (o Davi mudo, uma mão pequena ou dois olhos vermelhos).
+1064. Quando é o Davi dentro do armário, ele te estende uma pilha e aponta a saída.
+1065. O armário ocupado fica trancado ("Ocupado") pelo resto da noite e o barulho chama o Inspetor para perto.
+1066. Lápide a giz com o nome de quem te pegou, no lugar exato onde você caiu (da segunda noite), legível de perto.
+1067. Contorno de giz do seu corpo com a lanterna caída piscando e uma respiração fraca, que some quando você chega a 1 m.
+1068. A casa reencena a sua última morte no mesmo canto (com a entidade que te pegou), sem dano, com a conquista "O Seu Susto".
+1069. Ajuda-fantasma: onde você já morreu, a sua própria voz lembra baixinho o que era para fazer ali.
+1070. Esconderijo queimado: o armário onde você morreu na noite passada vem marcado "aqui foi a sua última vez", com batidas e sussurro de dentro.
+1071. O Chamado, da terceira noite em diante, às vezes usa a sua pior causa de morte (o Inspetor, a Ana ou a Procissão) em vez do "Lia...?" comum.
+1072. Esconderijo podre da noite: a semente marca um armário e uma cama em cada mapa, e eles mudam de lugar a cada noite.
+1073. O armário podre tem um tell justo: arranhões no verso da porta, legíveis sem tela cheia, e um rangido quando você entra.
+1074. Ficar mais de 14 s num esconderijo podre faz uma mão te empurrar para fora, com ruído (e em algumas noites só assusta, sem tirar vida).
+1075. Conquista secreta "Nada é Seguro" por sobreviver ao esconderijo podre.
+1076. Falso alarme da Procissão fica mais raro depois da primeira noite e nunca acontece no Pesadelo nem no Uma Vida.
+1077. O aviso verdadeiro da Procissão ganha um tell: um quarto de segundo de silêncio total antes do chiado, que o alarme falso não tem.
+1078. 3h07 de verdade: se o relógio do computador marca 03:07 com o jogo aberto, as luzes apagam, o rádio diz "três e sete" e uma figura aparece (uma vez por dia, conquista "Hora Marcada").
+1079. Entre 03:00 e 03:10 do relógio real o sino toca longe uma vez e o jogo avisa que o internato parou o relógio.
+1080. A casa sentiu sua falta: depois de 7 dias sem jogar, um "Você demorou" escrito a giz aparece na tela no começo da noite.
+1081. Créditos falsos (cerca de 10% das noites, da terceira em diante, só se você não morreu no capítulo): tela preta com FIM e música de caixinha, que engasga e volta com a Ana contando atrás de você.
+1082. Conquista secreta "Isso Não Era o Fim" por cair nos créditos falsos (e eles só se repetem uma vez, para não virar hábito).
+1083. Quando o jogo finge que fechou: a tela vai a preto por 2 s, a Lia sussurra "não olha" e, ao voltar, há algo atrás dela.
+1084. Susto ao despausar: se a pausa passar de 60 s, uma porta fechada se abre ou um vulto aparece no canto da sala.
+1085. A boneca que anda entre as noites: a cada noite jogada ela avança da sala de brinquedos pelo corredor até a recepção.
+1086. Na sétima noite a boneca está no banco do passageiro do carro, virada para você (conquista "A Boneca Chegou").
+1087. Frequência de sustos de 0% a 200% nas opções de Desempenho: em 0% é a Noite Crua, só os monstros reais ameaçam.
+1088. Modo Sangue Frio: desliga todos os avisos antes dos sustos e dá conquista ao terminar um capítulo assim.
+1089. Modo Insone: a casa não te deixa em paz, com a calmaria do diretor de sustos encurtada (conquista "Insone").
+1090. Modo A Casa Mente: os golpes da assinatura passam a ser fingidos.
+1091. Os modos e a frequência ficam guardados entre as noites e mostram um aviso na tela ao serem trocados.
+1092. Falsa vitória: ao cumprir um objetivo que você já conhece, às vezes a luz apaga e algo respira perto.
+1093. Encarar uma porta fechada por uns 6 s forma por um piscar a cara de uma criança no ar à sua frente.
+1094. Depois de zerar o jogo pelo menos uma vez, pegadas molhadas passam a seguir você de vez em quando.
+1095. O jogo conta os seus pulos (reação forte depois de um susto): na quarta vez da noite uma voz diz "você pula bonito", com a conquista "Pula Bonito".
+1096. Recorde assombrado: ao terminar um capítulo sem ser pega, um sussurro "ele viu você correr" e um estalo atrás.
+1097. Recompensa bonita: depois de um capítulo limpo, uma vela se acende sozinha no caminho do próximo.
+1098. Porta que bate quando você olha para trás com Q: uma porta já visitada bate atrás de você, avisando que algo passou.
+1099. A sequência de sustos ambiente do diretor agora sai da semente da noite e varia a cada noite, em vez de ser sorteada solta.
+1100. Conquista secreta "Veterana" por chegar à quinta noite no São Lázaro.
+1101. Todos os eventos novos ficam calados no QA (`navigator.webdriver`) e nunca disparam durante caçada, Procissão ou Ana ativa.
+1102. O novo módulo entra no cache do service worker para o jogo rodar sem internet.
 
-### Visual e luz (96)
+### Áudio (189)
 
-558. A semente da noite agora sorteia um clima fixo para a campanha inteira (temporal, garoa, neblina ou noite seca).
-559. No temporal a chuva cai mais densa e opaca, mascarando o que você vê e ouve.
-560. No temporal os relâmpagos ficam bem mais frequentes.
-561. No temporal a força do feixe da lanterna cai e o alcance aparente encurta com a água no ar.
-562. Na garoa a chuva fica fina e com poucos respingos, numa noite quase quieta.
-563. Na neblina fechada a névoa engrossa e você enxerga bem menos à frente.
-564. Na neblina a força do feixe cai e o alcance aparente da lanterna encurta de propósito.
-565. Na noite seca não cai chuva nenhuma e o ar fica nítido.
-566. Na noite seca os relâmpagos ficam raros e secos, deixando o silêncio mais pesado.
-567. Na noite seca o feixe alcança um pouco mais longe e o mundo fica mais contrastado.
-568. Um aviso curto no começo de cada capítulo conta qual é o clima daquela noite.
-569. O jogo guarda quais climas você já viu entre as partidas.
-570. Conquista secreta "Todo tipo de noite" ao jogar sob os quatro climas.
-571. A densidade base da névoa muda conforme o clima da noite.
-572. A exposição da imagem (brilho geral) muda conforme o clima.
-573. A cor dos respingos de chuva no chão muda conforme o clima.
-574. A cor e a opacidade dos riscos de chuva mudam conforme o clima.
-575. A força do vento que inclina a chuva muda conforme o clima.
-576. A semente também sorteia a paleta de cor da noite (lua azulada, verde doente, âmbar, luto cinza, calor doente).
-577. A paleta da noite tinge a cor da névoa.
-578. A paleta da noite tinge o céu e o fundo da cena.
-579. A paleta da noite tinge a luz da lua e a luz ambiente.
-580. A paleta da noite recolore os halos das lâmpadas.
-581. A paleta da noite recolore o brilho dos bulbos das lâmpadas.
-582. "A casa te conhece": a cada noite acumulada a névoa vai ficando um nada mais fria e esverdeada.
-583. A combinação de clima e paleta faz com que duas noites nunca pareçam idênticas logo de cara.
-584. O número de lampejos de cada rajada de relâmpago agora é sorteado pela semente.
-585. A intensidade dos lampejos é sorteada pela semente.
-586. Os intervalos entre relâmpagos ficam deslocados por semente, para o susto da luz nunca cair no mesmo ponto decorado.
-587. No temporal o clarão faz a chuva brilhar mais forte.
-588. O clarão do relâmpago passou a tingir a luz pela paleta da noite.
-589. O relâmpago forte ao ar livre pode revelar uma silhueta por um instante (banco de aparições sorteado).
-590. As aparições do clarão variam: o batedor rígido de pé, um vulto qualquer ou só a janela vazia.
-591. O jogo registra quais aparições você já flagrou no clarão entre partidas.
-592. Conquista secreta "O que o clarão mostra" ao flagrar três aparições diferentes.
-593. Ilhas de luz sorteadas: um subconjunto das lâmpadas de cada mapa fica apagado nesta semente.
-594. As lâmpadas apagadas pela semente continuam apagadas mesmo quando a energia volta.
-595. Uma queda breve de energia (piscada geral das lâmpadas) acontece num horário sorteado por semente.
-596. Nova camada de lente de rejogo que repinta o render inteiro, alternada pela tecla I.
-597. Lente Negativo: o mundo em cores invertidas.
-598. Lente Fita de 1979: sépia, grão e bordas de fita velha.
-599. Lente Sonho: cores lavadas, bordas moles e imagem macia.
-600. Lente Memória da Lia: imagem quente e desbotada, como lembrança.
-601. Lente Noite de 1979: cores limpas e quentes do internato de antes.
-602. Lente Projetor 16mm: cintilação e varredura de projetor.
-603. Lente TV de tubo: linhas de varredura e cor saturada.
-604. Lente Super-8: grão quente e cor forte de filme caseiro.
-605. Lente Raio-X do medo: alto contraste quase invertido.
-606. Lente Termovisão: silhuetas quentes sobre o escuro.
-607. Lente Sonar: tudo em pulsos azulados que respiram.
-608. Lente Olho do Moacir: o mundo como mancha de calor, não de luz.
-609. Novas lentes vão sendo liberadas conforme o número de noites e capítulos jogados.
-610. O nome da lente aparece num aviso ao alternar com a tecla I.
-611. A lente escolhida fica salva entre partidas.
-612. A granulação e as linhas da lente Fita aumentam conforme o número de noites jogadas (fita que se gasta).
-613. A cor do feixe da lanterna muda sutilmente conforme o clima da noite.
-614. Depois de terminar a campanha, o feixe ganha um tom dourado permanente (Selo de Mestre).
-615. Ao escapar de uma caçada do Inspetor, o feixe dá um pulso dourado por um instante.
-616. A luz de preenchimento perto das mãos acompanha a cor cosmética do feixe.
-617. Marcas de giz aparecem no chão exatamente onde você morreu na vez anterior naquele mapa.
-618. As marcas de giz das mortes se acumulam entre noites.
-619. Quanto mais vezes você morre num mapa, mais densas ficam as marcas de giz (até um limite).
-620. As marcas de giz alternam entre um "x" e uma setinha riscados à mão.
-621. As marcas das mortes só aparecem a partir da segunda vez que você joga aquele mapa.
-622. A cena do título ganhou uma prateleira de troféus em 3D à frente da câmera.
-623. O troféu do sino aparece conforme você avança.
-624. O troféu do lampião aceso aparece com o progresso.
-625. O troféu da cruz de giz aparece com o progresso.
-626. O troféu da engrenagem aparece com o progresso.
-627. O troféu do carrinho azul aparece com o progresso.
-628. Os troféus do título vão enchendo em silêncio conforme você joga mais capítulos.
-629. Um troféu extra só aparece depois de terminar a campanha ao menos uma vez.
-630. A fase real da lua clareia um tiquinho o céu do prólogo na estrada.
-631. Um tinte de estação pelo mês real dá uma cara ligeiramente diferente ao prólogo (frio no inverno, âmbar no outono).
-632. Marca d'água de giz no canto mostra semente, clima e lente ativos na partida (para quem grava vídeo).
-633. A marca da run só aparece quando há uma lente ou um mutador ativo, discreta e sem atrapalhar.
-634. Conquista secreta "Colecionadora de lentes" ao experimentar oito lentes diferentes.
-635. O feixe da lanterna fica levemente mais azulado no temporal.
-636. O feixe fica mais branco e frio na noite seca.
-637. Os respingos ficam mais azulados no temporal.
-638. A névoa do interior respeita o clima da noite, ficando mais fechada na neblina.
-639. O vento das rajadas quase some na noite seca, deixando a chuva (quando há) mais reta.
-640. As conquistas novas do lote entram no acervo do painel sem quebrar a contagem.
-641. O sistema todo é passivo e seguro: nada disso interfere no teste automático nem no fluxo dos capítulos.
-642. A silhueta do clarão aparece sempre à frente do seu olhar, para ser vista de relance e sumir.
-643. A silhueta do clarão some sozinha quando o brilho do relâmpago acaba.
-644. O apagão breve do gerador toca um clique seco de energia caindo.
-645. As lâmpadas apagadas pela semente também somem do brilho do bulbo, não só da luz.
-646. A cor dos riscos de chuva do temporal puxa mais para o azul-aço.
-647. A paleta "verde doente" dá um ar de mofo à noite inteira.
-648. A paleta "âmbar abafado" deixa a noite com um calor doentio.
-649. A paleta "luto cinza" lava a cor do mundo quase ao preto e branco.
-650. Cada capítulo jogado numa semente é lembrado para fazer os troféus crescerem.
-651. Terminar a campanha também conta mais uma noite para o resfriamento da paleta e o desgaste da fita.
-652. A lente pode ser trocada tanto no título quanto durante o jogo, sem pausar.
-653. A tecla I é ignorada enquanto você digita em qualquer campo, para não atrapalhar os códigos do título.
+1103. A semente da noite sorteia um clima sonoro entre cinco (tempestade, garoa, vento, cigarras, quietude), e a casa nunca soa igual duas noites
+1104. Na tempestade uma camada de chuva pesada cobre a base e deixa tudo mais denso
+1105. Na garoa cai uma chuva fina e discreta sobre o telhado
+1106. No clima de vento, uma camada de vento seco corre pelos corredores com o filtro oscilando
+1107. No clima de cigarras, um canto agudo e tremulado vem de fora
+1108. Na quietude, um sibilo quase inaudível domina e faz tudo parecer exposto
+1109. O clima soa mais forte ao ar livre e abafa quando você está dentro da casa
+1110. O clima quase some no subsolo, onde o mundo lá de fora não chega
+1111. Uma legenda avisa qual é o clima da noite assim que ela começa
+1112. A tempestade abafa de verdade os seus passos: o Inspetor te ouve menos
+1113. A quietude expõe os seus passos: o Inspetor te ouve mais
+1114. Vento e garoa ficam no meio-termo de quanto o ambiente mascara o seu som
+1115. A tempestade solta trovões graves ocasionais quando você está ao ar livre
+1116. As cigarras calam quase por completo quando o Inspetor entra em caçada
+1117. O sibilo da quietude sobe conforme o seu medo aumenta
+1118. O filtro da chuva muda por clima: a tempestade soa mais grave, a garoa mais aguda
+1119. Cada noite ganha um tema procedural de três ou quatro notas sorteado pela semente
+1120. A transposição (altura) do tema é definida pela semente da noite
+1121. O andamento do tema é definido pela semente da noite
+1122. A mesma semente sempre soa igual entre amigos; sementes diferentes soam distintas
+1123. O tema da noite toca de leve nos momentos calmos, quando não há perigo
+1124. O tema ganha uma voz (oitava) a mais a cada duas noites que você sobrevive
+1125. O tema fica mais grave conforme sobe o número da sua noite
+1126. No modo Uma Vida o tema desce ainda mais de tom
+1127. No rejogo o tema desafina de leve
+1128. No rejogo o tema também soa mais arrastado
+1129. Uma legenda avisa quando o tema está mais grave porque a noite é especial
+1130. A hora em que a noite começa é sorteada entre 20h, 21h e 23h
+1131. Uma legenda avisa quando a noite não começa às 21h, com mais badaladas pela frente
+1132. Depois do final verdadeiro, as nove badaladas da Hora marcam um ritmo que soletra um número
+1133. O número soletrado pelas badaladas é fixo pela semente, reconhecível ao rejogar a mesma
+1134. No rejogo do capítulo II, um sino-presságio nervoso bate fora de hora, em horário sorteado
+1135. Ao bater o seu recorde de tempo de um capítulo, um sino quente e baixo marca o momento
+1136. Ao bater o recorde de tempo total da noite, o sino celebra mais cheio
+1137. O sino de recorde cala o mundo por um instante, como um respiro
+1138. Com o cronômetro ligado, um grave sobe quando você está à frente do seu melhor tempo
+1139. O mesmo grave esvazia e fica oco quando você está atrás do seu tempo
+1140. A frequência desse grave sobe quando você está na frente e desce quando está atrás
+1141. Uma legenda avisa quando você passa a estar à frente do seu fantasma
+1142. Uma legenda avisa quando o fantasma te ultrapassa
+1143. Passos-fantasma macios ecoam de leve marcando a rota da sua melhor corrida
+1144. Conquista "Correndo Contra Si" ao fechar um capítulo à frente do fantasma
+1145. No prólogo, o rádio do carro monta um boletim da Serra FM a partir das suas estatísticas
+1146. O boletim vem precedido de estática, como uma sintonia que se resolve
+1147. O boletim cita o clima sorteado da noite
+1148. O boletim cita o seu recorde de tempo total
+1149. O boletim cita quantas noites você já começou
+1150. O boletim cita quantos finais você já viu e qual foi o último
+1151. Na primeira noite o rádio dá boas-vindas em vez de citar recordes
+1152. Depois do final verdadeiro, o rádio cochicha quanto ainda falta no acervo
+1153. O boletim sorteia uma linha extra de sabor pela semente
+1154. O boletim tem falas próprias da segunda, terceira, quinta e nona noite
+1155. Depois da fala, o tema da noite fecha o boletim como assinatura sonora
+1156. Só na rejogada, uma estação secreta de folclore aparece ao fundo na estrada
+1157. No rejogo, o Davi comenta baixinho ao trocar de sala ("aqui eu me escondia", "não vai pela esquerda")
+1158. Depois do final verdadeiro, um leitmotif do Davi assombra salas que antes eram caladas
+1159. Depois de vencer, os ecos de 1979 ganham legenda que revela que eram frases
+1160. Depois de vencer, as fitas já ouvidas ganham uma camada de respiração por baixo
+1161. Ao entrar numa sala, você pode ouvir baixinho um som da sua noite anterior naquele ponto
+1162. O eco da noite anterior acontece no máximo uma vez por noite e nunca em perigo
+1163. O jogo grava um pequeno log de sons por sala para reproduzir na noite seguinte
+1164. O log de sons da noite é salvo ao terminar a partida
+1165. O eco da noite anterior distingue corrida, passo e clique de lanterna
+1166. A caixinha da Ana ganha uma nota a mais a cada noite concluída, guardada entre partidas
+1167. Uma legenda avisa quando a caixinha ganhou uma nota nova desde a última noite
+1168. Completar a melodia da Ana ao longo das noites abre a conquista "A Caixinha Inteira"
+1169. A cantiga da Ana toca perto dela usando a escala sorteada da noite
+1170. Detecta quando você joga um capítulo inteiro com o mundo quase mudo
+1171. Conquista "De Olhos Fechados" por terminar um capítulo guiada só pelo som do perigo
+1172. Mensagem "[silêncio total. ele gosta assim.]" ao vencer o capítulo no mundo mudo
+1173. Um medidor de estresse escondido soma o seu medo e as caçadas ao longo do capítulo
+1174. Conquista "Nervos de Aço" ao atravessar um capítulo inteiro com o coração calmo
+1175. Um batimento que se assenta marca o momento em que você ganha os Nervos de Aço
+1176. O hino do internato volta de leve nos momentos calmos da casa
+1177. O hino desafina mais a cada noite que você joga
+1178. A partir da quarta noite o hino ganha uma voz grave por baixo
+1179. Na nona noite o hino ganha micro-desafinações além da voz grave
+1180. Na segunda jogada, um sussurro num ouvido só diz um número de código falso, para enganar
+1181. Onde você morreu em noites anteriores, uma nota baixa assombra o lugar
+1182. Os pontos onde você morreu são guardados por mapa entre as noites
+1183. Quanto mais vezes você morreu no mesmo ponto, mais forte fica a nota que assombra ali
+1184. O boletim do rádio não toca durante o teste automático, para não atrapalhar o QA
+1185. Os ecos, comentários e sustos proativos ficam calados no teste automático
+1186. O eco da noite anterior some de vez quando você entra numa sala em perigo
+1187. A trilha-fantasma só liga quando há cronômetro ou modo de corrida ativo
+1188. O leitmotif do Davi e os ecos de 1979 só existem para quem já viu o final verdadeiro
+1189. O código das badaladas só soa para quem chegou ao final verdadeiro
+1190. O boletim de boas-vindas muda de texto conforme o clima sorteado da noite
+1191. O tema da noite usa a escala de dó menor para soar sempre melancólico
+1192. As novas camadas de clima são nós contínuos próprios, sem mexer na ambiência base
+1193. Todas as novas pistas sonoras têm legenda registrada, respeitando o filtro perigo/história
+1194. O módulo registra três conquistas secretas novas no acervo do jogo
+1195. Na rejogada, o rádio do carro lê a notícia da sua última morte com o nome real do cômodo onde ela aconteceu
+1196. O boletim da Serra FM usa a causa real da morte: o Inspetor, a Ana ou a Procissão têm cada um as suas frases
+1197. Mortes especiais ganham frase própria no rádio: escondida, sem pilha, puxada pelo pescoço, no armário da Ana e pela luz da Procissão
+1198. A notícia dá a hora de verdade em que você morreu, no estilo "às 3h07", gravada do relógio do computador
+1199. O Davi corta o locutor depois da notícia, com estática e uma fala de pressa, e a legenda avisa
+1200. O boletim reconta o seu trajeto da noite anterior: por onde passou, onde mais parou e onde acabou
+1201. O boletim inclui uma previsão do humor do Inspetor ("o vento vem nervoso hoje") que é verdadeira em cerca de 75% das noites
+1202. Os rádios do térreo e do andar de cima repetem a notícia da sua morte de uma sala vizinha, com chiado e legenda de direção
+1203. Nova opção "Guardar um trecho da minha voz", desligada por padrão, com aviso claro de que o áudio fica só na memória do navegador
+1204. Com a opção ligada, os primeiros 2,5 segundos da sua fala nos capítulos iniciais são guardados na memória, sem tocar no disco nem na rede
+1205. Nos capítulos IV e V a sua própria voz volta de uma sala vizinha, mais lenta, picotada, com tom quebrado e eco
+1206. Se o microfone for negado, o jogo avisa, desliga a opção e segue com as vozes de sempre
+1207. A opção ganhou um item "Apagar a voz guardada agora" que descarta a gravação e desliga o microfone
+1208. Medidor de grito na tela de morte: barras com o pico de voz da noite e a classe "sussurro", "susto", "grito de verdade" ou "vizinho acordou"
+1209. O seu maior grito fica salvo como recorde, ganha a marca "recorde" na tela de morte e um sininho curto
+1210. Nova conquista secreta "A Casa Inteira Ouviu", para quem grita alto o bastante para o vizinho acordar
+1211. Na hora cheia do seu relógio (21h, 22h, 23h...), o sino bate essa quantidade de vezes ao longe, no máximo 12, com a legenda "a casa sabe a sua hora"
+1212. O aviso sonoro da Procissão ganhou 4 formas sorteadas pela semente da noite, para ninguém decorar o som
+1213. Uma das formas do aviso é um sininho de brinquedo que toca três vezes, com legenda própria
+1214. Outra forma é uma risada de criança vinda de longe, com legenda de direção
+1215. Outra forma é o hino do internato tocando de trás para a frente, com legenda própria
+1216. As nove badaladas do Capítulo II, na rejogada, ganharam nove timbres (vidro, madeira, ferro, voz, gota, osso, papel, pedra e lata) embaralhados pela semente
+1217. A legenda de cada badalada descreve o timbre ("a badalada soa como vidro batido")
+1218. Em algumas noites a casa conta errado: depois da nona vêm uma ou duas badaladas a mais, mais baixas, com legenda de alerta
+1219. Mutador sonoro "Buraco de som": uma vez por noite, por 6 segundos, o áudio inteiro cai a zero e volta de uma vez no meio de um passo, com o Inspetor se movendo normalmente
+1220. Mutador "Pistas que mentem": até duas vezes por noite um chaveiro, passos de metal ou uma respiração tocam numa sala vizinha sem ninguém lá
+1221. Depois de uma pista falsa um clique seco e uma legenda revelam que era só um cano velho
+1222. Depois de morrer, os primeiros 20 segundos da nova tentativa têm um zumbido agudo e distante que some aos poucos, com legenda
+1223. Vidro estourando a menos de 3 metros e sustos de impacto forte deixam um zumbido que abafa os sons de longe
+1224. Nova opção para desligar o zumbido de morte e de estouro (a opção de reduzir zumbido que já existia também vale)
+1225. O eco da casa cresce com as suas mortes: o rabo do reverb fica mais longo e a voz atrasa até meio segundo perto das 50 mortes
+1226. Na centésima morte, o grito do golpe volta como uma segunda voz, quase um segundo depois
+1227. O corpo da Lia (respiração, engolir, batimento) fica mais surdo a cada três noites jogadas, por um filtro passa-baixa que fecha aos poucos
+1228. Cada noite o Inspetor calça um sapato sorteado pela semente: bota seca, chinelo molhado ou pés descalços colando no chão
+1229. A legenda diz qual é o sapato desta noite ("passos molhados de chinelo"), com a direção
+1230. Uma sala por noite e por mapa, sorteada pela semente, vira a "sala do silêncio": sem reverb, com o mundo abafado e a legenda "este cômodo não devolve nada"
+1231. Dentro da sala do silêncio o seu ruído conta só metade para o Inspetor, mas você também não o ouve chegar
+1232. Ao sair da sala do silêncio o som volta de repente, com legenda
+1233. Nova conquista secreta "Sala Muda" por atravessar a sala do silêncio da noite
+1234. De vez em quando o coro cantarola o nome da sala do silêncio da noite, uma pista para quem escuta
+1235. Nova ferramenta "ouvido atento": segurar a tecla . (ponto) por 3 segundos dá três pings direcionais que apontam onde o Inspetor está
+1236. O ouvido atento também aponta a Menina Que Conta quando ela está na casa, com tom mais grave
+1237. O ouvido atento descreve a direção e a distância na legenda ("à esquerda, perto") e reduz o seu ruído em 30% enquanto dura
+1238. O ouvido atento cansa: tem recarga de 40 segundos, ou 8 se você soltar a tecla antes
+1239. Nova ferramenta "estalo de dedos" na tecla , (vírgula): ecos curtos voltam pelas paredes e chegam mais rápido de quem está mais perto
+1240. A legenda do estalo diz onde fica a parede mais próxima e o estalo faz barulho de verdade, que o Inspetor pode ouvir
+1241. Nova conquista secreta "Morcego" por estalar os dedos cinco vezes numa noite
+1242. Na primeira volta à casa, uma dica avisa que existem o ouvido atento e o estalo de dedos
+1243. Depois do final verdadeiro, segurar B com uma fita tocando toca a gravação ao contrário e a Lia lê a frase escondida em legenda
+1244. Cada fita esconde uma frase diferente do avesso, e as já descobertas ficam guardadas
+1245. Novo modo opcional "Toca-fitas de bolso": uma melodia leve que arrasta o tom quando o Inspetor chega perto
+1246. No toca-fitas de bolso a fita pula quando ele caça e engasga, com volume que pulsa, quando a Procissão vem
+1247. Nova opção "Ouvido Absoluto": trilha e sons de apoio quase mudos, sobra só o som que tem direção
+1248. Nova conquista secreta "Ouvido Absoluto" por terminar um capítulo inteiro nesse modo
+1249. Terminar um capítulo sem nenhum barulho alto toca um acorde único de silêncio, com legenda
+1250. Nova conquista secreta "Assinatura de Silêncio" por esse capítulo sem barulho
+1251. Depois de morrer três vezes na mesma sala, a Lia assobia sem perceber ao entrar nela, o que faz um pouco de barulho
+1252. Eco do erro: o som que te entregou na última morte (porta, vidro, passos, respiração) volta sozinho de longe, no mesmo ponto do mapa
+1253. O eco da noite anterior agora também grava portas, vidros e respiração presa, e não só passos e cliques
+1254. O tema da noite desafina 3 centésimos a cada noite jogada, até soar levemente errado depois de umas vinte noites
+1255. No capítulo em que você mais morreu o tema fica desafinado e mais rápido, com legenda
+1256. Se você vence esse capítulo sem morrer o tema volta limpo, toca um acorde de alívio e o contador dele zera
+1257. Cada morte acrescenta uma nota a uma melodia pentatônica sorteada pela sua conta, até 16 notas
+1258. A nova nota da melodia das mortes soa logo depois da tela de morte, com legenda
+1259. Na fuga do Capítulo V a caixinha toca a melodia completa das suas mortes
+1260. Cada Tema da Noite tem um prelúdio de quatro notas no prólogo (espelhos agudos, telefones secos, água grave ou sombras) escolhido pela semente
+1261. O nome do tema da noite aparece em legenda só quando o final começa, junto com o réquiem
+1262. A cantiga da Ana tem quatro melodias sorteadas pela semente
+1263. A cantiga termina sempre com uma nota faltando, e essa nota soa bem atrás de você quando a Ana aparece
+1264. O Inspetor assobia uma melodia curta própria de cada humor (paciente, nervoso, metódico, surdo, faminto e teimoso), ouvida de longe em momentos calmos
+1265. A legenda descreve o assobio ("assobio lento", "assobio que escorrega") sem dizer o nome do humor
+1266. O caderno anota cada humor reconhecido pelo assobio, com um aviso de quantos dos seis você já conhece
+1267. Nova conquista secreta "Ouvido Treinado" por reconhecer três humores só pelo assobio
+1268. Um coro de crianças canta ao longe com uma voz a mais por noite vencida, de uma criança sozinha até um coral denso de 34
+1269. Nos corredores do internato crianças cantam uma cantiga com um verso por noite sua, até 12, e mais grave e lenta além disso
+1270. A cantiga das crianças fica mais clara quando você está quieta e some quando o Inspetor está perto
+1271. O hino do internato ganha um verso novo a cada capítulo na rejogada, com o verso na legenda
+1272. O jogo avisa quantos versos do hino você já ouviu
+1273. Cada clima ganhou um som raro: coruja na garoa, cão uivando no vento e cincerro nas cigarras
+1274. Na tempestade o trovão agora também chega abafado dentro de casa, sacudindo as vidraças
+1275. Na noite de quietude um relógio de parede tiquetaqueia ao longe
+1276. A goteira dos túneis ganhou um ritmo próprio sorteado pela semente
+1277. De vez em quando cai uma gota fora do compasso, com legenda
+1278. Perto do Carnaval de verdade, o rádio do prólogo toca uma marchinha lenta que vai desafinando
+1279. A caixinha de música do título ganha uma voz nova por final visto, em até sete vozes: caixinha, sino, coro, harmônio, violino, sussurro e celesta
+1280. Com as sete vozes a frase do título toca duas vezes em seguida
+1281. As conquistas também enriquecem o título: coral, sino e harmônio extras a partir de 10, 25 e 50 conquistas
+1282. Réquiem dos créditos: a cantiga da Ana, o tema da noite e o hino juntos, com um instrumento a mais por final já visto
+1283. A tela de final ganhou o botão "Ouvir a colagem sonora da noite (20 s)", montado com passos, portas, respiração e vidros da sua própria noite
+1284. A tela de final ganhou o botão "Baixar a fita desta noite (.wav)", renderizada na hora com o tema da semente, as badaladas, o ritmo dos seus passos, a respiração e a cantiga da Ana
+1285. Cada fita baixada ganha um nome de lado A ou B sorteado
+1286. Passos fantasmas no seu ritmo exato aparecem atrás de você em um trecho calmo, e param 0,4 segundo depois de você parar
+1287. Depois de prender o ar, às vezes uma respiração responde da sala vizinha segundos depois
+1288. O telefone interno às vezes toca, uma criança ri, dá um ramal sorteado e desliga
+1289. O ramal da criança é anotado no caderno da Lia
+1290. Novo grupo de opções "Som da rejogada" com sete botões para ligar e desligar tudo isso
+1291. As legendas dos sons novos descrevem o que foi ouvido (timbre, direção, humor), com texto montado na hora
 
-### Jogabilidade (91)
+### Visual e luz (225)
 
-654. Novo mutador Pilha Única: a lanterna tem uma carga só, sem pilhas reservas nem recarga a noite inteira.
-655. Novo mutador Luz Faminta: a lanterna consome a pilha mais rápido, encarecendo cada segundo acesa.
-656. Novo mutador Lanterna Fraca: o feixe mal alcança à frente, deixando o jogador quase no breu.
-657. Novo mutador Luz Piscante: mau contato faz a luz falhar em instantes aleatórios.
-658. Novo mutador Lanterna Curta: a lanterna apaga sozinha depois de alguns segundos acesa de cada vez.
-659. Novo mutador No Escuro: sem lanterna a noite toda, só relâmpagos e som.
-660. Novo mutador A Luz Chama: andar de lanterna acesa perto do Inspetor passa a fazer barulho.
-661. Novo mutador Fôlego Curto: prender o ar acaba bem mais rápido.
-662. Novo mutador Sem Prender o Ar: o jogador não consegue segurar a respiração.
-663. Novo mutador Coração Exposto: com o medo no alto, o batimento vira ruído que o Inspetor escuta.
-664. Novo mutador Pavor Fácil: o medo sobe sozinho no escuro.
-665. Novo mutador Pânico no Escuro: no breu o terror dispara e trava a respiração até você achar luz.
-666. Novo mutador Frio na Espinha: parada no escuro, o calafrio faz um barulho baixinho que denuncia.
-667. Novo mutador Mãos Trêmulas: a câmera treme mais, sobretudo com medo.
-668. Novo mutador Corpo Frágil: o jogador aguenta muito menos dano antes de cair.
-669. Novo mutador Fadiga: o fôlego de corrida fica curto e se recupera devagar.
-670. Novo mutador Eco de Passos: o Inspetor volta ao seu último ponto 2 s depois de você parar.
-671. Novo mutador Rastro Quente: o Inspetor fareja a trilha e vai atrás de onde você passou.
-672. Novo mutador Presença Delatora: mesmo parada, a casa denuncia sua posição de vez em quando.
-673. Novo mutador Passos Pesados: cada passo soa mais alto, valorizando andar devagar e agachar.
-674. Novo mutador Corrida Que Ecoa: correr ecoa pelo prédio inteiro em qualquer capítulo.
-675. Novo mutador Relâmpago: a noite inteira roda mais rápido (jogador, Inspetor, Ana).
-676. Novo mutador Pernas Pesadas: SHIFT não corre mais; tudo vira leitura de rota.
-677. Novo mutador Sem Pé Ante Pé: o jogador não consegue andar devagar (ALT).
-678. Novo mutador Sem Agachar: os joelhos não dobram, nada de abafar o passo agachando.
-679. Novo mutador Controles Trocados: esquerda e direita do movimento invertidas.
-680. Novo mutador Mira Espelhada: o eixo horizontal do mouse vira ao contrário.
-681. Novo mutador Sem Olhar pra Trás: a tecla Q de olhar para trás deixa de funcionar.
-682. Novo mutador Sem Espiar: escondida, não dá para espiar pela fresta (Z/X).
-683. Novo mutador Mãos Vazias: sem garrafa, curativo nem pilha a noite inteira.
-684. Novo mutador Sem Garrafa: a garrafa some do inventário, sem distrair o Inspetor.
-685. Novo mutador Pele Dura: sem curativo, a vida perdida não volta.
-686. Novo mutador Só Uma Garrafa: o jogador carrega no máximo uma garrafa por vez.
-687. Novo mutador Só Um Curativo: no máximo um curativo guardado de cada vez.
-688. Novo mutador Garrafa Barulhenta: a garrafa estoura muito mais alto.
-689. Novo mutador Truque Velho: o Inspetor quase não cai mais na distração da garrafa.
-690. Novo mutador Sem Esconderijo: armários e camas ficam pregados a noite toda.
-691. Novo mutador Esconderijo Podre: a semente apodrece um esconderijo que range e te entrega.
-692. Novo mutador Caçada: a noite já começa com o Inspetor te caçando, sem preparação.
-693. Novo mutador Água Traiçoeira: na água o medo sobe e o movimento espalha barulho.
-694. Novo preset Regras da Casa: pilha única, sem esconderijo e passos pesados num clique.
-695. Novo preset De Mãos Limpas: mãos vazias somadas a uma pilha só.
-696. Novo preset Corrida às Cegas: coração exposto com passos pesados.
-697. Novo preset Noite Cega: no escuro, coração exposto e passos pesados juntos.
-698. Novo modo Regra da Noite: a semente fixa uma regra da casa, com conquista ao cumprir.
-699. Regra da Noite "não corra": correr quebra a regra daquele capítulo.
-700. Regra da Noite "não acenda a lanterna muito tempo": luz acesa demais quebra a regra.
-701. Regra da Noite "não jogue garrafa": gastar uma garrafa quebra a regra.
-702. Regra da Noite "não fique parada demais": parar tempo demais quebra a regra.
-703. Regra da Noite "não se esconda": entrar em armário ou cama quebra a regra.
-704. Regra da Noite "não deixe o pavor te dominar": deixar o medo estourar quebra a regra.
-705. Quebrar a Regra da Noite solta um ruído que atrai o Inspetor como castigo.
-706. Novo modo Economia da Noite: a semente decide a fartura ou a escassez da noite.
-707. Economia da Noite "seca": a noite começa com um curativo a menos.
-708. Economia da Noite "cheia": a noite começa com uma garrafa a mais.
-709. Economia da Noite "pilha contada": sem pilhas reservas naquela noite.
-710. Botão Me Surpreenda: sorteia um combo de mutadores, a dificuldade e às vezes uma regra, e já começa a noite.
-711. Nova tech Deslize: agachar correndo faz a Lia escorregar e abaixar o perfil por um instante.
-712. Dica do Deslize aparece na primeira vez que ele é usado.
-713. Contador de noites jogadas guardado entre partidas.
-714. Lampejo de déjà-vu da Lia no prólogo a partir da segunda noite jogada.
-715. Nova conquista secreta Nó Cego: terminar um capítulo sem usar esconderijo.
-716. Nova conquista secreta De Mãos Vazias: terminar um capítulo de mãos vazias.
-717. Nova conquista secreta Mão Trocada: terminar um capítulo com os controles trocados.
-718. Nova conquista secreta Num Piscar: terminar um capítulo no modo Relâmpago.
-719. Nova conquista secreta Coração à Mostra: terminar um capítulo com o coração exposto.
-720. Nova conquista secreta Sem Trégua: terminar um capítulo com o Inspetor caçando desde o início.
-721. Nova conquista secreta À Pilha Contada: terminar um capítulo com uma pilha só.
-722. Nova conquista secreta Casa em Ordem: cumprir a Regra da Noite por um capítulo inteiro.
-723. Nova conquista secreta O Que a Noite Mandar: terminar um capítulo numa noite do Me Surpreenda.
-724. Nova conquista secreta Raiz: terminar um capítulo no preset Regras da Casa.
-725. Nova conquista secreta No Breu: terminar um capítulo sem lanterna.
-726. Nova conquista secreta Por Um Fio: terminar um capítulo inteiro de Corpo Frágil.
-727. Recorde próprio do capítulo mais longe alcançado em cada desafio.
-728. Recorde próprio de menor tempo até avançar em cada desafio.
-729. Painel mostra seus recordes e quantas noites de desafio você já jogou.
-730. Painel mostra quantas conquistas de modo você já destravou.
-731. Novo botão "Modos" na tela de título.
-732. Nova tela "Modos & Desafios" com presets, regras, mutadores e recordes.
-733. Mutadores do painel agrupados por categoria (Luz, Corpo, Passos, Controle, Itens...) com descrição em cada um.
-734. A seleção de mutadores e modos fica salva entre sessões.
-735. Botão "Limpar tudo" zera os modos escolhidos de uma vez.
-736. Painel mostra o código legível do desafio montado.
-737. Presets podem ser jogados direto do painel, já iniciando a noite.
-738. Aviso no começo de cada capítulo lista os modos, a regra ou a economia ativos.
-739. A semente da noite passa a aparecer na tela de morte.
-740. Botão "Copiar semente" na tela de morte, para desafiar um amigo com a mesma noite.
-741. Botão "Refazer esta noite" na tela de morte, recomeçando com a mesma semente exata.
-742. Os modos ativos da noite aparecem listados na tela de morte.
-743. Os mutadores escolhidos seguem firmes nos checkpoints, nas mortes e na noite refeita.
-744. Módulo de rejogabilidade adicionado ao cache offline para o jogo rodar sem internet.
+1292. A semente da noite agora sorteia um clima fixo para a campanha inteira (temporal, garoa, neblina ou noite seca).
+1293. No temporal a chuva cai mais densa e opaca, mascarando o que você vê e ouve.
+1294. No temporal os relâmpagos ficam bem mais frequentes.
+1295. No temporal a força do feixe da lanterna cai e o alcance aparente encurta com a água no ar.
+1296. Na garoa a chuva fica fina e com poucos respingos, numa noite quase quieta.
+1297. Na neblina fechada a névoa engrossa e você enxerga bem menos à frente.
+1298. Na neblina a força do feixe cai e o alcance aparente da lanterna encurta de propósito.
+1299. Na noite seca não cai chuva nenhuma e o ar fica nítido.
+1300. Na noite seca os relâmpagos ficam raros e secos, deixando o silêncio mais pesado.
+1301. Na noite seca o feixe alcança um pouco mais longe e o mundo fica mais contrastado.
+1302. Um aviso curto no começo de cada capítulo conta qual é o clima daquela noite.
+1303. O jogo guarda quais climas você já viu entre as partidas.
+1304. Conquista secreta "Todo tipo de noite" ao jogar sob os quatro climas.
+1305. A densidade base da névoa muda conforme o clima da noite.
+1306. A exposição da imagem (brilho geral) muda conforme o clima.
+1307. A cor dos respingos de chuva no chão muda conforme o clima.
+1308. A cor e a opacidade dos riscos de chuva mudam conforme o clima.
+1309. A força do vento que inclina a chuva muda conforme o clima.
+1310. A semente também sorteia a paleta de cor da noite (lua azulada, verde doente, âmbar, luto cinza, calor doente).
+1311. A paleta da noite tinge a cor da névoa.
+1312. A paleta da noite tinge o céu e o fundo da cena.
+1313. A paleta da noite tinge a luz da lua e a luz ambiente.
+1314. A paleta da noite recolore os halos das lâmpadas.
+1315. A paleta da noite recolore o brilho dos bulbos das lâmpadas.
+1316. "A casa te conhece": a cada noite acumulada a névoa vai ficando um nada mais fria e esverdeada.
+1317. A combinação de clima e paleta faz com que duas noites nunca pareçam idênticas logo de cara.
+1318. O número de lampejos de cada rajada de relâmpago agora é sorteado pela semente.
+1319. A intensidade dos lampejos é sorteada pela semente.
+1320. Os intervalos entre relâmpagos ficam deslocados por semente, para o susto da luz nunca cair no mesmo ponto decorado.
+1321. No temporal o clarão faz a chuva brilhar mais forte.
+1322. O clarão do relâmpago passou a tingir a luz pela paleta da noite.
+1323. O relâmpago forte ao ar livre pode revelar uma silhueta por um instante (banco de aparições sorteado).
+1324. As aparições do clarão variam: o batedor rígido de pé, um vulto qualquer ou só a janela vazia.
+1325. O jogo registra quais aparições você já flagrou no clarão entre partidas.
+1326. Conquista secreta "O que o clarão mostra" ao flagrar três aparições diferentes.
+1327. Ilhas de luz sorteadas: um subconjunto das lâmpadas de cada mapa fica apagado nesta semente.
+1328. As lâmpadas apagadas pela semente continuam apagadas mesmo quando a energia volta.
+1329. Uma queda breve de energia (piscada geral das lâmpadas) acontece num horário sorteado por semente.
+1330. Nova camada de lente de rejogo que repinta o render inteiro, alternada pela tecla I.
+1331. Lente Negativo: o mundo em cores invertidas.
+1332. Lente Fita de 1979: sépia, grão e bordas de fita velha.
+1333. Lente Sonho: cores lavadas, bordas moles e imagem macia.
+1334. Lente Memória da Lia: imagem quente e desbotada, como lembrança.
+1335. Lente Noite de 1979: cores limpas e quentes do internato de antes.
+1336. Lente Projetor 16mm: cintilação e varredura de projetor.
+1337. Lente TV de tubo: linhas de varredura e cor saturada.
+1338. Lente Super-8: grão quente e cor forte de filme caseiro.
+1339. Lente Raio-X do medo: alto contraste quase invertido.
+1340. Lente Termovisão: silhuetas quentes sobre o escuro.
+1341. Lente Sonar: tudo em pulsos azulados que respiram.
+1342. Lente Olho do Moacir: o mundo como mancha de calor, não de luz.
+1343. Novas lentes vão sendo liberadas conforme o número de noites e capítulos jogados.
+1344. O nome da lente aparece num aviso ao alternar com a tecla I.
+1345. A lente escolhida fica salva entre partidas.
+1346. A granulação e as linhas da lente Fita aumentam conforme o número de noites jogadas (fita que se gasta).
+1347. A cor do feixe da lanterna muda sutilmente conforme o clima da noite.
+1348. Depois de terminar a campanha, o feixe ganha um tom dourado permanente (Selo de Mestre).
+1349. Ao escapar de uma caçada do Inspetor, o feixe dá um pulso dourado por um instante.
+1350. A luz de preenchimento perto das mãos acompanha a cor cosmética do feixe.
+1351. Marcas de giz aparecem no chão exatamente onde você morreu na vez anterior naquele mapa.
+1352. As marcas de giz das mortes se acumulam entre noites.
+1353. Quanto mais vezes você morre num mapa, mais densas ficam as marcas de giz (até um limite).
+1354. As marcas de giz alternam entre um "x" e uma setinha riscados à mão.
+1355. As marcas das mortes só aparecem a partir da segunda vez que você joga aquele mapa.
+1356. A cena do título ganhou uma prateleira de troféus em 3D à frente da câmera.
+1357. O troféu do sino aparece conforme você avança.
+1358. O troféu do lampião aceso aparece com o progresso.
+1359. O troféu da cruz de giz aparece com o progresso.
+1360. O troféu da engrenagem aparece com o progresso.
+1361. O troféu do carrinho azul aparece com o progresso.
+1362. Os troféus do título vão enchendo em silêncio conforme você joga mais capítulos.
+1363. Um troféu extra só aparece depois de terminar a campanha ao menos uma vez.
+1364. A fase real da lua clareia um tiquinho o céu do prólogo na estrada.
+1365. Um tinte de estação pelo mês real dá uma cara ligeiramente diferente ao prólogo (frio no inverno, âmbar no outono).
+1366. Marca d'água de giz no canto mostra semente, clima e lente ativos na partida (para quem grava vídeo).
+1367. A marca da run só aparece quando há uma lente ou um mutador ativo, discreta e sem atrapalhar.
+1368. Conquista secreta "Colecionadora de lentes" ao experimentar oito lentes diferentes.
+1369. O feixe da lanterna fica levemente mais azulado no temporal.
+1370. O feixe fica mais branco e frio na noite seca.
+1371. Os respingos ficam mais azulados no temporal.
+1372. A névoa do interior respeita o clima da noite, ficando mais fechada na neblina.
+1373. O vento das rajadas quase some na noite seca, deixando a chuva (quando há) mais reta.
+1374. As conquistas novas do lote entram no acervo do painel sem quebrar a contagem.
+1375. O sistema todo é passivo e seguro: nada disso interfere no teste automático nem no fluxo dos capítulos.
+1376. A silhueta do clarão aparece sempre à frente do seu olhar, para ser vista de relance e sumir.
+1377. A silhueta do clarão some sozinha quando o brilho do relâmpago acaba.
+1378. O apagão breve do gerador toca um clique seco de energia caindo.
+1379. As lâmpadas apagadas pela semente também somem do brilho do bulbo, não só da luz.
+1380. A cor dos riscos de chuva do temporal puxa mais para o azul-aço.
+1381. A paleta "verde doente" dá um ar de mofo à noite inteira.
+1382. A paleta "âmbar abafado" deixa a noite com um calor doentio.
+1383. A paleta "luto cinza" lava a cor do mundo quase ao preto e branco.
+1384. Cada capítulo jogado numa semente é lembrado para fazer os troféus crescerem.
+1385. Terminar a campanha também conta mais uma noite para o resfriamento da paleta e o desgaste da fita.
+1386. A lente pode ser trocada tanto no título quanto durante o jogo, sem pausar.
+1387. A tecla I é ignorada enquanto você digita em qualquer campo, para não atrapalhar os códigos do título.
+1388. Nova paleta de noite "verde de hospital": névoa e lâmpadas ganham um verde frio de corredor de enfermaria.
+1389. Nova paleta de noite "brasa de incêndio": tudo esquenta para um laranja de brasa, sorteado pela semente.
+1390. Nova paleta de noite "azul de gelo": a mesma sala parece outra sob uma luz azulada e dura.
+1391. Nova lente Fita VHS (tecla I): tracking oscilando, linhas de varredura, chuvisco e vazamento de cor na imagem.
+1392. A Fita VHS imprime "PLAY" e a data 12/03/1979 com a hora da noite no canto, como achado de gaveta.
+1393. A Fita VHS distorce mais quando o Inspetor está perto e falha forte no instante em que você leva um golpe.
+1394. Nova lente Câmera de Segurança, com aberração de cor e imagem de monitor de CFTV.
+1395. A Câmera de Segurança mostra o relógio da noite, avançando junto com o tempo da partida.
+1396. A Câmera de Segurança tem o REC vermelho piscando no canto.
+1397. O carimbo da câmera diz "CAM 03 · NOME DA SALA" conforme o cômodo em que a Lia está.
+1398. Quando o Inspetor está caçando você, o carimbo troca para "CAM —".
+1399. Com o Inspetor a menos de 8 passos a Câmera de Segurança rasga a imagem em faixas e avisa "SINAL FRACO".
+1400. Nova lente Pixel 1996: o jogo passa a 320x240, com pixels grandes e sem suavização.
+1401. A lente Pixel 1996 reduz tudo a 16 cores com dither em grade, como uma placa de vídeo antiga.
+1402. Na lente Pixel 1996 a imagem treme alguns décimos de pixel, como a geometria de um jogo de 1996.
+1403. Nova lente Só Som: a tela fica quase preta e só aparece o que faz barulho.
+1404. No Só Som, cada passo, corrida ou batida desenha um anel azul que se expande pelo chão.
+1405. Quando o anel do Só Som toca uma parede, o contorno dela acende por alguns instantes (eco-localização).
+1406. No Só Som o Inspetor só aparece como uma mancha vermelha quando anda rápido ou caça; parado, ele some.
+1407. No Só Som a Ana e a Procissão deixam anéis próprios, em tons de âmbar, quando se movem.
+1408. No Só Som a lanterna acesa desenha um anel curto e claro ao seu redor.
+1409. Nova lente Carvão e Giz: a cena vira desenho a carvão em papel granulado que cintila devagar.
+1410. No Carvão e Giz as bordas dos objetos ganham traço grosso e preto.
+1411. No Carvão e Giz as luzes fortes viram pontos de branco puro.
+1412. Cada lente nova só abre por um marco seu: VHS na 1ª noite, câmera na 2ª, Pixel na 3ª, Só Som no primeiro final (ou 5 mortes), Carvão no final do Silêncio.
+1413. A tecla I pula as lentes ainda trancadas em vez de mostrar uma lente que você não ganhou.
+1414. O jogo lembra quais lentes novas você já usou.
+1415. A casa ganha um nível de idade pelas noites e mortes acumuladas, e a mesma planta fica claramente mais velha.
+1416. A partir do nível 1 aparece mofo subindo dos rodapés e dos cantos do reboco.
+1417. No nível 2 surgem teias nos cantos altos das paredes.
+1418. No nível 3 a tinta começa a descascar em lascas com a borda escurecida.
+1419. No nível 4 rachaduras finas correm pelas paredes de reboco, tijolo e concreto.
+1420. No nível 5 aparecem desenhos de giz de criança nas paredes: uma casinha, um sol e um boneco de palito.
+1421. No nível 6 manchas de umidade escura escorrem do teto.
+1422. No nível 7 raízes e hera sobem pelo reboco e pelo tijolo.
+1423. No nível 8 a casa está "tomada": reboco, madeira e piso escurecem de vez.
+1424. Depois de 25 mortes as paredes sangram quase sem se notar, filetes vinho que descem do alto.
+1425. Os vidros das janelas ficam mais embaçados e mais escuros conforme a casa envelhece.
+1426. As lâmpadas amarelam com a idade da casa, e o halo delas também.
+1427. O local de cada uma das últimas 12 mortes naquele mapa ganha uma mancha escura no chão.
+1428. A última morte deixa o contorno de giz de um corpo caído no chão.
+1429. No lugar onde você mais morreu aparece a contagem em risquinhos de cinco, riscados a giz.
+1430. A porta mais próxima do seu ponto fraco ganha marcas de unha dos dois lados, em número proporcional às mortes.
+1431. Na cena do portão, o internato acende uma janela por noite jogada (até 26), cada uma com a silhueta de uma criança.
+1432. Os finais vistos também acendem janelas extras na fachada.
+1433. Na décima segunda noite, uma janela da fachada apaga quando você olha para ela, com um clique seco.
+1434. A janela do sótão só acende na fachada depois do final verdadeiro.
+1435. No cemitério da capela, uma vela acesa por final alcançado forma uma fileira no muro dos fundos (até 34).
+1436. As chamas das velas do cemitério oscilam ao vento, cada uma no seu ritmo.
+1437. Passar a lanterna sobre as velas deixa o brilho delas mais forte.
+1438. Sob a luz da lanterna, uma sombra miúda aparece atrás de cada vela.
+1439. No hall, um quadrinho de giz de nove painéis mostra o Davi fugindo, se escondendo e olhando; um painel novo por noite jogada.
+1440. O nono painel do gibi só aparece depois do final verdadeiro e tem a única cor da tela: um vermelho.
+1441. No hall um cartaz de PROCURA-SE traz o desenho a lápis da Lia, com o nome e uma recompensa.
+1442. A recompensa do cartaz sobe a cada noite jogada, de Cr$ 50 a Cr$ 5.000.
+1443. Depois de 15 noites o cartaz deixa de dizer "viva ou morta": o título vira VOLTE e a frase muda.
+1444. Uma mancha de umidade na parede tem a forma vaga de um rosto, diferente a cada semente.
+1445. Na segunda vez que você olha para a mancha, o rosto parece virado para você; depois ela some, deixando só o reboco liso.
+1446. Quem já viu um final encontra tinta invisível: recados da Lia antiga que só aparecem sob a lanterna.
+1447. Os recados da Lia antiga mudam por mapa e funcionam como dicas ("o segundo degrau range").
+1448. Cada recado some depois de 4 segundos de luz, e a lembrança dos recados lidos fica salva.
+1449. Nova conquista secreta "A letra da Lia antiga", por ler quatro recados de tinta.
+1450. Troféus no canto do hall: uma vela de cera quando você já jogou uma noite.
+1451. Troféus no hall: uma fita vermelha depois do final verdadeiro.
+1452. Troféus no hall: um par de sapatinhos de criança com dois finais vistos.
+1453. Depois de 20 segundos sem lanterna os olhos da Lia se acostumam e o ambiente sobe devagar até 40% de claridade.
+1454. Acender a lanterna zera a adaptação do escuro.
+1455. Ao apagar a lanterna fica uma mancha clara de ofuscamento por 2 segundos.
+1456. O ofuscamento é reduzido quando a opção de reduzir clarões está ligada.
+1457. O relâmpago agora aparece de verdade no céu: um raio ramificado desenhado no horizonte, no lado de fora.
+1458. Lua de sangue, rara (uma noite em vinte): céu vinho, lua vermelha e baixa, sombras compridas e quase pretas.
+1459. A lua de sangue avisa com uma frase curta e dá a conquista secreta "Você pegou a lua vermelha?".
+1460. Noite sem lua, rara: sem lua nem relâmpago, as janelas viram retângulos pretos e só a lanterna ilumina.
+1461. Na noite sem lua a lanterna dura mais, como compensação, e não há aviso do clima.
+1462. Nova conquista secreta "O mundo fechou", por atravessar uma noite sem lua.
+1463. No capítulo V o céu atrás da capela clareia aos poucos com o tempo do capítulo, num rosa de amanhecer.
+1464. Quando o céu quase clareia, um primeiro pássaro canta lá fora.
+1465. A cor da luz muda levemente com o dia da semana real: terça mais verde, sexta mais vermelha.
+1466. O tinte por dia da semana respeita o modo daltônico e a baixa visão.
+1467. A cor da noite esquenta a cada dez mortes: do azul para o âmbar e depois para um vermelho de brasa.
+1468. Depois de três finais verdadeiros a casa reaparece "lavada", num tom azulado quase calmo.
+1469. Na Sexta-feira da Paixão (data real), a paleta tende ao roxo-sangue.
+1470. De janeiro a março (data real) a chuva fica mais grossa.
+1471. A sombra da Lia sob a lanterna passa a atrasar meio segundo, a partir da quinta noite.
+1472. De tempos em tempos a sombra fica parada por 3 segundos enquanto a Lia segue andando.
+1473. Uma vez por capítulo a sombra olha para o lado oposto.
+1474. Uma noite em oito surge um segundo par de pés atrás da sombra, a dois passos; se você vira a câmera, não há nada, e some em 20 s.
+1475. Traças voam em volta das lâmpadas acesas dentro da casa.
+1476. Folhas secas atravessam o pátio no vento do temporal.
+1477. De setembro a dezembro (data real) vaga-lumes piscam pela estrada.
+1478. De junho a agosto (data real) a respiração da Lia vira vapor diante da câmera, mais denso quando ela corre.
+1479. De junho a agosto uma geada sutil aparece nas bordas do vidro, no lado de fora.
+1480. Brasas flutuam do chão nas paletas de fogo e depois de 20 mortes.
+1481. Fiapos de neblina rastejam rente ao chão nas noites de neblina.
+1482. As partículas de clima reduzem à metade na qualidade Baixa e somem na Mínima.
+1483. Na diretoria, um monitor antigo mostra em tempo real a visão de câmera da sala onde o Inspetor está.
+1484. O monitor roda a 5 quadros por segundo, com cor esverdeada e cintilação.
+1485. Sem o Inspetor ativo, o monitor mostra só chuvisco.
+1486. Olhar para o monitor enche o ouvido com o zumbido do aparelho: ver onde ele está custa a audição.
+1487. O monitor fica desligado na qualidade Mínima e vira só chuvisco na Baixa.
+1488. O espelho do banheiro agora mostra o cômodo em tempo real, por uma segunda câmera refletida.
+1489. O espelho tem moldura escura e só acende quando você olha para ele.
+1490. A Lia do reflexo copia sua posição, sua direção e quando você se agacha.
+1491. Em noites sorteadas o reflexo dá um passo à frente de você.
+1492. Em outras noites sorteadas o reflexo vira a cabeça para você sozinho.
+1493. Nas qualidades Baixa e Mínima o espelho vira vidro escuro, sem custo de render.
+1494. Ao morrer, o jogo guarda um retrato 160x90 do último instante e o mostra no título como polaroide presa na parede, com hora e sala.
+1495. Se o Inspetor estava à vista na hora da morte, o rosto dele aparece coberto por um X de giz na foto.
+1496. O jogo guarda o frame de maior medo da noite (medo acima de 95) e o mostra como polaroide na tela de morte.
+1497. Novo botão "Gerar cartão da noite" na tela de morte e no final.
+1498. O cartão da noite é um PNG 1080x1350 com a semente, o tempo, as mortes, o clima, a paleta e uma foto da partida.
+1499. No fim da campanha, um replay 2D de 20 segundos mostra a planta com a Lia, o Inspetor, a Ana e a Procissão em movimento.
+1500. O replay marca com cruzes de giz os lugares onde a Lia caiu.
+1501. A tela de título ganha um vitral onde cada conquista acende uma peça colorida.
+1502. As conquistas secretas aparecem em vidro fosco até serem ganhas.
+1503. Com 100% das conquistas, o vitral acende inteiro com a luz do amanhecer.
+1504. Segurar a tecla ; leva à tela o relógio de pulso da Lia, com ponteiros, algarismos romanos e o tempo do capítulo.
+1505. Seis trajes para a manga e a mão da Lia, trocados com a tecla \, liberados por noites, finais e mortes.
+1506. Traje "manga do uniforme do internato", liberado na 3ª noite.
+1507. Traje "couro velho do Davi", liberado pelo final verdadeiro.
+1508. Traje "luva de lã da Celeste", liberado com dois finais.
+1509. Traje "mão enfaixada", liberado com 15 mortes.
+1510. Traje "manga encharcada", liberado com uma campanha concluída ou 8 noites.
+1511. A mão da lanterna ganha a pulseira de fita vermelha do Davi depois do final verdadeiro.
+1512. A mão ganha um anel de corda depois do final do Silêncio.
+1513. Com 10 mortes, a mão da lanterna ganha um curativo de criança.
+1514. Arranhões na mão aumentam com as mortes (1, 3 e 4 marcas em 5, 15 e 40 mortes).
+1515. Quem já viu o incêndio carrega fuligem na mão.
+1516. No primeiro encontro com o Inspetor, a Ana e a Procissão, o FOV abre e a câmera avança por 1,2 s: vertigem que só acontece na primeira vez.
 
-### Interface (93)
+### Jogabilidade (225)
 
-745. Campo "Semente" no título: digite qualquer palavra (PIZZA, ESCOLA, um nome) e jogue a mesma noite que todo mundo que digitar igual
-746. Qualquer texto digitado vira um código estável de 6 caracteres, então a mesma palavra sempre dá a mesma noite
-747. Um código puro de 4 a 7 caracteres também é aceito direto no campo Semente
-748. Botão de dado ao lado da semente sorteia uma semente nova na hora
-749. Botão "copiar" ao lado da semente copia o código da noite para mandar a um amigo
-750. Botão "Noite de hoje" preenche a semente do dia, igual para o mundo todo naquele dia
-751. Linha fixa embaixo do campo mostra a semente de hoje
-752. Ao clicar no campo Semente, o subtítulo explica para que serve
-753. Um código escrito à mão no campo Desafio vira dica no campo Semente
-754. Botão de menu "Repetir a última noite" refaz a noite anterior sem passar por menus
-755. A última noite jogada (semente, dificuldade, mutadores e Uma Vida) fica guardada para repetir
-756. "Repetir a última noite" remarca a caixa Uma Vida se a noite anterior era Uma Vida
-757. Aviso na tela confirma a semente ao repetir uma noite
-758. Linha "próxima meta" no título mostra a conquista não destravada mais perto, com dica
-759. A próxima meta troca sozinha a cada poucos segundos
-760. Sem metas pendentes, o título mostra quantos finais e conquistas ainda faltam
-761. Nova opção "Mostrar a próxima meta no título" (liga/desliga)
-762. Botão de menu "Modos e desafios"
-763. Botão de menu "Recordes"
-764. Botão de menu "Hall das noites"
-765. Botão de menu "Placar da casa"
-766. Botão de menu "Onde você mais cai"
-767. Nova tela "Modos e desafios" reúne todos os modos num lugar só
-768. Cada modo com descrição de uma linha
-769. Cada modo diz como ativar
-770. Cada modo mostra se está travado ou livre
-771. Modos aplicáveis mostram o seu melhor resultado
-772. Baralho de regras com 4 cartas de mutador, cada uma com o efeito escrito
-773. Clicar numa carta liga ou desliga o mutador, com destaque dourado
-774. O código da noite montada aparece ao vivo conforme você escolhe as cartas
-775. Botão copiar o código montado no baralho
-776. Botão "jogar esta noite" começa com a combinação montada
-777. Botão "Jogar a Noite de hoje" na tela de modos
-778. Botão "Copiar a semente de hoje" na tela de modos
-779. Estante de troféus na tela de modos com marcos (10 noites, 3 finais, S em tudo, noite sem morte, todos os finais)
-780. Nova tela "Caderno de Recordes"
-781. Melhor tempo por capítulo no caderno
-782. Melhor rank por capítulo, com cor própria de S e de C
-783. Menos mortes por capítulo quando houver registro
-784. Splits do recorde por objetivo de cada capítulo
-785. Melhor tempo somado no topo do caderno
-786. Finais vistos / total no topo do caderno
-787. "Coração de gelo" (menos mortes numa noite concluída) no topo do caderno
-788. Partidas, noites concluídas e capítulos com rank S no topo
-789. Botão copiar todos os recordes de uma vez
-790. Nova tela "Placar da Casa" para comparar com amigos
-791. Campo para colar o código de resultado de um amigo
-792. O placar decodifica ranks, mortes e tempo do código colado
-793. O placar inclui o seu próprio resultado para comparar
-794. O placar ordena todos por pontuação e depois por tempo
-795. Coluna "vs você" mostra a diferença de tempo de cada amigo
-796. Botão × remove um código do placar
-797. O placar guarda até 5 códigos de amigos
-798. Nova tela "Hall das Noites" com o histórico das últimas 20 noites
-799. Cada noite é registrada ao terminar e ao morrer
-800. Carimbo de final (bandeira) ou de morte (cruz) em cada noite
-801. Número da noite em cada linha do hall
-802. Data, tempo, mortes, dificuldade e semente em cada noite
-803. Botão "repetir esta noite" em cada linha do hall
-804. Botão "copiar semente" em cada linha do hall
-805. Topo do hall com total de noites, primeira registrada e melhor noite concluída
-806. Nova tela "Onde você mais cai" com as mortes por capítulo
-807. Barras proporcionais mostram onde você morre mais
-808. Destaque do capítulo que mais te pega
-809. Total de mortes acumuladas
-810. Botão "Zerar o mapa" de mortes
-811. Cada morte é contada por capítulo
-812. Botão "Copiar cartela" no fim da noite gera uma grade de símbolos por capítulo
-813. A cartela de símbolos aparece na própria tela final
-814. Cada capítulo vira um símbolo conforme o rank (S/A/B/C)
-815. A cartela copiada inclui o final alcançado
-816. A cartela copiada inclui a semente da noite
-817. Botão "Jogar esta noite de novo" na tela final
-818. Botão "De novo, a mesma noite do zero" na tela de morte
-819. Linha "seu melhor neste capítulo" com rank e tempo na tela de morte
-820. Fantasma do recorde por objetivo no HUD: verde se adiantado, vermelho se atrasado
-821. Nova opção "Comparar cada objetivo com o recorde" (liga o fantasma)
-822. Aviso "recorde!" pisca na hora em que um objetivo bate o tempo recorde
-823. Nova opção "Cronômetro de precisão" deixa os dígitos de largura fixa, bom para gravar
-824. A precisão vale tanto para o cronômetro da interface quanto para o da progressão
-825. Resumo de parciais no fim do capítulo: quanto durou cada objetivo
-826. O trecho em que você mais demorou aparece destacado em laranja no fim do capítulo
-827. Cada parcial do fim do capítulo mostra seta de adiantado/atrasado contra o recorde
-828. Cartão na pausa mostra a semente/código da noite atual
-829. O cartão da pausa lista os mutadores ativos como cartõezinhos
-830. O cartão da pausa mostra o modo Uma Vida quando ligado
-831. Nova tela genérica do lote com título, corpo e botão Voltar
-832. ESC e Backspace fecham as telas novas
-833. As telas novas entram na navegação por teclado (setas e Tab)
-834. A semente do dia é a mesma no mundo todo, baseada na data
-835. O novo módulo entrou na lista de arquivos para jogar sem internet (service worker)
-836. O cronômetro de precisão só mexe no estilo da tela quando liga ou desliga, sem custo por quadro
-837. Guardar a noite para repetir virou uma comparação leve por quadro, sem montar texto JSON toda hora
+1517. Novo mutador Pilha Única: a lanterna tem uma carga só, sem pilhas reservas nem recarga a noite inteira.
+1518. Novo mutador Luz Faminta: a lanterna consome a pilha mais rápido, encarecendo cada segundo acesa.
+1519. Novo mutador Lanterna Fraca: o feixe mal alcança à frente, deixando o jogador quase no breu.
+1520. Novo mutador Luz Piscante: mau contato faz a luz falhar em instantes aleatórios.
+1521. Novo mutador Lanterna Curta: a lanterna apaga sozinha depois de alguns segundos acesa de cada vez.
+1522. Novo mutador No Escuro: sem lanterna a noite toda, só relâmpagos e som.
+1523. Novo mutador A Luz Chama: andar de lanterna acesa perto do Inspetor passa a fazer barulho.
+1524. Novo mutador Fôlego Curto: prender o ar acaba bem mais rápido.
+1525. Novo mutador Sem Prender o Ar: o jogador não consegue segurar a respiração.
+1526. Novo mutador Coração Exposto: com o medo no alto, o batimento vira ruído que o Inspetor escuta.
+1527. Novo mutador Pavor Fácil: o medo sobe sozinho no escuro.
+1528. Novo mutador Pânico no Escuro: no breu o terror dispara e trava a respiração até você achar luz.
+1529. Novo mutador Frio na Espinha: parada no escuro, o calafrio faz um barulho baixinho que denuncia.
+1530. Novo mutador Mãos Trêmulas: a câmera treme mais, sobretudo com medo.
+1531. Novo mutador Corpo Frágil: o jogador aguenta muito menos dano antes de cair.
+1532. Novo mutador Fadiga: o fôlego de corrida fica curto e se recupera devagar.
+1533. Novo mutador Eco de Passos: o Inspetor volta ao seu último ponto 2 s depois de você parar.
+1534. Novo mutador Rastro Quente: o Inspetor fareja a trilha e vai atrás de onde você passou.
+1535. Novo mutador Presença Delatora: mesmo parada, a casa denuncia sua posição de vez em quando.
+1536. Novo mutador Passos Pesados: cada passo soa mais alto, valorizando andar devagar e agachar.
+1537. Novo mutador Corrida Que Ecoa: correr ecoa pelo prédio inteiro em qualquer capítulo.
+1538. Novo mutador Relâmpago: a noite inteira roda mais rápido (jogador, Inspetor, Ana).
+1539. Novo mutador Pernas Pesadas: SHIFT não corre mais; tudo vira leitura de rota.
+1540. Novo mutador Sem Pé Ante Pé: o jogador não consegue andar devagar (ALT).
+1541. Novo mutador Sem Agachar: os joelhos não dobram, nada de abafar o passo agachando.
+1542. Novo mutador Controles Trocados: esquerda e direita do movimento invertidas.
+1543. Novo mutador Mira Espelhada: o eixo horizontal do mouse vira ao contrário.
+1544. Novo mutador Sem Olhar pra Trás: a tecla Q de olhar para trás deixa de funcionar.
+1545. Novo mutador Sem Espiar: escondida, não dá para espiar pela fresta (Z/X).
+1546. Novo mutador Mãos Vazias: sem garrafa, curativo nem pilha a noite inteira.
+1547. Novo mutador Sem Garrafa: a garrafa some do inventário, sem distrair o Inspetor.
+1548. Novo mutador Pele Dura: sem curativo, a vida perdida não volta.
+1549. Novo mutador Só Uma Garrafa: o jogador carrega no máximo uma garrafa por vez.
+1550. Novo mutador Só Um Curativo: no máximo um curativo guardado de cada vez.
+1551. Novo mutador Garrafa Barulhenta: a garrafa estoura muito mais alto.
+1552. Novo mutador Truque Velho: o Inspetor quase não cai mais na distração da garrafa.
+1553. Novo mutador Sem Esconderijo: armários e camas ficam pregados a noite toda.
+1554. Novo mutador Esconderijo Podre: a semente apodrece um esconderijo que range e te entrega.
+1555. Novo mutador Caçada: a noite já começa com o Inspetor te caçando, sem preparação.
+1556. Novo mutador Água Traiçoeira: na água o medo sobe e o movimento espalha barulho.
+1557. Novo preset Regras da Casa: pilha única, sem esconderijo e passos pesados num clique.
+1558. Novo preset De Mãos Limpas: mãos vazias somadas a uma pilha só.
+1559. Novo preset Corrida às Cegas: coração exposto com passos pesados.
+1560. Novo preset Noite Cega: no escuro, coração exposto e passos pesados juntos.
+1561. Novo modo Regra da Noite: a semente fixa uma regra da casa, com conquista ao cumprir.
+1562. Regra da Noite "não corra": correr quebra a regra daquele capítulo.
+1563. Regra da Noite "não acenda a lanterna muito tempo": luz acesa demais quebra a regra.
+1564. Regra da Noite "não jogue garrafa": gastar uma garrafa quebra a regra.
+1565. Regra da Noite "não fique parada demais": parar tempo demais quebra a regra.
+1566. Regra da Noite "não se esconda": entrar em armário ou cama quebra a regra.
+1567. Regra da Noite "não deixe o pavor te dominar": deixar o medo estourar quebra a regra.
+1568. Quebrar a Regra da Noite solta um ruído que atrai o Inspetor como castigo.
+1569. Novo modo Economia da Noite: a semente decide a fartura ou a escassez da noite.
+1570. Economia da Noite "seca": a noite começa com um curativo a menos.
+1571. Economia da Noite "cheia": a noite começa com uma garrafa a mais.
+1572. Economia da Noite "pilha contada": sem pilhas reservas naquela noite.
+1573. Botão Me Surpreenda: sorteia um combo de mutadores, a dificuldade e às vezes uma regra, e já começa a noite.
+1574. Nova tech Deslize: agachar correndo faz a Lia escorregar e abaixar o perfil por um instante.
+1575. Dica do Deslize aparece na primeira vez que ele é usado.
+1576. Contador de noites jogadas guardado entre partidas.
+1577. Lampejo de déjà-vu da Lia no prólogo a partir da segunda noite jogada.
+1578. Nova conquista secreta Nó Cego: terminar um capítulo sem usar esconderijo.
+1579. Nova conquista secreta De Mãos Vazias: terminar um capítulo de mãos vazias.
+1580. Nova conquista secreta Mão Trocada: terminar um capítulo com os controles trocados.
+1581. Nova conquista secreta Num Piscar: terminar um capítulo no modo Relâmpago.
+1582. Nova conquista secreta Coração à Mostra: terminar um capítulo com o coração exposto.
+1583. Nova conquista secreta Sem Trégua: terminar um capítulo com o Inspetor caçando desde o início.
+1584. Nova conquista secreta À Pilha Contada: terminar um capítulo com uma pilha só.
+1585. Nova conquista secreta Casa em Ordem: cumprir a Regra da Noite por um capítulo inteiro.
+1586. Nova conquista secreta O Que a Noite Mandar: terminar um capítulo numa noite do Me Surpreenda.
+1587. Nova conquista secreta Raiz: terminar um capítulo no preset Regras da Casa.
+1588. Nova conquista secreta No Breu: terminar um capítulo sem lanterna.
+1589. Nova conquista secreta Por Um Fio: terminar um capítulo inteiro de Corpo Frágil.
+1590. Recorde próprio do capítulo mais longe alcançado em cada desafio.
+1591. Recorde próprio de menor tempo até avançar em cada desafio.
+1592. Painel mostra seus recordes e quantas noites de desafio você já jogou.
+1593. Painel mostra quantas conquistas de modo você já destravou.
+1594. Novo botão "Modos" na tela de título.
+1595. Nova tela "Modos & Desafios" com presets, regras, mutadores e recordes.
+1596. Mutadores do painel agrupados por categoria (Luz, Corpo, Passos, Controle, Itens...) com descrição em cada um.
+1597. A seleção de mutadores e modos fica salva entre sessões.
+1598. Botão "Limpar tudo" zera os modos escolhidos de uma vez.
+1599. Painel mostra o código legível do desafio montado.
+1600. Presets podem ser jogados direto do painel, já iniciando a noite.
+1601. Aviso no começo de cada capítulo lista os modos, a regra ou a economia ativos.
+1602. A semente da noite passa a aparecer na tela de morte.
+1603. Botão "Copiar semente" na tela de morte, para desafiar um amigo com a mesma noite.
+1604. Botão "Refazer esta noite" na tela de morte, recomeçando com a mesma semente exata.
+1605. Os modos ativos da noite aparecem listados na tela de morte.
+1606. Os mutadores escolhidos seguem firmes nos checkpoints, nas mortes e na noite refeita.
+1607. Módulo de rejogabilidade adicionado ao cache offline para o jogo rodar sem internet.
+1608. Novo mutador Rota de Silêncio: no escuro os passos soam pela metade e, com a lanterna acesa, em dobro.
+1609. Novo mutador Orçamento de Ruído: uma barra de ruído por capítulo, no HUD, vai sendo gasta a cada passo barulhento.
+1610. Quando o Orçamento de Ruído zera, o Inspetor sabe onde você está por 10 s, com aviso na tela.
+1611. Novo mutador Sapatilhas de Lã: passos 30% mais baixos em qualquer chão, mas correr cobra o dobro de fôlego.
+1612. Novo mutador Meias de Lã: passos 35% mais baixos, mas a lanterna gasta 25% mais pilha.
+1613. Novo mutador Cobertura do Trovão: correr até 2 s depois de um trovão soa como andar.
+1614. Novo mutador Silêncio Absoluto: um barulho de corrida derruba o selo do capítulo e acende uma fresta vermelha na tela.
+1615. O Silêncio Absoluto guarda a "noite mais quieta" de cada capítulo no painel de recordes.
+1616. Novo mutador Dobradiças Ruidosas: toda porta mexida perto de você range alto e chama o Inspetor.
+1617. Novo mutador Portas Traiçoeiras: as portas que você abre fecham sozinhas e batem depois de alguns segundos.
+1618. Novo mutador Lanterna de Manivela: a lanterna nunca gasta pilha, mas só acende enquanto você segura R.
+1619. A manivela faz um barulhinho a cada volta, e F avisa como acender a luz.
+1620. Novo mutador Fome de Pilha: metade das pilhas que você pega estão gastas e viram pó na mão.
+1621. Novo mutador Dois Bolsos: só cabem dois consumíveis de cada vez, com aviso quando o excesso fica para trás.
+1622. Novo mutador Trouxinha Caída: ao morrer, o que você carregava fica numa trouxinha no ponto da queda.
+1623. Pegar a trouxinha devolve até dois itens de cada tipo.
+1624. Novo jeito Corredora: 50% mais fôlego de corrida, mas correr faz 30% mais barulho.
+1625. Novo jeito Silenciosa: passos 35% mais baixos, mas o fôlego de corrida fica curto.
+1626. Novo jeito Observadora: a lanterna fica 30% mais forte, mas gasta 60% mais pilha.
+1627. Novo mutador Ouvido Fino: o Inspetor ouve 25% mais longe a noite inteira.
+1628. Novo mutador Inspetor Apressado: o Inspetor anda 15% mais rápido.
+1629. Novo mutador Cicatrizes: cada morte deixa uma cicatriz sorteada até o fim da noite.
+1630. Cicatriz mão trêmula: a câmera passa a tremer o tempo todo.
+1631. Cicatriz manqueira: os passos ficam 25% mais barulhentos.
+1632. Cicatriz olho turvo: as bordas da visão escurecem permanentemente.
+1633. Cicatriz fôlego curto: o fôlego máximo de corrida cai 12 pontos a cada uma.
+1634. Cicatriz pilha fraca: a lanterna gasta mais pilha.
+1635. A tela de morte lista as cicatrizes acumuladas da noite.
+1636. Novo mutador Escada do Medo: capítulo sem morrer sobe um degrau (ouvido, velocidade e ruído); cada morte desce um.
+1637. Termômetro de degraus da Escada do Medo no HUD.
+1638. Novo mutador Contagem da Casa: a cada 10 minutos reais a casa acorda mais um nível, com aviso e sino.
+1639. Aos 45 minutos de noite a Contagem da Casa vira caçada permanente.
+1640. Novo mutador Contrarrelógio das Badaladas: um sino a cada 6 minutos de capítulo deixa o Inspetor mais rápido e atento (até 9).
+1641. Contagem regressiva da próxima badalada no HUD.
+1642. Terminar o capítulo antes da terceira badalada dá o selo dourado.
+1643. Novo equipamento Apito de Lata (tecla 4): desvia o Inspetor como a garrafa, mas é reutilizável, com recarga de 75 s.
+1644. Faixa de equipamentos no HUD mostra as teclas, as cargas e a recarga.
+1645. Novo equipamento Barbante com Guizo (segure 5): pendura um guizo numa porta em 1,5 s, com porcentagem na tela.
+1646. Quando o Inspetor ou a Ana passam pelo guizo, ele toca, uma legenda avisa e o Inspetor vira a cabeça para lá.
+1647. O guizo é limitado a dois por capítulo.
+1648. Novo equipamento Cadeira (segure 6): escora a porta junto de você em 2 s, com barulho.
+1649. O Inspetor perde 3 s batendo na porta escorada e arromba com barulho alto.
+1650. Cada porta aceita só uma cadeira por noite.
+1651. Abrir a porta escorada puxa a cadeira de volta.
+1652. Novo equipamento Giz da Lia (tecla 0): risca seta, X ou círculo no chão, alternando.
+1653. O giz rende 6 marcas por capítulo.
+1654. As marcas de giz continuam no lugar depois que você morre na mesma noite.
+1655. O Inspetor apaga as marcas que pisa, com um estalinho na legenda.
+1656. Novo equipamento Isca de Bolso: sem garrafa, G arremessa uma moeda que tilinta ao longe (3 por capítulo).
+1657. Novo mutador Imersão Total: some todo o HUD, as dicas e os avisos de objetivo.
+1658. Novo mutador Noite sem Bússola: o objetivo aparece só no começo do capítulo e depois vira "a Lia não lembra".
+1659. Novo pertence do prólogo: três de quatro objetos são sorteados pela semente e você leva um (teclas 1 a 3).
+1660. Pertence Cobertor: agachada, seus passos fazem metade do barulho.
+1661. Pertence Apito do Joaquim (tecla 4): uma vez por capítulo desvia o Inspetor para o lado.
+1662. Pertence Caixa de Fósforos: com a pilha acabada, F risca um fósforo e dá uma luz curta, uma vez por capítulo.
+1663. Pertence Sineta da Celeste (tecla 4): uma vez por capítulo faz a Ana perder 4 s de contagem.
+1664. Novas Dádivas da Hora: a cada capítulo, três cartas sorteadas pela semente, cada uma com bênção e custo escrito.
+1665. Dádiva Meias de Lã: passos 35% mais baixos, mas a lanterna gasta 25% mais.
+1666. Dádiva Garrafa Extra: uma garrafa a mais, mas o Inspetor ouve 12% mais longe.
+1667. Dádiva Chaveiro do Davi: na primeira morte do capítulo você cai com 1 de vida e ele recua, mas o chaveiro tilinta se você ficar parada 40 s.
+1668. Dádiva Fita Rebobinada: uma vez por noite o golpe fatal te devolve 20 s no tempo, com a tela chiando.
+1669. Dádiva Pilha Cheia: carga total e uma pilha a mais, mas a luz forte faz ele ouvir mais com a lanterna acesa.
+1670. Dádiva Coração de Ferro: o medo sobe 40% mais devagar, mas o fôlego preso acaba mais rápido.
+1671. Dádiva Pé Leve: 50% mais fôlego de corrida, mas os passos soam 20% mais altos.
+1672. Dádiva Mão Firme: a câmera quase não treme, mas a vida máxima cai para 85.
+1673. Dádiva Sorte do Albano: a vida volta devagar até 70, mas o Inspetor anda 6% mais rápido.
+1674. Sem escolher em 22 s, a noite escolhe a primeira dádiva por você.
+1675. As cartas ativas e o contrato do capítulo ficam listados no HUD.
+1676. As cartas oferecidas de cada capítulo ficam salvas e não mudam se você morrer.
+1677. Novos Contratos de risco: três por capítulo, recusar é grátis (teclas 7 a 9).
+1678. Contrato Nenhuma garrafa: usar uma garrafa quebra o contrato.
+1679. Contrato Sem curativo: usar um curativo quebra o contrato.
+1680. Contrato Sem correr: correr quebra o contrato.
+1681. Contrato Sem prender o ar: prender a respiração quebra o contrato.
+1682. Contrato Sem esconderijo: entrar em armário ou cama quebra o contrato.
+1683. Contrato Lanterna avarenta: passar de 90 s de lanterna acesa quebra o contrato.
+1684. Contrato Sete minutos: passar de 7 minutos no capítulo quebra o contrato.
+1685. Contrato Um item só: carregar mais de um consumível quebra o contrato.
+1686. Contrato cumprido dá selo, multiplicador ×1,25 e aviso; contrato quebrado avisa na hora.
+1687. Pontos de rejogo ao fim de cada capítulo, com multiplicador por mutadores, Ascensão, contratos e regras do amigo.
+1688. Nova Ascensão 1 (depois do primeiro final): o Inspetor anda 5% mais rápido.
+1689. Ascensão 2: o Inspetor ouve 8% mais longe.
+1690. Ascensão 3: a lanterna gasta 20% mais pilha.
+1691. Ascensão 4: no máximo duas garrafas no bolso.
+1692. Ascensão 5: o fôlego de corrida chega só a 85.
+1693. Ascensão 6: o medo sobe 20% mais depressa.
+1694. Ascensão 7: o Inspetor ganha mais 5% de velocidade.
+1695. Ascensão 8: a vida máxima cai para 85.
+1696. Ascensão 9: o Inspetor ouve mais 10% longe.
+1697. Ascensão 10: correr ecoa pelo prédio em todos os capítulos.
+1698. Seletor de Ascensão no painel de Modos, bloqueado até o primeiro final, e aviso da regra no começo do capítulo.
+1699. Nova técnica Fechar os olhos (segure M): a tela fica preta e o medo sobe bem mais devagar.
+1700. De olhos fechados, uma seta azul aponta para onde o Inspetor está se ele estiver a menos de 22 m.
+1701. Depois de 3 s de olhos fechados o coração denuncia: o Inspetor ouve a batida.
+1702. Passou de 5 s, os olhos ardem, abrem sozinhos com ruído e ficam bloqueados por 6 s.
+1703. Nova técnica Coração no compasso: ao prender o ar, o HUD pulsa o batimento.
+1704. Soltar o ar no pico do batimento dá um fôlego de ouro de +12 de ar.
+1705. Soltar o ar fora do tempo faz um sopro audível que o Inspetor escuta.
+1706. Nova técnica Apagão perfeito: apagar a lanterna quando ele vira o rosto faz ele perder o rastro por 2 s.
+1707. Nova técnica Sangue-frio: medidor que sobe ao passar perto dele em silêncio e multiplica os pontos.
+1708. O sangue-frio zera na hora em que ele te ouve e entra em alerta ou caçada.
+1709. Novo Fantasma da melhor corrida: o jogo grava a sua rota a cada 0,2 s e guarda a mais rápida de cada capítulo sem morrer.
+1710. Opção Correr contra mim: uma silhueta azul translúcida repete a melhor rota.
+1711. Diferença de tempo para o fantasma aparece discreta no HUD ("+4 s").
+1712. Botão para copiar o código do seu fantasma e importar o de um amigo, que aparece em vermelho.
+1713. Novo modo Passa o Controle: a cada morte ou fim de capítulo, tela preta com o nome do próximo jogador e ENTER para seguir.
+1714. Passa o Controle guarda nomes digitados, tempo, mortes e capítulos de cada jogador, com placar na tela de morte.
+1715. Novo modo Amanhecer: arena no térreo de meia-noite às 6h em 12 minutos, sem objetivos, com relógio no HUD.
+1716. No Amanhecer, 1h deixa o Inspetor ouvir melhor, 2h traz a Ana, 3h a Procissão, 4h o apagão geral e 5h a caçada sem pausa.
+1717. Novo modo Noite Sem Fim: badaladas a cada 45 s, cada uma sobe a pressão e troca a ameaça (Ana, Procissão, caçada).
+1718. Entre as badaladas da Noite Sem Fim cai um item (pilha, curativo ou garrafa) em outra sala.
+1719. Novo modo Até o Canto do Galo: dez minutos de sobrevivência com pressão que sobe a cada minuto.
+1720. No Canto do Galo, um item surge a cada 90 s e some em 30 s.
+1721. Fim das arenas com resultado, recorde, botões De novo e Menu; morrer na arena não reinicia o capítulo.
+1722. As arenas nunca gravam checkpoint e não mexem no save da campanha.
+1723. Novas Regras do Amigo: quem assiste escolhe até 3 de 6 regras e o jogo vigia cada uma.
+1724. Quebrar uma regra do amigo avisa na hora e carimba o capítulo e a tela de morte.
+1725. Novo botão Me Surpreenda II no painel de Modos sorteia mutadores novos e já começa a noite.
+1726. Painel de Modos ganha seções dos mutadores novos, cartas, Ascensão, fantasma, passa o controle, arenas e recordes II.
+1727. Tela de morte mostra o tempo do capítulo contra o seu melhor e lembra que ENTER reinicia.
+1728. Início do capítulo mostra o seu melhor tempo limpo.
+1729. Aviso no começo da noite lista os mutadores novos ativos.
+1730. Nova conquista Fôlego de Ouro: dez acertos seguidos no Coração no compasso.
+1731. Nova conquista Sangue-Frio: chegue a x10 no medidor.
+1732. Nova conquista Apagão Perfeito.
+1733. Nova conquista Vi com os Ouvidos: deixe o Inspetor passar a menos de 4 m de olhos fechados.
+1734. Nova conquista Noite Mais Quieta: termine um capítulo com o Silêncio Absoluto intacto.
+1735. Nova conquista Selo Dourado: termine antes da terceira badalada.
+1736. Nova conquista Palavra Dada: cumpra três contratos.
+1737. Novas conquistas O Sino das Seis, Décima Badalada e Canto do Galo, uma por arena.
+1738. Nova conquista Mais Rápida que Eu: vença o seu fantasma.
+1739. Nova conquista Ascensão V: termine um capítulo na Ascensão 5 ou mais.
+1740. Novas conquistas Marcas de Guerra, Dois no Sofá, Porta Escorada e Alarme de Lata.
+1741. Módulo jogabilidade-lote6b no cache offline do jogo.
 
-### Progressão e rejogabilidade (96)
+### Interface (199)
 
-838. Nova conquista "A Hora Perfeita": zerar a noite no Pesadelo sem morrer e sem dano.
-839. Nova conquista "Noite Cheia": cumprir os seis desafios secretos numa só noite.
-840. Nova conquista secreta "Nunca Ouvida": chegar ao final sem o Inspetor caçar uma vez.
-841. Nova conquista secreta "A Primeira Hora": atravessar a campanha quase sem acender a lanterna.
-842. Nova conquista "Noite Perfeita": S em todos os capítulos, sem morte e final verdadeiro na mesma noite.
-843. Nova conquista secreta "Mão Cheia": vencer com cinco Regras da Casa ligadas.
-844. Nova conquista "Três Pesos": vencer com três Regras da Casa ligadas.
-845. Nova conquista "A Noite em Quarenta": chegar a um final em menos de quarenta minutos.
-846. Nova conquista secreta "A Noite em Trinta": chegar a um final em menos de trinta minutos.
-847. Nova conquista secreta "A Noite em Vinte": chegar a um final em menos de vinte minutos.
-848. Nova conquista "Saída Rápida": terminar o Prólogo em menos de dois minutos.
-849. Nova conquista "Pele Intacta": terminar um capítulo sem levar dano.
-850. Nova conquista "Três Sem Toque": três capítulos sem dano na mesma noite.
-851. Nova conquista secreta "Noite Sem Toque": a noite inteira sem um arranhão.
-852. Nova conquista "Por Um Triz": escapar dez vezes do Inspetor a um passo.
-853. Nova conquista "Nervos de Aço": trinta escapadas rente ao Inspetor.
-854. Nova conquista secreta "Dança da Morte": sessenta escapadas rente ao Inspetor.
-855. Nova conquista "Veterana da Casa": começar dez noites no internato.
-856. Nova conquista "Insone": começar vinte e cinco noites no internato.
-857. Nova conquista "No Breu": terminar um capítulo sem acender a lanterna.
-858. Nova conquista "Sem Buraco": terminar um capítulo sem usar nenhum esconderijo.
-859. Nova conquista "Barulhenta e Viva": sobreviver a um capítulo mesmo fazendo muito barulho.
-860. Nova conquista secreta "Fantasma de Verdade": terminar um capítulo em silêncio quase absoluto.
-861. Nova conquista "Tempo de Ouro": bater o tempo de ouro do autor num capítulo.
-862. Nova conquista "Capítulo Impecável": rank S, sem dano e sem morte no mesmo capítulo.
-863. Nova conquista "Regras da Casa": vencer uma noite com ao menos uma regra ligada.
-864. Nova conquista secreta "A Casa Toda Contra Você": vencer com todas as Regras da Casa ligadas.
-865. Nova conquista "Noite do Dia": completar a Noite do Dia.
-866. Nova conquista "Ofensiva": jogar a Noite do Dia em três dias diferentes.
-867. Nova conquista "Caçadora de Pontos": mais de quarenta mil pontos numa noite.
-868. Nova conquista secreta "Lenda da Noite": mais de oitenta mil pontos numa noite.
-869. Nova conquista secreta "Marca de Ouro": fechar um capítulo com rank SS.
-870. Nova conquista "Uma Noite Só": atravessar a campanha inteira sem morrer.
-871. Nova conquista "Três Limpos": encadear três capítulos sem morrer.
-872. Nova conquista "Cinco Limpos": encadear cinco capítulos sem morrer.
-873. Nova conquista "Dados Lançados": vencer uma Noite Surpresa.
-874. Nova conquista secreta "Palavra de Poder": jogar até o fim uma semente de palavra marcada.
-875. Nova conquista secreta "Tudo Numa Noite": juntar final verdadeiro, nunca caçada, capítulo sem esconderijo e sem morte na mesma noite.
-876. Nova conquista secreta "A Casa Toda": destravar tudo (conquistas, finais e acervo completos).
-877. Regra da Casa "Passo Pesado": o Inspetor anda 12% mais rápido.
-878. Regra da Casa "Ouvido de Morcego": ele ouve metade mais longe.
-879. Regra da Casa "Pilha Seca": a lanterna gasta mais que o dobro.
-880. Regra da Casa "Procissão Súbita": o aviso da Procissão quase some.
-881. Regra da Casa "Implacável": ele desiste mais devagar e volta mais rápido.
-882. Regra da Casa "Carne Viva": todo toque machuca muito mais.
-883. Regras da Casa empilháveis, cada uma soma um multiplicador no placar da noite.
-884. Multiplicador de placar das regras mostrado na aba e na tela final.
-885. As Regras da Casa só se liberam depois do seu primeiro final.
-886. As regras ligadas ficam salvas entre sessões.
-887. As regras endurecem de verdade a dificuldade da noite (velocidade, audição, pilha, dano).
-888. Botão "Sortear regras" que arma um combo aleatório de Regras da Casa.
-889. Novo botão "Rejogo" no menu do título.
-890. Noite do Dia: uma semente igual para todo mundo, que zera à meia-noite.
-891. Botão para jogar a Noite do Dia direto do painel.
-892. Noite do Dia mostra seu melhor tempo de hoje.
-893. Noite do Dia conta quantos dias seguidos você jogou (ofensiva).
-894. A Noite do Dia sorteia uma "regra de hoje" fixa, anunciada antes de começar.
-895. Noite Surpresa: a casa escolhe a semente e sorteia de uma a três regras.
-896. Campo para digitar uma semente por palavra e jogar a mesma noite de um amigo.
-897. Sementes de palavra marcadas guardam uma surpresa própria.
-898. Quadro de Recordes com o melhor tempo e rank de cada capítulo.
-899. Medalhas de ouro, prata e bronze por capítulo no quadro.
-900. "Corrida teórica perfeita": soma dos seus melhores tempos de cada capítulo.
-901. Quadro guarda a noite mais silenciosa (menor ruído médio).
-902. Quadro guarda a noite com menos mortes.
-903. Quadro guarda a data da última Noite Perfeita.
-904. Quadro guarda o melhor placar por dificuldade.
-905. Hall da Fama com as cinco melhores noites (tempo, dificuldade, final e pontos).
-906. Caça aos Finais: lista dos três finais com dica sem spoiler para os que faltam.
-907. Comparar: colar o código de desafio de um amigo monta a mesma noite.
-908. Pontuação da noite: um número único para cada campanha.
-909. Pontuação soma o rank de cada capítulo.
-910. Pontuação premia o acervo de lore encontrado.
-911. Pontuação premia terminar rápido.
-912. Pontuação premia a noite silenciosa.
-913. Pontuação desconta por cada morte.
-914. Pontuação multiplicada pelas Regras da Casa ligadas.
-915. Pontos mostrados na tela final, com aviso de novo recorde de pontos.
-916. Botão "Copiar em giz" na tela final gera um resumo compartilhável.
-917. O resumo em giz traz ranks, lore, pontos e a semente da noite.
-918. "O que mudou esta noite" na tela final: código do quadro, ordem das válvulas e números do cofre.
-919. Checklist "Tudo numa noite" na tela final marcando os feitos de maestria.
-920. Faixa no título mostra o recorde de capítulos limpos seguidos.
-921. Faixa no título mostra a completude ("você já viu X% do que a casa esconde").
-922. Medidor de completude detalhado no painel (conquistas, finais e acervo).
-923. Rank SS, o degrau de ouro acima do S, no fim de capítulo.
-924. Medalha de tempo do capítulo exibida no fim de capítulo.
-925. Escapadas rente ao Inspetor são registradas a cada fuga por um fio.
-926. Pausa mostra as regras ativas e o multiplicador da noite.
-927. Pausa avisa quando é Noite do Dia, Noite Surpresa ou semente marcada.
-928. Estatísticas ganham a linha de completude ("quanto da casa você já viu").
-929. Estatísticas mostram as escapadas rente ao Inspetor.
-930. Estatísticas mostram o melhor placar de uma noite.
-931. Estatísticas mostram o recorde de capítulos limpos seguidos.
-932. Estatísticas mostram a noite mais silenciosa.
-933. Módulo de rejogabilidade adicionado ao cache offline (sw.js), jogável sem internet.
+1742. Campo "Semente" no título: digite qualquer palavra (PIZZA, ESCOLA, um nome) e jogue a mesma noite que todo mundo que digitar igual
+1743. Qualquer texto digitado vira um código estável de 6 caracteres, então a mesma palavra sempre dá a mesma noite
+1744. Um código puro de 4 a 7 caracteres também é aceito direto no campo Semente
+1745. Botão de dado ao lado da semente sorteia uma semente nova na hora
+1746. Botão "copiar" ao lado da semente copia o código da noite para mandar a um amigo
+1747. Botão "Noite de hoje" preenche a semente do dia, igual para o mundo todo naquele dia
+1748. Linha fixa embaixo do campo mostra a semente de hoje
+1749. Ao clicar no campo Semente, o subtítulo explica para que serve
+1750. Um código escrito à mão no campo Desafio vira dica no campo Semente
+1751. Botão de menu "Repetir a última noite" refaz a noite anterior sem passar por menus
+1752. A última noite jogada (semente, dificuldade, mutadores e Uma Vida) fica guardada para repetir
+1753. "Repetir a última noite" remarca a caixa Uma Vida se a noite anterior era Uma Vida
+1754. Aviso na tela confirma a semente ao repetir uma noite
+1755. Linha "próxima meta" no título mostra a conquista não destravada mais perto, com dica
+1756. A próxima meta troca sozinha a cada poucos segundos
+1757. Sem metas pendentes, o título mostra quantos finais e conquistas ainda faltam
+1758. Nova opção "Mostrar a próxima meta no título" (liga/desliga)
+1759. Botão de menu "Modos e desafios"
+1760. Botão de menu "Recordes"
+1761. Botão de menu "Hall das noites"
+1762. Botão de menu "Placar da casa"
+1763. Botão de menu "Onde você mais cai"
+1764. Nova tela "Modos e desafios" reúne todos os modos num lugar só
+1765. Cada modo com descrição de uma linha
+1766. Cada modo diz como ativar
+1767. Cada modo mostra se está travado ou livre
+1768. Modos aplicáveis mostram o seu melhor resultado
+1769. Baralho de regras com 4 cartas de mutador, cada uma com o efeito escrito
+1770. Clicar numa carta liga ou desliga o mutador, com destaque dourado
+1771. O código da noite montada aparece ao vivo conforme você escolhe as cartas
+1772. Botão copiar o código montado no baralho
+1773. Botão "jogar esta noite" começa com a combinação montada
+1774. Botão "Jogar a Noite de hoje" na tela de modos
+1775. Botão "Copiar a semente de hoje" na tela de modos
+1776. Estante de troféus na tela de modos com marcos (10 noites, 3 finais, S em tudo, noite sem morte, todos os finais)
+1777. Nova tela "Caderno de Recordes"
+1778. Melhor tempo por capítulo no caderno
+1779. Melhor rank por capítulo, com cor própria de S e de C
+1780. Menos mortes por capítulo quando houver registro
+1781. Splits do recorde por objetivo de cada capítulo
+1782. Melhor tempo somado no topo do caderno
+1783. Finais vistos / total no topo do caderno
+1784. "Coração de gelo" (menos mortes numa noite concluída) no topo do caderno
+1785. Partidas, noites concluídas e capítulos com rank S no topo
+1786. Botão copiar todos os recordes de uma vez
+1787. Nova tela "Placar da Casa" para comparar com amigos
+1788. Campo para colar o código de resultado de um amigo
+1789. O placar decodifica ranks, mortes e tempo do código colado
+1790. O placar inclui o seu próprio resultado para comparar
+1791. O placar ordena todos por pontuação e depois por tempo
+1792. Coluna "vs você" mostra a diferença de tempo de cada amigo
+1793. Botão × remove um código do placar
+1794. O placar guarda até 5 códigos de amigos
+1795. Nova tela "Hall das Noites" com o histórico das últimas 20 noites
+1796. Cada noite é registrada ao terminar e ao morrer
+1797. Carimbo de final (bandeira) ou de morte (cruz) em cada noite
+1798. Número da noite em cada linha do hall
+1799. Data, tempo, mortes, dificuldade e semente em cada noite
+1800. Botão "repetir esta noite" em cada linha do hall
+1801. Botão "copiar semente" em cada linha do hall
+1802. Topo do hall com total de noites, primeira registrada e melhor noite concluída
+1803. Nova tela "Onde você mais cai" com as mortes por capítulo
+1804. Barras proporcionais mostram onde você morre mais
+1805. Destaque do capítulo que mais te pega
+1806. Total de mortes acumuladas
+1807. Botão "Zerar o mapa" de mortes
+1808. Cada morte é contada por capítulo
+1809. Botão "Copiar cartela" no fim da noite gera uma grade de símbolos por capítulo
+1810. A cartela de símbolos aparece na própria tela final
+1811. Cada capítulo vira um símbolo conforme o rank (S/A/B/C)
+1812. A cartela copiada inclui o final alcançado
+1813. A cartela copiada inclui a semente da noite
+1814. Botão "Jogar esta noite de novo" na tela final
+1815. Botão "De novo, a mesma noite do zero" na tela de morte
+1816. Linha "seu melhor neste capítulo" com rank e tempo na tela de morte
+1817. Fantasma do recorde por objetivo no HUD: verde se adiantado, vermelho se atrasado
+1818. Nova opção "Comparar cada objetivo com o recorde" (liga o fantasma)
+1819. Aviso "recorde!" pisca na hora em que um objetivo bate o tempo recorde
+1820. Nova opção "Cronômetro de precisão" deixa os dígitos de largura fixa, bom para gravar
+1821. A precisão vale tanto para o cronômetro da interface quanto para o da progressão
+1822. Resumo de parciais no fim do capítulo: quanto durou cada objetivo
+1823. O trecho em que você mais demorou aparece destacado em laranja no fim do capítulo
+1824. Cada parcial do fim do capítulo mostra seta de adiantado/atrasado contra o recorde
+1825. Cartão na pausa mostra a semente/código da noite atual
+1826. O cartão da pausa lista os mutadores ativos como cartõezinhos
+1827. O cartão da pausa mostra o modo Uma Vida quando ligado
+1828. Nova tela genérica do lote com título, corpo e botão Voltar
+1829. ESC e Backspace fecham as telas novas
+1830. As telas novas entram na navegação por teclado (setas e Tab)
+1831. A semente do dia é a mesma no mundo todo, baseada na data
+1832. O novo módulo entrou na lista de arquivos para jogar sem internet (service worker)
+1833. O cronômetro de precisão só mexe no estilo da tela quando liga ou desliga, sem custo por quadro
+1834. Guardar a noite para repetir virou uma comparação leve por quadro, sem montar texto JSON toda hora
+1835. Fim de capítulo ganha o painel "Onde o tempo foi": uma barra dividida em andando, correndo, escondida, parada, em diálogo, em notas e morta
+1836. Uma segunda barra fininha embaixo mostra a sua melhor corrida do mesmo capítulo, para comparar a olho
+1837. A legenda da barra mostra quantos segundos você gastou em cada categoria e quanto isso difere da melhor corrida (▲ pior, ▼ melhor)
+1838. Uma dica em amarelo aponta a categoria que mais pesou ("42% do capítulo escondida") com um conselho curto de como cortar tempo
+1839. O fim de capítulo desenha a rota do capítulo na planta do mapa, amostrada a cada meio segundo, em linha de giz branco
+1840. A rota da sua melhor corrida aparece tracejada em dourado por cima, e o título avisa "nova melhor" quando você a supera
+1841. Marcadores na rota: quadrado azul onde se escondeu, círculo vermelho onde fez barulho alto, anel onde parou, triângulo onde foi caçada, losango onde levou golpe, X onde morreu
+1842. Uma legenda pequena embaixo da rota explica cada marcador
+1843. "Segredos deste lugar": o fim de capítulo diz "havia 4 segredos, você achou 2", com ícones de giz sem dizer onde estão
+1844. Na rejogada do mesmo capítulo, os ícones dos segredos que faltam piscam acesos, prometendo que ainda há mais
+1845. "Como a casa viu você": um parágrafo na voz do Inspetor descreve o seu estilo naquele capítulo, com uma dica de contra-jogo abaixo
+1846. Botões Copiar imagem e Salvar imagem geram um PNG da rota com título do capítulo, tempo e rank para mandar a um amigo
+1847. Tecla T no fim de capítulo para o relógio automático e deixa você ler com calma; E ou Enter segue
+1848. Na rejogada de um capítulo já terminado, segurar E por 0,6 s pula direto para o próximo, com indicador de progresso na tela
+1849. A melhor rota e a rota anterior de cada capítulo ficam guardadas no perfil para a comparação do mapa
+1850. Pulômetro: um giro brusco da câmera logo depois de um susto marcado conta como "pulou", sem alterar o jogo
+1851. Os sustos medidos (Inspetor te achando, Menina que conta, Procissão, golpe) são contados por fonte durante a noite
+1852. Opção "Pulômetro" nas Opções, ligada por padrão, para quem não quer ser medido
+1853. Tela de morte comentada: uma frase montada com o que aconteceu ("você morreu a 4 passos de um esconderijo vazio")
+1854. 35 frases de morte, escolhidas por prioridade entre as que combinam com a cena: lanterna acesa por 40 s, 5º passo agachada, garrafa sem usar, corrida dos últimos 10 s, pilha reserva esquecida
+1855. A tela de morte mostra "você pulou N vezes nesta noite" e os três glifos de giz da semente
+1856. Depois de três mortes seguidas pelo mesmo motivo, aparece uma linha amarela com um treino curto para aquele inimigo
+1857. Botão "Autópsia: o último minuto" na tela de morte abre a planta com o seu caminho dos últimos 60 segundos
+1858. Na autópsia, o caminho do Inspetor, da Menina ou da Procissão aparece tracejado em vermelho, com uma seta onde ele estava
+1859. Na autópsia, bolinhas vermelhas marcam onde você fez barulho e quadrados azuis onde se escondeu
+1860. Cada morte entra no mapa de calor acumulado do perfil, guardado por mapa com quem te pegou e em qual capítulo
+1861. Final da noite com Boletim escolar: cinco notas (Silêncio, Coragem, Pressa, Esconderijo, Atenção) em azul ou vermelho
+1862. O boletim traz a observação da professora, que junta a sua melhor e a sua pior matéria ("ouve bem, mas corre demais")
+1863. A assinatura "ciente" dos pais muda conforme a média da noite
+1864. Perfil de medo no final: um arquétipo calculado das suas estatísticas (A Corredora, A Rata de Armário, A Sombra, A Teimosa, A Imprudente, A Sortuda, A Curiosa, A Observadora)
+1865. O perfil mostra o hábito que mais te custou naquela noite
+1866. Um gráfico de barras mostra de quais sustos você mais se assustou e quantos pulos cada um rendeu
+1867. O final diz qual susto mais te fez virar a câmera
+1868. Epíteto da noite gerado por regra, como "a que se escondeu demais", usado no cartão e na lápide
+1869. Retrato de estilo e desafio sob medida: o jogo propõe o desafio oposto ao seu estilo ("você sempre se esconde, tente Sem Esconderijo")
+1870. O botão "Ligar este desafio e jogar" aplica o desafio sugerido e começa a noite em um clique
+1871. O Diário da Lia se escreve sozinho no final, com esconderijos, corridas, mortes, barulho e pulos reais da noite
+1872. A tela final desenha a rota de cada capítulo em miniatura, uma ao lado da outra
+1873. Portas dos finais: quatro portas, as dos finais já vistos acesas e as que faltam apagadas com uma pista curta de como abrir
+1874. Placar de iniciais estilo fliperama: recorde novo pede três letras, e a última escolha fica lembrada
+1875. Os cinco melhores tempos aparecem numa tabela com iniciais, dificuldade e data
+1876. Código da noite com semente, tempo, mortes, dificuldade e conferência (HS1-...), com botão de copiar
+1877. Cartão da noite desenhado em canvas, com lápide, epíteto, rotas e o código, para salvar como imagem ou copiar
+1878. Glifos da semente: três desenhos de giz gerados pela semente que aparecem na pausa, na morte e no resumo, para dois jogadores conferirem a mesma noite num olhar
+1879. Dez títulos de jogadora liberados pelo estilo de jogo (A Sombra, A Pé de Chumbo, A Que Voltou, A Que Calou o Sino, A Inteira, A Que Não Pulou, A Bibliotecária, A Muda, A Pressa Dele, A Hóspede)
+1880. O título escolhido aparece na linha do menu, na tela de morte e no cartão compartilhável
+1881. Cada título tem uma descrição de como se ganha, e os que faltam aparecem como ???
+1882. A tela de título mostra quantas noites você já terminou
+1883. "Sonhei que...": uma linha atmosférica no título gerada do que aconteceu na última noite, com detalhes que são mentira
+1884. Nove sonhos diferentes, que citam o armário, o número do Inspetor, a sala onde você morreu ou a lanterna que sabe o seu nome
+1885. Opção para esconder o "Sonhei que..." do título
+1886. A casa do título acende: uma janela por conquista, uma janela do sótão para o final verdadeiro e a torre com o acervo completo
+1887. A próxima janela da meta pisca em tom quente, e um contador "7/40 janelas" aparece embaixo
+1888. Opção para desligar a casa do título
+1889. Previsão da noite sem spoiler: ao digitar uma semente, o título mostra clima, cor da lua e nível de perigo, sem revelar o humor do Inspetor
+1890. Chip com o nome e a cor do perfil no canto do título, que abre a troca de perfil com um clique
+1891. Botão "Central do rejogo" no título reúne todas as telas de segunda jogada numa só
+1892. Central, aba "Hoje eu quero…": três perguntas curtas (medo, ritmo, plateia) que sugerem modo, semente e dificuldade
+1893. A sugestão de "Hoje eu quero" vem com código, glifos e botão Jogar agora
+1894. Escolher jogar com amigos usa a semente da Noite do Dia, igual para todo mundo
+1895. Central, aba "Roda Surpresa": gira e sorteia um presente e uma maldição para a noite
+1896. A roda tem clique de metrônomo que desacelera até parar, e dá para girar de novo uma única vez
+1897. Botão para copiar o resultado da roda ("a Roda Surpresa deu: Pesadelo e Dicas da Lia ligadas")
+1898. Central, aba "Tarô": três cartas desenhadas em canvas, cada uma com um modificador temático (A Torre, O Eremita, A Lua, O Sino, A Menina, O Cego, A Morte, O Juízo)
+1899. As cartas bloqueadas ficam viradas para baixo e se soltam quando você morre de formas diferentes ou chega a certos finais
+1900. Embaralhar as três cartas e jogar direto com a carta escolhida
+1901. Central, aba "Seu perfil": arquétipo mais frequente, histórico de estilos, mortes por inimigo e títulos de jogadora
+1902. Central, aba "Segredos e álbum": quantos segredos faltam por mapa, só com ícones de giz e sem dizer onde
+1903. O painel de segredos pode ser escondido para quem prefere a surpresa total
+1904. A cada dez noites jogadas, uma dica vaga sobre um segredo aleatório ainda não achado é liberada
+1905. Álbum da casa: silhuetas de finais, fitas, notas e páginas que se acendem quando você acha, com contador de 100%
+1906. Central, aba "Conquistas": molduras bronze, prata, ouro e sangue pela raridade, com filtro por moldura e por "faltam"
+1907. Barras por área mostram "3 de 74 faltam" sem spoiler
+1908. Dicas graduais nas conquistas: a descrição aparece aos poucos conforme as noites jogadas
+1909. As conquistas secretas ganham uma quadrinha de duas linhas, com a primeira após 3 noites e a segunda após 6
+1910. Central, aba "Últimas noites": histórico das dez últimas com data, final, tempo, mortes, clima e rank em cor
+1911. Gráfico de linhas das últimas noites com tempo, mortes, ruído e pulos, e um plano de melhoria ("seu ruído caiu 18%")
+1912. Comparar duas noites lado a lado, com setas de melhor ou pior e tempo por capítulo
+1913. Botão "repetir" em cada noite do histórico refaz aquela semente com os mesmos mutadores
+1914. Central, aba "Calendário": cada dia jogado vira uma marca (verde terminou, vermelho morreu, dourado Noite do Dia)
+1915. O calendário mostra a sequência atual e a maior sequência, e dá para navegar pelos meses
+1916. Clicar num dia mostra a semente, o tempo e as mortes daquele dia e deixa rejogar uma noite que você perdeu
+1917. Central, aba "Placares": cole o código de um amigo e abre uma tabela por semente, sem servidor
+1918. A tabela mostra a diferença de tempo entre você e cada amigo, e os códigos podem ser apagados
+1919. Placar da turma: com dois ou mais perfis, uma tabela de pontos, melhor tempo, mortes e conquistas com a coroa de quem lidera cada categoria
+1920. Botão que copia o placar da turma como texto para mandar no grupo
+1921. Central, aba "Mapa e rotas": mancha vermelha das mortes acumuladas, mais forte onde você morreu mais vezes
+1922. Clicar numa mancha diz quem te pegou ali e em qual capítulo
+1923. Replay animado das rotas: a sua última rota e a sua melhor andam juntas sobre a planta
+1924. Central, aba "Perfis": até 4 perfis no mesmo navegador, cada um com save, conquistas, recordes e opções próprios
+1925. Trocar de perfil leva um clique, e apagar um perfil só apaga os dados dele
+1926. Modo Visitante: uma noite que não grava nada no save, nos recordes nem nas conquistas, com aviso "só pra experimentar"
+1927. Se a aba for fechada no meio de uma visita, o perfil verdadeiro volta sozinho
+1928. Tela "quem está jogando?" antes do título quando há mais de um perfil
+1929. Opção Modo Memória: o objetivo some 5 segundos depois de aparecer e a tecla O lembra uma única vez por capítulo
+1930. Conquista "Memória de Elefante" por terminar um capítulo no Modo Memória
+1931. Opção Imersão total: tira as barras da tela e a vida vira o vermelho nas bordas, com pulso quando o fôlego acaba
+1932. Conquista "Só os Olhos" por terminar um capítulo com a Imersão total ligada
+1933. Ponto de giz opcional ao entrar numa sala já visitada diz quantos segredos ainda restam ali, sem dizer quais
+1934. Aba "Rascunho" no diário: bloco de notas de até 400 letras guardado por semente, que volta quando a mesma noite for repetida
+1935. Marcadores de giz no mapa do diário (perigo, esconderijo, item, dúvida) que persistem na mesma semente
+1936. Conquistas novas: Coração de Pedra (noite sem pular), Quadro de Honra (média 8 no boletim), Mão do Destino (jogar a noite da Roda) e Leitura de Cartas (começar com uma carta do Tarô)
+1937. Um grupo "Rejogo (segunda noite)" nas Opções reúne os sete interruptores novos
+1938. Opção para esconder a rota e o painel de tempo no fim do capítulo
+1939. O novo módulo e as 4 partes dele entraram na lista do funcionamento sem internet (service worker)
+1940. A frase do sonho com a sala agora lê "em sala de aula" em vez de repetir a palavra sala
+
+### Progressão e rejogabilidade (228)
+
+1941. Nova conquista "A Hora Perfeita": zerar a noite no Pesadelo sem morrer e sem dano.
+1942. Nova conquista "Noite Cheia": cumprir os seis desafios secretos numa só noite.
+1943. Nova conquista secreta "Nunca Ouvida": chegar ao final sem o Inspetor caçar uma vez.
+1944. Nova conquista secreta "A Primeira Hora": atravessar a campanha quase sem acender a lanterna.
+1945. Nova conquista "Noite Perfeita": S em todos os capítulos, sem morte e final verdadeiro na mesma noite.
+1946. Nova conquista secreta "Mão Cheia": vencer com cinco Regras da Casa ligadas.
+1947. Nova conquista "Três Pesos": vencer com três Regras da Casa ligadas.
+1948. Nova conquista "A Noite em Quarenta": chegar a um final em menos de quarenta minutos.
+1949. Nova conquista secreta "A Noite em Trinta": chegar a um final em menos de trinta minutos.
+1950. Nova conquista secreta "A Noite em Vinte": chegar a um final em menos de vinte minutos.
+1951. Nova conquista "Saída Rápida": terminar o Prólogo em menos de dois minutos.
+1952. Nova conquista "Pele Intacta": terminar um capítulo sem levar dano.
+1953. Nova conquista "Três Sem Toque": três capítulos sem dano na mesma noite.
+1954. Nova conquista secreta "Noite Sem Toque": a noite inteira sem um arranhão.
+1955. Nova conquista "Por Um Triz": escapar dez vezes do Inspetor a um passo.
+1956. Nova conquista "Nervos de Aço": trinta escapadas rente ao Inspetor.
+1957. Nova conquista secreta "Dança da Morte": sessenta escapadas rente ao Inspetor.
+1958. Nova conquista "Veterana da Casa": começar dez noites no internato.
+1959. Nova conquista "Insone": começar vinte e cinco noites no internato.
+1960. Nova conquista "No Breu": terminar um capítulo sem acender a lanterna.
+1961. Nova conquista "Sem Buraco": terminar um capítulo sem usar nenhum esconderijo.
+1962. Nova conquista "Barulhenta e Viva": sobreviver a um capítulo mesmo fazendo muito barulho.
+1963. Nova conquista secreta "Fantasma de Verdade": terminar um capítulo em silêncio quase absoluto.
+1964. Nova conquista "Tempo de Ouro": bater o tempo de ouro do autor num capítulo.
+1965. Nova conquista "Capítulo Impecável": rank S, sem dano e sem morte no mesmo capítulo.
+1966. Nova conquista "Regras da Casa": vencer uma noite com ao menos uma regra ligada.
+1967. Nova conquista secreta "A Casa Toda Contra Você": vencer com todas as Regras da Casa ligadas.
+1968. Nova conquista "Noite do Dia": completar a Noite do Dia.
+1969. Nova conquista "Ofensiva": jogar a Noite do Dia em três dias diferentes.
+1970. Nova conquista "Caçadora de Pontos": mais de quarenta mil pontos numa noite.
+1971. Nova conquista secreta "Lenda da Noite": mais de oitenta mil pontos numa noite.
+1972. Nova conquista secreta "Marca de Ouro": fechar um capítulo com rank SS.
+1973. Nova conquista "Uma Noite Só": atravessar a campanha inteira sem morrer.
+1974. Nova conquista "Três Limpos": encadear três capítulos sem morrer.
+1975. Nova conquista "Cinco Limpos": encadear cinco capítulos sem morrer.
+1976. Nova conquista "Dados Lançados": vencer uma Noite Surpresa.
+1977. Nova conquista secreta "Palavra de Poder": jogar até o fim uma semente de palavra marcada.
+1978. Nova conquista secreta "Tudo Numa Noite": juntar final verdadeiro, nunca caçada, capítulo sem esconderijo e sem morte na mesma noite.
+1979. Nova conquista secreta "A Casa Toda": destravar tudo (conquistas, finais e acervo completos).
+1980. Regra da Casa "Passo Pesado": o Inspetor anda 12% mais rápido.
+1981. Regra da Casa "Ouvido de Morcego": ele ouve metade mais longe.
+1982. Regra da Casa "Pilha Seca": a lanterna gasta mais que o dobro.
+1983. Regra da Casa "Procissão Súbita": o aviso da Procissão quase some.
+1984. Regra da Casa "Implacável": ele desiste mais devagar e volta mais rápido.
+1985. Regra da Casa "Carne Viva": todo toque machuca muito mais.
+1986. Regras da Casa empilháveis, cada uma soma um multiplicador no placar da noite.
+1987. Multiplicador de placar das regras mostrado na aba e na tela final.
+1988. As Regras da Casa só se liberam depois do seu primeiro final.
+1989. As regras ligadas ficam salvas entre sessões.
+1990. As regras endurecem de verdade a dificuldade da noite (velocidade, audição, pilha, dano).
+1991. Botão "Sortear regras" que arma um combo aleatório de Regras da Casa.
+1992. Novo botão "Rejogo" no menu do título.
+1993. Noite do Dia: uma semente igual para todo mundo, que zera à meia-noite.
+1994. Botão para jogar a Noite do Dia direto do painel.
+1995. Noite do Dia mostra seu melhor tempo de hoje.
+1996. Noite do Dia conta quantos dias seguidos você jogou (ofensiva).
+1997. A Noite do Dia sorteia uma "regra de hoje" fixa, anunciada antes de começar.
+1998. Noite Surpresa: a casa escolhe a semente e sorteia de uma a três regras.
+1999. Campo para digitar uma semente por palavra e jogar a mesma noite de um amigo.
+2000. Sementes de palavra marcadas guardam uma surpresa própria.
+2001. Quadro de Recordes com o melhor tempo e rank de cada capítulo.
+2002. Medalhas de ouro, prata e bronze por capítulo no quadro.
+2003. "Corrida teórica perfeita": soma dos seus melhores tempos de cada capítulo.
+2004. Quadro guarda a noite mais silenciosa (menor ruído médio).
+2005. Quadro guarda a noite com menos mortes.
+2006. Quadro guarda a data da última Noite Perfeita.
+2007. Quadro guarda o melhor placar por dificuldade.
+2008. Hall da Fama com as cinco melhores noites (tempo, dificuldade, final e pontos).
+2009. Caça aos Finais: lista dos três finais com dica sem spoiler para os que faltam.
+2010. Comparar: colar o código de desafio de um amigo monta a mesma noite.
+2011. Pontuação da noite: um número único para cada campanha.
+2012. Pontuação soma o rank de cada capítulo.
+2013. Pontuação premia o acervo de lore encontrado.
+2014. Pontuação premia terminar rápido.
+2015. Pontuação premia a noite silenciosa.
+2016. Pontuação desconta por cada morte.
+2017. Pontuação multiplicada pelas Regras da Casa ligadas.
+2018. Pontos mostrados na tela final, com aviso de novo recorde de pontos.
+2019. Botão "Copiar em giz" na tela final gera um resumo compartilhável.
+2020. O resumo em giz traz ranks, lore, pontos e a semente da noite.
+2021. "O que mudou esta noite" na tela final: código do quadro, ordem das válvulas e números do cofre.
+2022. Checklist "Tudo numa noite" na tela final marcando os feitos de maestria.
+2023. Faixa no título mostra o recorde de capítulos limpos seguidos.
+2024. Faixa no título mostra a completude ("você já viu X% do que a casa esconde").
+2025. Medidor de completude detalhado no painel (conquistas, finais e acervo).
+2026. Rank SS, o degrau de ouro acima do S, no fim de capítulo.
+2027. Medalha de tempo do capítulo exibida no fim de capítulo.
+2028. Escapadas rente ao Inspetor são registradas a cada fuga por um fio.
+2029. Pausa mostra as regras ativas e o multiplicador da noite.
+2030. Pausa avisa quando é Noite do Dia, Noite Surpresa ou semente marcada.
+2031. Estatísticas ganham a linha de completude ("quanto da casa você já viu").
+2032. Estatísticas mostram as escapadas rente ao Inspetor.
+2033. Estatísticas mostram o melhor placar de uma noite.
+2034. Estatísticas mostram o recorde de capítulos limpos seguidos.
+2035. Estatísticas mostram a noite mais silenciosa.
+2036. Módulo de rejogabilidade adicionado ao cache offline (sw.js), jogável sem internet.
+2037. Novo botão "A Casa" no título, com um painel de abas: Calor, Dádivas, Estrelas, Estilo, Necrológio, Sementes, Calendário, Altar e Modos & Códigos
+2038. Calor da Casa: uma escada de 1 a 10 que você escolhe no painel, com um degrau novo liberado a cada final visto
+2039. Cada degrau de Calor soma, de forma cumulativa, ouvido maior do Inspetor, pilha que gasta mais, passo dele mais rápido, aviso da Procissão menor e aparições mais frequentes
+2040. Os dez degraus do Calor têm nome e frase (de Brasa até Incêndio de 1979) e o painel mostra os números exatos de cada um
+2041. Botão "Sortear Calor e semente" no painel do Calor para uma noite surpresa de dificuldade
+2042. Cada degrau de Calor acima de 1 soma 8% de bônus de pontos na tela final e mais Cera por noite vencida
+2043. A tela final avisa "Calor N liberado" quando o final abre o degrau seguinte
+2044. O Calor da noite aparece na pausa e na faixa de status do título
+2045. Nova conquista "Abafada": vencer uma noite no Calor 3 ou mais
+2046. Nova conquista "Febre": vencer uma noite no Calor 5 ou mais
+2047. Nova conquista secreta "Incêndio de 1979": vencer uma noite no Calor 10
+2048. Dádivas da Noite: no fim de cada capítulo (menos o último) aparecem três cartas sorteadas pela semente, e você escolhe uma com 1, 2 ou 3 (ou tocando nela)
+2049. Cada carta de Dádiva traz um ganho e um preço escritos na própria carta (16 cartas, como Pés de Lã, Olho de Gato, Sino Rachado e Mão Fechada)
+2050. Os efeitos das Dádivas entram de verdade no jogo: ouvido do Inspetor, velocidade dele, gasto de pilha, dano recebido, frequência das aparições e aviso da Procissão
+2051. Novo fator de ruído dos passos no motor, que permite cartas como Pés de Lã (passos mais baixos) e Passo Largo (mais altos)
+2052. Você carrega no máximo cinco Dádivas por noite: ao pegar a sexta, a mais antiga se desfaz
+2053. As Dádivas escolhidas ficam salvas no checkpoint e sobrevivem à morte e ao reinício do capítulo
+2054. Algumas cartas entregam itens na hora: Pilha Boa, Vela Curta, Moeda na Língua e Mãos Limpas dão pilhas ou curativos na mochila
+2055. A tela de fim de capítulo passa a esperar até 24 segundos quando há cartas para escolher e segue sozinha logo depois das escolhas
+2056. Apertar 0 na tela de cartas recusa tudo e rende Cera de vela
+2057. O Trato vermelho: depois do primeiro final, uma das três cartas pode ser um Trato, com ganho forte e uma maldição escrita que vale até o fim do capítulo seguinte
+2058. Cumprir o Trato sem morrer paga 1500 pontos, o dobro de Cera e a conquista "Trato Cumprido"
+2059. Cinco combinações secretas de Dádivas (Sombra Mansa, Faro Duplo, Punhos de Pedra, Luz Demais, Tapa-Ouvido) acendem um efeito extra sem aviso prévio
+2060. As combinações descobertas ficam listadas no painel de Dádivas com a receita
+2061. O baralho de Dádivas cresce: quatro cartas só entram depois de feitos (dez escapadas, noite sem garrafa, rank S, ver um final) e aparecem como silhueta com dica
+2062. O painel de Dádivas mostra "cartas: N de M" e quantas vezes você aceitou cada carta
+2063. As Dádivas e os Tratos ativos aparecem listados na pausa e no resumo da tela final
+2064. Nova conquista "Primeira Dádiva": aceitar uma carta entre capítulos
+2065. Nova conquista "Mão Carregada": carregar cinco Dádivas ao mesmo tempo
+2066. Nova conquista "Mãos Vazias": vencer uma noite sem aceitar nenhuma Dádiva
+2067. Nova conquista secreta "Trato Cumprido": fechar o capítulo seguinte a um Trato sem morrer
+2068. Nova conquista secreta "Assina Qualquer Coisa": aceitar três Tratos ao longo das noites
+2069. Nova conquista secreta "Combinação": descobrir a primeira combinação de Dádivas
+2070. Nova conquista secreta "Alquimista de Cartas": descobrir três combinações de Dádivas
+2071. Apostas entre capítulos: três apostas sorteadas pela semente (sem esconderijo, sem dano, abaixo da meta...) e você escolhe uma com 4, 5 ou 6
+2072. Cumprir a aposta paga 600 pontos e Cera, e o resultado aparece em uma linha no fim do capítulo
+2073. Quebrar a aposta custa caro: o Inspetor ouve 10% mais longe no capítulo seguinte e a casa avisa com um "Perdeu."
+2074. Nova conquista "Jogadora de Palavra": cumprir três apostas
+2075. Nova conquista "Perdeu.": quebrar uma aposta
+2076. Cinco estrelas por capítulo (terminar, sem dano, lanterna quase sempre apagada, sem esconderijo, tempo de ouro), que só acendem e nunca apagam
+2077. O fim de capítulo mostra as estrelas da passada e destaca as que acenderam pela primeira vez
+2078. Aba "Estrelas" com o céu dos seis capítulos, o que falta em cada um e os melhores tempos
+2079. Placar de três tentativas: o jogo guarda os três melhores tempos de cada capítulo e mostra no fim do capítulo
+2080. Mede quanto tempo o Inspetor ficou atento a você em cada capítulo e mostra no fim, com selo bronze para menos de 5 s e prata para zero
+2081. Temperatura do terror: cada capítulo recebe uma faixa de medo (Gelo, Frio, Febre, Delírio ou Pavor) no resumo do fim do capítulo
+2082. A aba de estrelas guarda a faixa de medo mais alta de cada capítulo e a menor atenção do Inspetor
+2083. Nova conquista "Dez Estrelas": acender dez estrelas
+2084. Nova conquista secreta "Constelada": acender as trinta estrelas
+2085. Nova conquista "Capítulo Perfeito": acender as cinco estrelas de um capítulo na mesma passada
+2086. Nova conquista secreta "Surda de Propósito": fechar um capítulo sem o Inspetor ouvir você nenhuma vez
+2087. Nova conquista "Temperatura do Pavor": fechar um capítulo na faixa mais alta de medo
+2088. Nova conquista "Sangue de Gelo": fechar um capítulo na faixa mais baixa de medo com o Inspetor solto
+2089. O jogo passa a medir o seu jeito de jogar: porcentagem do tempo correndo, agachada, escondida, parada e com a lanterna acesa
+2090. Doze epítetos da noite (A Sombra, A Teimosa, A Toupeira, A Corredora, A Gata, A Estátua, A Vagalume...) com frase própria na tela final
+2091. Retrato em giz na tela final com as porcentagens do seu estilo e o epíteto
+2092. Desafio pessoal oposto ao seu estilo (quem corre muito recebe "Pés no Chão", quem se esconde muito recebe "A Céu Aberto"), aceito na aba Estilo
+2093. O desafio pessoal aceito é anunciado no começo da noite e verificado no final
+2094. Cumprir o desafio pessoal libera um título pessoal e 40 de Cera
+2095. O histórico de epítetos aparece no painel e, ao repetir o mesmo cinco noites seguidas, a Lia comenta na tela final
+2096. Nova conquista "Versátil": cumprir três desafios pessoais diferentes
+2097. Nova conquista secreta "Previsível": terminar cinco noites com o mesmo epíteto
+2098. Nova conquista "Muitas Caras": receber seis epítetos diferentes
+2099. Doze patentes do internato (Visitante até Zeladora) calculadas por noites, finais, conquistas e estrelas, mostradas no título, na pausa e nas estatísticas
+2100. O painel mostra a próxima patente e quantos pontos da casa faltam
+2101. Nova conquista "Chaveira": chegar à sexta patente
+2102. Nova conquista secreta "Zeladora": chegar à patente mais alta
+2103. Necrológio com doze fichas de causa de morte (pega correndo, agachada, parada, na água, na fuga do sino, pela Menina no escuro...), cada uma com um epitáfio do Davi
+2104. Morrer numa sexta-feira treze abre uma ficha especial do necrológio
+2105. O necrológio conta quantas vezes você morreu de cada jeito e esconde as fichas que ainda não aconteceram
+2106. Nova conquista "Cinco Epitáfios": morrer de cinco jeitos diferentes
+2107. Nova conquista secreta "Morreu de Tudo": completar o necrológio
+2108. Dívida do Inspetor: cada morte soma um ponto de dívida e, com dez, ele fala uma frase de cobrança no começo do próximo capítulo
+2109. Quitar a dívida exige fechar um capítulo sem ser perseguida e dá a conquista "Dívida Paga"
+2110. Nova conquista secreta "Nem Saiu do Carro": morrer nos primeiros dez segundos do Prólogo
+2111. Nova conquista secreta "Gosta de Contar": morrer três vezes para a Menina no mesmo capítulo
+2112. Nova conquista secreta "Poste": ficar três minutos parada no escuro dentro de um capítulo
+2113. Nova conquista secreta "Tiro no Pé": morrer até cinco segundos depois de jogar uma garrafa
+2114. Nova conquista secreta "Pisca-Pisca": ligar e desligar a lanterna vinte vezes no mesmo capítulo
+2115. Nova conquista secreta "Armário Teimoso": ficar escondida noventa segundos seguidos
+2116. Nova conquista secreta "Correu Direto": morrer correndo três vezes na mesma noite
+2117. Herança da Lia: depois de cada final você escolhe uma de quatro relíquias (entre oito) para levar à próxima noite, e só uma
+2118. Cada relíquia (Botão do Davi, Apito Quebrado, Giz da Ana, Moeda do Davi...) tem ganho e custo escritos e muda de verdade os números da noite seguinte
+2119. A relíquia da mala aparece na faixa do título e na pausa, e dá itens iniciais quando é o caso
+2120. Nova conquista "Herdeira": começar uma noite levando a relíquia da anterior
+2121. Hora Zero: modo que abre depois de três finais, com uma vida só e nenhuma barra, inventário ou lista de objetivos na tela
+2122. A Hora Zero sorteia uma maldição só de custo a cada capítulo, escrita na tela de fim de capítulo
+2123. A Hora Zero dobra o placar da casa, guarda recorde e vitórias próprias e mostra um parágrafo de final exclusivo (a Lia em silêncio no amanhecer)
+2124. Nova conquista secreta "A Hora Zero": vencer a Hora Zero
+2125. Calendário de velas: o painel mostra as velas dos últimos trinta dias e os dias seguidos que você jogou
+2126. Nova conquista "Sete Velas": jogar sete dias seguidos
+2127. Nova conquista secreta "Trinta Velas": jogar trinta dias diferentes
+2128. A casa sente a sua falta: com três dias fora, o título avisa que a casa esperou
+2129. Com catorze dias fora, o Inspetor chega impaciente (ouve 8% mais longe no Prólogo e no Capítulo I), mas uma pilha de boas-vindas espera na mochila
+2130. Série de noites sem morrer no título, com recorde nas estatísticas
+2131. Nova conquista "Série de Três": três noites seguidas sem morrer
+2132. Nova conquista secreta "Série de Cinco": cinco noites seguidas sem morrer
+2133. Nova conquista secreta "Série de Dez": dez noites seguidas sem morrer
+2134. Tarefas do dia: três tarefas pequenas sorteadas pela data (esconder-se, jogar garrafa, agachar...) cumpridas durante a noite, com aviso a cada uma e 20 de Cera pelas três
+2135. Nova conquista "Dia Cumprido": cumprir as três tarefas do dia
+2136. Missões da semana: três missões que trocam na segunda-feira, calculadas pela data e com progresso salvo
+2137. Nova conquista "Semana Cumprida": cumprir as três missões da semana, com 60 de Cera
+2138. Maldição do mês: doze temas, um por mês, que mudam números pequenos da noite quando você liga a opção no calendário
+2139. Nova conquista "Maldição do Mês": vencer uma noite com a maldição do mês ligada
+2140. Seis datas especiais da Serra (14 de março, São João, Cosme e Damião, 31 de outubro, Finados, sexta-feira treze) ganham selo no calendário quando você joga nelas
+2141. Nova conquista secreta "Calendário Folclórico": jogar em todas as datas especiais
+2142. Selo da Primeira Vez: terminar o Prólogo da primeiríssima noite sem morrer, uma chance só na vida
+2143. Noites marcadas: na 7ª noite o sino toca sete vezes ao chegar ao Capítulo I
+2144. Noites marcadas: na 13ª noite a tela ganha moldura de câmera de fita com REC e relógio girando
+2145. Noites marcadas: na 31ª noite a Lia acorda dizendo que tem terra no rosto
+2146. Noites marcadas: na 66ª noite todas as portas estão abertas do jeito errado e o Inspetor ouve 10% mais longe
+2147. Quatro conquistas secretas das noites marcadas (Sete Toques, Fita Treze, Terra no Rosto, Todas as Portas), uma para cada noite sobrevivida
+2148. Bingo da noite: uma cartela 3x3 de façanhas sorteadas pela semente aparece na pausa e se marca sozinha
+2149. Fechar uma linha do bingo paga 300 pontos e Cera, e a cartela cheia paga 1000
+2150. Nova conquista "Bingo!": fechar uma linha da cartela
+2151. Nova conquista secreta "Cartela Cheia": preencher o bingo inteiro numa noite
+2152. Cera de vela como moeda de rejogo, ganha por capítulo, final, aposta, desafio pessoal e tarefas, com saldo no título
+2153. Altar de cera: oito títulos para comprar com Cera, só cosméticos, mostrados na faixa do título
+2154. Nova conquista "Cera Derretida": juntar cem de Cera
+2155. Nova conquista "Altar Montado": comprar um título no Altar
+2156. Doze sementes lendárias com apelido e descrição (A Mais Silenciosa, O Corredor Sem Fim, A Mais Cruel...), que se jogam ou se copiam com um clique
+2157. Sementes favoritas: F na tela de fim de capítulo guarda a semente da noite numa lista com botão de jogar, copiar e tirar
+2158. Nova conquista "Semente Lendária": vencer uma noite numa das sementes lendárias
+2159. Alvo de tempo do amigo: um código ALVO com nome e tempo monta a noite e mostra no canto da tela "Vencer Fulano: 07:42" com a diferença ao vivo
+2160. A tela final diz se você venceu ou perdeu para o alvo e por quanto
+2161. Botão "Devolver o desafio" na tela final copia um novo código ALVO com o seu nome e o seu tempo
+2162. Nova conquista "Alvo Batido": vencer o tempo de um amigo
+2163. Nova conquista "Devolveu na Hora": gerar o código de devolução
+2164. Recordes por categoria (qualquer final, final verdadeiro, sem dano, pouca lanterna, sem esconderijo), cada uma com o seu melhor tempo
+2165. Nova conquista "Sem Dano, Sem Fita": gravar um recorde na categoria sem dano
+2166. Videoteca: grade de finais por dificuldade no painel de Modos, com uma fita para cada combinação concluída
+2167. Nova conquista secreta "Videoteca": ver os três finais em ao menos duas dificuldades cada
+2168. Estatísticas ganham patente, Calor liberado, estrelas, necrológio, Cera, cartas do baralho, recorde de série e dívida do Inspetor
 
 ### Plataforma e acessibilidade (90)
 
-934. Novo botão "Rejogar / Desafios" no título, logo depois da Noite da Semana
-935. Painel próprio "Rejogar" que fecha com ESC ou botão Voltar
-936. A dica do botão mostra o melhor tempo da Noite do Dia de hoje
-937. Seção "Noite do Dia" com o nome gerado da noite em destaque
-938. Semente do dia determinística pela data: a mesma noite para todo mundo no mesmo dia
-939. 2 a 3 pactos fixos do dia, iguais o dia inteiro (sorteados pela data)
-940. Texto explica em linguagem simples quais pactos estão ligados hoje
-941. A Noite do Dia é sempre no Normal, para a comparação ser justa
-942. Placar local mostra quantas tentativas você já fez hoje
-943. Placar local mostra o seu melhor tempo de hoje
-944. Botão "Jogar a Noite do Dia" começa a noite exata do dia
-945. Botão "Copiar código" da Noite do Dia para mandar a amigos
-946. Conta mais uma tentativa toda vez que você começa a Noite do Dia
-947. Registra o seu tempo ao terminar a Noite do Dia
-948. Aviso "Novo recorde da Noite do Dia" quando você bate o seu tempo
-949. O placar do dia zera sozinho quando vira o dia
-950. Botão "Surpreenda-me" sorteia uma semente nova com 1 a 2 pactos e já começa
-951. Botão "Noite da Casa" sorteia uma noite bem tensa, com 3 pactos
-952. A Noite Surpresa e a da Casa ficam no Normal, variando só os pactos
-953. Toda noite ganha um nome gerado ("Noite da Névoa Faminta", etc.)
-954. Gerador de nomes com 16 adjetivos e 16 núcleos, sempre o mesmo para a mesma semente
-955. Campo para colar o link ou o código da noite de outra pessoa
-956. O campo aceita tanto o link inteiro quanto só o código
-957. Botão "Jogar essa noite" começa a noite colada
-958. Aviso quando o código colado não é entendido
-959. O jogo lê "#n=CODIGO" no carregamento e já preenche o campo Desafio
-960. O link carrega também a dificuldade embutida
-961. Troca de link na barra (hashchange) atualiza a noite sem recarregar
-962. Prévia no título: "fulano te desafia para esta noite" com o nome da noite
-963. A prévia mostra o tempo e as mortes do desafiante quando o link traz
-964. Link sem resultado mostra "Noite compartilhada" com o nome da noite
-965. A prévia é anunciada por leitores de tela (aria-live)
-966. Botão "★ Favoritar" no fim da noite guarda a noite exata
-967. Lista de favoritas no painel, até 12 noites
-968. Favoritar a mesma noite não duplica; a mais recente fica no topo
-969. Cada favorita mostra o nome gerado e o código
-970. Botão "Jogar" rejoga a favorita igualzinha
-971. Botão "Copiar" pega o link da favorita
-972. Botão "Tirar" remove a favorita da lista
-973. Contador de quantas favoritas no título da seção
-974. Mensagem quando ainda não há favoritas
-975. Botão "De novo, igual" no fim reabre a mesma semente, dificuldade e pactos
-976. A tela de morte ganha "Recomeçar a noite do zero" (além do tentar de novo do trecho)
-977. O jogo guarda a configuração da noite que começou, para rejogar sem reconfigurar
-978. Botão "Copiar link da noite" no fim da partida
-979. O link embute semente, dificuldade e pactos (a mesma noite exata)
-980. O link usa o compartilhamento do sistema (navigator.share) quando existe
-981. Sem share, o link cai para a área de transferência
-982. O link de desafio embute o seu tempo e as suas mortes para o veredito
-983. Veredito no fim: "você venceu fulano por X" quando foi mais rápido
-984. Veredito no fim: "você perdeu para fulano por X" quando foi mais lento
-985. Veredito de empate no relógio
-986. O veredito também compara o número de mortes
-987. Botão "Cartão da noite (imagem)" gera um PNG do boletim
-988. O cartão é desenhado em canvas e baixa como arquivo
-989. O cartão traz os ranks de cada capítulo
-990. O cartão traz tempo, mortes e segredos
-991. O cartão traz o código da noite para quem quiser rejogar
-992. Etiqueta estilo cartucho antigo com a semente como "nº da fita"
-993. O cartão não entrega o final (só o nome da noite)
-994. Botão "Perfil de corrida" em Desempenho
-995. O perfil de corrida liga o cronômetro num clique
-996. O perfil de corrida troca o relógio para tempo real
-997. O perfil de corrida desliga os avisos lentos
-998. O perfil confirma por texto o que mudou
-999. Opção "Repetir sempre a última semente no Novo jogo"
-1000. Com a semente fixa, o campo Desafio já vem com a última noite
-1001. A semente fixa não atropela um código que você já colou
-1002. A preferência de semente fixa fica salva
-1003. Opção de sensibilidade horizontal do toque
-1004. Opção de sensibilidade vertical do toque
-1005. O olhar por toque passa a respeitar as duas sensibilidades por eixo
-1006. As sensibilidades de toque ficam salvas
-1007. Botão "Legenda de cores (daltônicos)" em Desempenho
-1008. Quadro explica o que cada cor avisa, descrevendo também a forma, não só a cor
-1009. A legenda aponta a paleta de daltonismo e as legendas de som do jogo
-1010. A legenda de cores fecha com ESC ou botão
-1011. Selo "corrida assistida" no fim quando há ajudas ligadas, sem bloquear recordes ou conquistas
-1012. O selo detecta dificuldade fácil, avisos antecipados, ajuda invisível e conforto
-1013. Os códigos usam o mesmo formato do campo Desafio que já existia
-1014. O link aponta para o próprio endereço do jogo (funciona instalado e no GitHub Pages)
-1015. Se a cópia falhar, o botão mostra o código/link na tela para copiar à mão
-1016. Novo módulo plataforma-lote6.js ligado por um gancho curto no plataforma.js
-1017. Estilo próprio injetado pelo módulo, sem mexer na folha de estilo compartilhada
-1018. O módulo entra no BASE do service worker para jogar sem internet
-1019. Nova versão de cache (v8) para pegar os arquivos novos
-1020. Todo o módulo é silenciado no QA (navigator.webdriver): a UI nova não roda no teste
-1021. Todo o corpo fica em try/catch e nunca toca no caminho obrigatório dos capítulos
-1022. "De novo, igual" e o link escondem as telas de fim antes de começar a nova noite
-1023. O botão de começar a noite reaproveita o fluxo do "Novo jogo" (nada de código paralelo)
+2169. Novo botão "Rejogar / Desafios" no título, logo depois da Noite da Semana
+2170. Painel próprio "Rejogar" que fecha com ESC ou botão Voltar
+2171. A dica do botão mostra o melhor tempo da Noite do Dia de hoje
+2172. Seção "Noite do Dia" com o nome gerado da noite em destaque
+2173. Semente do dia determinística pela data: a mesma noite para todo mundo no mesmo dia
+2174. 2 a 3 pactos fixos do dia, iguais o dia inteiro (sorteados pela data)
+2175. Texto explica em linguagem simples quais pactos estão ligados hoje
+2176. A Noite do Dia é sempre no Normal, para a comparação ser justa
+2177. Placar local mostra quantas tentativas você já fez hoje
+2178. Placar local mostra o seu melhor tempo de hoje
+2179. Botão "Jogar a Noite do Dia" começa a noite exata do dia
+2180. Botão "Copiar código" da Noite do Dia para mandar a amigos
+2181. Conta mais uma tentativa toda vez que você começa a Noite do Dia
+2182. Registra o seu tempo ao terminar a Noite do Dia
+2183. Aviso "Novo recorde da Noite do Dia" quando você bate o seu tempo
+2184. O placar do dia zera sozinho quando vira o dia
+2185. Botão "Surpreenda-me" sorteia uma semente nova com 1 a 2 pactos e já começa
+2186. Botão "Noite da Casa" sorteia uma noite bem tensa, com 3 pactos
+2187. A Noite Surpresa e a da Casa ficam no Normal, variando só os pactos
+2188. Toda noite ganha um nome gerado ("Noite da Névoa Faminta", etc.)
+2189. Gerador de nomes com 16 adjetivos e 16 núcleos, sempre o mesmo para a mesma semente
+2190. Campo para colar o link ou o código da noite de outra pessoa
+2191. O campo aceita tanto o link inteiro quanto só o código
+2192. Botão "Jogar essa noite" começa a noite colada
+2193. Aviso quando o código colado não é entendido
+2194. O jogo lê "#n=CODIGO" no carregamento e já preenche o campo Desafio
+2195. O link carrega também a dificuldade embutida
+2196. Troca de link na barra (hashchange) atualiza a noite sem recarregar
+2197. Prévia no título: "fulano te desafia para esta noite" com o nome da noite
+2198. A prévia mostra o tempo e as mortes do desafiante quando o link traz
+2199. Link sem resultado mostra "Noite compartilhada" com o nome da noite
+2200. A prévia é anunciada por leitores de tela (aria-live)
+2201. Botão "★ Favoritar" no fim da noite guarda a noite exata
+2202. Lista de favoritas no painel, até 12 noites
+2203. Favoritar a mesma noite não duplica; a mais recente fica no topo
+2204. Cada favorita mostra o nome gerado e o código
+2205. Botão "Jogar" rejoga a favorita igualzinha
+2206. Botão "Copiar" pega o link da favorita
+2207. Botão "Tirar" remove a favorita da lista
+2208. Contador de quantas favoritas no título da seção
+2209. Mensagem quando ainda não há favoritas
+2210. Botão "De novo, igual" no fim reabre a mesma semente, dificuldade e pactos
+2211. A tela de morte ganha "Recomeçar a noite do zero" (além do tentar de novo do trecho)
+2212. O jogo guarda a configuração da noite que começou, para rejogar sem reconfigurar
+2213. Botão "Copiar link da noite" no fim da partida
+2214. O link embute semente, dificuldade e pactos (a mesma noite exata)
+2215. O link usa o compartilhamento do sistema (navigator.share) quando existe
+2216. Sem share, o link cai para a área de transferência
+2217. O link de desafio embute o seu tempo e as suas mortes para o veredito
+2218. Veredito no fim: "você venceu fulano por X" quando foi mais rápido
+2219. Veredito no fim: "você perdeu para fulano por X" quando foi mais lento
+2220. Veredito de empate no relógio
+2221. O veredito também compara o número de mortes
+2222. Botão "Cartão da noite (imagem)" gera um PNG do boletim
+2223. O cartão é desenhado em canvas e baixa como arquivo
+2224. O cartão traz os ranks de cada capítulo
+2225. O cartão traz tempo, mortes e segredos
+2226. O cartão traz o código da noite para quem quiser rejogar
+2227. Etiqueta estilo cartucho antigo com a semente como "nº da fita"
+2228. O cartão não entrega o final (só o nome da noite)
+2229. Botão "Perfil de corrida" em Desempenho
+2230. O perfil de corrida liga o cronômetro num clique
+2231. O perfil de corrida troca o relógio para tempo real
+2232. O perfil de corrida desliga os avisos lentos
+2233. O perfil confirma por texto o que mudou
+2234. Opção "Repetir sempre a última semente no Novo jogo"
+2235. Com a semente fixa, o campo Desafio já vem com a última noite
+2236. A semente fixa não atropela um código que você já colou
+2237. A preferência de semente fixa fica salva
+2238. Opção de sensibilidade horizontal do toque
+2239. Opção de sensibilidade vertical do toque
+2240. O olhar por toque passa a respeitar as duas sensibilidades por eixo
+2241. As sensibilidades de toque ficam salvas
+2242. Botão "Legenda de cores (daltônicos)" em Desempenho
+2243. Quadro explica o que cada cor avisa, descrevendo também a forma, não só a cor
+2244. A legenda aponta a paleta de daltonismo e as legendas de som do jogo
+2245. A legenda de cores fecha com ESC ou botão
+2246. Selo "corrida assistida" no fim quando há ajudas ligadas, sem bloquear recordes ou conquistas
+2247. O selo detecta dificuldade fácil, avisos antecipados, ajuda invisível e conforto
+2248. Os códigos usam o mesmo formato do campo Desafio que já existia
+2249. O link aponta para o próprio endereço do jogo (funciona instalado e no GitHub Pages)
+2250. Se a cópia falhar, o botão mostra o código/link na tela para copiar à mão
+2251. Novo módulo plataforma-lote6.js ligado por um gancho curto no plataforma.js
+2252. Estilo próprio injetado pelo módulo, sem mexer na folha de estilo compartilhada
+2253. O módulo entra no BASE do service worker para jogar sem internet
+2254. Nova versão de cache (v8) para pegar os arquivos novos
+2255. Todo o módulo é silenciado no QA (navigator.webdriver): a UI nova não roda no teste
+2256. Todo o corpo fica em try/catch e nunca toca no caminho obrigatório dos capítulos
+2257. "De novo, igual" e o link escondem as telas de fim antes de começar a nova noite
+2258. O botão de começar a noite reaproveita o fluxo do "Novo jogo" (nada de código paralelo)
 
 ### revisão (jogador crítico / QA antes de publicar) (11)
 
-1024. Revisão completa do diff lote6-base..main (36 arquivos, +8130 linhas): integração dos módulos novos, mapas e textos.
-1025. Conferido que todo método de L6/JGL6/L6V/AUDL6 chamado em jogo.js existe no módulo correspondente (sem TypeError de método ausente).
-1026. Verificado que os índices de spot sorteados por semente (rj.i) nunca saem do array: spot() aplica módulo e os itens ficam na MESMA sala, sem backtracking nem objetivo perdido.
-1027. Confirmado que lapide/emCima/objeto existem no escopo de cemiterio() antes de serem passados a subterraneo-rejogo.js (sem ReferenceError na troca pro Capítulo V).
-1028. Checado o caminho de QA/robô: clima fica neutro (webdriver), rejogo usa semente fixa — playthrough determinístico, progressão intacta.
-1029. node --check limpo nos 17 arquivos tocados (roteiro.js, jogo.js, mapas.js e os 14 módulos novos do lote 6).
-1030. Varredura de mojibake nos textos do lote 6: nenhum acento corrompido; arquivos UTF-8.
-1031. Varredura de nomes/marcas de outros jogos nos textos e módulos do lote 6: nenhuma cópia.
-1032. sw.js (cache hora-silencio-v10) lista todos os 14 módulos novos em BASE: joga offline sem faltar arquivo.
-1033. QA de sobrevivência (node ferramentas/qa.mjs . --sobrevivencia) percorreu prólogo e Capítulos I a V, final, plataforma e segredos e terminou com RESULTADO: PASSOU.
-1034. Observação registrada (sem regressão do lote 6): um AVISO intermitente de áudio (setValueAtTime não-finito) vem de helpers de som pré-existentes do motor (jogo.js), já embrulhado em try/catch; todo setValueAtTime do áudio do lote 6 usa valor literal finito e boletim() sai cedo no QA. Não derruba o quadro nem falha o QA.
+2259. Revisão completa do diff lote6-base..main (36 arquivos, +8130 linhas): integração dos módulos novos, mapas e textos.
+2260. Conferido que todo método de L6/JGL6/L6V/AUDL6 chamado em jogo.js existe no módulo correspondente (sem TypeError de método ausente).
+2261. Verificado que os índices de spot sorteados por semente (rj.i) nunca saem do array: spot() aplica módulo e os itens ficam na MESMA sala, sem backtracking nem objetivo perdido.
+2262. Confirmado que lapide/emCima/objeto existem no escopo de cemiterio() antes de serem passados a subterraneo-rejogo.js (sem ReferenceError na troca pro Capítulo V).
+2263. Checado o caminho de QA/robô: clima fica neutro (webdriver), rejogo usa semente fixa — playthrough determinístico, progressão intacta.
+2264. node --check limpo nos 17 arquivos tocados (roteiro.js, jogo.js, mapas.js e os 14 módulos novos do lote 6).
+2265. Varredura de mojibake nos textos do lote 6: nenhum acento corrompido; arquivos UTF-8.
+2266. Varredura de nomes/marcas de outros jogos nos textos e módulos do lote 6: nenhuma cópia.
+2267. sw.js (cache hora-silencio-v10) lista todos os 14 módulos novos em BASE: joga offline sem faltar arquivo.
+2268. QA de sobrevivência (node ferramentas/qa.mjs . --sobrevivencia) percorreu prólogo e Capítulos I a V, final, plataforma e segredos e terminou com RESULTADO: PASSOU.
+2269. Observação registrada (sem regressão do lote 6): um AVISO intermitente de áudio (setValueAtTime não-finito) vem de helpers de som pré-existentes do motor (jogo.js), já embrulhado em try/catch; todo setValueAtTime do áudio do lote 6 usa valor literal finito e boletim() sai cedo no QA. Não derruba o quadro nem falha o QA.

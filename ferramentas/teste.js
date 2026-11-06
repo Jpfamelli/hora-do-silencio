@@ -31,7 +31,7 @@ const T = window.T = {
   }
 };
 T.avisos = window.__avisos = window.__avisos || [];
-if (!console.__orig) { console.__orig = console.warn; console.warn = (...a) => { window.__avisos.push(a.join(' ')); console.__orig(...a); }; }
+if (!console.__orig) { console.__orig = console.warn; console.warn = (...a) => { window.__avisos.push(a.map(x => x instanceof Error ? String(x.stack || x).split(String.fromCharCode(10)).slice(0, 3).join(' | ') : x).join(' ')); console.__orig(...a); }; }
 T.novo = async (dif = 'normal') => {
   document.getElementById('o-dif').value = dif;
   document.getElementById('b-novo').click(); T.passo(1); J.pularCena(); T.passo(.5);
