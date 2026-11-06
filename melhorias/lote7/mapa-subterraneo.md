@@ -1,0 +1,93 @@
+# Lote 7 — Mapa: túneis, cemitério e capela
+- Nos túneis a caldeira assobia ganhando pressão, abafa os seus passos enquanto apita e cala num "tchunc" que o Inspetor ouve.
+- Quatro goteiras fixas com timbres próprios (poça, lata, pedra e concreto) servem de mapa sonoro do escuro, em intervalos diferentes que quase nunca coincidem, para o compasso nunca fechar.
+- Cada pingo ganha uma cauda de eco molhada um instante depois.
+- A goteira da poça marca um compasso: andar no tempo dela abaixa um pouco o seu ruído.
+- Perto de cada válvula pinga uma goteira-guia para você se achar de ouvido, e ela cala quando a válvula já foi girada.
+- De vez em quando as três goteiras caem juntas num só "plop" que parece de propósito.
+- As goteiras calam quando o Inspetor chega perto: o silêncio vira aviso.
+- Uma infiltração acelera os pingos até transbordar num respingo alto e recomeçar, um relógio de tensão.
+- Debaixo d'água o mundo abafa num ronco grave e só sobra o seu coração.
+- Na caça dentro do túnel os seus próprios passos voltam ecoando de trás e confundem.
+- Unhas pequenas arranham ao longe quando ele não está por perto.
+- Pisar na poça de referência faz um respingo alto que denuncia a sua posição.
+- Ratos guincham e correm para longe do Inspetor, e calam quando ele chega ao túnel.
+- Um cano distante responde ao seu barulho cerca de um segundo depois.
+- O trovão chega aos túneis como um subgrave sentido no corpo, com um tremor leve.
+- A cisterna gorgoleja cada vez mais grosso conforme o nível da água, com uma maré lenta de uns 30 segundos.
+- A voz grave da cisterna sobe de tom a cada válvula que baixa a água.
+- Parada na água por alguns segundos, você ouve um respingo que não é seu.
+- Uma gota cai na sua nuca na água, com um estremecer.
+- Um sussurro conta de trás para frente e, no "um", uma porta bate longe.
+- A lama cede com sucção na ida e fica mais calada na volta.
+- Uma estrutura metálica range ao longe perto do monta-cargas e da escada de saída.
+- Moscas zumbem sobre algo morto no canto do túnel leste.
+- Cada sala dos túneis troca de tom surdo ao você entrar: mais fundo e longo na cisterna e na sala do diretor.
+- Com a água alta, ela bate de leve nas paredes.
+- A água corrente de fundo fica mais forte com a água alta e nas tempestades.
+- Girar a válvula certa manda uma pancada pelos canos até salas distantes.
+- Com as três válvulas certas, a água escorre gorgolejando pelos ralos.
+- Andar na água alta faz respingos que formam um anel sonoro que ele pode seguir.
+- Os canos velhos assentam sozinhos de longe, estalando.
+- Um pulso grave de tensão sobe enquanto o Inspetor caça ou procura nos túneis.
+- Parada sob o cano do cruzamento, o andar de cima vaza numa nota fina.
+- Dá para encostar o ouvido numa parede marcada do túnel leste (E) e ouvir gente falando baixo do outro lado.
+- O eco dos seus passos agora tem atraso proporcional ao tamanho da sala: curto no beco, longo no salão.
+- Uma vez por noite, no túnel leste, o eco devolve dois passos para cada um seu.
+- Uma vez por noite, o passo continua um instante depois de você parar, e a Lia comenta.
+- Câmara do eco: nas câmaras oeste e leste o seu barulho volta três vezes, de lugares diferentes, e o Inspetor corre para o eco falso.
+- Cada passo vira um "bong" metálico de tubo: curto na passagem estreita, longo na galeria, grave na cisterna.
+- Perto das passagens secretas (duto dos ratos e cabana de lençóis) o passo soa mais oco e fundo, sem nenhum marcador.
+- Ao entrar nos túneis o ouvido estala: zumbido de pressão, mundo abafado e um "pop" que abre o som de volta.
+- Ao entrar pela primeira vez na cisterna, no túnel norte e nas galerias, a rocha estala atrás de você, pedras rolam e o pó baixa devagar, como se o caminho se fechasse.
+- Um compressor velho sopra a cada 8 segundos e cobre os seus passos enquanto sopra.
+- Entre um sopro e outro do compressor o túnel fica quieto demais e os seus passos pesam mais.
+- Quando a água baixa o compressor desliga num suspiro longo.
+- Um ventilador gigante gira num ciclo de 12 segundos: no pico do rugido você pode correr, no vale tudo fica exposto.
+- No vale do ventilador dá para ouvir os passos do Inspetor do outro lado da parede.
+- Cada válvula canta a sua própria nota baixa quando você chega perto, e a nota cala depois que ela é girada.
+- Depois de ouvir a fita 2, gotas caem em baldes de lata tocando a ordem certa das válvulas como uma melodia.
+- Uma nova válvula de vapor na galeria leste, aberta segurando E, assobia agudo por 20 segundos e mascara os seus passos, mas o assobio chama o Inspetor depois de 15.
+- Correr na água da cisterna faz soar um sino afogado, abafado e atrasado, que o Inspetor também ouve.
+- Galeria dos sussurros: parada por 3 segundos numa ponta dos túneis oeste ou leste, a Lia ouve nítida a voz do Davi vinda da ponta oposta.
+- Uma grade nova no teto do túnel central deixa vazar passos, uma reza e uma contagem do andar de cima para quem fica parada embaixo dela.
+- O rumor de água cresce na direção da saída: quem segue o som chega lá.
+- Frestas e passagens assobiam uma nota que pulsa a cada 8 segundos, mais aguda na cabana e mais grave no duto.
+- Quanto mais fundo nos túneis, mais o ar zumbe no ouvido.
+- Nos canais oeste e leste a água corrente cobre um pouco o seu barulho.
+- Uma vez por noite a água do canal cala de repente, e seis segundos depois volta rugindo com um tremor.
+- Quando o nível da água sobe, rugido de torrente e gotas rápidas crescem junto.
+- O Inspetor na água faz chapes em compasso que dá para ouvir; se ele para, o barulho para e ele está escutando.
+- Os canos batem o estado dele: uma batida por segundo é ronda, batida rápida é caça, nenhuma é ele parado escutando.
+- Uma placa nova na sala do diretor ensina o código das batidas nos canos.
+- Quando o Inspetor começa a caçar, o mundo prende o fôlego por quase um segundo.
+- Dois tons em segunda menor crescem com o seu medo, nos túneis e no cemitério, como música de tensão sem melodia.
+- Quando o Inspetor perde você, o ar solta num suspiro longo que avisa que o perigo passou.
+- No cemitério, bandos de corvos pousam em três lápides; se você corre ou faz barulho perto, eles estouram em voo e o Inspetor ouve com ganho alto.
+- Os corvos também levantam voo quando é o Inspetor que passa pelo mato, avisando onde ele está.
+- As cruzes de ferro assobiam uma nota ao vento, mais aguda e mais alta quanto mais perto da capela: uma bússola sonora sem marcador.
+- O vento nas cruzes se cala por 3 segundos quando o Inspetor chega perto.
+- Sinos de vento nas cruzes tocam com a brisa, e fora de compasso quando você corre colada nelas.
+- Cada túmulo ainda por cavar sussurra uma sílaba do nome, vinda da direção dele e mais alta quanto mais perto.
+- Depois que você pega a pá, uma nuvem de moscas zumbe mais forte perto do túmulo que falta.
+- Um sino toca abafado debaixo da terra sob a lápide rachada, mais alto conforme você se aproxima, e a Lia comenta ao chegar nela.
+- A pá muda de som a cada camada: terra mole, raízes e pedra.
+- Cada cova tem uma profundidade própria: as camadas mudam em pontos diferentes do cavar.
+- Na última camada a pá bate num toque oco de madeira, com um aviso na tela.
+- O buraco assobia como uma garrafa e a nota desce conforme você cava mais fundo, contando o progresso pelo ouvido.
+- A pá soa mais baixa no trovão, a Lia diz "só cavo quando trovejar" e depois o aviso confirma que o trovão cobre a pá.
+- Uma pá distante cava num ritmo próprio, pausa quando você começa e responde com o mesmo número de golpes, cada vez mais perto.
+- Um órgão distante, audível ao ar livre, soma uma nota ao acorde para cada túmulo cavado.
+- Com os três túmulos o acorde fecha e a porta da capela vibra, com uma fala da Lia.
+- Antes da mão sair da terra no terceiro túmulo, o mundo cala por quase três segundos.
+- Na capela o sino bate sem badalo, e a cada batida uma vela do altar apaga.
+- A batida a mais, grave, faz o chão vibrar e as velas voltam a acender.
+- Ao chegar ao altar o órgão toca o primeiro compasso do hino do internato.
+- Na fuga o trovão grave chega cada vez mais depressa depois do relâmpago.
+- A chuva soa diferente nas lápides, secas e agudas, e na terra, abafada.
+- Ao subir para o cemitério o ouvido estala de novo e o ar frio entra pela escotilha.
+- No final verdadeiro, depois do portão, o último som é um amanhecer: pássaros em camadas, um galo, um ônibus rural longe e um sino de seis badaladas.
+- No final comum e no do silêncio há só um pássaro, sem resposta.
+- Os sons de ambiência novos dos túneis e do cemitério vão num barramento próprio, que cai primeiro quando há muitas vozes e respeita o volume de ambiente.
+- Um erro de ordem no código do som dos túneis (variável lida antes de existir) foi corrigido, e cada tratador de som agora se desliga sozinho depois de cinco erros em vez de derrubar o quadro.
+- A goteira-guia de cada válvula agora cala de verdade depois que a válvula é girada (antes a checagem nunca casava).
