@@ -90,3 +90,108 @@
 - Recordes do subterrâneo (válvulas, travessia e sino) ficam guardados em memória própria entre partidas.
 - Os conteúdos de "segunda jogada" só aparecem para quem já terminou o capítulo antes.
 - As treze conquistas novas do subterrâneo já aparecem na lista do acervo mesmo antes de serem ganhas.
+- Uma régua de maré aparece na parede da entrada dos túneis e outra na cisterna, mostrando se a água está subindo ou descendo.
+- A água dos túneis agora respira em ciclos de 70 a 110 segundos, com o ritmo sorteado pela semente da noite.
+- Na maré alta os seus passos na água ficam 30% mais barulhentos.
+- Na maré baixa os passos na água ficam 15% mais discretos.
+- Na maré alta a Lia anda 10% mais devagar dentro d'água.
+- O nível visual da água acompanha a maré: sobe e desce de verdade nas salas baixas.
+- O cano range cinco segundos antes de a maré subir, com legenda de som e um aviso na primeira vez.
+- A Lia comenta, na primeira vez que a água sobe sozinha, que parece que ela respira.
+- Cada noite a cisterna sai seca, normal ou cheia, sorteada pela semente.
+- Cisterna seca: a água baixa abafa menos e os passos soam 12% mais baixos.
+- Cisterna cheia: a água chega mais alto e cada passo ecoa 12% mais.
+- Um aviso na tela diz como está a cisterna nesta noite, sem precisar adivinhar.
+- Ao chegar no cruzamento central a Lia fala sobre o nível da água daquela noite.
+- Um dos três ramais dos túneis fica alagado a cada noite, sorteado pela semente.
+- Uma faixa de limo escuro marca a boca do ramal alagado, nas duas paredes.
+- No ramal alagado os passos fazem 25% mais barulho e a Lia fica 15% mais lenta.
+- O ramal vizinho ao alagado fica mais discreto: o barulho da água esconde parte dos seus passos.
+- Perto do ramal alagado dá para ouvir o gotejar e as bolhas antes de entrar, com legenda.
+- Na segunda jogada um cano assobia fininho nos túneis, e a legenda de som avisa de onde vem.
+- O registro que faz o cano assobiar muda de lugar a cada semente (três pontos possíveis).
+- Girar o registro prende a maré em baixa por dois minutos, e a régua da parede fica azulada enquanto durar.
+- Depois de girar o registro a Lia comenta quem o deixou ali para quem soubesse ouvir.
+- Na segunda jogada há uma barra de ferro e um cano mestre com a placa NÃO BATER no depósito.
+- Quebrar o cano mestre baixa a água de uma vez, sem seguir a ordem das válvulas.
+- A semente decide se o cano mestre resiste 3 ou 5 segundos de pancadas.
+- O estrondo do cano mestre é ouvido por todos os túneis e chama o Inspetor para lá.
+- O jogo salva um checkpoint depois que o cano mestre racha, para você não perder o que fez.
+- Em noites sorteadas da segunda jogada, uma sala dos túneis fica cheia de ruídos falsos: passos, respiração e um "Lia" no escuro.
+- Ao sair do corredor dos ruídos falsos aparece "Nada aqui era real. Quase." e a Lia fala do que ouviu.
+- O ossuário do depósito ganhou 16 caveiras de verdade na mesa e dá para escutá-las.
+- As caveiras cochicham qual dos três túmulos é o fundo daquela noite, a pista honesta da mão que sai da terra.
+- Chegar perto do ossuário já dispara um cochicho sozinho, com legenda.
+- Atrás da mesa do diretor existe uma gaveta de baixo, que abre com o seu número de noites, de mortes e de finais.
+- Dentro da gaveta de baixo está a última fotografia do Davi, e o Davi comenta.
+- Uma placa MELHOR com o seu melhor tempo dos túneis surge no giz da parede quando você chega com a lanterna.
+- Durante a corrida o jogo avisa se você está à frente ou atrás da sua melhor passagem em cada sala principal.
+- Terminar os túneis mais rápido grava a nova melhor corrida e avisa com o tempo.
+- Com sete mortes, o depósito ganha sete espelhos, um para cada vez que a Lia não voltou.
+- Cada espelho mostra a data, o capítulo e quem pegou a Lia naquela morte, e se foi dentro d'água.
+- O último espelho mostra o que ela tinha na mão: a lanterna que você tem agora, ou a mão vazia.
+- Entrar no depósito com os espelhos avisa o que está na parede do fundo.
+- As suas mortes ficam gravadas entre noites (capítulo, causa, data e se foi na água), para alimentar espelhos e cruzes.
+- Dez legendas de som novas descrevem assobio, maré, gotejar, ruído falso, pancada, batida, poço, ritmo, sino torto e cochicho.
+- O cemitério ganha uma cruz de madeira para cada morte sua, até 30, em duas fileiras na frente do portão.
+- A cruz de hoje é de madeira clara, já na primeira vez em que você morre ali.
+- Cada cruz tem uma faixa de cor pela causa da morte: vermelha, azul ou branca.
+- Ler uma cruz mostra a data, o capítulo e a causa daquela morte, sem tela cheia.
+- Mortes antigas sem registro viram cruzes de data apagada pela chuva.
+- Ler cruzes sobe um pouco o medo da Lia.
+- Na primeira cruz lida a Lia fala em voz baixa o que sentiu naquela morte.
+- Passar entre as cruzes pela primeira vez sussurra e faz a Lia dizer que é pior do que a fuga.
+- Com dez mortes nasce uma seção D no fundo do cemitério, com oito lápides que nunca estiveram no mapa.
+- A última pedra da seção D leva o nome digitado da jogadora e a data de hoje.
+- Ler a pedra da seção D assusta, a Lia comenta e vale a conquista A Seção Que Nunca Existiu.
+- Ao cavar a primeira cova, uma placa de HOJE aparece caída no túmulo com a data e o seu número de mortes.
+- A placa mostra "ainda não" para quem nunca morreu e "de novo" para quem passou de 20 mortes.
+- A Lia responde de um jeito diferente à placa de acordo com o seu número de mortes.
+- A ordem de cavar os três túmulos agora é sorteada pela semente da noite.
+- Uma tábua riscada junto ao portão diz a ordem em objetos: a fita, a roda e a folha.
+- Cavar fora da ordem do portão faz a terra gritar e o Inspetor ouvir (na segunda jogada).
+- Cavar os três na ordem certa dá uma fala da Lia e a conquista Na Ordem Deles.
+- Na segunda jogada ou nas dificuldades altas, duas covas falsas aparecem com uma pá cravada e uma vela, sorteadas pela semente.
+- Cova falsa vazia: só terra fria e um susto calado.
+- Cova falsa com pilha: um pequeno prêmio escondido na terra.
+- Cova falsa com mão: algo puxa o tornozelo da Lia, tira fôlego e faz barulho, sem matar.
+- Cavar uma cova falsa leva tempo e faz um barulho que cresce enquanto a pá afunda.
+- Cavar os três túmulos certos sem abrir nenhuma falsa dá a conquista Pá Certeira.
+- Na terceira cova da segunda jogada, uma pá cravada aceita ser batida e a terra responde.
+- A Lia lembra que o Davi batia curto, curto e um longo na parede do dormitório.
+- Acertar curto, curto, longo faz três batidas responderem de dentro da cova e empurrarem uma garrafa para cima.
+- Errar o padrão fecha a terra sobre a pá e o Inspetor ouve a pancada.
+- Um poço seco aparece no cemitério e aceita uma garrafa, uma pilha ou um curativo seu.
+- Depois de soltar o item há três segundos de silêncio antes da resposta do poço.
+- O poço pode abençoar: o medo cai e seus passos ficam mais discretos pelo resto da noite.
+- O poço pode ficar mudo, sem bênção nem praga.
+- O poço pode amaldiçoar: susto, ruído e passos mais altos até o fim da noite.
+- A resposta do poço depende da semente e do item, então o grupo de amigos compara se o poço amou cada um.
+- O primeiro banco da capela deixa a Lia esperar dez segundos em silêncio total para o Inspetor esquecer a caçada (uma vez por noite).
+- Uma barra IMÓVEL com progresso aparece enquanto a Lia espera no banco.
+- Ao esperar no banco o sino toca longe aos 4 segundos e passos se aproximam aos 7, o preço de arriscar.
+- Mexer, correr ou fazer barulho no banco range a madeira, interrompe a espera e faz ruído.
+- Esperar no banco rende a conquista Quieta no Banco.
+- Um vitral novo na parede leste da capela mostra a cada noite um anjo, uma ave ou uma criança, e cada símbolo conta quantos toques o sino pede.
+- O vitral brilha mais com os relâmpagos.
+- O sino da capela agora pede um ritmo de 3 a 5 toques, sorteado pela semente.
+- O ritmo aparece como pontos de giz na parede do fundo, com os pontos perto ou longe um do outro.
+- As velas do altar piscam o ritmo quando a Lia se aproxima, para quem joga sem som.
+- A corda do sino é puxada em toques curtos, com um contador de 0 a 5 no rótulo.
+- Errar o ritmo faz o sino soar torto, com legenda, tremor e o Inspetor vem investigar.
+- Na dificuldade Fácil a janela do ritmo é mais generosa.
+- Acertar o ritmo de primeira vale a conquista Ouvido de Sineiro.
+- A Lia explica os riscos de giz como o compasso do sino na primeira vez que puxa a corda.
+- Uma tigela das lembranças na capela troca as notas e fitas que você achou por vantagem na fuga.
+- Com três achados o sino demora mais para o Inspetor ouvir; com seis surge uma vela extra no corredor de saída; com nove os passos da fuga abafam.
+- Cada final já alcançado planta um canteiro na frente da capela: flor branca, cruz com flor azul e flor vermelha.
+- A quarta criança deixa uma cruzinha com fita vermelha no canteiro.
+- Com três canteiros uma palavra de giz, VOLTE, aparece no chão.
+- Passar pela palavra VOLTE vale a conquista Canteiro Completo.
+- Depois de ver um final, a capela volta de cabeça para baixo: a cruz invertida e as velas apagadas até o sino tocar.
+- A Lia estranha a capela torta, como se a casa soubesse que ela já viu o fim.
+- Depois do sino um relógio discreto conta a fuga até o portão.
+- A fuga recebe medalha de ouro, prata ou bronze pelo tempo e pela vida perdida.
+- O melhor tempo de fuga fica salvo e o aviso diz quando você o bateu.
+- Fuga em ouro vale a conquista Fuga de Ouro.
+- Dezesseis conquistas secretas novas do subterrâneo entram na lista do acervo.
