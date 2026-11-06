@@ -1,0 +1,108 @@
+# Lote 7 — Visual e luz
+- A chama das velas verga para o lado oposto ao Inspetor quando ele se aproxima, como uma corrente de ar monstruosa
+- Quanto mais perto o Inspetor, mais a chama se deita (pista de direção sem HUD)
+- A chama também verga para o lado da rajada de vento da noite
+- Ao ar livre a corrente de ar inclina mais a chama do que dentro de casa
+- A inclinação da chama volta sozinha, suave, depois que o perigo passa
+- A chama quase apaga e encolhe quando o Inspetor chega perto demais
+- A luz da vela cai junto com a chama quando ela está quase apagando
+- A chama treme forte no pico do trovão e do clarão do relâmpago
+- A chama estremece no subgrave do passo pesado do Inspetor a menos de 8 m
+- A intensidade da luz da vela pulsa junto com esse tremor do passo
+- No fundo do quase-apagar, a chama "morre" num tom frio de pavio se apagando
+- A chama fica inquieta (tremor leve) quando o Inspetor caça por perto, mesmo a média distância
+- No pico de um clarão forte a chama some, ofuscada pela luz do relâmpago
+- A vela ganha um tom mais quente quando o jogador está a menos de 3,5 m (conforto do esconderijo)
+- O tom quente da vela não roda na qualidade Baixa/Mínima
+- Velas que quase apagam perto do Inspetor soltam fagulhas de brasa no ar
+- As fagulhas das velas sobem, perdem força e se apagam
+- As fagulhas são levadas de lado pelo vento da noite
+- As fagulhas desligam na qualidade Baixa/Mínima e no QA
+- Um trovão forte faz todas as lâmpadas acesas caírem juntas num instante
+- A queda das lâmpadas no trovão acompanha a força do clarão
+- O filamento do bulbo esfria (brilho cai) junto com a queda da luz
+- Lâmpadas a menos de 6 m do Inspetor caem mais fundo no trovão (fiação mais fraca)
+- Com "reduzir flashes", a queda das lâmpadas é suave e mais longa, sem estrobo
+- Num trovão muito forte e raro, as luzes apagam de vez por quase 1 segundo
+- O apagão restaura o brilho do bulbo ao devolver a luz
+- A derrubada das lâmpadas não dispara durante a Procissão
+- O halo luminoso da lâmpada apaga junto com ela no trovão
+- A derrubada das lâmpadas não dispara nos túneis (sem céu) nem no QA
+- A densidade da névoa sobe quando o Inspetor caça ou está em alerta
+- A névoa também engrossa quando o Inspetor está a menos de 6 m
+- Na calmaria a névoa abre de novo, com transição lenta que não enjoa
+- A névoa "respira": a densidade pulsa junto com o drone da ambiência
+- O pulso da respiração da névoa acelera quando o perigo sobe
+- Dentro de casa o aperto da névoa é mais forte do que ao ar livre
+- No temporal a névoa fecha ainda mais nos momentos de perigo
+- A Lia solta um bafo visível à frente da câmera nas salas frias
+- O bafo sai no ritmo da respiração da Lia
+- A respiração fica mais curta (bafo mais frequente) quanto maior o medo
+- Prender o ar (ESPAÇO) dissipa o bafo na hora
+- Virar estátua também segura o bafo
+- Cada baforada nasce à frente da câmera, sobe e se dissipa
+- O bafo é levado de lado pela corrente de ar da noite
+- O bafo fica mais denso na neblina
+- O bafo fica mais denso (mais partículas) quanto maior o medo
+- O bafo só aparece no cemitério, nos túneis, na neblina ou na noite seca ao relento
+- O bafo fica mais fraco quando a Lia está escondida, para não denunciá-la
+- O bafo desliga na qualidade Baixa/Mínima (desempenho)
+- O bafo não roda no QA e é à prova de erro
+- Um clarão forte "molha" a tela com um vidro de chuva escorrendo
+- As gotas do vidro molhado escorrem e somem depois do clarão
+- O vidro molhado só aparece perto de janela, nunca nos túneis
+- O vidro molhado respeita "reduzir flashes" (fica desligado)
+- Os respingos de chuva brilham mais no pico do clarão
+- A chuva ganha um realce de opacidade no pico do clarão
+- A lua pulsa de brilho no clarão, mantendo a coerência da luz lá fora
+- O realce da lua e do céu no clarão só acontece ao ar livre
+- Relâmpagos mudos e distantes acendem o céu no começo do capítulo, sem trovão
+- O intervalo entre os clarões mudos encurta ao longo do capítulo (a tempestade chega)
+- Os clarões mudos vão ficando mais fortes conforme a frente de tempestade se aproxima
+- Dentro de casa o clarão mudo é mais fraco do que ao ar livre
+- A tempestade que chega não aparece na noite seca nem nos túneis
+- A vinheta escura das bordas pulsa com o subgrave da caça acima de 90 de medo
+- O pulso da vinheta casa com o ritmo do perigo (sincronia olho-ouvido)
+- A vinheta some suave quando o perigo passa
+- A sinestesia da vinheta respeita "reduzir flashes" e o QA
+- A ambiência dá um micro-corte de fôlego no som no pico do clarão forte
+- O micro-corte da ambiência é curto (~120 ms) e volta sozinho, suave
+- O micro-corte da ambiência não acontece com "reduzir flashes"
+- A poeira do feixe treme junto com o estrondo do trovão, que chega depois do clarão (dá para contar a distância)
+- A poeira do feixe treme no passo pesado do Inspetor a menos de 10 m, mais rápido quando ele caça
+- A poeira salta com o sub-grave da Procissão passando
+- A poeira treme a cada pulso do sino do fim
+- O infra-som da caçada a menos de 14 m faz a poeira vibrar mesmo sem fone
+- Os grãos de poeira incham e brilham mais no pulso do grave
+- O feixe da lanterna vibra 1 a 2 px a cada pulso de grave e a mão da Lia reage
+- A luz da lanterna oscila de intensidade no mesmo grave
+- Com "reduzir flashes", a vibração do feixe cai a 40%
+- A lanterna cintila de 1 a 4 Hz no ritmo do drone da sala
+- Com uma entidade a menos de 9 m, a cintilação da lanterna vira irregular
+- Quando alguém pisa no andar de cima, cai poeira fina do forro, visível no feixe, no mesmo compasso dos passos
+- A poeira do forro faz o feixe tremer e as lâmpadas balançarem a cada pisada
+- As lâmpadas respiram 4% de brilho no ciclo de 14 s da casa
+- Na caça perto, a respiração das lâmpadas acelera e vira batimento irregular
+- As lâmpadas balançam no fio com o trovão e com o grave
+- O clarão forte vem com estalo de filamento e zumbido de transformador que some em 400 ms
+- Uma porta que acabou de abrir puxa a chama das velas na direção dela por 8 s (a vela aponta a porta)
+- A corrente da porta é mais forte perto dela e vai enfraquecendo até sumir
+- Porta aberta pelo Inspetor também move as chamas, uma pista de rota sem HUD
+- A chama também desliza um fio de lado na direção da corrente de ar
+- No cemitério, pirilampos flutuam e piscam em ritmos diferentes
+- Os pirilampos apagam em círculo quando o Inspetor chega a 10 m
+- Os pirilampos voltam a acender devagar depois que ele se afasta
+- Nos túneis, cada passo do Inspetor na água desenha um anel, mesmo longe da vista
+- Nos túneis, ondas concêntricas aparecem sozinhas na água, em fila de 2 a 4, como passos invisíveis
+- No silêncio que avisa, uma vinheta escura sutil fecha devagar nas bordas da tela
+- No silêncio, as gotas de chuva passam a cair a 25% da velocidade
+- No silêncio, a poeira do feixe também flutua em câmera lenta
+- Quando o som volta, a velocidade das gotas e da poeira volta ao normal em cerca de 1 s
+- Com medo acima de 60, o vidro das salas do internato embaça das bordas para o centro
+- O embaçado do vidro cresce devagar e limpa em cerca de 4 s quando o medo cai
+- Com o vidro embaçado e o Inspetor a menos de 8 m, um "shh" se desenha no vapor
+- O trovão forte ao relento cria na lente um anel de onda de choque que se alarga por 0,4 s
+- O golpe do Inspetor também sacode a lente com a onda de choque
+- No frio, um segundo bafo mais lento e largo aparece no escuro à frente quando o Inspetor respira por perto
+- O bafo da Lia agora é uma nuvem macia, não pontos quadrados
+- As fagulhas das velas também ganharam o brilho macio

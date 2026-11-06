@@ -159,6 +159,7 @@ export function instalarVisual(C) {
       x += (Math.sin(t * 13.1) + Math.sin(t * 7.3 + 1)) * .5 * amp; y += (Math.sin(t * 11.7 + 2) + Math.sin(t * 5.9)) * .5 * amp;
     }
     if (twT > 0) { twT -= dt; x += twX; } // reflexo: a mão vira para o estalo
+    { const l7 = flash.userData.l7; if (l7) { x += l7.bx; y += l7.by; } } // lote 7: o feixe vibra 1 a 2 px com o grave
     flash.target.position.set(x, y, -5);
     if (!ativo) return;
     // pilha acabando: luz amarela/alaranjada e cone mais fechado
@@ -187,10 +188,11 @@ export function instalarVisual(C) {
     if (!poeira.visible) return;
     camera.updateMatrixWorld(); mInv.copy(camera.matrixWorld).invert();
     if (!poIni) { for (let i = 0; i < NP; i++) semente(i); poIni = true; }
-    const parado = PROC.fase === 'passando' ? 0 : 1; // a poeira congela no ar quando eles passam
+    const l7 = flash.userData.l7, l7tr = l7 ? l7.tr : 0, parado = (PROC.fase === 'passando' ? 0 : 1) * (l7 ? l7.lento : 1); // a poeira congela no ar quando eles passam; lote 7: câmera lenta no silêncio
     const vy = lugar === 'vapor' ? .12 : lugar === 'garoa' ? -2.2 : 0;
     for (let i = 0; i < NP; i++) {
       const o = i * 3;
+      if (l7tr > .02) { const j = l7tr * .035; poPos[o] += (Math.random() - .5) * j; poPos[o + 1] += (Math.random() - .5) * j; poPos[o + 2] += (Math.random() - .5) * j; } // lote 7: a poeira treme e salta com o grave
       poPos[o] += poVel[o] * dt * parado; poPos[o + 1] += (poVel[o + 1] + vy) * dt * parado; poPos[o + 2] += poVel[o + 2] * dt * parado;
       v1.set(poPos[o], poPos[o + 1], poPos[o + 2]).applyMatrix4(mInv);
       if (v1.z > -.4 || v1.z < -5.2 || Math.hypot(v1.x - flash.position.x * (1 + v1.z / 5), v1.y + .15) > Math.tan(.38) * -v1.z + .05) semente(i);
@@ -198,7 +200,7 @@ export function instalarVisual(C) {
     poGeo.attributes.position.needsUpdate = true;
     poMat.size = lugar === 'vapor' ? .055 : lugar === 'garoa' ? .014 : .018;
     poMat.color.setHex(lugar === 'vapor' ? 0xbfc8c2 : lugar === 'garoa' ? 0xb8c6dc : 0xffe6c0).multiply(flash.color);
-    poMat.opacity = I * (lugar === 'vapor' ? .09 : .55);
+    poMat.opacity = I * (lugar === 'vapor' ? .09 : .55) * (1 + l7tr * .5); poMat.size *= 1 + l7tr * .8; // lote 7: a poeira incha e brilha no pulso do grave
   }
 
   // =================================================================== VULTOS (sustos de um instante)

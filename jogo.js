@@ -25,6 +25,7 @@ import { instalarMonstrosVisual } from './src/monstros-visual.js';
 import { instalarVisualLote6 } from './src/visual-lote6.js';
 import { instalarVisualLote6B } from './src/visual-lote6b.js'; // lote 6 (2ª rodada): a casa envelhece, luas raras, lentes novas, cartões
 import { instalarMonstrosVisual2 } from './src/monstros-visual2.js';
+import { instalarVisualLote7 } from './src/visual-lote7.js';
 import { instalarAudioMundo } from './src/audio-mundo.js';
 import { instalarAudioPlataforma } from './src/audio-plataforma.js';
 import { instalarAudioSegredos } from './src/audio-segredos.js';
@@ -427,7 +428,7 @@ function lampada(x, z, h = 3.2, alcance = 8, cor = 0xffc98a, base = 6) {
 function vela(x, y, z) {
   cyl(.03, .03, .25, MAT.vela, x, y + .125, z, 8);
   const chama = new THREE.Mesh(new THREE.SphereGeometry(.016, 6, 5), new THREE.MeshBasicMaterial({ color: 0xffc060 })); chama.scale.y = 2.4; chama.position.set(x, y + .29, z); W.grupo.add(chama);
-  const l = new THREE.PointLight(0xff9a40, 1.2, 4.5, 1.8); l.position.set(x, y + .4, z); W.grupo.add(l); l.userData.vela = true;
+  const l = new THREE.PointLight(0xff9a40, 1.2, 4.5, 1.8); l.position.set(x, y + .4, z); W.grupo.add(l); l.userData.vela = true; l.userData.chama = chama; l.userData.velaBase = { x, y, z }; // lote 7: a chama fica visível ao módulo de luz para vergar com vento/Inspetor/trovão
   const ph = Math.random() * 10; VM.vela(x, y, z, l, chama); // cera e fumaça (src/visual-mundo.js)
   W.tick.push(() => { // chama tremula suave (sem pisca-pisca a cada quadro) e às vezes engasga; apagada (sustos), some
     if (l.userData.apagada) { l.intensity = 0; chama.visible = false; return; }
@@ -1679,6 +1680,7 @@ const SOMX = {
 const SX = new Proxy({}, { get: (t, k) => (...a) => { if (!AC) return; try { UIX.som('x_' + k, a); } catch (e) {} try { return SOMX[k] && SOMX[k](...a); } catch (e) { console.warn(e); } } }); // Lote 3: os sons das entidades também ganham legenda
 // Silêncio repentino: abafa o mundo inteiro por um instante
 function abafarMundo(nivel, dur) {
+  try { VL7.silencio(dur); } catch (e) {} // lote 7: o silêncio que avisa fecha a vinheta e dilata o tempo da chuva
   if (!AC || !master) return;
   const t = AC.currentTime, g = master.gain; g.cancelScheduledValues(t); g.setValueAtTime(g.value, t);
   g.linearRampToValueAtTime(OPT.vol * nivel, t + .06); g.setValueAtTime(OPT.vol * nivel, t + dur); g.linearRampToValueAtTime(OPT.vol, t + dur + .3);
@@ -2745,7 +2747,7 @@ function carregarMapa(id, spawn, { salvar = true } = {}) {
   renderObj(); renderInvMini();
   SUST.novoMapa(id);
   ML.novoMapa(id); MS.novoMapa(id); L6.novoMapa(id); L6B.novoMapa(id); // lote 6: humor da noite, memória entre jogadas, eco da morte
-  VIS.mapa(); VM.mapa(); L6V.mapa(); VL6B.mapa(); // lote 6: clima/paleta por semente, giz das mortes, ilhas de luz, troféus
+  VIS.mapa(); VM.mapa(); L6V.mapa(); VL6B.mapa(); VL7.mapa(); // lote 7: coleta as velas do mapa · lote 6: clima/paleta por semente, giz das mortes, ilhas de luz, troféus
   JGL6.mapa(id); // lote 6: Caçada, Esconderijo Podre e economia da noite
   JGL6B.mapa(id); // lote 6 (2ª rodada): giz, guizos, trouxinha e fantasma voltam ao mapa
 }
@@ -3300,6 +3302,7 @@ const SOM = {
     o.connect(g); o2.connect(g2); g2.connect(g); g.connect(BUS.sfx); o.start(); o2.start(); AMB.flash = { g, o };
   },
   silencio(dur = 1.5, nivel = .1, seco) {
+    try { VL7.silencio(dur); } catch (e) {} // lote 7
     const t = AC.currentTime;
     AUD.sils = AUD.sils.filter(w => w.ate > t); AUD.sils.push({ ate: t + dur, nivel });
     if (seco) { AUD.vacuo.gain.cancelScheduledValues(t); AUD.vacuo.gain.setValueAtTime(nivel, t); }
@@ -3635,7 +3638,8 @@ const SOM = {
   alivio() { const t = AC.currentTime; for (const [i, f] of [[0, 220], [1, 277.2], [2, 329.6]]) { const g = saida(null, .8, 'mus'); osc('sine', f, t + i * .12, 4.5, g); g.gain.setValueAtTime(.0001, t + i * .12); g.gain.exponentialRampToValueAtTime(.018, t + i * .12 + 1); g.gain.exponentialRampToValueAtTime(.0001, t + 4.4); } },
   pulso(v) { const t = AC.currentTime, g = saida(null, .2, 'amb'), o = AC.createOscillator(); o.frequency.setValueAtTime(48, t); o.frequency.exponentialRampToValueAtTime(36, t + .5); o.connect(g); env(g, t, .02, .3 * v, .55); o.start(t); o.stop(t + .65); },
   metal(v = 1) { const t = AC.currentTime, g = saida(null, .5, 'amb'); burst(t, .12, 'bandpass', rand(2000, 3500), 15, g); env(g, t, .001, .5 * v, .12); const g2 = saida(null, .3, 'amb'); osc('triangle', rand(90, 120), t, .2, g2); env(g2, t, .002, .15 * v, .15); },
-  passosTeto() { const t = AC.currentTime, x0 = P.pos.x + rand(-4, 4), z0 = P.pos.z + rand(-4, 4), a = rand(0, 6.28), n = 4 + (Math.random() * 3 | 0); for (let i = 0; i < n; i++) { const pos = { x: x0 + Math.cos(a) * i * .7, y: 5.5, z: z0 + Math.sin(a) * i * .7 }, k = i * .62, g = saida(pos, .3, 'amb'); burst(t + k, .25, 'lowpass', 230, 1, g); env(g, t + k, .01, .5, .22); } depois(n * 300, () => SOM.rangido(x0, 5.5, z0, .25, 'amb')); },
+  lampadaEstala(f = 1) { const t = AC.currentTime, g = saida(null, .2, 'sfx'); burst(t, .05, 'highpass', 3200, 1.2, g); env(g, t, .001, .2 * f, .06); const g2 = saida(null, .3, 'amb'); osc('sawtooth', 118, t + .02, .45, g2); env(g2, t + .02, .06, .05 * f, .38); }, // lote 7: estalo de filamento e zumbido de transformador que sobe e some em ~400 ms
+  passosTeto() { try { VL7.poeiraTeto(); } catch (e) {} const t = AC.currentTime, x0 = P.pos.x + rand(-4, 4), z0 = P.pos.z + rand(-4, 4), a = rand(0, 6.28), n = 4 + (Math.random() * 3 | 0); for (let i = 0; i < n; i++) { const pos = { x: x0 + Math.cos(a) * i * .7, y: 5.5, z: z0 + Math.sin(a) * i * .7 }, k = i * .62, g = saida(pos, .3, 'amb'); burst(t + k, .25, 'lowpass', 230, 1, g); env(g, t + k, .01, .5, .22); } depois(n * 300, () => SOM.rangido(x0, 5.5, z0, .25, 'amb')); },
   batidasChao() { const t = AC.currentTime, x = P.pos.x + rand(-3, 3), z = P.pos.z + rand(-3, 3); for (let i = 0; i < 3; i++) { const g = saida({ x, y: -2, z }, .4, 'amb'); burst(t + i * .45, .3, 'lowpass', 180, 1, g, 0); env(g, t + i * .45, .005, .7, .25); } },
   tremor() { const t = AC.currentTime, g = saida(null, .5, 'amb'), o = AC.createOscillator(); o.frequency.value = 28; o.connect(g); g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(.35, t + .8); g.gain.exponentialRampToValueAtTime(.0001, t + 3.2); o.start(t); o.stop(t + 3.3); const g2 = saida(null, .4, 'amb'); burst(t, 3, 'lowpass', 120, 1, g2, 0); env(g2, t, .8, .4, 2.2); for (let i = 0; i < 6; i++) { const k = 1 + rand(0, 2), g3 = saida({ x: P.pos.x + rand(-3, 3), y: 2.5, z: P.pos.z + rand(-3, 3) }, .4, 'amb'); burst(t + k, .02, 'bandpass', rand(2000, 4000), 4, g3); env(g3, t + k, .001, .08, .02); } P.shake = Math.max(P.shake, .012); },
   predio() { const x = P.pos.x + rand(-7, 7), z = P.pos.z + rand(-7, 7), t = AC.currentTime; if (Math.random() < .5) SOM.rangido(x, 2.6, z, .35, 'amb'); else { const g = saida({ x, y: 2.6, z }, .5, 'amb'); burst(t, .05, 'bandpass', 1100, 4, g); env(g, t, .001, .3, .05); } },
@@ -4040,9 +4044,9 @@ function updateClima(dt) {
     ventoT -= dt; if (ventoT <= 0) { ventoT = rand(2, 6); vento = rand(-3.5, 3.5) * CL.vento; } // rajadas de vento inclinam a chuva
     ventoAtual = lerp(ventoAtual, vento, Math.min(1, dt * .8));
     chuva.position.set(camera.position.x, 0, camera.position.z); respingos.position.copy(chuva.position);
-    const a = chuvaPos, r = resPos;
+    const a = chuvaPos, r = resPos, lentoCh = VL7.lento || 1; // lote 7: no silêncio as gotas caem a 25%
     for (let i = 0; i < NCH; i++) {
-      const o = i * 6; a[o + 1] -= chuvaVel[i] * dt; a[o] += ventoAtual * dt;
+      const o = i * 6; a[o + 1] -= chuvaVel[i] * dt * lentoCh; a[o] += ventoAtual * dt * lentoCh;
       if (a[o + 1] < 0) {
         if (Math.random() < .35 * CL.resp) { const k = resI++ % NRES; r[k * 3] = a[o]; r[k * 3 + 1] = .03; r[k * 3 + 2] = a[o + 2]; resVida[k] = .12; }
         a[o + 1] = 14; a[o] = rand(-20, 20); a[o + 2] = rand(-20, 20);
@@ -4597,6 +4601,15 @@ const L6V = instalarVisualLote6({
 const VL6B = instalarVisualLote6B({
   THREE, scene, camera, renderer, canvas, flash, flashFill, hemi, moon, chuvaMat, W, P, M, ANA, PROC, MAT, TX, OPT, VIS, L6V, SFX, toast, conquista, canvasTex, rand, clamp, lerp, roomAt, perf: () => perf,
   get S() { return S; }, get mode() { return mode; }, get raioI() { return raioI; }, get AC() { return AC; } });
+// Lote 7: som e atmosfera pelo lado da luz/chuva/partículas (src/visual-lote7.js)
+const VL7 = instalarVisualLote7({
+  THREE, scene, camera, flash, hemi, moon, chuva, chuvaMat, respingos, W, P, OPT, SFX, canvasTex, rand, clamp, lerp, toast,
+  get S() { return S; }, get M() { return M; }, get mode() { return mode; }, get PROC() { return PROC; }, get raioI() { return raioI; },
+  perf: () => perf, vento: () => ventoAtual, baixa: () => { try { return !PLAT.antialias(); } catch (e) { return false; } },
+  estatua: () => P.estatua > .9, droneNivel: () => { try { return (AMB.drone && AMB.drone.gain.value) || 0; } catch (e) { return 0; } },
+  AC: () => AC, AMB: () => AMB, AUD: () => AUD, criarOnda,
+  climaId: () => { try { const n = (L6V.clima && L6V.clima.nome) || ''; return n.indexOf('Neblina') === 0 ? 'neblina' : n === 'Noite seca' ? 'seca' : n === 'Garoa' ? 'garoa' : n === 'Temporal' ? 'temporal' : ''; } catch (e) { return ''; } }
+});
 PG.ligar({
   get S() { return S; }, setS: v => { S = v; }, get ui() { return ui; }, get mode() { return mode; },
   KEYS: { SAVE_KEY, CAPS_KEY, CONQ_KEY, OPT_KEY }, OPT, salvarOpt: () => lsSet(OPT_KEY, OPT), saveExterno: true, dicaExterna: true, ajudaExterna: true,
@@ -4701,9 +4714,9 @@ function frame(dt) {
   for (const d of W.doors) { d.ang = lerp(d.ang, d.target, Math.min(1, dt * (d.vel || 7))); d.pivot.rotation.y = d.ang + (d.qOff || 0); } // velocidade conforme o passo e quique no batente
   grainT -= dt;
   if (grainT <= 0) { grainT = PLAT.grao(); const d = grainImg.data; for (let i = 0; i < d.length; i += 4) { const v = Math.random() * 255; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = 255; } grain.putImageData(grainImg, 0, 0); }
-  VIS.update(dt, ativo); VM.update(dt, ativo); L6V.tick(dt); VL6B.tick(dt); SEG.depois(); // lote 6: cosméticos de feixe, clarão, lente de rejogo, troféus; cor da lanterna: papel vermelho, luz negra, lanterninha
+  VIS.update(dt, ativo); VM.update(dt, ativo); L6V.tick(dt); VL6B.tick(dt); VL7.tick(dt); SEG.depois(); // lote 7: chama reage, trovão derruba lâmpadas, névoa respira, bafo no frio, vidro molhado // // lote 6: cosméticos de feixe, clarão, lente de rejogo, troféus; cor da lanterna: papel vermelho, luz negra, lanterninha
   PLAT.depois(dt, ativo);
-  const cortados = cortarNevoa(); renderer.render(scene, camera); for (const o of cortados) o.layers.enable(0); VM.depois(); VIS.depois(); VL6B.depois(); // VIS.depois: a mão da Lia por cima · L6B.depois: lentes de pós-processo e quadros guardados
+  const cortados = cortarNevoa(); renderer.render(scene, camera); for (const o of cortados) o.layers.enable(0); VM.depois(); VIS.depois(); VL6B.depois(); VL7.depois(); // VIS.depois: a mão da Lia por cima · L6B.depois: lentes de pós-processo e quadros guardados
 }
 // Revisão do lote 2: o lote 2 quase dobrou os objetos de cada mapa. Dentro de casa e nos túneis, o que está além da
 // névoa (sobra menos de 0,4% da cor, invisível de qualquer jeito) sai só deste desenho. Ao ar livre nada muda: no
