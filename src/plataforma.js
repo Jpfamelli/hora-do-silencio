@@ -8,6 +8,7 @@ import { instalarPlat3 } from './plataforma3.js';
 import { instalarPlat4 } from './plataforma4.js';
 import { instalarPlat5 } from './plataforma-lote5.js';
 import { instalarPlat6 } from './plataforma-lote6.js';
+import { instalarPlat7 } from './plataforma-lote7.js';
 
 const KEY = 'hora-silencio-plat';
 const AUTO_KEY = 'hora-silencio-v3-auto';
@@ -69,6 +70,7 @@ let P2 = { fecharLapide() {}, abrirLapide() {}, morreu() {}, frame() {}, mapa() 
 let P4 = { frame() {}, mapa() {}, aoFim() {} }; // lote 4: segredos e easter eggs
 let P5 = { antes() {}, depois() {}, opcoes() {}, mapa() {}, montarOpcoes() {} }; // trocado em instalar() pelo módulo do lote 5
 let P6 = { montarOpcoes() {}, aoFim() {}, aoMorte() {}, aoNovaNoite() {}, escalaToque() { return 1; } }; // trocado em instalar() pelo módulo do lote 6
+let P7 = { montarOpcoes() {}, ajuste() {}, atraso(k, v) { return v; }, aposPortal() { return false; }, audioOpcoes() { return undefined; }, depois() {}, aoMorte() {}, aoCarregar() {}, aoNovaNoite() {}, aposRender() {} }; // trocado em instalar() pelo módulo do lote 7 (som e atmosfera)
 let prAtual = 1, tetoPR = 1;
 let fogAplicada = -1;
 let ultimoQuadro = 0;
@@ -381,7 +383,7 @@ function dicaAgarrao() {
   const t = toque ? (O.soltar === 'segurar' ? 'Segure o botão Usar para se soltar!' : 'Toque em Usar sem parar (ou arraste o dedo) para se soltar!') : padAtivo ? (O.soltar === 'segurar' ? 'Segure A para se soltar!' : 'Aperte A sem parar (ou sacuda o analógico) para se soltar!') : O.soltar === 'segurar' ? 'Segure E (ou Usar) para se soltar!' : O.soltar === 'tecla' ? 'Aperte E sem parar para se soltar!' : 'Sacuda o mouse para se soltar!';
   C.toast(t);
 }
-const TELAS = ['#lapide', '#portal', '#calibra', '#plat-opcoes', '#opcoes', '#keypad', '#note', '#painel', '#pause', '#death', '#escolha', '#ending', '#diario', '#title', '#aviso-mobile'];
+const TELAS = ['#p7-cal', '#lapide', '#portal', '#calibra', '#plat-opcoes', '#opcoes', '#keypad', '#note', '#painel', '#pause', '#death', '#escolha', '#ending', '#diario', '#title', '#aviso-mobile'];
 function telaAtual() { for (const s of TELAS) { const el = $(s); if (el && !el.hidden && el.getClientRects().length) return el; } return null; }
 function focaveis() { const t = telaAtual(); if (!t) return []; return [...t.querySelectorAll('button, input, select')].filter(el => !el.disabled && el.getClientRects().length && !el.closest('[hidden]')); }
 function focar(d) {
@@ -845,6 +847,7 @@ function fecharPortal() { const el = $('#portal'); if (!el || el.hidden) return;
   if (/[?&]continuar=1/.test(location.search) && !$('#b-cont').hidden) { setTimeout(() => $('#b-cont').click(), 60); return; }
   // atalho "Desempenho e acessibilidade" do aplicativo instalado
   if (/[?&]opcoes=1/.test(location.search)) { setTimeout(abrirOpcoes, 80); return; }
+  try { if (P7.aposPortal()) return; } catch (e) {} // lote 7: pergunta como a pessoa ouve na primeira abertura (ou ?som=1)
   setTimeout(() => { if (padAtivo || toque) { const b = $('#b-cont').hidden ? $('#b-novo') : $('#b-cont'); b.focus(); } }, 30); }
 
 // =====================================================================
@@ -942,8 +945,15 @@ export const PLAT = {
     try { const dc = C.R.entidades.dicas_ctx; if (dc) dc.agarrao = toque ? (O.soltar === 'segurar' ? 'Quando ele te agarrar, segure o botão Usar para se soltar.' : 'Quando ele te agarrar, toque em Usar sem parar (ou arraste o dedo pela tela) para se soltar.') : padAtivo ? (O.soltar === 'segurar' ? 'Quando ele te agarrar, segure A para se soltar.' : 'Quando ele te agarrar, aperte A sem parar ou sacuda o analógico direito para se soltar.') : O.soltar === 'segurar' ? 'Quando ele te agarrar, segure E (ou o botão Usar) sem largar para se soltar.' : O.soltar === 'tecla' ? 'Quando ele te agarrar, aperte E sem parar para se soltar.' : 'Quando ele te agarrar, sacuda o mouse com força para se soltar. (Em Desempenho > Controles dá para trocar por apertar ou segurar.)'; } catch (e) {}
     P2.morreu();
     try { P6.aoMorte(); } catch (e) {}
+    try { P7.aoMorte(); } catch (e) {}
   },
-  aoCarregar() { fila.length = 0; graca = 0; limparTeclas(); calmaT = 0; },
+  aoCarregar() { fila.length = 0; graca = 0; limparTeclas(); calmaT = 0; try { P7.aoCarregar(); } catch (e) {} },
+  // lote 7: som e atmosfera (src/plataforma-lote7.js)
+  somAjuste() { P7.ajuste(); },
+  irPronto(seg, curva, sr) { return P7.irPronto ? P7.irPronto(seg, curva, sr) : null; },
+  audioOpcoes() { return P7.audioOpcoes(); },
+  atraso(k, v) { return P7.atraso(k, v); },
+  aposRender() { P7.aposRender(); },
   antes(dt) {
     if (!C) return dt;
     pad(dt); toqueFrame(dt); travaFrame(); P5.antes(dt);
@@ -997,10 +1007,11 @@ export const PLAT = {
     atualizarIndicadores();
     const cs = $('#tq-pular'); if (cs) cs.hidden = C.mode !== 'cena';
     PLAT._fpsT = (PLAT._fpsT || 0) - dt;
-    if (O.fps && PLAT._fpsT <= 0) { PLAT._fpsT = .5; const f = $('#fps'); if (f) f.textContent = Math.round(1000 / mediaMs) + ' qps · ' + mediaMs.toFixed(1) + ' ms · ' + prAtual.toFixed(2) + 'x · ' + Q().nome + (C.renderer.info ? ' · ' + C.renderer.info.render.calls + ' desenhos · ' + C.renderer.info.memory.geometries + ' geom. · ' + C.renderer.info.memory.textures + ' text.' : '') + (P3.poolInfo() ? ' · ' + P3.poolInfo() : '') + (corte ? ' · corte ' + corte + '/3' : ''); }
+    if (O.fps && PLAT._fpsT <= 0) { PLAT._fpsT = .5; const f = $('#fps'); if (f) f.textContent = Math.round(1000 / mediaMs) + ' qps · ' + mediaMs.toFixed(1) + ' ms · ' + prAtual.toFixed(2) + 'x · ' + Q().nome + (C.renderer.info ? ' · ' + C.renderer.info.render.calls + ' desenhos · ' + C.renderer.info.memory.geometries + ' geom. · ' + C.renderer.info.memory.textures + ' text.' : '') + (P3.poolInfo() ? ' · ' + P3.poolInfo() : '') + (corte ? ' · corte ' + corte + '/3' : '') + (P7.infoFps ? P7.infoFps() : ''); }
     if (C.W.grupo !== grupoAnt) { grupoAnt = C.W.grupo; P2.mapa(); P3.mapa(); try { P4.mapa(); } catch (e) {} P5.mapa(); }
     P3.depois(dt, ativo);
     P5.depois(dt, ativo);
+    P7.depois(dt, ativo);
     P2.frame(dt, ativo);
     try { P4.frame(dt, ativo); } catch (e) {}
     PLAT._tabT = (PLAT._tabT || 0) - dt; if (PLAT._tabT <= 0) { PLAT._tabT = .5; tituloAba(); }
@@ -1054,7 +1065,8 @@ export const PLAT = {
     P5 = instalarPlat5(C, { O, salvar, vibrar, aviso, emJogoAtivo, legenda, direcao, nomeDir, aplicarQual, qual: () => O.qual || 'alta', robo, get toque() { return toque; }, get padAtivo() { return padAtivo; } });
     P5.montarOpcoes($('#plat-opcoes .wrap'));
     try { P6 = instalarPlat6(C, { O, salvar, vibrar, aviso, copiar, feedback, robo, qual: () => O.qual || 'alta', get toque() { return toque; }, get padAtivo() { return padAtivo; } }); P6.montarOpcoes($('#plat-opcoes .wrap')); } catch (e) {}
-    const bnv = $('#b-novo'); if (bnv) bnv.addEventListener('click', () => setTimeout(() => { try { P6.aoNovaNoite(); } catch (e) {} }, 0), false);
+    try { P7 = instalarPlat7(C, { O, salvar, vibrar, aviso, robo, syncOpcoes, legenda, qual: () => O.qual || 'alta', get toque() { return toque; }, get padAtivo() { return padAtivo; } }); P7.montarOpcoes($('#plat-opcoes .wrap')); } catch (e) { console.warn(e); }
+    const bnv = $('#b-novo'); if (bnv) bnv.addEventListener('click', () => setTimeout(() => { try { P6.aoNovaNoite(); P7.aoNovaNoite(); } catch (e) {} }, 0), false);
     if (P3.plateia) { const pt = $('#portal'); if (pt) pt.hidden = true; }
     const dm = $('#dt-menu'); if (dm) { const lb = document.createElement('button'); lb.className = 'btn'; lb.id = 'dt-lapide'; lb.textContent = 'Guardar lápide'; dm.before(lb); lb.onclick = () => P2.abrirLapide('morte'); }
     const tcl = $('#death .teclas'); if (tcl && !/lápide/.test(tcl.textContent)) tcl.textContent += ' · L guarda a lápide';
@@ -1066,6 +1078,6 @@ export const PLAT = {
     addEventListener('resize', () => { const t = Math.min(devicePixelRatio || 1, Q().pr); if (t !== tetoPR) { tetoPR = t; prAtual = Math.min(prAtual, t); C.renderer.setPixelRatio(prAtual); } });
     requestAnimationFrame(medir);
     if ('serviceWorker' in navigator && !robo && location.protocol !== 'file:') { const reg = () => navigator.serviceWorker.register('sw.js').catch(() => {}); if (document.readyState === 'complete') reg(); else addEventListener('load', reg); }
-    window.__plat = { O, aplicarOpcoes, salvarAuto, autoValido, textoResultado, agenda, fila, pad, limparTeclas, get graca() { return graca; }, get prAtual() { return prAtual; }, simularOculto() { if (emJogoAtivo()) C.abrirPausa(); volume(0, .2); }, forcarCalma() { calmaT = 99; }, semPad() { setPad(false); }, get P2() { return P2; }, get trava() { return trava; }, travaFrame, puxar, soltarTodosPad, segPad, get AG() { return C.AG; }, get P3() { return P3; }, get P5() { return P5; }, get corte() { return corte; } };
+    window.__plat = { O, get P7() { return P7; }, aplicarOpcoes, salvarAuto, autoValido, textoResultado, agenda, fila, pad, limparTeclas, get graca() { return graca; }, get prAtual() { return prAtual; }, simularOculto() { if (emJogoAtivo()) C.abrirPausa(); volume(0, .2); }, forcarCalma() { calmaT = 99; }, semPad() { setPad(false); }, get P2() { return P2; }, get trava() { return trava; }, travaFrame, puxar, soltarTodosPad, segPad, get AG() { return C.AG; }, get P3() { return P3; }, get P5() { return P5; }, get corte() { return corte; } };
   }
 };

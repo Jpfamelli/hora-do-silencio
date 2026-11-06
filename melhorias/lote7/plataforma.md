@@ -1,0 +1,94 @@
+# Lote 7 — Plataforma e acessibilidade
+- O Three.js (r160) agora vem da própria pasta do jogo (vendor/three.module.min.js): o 3D abre mesmo com o unpkg e o jsdelivr fora do ar ou lentos
+- O service worker guarda essa cópia local do Three.js, então depois da primeira visita o jogo abre sem internet
+- Se a cópia local falhar, o carregamento tenta o unpkg e depois o jsdelivr, na mesma versão, em vez de ficar preso na tela de carregamento
+- O botão "Tentar de novo" da tela de carregamento troca de texto conforme o servidor que será tentado a seguir
+- Tirados os preconnect e dns-prefetch para unpkg e jsdelivr, que não são mais usados na abertura (menos conexões desperdiçadas)
+- A cópia local do Three.js é pré-carregada junto com a página (modulepreload), o 3D começa a ser lido mais cedo
+- A tela de carregamento da primeira visita explica que o internato está sendo guardado no aparelho para abrir direto e até sem internet
+- Três dicas novas na tela de carregamento: o botão Som do título, os graves em caixinha de notebook e celular, e jogar sem internet
+- Cache do aplicativo passou para v14 e lista o módulo novo, para a versão nova chegar na próxima abertura
+- O áudio do celular e de aparelho fraco é criado com latencyHint "balanced", que gasta menos CPU e dá menos estalos
+- As respostas de impulso do reverb (as caudas de eco de 0,6, 2,8 e 4 s) são geradas na tela de título em pedaços de 30 mil amostras entre quadros, e não de uma vez ao apertar Novo jogo
+- O impulso de 2,6 s e o ruído do efeito de voz do Inspetor e das fitas são preparados em tempo ocioso quando o áudio começa, e não na primeira fala do jogo
+- O efeito de voz reaproveita o buffer de ruído compartilhado do motor em vez de criar mais um de 2 s
+- A descrição que aparece ao compartilhar o link (og:description) agora fala do som e do Inspetor cego
+- A descrição do cartão de rede social (twitter:description) também foi reescrita com o Inspetor que caça pelo som
+- O navegador deixa de transformar números do texto em links de telefone (format-detection)
+- O link do jogo passa a enviar só a origem como referência a outros sites (política de referrer)
+- A descrição do aplicativo instalado agora diz que funciona sem internet e que o som é parte do medo
+- O aplicativo instalado ganha o atalho "Calibrar o som" (abre direto o assistente, ?som=1)
+- O endereço ?som=1 abre o assistente de calibragem logo depois do toque de início
+- Botão "Mandar o jogo a um amigo" nas opções de som: abre o compartilhar do celular ou copia o link
+- Na primeira abertura o jogo pergunta como você está ouvindo (fone, fone sem fio, caixa de notebook ou celular) e ajusta o som para isso
+- Seletor "Meu som" nas opções com quatro perfis de saída: fone com fio, fone sem fio, caixa do notebook e alto-falante do celular
+- Escolher o perfil também atualiza o "Estou de fone" do Desempenho, então o som 3D (HRTF) liga ou desliga junto
+- Em aparelho de toque o assistente já marca o alto-falante do celular como sugerido
+- Botão "Som" no título, que mostra o perfil escolhido e se o som já foi calibrado
+- Assistente de calibragem do som em passos (perfil, audibilidade, fone, sincronia, graves), com opção de pular cada passo
+- Teste de audibilidade: um tom grave, um passo seco e uma respiração tocam em seis níveis cada vez mais baixos, e você aperta "Não ouvi" quando sumirem
+- O resultado do teste vira um reforço de 0 a 12 dB aplicado a todo o jogo, para os passos distantes do Inspetor ficarem acima do que você consegue ouvir
+- Durante os testes o reforço fica desligado, para medir o aparelho sem ajuda
+- Os sons de teste passam pelo mesmo caminho do jogo (EQ, compressor e limitador do perfil), então testam o aparelho de verdade
+- Teste de fone: um passo circula pela cabeça e você diz se veio da esquerda, da direita ou de trás, em três rodadas, com opção de ouvir de novo
+- Se você errar o teste de fone, o jogo desliga o som 3D (HRTF) e passa para o som simples, melhor para caixa e mono
+- Teste de sincronia: um quadrado acende a cada clique e um controle de 0 a 400 ms atrasa a imagem até o clarão e o som chegarem juntos
+- O teste de sincronia mostra a latência de saída que o próprio aparelho informa
+- O clarão do teste de sincronia fica fraco quando "reduzir flashes" está ligado
+- Teste de graves: um tom de 55 Hz puro e depois o mesmo com harmônicos, e a resposta ajusta os graves virtuais
+- Último passo do assistente resume o perfil, o reforço e a sincronia, e deixa refazer do início
+- O assistente é navegável por controle e teclado (entra na lista de telas do foco) e Esc fecha
+- O assistente tem role de diálogo, rótulo e resultado em região viva, para leitor de tela
+- Nos botões do assistente, no celular, cada toque dá um tique de vibração na mão
+- Se o navegador ainda não liberou o som, o assistente avisa em vez de ficar mudo
+- Pular a calibragem na primeira vez é lembrado: o jogo não pergunta de novo
+- Linha de estado nas opções ("Calibrado: perfil, reforço de +X dB") e botão para zerar a calibragem
+- Medidor de nível da saída de som no assistente e nas opções, para ver se o jogo está mesmo tocando
+- Graves virtuais ajustáveis por controle deslizante (0 a 200%): harmônicos 2x e 3x do grave que caixinha e celular não tocam
+- Caixa de som comum (sem fone) ganha uma dose leve de graves virtuais, antes só notebook e celular tinham
+- Presença de voz (realce de médios em 900 Hz) conforme o perfil, com controle deslizante
+- No alto-falante do celular entra um compressor extra, para os sons baixos não sumirem
+- O reverb diminui no alto-falante pequeno (55% no celular, 80% no notebook), porque a cauda embola o som
+- Opção Infrassom (completo, suavizado abaixo de 40 Hz, cortado abaixo de 80 Hz) para quem se incomoda com o zumbido grave da caçada, do sino e dos sustos
+- No celular o teto de vozes de áudio simultâneas cai de 24 para 12; o ambiente é cortado primeiro e perigo, voz e sustos continuam tocando
+- No áudio leve o teto cai para 8 vozes
+- As opções mostram o número de vozes de áudio em uso, o limite do aparelho, a latência de saída e as falhas do áudio dos últimos 10 s
+- O contador de qps (overlay de depuração) ganhou vozes de áudio, áudio leve e sincronia
+- Áudio leve automático: se o jogo ficar abaixo de 30 quadros por segundo por mais de 5 s, o áudio simplifica sozinho
+- Áudio leve automático também quando o relógio do áudio atrasa em relação ao da página mais de duas vezes em 10 s (sinal de estouro de buffer)
+- No áudio leve o reverb de convolução é trocado por dois atrasos com realimentação, bem mais barato, e a acústica não some
+- No áudio leve duas camadas contínuas da trilha (cordas e o cluster agudo) saem do grafo e deixam de gastar CPU
+- Quando a carga cai por 40 s sem falhas, o áudio completo volta sozinho
+- Opção Áudio leve (automático, sempre ligado, desligado) com uma linha que diz se está ativo e por quê
+- A qualidade Mínima liga o áudio leve
+- Aparelho modesto (pouca memória, poucos núcleos ou economia de dados) liga o áudio leve sozinho
+- Bateria em 15% ou menos sem carregar liga o áudio leve, e ele volta quando o aparelho é ligado na tomada
+- Sincronia imagem e som: o relâmpago é atrasado pela latência do fone, para o clarão e o trovão chegarem juntos
+- O tremor de câmera dos golpes e sustos também é atrasado pela latência, para a imagem bater com o som no fone sem fio
+- A latência é lida sozinha de outputLatency e baseLatency do AudioContext (acima de 120 ms)
+- No perfil de fone sem fio o jogo assume 160 ms quando o Chrome informa zero, o que é comum em Bluetooth
+- Controle manual de 0 a 400 ms nas opções, com os modos automático, sem ajuste e manual
+- Ao trocar de fone no meio da sessão a latência é lida de novo
+- Opção "Só o mundo, sem trilha": desliga a música (barramento e as quatro camadas contínuas) e deixa só o som do prédio
+- Sem trilha, o aviso de início da caçada passa a ser batidas no chão no lugar do acorde de tensão
+- Sem trilha, a Procissão é anunciada por batidas no chão e rangidos do prédio
+- Sem trilha, durante a caçada o prédio range de tempos em tempos para o jogador sentir a ameaça
+- Os avisos do modo sem trilha têm legenda ("o prédio treme e range")
+- Pulso de tensão no controle e no celular: o Inspetor caçando vira uma batida dupla que acelera quando ele chega perto
+- A Ana dá um toque curto e agudo (só o motor fraco) que acelera com a proximidade, diferente das outras ameaças
+- A Procissão chega como uma onda longa e grave
+- Nos controles compatíveis os gatilhos (trigger-rumble) pulsam junto com as batidas
+- Os pulsos têm limite de frequência para poupar o motor de vibração
+- O acorde de susto da caçada ganha um solavanco de vibração
+- Os passos do Inspetor a menos de 7 m dão um tremor leve que cresce com a proximidade
+- O trovão ressoa no controle e no celular um instante depois do clarão
+- Opção para desligar o pulso de tensão
+- Botão "Sentir os avisos" toca os três padrões (Inspetor, Ana, Procissão), para o jogador aprender a diferença
+- Botão "Ouvir o Inspetor a 8 m" toca três passos reais do jogo à distância em que ele precisa ser ouvido
+- Botão "Ouvir um trovão" para checar graves e volume com um som do jogo
+- Botão "Destravar o som" para quando o navegador ou o aparelho (iPhone no silencioso, por exemplo) deixou o áudio mudo
+- Clipe do susto (opcional): grava os últimos segundos de imagem e som num arquivo webm leve, só no aparelho, sem enviar nada
+- O clipe tem 640x360 a 15 quadros, com a legenda "sobrevivi até aqui" e o nome do capítulo
+- Dois gravadores defasados em 10 s garantem de 10 a 20 s de clipe sem guardar o vídeo inteiro
+- Na tela de morte aparece o botão para salvar o clipe ou mandá-lo pelo compartilhar do celular
+- O clipe é desligado em qualidade Baixa e com áudio leve, para não pesar em aparelho fraco

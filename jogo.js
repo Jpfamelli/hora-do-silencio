@@ -1242,7 +1242,7 @@ function updatePlayer(dt) {
   const folego = (100 - S.stamina) / 100, resp = moving ? 0 : Math.sin(perf * (1.5 + folego * 2.6)) * (.004 + folego * .012) * (P.prende ? .2 : 1);
   P.rollLado = lerp(P.rollLado, moving ? -st * (P.sprinting ? .018 : .01) : 0, Math.min(1, dt * 6)); // inclina de leve para o lado em que anda
   const firme = P.prende ? .3 : (P.estatua ? .45 : 1); // prender o ar (ou virar estátua) firma o corpo contra o tremor do medo
-  const sh = P.shake + (S.fear > 70 ? (S.fear - 70) / 30 * .015 * firme : 0);
+  const sh = PLAT.atraso('sh', P.shake) + (S.fear > 70 ? (S.fear - 70) / 30 * .015 * firme : 0);
   camera.position.set(hx + rand(-sh, sh), P.h + bobY + resp + rand(-sh, sh) - (P.naAgua ? .12 : 0) - Math.abs(P.incl) * .04, hz + rand(-sh, sh));
   // sair do esconderijo também tem gesto: a câmera desliza para fora em vez de pular
   if (P.camK < 1) { P.camK = Math.min(1, P.camK + dt / .35); _camAlvo.copy(camera.position); camera.position.lerpVectors(P.camDe, _camAlvo, suave(P.camK)); }
@@ -3057,6 +3057,7 @@ const alvoAtual = () => alvo;
 const SFX = new Proxy({}, { get: (t, k) => (...a) => { if (!AC) return; try { UIX.som(k, a); } catch (e) {} try { return SOM[k] && SOM[k](...a); } catch (e) { console.warn(e); } } });
 const depois = (ms, fn) => setTimeout(() => { try { if (AC) fn(); } catch (e) { console.warn(e); } }, ms);
 function gerarIR(seg, curva) {
+  try { const pronto = PLAT.irPronto(seg, curva, AC.sampleRate); if (pronto) return pronto; } catch (e) {} // lote 7: impulso gerado no título, em pedaços
   const n = Math.max(1, AC.sampleRate * seg | 0), ir = AC.createBuffer(2, n, AC.sampleRate);
   for (let c = 0; c < 2; c++) { const ch = ir.getChannelData(c); for (let i = 0; i < n; i++) ch[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / n, curva); }
   return ir;
@@ -3097,11 +3098,12 @@ function aplicarVolumes() {
   if (AUD.musG) AUD.musG.gain.setTargetAtTime(musK(), t, .08);
   if (AUD.chuvaG) AUD.chuvaG.gain.setTargetAtTime(OPT.vChuva ?? 1, t, .08);
   AUD.mono.channelCount = OPT.mono ? 1 : 2;
+  try { PLAT.somAjuste(); } catch (e) {} // lote 7 (src/plataforma-lote7.js): graves virtuais, presença, compressão do celular, calibragem, sem trilha
 }
 function musK() { return OPT.semTrilha ? 0 : (OPT.vMus ?? 1); } // lote 7: volume da trilha de tensão (0 = só a casa)
 function iniciarAudio() {
   if (AC) { if (AC.state === 'suspended') AC.resume(); return; }
-  AC = new (window.AudioContext || window.webkitAudioContext)();
+  AC = new (window.AudioContext || window.webkitAudioContext)(PLAT.audioOpcoes ? PLAT.audioOpcoes() : undefined); // lote 7: latencyHint "balanced" em celular e aparelho fraco
   master = AC.createGain(); master.gain.value = OPT.vol;
   AUD.corte = AC.createGain();
   AUD.mono = AC.createGain(); AUD.mono.channelCountMode = 'explicit'; AUD.mono.channelInterpretation = 'speakers'; AUD.mono.channelCount = OPT.mono ? 1 : 2;
@@ -4080,7 +4082,7 @@ function updateClima(dt) {
   raioClock += dt;
   if (OPT.vFlash) raioI = raioClock < .3 ? .35 * raioClock / .3 : raioClock < 3 ? .35 * Math.exp(-(raioClock - .3) * 3) : 0;
   else { raioI = 0; for (const p of raioSeq) if (raioClock >= p.t) raioI = Math.max(raioI, p.i * Math.exp(-(raioClock - p.t) * 9)); if (raioClock > 3) raioSeq = []; }
-  const semCeu = W.mapa === 'tuneis', fl = semCeu ? 0 : raioI * PLAT.clarao();
+  const semCeu = W.mapa === 'tuneis', fl = semCeu ? 0 : PLAT.atraso('raio', raioI) * PLAT.clarao();
   luzBase = lerp(luzBase, fora ? 1 : 0, Math.min(1, dt * 2));
   moon.intensity = lerp(ambDentro.moon, ambFora.moon, luzBase) + fl * 3;
   hemi.intensity = lerp(ambDentro.hemi, ambFora.hemi, luzBase) + fl * .7;
@@ -4216,13 +4218,14 @@ const VOZ = (() => {
     const pr = fetch('audio/' + chave + '.mp3').then(r => r.ok ? r.arrayBuffer() : Promise.reject(0)).then(a => AC.decodeAudioData(a)).catch(() => null);
     cache.set(chave, pr); return pr;
   }
+  function iniciarEfeitos() { if (!curva) { curva = distCurve(5); curvaL = distCurve(2); imp = impulse(2.6, 1.9); ruido = ruidoBuf || noiseBuf(); } }
   function tocar(quem, texto) {
     if (!AC || (typeof OPT !== 'undefined' && OPT.vozes === false)) return;
     const chave = vozHash(quem + '|' + texto);
     Promise.resolve(bufferDe(chave)).then(buf => {
       if (!buf || !AC) return;
       parar();
-      if (!curva) { curva = distCurve(5); curvaL = distCurve(2); imp = impulse(2.6, 1.9); ruido = noiseBuf(); }
+      iniciarEfeitos();
       const out = AC.createGain(); out.gain.value = 1; out.connect(master || AC.destination); atuais.push({ disconnect: () => out.disconnect() });
       const vol = quem === 'inspetor' ? .95 : TAPE[quem] ? .85 : .9;
       const grupo = quem === 'inspetor' ? 'inspetor' : quem === 'radio' ? 'radio' : TAPE[quem] ? 'fita' : 'limpo';
@@ -4263,7 +4266,7 @@ const VOZ = (() => {
       if (dur > 0 && subAtual && subAtual.quem === quem) subT = Math.max(subT, dur + .5);
     });
   }
-  return { tocar, parar };
+  return { tocar, parar, aquecer: () => { if (AC) iniciarEfeitos(); } }; // lote 7: o impulso de 2,6 s e o ruído nascem no título, não na primeira fala
 })();
 let toastT;
 let toastUlt = '', toastQuando = 0;
@@ -4746,7 +4749,7 @@ function frame(dt) {
   if (grainT <= 0) { grainT = PLAT.grao(); const d = grainImg.data; for (let i = 0; i < d.length; i += 4) { const v = Math.random() * 255; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = 255; } grain.putImageData(grainImg, 0, 0); }
   VIS.update(dt, ativo); VM.update(dt, ativo); L6V.tick(dt); VL6B.tick(dt); VL7.tick(dt); SEG.depois(); // lote 7: chama reage, trovão derruba lâmpadas, névoa respira, bafo no frio, vidro molhado // // lote 6: cosméticos de feixe, clarão, lente de rejogo, troféus; cor da lanterna: papel vermelho, luz negra, lanterninha
   PLAT.depois(dt, ativo);
-  const cortados = cortarNevoa(); renderer.render(scene, camera); for (const o of cortados) o.layers.enable(0); VM.depois(); VIS.depois(); VL6B.depois(); VL7.depois(); // VIS.depois: a mão da Lia por cima · L6B.depois: lentes de pós-processo e quadros guardados
+  const cortados = cortarNevoa(); renderer.render(scene, camera); for (const o of cortados) o.layers.enable(0); VM.depois(); VIS.depois(); VL6B.depois(); VL7.depois(); PLAT.aposRender(); // VIS.depois: a mão da Lia por cima · L6B.depois: lentes de pós-processo e quadros guardados
 }
 // Revisão do lote 2: o lote 2 quase dobrou os objetos de cada mapa. Dentro de casa e nos túneis, o que está além da
 // névoa (sobra menos de 0,4% da cor, invisível de qualquer jeito) sai só deste desenho. Ao ar livre nada muda: no
@@ -4767,5 +4770,5 @@ function cortarNevoa() {
 }
 requestAnimationFrame(loop);
 
-PLAT.instalar({ THREE, renderer, scene, camera, flash, chuva, chuvaGeo, NCH, P, M, ANA, PROC, W, keys, OPT, SOM, AMB, R, AG, conquista, lsGet, lsSet, SAVE_KEY, CAPS_KEY, CONQ_KEY, onKey, toast, abrirPausa, fecharPausa, entrarJogo, carregarSnap, iniciarAudio, lockPointer, unlock, roomAt, setOpt, entrarMaisPerto, SFX, get chamado() { return chamadoArmadilha; }, get alvo() { return alvo; }, get S() { return S; }, get ui() { return ui; }, get mode() { return mode; }, get locked() { return locked; }, get AC() { return AC; }, get master() { return master; } });
+PLAT.instalar({ THREE, renderer, scene, camera, flash, chuva, chuvaGeo, NCH, P, M, ANA, PROC, W, keys, OPT, SOM, AMB, R, AG, conquista, lsGet, lsSet, SAVE_KEY, CAPS_KEY, CONQ_KEY, onKey, toast, abrirPausa, fecharPausa, entrarJogo, carregarSnap, iniciarAudio, lockPointer, unlock, roomAt, setOpt, entrarMaisPerto, SFX, get chamado() { return chamadoArmadilha; }, get alvo() { return alvo; }, get S() { return S; }, get ui() { return ui; }, get mode() { return mode; }, get locked() { return locked; }, get AC() { return AC; }, get master() { return master; }, get AUD() { return AUD; }, BUS, aquecerVoz: () => VOZ.aquecer() });
 window.__jogo = { finalizar: final, get S() { return S; }, P, M, ANA, PROC, W, frame, carregarMapa, objDone, iniciarProcissao, spawnAna, ativarInspetor, camera, renderer, scene, hemi, moon, salvarCheckpoint, carregarSnap, lerNota, tocarFita, pularCena, roomAt, get ui() { return ui; }, get mode() { return mode; }, get alvo() { return alvo; }, keys, onKey, SUST, novoEstado: d => { S = novoEstado(d); return S; } };
