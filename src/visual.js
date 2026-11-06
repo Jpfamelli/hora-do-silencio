@@ -760,7 +760,7 @@ export function instalarVisual(C) {
   }
   POL = instalarPolimento(C, { tex, TX_SUAVE, cone, coneMat, poMat, pegada, pegadaSe, ANAX, salvar, syncUI, mapaLanterna: ch => SEG ? SEG.mapaLanterna(ch) : null });
   SEG = instalarSegredos(C, { tex, salvar });
-  const api = { update, hud, mapa, estrobo, morte, ruido, opt: OPT, vermelha: () => !!(SEG && SEG.vermelha()), depois: () => POL.depois(), tempo: dt => POL.tempo(dt) };
+  const api = { update, hud, mapa, estrobo, morte, ruido, opt: OPT, vermelha: () => !!(SEG && SEG.vermelha()), depois: () => POL.depois(), tempo: dt => POL.tempo(dt), mao: () => POL.maoPartes() };
   window.__visual = api;
   return api;
 }

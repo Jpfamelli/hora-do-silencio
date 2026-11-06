@@ -22,6 +22,7 @@ import { criarMonstrosLote5 } from './src/monstros-lote5.js';
 import { criarMonstrosLote5B } from './src/monstros-lote5b.js';
 import { instalarMonstrosVisual } from './src/monstros-visual.js';
 import { instalarVisualLote6 } from './src/visual-lote6.js';
+import { instalarVisualLote6B } from './src/visual-lote6b.js'; // lote 6 (2ª rodada): a casa envelhece, luas raras, lentes novas, cartões
 import { instalarMonstrosVisual2 } from './src/monstros-visual2.js';
 import { instalarAudioMundo } from './src/audio-mundo.js';
 import { instalarAudioPlataforma } from './src/audio-plataforma.js';
@@ -2732,7 +2733,7 @@ function carregarMapa(id, spawn, { salvar = true } = {}) {
   renderObj(); renderInvMini();
   SUST.novoMapa(id);
   ML.novoMapa(id); MS.novoMapa(id); L6.novoMapa(id); L6B.novoMapa(id); // lote 6: humor da noite, memória entre jogadas, eco da morte
-  VIS.mapa(); VM.mapa(); L6V.mapa(); // lote 6: clima/paleta por semente, giz das mortes, ilhas de luz, troféus
+  VIS.mapa(); VM.mapa(); L6V.mapa(); VL6B.mapa(); // lote 6: clima/paleta por semente, giz das mortes, ilhas de luz, troféus
   JGL6.mapa(id); // lote 6: Caçada, Esconderijo Podre e economia da noite
 }
 function syncLuzes() {
@@ -4037,7 +4038,7 @@ function updateClima(dt) {
   // o clarão tinge o céu e a névoa de azul e faz a chuva brilhar
   scene.background.copy(CEU0).lerp(CEU1, fl * .7 * luzBase); scene.fog.color.copy(NEV0).lerp(NEV1, fl * .8 * luzBase);
   chuvaMat.opacity = (.3 + fl * .5) * CL.chuvaOp;
-  L6V.posClima(); // lote 6: tinte da paleta da noite na névoa e no céu
+  L6V.posClima(); VL6B.posClima(); // lote 6: tinte da paleta da noite na névoa e no céu · luas raras, amanhecer, estações
   const perto = M.ativo ? M.pos : null;
   if (!PROC.fase) for (const L of W.lampadas) {
     if (!L.ligada) continue;
@@ -4553,6 +4554,10 @@ const VM = instalarMundoVisual({ THREE, scene, camera, renderer, flash, hemi, mo
 const L6V = instalarVisualLote6({
   THREE, scene, camera, renderer, canvas, flash, flashFill, hemi, moon, chuva, chuvaMat, respingos, W, P, MAT, OPT, SFX, toast, conquista, canvasTex, rand, pick, clamp, lerp,
   get S() { return S; }, get M() { return M; }, get mode() { return mode; }, get raioI() { return raioI; }, perf: () => perf });
+// Lote 6 (2ª rodada): a casa lembra de você — envelhece, fachada que acende, luas raras, sombras, lentes de pós-processo, monitor e espelho, cartões (src/visual-lote6b*.js)
+const VL6B = instalarVisualLote6B({
+  THREE, scene, camera, renderer, canvas, flash, flashFill, hemi, moon, chuvaMat, W, P, M, ANA, PROC, MAT, TX, OPT, VIS, L6V, SFX, toast, conquista, canvasTex, rand, clamp, lerp, roomAt, perf: () => perf,
+  get S() { return S; }, get mode() { return mode; }, get raioI() { return raioI; }, get AC() { return AC; } });
 PG.ligar({
   get S() { return S; }, setS: v => { S = v; }, get ui() { return ui; }, get mode() { return mode; },
   KEYS: { SAVE_KEY, CAPS_KEY, CONQ_KEY, OPT_KEY }, OPT, salvarOpt: () => lsSet(OPT_KEY, OPT), saveExterno: true, dicaExterna: true, ajudaExterna: true,
@@ -4638,9 +4643,9 @@ function frame(dt) {
   for (const d of W.doors) { d.ang = lerp(d.ang, d.target, Math.min(1, dt * (d.vel || 7))); d.pivot.rotation.y = d.ang + (d.qOff || 0); } // velocidade conforme o passo e quique no batente
   grainT -= dt;
   if (grainT <= 0) { grainT = PLAT.grao(); const d = grainImg.data; for (let i = 0; i < d.length; i += 4) { const v = Math.random() * 255; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = 255; } grain.putImageData(grainImg, 0, 0); }
-  VIS.update(dt, ativo); VM.update(dt, ativo); L6V.tick(dt); SEG.depois(); // lote 6: cosméticos de feixe, clarão, lente de rejogo, troféus; cor da lanterna: papel vermelho, luz negra, lanterninha
+  VIS.update(dt, ativo); VM.update(dt, ativo); L6V.tick(dt); VL6B.tick(dt); SEG.depois(); // lote 6: cosméticos de feixe, clarão, lente de rejogo, troféus; cor da lanterna: papel vermelho, luz negra, lanterninha
   PLAT.depois(dt, ativo);
-  const cortados = cortarNevoa(); renderer.render(scene, camera); for (const o of cortados) o.layers.enable(0); VM.depois(); VIS.depois(); // VIS.depois: a mão da Lia por cima
+  const cortados = cortarNevoa(); renderer.render(scene, camera); for (const o of cortados) o.layers.enable(0); VM.depois(); VIS.depois(); VL6B.depois(); // VIS.depois: a mão da Lia por cima · L6B.depois: lentes de pós-processo e quadros guardados
 }
 // Revisão do lote 2: o lote 2 quase dobrou os objetos de cada mapa. Dentro de casa e nos túneis, o que está além da
 // névoa (sobra menos de 0,4% da cor, invisível de qualquer jeito) sai só deste desenho. Ao ar livre nada muda: no
