@@ -92,3 +92,109 @@
 - O novo módulo entrou na lista de arquivos para jogar sem internet (service worker)
 - O cronômetro de precisão só mexe no estilo da tela quando liga ou desliga, sem custo por quadro
 - Guardar a noite para repetir virou uma comparação leve por quadro, sem montar texto JSON toda hora
+- Fim de capítulo ganha o painel "Onde o tempo foi": uma barra dividida em andando, correndo, escondida, parada, em diálogo, em notas e morta
+- Uma segunda barra fininha embaixo mostra a sua melhor corrida do mesmo capítulo, para comparar a olho
+- A legenda da barra mostra quantos segundos você gastou em cada categoria e quanto isso difere da melhor corrida (▲ pior, ▼ melhor)
+- Uma dica em amarelo aponta a categoria que mais pesou ("42% do capítulo escondida") com um conselho curto de como cortar tempo
+- O fim de capítulo desenha a rota do capítulo na planta do mapa, amostrada a cada meio segundo, em linha de giz branco
+- A rota da sua melhor corrida aparece tracejada em dourado por cima, e o título avisa "nova melhor" quando você a supera
+- Marcadores na rota: quadrado azul onde se escondeu, círculo vermelho onde fez barulho alto, anel onde parou, triângulo onde foi caçada, losango onde levou golpe, X onde morreu
+- Uma legenda pequena embaixo da rota explica cada marcador
+- "Segredos deste lugar": o fim de capítulo diz "havia 4 segredos, você achou 2", com ícones de giz sem dizer onde estão
+- Na rejogada do mesmo capítulo, os ícones dos segredos que faltam piscam acesos, prometendo que ainda há mais
+- "Como a casa viu você": um parágrafo na voz do Inspetor descreve o seu estilo naquele capítulo, com uma dica de contra-jogo abaixo
+- Botões Copiar imagem e Salvar imagem geram um PNG da rota com título do capítulo, tempo e rank para mandar a um amigo
+- Tecla T no fim de capítulo para o relógio automático e deixa você ler com calma; E ou Enter segue
+- Na rejogada de um capítulo já terminado, segurar E por 0,6 s pula direto para o próximo, com indicador de progresso na tela
+- A melhor rota e a rota anterior de cada capítulo ficam guardadas no perfil para a comparação do mapa
+- Pulômetro: um giro brusco da câmera logo depois de um susto marcado conta como "pulou", sem alterar o jogo
+- Os sustos medidos (Inspetor te achando, Menina que conta, Procissão, golpe) são contados por fonte durante a noite
+- Opção "Pulômetro" nas Opções, ligada por padrão, para quem não quer ser medido
+- Tela de morte comentada: uma frase montada com o que aconteceu ("você morreu a 4 passos de um esconderijo vazio")
+- 35 frases de morte, escolhidas por prioridade entre as que combinam com a cena: lanterna acesa por 40 s, 5º passo agachada, garrafa sem usar, corrida dos últimos 10 s, pilha reserva esquecida
+- A tela de morte mostra "você pulou N vezes nesta noite" e os três glifos de giz da semente
+- Depois de três mortes seguidas pelo mesmo motivo, aparece uma linha amarela com um treino curto para aquele inimigo
+- Botão "Autópsia: o último minuto" na tela de morte abre a planta com o seu caminho dos últimos 60 segundos
+- Na autópsia, o caminho do Inspetor, da Menina ou da Procissão aparece tracejado em vermelho, com uma seta onde ele estava
+- Na autópsia, bolinhas vermelhas marcam onde você fez barulho e quadrados azuis onde se escondeu
+- Cada morte entra no mapa de calor acumulado do perfil, guardado por mapa com quem te pegou e em qual capítulo
+- Final da noite com Boletim escolar: cinco notas (Silêncio, Coragem, Pressa, Esconderijo, Atenção) em azul ou vermelho
+- O boletim traz a observação da professora, que junta a sua melhor e a sua pior matéria ("ouve bem, mas corre demais")
+- A assinatura "ciente" dos pais muda conforme a média da noite
+- Perfil de medo no final: um arquétipo calculado das suas estatísticas (A Corredora, A Rata de Armário, A Sombra, A Teimosa, A Imprudente, A Sortuda, A Curiosa, A Observadora)
+- O perfil mostra o hábito que mais te custou naquela noite
+- Um gráfico de barras mostra de quais sustos você mais se assustou e quantos pulos cada um rendeu
+- O final diz qual susto mais te fez virar a câmera
+- Epíteto da noite gerado por regra, como "a que se escondeu demais", usado no cartão e na lápide
+- Retrato de estilo e desafio sob medida: o jogo propõe o desafio oposto ao seu estilo ("você sempre se esconde, tente Sem Esconderijo")
+- O botão "Ligar este desafio e jogar" aplica o desafio sugerido e começa a noite em um clique
+- O Diário da Lia se escreve sozinho no final, com esconderijos, corridas, mortes, barulho e pulos reais da noite
+- A tela final desenha a rota de cada capítulo em miniatura, uma ao lado da outra
+- Portas dos finais: quatro portas, as dos finais já vistos acesas e as que faltam apagadas com uma pista curta de como abrir
+- Placar de iniciais estilo fliperama: recorde novo pede três letras, e a última escolha fica lembrada
+- Os cinco melhores tempos aparecem numa tabela com iniciais, dificuldade e data
+- Código da noite com semente, tempo, mortes, dificuldade e conferência (HS1-...), com botão de copiar
+- Cartão da noite desenhado em canvas, com lápide, epíteto, rotas e o código, para salvar como imagem ou copiar
+- Glifos da semente: três desenhos de giz gerados pela semente que aparecem na pausa, na morte e no resumo, para dois jogadores conferirem a mesma noite num olhar
+- Dez títulos de jogadora liberados pelo estilo de jogo (A Sombra, A Pé de Chumbo, A Que Voltou, A Que Calou o Sino, A Inteira, A Que Não Pulou, A Bibliotecária, A Muda, A Pressa Dele, A Hóspede)
+- O título escolhido aparece na linha do menu, na tela de morte e no cartão compartilhável
+- Cada título tem uma descrição de como se ganha, e os que faltam aparecem como ???
+- A tela de título mostra quantas noites você já terminou
+- "Sonhei que...": uma linha atmosférica no título gerada do que aconteceu na última noite, com detalhes que são mentira
+- Nove sonhos diferentes, que citam o armário, o número do Inspetor, a sala onde você morreu ou a lanterna que sabe o seu nome
+- Opção para esconder o "Sonhei que..." do título
+- A casa do título acende: uma janela por conquista, uma janela do sótão para o final verdadeiro e a torre com o acervo completo
+- A próxima janela da meta pisca em tom quente, e um contador "7/40 janelas" aparece embaixo
+- Opção para desligar a casa do título
+- Previsão da noite sem spoiler: ao digitar uma semente, o título mostra clima, cor da lua e nível de perigo, sem revelar o humor do Inspetor
+- Chip com o nome e a cor do perfil no canto do título, que abre a troca de perfil com um clique
+- Botão "Central do rejogo" no título reúne todas as telas de segunda jogada numa só
+- Central, aba "Hoje eu quero…": três perguntas curtas (medo, ritmo, plateia) que sugerem modo, semente e dificuldade
+- A sugestão de "Hoje eu quero" vem com código, glifos e botão Jogar agora
+- Escolher jogar com amigos usa a semente da Noite do Dia, igual para todo mundo
+- Central, aba "Roda Surpresa": gira e sorteia um presente e uma maldição para a noite
+- A roda tem clique de metrônomo que desacelera até parar, e dá para girar de novo uma única vez
+- Botão para copiar o resultado da roda ("a Roda Surpresa deu: Pesadelo e Dicas da Lia ligadas")
+- Central, aba "Tarô": três cartas desenhadas em canvas, cada uma com um modificador temático (A Torre, O Eremita, A Lua, O Sino, A Menina, O Cego, A Morte, O Juízo)
+- As cartas bloqueadas ficam viradas para baixo e se soltam quando você morre de formas diferentes ou chega a certos finais
+- Embaralhar as três cartas e jogar direto com a carta escolhida
+- Central, aba "Seu perfil": arquétipo mais frequente, histórico de estilos, mortes por inimigo e títulos de jogadora
+- Central, aba "Segredos e álbum": quantos segredos faltam por mapa, só com ícones de giz e sem dizer onde
+- O painel de segredos pode ser escondido para quem prefere a surpresa total
+- A cada dez noites jogadas, uma dica vaga sobre um segredo aleatório ainda não achado é liberada
+- Álbum da casa: silhuetas de finais, fitas, notas e páginas que se acendem quando você acha, com contador de 100%
+- Central, aba "Conquistas": molduras bronze, prata, ouro e sangue pela raridade, com filtro por moldura e por "faltam"
+- Barras por área mostram "3 de 74 faltam" sem spoiler
+- Dicas graduais nas conquistas: a descrição aparece aos poucos conforme as noites jogadas
+- As conquistas secretas ganham uma quadrinha de duas linhas, com a primeira após 3 noites e a segunda após 6
+- Central, aba "Últimas noites": histórico das dez últimas com data, final, tempo, mortes, clima e rank em cor
+- Gráfico de linhas das últimas noites com tempo, mortes, ruído e pulos, e um plano de melhoria ("seu ruído caiu 18%")
+- Comparar duas noites lado a lado, com setas de melhor ou pior e tempo por capítulo
+- Botão "repetir" em cada noite do histórico refaz aquela semente com os mesmos mutadores
+- Central, aba "Calendário": cada dia jogado vira uma marca (verde terminou, vermelho morreu, dourado Noite do Dia)
+- O calendário mostra a sequência atual e a maior sequência, e dá para navegar pelos meses
+- Clicar num dia mostra a semente, o tempo e as mortes daquele dia e deixa rejogar uma noite que você perdeu
+- Central, aba "Placares": cole o código de um amigo e abre uma tabela por semente, sem servidor
+- A tabela mostra a diferença de tempo entre você e cada amigo, e os códigos podem ser apagados
+- Placar da turma: com dois ou mais perfis, uma tabela de pontos, melhor tempo, mortes e conquistas com a coroa de quem lidera cada categoria
+- Botão que copia o placar da turma como texto para mandar no grupo
+- Central, aba "Mapa e rotas": mancha vermelha das mortes acumuladas, mais forte onde você morreu mais vezes
+- Clicar numa mancha diz quem te pegou ali e em qual capítulo
+- Replay animado das rotas: a sua última rota e a sua melhor andam juntas sobre a planta
+- Central, aba "Perfis": até 4 perfis no mesmo navegador, cada um com save, conquistas, recordes e opções próprios
+- Trocar de perfil leva um clique, e apagar um perfil só apaga os dados dele
+- Modo Visitante: uma noite que não grava nada no save, nos recordes nem nas conquistas, com aviso "só pra experimentar"
+- Se a aba for fechada no meio de uma visita, o perfil verdadeiro volta sozinho
+- Tela "quem está jogando?" antes do título quando há mais de um perfil
+- Opção Modo Memória: o objetivo some 5 segundos depois de aparecer e a tecla O lembra uma única vez por capítulo
+- Conquista "Memória de Elefante" por terminar um capítulo no Modo Memória
+- Opção Imersão total: tira as barras da tela e a vida vira o vermelho nas bordas, com pulso quando o fôlego acaba
+- Conquista "Só os Olhos" por terminar um capítulo com a Imersão total ligada
+- Ponto de giz opcional ao entrar numa sala já visitada diz quantos segredos ainda restam ali, sem dizer quais
+- Aba "Rascunho" no diário: bloco de notas de até 400 letras guardado por semente, que volta quando a mesma noite for repetida
+- Marcadores de giz no mapa do diário (perigo, esconderijo, item, dúvida) que persistem na mesma semente
+- Conquistas novas: Coração de Pedra (noite sem pular), Quadro de Honra (média 8 no boletim), Mão do Destino (jogar a noite da Roda) e Leitura de Cartas (começar com uma carta do Tarô)
+- Um grupo "Rejogo (segunda noite)" nas Opções reúne os sete interruptores novos
+- Opção para esconder a rota e o painel de tempo no fim do capítulo
+- O novo módulo e as 4 partes dele entraram na lista do funcionamento sem internet (service worker)
+- A frase do sonho com a sala agora lê "em sala de aula" em vez de repetir a palavra sala

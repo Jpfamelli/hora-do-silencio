@@ -7,6 +7,7 @@ import { criarSegredos } from './interface-segredos.js';
 import { criarSegredos2 } from './interface-segredos2.js';
 import { criarInterfaceMonstros } from './interface-monstros.js';
 import { criarInterfaceLote6 } from './interface-lote6.js';
+import { criarInterfaceLote6B } from './interface-lote6b.js';
 import { criarInterfaceMonstros2 } from './interface-monstros2.js';
 import { criarInterfaceMonstros3 } from './interface-monstros3.js';
 export function criarInterface(C) {
@@ -16,6 +17,7 @@ export function criarInterface(C) {
   let SG2 = null; // segredos e easter eggs (lote 4, 2ª leva): src/interface-segredos2.js
   let MM = null; // leitura do perigo (lote 5): src/interface-monstros.js
   let L6 = null; // rejogabilidade (lote 6): src/interface-lote6.js
+  let L6B = null; // rejogabilidade, 2ª rodada (lote 6): telemetria, fim de capítulo, morte comentada, Central: src/interface-lote6b.js
   let MM3 = null; // leitura do perigo, 3ª rodada (lote 5): src/interface-monstros3.js
   let MM2 = null; // leitura do perigo avançada (lote 5, 2ª rodada): src/interface-monstros2.js
   const $ = s => document.querySelector(s);
@@ -364,6 +366,7 @@ export function criarInterface(C) {
     if (SG) SG.morte(quem);
     if (MM) try { MM.morte(quem); } catch (e) {}
     if (L6) try { L6.morte(quem); } catch (e) {}
+    if (L6B) try { L6B.morte(quem); } catch (e) {}
     if (MM3) try { MM3.morte(quem); } catch (e) {}
   }
   function aliviar() {
@@ -521,6 +524,7 @@ export function criarInterface(C) {
     if (PL) PL.fimCap(c, rk);
     if (SG) SG.fimCap(c);
     if (L6) try { L6.fimCap(c, rk, ant); } catch (e) {}
+    if (L6B) try { L6B.fimCap(c, rk, ant); } catch (e) {}
     if (MM3) try { MM3.fimCap(c); } catch (e) {}
   }
 
@@ -561,6 +565,7 @@ export function criarInterface(C) {
     if (PL) PL.atualizarTitulo();
     if (SG) SG.atualizarTitulo();
     if (L6) try { L6.atualizarTitulo(); } catch (e) {}
+    if (L6B) try { L6B.atualizarTitulo(); } catch (e) {}
     $('#o-dif-desc').textContent = DIF_DESC[$('#o-dif').value] || '';
     focar('#title');
   }
@@ -577,12 +582,14 @@ export function criarInterface(C) {
     if (SG) SG.pausa();
     if (MM) try { MM.pausa(); } catch (e) {}
     if (MM3) try { MM3.pausa(); } catch (e) {}
+    if (L6B) try { L6B.pausa(); } catch (e) {}
   }
 
   // ---------------------------------------------------------------- TECLAS
   function tecla(e) {
     const S = C.S;
     if (L6) { try { if (L6.tecla(e)) return true; } catch (er) {} }
+    if (L6B) { try { if (L6B.tecla(e)) return true; } catch (er) {} }
     if (SG && SG.tecla(e)) return true;
     if (PL && PL.tecla(e)) return true;
     if (!$('#confirma').hidden && e.code === 'Escape') { $('#cf-nao').click(); return true; }
@@ -620,6 +627,7 @@ export function criarInterface(C) {
     if (SG) SG.frame(dt, ativo);
     if (MM) try { MM.frame(dt, ativo); } catch (e) {}
     if (L6) try { L6.frame(dt, ativo); } catch (e) {}
+    if (L6B) try { L6B.frame(dt, ativo); } catch (e) {}
     if (MM2) try { MM2.frame(dt, ativo); } catch (e) {}
     if (MM3) try { MM3.frame(dt, ativo); } catch (e) {}
     const S = C.S, P = C.P, M = C.M;
@@ -680,11 +688,12 @@ export function criarInterface(C) {
   try { SG2 = criarSegredos2(C, { PAD, GRUPOS, som, legenda, subTitulo, registrarCodigo, emCampo, focar }); } catch (e) { console.warn('[segredos2]', e); }
   try { MM = criarInterfaceMonstros(C, { PAD, GRUPOS, direcao, legenda, focar, historico: (q, t) => historico(q, t) }); } catch (e) { console.warn('[monstros-ui]', e); }
   try { L6 = criarInterfaceLote6(C, { PAD, GRUPOS, focar, subTitulo }); } catch (e) { console.warn('[rejogo-ui]', e); }
+  try { L6B = criarInterfaceLote6B(C, { PAD, GRUPOS, focar, subTitulo, abrir: L6.abrir, fechar: L6.fechar, ultSaveTempo: () => ultSaveTempo }); } catch (e) { console.warn('[rejogo-ui2]', e); }
   try { MM2 = criarInterfaceMonstros2(C, { PAD, GRUPOS, direcao, legenda, focar, historico: (q, t) => historico(q, t) }); } catch (e) { console.warn('[monstros-ui2]', e); }
   try { MM3 = criarInterfaceMonstros3(C, { PAD, GRUPOS, direcao, legenda, focar, aplicar, historico: (q, t) => historico(q, t) }); } catch (e) { console.warn('[monstros-ui3]', e); }
   aplicar();
   $('#b-opc').onclick = () => abrirOpcoes('#title');
   $('#p-opc').onclick = () => abrirOpcoes('#pause');
   atualizarTitulo();
-  return { GRUPOS, mundo: MU, papel: (id, m) => MU.papel(id, m), renderTempo: el => MU.renderTempo(el), renderPessoas: el => MU.renderPessoas(el), renderParedes: () => MU.renderParedes(), ondeNota: id => MU.ondeNota(id), marcasAbas: () => { MU.marcasAbas(); if (SG) SG.diario(); }, marcaMapa: r => MU.marcaMapa(r), telaFinal: t => { MU.telaFinal(t); if (SG) SG.telaFinal(t); if (L6) try { L6.registrarFinal(t); L6.telaFinal(t); } catch (e) {} }, renderAlbum: el => SG ? SG.renderAlbum(el) : (el.innerHTML = ''), renderUltima: el => SG ? SG.renderUltima(el) : (el.innerHTML = ''), renderMonstros: el => { if (MM) MM.renderMonstros(el); else el.innerHTML = ''; if (MM2) try { MM2.render(el); } catch (e) {} if (MM3) try { MM3.render(el); } catch (e) {} }, tecla, soltou, som, ruido, golpe, morte, objetivo, salvou, fimCap, frame, fala, historico, nomeFalante, renderPistas, renderOuvido, salaMarcada, pausa, atualizarTitulo, antesDeNovoJogo, confirmar, aplicar, mmss, get ultSaveTempo() { return ultSaveTempo; } };
+  return { GRUPOS, mundo: MU, papel: (id, m) => MU.papel(id, m), renderTempo: el => MU.renderTempo(el), renderPessoas: el => MU.renderPessoas(el), renderParedes: () => MU.renderParedes(), ondeNota: id => MU.ondeNota(id), marcasAbas: () => { MU.marcasAbas(); if (SG) SG.diario(); }, marcaMapa: r => MU.marcaMapa(r), telaFinal: t => { MU.telaFinal(t); if (SG) SG.telaFinal(t); if (L6) try { L6.registrarFinal(t); L6.telaFinal(t); } catch (e) {} if (L6B) try { L6B.telaFinal(t); } catch (e) { console.warn(e); } }, renderRascunho: el => L6B ? L6B.renderRascunho(el) : (el.innerHTML = ''), renderAlbum: el => SG ? SG.renderAlbum(el) : (el.innerHTML = ''), renderUltima: el => SG ? SG.renderUltima(el) : (el.innerHTML = ''), renderMonstros: el => { if (MM) MM.renderMonstros(el); else el.innerHTML = ''; if (MM2) try { MM2.render(el); } catch (e) {} if (MM3) try { MM3.render(el); } catch (e) {} }, tecla, soltou, som, ruido, golpe, morte, objetivo, salvou, fimCap, frame, fala, historico, nomeFalante, renderPistas, renderOuvido, salaMarcada, pausa, atualizarTitulo, antesDeNovoJogo, confirmar, aplicar, mmss, get ultSaveTempo() { return ultSaveTempo; } };
 }

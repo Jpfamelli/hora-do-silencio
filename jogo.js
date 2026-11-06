@@ -4234,7 +4234,7 @@ function conquista(id) { PG.conquista(id); } // fila, secretas e som: src/progre
 // Diário
 let abaDiario = 'obj';
 function abrirDiario() { if (JP.travado()) { JP.agoraNao(); return; } ui = 'diario'; $('#diario').hidden = false; unlock(); renderDiario(); UIX.marcasAbas(); if (S.dif === 'pesadelo') $('#d-pane').insertAdjacentHTML('afterbegin', '<div class="tarja-tempo">o tempo não para</div>'); }
-const ABAS = ['obj', 'regras', 'inv', 'notas', 'tempo', 'pessoas', 'monstros', 'pistas', 'mapa', 'ouvido', 'album', 'ultima']; // lote 4: Álbum e Última página · lote 5: Monstros (bestiário vivo)
+const ABAS = ['obj', 'regras', 'inv', 'notas', 'tempo', 'pessoas', 'monstros', 'pistas', 'mapa', 'ouvido', 'album', 'ultima', 'rasc']; // lote 4: Álbum e Última página · lote 5: Monstros (bestiário vivo)
 function irAba(id) { abaDiario = id; document.querySelectorAll('#diario nav .btn').forEach(x => x.classList.toggle('on', x.dataset.tab === id)); renderDiario(); }
 function trocarAba(e) {
   const i = ABAS.indexOf(abaDiario), m = /^Digit([0-9])$/.exec(e.code);
@@ -4298,6 +4298,7 @@ function renderDiario() {
   else if (abaDiario === 'ouvido') UIX.renderOuvido(el);
   else if (abaDiario === 'album') UIX.renderAlbum(el);
   else if (abaDiario === 'ultima') UIX.renderUltima(el);
+  else if (abaDiario === 'rasc') UIX.renderRascunho(el); // lote 6: rascunho por semente
   else {
     const salas = W.salas; if (!salas.length) return;
     const marca = UIX.salaMarcada();
@@ -4448,7 +4449,7 @@ const UIX = criarInterface({
   get S() { return S; }, P, M, ANA, PROC, W, OPT, DIFS, R, camera, renderer, keys, SFX, CAPS_KEY, SAVE_KEY, scene, get AC() { return AC; }, get master() { return master; },
   get mode() { return mode; }, get ui() { return ui; }, get fita() { return fitaTocando && !fitaPausada ? fitaTocando : null; }, loreAchado, totalLore,
   D: () => D(), salaAdj, roomAt, emitNoise, toast, sub, conquista, lsGet, lsSet, get chamado() { return chamadoArmadilha; },
-  salvarOpt: () => lsSet(OPT_KEY, OPT), setOpt, retry: () => $('#dt-retry').click(), fecharPausa, pularFimCap: () => pularFimCap()
+  salvarOpt: () => lsSet(OPT_KEY, OPT), setOpt, retry: () => $('#dt-retry').click(), fecharPausa, pularFimCap: () => pularFimCap(), pararFimCap: () => clearTimeout(capTO)
 });
 
 // =====================================================================
