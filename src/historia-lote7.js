@@ -13,12 +13,12 @@
 // =====================================================================
 
 const LEG = {
-  l7_regras: { t: 'uma criança lê as regras da casa num canto', imp: 0, cd: 10, cat: 'h' },
+  l7h_regras: { t: 'uma criança lê as regras da casa num canto', imp: 0, cd: 10, cat: 'h' },
   l7_regraInteira: { t: 'a última regra foi lida inteira', imp: 1, cd: 20, cat: 'h' },
-  l7_reza: { t: 'atrás da porta, a Irmã Celeste reza', imp: 0, cd: 24, cat: 'h' },
+  l7h_reza: { t: 'atrás da porta, a Irmã Celeste reza', imp: 0, cd: 24, cat: 'h' },
   l7_rezaVira: { t: 'a reza mudou de lado: agora ela te entrega', imp: 1, cd: 30, cat: 'p' },
   l7_horaReal: { t: 'nove badaladas distantes — e não são do jogo', imp: 1, cd: 600, cat: 'h' },
-  l7_chamada: { t: 'longe, uma menina ensaia a chamada', imp: 0, cd: 40, cat: 'h' },
+  l7h_chamada: { t: 'longe, uma menina ensaia a chamada', imp: 0, cd: 40, cat: 'h' },
   l7_chamadaNome: { t: 'a chamada tropeça no seu nome e acerta', imp: 1, cd: 60, cat: 'p' },
   l7_radio: { t: 'o rádio interrompe e fala com o seu medo', imp: 1, cd: 50, cat: 'p' },
   l7_memoria: { t: 'a sala solta uma memória sussurrada', imp: 1, cd: 18, cat: 'h' },
@@ -27,13 +27,13 @@ const LEG = {
   l7_pergunta: { t: 'uma vozinha pergunta no escuro', imp: 0, cd: 24, cat: 'h' },
   l7_incendio: { t: '1979 voltou por três segundos e foi embora', imp: 1, cd: 70, cat: 'h' },
   l7_estrofe: { t: 'a capela canta sozinha a estrofe perdida', imp: 1, cd: 40, cat: 'h' },
-  l7_assobio: { t: 'o assobio do velho volta fora de ordem', imp: 0, cd: 30, cat: 'h' },
+  l7h_assobio: { t: 'o assobio do velho volta fora de ordem', imp: 0, cd: 30, cat: 'h' },
   l7_fitaGasta: { t: 'a fita range: a verdade some sob o chiado', imp: 1, cd: 8, cat: 'h' },
   l7_pensa: { t: 'um pensamento seu, sem voz', imp: 0, cd: 14, cat: 'eu' },
   l7_motivo: { t: 'três notas distantes abrem o capítulo', imp: 0, cd: 60, cat: 'h' },
   l7_acorde: { t: 'um acorde fecha a noite', imp: 1, cd: 4, cat: 'h' },
   l7_tensao: { t: 'a música da casa aperta: ele está caçando', imp: 0, cd: 20, cat: 'p' },
-  l7_alivio: { t: 'a tensão se desfaz: ele perdeu o rastro', imp: 0, cd: 20, cat: 'h' },
+  l7h_alivio: { t: 'a tensão se desfaz: ele perdeu o rastro', imp: 0, cd: 20, cat: 'h' },
   l7_silencio: { t: '[silêncio pesado. é assim que ele gosta.]', imp: 1, cd: 30, cat: 'p' }
 };
 
@@ -140,7 +140,7 @@ export function instalarHistoriaLote7(c) {
     try {
       if (inten >= 2 && intenAnt < 2) { leg('l7_tensao'); tensT = 0; }
       if (inten === 0 && intenAnt >= 2) { // alívio: ele perdeu o rastro
-        const t = c.AC.currentTime + .05; for (const f of [147, 196, 262]) bip(t, f, 2.2, .045, 'amb', 1, 'sine'); leg('l7_alivio');
+        const t = c.AC.currentTime + .05; for (const f of [147, 196, 262]) bip(t, f, 2.2, .045, 'amb', 1, 'sine'); leg('l7h_alivio');
       }
       if (inten >= 2) {
         tensT -= dt;
@@ -171,7 +171,7 @@ export function instalarHistoriaLote7(c) {
       if (quieto() && parado() && cap >= 1) {
         const regras = R.regrasDaCasa || [];
         if (!regraLendo && pronto('regraIni', 14) && Math.random() < dt * .25) {
-          regraLendo = true; regraPausa = 0; regraOlhando = false; leg('l7_regras');
+          regraLendo = true; regraPausa = 0; regraOlhando = false; leg('l7h_regras');
         }
         if (regraLendo) {
           // "olhar para a fonte" = estar virada para uma parede próxima e com a mira baixa; aqui: desvio de olhar aleatório da casa
@@ -195,7 +195,7 @@ export function instalarHistoriaLote7(c) {
       if (quieto() && rezaCap !== cap && (mapa === 'terreo' || mapa === 'superior') && pronto('reza', 24) && Math.random() < dt * .2) {
         rezaCap = cap;
         const txt = (R.rezaPorCapitulo || {})[cap];
-        if (txt) { sub('celeste', subst(txt)); leg(cap >= 3 ? 'l7_rezaVira' : 'l7_reza'); if (cap >= 3) try { c.conquista('l7_entrega'); } catch (e) {} }
+        if (txt) { sub('celeste', subst(txt)); leg(cap >= 3 ? 'l7_rezaVira' : 'l7h_reza'); if (cap >= 3) try { c.conquista('l7_entrega'); } catch (e) {} }
       }
     } catch (e) {}
 
@@ -204,7 +204,7 @@ export function instalarHistoriaLote7(c) {
       if (quieto() && cap >= 2 && pronto('chamada', 55) && Math.random() < dt * .06) {
         const linhas = R.chamadaEnsaia || [];
         if (linhas.length >= 3) {
-          sub('crianca', subst(linhas[0])); leg('l7_chamada');
+          sub('crianca', subst(linhas[0])); leg('l7h_chamada');
           setTimeout(() => { if (jogavel()) { sub('crianca', subst(linhas[1])); vozCrianca(nome(), 420); } }, 2600);
           setTimeout(() => { if (jogavel()) { sub('crianca', subst(linhas[2])); leg('l7_chamadaNome'); } }, 5400);
         }
@@ -265,7 +265,7 @@ export function instalarHistoriaLote7(c) {
 
     // ---------- (12) o assobio do Joaquim volta errado ----------
     try {
-      if ((mapa === 'terreo' || mapa === 'superior') && pronto('assobio', 35) && Math.random() < dt * .08) { assobioErrado(); sub('voz', subst(R.assobioJoaquim)); leg('l7_assobio'); }
+      if ((mapa === 'terreo' || mapa === 'superior') && pronto('assobio', 35) && Math.random() < dt * .08) { assobioErrado(); sub('voz', subst(R.assobioJoaquim)); leg('l7h_assobio'); }
     } catch (e) {}
 
     // ---------- (10) a capela canta a estrofe perdida ----------

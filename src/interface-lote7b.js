@@ -47,7 +47,7 @@ export function criarInterfaceLote7b(C, U) {
   #l7-calib .lados i.on{opacity:1;color:#c9a75a}
   #l7-calib .linha{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:8px 0}
   #l7-pausa{max-width:560px;width:90vw;margin:8px auto;font-size:14px;line-height:1.5;text-align:left}
-  #l7-pausa h4,#l7-md h4,#l7-fc h4{font-family:"IM Fell English SC",Georgia,serif;letter-spacing:.12em;font-weight:normal;margin:10px 0 4px;color:var(--fraco,#999)}
+  #l7-pausa h4,#l7-md h4,#l7i-fc h4{font-family:"IM Fell English SC",Georgia,serif;letter-spacing:.12em;font-weight:normal;margin:10px 0 4px;color:var(--fraco,#999)}
   #l7-pausa ul,#l7-md ul{list-style:none;margin:0;padding:0}
   #l7-pausa li,#l7-md li{opacity:.88;padding:1px 0}
   #l7-pausa li small,#l7-md li small{opacity:.6}
@@ -57,10 +57,10 @@ export function criarInterfaceLote7b(C, U) {
   .l7-bar .b i{display:block;height:100%}
   .l7-mins{display:flex;align-items:flex-end;gap:2px;height:46px;margin:4px 0}
   .l7-mins i{flex:1;min-width:3px;background:#7d8aa0;border-radius:1px 1px 0 0}
-  #l7-fc,#l7-md{max-width:560px;width:90vw;margin:10px auto;text-align:left;font-size:14px}
+  #l7i-fc,#l7-md{max-width:560px;width:90vw;margin:10px auto;text-align:left;font-size:14px}
   #l7-vu{position:absolute;left:20px;bottom:116px;width:96px;height:56px;pointer-events:none;opacity:.9}
   body.l7-vu #ruido{display:none!important}
-  .l7-onda{display:inline-block;vertical-align:middle;margin-right:.4em;opacity:.8}
+  .l7i-onda{display:inline-block;vertical-align:middle;margin-right:.4em;opacity:.8}
   .l7-mixbt{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 2px}
   #b-l7-fone{font-size:17px;opacity:.85}
   .l7-fone-dica{font-family:"Special Elite",monospace;font-size:13px;opacity:.55;margin-top:4px}
@@ -88,7 +88,7 @@ export function criarInterfaceLote7b(C, U) {
     const w = 38, h = 12, f = [1.4, 3, 7, 5][tipo] ?? 3, amp = [5, 3.5, 2.2, 3.2][tipo] ?? 3, sw = [2.6, 1.6, .9, 1.3][tipo] ?? 1.5;
     let d = '';
     for (let i = 0; i <= 38; i++) { const x = i, ruido = tipo === 3 ? Math.sin(i * 2.1) * .9 : 0; const y = h / 2 + Math.sin(i / 38 * Math.PI * 2 * f) * (amp + ruido); d += (i ? 'L' : 'M') + x + ' ' + y.toFixed(1); }
-    return `<svg class="l7-onda" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" aria-hidden="true"><path d="${d}" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round"/></svg>`;
+    return `<svg class="l7i-onda" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" aria-hidden="true"><path d="${d}" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round"/></svg>`;
   }
   // chamado por interface-lote7.js em cada som legendado, antes dos enfeites
   function evento(k, def, dr, a, line) {
@@ -142,7 +142,7 @@ export function criarInterfaceLote7b(C, U) {
   function fimCap(c) {
     if (!OPT.fimBarras) return;
     const alvo = $('#fimcap'); if (!alvo) return;
-    let box = $('#l7-fc'); if (!box) { box = document.createElement('div'); box.id = 'l7-fc'; const ref = $('#fc-gancho') || $('#fc-pular'); if (ref) ref.before(box); else alvo.appendChild(box); }
+    let box = $('#l7i-fc'); if (!box) { box = document.createElement('div'); box.id = 'l7i-fc'; const ref = $('#fc-gancho') || $('#fc-pular'); if (ref) ref.before(box); else alvo.appendChild(box); }
     const rank = rankRuido(), m = Math.round(mediaRuido());
     let rec = {}; try { rec = C.lsGet(RECORDE, {}) || {}; } catch (e) {}
     const cap = C.S ? C.S.chapter : 0, ant = rec[cap];

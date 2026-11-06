@@ -20,7 +20,7 @@ const LEGENDAS = {
   l7_parouDemais: { t: '"ela parou...": ficar parada demais te entrega', imp: 1, cd: 12, cat: 'p' },
   l7_dedz: { t: 'ele murmura o que deduz de você', imp: 0, cd: 7, cat: 'p', pos: a => a[0] },
   l7_desculpa: { t: 'ele pede desculpa, baixinho, às crianças', imp: 0, cd: 10, cat: 'h', pos: a => a[0] },
-  l7_regras: { t: 'ele recita as regras da casa de boca fechada', imp: 0, cd: 9, cat: 'h', pos: a => a[0] },
+  l7m_regras: { t: 'ele recita as regras da casa de boca fechada', imp: 0, cd: 9, cat: 'h', pos: a => a[0] },
   l7_citaBarulho: { t: 'ele resmunga sobre o seu último barulho', imp: 0, cd: 7, cat: 'p', pos: a => a[0] },
   l7_memoriaSala: { t: 'ele murmura a lembrança deste cômodo', imp: 0, cd: 10, cat: 'h', pos: a => a[0] },
   l7_iscaLia: { t: 'uma voz tenta soar como você: não vá', imp: 1, cd: 10, cat: 'p', pos: a => a[0] },
@@ -59,7 +59,7 @@ const LEGENDAS = {
   l7_procPerto: { t: 'a cada badalada o coro está uma sala mais perto', imp: 1, cd: 6, cat: 'p' },
   l7_procCerca: { t: 'o coro circula o seu esconderijo', imp: 1, cd: 8, cat: 'p' },
   l7_ladainha: { t: 'a ladainha fica clara por um instante: ordem, silêncio', imp: 1, cd: 10, cat: 'h' },
-  l7_corrente: { t: 'uma corrente pesada se arrasta a cada passo dele', imp: 0, cd: 6, cat: 'p', pos: a => a[0] },
+  l7m_corrente: { t: 'uma corrente pesada se arrasta a cada passo dele', imp: 0, cd: 6, cat: 'p', pos: a => a[0] },
   l7_tensaoSuja: { t: 'a trilha range mais doente a cada capítulo', imp: 0, cd: 20, cat: 'p' },
   l7_impasse: { t: 'ele congelou na Hora do Silêncio: não faça som', imp: 1, cd: 20, cat: 'p' },
   l7_paredeSilencio: { t: 'uma parede de silêncio rola na sua direção', imp: 1, cd: 12, cat: 'p' },
@@ -323,7 +323,7 @@ export function instalarSomMonstros7(C) {
       }
       // regras da casa recitadas na ronda ("não corra... não acenda...")
       else if (est === 'patrulha' && L.regrasCd <= 0 && Math.random() < dt * .16) {
-        L.regrasCd = rand(10, 18); murmurar(M.pos, 'aooa', 104, .06); leg('l7_regras', M.pos);
+        L.regrasCd = rand(10, 18); murmurar(M.pos, 'aooa', 104, .06); leg('l7m_regras', M.pos);
       }
       // resmunga citando o seu último barulho, com a direção certa
       if (est === 'investiga' && M.ultimo && L.citaCd <= 0 && Math.random() < dt * .4) {
@@ -529,7 +529,7 @@ export function instalarSomMonstros7(C) {
       if (L.stepPrevPos && L.stepPrevPos.distanceTo(M.pos) > .5 && now - (L._correnteT || 0) > .4) {
         L._correnteT = now;
         try { const t = now, g = pos3(M.pos, .1, 'ent', .4); for (let i = 0; i < 2; i++) { C.osc('triangle', rand(1500, 2600), t + i * .05, .2, g); } C.env(g, t, .01, .06, .2); } catch (e) {}
-        if (now - (L._correnteLeg || 0) > 6) { L._correnteLeg = now; leg('l7_corrente', M.pos); }
+        if (now - (L._correnteLeg || 0) > 6) { L._correnteLeg = now; leg('l7m_corrente', M.pos); }
       }
     }
 

@@ -54,10 +54,10 @@ export function criarInterfaceLote7(C, U) {
   @keyframes l7flash{0%{opacity:.5}100%{opacity:0}}
   body.menos-mov #l7-eco .pul::before,body.menos-mov #l7-eco .pul .gl,body.menos-mov #l7-eco .anel{animation-duration:.5s}
   #l7-cala{position:absolute;inset:0;pointer-events:none;opacity:0;z-index:3;transition:opacity 1.2s ease;box-shadow:inset 0 0 160px 50px rgba(2,2,4,.9);background:radial-gradient(130% 130% at 50% 50%,transparent 52%,rgba(2,2,4,.55) 100%)}
-  #l7-sil{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:0;height:0;pointer-events:none}
-  #l7-sil svg{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
-  #l7-sil circle{fill:none;stroke:#7d8aa0;stroke-width:2;opacity:.5}
-  #l7-sil .f{stroke:#aeb9cc;transition:stroke-dashoffset .2s linear,stroke .3s}
+  #l7i-sil{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:0;height:0;pointer-events:none}
+  #l7i-sil svg{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
+  #l7i-sil circle{fill:none;stroke:#7d8aa0;stroke-width:2;opacity:.5}
+  #l7i-sil .f{stroke:#aeb9cc;transition:stroke-dashoffset .2s linear,stroke .3s}
   #l7-mask{position:absolute;right:20px;bottom:116px;width:116px;font-family:"IM Fell English SC",Georgia,serif;font-size:11px;letter-spacing:.06em;color:var(--fraco);text-shadow:0 0 5px #000;opacity:.9}
   #l7-mask .tr{height:7px;border:1px solid rgba(180,170,150,.4);border-radius:3px;margin-top:3px;overflow:hidden;background:rgba(0,0,0,.4)}
   #l7-mask .tr i{display:block;height:100%;width:0;background:linear-gradient(90deg,#5d7a3a,#9bbd62);transition:width .25s,background .3s}
@@ -65,7 +65,7 @@ export function criarInterfaceLote7(C, U) {
   #l7-part{position:absolute;left:0;right:0;bottom:0;height:34px;pointer-events:none;opacity:.8}
   #l7-cor{position:absolute;inset:0;pointer-events:none;opacity:0;box-shadow:inset 0 0 90px 22px rgba(150,20,16,.38);transition:opacity .07s}
   body.menos-mov #l7-cor{box-shadow:inset 0 0 70px 18px rgba(150,20,16,.26)}
-  #hud.panico #l7-mask,#hud.panico #l7-sil{opacity:0}
+  #hud.panico #l7-mask,#hud.panico #l7i-sil{opacity:0}
   .leg-forte{display:inline-block;font-weight:bold;letter-spacing:.02em}
   body:not(.menos-mov) .leg-tremer{display:inline-block;animation:l7tremer .12s infinite alternate}
   @keyframes l7tremer{from{transform:translate(-.5px,.3px)}to{transform:translate(.6px,-.4px)}}
@@ -86,7 +86,7 @@ export function criarInterfaceLote7(C, U) {
   function mk(id, cls) { const d = document.createElement('div'); if (id) d.id = id; if (cls) d.className = cls; d.hidden = true; return d; }
   const eco = mk('l7-eco'); eco.hidden = false;
   const cala = mk('l7-cala'); cala.hidden = false;
-  const sil = mk('l7-sil');
+  const sil = mk('l7i-sil');
   sil.innerHTML = '<svg width="86" height="86" viewBox="0 0 86 86"><circle cx="43" cy="43" r="38"/><circle class="f" cx="43" cy="43" r="38" stroke-dasharray="238.8" stroke-dashoffset="238.8" transform="rotate(-90 43 43)"/></svg>';
   const mask = mk('l7-mask'); mask.innerHTML = '<span class="lb"></span><div class="tr"><i></i></div>';
   const part = document.createElement('canvas'); part.id = 'l7-part'; part.width = 480; part.height = 34; part.hidden = true;
