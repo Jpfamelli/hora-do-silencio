@@ -1,0 +1,93 @@
+# Lote 6 — Sustos e eventos
+- Baralho de 24 sustos calados e sem dano: cada noite a casa sorteia 1 ou 2 deles para você, em salas que combinam com a cena.
+- O baralho tem memória de 30 noites: o susto que você nunca viu pesa muito e os das últimas 10 noites quase não saem de novo.
+- A sorte de cada noite vem de um código guardado só no seu aparelho, então a sua noite 5 não é a noite 5 de outra pessoa (e a mesma noite se repete igual ao recarregar).
+- Aviso depois do susto: "sustos novos nesta noite, vistos até agora X de Y", para dar meta de colecionadora.
+- Susto repetido muda de forma: da segunda vez ele pode vir dobrado (acontece duas vezes).
+- Susto repetido muda de forma: ou vem só o aviso (estalo e chiado) e nada acontece.
+- Susto repetido muda de forma: ou vem atrasado, com um estalo antes, quebrando a memória de quem decorou.
+- Conquista secreta "Sem Repetir" por ver três sustos diferentes do baralho.
+- Conquista secreta "Colecionadora de Sustos" por ver o baralho inteiro.
+- O susto que ninguém viu ainda: só depois de 20 noites, alguém esperava sentado num canto da sala e some quando a lanterna o encontra.
+- Cadeira que gira sozinha no escuro quando você a encara e some quando você chega perto.
+- Vulto que acena lá do fundo do corredor e desfaz na luz da lanterna.
+- Passos no teto que acompanham você e param no instante em que você para.
+- Lâmpada que pisca soletrando um nome, com a Lia soletrando "L... I... A...".
+- Goteira em ritmo que no fim vira um sussurro.
+- O corredor que respira ao seu redor por alguns segundos.
+- Uma porta que não estava ali aparece na parede e some quando você se aproxima (da segunda noite em diante).
+- Entidade fora do roteiro: a Ana conta até dez duas vezes seguidas ou a Procissão ecoa ao contrário (da terceira noite), com a conquista "Fora do Roteiro".
+- Figura alta demais, parada no fundo do corredor só observando (da quarta noite), com a conquista "O Alto".
+- Objeto fora do lugar: uma banqueta que "não estava aqui ontem" (ou "sumiu"), com a Lia reparando em voz alta.
+- Boneca de pano de costas no chão que, quando você olha, está virada para a porta.
+- Vulto lendário, ainda mais alto, que só aparece para quem já viu três finais.
+- Sombra comprida que desliza por uma parede da sala e some.
+- Vela que se acende sozinha perto de você, tingindo a luz de laranja.
+- Criança que corre pelo corredor e some na parede (da terceira noite).
+- Nome rabiscado na parede (LIA, DAVI, TOMÉ, ANA ou LUIZ) que dá pra ler sem abrir tela cheia.
+- Respiração do outro lado de uma porta fechada perto de você.
+- Risadinhas de criança que se afastam.
+- Passos atrás de você que param no instante em que você vira para olhar.
+- Silêncio Total: todo som do mundo cai a zero (inclusive seus passos) e o HUD some, até uma única batida de porta vir de trás.
+- O Silêncio Total dura mais quando você está calma, e dá a conquista "Silêncio Total".
+- Vulto que repete o seu caminho: uma silhueta refaz os seus passos de 8 s atrás, parando onde você parou, e some na luz (conquista "Seus Próprios Passos").
+- Coro de crianças cantando baixinho ao longe, em três vozes.
+- Aviso sem susto: luzes piscam, o rádio chia, passos se aproximam e não vem nada, e o susto de verdade chega depois, longe do aviso.
+- Noite Vazia (1 em 20, a partir da terceira): sem sustos de cenário, só ele parado a 3 m de você, no escuro, em até 12 momentos.
+- No fim do capítulo da Noite Vazia o jogo mostra o replay "ele ficou parado a 3 m de você em N momentos", com a conquista "Ele Estava Lá".
+- Noite Mansa (1 em 12): a casa fica calma demais, os sustos ambiente se espaçam e a Lia estranha o silêncio (conquista "Noite Mansa").
+- Queda geral de energia a meio capítulo numa noite sorteada: todas as luzes morrem de uma vez por 20 s.
+- Madrugada Cruel (1 em 10): três sustos encadeados em 20 s, seguidos de uma calmaria longa e falsa, com a conquista "Três em Fila".
+- Calmaria Falsa: um capítulo passa 5 minutos sem nenhum evento e então a casa cobra a conta com dois sustos juntos.
+- Onze badaladas numa noite marcada (da terceira noite): o sino bate uma a mais que a décima, e a Lia diz "Foram onze" (conquista "Mais Uma").
+- Depois da noite das onze, a Ana às vezes conta até onze fora de hora.
+- Susto-assinatura da noite: a semente escolhe um golpe marcante e o prenuncia cedo com um estalo e um vulto rápido.
+- O susto-assinatura paga mais forte no fim do capítulo.
+- Da terceira noite em diante o prenúncio da assinatura às vezes vem só no som, sem o vulto.
+- Pegadinha do veterano: às vezes o golpe da assinatura finge e some.
+- Hábito de olhar para trás (Q): depois de três olhadas na mesma noite, na próxima algo está no fundo atrás de você, e a Lia diz "eu sempre faço isso".
+- Hábito de correr no corredor: depois de uns 8 s de corrida o chão estala alto na sua frente.
+- Hábito da lanterna sempre acesa: com um estalo de aviso, a luz morre por um instante (dá para bater nela para voltar).
+- Hábito do armário favorito: com 3 usos na noite, um dedo aparece pela fresta e arranha a porta, e a Lia comenta.
+- Os hábitos de cada noite ficam guardados e a noite seguinte usa o dominante: o gatilho fica mais cedo para quem tem aquele vício.
+- Conquista secreta "Piloto Automático" por ver a casa quebrar um hábito seu de propósito.
+- Armário ocupado: numa noite sorteada o armário que você mais usa tem alguém dentro (o Davi mudo, uma mão pequena ou dois olhos vermelhos).
+- Quando é o Davi dentro do armário, ele te estende uma pilha e aponta a saída.
+- O armário ocupado fica trancado ("Ocupado") pelo resto da noite e o barulho chama o Inspetor para perto.
+- Lápide a giz com o nome de quem te pegou, no lugar exato onde você caiu (da segunda noite), legível de perto.
+- Contorno de giz do seu corpo com a lanterna caída piscando e uma respiração fraca, que some quando você chega a 1 m.
+- A casa reencena a sua última morte no mesmo canto (com a entidade que te pegou), sem dano, com a conquista "O Seu Susto".
+- Ajuda-fantasma: onde você já morreu, a sua própria voz lembra baixinho o que era para fazer ali.
+- Esconderijo queimado: o armário onde você morreu na noite passada vem marcado "aqui foi a sua última vez", com batidas e sussurro de dentro.
+- O Chamado, da terceira noite em diante, às vezes usa a sua pior causa de morte (o Inspetor, a Ana ou a Procissão) em vez do "Lia...?" comum.
+- Esconderijo podre da noite: a semente marca um armário e uma cama em cada mapa, e eles mudam de lugar a cada noite.
+- O armário podre tem um tell justo: arranhões no verso da porta, legíveis sem tela cheia, e um rangido quando você entra.
+- Ficar mais de 14 s num esconderijo podre faz uma mão te empurrar para fora, com ruído (e em algumas noites só assusta, sem tirar vida).
+- Conquista secreta "Nada é Seguro" por sobreviver ao esconderijo podre.
+- Falso alarme da Procissão fica mais raro depois da primeira noite e nunca acontece no Pesadelo nem no Uma Vida.
+- O aviso verdadeiro da Procissão ganha um tell: um quarto de segundo de silêncio total antes do chiado, que o alarme falso não tem.
+- 3h07 de verdade: se o relógio do computador marca 03:07 com o jogo aberto, as luzes apagam, o rádio diz "três e sete" e uma figura aparece (uma vez por dia, conquista "Hora Marcada").
+- Entre 03:00 e 03:10 do relógio real o sino toca longe uma vez e o jogo avisa que o internato parou o relógio.
+- A casa sentiu sua falta: depois de 7 dias sem jogar, um "Você demorou" escrito a giz aparece na tela no começo da noite.
+- Créditos falsos (cerca de 10% das noites, da terceira em diante, só se você não morreu no capítulo): tela preta com FIM e música de caixinha, que engasga e volta com a Ana contando atrás de você.
+- Conquista secreta "Isso Não Era o Fim" por cair nos créditos falsos (e eles só se repetem uma vez, para não virar hábito).
+- Quando o jogo finge que fechou: a tela vai a preto por 2 s, a Lia sussurra "não olha" e, ao voltar, há algo atrás dela.
+- Susto ao despausar: se a pausa passar de 60 s, uma porta fechada se abre ou um vulto aparece no canto da sala.
+- A boneca que anda entre as noites: a cada noite jogada ela avança da sala de brinquedos pelo corredor até a recepção.
+- Na sétima noite a boneca está no banco do passageiro do carro, virada para você (conquista "A Boneca Chegou").
+- Frequência de sustos de 0% a 200% nas opções de Desempenho: em 0% é a Noite Crua, só os monstros reais ameaçam.
+- Modo Sangue Frio: desliga todos os avisos antes dos sustos e dá conquista ao terminar um capítulo assim.
+- Modo Insone: a casa não te deixa em paz, com a calmaria do diretor de sustos encurtada (conquista "Insone").
+- Modo A Casa Mente: os golpes da assinatura passam a ser fingidos.
+- Os modos e a frequência ficam guardados entre as noites e mostram um aviso na tela ao serem trocados.
+- Falsa vitória: ao cumprir um objetivo que você já conhece, às vezes a luz apaga e algo respira perto.
+- Encarar uma porta fechada por uns 6 s forma por um piscar a cara de uma criança no ar à sua frente.
+- Depois de zerar o jogo pelo menos uma vez, pegadas molhadas passam a seguir você de vez em quando.
+- O jogo conta os seus pulos (reação forte depois de um susto): na quarta vez da noite uma voz diz "você pula bonito", com a conquista "Pula Bonito".
+- Recorde assombrado: ao terminar um capítulo sem ser pega, um sussurro "ele viu você correr" e um estalo atrás.
+- Recompensa bonita: depois de um capítulo limpo, uma vela se acende sozinha no caminho do próximo.
+- Porta que bate quando você olha para trás com Q: uma porta já visitada bate atrás de você, avisando que algo passou.
+- A sequência de sustos ambiente do diretor agora sai da semente da noite e varia a cada noite, em vez de ser sorteada solta.
+- Conquista secreta "Veterana" por chegar à quinta noite no São Lázaro.
+- Todos os eventos novos ficam calados no QA (`navigator.webdriver`) e nunca disparam durante caçada, Procissão ou Ana ativa.
+- O novo módulo entra no cache do service worker para o jogo rodar sem internet.

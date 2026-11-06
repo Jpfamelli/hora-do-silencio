@@ -8,6 +8,7 @@ import { instalarSustosL3 } from './sustos-plataforma.js';
 import { instalarSustosL4 } from './sustos-segredos.js';
 import { instalarSustosL4b } from './sustos-segredos2.js';
 import { instalarSustosL5 } from './sustos-lote5.js';
+import { instalarSustosL6 } from './sustos-lote6.js';
 
 export function criarSustos(E) {
   const { R, rand, pick, clamp, lerp, camera, scene, W, P, M, MON, ANA, ANA_G, PROC } = E;
@@ -401,7 +402,7 @@ export function criarSustos(E) {
   // ===================================================================== PROCISSÃO
   API.procFalsa = seguro(() => {
     const s = S();
-    if (s.chapter < 3 || !s.flags.procAviso || D.ultimaFalsa || Math.random() > .3) { D.ultimaFalsa = false; return false; }
+    if (s.chapter < 3 || !s.flags.procAviso || D.ultimaFalsa || Math.random() > L6.probFalsa()) { D.ultimaFalsa = false; return false; }
     D.ultimaFalsa = true; D.falsaT = 1.5; E.SFX.estatica(1.2); D.cantoSairAte = agora + 25;
     s.timers.procissao = rand(40, 70) * dif().intervalo;
     depois(1.5, () => { if (!PROC.fase) E.syncLuzes(); E.SFX.estalo({ x: P.pos.x + rand(-3, 3), z: P.pos.z + rand(-3, 3) }, .5); });
@@ -410,7 +411,7 @@ export function criarSustos(E) {
   API.procAviso = seguro(dt => {
     const s = S();
     if (!D.aviso) {
-      D.aviso = { ini: PROC.t, etapa: 0, rangT: 0 };
+      D.aviso = { ini: PROC.t, etapa: 0, rangT: 0 }; L6.tellProc(); // o aviso de verdade tem um quarto de segundo de silêncio total
       const hs = W.lockers.slice().sort((a, b) => Math.hypot(a.x - P.pos.x, a.z - P.pos.z) - Math.hypot(b.x - P.pos.x, b.z - P.pos.z));
       D.aviso.alvo = hs[0] || null;
       if (!hs[0] || Math.hypot(hs[0].x - P.pos.x, hs[0].z - P.pos.z) > 12) { PROC.t += 3; D.aviso.ini += 3; }
@@ -449,6 +450,7 @@ export function criarSustos(E) {
 
   // ===================================================================== ESCONDERIJOS
   API.armarioOcupado = seguro(L => {
+    if (L6.armarioOcupado(L)) return true; // Lote 6: o armário que você mais usa pode estar ocupado
     const s = S();
     if (L.sxOcupado) { E.SFX.trancado(); E.toast(TXT.ocupado_de_novo); return true; }
     if (s.flags.sx_ocupado || L !== D.armOcup || !(s.chapter === 2 || s.chapter === 3)) return false;
@@ -458,7 +460,7 @@ export function criarSustos(E) {
     E.toast(TXT.ocupado_toast); return true;
   });
   API.aoEsconder = seguro(L => {
-    const s = S(); D.hiddenT = 0; D.hiddenBateu = false; MUNDO.aoEsconder(L); L4.aoEsconder(L); L4b.aoEsconder(L); L5.aoEsconder(L);
+    const s = S(); D.hiddenT = 0; D.hiddenBateu = false; MUNDO.aoEsconder(L); L4.aoEsconder(L); L4b.aoEsconder(L); L5.aoEsconder(L); L6.aoEsconder(L);
     if (agora < D.ecoAte && D.ecoSala) { const r = D.ecoSala; depois(2, () => E.SFX.rangido((r.x0 + r.x1) / 2, 1, (r.z0 + r.z1) / 2, .5)); }
     if (L.tipo === 'cama') { D.camaN = (D.camaN || 0) + 1; D.camaT = 0; return; }
     const novo = !L.sxAberto; L.sxAberto = true;
@@ -478,7 +480,7 @@ export function criarSustos(E) {
     }
   });
   API.aoSair = seguro(L => {
-    const s = S(); esconderFresta(); D.espia = null; MUNDO.aoSair(L); L4.aoSair(L); L4b.aoSair(L); L5.aoSair(L);
+    const s = S(); esconderFresta(); D.espia = null; MUNDO.aoSair(L); L4.aoSair(L); L4b.aoSair(L); L5.aoSair(L); L6.aoSair(L);
     if (agora < D.cantoSairAte) { D.cantoSairAte = 0; const a = atras(4); cantoCurto(a, 1.1, .04); }
     if (L && L.tipo === 'cama' && W.mapa === 'superior' && s.chapter === 3 && s.flags.sx_rostoCama && !s.flags.sx_anaSentada && !ANA.ativa) {
       const outra = W.lockers.filter(o => o.tipo === 'cama' && o !== L && Math.hypot(o.x - L.x, o.z - L.z) < 3.5)[0];
@@ -527,7 +529,7 @@ export function criarSustos(E) {
 
   // ===================================================================== MORTE
   API.morte = seguro(quem => {
-    MUNDO.morte(quem); L3.morte(quem); L4.morte(quem); L4b.morte(quem); L5.morte(quem);
+    MUNDO.morte(quem); L3.morte(quem); L4.morte(quem); L4b.morte(quem); L5.morte(quem); L6.morte(quem);
     D.fov0 = D.fov0 || camera.fov;
     setTimeout(() => restaurarVolume(), 2400);
     som((ac, t) => { const g = E.master.gain; g.cancelScheduledValues(t); g.setValueAtTime(g.value, t); g.setValueAtTime(g.value, t + .33); g.linearRampToValueAtTime(0, t + .38); g.setValueAtTime(0, t + .53); g.setValueAtTime(E.OPT.vol, t + .54); });
@@ -569,7 +571,9 @@ export function criarSustos(E) {
     if (s.chapter === 4 && !s.flags.sx_chamadoIV) {
       s.flags.sx_chamadoIV = true; voz(pos, { f0: 230, vogais: [[300, 2300], [700, 1200], [300, 2300], [600, 1000]], dur: 1.3, vol: .1 }); E.sub('lia', TXT.chamado_davi);
     } else if (n === 3) {
-      voz(pos, { f0: 220, vogais: [[300, 2300], [800, 1200]], dur: .9, vol: .11 }); E.sub('lia', TXT.chamado_lia);
+      voz(pos, { f0: 220, vogais: [[300, 2300], [800, 1200]], dur: .9, vol: .11 });
+      let linha = null; try { linha = L6 && L6.chamadoFundo && L6.chamadoFundo(); } catch (e) {}
+      E.sub('lia', linha || TXT.chamado_lia); // na 3ª noite em diante, às vezes ele usa a sua pior causa de morte
     } else {
       voz(pos, { f0: 330, vogais: [[320, 2400], [330, 2300], [800, 1250], [780, 1200]], dur: .95, vol: .11 }); E.sub('davi', R.falas.chamado[0].texto);
     }
@@ -640,7 +644,7 @@ export function criarSustos(E) {
 
   // ===================================================================== PASSOS (eco e água)
   API.aoPasso = seguro(() => {
-    L4.aoPasso(); L4b.aoPasso(); L5.aoPasso();
+    L4.aoPasso(); L4b.aoPasso(); L5.aoPasso(); L6.aoPasso();
     if (agora < D.ecoPassosAte) { const a = atras(1.6); depois(.15, () => passoPos({ x: a.x, y: .1, z: a.z }, .5)); }
     if (P.naAgua) {
       anel(P.pos.x, P.pos.z);
@@ -650,7 +654,7 @@ export function criarSustos(E) {
 
   // ===================================================================== PAUSA E FIM DE CAPÍTULO
   API.aoPausar = seguro(() => {
-    L3.aoPausar();
+    L3.aoPausar(); L6.aoPausar();
     const s = S(); if (!s || s.flags.sx_pausa || !M.ativo || dist2(M.pos, P.pos) > 8) return;
     D.pausas = (D.pausas || 0) + 1; if (D.pausas < 3) return;
     s.flags.sx_pausa = true; const h = document.querySelector('#pause h2'); if (!h) return;
@@ -658,7 +662,7 @@ export function criarSustos(E) {
     setTimeout(() => { h.textContent = orig; h.style.color = ''; }, 1000);
   });
   API.fimCap = seguro(() => {
-    L3.fimCap();
+    L3.fimCap(); L6.fimCap();
     vacuo(1.5, .02);
     if (Math.random() < .34) setTimeout(() => voz(null, { sopro: true, vogais: [[300, 2400], [800, 1200]], dur: .6, vol: .14, wet: 0 }), 900);
     setTimeout(() => { if (!elFim) return; elFim.style.opacity = .85; E.SFX.estalo({ x: P.pos.x, z: P.pos.z }, .7); setTimeout(() => elFim.style.opacity = 0, 130); }, 3000);
@@ -710,12 +714,15 @@ export function criarSustos(E) {
     const s = S();
     if (agora < D.proxAmb) return;
     const semAmeaca = !(M.ativo && (M.state === 'caca' || dist2(M.pos, P.pos) < 15)) && !PROC.fase && !ANA.ativa && !s.hidden;
-    if (!semAmeaca || s.fear >= 40 || M.tensao >= 30 || agora - D.ultimaCaca < 20 || agora - D.ultimoForte < 45 || s.flags.sino) { D.proxAmb = agora + 5; return; }
+    if (!semAmeaca || s.fear >= 40 || M.tensao >= 30 || agora - D.ultimaCaca < 20 || agora - D.ultimoForte < 45 || s.flags.sino || L6.segurarAmb()) { D.proxAmb = agora + 5; return; }
     let cands = AMBIENTE.filter(c => c.id !== D.ultimoTipo && !D.usados.has(c.id) && seguro(c.ok)());
     if (!cands.length) { D.usados.clear(); cands = AMBIENTE.filter(c => c.id !== D.ultimoTipo && seguro(c.ok)()); }
-    D.proxAmb = agora + rand(75, 110) * dif().intervalo;
+    D.proxAmb = agora + rand(75, 110) * dif().intervalo * L6.ambMul();
     if (!cands.length) return;
-    const c = pick(cands); D.ultimoTipo = c.id; D.usados.add(c.id); seguro(c.fn)();
+    // semente da noite: a sequência de sustos ambiente é reproduzível por código e varia a cada noite
+    const seedStr = (s.semente || 'x') + '|amb|' + ((s.flags && s.flags._noite) || 1) + '|' + (D.ambN = (D.ambN || 0) + 1);
+    let h = 2166136261; for (const ch of seedStr) { h ^= ch.charCodeAt(0); h = Math.imul(h, 16777619); } const r01 = ((h >>> 0) % 100000) / 100000;
+    const c = cands[Math.floor(r01 * cands.length)] || cands[0]; D.ultimoTipo = c.id; D.usados.add(c.id); seguro(c.fn)();
   }
 
   // ===================================================================== CORREDORES (vulto, passagem, teto)
@@ -996,7 +1003,7 @@ export function criarSustos(E) {
     const arm = W.lockers.filter(l => l.tipo === 'armario'); D.armOcup = arm.length ? pick(arm) : null;
     if (id === 'terreo') montarTerreo();
     if (id === 'superior') { montarSuperior(); if (!s.flags.sx_chegouCima) { s.flags.sx_chegouCima = true; depois(4, () => batida({ x: 0, y: -2, z: 6 }, 1)); } }
-    MUNDO.novoMapa(id); L3.novoMapa(id); L4.novoMapa(id); L4b.novoMapa(id); L5.novoMapa(id);
+    MUNDO.novoMapa(id); L3.novoMapa(id); L4.novoMapa(id); L4b.novoMapa(id); L5.novoMapa(id); L6.novoMapa(id);
     if (id === 'tuneis' && D.mapaAnterior === 'superior' && !s.flags.sx_poco) { s.flags.sx_poco = true; depois(1.4, () => { voz({ x: 0, y: 4, z: -1 }, { f0: 520, vogais: [[300, 2300], [500, 2000], [700, 1200]], dur: 1, vol: .1 }); E.sub('ana', TXT.nove_poco); }); }
   });
   API.update = seguro(dt => {
@@ -1012,7 +1019,7 @@ export function criarSustos(E) {
     for (let i = temporarios.length - 1; i >= 0; i--) { let fim = false; try { fim = temporarios[i].upd(dt); } catch (e) { fim = true; console.warn('[sustos]', e && e.message); } if (fim) temporarios.splice(i, 1); }
     updateInspetorSustos(dt); updateAnaSustos(dt); updateEsconderijo(dt); updateCorredor(dt); updatePortas(dt); vigiarEstado(dt);
     diretor();
-    MUNDO.update(dt); L3.update(dt, s); L4.update(dt, s); L4b.update(dt, s); L5.update(dt, s);
+    MUNDO.update(dt); L3.update(dt, s); L4.update(dt, s); L4b.update(dt, s); L5.update(dt, s); L6.update(dt, s);
   });
   const MUNDO = instalarMundo(E, { D, depois, anima, voz, respiracao, passoPos, batida, vacuo, marcarForte, apagao, notas, arranhao, vento, rolar, atras, fwdH, dist2, abrirDevagar, bater, andarModelo, portaDaSala, fundoCorredor, seguro, som, maoContato, AMBIENTE, agora: () => agora });
   const L3 = instalarSustosL3(E, { D, depois, anima, voz, respiracao, passoPos, batida, vacuo, marcarForte, apagao, rolar, atras, fwdH, dist2, abrirDevagar, andarModelo, portaDaSala, seguro, som, agora: () => agora, SOMBRA, ANA2, CRIANCA, luzRosto });
@@ -1025,6 +1032,9 @@ export function criarSustos(E) {
   // Lote 5: MONSTROS — comportamentos novos, variações por capítulo, aparições, contra-jogos e perseguições (src/sustos-lote5.js)
   const L5 = instalarSustosL5(E, { D, depois, anima, voz, respiracao, passoPos, batida, marcarForte, apagao, arranhao, rolar, vacuo, notas, portaDaSala, atras, fwdH, dist2, som, sustoCom, seguro, agora: () => agora });
   API._L5 = L5;
+  // Lote 6: REJOGABILIDADE — modos extras, desafios, variações por semente, conquistas, recordes e segredos de 2ª jogada (src/sustos-lote6.js)
+  const L6 = instalarSustosL6(E, { D, depois, anima, voz, respiracao, passoPos, batida, vacuo, marcarForte, apagao, arranhao, notas, rolar, vento, atras, fwdH, dist2, abrirDevagar, bater, andarModelo, portaDaSala, fundoCorredor, seguro, som, sustoCom, agora: () => agora, SOMBRA, ANA2, CRIANCA, luzRosto });
+  API._L6 = L6;
   // Lote 3: o motor multiplica o dt do mundo (golpe congela, 'por um fio' desacelera), avisa o golpe e espera a queda na morte
   API.escala = dt => { try { return L3.escala(dt); } catch (e) { return dt; } };
   API.golpe = seguro(q => L3.golpe(q));
