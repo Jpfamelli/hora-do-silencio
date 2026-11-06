@@ -1,7 +1,7 @@
 {
   "name": "A Hora do Silêncio",
   "short_name": "Hora do Silêncio",
-  "description": "Terror em primeira pessoa no navegador. Jogue de fone, no escuro.",
+  "description": "Terror em primeira pessoa no navegador, com som feito para dar medo. Funciona sem internet depois da primeira visita. Jogue de fone, no escuro.",
   "lang": "pt-BR",
   "start_url": "./",
   "scope": "./",
@@ -35,6 +35,11 @@
       "name": "Continuar a noite",
       "short_name": "Continuar",
       "url": "./?continuar=1"
+    },
+    {
+      "name": "Calibrar o som",
+      "short_name": "Som",
+      "url": "./?som=1"
     },
     {
       "name": "Desempenho e acessibilidade",
