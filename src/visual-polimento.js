@@ -836,5 +836,6 @@ export function instalarPolimento(C, V) {
     if (OPT.vRetro) retro();
   }
   if (OPT.vRetro) setTimeout(retro, 0);
-  return { update, lanterna, depois, mapa, morte, tempo, filtro, ruido: empurrao, retro, maoVisivel: () => H.vis };
+  const MAOP = { braco, mao, maoE, matPele, matMol }; // lote 6 (2ª rodada): marcas e trajes da mão (src/visual-lote6b-cartoes.js)
+  return { update, lanterna, depois, mapa, morte, tempo, filtro, ruido: empurrao, retro, maoVisivel: () => H.vis, maoPartes: () => MAOP };
 }

@@ -27,7 +27,10 @@ const PALETAS = [
   { nome: 'verde doente', tint: [0.86, 1.06, 0.9], lamp: 0xc8d2a0 },
   { nome: 'âmbar abafado', tint: [1.12, 0.98, 0.8], lamp: 0xffc070 },
   { nome: 'luto cinza', tint: [0.95, 0.95, 0.98], lamp: 0xd8cfc0 },
-  { nome: 'calor doente', tint: [1.1, 0.9, 0.86], lamp: 0xffb890 }
+  { nome: 'calor doente', tint: [1.1, 0.9, 0.86], lamp: 0xffb890 },
+  { nome: 'verde de hospital', tint: [0.84, 1.1, 0.98], lamp: 0xcfe8c0 },
+  { nome: 'brasa de incêndio', tint: [1.16, 0.86, 0.78], lamp: 0xff9a60 },
+  { nome: 'azul de gelo', tint: [0.82, 0.94, 1.18], lamp: 0xdfe8ff }
 ];
 
 // filtros de rejogo (lente) — alternados com a tecla I; cada um repinta o render
@@ -44,7 +47,13 @@ const FILTROS = [
   { id: 'raiox', nome: 'Raio-X do medo', css: 'invert(.92) contrast(1.4) brightness(.9) grayscale(.4)' },
   { id: 'termo', nome: 'Termovisão', css: 'hue-rotate(205deg) saturate(2.4) contrast(1.3) brightness(1.1)' },
   { id: 'sonar', nome: 'Sonar', css: 'hue-rotate(130deg) saturate(1.8) brightness(.9) contrast(1.2)', pulse: true },
-  { id: 'moacir', nome: 'Olho do Moacir', css: 'grayscale(1) contrast(1.6) brightness(1.15) sepia(.3) hue-rotate(-20deg)' }
+  { id: 'moacir', nome: 'Olho do Moacir', css: 'grayscale(1) contrast(1.6) brightness(1.15) sepia(.3) hue-rotate(-20deg)' },
+  // 2ª rodada: lentes de pós-processo desenhadas em src/visual-lote6b-lentes.js (cada uma abre por um marco do seu histórico)
+  { id: 'vhs', nome: 'Fita VHS', css: 'none', pos: true, lib: d => d.partidas >= 1 },
+  { id: 'cftv', nome: 'Câmera de Segurança', css: 'none', pos: true, lib: d => d.partidas >= 2 },
+  { id: 'pixel96', nome: 'Pixel 1996', css: 'none', pos: true, lib: d => d.partidas >= 3 },
+  { id: 'sosom', nome: 'Só Som', css: 'none', pos: true, lib: d => d.finais >= 1 || d.mortes >= 5 },
+  { id: 'carvao', nome: 'Carvão e Giz', css: 'none', pos: true, lib: d => d.silencio >= 1 }
 ];
 
 const L6K = 'hora-silencio-l6';
@@ -272,17 +281,19 @@ export function instalarVisualLote6(C) {
     const selo = document.createElement('div'); selo.id = 'l6-selo'; selo.hidden = true; document.body.appendChild(selo); L6selo = selo;
   }
   let L6selo = null, lenteFlickT = 0;
+  function dadosLente() { const st = lsGet('hora-silencio-stats', {}), f = st.finais || {}; return { partidas: Math.max(st.partidas | 0, store.noites | 0), mortes: st.mortes | 0, finais: Object.keys(f).length, silencio: f.silencio | 0 }; }
+  const nBase = 13; // as 13 lentes de filtro CSS do início do lote 6
+  function lenteLivre(i) { const f = FILTROS[i]; if (!f) return false; if (f.lib) return !!f.lib(dadosLente()); return i < Math.min(nBase, 3 + (store.noites || 0) + (store.caps ? store.caps.length : 0)); }
   function aplicarLente() {
     garantirOverlay();
-    const nDispon = Math.min(FILTROS.length, 3 + (store.noites || 0) + (store.caps ? store.caps.length : 0));
-    lenteAtual = clamp ? clamp(store.filtro | 0, 0, nDispon - 1) : Math.max(0, Math.min(nDispon - 1, store.filtro | 0));
+    lenteAtual = lenteLivre(store.filtro | 0) ? (store.filtro | 0) : 0;
     const f = FILTROS[lenteAtual];
     try { canvas.style.filter = f.css === 'none' ? '' : f.css; } catch (e) {}
     if (overlay) { overlay.style.opacity = f.scan ? (f.id === 'fita' ? Math.min(.5, .22 + (store.noites || 0) * .03) : .35) : 0; overlay.classList.toggle('tv', !!f.tv); }
   }
   function cicloLente() {
-    const nDispon = Math.min(FILTROS.length, 3 + (store.noites || 0) + (store.caps ? store.caps.length : 0));
-    store.filtro = ((store.filtro | 0) + 1) % nDispon; salvar(); aplicarLente();
+    let prox = ((store.filtro | 0) + 1) % FILTROS.length; for (let k = 0; k < FILTROS.length && !lenteLivre(prox); k++) prox = (prox + 1) % FILTROS.length;
+    store.filtro = prox; salvar(); aplicarLente();
     const f = FILTROS[store.filtro]; if (!robo && toast) toast('Lente: ' + f.nome);
     expCount++; if (expCount >= 8) conquista('l6_lentes');
   }
@@ -329,6 +340,9 @@ export function instalarVisualLote6(C) {
   // ganchos públicos ------------------------------------------------
   const api = {
     get clima() { return CL; },
+    lenteId() { return (FILTROS[lenteAtual] || {}).id || ''; }, // lentes de pós-processo da 2ª rodada
+    irParaLente(id) { const i = FILTROS.findIndex(f => f.id === id); if (i >= 0 && lenteLivre(i)) { store.filtro = i; salvar(); aplicarLente(); return true; } return false; },
+    climaNome() { return (CLIMAS[climaId] || {}).nome || ''; }, paletaNome() { return paleta ? paleta.nome : ''; },
     mapa() {
       try {
         definirNoite();

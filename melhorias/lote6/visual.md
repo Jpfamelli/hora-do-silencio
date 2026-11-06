@@ -95,3 +95,132 @@
 - Terminar a campanha também conta mais uma noite para o resfriamento da paleta e o desgaste da fita.
 - A lente pode ser trocada tanto no título quanto durante o jogo, sem pausar.
 - A tecla I é ignorada enquanto você digita em qualquer campo, para não atrapalhar os códigos do título.
+- Nova paleta de noite "verde de hospital": névoa e lâmpadas ganham um verde frio de corredor de enfermaria.
+- Nova paleta de noite "brasa de incêndio": tudo esquenta para um laranja de brasa, sorteado pela semente.
+- Nova paleta de noite "azul de gelo": a mesma sala parece outra sob uma luz azulada e dura.
+- Nova lente Fita VHS (tecla I): tracking oscilando, linhas de varredura, chuvisco e vazamento de cor na imagem.
+- A Fita VHS imprime "PLAY" e a data 12/03/1979 com a hora da noite no canto, como achado de gaveta.
+- A Fita VHS distorce mais quando o Inspetor está perto e falha forte no instante em que você leva um golpe.
+- Nova lente Câmera de Segurança, com aberração de cor e imagem de monitor de CFTV.
+- A Câmera de Segurança mostra o relógio da noite, avançando junto com o tempo da partida.
+- A Câmera de Segurança tem o REC vermelho piscando no canto.
+- O carimbo da câmera diz "CAM 03 · NOME DA SALA" conforme o cômodo em que a Lia está.
+- Quando o Inspetor está caçando você, o carimbo troca para "CAM —".
+- Com o Inspetor a menos de 8 passos a Câmera de Segurança rasga a imagem em faixas e avisa "SINAL FRACO".
+- Nova lente Pixel 1996: o jogo passa a 320x240, com pixels grandes e sem suavização.
+- A lente Pixel 1996 reduz tudo a 16 cores com dither em grade, como uma placa de vídeo antiga.
+- Na lente Pixel 1996 a imagem treme alguns décimos de pixel, como a geometria de um jogo de 1996.
+- Nova lente Só Som: a tela fica quase preta e só aparece o que faz barulho.
+- No Só Som, cada passo, corrida ou batida desenha um anel azul que se expande pelo chão.
+- Quando o anel do Só Som toca uma parede, o contorno dela acende por alguns instantes (eco-localização).
+- No Só Som o Inspetor só aparece como uma mancha vermelha quando anda rápido ou caça; parado, ele some.
+- No Só Som a Ana e a Procissão deixam anéis próprios, em tons de âmbar, quando se movem.
+- No Só Som a lanterna acesa desenha um anel curto e claro ao seu redor.
+- Nova lente Carvão e Giz: a cena vira desenho a carvão em papel granulado que cintila devagar.
+- No Carvão e Giz as bordas dos objetos ganham traço grosso e preto.
+- No Carvão e Giz as luzes fortes viram pontos de branco puro.
+- Cada lente nova só abre por um marco seu: VHS na 1ª noite, câmera na 2ª, Pixel na 3ª, Só Som no primeiro final (ou 5 mortes), Carvão no final do Silêncio.
+- A tecla I pula as lentes ainda trancadas em vez de mostrar uma lente que você não ganhou.
+- O jogo lembra quais lentes novas você já usou.
+- A casa ganha um nível de idade pelas noites e mortes acumuladas, e a mesma planta fica claramente mais velha.
+- A partir do nível 1 aparece mofo subindo dos rodapés e dos cantos do reboco.
+- No nível 2 surgem teias nos cantos altos das paredes.
+- No nível 3 a tinta começa a descascar em lascas com a borda escurecida.
+- No nível 4 rachaduras finas correm pelas paredes de reboco, tijolo e concreto.
+- No nível 5 aparecem desenhos de giz de criança nas paredes: uma casinha, um sol e um boneco de palito.
+- No nível 6 manchas de umidade escura escorrem do teto.
+- No nível 7 raízes e hera sobem pelo reboco e pelo tijolo.
+- No nível 8 a casa está "tomada": reboco, madeira e piso escurecem de vez.
+- Depois de 25 mortes as paredes sangram quase sem se notar, filetes vinho que descem do alto.
+- Os vidros das janelas ficam mais embaçados e mais escuros conforme a casa envelhece.
+- As lâmpadas amarelam com a idade da casa, e o halo delas também.
+- O local de cada uma das últimas 12 mortes naquele mapa ganha uma mancha escura no chão.
+- A última morte deixa o contorno de giz de um corpo caído no chão.
+- No lugar onde você mais morreu aparece a contagem em risquinhos de cinco, riscados a giz.
+- A porta mais próxima do seu ponto fraco ganha marcas de unha dos dois lados, em número proporcional às mortes.
+- Na cena do portão, o internato acende uma janela por noite jogada (até 26), cada uma com a silhueta de uma criança.
+- Os finais vistos também acendem janelas extras na fachada.
+- Na décima segunda noite, uma janela da fachada apaga quando você olha para ela, com um clique seco.
+- A janela do sótão só acende na fachada depois do final verdadeiro.
+- No cemitério da capela, uma vela acesa por final alcançado forma uma fileira no muro dos fundos (até 34).
+- As chamas das velas do cemitério oscilam ao vento, cada uma no seu ritmo.
+- Passar a lanterna sobre as velas deixa o brilho delas mais forte.
+- Sob a luz da lanterna, uma sombra miúda aparece atrás de cada vela.
+- No hall, um quadrinho de giz de nove painéis mostra o Davi fugindo, se escondendo e olhando; um painel novo por noite jogada.
+- O nono painel do gibi só aparece depois do final verdadeiro e tem a única cor da tela: um vermelho.
+- No hall um cartaz de PROCURA-SE traz o desenho a lápis da Lia, com o nome e uma recompensa.
+- A recompensa do cartaz sobe a cada noite jogada, de Cr$ 50 a Cr$ 5.000.
+- Depois de 15 noites o cartaz deixa de dizer "viva ou morta": o título vira VOLTE e a frase muda.
+- Uma mancha de umidade na parede tem a forma vaga de um rosto, diferente a cada semente.
+- Na segunda vez que você olha para a mancha, o rosto parece virado para você; depois ela some, deixando só o reboco liso.
+- Quem já viu um final encontra tinta invisível: recados da Lia antiga que só aparecem sob a lanterna.
+- Os recados da Lia antiga mudam por mapa e funcionam como dicas ("o segundo degrau range").
+- Cada recado some depois de 4 segundos de luz, e a lembrança dos recados lidos fica salva.
+- Nova conquista secreta "A letra da Lia antiga", por ler quatro recados de tinta.
+- Troféus no canto do hall: uma vela de cera quando você já jogou uma noite.
+- Troféus no hall: uma fita vermelha depois do final verdadeiro.
+- Troféus no hall: um par de sapatinhos de criança com dois finais vistos.
+- Depois de 20 segundos sem lanterna os olhos da Lia se acostumam e o ambiente sobe devagar até 40% de claridade.
+- Acender a lanterna zera a adaptação do escuro.
+- Ao apagar a lanterna fica uma mancha clara de ofuscamento por 2 segundos.
+- O ofuscamento é reduzido quando a opção de reduzir clarões está ligada.
+- O relâmpago agora aparece de verdade no céu: um raio ramificado desenhado no horizonte, no lado de fora.
+- Lua de sangue, rara (uma noite em vinte): céu vinho, lua vermelha e baixa, sombras compridas e quase pretas.
+- A lua de sangue avisa com uma frase curta e dá a conquista secreta "Você pegou a lua vermelha?".
+- Noite sem lua, rara: sem lua nem relâmpago, as janelas viram retângulos pretos e só a lanterna ilumina.
+- Na noite sem lua a lanterna dura mais, como compensação, e não há aviso do clima.
+- Nova conquista secreta "O mundo fechou", por atravessar uma noite sem lua.
+- No capítulo V o céu atrás da capela clareia aos poucos com o tempo do capítulo, num rosa de amanhecer.
+- Quando o céu quase clareia, um primeiro pássaro canta lá fora.
+- A cor da luz muda levemente com o dia da semana real: terça mais verde, sexta mais vermelha.
+- O tinte por dia da semana respeita o modo daltônico e a baixa visão.
+- A cor da noite esquenta a cada dez mortes: do azul para o âmbar e depois para um vermelho de brasa.
+- Depois de três finais verdadeiros a casa reaparece "lavada", num tom azulado quase calmo.
+- Na Sexta-feira da Paixão (data real), a paleta tende ao roxo-sangue.
+- De janeiro a março (data real) a chuva fica mais grossa.
+- A sombra da Lia sob a lanterna passa a atrasar meio segundo, a partir da quinta noite.
+- De tempos em tempos a sombra fica parada por 3 segundos enquanto a Lia segue andando.
+- Uma vez por capítulo a sombra olha para o lado oposto.
+- Uma noite em oito surge um segundo par de pés atrás da sombra, a dois passos; se você vira a câmera, não há nada, e some em 20 s.
+- Traças voam em volta das lâmpadas acesas dentro da casa.
+- Folhas secas atravessam o pátio no vento do temporal.
+- De setembro a dezembro (data real) vaga-lumes piscam pela estrada.
+- De junho a agosto (data real) a respiração da Lia vira vapor diante da câmera, mais denso quando ela corre.
+- De junho a agosto uma geada sutil aparece nas bordas do vidro, no lado de fora.
+- Brasas flutuam do chão nas paletas de fogo e depois de 20 mortes.
+- Fiapos de neblina rastejam rente ao chão nas noites de neblina.
+- As partículas de clima reduzem à metade na qualidade Baixa e somem na Mínima.
+- Na diretoria, um monitor antigo mostra em tempo real a visão de câmera da sala onde o Inspetor está.
+- O monitor roda a 5 quadros por segundo, com cor esverdeada e cintilação.
+- Sem o Inspetor ativo, o monitor mostra só chuvisco.
+- Olhar para o monitor enche o ouvido com o zumbido do aparelho: ver onde ele está custa a audição.
+- O monitor fica desligado na qualidade Mínima e vira só chuvisco na Baixa.
+- O espelho do banheiro agora mostra o cômodo em tempo real, por uma segunda câmera refletida.
+- O espelho tem moldura escura e só acende quando você olha para ele.
+- A Lia do reflexo copia sua posição, sua direção e quando você se agacha.
+- Em noites sorteadas o reflexo dá um passo à frente de você.
+- Em outras noites sorteadas o reflexo vira a cabeça para você sozinho.
+- Nas qualidades Baixa e Mínima o espelho vira vidro escuro, sem custo de render.
+- Ao morrer, o jogo guarda um retrato 160x90 do último instante e o mostra no título como polaroide presa na parede, com hora e sala.
+- Se o Inspetor estava à vista na hora da morte, o rosto dele aparece coberto por um X de giz na foto.
+- O jogo guarda o frame de maior medo da noite (medo acima de 95) e o mostra como polaroide na tela de morte.
+- Novo botão "Gerar cartão da noite" na tela de morte e no final.
+- O cartão da noite é um PNG 1080x1350 com a semente, o tempo, as mortes, o clima, a paleta e uma foto da partida.
+- No fim da campanha, um replay 2D de 20 segundos mostra a planta com a Lia, o Inspetor, a Ana e a Procissão em movimento.
+- O replay marca com cruzes de giz os lugares onde a Lia caiu.
+- A tela de título ganha um vitral onde cada conquista acende uma peça colorida.
+- As conquistas secretas aparecem em vidro fosco até serem ganhas.
+- Com 100% das conquistas, o vitral acende inteiro com a luz do amanhecer.
+- Segurar a tecla ; leva à tela o relógio de pulso da Lia, com ponteiros, algarismos romanos e o tempo do capítulo.
+- Seis trajes para a manga e a mão da Lia, trocados com a tecla \, liberados por noites, finais e mortes.
+- Traje "manga do uniforme do internato", liberado na 3ª noite.
+- Traje "couro velho do Davi", liberado pelo final verdadeiro.
+- Traje "luva de lã da Celeste", liberado com dois finais.
+- Traje "mão enfaixada", liberado com 15 mortes.
+- Traje "manga encharcada", liberado com uma campanha concluída ou 8 noites.
+- A mão da lanterna ganha a pulseira de fita vermelha do Davi depois do final verdadeiro.
+- A mão ganha um anel de corda depois do final do Silêncio.
+- Com 10 mortes, a mão da lanterna ganha um curativo de criança.
+- Arranhões na mão aumentam com as mortes (1, 3 e 4 marcas em 5, 15 e 40 mortes).
+- Quem já viu o incêndio carrega fuligem na mão.
+- No primeiro encontro com o Inspetor, a Ana e a Procissão, o FOV abre e a câmera avança por 1,2 s: vertigem que só acontece na primeira vez.
