@@ -11,6 +11,7 @@ import { criarPolimento } from './src/jogabilidade-polimento.js';
 import { criarSegredos } from './src/jogabilidade-segredos.js';
 import { criarJogabilidadeL5 } from './src/jogabilidade-lote5.js';
 import { criarJogabilidadeL6 } from './src/jogabilidade-lote6.js';
+import { criarJogabilidadeSom } from './src/jogabilidade-som.js';
 import { criarInterface } from './src/interface.js';
 import { PG } from './src/progressao.js';
 import { PLAT } from './src/plataforma.js';
@@ -704,6 +705,7 @@ function onKey(e) {
   if (SEG.tecla(e)) return; // lote 4: U usa e Y troca o item do bolso, contar junto com a Ana (src/jogabilidade-segredos.js)
   if (JM.tecla(e)) return; // T fone, B rádio
   if (JGL6.tecla(e)) return; // lote 6: deslize (agachar correndo)
+  if (JGS.tecla(e)) return; // lote 7: N fecha os olhos para ouvir
   if (MS.tecla(e)) return; // lote 4: V (o nome dele, contar junto, a senha, a chamada) e G com o apito dele (src/monstros-segredos.js)
   if (e.code !== 'KeyQ' && e.code !== 'KeyZ' && e.code !== 'KeyX') silencioT = 0;
   switch (e.code) {
@@ -732,7 +734,7 @@ function onKey(e) {
     case 'KeyV': { const c = chamadoArmadilha; SUST.responder(); if (c && !chamadoArmadilha) H.respondeu(); } break;
     case 'KeyR': if (S.inv.lanterna && S.inv.pilhas <= 0 && S.battery < 15) P.sacudirT = .001; else trocarPilha(); break;
     case 'KeyH': iniciarCurativo(); break;
-    case 'KeyG': if (!S.hidden && S.inv.garrafas > 0) P.mirarG = .001; else jogarGarrafa(); break;
+    case 'KeyG': if (!S.hidden && (S.inv.garrafas > 0 || JGS.pedras() > 0)) P.mirarG = .001; else jogarGarrafa(); break; // lote 7: sem garrafa, G joga uma pedrinha
     case 'Tab': case 'KeyJ': abrirDiario(); break;
     case 'KeyC': if (!S.hidden) { if (P.sentada) { levantar(); break; } P.crouch = OPT.agachar === 'segurar' ? true : !P.crouch; if (P.crouch) dicaAgachar(); } break;
     case 'ShiftLeft': case 'ShiftRight': if (OPT.correr) P.correrTrava = !P.correrTrava; break;
@@ -744,7 +746,7 @@ function onKey(e) {
 function onKeyUp(e) {
   if (!S) return;
   if (e.code === 'KeyC' && OPT.agachar === 'segurar') P.crouch = false;
-  if (e.code === 'KeyG' && P.mirarG > 0) { P.mirarG = 0; mira.visible = false; if (mode === 'jogo' && !ui && !S.dead) jogarGarrafa(); }
+  if (e.code === 'KeyG' && P.mirarG > 0) { const f = clamp(.4 + Math.min(P.mirarG, .9), .4, 1); P.mirarG = 0; mira.visible = false; if (mode === 'jogo' && !ui && !S.dead) jogarGarrafa(f); }
 }
 function dicaAgachar() { if (S.flags.dicaAgachar) return; S.flags.dicaAgachar = true; toast(JP.t('Alt') === 'ALT' ? 'Agachada, quase não se ouve. Segure ALT para andar devagar em pé. (Não use Ctrl: o navegador fecha a aba.)' : `Agachada, quase não se ouve. Em pé, use ${JP.t('Alt')} para andar devagar.`); }
 // trocar a pilha leva tempo: a luz apaga, a pilha velha cai e quica no chão (barulho pequeno) e a nova entra com um clique
@@ -795,12 +797,14 @@ function updateSacudir(dt) {
 const garrafasVoando = [], cacos = [], ondas = [], _rcG = new THREE.Raycaster(), _rcV = new THREE.Raycaster(), _vV = new THREE.Vector3(), _vF = new THREE.Vector3(), _vA = new THREE.Vector3(), _vU = new THREE.Vector3();
 const _dirG = new THREE.Vector3(), _fimG = new THREE.Vector3(), _iniG = new THREE.Vector3(), _centroTela = { x: 0, y: 0 };
 // mirar a garrafa não cria vetores novos a cada quadro (menos travadinhas em notebook fraco)
-function alvoGarrafa(fim = new THREE.Vector3()) {
-  const rc = _rcG; rc.setFromCamera(_centroTela, camera); rc.far = 16;
+// lote 7: a força do arremesso (toque = leve e perto; segurar = forte e longe) encurta ou estica o alcance
+function alvoGarrafa(fim = new THREE.Vector3(), forca = 1) {
+  const alc = 2.5 + 13.5 * forca;
+  const rc = _rcG; rc.setFromCamera(_centroTela, camera); rc.far = alc;
   const hits = rc.intersectObjects(W.solid, false);
   const dir = _dirG; camera.getWorldDirection(dir);
-  if (hits.length) fim.copy(hits[0].point).addScaledVector(dir, -.25); else fim.copy(camera.position).addScaledVector(dir, 14);
-  if (fim.y < 0) { const t = (camera.position.y - .05) / Math.max(.01, -dir.y); fim.copy(camera.position).addScaledVector(dir, Math.min(14, t)); }
+  if (hits.length) fim.copy(hits[0].point).addScaledVector(dir, -.25); else fim.copy(camera.position).addScaledVector(dir, alc);
+  if (fim.y < 0) { const t = (camera.position.y - .05) / Math.max(.01, -dir.y); fim.copy(camera.position).addScaledVector(dir, Math.min(alc, t)); }
   fim.y = Math.max(.05, fim.y);
   return { fim, perto: Math.hypot(fim.x - P.pos.x, fim.z - P.pos.z) < 3 };
 }
@@ -814,14 +818,16 @@ function superficie(x, z) {
   if (p === 'madeira') return { tipo: 'madeira', r: 17, cor: 0xe9dfc8 };
   return { tipo: 'pedra', r: 17, cor: 0xf4ead2 };
 }
-function jogarGarrafa() {
+function jogarGarrafa(forca = 1) {
   if (S.hidden) return;
-  if (S.inv.garrafas <= 0) { toast('Sem garrafas para jogar.'); return; }
-  S.inv.garrafas--; PG.garrafa(); renderInvMini();
-  const { fim } = alvoGarrafa();
-  const m = MK.garrafa(); m.position.copy(camera.position); W.grupo.add(m);
-  garrafasVoando.push({ m, ini: camera.position.clone(), fim, t: 0, dur: clamp(fim.distanceTo(camera.position) / 14, .2, .9), grupo: W.grupo, agachada: P.crouch });
+  const pedra = S.inv.garrafas <= 0; // lote 7: sem garrafa, a pedrinha do bolso
+  if (pedra && !JGS.gastarPedra()) { toast('Sem garrafas para jogar.'); return; }
+  if (!pedra) { S.inv.garrafas--; PG.garrafa(); renderInvMini(); }
+  const { fim } = alvoGarrafa(new THREE.Vector3(), forca);
+  const m = pedra ? new THREE.Mesh(new THREE.SphereGeometry(.05, 7, 6), new THREE.MeshStandardMaterial({ color: 0x6b6a66, roughness: 1 })) : MK.garrafa(); m.position.copy(camera.position); W.grupo.add(m);
+  garrafasVoando.push({ m, ini: camera.position.clone(), fim, t: 0, dur: clamp(fim.distanceTo(camera.position) / 14, .2, .9), grupo: W.grupo, agachada: P.crouch, forca, pedra });
   SFX.arremesso();
+  if (forca < .55 && !S.flags.dicaGarrafaLeve) { S.flags.dicaGarrafaLeve = true; toast('Toque em G joga de leve e perto; segure para arremessar longe.'); }
 }
 const mira = new THREE.Group(); mira.visible = false; scene.add(mira);
 const miraLinha = new THREE.Line(new THREE.BufferGeometry().setFromPoints(Array.from({ length: 20 }, () => new THREE.Vector3())), new THREE.LineBasicMaterial({ color: 0xe9dfc8, transparent: true, opacity: .35, depthWrite: false }));
@@ -831,7 +837,8 @@ function updateMira(dt) {
   if (!(P.mirarG > 0) || S.hidden) { mira.visible = false; return; }
   P.mirarG += dt;
   if (P.mirarG < .3 || S.dif === 'pesadelo') { mira.visible = false; return; }
-  const { fim, perto } = alvoGarrafa(_fimG), ini = _iniG.copy(camera.position); ini.y -= .15;
+  const forcaMira = clamp(.4 + Math.min(P.mirarG, .9), .4, 1); // lote 7: o arco acompanha a força segurada
+  const { fim, perto } = alvoGarrafa(_fimG, forcaMira), ini = _iniG.copy(camera.position); ini.y -= .15;
   const sup = superficie(fim.x, fim.z);
   const pos = miraLinha.geometry.attributes.position;
   for (let i = 0; i < 20; i++) { const k = i / 19, x = lerp(ini.x, fim.x, k), z = lerp(ini.z, fim.z, k), y = lerp(ini.y, fim.y, k) + Math.sin(k * Math.PI) * 1.2; pos.setXYZ(i, x, y, z); }
@@ -848,6 +855,7 @@ function updateGarrafas(dt) {
     g.m.position.lerpVectors(g.ini, g.fim, Math.min(1, g.t)); g.m.position.y += Math.sin(Math.min(1, g.t) * Math.PI) * 1.2; g.m.rotation.x += dt * 12;
     if (g.t >= 1) {
       W.grupo.remove(g.m); garrafasVoando.splice(i, 1);
+      if (g.pedra) { JGS.pedraCaiu(g.fim.x, g.fim.z); continue; } // lote 7: a pedrinha soa conforme o piso e atrai ele
       if (SUST.garrafaVolta(g.fim)) continue;
       try { if (SUST._L4b && SUST._L4b.garrafaBateu) SUST._L4b.garrafaBateu(g.fim.x, g.fim.z); } catch (e) {} // garrafa no sino da torre (src/sustos-segredos2.js)
       if (SEG.garrafa(g)) continue; // garrafa que estoura a lâmpada (src/jogabilidade-segredos.js)
@@ -858,11 +866,11 @@ function updateGarrafas(dt) {
       if (sup.tipo === 'agua') { SFX.passo(1, 'pedra', false, true); criarOnda(g.fim.x, g.fim.z); emitNoise(g.fim.x, g.fim.z, 7, false, true); }
       else if (sup.tipo === 'terra') { JP.som.terra(g.fim.x, g.fim.z); emitNoise(g.fim.x, g.fim.z, 7, false, true); if (!S.flags.dicaGarrafaTerra) { S.flags.dicaGarrafaTerra = true; toast('Na terra a garrafa não quebra. Quase não faz barulho.'); } }
       else if (sup.tipo === 'madeira') { // quica uma vez na madeira (tinido) e só então estoura, meio metro adiante
-        JP.som.quique(g.fim.x, g.fim.z); emitNoise(g.fim.x, g.fim.z, 5, false, true);
+        JP.som.quique(g.fim.x, g.fim.z); emitNoise(g.fim.x, g.fim.z, 5, false, true); JGS.garrafaQuique(g.fim.x, g.fim.z); // lote 7: ele segue cada quique
         const p = g.fim.clone(), dx = g.fim.x - g.ini.x, dz = g.fim.z - g.ini.z, l = Math.hypot(dx, dz) || 1; p.x += dx / l * .5; p.z += dz / l * .5; collide(p, .15);
         quiques.push({ p, t: .3, grupo: W.grupo }); continue;
       }
-      else quebrarGarrafa(g.fim, sup.tipo === 'tapete' ? 10 : 17);
+      else quebrarGarrafa(g.fim, (sup.tipo === 'tapete' ? 10 : 17) * clamp(.55 + (g.forca || 1) * .45, .55, 1));
       if (antes !== null && M.state === 'investiga' && M.alvoGarrafa) conquista('garrafa');
     }
   }
@@ -1177,6 +1185,7 @@ function updatePlayer(dt) {
   P.noiseR *= SEG.ruidoMul(); // descalça e o chuveiro aberto (src/jogabilidade-segredos.js)
   if (AUDL6) P.noiseR *= AUDL6.ruidoMul(); // o clima sorteado da noite abafa ou expõe seus passos (src/audio-lote6.js)
   P.noiseR *= (P.ruido6 || 1); // lote 6: Passos Pesados
+  P.noiseR *= JGS.passoK(); // lote 7: tapete/carpete abafa o passo
   const moved = Math.min(andou, vel * dt);
   // o som do passo cai exatamente quando a cabeça desce no balanço
   P.bob += moved * (P.sprinting ? 2 : 2.9);
@@ -1773,6 +1782,7 @@ function patrulhar() {
   M.state = 'patrulha'; M.acao = null; planejar(M, x, z);
 }
 function emitNoise(x, z, r, doJogador, garrafa) {
+  if (garrafa) JGS.garrafaQuebrou(); // lote 7: a garrafa cria um poço de silêncio — mexa-se nele que é seguro
   if (AUDS) AUDS.ruido(x, z, r, doJogador, garrafa); // gravador dos túneis e eco da cisterna (src/audio-segredos.js)
   if (AUDL5 && doJogador && r > 1) AUDL5.registraRuido(x, z, r); // lote 5: guarda o último barulho para ele imitar
   VIS.ruido(x, z, r);
@@ -3689,6 +3699,7 @@ function mascaraSom(x, z) {
   if (AC && AC.currentTime > AUD.trovaoIni && AC.currentTime < AUD.trovaoAte) k *= .3;
   if (AMB.ger && Math.hypot(x - AMB.ger.pos.x, z - AMB.ger.pos.z) < 8) k *= .5;
   k *= JGL5.mascara(); // lote 5: o barulho da Procissão e o sino da fuga cobrem os passos
+  k *= JGS.mascara(x, z); // lote 7: trovão, gerador, compasso quebrado e o vácuo da garrafa/bote
   return k;
 }
 function silenciarContinuos() {
@@ -3779,6 +3790,7 @@ function updateAudioCore(dt) {
   if (PROC.fase === 'aviso' && PROC.t < 1.6) vac = Math.min(vac, .06);
   if (prende) vac = Math.min(vac, .45);
   if (bote && jogando) vac = Math.min(vac, .2);
+  vac = Math.min(vac, JGS.vacuo()); // lote 7: o poço de silêncio depois da garrafa/do bote
   if (!S.dead) { const cur = AUD.vacuo.gain.value; AUD.vacuo.gain.setTargetAtTime(vac, now, vac < cur ? .17 : .6); }
   // --- Abafar: armário, cama, medo extremo, ferida, morte
   let corte = 20000;
@@ -3788,9 +3800,10 @@ function updateAudioCore(dt) {
   if (prende) corte = Math.min(corte, 380 + 820 * clamp(S.stamina / 100, 0, 1)); // o mundo some aos poucos; quanto menos ar, mais longe
   if (now < AUD.zumbidoFim) { const k = clamp((now - AUD.zumbidoIni) / Math.max(.1, AUD.zumbidoFim - AUD.zumbidoIni), 0, 1); corte = Math.min(corte, 650 + 19350 * k * k); }
   if (S.dead) corte = 500;
+  if (!S.dead) corte = Math.min(corte, JGS.corte()); // lote 7: surdez tática (prender o ar / olhos fechados)
   AUD.abafa.frequency.setTargetAtTime(corte, now, prende ? .25 : .1);
   AUD.madeiraG.gain.setTargetAtTime(S.hidden && S.hidden.tipo !== 'cama' ? .3 : 0, now, .1);
-  AUD.mundo.gain.setTargetAtTime(S.dead ? .15 : now < AUD.zumbidoAte ? .3 : 1, now, S.dead ? 1 : .8);
+  AUD.mundo.gain.setTargetAtTime((S.dead ? .15 : now < AUD.zumbidoAte ? .3 : 1) * (S.dead ? 1 : JGS.mundoK()), now, S.dead ? 1 : .8);
   // --- Gerador: perto dele você some, mas fica surda para ele
   const entK = AMB.ger && Math.hypot(P.pos.x - AMB.ger.pos.x, P.pos.z - AMB.ger.pos.z) < 8 ? .4 : 1;
   if (entK !== AUD.entK) { AUD.entK = entK; aplicarVolumes(); }
@@ -4011,6 +4024,8 @@ function updateClima(dt) {
   scene.background.copy(CEU0).lerp(CEU1, fl * .7 * luzBase); scene.fog.color.copy(NEV0).lerp(NEV1, fl * .8 * luzBase);
   chuvaMat.opacity = (.3 + fl * .5) * CL.chuvaOp;
   L6V.posClima(); // lote 6: tinte da paleta da noite na névoa e no céu
+  // lote 7: o módulo de som lê o clima por aqui (clarão, chuva forte, frio) sem novo gancho
+  window.__raioI = raioI; window.__chuvaForte = fora && CL.chuvaOp > .45; window.__raioFrio = fora || CL.chuvaOp > .2;
   const perto = M.ativo ? M.pos : null;
   if (!PROC.fase) for (const L of W.lampadas) {
     if (!L.ligada) continue;
@@ -4498,6 +4513,14 @@ const JGL6 = criarJogabilidadeL6({
   ativarInspetor, salasAlcancaveis, pontoEm, distSalas, roomAt, collide,
   get S() { return S; }, get perf() { return perf; }, get mode() { return mode; }, get ui() { return ui; }, get alvo() { return alvo; } });
 JGL6.ligar();
+// Jogabilidade, lote 7: SOM E ATMOSFERA pela pele da Lia — silêncio como arma, prender o ar como bolha, trovão e poças como cobertura (src/jogabilidade-som.js)
+const JGS = criarJogabilidadeSom({
+  THREE, P, keys, camera, OPT, SFX, emitNoise, marcarCausa, toast, sub, subPequeno, conquista, scene, collide, setDoor, chuvaMat, roomAt,
+  audio: { saida: (...a) => saida(...a), osc: (...a) => osc(...a), env: (...a) => env(...a), burst: (...a) => burst(...a) },
+  abafarMundo, aplicarVolumes,
+  get S() { return S; }, get M() { return M; }, get ANA() { return ANA; }, get PROC() { return PROC; }, get W() { return W; },
+  get AC() { return AC; }, get perf() { return perf; }, get mode() { return mode; }, get ui() { return ui; },
+  get AUD() { return AUD; }, get AMB() { return AMB; }, get BUS() { return BUS; }, get master() { return master; } });
 const VIS = instalarVisual({ THREE, scene, camera, renderer, canvas, flash, flashFill, MON, ANA, ANA_G, PROC, M, P, W, MAT, OPT, OPT_KEY, lsSet, R, ROLOS, keys, roomAt, visivel, collide, salasAlcancaveis, distSalas, D, MAOS, MAT_CACO, chuvaMat, chuvaGeo, SFX, sub, toast, conquista, interact, item, MK, legendas: UIX.som.def, get alvo() { return alvo; },
   get S() { return S; }, get mode() { return mode; }, get ui() { return ui; }, get flashPisca() { return flashPisca; }, get hbT() { return AUD.hbT; }, get raioI() { return raioI; }, get fita() { return fitaTocando; }, get perf() { return perf; } });
 const VM = instalarMundoVisual({ THREE, scene, camera, renderer, flash, hemi, moon, W, P, M, ANA, ANA_G, PROC, MON, MAT, MK, OPT, R, TX, chuvaMat, respingos, interact, sub, SFX, DOOR, collide, raio: () => { raioT = 0; },
@@ -4566,7 +4589,7 @@ function frame(dt) {
     S.tempo += dt; S.capT += dt; PG.tick(dt);
     updatePlayer(dt); updateLanterna(dt); updateFear(dt);
     { const dm = dt * JP.ritmo(); if (!congelado(dm)) { updateInspetor(dm); updateAna(dm); updateProcissao(dm); ML.tick(dm); MS.tick(dm); L5.tick(dm); L5B.tick(dm); L6.tick(dm); } updateEventos(dm); } updateGarrafas(dt); // ritmo do mundo (acessibilidade): a Lia não fica mais lenta
-    updateClima(dt); updateJogabilidade(dt); updateAlvo(); JM.update(dt); SEG.update(dt); JGL5.update(dt); JGL6.update(dt); updateSegurar(dt); updateFita(dt); updateHUD(); updateSub(dt); updateAudio(dt); H.tick(dt); MVIS.tick(dt); // lote 5: visual e luz das entidades · lote 6: rejogabilidade
+    updateClima(dt); updateJogabilidade(dt); updateAlvo(); JM.update(dt); SEG.update(dt); JGL5.update(dt); JGL6.update(dt); JGS.update(dt); updateSegurar(dt); updateFita(dt); updateHUD(); updateSub(dt); updateAudio(dt); H.tick(dt); MVIS.tick(dt); // lote 5: visual e luz das entidades · lote 6: rejogabilidade · lote 7: som e atmosfera
   } else if (mundoVivo()) { // cofre, quadro (e no Pesadelo notas e diário): o mundo continua, com o som abafado
     S.tempo += dt; S.capT += dt; P.noiseR = 0; abafar(true);
     updateLanterna(dt); updateFear(dt);

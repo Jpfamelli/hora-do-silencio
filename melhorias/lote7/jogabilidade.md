@@ -1,0 +1,103 @@
+# Lote 7 — Jogabilidade
+- Segurar a vírgula fecha os olhos da Lia: a tela escurece rápido e ela fica parada, só ouvindo.
+- De olhos fechados, os passos e as vozes das ameaças chegam 60% mais altos.
+- De olhos fechados, a ambiência da casa afunda e os agudos cortam, para a ameaça se destacar.
+- A Lia comenta na primeira vez que fecha os olhos: escuta melhor, mas fica cega.
+- A escuta de olhos fechados dura até 4 segundos; depois os olhos ardem e é preciso descansar 10 segundos.
+- De olhos fechados, um anel no chão marca onde o Inspetor está (até 24 m), uma vez por segundo.
+- Agachada de olhos fechados, o medo da Lia cai bem mais rápido.
+- Um toque rápido na vírgula não escurece a tela: só quem segura de verdade fecha os olhos.
+- Prender o ar vira uma bolha: o volume do mundo despenca para cerca de 40%.
+- Quanto mais tempo se prende o ar, mais os agudos somem e o mundo fica abafado.
+- Depois de 4,5 s de ar preso, um zumbido agudo cresce e empurra a soltar a respiração.
+- Um pontinho de respiração aparece embaixo da tela quando há ameaça perto ou o ar está preso.
+- Com o fôlego quase no fim, um assobio fino escapa da Lia e o Inspetor perto pode ouvir.
+- Prender o ar colado no Inspetor (menos de 2 m) alivia o medo aos poucos.
+- Na rajada de chuva ou no trovão, prender o ar gasta só metade do fôlego.
+- Soltar e prender o ar duas vezes seguidas, parada e agachada, acalma o coração com um "ufa".
+- Com o Inspetor a menos de 3 m, a Lia engole seco em intervalos: um ruído mínimo que denuncia.
+- Encostada numa porta fechada e parada, dá para ouvir a respiração ou os passos abafados do outro lado.
+- Agachada e parada, o ouvido no chão sente o ribombo grave dos passos dele até 9 m.
+- Com medo alto no frio ou na tempestade, os dentes da Lia batem.
+- Os dentes batendo fazem ruído que o Inspetor ouve a menos de 6 m; prender o ar segura.
+- Correr numa poça faz um respingo alto (ruído 10) e, com ele perto, soa uma corda de susto.
+- Depois de sair da água os pés pingam por uns segundos e o rastro denuncia a posição.
+- Agachada, parada e sem lanterna por 8 s, "a casa te perde": o Inspetor ouve menos da metade do seu ruído.
+- Enquanto a casa te perde, o medo cai e quem procura por você erra o alvo.
+- No silêncio total sobem sons distantes na casa, que revelam por onde andam as coisas.
+- Um silêncio de 0,4 s vem logo antes do bote do Inspetor: o mundo cala para o susto.
+- Mudar o ritmo do passo (parar, andar, agachar) com ele caçando quebra o compasso e o faz perder o rastro.
+- A garrafa quebrada abre um poço de silêncio de 1,5 s em que mexer-se é seguro.
+- Teste de nervos opcional: uma vez por noite, bem raro, todo o som some por 3,6 s.
+- O estrondo do trovão é cobertura: por 2 s o ruído cai a um quarto, para cavar, arrombar e correr.
+- 0,9 s antes do estrondo a Lia avisa que é a hora de correr, sem tela de tutorial.
+- Chuva forte cobre 20% do ruído da Lia, e em noite seca ela fica mais exposta.
+- A chuva alterna garoa e rajada em ciclos de 40 a 70 s, sem aviso na tela.
+- Cerca de 3 s antes de cada rajada um vento crescente se ouve, e a jogadora aprende a ler o momento.
+- Na rajada, o ruído da Lia e o ouvido do Inspetor ficam em 40% ao ar livre.
+- Na rajada a chuva engrossa na tela e dá para ver o momento seguro.
+- No recuo depois da rajada, o ruído ao ar livre sobe 15% e os passos 30%: a janela fecha.
+- Segurar o ponto faz a Lia tapar os ouvidos: o mundo cai 70% e abafa.
+- Com os ouvidos tapados, o coro da Procissão e o grito da Ana perdem 80% do susto.
+- Soltar os ouvidos faz um farfalhar de roupa e deixa o som abafado por 1,2 s.
+- Tapar os ouvidos logo depois de um estouro encurta o zumbido do tímpano.
+- Ligar a lanterna parada e em pé faz um clique que o Inspetor ouve a uns 4 m.
+- Com a pilha abaixo de 20%, a lanterna emite um zumbido baixo que cresce até a pilha acabar.
+- O zumbido da pilha fraca entrega a Lia a menos de 5,5 m do Inspetor.
+- A Lia comenta que a pilha está zumbindo, para a jogadora decidir apagar a luz.
+- Com a lanterna apagada o ouvido vai afinando por 8 s, até +35% de volume; ao reacender volta em 1 s.
+- Atravessar poça ou chuva forte molha os sapatos por 40 s.
+- Sapatos encharcados chapam: cada passo tem 25% mais ruído, também dentro de casa.
+- Cada passo de sapato molhado faz o "chap" no som.
+- Sapatos molhados deixam pegadas escuras no chão, que somem em 14 s.
+- Parada num piso seco ou agachada, a Lia seca os sapatos na metade do tempo.
+- Um terço das salas fechadas tem goteira, com pingo de ritmo fixo por sala.
+- Pisar junto do pingo da goteira deixa o passo com 40% do ruído.
+- Três passos seguidos no pingo dão um tique discreto e a Lia comenta, sem tutorial.
+- Segurar M faz a Lia rezar baixinho, com sílabas sussurradas, sem texto.
+- A reza baixa o medo 2 por segundo (3 por segundo com o medo acima de 70).
+- A reza vaza: com o Inspetor a menos de 7 m ela soa a 3 m (1,6 m dentro do esconderijo).
+- A legenda "[ela reza baixinho]" aparece ao começar a rezar.
+- Escondida com medo acima de 88, a Lia murmura sem querer e o murmúrio é ouvido a 2,5 m.
+- Prender o ar (ESPAÇO) cala o murmúrio involuntário da Lia.
+- Com medo acima de 90 e fôlego baixo, um soluço de pânico escapa a cada 20 a 40 s e é ouvido a 4 m.
+- Tocar a vírgula bate palma: um estalo alto (ruído 14) que o Inspetor ouve, com 5 s de intervalo.
+- A palma volta como três ecos vindos das paredes mais próximas, cada um do seu lado.
+- A palma revela o tamanho do cômodo pelo eco: apertado, comum ou salão, mesmo no escuro.
+- Ao ar livre a palma não tem eco e a Lia diz que é espaço aberto.
+- Nos túneis, correr levanta poeira e a Lia tosse a cada 2,6 s de corrida, com ruído 9.
+- Agachar, andar devagar ou prender o ar evita a tosse da poeira.
+- A cada 50 a 90 s uma corrente de ar sopra e bate uma porta que você deixou aberta.
+- O sopro de vento avisa 1,4 s antes da batida da porta.
+- A batida da porta tem estrondo de ruído 10 que o Inspetor ouve de longe.
+- Correr rente a uma parede faz a mochila raspar, com ruído 4 e raspão agudo.
+- Virar a câmera rápido demais com o Inspetor perto faz o pano farfalhar; ALT vira devagar e fica silencioso.
+- No capítulo III, sorteado pela semente, o telhado leva granizo por 40 s e ninguém ouve ninguém.
+- O granizo estala no telhado com sons aleatórios e cobre 70% do ruído de tudo.
+- Biblioteca, rouparia, quarto da Celeste e diretoria abafam os passos da Lia (50 a 75% do ruído).
+- Nesses refúgios de tecido e papel o som de fora cai 6 dB: a Lia fica difícil de ouvir, mas surda.
+- A Lia avisa na primeira vez que entra num refúgio acústico.
+- Ladrilho e pedra deixam o passo mais alto (+20% e +10%): as rotas silenciosas se leem pelo piso.
+- Passar 40 s numa mesma área sem seguir faz a casa pressionar: os agudos cedem e o grave sobe.
+- Um grave de 44 Hz cresce sob a casa à medida que a pressão sobe.
+- Com a casa pressionando, o Inspetor ouve até 25% mais, para empurrar a jogadora adiante.
+- A Lia comenta que a casa pesa em cima dela quando a pressão passa de 40%.
+- Música de tensão procedural: três notas em atrito crescem conforme o Inspetor se aproxima.
+- A música de tensão pulsa mais rápido quanto mais perto ele está e abafa dentro do esconderijo.
+- Mutador opcional "Ouvido Ruim": depois de levar dano, 60 s de zumbido e som abafado.
+- A Lia ganha duas pedrinhas por capítulo e avisa na primeira vez.
+- Sem garrafa, G joga uma pedrinha, com a mesma mira em arco da garrafa.
+- A pedrinha tem som próprio por piso: tic na pedra, toc na madeira, pof na terra, plop na água.
+- O raio de atração da pedrinha varia por piso: 11 na pedra, 9 na madeira, 6 na água, 3,5 na terra e 2,5 no tecido.
+- A pedrinha quica mais duas vezes, cada vez mais fraca, e o Inspetor vai investigar.
+- Tocar em G arremessa a garrafa leve e perto; segurar arremessa forte e longe (2,5 a 16 m).
+- O arco da mira acompanha a força segurada e mostra onde a garrafa vai cair.
+- Um aviso ensina o arremesso leve na primeira vez que ele acontece.
+- O estilhaço da garrafa fica mais baixo quando o arremesso é leve.
+- Na madeira, o Inspetor segue cada quique da garrafa com a cabeça.
+- Modo opcional "Só o Perigo": sem ambiência nem música, só as pistas da ameaça.
+- Modo opcional "Surdo": só o corpo da Lia soa, horror sem pista.
+- A tela de opções ganha o grupo "Som e atmosfera" com os recursos opcionais e o Ouvido Ruim.
+- Corrigido: fechar os olhos agora usa a vírgula, porque o N já era a tecla "andar sozinha" da plataforma.
+- Corrigido: o tapete abafador nunca valia, pois nenhuma sala tinha piso de tapete; agora o abafamento vem de uma tabela por sala.
+- Corrigido: ouvir pela porta, engolir seco e o assobio de fôlego baixo nunca disparavam por contadores sem valor inicial.

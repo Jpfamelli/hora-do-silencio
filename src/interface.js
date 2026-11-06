@@ -77,6 +77,13 @@ export function criarInterface(C) {
       { k: 'placaSala', nome: 'Placa das salas', tipo: 'sel', ops: [['historia', 'Nome e 1979'], ['nome', 'Só o nome'], ['nao', 'Desligada']] },
       { k: 'leitura', nome: 'Ler placas e paredes de perto', tipo: 'sel', ops: [[true, 'Sim'], [false, 'Não']] },
       { k: 'olhoAna', nome: 'Olho da Menina ao lado da mira', tipo: 'sel', ops: [[true, 'Sim'], [false, 'Não']] }
+    ]],
+    ['Som e atmosfera', [
+      { k: 's7olhos', nome: 'Fechar os olhos para ouvir (segure a vírgula; toque = palma)', tipo: 'sel', ops: SIMNAO },
+      { k: 's7nervos', nome: 'Teste de nervos (o som some por alguns segundos, raro)', tipo: 'sel', ops: SIMNAO },
+      { k: 's7soPerigo', nome: 'Desafio: Só o Perigo (sem ambiência nem música)', tipo: 'sel', ops: SIMNAO },
+      { k: 's7surdo', nome: 'Desafio: Surdo (só o corpo da Lia)', tipo: 'sel', ops: SIMNAO },
+      { k: 's7ouvido', nome: 'Mutador: Ouvido Ruim (zumbido e som abafado por 60 s depois de levar dano)', tipo: 'sel', ops: SIMNAO }
     ]]
   ];
   function setar(k, v, motor) {
