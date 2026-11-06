@@ -29,7 +29,8 @@ window.ROTEIRO = {
     diretor:  { nome: "Diretor Albano",   cor: "#c8a878" },
     moacir:   { nome: "Moacir",           cor: "#a89888" },
     radio:    { nome: "Rádio",            cor: "#a8b08a" },
-    voz:      { nome: "???",              cor: "#9fc3d8" }
+    voz:      { nome: "???",              cor: "#9fc3d8" },
+    crianca:  { nome: "uma criança",      cor: "#b9cfe0" }
   },
 
   // Cartões de texto durante a viagem de carro (abertura)
@@ -2103,6 +2104,130 @@ window.ROTEIRO.lote6 = {
   },
   // Quando não falta mais nenhum segredo, as setas do Davi somem (recompensa de quem achou tudo)
   setaNada: "(num canto, a giz) não falta mais nada, Lia. você achou tudo o que eu queria te mostrar."
+};
+
+// =====================================================================
+// LOTE 7 — História e texto por SOM E ATMOSFERA (ligado por src/historia-lote7.js)
+// Tudo o que a casa conta pelo ouvido: a reza da Celeste que troca de lado,
+// o cochicho das regras que para no olhar, a chamada ensaiando o seu nome,
+// o rádio que fala com o seu medo, memórias sussurradas por sala, o último
+// som de cada vítima, a casa que suspira o seu nome, a noite do incêndio,
+// a estrofe perdida da capela, a pergunta no escuro, o assobio do Joaquim,
+// fitas que se apagam, acorde de cada final, motivo de cada capítulo e o
+// pensamento da Lia no limite. Som 100% procedural; texto todo aqui.
+// =====================================================================
+window.ROTEIRO.lote7 = {
+  // (1) A reza da Irmã Celeste atrás da porta muda de lado capítulo a capítulo:
+  // começa protegendo a Lia e termina entregando ela. Sussurro legendado.
+  rezaPorCapitulo: {
+    0: "(atrás da porta, a Irmã Celeste reza) ...e que a estrada traga a menina em paz, Senhor. Protege ela do que mora aqui.",
+    1: "(a reza, mais baixa) ...protege ela, Senhor. Ela não sabe no que se meteu. Ainda dá tempo dela voltar.",
+    2: "(a voz hesita) ...protege ela... ou deixa que ela fique? Nove crianças precisam de uma irmã mais velha.",
+    3: "(a reza troca de dono) ...ela veio sozinha, Senhor. Ninguém vai sentir falta. Talvez seja a vontade da casa.",
+    4: "(quase sem reza) ...eu guardei o lugar dela todos esses anos. Entrega ela, Senhor. A casa tem fome.",
+    5: "(a mesma voz, agora fria) ...entrega ela pra Hora. Uma a mais pra contar. Amém."
+  },
+  // (2) Uma criança lê as regras da casa num canto; a fala para na sílaba
+  // exata em que você encara a fonte e recomeça quando desvia o olhar.
+  regrasDaCasa: [
+    "regra um: não corra nos corredores.",
+    "regra dois: não acenda luz depois das nove.",
+    "regra três: não responda quando chamarem seu nome.",
+    "regra quatro: não abra a gaveta do Inspetor.",
+    "regra cinco: não deixe a Hora te achar acordada.",
+    "regra seis: quem foge uma vez, foge pra sempre.",
+    "regra sete: o sino manda em todos nós."
+  ],
+  regrasInterrompida: "(a criança para de ler assim que você olha)",
+  // (3) A Hora segue o relógio de verdade: na virada de uma hora cheia,
+  // raríssimo, nove badaladas bem distantes escapam da tela.
+  horaReal: "(longe, nove badaladas quase inaudíveis — e não é dentro do jogo)",
+  // (4) Numa sala distante, uma criança pratica a chamada e tropeça no SEU nome.
+  chamadaEnsaia: [
+    "(uma menina ensaia a chamada, bem longe) ...presente... presente...",
+    "(ela tropeça no seu nome) {nome}...? {parcial}...? não, {nome}. {nome}, presente.",
+    "(ela repete, agora certinho) {nome}. presente. tá na lista agora."
+  ],
+  // (5) Um rádio de válvula interrompe a transmissão e fala com o seu medo.
+  radioConforto: [
+    "(o rádio chia e muda de voz) ...respira, menina. já passou. a tia tá aqui...",
+    "(a voz no rádio) ...fecha os olhos. ninguém vai te achar se você ficar bem quietinha...",
+    "(o rádio, doce demais) ...tá tudo bem. deita. a Hora passa rápido pra quem dorme..."
+  ],
+  radioVolta: "(a transmissão volta ao normal, como se nada tivesse acontecido)",
+  // (6) Ficar numa sala de história faz emergir uma memória sussurrada.
+  memoriaSala: {
+    estrada: [
+      "(a estrada lembra) ...o ônibus escolar nunca chegou naquela noite. as crianças esperaram na chuva até o sino.",
+      "(baixinho) ...o Seu Joaquim abriu o portão pra elas. foi a última coisa boa que ele fez vivo."
+    ],
+    terreo: [
+      "(a parede guarda) ...a porta da frente foi trancada por fora. quem trancou guardou a chave no bolso do casaco.",
+      "(uma memória) ...o gerador morreu às nove em ponto. ninguém nunca mais consertou de propósito."
+    ],
+    superior: [
+      "(o dormitório sussurra) ...a Ana contava até dez pra turma dormir. na última noite, ela contou e ninguém acordou.",
+      "(bem baixinho) ...a Irmã Celeste fechou cada cama com um beijo. depois desceu e não voltou."
+    ],
+    tuneis: [
+      "(o túnel ecoa) ...cavaram essa passagem pra fugir do fogo. ela só levava mais fundo.",
+      "(a terra lembra) ...QUEM ABRIU A MINHA GAVETA. ele escreveu na parede com a própria unha."
+    ],
+    cemiterio: [
+      "(o cemitério respira) ...três covas pequenas, três nomes raspados. alguém não queria que lembrassem.",
+      "(a capela guarda) ...o sino tocou a noite inteira. de manhã, a corda estava quente e vazia."
+    ]
+  },
+  // (7) O último som de cada vítima toca fraquinho só na sala onde ela morreu.
+  ultimoSom: {
+    tome: "(longe, rodinhas de um carrinho de brinquedo rolando no assoalho)",
+    davi: "(um radinho de pilha chiando baixinho uma estação morta)",
+    ana: "(uma caixinha de música tocando a mesma nota, sem fechar)",
+    luiz: "(o zumbido de um pião girando, girando, sem cair)"
+  },
+  // (8) A casa suspira o nome que você digitou, grave, como se a parede falasse.
+  suspiroNome: "(a sala vazia parece suspirar o seu nome, grave: {nome}...)",
+  // (11) Parada e calada numa sala de história, uma vozinha pergunta.
+  perguntasEscuro: [
+    "(uma vozinha, do escuro) você também fugiu?",
+    "(bem baixinho) você veio buscar alguém? eu posso ir junto?",
+    "(do escuro) por que você não envelhece, moça?",
+    "(uma criança) se o sino parar, a gente pode ir pra casa?",
+    "(bem baixinho) você promete que não me deixa aqui de novo?"
+  ],
+  // (9) A noite do incêndio volta por alguns segundos, só pelo clima.
+  incendio: "(por três segundos, a chuva engrossa, o sino dobra e muitas vozes de criança sobem com a madeira estalando — 1979 voltou e foi embora)",
+  // (10) A capela canta a estrofe perdida do hino pela própria ressonância.
+  estrofePerdida: "(a nave inteira ressoa a quarta estrofe raspada do hino, nota por nota, sem ninguém cantar: \"quando o sino parar de vez, a gente fala outra vez\")",
+  // (12) O assobio do Joaquim volta fora de ordem e para no meio.
+  assobioJoaquim: "(de muito longe, cinco notas de um assobio velho, fora de ordem, param no meio)",
+  // (13) Fitas se apagam depois de vencer: chiado que cresce a cada reprodução.
+  fitaGasta: "(a fita range de tão gasta; a verdade vai sumindo embaixo do chiado)",
+  fitaQuaseMuda: "(já quase não dá pra ouvir a fita sob o ruído)",
+  // (16) O pensamento sussurrado da Lia em momentos-chave.
+  pensamentoLia: {
+    folego: "(a Lia pensa, sem voz) não respira agora.",
+    inspetorPerto: "(a Lia pensa) fica quieta. fica quieta.",
+    beiraMorte: "(a Lia pensa) não hoje. não aqui.",
+    escondida: "(a Lia pensa) conta até dez. ele vai embora.",
+    chamado: "(a Lia pensa) não é o Davi. não é o Davi."
+  },
+  // Acorde-assinatura de cada final (texto da legenda do som).
+  acordeFinal: {
+    comum: "(um acorde menor e oco fecha a noite, sem resolver)",
+    silencio: "(uma única nota soa e fica no ar, sem nunca resolver)",
+    verdadeiro: "(um acorde maior, enfim resolvido, fecha a Hora)"
+  },
+  // Motivo de 3 notas que abre cada capítulo, como caixinha distante.
+  motivoCapitulo: "(três notas de uma caixa de música, muito longe, abrem o capítulo)",
+  motivoAna: "(a melodia da Ana abre o capítulo, uma nota desafinada)",
+  // Conquistas novas do lote (passivas, à prova de erro).
+  conquistas: [
+    { id: "l7_regra_inteira", nome: "A Regra Inteira", desc: "Ouça uma regra da casa do começo ao fim sem olhar pra fonte.", secreta: true, charada: "A criança só lê enquanto você não encara." },
+    { id: "l7_entrega", nome: "A Reza Virou", desc: "Ouça a Irmã Celeste pedir para te entregarem.", secreta: true, charada: "Escute atrás da porta dela nos capítulos finais." },
+    { id: "l7_nome_casa", nome: "A Casa Sabe Meu Nome", desc: "Ouça a casa suspirar o seu nome.", secreta: true, charada: "Fique sozinha e muito quieta numa sala vazia." },
+    { id: "l7_estrofe", nome: "A Estrofe Perdida", desc: "Faça a capela cantar a quarta estrofe sozinha.", secreta: true, charada: "Fique parada no ponto certo da nave e deixe o sino ressoar." }
+  ]
 };
 
 // Aspas tipográficas: a fonte desenha a aspa reta como a de fechar, então as falas abrem com “ e fecham com ”.
