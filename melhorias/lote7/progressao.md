@@ -1,0 +1,103 @@
+# Lote 7 — Progressão e rejogabilidade
+- Novo desafio opcional "Só a Casa": sem música de tensão e sem legenda de perigo, só a ambiência e o som real das entidades.
+- No desafio Só a Casa os sustos vêm 20% mais fortes: o medo sobe 1,2 vez mais e o Inspetor volta com intervalo menor.
+- Conquista "Orelha Nua" por terminar o Capítulo III no desafio Só a Casa.
+- Novo desafio "Só pelo Som": o HUD some (objetivos, barras, inventário e indicadores) e você joga só pelo áudio 3D.
+- No Só pelo Som as legendas de som ficam totalmente desligadas.
+- No Só pelo Som a vinheta escurece a 85%, deixando só o miolo da tela.
+- Selo "De olhos fechados" no cartão de fim da noite para quem terminar no Só pelo Som.
+- Conquista secreta "De Olhos Fechados" por terminar um capítulo no Só pelo Som.
+- Novo desafio "Rádio Mudo": sem música, sem legenda direcional e sem bússola de ameaças; tudo vem só pelo som.
+- No Rádio Mudo os sustos pesam o dobro: todo ganho de medo é dobrado e a ajuda auditiva não vale.
+- O Rádio Mudo guarda o recorde de tempo da noite e mostra nas estatísticas e no painel de desafios.
+- Conquista "Rádio Mudo" por terminar um capítulo no desafio.
+- Novo desafio "Noite Muda": sem legenda de perigo e sem música de tensão.
+- Na Noite Muda a Hora do Silêncio dura 40 s em vez de 20.
+- A Noite Muda tem placar próprio (melhor tempo) guardado e exibido nas estatísticas.
+- Conquista "Noite Muda" por atravessar o Capítulo II nesse desafio.
+- Conquista secreta "Quatro Silêncios" por terminar capítulos nos quatro desafios sonoros.
+- Só a Casa abre desde o começo; os outros três desafios abrem depois do primeiro final, com aviso claro nas caixas travadas.
+- A música de tensão (cordas, caçada, violino, zumbido, aglomerado agudo, percussão e pulso) realmente cala nos desafios que a tiram.
+- Nova aba "Desafios" no painel Sons e silêncios, com caixas para ligar cada desafio e o termômetro de silêncio.
+- A tela de pausa lista os desafios sonoros ligados e a ajuda auditiva atual.
+- Fim de capítulo mostra "barulho neste capítulo: tempo e porcentagem".
+- Fim de capítulo mostra os pontos de silêncio (segundos e porcentagem do capítulo).
+- Rank Sombra: passar 40% do capítulo em silêncio destaca a linha no fim do capítulo e dá a conquista "Sombra".
+- Selo Pé de Pluma no fim do capítulo para quem faz pouco barulho, com a conquista "Pé de Pluma".
+- Conquista secreta "Pluma de Ouro" por três selos Pé de Pluma na mesma noite.
+- O melhor silêncio de cada capítulo é lembrado e comparado no fim ("melhor deste capítulo: X%").
+- A tela final diz "você fez barulho por X min Y s (Z% da noite)".
+- Selos bronze, prata e ouro de furtividade pela faixa de barulho da noite, na tela final.
+- A tela final mostra a área sob a curva do ruído e o total de silêncio da noite.
+- A tela final conta quantas vezes o Inspetor te ouviu na noite (barulho seguido de investigação ou caçada).
+- A tela final mostra quantos sons novos entraram no caderno de sons naquela noite.
+- Audiograma na tela final: um gráfico em canvas com o ruído que a Lia fez a cada segundo.
+- O audiograma marca em vermelho cada vez que o Inspetor te ouviu.
+- O audiograma marca com pontos verdes os silêncios totais de 15 s ou mais.
+- Botão para baixar o audiograma como imagem PNG, com a conquista "Gráfico da Noite".
+- Nova aba "Última noite" no painel Sons e silêncios para rever o audiograma, o resumo e os selos depois.
+- Fita da noite exportável: botão que renderiza 20 s de chuva, passos, batimento e susto em arquivo .wav (OfflineAudioContext, 100% procedural).
+- Na fita da noite os passos seguem o ruído real que a Lia fez nos últimos segundos da noite, com mais pressa e força quando corria.
+- Conquista "Fita Gravada" por exportar a fita da noite.
+- Termômetro de silêncio: um brilho azul discreto na borda da tela que cresce enquanto você fica em silêncio e sem lanterna.
+- Opção de desligar o termômetro de silêncio.
+- Conquista secreta "Noite Calada" por terminar a noite com menos de 20 s de barulho alto.
+- Conquista secreta "Furtiva de Ouro" por fechar a noite com o selo de ouro de furtividade.
+- Conquista "Só de Ouvido" por terminar um capítulo com a lanterna acesa em menos de um quinto do tempo.
+- A pausa mostra o tempo de barulho e de silêncio da noite até ali.
+- Novas linhas nas estatísticas: sons no caderno, silêncios, estações de rádio, ajuda auditiva, selos Pé de Pluma e sons ouvidos de novo.
+- Conquista secreta "Silêncio Absoluto": chegar ao último degrau de silêncio sem nenhum barulho alto na noite, com uma carta curta do Davi.
+- Conquista secreta "Nem a Casa Te Ouviu" por atravessar um corredor longo inteiro sem som acima do que o Inspetor escuta, com a frase "Nem a casa te ouviu".
+- Conquista "Ouvido de Gato": esconder-se três vezes na mesma noite antes de ver o Inspetor, só pelo som dele chegando.
+- Conquista "Sessenta Segundos": um minuto numa sala sem lanterna e sem som com o Inspetor solto, com frase da Lia.
+- Conquista secreta "Cantor Calado" por ficar parada durante as nove badaladas, com frase da Lia.
+- Conquista secreta "Tinha Alguém Aí?" por olhar para trás (Q) logo depois do sussurro.
+- Conquista "Orelha Absoluta": virar para o lado certo oito vezes no capítulo antes de ver o Inspetor, com contagem e frase do rádio no fim do capítulo.
+- Conquista secreta "A Goteira Inteira" por ficar parada 60 s só para escutar a casa.
+- Conquista "Ouvido de Cão" por escutar cinco sons raros da casa.
+- Caderno de sons: cada som com legenda entra sozinho na primeira vez que é escutado, sem coleta nem ida e volta.
+- Aviso discreto "Novo no caderno de sons" nos primeiros sons e em todo som raro.
+- Cada verbete do caderno mostra a sala da primeira escuta e quantas vezes o som foi escutado.
+- Cada som tem uma linha de lore própria (48 sons) e os demais ganham uma explicação pela categoria (perigo, história, segredo, corpo).
+- Botão "ouvir de novo" em cada verbete reproduz o som na galeria do título.
+- Conquista "Sala de Som" por ouvir dez sons de novo na galeria.
+- Filtros por categoria no caderno (perigo, história, segredo, seu corpo e outros).
+- Barra de progresso do caderno e contador de sons raros.
+- Dezoito sons marcados como raros (mais todos os de segredo) com a etiqueta RARO.
+- Conquistas "Primeiras Páginas" (25 sons), "Dicionário de Sons" (60) e a secreta "Ouvido Absoluto" (150).
+- Aviso de que alguns sons só acontecem dentro da casa quando o replay não soa.
+- Novo botão "Sons e silêncios" no título abrindo o painel do caderno.
+- Silêncio do Inspetor: parada perto dele enquanto ele escuta vira um verbete, com frase da Lia.
+- Silêncio do armário: ficar quieta escondida no armário vira um verbete, com frase da Lia.
+- Silêncio da cama: ficar quieta embaixo da cama vira um verbete, com frase da Lia.
+- Silêncio do refúgio: ficar quieta numa sala segura vira um verbete, com frase da Lia.
+- Silêncio da Hora: a chuva e o vento que param viram um verbete, com frase da Lia.
+- Silêncio do esconde-esconde: ficar parada enquanto a Ana conta vira um verbete, com frase da Lia.
+- Silêncio do fôlego preso: prender o ar escondida vira um verbete, com frase da Lia.
+- Aba "Silêncios" mostra os escutados com a frase e, nos que faltam, a dica de onde escutá-los.
+- Conquista secreta "Orelha Fina" por escutar os sete silêncios.
+- Filtro de áudio cosmético "Rádio de gaveta" (menos grave e menos agudo), liberado pelos sete silêncios.
+- Filtro de áudio cosmético "Fundo de poço" (som abafado).
+- Filtro de áudio cosmético "Agulha" (agudos mais claros).
+- Grade da rádio com sete estações (frequência, nome e horário), preenchida ao escutar cada uma.
+- Aviso "Dial: frequência, nome" no momento em que uma estação nova é sintonizada.
+- Conquista "Dial Completo" por sintonizar as sete estações.
+- Estação final secreta 107.9 FM, liberada pelo dial completo, com som e mensagem próprios.
+- Conquista secreta "A Frequência Que Falta" por sintonizar a estação final.
+- Espectrograma da fita 2 em canvas, na aba "Fita 2", quando a fita for achada.
+- Tocar no trecho certo do espectrograma revela o rosto do Davi e o número 1979, com uma nota nova e a conquista secreta "O Rosto na Fita".
+- Botão "Ouvir o espectro" toca o espectrograma por síntese aditiva, o rosto virando chiado.
+- Teste de fones guiado de 10 s: bipes só à esquerda e só à direita, sussurro de um ouvido ao outro, pulso que sobe e passos vindo de trás.
+- O teste de fones é oferecido uma vez no título, com "Agora não" que nunca mais insiste.
+- O teste de fones pergunta como ficou o volume e ajusta o volume mestre.
+- Se um dos lados não chegou, o teste oferece e liga o Som mono.
+- Conquista "Fones no Lugar" por passar no teste de fones.
+- Ajuda auditiva que se adapta: nas primeiras noites os avisos de perigo duram 3 s a mais.
+- Com ajuda auditiva as legendas de aviso repetem mais cedo.
+- A ajuda auditiva cai 10% a cada final.
+- A ajuda auditiva cai 10% a cada dez capítulos terminados sem morrer.
+- A ajuda auditiva não existe no Pesadelo, no Rádio Mudo nem no Só pelo Som, então a dificuldade escolhida continua mandando.
+- Em "Fones e ajuda" dá para travar a ajuda no nível atual ou zerar de uma vez.
+- Conquista "Sem Rodinhas" por deixar a ajuda auditiva chegar a zero.
+- Pena no título que aparece depois do primeiro Pé de Pluma e ressoa uma nota a cada toque.
+- Conquista secreta "A Pena Que Ressoa" por tocar a pena sete vezes.

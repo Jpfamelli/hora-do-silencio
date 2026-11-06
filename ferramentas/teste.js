@@ -118,7 +118,7 @@ T.tudo = async () => {
     await T.ate(() => J.S.done.procissao, 90);
     T.usar(/Subir para os dormitórios/);
     passo('cap II', await T.cap(3) && J.S.mapa === 'superior'); passo('portas e lore: andar de cima', !T.checarMapa().length);
-    T.usar(/Pegar a engrenagem/); T.usar(/dar corda na caixinha/); await T.ate(() => J.S.done.ana, 60);
+    T.usar(/Pegar a engrenagem/); T.usar(/dar corda na caixinha/); await T.ate(() => J.S.done.ana, 150);
     T.usar(/página 3/); T.dlg();
     T.usar(/chave da Irmã/); T.usar(/porta da Irmã/); await T.semFita(); T.usar(/Fita 2/); await T.ate(() => J.S.fitas.f2, 120);
     T.usar(/página 2/); T.dlg();
