@@ -11,6 +11,7 @@ import { criarPolimento } from './src/jogabilidade-polimento.js';
 import { criarSegredos } from './src/jogabilidade-segredos.js';
 import { criarJogabilidadeL5 } from './src/jogabilidade-lote5.js';
 import { criarJogabilidadeL6 } from './src/jogabilidade-lote6.js';
+import { criarJogabilidadeL6B } from './src/jogabilidade-lote6b.js'; // lote 6 (2ª rodada): mutadores, equipamentos, cartas, fantasma, arenas
 import { criarJogabilidadeL5B } from './src/jogabilidade-lote5b.js';
 import { criarInterface } from './src/interface.js';
 import { PG } from './src/progressao.js';
@@ -711,6 +712,7 @@ function onKey(e) {
   if (SEG.tecla(e)) return; // lote 4: U usa e Y troca o item do bolso, contar junto com a Ana (src/jogabilidade-segredos.js)
   if (JM.tecla(e)) return; // T fone, B rádio
   if (JGL6.tecla(e)) return; // lote 6: deslize (agachar correndo)
+  if (JGL6B.tecla(e)) return; // lote 6 (2ª rodada): cartas (1-3, 7-9), apito/guizo/cadeira/giz (4, 5, 6, 0), moeda (G), manivela (R)
   if (MS.tecla(e)) return; // lote 4: V (o nome dele, contar junto, a senha, a chamada) e G com o apito dele (src/monstros-segredos.js)
   if (JGL5B.tecla(e)) return; // lote 5 (2ª rodada): ` descalçar (src/jogabilidade-lote5b.js)
   if (e.code !== 'KeyQ' && e.code !== 'KeyZ' && e.code !== 'KeyX') silencioT = 0;
@@ -1097,6 +1099,7 @@ function pisarTabua() {
 function updatePlayer(dt) {
   holdProprio = false;
   JGL6.antes(dt); // lote 6: mutadores que mexem no movimento/teclas antes de ler o input
+  JGL6B.antes(dt); // lote 6 (2ª rodada): fator de ruído dos mutadores, jeitos e cartas
   if (alvo) { P.alvoAnt = alvo; P.alvoAntEm = perf; }
   // E apertado um instante antes de o esconderijo (ou o item) entrar na mira ainda vale
   if (P.eBuf > 0) { P.eBuf -= dt; if (alvo && !alvo.hold && !alvo.porta && !S.hidden && (ehEsconderijo(alvo) || W.items.some(i => i.it === alvo))) { P.eBuf = 0; alvo.act(); } }
@@ -1937,6 +1940,7 @@ function fimProcura(ra) {
   patrulhar();
 }
 function portaInspetor(dr) {
+  if (JGL6B.portaBarr(dr)) return; // lote 6 (2ª rodada): cadeira escorada na porta — ele perde 3 s e arromba com barulho
   const k = dr.id || (dr.x + ',' + dr.z);
   if (M.state === 'caca' && !S.flags.sino) { // na caçada ele esmurra a porta antes de arrombar
     if (M.porta !== dr) { M.porta = dr; M.socos = 0; }
@@ -2040,7 +2044,7 @@ function updateInspetor(dt) {
   if (P.room && P.room !== M.ultSalaJog) { M.ultSalaJog = P.room; const rt = S.flags.rotas || (S.flags.rotas = {}), k = W.mapa + ':' + P.room.id; rt[k] = (rt[k] || 0) + 1; }
   // Audição (submersa na água dos túneis, ela não é ouvida; trovão e chuva mascaram os passos)
   const ajuda = 1; // a ajuda invisível já está em D().ouvido
-  const ouvido = P.noiseR * pisoMult() * att * D().ouvido * ajuda * JM.ouvidoMul() * SEG.ouvidoMul() * (M.l5ouvidoMul || 1) * (M.l6ouvidoMul || 1) * (M.l6bOuvMul || 1) * (M.state === 'caca' ? 1.6 : M.state === 'escuta' ? 1.5 : M.state === 'reza' ? .5 : 1) * mascaraSom(P.pos.x, P.pos.z); // lote 6: humor/modo da noite
+  const ouvido = P.noiseR * pisoMult() * att * D().ouvido * ajuda * JM.ouvidoMul() * SEG.ouvidoMul() * (M.l5ouvidoMul || 1) * (M.l6ouvidoMul || 1) * (M.l6bOuvMul || 1) * (M.l6bOuv || 1) * (M.state === 'caca' ? 1.6 : M.state === 'escuta' ? 1.5 : M.state === 'reza' ? .5 : 1) * mascaraSom(P.pos.x, P.pos.z); // lote 6: humor/modo da noite
   const submersa = !!(W.def.submersa && W.def.submersa());
   const ouve = !S.hidden && !submersa && !(P.room.seguro && !fuga) && (fuga || M.furia > 0 || (P.noiseR > 0 && d < ouvido));
   if (cb && ouve && !(M.alvoGarrafa && d > 4) && !ocupado) {
@@ -2124,7 +2128,7 @@ function updateInspetor(dt) {
   const base = { patrulha: 1.9, investiga: 3.0, procura: 1.6, caca: 4.6, conferir: M.conferir === 2 ? 3.2 : 2 }[M.state] || 1.8;
   const esc = 1 + Math.max(0, S.chapter - 2) * .083;
   const fugaVel = d > 9 ? 5.6 : d < 3 ? 4.2 : 4.9; // na fuga ele fica colado nas suas costas, sem ser impossível
-  const speed = (fuga && M.state === 'caca' ? fugaVel : fuga ? 4.9 : base * esc) * D().vel * (aguaAqui ? .85 : 1) * (M.l5velMul || 1) * (M.l6velMul || 1) * (M.l6bVelMul || 1); // lote 6: humor/modo da noite (+ fúria e ira do Inspetor, src/monstros-lote6b.js)
+  const speed = (fuga && M.state === 'caca' ? fugaVel : fuga ? 4.9 : base * esc) * D().vel * (aguaAqui ? .85 : 1) * (M.l5velMul || 1) * (M.l6velMul || 1) * (M.l6bVelMul || 1) * (M.l6bVel || 1); // lote 6: humor/modo da noite (+ fúria e ira do Inspetor, src/monstros-lote6b.js)
   const parado = ['alerta', 'bote', 'agarra', 'escuta', 'emboscada', 'fareja', 'vasculha', 'reza'].includes(M.state) || M.l5stun > 0;
   if (fuga && M.state === 'caca') { M.tropecoT -= dt; if (M.tropecoT <= 0 && d > 3) { M.tropecoT = rand(13, 17); M.wait = 2; M.caidoT = 2; SX.tropeco(M.pos); } }
   M.caidoT = Math.max(0, M.caidoT - dt);
@@ -2602,6 +2606,7 @@ function atacar(quem, leve) {
   dano *= SEG.danoMul(quem); // amuleto do relógio
   S.health -= dano; S.capDano += dano; S.fear = 100; PG.dano(quem);
   if (S.health <= 0 && SEG.salvarDaMorte()) S.health = 20; // ampola de adrenalina da enfermaria
+  if (S.health <= 0) { const v = JGL6B.salvarDaMorte(quem); if (v) S.health = v; } // lote 6 (2ª rodada): chaveiro do Davi e fita rebobinada
   if (S.health <= 0) { morrer(quem); return; }
   S.causaCtx = null;
   toast(quem === 'inspetor' ? 'Ele te largou. Fuja e se esconda.' : quem === 'ana' ? 'Mãos geladas. Ela sumiu... por enquanto.' : 'Eles passaram por dentro de você. Ainda está viva. Por pouco.');
@@ -2632,6 +2637,7 @@ function morrer(quem) {
       dicaMorte(quem, ctx); // dica pela causa exata, quando houver
       PG.telaMorte(quem); // contagem, objetivos que faltavam, penalidade e o modo Uma Vida
       JGL6.telaMorte(); // lote 6: semente da noite, copiar e refazer esta noite exata
+      JGL6B.telaMorte(); // lote 6 (2ª rodada): melhor tempo, cicatrizes, placar da dupla, fim da arena
       $('#dt-diag').hidden = true; $('#death-info').hidden = true; // a causa e a contagem já aparecem acima
       $('#death-conta').textContent = [S.mortes > 1 && R.mortes ? R.mortes.voltou.replace('{n}', S.mortes - 1) : '', S.dif === 'pesadelo' && R.mortes ? R.mortes.pesadelo : ''].filter(Boolean).join(' · ');
       L6B.telaMorte(); // lote 6 (2a rodada): Nêmesis, "ele te pegou N vezes"
@@ -2735,6 +2741,7 @@ function carregarMapa(id, spawn, { salvar = true } = {}) {
   ML.novoMapa(id); MS.novoMapa(id); L6.novoMapa(id); L6B.novoMapa(id); // lote 6: humor da noite, memória entre jogadas, eco da morte
   VIS.mapa(); VM.mapa(); L6V.mapa(); VL6B.mapa(); // lote 6: clima/paleta por semente, giz das mortes, ilhas de luz, troféus
   JGL6.mapa(id); // lote 6: Caçada, Esconderijo Podre e economia da noite
+  JGL6B.mapa(id); // lote 6 (2ª rodada): giz, guizos, trouxinha e fantasma voltam ao mapa
 }
 function syncLuzes() {
   const ligada = W.def && W.def.energia ? W.def.energia() : false;
@@ -2746,6 +2753,7 @@ function syncWorld() {
   if (W.def && W.def.sync) W.def.sync();
 }
 function salvarCheckpoint(inicioCap) {
+  if (S && S.arena6b) return; // lote 6 (2ª rodada): as arenas nunca mexem no save da campanha
   PG.salvando(inicioCap);
   S.pos = [P.pos.x, P.pos.z]; S.yaw = P.yaw; S.mapa = W.mapa;
   const snap = JSON.parse(JSON.stringify({ ...S, hidden: null, dead: false, fim: false, _check: undefined }));
@@ -4410,6 +4418,7 @@ function novoJogo() {
   S = novoEstado($('#o-dif').value); mortesNoPonto = 0;
   PG.novoJogo(S);
   JGL6.novoJogo(S); // lote 6: aplica os modos escolhidos à noite
+  JGL6B.novoJogo(S); // lote 6 (2ª rodada): mutadores II, cartas, Ascensão, revezamento, arena
   carregarMapa('estrada', 'carro'); H.aoComecar(S);
   salvarCheckpoint(true);
   $('#title').hidden = true;
@@ -4541,6 +4550,14 @@ const JGL6 = criarJogabilidadeL6({
   ativarInspetor, salasAlcancaveis, pontoEm, distSalas, roomAt, collide,
   get S() { return S; }, get perf() { return perf; }, get mode() { return mode; }, get ui() { return ui; }, get alvo() { return alvo; } });
 JGL6.ligar();
+// Jogabilidade, lote 6 (2ª rodada): mutadores II, equipamentos de bolso, cartas, Ascensão, fantasma, revezamento e arenas (src/jogabilidade-lote6b.js)
+const JGL6B = criarJogabilidadeL6B({
+  THREE, scene, P, M, ANA, PROC, W, keys, camera, OPT, SFX, flash,
+  emitNoise, toast, subPequeno, conquista, lsGet, lsSet, salvarOpt: () => lsSet(OPT_KEY, OPT),
+  ativarInspetor, setDoor, spawnAna, iniciarProcissao, carregarMapa, pularCena, voltarMenu, syncWorld, renderInvMini, renderObj, salasAlcancaveis, pontoEm, interact,
+  trovao: () => { try { return AC && AC.currentTime > AUD.trovaoIni && AC.currentTime < AUD.trovaoAte; } catch (e) { return false; } },
+  get perf() { return perf; }, get S() { return S; }, get mode() { return mode; }, get ui() { return ui; } });
+JGL6B.ligar();
 const JGL5B = criarJogabilidadeL5B({
   THREE, P, M, ANA, PROC, W, keys, camera, OPT, SFX, emitNoise, marcarCausa, toast, sub, subPequeno, estourarLampada, conquista, paredeEntre,
   audio: { saida: (...a) => saida(...a), osc: (...a) => osc(...a), env: (...a) => env(...a), burst: (...a) => burst(...a) },
@@ -4632,7 +4649,7 @@ function frame(dt) {
     S.tempo += dt; S.capT += dt; PG.tick(dt);
     updatePlayer(dt); updateLanterna(dt); updateFear(dt);
     { const dm = dt * JP.ritmo(); if (!congelado(dm)) { updateInspetor(dm); updateAna(dm); updateProcissao(dm); ML.tick(dm); MS.tick(dm); L5.tick(dm); L5B.tick(dm); L6.tick(dm); L6B.tick(dm); } updateEventos(dm); } updateGarrafas(dt); // ritmo do mundo (acessibilidade): a Lia não fica mais lenta
-    updateClima(dt); updateJogabilidade(dt); updateAlvo(); JM.update(dt); SEG.update(dt); JGL5.update(dt); JGL5B.update(dt); JGL6.update(dt); updateSegurar(dt); updateFita(dt); updateHUD(); updateSub(dt); updateAudio(dt); H.tick(dt); MVIS.tick(dt); MVIS2.tick(dt); // lote 5: visual e luz das entidades (2 rodadas) · lote 6: rejogabilidade
+    updateClima(dt); updateJogabilidade(dt); updateAlvo(); JM.update(dt); SEG.update(dt); JGL5.update(dt); JGL5B.update(dt); JGL6.update(dt); JGL6B.update(dt); updateSegurar(dt); updateFita(dt); updateHUD(); updateSub(dt); updateAudio(dt); H.tick(dt); MVIS.tick(dt); MVIS2.tick(dt); // lote 5: visual e luz das entidades (2 rodadas) · lote 6: rejogabilidade
   } else if (mundoVivo()) { // cofre, quadro (e no Pesadelo notas e diário): o mundo continua, com o som abafado
     S.tempo += dt; S.capT += dt; P.noiseR = 0; abafar(true);
     updateLanterna(dt); updateFear(dt);
