@@ -23,6 +23,8 @@ import * as SUBS2 from './src/subterraneo-segredos2.js';
 import * as SUBM from './src/subterraneo-monstros.js'; // lote 5: comportamentos e perseguições das entidades
 import * as SUBM2 from './src/subterraneo-monstros2.js'; // lote 5 (2ª leva): mais comportamentos, perseguições e contra-jogos
 import * as SUBR from './src/subterraneo-rejogo.js'; // lote 6: rejogabilidade (modos, desafios, variações por semente, conquistas, recordes, segredos da 2ª jogada)
+import * as AUDL7B from './src/subterraneo-audio7b.js'; // lote 7 (2ª leva): eco que mede o espaço, canos que cantam, corvos, cruzes, pá por camada, órgão por túmulo, amanhecer
+import * as AUDL7 from './src/subterraneo-audio7.js'; // lote 7: som e atmosfera (ambiência por sala, órgão/coro, goteiras, vozes, silêncio como arma, clima e trovão)
 
 // ---------- utilidades compartilhadas entre mapas
 function arvores(A, faixas, n = 300) {
@@ -859,7 +861,7 @@ function tuneis(A, S) {
     }
   });
 
-  return SUBR.tuneis(A, S, SUBM2.tuneis(A, S, SUBM.tuneis(A, S, SUBS2.tuneis(A, S, SUBS.tuneis(A, S, SUBP.tuneis(A, S, SUBL.tuneis(A, S, {
+  return AUDL7B.tuneis(A, S, AUDL7.tuneis(A, S, SUBR.tuneis(A, S, SUBM2.tuneis(A, S, SUBM.tuneis(A, S, SUBS2.tuneis(A, S, SUBS.tuneis(A, S, SUBP.tuneis(A, S, SUBL.tuneis(A, S, {
     nome: 'Túneis de drenagem',
     spawns: { entrada: { x: 0, z: -2.5, yaw: 0 }, inicio: { x: 0, z: -2.5, yaw: 0 } },
     dentro: { hemi: .05, moon: 0, fog: .12 },
@@ -886,7 +888,9 @@ function tuneis(A, S) {
   { nivel: () => nivel }), // lote 4 (2ª leva): src/subterraneo-segredos2.js
   { som, O, B, nivel: () => nivel, muretaX: -18, muretaZ: -36 }), // lote 5: src/subterraneo-monstros.js
   { som, O, B, nivel: () => nivel }), // lote 5 (2ª leva): src/subterraneo-monstros2.js
-  { valvIts, jato, sub, nivel: () => nivel, som, O, B }); // lote 6: src/subterraneo-rejogo.js
+  { valvIts, jato, sub, nivel: () => nivel, som, O, B }), // lote 6: src/subterraneo-rejogo.js
+  { nivel: () => nivel, valvIts, O, B, som }), // lote 7: src/subterraneo-audio7.js
+  { nivel: () => nivel, valvIts }); // lote 7 (2ª leva): src/subterraneo-audio7b.js
 }
 
 // =====================================================================
@@ -1123,13 +1127,15 @@ function cemiterio(A, S) {
       A.agendarEntidades();
     },
   };
-  return SUBR.cemiterio(A, S, SUBM2.cemiterio(A, S, SUBM.cemiterio(A, S, SUBS2.cemiterio(A, S, SUBS.cemiterio(A, S, SUBP.cemiterio(A, S, SUBL.cemiterio(A, S, def, { covas, pedras, importantes, velasTum, velasAltar, avivar, itSino, sinoP, corda, fundos, noAltar, cel, nomes }), // lore do Lote 2
+  return AUDL7B.cemiterio(A, S, AUDL7.cemiterio(A, S, SUBR.cemiterio(A, S, SUBM2.cemiterio(A, S, SUBM.cemiterio(A, S, SUBS2.cemiterio(A, S, SUBS.cemiterio(A, S, SUBP.cemiterio(A, S, SUBL.cemiterio(A, S, def, { covas, pedras, importantes, velasTum, velasAltar, avivar, itSino, sinoP, corda, fundos, noAltar, cel, nomes }), // lore do Lote 2
     { FX, som, neblina: nev, velasAltar, velasTum, itsTum, importantes, sinoP, obel, arvoresMesh: [arv.tronco, arv.copa] }), // lote 3: src/subterraneo-polimento.js
     { FX, itsTum, importantes, covas, sinoP, fundos }), // lote 4: src/subterraneo-segredos.js
     { itsTum, importantes, covas, sinoP, fundos }), // lote 4 (2ª leva): src/subterraneo-segredos2.js
     { som, covas, pedras, fundos, velasAltar, avivar, neblina: nev }), // lote 5: src/subterraneo-monstros.js
     { som, covas, pedras, sinoP, avivar }), // lote 5 (2ª leva): src/subterraneo-monstros2.js
-    { som, covas, itsTum, importantes, lapide, emCima, objeto, neblina: nev }); // lote 6: src/subterraneo-rejogo.js
+    { som, covas, itsTum, importantes, lapide, emCima, objeto, neblina: nev }), // lote 6: src/subterraneo-rejogo.js
+    { avivar, sinoP, importantes, covas, velasAltar, som }), // lote 7: src/subterraneo-audio7.js
+    { covas, pedras, itsTum, importantes, velasAltar, cel, nomes }); // lote 7 (2ª leva): src/subterraneo-audio7b.js
 }
 
 export const MAPAS = { estrada, terreo, superior, tuneis, cemiterio };
