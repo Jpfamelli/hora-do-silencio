@@ -16,6 +16,7 @@ import { segredosTerreo } from './src/internato-segredos.js';
 import { segredosSuperior } from './src/internato-segredos-sup.js';
 import { monstrosTerreo, monstrosSuperior } from './src/monstros-internato.js';
 import { rejogoTerreo, rejogoSuperior } from './src/internato-rejogo.js'; // lote 6: rejogabilidade (semente, 2ª jogada, recordes)
+import { rejogo2Terreo, rejogo2Superior } from './src/internato-rejogo2.js'; // lote 6 (2ª leva): desafios, salas-evento, corredor que se repete, segredos da rejogada
 import * as SUB from './src/subterraneo.js';
 import * as SUBL from './src/subterraneo-lore.js';
 import * as SUBP from './src/subterraneo-polimento.js';
@@ -406,8 +407,9 @@ function terreo(A, S) {
   const Z = polirTerreo(A, S, { X, ger, led, visor, quadro, grade, EX, fusNoQuadro, alcapao, bal, itens: [itGalao, itFus] }); // Lote 3: polimento e janela da copa
   const SG = segredosTerreo(A, S, {}); // Lote 4: segredos e salas escondidas
   const M5 = monstrosTerreo(A, S, { vulto, EX }); // Lote 5: comportamentos, perseguições e marcas do Inspetor
+  const RJ2 = rejogo2Terreo(A, S, {}); // Lote 6 (2ª leva): desafios e segredos da rejogada
 
-  return juntar(juntar(juntar(juntar(juntar(juntar({
+  return juntar(juntar(juntar(juntar(juntar(juntar(juntar({
     nome: 'Térreo do internato',
     ruidoMul: () => Z.ruidoMul(),
     spawns: { inicio: { x: 0, z: 13, yaw: 0 }, escada: { x: EX, z: -7.6, yaw: Math.PI }, porao: { x: 27, z: -21.5, yaw: Math.PI } },
@@ -433,7 +435,7 @@ function terreo(A, S) {
       }
     },
     fitaOuvida(id) { if (id === 'f1' && S.chapter >= 2) A.objDone('fita_diretor'); }
-  }, X), Y), Z), SG), M5), RJ);
+  }, X), Y), Z), SG), M5), RJ), RJ2);
 }
 
 // =====================================================================
@@ -531,8 +533,9 @@ function superior(A, S) {
   const Z = polirSuperior(A, S, { X, caixa, itPoco, desce, itEng, itens: [itEng, itChC, itChP] }); // Lote 3: polimento
   const SG = segredosSuperior(A, S, {}); // Lote 4: segredos e salas escondidas
   const M5 = monstrosSuperior(A, S, { vulto }); // Lote 5: rosto na janela, camas que viram, corredor que desaba, monta-cargas
+  const RJ2 = rejogo2Superior(A, S, {}); // Lote 6 (2ª leva): desafios e segredos da rejogada
 
-  return juntar(juntar(juntar(juntar(juntar(juntar({
+  return juntar(juntar(juntar(juntar(juntar(juntar(juntar({
     nome: 'Andar dos dormitórios',
     ruidoMul: () => Z.ruidoMul(),
     spawns: { escada: { x: 0, z: 3, yaw: 0 }, inicio: { x: 0, z: 3, yaw: 0 } },
@@ -552,7 +555,7 @@ function superior(A, S) {
       if (cap === 3 && !S.flags.supIntro) { S.flags.supIntro = true; A.falar('superior_inicio'); }
     },
     fitaOuvida(id) { if (id === 'f2') { A.objDone('fita_celeste'); A.syncWorld(); } }
-  }, X), Y), Z), SG), M5), RJ);
+  }, X), Y), Z), SG), M5), RJ), RJ2);
 }
 
 // =====================================================================

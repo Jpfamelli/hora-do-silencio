@@ -90,3 +90,105 @@
 - Conquista secreta "Falta Um" ao reparar na criança que sumiu da foto ou da chamada
 - Conquista "Pé Ligeiro" ao bater o seu próprio recorde de tempo num capítulo
 - Conquista secreta "Quarto do Castigo" ao ler os desenhos do Moacir na segunda jogada
+- O relógio de pêndulo da recepção marca a hora real do computador, com ponteiros, segundos e pêndulo balançando
+- À meia-noite real o relógio dá uma batida a mais e deixa um bilhete do Davi preso embaixo dele
+- Às 03:07 reais toca uma conquista secreta e a Lia diz o horário em voz alta
+- A lousa da sala de aula escreve um relatório macabro da Lia com números reais: esconderijos, segundos correndo, mortes e noites
+- A lousa ganha uma lição de casa, uma conta sorteada entre 24 pela semente, que abre uma gaveta por teclado
+- Errar a lição três vezes quebra o giz com estalo e um barulho que o Inspetor ouve
+- A gaveta da lição rende uma pilha ou um curativo, sorteado pela semente
+- O refeitório amanhece com uma mesa posta: um prato para cada noite que você já jogou, com a colher virada
+- Cada morte antiga acrescenta um prato escuro e vazio na ponta da mesa
+- A recepção ganha uma vitrine de troféus com medalhas de ouro, prata ou bronze por capítulo, conforme os seus tempos
+- A vitrine tem a placa da "Aluna Lia" com a soma dos seus três melhores tempos
+- Uma caneca acende na vitrine para cada final que você já alcançou
+- Selos dourados de atenção se acumulam na vitrine a cada erro achado na rejogada
+- Uma galeria de desenhos do menino Moacir cresce na parede do corredor oeste: um desenho novo por noite jogada, cada um com uma fala da Lia
+- O 12º desenho mostra uma menina com uma lanterna e o nome da Lia escrito errado
+- Depois do primeiro final, uma porta no fundo do corredor leste devolve a Lia ao início do mesmo corredor
+- Na segunda travessia os retratos do corredor leste aparecem de costas
+- Na terceira travessia as portas do corredor leste sangram
+- Também na terceira travessia surge um relógio que anda para trás
+- Na quarta passagem a porta do fundo abre numa nota secreta do Davi e uma conquista
+- Uma sala-evento sorteada pela semente (biblioteca, lavanderia ou banheiros) acontece por cerca de 26 segundos quando você entra
+- Evento de dança: uma música de caixinha sobe e quatro vultos giram em volta do centro da sala
+- Evento das carteiras: seis vultos sentados viram a cabeça devagar para onde a Lia está
+- Evento das brasas: brasas no chão, luz laranja tremendo e estalos de madeira
+- Ficar quieta até o evento acabar rende uma pilha ou um curativo; correr lá dentro chama o Inspetor
+- Uma sala lateral sorteada vem interditada com fita zebrada cruzando a porta
+- Dentro da sala interditada há uma polaroide rara com uma pista do final verdadeiro, mais uma pilha extra
+- Passar por baixo da fita faz barulho e a Lia avisa que ele vai ficar sabendo
+- Uma porta lateral amanhece emperrada por semente, com arranhões fundos na madeira, e dá para arrombar segurando E
+- A casa lembra: a porta que você arrombou fica aberta nas noites seguintes, com marca de pó no chão
+- Em metade das noites uma estante caída fecha o corredor oeste: dá para empurrar com barulho ou contornar pelo refeitório
+- Três poças de goteira por noite pingam audivelmente e aumentam o ruído dos seus passos se você pisar nelas
+- Uma sala por noite é de eco, com piso de azulejo claro, e dobra o ruído de tudo o que você faz ali
+- Outra sala por noite é abafada, com tapete vermelho, e corta o ruído pela metade
+- A diretoria ganha uma parede de quatro monitores de vigilância com imagem de tubo, estática e luz de gravação
+- As imagens dos monitores chegam com dois segundos de atraso: dá para espiar onde o Inspetor estava
+- Às vezes um monitor mostra a Lia de costas em um corredor onde ela ainda não esteve
+- O cuco da recepção aponta com uma seta para o lado onde fica o armário abençoado da noite
+- O armário abençoado acalma quem se esconde nele: o medo cai e o faro do Inspetor se desfaz
+- Partículas violeta de lavanda sobem em volta do armário abençoado e o rótulo avisa do cheiro
+- Um dado de osso do Tomé aparece em duas salas fora do caminho, escolhidas pela semente
+- O dado tem seis resultados: pilha, curativo, calma, barulho, lanterna apagada por 3 s ou o Inspetor desperto
+- Nos banheiros, de lanterna apagada, chamar por ela nos três espelhos em sequência invoca a Loira, uma vez por capítulo
+- Quando a Loira ajuda, um sussurro conta em que sala o Inspetor está agora
+- Quando a Loira castiga, cai algodão molhado da torneira, ouve-se uma risada e o medo sobe
+- A Loira lembra a vez passada: a Lia comenta quando o resultado se repete
+- Um papel pregado na porta da despensa traz uma regra sorteada: não acenda a luz, não feche a porta, não corra ou não olhe para trás
+- Obedecer a regra por 7 segundos revela um maço de pilhas atrás das latas
+- Quebrar a regra do papel faz o Inspetor ouvir (sem dano) e sobe o medo
+- Na rejogada, quatro quadros do corredor oeste viram um jogo de sete erros: um deles mudou (está torto e tem olhos novos)
+- Apontar o quadro certo dá uma pilha, um selo de atenção e uma conquista
+- Apontar um quadro errado faz uma pancada que ecoa e atrai o Inspetor
+- Na rejogada, as placas das portas da sala de aula e da biblioteca trocam de nome e a Lia comenta
+- A campainha da recepção abre um desafio: 60 segundos sem correr, com avisos aos 40 e aos 20
+- Correr durante o desafio faz a campainha tocar sozinha, bem alto, e o Inspetor ouve
+- Vencer o desafio dá uma pilha, uma conquista e conta em um placar permanente
+- As três portas laterais ganham placas em braile desenhadas em canvas, e a biblioteca tem a tabela que diz qual está emperrada, interditada ou em festa
+- Uma lâmpada do corredor oeste pisca em grupos de 1 a 4 vezes: é o código de uma gaveta, diferente a cada noite
+- A gaveta do código rende um curativo e uma conquista
+- Em um terço das noites a foto da turma ganha um rosto a mais, com os olhos mexendo
+- Encarar o rosto extra por 4 segundos apaga as luzes do prédio por 2 segundos
+- Um cartaz na recepção mostra uma matrícula sorteada pela semente, que abre o fichário da secretaria na diretoria
+- O fichário rende uma pilha e uma ficha de matrícula da Lia, lida como nota
+- Nas noites 2, 3, 5, 7, 10 e 13 a Lia comenta em voz alta há quantas noites está ali
+- A cada cinco noites jogadas o internato ganha mais manchas de mofo nas paredes
+- Na vigésima noite a foto da turma aparece virada para a parede
+- Um bilhete do dia aparece na ala leste em dias pares e na oeste em dias ímpares, pelo calendário real
+- Pegar o bilhete do dia solta um susto calado: sussurros e passos no forro
+- Perto do dia 24 de junho (calendário real) o pátio ganha bandeirinhas e uma fogueira baixa com luz tremendo
+- Pular a fogueira baixa rende uma pilha
+- Um livro de visitas na recepção lista as datas e horas reais das suas últimas noites
+- A conquista Casa Dobrada premia terminar o Capítulo I com o corredor livre e com a estante caída
+- Doze conquistas novas, várias secretas, entram na lista: Três e Sete, Lição Feita, Sete Erros, Sala 13 e outras
+- O relógio da recepção ganha uma placa parada na hora real da sua última morte: "parou quando você parou"
+- No corredor dos dormitórios uma chamada de giz risca um nome por noite, e a cama dele é a que o Inspetor nunca fareja
+- Uma cama de cada dormitório ganha plaqueta com nome e número
+- A cama do nome riscado é segura: esconder-se nela derruba o medo e desfaz o faro do Inspetor
+- Partículas de lavanda sobem em volta da cama intocada
+- Quatro dormitórios ganham um volume suspeito sob o lençol
+- Um dos volumes respira de verdade, sobe e desce, e sussurra quando você se aproxima devagar
+- Levantar o lençol da cama certa dá uma pilha ou um curativo e uma conquista secreta
+- Levantar o lençol de um volume falso faz um estalo seco que o Inspetor ouve
+- Correr perto da cama que respira faz a criança sumir deixando só um lençol vazio
+- Na rejogada os números das plaquetas das camas embaralham
+- Andar 10 segundos de lanterna apagada e em silêncio pelo corredor revela uma porta sem número com luz fraca
+- Atrás da porta sem número há o cômodo fantasma, uma sala que não existe na planta, com cama, cadeira de balanço e luz fraca
+- O cômodo fantasma tem quatro fotografias do internato, cada uma com sua fala
+- A cadeira de balanço do cômodo fantasma balança sozinha
+- Na rejogada, em duas noites de cada três, atravessar o corredor dos dormitórios de lanterna acesa devolve ao início, até três vezes
+- A cada volta do corredor que não acaba aparece um detalhe: um retrato, uma porta entreaberta, marcas de mãos de criança
+- Atravessar de lanterna apagada escapa da repetição, e a Lia sugere isso na primeira volta
+- Na terceira volta um bilhete do Davi explica o corredor e uma conquista toca
+- Um dormitório sorteado vem interditado com fita zebrada
+- Dentro da ala interditada há um curativo e, atrás da parede, a risada da Ana
+- As poças de goteira e as salas de eco e abafada também sorteiam no andar de cima
+- No quarto da Celeste, um tabuleiro de sessão tem uma plaqueta que se move e responde
+- O tabuleiro responde três perguntas verdadeiras: onde ele está, qual cama é segura e o que falta fazer
+- Cada pergunta ao tabuleiro custa medo e faz um ruído que chama atenção
+- Na rouparia, três lençóis de varal balançam e roçam em quem passa
+- Às vezes uma silhueta cruza do outro lado dos lençóis do varal
+- Na rejogada as placas de dois pares de dormitórios trocam de nome e a Lia comenta
+- O mofo da casa também cresce nas paredes do corredor dos dormitórios a cada cinco noites
