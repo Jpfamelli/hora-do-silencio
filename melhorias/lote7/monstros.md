@@ -1,0 +1,92 @@
+# Lote 7 — Monstros e IA
+- Cada cômodo agora tem o seu próprio leito de ar (um zumbido contínuo filtrado) que troca de timbre quando você atravessa a porta.
+- Cada sala ganhou uma nota fundamental ressonante própria, um tom surdo diferente em cada cômodo.
+- Nos túneis o leito de ar fica grave e denso, como respiração de pedra molhada.
+- Ao ar livre o leito de ar fica agudo e aberto, com a chuva e o vento mais presentes.
+- Na capela e na nave o ar soa reverberante e mais alto, como um espaço enorme e vazio.
+- Nos dormitórios de cima entra um assobio de vento pela janela quebrada.
+- Na cozinha, despensa e refeitório zumbe um grave elétrico de geladeira morta.
+- Salas com água ganham um leito mais encharcado, com borbulhar baixo.
+- Salas grandes deixam o ar parado mais presente do que os cômodos pequenos.
+- O leito de ar abaixa e abafa quando a Lia prende a respiração.
+- Entrou uma música de tensão procedural que cresce conforme o perigo, sem piscar, com subida lenta e descida ainda mais lenta.
+- A trilha de tensão respira com o fôlego: sobe quando a Lia está sem ar.
+- No instante do bote a música de tensão some de repente — o vazio avisa o golpe.
+- A dissonância da trilha sobe de meio-tom a cada capítulo, afinando a casa mais doente.
+- A trilha fica mais desafinada e suja a cada capítulo que passa.
+- Um sino-celeste frio entra na trilha quando a Ana está contando perto.
+- Um órgão grave se aproxima na trilha durante a Procissão.
+- Um pedal grave entra quando duas ameaças dividem a cena (os temas se entrelaçam em vez de só somar).
+- Um bumbo surdo de coração entra na trilha quando o perigo está alto durante a caça.
+- Um sub-grave de pavor desce no instante em que o Inspetor decide caçar.
+- O Inspetor cala de repente ao travar em você — cerca de 1,3 s de silêncio total antes do bote.
+- Falsa desistência: na procura, às vezes todo o som dele some por uns 4 s enquanto ele espera parado perto.
+- Nos capítulos finais ele larga as chaves e passa a caçar em silêncio total: o tilintar que te protegia some.
+- Ele odeia o silêncio: silêncio longo o deixa agitado e ele bate em algo de propósito para te assustar.
+- Ficar totalmente parada e calada demais te entrega: um sussurro "ela parou..." e ele muda de rota na sua direção.
+- O buraco de som: na escuta ou na Hora do Silêncio, qualquer ruído seu vale muito mais e crava a sua posição.
+- Ele saboreia o seu coração: perto e com o batimento alto, ele para e escuta antes do bote.
+- Aviso puramente sonoro de "ele te ouviu": um baque sub-grave no instante em que ele trava em você.
+- Impasse na Hora do Silêncio: se ele está na mesma sala quando as badaladas calam o mundo, ele congela e escuta.
+- A Procissão subtrai o som: uma parede de silêncio rola na sua direção quando a fila se aproxima.
+- Na procura o Inspetor murmura o que deduz de você ("ela parou...", "respira aí").
+- Na patrulha calma dos primeiros capítulos ele resmunga desculpas, de boca quase fechada.
+- Na ronda ele recita as regras da casa numa ladainha baixa ("não corra... não acenda...").
+- Investigando, ele resmunga sobre o seu último barulho, vindo da direção certa.
+- Ao mudar de sala na ronda ele murmura a lembrança daquele cômodo.
+- Ventríloquo: ao perder você, às vezes ele joga a própria voz para a sala oposta.
+- Isca: da sala vizinha uma voz tenta soar como a Lia, dizendo que está tudo bem.
+- Grunhidos graves vazam das paredes quando ele está do lado, mais desumanos a cada capítulo.
+- Durante a Procissão o coro soletra o seu nome digitado, letra por letra.
+- Na reza, de vez em quando um dos nomes é trocado pelo seu.
+- Dueto do Chamado: duas vozes harmonizam o seu nome em terça, de salas opostas.
+- Cânone a duas vozes: nos capítulos finais o Inspetor e a Ana chamam de lados opostos.
+- Respiração nítida pela fechadura: agachada numa porta fechada com ele do outro lado, o fôlego dele vem sem oclusão.
+- A respiração dele contamina a sua: perto e sem te ver, o fôlego da Lia acelera, fica audível e te denuncia.
+- Unhas arranham a parede acompanhando a sua posição quando ele está na sala vizinha.
+- Ele imita a casa: reproduz um pingo ou trinco sutilmente errado, de um canto, para te atrair.
+- A respiração dele atravessa a madeira do armário, grave e colada, do lado exato em que ele está.
+- Ele bate na parede e escuta o eco voltar (eco-localização) e vira a cabeça para você.
+- No quarto morto o passo dele chega seco, sem eco, soando mais perto do que o ouvido espera.
+- Ele funga o ar em rajadas curtas seguindo o seu rastro.
+- O coração-bússola ganhou eixo vertical: agudo quando ele está acima, grave quando está nos túneis.
+- No estado de escuta a bengala dele bate num ritmo irregular e espaçado, diferente da patrulha.
+- O passo que falta: na patrulha ele engole um passo de propósito e o silêncio no lugar dele te prende.
+- Escondida nos capítulos finais, ele imita o ritmo do seu fôlego e devolve, zombando.
+- A lanterna apita a presença dele: o zumbido ganha um batimento que acelera conforme ele chega perto.
+- Duas notas da bengala atravessam a parede um instante antes de ele entrar na sala vizinha.
+- Doppler nas chaves e nos passos quando ele cruza correndo na sua frente.
+- Em salas-eco grandes, raríssimo, um passo dele volta forte da parede errada e mente a direção.
+- A partir do capítulo IV um arrasto de corrente metálica acompanha cada passo dele.
+- As chaves enferrujam do capítulo IV em diante: uma cauda de metal morto, mais grave e sem brilho, nos passos.
+- O passo dele ganha mais cauda de eco quanto maior e mais distante é a sala entre vocês.
+- Feedback do olhar da Ana: um suspiro de alívio quando a sua luz a prende e um gemido ao perdê-la de vista.
+- A Ana respira pela boca (um chiado infantil) quando está no cômodo mas ainda invisível.
+- Quando a Ana está perto, um número fora de ordem é sussurrado por cima da contagem.
+- A Ana cantarola a melodia da caixinha, de boca fechada, um instante antes de começar a contar.
+- Ventriloquia da Ana: às vezes a contagem vem de 180° do lado real dela.
+- Nos túneis e no cemitério a contagem da Ana ganha um eco frio e atrasado.
+- Quando a Procissão atravessa o seu esconderijo, o coro circula em volta de você, de um ouvido ao outro.
+- No ponto de passagem mais próximo, a ladainha da Procissão fica compreensível por um instante (ordem, silêncio).
+- O canto da Procissão ganha efeito Doppler conforme ela se move: sobe ao se aproximar e cai ao passar.
+- Trovões periódicos estouram ao longe, mais fortes e mais frequentes a cada capítulo.
+- Um trovão forte abre uma janela de uns 2 s em que os seus passos somem para o ouvido do Inspetor.
+- O trovão perto também deixa a Lia com o mundo abafado por um instante.
+- O relâmpago estala agudo e elétrico pela casa, sincronizado com o clarão.
+- A chuva vem em rajadas que crescem e somem ao longo da noite.
+- No andar de cima a chuva no telhado arrebenta mais forte durante as rajadas.
+- O vento uiva em rajadas longas quando você está ao ar livre.
+- Nos túneis um gotejar com eco denso pinga de cantos aleatórios além da goteira de sempre.
+- Andando na água dos túneis, cada passo deixa um "plic" de eco que persiste atrás de você.
+- O prédio geme num grave estrutural longo nas calmarias demoradas.
+- Estalos de madeira esfriando à noite surgem de cantos aleatórios dentro da casa.
+- A casa cochicha: vozes coletivas distantes e indistintas sobem numa calmaria longa.
+- Um sino distante da capela dobra sozinho, raro, em algum canto da noite.
+- Enquanto ele ronda longe, um rangido de porta distante bate sozinho de vez em quando.
+- No escuro total, sem lanterna, o ar fica pesado: um sub-grave sobe quanto mais tempo você fica às cegas.
+- A Lia arfa mais fundo e trêmulo quando o perigo é extremo e ela está sem ar.
+- O segundo batimento do coração-bússola ganha um eco panoramizado para o lado onde ele está.
+- Com a pilha baixa, a lanterna solta um chiado agudo de capacitor que o Inspetor ouve de leve de perto.
+- Um acorde de alívio tênue soa quando o Inspetor desiste e volta à patrulha.
+- Todos esses sons novos entram no menu de legendas de som, marcados como perigo ou história.
+- O módulo novo src/monstros-som-lote7.js entra no cache do PWA, para a casa continuar soando assim offline.
