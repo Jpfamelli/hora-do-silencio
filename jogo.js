@@ -3074,8 +3074,8 @@ function aplicarNoturno() {
 // Proteção dos ouvidos (limitador final), sustos menos altos e perfil de alto-falante
 function aplicarPerfil() {
   if (!AC || !AUD.lim) return;
-  const L = AUD.lim, pr = !!OPT.protege, t = AC.currentTime;
-  L.threshold.value = pr ? -6 : 0; L.knee.value = 0; L.ratio.value = pr ? 20 : 1; L.attack.value = .001; L.release.value = .2;
+  const L = AUD.lim, pr = !!OPT.protege || !!OPT.vizinho, t = AC.currentTime;
+  L.threshold.value = OPT.vizinho ? -9 : pr ? -6 : 0; L.knee.value = 0; L.ratio.value = pr ? 20 : 1; L.attack.value = .001; L.release.value = .2;
   const sv = !!OPT.sustoSuave, c = AUD.sustoCmp;
   c.threshold.value = sv ? -30 : 0; c.knee.value = sv ? 6 : 0; c.ratio.value = sv ? 8 : 1; c.attack.value = sv ? .04 : .003; c.release.value = .3;
   AUD.sustoLp.frequency.setTargetAtTime(sv ? 3000 : 20000, t, .05);
@@ -3091,11 +3091,14 @@ function aplicarVolumes() {
   const caixinha = OPT.saidaSom === 'celular' || OPT.saidaSom === 'notebook';
   for (const [k, v] of [['amb', 'vAmb'], ['mus', 'vAmb'], ['ent', 'vEnt'], ['voz', 'vVoz'], ['sfx', 'vSfx'], ['corpo', 'vSfx'], ['susto', 'vSusto'], ['menu', 'vMenu']]) {
     if (!BUS[k]) continue;
-    const alvo = (OPT[v] ?? 1) * (k === 'ent' ? (AUD.entK ?? 1) : 1) * (k === 'amb' && caixinha ? .7 : 1);
+    const alvo = (OPT[v] ?? 1) * (k === 'ent' ? (AUD.entK ?? 1) : 1) * (k === 'amb' && caixinha ? .7 : 1) * (k === 'mus' ? musK() : 1);
     BUS[k].gain.setTargetAtTime(alvo, t, .05); BUS[k + 'R'].gain.setTargetAtTime(alvo, t, .05);
   }
+  if (AUD.musG) AUD.musG.gain.setTargetAtTime(musK(), t, .08);
+  if (AUD.chuvaG) AUD.chuvaG.gain.setTargetAtTime(OPT.vChuva ?? 1, t, .08);
   AUD.mono.channelCount = OPT.mono ? 1 : 2;
 }
+function musK() { return OPT.semTrilha ? 0 : (OPT.vMus ?? 1); } // lote 7: volume da trilha de tensão (0 = só a casa)
 function iniciarAudio() {
   if (AC) { if (AC.state === 'suspended') AC.resume(); return; }
   AC = new (window.AudioContext || window.webkitAudioContext)();
@@ -3246,7 +3249,7 @@ const SOM = {
     lp.connect(dg); dg.connect(BUS.amb); AMB.drone = dg;
     const lfo = AC.createOscillator(); lfo.frequency.value = .07; const lg = AC.createGain(); lg.gain.value = 80; lfo.connect(lg); lg.connect(lp.frequency); lfo.start();
     const ch = ruido(true), bp = AC.createBiquadFilter(); bp.type = 'lowpass'; bp.frequency.value = 2800;
-    const cg = AC.createGain(); cg.gain.value = .12; ch.connect(bp); bp.connect(cg); cg.connect(BUS.amb); ch.start(); AMB.chuva = cg; AMB.chuvaF = bp;
+    const cg = AC.createGain(); cg.gain.value = .12; ch.connect(bp); bp.connect(cg); AUD.chuvaG = AC.createGain(); AUD.chuvaG.gain.value = OPT.vChuva ?? 1; AUD.chuvaG.connect(BUS.amb); cg.connect(AUD.chuvaG); ch.start(); AMB.chuva = cg; // lote 7: a chuva tem controle próprio AMB.chuvaF = bp;
     // a chuva vem em ondas: uma camada de gotas grossas que cresce e some devagar
     const rg = ruido(true), rgf = AC.createBiquadFilter(); rgf.type = 'bandpass'; rgf.frequency.value = 4800; rgf.Q.value = .6; const rgg = AC.createGain(); rgg.gain.value = 0;
     rg.connect(rgf); rgf.connect(rgg); rgg.connect(cg); rg.start(t, .7);
@@ -3267,19 +3270,20 @@ const SOM = {
   },
   musica() {
     const t = AC.currentTime;
+    AUD.musG = AC.createGain(); AUD.musG.gain.value = OPT.semTrilha ? 0 : (OPT.vMus ?? 1); AUD.musG.connect(BUS.amb); // lote 7: a trilha tem controle próprio e pode ser desligada
     const cg = AC.createGain(); cg.gain.value = 0; const cf = AC.createBiquadFilter(); cf.type = 'bandpass'; cf.frequency.value = 1100; cf.Q.value = 1.5;
     const trem = AC.createGain(); trem.gain.value = .5; const tl = AC.createOscillator(); tl.frequency.value = 9; const tlg = AC.createGain(); tlg.gain.value = .5; tl.connect(tlg); tlg.connect(trem.gain); tl.start(t);
     for (const f of [220, 233.1, 246.9, 329.6]) { const o = AC.createOscillator(); o.type = 'sawtooth'; o.frequency.value = f; o.detune.value = rand(-8, 8); o.connect(cf); o.start(t); }
-    cf.connect(trem); trem.connect(cg); cg.connect(BUS.amb); AMB.cordas = cg;
+    cf.connect(trem); trem.connect(cg); cg.connect(AUD.musG); AMB.cordas = cg;
     const kg = AC.createGain(); kg.gain.value = 0; const kf = AC.createBiquadFilter(); kf.type = 'lowpass'; kf.frequency.value = 320;
     AMB.cacaOsc = [55, 58].map(f => { const o = AC.createOscillator(); o.type = 'sawtooth'; o.frequency.value = f; o.connect(kf); o.start(t); return o; });
-    kf.connect(kg); kg.connect(BUS.amb); AMB.caca = kg;
+    kf.connect(kg); kg.connect(AUD.musG); AMB.caca = kg;
     const vg = AC.createGain(); vg.gain.value = 0; const vo = AC.createOscillator(); vo.type = 'sawtooth'; vo.frequency.value = 880; const vf = AC.createBiquadFilter(); vf.type = 'bandpass'; vf.frequency.value = 2400; vf.Q.value = 4;
-    const vib = AC.createOscillator(); vib.frequency.value = 6; const vibg = AC.createGain(); vibg.gain.value = 9; vib.connect(vibg); vibg.connect(vo.frequency); vo.connect(vf); vf.connect(vg); vg.connect(BUS.amb); vo.start(t); vib.start(t);
+    const vib = AC.createOscillator(); vib.frequency.value = 6; const vibg = AC.createGain(); vibg.gain.value = 9; vib.connect(vibg); vibg.connect(vo.frequency); vo.connect(vf); vf.connect(vg); vg.connect(AUD.musG); vo.start(t); vib.start(t);
     AMB.violino = vg; AMB.violinoO = vo;
-    const zg = AC.createGain(); zg.gain.value = 0; const zo = AC.createOscillator(); zo.frequency.value = 2960; zo.connect(zg); zg.connect(BUS.amb); zo.start(t); AMB.zumbido = zg;
+    const zg = AC.createGain(); zg.gain.value = 0; const zo = AC.createOscillator(); zo.frequency.value = 2960; zo.connect(zg); zg.connect(AUD.musG); zo.start(t); AMB.zumbido = zg;
     // medo alto: um cluster agudo que bate devagar (entra acima de 78 de medo e só sai abaixo de 55)
-    const clg = AC.createGain(); clg.gain.value = 0; clg.connect(BUS.amb);
+    const clg = AC.createGain(); clg.gain.value = 0; clg.connect(AUD.musG);
     for (const fr of [1760, 1812, 1866, 1975]) { const o = AC.createOscillator(); o.frequency.value = fr; o.detune.value = rand(-12, 12); o.connect(clg); o.start(t); }
     AMB.cluster = clg;
   },
@@ -3989,7 +3993,7 @@ document.addEventListener('visibilitychange', () => { try { if (!AC) return; if 
 for (const ev of ['pointerdown', 'keydown', 'touchend', 'click']) addEventListener(ev, () => { try { if (AC && AC.state !== 'running' && AC.state !== 'closed' && !document.hidden) AC.resume(); } catch (e) {} });
 // Opções de som (volumes separados, mono, som noturno, voz falada)
 (function opcoesSom() {
-  const campos = [['vAmb', 'Ambiente e música'], ['vEnt', 'Criaturas'], ['vSfx', 'Efeitos'], ['vVoz', 'Vozes e fitas'], ['vSusto', 'Sustos'], ['vMenu', 'Sons dos menus']];
+  const campos = [['vAmb', 'Ambiência da casa'], ['vEnt', 'Criaturas'], ['vSfx', 'Efeitos'], ['vVoz', 'Vozes e fitas'], ['vSusto', 'Sustos'], ['vMenu', 'Sons dos menus']];
   const chk = [['protege', 'Proteger os ouvidos (limita os picos)'], ['sustoSuave', 'Sustos menos altos'], ['semZumbido', 'Sem zumbido no ouvido'], ['tiqueMira', 'Tique ao mirar em algo usável'], ['mono', 'Áudio mono'], ['falada', 'Voz falada do Inspetor']];
   const sels = [['faixa', 'Faixa de som', [['cinema', 'Cinema (picos livres)'], ['noite', 'Noite (gritos contidos)'], ['baixo', 'Fone baixo (tudo nivelado)']]], ['saidaSom', 'Tocando em', [['normal', 'Fone ou caixa de som'], ['notebook', 'Alto-falante do notebook'], ['celular', 'Alto-falante do celular']]]];
   const pct = k => Math.round((OPT[k] ?? 1) * 100) + '%';
@@ -4488,6 +4492,7 @@ const UIX = criarInterface({
   get S() { return S; }, P, M, ANA, PROC, W, OPT, DIFS, R, camera, renderer, keys, SFX, CAPS_KEY, SAVE_KEY, scene, get AC() { return AC; }, get master() { return master; },
   get mode() { return mode; }, get ui() { return ui; }, get fita() { return fitaTocando && !fitaPausada ? fitaTocando : null; }, loreAchado, totalLore,
   D: () => D(), salaAdj, roomAt, emitNoise, toast, sub, conquista, lsGet, lsSet, get chamado() { return chamadoArmadilha; },
+  mascaraSom: (x, z) => mascaraSom(x, z), climaMul: () => AUDL6 ? AUDL6.ruidoMul() : 1, iniciarAudio: () => iniciarAudio(), aplicarVolumes: () => aplicarVolumes(), aplicarPerfil: () => aplicarPerfil(), get AUD() { return AUD; }, get BUS() { return BUS; }, // lote 7: leitura de atmosfera/som na UI (src/interface-lote7.js)
   salvarOpt: () => lsSet(OPT_KEY, OPT), setOpt, retry: () => $('#dt-retry').click(), fecharPausa, pularFimCap: () => pularFimCap(), pararFimCap: () => clearTimeout(capTO)
 });
 

@@ -1,0 +1,145 @@
+# Lote 7 — Interface
+- Novo grupo "Som e atmosfera" na tela de Opções reúne todas as pistas de som, silêncio e clima
+- O grupo "Som e atmosfera" aparece inteiro tanto nas Opções do título quanto nas da pausa
+- Botão "Modo Surdez (tudo visual)" liga de uma vez todas as pistas visuais equivalentes ao som
+- O Modo Surdez já marca os seletores da tela, sem precisar reabrir as opções
+- Aviso na tela explica que, no Modo Surdez, cada som ganha uma pista visual
+- Nova opção "Ver o som": um anel na borda aponta de onde veio cada barulho (desligado / só perigo / todos)
+- A onda do anel nasce na direção real da fonte do som e some em cerca de um segundo
+- Cor do anel por categoria: perigo em vermelho, história em âmbar, segredo em roxo, seu barulho em azul
+- Sons grandes sem direção (sino, Procissão) piscam a borda inteira na cor da categoria
+- Opção de forma por tipo de som no anel: • passo, ▭ porta/vidro, ◗ voz, ◉ sino
+- O glifo de forma fica de pé e legível mesmo quando aponta para baixo
+- Limite de pulsos simultâneos no anel para a tela não poluir
+- "Reduzir flashes" encurta pela metade as animações do anel
+- Nova opção: a legenda cresce conforme o volume do som descrito
+- Um grito sai em corpo grande; um sussurro sai miúdo
+- Sons muito altos fazem a legenda tremer
+- Sons de volume médio saem em negrito, sem tremor
+- Nova opção: textura além da cor nas legendas, para daltônicos
+- Legenda de perigo ganha um sublinhado tracejado
+- Legenda de história sai em itálico
+- Legenda de segredo sai com espaçamento de letras aberto
+- Nova opção: seta de direção na própria legenda do som
+- ‹ marca som vindo da esquerda e › da direita
+- A seta dobra (‹‹ / ››) quando o som vem bem de lado
+- ⌃ marca som vindo da frente
+- ⌄ marca som vindo de trás de você
+- Nova opção: a legenda diz se o som está perto, médio ou longe
+- Nova opção: a legenda encosta no lado da tela de onde veio o som
+- Som à direita puxa a legenda para a direita; à esquerda, para a esquerda
+- Som de trás centraliza a legenda e a deixa um pouco mais apagada
+- Nova opção: medidor de camuflagem mostra quanto o clima cobre seus passos agora
+- A barra do medidor fica verde quando o mundo te cobre e vermelha quando você está exposta
+- Rótulo em texto do medidor (o mundo te cobre / cobre em parte / quase sem cobertura / você está exposta)
+- O medidor combina o clima sorteado da noite com o trovão e o gerador que abafam o som
+- O medidor de camuflagem some durante o pânico da caçada para não distrair
+- Nova opção: o clima da noite é anunciado ao entrar em cada capítulo
+- Frase de sensação do clima (a tempestade cobre seus passos / a quietude te entrega / ...) em quatro faixas
+- A frase do clima também vira legenda, para quem joga sem som
+- O clima só é reanunciado ao mudar de capítulo, nunca repetindo no mesmo mapa
+- Nova opção: a tela escurece nas bordas quando o mundo fica em silêncio
+- A vinheta de silêncio entra e sai suave, voltando ao normal assim que um som acontece
+- Nova opção: medidor do silêncio, um anel que enche quanto mais tempo tudo se cala
+- O anel do silêncio fica avermelhado ao se aproximar do limiar
+- Nova opção: pressão do silêncio, um tom fino que cresce quando tudo fica quieto demais
+- O tom do silêncio sobe de frequência conforme a quietude se arrasta
+- O silêncio só "pesa" quando não há perigo ativo nem você fazendo barulho, então não pune andar
+- Legenda "[o silêncio aperta os ouvidos]" quando a quietude chega ao extremo
+- Nova opção: legendar o estado da trilha de tensão
+- Quatro estados nomeados da trilha (a casa respira baixo / a música se inquieta / adoece / não resolve)
+- O estado da trilha só é relegendado com alguns segundos de folga, para não inundar a tela
+- Nova opção: partitura do perigo desenha a curva de tensão rolando na borda de baixo
+- A linha da partitura esquenta para o vermelho na caçada
+- Nova opção: pulso nas bordas no ritmo do coração e da caçada
+- O ritmo do pulso acelera conforme a tensão sobe e também com a vida baixa
+- O pulso do coração usa uma onda suave, sem piscar seco; "Reduzir flashes" o deixa mais fraco
+- Nova opção: nomear a ambiência ao entrar numa sala, para quem não distingue as camadas
+- Cozinha e despensa viram "[ambiência: geladeira morta zumbindo]"
+- Enfermaria vira "uma torneira pingando"
+- Capela vira "um eco de reza parada no ar"
+- Túnel e cisterna viram "água escorrendo ao longe"
+- Dormitório e quarto viram "molas de cama rangendo ao vento"
+- Banheiro vira "canos estalando"
+- Recepção e hall viram "um relógio de parede, tique distante"
+- Diretoria e sala secreta viram "papel farfalhando no ar frio"
+- Sala de brinquedos e de aula viram "um móbile girando sozinho"
+- Área externa vira "vento e chuva batendo no telhado"
+- As demais salas viram "o silêncio da casa respirando"
+- A legenda de ambiência sai sempre como história (âmbar), separada dos sons de perigo
+- A ambiência não repete ao voltar para a mesma sala e tem folga entre avisos
+- Botão "Ouvir os sons do perigo" toca passo, estalo, risada, contagem e Procissão em sequência
+- Botão "Prévia de atmosfera" toca sino ao longe, estática, sino e as badaladas
+- As prévias disparam as próprias legendas junto, para calibrar fone e volume
+- Um aviso na tela explica para que serve cada prévia
+- As prévias destravam o áudio do navegador antes de tocar
+- As pistas novas respeitam o filtro "Legendar sons": com ele desligado, seguem mudas
+- O anel, a vinheta de silêncio e o pulso do coração somem em pausa, cena e fim de capítulo
+- O medidor de camuflagem aparece só quando ligado, no canto, sem cobrir as barras de vida
+- Novo grupo "Mixer da casa" nas Opções, com controle separado para o que antes era um volume só
+- Controle "Chuva" (0 a 150%) mexe só na chuva, sem calar o resto da casa
+- Controle "Música de tensão" (0 a 150%) mexe só na trilha: cordas, caçada, violino, cluster agudo e acordes de alívio
+- Opção "Sem trilha, só a casa" desliga a música de tensão e deixa só o som do ambiente e das criaturas
+- "Ambiência da casa" (antes "Ambiente e música") agora controla só o som da casa, sem arrastar a música
+- Modo vizinho (☾): corta os picos a -9 dB para jogar de madrugada, sem abafar o susto
+- Quatro presets de mixagem em um toque: Cinema, Fone, Caçador e Cru
+- O preset Caçador sobe as criaturas e as vozes e baixa chuva e música para ouvir os passos dele
+- O preset Cru derruba a música e os sustos para um terror seco, só com a casa
+- Os presets atualizam na hora os controles na tela, inclusive os do menu de som antigo
+- Botões "Testar chuva / ambiência / música / vozes" tocam uma amostra de cada canal
+- A amostra passa pelo canal certo, então obedece ao controle que você acabou de mexer
+- Botão "Teste de fone e escuta" nas Opções, para refazer a calibragem quando quiser
+- O título ganha o botão "Teste de fone e escuta"
+- O título ganha uma linha discreta recomendando fones e explicando as legendas com direção
+- Antes da primeira noite, a tela de teste abre sozinha, uma única vez
+- A tela de teste mostra três marcadores (‹ ⌄ ›) que acendem junto com cada som
+- Teste de fone: um passo toca só no ouvido esquerdo, com legenda
+- Teste de fone: um sussurro toca só no ouvido direito, com legenda
+- Teste de fone: uma batida toca atrás de você, em som 3D, com legenda
+- Pergunta "Você ouviu cada um num lado diferente?" com três respostas
+- Responder "estou de fones" liga o áudio 3D de fones
+- Responder "só de uma caixa" liga o modo alto-falante e as legendas com direção e o anel na borda
+- Responder "não ouvi nada" sobe o volume e pede para tocar de novo
+- Segunda etapa da calibragem: três tons cada vez mais baixos e depois um sussurro quase inaudível
+- Os cinco botões de resposta ("nenhum" até "os 3 e o sussurro") ajustam o volume geral
+- Escuta curta escolhe a faixa "Fone baixo" e escuta média escolhe a faixa "Noite"
+- A margem dos sussurros (vozes) sobe conforme a escuta, para o sussurro importante não se perder
+- A tela final resume em texto o que foi ajustado
+- Todas as telas de teste têm "Pular", e quem pula não é incomodado de novo
+- O resumo tem "Refazer", e a tela de teste responde a setas e Enter
+- Legenda "[a chuva ficou do lado de fora]" ao entrar num cômodo vindo de fora
+- Legenda "[a chuva volta a bater em você]" ao sair para o lado de fora
+- Legenda "[silêncio]" quando tudo se cala por alguns segundos
+- Legenda "[silêncio: não é o de sempre]" quando o silêncio vem com perigo no ar
+- Legenda "[o silêncio engrossa]" quando a quietude se arrasta sem perigo
+- Opção de legendas poéticas ("a casa fecha a mão numa porta", "o prédio prende o ar") no lugar das secas
+- A tabela poética cobre vinte sons, de passos e vidro a sino, Procissão e telefone
+- Opção de direção em horas de relógio: "às 3h", "às 9h", "às 12h"
+- Opção de desenhar a forma da onda do som ao lado da legenda
+- Na legenda, grave sai grosso e lento, agudo sai fino e rápido, voz sai tremida
+- Opção de medidor de ruído em agulha de VU no lugar do anel, estilo toca-fitas
+- A agulha do VU passa do alvo e volta, com quique de mola
+- A zona vermelha do VU avisa o ruído alto
+- Ao ligar o VU, o anel de ruído some para não duplicar a informação
+- A pausa mostra "O que a Lia ouviu": os últimos 8 sons em texto
+- Cada som da lista de pausa vem com "há N s", direção e hora de relógio
+- A lista de pausa diz que a casa está quieta quando nada soou
+- A pausa mostra o seu ruído minuto a minuto em barras
+- As barras vão do verde ao vermelho conforme o barulho do minuto
+- A pausa não cala a casa: fica só uma chuva abafada
+- Durante a pausa, um batimento lento e grave marca o tempo
+- Ao despausar, um estalo de porta soa no fundo da casa
+- Fim de capítulo ganha o gráfico "O barulho da sua noite" com as salas mais barulhentas em barras coloridas
+- O fim de capítulo dá um título ao seu ruído: Silêncio de Monge, Pés de Gato, Passos de Gente ou Estrondo
+- A sala mais barulhenta fica marcada com ▲ e nomeada em texto
+- O menor ruído de cada capítulo vira recorde local de silêncio, guardado no navegador
+- Mensagem de novo recorde de silêncio ou comparação com o recorde anterior
+- A tela de morte ganha a autópsia sonora: os últimos 10 segundos de sons, cada um com o "-8s"
+- Cada linha da autópsia traz a direção e a hora de relógio do som
+- Botão "Ouvir de novo (sem direção)" na tela de morte toca de novo a sequência que te entregou
+- Se nada foi legendado nos últimos 10 s, a tela de morte avisa que ele chegou calado
+- A tela de morte mostra as salas onde você fez mais barulho
+- Nova opção "Legendar o que deixou de soar" (chuva que sumiu, silêncio) no grupo "Mais pistas de som"
+- Nova opção para ligar e desligar o "O que a Lia ouviu" da pausa
+- Nova opção para a pausa continuar respirando, com chuva e batimento abafados
+- Nova opção para o gráfico de ruído por sala no fim do capítulo e na morte
