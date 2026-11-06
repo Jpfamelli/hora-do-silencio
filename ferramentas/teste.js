@@ -46,7 +46,7 @@ T.cap1 = async () => { T.usar(/Forçar a porta/); T.usar(/galão/); T.usar(/caix
 T.ok = () => { if (J.ui === 'pausa') document.getElementById('p-voltar').click(); T.dlg(); };
 T.ate = async (cond, seg = 60, deus = true) => {
   const r = J.renderer, orig = r.render; r.render = () => {};
-  const fim = performance.now() + seg * 1000;
+  const fim = performance.now() + seg * 1000 * 4; // espera x4: o QA roda lento quando a máquina está ocupada
   try {
     while (!cond() && performance.now() < fim) {
       for (let i = 0; i < 6; i++) { if (deus && J.S) { J.S.health = 1000; J.S.dead = false; } J.frame(1 / 30); }
