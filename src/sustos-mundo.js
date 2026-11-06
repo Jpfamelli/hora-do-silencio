@@ -13,7 +13,7 @@ const lsSet = (v) => { try { localStorage.setItem(LS_KEY, JSON.stringify(v)); } 
 export function instalarMundo(E, K) {
   const { R, rand, pick, clamp, lerp, camera, W, P, M, ANA, PROC } = E;
   const S = () => E.S;
-  const { depois, anima, voz, respiracao, passoPos, batida, vacuo, marcarForte, apagao, notas, arranhao, vento, rolar, atras, fwdH, dist2, abrirDevagar, fundoCorredor, seguro, som, maoContato } = K;
+  const { depois, anima, voz, respiracao, passoPos, batida, vacuo, marcarForte, apagao, notas, arranhao, vento, rolar, atras, fwdH, dist2, abrirDevagar, fundoCorredor, seguro, som, maoContato, andarModelo } = K;
   const agora = () => K.agora();
   const T = Object.assign({
     cartaz_arranca: 'Isso não tem graça. Quem colou isso aqui?',

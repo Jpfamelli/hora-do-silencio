@@ -4471,7 +4471,8 @@ const SUST = criarSustos({
   limparChamado: () => { chamadoArmadilha = null; }, raio: () => { raioT = 0; },
   saida, env, osc, burst, ruido, SFX, box, cyl, plano, interact, gatilho, SALA, DOOR, setDoor, roomAt, visivel, naLuz, emitNoise, collide, pontoEm, planejar, patrulhar,
   sub, falar, toast, fade, entrarEsconderijo, sairEsconderijo, syncLuzes, despawnAna, renderInvMini,
-  conquista, flash, get ui() { return ui; }, get mode() { return mode; } // lote 3 (src/sustos-plataforma.js)
+  conquista, flash, get ui() { return ui; }, get mode() { return mode; }, // lote 3 (src/sustos-plataforma.js)
+  get BUS() { return BUS; }, get CLIMA() { return L6V && L6V.clima; } // lote 7 (src/sustos-lote7b.js): mudar a chuva e o vento de uma vez
 });
 // Monstros e IA, lote 2: lore viva das entidades (chaves, apito, armários dele, Procissão com rosto, Davi, Joaquim, Albano)
 const ML = criarMonstrosLore({
