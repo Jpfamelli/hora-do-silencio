@@ -11,6 +11,7 @@ export function monstrosEstrada(A, S, c) {
   mesclarMonstros(A.R);
   const grupo = A.W.grupo, P = A.P, cam = A.camera, GZ = c.GZ, BZ = c.BZ, carro = c.carro;
   const U = (c.ex && c.ex.util) || {};
+  const farolOn = c.farolOn || (() => {});   // correção do Lote 6: os faróis que acendem sozinhos e a luz atrás da perseguição chamavam uma função que não existia aqui
   const vivo = () => A.W.grupo === grupo && A.S === S;
   const jogando = () => vivo() && A.mode === 'jogo';
   const _v = new THREE.Vector3(), _f = new THREE.Vector3();

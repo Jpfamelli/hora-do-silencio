@@ -8,6 +8,7 @@ import { polirEstrada, tecla, semFlash } from './src/estrada-polimento.js';
 import { segredosEstrada, letrasPlaca } from './src/estrada-segredos.js';
 import { monstrosEstrada } from './src/estrada-monstros.js';
 import { rejogoEstrada } from './src/estrada-lote6.js';
+import { rejogoEstrada2 } from './src/estrada-lote6b.js'; // lote 6 (2ª rodada): mala, rádio, posto que muda e eventos da estrada
 import { extrasTerreo, extrasSuperior, juntar } from './src/internato.js';
 import { loreTerreo, loreSuperior } from './src/internato-lore.js';
 import { polirTerreo, polirSuperior } from './src/internato-polimento.js';
@@ -236,7 +237,9 @@ function estrada(A, S) {
   monstrosEstrada(A, S, { GZ, BZ, carro, farolOn, gate, ex, v, novoVulto: () => vulto(A) });
   // Lote 6: rejogabilidade — variações sorteadas por semente, segredos só da segunda jogada,
   // recordes e selos do prólogo (src/estrada-lote6.js)
-  rejogoEstrada(A, S, { GZ, BZ, carro, gate, cadeado, chave, orelhao, joaquim, velho, farolOn, ex, pol, fora, novoVulto: () => vulto(A) });
+  const r6 = rejogoEstrada(A, S, { GZ, BZ, carro, gate, cadeado, chave, orelhao, joaquim, velho, farolOn, ex, pol, fora, novoVulto: () => vulto(A) });
+  // Lote 6 (2ª rodada): mala do carro, painel, rádio, posto que muda e eventos sorteados da estrada (src/estrada-lote6b.js)
+  rejogoEstrada2(A, S, { GZ, BZ, carro, joaquim, velho, farolOn, ex, fora, r6: r6 && r6.util, novoVulto: () => vulto(A) });
 
   return {
     nome: 'A Estrada Velha',
