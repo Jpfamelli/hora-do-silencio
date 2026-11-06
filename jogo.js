@@ -3760,9 +3760,11 @@ function updateAudioCore(dt) {
   AMB.cluster.gain.setTargetAtTime(AUD.clusterOn && !bote ? .0035 : 0, now, AUD.clusterOn ? 1.5 : 2.5);
   AMB.cordas.gain.setTargetAtTime(lCordas * .022, now, .5); AMB.caca.gain.setTargetAtTime(lCaca * .07, now, .5);
   AMB.violino.gain.setTargetAtTime(lCaca * .01, now, .5); AMB.zumbido.gain.setTargetAtTime(lZ * .0035, now, .5);
+  const semMus = !!(window.__L7 && window.__L7.semMusica()); // lote 7: Só a Casa, Rádio Mudo e Noite Muda tiram a música
+  if (semMus) { for (const g of [AMB.cordas, AMB.caca, AMB.violino, AMB.zumbido, AMB.cluster]) g.gain.setTargetAtTime(0, now, .1); lPulso = 0; }
   if (est === 'caca') {
     AUD.cacaT += dt; if (AUD.cacaT > 3 && AUD.cacaSemi < 6) { AUD.cacaT = 0; AUD.cacaSemi++; for (const o of AMB.cacaOsc) o.detune.setTargetAtTime(AUD.cacaSemi * 100, now, .3); AMB.violinoO.frequency.setTargetAtTime(880 * Math.pow(2, AUD.cacaSemi / 12) * rand(.98, 1.02), now, .8); }
-    AUD.percT -= dt; if (AUD.percT <= 0) { AUD.percT = clamp(.3 + dM * .06, .3, 1.1); SOM.metal(.6 + .4 * clamp(1 - dM / 15, 0, 1)); }
+    AUD.percT -= dt; if (AUD.percT <= 0) { AUD.percT = clamp(.3 + dM * .06, .3, 1.1); if (!semMus) SOM.metal(.6 + .4 * clamp(1 - dM / 15, 0, 1)); }
   } else if (AUD.cacaSemi) { AUD.cacaSemi = 0; AUD.cacaT = 0; for (const o of AMB.cacaOsc) o.detune.setTargetAtTime(-300, now, 1.2); AMB.violinoO.frequency.setTargetAtTime(660, now, 1); }
   AUD.pulsoT -= dt; if (lPulso > .05 && AUD.pulsoT <= 0) { AUD.pulsoT = dM < 6 ? 1.2 : 2; SOM.pulso(lPulso); }
   // Mudanças de estado: suspiro quando ele perde a pista, acorde de alívio quando desiste
@@ -4509,7 +4511,7 @@ const L6V = instalarVisualLote6({
 PG.ligar({
   get S() { return S; }, setS: v => { S = v; }, get ui() { return ui; }, get mode() { return mode; },
   KEYS: { SAVE_KEY, CAPS_KEY, CONQ_KEY, OPT_KEY }, OPT, salvarOpt: () => lsSet(OPT_KEY, OPT), saveExterno: true, dicaExterna: true, ajudaExterna: true,
-  P, M, ANA, PROC, W, MON, SFX, D, toast, sub, loreAchado, totalLore, salvarCheckpoint, carregarSnap, entrarJogo, iniciarAudio, emitNoise,
+  P, M, ANA, PROC, W, MON, SFX, D, toast, sub, loreAchado, totalLore, salvarCheckpoint, carregarSnap, entrarJogo, iniciarAudio, emitNoise, AUD, get AC() { return AC; },
   recomecarCap: () => { // Lote 3: reinício na hora (segurar BACKSPACE / SELECT / três dedos), sem tela de morte nem menu
     const snap = (lsGet(CAPS_KEY, {})[R.capitulos[S.chapter].id] || {}).snap; if (!snap || trocandoCap) return false;
     if (ui === 'diario') fecharDiario();

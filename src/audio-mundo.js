@@ -428,7 +428,7 @@ export function instalarAudioMundo(C) {
   function horaDoSilencio() {
     const t0 = ac().currentTime + 1.4;
     const fim = anunciar(TXT.hora, { f0: 92, vel: .17, formK: .9, q: 5 }, t0);
-    hora = { ini: fim + .4, fim: fim + 20.4 };
+    hora = { ini: fim + .4, fim: fim + .4 + 20 * ((window.__L7 && window.__L7.horaMul()) || 1) }; // lote 7: Noite Muda dura 40 s
     mais(hora.ini - ac().currentTime, () => { C.SFX.horaSilencio(); C.SOM.silencio(.6, .02, true); });
     mais(hora.ini - ac().currentTime + 2.5, () => C.sub('lia', TXT.nemChuva));
     mais(hora.fim - ac().currentTime + 1, () => C.subPequeno ? C.subPequeno('lia', TXT.voltaSom) : null);

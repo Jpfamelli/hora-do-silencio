@@ -131,7 +131,7 @@ export function criarInterfaceMonstros(C, U) {
     const insp = vivas.find(v => v.id === 'insp');
 
     // -------- bússola de ameaças
-    const bOn = OPT.bussola === 'sim' || (OPT.bussola === 'facil' && S.dif === 'facil');
+    const bOn = (OPT.bussola === 'sim' || (OPT.bussola === 'facil' && S.dif === 'facil')) && !(window.__L7 && window.__L7.semBussola()); // lote 7: Rádio Mudo e Só pelo Som
     if (E.box) E.box.hidden = !bOn;
     const mostradas = !bOn ? [] : (OPT.bussolaUm && vivas.length) ? [vivas.slice().sort((a, b) => a.d - b.d)[0]] : vivas;
     for (const id of ['insp', 'ana', 'proc', 'cham']) {

@@ -210,10 +210,12 @@ export function criarInterface(C) {
   }
   function som(k, a) {
     if (PL) PL.som(k, a);
+    try { if (window.__L7) window.__L7.som(k, a, SONS); } catch (e) {} // lote 7: caderno de sons, silêncios, grade da rádio
     const def = SONS[k]; if (!def || C.mode === 'titulo' || OPT.legSom === 'nao') return;
+    try { if (window.__L7 && window.__L7.mudo(def)) return; } catch (e) {} // lote 7: desafios sonoros calam as legendas
     if (!def.imp && OPT.legSom !== 'todos') return;
     if (k === 'gerador' && !a[0]) return;
-    if ((cdSom[k] || -99) > agora - def.cd) return; cdSom[k] = agora;
+    if ((cdSom[k] || -99) > agora - def.cd * (window.__L7 ? window.__L7.cdMul() : 1)) return; cdSom[k] = agora; // lote 7: a ajuda auditiva repete os avisos mais cedo
     let txt = def.t;
     const pos = def.pos ? def.pos(a) : null;
     if (pos && C.P.pos) {
@@ -232,10 +234,12 @@ export function criarInterface(C) {
   SONS.arrastar = { t: 'algo pesado sendo arrastado', imp: 0, cd: 4, cat: 'p' };
   SONS.fitaClique = { t: 'o gravador estala', imp: 0, cd: 3, cat: 'h' };
   for (const [k, c] of Object.entries({ passoMonstro: 'p', estalo: 'p', vidro: 'p', pancada: 'p', risada: 'p', contagem: 'p', chamadoVoz: 'p', sino: 'h', sinoLonge: 'h', badaladas: 'p', estatica: 'p', canto: 'h', procissao: 'p', sussurros: 'h', orelhao: 'h' })) SONS[k].cat = c;
+  window.__L7defs = SONS; // lote 7: o caderno de sons lê as legendas daqui
   som.def = SONS; // outros módulos (src/audio-mundo.js) registram legendas aqui
   // lote 4: legenda avulsa (sem som por trás), para os segredos da interface
   function legenda(txt, cat) {
     if (OPT.legSom === 'nao' || C.mode === 'titulo') return;
+    try { if (window.__L7 && window.__L7.mudo({ cat })) return; } catch (e) {}
     const simb = OPT.somSimb && cat ? (cat === 'p' ? '▲ ' : cat === 's' ? '✶ ' : cat === 'h' ? '✦ ' : cat === 'eu' ? '› ' : cat === 'dele' ? '▲ ' : '') : '';
     linhasSom.push({ txt: simb + txt, cat, t: agora + 4 }); while (linhasSom.length > 3) linhasSom.shift();
     desenharSom(); historico('som', simb + txt.replace(/^\[|\]$/g, ''));
