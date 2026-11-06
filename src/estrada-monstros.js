@@ -106,6 +106,7 @@ export function monstrosEstrada(A, S, c) {
   //    Chegar ao portão encerra. Sem dano (no Pesadelo, um sobressalto).
   // ===============================================================
   const bat = { fase: 0, vulto: null, dist: 46, t: 0, passoT: 0, vistoT: 0, dica: 0, paradoT: 0, lurch: 0, breatheT: 0, contaT: 0, hissT: 0, fachoT: 0, dicaFacho: false, semPilha: false, naoVistoT: 0, dicaCostas: false, isca: null, iscaT: 0, iscaFeita: false, iscaRevel: false };
+  U.batedorPos = () => (bat.vulto && bat.fase > 0 && bat.fase < 5 ? bat.vulto.position : null); // onde o batedor está (a natureza cala em volta dele: src/estrada-audio.js)
   let lastPos = new THREE.Vector3(), velSuave = 0;
   function tickVel(dt) { // velocidade do jogador, suavizada; teleporte (QA) conta como "andando"
     const d = Math.hypot(P.pos.x - lastPos.x, P.pos.z - lastPos.z); lastPos.copy(P.pos);

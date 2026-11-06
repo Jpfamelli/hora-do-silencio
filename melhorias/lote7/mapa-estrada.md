@@ -1,0 +1,98 @@
+# Lote 7 — Mapa: prólogo e estrada
+- O coro de grilos agora vem de dez pontos fixos dos dois lados da estrada, cada um cantando do seu canto do mato (antes era um chiado único).
+- Cada ponto de grilos tem trinado e timbre próprios, modulados em ritmo diferente, então o coro nunca soa como um loop.
+- Acentos de grilos soltos surgem em volta de você, não só no fundo.
+- Um coro de sapos coaxa na valeta do posto, em pulsos graves com gargarejo.
+- O número e a força dos sapos mudam a cada rajada, nunca soa igual.
+- Os sapos coaxam mais alto quando está chovendo.
+- Quatro cães de sítio latem de cantos fixos do mapa, e a direção do latido é verdadeira.
+- Os cães respondem uns aos outros com atraso proporcional à distância entre eles.
+- Às vezes um cão corta o latido no meio e fica mudo por um tempo.
+- Quando o vulto ou o batedor de 1979 se aproxima, os cães calam um a um, da direção dele, cada um com um ganido final.
+- Os cães voltam devagar quando a ameaça some.
+- No instante em que o vulto aparece, o cão mais próximo ganiu cortado, um aviso sonoro antes da silhueta.
+- O trovão faz um cão latir pouco depois do estrondo.
+- Um caminhão passa na rodovia de madrugada, o motor grave crescendo e sumindo, indiferente à sua noite.
+- No auge da passagem o caminhão às vezes solta uma buzina grave.
+- Uma coruja pia nas copas, de longe, de tempos em tempos.
+- Corvos grasnam inquietos ao longe.
+- Um inseto noturno zumbe sustentado, com timbre diferente do grilo.
+- Rajadas de vento passam como um assovio que cresce e cai.
+- O vento rasteja no mato numa camada própria, somada ao vento do jogo.
+- A força do vento muda conforme o clima sorteado da noite.
+- Um grito distante vem no vento, de direção sorteada, e nunca corresponde a perigo real.
+- O trovão volta em eco do vale cerca de um segundo depois.
+- O silêncio do coro é a leitura de perigo: em volta do vulto abre-se um buraco de uns 5 a 16 m onde os grilos calam.
+- Como os coros são fixos, o buraco caminha pela mata junto com o vulto, em fila, mostrando por onde ele passa só pelo ouvido.
+- O batedor de 1979 também cala a mata ao redor dele, mesmo longe da vista.
+- Os sapos só calam dentro do raio do morto, não mais em toda a estrada.
+- Legenda "os grilos calam de repente" quando o silêncio te alcança.
+- Legenda própria para os sapos que se calam.
+- A natureza volta devagar depois que a ameaça passa, dando alívio.
+- Medo alto faz a natureza abaixar mesmo sem ver o vulto.
+- Quando o morto passa rente, um baque de infra-som, sentido mais que ouvido.
+- Perto do portão a ambiência afina, mais quieta junto da massa do prédio.
+- Uma massa surda e grave do internato cresce ao chegar no portão, mal-estar sem fonte visível.
+- Relâmpago rente raro: estalo seco sem atraso, seguido de um segundo de silêncio total e um tranco leve na câmera.
+- Cada trovão faz a chuva inchar no áudio, uma pista de ritmo, mais forte quanto mais forte o raio.
+- Logo após o trovão os bichos engasgam e voltam em seguida.
+- Na abertura, a chuva tamborila abafada no teto de metal do carro.
+- Ao sair do carro a chuva estoura em volume e o timbre abre, uma vez só.
+- A chuva no teto do carro fica discreta de longe e cresce ao se aproximar dele.
+- A chuva martela no zinco da marquise do posto, um tamborilar metálico localizado.
+- Debaixo da marquise você fica surda ao resto: a ambiência abafa.
+- A poça sob os pés chapinha a cada passo na chuva.
+- A poça engrossa ao longo do prólogo e a chapinhada fica mais funda, com timbre mais grave.
+- Correr na água faz a chapinhada mais alta e mais frequente, punindo a pressa.
+- Janelas de granizo batem seco no telhado durante a tempestade.
+- Pingos grossos escorrem e caem do carro depois da chuva.
+- Água escorre da calha do posto na chuva.
+- O rádio deixado ligado no carro vira um farol sonoro: estática cujo sinal cai com a distância e abafa.
+- Uma estaçãozinha de 1979 aparece por baixo da estática só quando você está perto do carro.
+- O rádio-farol acompanha a posição do carro no espaço (som 3D).
+- O rádio vira só estática no instante em que o morto aparece.
+- A estática do rádio cresce quando o morto está a menos de 40 m, o ouvido como farol de perigo.
+- O rádio do carro troca de estação sozinho, com trechos de melodia, e volta à estática.
+- Às vezes o rádio para numa estática com um sussurro baixinho por baixo.
+- Perto do portão o rádio do carro some de vez, o último elo com o mundo lá fora.
+- Um rádio de válvula no posto toca uma cantiga antiga, com oclusão pelas paredes da loja.
+- Ao se afastar do posto, o rádio toca um verso a mais do que a cantiga tinha.
+- Depois que o Seu Joaquim some, a cantiga do posto desafina e vem com chiado.
+- O letreiro de neon do posto zumbe eletricamente quando você chega perto, e o zumbido morre com a luz do posto.
+- Ao chegar muito perto da porta da loja o letreiro estala e se cala por 3 segundos.
+- Um zumbido de rede elétrica acompanha o fio da rua lá fora, e cada trecho da estrada tem o seu tom.
+- Quando o morto passa a menos de 18 m o zumbido do fio sobe e racha.
+- Os isoladores crepitam na chuva e quando o morto está por perto.
+- Ao abrir o portão os fios calam de uma vez e os bichos quase se calam junto.
+- O vento assovia nas grades do portão, mais forte conforme você chega, trocando de lado conforme você passa.
+- A dobradiça do portão range em ciclos de 8 a 12 s, uma bússola sonora na neblina.
+- Quando a chave gira, o rangido do portão para de vez.
+- A placa do posto bate em intervalos irregulares, mais rápido na chuva.
+- Num trecho perto do posto o vento cala e a placa continua batendo em compasso certinho, um susto discreto.
+- Um sino de vento tilinta no pátio do posto com as rajadas.
+- Numa das rajadas o sino para de uma vez, o vento continua, e a Lia diz "Não foi o vento."
+- O motor do carro esfria com um tic metálico direcional, cada vez mais espaçado.
+- O último tic e o silêncio do motor frio são um relógio sonoro sem HUD.
+- De vez em quando um tic soa mais perto que os outros, como se algo mexesse junto do carro.
+- De longe, o motor do carro liga sozinho por 2 segundos e morre.
+- Quando o pisca-alerta para, o último clique do relé seco vem seguido de quase 2 segundos de silêncio.
+- Voltar ao carro depois disso faz o pisca-alerta estalar mais uma vez, sozinho.
+- Latidos vêm da mata, chegam perto da estrada e param de uma vez, uma vez por noite.
+- Depois dos latidos, um chiado de respiração passa rente ao carro, e a Lia comenta que ali não tem cachorro.
+- Na chuva, um segundo par de passos molhados, de outro ritmo, segue atrás de você e para junto quando você para.
+- O vento passa na mata como palavras sibiladas em ritmo de frase.
+- Perto do carro, o vento termina a frase num sussurro, como se dissesse um nome.
+- Num cruzamento da estrada há um círculo de 7 m onde bichos, vento e poças calam por completo.
+- No cruzamento, depois de uns instantes de silêncio total, toca um sino distante, e a Lia nota que ali não canta bicho nem chove.
+- Em noite de neblina a ambiência inteira fica abafada e os grilos afundam de timbre.
+- Em noite de neblina um assovio fino e tonal de cabos toma o lugar da chuva.
+- Na neblina, sussurros em fila atravessam a cabeça de um ouvido ao outro.
+- Em noite de chuva todas as camadas de chuva ligam, o vento sobe e os grilos abaixam.
+- Em noite seca os grilos cantam mais altos.
+- O estrondo do trovão mascara seus passos por uma janela, premiando quem corre no barulho.
+- O granizo também abafa seus passos enquanto cai.
+- Prender o ar ao ar livre faz o mundo focar: a ambiência dá uma afundada.
+- Legendas de acessibilidade para cães, caminhão, grito no vento, coruja, chuva no teto e no zinco, granizo, placa, sino, portão, fios, rádio e demais sons novos.
+- As camadas de som e os agendamentos param e se desconectam ao trocar de mapa, sem som fantasma.
+- Os sons agendados pausam junto com o jogo, e todo o módulo é tolerante a falha de áudio.
+- Corrigido um erro que travava o quadro quando os faróis do carro acendiam sozinhos no susto da estrada.
