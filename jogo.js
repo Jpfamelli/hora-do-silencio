@@ -4422,7 +4422,8 @@ const SUST = criarSustos({
   limparChamado: () => { chamadoArmadilha = null; }, raio: () => { raioT = 0; },
   saida, env, osc, burst, ruido, SFX, box, cyl, plano, interact, gatilho, SALA, DOOR, setDoor, roomAt, visivel, naLuz, emitNoise, collide, pontoEm, planejar, patrulhar,
   sub, falar, toast, fade, entrarEsconderijo, sairEsconderijo, syncLuzes, despawnAna, renderInvMini,
-  conquista, flash, get ui() { return ui; }, get mode() { return mode; } // lote 3 (src/sustos-plataforma.js)
+  conquista, flash, get ui() { return ui; }, get mode() { return mode; }, // lote 3 (src/sustos-plataforma.js)
+  get BUS() { return BUS; }, get CLIMA() { return L6V && L6V.clima; } // lote 7 (src/sustos-lote7b.js): mudar a chuva e o vento de uma vez
 });
 // Monstros e IA, lote 2: lore viva das entidades (chaves, apito, armários dele, Procissão com rosto, Davi, Joaquim, Albano)
 const ML = criarMonstrosLore({
@@ -4601,4 +4602,4 @@ function cortarNevoa() {
 requestAnimationFrame(loop);
 
 PLAT.instalar({ THREE, renderer, scene, camera, flash, chuva, chuvaGeo, NCH, P, M, ANA, PROC, W, keys, OPT, SOM, AMB, R, AG, conquista, lsGet, lsSet, SAVE_KEY, CAPS_KEY, CONQ_KEY, onKey, toast, abrirPausa, fecharPausa, entrarJogo, carregarSnap, iniciarAudio, lockPointer, unlock, roomAt, setOpt, entrarMaisPerto, SFX, get chamado() { return chamadoArmadilha; }, get alvo() { return alvo; }, get S() { return S; }, get ui() { return ui; }, get mode() { return mode; }, get locked() { return locked; }, get AC() { return AC; }, get master() { return master; } });
-window.__jogo = { get S() { return S; }, P, M, ANA, PROC, W, frame, carregarMapa, objDone, iniciarProcissao, spawnAna, ativarInspetor, camera, renderer, scene, hemi, moon, salvarCheckpoint, carregarSnap, lerNota, tocarFita, pularCena, roomAt, get ui() { return ui; }, get mode() { return mode; }, get alvo() { return alvo; }, keys, onKey, novoEstado: d => { S = novoEstado(d); return S; } };
+window.__jogo = { SUST, get S() { return S; }, P, M, ANA, PROC, W, frame, carregarMapa, objDone, iniciarProcissao, spawnAna, ativarInspetor, camera, renderer, scene, hemi, moon, salvarCheckpoint, carregarSnap, lerNota, tocarFita, pularCena, roomAt, get ui() { return ui; }, get mode() { return mode; }, get alvo() { return alvo; }, keys, onKey, novoEstado: d => { S = novoEstado(d); return S; } };

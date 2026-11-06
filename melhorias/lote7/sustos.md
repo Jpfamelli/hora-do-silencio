@@ -1,0 +1,121 @@
+# Lote 7 — Sustos e eventos
+- Quando o Inspetor está prestes a desistir ou a te achar, o mundo cala por quase 2 s, inclusive o seu corpo, e ninguém sabe qual dos dois vem
+- Calmaria rara em que o mundo cala por um instante e nada acontece, com a legenda seca "tudo ficou quieto... e passou"
+- O susto que não vem: a luz pisca, o som cai e não há nada (recalibra o medo)
+- Grilos e cigarras lá fora que calam todos de uma vez quando o perigo se aproxima
+- Nos túneis e nas salas com água um pingo cai em ritmo fixo, e o ritmo é o que se perde quando algo muda
+- Nos túneis uma goteira acompanha você uns três metros atrás, soando como passo molhado
+- Parada sob uma goteira num momento calmo, um pingo frio cai na sua nuca
+- Portas soltas batem ao vento ao longe como falsos alertas; uma fora do ritmo é ele
+- Antes do bote, uma gota acelera colada ao coração e avisa para quem ouve
+- Trovão forte e muito perto deixa um zumbido no ouvido e abafa o mundo por um instante
+- Um segundo coração bate num canto da sala, parado
+- O seu nome (o digitado no título) é sussurrado uma vez por noite, bem colado e baixíssimo
+- No esconderijo, depois de uns 20 s, surge uma segunda respiração atrasada em relação à sua
+- No esconderijo, um sopro de criança vem de dentro, uma vez por esconde, sem dano
+- Escondida com ele rente à porta, a respiração dele passa pela fresta, abafada e apontada
+- Com medo altíssimo, a Lia conta junto com a Ana sem querer, e faz barulho de verdade
+- O sussurro "atrás de você" só dispara quando o Inspetor está fora do seu campo de visão
+- Uma sala sorteada do mapa é amaldiçoada: ao entrar, o som é sugado e cai num buraco de silêncio
+- No aviso da Procissão o eco da sala colapsa para um som seco, antes de qualquer luz piscar
+- Vozes de criança nos corredores que calam quando a lanterna acende
+- Depois de escapar por um fio, um zumbido mascara justamente os passos dele por alguns segundos
+- Escapar por um fio custa o grito preso, que ecoa pela ala e te entrega
+- No instante do relâmpago, uma respiração brusca vem de uma direção aleatória
+- No instante do relâmpago, uma corda arranhada curtíssima bate junto com o pico
+- Raramente o trovão vem casado com um estrondo seco da casa, com infra-som sentido no peito antes
+- Ao avistar o Inspetor de perto, a Lia solta um inspirar curto, e o ruído é real
+- Logo depois de um golpe, 1 s de clareira auditiva: quase nada, e você decide para onde ir no escuro
+- Ao morrer, o último barulho que você fez volta grave e lento, e a cauda do reverb congela e corta seco
+- Responder ao Chamado devolve a sua resposta com um tom abaixo, distorcida
+- Moscas zumbem sobre alguma coisa logo ali, num momento de calmaria
+- Uma porta bate onde não há porta, ao longe
+- Premonição invertida: um sussurro ao contrário e, depois, um estrondo distante sem ameaça
+- Um passo a mais no eco, atrás de você, fora de ritmo
+- Uma respiração sua, repetida em outra parte da sala
+- Arranhão de unhas numa parede, em algum ponto longe
+- Metal ou cabide balançando sozinho
+- Um sussurro curtíssimo vindo de uma direção só
+- Um objeto cai numa sala vizinha, isca sonora que não leva a nada
+- O prédio assenta com um rangido e um estalo
+- Um mosquito zumbe em volta de um ouvido só
+- Um sino único e distante, sem resposta
+- Estalo de língua colado ao ouvido
+- Uma respiração presa numa sala vizinha
+- Uivo de vento numa fresta
+- Trovão rolando longe, só o ronco, sem clarão
+- Um corvo grasna na noite lá fora
+- Um portão range ao vento
+- Uma revoada de asas passa por você
+- Água batendo num cano ao longe, nos túneis
+- Uma gota na cisterna, com eco longo e grave
+- Um passo molhado que vem do reflexo e não da fonte
+- Uma cantiga de ninar doce demais chama de um canto, na direção em que ele está
+- Três passos molhados três metros atrás, nos túneis
+- Vento nas frestas da capela
+- Terra sendo mexida ao longe no cemitério
+- Molas de uma cama rangendo num dormitório
+- Chuva no telhado do andar de cima, mais forte no ouvido
+- Susto duplo: um fraco e, quando você relaxa, o prédio inspira e vem o forte
+- Susto por sussurro e não por pico: o som cai e um sussurro baixíssimo chega colado
+- O som falso que ensina a duvidar: passos dele numa sala vizinha, sem ninguém, que param junto à parede
+- A chuva e o vento param de uma vez no cemitério e na estrada, com um último pingo grave e 8 s de campo aberto
+- A chuva volta de uma só vez no fim da frase de uma voz grave que ninguém viu falar
+- Susto que só vem pelo ouvido: a casa cala e alguém respira colado atrás da cabeça da Lia por 5 s
+- Silêncio total no corredor longo do superior por 6 s, sem passos nem respiração
+- Quando o som volta, uma porta do corredor que estava fechada agora está aberta
+- Passos idênticos aos seus soam atrás com atraso que vai caindo até sincronizar e passar a adiantar
+- Quando você para depois dos passos defasados, soa um único passo a mais
+- Passos que soam à frente de você por uns segundos, e a Lia sussurra "tá errado"
+- Um rádio chia numa sala próxima e narra, entre chiados, o que a Lia acabou de fazer (entrou, agachou, acendeu a lanterna)
+- O rádio narra com 2 s ou com 8 s de atraso, sorteado, e a fala pode atrair o Inspetor
+- O rádio às vezes prevê o próximo passo ("atrás dela, a porta") e, se você contraria, a voz engasga
+- A chamada de 1979 pelo alto-falante com nomes de crianças, e quando chamam o seu você precisa ficar parada
+- Se você se mexe na chamada, a voz repete mais alta e o Inspetor ouve; se fica, uma criança responde "presente" longe
+- Três vozes chamam o seu nome ao mesmo tempo, de três lugares, e a mais baixa é a verdadeira e volta mais perto
+- A casa repete o nome da Lia com o timbre agudo da Ana, atrás de você
+- Silêncio de 4 s em que você não ouve mais nada: uma em cada três vezes nada acontece depois
+- Em algumas dessas pausas há um segundo falso susto lá dentro, uma porta que range no fim
+- Um clarão sem trovão: raramente o relâmpago vem seguido de 3 s de silêncio sem chuva
+- Uma tosse curta de criança, a poucos passos, depois de 25 s de calmaria total (uma vez por capítulo)
+- Escondida com ele rente à porta, o coração para por 2 s e volta duplo
+- Nos banheiros, os chuveiros abrem um a um, só o último box continua correndo e todos fecham quando você olha
+- Uma bola de plástico quica corredor adentro, cada quique mais perto, e rola e para junto aos pés da Lia
+- A bola, se ignorada, quica de novo atrás de você
+- Uma porta que você abriu fecha sozinha às suas costas, 20 a 40 s depois, com rangido lento e clique
+- Ao passar rente a um armário, às vezes três batidas fracas vêm de dentro
+- Se você se esconde nesse armário depois, as batidas voltam dentro com você, junto de uma respiração que não é a sua
+- Um piano toca a cantiga numa sala fechada e, ao entrar, a música corta num acorde dissonante
+- No corredor, todas as portas rangem em coro com o vento e uma delas, só uma, não range
+- Quem abre a porta muda ouve alguém prender o ar do outro lado
+- Na nona badalada da Hora do Silêncio a lanterna cai a zero por 4 s
+- Quando a luz volta, com uma falha elétrica, algo mudou de lugar
+- Um rádio-relógio liga sozinho tocando uma cantiga desafinada, e o Inspetor ouve como ruído de objeto
+- Ao fim da cantiga ela continua dentro da parede, mais baixa
+- Um telefone toca atrás de uma parede onde não há telefone, e o Inspetor também ouve
+- A cada vez o telefone toca mais perto do que da anterior
+- Uma sirene sobe de longe como esperança e corta antes de chegar (uma vez por jogo)
+- Se você corre à toa por mais de 5 s, as paredes soltam um "shhh" de quatro lugares
+- Na segunda visita ao banheiro, uma criança fala pelo cano e erra o nome da Lia, e a torneira pinga uma gota escura
+- O choro que acompanha a lanterna: apontada ao canto escuro de uma sala vazia por 2 s, um choro cresce e cala de uma vez quando você desvia
+- Na capela uma risada abafada vem lá do alto da nave e, a cada passagem, mais perto do chão
+- Uma caixinha de música toca o hino num canto escuro, desafinando e acelerando, e ao chegar a corda acabou
+- A melodia da caixinha nunca fecha na tônica, e quando fecha a Ana está logo atrás
+- Três portas batem em salas cada vez mais próximas pelo mapa real de portas
+- Parada 10 s num corredor, uma respiração quente aparece na nuca e se afasta quando você vira (uma em seis é de verdade)
+- Um sussurro dá a volta em você em 4 s; se você olha na direção dele ele para, se não, termina com um "bu" suave
+- No quarto da Celeste, a tela pede 10 s de imobilidade enquanto uma respiração gira em volta da cabeça
+- Se você se mexe nos 10 s a respiração para e vem de trás; quem aguenta ouve um sussurro de pista
+- Algo anda no telhado de ponta a ponta, para bem em cima da sua sala por 3 s e continua
+- Parada 3 s, a estática do ouvido abre numa frase sussurrada (uma por capítulo, algumas mentem) e some se você anda
+- Depois de morrer, o mundo volta devagar por 5 s, como de baixo d'água, com o coração em primeiro plano e uma gota como primeiro som claro
+- Uma tábua range onde você não pisou a cada passo no corredor do térreo, ficando para trás, e some quando você corre
+- Coro de rádios: três rádios ligam um a um e sussurram a mesma frase até cantarem juntos
+- O loop que erra: uma gota se repete idêntica três vezes e na quarta cai diferente, com uma sílaba humana
+- Um tique-taque inofensivo nas primeiras vezes e, na quarta (ou quinta, por sorteio da noite), marca a chegada dele
+- Num dormitório uma cama bem feita ronca com ritmo e o ronco para de uma vez quando você chega perto, com os lençóis se mexendo
+- Depois de despistá-lo, um acorde maior suave por 3 s e logo uma porta distante quebra o clima (falso alívio, uma vez por capítulo)
+- Em metade dos avistamentos, o ar da sala é puxado por um silêncio seco antes do susto
+- Passos sobem a escada do patamar, degrau por degrau, param no último, e a contagem muda a cada visita
+- Um assovio grave e uma porta bate: nas duas primeiras vezes é a casa, na terceira o som é ele
+- A porta fechada e quieta range como se abrisse e um passo sai do lugar vazio
