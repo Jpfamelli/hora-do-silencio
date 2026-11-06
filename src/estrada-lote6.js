@@ -113,7 +113,7 @@ export function rejogoEstrada(A, S, c) {
   // por semente, um objeto diferente aparece no balcão da loja: bilhete, foto velha ou pilha de reserva.
   const achadoTipo = ['bilhete', 'foto', 'pilha'][(seed >>> 2) % 3];
   (function achadoBalcao() {
-    const spots = [{ x: 15.4, y: 1.08, z: -16.2 }, { x: 16.8, y: 1.08, z: -18.4 }, { x: 13.9, y: 1.08, z: -15.0 }];
+    const spots = [{ x: 16.5, y: 1.07, z: -17.6 }, { x: 16.3, y: 1.07, z: -18.25 }, { x: 16.5, y: 1.07, z: -14.8 }]; // em cima do balcão (antes flutuavam fora dele)
     const pos = spots[(seed >>> 5) % spots.length]; // o achado troca de canto do posto pela semente
     let mesh, label, onPick;
     if (achadoTipo === 'bilhete') {
@@ -486,5 +486,5 @@ export function rejogoEstrada(A, S, c) {
     if (!chegouPortao && S.flags.saiuCarro && Math.hypot(P.pos.x, P.pos.z - GZ) < 6) { chegouPortao = true; fecharTravessia(); }
   });
 
-  return { util: { seed, clima, noite, rejogo } };
+  return { util: { seed, clima, noite, rejogo, desafio: desafio.id, achado: achadoTipo } };
 }

@@ -91,3 +91,113 @@
 - Módulo novo src/estrada-lote6.js ligado por gancho curto em estrada(), depois de monstrosEstrada()
 - Arquivos novos entram no sw.js para o jogo rodar offline, com o cache subindo para a versão v8
 - Nada do Lote 6 bloqueia o caminho obrigatório nem muda o fluxo da chave e do portão
+- Antes de sair do carro, a mala mostra três objetos sorteados pela semente (garrafa, pilha, curativo, fósforos ou mapa riscado) e a Lia leva só um
+- Garrafa extra da mala: quem a escolhe joga a noite mais ofensivo, com barulho longe para desviar o Inspetor
+- Curativo da mala: quem o leva aguenta o primeiro erro da noite
+- Fósforos da mala: um acendimento a mais para as charadas do internato
+- Mapa riscado da mala: dá a dica do galão na despensa e dos fusíveis na enfermaria
+- Pilha reserva da mala: mais uma troca de lanterna logo no começo
+- Quem se afasta do carro sem pegar nada fecha a mala (sem voltar) e a Lia comenta as mãos vazias
+- Conquista secreta "Mãos Vazias" por seguir para o posto sem levar nada da mala
+- Conquista secreta "Bolso Pequeno" por escolher um objeto da mala em cinco noites diferentes
+- A Lia avisa, ao chegar perto do carro, que só cabe um objeto no bolso
+- Herança: perto do portão, na rejogada, um monte de terra deixa a Lia enterrar um item (pilha, curativo ou garrafa) para a próxima noite
+- O item enterrado reaparece em cima do carro na noite seguinte, sem tirar a escolha da mala; o novo enterro substitui o antigo
+- Moeda da sorte no capô do carro: com E ela é jogada; cara dá uma pilha
+- Coroa na moeda faz os faróis piscarem sozinhos e o medo subir
+- O resultado da moeda depende da semente e do número de jogadas da noite, então não dá para repetir até acertar
+- O porta-malas guarda um colecionável que muda a cada noite a partir da terceira (ursinho do Davi, gravador sem fita, sapatinho molhado), cada um com fala própria
+- Conquista secreta "Enxoval do Porta-Malas" ao ver os três objetos do porta-malas
+- Hodômetro novo no painel do carro: ganha 3 km por noite jogada e fica guardado entre sessões
+- Na 3ª noite o hodômetro trava em 1979, o ano e não a distância
+- Na 7ª noite o hodômetro roda ao contrário até zero
+- Na 10ª noite o hodômetro mostra o nome DAVI no lugar dos números
+- O retrovisor mostra o banco de trás e ganha um acessório novo a cada noite (jaqueta, chinelos, boneca)
+- A partir da 4ª noite um vulto sentado aparece no espelho e, a cada noite, fica mais perto do banco da frente
+- Na 5ª noite o vulto aparece no reflexo por cerca de 1 segundo, uma vez só
+- Da 9ª noite em diante a silhueta do banco de trás vira e olha para a Lia, com dois pontos de olho e uma respiração atrás do pescoço
+- A silhueta sentada do banco de trás também existe em 3D dentro do carro, para quem vira a cabeça na hora certa
+- Riscos de giz no capô: uma marca por noite já jogada, agrupadas de cinco em cinco
+- Marcos redondos de noite (5, 10, 25 e 50) ganham uma fala única da Lia na primeira vez
+- A partir da 3ª noite o carro amanhece fora do lugar, torto e com a porta do motorista aberta
+- Quando o carro está fora do lugar, o rádio toca baixinho uma melodia de caixinha de música e a Lia estranha
+- A pane do carro muda por noite: pneu murchando, com chiado de ar saindo
+- A pane pode ser um cano de água estourado, com vapor branco subindo do capô
+- A pane pode ser a bateria arriada, com os faróis piscando sozinhos de tempos em tempos
+- A pane pode ser o tanque seco, com poça escura de gasolina no chão e cheiro avisado pela Lia
+- Cada causa de pane tem a sua fala de abertura, então a primeira cena deixa de ser decorada
+- Em noites raras, um carro idêntico ao seu está parado perto do portão, com o porta-malas aberto
+- Dentro do carro de quem veio antes, um gravador lê um relatório frio da sua noite anterior, com os números reais das suas estatísticas
+- Conquista secreta "Caso Encerrado" por ouvir o relatório do gravador do carro de quem veio antes
+- Nova estação do rádio, a Estação do Davi (pirata): em frequência sorteada pela semente, entrega a posição da chave, o clima, onde o velho está sentado ou o desafio do dia
+- Nova estação do rádio, a radionovela da Serra FM: nove capítulos que avançam a cada noite, todos terminando em gancho
+- Conquista secreta "Ouvinte Fiel" por ouvir os nove capítulos da radionovela
+- Nova estação do rádio, a estação Você: narra a causa da sua última morte, com a voz fria do locutor
+- Boletim da Serra FM sorteado pela semente: 70% de chance de ser verdadeiro e 30% de ser falso, e a Lia confere no portão se o rádio mentiu
+- Estação do rádio com o código do dia: uma transmissão de 1979 repete quatro números que mudam a cada dia do calendário
+- Charada do Davi pelo rádio: a resposta se dá em buzinadas curtas perto do carro, e acertar rende um curativo
+- Conquista secreta "Buzina do Davi" por acertar a charada em buzinadas
+- Armário de ferramentas no pátio do posto, aberto pelo código do dia ouvido no rádio, que entrega uma pilha ou uma caixa de fósforos conforme o dia
+- O armário também revela uma nota de lore do dia da semana e um recado de fita sorteado
+- Conquista secreta "Código do Dia" por abrir o armário de ferramentas
+- A chave do portão passa a ficar em um de quatro pontos do posto (prego, balcão, bolso do casaco ou bomba), sorteado pela semente na rejogada
+- A chave no bolso do casaco ganha um casaco pendurado na parede, e a chave na bomba ganha a mangueira onde ela pende
+- Seu Joaquim aponta, em tom vago, o lugar onde a chave está naquela noite
+- Seu Joaquim ganha uma fala extra por noite, sorteada pela semente e pelo número de noites, e cada uma esconde uma dica real do internato
+- Na 20ª noite o Seu Joaquim comenta que a estrada ficou mais curta
+- Depois de ver o final verdadeiro, o velho do posto aparece já frio e morto, com luz mais fria na cadeira, e diz "você voltou"
+- Noite do posto vazio: em uma de cada cinco noites o Seu Joaquim não está lá, a luz está acesa e a xícara solta vapor
+- No posto vazio, um gravador no balcão explica o que fazer e entrega as regras, e a chave fica embaixo do balcão
+- No posto vazio, o rádio chia o nome da Lia de tempos em tempos e a Lia comenta que ele devia estar ali
+- Cartaz de procurada no posto: "Desaparecida há N noites", onde N é o seu contador real de partidas
+- Da décima noite em diante o cartaz troca o retrato da Lia pelo de Ana
+- Cliente fantasma: em noites sorteadas uma silhueta senta de costas no banco do posto e some quando a lanterna a toca
+- Se a lanterna ficar apagada por 5 segundos olhando para o cliente fantasma, ele se vira de frente
+- Conquista secreta "Freguês Constante" por encarar o cliente fantasma até ele sumir
+- Máquina de refrigerante da sorte no pátio, com três botões cujo resultado a semente embaralha
+- Um botão da máquina enche o fôlego e baixa o medo
+- Outro botão da máquina solta uma pilha
+- O terceiro botão faz a lata estourar alto e chama a atenção da casa
+- Cardápio de desafios no balcão do posto: três cartões sorteados entre cinco (sem lanterna no pátio, sem correr, chegar em 100 s, sem perder vida, sem passar de 60 de medo)
+- Cumprir o desafio aceito rende uma pilha no portão, e falhar avisa na hora com uma fala da Lia
+- Conquista secreta "Freguesa do Cardápio" por cumprir um desafio do cardápio
+- A janela acesa do internato, vista do posto, muda de cor por noite
+- As placas de quilômetro da estrada passam a contar as noites: SÃO LÁZARO 9 km, 8 km, 7 km a cada rejogada
+- Na 3ª noite a placa de quilômetro mostra 1979 km
+- Na 10ª noite a placa diz JÁ CHEGOU e fica vermelha, e na 11ª diz BEM-VINDA
+- Na 20ª noite a placa de quilômetro marca zero
+- Da 10ª noite em diante, ler a placa de quilômetro (E) rende uma fala da Lia dizendo que chegou, mas o portão ainda está lá na frente
+- Placa de destinos com três nomes sorteados, em que só SÃO LÁZARO é verdadeiro
+- Ler uma placa de destino falsa dá um estalo sonoro e um pequeno susto, sem dano
+- Obstáculo sorteado da descida: um tronco caído que obriga a contornar pela mata
+- Obstáculo sorteado da descida: uma poça funda cujos passos fazem chape que o Inspetor pode ouvir e deixam pegadas molhadas
+- Obstáculo sorteado da descida: arame farpado que pode ser afastado com E, fazendo barulho
+- Quem usou o atalho do barranco numa noite encontra-o fechado por lama na seguinte, com placa de LAMA · FECHADO
+- Placar na entrada do portão com o melhor tempo por caminho, estrada e barranco
+- Conquista secreta "As Duas Estradas" por fazer a travessia pela estrada e pelo barranco
+- A Lia comenta a primeira vez em cada rota e quando bate o recorde de um dos caminhos
+- Em noites de neblina, pegadas de lama seguem o trajeto da sua partida anterior e terminam numa pilha escondida
+- Corvos enfileirados na cerca voam todos de uma vez quando você chega perto
+- Grilos cantam na noite seca e se calam quando algo se aproxima, e a Lia avisa quando eles param
+- Sapos coaxam ao longe nas noites de chuva
+- Evento de noite: serração viva, uma parede de névoa que vem de trás engolindo a estrada e apaga a lanterna por 2 segundos se te alcançar
+- Conquista secreta "Sem a Névoa Me Alcançar" por chegar ao portão antes da serração
+- Evento de noite: a Estrada Escura, em que os postes apagam de trás para a frente e parar mais de 4 segundos deixa o escuro te alcançar
+- Evento de noite: luzinhas amarelas e risadas de criança entre as árvores, que levam a uma pilha ou a uma emboscada conforme a semente
+- Evento de noite: a mula sem cabeça cruza a pista com chamas azuis; quem fica no meio da estrada perde a lanterna por 5 segundos
+- Evento de noite: um redemoinho de poeira com assobio vem pela pista e apaga a lanterna por 3 segundos
+- Evento de noite: uma forma quase reconhecível (mão, árvore ou criança) aparece na névoa e some ao chegar perto
+- Evento de noite: um caroneiro de costas no acostamento pede carona e dá uma pista verdadeira, uma falsa ou nada
+- Se o caroneiro for ignorado, ele segue o carro de longe e deixa pegadas encharcadas no portão
+- Evento de noite: um ponto de ônibus onde esperar 25 segundos paga uma pilha, mas um vulto vem se aproximando devagar
+- Levantar do ponto de ônibus antes do tempo não dá nada, e esperar demais custa um susto
+- Conquista secreta "Paciência de Ponto" por esperar o banco do ponto de ônibus pagar a espera
+- Evento de noite: um cervo de olhos humanos para na pista e foge ao se aproximar
+- Evento de noite: uma mulher cruza a estrada com um lampião e não deixa sombra
+- Evento de noite: um caminhão sem motorista desce a estrada com os faróis acesos e buzina
+- Evento de noite: uma criança de capa para no meio da pista e deixa só a capa vazia no chão
+- Evento de noite: o rádio avisa que algo vai acontecer, e nada acontece, e a espera é o susto
+- Conquista secreta "Susto da Espera" por aguentar o evento em que nada acontece
+- No portão, a Lia lista um resumo do que mudou naquela noite (chave, obstáculo, evento, mala, moeda e o resto)
+- Correção: o achado do balcão do posto não flutua mais fora do balcão
+- Correção: os faróis que acendem sozinhos na perseguição do batedor não quebram mais por função inexistente
