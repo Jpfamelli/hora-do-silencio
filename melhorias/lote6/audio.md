@@ -91,3 +91,100 @@
 - As novas camadas de clima são nós contínuos próprios, sem mexer na ambiência base
 - Todas as novas pistas sonoras têm legenda registrada, respeitando o filtro perigo/história
 - O módulo registra três conquistas secretas novas no acervo do jogo
+- Na rejogada, o rádio do carro lê a notícia da sua última morte com o nome real do cômodo onde ela aconteceu
+- O boletim da Serra FM usa a causa real da morte: o Inspetor, a Ana ou a Procissão têm cada um as suas frases
+- Mortes especiais ganham frase própria no rádio: escondida, sem pilha, puxada pelo pescoço, no armário da Ana e pela luz da Procissão
+- A notícia dá a hora de verdade em que você morreu, no estilo "às 3h07", gravada do relógio do computador
+- O Davi corta o locutor depois da notícia, com estática e uma fala de pressa, e a legenda avisa
+- O boletim reconta o seu trajeto da noite anterior: por onde passou, onde mais parou e onde acabou
+- O boletim inclui uma previsão do humor do Inspetor ("o vento vem nervoso hoje") que é verdadeira em cerca de 75% das noites
+- Os rádios do térreo e do andar de cima repetem a notícia da sua morte de uma sala vizinha, com chiado e legenda de direção
+- Nova opção "Guardar um trecho da minha voz", desligada por padrão, com aviso claro de que o áudio fica só na memória do navegador
+- Com a opção ligada, os primeiros 2,5 segundos da sua fala nos capítulos iniciais são guardados na memória, sem tocar no disco nem na rede
+- Nos capítulos IV e V a sua própria voz volta de uma sala vizinha, mais lenta, picotada, com tom quebrado e eco
+- Se o microfone for negado, o jogo avisa, desliga a opção e segue com as vozes de sempre
+- A opção ganhou um item "Apagar a voz guardada agora" que descarta a gravação e desliga o microfone
+- Medidor de grito na tela de morte: barras com o pico de voz da noite e a classe "sussurro", "susto", "grito de verdade" ou "vizinho acordou"
+- O seu maior grito fica salvo como recorde, ganha a marca "recorde" na tela de morte e um sininho curto
+- Nova conquista secreta "A Casa Inteira Ouviu", para quem grita alto o bastante para o vizinho acordar
+- Na hora cheia do seu relógio (21h, 22h, 23h...), o sino bate essa quantidade de vezes ao longe, no máximo 12, com a legenda "a casa sabe a sua hora"
+- O aviso sonoro da Procissão ganhou 4 formas sorteadas pela semente da noite, para ninguém decorar o som
+- Uma das formas do aviso é um sininho de brinquedo que toca três vezes, com legenda própria
+- Outra forma é uma risada de criança vinda de longe, com legenda de direção
+- Outra forma é o hino do internato tocando de trás para a frente, com legenda própria
+- As nove badaladas do Capítulo II, na rejogada, ganharam nove timbres (vidro, madeira, ferro, voz, gota, osso, papel, pedra e lata) embaralhados pela semente
+- A legenda de cada badalada descreve o timbre ("a badalada soa como vidro batido")
+- Em algumas noites a casa conta errado: depois da nona vêm uma ou duas badaladas a mais, mais baixas, com legenda de alerta
+- Mutador sonoro "Buraco de som": uma vez por noite, por 6 segundos, o áudio inteiro cai a zero e volta de uma vez no meio de um passo, com o Inspetor se movendo normalmente
+- Mutador "Pistas que mentem": até duas vezes por noite um chaveiro, passos de metal ou uma respiração tocam numa sala vizinha sem ninguém lá
+- Depois de uma pista falsa um clique seco e uma legenda revelam que era só um cano velho
+- Depois de morrer, os primeiros 20 segundos da nova tentativa têm um zumbido agudo e distante que some aos poucos, com legenda
+- Vidro estourando a menos de 3 metros e sustos de impacto forte deixam um zumbido que abafa os sons de longe
+- Nova opção para desligar o zumbido de morte e de estouro (a opção de reduzir zumbido que já existia também vale)
+- O eco da casa cresce com as suas mortes: o rabo do reverb fica mais longo e a voz atrasa até meio segundo perto das 50 mortes
+- Na centésima morte, o grito do golpe volta como uma segunda voz, quase um segundo depois
+- O corpo da Lia (respiração, engolir, batimento) fica mais surdo a cada três noites jogadas, por um filtro passa-baixa que fecha aos poucos
+- Cada noite o Inspetor calça um sapato sorteado pela semente: bota seca, chinelo molhado ou pés descalços colando no chão
+- A legenda diz qual é o sapato desta noite ("passos molhados de chinelo"), com a direção
+- Uma sala por noite e por mapa, sorteada pela semente, vira a "sala do silêncio": sem reverb, com o mundo abafado e a legenda "este cômodo não devolve nada"
+- Dentro da sala do silêncio o seu ruído conta só metade para o Inspetor, mas você também não o ouve chegar
+- Ao sair da sala do silêncio o som volta de repente, com legenda
+- Nova conquista secreta "Sala Muda" por atravessar a sala do silêncio da noite
+- De vez em quando o coro cantarola o nome da sala do silêncio da noite, uma pista para quem escuta
+- Nova ferramenta "ouvido atento": segurar a tecla . (ponto) por 3 segundos dá três pings direcionais que apontam onde o Inspetor está
+- O ouvido atento também aponta a Menina Que Conta quando ela está na casa, com tom mais grave
+- O ouvido atento descreve a direção e a distância na legenda ("à esquerda, perto") e reduz o seu ruído em 30% enquanto dura
+- O ouvido atento cansa: tem recarga de 40 segundos, ou 8 se você soltar a tecla antes
+- Nova ferramenta "estalo de dedos" na tecla , (vírgula): ecos curtos voltam pelas paredes e chegam mais rápido de quem está mais perto
+- A legenda do estalo diz onde fica a parede mais próxima e o estalo faz barulho de verdade, que o Inspetor pode ouvir
+- Nova conquista secreta "Morcego" por estalar os dedos cinco vezes numa noite
+- Na primeira volta à casa, uma dica avisa que existem o ouvido atento e o estalo de dedos
+- Depois do final verdadeiro, segurar B com uma fita tocando toca a gravação ao contrário e a Lia lê a frase escondida em legenda
+- Cada fita esconde uma frase diferente do avesso, e as já descobertas ficam guardadas
+- Novo modo opcional "Toca-fitas de bolso": uma melodia leve que arrasta o tom quando o Inspetor chega perto
+- No toca-fitas de bolso a fita pula quando ele caça e engasga, com volume que pulsa, quando a Procissão vem
+- Nova opção "Ouvido Absoluto": trilha e sons de apoio quase mudos, sobra só o som que tem direção
+- Nova conquista secreta "Ouvido Absoluto" por terminar um capítulo inteiro nesse modo
+- Terminar um capítulo sem nenhum barulho alto toca um acorde único de silêncio, com legenda
+- Nova conquista secreta "Assinatura de Silêncio" por esse capítulo sem barulho
+- Depois de morrer três vezes na mesma sala, a Lia assobia sem perceber ao entrar nela, o que faz um pouco de barulho
+- Eco do erro: o som que te entregou na última morte (porta, vidro, passos, respiração) volta sozinho de longe, no mesmo ponto do mapa
+- O eco da noite anterior agora também grava portas, vidros e respiração presa, e não só passos e cliques
+- O tema da noite desafina 3 centésimos a cada noite jogada, até soar levemente errado depois de umas vinte noites
+- No capítulo em que você mais morreu o tema fica desafinado e mais rápido, com legenda
+- Se você vence esse capítulo sem morrer o tema volta limpo, toca um acorde de alívio e o contador dele zera
+- Cada morte acrescenta uma nota a uma melodia pentatônica sorteada pela sua conta, até 16 notas
+- A nova nota da melodia das mortes soa logo depois da tela de morte, com legenda
+- Na fuga do Capítulo V a caixinha toca a melodia completa das suas mortes
+- Cada Tema da Noite tem um prelúdio de quatro notas no prólogo (espelhos agudos, telefones secos, água grave ou sombras) escolhido pela semente
+- O nome do tema da noite aparece em legenda só quando o final começa, junto com o réquiem
+- A cantiga da Ana tem quatro melodias sorteadas pela semente
+- A cantiga termina sempre com uma nota faltando, e essa nota soa bem atrás de você quando a Ana aparece
+- O Inspetor assobia uma melodia curta própria de cada humor (paciente, nervoso, metódico, surdo, faminto e teimoso), ouvida de longe em momentos calmos
+- A legenda descreve o assobio ("assobio lento", "assobio que escorrega") sem dizer o nome do humor
+- O caderno anota cada humor reconhecido pelo assobio, com um aviso de quantos dos seis você já conhece
+- Nova conquista secreta "Ouvido Treinado" por reconhecer três humores só pelo assobio
+- Um coro de crianças canta ao longe com uma voz a mais por noite vencida, de uma criança sozinha até um coral denso de 34
+- Nos corredores do internato crianças cantam uma cantiga com um verso por noite sua, até 12, e mais grave e lenta além disso
+- A cantiga das crianças fica mais clara quando você está quieta e some quando o Inspetor está perto
+- O hino do internato ganha um verso novo a cada capítulo na rejogada, com o verso na legenda
+- O jogo avisa quantos versos do hino você já ouviu
+- Cada clima ganhou um som raro: coruja na garoa, cão uivando no vento e cincerro nas cigarras
+- Na tempestade o trovão agora também chega abafado dentro de casa, sacudindo as vidraças
+- Na noite de quietude um relógio de parede tiquetaqueia ao longe
+- A goteira dos túneis ganhou um ritmo próprio sorteado pela semente
+- De vez em quando cai uma gota fora do compasso, com legenda
+- Perto do Carnaval de verdade, o rádio do prólogo toca uma marchinha lenta que vai desafinando
+- A caixinha de música do título ganha uma voz nova por final visto, em até sete vozes: caixinha, sino, coro, harmônio, violino, sussurro e celesta
+- Com as sete vozes a frase do título toca duas vezes em seguida
+- As conquistas também enriquecem o título: coral, sino e harmônio extras a partir de 10, 25 e 50 conquistas
+- Réquiem dos créditos: a cantiga da Ana, o tema da noite e o hino juntos, com um instrumento a mais por final já visto
+- A tela de final ganhou o botão "Ouvir a colagem sonora da noite (20 s)", montado com passos, portas, respiração e vidros da sua própria noite
+- A tela de final ganhou o botão "Baixar a fita desta noite (.wav)", renderizada na hora com o tema da semente, as badaladas, o ritmo dos seus passos, a respiração e a cantiga da Ana
+- Cada fita baixada ganha um nome de lado A ou B sorteado
+- Passos fantasmas no seu ritmo exato aparecem atrás de você em um trecho calmo, e param 0,4 segundo depois de você parar
+- Depois de prender o ar, às vezes uma respiração responde da sala vizinha segundos depois
+- O telefone interno às vezes toca, uma criança ri, dá um ramal sorteado e desliga
+- O ramal da criança é anotado no caderno da Lia
+- Novo grupo de opções "Som da rejogada" com sete botões para ligar e desligar tudo isso
+- As legendas dos sons novos descrevem o que foi ouvido (timbre, direção, humor), com texto montado na hora

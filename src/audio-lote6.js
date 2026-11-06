@@ -84,6 +84,8 @@ export function instalarAudioLote6(C) {
     return () => { h += 0x6D2B79F5; let t = h; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
   }
 
+  // ajuste do tema por noite jogada: o AUDL6B (audio-lote6b.js) desafina 3 centésimos por noite e acelera o capítulo em que você mais morre
+  const AJ = { cents: 0, tempoMul: 1 };
   const CLIMAS = ['tempestade', 'garoa', 'vento', 'cigarras', 'quietude'];
   // escala menor (dó menor natural) em Hz para o tema da noite
   const ESCALA = [261.63, 293.66, 311.13, 349.23, 392.0, 415.3, 466.16, 523.25];
@@ -175,9 +177,9 @@ export function instalarAudioLote6(C) {
   function tocaTema(pos, vol) {
     const A = ac(), t = A.currentTime, g = pos ? pos3(pos, 1.8, 'amb', .6) : C.saida(null, .6, 'mus');
     L.tema.forEach((f, i) => {
-      const o = A.createOscillator(); o.type = 'triangle'; o.frequency.value = f * L.temaBase * L.temaGrave;
+      const o = A.createOscillator(); o.type = 'triangle'; o.frequency.value = f * L.temaBase * L.temaGrave; o.detune.value = (i % 2 ? AJ.cents : 0);
       const bp = A.createBiquadFilter(); bp.type = 'lowpass'; bp.frequency.value = 1400; o.connect(bp); bp.connect(g);
-      o.start(t + i * L.temaTempo); o.stop(t + i * L.temaTempo + L.temaTempo + .3);
+      o.start(t + i * L.temaTempo * AJ.tempoMul); o.stop(t + i * L.temaTempo * AJ.tempoMul + L.temaTempo + .3);
       // vozes extras (oitavas) acumuladas por noite
       for (let v = 1; v < L.temaVozes; v++) { const o2 = A.createOscillator(); o2.type = 'sine'; o2.frequency.value = f * L.temaBase * L.temaGrave * (v === 1 ? .5 : 2); o2.detune.value = C.rand(-6, 6) * v; o2.connect(bp); o2.start(t + i * L.temaTempo); o2.stop(t + i * L.temaTempo + L.temaTempo + .2); }
     });
@@ -444,6 +446,7 @@ export function instalarAudioLote6(C) {
       L.logTick = (L.logTick || 0) + dt;
       if (L.logTick > 2 && P.noiseR > 3) { L.logTick = 0; logar(P.sprinting ? 'corrida' : 'passo'); }
       if (S.flashOn && !L.flashPrev) logar('clique');
+      if (P.causaRuidoEm && P.causaRuidoEm !== L.causaPrev) { L.causaPrev = P.causaRuidoEm; const tp = { porta: 'porta', cacos: 'vidro', respirou: 'respiro', tabua: 'passo' }[P.causaRuido]; if (tp) logar(tp); }
       L.flashPrev = S.flashOn;
     }
     } catch (e) {} // um erro em qualquer camada de áudio nunca derruba o quadro
@@ -453,6 +456,9 @@ export function instalarAudioLote6(C) {
   function ecoDaNoite(tipo, pos) {
     const A = ac(), t = A.currentTime, g = pos3(pos, 1.2, 'amb', .7);
     if (tipo === 'corrida' || tipo === 'passo') { for (let i = 0; i < (tipo === 'corrida' ? 4 : 2); i++) { const o = A.createOscillator(); o.frequency.setValueAtTime(70, t + i * .28); o.frequency.exponentialRampToValueAtTime(34, t + i * .28 + .18); const lp = A.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 380; o.connect(lp); lp.connect(g); o.start(t + i * .28); o.stop(t + i * .28 + .25); } C.env(g, t, .02, .05, 1.2); }
+    else if (tipo === 'porta') { C.burst(t, .3, 'lowpass', 280, 1, g, 0); C.env(g, t, .01, .12, .25); }
+    else if (tipo === 'vidro') { C.burst(t, .22, 'highpass', 3200, 1.2, g); C.env(g, t, .002, .08, .2); }
+    else if (tipo === 'respiro') { const f = C.burst(t, .7, 'bandpass', 1200, 1.2, g); f.frequency.linearRampToValueAtTime(1700, t + .4); C.env(g, t, .08, .06, .6); }
     else { C.burst(t, .06, 'highpass', 3000, 1, g); C.env(g, t, .001, .08, .05); }
   }
 
@@ -478,5 +484,5 @@ export function instalarAudioLote6(C) {
     return 1;
   }
 
-  return { tick, horaDoSilencio, fecharNoite, climaDaNoite, ruidoMul, boletim, horaCodificada };
+  return { tick, horaDoSilencio, fecharNoite, climaDaNoite, ruidoMul, boletim, horaCodificada, ajuste: AJ };
 }

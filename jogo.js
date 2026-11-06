@@ -29,6 +29,7 @@ import { instalarAudioSegredos } from './src/audio-segredos.js';
 import { instalarAudioLote5 } from './src/audio-lote5.js';
 import { criarMonstrosLote6 } from './src/monstros-lote6.js';
 import { instalarAudioLote6 } from './src/audio-lote6.js';
+import { instalarAudioLote6b } from './src/audio-lote6b.js'; // lote 6 (2ª rodada): a casa lembra o que você fez (rádio da sua morte, sua voz, mutadores sonoros, ouvido atento)
 import { instalarAudioLote5b } from './src/audio-lote5b.js';
 import './src/legendas-pilha.js'; // revisão do lote 5: legendas próprias dos monstros sobem para cima da pilha de legendas de som
 
@@ -1187,6 +1188,7 @@ function updatePlayer(dt) {
   P.noiseR *= anK;
   P.noiseR *= SEG.ruidoMul(); // descalça e o chuveiro aberto (src/jogabilidade-segredos.js)
   if (AUDL6) P.noiseR *= AUDL6.ruidoMul(); // o clima sorteado da noite abafa ou expõe seus passos (src/audio-lote6.js)
+  if (AUDL6B) P.noiseR *= AUDL6B.ruidoMul(); // sala do silêncio e ouvido atento (src/audio-lote6b.js)
   P.noiseR *= (P.ruido6 || 1); // lote 6: Passos Pesados
   P.noiseR *= JGL5B.ruidoMul(); // lote 5 (2ª rodada): descalça, lama e o compasso dos passos dele (src/jogabilidade-lote5b.js)
   const moved = Math.min(andou, vel * dt);
@@ -2601,7 +2603,7 @@ function atacar(quem, leve) {
   if (quem === 'inspetor') { const dx = P.pos.x - M.pos.x, dz = P.pos.z - M.pos.z, l = Math.hypot(dx, dz) || 1; P.pos.x += dx / l * 1.2; P.pos.z += dz / l * 1.2; collide(P.pos, .33); }
 }
 function morrer(quem) {
-  S.dead = true; S.mortes++; S.causa = quem; SUST.morte(quem); PG.morte(quem); PLAT.aoMorrer(quem); if (MP) MP.morte(quem); JP.aoMorrer(mortesNoPonto + 1); SEG.morte(quem); L6.morte(quem); mortesNoPonto++; saveDevido = 0; // lote 6: lembra onde ele te pegou
+  S.dead = true; S.mortes++; S.causa = quem; SUST.morte(quem); PG.morte(quem); PLAT.aoMorrer(quem); if (MP) MP.morte(quem); JP.aoMorrer(mortesNoPonto + 1); SEG.morte(quem); L6.morte(quem); if (AUDL6B) AUDL6B.morte(quem); mortesNoPonto++; saveDevido = 0; // lote 6: lembra onde ele te pegou
   const rapido = mortesNoPonto >= 2;
   if (mortesCap.cap !== S.chapter) { mortesCap.cap = S.chapter; mortesCap.n = 0; } mortesCap.n++;
   const ctx = S.causaCtx; S.causaCtx = null;
@@ -3001,6 +3003,7 @@ const FONTES = new Set();
 let AUDM = null; // src/audio-mundo.js: hino, alto-falantes, rádios, ecos de 1979, chaves do Inspetor, Hora do Silêncio
 let AUDP = null; // src/audio-plataforma.js: menus que soam, som que cai, fone que sai, chão solto, batidas nos armários
 let AUDS = null; // src/audio-segredos.js (Lote 4): telefone, bipes, sussurros num ouvido só, gravador, cisterna, panelas, lata, ralos
+let AUDL6B = null; // src/audio-lote6b.js (+ audio-lote6c.js): o boletim da sua morte, voz guardada, mutadores sonoros, ouvido atento, estalo de dedos, trilha que lembra
 let AUDL6 = null; // src/audio-lote6.js: rejogabilidade pelo ouvido (clima da noite, tema que evolui, boletim do rádio, sino de recorde, trilha-fantasma, segredos da 2ª jogada)
 let AUDL5 = null, AUDL5B = null; // src/audio-lote5.js e src/audio-lote5b.js: os monstros pelo ouvido (respiração por parede/porta, bengala, leitmotifs, infra-som, Hora do Silêncio, coração-bússola)
 const AUD = { sils: [], trovaoIni: 0, trovaoAte: 0, coracaoN: 0, hbT: 0, resp: 0, prendia: false, ultStinger: [], stingerT: -99, dezAte: 0, estPrev: null, anaPrev: null, procT: 0, evT: 28, cacaT: 0, cacaSemi: 0, posCacaT: 0, percT: 0, pulsoT: 0, lampT: 0, ocT: 0, flashPrev: false, tiqueT: 0, avisouCoracao: false, cordaT: -9, cordaN: 0, sala: null, zumbidoAte: 0, pausado: false, erroAvisado: false,
@@ -3910,6 +3913,7 @@ function updateAudioCore(dt) {
   if (AUDS) AUDS.tick(dt); // segredos do som (lote 4)
   if (AUDL5) AUDL5.tick(dt, { dM, dA, est, jogando, prende, perigo, fora, subsolo }); // os monstros pelo ouvido (lote 5)
   if (AUDL6) AUDL6.tick(dt, { dM, dA, est, jogando, prende, perigo, fora, subsolo }); // rejogabilidade pelo ouvido (lote 6)
+  if (AUDL6B) AUDL6B.tick(dt, { dM, dA, est, jogando, prende, perigo, fora, subsolo }); // a casa lembra o que você fez (lote 6, 2ª rodada)
   if (AUDL5B) AUDL5B.tick(dt, { dM, dA, est, jogando, prende, perigo, fora, subsolo }); // 2ª rodada (lote 5)
 }
 // Pausa e diário abafam o mundo; menu silencia o que é contínuo; aba escondida suspende o áudio
@@ -4364,6 +4368,7 @@ function final(tipo) {
   desativarInspetor(); despawnAna(true);
   conquista('final_' + tipo); if (S.dif === 'pesadelo') conquista('pesadelo'); if (tipo === 'verdadeiro') L6.registrarVitoria(); H.aoFinal(tipo); // lote 6: sobe a Vigília (NG+)
   PG.final(tipo);
+  if (AUDL6B) AUDL6B.final(tipo); // réquiem dos créditos, colagem sonora e fita .wav da noite (src/audio-lote6c.js)
   if (AUDL6) AUDL6.fecharNoite(); // salva o log de sons da noite e avança a cantiga da Ana (src/audio-lote6.js)
   $('#fx-black').style.opacity = 1; SFX.pararCanto();
   if (F.antes) setTimeout(() => cartao(F.antes.texto, 3), 300);
@@ -4571,6 +4576,14 @@ AUDL6 = instalarAudioLote6({
   SOM, SFX, BUS, AUD, AMB, OPT, THREE, R, P, M, ANA, PROC, W, camera, legendas: UIX.som.def, som: (k, a) => { try { UIX.som(k, a); } catch (e) {} },
   saida, env, osc, burst, ruido, curvaDist, roomAt, salaAdj, emitNoise, abafarMundo, rand, pick, clamp, sub, subPequeno, toast, conquista, lsGet, lsSet, KEYS: { CAPS_KEY, SAVE_KEY, CONQ_KEY }
 });
+// Lote 6 (2ª rodada): a casa lembra o que você fez (src/audio-lote6b.js)
+AUDL6B = instalarAudioLote6b({
+  get AC() { return AC; }, get S() { return S; }, get mode() { return mode; }, get ui() { return ui; }, get fita() { return fitaTocando; }, get perf() { return perf; }, get master() { return master; }, get AUDL6() { return AUDL6; },
+  SOM, SFX, BUS, AUD, AMB, OPT, THREE, R, P, M, ANA, PROC, W, camera, keys, legendas: UIX.som.def, grupos: UIX.GRUPOS, som: (k, a) => { try { UIX.som(k, a); } catch (e) {} },
+  saida, env, osc, burst, ruido, roomAt, salaAdj, emitNoise, marcarCausa, abafarMundo, sub, subPequeno, toast, conquista, lsGet, lsSet, iniciarAudio,
+  salvarOpt: () => lsSet(OPT_KEY, OPT), humor: () => { try { return L6.humor(); } catch (e) { return null; } }, KEYS: { CAPS_KEY, SAVE_KEY, CONQ_KEY }
+});
+window.__AUDL6B = AUDL6B; // depuração e testes
 // Lote 5 (2ª rodada): mais monstros pelo ouvido (src/audio-lote5b.js)
 AUDL5B = instalarAudioLote5b({
   get AC() { return AC; }, get S() { return S; }, get mode() { return mode; }, get ui() { return ui; }, get perf() { return perf; }, get master() { return master; }, get chamado() { return chamadoArmadilha; },
@@ -4591,7 +4604,7 @@ function frame(dt) {
     const t = perf * .05, sp = W.def.spawns.titulo;
     camera.position.set(sp.x + Math.sin(t) * 2, 1.7, sp.z + Math.cos(t * .7)); camera.rotation.set(.03, (sp.yaw || 0) + Math.sin(t * .6) * .2, 0);
     flash.intensity = 0; flashFill.intensity = 0; P.pos.set(camera.position.x, 0, camera.position.z); P.room = roomAt(P.pos.x, P.pos.z);
-    updateClima(dt); for (const f of W.tick) f(dt);
+    updateClima(dt); for (const f of W.tick) f(dt); if (AUDL6B) AUDL6B.titulo(dt); // a caixinha do título ganha uma voz por final visto
   } else if (mode === 'cena') {
     updateCena(dt); updateClima(dt); updateAudio(dt);
   } else if (ativo) {
