@@ -7,6 +7,7 @@ import { criarSegredos } from './interface-segredos.js';
 import { criarSegredos2 } from './interface-segredos2.js';
 import { criarInterfaceMonstros } from './interface-monstros.js';
 import { criarInterfaceLote6 } from './interface-lote6.js';
+import { criarInterfaceLote7 } from './interface-lote7.js';
 export function criarInterface(C) {
   let MU = null; // mundo e história (lote 2): src/interface-mundo.js
   let PL = null; // polimento e plataforma (lote 3): src/interface-polimento.js
@@ -14,6 +15,7 @@ export function criarInterface(C) {
   let SG2 = null; // segredos e easter eggs (lote 4, 2ª leva): src/interface-segredos2.js
   let MM = null; // leitura do perigo (lote 5): src/interface-monstros.js
   let L6 = null; // rejogabilidade (lote 6): src/interface-lote6.js
+  let L7 = null; // som e atmosfera na tela (lote 7): src/interface-lote7.js
   const $ = s => document.querySelector(s);
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
   const lerp = (a, b, t) => a + (b - a) * t;
@@ -93,6 +95,7 @@ export function criarInterface(C) {
     b.toggle('sem-flash', !!OPT.vFlash); b.toggle('velorio', !!(OPT.velorio && OPT.velorioLib));
     $('#fx-velorio').hidden = !(OPT.velorio && OPT.velorioLib);
     if (PL) PL.aplicar();
+    if (L7) try { L7.aplicar(); } catch (e) {}
   }
   let opcVolta = null;
   function abrirOpcoes(de) {
@@ -121,6 +124,7 @@ export function criarInterface(C) {
     if (PL) PL.opcoes(box);
     if (SG) SG.opcoes(box);
     if (SG2) SG2.opcoes(box);
+    if (L7) try { L7.opcoes(box); } catch (e) {}
     $('#opcoes').hidden = false; focar('#opcoes');
   }
   function fecharOpcoes() { $('#opcoes').hidden = true; if (opcVolta) $(opcVolta).hidden = false; focar(opcVolta); opcVolta = null; }
@@ -149,14 +153,15 @@ export function criarInterface(C) {
   }
   function antesDeNovoJogo(cb) {
     if (window.__teste) return cb();
-    const seguir = () => PL.aviso(() => OPT.calibrado ? cb() : calibrar(cb));
+    const comSom = () => L7 ? L7.antesDeJogar(cb) : cb(); // lote 7: teste de fone e escuta na primeira noite
+    const seguir = () => PL.aviso(() => OPT.calibrado ? comSom() : calibrar(comSom));
     const sv = C.lsGet(C.SAVE_KEY, null);
     if (sv && sv.chapter > 0) confirmar(`Começar do zero apaga o progresso salvo (${R.capitulos[sv.chapter].titulo}). Os capítulos já liberados continuam no menu Capítulos.`, () => { $('#title').hidden = true; seguir(); }, 'Começar do zero', 'Voltar');
     else { $('#title').hidden = true; seguir(); }
   }
 
   // ---------------------------------------------------------------- NAVEGAÇÃO POR TECLADO
-  const TELAS = ['#confirma', '#brilho', '#opcoes', '#comojogar', '#painel', '#keypad', '#l6', '#pause', '#death', '#escolha', '#ending', '#title'];
+  const TELAS = ['#confirma', '#brilho', '#l7-calib', '#opcoes', '#comojogar', '#painel', '#keypad', '#l6', '#pause', '#death', '#escolha', '#ending', '#title'];
   const telaAtiva = () => TELAS.map(s => $(s)).find(el => el && !el.hidden);
   const focaveis = el => [...el.querySelectorAll('button.btn, select, input[type=range]')].filter(b => !b.disabled && !b.hidden && b.offsetParent !== null && !b.closest('[hidden]'));
   function focar(sel) { setTimeout(() => { const el = sel ? $(sel) : telaAtiva(); if (!el || el.hidden) return; const f = focaveis(el); if (f.length && !el.contains(document.activeElement)) f[0].focus({ preventScroll: false }); }, 30); }
@@ -214,15 +219,17 @@ export function criarInterface(C) {
     if (!def.imp && OPT.legSom !== 'todos') return;
     if (k === 'gerador' && !a[0]) return;
     if ((cdSom[k] || -99) > agora - def.cd) return; cdSom[k] = agora;
-    let txt = def.t;
+    let txt = def.t, drRef = null;
     const pos = def.pos ? def.pos(a) : null;
     if (pos && C.P.pos) {
       const dr = direcao(pos); if (dr.d > 40) return;
+      drRef = dr;
       txt += ' ' + dr.txt;
       if (def.insp) seta(dr);
     }
     const simb = OPT.somSimb && def.cat ? (def.cat === 'p' ? '▲ ' : def.cat === 's' ? '✶ ' : def.cat === 'h' ? '✦ ' : def.cat === 'eu' ? '› ' : '') : '';
     linhasSom.push({ txt: `${simb}[${txt}]`, cat: def.cat, t: agora + 2.8 }); while (linhasSom.length > 3) linhasSom.shift();
+    if (L7) try { L7.evento(k, def, drRef, a, linhasSom[linhasSom.length - 1]); } catch (e) {}
     desenharSom();
     if (def.imp) historico('som', simb + txt);
   }
@@ -238,12 +245,13 @@ export function criarInterface(C) {
     if (OPT.legSom === 'nao' || C.mode === 'titulo') return;
     const simb = OPT.somSimb && cat ? (cat === 'p' ? '▲ ' : cat === 's' ? '✶ ' : cat === 'h' ? '✦ ' : cat === 'eu' ? '› ' : cat === 'dele' ? '▲ ' : '') : '';
     linhasSom.push({ txt: simb + txt, cat, t: agora + 4 }); while (linhasSom.length > 3) linhasSom.shift();
+    if (L7) try { L7.legendaEvento(txt, cat, linhasSom[linhasSom.length - 1]); } catch (e) {}
     desenharSom(); historico('som', simb + txt.replace(/^\[|\]$/g, ''));
   }
   let somHtml = '', legBase = '', subTxtAnt = null, subMedidoEm = -99;
   function desenharSom() {
     for (let i = linhasSom.length - 1; i >= 0; i--) if (linhasSom[i].t < agora) linhasSom.splice(i, 1);
-    const h = linhasSom.map(l => `<div class="${l.cat === 'p' ? 'perigo' : l.cat === 'h' ? 'historia' : l.cat === 's' ? 'segredo' : l.cat === 'eu' ? 'eu' : l.cat === 'dele' ? 'dele' : ''}">${l.txt}</div>`).join('');
+    const h = linhasSom.map(l => `<div class="${l.cat === 'p' ? 'perigo' : l.cat === 'h' ? 'historia' : l.cat === 's' ? 'segredo' : l.cat === 'eu' ? 'eu' : l.cat === 'dele' ? 'dele' : ''}${l.cls2 ? ' ' + l.cls2 : ''}">${l.txt}</div>`).join('');
     const mudou = h !== somHtml;
     if (mudou) { $('#legsom').innerHTML = h; somHtml = h; }
     // revisão do lote 2: com legenda de duas linhas, a legenda de som subia por cima do nome de quem fala
@@ -359,6 +367,7 @@ export function criarInterface(C) {
     if (SG) SG.morte(quem);
     if (MM) try { MM.morte(quem); } catch (e) {}
     if (L6) try { L6.morte(quem); } catch (e) {}
+    if (L7) try { L7.morte(quem); } catch (e) {}
   }
   function aliviar() {
     const cap = C.S.chapter; C.retry();
@@ -515,6 +524,7 @@ export function criarInterface(C) {
     if (PL) PL.fimCap(c, rk);
     if (SG) SG.fimCap(c);
     if (L6) try { L6.fimCap(c, rk, ant); } catch (e) {}
+    if (L7) try { L7.fimCap(c, rk, ant); } catch (e) {}
   }
 
   // ---------------------------------------------------------------- SEGREDOS DO TÍTULO
@@ -569,6 +579,7 @@ export function criarInterface(C) {
     focar('#pause');
     if (SG) SG.pausa();
     if (MM) try { MM.pausa(); } catch (e) {}
+    if (L7) try { L7.pausa(); } catch (e) {}
   }
 
   // ---------------------------------------------------------------- TECLAS
@@ -612,6 +623,7 @@ export function criarInterface(C) {
     if (SG) SG.frame(dt, ativo);
     if (MM) try { MM.frame(dt, ativo); } catch (e) {}
     if (L6) try { L6.frame(dt, ativo); } catch (e) {}
+    if (L7) try { L7.frame(dt, ativo); } catch (e) {}
     const S = C.S, P = C.P, M = C.M;
     if (S !== Sref) { Sref = S; rastro.length = 0; causa = null; motivoCaca = null; if (S && S.capT < 1 && S.chapter === 0 && S.tempo < 1) { mortesCap = {}; mortesCausa = {}; } }
     $('#cena-pular').hidden = C.mode !== 'cena';
@@ -670,6 +682,7 @@ export function criarInterface(C) {
   try { SG2 = criarSegredos2(C, { PAD, GRUPOS, som, legenda, subTitulo, registrarCodigo, emCampo, focar }); } catch (e) { console.warn('[segredos2]', e); }
   try { MM = criarInterfaceMonstros(C, { PAD, GRUPOS, direcao, legenda, focar, historico: (q, t) => historico(q, t) }); } catch (e) { console.warn('[monstros-ui]', e); }
   try { L6 = criarInterfaceLote6(C, { PAD, GRUPOS, focar, subTitulo }); } catch (e) { console.warn('[rejogo-ui]', e); }
+  try { L7 = criarInterfaceLote7(C, { PAD, GRUPOS, focar, legenda, direcao, historico: (q, t) => historico(q, t), objAtual }); } catch (e) { console.warn('[atmosfera-ui]', e); }
   aplicar();
   $('#b-opc').onclick = () => abrirOpcoes('#title');
   $('#p-opc').onclick = () => abrirOpcoes('#pause');
