@@ -11,6 +11,7 @@ export function monstrosEstrada(A, S, c) {
   mesclarMonstros(A.R);
   const grupo = A.W.grupo, P = A.P, cam = A.camera, GZ = c.GZ, BZ = c.BZ, carro = c.carro;
   const U = (c.ex && c.ex.util) || {};
+  const farolOn = on => { if (c.farolOn) c.farolOn(on); }; // os faróis do carro (antes o nome não existia aqui e o susto dos faróis dava ReferenceError)
   const vivo = () => A.W.grupo === grupo && A.S === S;
   const jogando = () => vivo() && A.mode === 'jogo';
   const _v = new THREE.Vector3(), _f = new THREE.Vector3();
@@ -105,6 +106,7 @@ export function monstrosEstrada(A, S, c) {
   //    Chegar ao portão encerra. Sem dano (no Pesadelo, um sobressalto).
   // ===============================================================
   const bat = { fase: 0, vulto: null, dist: 46, t: 0, passoT: 0, vistoT: 0, dica: 0, paradoT: 0, lurch: 0, breatheT: 0, contaT: 0, hissT: 0, fachoT: 0, dicaFacho: false, semPilha: false, naoVistoT: 0, dicaCostas: false, isca: null, iscaT: 0, iscaFeita: false, iscaRevel: false };
+  U.batedorPos = () => (bat.vulto && bat.fase > 0 && bat.fase < 5 ? bat.vulto.position : null); // onde o batedor está (a natureza cala em volta dele: src/estrada-audio.js)
   let lastPos = new THREE.Vector3(), velSuave = 0;
   function tickVel(dt) { // velocidade do jogador, suavizada; teleporte (QA) conta como "andando"
     const d = Math.hypot(P.pos.x - lastPos.x, P.pos.z - lastPos.z); lastPos.copy(P.pos);

@@ -8,6 +8,7 @@ import { polirEstrada, tecla, semFlash } from './src/estrada-polimento.js';
 import { segredosEstrada, letrasPlaca } from './src/estrada-segredos.js';
 import { monstrosEstrada } from './src/estrada-monstros.js';
 import { rejogoEstrada } from './src/estrada-lote6.js';
+import { audioEstrada } from './src/estrada-audio.js';
 import { extrasTerreo, extrasSuperior, juntar } from './src/internato.js';
 import { loreTerreo, loreSuperior } from './src/internato-lore.js';
 import { polirTerreo, polirSuperior } from './src/internato-polimento.js';
@@ -237,13 +238,17 @@ function estrada(A, S) {
   // Lote 6: rejogabilidade — variações sorteadas por semente, segredos só da segunda jogada,
   // recordes e selos do prólogo (src/estrada-lote6.js)
   rejogoEstrada(A, S, { GZ, BZ, carro, gate, cadeado, chave, orelhao, joaquim, velho, farolOn, ex, pol, fora, novoVulto: () => vulto(A) });
+  // Lote 7: som e atmosfera do prólogo — ambiência viva (grilos, sapos, cão, caminhão, grito no vento),
+  // chuva na lataria do carro e no zinco do posto, rádio-farol que some com a distância e o silêncio
+  // como arma (a natureza cala quando o morto chega). Lê S.flags.climaNoite (src/estrada-audio.js)
+  const aud = audioEstrada(A, S, { GZ, BZ, carro, ex, v });
 
   return {
     nome: 'A Estrada Velha',
     spawns: { titulo: { x: 0, z: GZ + 24, yaw: 0 }, carro: { x: 1.6, z: 9.6, yaw: 0 }, inicio: { x: SPAWN.x, z: SPAWN.z, yaw: SPAWN.yaw } },
     fora, dentro: { hemi: .12, moon: .05, fog: .08 },
     energia: () => !S.flags.luzPostoMorta,
-    ruidoMul: () => pol.ruidoMul(),
+    ruidoMul: () => pol.ruidoMul() * aud.ruidoMul(), // o trovão e o granizo mascaram seus passos (src/estrada-audio.js)
     inicioCapitulo(cap) { if (cap === 1) A.carregarMapa('terreo', 'inicio'); },
     cena: ex.cena
   };
