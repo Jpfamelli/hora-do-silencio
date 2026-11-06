@@ -95,3 +95,113 @@
 - O título ganha um subtítulo de ciclo após três campanhas, com a contagem de noites ("Noite {n}. A estrada velha te traz de volta").
 - No título, uma linha discreta provoca o seu melhor tempo ("Da última vez você chegou ao fim em {t}").
 - Conquista secreta "Segunda Vigília" por voltar ao São Lázaro depois de já ter visto um final.
+- Cada noite a semente sorteia quem realmente soltou o fogo de 1979: Albano, Celeste ou Joaquim.
+- A nota n2 ganha, na margem e a lápis, uma pista que aponta para o culpado da noite.
+- A nota n8 ganha uma anotação riscada que aponta para o culpado da noite.
+- A nota n10 ganha uma frase na margem que acusa o culpado da noite.
+- A página 4 do diário do Davi ganha um P.S. diferente conforme o culpado da noite.
+- A fita 1 ganha uma linha do diretor que muda conforme o culpado da noite.
+- A fita 2 ganha uma linha final que muda conforme o culpado da noite.
+- A lápide do Albano no cemitério ganha giz fraco com "foi ele" quando ele é o culpado.
+- A lápide da Irmã Celeste ganha cera derretida em volta do terço quando ela é a culpada.
+- O texto do final cita quem a casa insistiu ser o culpado naquela noite e avisa que amanhã conta de outro jeito.
+- No fim da noite abre a tela "Quem soltou o fogo?" com um botão para cada suspeito.
+- A tela de acusação lista as pistas que você realmente leu naquela noite.
+- Acertar o culpado faz a Lia falar e mostra a frase que explica o fogo daquele nome.
+- Acertar o culpado dá a conquista Detetive do São Lázaro.
+- Errar faz o Inspetor repetir o nome errado que você escolheu, três vezes, de longe.
+- Errar faz o Inspetor desmentir: "Não foi ele, menina. Eu estava lá."
+- Acertar os três culpados em três noites diferentes dá a conquista Os Três Nomes.
+- Quem acerta os três ouve que nenhum acendeu sozinho: o fogo precisou da vela, do fogão e da mão que tranca.
+- No térreo, o eco do Albano conta o incêndio e culpa a Celeste pela porta trancada.
+- No térreo, o eco da Celeste conta o incêndio e diz que a chave estava no bolso do Joaquim.
+- No térreo, o eco do Joaquim conta o incêndio e diz que quem trancou foi o diretor.
+- Cada noite o eco que toca é o do narrador que você ainda não ouviu, então as três versões pedem noites diferentes.
+- Depois de ouvir duas versões o Davi sussurra que falta alguém contar a outra volta da chave.
+- Depois de ouvir as três versões uma quarta nota (a quarta versão) aparece numa mesa do refeitório.
+- Ao abrir a quarta versão surge o aviso "Uma quarta nota se abriu: a versão que ninguém contou."
+- A quarta nota revela que a chave deu duas voltas e que a de dentro foi do Davi, para segurar o fogo longe dos outros.
+- Ler a quarta versão dá a conquista As Quatro Versões.
+- O jogo passa a lembrar, entre noites, em que sala você morreu e quem te matou.
+- Ao entrar numa sala onde uma Lia anterior morreu para o Inspetor, aparece um aviso arranhado no reboco.
+- Ao entrar numa sala onde uma Lia anterior morreu para a Ana, aparece um aviso escrito com o dedo na poeira.
+- Ao entrar numa sala onde uma Lia anterior morreu para a Procissão, aparece um aviso torto a giz.
+- Há também avisos genéricos de letra tremida, como "não entre aqui. eu entrei."
+- Os avisos citam quantos minutos a Lia anterior durou antes de morrer.
+- A casa mostra no máximo dois testemunhos por capítulo, para não virar enrolação.
+- Ler cinco avisos das Lias que morreram dá a conquista Letra Tremida.
+- Morrer três vezes no mesmo capítulo faz a Lia achar um papel dobrado no bolso com a própria letra tremida.
+- O papel traz um conselho que muda conforme o monstro que te matou e cita o nome da sala.
+- A semente decide se o conselho do papel é verdadeiro ou falso, e você nunca sabe qual.
+- Quando o conselho é verdadeiro, a Lia reconhece o próprio medo na letra.
+- Quando o conselho é falso, a Lia estranha o "g" e pergunta quem escreveu aquilo.
+- Na tela de morte surge um campo para deixar um recado de até 40 letras para a próxima Lia.
+- Na tela do final surge o mesmo campo de recado para a próxima Lia.
+- Na tela de título há um campo para escrever ou rever o recado antes de começar.
+- O campo de recado oferece vinte frases prontas ("ele está atrás da porta", "não confie na voz"...).
+- O recado é limpo de símbolos, links e arrobas e cortado em 40 letras.
+- Na noite seguinte o recado aparece no banco do carona, na letra do Davi com as suas palavras.
+- O mesmo recado aparece como nota escondida numa mesa da sala de aula do térreo.
+- A cada noite a casa troca uma palavra a mais do seu recado, e uma frase como "não confie no armário" vai virando o contrário.
+- A troca usa antônimos de verdade (não/sim, esquerda/direita, corra/pare, luz/escuro...).
+- Quando uma palavra foi trocada, a Lia diz que não escreveu assim ou que a casa trocou uma palavra.
+- Quando duas ou mais palavras mudam, a Lia reclama e o Davi jura que não foi ele, só copia a letra.
+- A nota do recado ganha o rodapé "(embaixo, a lápis) alguém mexeu aqui." depois de corrompida.
+- Ler o recado depois de três palavras trocadas dá a conquista Ninguém Escreveu Isso.
+- Nas noites de volta, uma das regras do papel do internato aparece riscada a caneta e reescrita (4 regras possíveis).
+- A regra reescrita muda de verdade: "Nunca responda" vira "Responda uma única vez".
+- As regras no diário mostram o trecho velho riscado e a frase nova ao lado.
+- O verso do papel guarda a versão antiga da regra, a lápis, no pé da folha.
+- Quando você relê o papel, a Lia comenta "alguém mexeu no papel" e cita qual regra mudou.
+- Perceber a regra rasurada dá a conquista Letra de Outra Mão.
+- Se você volta poucos minutos depois de sair, o Davi diz "de novo? você acabou de sair".
+- Se você volta entre 18 e 40 horas depois, a Lia encosta no capô e o acha ainda quente.
+- Se você volta depois de 3 a 6 dias, a Lia sente cheiro de fechado e poeira no painel.
+- Se você volta depois de 2 dias ou mais, o Davi diz "demorou, Lia. Eu contei N dias no escuro."
+- Se você volta depois de uma semana ou mais, a Lia diz "faz N dias, a casa não contou o tempo."
+- Se você volta depois de dois meses, o Davi diz que achou que você tinha desistido.
+- Um calendário de papel preso ao painel do carro mostra um fragmento de lore diferente para cada dia do mês (31 textos novos).
+- O fragmento do dia aparece uma vez por dia real, espelhando a data do aparelho.
+- Abrir o calendário nos 31 dias do mês revela a trigésima segunda página e a conquista O Mês Inteiro.
+- O Davi cita no rádio a data real de hoje (dia da semana, número e mês) e diz que ainda é a mesma noite.
+- O Davi acrescenta uma frase própria para cada dia da semana.
+- O Davi comenta o seu jeito de jogar da noite anterior: discreta, destruidora ou apressada, cada um com tom e fala próprios.
+- O rádio do carro passa um folhetim da Serra FM em sete boletins de 1979, um por noite jogada, em ordem.
+- O sétimo boletim revela que o Moacir não fugiu e que as crianças pediam para ele tocar o sino.
+- Quem ouviu os sete boletins ganha a conquista Serra FM, Sete Noites e uma fala nova do Inspetor no final verdadeiro.
+- Na trigésima noite a Lia fala com a casa como com uma velha amiga.
+- Na quinquagésima noite o Inspetor aparece cansado e arrasta o pé na entrada.
+- Na centésima noite o portão está aberto e há uma cadeira de balanço esperando no pátio.
+- Novo final secreto "Com Nome": devolver o apito e o crachá ao Moacir, que diz o próprio nome e para o sino antes da hora.
+- Novo final secreto "A Substituta": tirar o apito do cinto dele e assoprar três vezes, e a Lia vira a vigia cega do internato.
+- Novo final secreto "A Quarta da Fila": depois de responder três chamados e brincar com a Ana, a Lia entra na fila da Procissão.
+- Novo final secreto "A Hora Compartilhada": tocar o sino junto com o Moacir, sem fuga e sem monstro.
+- O apito, o crachá e a lamparina do pedreiro ficam guardados entre noites, então as relíquias podem ser juntadas em noites diferentes.
+- A escolha do portão ganha um botão extra para cada final alternativo que você liberou.
+- Quando só a saída alternativa está liberada, o portão abre mesmo sem as atitudes do final verdadeiro.
+- Cada final alternativo tem título próprio na tela do final e um subtítulo novo na tela de título para sempre.
+- Cada final alternativo dá uma conquista secreta própria (Com Nome, A Substituta, A Quarta da Fila, A Hora Compartilhada).
+- O epílogo muda conforme o estilo da noite: escondida, corredora, exploradora, sobrevivente ou furtiva (duas linhas cada).
+- Repetir o mesmo estilo duas noites seguidas acrescenta "o internato já aprendeu o seu ritmo".
+- O céu do epílogo muda com o tempo total: madrugada com lua alta, dia clareando ou sol alto na rua cheia.
+- O epílogo termina com a hora da noite escrita a giz na última parede.
+- A cada final, o jornal do dia seguinte lista os nomes dos seus amigos entre os visitantes da noite.
+- O título ganha um campo para até cinco nomes de amigos, salvo só no navegador.
+- Na chamada de 1979, a voz do Inspetor passa a chamar os nomes dos seus amigos.
+- O Chamado às vezes diz o nome de um amigo seu ("fulano me falou de você. Vem cá.").
+- Depois do primeiro final a Lia fala mais cansada nas pausas da noite.
+- Depois do segundo final a Lia fala irônica sobre a casa.
+- Depois do terceiro final a Lia fala quase afetuosa com a casa.
+- Depois do final verdadeiro, cinco cartas do enfermeiro Moacir aparecem, uma por capítulo, e a voz dele degrada até o desenho do apito.
+- Ler as cinco cartas do Moacir dá a conquista O Enfermeiro.
+- Cada final visto deixa uma carta da mãe da Lia no porta-luvas da noite seguinte, com tom diferente (preocupada, magoada, em paz).
+- Ler as três cartas libera uma quarta folha da mãe e a conquista Quatro Páginas da Mãe.
+- Na recepção aparece o cartão de um visitante fictício a cada noite concluída (12 cartões, o último com a sua letra e a data de hoje).
+- Na terceira noite o toca-fitas do carro toca a Lia aos seis anos cantando uma cantiga que muda a leitura do final.
+- Essa fita dá a conquista Cantiga de Seis Anos.
+- Depois dos créditos aparece uma de sete cenas curtas (carro vazio, rádio com a data, cavalinho girando...), sem repetir até ver todas.
+- Ver as sete cenas libera uma oitava, com a cadeira de balanço e o chapéu do Inspetor, e a conquista Depois dos Créditos.
+- Depois do final verdadeiro, as notas n2, n3, n4, n8 e n10 ganham um carimbo "LIDO DE NOVO" e trechos em caneta vermelha que revelam o que o diário omitia.
+- Em cada noite de volta uma das notas n2, n3, n4 ou n8 é mentirosa, com um detalhe trocado (hora, número de crianças, idade, piscar).
+- No final a casa revela qual nota mentia, o que ela dizia e o certo, e avisa quando você nem a leu.
+- Nas notas que você já leu aparecem anotações a lápis na letra da Lia anterior, metade conselho, metade armadilha.
