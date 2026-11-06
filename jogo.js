@@ -1187,6 +1187,7 @@ function updatePlayer(dt) {
   P.noiseR *= anK;
   P.noiseR *= SEG.ruidoMul(); // descalça e o chuveiro aberto (src/jogabilidade-segredos.js)
   if (AUDL6) P.noiseR *= AUDL6.ruidoMul(); // o clima sorteado da noite abafa ou expõe seus passos (src/audio-lote6.js)
+  P.noiseR *= PG.ruidoMul(); // lote 6 (2ª rodada): Dádivas, Calor e relíquia da noite entram no ruído (src/progressao-lote7.js)
   P.noiseR *= (P.ruido6 || 1); // lote 6: Passos Pesados
   P.noiseR *= JGL5B.ruidoMul(); // lote 5 (2ª rodada): descalça, lama e o compasso dos passos dele (src/jogabilidade-lote5b.js)
   const moved = Math.min(andou, vel * dt);
@@ -2697,7 +2698,7 @@ function fimDeCapitulo() {
     salvarCheckpoint(true);
   };
   pularFimCap = seguir;
-  const seguirTO = capTO = setTimeout(seguir, 6400); // morrer ou reiniciar cancela (clearTimeout(capTO))
+  const seguirTO = capTO = setTimeout(seguir, PG.fimCapEspera()); // 6,4 s; mais tempo quando há Dádivas para escolher (src/progressao-lote7.js) // morrer ou reiniciar cancela (clearTimeout(capTO))
 }
 let pularFimCap = () => {};
 
@@ -4535,7 +4536,7 @@ const L6V = instalarVisualLote6({
 PG.ligar({
   get S() { return S; }, setS: v => { S = v; }, get ui() { return ui; }, get mode() { return mode; },
   KEYS: { SAVE_KEY, CAPS_KEY, CONQ_KEY, OPT_KEY }, OPT, salvarOpt: () => lsSet(OPT_KEY, OPT), saveExterno: true, dicaExterna: true, ajudaExterna: true,
-  P, M, ANA, PROC, W, MON, SFX, D, toast, sub, loreAchado, totalLore, salvarCheckpoint, carregarSnap, entrarJogo, iniciarAudio, emitNoise,
+  P, M, ANA, PROC, W, MON, SFX, D, toast, sub, loreAchado, totalLore, salvarCheckpoint, carregarSnap, entrarJogo, iniciarAudio, emitNoise, pularFimCap: () => pularFimCap(),
   recomecarCap: () => { // Lote 3: reinício na hora (segurar BACKSPACE / SELECT / três dedos), sem tela de morte nem menu
     const snap = (lsGet(CAPS_KEY, {})[R.capitulos[S.chapter].id] || {}).snap; if (!snap || trocandoCap) return false;
     if (ui === 'diario') fecharDiario();

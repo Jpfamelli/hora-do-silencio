@@ -95,3 +95,135 @@
 - Estatísticas mostram o recorde de capítulos limpos seguidos.
 - Estatísticas mostram a noite mais silenciosa.
 - Módulo de rejogabilidade adicionado ao cache offline (sw.js), jogável sem internet.
+- Novo botão "A Casa" no título, com um painel de abas: Calor, Dádivas, Estrelas, Estilo, Necrológio, Sementes, Calendário, Altar e Modos & Códigos
+- Calor da Casa: uma escada de 1 a 10 que você escolhe no painel, com um degrau novo liberado a cada final visto
+- Cada degrau de Calor soma, de forma cumulativa, ouvido maior do Inspetor, pilha que gasta mais, passo dele mais rápido, aviso da Procissão menor e aparições mais frequentes
+- Os dez degraus do Calor têm nome e frase (de Brasa até Incêndio de 1979) e o painel mostra os números exatos de cada um
+- Botão "Sortear Calor e semente" no painel do Calor para uma noite surpresa de dificuldade
+- Cada degrau de Calor acima de 1 soma 8% de bônus de pontos na tela final e mais Cera por noite vencida
+- A tela final avisa "Calor N liberado" quando o final abre o degrau seguinte
+- O Calor da noite aparece na pausa e na faixa de status do título
+- Nova conquista "Abafada": vencer uma noite no Calor 3 ou mais
+- Nova conquista "Febre": vencer uma noite no Calor 5 ou mais
+- Nova conquista secreta "Incêndio de 1979": vencer uma noite no Calor 10
+- Dádivas da Noite: no fim de cada capítulo (menos o último) aparecem três cartas sorteadas pela semente, e você escolhe uma com 1, 2 ou 3 (ou tocando nela)
+- Cada carta de Dádiva traz um ganho e um preço escritos na própria carta (16 cartas, como Pés de Lã, Olho de Gato, Sino Rachado e Mão Fechada)
+- Os efeitos das Dádivas entram de verdade no jogo: ouvido do Inspetor, velocidade dele, gasto de pilha, dano recebido, frequência das aparições e aviso da Procissão
+- Novo fator de ruído dos passos no motor, que permite cartas como Pés de Lã (passos mais baixos) e Passo Largo (mais altos)
+- Você carrega no máximo cinco Dádivas por noite: ao pegar a sexta, a mais antiga se desfaz
+- As Dádivas escolhidas ficam salvas no checkpoint e sobrevivem à morte e ao reinício do capítulo
+- Algumas cartas entregam itens na hora: Pilha Boa, Vela Curta, Moeda na Língua e Mãos Limpas dão pilhas ou curativos na mochila
+- A tela de fim de capítulo passa a esperar até 24 segundos quando há cartas para escolher e segue sozinha logo depois das escolhas
+- Apertar 0 na tela de cartas recusa tudo e rende Cera de vela
+- O Trato vermelho: depois do primeiro final, uma das três cartas pode ser um Trato, com ganho forte e uma maldição escrita que vale até o fim do capítulo seguinte
+- Cumprir o Trato sem morrer paga 1500 pontos, o dobro de Cera e a conquista "Trato Cumprido"
+- Cinco combinações secretas de Dádivas (Sombra Mansa, Faro Duplo, Punhos de Pedra, Luz Demais, Tapa-Ouvido) acendem um efeito extra sem aviso prévio
+- As combinações descobertas ficam listadas no painel de Dádivas com a receita
+- O baralho de Dádivas cresce: quatro cartas só entram depois de feitos (dez escapadas, noite sem garrafa, rank S, ver um final) e aparecem como silhueta com dica
+- O painel de Dádivas mostra "cartas: N de M" e quantas vezes você aceitou cada carta
+- As Dádivas e os Tratos ativos aparecem listados na pausa e no resumo da tela final
+- Nova conquista "Primeira Dádiva": aceitar uma carta entre capítulos
+- Nova conquista "Mão Carregada": carregar cinco Dádivas ao mesmo tempo
+- Nova conquista "Mãos Vazias": vencer uma noite sem aceitar nenhuma Dádiva
+- Nova conquista secreta "Trato Cumprido": fechar o capítulo seguinte a um Trato sem morrer
+- Nova conquista secreta "Assina Qualquer Coisa": aceitar três Tratos ao longo das noites
+- Nova conquista secreta "Combinação": descobrir a primeira combinação de Dádivas
+- Nova conquista secreta "Alquimista de Cartas": descobrir três combinações de Dádivas
+- Apostas entre capítulos: três apostas sorteadas pela semente (sem esconderijo, sem dano, abaixo da meta...) e você escolhe uma com 4, 5 ou 6
+- Cumprir a aposta paga 600 pontos e Cera, e o resultado aparece em uma linha no fim do capítulo
+- Quebrar a aposta custa caro: o Inspetor ouve 10% mais longe no capítulo seguinte e a casa avisa com um "Perdeu."
+- Nova conquista "Jogadora de Palavra": cumprir três apostas
+- Nova conquista "Perdeu.": quebrar uma aposta
+- Cinco estrelas por capítulo (terminar, sem dano, lanterna quase sempre apagada, sem esconderijo, tempo de ouro), que só acendem e nunca apagam
+- O fim de capítulo mostra as estrelas da passada e destaca as que acenderam pela primeira vez
+- Aba "Estrelas" com o céu dos seis capítulos, o que falta em cada um e os melhores tempos
+- Placar de três tentativas: o jogo guarda os três melhores tempos de cada capítulo e mostra no fim do capítulo
+- Mede quanto tempo o Inspetor ficou atento a você em cada capítulo e mostra no fim, com selo bronze para menos de 5 s e prata para zero
+- Temperatura do terror: cada capítulo recebe uma faixa de medo (Gelo, Frio, Febre, Delírio ou Pavor) no resumo do fim do capítulo
+- A aba de estrelas guarda a faixa de medo mais alta de cada capítulo e a menor atenção do Inspetor
+- Nova conquista "Dez Estrelas": acender dez estrelas
+- Nova conquista secreta "Constelada": acender as trinta estrelas
+- Nova conquista "Capítulo Perfeito": acender as cinco estrelas de um capítulo na mesma passada
+- Nova conquista secreta "Surda de Propósito": fechar um capítulo sem o Inspetor ouvir você nenhuma vez
+- Nova conquista "Temperatura do Pavor": fechar um capítulo na faixa mais alta de medo
+- Nova conquista "Sangue de Gelo": fechar um capítulo na faixa mais baixa de medo com o Inspetor solto
+- O jogo passa a medir o seu jeito de jogar: porcentagem do tempo correndo, agachada, escondida, parada e com a lanterna acesa
+- Doze epítetos da noite (A Sombra, A Teimosa, A Toupeira, A Corredora, A Gata, A Estátua, A Vagalume...) com frase própria na tela final
+- Retrato em giz na tela final com as porcentagens do seu estilo e o epíteto
+- Desafio pessoal oposto ao seu estilo (quem corre muito recebe "Pés no Chão", quem se esconde muito recebe "A Céu Aberto"), aceito na aba Estilo
+- O desafio pessoal aceito é anunciado no começo da noite e verificado no final
+- Cumprir o desafio pessoal libera um título pessoal e 40 de Cera
+- O histórico de epítetos aparece no painel e, ao repetir o mesmo cinco noites seguidas, a Lia comenta na tela final
+- Nova conquista "Versátil": cumprir três desafios pessoais diferentes
+- Nova conquista secreta "Previsível": terminar cinco noites com o mesmo epíteto
+- Nova conquista "Muitas Caras": receber seis epítetos diferentes
+- Doze patentes do internato (Visitante até Zeladora) calculadas por noites, finais, conquistas e estrelas, mostradas no título, na pausa e nas estatísticas
+- O painel mostra a próxima patente e quantos pontos da casa faltam
+- Nova conquista "Chaveira": chegar à sexta patente
+- Nova conquista secreta "Zeladora": chegar à patente mais alta
+- Necrológio com doze fichas de causa de morte (pega correndo, agachada, parada, na água, na fuga do sino, pela Menina no escuro...), cada uma com um epitáfio do Davi
+- Morrer numa sexta-feira treze abre uma ficha especial do necrológio
+- O necrológio conta quantas vezes você morreu de cada jeito e esconde as fichas que ainda não aconteceram
+- Nova conquista "Cinco Epitáfios": morrer de cinco jeitos diferentes
+- Nova conquista secreta "Morreu de Tudo": completar o necrológio
+- Dívida do Inspetor: cada morte soma um ponto de dívida e, com dez, ele fala uma frase de cobrança no começo do próximo capítulo
+- Quitar a dívida exige fechar um capítulo sem ser perseguida e dá a conquista "Dívida Paga"
+- Nova conquista secreta "Nem Saiu do Carro": morrer nos primeiros dez segundos do Prólogo
+- Nova conquista secreta "Gosta de Contar": morrer três vezes para a Menina no mesmo capítulo
+- Nova conquista secreta "Poste": ficar três minutos parada no escuro dentro de um capítulo
+- Nova conquista secreta "Tiro no Pé": morrer até cinco segundos depois de jogar uma garrafa
+- Nova conquista secreta "Pisca-Pisca": ligar e desligar a lanterna vinte vezes no mesmo capítulo
+- Nova conquista secreta "Armário Teimoso": ficar escondida noventa segundos seguidos
+- Nova conquista secreta "Correu Direto": morrer correndo três vezes na mesma noite
+- Herança da Lia: depois de cada final você escolhe uma de quatro relíquias (entre oito) para levar à próxima noite, e só uma
+- Cada relíquia (Botão do Davi, Apito Quebrado, Giz da Ana, Moeda do Davi...) tem ganho e custo escritos e muda de verdade os números da noite seguinte
+- A relíquia da mala aparece na faixa do título e na pausa, e dá itens iniciais quando é o caso
+- Nova conquista "Herdeira": começar uma noite levando a relíquia da anterior
+- Hora Zero: modo que abre depois de três finais, com uma vida só e nenhuma barra, inventário ou lista de objetivos na tela
+- A Hora Zero sorteia uma maldição só de custo a cada capítulo, escrita na tela de fim de capítulo
+- A Hora Zero dobra o placar da casa, guarda recorde e vitórias próprias e mostra um parágrafo de final exclusivo (a Lia em silêncio no amanhecer)
+- Nova conquista secreta "A Hora Zero": vencer a Hora Zero
+- Calendário de velas: o painel mostra as velas dos últimos trinta dias e os dias seguidos que você jogou
+- Nova conquista "Sete Velas": jogar sete dias seguidos
+- Nova conquista secreta "Trinta Velas": jogar trinta dias diferentes
+- A casa sente a sua falta: com três dias fora, o título avisa que a casa esperou
+- Com catorze dias fora, o Inspetor chega impaciente (ouve 8% mais longe no Prólogo e no Capítulo I), mas uma pilha de boas-vindas espera na mochila
+- Série de noites sem morrer no título, com recorde nas estatísticas
+- Nova conquista "Série de Três": três noites seguidas sem morrer
+- Nova conquista secreta "Série de Cinco": cinco noites seguidas sem morrer
+- Nova conquista secreta "Série de Dez": dez noites seguidas sem morrer
+- Tarefas do dia: três tarefas pequenas sorteadas pela data (esconder-se, jogar garrafa, agachar...) cumpridas durante a noite, com aviso a cada uma e 20 de Cera pelas três
+- Nova conquista "Dia Cumprido": cumprir as três tarefas do dia
+- Missões da semana: três missões que trocam na segunda-feira, calculadas pela data e com progresso salvo
+- Nova conquista "Semana Cumprida": cumprir as três missões da semana, com 60 de Cera
+- Maldição do mês: doze temas, um por mês, que mudam números pequenos da noite quando você liga a opção no calendário
+- Nova conquista "Maldição do Mês": vencer uma noite com a maldição do mês ligada
+- Seis datas especiais da Serra (14 de março, São João, Cosme e Damião, 31 de outubro, Finados, sexta-feira treze) ganham selo no calendário quando você joga nelas
+- Nova conquista secreta "Calendário Folclórico": jogar em todas as datas especiais
+- Selo da Primeira Vez: terminar o Prólogo da primeiríssima noite sem morrer, uma chance só na vida
+- Noites marcadas: na 7ª noite o sino toca sete vezes ao chegar ao Capítulo I
+- Noites marcadas: na 13ª noite a tela ganha moldura de câmera de fita com REC e relógio girando
+- Noites marcadas: na 31ª noite a Lia acorda dizendo que tem terra no rosto
+- Noites marcadas: na 66ª noite todas as portas estão abertas do jeito errado e o Inspetor ouve 10% mais longe
+- Quatro conquistas secretas das noites marcadas (Sete Toques, Fita Treze, Terra no Rosto, Todas as Portas), uma para cada noite sobrevivida
+- Bingo da noite: uma cartela 3x3 de façanhas sorteadas pela semente aparece na pausa e se marca sozinha
+- Fechar uma linha do bingo paga 300 pontos e Cera, e a cartela cheia paga 1000
+- Nova conquista "Bingo!": fechar uma linha da cartela
+- Nova conquista secreta "Cartela Cheia": preencher o bingo inteiro numa noite
+- Cera de vela como moeda de rejogo, ganha por capítulo, final, aposta, desafio pessoal e tarefas, com saldo no título
+- Altar de cera: oito títulos para comprar com Cera, só cosméticos, mostrados na faixa do título
+- Nova conquista "Cera Derretida": juntar cem de Cera
+- Nova conquista "Altar Montado": comprar um título no Altar
+- Doze sementes lendárias com apelido e descrição (A Mais Silenciosa, O Corredor Sem Fim, A Mais Cruel...), que se jogam ou se copiam com um clique
+- Sementes favoritas: F na tela de fim de capítulo guarda a semente da noite numa lista com botão de jogar, copiar e tirar
+- Nova conquista "Semente Lendária": vencer uma noite numa das sementes lendárias
+- Alvo de tempo do amigo: um código ALVO com nome e tempo monta a noite e mostra no canto da tela "Vencer Fulano: 07:42" com a diferença ao vivo
+- A tela final diz se você venceu ou perdeu para o alvo e por quanto
+- Botão "Devolver o desafio" na tela final copia um novo código ALVO com o seu nome e o seu tempo
+- Nova conquista "Alvo Batido": vencer o tempo de um amigo
+- Nova conquista "Devolveu na Hora": gerar o código de devolução
+- Recordes por categoria (qualquer final, final verdadeiro, sem dano, pouca lanterna, sem esconderijo), cada uma com o seu melhor tempo
+- Nova conquista "Sem Dano, Sem Fita": gravar um recorde na categoria sem dano
+- Videoteca: grade de finais por dificuldade no painel de Modos, com uma fita para cada combinação concluída
+- Nova conquista secreta "Videoteca": ver os três finais em ao menos duas dificuldades cada
+- Estatísticas ganham patente, Calor liberado, estrelas, necrológio, Cera, cartas do baralho, recorde de série e dívida do Inspetor
