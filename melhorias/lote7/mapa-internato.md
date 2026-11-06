@@ -1,0 +1,99 @@
+# Lote 7 — Mapa: térreo e dormitórios
+- O relógio de pêndulo da recepção passa a bater tic e tac com timbres diferentes, uma bússola sonora do hall
+- O pêndulo da recepção cala por 6 segundos quando o Inspetor entra no hall: quem ouve o tique morrer sabe que ele está lá
+- De vez em quando o pêndulo para sozinho por alguns segundos, sem monstro nenhum, para você desconfiar do silêncio
+- Às 3h07 do relógio real, o pêndulo bate três vezes sozinho e para
+- O relógio da diretoria bate desregulado: a cadência acelera e tropeça conforme o Inspetor investiga, procura ou caça, e cala quando ele para para escutar
+- O barômetro da diretoria estala quando a ameaça muda de faixa, audível da porta
+- O telefone da diretoria toca ao longe e para no instante em que você entra na sala
+- A geladeira da cozinha ganha um compressor que ronca com a energia ligada
+- Quando a energia cai, o compressor da geladeira morre num estalo e, quando volta, religa com um tranco
+- O fogão a lenha esfria com tiques de metal contraindo na cozinha
+- Bomba d'água, caldeira e transformador do corredor ganham zumbidos fixos que acordam um a um depois que o gerador liga, e morrem juntos se a energia cair
+- Ao ligar o gerador, os canos estalam e assoviam em cadeia, do gerador até o hall, desenhando a casa pelo som
+- A caldeira solta sopros de vapor de tempos em tempos com a energia ligada
+- Os dutos da casa de máquinas estalam por dilatação, mais forte perto do gerador quente
+- Do lado de fora do refeitório vaza o murmúrio de quarenta crianças comendo, com colheres e cochichos
+- Ao abrir a porta do refeitório, o murmúrio cala de uma vez e fica só o eco vazio do pé-direito alto
+- Logo depois que o refeitório cala, uma cadeira vazia é arrastada perto de você
+- Quando você sai, o murmúrio do refeitório volta devagar; na noite da Procissão ele continua mesmo com a sala vazia
+- Ao se aproximar do refeitório, talheres e pratos batem em marcha lenta de três tempos e param quando você entra
+- Dentro do refeitório, talheres tilintam em mesas vazias enquanto você anda devagar e param quando você para
+- Correndo no refeitório, uma colher cai de verdade no chão e o barulho chama o Inspetor
+- Os passos no refeitório voltam em eco duas vezes, e quem escuta o eco ouve o que anda por perto
+- Depois de um trovão, a louça da cozinha e do refeitório tilinta em ressonância
+- Correr perto da pilha de pratos da cozinha faz a pilha tilintar e às vezes cair, chamando o Inspetor
+- Encostar na parede fina entre refeitório e cozinha deixa vazar clara a respiração do Inspetor do outro lado, e a Lia comenta
+- A prateleira da despensa estala seca ao esfriar
+- Atrás da porta fechada da sala de aula há um murmúrio abafado de trinta vozes de criança
+- Ao entrar na sala de aula, o murmúrio corta de uma vez e a sala está vazia, e a Lia repara no giz ainda caindo
+- Uma professora conta devagar em voz formante atrás da porta da sala de aula, e a contagem para quando você entra
+- O giz arranha a lousa da sala de aula num guincho de desconforto
+- Num trovão ou pancada perto, um giz rola na calha do quadro e cai com um toc
+- Na biblioteca, correr ou andar sem cuidado por muito tempo é respondido um segundo depois por um coro fraco de psiu, que o Inspetor também ouve
+- Na biblioteca, um som de páginas viradas anda entre as estantes
+- Asas de traça batem no escuro entre as estantes da biblioteca
+- Os corredores sopram como túneis de vento, e o assopro sobe de tom quando as portas das pontas estão abertas
+- No corredor oeste, depois de alguns metros, os seus passos voltam um instante depois, como se alguém te seguisse no mesmo ritmo
+- Três tábuas soltas do corredor oeste rangem alto se você as pisa em pé e fazem barulho de verdade; agachada ou devagar passa em silêncio
+- Golpes metálicos nos canos acompanham o Inspetor do outro lado da parede, nos dois andares, com legenda de direção
+- O interfone toca ding-dong e avisa uma ala: o padrão de notas muda conforme o Inspetor muda de ala, um radar para quem entende a linguagem
+- No corredor oeste, uma fileira de armários bate uma a uma na sua direção e para no armário ao lado (uma vez por noite)
+- As poças sob as goteiras dos corredores crescem ao longo da noite: pisar espirra e faz barulho maior a cada minuto
+- A grade da escada principal range quando o vento sopra
+- O vento assovia pelas frestas sob a porta principal da recepção
+- Frascos da enfermaria tilintam quando o Inspetor passa perto
+- Uma lâmpada fluorescente agoniza na enfermaria com um zumbido que estala
+- Um monitor cardíaco da enfermaria bipa na cadência do medo da Lia, um pouco atrasado
+- De vez em quando o bipe do monitor sai fora do tempo, como se o coração fosse de outra pessoa
+- Com o Inspetor dentro da enfermaria o bipe vira um apito contínuo
+- Uma maca range sobre as rodinhas, sozinha, numa enfermaria vazia
+- O tambor da máquina de lavar gira com uma peça solta batendo e para quando você entra na lavanderia
+- O cano do banheiro respira e dá um golpe grave
+- Três batidas em sequência soam nos canos do banheiro quando ninguém está lá
+- A janela quebrada da copa assovia, mais aguda nas rajadas, e serve de bússola pelos corredores
+- A chuva entra pela janela quebrada da copa com um tamborilar agudo e localizado
+- O balanço de ferro do pátio range em ciclos e às vezes para no meio
+- Mariposas batem no vidro das lâmpadas acesas
+- Um cachorro uiva muito longe no pátio e para
+- Uma coruja pia no pátio, duas notas
+- Rajadas de vento batem portas soltas ao longe, e o estrondo pode ser investigado pelo Inspetor
+- Um coro abafado reza atrás da parede da biblioteca e cessa quando você chega à sala
+- Um sino distante bate a cada quarto de hora do relógio real, fraco sob a chuva
+- Três tubos de latão na recepção e nas pontas dos corredores deixam você encostar o ouvido e escutar o Inspetor com o chiado e a ressonância do metal, por 6 segundos
+- Ouvir pelo tubo tem preço: o seu sopro pode descer pelo tubo e o Inspetor vai conferir a outra ponta
+- Cada tipo de sala ganha o seu próprio tom grave de fundo (hall largo, biblioteca abafada, despensa quase muda, casa de máquinas pesada) com troca suave ao mudar de sala
+- A vida sonora da sala (murmúrios, grilos, pingos) cala de uma vez quando o Inspetor entra, e o silêncio vira aviso
+- Prender o ar cala os sons de fundo da casa para você escutar melhor, e só o perigo continua
+- Mais de setenta sons novos ganham legenda com direção, como cano batendo, tábua que range e eco de passo
+- Nos dormitórios, um murmúrio subliminar de muita gente toma o corredor e cai quando a lanterna aponta
+- Uma cantiga de roda sussurrada anda à deriva pelos dormitórios e para seco quando você olha na direção dela
+- As camas dos dormitórios respiram juntas, em coro lento, e o coro para junto com você quando você para
+- Uma das camas respira fora do compasso, mais grave e mais lenta, e muda de lugar a cada noite
+- Parar ao lado da cama que respira errado faz a Lia reconhecer a pista
+- Um colchão range sozinho quando você passa perto de uma cama
+- No rangido da madeira dos dormitórios vem escondido um suspiro de criança
+- Uma tosse abafada de criança vem de trás da porta de um dormitório
+- O espelho do banheiro de cima treme num subgrave quando a Ana está em cena
+- A pia do banheiro de cima pinga num ritmo que serve de âncora
+- Uma veneziana solta bate no batente nas rajadas do dormitório
+- A veneziana também bate em sequência quando o Inspetor chega perto, delatando a aproximação
+- A janela quebrada do dormitório dos fundos assovia e é uma bússola no escuro
+- A chuva entra pela janela quebrada do dormitório com um tamborilar agudo
+- Rajadas sacodem a vidraça do dormitório com um estalo e um assovio
+- A chuva martela o telhado do andar de cima, mais grave e perto nos dormitórios dos fundos
+- A goteira do dormitório C forma uma poça: pisar nela espirra e faz barulho
+- O corredor longo do andar de cima sopra como túnel de vento quando as portas das pontas estão abertas
+- Um harmônio-fantasma toca um acorde desafinado de trítono e some devagar
+- Uma caixinha de música toca fraco de longe e some, antes de você montá-la
+- Roupa pendurada farfalha na rouparia numa corrente de ar
+- Os dutos do monta-cargas estalam por dilatação no depósito
+- Passos arrastados soam no forro acima do dormitório quando você está longe do depósito
+- Uma cadeira de balanço range no depósito num ritmo que não bate com o vento, e recomeça mais rápida cada vez que você sai
+- Fazer barulho correndo no depósito acorda morcegos: asas e guinchos descem do teto e o Inspetor ouve
+- Cada degrau da escada do patamar toca uma nota em escala menor, e um degrau nunca soa
+- Correr na escada do patamar vira uma cascata de estalos que o Inspetor ouve de longe
+- Um degrau range logo atrás de você, um instante depois de você passar
+- Sete tábuas do corredor do andar de cima tocam notas diferentes ao serem pisadas em pé
+- Pisar as sete tábuas do corredor em ordem completa o primeiro verso do hino, com um acorde, e a Lia reconhece
+- Ao descer pelo monta-cargas, os cabos gemem subindo de tom, correntes batem e a gaiola cai num baque
