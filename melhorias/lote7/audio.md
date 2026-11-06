@@ -1,0 +1,121 @@
+# Lote 7 — Áudio
+- Cada sala ganha o seu leito sonoro, um zumbido grave com ruído próprio por função (cozinha, enfermaria, biblioteca, refeitório, dormitório, máquinas, túnel, hall), com troca suave de 0,4 s ao cruzar a porta.
+- Cada sala tem também um sub-grave quase inaudível com altura própria, sorteada pelo nome da sala: quem joga de fone sente onde está de olhos fechados.
+- As salas ligadas a 1979 (Celeste, porão, cova, castigo, Luiz) soam meio tom desafinadas e um tom acima, e voltar lá soa errado antes de ver qualquer coisa.
+- Uma sala diferente a cada noite, sorteada pela semente, ganha um tom levemente fora do lugar, só para quem presta atenção.
+- Onde a caçada do Inspetor começou, o tom da sala fica meio tom desafinado pelo resto da noite.
+- A capela perde o drone reconfortante e ganha uma nota grave de órgão que surge de tempos em tempos, com legenda.
+- Na capela, perto do altar, um infra-som quase inaudível sobe e pesa no peito.
+- Nas salas com janela quebrada, na copa e na capela, o vento assobia pelas frestas em rajadas que mudam de altura.
+- A torneira da cozinha pinga num ritmo constante e para de repente quando o Inspetor chega perto.
+- Biblioteca, sala de aula, diretoria e recepção ganham um relógio de parede que tiquetaqueia.
+- O relógio de parede para quando o Inspetor entra na sala, e a legenda avisa que ele parou.
+- Com o medo alto o tique do relógio estica e o timbre desafina para baixo: o tempo parece arrastar.
+- Na enfermaria uma mosca voa em círculos em volta da sua cabeça, em som 3D.
+- A mosca da enfermaria cala na hora em que o Inspetor entra ou a Procissão passa.
+- No refeitório talheres tilintam e cadeiras são arrastadas sozinhos, como se a mesa posta para 37 ainda estivesse em uso.
+- Nos dormitórios molas de cama rangem sozinhas em pontos aleatórios do quarto.
+- Nos túneis algo pesado cai na cisterna, longe, com reverberação grande.
+- A geladeira da cozinha liga, trepida e desliga sozinha com um tum surdo a cada 40 a 90 segundos.
+- A geladeira para de vez quando o Inspetor entra na cozinha e volta com um tranco quando ele sai, com legenda "a geladeira parou".
+- Um pulso de sub-grave bate junto com o coração quando o medo sobe, separado do som do corpo.
+- A música de caça desliza de uma quinta justa para um trítono conforme o Inspetor encosta em você.
+- As cordas dissonantes apertam e desafinam quando ele investiga ou procura perto.
+- Cada capítulo sobe um pouquinho o tom do drone da caçada: o mundo fica mais errado a cada noite.
+- O Inspetor canta baixinho enquanto patrulha e o canto fica mais forte quanto mais perto ele está.
+- Se ele te ouve, o canto corta no meio da nota, e a legenda registra o corte.
+- Quando ele entra em alerta ou no bote, a ambiência e a chuva caem de uma vez: o vácuo antes do golpe avisa que o pior vem.
+- Na emboscada o mundo cala por um segundo e a legenda diz que o silêncio é estranho.
+- Depois que a caçada acaba o mundo fica mudo demais por 12 a 20 segundos, um falso seguro que não deixa relaxar.
+- De vez em quando tudo cala por 2 a 4 segundos sem que nada aconteça: um blefe que treina a paranoia.
+- Na fuga final, depois do sino, toda a trilha some e sobram só a chuva, o coração e o corpo da Lia.
+- No clímax a chuva engrossa para cobrir o sino e a fuga.
+- Quando a Procissão avisa e durante as badaladas, a chuva e o vento prendem o ar e sobra um silêncio cortante.
+- Na neblina os agudos da chuva se fecham e o mundo fica abafado.
+- Em noites sorteadas (cerca de 28%) cai granizo no telhado por 18 a 26 segundos, com tamborilar metálico no alto.
+- O granizo é anunciado: 3 segundos antes a chuva fina engrossa de repente.
+- Durante o granizo seus passos e os dele ficam cobertos: o Inspetor ouve só um terço do que você faz.
+- Quando o granizo para, só o degelo pinga no telhado por alguns segundos, num silêncio de gelo derretendo.
+- Parada ou prendendo o ar por muito tempo, um apito agudo de ouvido cresce de leve: o silêncio longo demais pesa.
+- Se você hesita muito no mesmo lugar, uma pressão grave sobe devagar, como se a casa não gostasse da demora.
+- Prendendo o ar, sussurros de criança surgem por baixo do silêncio ao redor da sua cabeça.
+- Em raros momentos de calma a casa sussurra o seu nome de um canto vazio atrás de você.
+- Se você fica parada demais, crianças cochicham "fica quieta" do outro lado da parede.
+- Em salas de 1979 uma chamada de freira soa muito longe, em voz formante.
+- Em pânico, quando se esconde ou prende o ar, a Lia murmura sozinha e quase se entrega.
+- Ao ligar e desligar a lanterna num corredor longo, às vezes o clique volta do fim do corredor, um tom abaixo.
+- Uma vez por noite, um barulho único e sem explicação cruza a noite longe de você.
+- Ao escapar por um fio de uma caçada soa um acorde quente e maior com sino, o único momento bonito do jogo.
+- Em 1 de cada 4 desses acordes de alívio a terça desafina para o menor no meio, e a legenda avisa.
+- Com o coração disparado o mundo abaixa: a ambiência cai até 35% no auge do pânico.
+- Em pânico extremo, com ele a menos de 2,5 m, a surdez aperta ainda mais e o mundo some.
+- Com a vida abaixo de 15% os agudos se fecham num túnel auditivo.
+- Prender o ar enche o leito da sala de pressão grave, como se você ficasse debaixo d'água.
+- A tonalidade do leito da sala afunda em degraus conforme o medo passa de 40, 65 e 85.
+- Machucada, as cordas da caçada desafinam proporcionalmente à ferida.
+- Apontar a lanterna para o Inspetor faz o zumbido dela estridular, como se ela o ouvisse.
+- O gerador range e desafina quando o Inspetor chega perto dele.
+- Ao se afastar do gerador, um zumbido fica no seu ouvido por um instante.
+- Uma veneziana solta bate ao vento em pontos aleatórios, um falso Inspetor.
+- Uma porta distante bate sozinha com o vento e faz a Lia duvidar do que ouviu.
+- Atrás de você, às vezes, um estalo seco idêntico a um passo dele soa e some.
+- Uma corda de pizzicato seca soa na calma e ninguém sabe de onde veio.
+- Depois de levar um golpe forte, um zumbido tapa o ouvido da Lia.
+- Parada e calma demais, a Lia cantarola sem querer e o ruído dela chega até o Inspetor.
+- Perdida por muito tempo, a Lia murmura para si mesma onde procurar.
+- Prendendo o ar por muito tempo, a Lia conta baixinho para se acalmar, e se há perigo o som vaza.
+- A partir da terceira morte, uma criança sussurra de um canto escuro o número de vezes que você já caiu.
+- Cada mapa abre com um acorde grave próprio, uma assinatura sonora para o novo lugar.
+- No instante em que o Inspetor ouve de verdade, até o som do seu próprio corpo abafa.
+- Depois do apito de um susto o mundo ensurdece e os passos dele ficam abafados por alguns segundos, uma janela real de vulnerabilidade.
+- Ao soltar o ar, em salas grandes, o seu arfar volta um instante depois, mais grave, como se fosse de outra pessoa.
+- Prender o ar até o fôlego acabar faz a respiração escapar sozinha, com o risco de ser ouvida.
+- Uma nota suspensa fica pendurada durante a caçada e só resolve quando ele perde a sua pista.
+- Um tom contínuo, o radar, sobe de altura e volume conforme o Inspetor chega perto, sem HUD nenhum.
+- Um pedal grave sobe meio-tom ao longo do capítulo, devagar demais para perceber.
+- No escuro, sem lanterna, uma respiração coletiva de crianças cresce em coro e some quando a luz liga.
+- Nos picos de medo um infra-som de 18 Hz pesa no peito.
+- Quando algo invisível divide a sala escura com você, uma pressão grave pulsa nos ouvidos.
+- Um tique de metrônomo trava no ritmo conforme ele fecha o cerco, e acelera no instante do bote.
+- Com duas presenças perto ao mesmo tempo, um acorde dissonante abre sobre a sua cabeça.
+- Escondida com ele a menos de 2 m, a trilha de caça cai a zero e sobra só um fio agudo.
+- Quando ele desiste e volta a patrulhar de longe, uma nota suspensa de segunda menor nunca resolve: não há descanso.
+- Antes da Procissão, sussurros de reza cercam a sala e a chuva fecha os agudos.
+- Se você se mexer durante a Hora do Silêncio, um estalo agudo e só seu denuncia o movimento.
+- Numa sala amaldiçoada, sorteada por noite, o silêncio absoluto cai por 4 segundos e a Lia fica surda ao perigo.
+- No cemitério a tempestade engrossa conforme o capítulo avança até a fuga.
+- O trovão chega depois do clarão com um atraso sorteado de 0,3 a 6 segundos, e quem conta os segundos aprende a ler a tempestade.
+- A tempestade se aproxima a cada capítulo: o atraso encurta e, no Capítulo V, clarão e estrondo quase caem juntos.
+- Raio muito perto vem com um estalo agudo rasgado e um zumbido curto no ouvido.
+- Cada trovão ganha legenda pela distância: muito perto, algumas casas adiante ou bem longe.
+- Durante as badaladas do sino a chuva prende o ar, e o silêncio faz cada toque pesar.
+- Uma vez por noite, fora do Capítulo II, a chuva para em 2 segundos e só a goteira fica, com a legenda "a chuva parou".
+- Na estiada o seu barulho vale 25% mais para o Inspetor durante uns 45 segundos, porque nada mais o mascara.
+- Durante a estiada gotas soltas pingam em volta de você, altas e nítidas.
+- A chuva volta devagar depois da estiada, com um trovão distante.
+- Uma rajada de vento vem da direita, cruza a casa para a esquerda e, durante 3 segundos, cobre metade do seu barulho.
+- No cemitério e nos túneis, cada passo seu ganha um segundo plof molhado de 50 a 90 ms atrás, como se algo te seguisse no mesmo ritmo.
+- Às vezes o segundo plof continua uma vez depois que você para, com a legenda "um passo a mais".
+- Pisar em água faz os seus passos chapinharem em qualquer piso por 40 segundos e o seu ruído sobe 10%.
+- Duas vezes por noite, em corredor vazio, um segundo par de passos 0,2 s atrasado acompanha o seu e dá mais um passo quando você para.
+- Na caçada, cada passo do Inspetor faz a ambiência ceder 35% por 220 ms, e o passo vira o ritmo da cena.
+- Quando uma porta é aberta ou fechada longe de você, um assobio de corrente de ar e um sopro grave denunciam onde ela foi, com legenda de direção.
+- Ruído alto por mais de 20 segundos (correr, portas) cansa o ouvido da Lia: os agudos descem de 16 kHz para 4 kHz e voltam em cerca de 12 s agachada.
+- Quando a caçada começa a menos de 8 m, um apito de ouvido tapa os agudos por um instante.
+- Sem música até o primeiro encontro com o Inspetor: o prólogo e o início do Capítulo I só têm ambiência.
+- No primeiro encontro com o Inspetor um golpe de cordas rasga o silêncio e a música entra pela primeira vez.
+- Depois de qualquer pico (caçada, bote, Procissão) a música cai a zero e fica proibida por 25 a 40 segundos, só chuva e leito.
+- Quando a proibição acaba a música volta com uma única nota longa, como uma pergunta.
+- Do cemitério até o sino do Capítulo V toda a trilha de tensão se cala: só chuva, vento, coração e respiração.
+- Escondida no armário ou na cama, as camadas de música são cortadas e só sobram respiração e coração.
+- Depois de 60 segundos sem ameaça a ambiência recua em quatro degraus, até quase nada, com a legenda "a casa prende o ar".
+- No último degrau da calmaria um único estalo de madeira soa por perto.
+- Qualquer barulho alto durante a calmaria devolve tudo de uma vez com um tum.
+- O zumbido da lanterna muda de tom com a pilha: grave e estável cheia, agudo e trêmulo na reserva.
+- Na escuridão total com a lanterna na mão, um chiado cresce no fundo depois de 6 segundos.
+- Ao acender a lanterna depois de muito escuro, todo o chiado corta num estalo seco.
+- Escondida, às vezes surge uma segunda respiração atrasada de um ponto fixo da sala, que continua quando você prende o ar: "outra respiração".
+- Com a Ana a menos de 6 m, mesmo fora de vista, o ruído da sala morre em um instante e sobra só o ar pesado.
+- Quando a Ana some, o ruído da sala volta com um pop quase imperceptível.
+- O radar e o canto do Inspetor ganham efeito Doppler de até 6%: o tom sobe quando ele vem e desce quando ele se afasta.
+- Os multiplicadores de chuva, ambiência, ruído e corte de agudos agora são lidos pelo motor, então todos esses silêncios passam a valer para o Inspetor e para o mix de verdade.

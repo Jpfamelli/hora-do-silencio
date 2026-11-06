@@ -37,6 +37,7 @@ import { instalarAudioLote5b } from './src/audio-lote5b.js';
 import './src/legendas-pilha.js'; // revisão do lote 5: legendas próprias dos monstros sobem para cima da pilha de legendas de som
 import { instalarHistoriaLote7 } from './src/historia-lote7.js';
 import { instalarSomMonstros7 } from './src/monstros-som-lote7.js';
+import { instalarAudioLote7 } from './src/audio-lote7.js';
 
 const R = window.ROTEIRO;
 const $ = s => document.querySelector(s);
@@ -382,6 +383,7 @@ function setDoor(d, open, silent) {
   if (!open && d.arrombada) return; // arrombada pelo Inspetor: fica aberta e torta até o fim do capítulo
   d.open = open; d.target = open ? -Math.PI * .56 : 0; d.col.on = !open; d.fresta = 0; d.vel = 7; d.quique = 0;
   S.doorsOpen[`${W.mapa}:${d.id}`] = open;
+  if (AUDL7 && !silent) AUDL7.porta(d, open);
   if (!silent) { SFX.rangido(d.x, 1.2, d.z, 1, 'sfx', true); emitNoise(d.x, d.z, (open ? 4.5 : 5.5) * (P.devagar ? .6 : P.sprinting ? 1.3 : 1)); }
 }
 const DOOR = id => W.doors.find(d => d.id === id);
@@ -1194,6 +1196,7 @@ function updatePlayer(dt) {
   if (W.def.ruidoMul) P.noiseR *= W.def.ruidoMul();
   P.noiseR *= anK;
   P.noiseR *= SEG.ruidoMul(); // descalça e o chuveiro aberto (src/jogabilidade-segredos.js)
+  if (AUDL7) P.noiseR *= AUDL7.ruidoMul(); // lote 7: estiada, granizo, rajada e fadiga auditiva mudam o que o seu barulho vale
   if (AUDL6) P.noiseR *= AUDL6.ruidoMul(); // o clima sorteado da noite abafa ou expõe seus passos (src/audio-lote6.js)
   if (AUDL6B) P.noiseR *= AUDL6B.ruidoMul(); // sala do silêncio e ouvido atento (src/audio-lote6b.js)
   P.noiseR *= PG.ruidoMul(); // lote 6 (2ª rodada): Dádivas, Calor e relíquia da noite entram no ruído (src/progressao-lote7.js)
@@ -1204,7 +1207,7 @@ function updatePlayer(dt) {
   P.bob += moved * (P.sprinting ? 2 : 2.9);
   const fase = Math.floor(P.bob * 2 / Math.PI);
   if (P.faseAnt === undefined) P.faseAnt = fase;
-  if (fase !== P.faseAnt) { P.faseAnt = fase; if (moving) { SFX.passo(P.sprinting ? 1 : P.crouch ? .25 : P.devagar ? .33 : .55, P.room.piso || 'grama', !!P.room.fora, P.naAgua); SUST.aoPasso(); if (P.naAgua) criarOnda(P.pos.x, P.pos.z); pisarTabua(); } }
+  if (fase !== P.faseAnt) { P.faseAnt = fase; if (moving) { SFX.passo(P.sprinting ? 1 : P.crouch ? .25 : P.devagar ? .33 : .55, P.room.piso || 'grama', !!P.room.fora, P.naAgua); if (AUDL7) AUDL7.passo(P.sprinting ? 1 : P.crouch ? .25 : P.devagar ? .33 : .55, P.room, P.naAgua); SUST.aoPasso(); if (P.naAgua) criarOnda(P.pos.x, P.pos.z); pisarTabua(); } }
   // prender a respiração também fora do esconderijo (parada, com ele perto)
   const dM = M.ativo ? M.pos.distanceTo(P.pos) : 99, perto = !moving && dM < 4;
   updateRespiracao(dt, perto, dM);
@@ -2140,7 +2143,7 @@ function updateInspetor(dt) {
   else if (M.path.length) {
     andar(M, dt, speed);
     M.stepT -= speed * dt;
-    if (M.stepT <= 0) { M.stepT = 1.05; SFX.passoMonstro(M.pos, M.state === 'caca' ? 1 : .6, aguaAqui); }
+    if (M.stepT <= 0) { M.stepT = 1.05; SFX.passoMonstro(M.pos, M.state === 'caca' ? 1 : .6, aguaAqui); if (AUDL7) AUDL7.passoMonstro(M.pos, M.state); }
     if (S.chapter === 3) { M.correnteT -= speed * dt; if (M.correnteT <= 0) { M.correnteT = .8; SX.corrente(M.pos); } }
   } else {
     if (M.acao) executarAcao();
@@ -3029,6 +3032,7 @@ let AUDL6 = null; // src/audio-lote6.js: rejogabilidade pelo ouvido (clima da no
 let L7 = null; // src/historia-lote7.js: a história pelo som e pela atmosfera (reza da Celeste por capítulo, cochicho das regras, chamada com o seu nome, rádio que fala com o medo, memórias por sala, último som das vítimas, suspiro do nome, incêndio de 1979, estrofe perdida, acorde de cada final, motivo de capítulo, pensamento da Lia, música de tensão)
 let AUDL5 = null, AUDL5B = null; // src/audio-lote5.js e src/audio-lote5b.js: os monstros pelo ouvido (respiração por parede/porta, bengala, leitmotifs, infra-som, Hora do Silêncio, coração-bússola)
 let SOMM7 = null; // src/monstros-som-lote7.js: som e atmosfera (ambiência por sala, música de tensão, vozes, silêncio como arma, clima/chuva)
+let AUDL7 = null; // src/audio-lote7.js: som e atmosfera (room tone por sala, trilha presa ao coração, vozes, silêncio como arma, tempestade e granizo)
 const AUD = { sils: [], trovaoIni: 0, trovaoAte: 0, coracaoN: 0, hbT: 0, resp: 0, prendia: false, ultStinger: [], stingerT: -99, dezAte: 0, estPrev: null, anaPrev: null, procT: 0, evT: 28, cacaT: 0, cacaSemi: 0, posCacaT: 0, percT: 0, pulsoT: 0, lampT: 0, ocT: 0, flashPrev: false, tiqueT: 0, avisouCoracao: false, cordaT: -9, cordaN: 0, sala: null, zumbidoAte: 0, pausado: false, erroAvisado: false,
   vozes: [], limVoz: 24, zumbidoIni: 0, zumbidoFim: 0, clusterOn: false, calmaT: 0, calmaAlvo: 300, pausaT: 0, pe: 1, crouchPrev: false, corriaPrev: false, agarraPrev: false, mortoPrev: false, grupoPrev: null };
 for (const [k, v] of Object.entries({ vAmb: 1, vSfx: 1, vEnt: 1, vVoz: 1, mono: 0, noturno: 0, falada: 0 })) if (OPT[k] === undefined) OPT[k] = v;
@@ -3442,6 +3446,7 @@ const SOM = {
   sinoLonge() { SOM.sino(.3, W.mapa === 'cemiterio' ? { x: 0, y: 4, z: -60 } : null, W.mapa === 'cemiterio' ? .98 : 1); }, // no cemitério o sino distante soa abafado pela chuva e um tom abaixo
   badaladas(n = 9) {
     SOM.silencio(1.8 + n * 2.2, .25);
+    AUD.badalando = true; depois((1.8 + n * 2.2) * 1000 + 600, () => { AUD.badalando = false; }); // lote 7: a chuva prende o ar durante as badaladas
     for (let i = 0; i < n; i++) depois(1800 + i * 2200, () => { if (!(S && S.dead) && ui !== 'morte') { SOM.sino(.45 * (i === n - 1 ? 1.25 : 1), null, 1 - i * .005); if (AUDL5B) AUDL5B.badalada(i, n); if (i === 8 && n === 9 && AUDS) AUDS.sinoNona(); if (i === 8 && n === 9 && AUDL5) AUDL5.horaDoSilencio(); if (i === 8 && n === 9 && AUDL6) AUDL6.horaDoSilencio(); if (i === 8 && n === 9 && SOMM7) SOMM7.horaDoSilencio(); } });
   },
   estatica(dur = 2, pos) {
@@ -3604,8 +3609,10 @@ const SOM = {
       if (M.ativo && S && !S.dead && M.pos.distanceTo(P.pos) < 15) depois(1200, () => { if (M.ativo && !S.dead) SOM.estalo(M.pos, 1); });
     }
   },
-  trovao() {
-    const fora = !!(P.room && P.room.fora), t = AC.currentTime + rand(.4, 1.8);
+  trovao(natural) {
+    // natural (vindo de um raio do clima): o estrondo chega depois do clarão por um tempo que representa a distância sorteada (0,3 a 6 s); a tempestade se aproxima a cada capítulo (no clímax clarão e trovão caem juntos)
+    const fora = !!(P.room && P.room.fora), cap = S ? S.chapter : 0, dist = natural ? rand(.3, 6) : rand(.2, .6), gap = dist * Math.max(.08, 1 - cap * .18), t = AC.currentTime + gap;
+    if (AUDL7) AUDL7.trovao(gap, fora, natural);
     AUD.trovaoIni = t; AUD.trovaoAte = t + 3.5;
     const g = saida(null, .7, 'amb'); burst(t, 3.6, 'lowpass', fora ? 260 : 140, 1, g, 0); g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(fora ? 1.4 : .45, t + .15); g.gain.exponentialRampToValueAtTime(.0001, t + 3.5);
     const g2 = saida(null, .7, 'amb'); burst(t + 1.1, 2, 'lowpass', fora ? 180 : 110, 1, g2, 0); g2.gain.setValueAtTime(.0001, t + 1.1); g2.gain.exponentialRampToValueAtTime(fora ? .7 : .25, t + 1.4); g2.gain.exponentialRampToValueAtTime(.0001, t + 3.1);
@@ -3729,6 +3736,7 @@ function mascaraSom(x, z) {
   let k = 1;
   if (AC && AC.currentTime > AUD.trovaoIni && AC.currentTime < AUD.trovaoAte) k *= .3;
   if (AMB.ger && Math.hypot(x - AMB.ger.pos.x, z - AMB.ger.pos.z) < 8) k *= .5;
+  if (AUDL7) k *= AUDL7.mascara(); // lote 7: granizo e rajada cobrem; a estiada (chuva parada) expõe
   k *= JGL5.mascara(); // lote 5: o barulho da Procissão e o sino da fuga cobrem os passos
   if (SOMM7) k *= SOMM7.mascara(); // lote 7: o trovão forte encobre os passos por um instante
   return k;
@@ -3772,8 +3780,8 @@ function updateAudioCore(dt) {
   // Ambiente: chuva abafada dentro, quase sumida debaixo da terra, mais forte no telhado do andar de cima
   const dM0 = S && M.ativo ? Math.hypot(M.pos.x - P.pos.x, M.pos.z - P.pos.z) : 99;
   const duck = jogando && dM0 < 10 ? 1 - .45 * (1 - dM0 / 10) : 1; // o mundo abaixa quando ele chega perto
-  const ambM = (AUDM && mode === 'jogo' ? AUDM.ambiente(dt) : 1) * duck * JGL5B.ambMul(); // Hora do Silêncio e salas de lore
-  AMB.chuva.gain.value = ambM < .05 ? 0 : lerp(AMB.chuva.gain.value, (subsolo ? .012 : fora ? .14 : W.mapa === 'superior' ? .05 : .03) * ambM, dt * 2);
+  const ambM = (AUDM && mode === 'jogo' ? AUDM.ambiente(dt) : 1) * duck * JGL5B.ambMul() * (AUDL7 ? AUDL7.ambMul() : 1); // Hora do Silêncio e salas de lore
+  AMB.chuva.gain.value = ambM < .05 ? 0 : lerp(AMB.chuva.gain.value, (subsolo ? .012 : fora ? .14 : W.mapa === 'superior' ? .05 : .03) * ambM * (AUDL7 ? AUDL7.chuvaMul() : 1), dt * 2);
   AMB.chuvaF.frequency.value = lerp(AMB.chuvaF.frequency.value, subsolo ? 300 : fora ? 3000 : 500, dt * 2);
   const rajada = .5 + .5 * Math.sin(perf * .23) * Math.sin(perf * .61);
   AMB.vento.gain.value = ambM < .05 ? 0 : lerp(AMB.vento.gain.value, (subsolo ? .012 : fora ? .03 + .07 * rajada : .02) * ambM, dt * 1.5);
@@ -3828,6 +3836,7 @@ function updateAudioCore(dt) {
   else if (S.fear > 90) corte = 2600;
   if (S.health < 30) corte = Math.min(corte, 3200);
   if (prende) corte = Math.min(corte, 380 + 820 * clamp(S.stamina / 100, 0, 1)); // o mundo some aos poucos; quanto menos ar, mais longe
+  if (AUDL7) corte = Math.min(corte, AUDL7.corte()); // lote 7: fadiga auditiva e o abafamento depois do susto
   if (now < AUD.zumbidoFim) { const k = clamp((now - AUD.zumbidoIni) / Math.max(.1, AUD.zumbidoFim - AUD.zumbidoIni), 0, 1); corte = Math.min(corte, 650 + 19350 * k * k); }
   if (S.dead) corte = 500;
   AUD.abafa.frequency.setTargetAtTime(corte, now, prende ? .25 : .1);
@@ -3940,6 +3949,7 @@ function updateAudioCore(dt) {
   if (AUDL6B) AUDL6B.tick(dt, { dM, dA, est, jogando, prende, perigo, fora, subsolo }); // a casa lembra o que você fez (lote 6, 2ª rodada)
   if (AUDL5B) AUDL5B.tick(dt, { dM, dA, est, jogando, prende, perigo, fora, subsolo }); // 2ª rodada (lote 5)
   if (SOMM7) SOMM7.tick(dt, { dM, dA, est, jogando, prende, perigo, fora, subsolo }); // som e atmosfera (lote 7)
+  if (AUDL7) AUDL7.tick(dt, { dM, dA, est, jogando, prende, perigo, fora, subsolo }); // som e atmosfera: silêncio como arma (lote 7)
 }
 // Pausa e diário abafam o mundo; menu silencia o que é contínuo; aba escondida suspende o áudio
 setInterval(() => {
@@ -4043,7 +4053,7 @@ function updateClima(dt) {
     chuvaGeo.attributes.position.needsUpdate = true; resGeo.attributes.position.needsUpdate = true;
   }
   raioT -= dt;
-  if (raioT <= 0 && W.mapa !== 'tuneis') { raioT = rand(14, 38) * CL.raio; novoRaio(); SFX.trovao(); SUST.aoRaio(); if (S && P.room && !P.room.fora) S.fear = Math.min(100, S.fear + 4); }
+  if (raioT <= 0 && W.mapa !== 'tuneis') { raioT = rand(14, 38) * CL.raio; novoRaio(); SFX.trovao(true); SUST.aoRaio(); if (S && P.room && !P.room.fora) S.fear = Math.min(100, S.fear + 4); }
   raioClock += dt;
   if (OPT.vFlash) raioI = raioClock < .3 ? .35 * raioClock / .3 : raioClock < 3 ? .35 * Math.exp(-(raioClock - .3) * 3) : 0;
   else { raioI = 0; for (const p of raioSeq) if (raioClock >= p.t) raioI = Math.max(raioI, p.i * Math.exp(-(raioClock - p.t) * 9)); if (raioClock > 3) raioSeq = []; }
@@ -4652,6 +4662,12 @@ SOMM7 = instalarSomMonstros7({
   SOM, SFX, BUS, AUD, AMB, OPT, THREE, P, M, ANA, PROC, W, camera, legendas: UIX.som.def, som: (k, a) => { try { UIX.som(k, a); } catch (e) {} },
   saida, env, osc, burst, ruido, curvaDist, silaba, roomAt, salaAdj, salasAlcancaveis, distSalas, emitNoise, abafarMundo, rand, pick, clamp, sub, subPequeno, toast, lsGet,
   relampejou: () => raioI > .3
+});
+// Lote 7: som e atmosfera, o silêncio como arma (src/audio-lote7.js)
+AUDL7 = instalarAudioLote7({
+  get AC() { return AC; }, get S() { return S; }, get mode() { return mode; }, get ui() { return ui; }, get chamado() { return chamadoArmadilha; },
+  SOM, SFX, BUS, AUD, AMB, OPT, THREE, P, M, ANA, PROC, W, L6: L6V, camera, legendas: UIX.som.def, som: (k, a) => { try { UIX.som(k, a); } catch (e) {} },
+  saida, env, osc, burst, ruido, curvaDist, silaba, fonteFixa, moverFonte, novoPanner, posPanner, roomAt, salaAdj, emitNoise, rand, pick, clamp, lerp, sub, subPequeno, toast
 });
 carregarTitulo();
 const grain = $('#fx-grain').getContext('2d'), grainImg = grain.createImageData(160, 90);
