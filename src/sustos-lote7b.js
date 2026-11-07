@@ -463,7 +463,7 @@ export function instalarSustosL7b(E, K, H) {
     }
   }
   // 34. Sussurro na estática: parada 3 s, a estática abre numa frase; se mexe, some. Uma frase por capítulo (algumas mentem).
-  const FRASES = { 0: 'o posto ainda esta aberto', 1: 'a luz volta quando voce nao olha', 2: 'ele nao ouve quem respira devagar', 3: 'a menina nunca mente', 4: 'a gaveta tem duas chaves', 5: 'o sino toca para quem fica' };
+  const FRASES = { 0: 'o posto ainda está aberto', 1: 'a luz volta quando você não olha', 2: 'ele não ouve quem respira devagar', 3: 'a menina nunca mente', 4: 'a gaveta tem duas chaves', 5: 'o sino toca para quem fica' };
   function updEstatica(dt) {
     const e = B.estat;
     if (!calmo() || qa() || !dentro() || usosCap('estatica') >= 1) { B.estat = null; return; }

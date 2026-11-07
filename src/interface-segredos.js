@@ -297,7 +297,7 @@ export function criarSegredos(C, U) {
   .sg-cena{position:fixed;inset:0;z-index:58;background:#000;display:flex;align-items:center;justify-content:center}
   .sg-cena canvas{width:100%;height:100%}
   .sg-cena .txt{position:absolute;left:0;right:0;bottom:12%;text-align:center;font-family:"Special Elite";font-size:20px;color:#e9dfc8;padding:0 20px;white-space:pre-line}
-  #sg-rec{position:absolute;top:18px;right:22px;font-family:"Courier New",monospace;font-size:16px;color:#e23b2b;z-index:3;letter-spacing:.1em}
+  #sg-rec{position:absolute;top:42px;right:22px;font-family:"Courier New",monospace;font-size:16px;color:#e23b2b;z-index:3;letter-spacing:.1em}
   #sg-rec::first-letter{animation:pisca 1s steps(1) infinite}
   #sg-vela{position:absolute;left:50%;top:22%;width:10px;height:44px;margin-left:min(-38vw,-330px);background:linear-gradient(#e9dfc8,#b8a988);border-radius:2px;z-index:2}
   #sg-vela::before{content:"";position:absolute;left:-3px;top:-20px;width:16px;height:22px;border-radius:50% 50% 45% 45%;background:radial-gradient(circle at 50% 70%,#fff6c8,#f2a93b 45%,rgba(200,60,20,0) 70%);animation:sgChama .25s infinite alternate;filter:blur(.4px)}

@@ -148,7 +148,7 @@ export function criarInterfaceLote6B(C, U) {
   body.l6b-mem #obj{opacity:0!important}
   #l6b-hold{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);font-family:"Special Elite",monospace;font-size:12px;color:#c9a75a;opacity:0;transition:opacity .3s}
   #l6b-hold.on{opacity:1}
-  #l6b-chip{position:absolute;top:14px;left:16px;pointer-events:auto;font-family:"Special Elite",monospace;font-size:12px;color:var(--fraco);background:#0c0b09;border:1px solid #2c2720;padding:4px 10px;cursor:pointer;z-index:3}
+  #l6b-chip{position:absolute;top:62px;left:20px;pointer-events:auto;font-family:"Special Elite",monospace;font-size:12px;color:var(--fraco);background:#0c0b09;border:1px solid #2c2720;padding:4px 10px;cursor:pointer;z-index:3}
   #l6b-chip:hover{color:#fff}#l6b-chip i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:7px;vertical-align:0}
   #l6b-quem{position:fixed;inset:0;z-index:90;background:rgba(0,0,0,.96);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px}
   #l6b-quem h2{font-family:"IM Fell English SC",Georgia,serif;font-weight:normal;letter-spacing:.14em;font-size:38px;color:var(--ui)}

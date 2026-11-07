@@ -3384,6 +3384,7 @@ const SOM = {
     g0.gain.setValueAtTime(0, t); g0.gain.setValueAtTime(.7 * vol, t + .001); if (fim - .2 > .002) g0.gain.setValueAtTime(.7 * vol, t + fim - .2); g0.gain.exponentialRampToValueAtTime(.0001, t + fim);
   },
   rangido(x, y, z, vol = 1, bus = 'sfx', porta) {
+    if (!Number.isFinite(x) || !Number.isFinite(z)) { x = P.pos.x; z = P.pos.z; } if (!Number.isFinite(y)) y = 1.2; // chamada de módulo sem posição não derruba o som
     const sd = Math.abs(Math.sin(x * 12.9898 + z * 78.233) * 43758.5453) % 1;
     // porta aberta devagar (ALT) range baixo e longo, quase mudo; aberta correndo range alto, curto, e bate
     const dv = porta && P.devagar, co = porta && P.sprinting, dur = dv ? 1.6 : co ? .4 : .7, tomP = dv ? .7 : co ? 1.25 : 1; vol *= dv ? .35 : co ? 1.4 : 1;

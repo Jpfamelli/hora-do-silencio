@@ -2,7 +2,7 @@
 
 Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/lote*/<área>.md`. Não edite à mão: edite o arquivo da área e gere de novo.
 
-**Total geral: 11547 melhorias**
+**Total geral: 11560 melhorias**
 
 ## Índice
 
@@ -90,7 +90,7 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
   - Progressão e rejogabilidade: 228
   - Plataforma e acessibilidade: 90
   - revisão (jogador crítico / QA antes de publicar): 11
-- [Lote 7](#lote-7) — 1256 melhorias
+- [Lote 7](#lote-7) — 1269 melhorias
   - História e texto: 90
   - Mapa: prólogo e estrada: 97
   - Mapa: térreo e dormitórios: 98
@@ -103,6 +103,7 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
   - Interface: 144
   - Progressão e rejogabilidade: 102
   - Plataforma e acessibilidade: 93
+  - revisão (jogador crítico / QA antes de publicar): 13
 
 ## Lote 1
 
@@ -10655,7 +10656,7 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
 
 ## Lote 7
 
-1256 melhorias.
+1269 melhorias.
 
 ### História e texto (90)
 
@@ -11948,3 +11949,19 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
 1254. Dois gravadores defasados em 10 s garantem de 10 a 20 s de clipe sem guardar o vídeo inteiro
 1255. Na tela de morte aparece o botão para salvar o clipe ou mandá-lo pelo compartilhar do celular
 1256. O clipe é desligado em qualidade Baixa e com áudio leve, para não pesar em aparelho fraco
+
+### revisão (jogador crítico / QA antes de publicar) (13)
+
+1257. Revisão do diff lote7-base..main (51 arquivos, +12 mil linhas): módulos de som e atmosfera, mapas, monstros, sustos, interface e plataforma conferidos contra os ganchos de jogo.js e mapas.js.
+1258. Corrigido texto sem acento no sussurro da estática (sustos-lote7b.js): "esta aberto", "voce nao olha" e "ele nao ouve" agora saem como "está aberto", "você não olha" e "ele não ouve" na legenda.
+1259. Corrigida tela sobreposta no título: o selo de perfil ("Jogador 1") cobria o rádio-relógio; agora fica logo abaixo dele.
+1260. Corrigida tela sobreposta no título: o aviso "GRAVANDO 21:00" escrevia por cima da versão no canto superior direito; desceu para a linha de baixo.
+1261. Corrigida tela sobreposta no título: o rótulo "próxima meta" herdava a posição absoluta da versão e ficava por cima dela, ilegível; agora fica na própria linha da meta.
+1262. Varredura de mojibake em todos os arquivos tocados pelo lote 7: nenhum acento corrompido; arquivos em UTF-8.
+1263. Varredura de nomes e marcas de outros jogos nos textos e módulos do lote 7: nenhuma cópia.
+1264. sw.js (cache hora-silencio-v14) lista todos os módulos novos de src/ e a cópia local do Three.js: joga offline sem faltar arquivo.
+1265. Capturas dos cinco mapas (estrada, térreo, andar de cima, túneis, cemitério) conferidas: lanterna e objetos legíveis, legendas empilhadas sem cobrir o objetivo, nada escuro a ponto de impedir o jogo.
+1266. Tempo do QA completo (capítulos I a V, plataforma, segredos e sobrevivência) igual ou menor que o do lote 6: sem queda de desempenho detectada.
+1267. Observação (sem regressão do lote 7): o aviso "spot faltando dormB mesa 2" do kit de teste já existia em rodadas anteriores e não afeta a progressão.
+1268. QA de sobrevivência (node ferramentas/qa.mjs . --sobrevivencia) terminou com RESULTADO: PASSOU.
+1269. Corrigido o aviso de áudio "valor não finito" em SFX.rangido: chamada sem posição válida agora cai na posição da Lia em vez de gerar TypeError no oscilador.
