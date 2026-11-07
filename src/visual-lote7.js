@@ -6,7 +6,7 @@
 // pirilampos apagam quando ele chega; o relâmpago molha o vidro e revela a
 // tempestade; o silêncio dilata o tempo. Tudo passivo, silencioso no QA
 // (navigator.webdriver) e respeita "reduzir flashes". Ganchos em jogo.js:
-// L7.mapa, L7.tick, L7.silencio, L7.poeiraTeto e L7.lento (queda da chuva).
+// VL7.mapa, VL7.tick, VL7.depois, VL7.silencio, VL7.poeiraTeto e VL7.lento (queda da chuva).
 // Regra de ouro: quase nada aqui é gravado "de vez": tudo o que mexe em luz,
 // névoa, chama ou posição passa por tweak(), que desfaz sozinho no quadro
 // seguinte se o motor não tiver reescrito o valor (nada acumula, nada fica preso).

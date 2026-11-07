@@ -118,7 +118,8 @@ export function criarJogabilidadeL6B(ctx) {
   const web = !!navigator.webdriver && !window.__L6B_FORCE; // as técnicas passivas não rodam no QA automático
   const jogando = () => ctx.mode === 'jogo' && !ctx.ui && S() && !S().dead && !S().fim;
   const tem = id => { const s = S(); return !!(s && s.m6b && s.m6b.includes(id)); };
-  const rec = () => lsGet(KEY, { arena: {}, quieta: {}, melhorCap: {}, selos: 0, contratos: 0, noites: 0, pts: 0, ascMax: 0 });
+  // a chave 'hora-silencio-l6b' é compartilhada com outros módulos que gravam outros campos: completa o que faltar (antes dava TypeError em melhorCap)
+  const rec = () => { const d = { arena: {}, quieta: {}, melhorCap: {}, selos: 0, contratos: 0, noites: 0, pts: 0, ascMax: 0 }; let v = lsGet(KEY, d); if (!v || typeof v !== 'object') v = d; for (const k of Object.keys(d)) if (v[k] == null) v[k] = d[k]; return v; };
   const grava = fn => { const r = rec(); fn(r); lsSet(KEY, r); return r; };
   const algumFinal = () => { try { return Object.keys((lsGet(STATS_KEY, {}) || {}).finais || {}).length > 0; } catch (e) { return false; } };
   const seedNum = () => { try { return hash(S().semente || 'ABCDEF'); } catch (e) { return 7; } };

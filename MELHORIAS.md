@@ -2,7 +2,7 @@
 
 Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/lote*/<área>.md`. Não edite à mão: edite o arquivo da área e gere de novo.
 
-**Total geral: 10291 melhorias**
+**Total geral: 11547 melhorias**
 
 ## Índice
 
@@ -90,6 +90,19 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
   - Progressão e rejogabilidade: 228
   - Plataforma e acessibilidade: 90
   - revisão (jogador crítico / QA antes de publicar): 11
+- [Lote 7](#lote-7) — 1256 melhorias
+  - História e texto: 90
+  - Mapa: prólogo e estrada: 97
+  - Mapa: térreo e dormitórios: 98
+  - Mapa: túneis, cemitério e capela: 92
+  - Monstros e IA: 91
+  - Sustos e eventos: 120
+  - Áudio: 120
+  - Visual e luz: 107
+  - Jogabilidade: 102
+  - Interface: 144
+  - Progressão e rejogabilidade: 102
+  - Plataforma e acessibilidade: 93
 
 ## Lote 1
 
@@ -10639,3 +10652,1299 @@ Lista gerada por `node ferramentas/gerar-melhorias.mjs` a partir de `melhorias/l
 2267. sw.js (cache hora-silencio-v10) lista todos os 14 módulos novos em BASE: joga offline sem faltar arquivo.
 2268. QA de sobrevivência (node ferramentas/qa.mjs . --sobrevivencia) percorreu prólogo e Capítulos I a V, final, plataforma e segredos e terminou com RESULTADO: PASSOU.
 2269. Observação registrada (sem regressão do lote 6): um AVISO intermitente de áudio (setValueAtTime não-finito) vem de helpers de som pré-existentes do motor (jogo.js), já embrulhado em try/catch; todo setValueAtTime do áudio do lote 6 usa valor literal finito e boletim() sai cedo no QA. Não derruba o quadro nem falha o QA.
+
+## Lote 7
+
+1256 melhorias.
+
+### História e texto (90)
+
+1. A casa agora conta a história pelo ouvido: um módulo novo (historia-lote7) tece som, voz e texto no jogo sem telas para ler.
+2. A reza da Irmã Celeste atrás da porta muda de capítulo em capítulo e você acompanha a história só pelo áudio.
+3. No Prólogo, a reza pede em paz: "protege ela do que mora aqui".
+4. No Capítulo I, a reza baixa de tom e ainda defende: "ainda dá tempo dela voltar".
+5. No Capítulo II, a voz hesita pela primeira vez entre proteger e prender você.
+6. No Capítulo III, a reza troca de dono: "ninguém vai sentir falta".
+7. No Capítulo IV, a reza praticamente te entrega: "a casa tem fome".
+8. No Capítulo V, a mesma voz que te defendia agora te vende, fria: "entrega ela pra Hora".
+9. Ouvir a reza nos capítulos finais desbloqueia a conquista secreta "A Reza Virou".
+10. Uma criança lê as regras da casa num canto, em voz baixinha e filtrada.
+11. A leitura das regras para na sílaba exata em que o seu olhar cruza a fonte e recomeça quando você desvia.
+12. São sete regras da casa, lidas uma a uma só enquanto você fica parada e sem perigo por perto.
+13. Regra um: não corra nos corredores (dita pela voz de criança).
+14. Regra dois: não acenda luz depois das nove.
+15. Regra três: não responda quando chamarem seu nome.
+16. Regra quatro: não abra a gaveta do Inspetor.
+17. Regra cinco: não deixe a Hora te achar acordada.
+18. Regra seis: quem foge uma vez, foge pra sempre.
+19. Regra sete: o sino manda em todos nós.
+20. Ouvir uma regra inteira sem olhar para a fonte rende a conquista secreta "A Regra Inteira".
+21. A chegada do Inspetor interrompe na hora a leitura das regras.
+22. A Hora do Silêncio escapa da tela: se o relógio REAL do computador vira uma hora cheia, raramente soam nove badaladas bem distantes e abafadas.
+23. As nove badaladas do relógio real acontecem no máximo uma vez por sessão e nunca durante uma caçada.
+24. Quem joga com "sustos suaves" não recebe o susto das badaladas do relógio real.
+25. Numa sala distante, uma menina ensaia a chamada e tropeça no seu nome como se fosse novo.
+26. A chamada usa o nome que você digitou no título: ela erra ("...Moraes? Lia...") e depois acerta.
+27. A voz que ensaia a chamada é sintetizada sílaba a sílaba, baixinho, vinda de longe.
+28. Acertar o seu nome na chamada vira um momento marcado na legenda: "a chamada tropeça no seu nome e acerta".
+29. Com o medo muito alto, um rádio de válvula interrompe a transmissão e fala com você em tom de conforto.
+30. O rádio tem três falas de conforto diferentes ("respira, menina", "fecha os olhos", "deita"), erradas e arrepiantes.
+31. Assim que o medo baixa, a transmissão do rádio volta ao normal como se nada tivesse acontecido.
+32. Ficar parada numa sala faz emergir uma memória sussurrada que avança a lore, sem nota para ler nem backtracking.
+33. Cada sala solta no máximo uma memória por noite, para não virar repetição.
+34. Memória da estrada: o ônibus escolar que nunca chegou na noite do incêndio.
+35. Memória da estrada: o Seu Joaquim abrindo o portão, a última coisa boa que ele fez vivo.
+36. Memória do térreo: a porta da frente trancada por fora, a chave no bolso de um casaco.
+37. Memória do térreo: o gerador que morreu às nove e nunca mais foi consertado de propósito.
+38. Memória dos dormitórios: a Ana contando até dez e ninguém acordando na última noite.
+39. Memória dos dormitórios: a Irmã Celeste fechando cada cama com um beijo e não voltando.
+40. Memória dos túneis: a passagem cavada para fugir do fogo que só levava mais fundo.
+41. Memória dos túneis: o "QUEM ABRIU A MINHA GAVETA" escrito na parede com a própria unha.
+42. Memória do cemitério: três covas pequenas com nomes raspados.
+43. Memória da capela: o sino que tocou a noite inteira e amanheceu com a corda quente e vazia.
+44. Cada criança morta tem um som-assinatura que toca fraquinho só na sala onde ela morreu.
+45. Som do Tomé: as rodinhas do carrinho rolando no assoalho, no térreo.
+46. Som da Ana: a caixinha de música batendo a mesma nota sem fechar, nos dormitórios.
+47. Som do Davi: um radinho de pilha chiando uma estação morta, nos túneis.
+48. Som do Luiz: o zumbido de um pião girando sem cair, no cemitério.
+49. O último som da vítima vem de um ponto deslocado da sala, com direção na legenda, para você aprender a planta pelo ouvido.
+50. Raríssimo, numa sala vazia e quieta, a casa "suspira" o nome que você digitou, grave, como se a parede falasse.
+51. O suspiro do nome é feito com formantes graves sobre o ambiente, sem nenhuma entidade aparecer.
+52. Ouvir a casa suspirar o seu nome rende a conquista secreta "A Casa Sabe Meu Nome".
+53. Parada, calada e no escuro, uma vozinha de criança faz uma pergunta que nunca se repete na mesma noite.
+54. Pergunta no escuro: "você também fugiu?".
+55. Pergunta no escuro: "você veio buscar alguém? eu posso ir junto?".
+56. Pergunta no escuro: "por que você não envelhece, moça?".
+57. Pergunta no escuro: "se o sino parar, a gente pode ir pra casa?".
+58. Pergunta no escuro: "você promete que não me deixa aqui de novo?".
+59. A pergunta no escuro é falada por uma voz de criança sintetizada, além da legenda.
+60. Com a lanterna apagada e sem perigo, a ambiência inteira "vira" 1979 por alguns segundos e depois volta ao presente.
+61. A noite do incêndio é contada só pelo clima: chuva mais forte, o sino dobrando, muitas vozes de criança e a madeira estalando como fogo.
+62. Na capela, ficar parada no ponto certo faz a nave "cantar" sozinha a quarta estrofe raspada do hino, nota por nota.
+63. A estrofe perdida revela a letra escondida: "quando o sino parar de vez, a gente fala outra vez".
+64. Fazer a capela cantar a estrofe rende a conquista secreta "A Estrofe Perdida".
+65. No internato, de muito longe, as cinco notas do assobio do velho Joaquim voltam fora de ordem e param no meio, como memória quebrada.
+66. Depois do final verdadeiro, re-ouvir uma fita ganha um chiado de fita gasta que cresce a cada reprodução.
+67. A partir da quarta reprodução, a fita fica quase inaudível sob o ruído: a verdade se apagando com o tempo.
+68. O contador de reproduções de cada fita fica salvo entre sessões, para o chiado continuar crescendo.
+69. Cada final fecha a noite com um acorde-assinatura próprio no último quadro.
+70. Final comum: um acorde menor e oco que não resolve.
+71. Final do silêncio: uma única nota que fica no ar sem nunca resolver.
+72. Final verdadeiro: um acorde maior, enfim resolvido, fechando a Hora.
+73. Cada capítulo abre com um motivo de três notas tocado baixíssimo, como caixa de música muito longe.
+74. O motivo do Prólogo e de cada capítulo tem notas próprias, virando assinatura sonora do capítulo.
+75. No capítulo da Ana, o motivo de abertura é a melodia dela, com uma nota desafinada.
+76. Em momentos-chave, a Lia pensa alto um pensamento curtíssimo, sussurrado no centro da cabeça, sem HUD.
+77. Pensamento da Lia ao ficar sem fôlego: "não respira agora".
+78. Pensamento da Lia com o Inspetor colado: "fica quieta. fica quieta".
+79. Pensamento da Lia na beira da morte: "não hoje. não aqui".
+80. Pensamento da Lia escondida com o perigo rondando: "conta até dez. ele vai embora".
+81. Os pensamentos da Lia saem num barramento de corpo, secos e raros, para não cansar.
+82. Uma música procedural de tensão nasce quando o Inspetor passa a investigar ou procurar você.
+83. Enquanto ele caça, um pulso grave aperta a trilha, mais rápido e agudo no instante da caçada.
+84. Quando o Inspetor perde o seu rastro, um acorde de alívio desfaz a tensão.
+85. Silêncio como arma: caçada em curso com você prendendo o ar faz um sub-bass pesar sobre o silêncio total.
+86. A legenda "[silêncio pesado. é assim que ele gosta.]" marca o momento em que o silêncio vira ameaça.
+87. Nova personagem de legenda "uma criança" para as vozes que leem regras, ensaiam a chamada e perguntam no escuro.
+88. Todas as novas camadas de som ganham legendas próprias (perigo ou história) no registro de sons, com direção quando têm posição.
+89. Quatro conquistas secretas novas entram no acervo pelo caminho de quem escuta a casa.
+90. O service worker passou para a versão v11 e guarda o módulo de som novo para jogar offline.
+
+### Mapa: prólogo e estrada (97)
+
+91. O coro de grilos agora vem de dez pontos fixos dos dois lados da estrada, cada um cantando do seu canto do mato (antes era um chiado único).
+92. Cada ponto de grilos tem trinado e timbre próprios, modulados em ritmo diferente, então o coro nunca soa como um loop.
+93. Acentos de grilos soltos surgem em volta de você, não só no fundo.
+94. Um coro de sapos coaxa na valeta do posto, em pulsos graves com gargarejo.
+95. O número e a força dos sapos mudam a cada rajada, nunca soa igual.
+96. Os sapos coaxam mais alto quando está chovendo.
+97. Quatro cães de sítio latem de cantos fixos do mapa, e a direção do latido é verdadeira.
+98. Os cães respondem uns aos outros com atraso proporcional à distância entre eles.
+99. Às vezes um cão corta o latido no meio e fica mudo por um tempo.
+100. Quando o vulto ou o batedor de 1979 se aproxima, os cães calam um a um, da direção dele, cada um com um ganido final.
+101. Os cães voltam devagar quando a ameaça some.
+102. No instante em que o vulto aparece, o cão mais próximo ganiu cortado, um aviso sonoro antes da silhueta.
+103. O trovão faz um cão latir pouco depois do estrondo.
+104. Um caminhão passa na rodovia de madrugada, o motor grave crescendo e sumindo, indiferente à sua noite.
+105. No auge da passagem o caminhão às vezes solta uma buzina grave.
+106. Uma coruja pia nas copas, de longe, de tempos em tempos.
+107. Corvos grasnam inquietos ao longe.
+108. Um inseto noturno zumbe sustentado, com timbre diferente do grilo.
+109. Rajadas de vento passam como um assovio que cresce e cai.
+110. O vento rasteja no mato numa camada própria, somada ao vento do jogo.
+111. A força do vento muda conforme o clima sorteado da noite.
+112. Um grito distante vem no vento, de direção sorteada, e nunca corresponde a perigo real.
+113. O trovão volta em eco do vale cerca de um segundo depois.
+114. O silêncio do coro é a leitura de perigo: em volta do vulto abre-se um buraco de uns 5 a 16 m onde os grilos calam.
+115. Como os coros são fixos, o buraco caminha pela mata junto com o vulto, em fila, mostrando por onde ele passa só pelo ouvido.
+116. O batedor de 1979 também cala a mata ao redor dele, mesmo longe da vista.
+117. Os sapos só calam dentro do raio do morto, não mais em toda a estrada.
+118. Legenda "os grilos calam de repente" quando o silêncio te alcança.
+119. Legenda própria para os sapos que se calam.
+120. A natureza volta devagar depois que a ameaça passa, dando alívio.
+121. Medo alto faz a natureza abaixar mesmo sem ver o vulto.
+122. Quando o morto passa rente, um baque de infra-som, sentido mais que ouvido.
+123. Perto do portão a ambiência afina, mais quieta junto da massa do prédio.
+124. Uma massa surda e grave do internato cresce ao chegar no portão, mal-estar sem fonte visível.
+125. Relâmpago rente raro: estalo seco sem atraso, seguido de um segundo de silêncio total e um tranco leve na câmera.
+126. Cada trovão faz a chuva inchar no áudio, uma pista de ritmo, mais forte quanto mais forte o raio.
+127. Logo após o trovão os bichos engasgam e voltam em seguida.
+128. Na abertura, a chuva tamborila abafada no teto de metal do carro.
+129. Ao sair do carro a chuva estoura em volume e o timbre abre, uma vez só.
+130. A chuva no teto do carro fica discreta de longe e cresce ao se aproximar dele.
+131. A chuva martela no zinco da marquise do posto, um tamborilar metálico localizado.
+132. Debaixo da marquise você fica surda ao resto: a ambiência abafa.
+133. A poça sob os pés chapinha a cada passo na chuva.
+134. A poça engrossa ao longo do prólogo e a chapinhada fica mais funda, com timbre mais grave.
+135. Correr na água faz a chapinhada mais alta e mais frequente, punindo a pressa.
+136. Janelas de granizo batem seco no telhado durante a tempestade.
+137. Pingos grossos escorrem e caem do carro depois da chuva.
+138. Água escorre da calha do posto na chuva.
+139. O rádio deixado ligado no carro vira um farol sonoro: estática cujo sinal cai com a distância e abafa.
+140. Uma estaçãozinha de 1979 aparece por baixo da estática só quando você está perto do carro.
+141. O rádio-farol acompanha a posição do carro no espaço (som 3D).
+142. O rádio vira só estática no instante em que o morto aparece.
+143. A estática do rádio cresce quando o morto está a menos de 40 m, o ouvido como farol de perigo.
+144. O rádio do carro troca de estação sozinho, com trechos de melodia, e volta à estática.
+145. Às vezes o rádio para numa estática com um sussurro baixinho por baixo.
+146. Perto do portão o rádio do carro some de vez, o último elo com o mundo lá fora.
+147. Um rádio de válvula no posto toca uma cantiga antiga, com oclusão pelas paredes da loja.
+148. Ao se afastar do posto, o rádio toca um verso a mais do que a cantiga tinha.
+149. Depois que o Seu Joaquim some, a cantiga do posto desafina e vem com chiado.
+150. O letreiro de neon do posto zumbe eletricamente quando você chega perto, e o zumbido morre com a luz do posto.
+151. Ao chegar muito perto da porta da loja o letreiro estala e se cala por 3 segundos.
+152. Um zumbido de rede elétrica acompanha o fio da rua lá fora, e cada trecho da estrada tem o seu tom.
+153. Quando o morto passa a menos de 18 m o zumbido do fio sobe e racha.
+154. Os isoladores crepitam na chuva e quando o morto está por perto.
+155. Ao abrir o portão os fios calam de uma vez e os bichos quase se calam junto.
+156. O vento assovia nas grades do portão, mais forte conforme você chega, trocando de lado conforme você passa.
+157. A dobradiça do portão range em ciclos de 8 a 12 s, uma bússola sonora na neblina.
+158. Quando a chave gira, o rangido do portão para de vez.
+159. A placa do posto bate em intervalos irregulares, mais rápido na chuva.
+160. Num trecho perto do posto o vento cala e a placa continua batendo em compasso certinho, um susto discreto.
+161. Um sino de vento tilinta no pátio do posto com as rajadas.
+162. Numa das rajadas o sino para de uma vez, o vento continua, e a Lia diz "Não foi o vento."
+163. O motor do carro esfria com um tic metálico direcional, cada vez mais espaçado.
+164. O último tic e o silêncio do motor frio são um relógio sonoro sem HUD.
+165. De vez em quando um tic soa mais perto que os outros, como se algo mexesse junto do carro.
+166. De longe, o motor do carro liga sozinho por 2 segundos e morre.
+167. Quando o pisca-alerta para, o último clique do relé seco vem seguido de quase 2 segundos de silêncio.
+168. Voltar ao carro depois disso faz o pisca-alerta estalar mais uma vez, sozinho.
+169. Latidos vêm da mata, chegam perto da estrada e param de uma vez, uma vez por noite.
+170. Depois dos latidos, um chiado de respiração passa rente ao carro, e a Lia comenta que ali não tem cachorro.
+171. Na chuva, um segundo par de passos molhados, de outro ritmo, segue atrás de você e para junto quando você para.
+172. O vento passa na mata como palavras sibiladas em ritmo de frase.
+173. Perto do carro, o vento termina a frase num sussurro, como se dissesse um nome.
+174. Num cruzamento da estrada há um círculo de 7 m onde bichos, vento e poças calam por completo.
+175. No cruzamento, depois de uns instantes de silêncio total, toca um sino distante, e a Lia nota que ali não canta bicho nem chove.
+176. Em noite de neblina a ambiência inteira fica abafada e os grilos afundam de timbre.
+177. Em noite de neblina um assovio fino e tonal de cabos toma o lugar da chuva.
+178. Na neblina, sussurros em fila atravessam a cabeça de um ouvido ao outro.
+179. Em noite de chuva todas as camadas de chuva ligam, o vento sobe e os grilos abaixam.
+180. Em noite seca os grilos cantam mais altos.
+181. O estrondo do trovão mascara seus passos por uma janela, premiando quem corre no barulho.
+182. O granizo também abafa seus passos enquanto cai.
+183. Prender o ar ao ar livre faz o mundo focar: a ambiência dá uma afundada.
+184. Legendas de acessibilidade para cães, caminhão, grito no vento, coruja, chuva no teto e no zinco, granizo, placa, sino, portão, fios, rádio e demais sons novos.
+185. As camadas de som e os agendamentos param e se desconectam ao trocar de mapa, sem som fantasma.
+186. Os sons agendados pausam junto com o jogo, e todo o módulo é tolerante a falha de áudio.
+187. Corrigido um erro que travava o quadro quando os faróis do carro acendiam sozinhos no susto da estrada.
+
+### Mapa: térreo e dormitórios (98)
+
+188. O relógio de pêndulo da recepção passa a bater tic e tac com timbres diferentes, uma bússola sonora do hall
+189. O pêndulo da recepção cala por 6 segundos quando o Inspetor entra no hall: quem ouve o tique morrer sabe que ele está lá
+190. De vez em quando o pêndulo para sozinho por alguns segundos, sem monstro nenhum, para você desconfiar do silêncio
+191. Às 3h07 do relógio real, o pêndulo bate três vezes sozinho e para
+192. O relógio da diretoria bate desregulado: a cadência acelera e tropeça conforme o Inspetor investiga, procura ou caça, e cala quando ele para para escutar
+193. O barômetro da diretoria estala quando a ameaça muda de faixa, audível da porta
+194. O telefone da diretoria toca ao longe e para no instante em que você entra na sala
+195. A geladeira da cozinha ganha um compressor que ronca com a energia ligada
+196. Quando a energia cai, o compressor da geladeira morre num estalo e, quando volta, religa com um tranco
+197. O fogão a lenha esfria com tiques de metal contraindo na cozinha
+198. Bomba d'água, caldeira e transformador do corredor ganham zumbidos fixos que acordam um a um depois que o gerador liga, e morrem juntos se a energia cair
+199. Ao ligar o gerador, os canos estalam e assoviam em cadeia, do gerador até o hall, desenhando a casa pelo som
+200. A caldeira solta sopros de vapor de tempos em tempos com a energia ligada
+201. Os dutos da casa de máquinas estalam por dilatação, mais forte perto do gerador quente
+202. Do lado de fora do refeitório vaza o murmúrio de quarenta crianças comendo, com colheres e cochichos
+203. Ao abrir a porta do refeitório, o murmúrio cala de uma vez e fica só o eco vazio do pé-direito alto
+204. Logo depois que o refeitório cala, uma cadeira vazia é arrastada perto de você
+205. Quando você sai, o murmúrio do refeitório volta devagar; na noite da Procissão ele continua mesmo com a sala vazia
+206. Ao se aproximar do refeitório, talheres e pratos batem em marcha lenta de três tempos e param quando você entra
+207. Dentro do refeitório, talheres tilintam em mesas vazias enquanto você anda devagar e param quando você para
+208. Correndo no refeitório, uma colher cai de verdade no chão e o barulho chama o Inspetor
+209. Os passos no refeitório voltam em eco duas vezes, e quem escuta o eco ouve o que anda por perto
+210. Depois de um trovão, a louça da cozinha e do refeitório tilinta em ressonância
+211. Correr perto da pilha de pratos da cozinha faz a pilha tilintar e às vezes cair, chamando o Inspetor
+212. Encostar na parede fina entre refeitório e cozinha deixa vazar clara a respiração do Inspetor do outro lado, e a Lia comenta
+213. A prateleira da despensa estala seca ao esfriar
+214. Atrás da porta fechada da sala de aula há um murmúrio abafado de trinta vozes de criança
+215. Ao entrar na sala de aula, o murmúrio corta de uma vez e a sala está vazia, e a Lia repara no giz ainda caindo
+216. Uma professora conta devagar em voz formante atrás da porta da sala de aula, e a contagem para quando você entra
+217. O giz arranha a lousa da sala de aula num guincho de desconforto
+218. Num trovão ou pancada perto, um giz rola na calha do quadro e cai com um toc
+219. Na biblioteca, correr ou andar sem cuidado por muito tempo é respondido um segundo depois por um coro fraco de psiu, que o Inspetor também ouve
+220. Na biblioteca, um som de páginas viradas anda entre as estantes
+221. Asas de traça batem no escuro entre as estantes da biblioteca
+222. Os corredores sopram como túneis de vento, e o assopro sobe de tom quando as portas das pontas estão abertas
+223. No corredor oeste, depois de alguns metros, os seus passos voltam um instante depois, como se alguém te seguisse no mesmo ritmo
+224. Três tábuas soltas do corredor oeste rangem alto se você as pisa em pé e fazem barulho de verdade; agachada ou devagar passa em silêncio
+225. Golpes metálicos nos canos acompanham o Inspetor do outro lado da parede, nos dois andares, com legenda de direção
+226. O interfone toca ding-dong e avisa uma ala: o padrão de notas muda conforme o Inspetor muda de ala, um radar para quem entende a linguagem
+227. No corredor oeste, uma fileira de armários bate uma a uma na sua direção e para no armário ao lado (uma vez por noite)
+228. As poças sob as goteiras dos corredores crescem ao longo da noite: pisar espirra e faz barulho maior a cada minuto
+229. A grade da escada principal range quando o vento sopra
+230. O vento assovia pelas frestas sob a porta principal da recepção
+231. Frascos da enfermaria tilintam quando o Inspetor passa perto
+232. Uma lâmpada fluorescente agoniza na enfermaria com um zumbido que estala
+233. Um monitor cardíaco da enfermaria bipa na cadência do medo da Lia, um pouco atrasado
+234. De vez em quando o bipe do monitor sai fora do tempo, como se o coração fosse de outra pessoa
+235. Com o Inspetor dentro da enfermaria o bipe vira um apito contínuo
+236. Uma maca range sobre as rodinhas, sozinha, numa enfermaria vazia
+237. O tambor da máquina de lavar gira com uma peça solta batendo e para quando você entra na lavanderia
+238. O cano do banheiro respira e dá um golpe grave
+239. Três batidas em sequência soam nos canos do banheiro quando ninguém está lá
+240. A janela quebrada da copa assovia, mais aguda nas rajadas, e serve de bússola pelos corredores
+241. A chuva entra pela janela quebrada da copa com um tamborilar agudo e localizado
+242. O balanço de ferro do pátio range em ciclos e às vezes para no meio
+243. Mariposas batem no vidro das lâmpadas acesas
+244. Um cachorro uiva muito longe no pátio e para
+245. Uma coruja pia no pátio, duas notas
+246. Rajadas de vento batem portas soltas ao longe, e o estrondo pode ser investigado pelo Inspetor
+247. Um coro abafado reza atrás da parede da biblioteca e cessa quando você chega à sala
+248. Um sino distante bate a cada quarto de hora do relógio real, fraco sob a chuva
+249. Três tubos de latão na recepção e nas pontas dos corredores deixam você encostar o ouvido e escutar o Inspetor com o chiado e a ressonância do metal, por 6 segundos
+250. Ouvir pelo tubo tem preço: o seu sopro pode descer pelo tubo e o Inspetor vai conferir a outra ponta
+251. Cada tipo de sala ganha o seu próprio tom grave de fundo (hall largo, biblioteca abafada, despensa quase muda, casa de máquinas pesada) com troca suave ao mudar de sala
+252. A vida sonora da sala (murmúrios, grilos, pingos) cala de uma vez quando o Inspetor entra, e o silêncio vira aviso
+253. Prender o ar cala os sons de fundo da casa para você escutar melhor, e só o perigo continua
+254. Mais de setenta sons novos ganham legenda com direção, como cano batendo, tábua que range e eco de passo
+255. Nos dormitórios, um murmúrio subliminar de muita gente toma o corredor e cai quando a lanterna aponta
+256. Uma cantiga de roda sussurrada anda à deriva pelos dormitórios e para seco quando você olha na direção dela
+257. As camas dos dormitórios respiram juntas, em coro lento, e o coro para junto com você quando você para
+258. Uma das camas respira fora do compasso, mais grave e mais lenta, e muda de lugar a cada noite
+259. Parar ao lado da cama que respira errado faz a Lia reconhecer a pista
+260. Um colchão range sozinho quando você passa perto de uma cama
+261. No rangido da madeira dos dormitórios vem escondido um suspiro de criança
+262. Uma tosse abafada de criança vem de trás da porta de um dormitório
+263. O espelho do banheiro de cima treme num subgrave quando a Ana está em cena
+264. A pia do banheiro de cima pinga num ritmo que serve de âncora
+265. Uma veneziana solta bate no batente nas rajadas do dormitório
+266. A veneziana também bate em sequência quando o Inspetor chega perto, delatando a aproximação
+267. A janela quebrada do dormitório dos fundos assovia e é uma bússola no escuro
+268. A chuva entra pela janela quebrada do dormitório com um tamborilar agudo
+269. Rajadas sacodem a vidraça do dormitório com um estalo e um assovio
+270. A chuva martela o telhado do andar de cima, mais grave e perto nos dormitórios dos fundos
+271. A goteira do dormitório C forma uma poça: pisar nela espirra e faz barulho
+272. O corredor longo do andar de cima sopra como túnel de vento quando as portas das pontas estão abertas
+273. Um harmônio-fantasma toca um acorde desafinado de trítono e some devagar
+274. Uma caixinha de música toca fraco de longe e some, antes de você montá-la
+275. Roupa pendurada farfalha na rouparia numa corrente de ar
+276. Os dutos do monta-cargas estalam por dilatação no depósito
+277. Passos arrastados soam no forro acima do dormitório quando você está longe do depósito
+278. Uma cadeira de balanço range no depósito num ritmo que não bate com o vento, e recomeça mais rápida cada vez que você sai
+279. Fazer barulho correndo no depósito acorda morcegos: asas e guinchos descem do teto e o Inspetor ouve
+280. Cada degrau da escada do patamar toca uma nota em escala menor, e um degrau nunca soa
+281. Correr na escada do patamar vira uma cascata de estalos que o Inspetor ouve de longe
+282. Um degrau range logo atrás de você, um instante depois de você passar
+283. Sete tábuas do corredor do andar de cima tocam notas diferentes ao serem pisadas em pé
+284. Pisar as sete tábuas do corredor em ordem completa o primeiro verso do hino, com um acorde, e a Lia reconhece
+285. Ao descer pelo monta-cargas, os cabos gemem subindo de tom, correntes batem e a gaiola cai num baque
+
+### Mapa: túneis, cemitério e capela (92)
+
+286. Nos túneis a caldeira assobia ganhando pressão, abafa os seus passos enquanto apita e cala num "tchunc" que o Inspetor ouve.
+287. Quatro goteiras fixas com timbres próprios (poça, lata, pedra e concreto) servem de mapa sonoro do escuro, em intervalos diferentes que quase nunca coincidem, para o compasso nunca fechar.
+288. Cada pingo ganha uma cauda de eco molhada um instante depois.
+289. A goteira da poça marca um compasso: andar no tempo dela abaixa um pouco o seu ruído.
+290. Perto de cada válvula pinga uma goteira-guia para você se achar de ouvido, e ela cala quando a válvula já foi girada.
+291. De vez em quando as três goteiras caem juntas num só "plop" que parece de propósito.
+292. As goteiras calam quando o Inspetor chega perto: o silêncio vira aviso.
+293. Uma infiltração acelera os pingos até transbordar num respingo alto e recomeçar, um relógio de tensão.
+294. Debaixo d'água o mundo abafa num ronco grave e só sobra o seu coração.
+295. Na caça dentro do túnel os seus próprios passos voltam ecoando de trás e confundem.
+296. Unhas pequenas arranham ao longe quando ele não está por perto.
+297. Pisar na poça de referência faz um respingo alto que denuncia a sua posição.
+298. Ratos guincham e correm para longe do Inspetor, e calam quando ele chega ao túnel.
+299. Um cano distante responde ao seu barulho cerca de um segundo depois.
+300. O trovão chega aos túneis como um subgrave sentido no corpo, com um tremor leve.
+301. A cisterna gorgoleja cada vez mais grosso conforme o nível da água, com uma maré lenta de uns 30 segundos.
+302. A voz grave da cisterna sobe de tom a cada válvula que baixa a água.
+303. Parada na água por alguns segundos, você ouve um respingo que não é seu.
+304. Uma gota cai na sua nuca na água, com um estremecer.
+305. Um sussurro conta de trás para frente e, no "um", uma porta bate longe.
+306. A lama cede com sucção na ida e fica mais calada na volta.
+307. Uma estrutura metálica range ao longe perto do monta-cargas e da escada de saída.
+308. Moscas zumbem sobre algo morto no canto do túnel leste.
+309. Cada sala dos túneis troca de tom surdo ao você entrar: mais fundo e longo na cisterna e na sala do diretor.
+310. Com a água alta, ela bate de leve nas paredes.
+311. A água corrente de fundo fica mais forte com a água alta e nas tempestades.
+312. Girar a válvula certa manda uma pancada pelos canos até salas distantes.
+313. Com as três válvulas certas, a água escorre gorgolejando pelos ralos.
+314. Andar na água alta faz respingos que formam um anel sonoro que ele pode seguir.
+315. Os canos velhos assentam sozinhos de longe, estalando.
+316. Um pulso grave de tensão sobe enquanto o Inspetor caça ou procura nos túneis.
+317. Parada sob o cano do cruzamento, o andar de cima vaza numa nota fina.
+318. Dá para encostar o ouvido numa parede marcada do túnel leste (E) e ouvir gente falando baixo do outro lado.
+319. O eco dos seus passos agora tem atraso proporcional ao tamanho da sala: curto no beco, longo no salão.
+320. Uma vez por noite, no túnel leste, o eco devolve dois passos para cada um seu.
+321. Uma vez por noite, o passo continua um instante depois de você parar, e a Lia comenta.
+322. Câmara do eco: nas câmaras oeste e leste o seu barulho volta três vezes, de lugares diferentes, e o Inspetor corre para o eco falso.
+323. Cada passo vira um "bong" metálico de tubo: curto na passagem estreita, longo na galeria, grave na cisterna.
+324. Perto das passagens secretas (duto dos ratos e cabana de lençóis) o passo soa mais oco e fundo, sem nenhum marcador.
+325. Ao entrar nos túneis o ouvido estala: zumbido de pressão, mundo abafado e um "pop" que abre o som de volta.
+326. Ao entrar pela primeira vez na cisterna, no túnel norte e nas galerias, a rocha estala atrás de você, pedras rolam e o pó baixa devagar, como se o caminho se fechasse.
+327. Um compressor velho sopra a cada 8 segundos e cobre os seus passos enquanto sopra.
+328. Entre um sopro e outro do compressor o túnel fica quieto demais e os seus passos pesam mais.
+329. Quando a água baixa o compressor desliga num suspiro longo.
+330. Um ventilador gigante gira num ciclo de 12 segundos: no pico do rugido você pode correr, no vale tudo fica exposto.
+331. No vale do ventilador dá para ouvir os passos do Inspetor do outro lado da parede.
+332. Cada válvula canta a sua própria nota baixa quando você chega perto, e a nota cala depois que ela é girada.
+333. Depois de ouvir a fita 2, gotas caem em baldes de lata tocando a ordem certa das válvulas como uma melodia.
+334. Uma nova válvula de vapor na galeria leste, aberta segurando E, assobia agudo por 20 segundos e mascara os seus passos, mas o assobio chama o Inspetor depois de 15.
+335. Correr na água da cisterna faz soar um sino afogado, abafado e atrasado, que o Inspetor também ouve.
+336. Galeria dos sussurros: parada por 3 segundos numa ponta dos túneis oeste ou leste, a Lia ouve nítida a voz do Davi vinda da ponta oposta.
+337. Uma grade nova no teto do túnel central deixa vazar passos, uma reza e uma contagem do andar de cima para quem fica parada embaixo dela.
+338. O rumor de água cresce na direção da saída: quem segue o som chega lá.
+339. Frestas e passagens assobiam uma nota que pulsa a cada 8 segundos, mais aguda na cabana e mais grave no duto.
+340. Quanto mais fundo nos túneis, mais o ar zumbe no ouvido.
+341. Nos canais oeste e leste a água corrente cobre um pouco o seu barulho.
+342. Uma vez por noite a água do canal cala de repente, e seis segundos depois volta rugindo com um tremor.
+343. Quando o nível da água sobe, rugido de torrente e gotas rápidas crescem junto.
+344. O Inspetor na água faz chapes em compasso que dá para ouvir; se ele para, o barulho para e ele está escutando.
+345. Os canos batem o estado dele: uma batida por segundo é ronda, batida rápida é caça, nenhuma é ele parado escutando.
+346. Uma placa nova na sala do diretor ensina o código das batidas nos canos.
+347. Quando o Inspetor começa a caçar, o mundo prende o fôlego por quase um segundo.
+348. Dois tons em segunda menor crescem com o seu medo, nos túneis e no cemitério, como música de tensão sem melodia.
+349. Quando o Inspetor perde você, o ar solta num suspiro longo que avisa que o perigo passou.
+350. No cemitério, bandos de corvos pousam em três lápides; se você corre ou faz barulho perto, eles estouram em voo e o Inspetor ouve com ganho alto.
+351. Os corvos também levantam voo quando é o Inspetor que passa pelo mato, avisando onde ele está.
+352. As cruzes de ferro assobiam uma nota ao vento, mais aguda e mais alta quanto mais perto da capela: uma bússola sonora sem marcador.
+353. O vento nas cruzes se cala por 3 segundos quando o Inspetor chega perto.
+354. Sinos de vento nas cruzes tocam com a brisa, e fora de compasso quando você corre colada nelas.
+355. Cada túmulo ainda por cavar sussurra uma sílaba do nome, vinda da direção dele e mais alta quanto mais perto.
+356. Depois que você pega a pá, uma nuvem de moscas zumbe mais forte perto do túmulo que falta.
+357. Um sino toca abafado debaixo da terra sob a lápide rachada, mais alto conforme você se aproxima, e a Lia comenta ao chegar nela.
+358. A pá muda de som a cada camada: terra mole, raízes e pedra.
+359. Cada cova tem uma profundidade própria: as camadas mudam em pontos diferentes do cavar.
+360. Na última camada a pá bate num toque oco de madeira, com um aviso na tela.
+361. O buraco assobia como uma garrafa e a nota desce conforme você cava mais fundo, contando o progresso pelo ouvido.
+362. A pá soa mais baixa no trovão, a Lia diz "só cavo quando trovejar" e depois o aviso confirma que o trovão cobre a pá.
+363. Uma pá distante cava num ritmo próprio, pausa quando você começa e responde com o mesmo número de golpes, cada vez mais perto.
+364. Um órgão distante, audível ao ar livre, soma uma nota ao acorde para cada túmulo cavado.
+365. Com os três túmulos o acorde fecha e a porta da capela vibra, com uma fala da Lia.
+366. Antes da mão sair da terra no terceiro túmulo, o mundo cala por quase três segundos.
+367. Na capela o sino bate sem badalo, e a cada batida uma vela do altar apaga.
+368. A batida a mais, grave, faz o chão vibrar e as velas voltam a acender.
+369. Ao chegar ao altar o órgão toca o primeiro compasso do hino do internato.
+370. Na fuga o trovão grave chega cada vez mais depressa depois do relâmpago.
+371. A chuva soa diferente nas lápides, secas e agudas, e na terra, abafada.
+372. Ao subir para o cemitério o ouvido estala de novo e o ar frio entra pela escotilha.
+373. No final verdadeiro, depois do portão, o último som é um amanhecer: pássaros em camadas, um galo, um ônibus rural longe e um sino de seis badaladas.
+374. No final comum e no do silêncio há só um pássaro, sem resposta.
+375. Os sons de ambiência novos dos túneis e do cemitério vão num barramento próprio, que cai primeiro quando há muitas vozes e respeita o volume de ambiente.
+376. Um erro de ordem no código do som dos túneis (variável lida antes de existir) foi corrigido, e cada tratador de som agora se desliga sozinho depois de cinco erros em vez de derrubar o quadro.
+377. A goteira-guia de cada válvula agora cala de verdade depois que a válvula é girada (antes a checagem nunca casava).
+
+### Monstros e IA (91)
+
+378. Cada cômodo agora tem o seu próprio leito de ar (um zumbido contínuo filtrado) que troca de timbre quando você atravessa a porta.
+379. Cada sala ganhou uma nota fundamental ressonante própria, um tom surdo diferente em cada cômodo.
+380. Nos túneis o leito de ar fica grave e denso, como respiração de pedra molhada.
+381. Ao ar livre o leito de ar fica agudo e aberto, com a chuva e o vento mais presentes.
+382. Na capela e na nave o ar soa reverberante e mais alto, como um espaço enorme e vazio.
+383. Nos dormitórios de cima entra um assobio de vento pela janela quebrada.
+384. Na cozinha, despensa e refeitório zumbe um grave elétrico de geladeira morta.
+385. Salas com água ganham um leito mais encharcado, com borbulhar baixo.
+386. Salas grandes deixam o ar parado mais presente do que os cômodos pequenos.
+387. O leito de ar abaixa e abafa quando a Lia prende a respiração.
+388. Entrou uma música de tensão procedural que cresce conforme o perigo, sem piscar, com subida lenta e descida ainda mais lenta.
+389. A trilha de tensão respira com o fôlego: sobe quando a Lia está sem ar.
+390. No instante do bote a música de tensão some de repente — o vazio avisa o golpe.
+391. A dissonância da trilha sobe de meio-tom a cada capítulo, afinando a casa mais doente.
+392. A trilha fica mais desafinada e suja a cada capítulo que passa.
+393. Um sino-celeste frio entra na trilha quando a Ana está contando perto.
+394. Um órgão grave se aproxima na trilha durante a Procissão.
+395. Um pedal grave entra quando duas ameaças dividem a cena (os temas se entrelaçam em vez de só somar).
+396. Um bumbo surdo de coração entra na trilha quando o perigo está alto durante a caça.
+397. Um sub-grave de pavor desce no instante em que o Inspetor decide caçar.
+398. O Inspetor cala de repente ao travar em você — cerca de 1,3 s de silêncio total antes do bote.
+399. Falsa desistência: na procura, às vezes todo o som dele some por uns 4 s enquanto ele espera parado perto.
+400. Nos capítulos finais ele larga as chaves e passa a caçar em silêncio total: o tilintar que te protegia some.
+401. Ele odeia o silêncio: silêncio longo o deixa agitado e ele bate em algo de propósito para te assustar.
+402. Ficar totalmente parada e calada demais te entrega: um sussurro "ela parou..." e ele muda de rota na sua direção.
+403. O buraco de som: na escuta ou na Hora do Silêncio, qualquer ruído seu vale muito mais e crava a sua posição.
+404. Ele saboreia o seu coração: perto e com o batimento alto, ele para e escuta antes do bote.
+405. Aviso puramente sonoro de "ele te ouviu": um baque sub-grave no instante em que ele trava em você.
+406. Impasse na Hora do Silêncio: se ele está na mesma sala quando as badaladas calam o mundo, ele congela e escuta.
+407. A Procissão subtrai o som: uma parede de silêncio rola na sua direção quando a fila se aproxima.
+408. Na procura o Inspetor murmura o que deduz de você ("ela parou...", "respira aí").
+409. Na patrulha calma dos primeiros capítulos ele resmunga desculpas, de boca quase fechada.
+410. Na ronda ele recita as regras da casa numa ladainha baixa ("não corra... não acenda...").
+411. Investigando, ele resmunga sobre o seu último barulho, vindo da direção certa.
+412. Ao mudar de sala na ronda ele murmura a lembrança daquele cômodo.
+413. Ventríloquo: ao perder você, às vezes ele joga a própria voz para a sala oposta.
+414. Isca: da sala vizinha uma voz tenta soar como a Lia, dizendo que está tudo bem.
+415. Grunhidos graves vazam das paredes quando ele está do lado, mais desumanos a cada capítulo.
+416. Durante a Procissão o coro soletra o seu nome digitado, letra por letra.
+417. Na reza, de vez em quando um dos nomes é trocado pelo seu.
+418. Dueto do Chamado: duas vozes harmonizam o seu nome em terça, de salas opostas.
+419. Cânone a duas vozes: nos capítulos finais o Inspetor e a Ana chamam de lados opostos.
+420. Respiração nítida pela fechadura: agachada numa porta fechada com ele do outro lado, o fôlego dele vem sem oclusão.
+421. A respiração dele contamina a sua: perto e sem te ver, o fôlego da Lia acelera, fica audível e te denuncia.
+422. Unhas arranham a parede acompanhando a sua posição quando ele está na sala vizinha.
+423. Ele imita a casa: reproduz um pingo ou trinco sutilmente errado, de um canto, para te atrair.
+424. A respiração dele atravessa a madeira do armário, grave e colada, do lado exato em que ele está.
+425. Ele bate na parede e escuta o eco voltar (eco-localização) e vira a cabeça para você.
+426. No quarto morto o passo dele chega seco, sem eco, soando mais perto do que o ouvido espera.
+427. Ele funga o ar em rajadas curtas seguindo o seu rastro.
+428. O coração-bússola ganhou eixo vertical: agudo quando ele está acima, grave quando está nos túneis.
+429. No estado de escuta a bengala dele bate num ritmo irregular e espaçado, diferente da patrulha.
+430. O passo que falta: na patrulha ele engole um passo de propósito e o silêncio no lugar dele te prende.
+431. Escondida nos capítulos finais, ele imita o ritmo do seu fôlego e devolve, zombando.
+432. A lanterna apita a presença dele: o zumbido ganha um batimento que acelera conforme ele chega perto.
+433. Duas notas da bengala atravessam a parede um instante antes de ele entrar na sala vizinha.
+434. Doppler nas chaves e nos passos quando ele cruza correndo na sua frente.
+435. Em salas-eco grandes, raríssimo, um passo dele volta forte da parede errada e mente a direção.
+436. A partir do capítulo IV um arrasto de corrente metálica acompanha cada passo dele.
+437. As chaves enferrujam do capítulo IV em diante: uma cauda de metal morto, mais grave e sem brilho, nos passos.
+438. O passo dele ganha mais cauda de eco quanto maior e mais distante é a sala entre vocês.
+439. Feedback do olhar da Ana: um suspiro de alívio quando a sua luz a prende e um gemido ao perdê-la de vista.
+440. A Ana respira pela boca (um chiado infantil) quando está no cômodo mas ainda invisível.
+441. Quando a Ana está perto, um número fora de ordem é sussurrado por cima da contagem.
+442. A Ana cantarola a melodia da caixinha, de boca fechada, um instante antes de começar a contar.
+443. Ventriloquia da Ana: às vezes a contagem vem de 180° do lado real dela.
+444. Nos túneis e no cemitério a contagem da Ana ganha um eco frio e atrasado.
+445. Quando a Procissão atravessa o seu esconderijo, o coro circula em volta de você, de um ouvido ao outro.
+446. No ponto de passagem mais próximo, a ladainha da Procissão fica compreensível por um instante (ordem, silêncio).
+447. O canto da Procissão ganha efeito Doppler conforme ela se move: sobe ao se aproximar e cai ao passar.
+448. Trovões periódicos estouram ao longe, mais fortes e mais frequentes a cada capítulo.
+449. Um trovão forte abre uma janela de uns 2 s em que os seus passos somem para o ouvido do Inspetor.
+450. O trovão perto também deixa a Lia com o mundo abafado por um instante.
+451. O relâmpago estala agudo e elétrico pela casa, sincronizado com o clarão.
+452. A chuva vem em rajadas que crescem e somem ao longo da noite.
+453. No andar de cima a chuva no telhado arrebenta mais forte durante as rajadas.
+454. O vento uiva em rajadas longas quando você está ao ar livre.
+455. Nos túneis um gotejar com eco denso pinga de cantos aleatórios além da goteira de sempre.
+456. Andando na água dos túneis, cada passo deixa um "plic" de eco que persiste atrás de você.
+457. O prédio geme num grave estrutural longo nas calmarias demoradas.
+458. Estalos de madeira esfriando à noite surgem de cantos aleatórios dentro da casa.
+459. A casa cochicha: vozes coletivas distantes e indistintas sobem numa calmaria longa.
+460. Um sino distante da capela dobra sozinho, raro, em algum canto da noite.
+461. Enquanto ele ronda longe, um rangido de porta distante bate sozinho de vez em quando.
+462. No escuro total, sem lanterna, o ar fica pesado: um sub-grave sobe quanto mais tempo você fica às cegas.
+463. A Lia arfa mais fundo e trêmulo quando o perigo é extremo e ela está sem ar.
+464. O segundo batimento do coração-bússola ganha um eco panoramizado para o lado onde ele está.
+465. Com a pilha baixa, a lanterna solta um chiado agudo de capacitor que o Inspetor ouve de leve de perto.
+466. Um acorde de alívio tênue soa quando o Inspetor desiste e volta à patrulha.
+467. Todos esses sons novos entram no menu de legendas de som, marcados como perigo ou história.
+468. O módulo novo src/monstros-som-lote7.js entra no cache do PWA, para a casa continuar soando assim offline.
+
+### Sustos e eventos (120)
+
+469. Quando o Inspetor está prestes a desistir ou a te achar, o mundo cala por quase 2 s, inclusive o seu corpo, e ninguém sabe qual dos dois vem
+470. Calmaria rara em que o mundo cala por um instante e nada acontece, com a legenda seca "tudo ficou quieto... e passou"
+471. O susto que não vem: a luz pisca, o som cai e não há nada (recalibra o medo)
+472. Grilos e cigarras lá fora que calam todos de uma vez quando o perigo se aproxima
+473. Nos túneis e nas salas com água um pingo cai em ritmo fixo, e o ritmo é o que se perde quando algo muda
+474. Nos túneis uma goteira acompanha você uns três metros atrás, soando como passo molhado
+475. Parada sob uma goteira num momento calmo, um pingo frio cai na sua nuca
+476. Portas soltas batem ao vento ao longe como falsos alertas; uma fora do ritmo é ele
+477. Antes do bote, uma gota acelera colada ao coração e avisa para quem ouve
+478. Trovão forte e muito perto deixa um zumbido no ouvido e abafa o mundo por um instante
+479. Um segundo coração bate num canto da sala, parado
+480. O seu nome (o digitado no título) é sussurrado uma vez por noite, bem colado e baixíssimo
+481. No esconderijo, depois de uns 20 s, surge uma segunda respiração atrasada em relação à sua
+482. No esconderijo, um sopro de criança vem de dentro, uma vez por esconde, sem dano
+483. Escondida com ele rente à porta, a respiração dele passa pela fresta, abafada e apontada
+484. Com medo altíssimo, a Lia conta junto com a Ana sem querer, e faz barulho de verdade
+485. O sussurro "atrás de você" só dispara quando o Inspetor está fora do seu campo de visão
+486. Uma sala sorteada do mapa é amaldiçoada: ao entrar, o som é sugado e cai num buraco de silêncio
+487. No aviso da Procissão o eco da sala colapsa para um som seco, antes de qualquer luz piscar
+488. Vozes de criança nos corredores que calam quando a lanterna acende
+489. Depois de escapar por um fio, um zumbido mascara justamente os passos dele por alguns segundos
+490. Escapar por um fio custa o grito preso, que ecoa pela ala e te entrega
+491. No instante do relâmpago, uma respiração brusca vem de uma direção aleatória
+492. No instante do relâmpago, uma corda arranhada curtíssima bate junto com o pico
+493. Raramente o trovão vem casado com um estrondo seco da casa, com infra-som sentido no peito antes
+494. Ao avistar o Inspetor de perto, a Lia solta um inspirar curto, e o ruído é real
+495. Logo depois de um golpe, 1 s de clareira auditiva: quase nada, e você decide para onde ir no escuro
+496. Ao morrer, o último barulho que você fez volta grave e lento, e a cauda do reverb congela e corta seco
+497. Responder ao Chamado devolve a sua resposta com um tom abaixo, distorcida
+498. Moscas zumbem sobre alguma coisa logo ali, num momento de calmaria
+499. Uma porta bate onde não há porta, ao longe
+500. Premonição invertida: um sussurro ao contrário e, depois, um estrondo distante sem ameaça
+501. Um passo a mais no eco, atrás de você, fora de ritmo
+502. Uma respiração sua, repetida em outra parte da sala
+503. Arranhão de unhas numa parede, em algum ponto longe
+504. Metal ou cabide balançando sozinho
+505. Um sussurro curtíssimo vindo de uma direção só
+506. Um objeto cai numa sala vizinha, isca sonora que não leva a nada
+507. O prédio assenta com um rangido e um estalo
+508. Um mosquito zumbe em volta de um ouvido só
+509. Um sino único e distante, sem resposta
+510. Estalo de língua colado ao ouvido
+511. Uma respiração presa numa sala vizinha
+512. Uivo de vento numa fresta
+513. Trovão rolando longe, só o ronco, sem clarão
+514. Um corvo grasna na noite lá fora
+515. Um portão range ao vento
+516. Uma revoada de asas passa por você
+517. Água batendo num cano ao longe, nos túneis
+518. Uma gota na cisterna, com eco longo e grave
+519. Um passo molhado que vem do reflexo e não da fonte
+520. Uma cantiga de ninar doce demais chama de um canto, na direção em que ele está
+521. Três passos molhados três metros atrás, nos túneis
+522. Vento nas frestas da capela
+523. Terra sendo mexida ao longe no cemitério
+524. Molas de uma cama rangendo num dormitório
+525. Chuva no telhado do andar de cima, mais forte no ouvido
+526. Susto duplo: um fraco e, quando você relaxa, o prédio inspira e vem o forte
+527. Susto por sussurro e não por pico: o som cai e um sussurro baixíssimo chega colado
+528. O som falso que ensina a duvidar: passos dele numa sala vizinha, sem ninguém, que param junto à parede
+529. A chuva e o vento param de uma vez no cemitério e na estrada, com um último pingo grave e 8 s de campo aberto
+530. A chuva volta de uma só vez no fim da frase de uma voz grave que ninguém viu falar
+531. Susto que só vem pelo ouvido: a casa cala e alguém respira colado atrás da cabeça da Lia por 5 s
+532. Silêncio total no corredor longo do superior por 6 s, sem passos nem respiração
+533. Quando o som volta, uma porta do corredor que estava fechada agora está aberta
+534. Passos idênticos aos seus soam atrás com atraso que vai caindo até sincronizar e passar a adiantar
+535. Quando você para depois dos passos defasados, soa um único passo a mais
+536. Passos que soam à frente de você por uns segundos, e a Lia sussurra "tá errado"
+537. Um rádio chia numa sala próxima e narra, entre chiados, o que a Lia acabou de fazer (entrou, agachou, acendeu a lanterna)
+538. O rádio narra com 2 s ou com 8 s de atraso, sorteado, e a fala pode atrair o Inspetor
+539. O rádio às vezes prevê o próximo passo ("atrás dela, a porta") e, se você contraria, a voz engasga
+540. A chamada de 1979 pelo alto-falante com nomes de crianças, e quando chamam o seu você precisa ficar parada
+541. Se você se mexe na chamada, a voz repete mais alta e o Inspetor ouve; se fica, uma criança responde "presente" longe
+542. Três vozes chamam o seu nome ao mesmo tempo, de três lugares, e a mais baixa é a verdadeira e volta mais perto
+543. A casa repete o nome da Lia com o timbre agudo da Ana, atrás de você
+544. Silêncio de 4 s em que você não ouve mais nada: uma em cada três vezes nada acontece depois
+545. Em algumas dessas pausas há um segundo falso susto lá dentro, uma porta que range no fim
+546. Um clarão sem trovão: raramente o relâmpago vem seguido de 3 s de silêncio sem chuva
+547. Uma tosse curta de criança, a poucos passos, depois de 25 s de calmaria total (uma vez por capítulo)
+548. Escondida com ele rente à porta, o coração para por 2 s e volta duplo
+549. Nos banheiros, os chuveiros abrem um a um, só o último box continua correndo e todos fecham quando você olha
+550. Uma bola de plástico quica corredor adentro, cada quique mais perto, e rola e para junto aos pés da Lia
+551. A bola, se ignorada, quica de novo atrás de você
+552. Uma porta que você abriu fecha sozinha às suas costas, 20 a 40 s depois, com rangido lento e clique
+553. Ao passar rente a um armário, às vezes três batidas fracas vêm de dentro
+554. Se você se esconde nesse armário depois, as batidas voltam dentro com você, junto de uma respiração que não é a sua
+555. Um piano toca a cantiga numa sala fechada e, ao entrar, a música corta num acorde dissonante
+556. No corredor, todas as portas rangem em coro com o vento e uma delas, só uma, não range
+557. Quem abre a porta muda ouve alguém prender o ar do outro lado
+558. Na nona badalada da Hora do Silêncio a lanterna cai a zero por 4 s
+559. Quando a luz volta, com uma falha elétrica, algo mudou de lugar
+560. Um rádio-relógio liga sozinho tocando uma cantiga desafinada, e o Inspetor ouve como ruído de objeto
+561. Ao fim da cantiga ela continua dentro da parede, mais baixa
+562. Um telefone toca atrás de uma parede onde não há telefone, e o Inspetor também ouve
+563. A cada vez o telefone toca mais perto do que da anterior
+564. Uma sirene sobe de longe como esperança e corta antes de chegar (uma vez por jogo)
+565. Se você corre à toa por mais de 5 s, as paredes soltam um "shhh" de quatro lugares
+566. Na segunda visita ao banheiro, uma criança fala pelo cano e erra o nome da Lia, e a torneira pinga uma gota escura
+567. O choro que acompanha a lanterna: apontada ao canto escuro de uma sala vazia por 2 s, um choro cresce e cala de uma vez quando você desvia
+568. Na capela uma risada abafada vem lá do alto da nave e, a cada passagem, mais perto do chão
+569. Uma caixinha de música toca o hino num canto escuro, desafinando e acelerando, e ao chegar a corda acabou
+570. A melodia da caixinha nunca fecha na tônica, e quando fecha a Ana está logo atrás
+571. Três portas batem em salas cada vez mais próximas pelo mapa real de portas
+572. Parada 10 s num corredor, uma respiração quente aparece na nuca e se afasta quando você vira (uma em seis é de verdade)
+573. Um sussurro dá a volta em você em 4 s; se você olha na direção dele ele para, se não, termina com um "bu" suave
+574. No quarto da Celeste, a tela pede 10 s de imobilidade enquanto uma respiração gira em volta da cabeça
+575. Se você se mexe nos 10 s a respiração para e vem de trás; quem aguenta ouve um sussurro de pista
+576. Algo anda no telhado de ponta a ponta, para bem em cima da sua sala por 3 s e continua
+577. Parada 3 s, a estática do ouvido abre numa frase sussurrada (uma por capítulo, algumas mentem) e some se você anda
+578. Depois de morrer, o mundo volta devagar por 5 s, como de baixo d'água, com o coração em primeiro plano e uma gota como primeiro som claro
+579. Uma tábua range onde você não pisou a cada passo no corredor do térreo, ficando para trás, e some quando você corre
+580. Coro de rádios: três rádios ligam um a um e sussurram a mesma frase até cantarem juntos
+581. O loop que erra: uma gota se repete idêntica três vezes e na quarta cai diferente, com uma sílaba humana
+582. Um tique-taque inofensivo nas primeiras vezes e, na quarta (ou quinta, por sorteio da noite), marca a chegada dele
+583. Num dormitório uma cama bem feita ronca com ritmo e o ronco para de uma vez quando você chega perto, com os lençóis se mexendo
+584. Depois de despistá-lo, um acorde maior suave por 3 s e logo uma porta distante quebra o clima (falso alívio, uma vez por capítulo)
+585. Em metade dos avistamentos, o ar da sala é puxado por um silêncio seco antes do susto
+586. Passos sobem a escada do patamar, degrau por degrau, param no último, e a contagem muda a cada visita
+587. Um assovio grave e uma porta bate: nas duas primeiras vezes é a casa, na terceira o som é ele
+588. A porta fechada e quieta range como se abrisse e um passo sai do lugar vazio
+
+### Áudio (120)
+
+589. Cada sala ganha o seu leito sonoro, um zumbido grave com ruído próprio por função (cozinha, enfermaria, biblioteca, refeitório, dormitório, máquinas, túnel, hall), com troca suave de 0,4 s ao cruzar a porta.
+590. Cada sala tem também um sub-grave quase inaudível com altura própria, sorteada pelo nome da sala: quem joga de fone sente onde está de olhos fechados.
+591. As salas ligadas a 1979 (Celeste, porão, cova, castigo, Luiz) soam meio tom desafinadas e um tom acima, e voltar lá soa errado antes de ver qualquer coisa.
+592. Uma sala diferente a cada noite, sorteada pela semente, ganha um tom levemente fora do lugar, só para quem presta atenção.
+593. Onde a caçada do Inspetor começou, o tom da sala fica meio tom desafinado pelo resto da noite.
+594. A capela perde o drone reconfortante e ganha uma nota grave de órgão que surge de tempos em tempos, com legenda.
+595. Na capela, perto do altar, um infra-som quase inaudível sobe e pesa no peito.
+596. Nas salas com janela quebrada, na copa e na capela, o vento assobia pelas frestas em rajadas que mudam de altura.
+597. A torneira da cozinha pinga num ritmo constante e para de repente quando o Inspetor chega perto.
+598. Biblioteca, sala de aula, diretoria e recepção ganham um relógio de parede que tiquetaqueia.
+599. O relógio de parede para quando o Inspetor entra na sala, e a legenda avisa que ele parou.
+600. Com o medo alto o tique do relógio estica e o timbre desafina para baixo: o tempo parece arrastar.
+601. Na enfermaria uma mosca voa em círculos em volta da sua cabeça, em som 3D.
+602. A mosca da enfermaria cala na hora em que o Inspetor entra ou a Procissão passa.
+603. No refeitório talheres tilintam e cadeiras são arrastadas sozinhos, como se a mesa posta para 37 ainda estivesse em uso.
+604. Nos dormitórios molas de cama rangem sozinhas em pontos aleatórios do quarto.
+605. Nos túneis algo pesado cai na cisterna, longe, com reverberação grande.
+606. A geladeira da cozinha liga, trepida e desliga sozinha com um tum surdo a cada 40 a 90 segundos.
+607. A geladeira para de vez quando o Inspetor entra na cozinha e volta com um tranco quando ele sai, com legenda "a geladeira parou".
+608. Um pulso de sub-grave bate junto com o coração quando o medo sobe, separado do som do corpo.
+609. A música de caça desliza de uma quinta justa para um trítono conforme o Inspetor encosta em você.
+610. As cordas dissonantes apertam e desafinam quando ele investiga ou procura perto.
+611. Cada capítulo sobe um pouquinho o tom do drone da caçada: o mundo fica mais errado a cada noite.
+612. O Inspetor canta baixinho enquanto patrulha e o canto fica mais forte quanto mais perto ele está.
+613. Se ele te ouve, o canto corta no meio da nota, e a legenda registra o corte.
+614. Quando ele entra em alerta ou no bote, a ambiência e a chuva caem de uma vez: o vácuo antes do golpe avisa que o pior vem.
+615. Na emboscada o mundo cala por um segundo e a legenda diz que o silêncio é estranho.
+616. Depois que a caçada acaba o mundo fica mudo demais por 12 a 20 segundos, um falso seguro que não deixa relaxar.
+617. De vez em quando tudo cala por 2 a 4 segundos sem que nada aconteça: um blefe que treina a paranoia.
+618. Na fuga final, depois do sino, toda a trilha some e sobram só a chuva, o coração e o corpo da Lia.
+619. No clímax a chuva engrossa para cobrir o sino e a fuga.
+620. Quando a Procissão avisa e durante as badaladas, a chuva e o vento prendem o ar e sobra um silêncio cortante.
+621. Na neblina os agudos da chuva se fecham e o mundo fica abafado.
+622. Em noites sorteadas (cerca de 28%) cai granizo no telhado por 18 a 26 segundos, com tamborilar metálico no alto.
+623. O granizo é anunciado: 3 segundos antes a chuva fina engrossa de repente.
+624. Durante o granizo seus passos e os dele ficam cobertos: o Inspetor ouve só um terço do que você faz.
+625. Quando o granizo para, só o degelo pinga no telhado por alguns segundos, num silêncio de gelo derretendo.
+626. Parada ou prendendo o ar por muito tempo, um apito agudo de ouvido cresce de leve: o silêncio longo demais pesa.
+627. Se você hesita muito no mesmo lugar, uma pressão grave sobe devagar, como se a casa não gostasse da demora.
+628. Prendendo o ar, sussurros de criança surgem por baixo do silêncio ao redor da sua cabeça.
+629. Em raros momentos de calma a casa sussurra o seu nome de um canto vazio atrás de você.
+630. Se você fica parada demais, crianças cochicham "fica quieta" do outro lado da parede.
+631. Em salas de 1979 uma chamada de freira soa muito longe, em voz formante.
+632. Em pânico, quando se esconde ou prende o ar, a Lia murmura sozinha e quase se entrega.
+633. Ao ligar e desligar a lanterna num corredor longo, às vezes o clique volta do fim do corredor, um tom abaixo.
+634. Uma vez por noite, um barulho único e sem explicação cruza a noite longe de você.
+635. Ao escapar por um fio de uma caçada soa um acorde quente e maior com sino, o único momento bonito do jogo.
+636. Em 1 de cada 4 desses acordes de alívio a terça desafina para o menor no meio, e a legenda avisa.
+637. Com o coração disparado o mundo abaixa: a ambiência cai até 35% no auge do pânico.
+638. Em pânico extremo, com ele a menos de 2,5 m, a surdez aperta ainda mais e o mundo some.
+639. Com a vida abaixo de 15% os agudos se fecham num túnel auditivo.
+640. Prender o ar enche o leito da sala de pressão grave, como se você ficasse debaixo d'água.
+641. A tonalidade do leito da sala afunda em degraus conforme o medo passa de 40, 65 e 85.
+642. Machucada, as cordas da caçada desafinam proporcionalmente à ferida.
+643. Apontar a lanterna para o Inspetor faz o zumbido dela estridular, como se ela o ouvisse.
+644. O gerador range e desafina quando o Inspetor chega perto dele.
+645. Ao se afastar do gerador, um zumbido fica no seu ouvido por um instante.
+646. Uma veneziana solta bate ao vento em pontos aleatórios, um falso Inspetor.
+647. Uma porta distante bate sozinha com o vento e faz a Lia duvidar do que ouviu.
+648. Atrás de você, às vezes, um estalo seco idêntico a um passo dele soa e some.
+649. Uma corda de pizzicato seca soa na calma e ninguém sabe de onde veio.
+650. Depois de levar um golpe forte, um zumbido tapa o ouvido da Lia.
+651. Parada e calma demais, a Lia cantarola sem querer e o ruído dela chega até o Inspetor.
+652. Perdida por muito tempo, a Lia murmura para si mesma onde procurar.
+653. Prendendo o ar por muito tempo, a Lia conta baixinho para se acalmar, e se há perigo o som vaza.
+654. A partir da terceira morte, uma criança sussurra de um canto escuro o número de vezes que você já caiu.
+655. Cada mapa abre com um acorde grave próprio, uma assinatura sonora para o novo lugar.
+656. No instante em que o Inspetor ouve de verdade, até o som do seu próprio corpo abafa.
+657. Depois do apito de um susto o mundo ensurdece e os passos dele ficam abafados por alguns segundos, uma janela real de vulnerabilidade.
+658. Ao soltar o ar, em salas grandes, o seu arfar volta um instante depois, mais grave, como se fosse de outra pessoa.
+659. Prender o ar até o fôlego acabar faz a respiração escapar sozinha, com o risco de ser ouvida.
+660. Uma nota suspensa fica pendurada durante a caçada e só resolve quando ele perde a sua pista.
+661. Um tom contínuo, o radar, sobe de altura e volume conforme o Inspetor chega perto, sem HUD nenhum.
+662. Um pedal grave sobe meio-tom ao longo do capítulo, devagar demais para perceber.
+663. No escuro, sem lanterna, uma respiração coletiva de crianças cresce em coro e some quando a luz liga.
+664. Nos picos de medo um infra-som de 18 Hz pesa no peito.
+665. Quando algo invisível divide a sala escura com você, uma pressão grave pulsa nos ouvidos.
+666. Um tique de metrônomo trava no ritmo conforme ele fecha o cerco, e acelera no instante do bote.
+667. Com duas presenças perto ao mesmo tempo, um acorde dissonante abre sobre a sua cabeça.
+668. Escondida com ele a menos de 2 m, a trilha de caça cai a zero e sobra só um fio agudo.
+669. Quando ele desiste e volta a patrulhar de longe, uma nota suspensa de segunda menor nunca resolve: não há descanso.
+670. Antes da Procissão, sussurros de reza cercam a sala e a chuva fecha os agudos.
+671. Se você se mexer durante a Hora do Silêncio, um estalo agudo e só seu denuncia o movimento.
+672. Numa sala amaldiçoada, sorteada por noite, o silêncio absoluto cai por 4 segundos e a Lia fica surda ao perigo.
+673. No cemitério a tempestade engrossa conforme o capítulo avança até a fuga.
+674. O trovão chega depois do clarão com um atraso sorteado de 0,3 a 6 segundos, e quem conta os segundos aprende a ler a tempestade.
+675. A tempestade se aproxima a cada capítulo: o atraso encurta e, no Capítulo V, clarão e estrondo quase caem juntos.
+676. Raio muito perto vem com um estalo agudo rasgado e um zumbido curto no ouvido.
+677. Cada trovão ganha legenda pela distância: muito perto, algumas casas adiante ou bem longe.
+678. Durante as badaladas do sino a chuva prende o ar, e o silêncio faz cada toque pesar.
+679. Uma vez por noite, fora do Capítulo II, a chuva para em 2 segundos e só a goteira fica, com a legenda "a chuva parou".
+680. Na estiada o seu barulho vale 25% mais para o Inspetor durante uns 45 segundos, porque nada mais o mascara.
+681. Durante a estiada gotas soltas pingam em volta de você, altas e nítidas.
+682. A chuva volta devagar depois da estiada, com um trovão distante.
+683. Uma rajada de vento vem da direita, cruza a casa para a esquerda e, durante 3 segundos, cobre metade do seu barulho.
+684. No cemitério e nos túneis, cada passo seu ganha um segundo plof molhado de 50 a 90 ms atrás, como se algo te seguisse no mesmo ritmo.
+685. Às vezes o segundo plof continua uma vez depois que você para, com a legenda "um passo a mais".
+686. Pisar em água faz os seus passos chapinharem em qualquer piso por 40 segundos e o seu ruído sobe 10%.
+687. Duas vezes por noite, em corredor vazio, um segundo par de passos 0,2 s atrasado acompanha o seu e dá mais um passo quando você para.
+688. Na caçada, cada passo do Inspetor faz a ambiência ceder 35% por 220 ms, e o passo vira o ritmo da cena.
+689. Quando uma porta é aberta ou fechada longe de você, um assobio de corrente de ar e um sopro grave denunciam onde ela foi, com legenda de direção.
+690. Ruído alto por mais de 20 segundos (correr, portas) cansa o ouvido da Lia: os agudos descem de 16 kHz para 4 kHz e voltam em cerca de 12 s agachada.
+691. Quando a caçada começa a menos de 8 m, um apito de ouvido tapa os agudos por um instante.
+692. Sem música até o primeiro encontro com o Inspetor: o prólogo e o início do Capítulo I só têm ambiência.
+693. No primeiro encontro com o Inspetor um golpe de cordas rasga o silêncio e a música entra pela primeira vez.
+694. Depois de qualquer pico (caçada, bote, Procissão) a música cai a zero e fica proibida por 25 a 40 segundos, só chuva e leito.
+695. Quando a proibição acaba a música volta com uma única nota longa, como uma pergunta.
+696. Do cemitério até o sino do Capítulo V toda a trilha de tensão se cala: só chuva, vento, coração e respiração.
+697. Escondida no armário ou na cama, as camadas de música são cortadas e só sobram respiração e coração.
+698. Depois de 60 segundos sem ameaça a ambiência recua em quatro degraus, até quase nada, com a legenda "a casa prende o ar".
+699. No último degrau da calmaria um único estalo de madeira soa por perto.
+700. Qualquer barulho alto durante a calmaria devolve tudo de uma vez com um tum.
+701. O zumbido da lanterna muda de tom com a pilha: grave e estável cheia, agudo e trêmulo na reserva.
+702. Na escuridão total com a lanterna na mão, um chiado cresce no fundo depois de 6 segundos.
+703. Ao acender a lanterna depois de muito escuro, todo o chiado corta num estalo seco.
+704. Escondida, às vezes surge uma segunda respiração atrasada de um ponto fixo da sala, que continua quando você prende o ar: "outra respiração".
+705. Com a Ana a menos de 6 m, mesmo fora de vista, o ruído da sala morre em um instante e sobra só o ar pesado.
+706. Quando a Ana some, o ruído da sala volta com um pop quase imperceptível.
+707. O radar e o canto do Inspetor ganham efeito Doppler de até 6%: o tom sobe quando ele vem e desce quando ele se afasta.
+708. Os multiplicadores de chuva, ambiência, ruído e corte de agudos agora são lidos pelo motor, então todos esses silêncios passam a valer para o Inspetor e para o mix de verdade.
+
+### Visual e luz (107)
+
+709. A chama das velas verga para o lado oposto ao Inspetor quando ele se aproxima, como uma corrente de ar monstruosa
+710. Quanto mais perto o Inspetor, mais a chama se deita (pista de direção sem HUD)
+711. A chama também verga para o lado da rajada de vento da noite
+712. Ao ar livre a corrente de ar inclina mais a chama do que dentro de casa
+713. A inclinação da chama volta sozinha, suave, depois que o perigo passa
+714. A chama quase apaga e encolhe quando o Inspetor chega perto demais
+715. A luz da vela cai junto com a chama quando ela está quase apagando
+716. A chama treme forte no pico do trovão e do clarão do relâmpago
+717. A chama estremece no subgrave do passo pesado do Inspetor a menos de 8 m
+718. A intensidade da luz da vela pulsa junto com esse tremor do passo
+719. No fundo do quase-apagar, a chama "morre" num tom frio de pavio se apagando
+720. A chama fica inquieta (tremor leve) quando o Inspetor caça por perto, mesmo a média distância
+721. No pico de um clarão forte a chama some, ofuscada pela luz do relâmpago
+722. A vela ganha um tom mais quente quando o jogador está a menos de 3,5 m (conforto do esconderijo)
+723. O tom quente da vela não roda na qualidade Baixa/Mínima
+724. Velas que quase apagam perto do Inspetor soltam fagulhas de brasa no ar
+725. As fagulhas das velas sobem, perdem força e se apagam
+726. As fagulhas são levadas de lado pelo vento da noite
+727. As fagulhas desligam na qualidade Baixa/Mínima e no QA
+728. Um trovão forte faz todas as lâmpadas acesas caírem juntas num instante
+729. A queda das lâmpadas no trovão acompanha a força do clarão
+730. O filamento do bulbo esfria (brilho cai) junto com a queda da luz
+731. Lâmpadas a menos de 6 m do Inspetor caem mais fundo no trovão (fiação mais fraca)
+732. Com "reduzir flashes", a queda das lâmpadas é suave e mais longa, sem estrobo
+733. Num trovão muito forte e raro, as luzes apagam de vez por quase 1 segundo
+734. O apagão restaura o brilho do bulbo ao devolver a luz
+735. A derrubada das lâmpadas não dispara durante a Procissão
+736. O halo luminoso da lâmpada apaga junto com ela no trovão
+737. A derrubada das lâmpadas não dispara nos túneis (sem céu) nem no QA
+738. A densidade da névoa sobe quando o Inspetor caça ou está em alerta
+739. A névoa também engrossa quando o Inspetor está a menos de 6 m
+740. Na calmaria a névoa abre de novo, com transição lenta que não enjoa
+741. A névoa "respira": a densidade pulsa junto com o drone da ambiência
+742. O pulso da respiração da névoa acelera quando o perigo sobe
+743. Dentro de casa o aperto da névoa é mais forte do que ao ar livre
+744. No temporal a névoa fecha ainda mais nos momentos de perigo
+745. A Lia solta um bafo visível à frente da câmera nas salas frias
+746. O bafo sai no ritmo da respiração da Lia
+747. A respiração fica mais curta (bafo mais frequente) quanto maior o medo
+748. Prender o ar (ESPAÇO) dissipa o bafo na hora
+749. Virar estátua também segura o bafo
+750. Cada baforada nasce à frente da câmera, sobe e se dissipa
+751. O bafo é levado de lado pela corrente de ar da noite
+752. O bafo fica mais denso na neblina
+753. O bafo fica mais denso (mais partículas) quanto maior o medo
+754. O bafo só aparece no cemitério, nos túneis, na neblina ou na noite seca ao relento
+755. O bafo fica mais fraco quando a Lia está escondida, para não denunciá-la
+756. O bafo desliga na qualidade Baixa/Mínima (desempenho)
+757. O bafo não roda no QA e é à prova de erro
+758. Um clarão forte "molha" a tela com um vidro de chuva escorrendo
+759. As gotas do vidro molhado escorrem e somem depois do clarão
+760. O vidro molhado só aparece perto de janela, nunca nos túneis
+761. O vidro molhado respeita "reduzir flashes" (fica desligado)
+762. Os respingos de chuva brilham mais no pico do clarão
+763. A chuva ganha um realce de opacidade no pico do clarão
+764. A lua pulsa de brilho no clarão, mantendo a coerência da luz lá fora
+765. O realce da lua e do céu no clarão só acontece ao ar livre
+766. Relâmpagos mudos e distantes acendem o céu no começo do capítulo, sem trovão
+767. O intervalo entre os clarões mudos encurta ao longo do capítulo (a tempestade chega)
+768. Os clarões mudos vão ficando mais fortes conforme a frente de tempestade se aproxima
+769. Dentro de casa o clarão mudo é mais fraco do que ao ar livre
+770. A tempestade que chega não aparece na noite seca nem nos túneis
+771. A vinheta escura das bordas pulsa com o subgrave da caça acima de 90 de medo
+772. O pulso da vinheta casa com o ritmo do perigo (sincronia olho-ouvido)
+773. A vinheta some suave quando o perigo passa
+774. A sinestesia da vinheta respeita "reduzir flashes" e o QA
+775. A ambiência dá um micro-corte de fôlego no som no pico do clarão forte
+776. O micro-corte da ambiência é curto (~120 ms) e volta sozinho, suave
+777. O micro-corte da ambiência não acontece com "reduzir flashes"
+778. A poeira do feixe treme junto com o estrondo do trovão, que chega depois do clarão (dá para contar a distância)
+779. A poeira do feixe treme no passo pesado do Inspetor a menos de 10 m, mais rápido quando ele caça
+780. A poeira salta com o sub-grave da Procissão passando
+781. A poeira treme a cada pulso do sino do fim
+782. O infra-som da caçada a menos de 14 m faz a poeira vibrar mesmo sem fone
+783. Os grãos de poeira incham e brilham mais no pulso do grave
+784. O feixe da lanterna vibra 1 a 2 px a cada pulso de grave e a mão da Lia reage
+785. A luz da lanterna oscila de intensidade no mesmo grave
+786. Com "reduzir flashes", a vibração do feixe cai a 40%
+787. A lanterna cintila de 1 a 4 Hz no ritmo do drone da sala
+788. Com uma entidade a menos de 9 m, a cintilação da lanterna vira irregular
+789. Quando alguém pisa no andar de cima, cai poeira fina do forro, visível no feixe, no mesmo compasso dos passos
+790. A poeira do forro faz o feixe tremer e as lâmpadas balançarem a cada pisada
+791. As lâmpadas respiram 4% de brilho no ciclo de 14 s da casa
+792. Na caça perto, a respiração das lâmpadas acelera e vira batimento irregular
+793. As lâmpadas balançam no fio com o trovão e com o grave
+794. O clarão forte vem com estalo de filamento e zumbido de transformador que some em 400 ms
+795. Uma porta que acabou de abrir puxa a chama das velas na direção dela por 8 s (a vela aponta a porta)
+796. A corrente da porta é mais forte perto dela e vai enfraquecendo até sumir
+797. Porta aberta pelo Inspetor também move as chamas, uma pista de rota sem HUD
+798. A chama também desliza um fio de lado na direção da corrente de ar
+799. No cemitério, pirilampos flutuam e piscam em ritmos diferentes
+800. Os pirilampos apagam em círculo quando o Inspetor chega a 10 m
+801. Os pirilampos voltam a acender devagar depois que ele se afasta
+802. Nos túneis, cada passo do Inspetor na água desenha um anel, mesmo longe da vista
+803. Nos túneis, ondas concêntricas aparecem sozinhas na água, em fila de 2 a 4, como passos invisíveis
+804. No silêncio que avisa, uma vinheta escura sutil fecha devagar nas bordas da tela
+805. No silêncio, as gotas de chuva passam a cair a 25% da velocidade
+806. No silêncio, a poeira do feixe também flutua em câmera lenta
+807. Quando o som volta, a velocidade das gotas e da poeira volta ao normal em cerca de 1 s
+808. Com medo acima de 60, o vidro das salas do internato embaça das bordas para o centro
+809. O embaçado do vidro cresce devagar e limpa em cerca de 4 s quando o medo cai
+810. Com o vidro embaçado e o Inspetor a menos de 8 m, um "shh" se desenha no vapor
+811. O trovão forte ao relento cria na lente um anel de onda de choque que se alarga por 0,4 s
+812. O golpe do Inspetor também sacode a lente com a onda de choque
+813. No frio, um segundo bafo mais lento e largo aparece no escuro à frente quando o Inspetor respira por perto
+814. O bafo da Lia agora é uma nuvem macia, não pontos quadrados
+815. As fagulhas das velas também ganharam o brilho macio
+
+### Jogabilidade (102)
+
+816. Segurar a vírgula fecha os olhos da Lia: a tela escurece rápido e ela fica parada, só ouvindo.
+817. De olhos fechados, os passos e as vozes das ameaças chegam 60% mais altos.
+818. De olhos fechados, a ambiência da casa afunda e os agudos cortam, para a ameaça se destacar.
+819. A Lia comenta na primeira vez que fecha os olhos: escuta melhor, mas fica cega.
+820. A escuta de olhos fechados dura até 4 segundos; depois os olhos ardem e é preciso descansar 10 segundos.
+821. De olhos fechados, um anel no chão marca onde o Inspetor está (até 24 m), uma vez por segundo.
+822. Agachada de olhos fechados, o medo da Lia cai bem mais rápido.
+823. Um toque rápido na vírgula não escurece a tela: só quem segura de verdade fecha os olhos.
+824. Prender o ar vira uma bolha: o volume do mundo despenca para cerca de 40%.
+825. Quanto mais tempo se prende o ar, mais os agudos somem e o mundo fica abafado.
+826. Depois de 4,5 s de ar preso, um zumbido agudo cresce e empurra a soltar a respiração.
+827. Um pontinho de respiração aparece embaixo da tela quando há ameaça perto ou o ar está preso.
+828. Com o fôlego quase no fim, um assobio fino escapa da Lia e o Inspetor perto pode ouvir.
+829. Prender o ar colado no Inspetor (menos de 2 m) alivia o medo aos poucos.
+830. Na rajada de chuva ou no trovão, prender o ar gasta só metade do fôlego.
+831. Soltar e prender o ar duas vezes seguidas, parada e agachada, acalma o coração com um "ufa".
+832. Com o Inspetor a menos de 3 m, a Lia engole seco em intervalos: um ruído mínimo que denuncia.
+833. Encostada numa porta fechada e parada, dá para ouvir a respiração ou os passos abafados do outro lado.
+834. Agachada e parada, o ouvido no chão sente o ribombo grave dos passos dele até 9 m.
+835. Com medo alto no frio ou na tempestade, os dentes da Lia batem.
+836. Os dentes batendo fazem ruído que o Inspetor ouve a menos de 6 m; prender o ar segura.
+837. Correr numa poça faz um respingo alto (ruído 10) e, com ele perto, soa uma corda de susto.
+838. Depois de sair da água os pés pingam por uns segundos e o rastro denuncia a posição.
+839. Agachada, parada e sem lanterna por 8 s, "a casa te perde": o Inspetor ouve menos da metade do seu ruído.
+840. Enquanto a casa te perde, o medo cai e quem procura por você erra o alvo.
+841. No silêncio total sobem sons distantes na casa, que revelam por onde andam as coisas.
+842. Um silêncio de 0,4 s vem logo antes do bote do Inspetor: o mundo cala para o susto.
+843. Mudar o ritmo do passo (parar, andar, agachar) com ele caçando quebra o compasso e o faz perder o rastro.
+844. A garrafa quebrada abre um poço de silêncio de 1,5 s em que mexer-se é seguro.
+845. Teste de nervos opcional: uma vez por noite, bem raro, todo o som some por 3,6 s.
+846. O estrondo do trovão é cobertura: por 2 s o ruído cai a um quarto, para cavar, arrombar e correr.
+847. 0,9 s antes do estrondo a Lia avisa que é a hora de correr, sem tela de tutorial.
+848. Chuva forte cobre 20% do ruído da Lia, e em noite seca ela fica mais exposta.
+849. A chuva alterna garoa e rajada em ciclos de 40 a 70 s, sem aviso na tela.
+850. Cerca de 3 s antes de cada rajada um vento crescente se ouve, e a jogadora aprende a ler o momento.
+851. Na rajada, o ruído da Lia e o ouvido do Inspetor ficam em 40% ao ar livre.
+852. Na rajada a chuva engrossa na tela e dá para ver o momento seguro.
+853. No recuo depois da rajada, o ruído ao ar livre sobe 15% e os passos 30%: a janela fecha.
+854. Segurar o ponto faz a Lia tapar os ouvidos: o mundo cai 70% e abafa.
+855. Com os ouvidos tapados, o coro da Procissão e o grito da Ana perdem 80% do susto.
+856. Soltar os ouvidos faz um farfalhar de roupa e deixa o som abafado por 1,2 s.
+857. Tapar os ouvidos logo depois de um estouro encurta o zumbido do tímpano.
+858. Ligar a lanterna parada e em pé faz um clique que o Inspetor ouve a uns 4 m.
+859. Com a pilha abaixo de 20%, a lanterna emite um zumbido baixo que cresce até a pilha acabar.
+860. O zumbido da pilha fraca entrega a Lia a menos de 5,5 m do Inspetor.
+861. A Lia comenta que a pilha está zumbindo, para a jogadora decidir apagar a luz.
+862. Com a lanterna apagada o ouvido vai afinando por 8 s, até +35% de volume; ao reacender volta em 1 s.
+863. Atravessar poça ou chuva forte molha os sapatos por 40 s.
+864. Sapatos encharcados chapam: cada passo tem 25% mais ruído, também dentro de casa.
+865. Cada passo de sapato molhado faz o "chap" no som.
+866. Sapatos molhados deixam pegadas escuras no chão, que somem em 14 s.
+867. Parada num piso seco ou agachada, a Lia seca os sapatos na metade do tempo.
+868. Um terço das salas fechadas tem goteira, com pingo de ritmo fixo por sala.
+869. Pisar junto do pingo da goteira deixa o passo com 40% do ruído.
+870. Três passos seguidos no pingo dão um tique discreto e a Lia comenta, sem tutorial.
+871. Segurar M faz a Lia rezar baixinho, com sílabas sussurradas, sem texto.
+872. A reza baixa o medo 2 por segundo (3 por segundo com o medo acima de 70).
+873. A reza vaza: com o Inspetor a menos de 7 m ela soa a 3 m (1,6 m dentro do esconderijo).
+874. A legenda "[ela reza baixinho]" aparece ao começar a rezar.
+875. Escondida com medo acima de 88, a Lia murmura sem querer e o murmúrio é ouvido a 2,5 m.
+876. Prender o ar (ESPAÇO) cala o murmúrio involuntário da Lia.
+877. Com medo acima de 90 e fôlego baixo, um soluço de pânico escapa a cada 20 a 40 s e é ouvido a 4 m.
+878. Tocar a vírgula bate palma: um estalo alto (ruído 14) que o Inspetor ouve, com 5 s de intervalo.
+879. A palma volta como três ecos vindos das paredes mais próximas, cada um do seu lado.
+880. A palma revela o tamanho do cômodo pelo eco: apertado, comum ou salão, mesmo no escuro.
+881. Ao ar livre a palma não tem eco e a Lia diz que é espaço aberto.
+882. Nos túneis, correr levanta poeira e a Lia tosse a cada 2,6 s de corrida, com ruído 9.
+883. Agachar, andar devagar ou prender o ar evita a tosse da poeira.
+884. A cada 50 a 90 s uma corrente de ar sopra e bate uma porta que você deixou aberta.
+885. O sopro de vento avisa 1,4 s antes da batida da porta.
+886. A batida da porta tem estrondo de ruído 10 que o Inspetor ouve de longe.
+887. Correr rente a uma parede faz a mochila raspar, com ruído 4 e raspão agudo.
+888. Virar a câmera rápido demais com o Inspetor perto faz o pano farfalhar; ALT vira devagar e fica silencioso.
+889. No capítulo III, sorteado pela semente, o telhado leva granizo por 40 s e ninguém ouve ninguém.
+890. O granizo estala no telhado com sons aleatórios e cobre 70% do ruído de tudo.
+891. Biblioteca, rouparia, quarto da Celeste e diretoria abafam os passos da Lia (50 a 75% do ruído).
+892. Nesses refúgios de tecido e papel o som de fora cai 6 dB: a Lia fica difícil de ouvir, mas surda.
+893. A Lia avisa na primeira vez que entra num refúgio acústico.
+894. Ladrilho e pedra deixam o passo mais alto (+20% e +10%): as rotas silenciosas se leem pelo piso.
+895. Passar 40 s numa mesma área sem seguir faz a casa pressionar: os agudos cedem e o grave sobe.
+896. Um grave de 44 Hz cresce sob a casa à medida que a pressão sobe.
+897. Com a casa pressionando, o Inspetor ouve até 25% mais, para empurrar a jogadora adiante.
+898. A Lia comenta que a casa pesa em cima dela quando a pressão passa de 40%.
+899. Música de tensão procedural: três notas em atrito crescem conforme o Inspetor se aproxima.
+900. A música de tensão pulsa mais rápido quanto mais perto ele está e abafa dentro do esconderijo.
+901. Mutador opcional "Ouvido Ruim": depois de levar dano, 60 s de zumbido e som abafado.
+902. A Lia ganha duas pedrinhas por capítulo e avisa na primeira vez.
+903. Sem garrafa, G joga uma pedrinha, com a mesma mira em arco da garrafa.
+904. A pedrinha tem som próprio por piso: tic na pedra, toc na madeira, pof na terra, plop na água.
+905. O raio de atração da pedrinha varia por piso: 11 na pedra, 9 na madeira, 6 na água, 3,5 na terra e 2,5 no tecido.
+906. A pedrinha quica mais duas vezes, cada vez mais fraca, e o Inspetor vai investigar.
+907. Tocar em G arremessa a garrafa leve e perto; segurar arremessa forte e longe (2,5 a 16 m).
+908. O arco da mira acompanha a força segurada e mostra onde a garrafa vai cair.
+909. Um aviso ensina o arremesso leve na primeira vez que ele acontece.
+910. O estilhaço da garrafa fica mais baixo quando o arremesso é leve.
+911. Na madeira, o Inspetor segue cada quique da garrafa com a cabeça.
+912. Modo opcional "Só o Perigo": sem ambiência nem música, só as pistas da ameaça.
+913. Modo opcional "Surdo": só o corpo da Lia soa, horror sem pista.
+914. A tela de opções ganha o grupo "Som e atmosfera" com os recursos opcionais e o Ouvido Ruim.
+915. Corrigido: fechar os olhos agora usa a vírgula, porque o N já era a tecla "andar sozinha" da plataforma.
+916. Corrigido: o tapete abafador nunca valia, pois nenhuma sala tinha piso de tapete; agora o abafamento vem de uma tabela por sala.
+917. Corrigido: ouvir pela porta, engolir seco e o assobio de fôlego baixo nunca disparavam por contadores sem valor inicial.
+
+### Interface (144)
+
+918. Novo grupo "Som e atmosfera" na tela de Opções reúne todas as pistas de som, silêncio e clima
+919. O grupo "Som e atmosfera" aparece inteiro tanto nas Opções do título quanto nas da pausa
+920. Botão "Modo Surdez (tudo visual)" liga de uma vez todas as pistas visuais equivalentes ao som
+921. O Modo Surdez já marca os seletores da tela, sem precisar reabrir as opções
+922. Aviso na tela explica que, no Modo Surdez, cada som ganha uma pista visual
+923. Nova opção "Ver o som": um anel na borda aponta de onde veio cada barulho (desligado / só perigo / todos)
+924. A onda do anel nasce na direção real da fonte do som e some em cerca de um segundo
+925. Cor do anel por categoria: perigo em vermelho, história em âmbar, segredo em roxo, seu barulho em azul
+926. Sons grandes sem direção (sino, Procissão) piscam a borda inteira na cor da categoria
+927. Opção de forma por tipo de som no anel: • passo, ▭ porta/vidro, ◗ voz, ◉ sino
+928. O glifo de forma fica de pé e legível mesmo quando aponta para baixo
+929. Limite de pulsos simultâneos no anel para a tela não poluir
+930. "Reduzir flashes" encurta pela metade as animações do anel
+931. Nova opção: a legenda cresce conforme o volume do som descrito
+932. Um grito sai em corpo grande; um sussurro sai miúdo
+933. Sons muito altos fazem a legenda tremer
+934. Sons de volume médio saem em negrito, sem tremor
+935. Nova opção: textura além da cor nas legendas, para daltônicos
+936. Legenda de perigo ganha um sublinhado tracejado
+937. Legenda de história sai em itálico
+938. Legenda de segredo sai com espaçamento de letras aberto
+939. Nova opção: seta de direção na própria legenda do som
+940. ‹ marca som vindo da esquerda e › da direita
+941. A seta dobra (‹‹ / ››) quando o som vem bem de lado
+942. ⌃ marca som vindo da frente
+943. ⌄ marca som vindo de trás de você
+944. Nova opção: a legenda diz se o som está perto, médio ou longe
+945. Nova opção: a legenda encosta no lado da tela de onde veio o som
+946. Som à direita puxa a legenda para a direita; à esquerda, para a esquerda
+947. Som de trás centraliza a legenda e a deixa um pouco mais apagada
+948. Nova opção: medidor de camuflagem mostra quanto o clima cobre seus passos agora
+949. A barra do medidor fica verde quando o mundo te cobre e vermelha quando você está exposta
+950. Rótulo em texto do medidor (o mundo te cobre / cobre em parte / quase sem cobertura / você está exposta)
+951. O medidor combina o clima sorteado da noite com o trovão e o gerador que abafam o som
+952. O medidor de camuflagem some durante o pânico da caçada para não distrair
+953. Nova opção: o clima da noite é anunciado ao entrar em cada capítulo
+954. Frase de sensação do clima (a tempestade cobre seus passos / a quietude te entrega / ...) em quatro faixas
+955. A frase do clima também vira legenda, para quem joga sem som
+956. O clima só é reanunciado ao mudar de capítulo, nunca repetindo no mesmo mapa
+957. Nova opção: a tela escurece nas bordas quando o mundo fica em silêncio
+958. A vinheta de silêncio entra e sai suave, voltando ao normal assim que um som acontece
+959. Nova opção: medidor do silêncio, um anel que enche quanto mais tempo tudo se cala
+960. O anel do silêncio fica avermelhado ao se aproximar do limiar
+961. Nova opção: pressão do silêncio, um tom fino que cresce quando tudo fica quieto demais
+962. O tom do silêncio sobe de frequência conforme a quietude se arrasta
+963. O silêncio só "pesa" quando não há perigo ativo nem você fazendo barulho, então não pune andar
+964. Legenda "[o silêncio aperta os ouvidos]" quando a quietude chega ao extremo
+965. Nova opção: legendar o estado da trilha de tensão
+966. Quatro estados nomeados da trilha (a casa respira baixo / a música se inquieta / adoece / não resolve)
+967. O estado da trilha só é relegendado com alguns segundos de folga, para não inundar a tela
+968. Nova opção: partitura do perigo desenha a curva de tensão rolando na borda de baixo
+969. A linha da partitura esquenta para o vermelho na caçada
+970. Nova opção: pulso nas bordas no ritmo do coração e da caçada
+971. O ritmo do pulso acelera conforme a tensão sobe e também com a vida baixa
+972. O pulso do coração usa uma onda suave, sem piscar seco; "Reduzir flashes" o deixa mais fraco
+973. Nova opção: nomear a ambiência ao entrar numa sala, para quem não distingue as camadas
+974. Cozinha e despensa viram "[ambiência: geladeira morta zumbindo]"
+975. Enfermaria vira "uma torneira pingando"
+976. Capela vira "um eco de reza parada no ar"
+977. Túnel e cisterna viram "água escorrendo ao longe"
+978. Dormitório e quarto viram "molas de cama rangendo ao vento"
+979. Banheiro vira "canos estalando"
+980. Recepção e hall viram "um relógio de parede, tique distante"
+981. Diretoria e sala secreta viram "papel farfalhando no ar frio"
+982. Sala de brinquedos e de aula viram "um móbile girando sozinho"
+983. Área externa vira "vento e chuva batendo no telhado"
+984. As demais salas viram "o silêncio da casa respirando"
+985. A legenda de ambiência sai sempre como história (âmbar), separada dos sons de perigo
+986. A ambiência não repete ao voltar para a mesma sala e tem folga entre avisos
+987. Botão "Ouvir os sons do perigo" toca passo, estalo, risada, contagem e Procissão em sequência
+988. Botão "Prévia de atmosfera" toca sino ao longe, estática, sino e as badaladas
+989. As prévias disparam as próprias legendas junto, para calibrar fone e volume
+990. Um aviso na tela explica para que serve cada prévia
+991. As prévias destravam o áudio do navegador antes de tocar
+992. As pistas novas respeitam o filtro "Legendar sons": com ele desligado, seguem mudas
+993. O anel, a vinheta de silêncio e o pulso do coração somem em pausa, cena e fim de capítulo
+994. O medidor de camuflagem aparece só quando ligado, no canto, sem cobrir as barras de vida
+995. Novo grupo "Mixer da casa" nas Opções, com controle separado para o que antes era um volume só
+996. Controle "Chuva" (0 a 150%) mexe só na chuva, sem calar o resto da casa
+997. Controle "Música de tensão" (0 a 150%) mexe só na trilha: cordas, caçada, violino, cluster agudo e acordes de alívio
+998. Opção "Sem trilha, só a casa" desliga a música de tensão e deixa só o som do ambiente e das criaturas
+999. "Ambiência da casa" (antes "Ambiente e música") agora controla só o som da casa, sem arrastar a música
+1000. Modo vizinho (☾): corta os picos a -9 dB para jogar de madrugada, sem abafar o susto
+1001. Quatro presets de mixagem em um toque: Cinema, Fone, Caçador e Cru
+1002. O preset Caçador sobe as criaturas e as vozes e baixa chuva e música para ouvir os passos dele
+1003. O preset Cru derruba a música e os sustos para um terror seco, só com a casa
+1004. Os presets atualizam na hora os controles na tela, inclusive os do menu de som antigo
+1005. Botões "Testar chuva / ambiência / música / vozes" tocam uma amostra de cada canal
+1006. A amostra passa pelo canal certo, então obedece ao controle que você acabou de mexer
+1007. Botão "Teste de fone e escuta" nas Opções, para refazer a calibragem quando quiser
+1008. O título ganha o botão "Teste de fone e escuta"
+1009. O título ganha uma linha discreta recomendando fones e explicando as legendas com direção
+1010. Antes da primeira noite, a tela de teste abre sozinha, uma única vez
+1011. A tela de teste mostra três marcadores (‹ ⌄ ›) que acendem junto com cada som
+1012. Teste de fone: um passo toca só no ouvido esquerdo, com legenda
+1013. Teste de fone: um sussurro toca só no ouvido direito, com legenda
+1014. Teste de fone: uma batida toca atrás de você, em som 3D, com legenda
+1015. Pergunta "Você ouviu cada um num lado diferente?" com três respostas
+1016. Responder "estou de fones" liga o áudio 3D de fones
+1017. Responder "só de uma caixa" liga o modo alto-falante e as legendas com direção e o anel na borda
+1018. Responder "não ouvi nada" sobe o volume e pede para tocar de novo
+1019. Segunda etapa da calibragem: três tons cada vez mais baixos e depois um sussurro quase inaudível
+1020. Os cinco botões de resposta ("nenhum" até "os 3 e o sussurro") ajustam o volume geral
+1021. Escuta curta escolhe a faixa "Fone baixo" e escuta média escolhe a faixa "Noite"
+1022. A margem dos sussurros (vozes) sobe conforme a escuta, para o sussurro importante não se perder
+1023. A tela final resume em texto o que foi ajustado
+1024. Todas as telas de teste têm "Pular", e quem pula não é incomodado de novo
+1025. O resumo tem "Refazer", e a tela de teste responde a setas e Enter
+1026. Legenda "[a chuva ficou do lado de fora]" ao entrar num cômodo vindo de fora
+1027. Legenda "[a chuva volta a bater em você]" ao sair para o lado de fora
+1028. Legenda "[silêncio]" quando tudo se cala por alguns segundos
+1029. Legenda "[silêncio: não é o de sempre]" quando o silêncio vem com perigo no ar
+1030. Legenda "[o silêncio engrossa]" quando a quietude se arrasta sem perigo
+1031. Opção de legendas poéticas ("a casa fecha a mão numa porta", "o prédio prende o ar") no lugar das secas
+1032. A tabela poética cobre vinte sons, de passos e vidro a sino, Procissão e telefone
+1033. Opção de direção em horas de relógio: "às 3h", "às 9h", "às 12h"
+1034. Opção de desenhar a forma da onda do som ao lado da legenda
+1035. Na legenda, grave sai grosso e lento, agudo sai fino e rápido, voz sai tremida
+1036. Opção de medidor de ruído em agulha de VU no lugar do anel, estilo toca-fitas
+1037. A agulha do VU passa do alvo e volta, com quique de mola
+1038. A zona vermelha do VU avisa o ruído alto
+1039. Ao ligar o VU, o anel de ruído some para não duplicar a informação
+1040. A pausa mostra "O que a Lia ouviu": os últimos 8 sons em texto
+1041. Cada som da lista de pausa vem com "há N s", direção e hora de relógio
+1042. A lista de pausa diz que a casa está quieta quando nada soou
+1043. A pausa mostra o seu ruído minuto a minuto em barras
+1044. As barras vão do verde ao vermelho conforme o barulho do minuto
+1045. A pausa não cala a casa: fica só uma chuva abafada
+1046. Durante a pausa, um batimento lento e grave marca o tempo
+1047. Ao despausar, um estalo de porta soa no fundo da casa
+1048. Fim de capítulo ganha o gráfico "O barulho da sua noite" com as salas mais barulhentas em barras coloridas
+1049. O fim de capítulo dá um título ao seu ruído: Silêncio de Monge, Pés de Gato, Passos de Gente ou Estrondo
+1050. A sala mais barulhenta fica marcada com ▲ e nomeada em texto
+1051. O menor ruído de cada capítulo vira recorde local de silêncio, guardado no navegador
+1052. Mensagem de novo recorde de silêncio ou comparação com o recorde anterior
+1053. A tela de morte ganha a autópsia sonora: os últimos 10 segundos de sons, cada um com o "-8s"
+1054. Cada linha da autópsia traz a direção e a hora de relógio do som
+1055. Botão "Ouvir de novo (sem direção)" na tela de morte toca de novo a sequência que te entregou
+1056. Se nada foi legendado nos últimos 10 s, a tela de morte avisa que ele chegou calado
+1057. A tela de morte mostra as salas onde você fez mais barulho
+1058. Nova opção "Legendar o que deixou de soar" (chuva que sumiu, silêncio) no grupo "Mais pistas de som"
+1059. Nova opção para ligar e desligar o "O que a Lia ouviu" da pausa
+1060. Nova opção para a pausa continuar respirando, com chuva e batimento abafados
+1061. Nova opção para o gráfico de ruído por sala no fim do capítulo e na morte
+
+### Progressão e rejogabilidade (102)
+
+1062. Novo desafio opcional "Só a Casa": sem música de tensão e sem legenda de perigo, só a ambiência e o som real das entidades.
+1063. No desafio Só a Casa os sustos vêm 20% mais fortes: o medo sobe 1,2 vez mais e o Inspetor volta com intervalo menor.
+1064. Conquista "Orelha Nua" por terminar o Capítulo III no desafio Só a Casa.
+1065. Novo desafio "Só pelo Som": o HUD some (objetivos, barras, inventário e indicadores) e você joga só pelo áudio 3D.
+1066. No Só pelo Som as legendas de som ficam totalmente desligadas.
+1067. No Só pelo Som a vinheta escurece a 85%, deixando só o miolo da tela.
+1068. Selo "De olhos fechados" no cartão de fim da noite para quem terminar no Só pelo Som.
+1069. Conquista secreta "De Olhos Fechados" por terminar um capítulo no Só pelo Som.
+1070. Novo desafio "Rádio Mudo": sem música, sem legenda direcional e sem bússola de ameaças; tudo vem só pelo som.
+1071. No Rádio Mudo os sustos pesam o dobro: todo ganho de medo é dobrado e a ajuda auditiva não vale.
+1072. O Rádio Mudo guarda o recorde de tempo da noite e mostra nas estatísticas e no painel de desafios.
+1073. Conquista "Rádio Mudo" por terminar um capítulo no desafio.
+1074. Novo desafio "Noite Muda": sem legenda de perigo e sem música de tensão.
+1075. Na Noite Muda a Hora do Silêncio dura 40 s em vez de 20.
+1076. A Noite Muda tem placar próprio (melhor tempo) guardado e exibido nas estatísticas.
+1077. Conquista "Noite Muda" por atravessar o Capítulo II nesse desafio.
+1078. Conquista secreta "Quatro Silêncios" por terminar capítulos nos quatro desafios sonoros.
+1079. Só a Casa abre desde o começo; os outros três desafios abrem depois do primeiro final, com aviso claro nas caixas travadas.
+1080. A música de tensão (cordas, caçada, violino, zumbido, aglomerado agudo, percussão e pulso) realmente cala nos desafios que a tiram.
+1081. Nova aba "Desafios" no painel Sons e silêncios, com caixas para ligar cada desafio e o termômetro de silêncio.
+1082. A tela de pausa lista os desafios sonoros ligados e a ajuda auditiva atual.
+1083. Fim de capítulo mostra "barulho neste capítulo: tempo e porcentagem".
+1084. Fim de capítulo mostra os pontos de silêncio (segundos e porcentagem do capítulo).
+1085. Rank Sombra: passar 40% do capítulo em silêncio destaca a linha no fim do capítulo e dá a conquista "Sombra".
+1086. Selo Pé de Pluma no fim do capítulo para quem faz pouco barulho, com a conquista "Pé de Pluma".
+1087. Conquista secreta "Pluma de Ouro" por três selos Pé de Pluma na mesma noite.
+1088. O melhor silêncio de cada capítulo é lembrado e comparado no fim ("melhor deste capítulo: X%").
+1089. A tela final diz "você fez barulho por X min Y s (Z% da noite)".
+1090. Selos bronze, prata e ouro de furtividade pela faixa de barulho da noite, na tela final.
+1091. A tela final mostra a área sob a curva do ruído e o total de silêncio da noite.
+1092. A tela final conta quantas vezes o Inspetor te ouviu na noite (barulho seguido de investigação ou caçada).
+1093. A tela final mostra quantos sons novos entraram no caderno de sons naquela noite.
+1094. Audiograma na tela final: um gráfico em canvas com o ruído que a Lia fez a cada segundo.
+1095. O audiograma marca em vermelho cada vez que o Inspetor te ouviu.
+1096. O audiograma marca com pontos verdes os silêncios totais de 15 s ou mais.
+1097. Botão para baixar o audiograma como imagem PNG, com a conquista "Gráfico da Noite".
+1098. Nova aba "Última noite" no painel Sons e silêncios para rever o audiograma, o resumo e os selos depois.
+1099. Fita da noite exportável: botão que renderiza 20 s de chuva, passos, batimento e susto em arquivo .wav (OfflineAudioContext, 100% procedural).
+1100. Na fita da noite os passos seguem o ruído real que a Lia fez nos últimos segundos da noite, com mais pressa e força quando corria.
+1101. Conquista "Fita Gravada" por exportar a fita da noite.
+1102. Termômetro de silêncio: um brilho azul discreto na borda da tela que cresce enquanto você fica em silêncio e sem lanterna.
+1103. Opção de desligar o termômetro de silêncio.
+1104. Conquista secreta "Noite Calada" por terminar a noite com menos de 20 s de barulho alto.
+1105. Conquista secreta "Furtiva de Ouro" por fechar a noite com o selo de ouro de furtividade.
+1106. Conquista "Só de Ouvido" por terminar um capítulo com a lanterna acesa em menos de um quinto do tempo.
+1107. A pausa mostra o tempo de barulho e de silêncio da noite até ali.
+1108. Novas linhas nas estatísticas: sons no caderno, silêncios, estações de rádio, ajuda auditiva, selos Pé de Pluma e sons ouvidos de novo.
+1109. Conquista secreta "Silêncio Absoluto": chegar ao último degrau de silêncio sem nenhum barulho alto na noite, com uma carta curta do Davi.
+1110. Conquista secreta "Nem a Casa Te Ouviu" por atravessar um corredor longo inteiro sem som acima do que o Inspetor escuta, com a frase "Nem a casa te ouviu".
+1111. Conquista "Ouvido de Gato": esconder-se três vezes na mesma noite antes de ver o Inspetor, só pelo som dele chegando.
+1112. Conquista "Sessenta Segundos": um minuto numa sala sem lanterna e sem som com o Inspetor solto, com frase da Lia.
+1113. Conquista secreta "Cantor Calado" por ficar parada durante as nove badaladas, com frase da Lia.
+1114. Conquista secreta "Tinha Alguém Aí?" por olhar para trás (Q) logo depois do sussurro.
+1115. Conquista "Orelha Absoluta": virar para o lado certo oito vezes no capítulo antes de ver o Inspetor, com contagem e frase do rádio no fim do capítulo.
+1116. Conquista secreta "A Goteira Inteira" por ficar parada 60 s só para escutar a casa.
+1117. Conquista "Ouvido de Cão" por escutar cinco sons raros da casa.
+1118. Caderno de sons: cada som com legenda entra sozinho na primeira vez que é escutado, sem coleta nem ida e volta.
+1119. Aviso discreto "Novo no caderno de sons" nos primeiros sons e em todo som raro.
+1120. Cada verbete do caderno mostra a sala da primeira escuta e quantas vezes o som foi escutado.
+1121. Cada som tem uma linha de lore própria (48 sons) e os demais ganham uma explicação pela categoria (perigo, história, segredo, corpo).
+1122. Botão "ouvir de novo" em cada verbete reproduz o som na galeria do título.
+1123. Conquista "Sala de Som" por ouvir dez sons de novo na galeria.
+1124. Filtros por categoria no caderno (perigo, história, segredo, seu corpo e outros).
+1125. Barra de progresso do caderno e contador de sons raros.
+1126. Dezoito sons marcados como raros (mais todos os de segredo) com a etiqueta RARO.
+1127. Conquistas "Primeiras Páginas" (25 sons), "Dicionário de Sons" (60) e a secreta "Ouvido Absoluto" (150).
+1128. Aviso de que alguns sons só acontecem dentro da casa quando o replay não soa.
+1129. Novo botão "Sons e silêncios" no título abrindo o painel do caderno.
+1130. Silêncio do Inspetor: parada perto dele enquanto ele escuta vira um verbete, com frase da Lia.
+1131. Silêncio do armário: ficar quieta escondida no armário vira um verbete, com frase da Lia.
+1132. Silêncio da cama: ficar quieta embaixo da cama vira um verbete, com frase da Lia.
+1133. Silêncio do refúgio: ficar quieta numa sala segura vira um verbete, com frase da Lia.
+1134. Silêncio da Hora: a chuva e o vento que param viram um verbete, com frase da Lia.
+1135. Silêncio do esconde-esconde: ficar parada enquanto a Ana conta vira um verbete, com frase da Lia.
+1136. Silêncio do fôlego preso: prender o ar escondida vira um verbete, com frase da Lia.
+1137. Aba "Silêncios" mostra os escutados com a frase e, nos que faltam, a dica de onde escutá-los.
+1138. Conquista secreta "Orelha Fina" por escutar os sete silêncios.
+1139. Filtro de áudio cosmético "Rádio de gaveta" (menos grave e menos agudo), liberado pelos sete silêncios.
+1140. Filtro de áudio cosmético "Fundo de poço" (som abafado).
+1141. Filtro de áudio cosmético "Agulha" (agudos mais claros).
+1142. Grade da rádio com sete estações (frequência, nome e horário), preenchida ao escutar cada uma.
+1143. Aviso "Dial: frequência, nome" no momento em que uma estação nova é sintonizada.
+1144. Conquista "Dial Completo" por sintonizar as sete estações.
+1145. Estação final secreta 107.9 FM, liberada pelo dial completo, com som e mensagem próprios.
+1146. Conquista secreta "A Frequência Que Falta" por sintonizar a estação final.
+1147. Espectrograma da fita 2 em canvas, na aba "Fita 2", quando a fita for achada.
+1148. Tocar no trecho certo do espectrograma revela o rosto do Davi e o número 1979, com uma nota nova e a conquista secreta "O Rosto na Fita".
+1149. Botão "Ouvir o espectro" toca o espectrograma por síntese aditiva, o rosto virando chiado.
+1150. Teste de fones guiado de 10 s: bipes só à esquerda e só à direita, sussurro de um ouvido ao outro, pulso que sobe e passos vindo de trás.
+1151. O teste de fones é oferecido uma vez no título, com "Agora não" que nunca mais insiste.
+1152. O teste de fones pergunta como ficou o volume e ajusta o volume mestre.
+1153. Se um dos lados não chegou, o teste oferece e liga o Som mono.
+1154. Conquista "Fones no Lugar" por passar no teste de fones.
+1155. Ajuda auditiva que se adapta: nas primeiras noites os avisos de perigo duram 3 s a mais.
+1156. Com ajuda auditiva as legendas de aviso repetem mais cedo.
+1157. A ajuda auditiva cai 10% a cada final.
+1158. A ajuda auditiva cai 10% a cada dez capítulos terminados sem morrer.
+1159. A ajuda auditiva não existe no Pesadelo, no Rádio Mudo nem no Só pelo Som, então a dificuldade escolhida continua mandando.
+1160. Em "Fones e ajuda" dá para travar a ajuda no nível atual ou zerar de uma vez.
+1161. Conquista "Sem Rodinhas" por deixar a ajuda auditiva chegar a zero.
+1162. Pena no título que aparece depois do primeiro Pé de Pluma e ressoa uma nota a cada toque.
+1163. Conquista secreta "A Pena Que Ressoa" por tocar a pena sete vezes.
+
+### Plataforma e acessibilidade (93)
+
+1164. O Three.js (r160) agora vem da própria pasta do jogo (vendor/three.module.min.js): o 3D abre mesmo com o unpkg e o jsdelivr fora do ar ou lentos
+1165. O service worker guarda essa cópia local do Three.js, então depois da primeira visita o jogo abre sem internet
+1166. Se a cópia local falhar, o carregamento tenta o unpkg e depois o jsdelivr, na mesma versão, em vez de ficar preso na tela de carregamento
+1167. O botão "Tentar de novo" da tela de carregamento troca de texto conforme o servidor que será tentado a seguir
+1168. Tirados os preconnect e dns-prefetch para unpkg e jsdelivr, que não são mais usados na abertura (menos conexões desperdiçadas)
+1169. A cópia local do Three.js é pré-carregada junto com a página (modulepreload), o 3D começa a ser lido mais cedo
+1170. A tela de carregamento da primeira visita explica que o internato está sendo guardado no aparelho para abrir direto e até sem internet
+1171. Três dicas novas na tela de carregamento: o botão Som do título, os graves em caixinha de notebook e celular, e jogar sem internet
+1172. Cache do aplicativo passou para v14 e lista o módulo novo, para a versão nova chegar na próxima abertura
+1173. O áudio do celular e de aparelho fraco é criado com latencyHint "balanced", que gasta menos CPU e dá menos estalos
+1174. As respostas de impulso do reverb (as caudas de eco de 0,6, 2,8 e 4 s) são geradas na tela de título em pedaços de 30 mil amostras entre quadros, e não de uma vez ao apertar Novo jogo
+1175. O impulso de 2,6 s e o ruído do efeito de voz do Inspetor e das fitas são preparados em tempo ocioso quando o áudio começa, e não na primeira fala do jogo
+1176. O efeito de voz reaproveita o buffer de ruído compartilhado do motor em vez de criar mais um de 2 s
+1177. A descrição que aparece ao compartilhar o link (og:description) agora fala do som e do Inspetor cego
+1178. A descrição do cartão de rede social (twitter:description) também foi reescrita com o Inspetor que caça pelo som
+1179. O navegador deixa de transformar números do texto em links de telefone (format-detection)
+1180. O link do jogo passa a enviar só a origem como referência a outros sites (política de referrer)
+1181. A descrição do aplicativo instalado agora diz que funciona sem internet e que o som é parte do medo
+1182. O aplicativo instalado ganha o atalho "Calibrar o som" (abre direto o assistente, ?som=1)
+1183. O endereço ?som=1 abre o assistente de calibragem logo depois do toque de início
+1184. Botão "Mandar o jogo a um amigo" nas opções de som: abre o compartilhar do celular ou copia o link
+1185. Na primeira abertura o jogo pergunta como você está ouvindo (fone, fone sem fio, caixa de notebook ou celular) e ajusta o som para isso
+1186. Seletor "Meu som" nas opções com quatro perfis de saída: fone com fio, fone sem fio, caixa do notebook e alto-falante do celular
+1187. Escolher o perfil também atualiza o "Estou de fone" do Desempenho, então o som 3D (HRTF) liga ou desliga junto
+1188. Em aparelho de toque o assistente já marca o alto-falante do celular como sugerido
+1189. Botão "Som" no título, que mostra o perfil escolhido e se o som já foi calibrado
+1190. Assistente de calibragem do som em passos (perfil, audibilidade, fone, sincronia, graves), com opção de pular cada passo
+1191. Teste de audibilidade: um tom grave, um passo seco e uma respiração tocam em seis níveis cada vez mais baixos, e você aperta "Não ouvi" quando sumirem
+1192. O resultado do teste vira um reforço de 0 a 12 dB aplicado a todo o jogo, para os passos distantes do Inspetor ficarem acima do que você consegue ouvir
+1193. Durante os testes o reforço fica desligado, para medir o aparelho sem ajuda
+1194. Os sons de teste passam pelo mesmo caminho do jogo (EQ, compressor e limitador do perfil), então testam o aparelho de verdade
+1195. Teste de fone: um passo circula pela cabeça e você diz se veio da esquerda, da direita ou de trás, em três rodadas, com opção de ouvir de novo
+1196. Se você errar o teste de fone, o jogo desliga o som 3D (HRTF) e passa para o som simples, melhor para caixa e mono
+1197. Teste de sincronia: um quadrado acende a cada clique e um controle de 0 a 400 ms atrasa a imagem até o clarão e o som chegarem juntos
+1198. O teste de sincronia mostra a latência de saída que o próprio aparelho informa
+1199. O clarão do teste de sincronia fica fraco quando "reduzir flashes" está ligado
+1200. Teste de graves: um tom de 55 Hz puro e depois o mesmo com harmônicos, e a resposta ajusta os graves virtuais
+1201. Último passo do assistente resume o perfil, o reforço e a sincronia, e deixa refazer do início
+1202. O assistente é navegável por controle e teclado (entra na lista de telas do foco) e Esc fecha
+1203. O assistente tem role de diálogo, rótulo e resultado em região viva, para leitor de tela
+1204. Nos botões do assistente, no celular, cada toque dá um tique de vibração na mão
+1205. Se o navegador ainda não liberou o som, o assistente avisa em vez de ficar mudo
+1206. Pular a calibragem na primeira vez é lembrado: o jogo não pergunta de novo
+1207. Linha de estado nas opções ("Calibrado: perfil, reforço de +X dB") e botão para zerar a calibragem
+1208. Medidor de nível da saída de som no assistente e nas opções, para ver se o jogo está mesmo tocando
+1209. Graves virtuais ajustáveis por controle deslizante (0 a 200%): harmônicos 2x e 3x do grave que caixinha e celular não tocam
+1210. Caixa de som comum (sem fone) ganha uma dose leve de graves virtuais, antes só notebook e celular tinham
+1211. Presença de voz (realce de médios em 900 Hz) conforme o perfil, com controle deslizante
+1212. No alto-falante do celular entra um compressor extra, para os sons baixos não sumirem
+1213. O reverb diminui no alto-falante pequeno (55% no celular, 80% no notebook), porque a cauda embola o som
+1214. Opção Infrassom (completo, suavizado abaixo de 40 Hz, cortado abaixo de 80 Hz) para quem se incomoda com o zumbido grave da caçada, do sino e dos sustos
+1215. No celular o teto de vozes de áudio simultâneas cai de 24 para 12; o ambiente é cortado primeiro e perigo, voz e sustos continuam tocando
+1216. No áudio leve o teto cai para 8 vozes
+1217. As opções mostram o número de vozes de áudio em uso, o limite do aparelho, a latência de saída e as falhas do áudio dos últimos 10 s
+1218. O contador de qps (overlay de depuração) ganhou vozes de áudio, áudio leve e sincronia
+1219. Áudio leve automático: se o jogo ficar abaixo de 30 quadros por segundo por mais de 5 s, o áudio simplifica sozinho
+1220. Áudio leve automático também quando o relógio do áudio atrasa em relação ao da página mais de duas vezes em 10 s (sinal de estouro de buffer)
+1221. No áudio leve o reverb de convolução é trocado por dois atrasos com realimentação, bem mais barato, e a acústica não some
+1222. No áudio leve duas camadas contínuas da trilha (cordas e o cluster agudo) saem do grafo e deixam de gastar CPU
+1223. Quando a carga cai por 40 s sem falhas, o áudio completo volta sozinho
+1224. Opção Áudio leve (automático, sempre ligado, desligado) com uma linha que diz se está ativo e por quê
+1225. A qualidade Mínima liga o áudio leve
+1226. Aparelho modesto (pouca memória, poucos núcleos ou economia de dados) liga o áudio leve sozinho
+1227. Bateria em 15% ou menos sem carregar liga o áudio leve, e ele volta quando o aparelho é ligado na tomada
+1228. Sincronia imagem e som: o relâmpago é atrasado pela latência do fone, para o clarão e o trovão chegarem juntos
+1229. O tremor de câmera dos golpes e sustos também é atrasado pela latência, para a imagem bater com o som no fone sem fio
+1230. A latência é lida sozinha de outputLatency e baseLatency do AudioContext (acima de 120 ms)
+1231. No perfil de fone sem fio o jogo assume 160 ms quando o Chrome informa zero, o que é comum em Bluetooth
+1232. Controle manual de 0 a 400 ms nas opções, com os modos automático, sem ajuste e manual
+1233. Ao trocar de fone no meio da sessão a latência é lida de novo
+1234. Opção "Só o mundo, sem trilha": desliga a música (barramento e as quatro camadas contínuas) e deixa só o som do prédio
+1235. Sem trilha, o aviso de início da caçada passa a ser batidas no chão no lugar do acorde de tensão
+1236. Sem trilha, a Procissão é anunciada por batidas no chão e rangidos do prédio
+1237. Sem trilha, durante a caçada o prédio range de tempos em tempos para o jogador sentir a ameaça
+1238. Os avisos do modo sem trilha têm legenda ("o prédio treme e range")
+1239. Pulso de tensão no controle e no celular: o Inspetor caçando vira uma batida dupla que acelera quando ele chega perto
+1240. A Ana dá um toque curto e agudo (só o motor fraco) que acelera com a proximidade, diferente das outras ameaças
+1241. A Procissão chega como uma onda longa e grave
+1242. Nos controles compatíveis os gatilhos (trigger-rumble) pulsam junto com as batidas
+1243. Os pulsos têm limite de frequência para poupar o motor de vibração
+1244. O acorde de susto da caçada ganha um solavanco de vibração
+1245. Os passos do Inspetor a menos de 7 m dão um tremor leve que cresce com a proximidade
+1246. O trovão ressoa no controle e no celular um instante depois do clarão
+1247. Opção para desligar o pulso de tensão
+1248. Botão "Sentir os avisos" toca os três padrões (Inspetor, Ana, Procissão), para o jogador aprender a diferença
+1249. Botão "Ouvir o Inspetor a 8 m" toca três passos reais do jogo à distância em que ele precisa ser ouvido
+1250. Botão "Ouvir um trovão" para checar graves e volume com um som do jogo
+1251. Botão "Destravar o som" para quando o navegador ou o aparelho (iPhone no silencioso, por exemplo) deixou o áudio mudo
+1252. Clipe do susto (opcional): grava os últimos segundos de imagem e som num arquivo webm leve, só no aparelho, sem enviar nada
+1253. O clipe tem 640x360 a 15 quadros, com a legenda "sobrevivi até aqui" e o nome do capítulo
+1254. Dois gravadores defasados em 10 s garantem de 10 a 20 s de clipe sem guardar o vídeo inteiro
+1255. Na tela de morte aparece o botão para salvar o clipe ou mandá-lo pelo compartilhar do celular
+1256. O clipe é desligado em qualidade Baixa e com áudio leve, para não pesar em aparelho fraco

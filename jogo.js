@@ -719,7 +719,7 @@ function onKey(e) {
   if (JM.tecla(e)) return; // T fone, B rádio
   if (JGL6.tecla(e)) return; // lote 6: deslize (agachar correndo)
   if (JGL6B.tecla(e)) return; // lote 6 (2ª rodada): cartas (1-3, 7-9), apito/guizo/cadeira/giz (4, 5, 6, 0), moeda (G), manivela (R)
-  if (JGS.tecla(e)) return; // lote 7: N fecha os olhos para ouvir
+  if (JGS.tecla(e)) return; // lote 7: vírgula fecha os olhos para ouvir (jogabilidade-som.js)
   if (MS.tecla(e)) return; // lote 4: V (o nome dele, contar junto, a senha, a chamada) e G com o apito dele (src/monstros-segredos.js)
   if (JGL5B.tecla(e)) return; // lote 5 (2ª rodada): ` descalçar (src/jogabilidade-lote5b.js)
   if (e.code !== 'KeyQ' && e.code !== 'KeyZ' && e.code !== 'KeyX') silencioT = 0;
@@ -3251,7 +3251,7 @@ const SOM = {
     lp.connect(dg); dg.connect(BUS.amb); AMB.drone = dg;
     const lfo = AC.createOscillator(); lfo.frequency.value = .07; const lg = AC.createGain(); lg.gain.value = 80; lfo.connect(lg); lg.connect(lp.frequency); lfo.start();
     const ch = ruido(true), bp = AC.createBiquadFilter(); bp.type = 'lowpass'; bp.frequency.value = 2800;
-    const cg = AC.createGain(); cg.gain.value = .12; ch.connect(bp); bp.connect(cg); AUD.chuvaG = AC.createGain(); AUD.chuvaG.gain.value = OPT.vChuva ?? 1; AUD.chuvaG.connect(BUS.amb); cg.connect(AUD.chuvaG); ch.start(); AMB.chuva = cg; // lote 7: a chuva tem controle próprio AMB.chuvaF = bp;
+    const cg = AC.createGain(); cg.gain.value = .12; ch.connect(bp); bp.connect(cg); AUD.chuvaG = AC.createGain(); AUD.chuvaG.gain.value = OPT.vChuva ?? 1; AUD.chuvaG.connect(BUS.amb); cg.connect(AUD.chuvaG); ch.start(); AMB.chuva = cg; AMB.chuvaF = bp; // lote 7: a chuva tem controle próprio (AUD.chuvaG)
     // a chuva vem em ondas: uma camada de gotas grossas que cresce e some devagar
     const rg = ruido(true), rgf = AC.createBiquadFilter(); rgf.type = 'bandpass'; rgf.frequency.value = 4800; rgf.Q.value = .6; const rgg = AC.createGain(); rgg.gain.value = 0;
     rg.connect(rgf); rgf.connect(rgg); rgg.connect(cg); rg.start(t, .7);

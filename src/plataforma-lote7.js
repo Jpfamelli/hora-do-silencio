@@ -106,7 +106,7 @@ export function instalarPlat7(C, U) {
   // camadas contínuas da trilha (osciladores que giram o tempo todo): fora do grafo, nem custam CPU
   const fora = new Set();
   function camadas() {
-    const amb = C.AMB, bus = C.BUS && C.BUS.amb; if (!amb || !bus) return;
+    const amb = C.AMB, bus = (C.AUD && C.AUD.musG) || (C.BUS && C.BUS.amb); if (!amb || !bus) return; // integração: as camadas da trilha agora saem em AUD.musG (mixer da interface), não direto no barramento amb
     const querFora = O.semTrilha ? ['cordas', 'violino', 'cluster', 'caca'] : (leve ? ['cordas', 'cluster'] : []);
     for (const k of ['cordas', 'violino', 'cluster', 'caca']) {
       const g = amb[k]; if (!g || !g.disconnect) continue;
