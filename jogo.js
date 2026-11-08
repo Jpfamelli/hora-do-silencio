@@ -36,6 +36,7 @@ import { criarMonstrosLote6B } from './src/monstros-lote6b.js'; // lote 6 (2a ro
 import { instalarAudioLote6 } from './src/audio-lote6.js';
 import { instalarAudioLote6b } from './src/audio-lote6b.js'; // lote 6 (2ª rodada): a casa lembra o que você fez (rádio da sua morte, sua voz, mutadores sonoros, ouvido atento)
 import { instalarAudioLote5b } from './src/audio-lote5b.js';
+import { criarSimples } from './src/modo-simples.js';
 import './src/legendas-pilha.js'; // revisão do lote 5: legendas próprias dos monstros sobem para cima da pilha de legendas de som
 import { instalarHistoriaLote7 } from './src/historia-lote7.js';
 import { instalarSomMonstros7 } from './src/monstros-som-lote7.js';
@@ -632,6 +633,7 @@ function mobiliar(r) {
 // ESTADO
 // =====================================================================
 let S;
+const SIMP = criarSimples({ OPT, S: () => S, THREE, camera, W, R, P: () => P, mode: () => mode, ui: () => ui }); // modo simples (src/modo-simples.js): porteiro de legendas, vozes, avisos e sistemas extras
 function perm3() { const a = [1, 2, 3]; for (let i = 2; i > 0; i--) { const j = Math.random() * (i + 1) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; }
 function novoEstado(dif) {
   return PG.novo({
@@ -1390,10 +1392,11 @@ function entrarMaisPerto() {
 // mira assistida: se o centro da tela não pega nada, procura o interativo mais perto do centro num cone pequeno
 const _vc = new THREE.Vector3(), _fw = new THREE.Vector3(), _bx = new THREE.Box3(), rayCone = new THREE.Raycaster();
 function alvoPorCone(vis) {
-  camera.getWorldDirection(_fw); let melhor = null, mAng = .17;
+  const gen = SIMP.on(); // modo simples: cone de mira mais generoso (objetos pequenos como a chave no prego eram difíceis de acertar)
+  camera.getWorldDirection(_fw); let melhor = null, mAng = gen ? .3 : .17;
   for (const it of vis) {
     if (!it._c) { _bx.setFromObject(it.obj); if (_bx.isEmpty()) continue; it._c = _bx.getCenter(new THREE.Vector3()); }
-    _vc.copy(it._c).sub(camera.position); const d = _vc.length(); if (d > 2.4 || d < .05) continue;
+    _vc.copy(it._c).sub(camera.position); const d = _vc.length(); if (d > (gen ? 2.9 : 2.4) || d < .05) continue;
     const ang = Math.acos(clamp(_fw.dot(_vc.normalize()), -1, 1)); if (ang >= mAng) continue;
     rayCone.set(camera.position, _vc); rayCone.far = d;
     const h = rayCone.intersectObjects(W.solid, false)[0];
@@ -2820,7 +2823,7 @@ function updateEventos(dt) {
     if (chamadoArmadilha.t <= 0) { chamadoExpirou(chamadoArmadilha.sala); chamadoArmadilha = null; PG.chamado(false); }
     else if (P.room === chamadoArmadilha.sala) { const s = chamadoArmadilha.sala; chamadoArmadilha = null; chamadoEm = perf; H.respondeu(); PG.chamado(true); chamadoBote(s); }
   }
-  SUST.update(dt);
+  if (SIMP.sustosOk()) SUST.update(dt); // modo simples: sem sustos soltos no prólogo
   for (const f of W.tick) f(dt);
 }
 // Caiu na armadilha: a porta bate, a voz vira a dele e ele vem da sala vizinha (com 2 s para você reagir)
@@ -2940,7 +2943,7 @@ function proxDialogo() {
   if (!l) { $('#dialogo').hidden = true; ui = null; const cb = dialogoCb; dialogoCb = null; cb && cb(); return; }
   const p = R.personagens[l.quem] || { nome: l.quem, cor: '#fff' };
   $('#dialogo .quem').textContent = p.nome; $('#dialogo .quem').style.color = p.cor;
-  if (l.quem && typeof VOZ !== 'undefined') VOZ.tocar(l.quem, l.texto);
+  if (l.quem && typeof VOZ !== 'undefined' && SIMP.vozOk({ quem: l.quem, _d: 1 })) VOZ.tocar(l.quem, l.texto);
   const txt = codTxt(l.texto), el = $('#dialogo .txt'); let i = 0; el.textContent = ''; clearInterval(dialogoDig);
   dialogoDig = setInterval(() => { i += 2; el.textContent = txt.slice(0, i); if (i >= txt.length) { clearInterval(dialogoDig); dialogoDig = null; } }, 22);
   dialogoTxt = txt; SFX.clique();
@@ -3003,7 +3006,8 @@ function dicaPular(on) {
 function iniciarCena() {
   mode = 'cena'; $('#fx-cine').hidden = false; dicaPular(true);
   cena = { t: 0, fim: 30, falas: R.abertura.slice(), cartoes: R.intro.slice(), cartaoT: 0 };
-  const lembra = PG.falaAbertura(); if (lembra) { cena.falas.push(lembra); cena.fim = lembra.t + 5; } // o rádio lembra como foi a última noite
+  if (SIMP.on()) { cena.falas = cena.falas.map(f => ({ ...f, t: f.t * .6 })); cena.fim = 18; } // modo simples: abertura mais curta (ENTER pula)
+  const lembra = SIMP.on() ? null : PG.falaAbertura(); if (lembra) { cena.falas.push(lembra); cena.fim = lembra.t + 5; } // o rádio lembra como foi a última noite
   if (W.def.cena) W.def.cena.iniciar();
   SFX.motor(true);
 }
@@ -3012,7 +3016,7 @@ function updateCena(dt) {
   if (W.def.cena) W.def.cena.update(cena.t, dt);
   if (cena.falas.length && cena.t >= cena.falas[0].t) { const f = cena.falas.shift(); sub(f.quem, f.texto, true); }
   cena.cartaoT -= dt;
-  if (cena.cartaoT <= 0 && cena.cartoes.length && cena.t < 24) { cartao(cena.cartoes.shift(), 4.2); cena.cartaoT = 5; }
+  if (cena.cartaoT <= 0 && cena.cartoes.length && cena.t < (SIMP.on() ? 16 : 24)) { cartao(cena.cartoes.shift(), SIMP.on() ? 3 : 4.2); cena.cartaoT = SIMP.on() ? 3.2 : 5; }
   updateSub(dt);
   if (cena.t >= cena.fim) pularCena();
 }
@@ -3968,14 +3972,15 @@ function updateAudioCore(dt) {
   // drone respira com o perigo
   AMB.drone.gain.setTargetAtTime((.03 + .03 * AUD.coracaoN) * ambM, now, ambM < .05 ? .02 : 1);
   // --- o mundo e a história pelo som (src/audio-mundo.js)
-  if (AUDM) AUDM.tick(dt);
-  if (AUDS) AUDS.tick(dt); // segredos do som (lote 4)
-  if (AUDL5) AUDL5.tick(dt, { dM, dA, est, jogando, prende, perigo, fora, subsolo }); // os monstros pelo ouvido (lote 5)
-  if (AUDL6) AUDL6.tick(dt, { dM, dA, est, jogando, prende, perigo, fora, subsolo }); // rejogabilidade pelo ouvido (lote 6)
-  if (AUDL6B) AUDL6B.tick(dt, { dM, dA, est, jogando, prende, perigo, fora, subsolo }); // a casa lembra o que você fez (lote 6, 2ª rodada)
-  if (AUDL5B) AUDL5B.tick(dt, { dM, dA, est, jogando, prende, perigo, fora, subsolo }); // 2ª rodada (lote 5)
-  if (SOMM7) SOMM7.tick(dt, { dM, dA, est, jogando, prende, perigo, fora, subsolo }); // som e atmosfera (lote 7)
-  if (AUDL7) AUDL7.tick(dt, { dM, dA, est, jogando, prende, perigo, fora, subsolo }); // som e atmosfera: silêncio como arma (lote 7)
+  // modo simples: o som do mundo (hino, rádios, segredos) e da rejogada ficam calados; o som dos monstros só do capítulo I em diante
+  if (AUDM && SIMP.rejogoExtra()) AUDM.tick(dt);
+  if (AUDS && SIMP.rejogoExtra()) AUDS.tick(dt); // segredos do som (lote 4)
+  if (AUDL5 && SIMP.mundoExtra()) AUDL5.tick(dt, { dM, dA, est, jogando, prende, perigo, fora, subsolo }); // os monstros pelo ouvido (lote 5)
+  if (AUDL6 && SIMP.rejogoExtra()) AUDL6.tick(dt, { dM, dA, est, jogando, prende, perigo, fora, subsolo }); // rejogabilidade pelo ouvido (lote 6)
+  if (AUDL6B && SIMP.rejogoExtra()) AUDL6B.tick(dt, { dM, dA, est, jogando, prende, perigo, fora, subsolo }); // a casa lembra o que você fez (lote 6, 2ª rodada)
+  if (AUDL5B && SIMP.mundoExtra()) AUDL5B.tick(dt, { dM, dA, est, jogando, prende, perigo, fora, subsolo }); // 2ª rodada (lote 5)
+  if (SOMM7 && SIMP.mundoExtra()) SOMM7.tick(dt, { dM, dA, est, jogando, prende, perigo, fora, subsolo }); // som e atmosfera (lote 7)
+  if (AUDL7 && SIMP.mundoExtra()) AUDL7.tick(dt, { dM, dA, est, jogando, prende, perigo, fora, subsolo }); // som e atmosfera: silêncio como arma (lote 7)
 }
 // Pausa e diário abafam o mundo; menu silencia o que é contínuo; aba escondida suspende o áudio
 setInterval(() => {
@@ -4107,7 +4112,7 @@ function updateClima(dt) {
 // =====================================================================
 // HUD / UI
 // =====================================================================
-const ray = new THREE.Raycaster(); ray.far = 2.6;
+const ray = new THREE.Raycaster(); ray.far = 3;
 function updateAlvo() {
   ray.setFromCamera({ x: 0, y: 0 }, camera);
   const vis = W.inter.filter(i => i.obj.visible && i.on());
@@ -4115,6 +4120,8 @@ function updateAlvo() {
   alvo = null;
   for (const h of hits) { let o = h.object; while (o && !o.userData.it) o = o.parent; if (o && o.userData.it && vis.includes(o.userData.it)) alvo = o.userData.it; break; }
   if (!alvo && !S.hidden) alvo = alvoPorCone(vis);
+  // modo simples: se a mira caiu num enfeite que não faz nada e há algo que se pode usar perto da mira, vale o que se pode usar
+  if (alvo && !S.hidden && SIMP.on() && !alvo.label().startsWith('<b>E</b>')) { const usavel = alvoPorCone(vis.filter(i => i !== alvo && i.label().startsWith('<b>E</b>'))); if (usavel) alvo = usavel; }
   if (S.hidden) alvo = W.inter.find(i => i.obj === S.hidden.g);
   let html = alvo ? alvo.label() : '';
   if (alvo && alvo.hold && html.startsWith('<b>E</b>')) html = html.replace('<b>E</b>', '<b>segure E</b>') + `<span class="dur">${alvo.hold}s</span>`;
@@ -4187,21 +4194,23 @@ function updateHUD() {
   $('#b-pilha').parentElement.classList.toggle('fraca', S.inv.lanterna && S.battery < 18);
 }
 let subQ = [], subT = 0, subAtual = null;
-function falar(chave) { let arr = R.falas[chave]; if (arr && Array.isArray(arr[0])) arr = pick(arr); if (!arr) return; for (const f of arr) subQ.push(f); if (subT <= 0) proxSub(); }
+function falar(chave) { if (SIMP.chaveNao(chave)) return; let arr = R.falas[chave]; if (arr && Array.isArray(arr[0])) arr = pick(arr); if (!arr) return; for (const f of arr) subQ.push({ ...f, _f: 1 }); if (subT <= 0) proxSub(); }
 function sub(quem, texto, prioridade) {
+  if (SIMP.subNao(quem, texto, prioridade)) return;
   if (prioridade) { subQ.unshift({ quem, texto, prioridade: true }); proxSub(); }
   else { subQ.unshift({ quem, texto }); if (!subAtual || !subAtual.prioridade) proxSub(); }
 }
-function subPequeno(quem, texto) { if (subAtual && subAtual.prioridade) return; subQ.unshift({ quem, texto, curta: true }); proxSub(); }
+function subPequeno(quem, texto) { if (subAtual && subAtual.prioridade) return; if (SIMP.subNao(quem, texto, false)) return; subQ.unshift({ quem, texto, curta: true }); proxSub(); }
 function proxSub() {
   const f = subQ.shift(), el = $('#sub'); subAtual = f || null;
+  if (f && SIMP.falaNao(f)) { proxSub(); return; } // o Inspetor não fala antes de existir
   if (!f) { el.innerHTML = ''; subT = 0; return; }
   const p = R.personagens[f.quem] || { nome: f.quem, cor: '#fff' }, txt = codTxt(f.texto);
   el.className = f.quem === 'inspetor' ? 'grave' : /^\((eco|longe|bem baixinho|do escuro)/.test(f.texto) ? 'eco' : '';
   el.innerHTML = `<span class="quem" style="color:${p.cor}">${UIX.nomeFalante(f.quem, p)}</span><span style="color:${p.cor}">${fmtFala(txt)}</span>`;
   if (!f.curta) UIX.fala(f.quem, txt);
   subT = f.curta ? 1.2 : 2.4 + f.texto.length * (OPT.legTempo === 'longo' ? .085 : .055);
-  if (f.quem) VOZ.tocar(f.quem, f.texto);
+  if (f.quem && SIMP.vozOk(f)) VOZ.tocar(f.quem, f.texto);
 }
 function updateSub(dt) { if (subT > 0) { subT -= dt; if (subT <= 0) proxSub(); } }
 
@@ -4271,7 +4280,7 @@ const VOZ = (() => {
 })();
 let toastT;
 let toastUlt = '', toastQuando = 0;
-function toast(t) { const agora = performance.now(); if (t === toastUlt && agora - toastQuando < 3000) return; toastUlt = t; toastQuando = agora; const el = $('#toast'); el.textContent = t; el.style.opacity = 1; clearTimeout(toastT); UIX.historico('nota', t); toastT = setTimeout(() => el.style.opacity = 0, Math.max(2800, t.length * 65) * (OPT.legTempo === 'longo' ? 1.6 : 1)); }
+function toast(t) { if (SIMP.toastNao(t)) return; const agora = performance.now(); if (t === toastUlt && agora - toastQuando < 3000) return; toastUlt = t; toastQuando = agora; const el = $('#toast'); el.textContent = t; el.style.opacity = 1; clearTimeout(toastT); UIX.historico('nota', t); toastT = setTimeout(() => el.style.opacity = 0, Math.max(2800, t.length * 65) * (OPT.legTempo === 'longo' ? 1.6 : 1)); }
 function cartaoCapitulo() { const el = $('#chapter'), c = R.capitulos[S.chapter]; el.textContent = c.titulo; if (c.epigrafe) { const s = document.createElement('small'); s.textContent = c.epigrafe; el.appendChild(s); } el.style.opacity = 1; setTimeout(() => el.style.opacity = 0, c.epigrafe ? 4200 : 3400); }
 let cartaoTO;
 function cartao(t, dur = 4) { const el = $('#cartao'); el.textContent = t; el.style.opacity = 1; clearTimeout(cartaoTO); cartaoTO = setTimeout(() => el.style.opacity = 0, dur * 1000); }
@@ -4736,8 +4745,8 @@ function frame(dt) {
   } else if (ativo) {
     S.tempo += dt; S.capT += dt; PG.tick(dt);
     updatePlayer(dt); updateLanterna(dt); updateFear(dt);
-    { const dm = dt * JP.ritmo(); if (!congelado(dm)) { updateInspetor(dm); updateAna(dm); updateProcissao(dm); ML.tick(dm); MS.tick(dm); L5.tick(dm); L5B.tick(dm); L6.tick(dm); L6B.tick(dm); } updateEventos(dm); } updateGarrafas(dt); // ritmo do mundo (acessibilidade): a Lia não fica mais lenta
-    updateClima(dt); updateJogabilidade(dt); updateAlvo(); JM.update(dt); SEG.update(dt); JGL5.update(dt); JGL5B.update(dt); JGL6.update(dt); JGL6B.update(dt); JGS.update(dt); updateSegurar(dt); updateFita(dt); updateHUD(); updateSub(dt); updateAudio(dt); H.tick(dt); MVIS.tick(dt); MVIS2.tick(dt); if (L7) L7.tick(dt); // lote 7: história pelo som · lote 5: visual e luz das entidades (2 rodadas) · lote 6: rejogabilidade
+    { const dm = dt * JP.ritmo(); if (!congelado(dm)) { updateInspetor(dm); updateAna(dm); updateProcissao(dm); ML.tick(dm); if (SIMP.rejogoExtra()) MS.tick(dm); if (SIMP.mundoExtra()) { L5.tick(dm); L5B.tick(dm); } if (SIMP.rejogoExtra()) { L6.tick(dm); L6B.tick(dm); } } updateEventos(dm); } updateGarrafas(dt); // ritmo do mundo (acessibilidade): a Lia não fica mais lenta · modo simples: sem camadas extras no prólogo
+    updateClima(dt); updateJogabilidade(dt); updateAlvo(); SIMP.faro(); JM.update(dt); SEG.update(dt); JGL5.update(dt); JGL5B.update(dt); JGL6.update(dt); JGL6B.update(dt); JGS.update(dt); updateSegurar(dt); updateFita(dt); updateHUD(); updateSub(dt); updateAudio(dt); H.tick(dt); MVIS.tick(dt); MVIS2.tick(dt); if (L7 && SIMP.rejogoExtra()) L7.tick(dt); // lote 7: história pelo som · lote 5: visual e luz das entidades (2 rodadas) · lote 6: rejogabilidade
   } else if (mundoVivo()) { // cofre, quadro (e no Pesadelo notas e diário): o mundo continua, com o som abafado
     S.tempo += dt; S.capT += dt; P.noiseR = 0; abafar(true);
     updateLanterna(dt); updateFear(dt);

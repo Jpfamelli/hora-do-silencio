@@ -31,7 +31,7 @@ function montar(A, S, c) {
   const finais = () => { const q = lsGet(CONQ_KEY, {}) || {}; return { comum: !!q.final_comum, silencio: !!q.final_silencio, verdadeiro: !!q.final_verdadeiro }; };
   const noite = () => F.noite || Math.max(1, S.flags._noite || stats().partidas || 1);
   const zerou = () => { const f = finais(); return f.comum || f.silencio || f.verdadeiro; };
-  const rejogo = () => F.rejogo !== undefined ? !!F.rejogo : (noite() > 1 || zerou());
+  const rejogo = () => F.rejogo !== undefined ? !!F.rejogo : (!(window.__SIMP && window.__SIMP.on()) && (noite() > 1 || zerou())); // modo simples: sem variações da segunda jogada
   const verdadeiro = () => F.verdadeiro !== undefined ? !!F.verdadeiro : finais().verdadeiro;
   const risco = () => !!F.risco || !(typeof window !== 'undefined' && (window.__teste || (navigator && navigator.webdriver)));
   const seed = ((F.seed !== undefined ? F.seed : (r6.seed !== undefined ? r6.seed : 7919)) ^ 0x6b6b6b6b) >>> 0;

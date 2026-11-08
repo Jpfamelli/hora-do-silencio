@@ -22,7 +22,7 @@ export function mundoL6B(X) {
     X.lugarChave = lugar; S.flags.e6b_lugar = lugar; X.vazio = vazio;
     const dica = TXT6B.dicaChave[lugar];
     const itC = A.W.items.find(i => i.key === 'estrada:chave_portao');
-    const POS = { balcao: [16.45, 1.075, -17.55], casaco: [12.32, 1.18, -14.4], bomba: [9.92, 1.18, -15.05], sob: [15.85, .06, -17.4] };
+    const POS = { balcao: [16.45, 1.075, -17.55], casaco: [12.56, 1.12, -14.4], bomba: [9.92, 1.18, -15.05], sob: [15.85, .06, -17.4] };
     if (itC && POS[lugar]) {
       itC.mesh.position.set(...POS[lugar]);
       if (lugar === 'balcao' || lugar === 'sob') itC.mesh.rotation.set(0, .7, 0);

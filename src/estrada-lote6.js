@@ -48,7 +48,7 @@ export function rejogoEstrada(A, S, c) {
   const noite = () => Math.max(1, S.flags._noite || stats().partidas || 1);
   const finais = () => { const q = lsGet(CONQ_KEY, {}) || {}; return { comum: !!q.final_comum, silencio: !!q.final_silencio, verdadeiro: !!q.final_verdadeiro }; };
   const zerou = () => { const f = finais(); return f.comum || f.silencio || f.verdadeiro; };
-  const rejogo = () => noite() > 1 || zerou();           // "a partir da segunda jogada"
+  const rejogo = () => !(window.__SIMP && window.__SIMP.on()) && (noite() > 1 || zerou()); // modo simples: o prólogo é sempre o mesmo (a chave fica no prego)           // "a partir da segunda jogada"
   const verdadeiro = () => finais().verdadeiro;           // viu o final verdadeiro ao menos uma vez
 
   // semente estável desta noite (varia tudo sem depender de save; determinística por noite/dificuldade)

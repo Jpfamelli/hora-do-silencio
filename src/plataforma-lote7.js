@@ -46,7 +46,7 @@ export function instalarPlat7(C, U) {
   const robo = U.robo || !!window.__teste || !!navigator.webdriver;
   const salvar = U.salvar || (() => {});
   const OPT = C.OPT;
-  for (const [k, v] of Object.entries({ somPerfil: '', somCal: '', audBoost: 0, gravesVirt: 1, presenca: 1, latMs: 0, latModo: 'auto', audioLeve: 'auto', semTrilha: false, hapTema: true, clip7: false })) if (O[k] === undefined) O[k] = v;
+  for (const [k, v] of Object.entries({ somPerfil: '', somCal: 'pulado', audBoost: 0, gravesVirt: 1, presenca: 1, latMs: 0, latModo: 'auto', audioLeve: 'auto', semTrilha: false, hapTema: true, clip7: false })) if (O[k] === undefined) O[k] = v;
   const st = document.createElement('style'); st.textContent = CSS; document.head.appendChild(st);
 
   const ac = () => C.AC;

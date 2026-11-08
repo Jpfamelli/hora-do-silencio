@@ -68,7 +68,7 @@ window.ROTEIRO = {
         { id: "sair_carro", texto: "Saia do carro" },
         { id: "lanterna", texto: "Pegue a lanterna no porta-malas", dica: "A lanterna ficou no porta-malas. Atrás do carro." },
         { id: "posto", texto: "Peça ajuda no posto de gasolina", dica: "Aquela luz lá na frente. O posto. Tem alguém lá dentro." },
-        { id: "chave_portao", texto: "Pegue a chave do portão do internato", dica: "Ele disse que a chave tá num prego. Atrás do balcão." },
+        { id: "chave_portao", texto: "Pegue a chave do portão do internato", dica: "A chave está num prego na parede da loja, do lado de dentro, ao lado da porta (o ◆ mostra onde)." },
         { id: "abrir_portao", texto: "Siga a estrada até o portão e abra o cadeado (segure E)", dica: "É só seguir a estrada. O portão fica no fim dela." }
       ],
       gancho: "O portão bateu sozinho atrás de você. Lá dentro, uma luz acendeu. E apagou." },
@@ -2238,3 +2238,6 @@ window.ROTEIRO.lote7 = {
     else if (v && typeof v === "object") curvar(v);
   }
 })(window.ROTEIRO);
+
+// Modo simples: as falas do roteiro base (as que contam a história). Falas soltas de módulos extras ficam de fora por padrão.
+window.__FALAS_BASE = new Set(Object.keys(window.ROTEIRO.falas));

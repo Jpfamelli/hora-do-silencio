@@ -74,6 +74,7 @@ export function criarInterface(C) {
       { k: 'avisoSusto', nome: 'Avisar antes dos sustos fortes (borda escura e tom grave; o estalo toca mais baixo)', tipo: 'sel', ops: SIMNAO }
     ]],
     ['Interface', [
+      { k: 'simples', nome: 'Modo simples (menos avisos, sons e vozes; só o essencial)', tipo: 'sel', ops: [[true, 'Ligado'], [false, 'Desligado']] },
       { k: 'ruido', nome: 'Anel do seu barulho', tipo: 'sel', ops: [['auto', 'Automático (sem no Pesadelo)'], ['sim', 'Sempre'], ['nao', 'Nunca']] },
       { k: 'mira', nome: 'Mira', tipo: 'sel', ops: [['ponto', 'Ponto'], ['cruz', 'Cruz'], ['anel', 'Anel']] },
       { k: 'miraTam', nome: 'Tamanho da mira', tipo: 'sel', ops: [['P', 'Pequena'], ['M', 'Média'], ['G', 'Grande']] },
@@ -243,8 +244,9 @@ export function criarInterface(C) {
       txt += ' ' + dr.txt;
       if (def.insp) seta(dr);
     }
+    if (window.__SIMP && window.__SIMP.legNao(def, drRef)) return; // modo simples: só perigo de verdade, uma legenda por vez
     const simb = OPT.somSimb && def.cat ? (def.cat === 'p' ? '▲ ' : def.cat === 's' ? '✶ ' : def.cat === 'h' ? '✦ ' : def.cat === 'eu' ? '› ' : '') : '';
-    linhasSom.push({ txt: `${simb}[${txt}]`, cat: def.cat, t: agora + 2.8 }); while (linhasSom.length > 3) linhasSom.shift();
+    linhasSom.push({ txt: `${simb}[${txt}]`, cat: def.cat, t: agora + 2.8 }); while (linhasSom.length > (window.__SIMP ? window.__SIMP.maxLeg() : 3)) linhasSom.shift();
     if (L7) try { L7.evento(k, def, drRef, a, linhasSom[linhasSom.length - 1]); } catch (e) {}
     desenharSom();
     if (def.imp) historico('som', simb + txt);
@@ -261,8 +263,9 @@ export function criarInterface(C) {
   function legenda(txt, cat) {
     if (OPT.legSom === 'nao' || C.mode === 'titulo') return;
     try { if (window.__S7P && window.__S7P.mudo({ cat })) return; } catch (e) {}
+    if (window.__SIMP && window.__SIMP.legNao({ cat }, null)) return; // modo simples
     const simb = OPT.somSimb && cat ? (cat === 'p' ? '▲ ' : cat === 's' ? '✶ ' : cat === 'h' ? '✦ ' : cat === 'eu' ? '› ' : cat === 'dele' ? '▲ ' : '') : '';
-    linhasSom.push({ txt: simb + txt, cat, t: agora + 4 }); while (linhasSom.length > 3) linhasSom.shift();
+    linhasSom.push({ txt: simb + txt, cat, t: agora + 4 }); while (linhasSom.length > (window.__SIMP ? window.__SIMP.maxLeg() : 3)) linhasSom.shift();
     if (L7) try { L7.legendaEvento(txt, cat, linhasSom[linhasSom.length - 1]); } catch (e) {}
     desenharSom(); historico('som', simb + txt.replace(/^\[|\]$/g, ''));
   }
