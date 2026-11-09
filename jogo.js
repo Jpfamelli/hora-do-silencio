@@ -1,6 +1,6 @@
 // A HORA DO SILÊNCIO v2 — motor (Three.js). Mapas e conteúdo em mapas.js, texto em roteiro.js.
 import * as THREE from 'three';
-import { MAPAS } from './mapas.js';
+import { MAPAS, mapaPronto, garantirMapa, carregarGrupo } from './mapas.js'; // leveza: só a estrada vem junto; internato e subsolo carregam sob demanda
 import { instalarHistoria, fmtFala, fmtNota, escrever, revelar } from './src/historia.js';
 import { criarSustos } from './src/sustos.js';
 import { instalarVisual } from './src/visual.js';
@@ -102,6 +102,8 @@ flash.target.position.set(0, -0.15, -5);
 camera.add(flash.target);
 const flashFill = new THREE.PointLight(0xffe2b8, .6, 3, 2);
 camera.add(flashFill);
+const _luzes = [], _luzV = new THREE.Vector3(); let _luzT = 0, _luzVarre = 0; // orçamento de luzes (ver orcamentoLuzes)
+const _cortados = [], _cortV = new THREE.Vector3(); let _cortQ = 0; // corte pela névoa (ver cortarNevoa)
 
 // =====================================================================
 // TEXTURAS
@@ -2739,9 +2741,37 @@ let pularFimCap = () => {};
 // =====================================================================
 // MAPAS
 // =====================================================================
-function carregarMapa(id, spawn, { salvar = true } = {}) {
+// Carga sob demanda dos mapas (ver mapas.js). Normalmente o próximo trecho já foi baixado em silêncio (precarregarProximo);
+// se o jogador chegar antes, uma tela preta de "carregando" cobre a espera e o mapa entra assim que o módulo chega.
+let _veuMapa = null;
+function veuCarregando(on) {
+  if (!_veuMapa) {
+    _veuMapa = document.createElement('div'); _veuMapa.id = 'carregando-mapa';
+    _veuMapa.style.cssText = 'position:fixed;inset:0;z-index:99999;background:#000;color:#8d877d;display:none;align-items:center;justify-content:center;font:15px Georgia,serif;letter-spacing:.3em;text-transform:uppercase';
+    _veuMapa.textContent = 'Carregando…'; document.body.appendChild(_veuMapa);
+  }
+  _veuMapa.style.display = on ? 'flex' : 'none';
+}
+function esperarMapa(id, depois) {
+  veuCarregando(true); congelarT = 99;
+  garantirMapa(id).then(() => { veuCarregando(false); congelarT = .6; depois(); })
+    .catch(() => { veuCarregando(false); congelarT = 0; toast('Não consegui carregar o próximo trecho. Verifique a internet e tente de novo.'); });
+}
+function precarregarProximo(id) {
+  const alvo = id === 'estrada' ? 'internato' : (id === 'terreo' || id === 'superior') ? 'subsolo' : null;
+  if (!alvo) return; let tent = 0;
+  const tenta = () => {
+    if (W.mapa !== id || ++tent > 40) return;
+    if (mode !== 'jogo') return void setTimeout(tenta, 4000);
+    (window.requestIdleCallback || (f => setTimeout(f, 50)))(() => carregarGrupo(alvo).catch(() => {}));
+  };
+  setTimeout(tenta, id === 'estrada' ? 25000 : 10000);
+}
+function carregarMapa(id, spawn, opc = {}) {
+  if (!mapaPronto(id)) { esperarMapa(id, () => carregarMapa(id, spawn, opc)); return; }
+  const { salvar = true } = opc;
   limparMundo();
-  W.mapa = id; S.mapa = id;
+  W.mapa = id; S.mapa = id; _luzes.length = 0; _luzT = 0; _cortados.length = 0; _cortQ = 0; // leveza: refaz o orçamento de luzes e o corte pela névoa no mapa novo
   desativarInspetor(); despawnAna(true); PROC.fase = null; PROC.g.visible = false; PROC.luz.intensity = 0; SFX.pararCanto(); SFX.gerador(false);
   const def = MAPAS[id](API, S);
   W.def = def;
@@ -2763,6 +2793,7 @@ function carregarMapa(id, spawn, { salvar = true } = {}) {
   VIS.mapa(); VM.mapa(); L6V.mapa(); VL6B.mapa(); VL7.mapa(); // lote 7: coleta as velas do mapa · lote 6: clima/paleta por semente, giz das mortes, ilhas de luz, troféus
   JGL6.mapa(id); // lote 6: Caçada, Esconderijo Podre e economia da noite
   JGL6B.mapa(id); // lote 6 (2ª rodada): giz, guizos, trouxinha e fantasma voltam ao mapa
+  precarregarProximo(id);
 }
 function syncLuzes() {
   const ligada = W.def && W.def.energia ? W.def.energia() : false;
@@ -2784,6 +2815,7 @@ function salvarCheckpoint(inicioCap) {
   if (inicioCap) { const caps = lsGet(CAPS_KEY, {}); const c = R.capitulos[S.chapter]; caps[c.id] = { ...(caps[c.id] || {}), snap }; lsSet(CAPS_KEY, caps); }
 }
 function carregarSnap(snap) {
+  if (snap && snap.mapa && MAPAS[snap.mapa] && !mapaPronto(snap.mapa)) { esperarMapa(snap.mapa, () => carregarSnap(snap)); return; } // save num capítulo cujo mapa ainda não baixou
   const mortes = S ? S.mortes : 0, tempo = S ? S.tempo : 0, antes = PG.antesCarregar();
   S = JSON.parse(JSON.stringify(snap)); S._check = snap;
   S.chapter = Math.max(0, Math.min(R.capitulos.length - 1, S.chapter | 0));
@@ -4423,6 +4455,7 @@ $('#e-menu').onclick = () => { $('#ending').hidden = true; voltarMenu(); };
 $('#pn-voltar').onclick = () => { $('#painel').hidden = true; $('#title').hidden = false; };
 $('#b-caps').onclick = () => {
   const caps = lsGet(CAPS_KEY, {});
+  carregarGrupo('internato').catch(() => {}); carregarGrupo('subsolo').catch(() => {}); // quem abre a lista de capítulos provavelmente vai pular para um
   $('#pn-tit').textContent = 'Capítulos';
   $('#pn-lista').innerHTML = R.capitulos.map(c => { const d = caps[c.id], ok = d && d.snap; return `<div class="it ${ok ? '' : 'x'}"><div><b>${c.titulo}</b><br><small>${d && d.tempo ? `melhor tempo ${Math.floor(d.tempo / 60)}min ${String(Math.floor(d.tempo % 60)).padStart(2, '0')}s` : ok ? 'liberado' : 'bloqueado'}</small></div><div style="display:flex;align-items:center;gap:12px"><span class="rank">${(d && d.rank) || ''}</span>${ok ? `<button class="btn" data-cap="${c.id}">Jogar</button>` : ''}</div></div>`; }).join('');
   $('#pn-lista').querySelectorAll('[data-cap]').forEach(b => b.onclick = () => { iniciarAudio(); const snap = caps[b.dataset.cap].snap; S = null; $('#painel').hidden = true; carregarSnap(snap); entrarJogo(); });
@@ -4726,6 +4759,14 @@ AUDL7 = instalarAudioLote7({
   saida, env, osc, burst, ruido, curvaDist, silaba, fonteFixa, moverFonte, novoPanner, posPanner, roomAt, salaAdj, emitNoise, rand, pick, clamp, lerp, sub, subPequeno, toast
 });
 carregarTitulo();
+// leveza: baixa em silêncio só o trecho do save (quem continua entra direto); no modo completo (sem "Modo simples") baixa tudo
+setTimeout(() => (window.requestIdleCallback || (f => setTimeout(f, 50)))(() => {
+  try {
+    const sv = lsGet(SAVE_KEY), m = sv && sv.mapa;
+    if (m && MAPAS[m] && !mapaPronto(m)) garantirMapa(m).catch(() => {});
+    if (!SIMP.on()) { carregarGrupo('internato').catch(() => {}); carregarGrupo('subsolo').catch(() => {}); }
+  } catch (e) {}
+}), 1200);
 const grain = $('#fx-grain').getContext('2d'), grainImg = grain.createImageData(160, 90);
 let last = performance.now(), grainT = 0;
 function loop(now) { requestAnimationFrame(loop); if (PLAT.pular(now)) return; const dt = Math.min(.05, (now - last) / 1000); last = now; frame(dt); }
@@ -4759,15 +4800,16 @@ function frame(dt) {
   if (grainT <= 0) { grainT = PLAT.grao(); const d = grainImg.data; for (let i = 0; i < d.length; i += 4) { const v = Math.random() * 255; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = 255; } grain.putImageData(grainImg, 0, 0); }
   VIS.update(dt, ativo); VM.update(dt, ativo); L6V.tick(dt); VL6B.tick(dt); VL7.tick(dt); SEG.depois(); // lote 7: chama reage, trovão derruba lâmpadas, névoa respira, bafo no frio, vidro molhado // // lote 6: cosméticos de feixe, clarão, lente de rejogo, troféus; cor da lanterna: papel vermelho, luz negra, lanterninha
   PLAT.depois(dt, ativo);
-  const cortados = cortarNevoa(); renderer.render(scene, camera); for (const o of cortados) o.layers.enable(0); VM.depois(); VIS.depois(); VL6B.depois(); VL7.depois(); PLAT.aposRender(); // VIS.depois: a mão da Lia por cima · L6B.depois: lentes de pós-processo e quadros guardados
+  orcamentoLuzes(dt); const cortados = cortarNevoa(); renderer.render(scene, camera); for (const o of cortados) o.layers.enable(0); VM.depois(); VIS.depois(); VL6B.depois(); VL7.depois(); PLAT.aposRender(); // VIS.depois: a mão da Lia por cima · L6B.depois: lentes de pós-processo e quadros guardados
 }
 // Revisão do lote 2: o lote 2 quase dobrou os objetos de cada mapa. Dentro de casa e nos túneis, o que está além da
 // névoa (sobra menos de 0,4% da cor, invisível de qualquer jeito) sai só deste desenho. Ao ar livre nada muda: no
 // clarão do relâmpago o céu fica mais claro que a névoa e as silhuetas distantes precisam continuar lá.
-const _cortados = [], _cortV = new THREE.Vector3();
 function cortarNevoa() {
+  if (!W.grupo || !scene.fog || luzBase > .02 || mode === 'titulo') { _cortados.length = 0; _cortQ = 0; return _cortados; }
+  // leveza: a varredura de ~3000 objetos roda a cada 4 quadros (a lista vale nos intermediários: o limite é a névoa total, ninguém percebe 0,4 m)
+  if (_cortQ++ % 4) { for (const o of _cortados) o.layers.disable(0); return _cortados; }
   _cortados.length = 0;
-  if (!W.grupo || !scene.fog || luzBase > .02 || mode === 'titulo') return _cortados;
   const lim = 2.4 / Math.max(.01, scene.fog.density);
   W.grupo.traverseVisible(o => {
     if (!o.isMesh || o.isInstancedMesh || o.isSkinnedMesh || !o.frustumCulled || (o.material && o.material.fog === false)) return;
@@ -4778,7 +4820,31 @@ function cortarNevoa() {
   });
   return _cortados;
 }
+// Orçamento de luzes (leveza): cada mapa tem de 30 a 50 luzes de ponto e o Three.js soma TODAS no cálculo de cada pixel de cada objeto,
+// mesmo as apagadas (intensidade 0). Aqui só as K de maior influência sobre o jogador ficam ligadas (as outras saem do desenho pela
+// camada, sem tocar em .visible nem em .intensity, que os módulos usam). K é fixo por qualidade: trocar a quantidade recompilaria shaders.
+function maxLuzes() {
+  let q = 'media'; try { q = (window.__plat && window.__plat.O.qual) || (PLAT.antialias() ? 'alta' : 'media'); } catch (e) {}
+  return q === 'alta' ? 12 : q === 'media' ? 9 : q === 'baixa' ? 6 : 4;
+}
+function orcamentoLuzes(dt) {
+  _luzT -= dt; if (_luzT > 0) return; _luzT = .18;
+  if (--_luzVarre <= 0 || !_luzes.length) { _luzVarre = 8; _luzes.length = 0; scene.traverse(o => { if (o.isPointLight && !o.castShadow) _luzes.push(o); }); }
+  const K = maxLuzes();
+  if (_luzes.length <= K) { for (const l of _luzes) l.layers.enable(0); return; }
+  const cp = camera.position;
+  for (const l of _luzes) {
+    if (!l.parent) { l.userData._lzS = -1; continue; } // luz já removida da cena
+    l.getWorldPosition(_luzV); const d2 = _luzV.distanceToSquared(cp), d = Math.sqrt(d2);
+    const alcance = l.distance > 0 ? l.distance : 1e9;
+    let inf = l.visible && l.intensity > .01 && d < alcance + 1 ? l.intensity / (1 + d2) : 0;
+    if (l.userData._lzOn) inf *= 1.4; // histerese: não troca de luz por pouco
+    l.userData._lzS = inf + 1e-7 / (1 + d2);
+  }
+  _luzes.sort((a, b) => b.userData._lzS - a.userData._lzS);
+  for (let i = 0; i < _luzes.length; i++) { const l = _luzes[i], on = i < K; l.userData._lzOn = on; if (on) l.layers.enable(0); else l.layers.disable(0); }
+}
 requestAnimationFrame(loop);
 
 PLAT.instalar({ THREE, renderer, scene, camera, flash, chuva, chuvaGeo, NCH, P, M, ANA, PROC, W, keys, OPT, SOM, AMB, R, AG, conquista, lsGet, lsSet, SAVE_KEY, CAPS_KEY, CONQ_KEY, onKey, toast, abrirPausa, fecharPausa, entrarJogo, carregarSnap, iniciarAudio, lockPointer, unlock, roomAt, setOpt, entrarMaisPerto, SFX, get chamado() { return chamadoArmadilha; }, get alvo() { return alvo; }, get S() { return S; }, get ui() { return ui; }, get mode() { return mode; }, get locked() { return locked; }, get AC() { return AC; }, get master() { return master; }, get AUD() { return AUD; }, BUS, aquecerVoz: () => VOZ.aquecer() });
-window.__jogo = { finalizar: final, get S() { return S; }, P, M, ANA, PROC, W, frame, carregarMapa, objDone, iniciarProcissao, spawnAna, ativarInspetor, camera, renderer, scene, hemi, moon, salvarCheckpoint, carregarSnap, lerNota, tocarFita, pularCena, roomAt, get ui() { return ui; }, get mode() { return mode; }, get alvo() { return alvo; }, keys, onKey, SUST, novoEstado: d => { S = novoEstado(d); return S; } };
+window.__jogo = { finalizar: final, get S() { return S; }, P, M, ANA, PROC, W, frame, carregarMapa, garantirMapa, mapaPronto, objDone, iniciarProcissao, spawnAna, ativarInspetor, camera, renderer, scene, hemi, moon, salvarCheckpoint, carregarSnap, lerNota, tocarFita, pularCena, roomAt, get ui() { return ui; }, get mode() { return mode; }, get alvo() { return alvo; }, keys, onKey, SUST, novoEstado: d => { S = novoEstado(d); return S; } };
