@@ -156,7 +156,51 @@ export function criarSimples(C) {
     } catch (e) { console.warn('[faro]', e); if (faroEl) faroEl.hidden = true; }
   }
 
-  const API = { on, faro, chaveNao, legNao, maxLeg, subNao, falaNao, vozOk, toastNao, mundoExtra, rejogoExtra, sustosOk };
+  // ---- OPÇÕES COMPACTAS: duas telas (Opções e Desempenho) tinham ~260 itens. No modo simples ficam só os essenciais;
+  // um botão "Mostrar todas as opções" devolve o resto. Os itens escondidos continuam valendo com o valor que tinham.
+  const ESSENCIAIS = {
+    k: ['simples', 'vol', 'sens', 'brilho', 'vFlash', 'leg', 'legSom', 'agachar', 'invY'],
+    op: ['qual', 'lim30', 'arrastar', 'fone', 'tqTam', 'tqCanhoto', 'giro']
+  };
+  function opcoesCompactas(box, attr) {
+    try {
+      if (!box) return;
+      const ess = ESSENCIAIS[attr] || [];
+      const filhos = [...box.children];
+      const marca = el => { el.classList.add('sp-extra'); };
+      for (const c of filhos) c.classList.remove('sp-extra');
+      let h3 = null, h3Tem = false;
+      const fechaH3 = () => { if (h3 && !h3Tem) marca(h3); };
+      for (const c of filhos) {
+        if (c.tagName === 'H3') { fechaH3(); h3 = c; h3Tem = false; continue; }
+        const inp = c.matches && c.matches('[data-' + attr + ']') ? c : (c.querySelector ? c.querySelector('[data-' + attr + ']') : null);
+        const k = inp && inp.dataset[attr];
+        if (k && ess.includes(k)) { h3Tem = true; continue; }
+        marca(c);
+      }
+      fechaH3();
+      let btn = box.parentElement && box.parentElement.querySelector('.sp-todas');
+      if (!btn) {
+        btn = document.createElement('button'); btn.type = 'button'; btn.className = 'btn sp-todas';
+        box.insertAdjacentElement('afterend', btn);
+        btn.onclick = () => { box.classList.toggle('sp-tudo'); btn.textContent = box.classList.contains('sp-tudo') ? 'Mostrar só o essencial' : 'Mostrar todas as opções'; };
+      }
+      box.classList.add('sp-box'); btn.hidden = !on();
+      btn.textContent = box.classList.contains('sp-tudo') ? 'Mostrar só o essencial' : 'Mostrar todas as opções';
+    } catch (e) { console.warn('[simples:opcoes]', e); }
+  }
+  const stOp = document.createElement('style');
+  stOp.textContent = `body.simples .sp-box:not(.sp-tudo) .sp-extra { display: none !important; }
+  body.simples #opcoes input[type="search"], body.simples #opcoes input[type="text"] { display: none !important; }
+  /* pausa: só os botões e o resumo; os ajustes ficam em Opções */
+  body.simples #pause > *:not(h2):not(button.btn):not(#p-info) { display: none !important; }
+  body.simples .sp-todas { margin: 14px auto 4px; display: block; opacity: .85; }
+  body:not(.simples) .sp-todas { display: none !important; }
+  body.simples #opcoes #op-brilho, body.simples #opcoes .op-ajuda { }
+  body.simples #plat-opcoes .op-ajuda, body.simples #plat-opcoes #pop-calibrar { display: none !important; }`;
+  document.head.appendChild(stOp);
+
+  const API = { on, faro, opcoesCompactas, chaveNao, legNao, maxLeg, subNao, falaNao, vozOk, toastNao, mundoExtra, rejogoExtra, sustosOk };
   window.__SIMP = API;
   return API;
 }

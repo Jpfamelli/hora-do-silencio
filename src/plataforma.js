@@ -748,7 +748,7 @@ let opDe = null;
 function abrirOpcoes() {
   opDe = !$('#title').hidden ? 'titulo' : 'pausa';
   if (opDe === 'titulo') $('#title').hidden = true; else $('#pause').hidden = true;
-  syncOpcoes(); $('#plat-opcoes').hidden = false;
+  syncOpcoes(); if (window.__SIMP) window.__SIMP.opcoesCompactas($('#plat-opcoes .op-grade'), 'op'); $('#plat-opcoes').hidden = false;
   setTimeout(() => { const f = focaveis(); if (padAtivo && f[0]) f[0].focus(); }, 30);
 }
 function fecharOpcoes() {

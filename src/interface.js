@@ -140,6 +140,7 @@ export function criarInterface(C) {
     if (SG2) SG2.opcoes(box);
     if (MM3) MM3.opcoes(box);
     if (L7) try { L7.opcoes(box); } catch (e) {}
+    if (window.__SIMP) window.__SIMP.opcoesCompactas(box, 'k'); // modo simples: só o essencial, com botão para mostrar tudo
     $('#opcoes').hidden = false; focar('#opcoes');
   }
   function fecharOpcoes() { $('#opcoes').hidden = true; if (opcVolta) $(opcVolta).hidden = false; focar(opcVolta); opcVolta = null; }
