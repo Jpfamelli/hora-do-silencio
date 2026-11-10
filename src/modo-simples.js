@@ -159,13 +159,14 @@ export function criarSimples(C) {
   // ---- OPÇÕES COMPACTAS: duas telas (Opções e Desempenho) tinham ~260 itens. No modo simples ficam só os essenciais;
   // um botão "Mostrar todas as opções" devolve o resto. Os itens escondidos continuam valendo com o valor que tinham.
   const ESSENCIAIS = {
-    k: ['simples', 'vol', 'sens', 'brilho', 'vFlash', 'leg', 'legSom', 'agachar', 'invY'],
+    k: ['simples', 'vol', 'sens', 'brilho', 'vFlash', 'leg'],
     op: ['qual', 'lim30', 'arrastar', 'fone', 'tqTam', 'tqCanhoto', 'giro']
   };
   function opcoesCompactas(box, attr) {
     try {
       if (!box) return;
-      const ess = ESSENCIAIS[attr] || [];
+      const toque = (window.matchMedia && matchMedia('(pointer:coarse)').matches) || navigator.maxTouchPoints > 0;
+      const ess = (ESSENCIAIS[attr] || []).filter(k => toque || !/^(tqTam|tqCanhoto|giro)$/.test(k)); // controles de toque só aparecem em aparelho de toque
       const filhos = [...box.children];
       const marca = el => { el.classList.add('sp-extra'); };
       for (const c of filhos) c.classList.remove('sp-extra');
@@ -183,9 +184,9 @@ export function criarSimples(C) {
       if (!btn) {
         btn = document.createElement('button'); btn.type = 'button'; btn.className = 'btn sp-todas';
         box.insertAdjacentElement('afterend', btn);
-        btn.onclick = () => { box.classList.toggle('sp-tudo'); btn.textContent = box.classList.contains('sp-tudo') ? 'Mostrar só o essencial' : 'Mostrar todas as opções'; };
+        btn.onclick = () => { const t = !box.classList.contains('sp-tudo'); box.classList.toggle('sp-tudo', t); if (box.parentElement) box.parentElement.classList.toggle('sp-tudo', t); btn.textContent = t ? 'Mostrar só o essencial' : 'Mostrar todas as opções'; };
       }
-      box.classList.add('sp-box'); btn.hidden = !on();
+      box.classList.add('sp-box'); if (box.parentElement) box.parentElement.classList.add('sp-pai'); btn.hidden = !on();
       btn.textContent = box.classList.contains('sp-tudo') ? 'Mostrar só o essencial' : 'Mostrar todas as opções';
     } catch (e) { console.warn('[simples:opcoes]', e); }
   }
@@ -197,7 +198,11 @@ export function criarSimples(C) {
   body.simples .sp-todas { margin: 14px auto 4px; display: block; opacity: .85; }
   body:not(.simples) .sp-todas { display: none !important; }
   body.simples #opcoes #op-brilho, body.simples #opcoes .op-ajuda { }
-  body.simples #plat-opcoes .op-ajuda, body.simples #plat-opcoes #pop-calibrar { display: none !important; }`;
+  body.simples #plat-opcoes .op-ajuda, body.simples #plat-opcoes #pop-calibrar { display: none !important; }
+  /* Desempenho: além da grade, saem perfis, teclas, passaporte, tátil, calibragem, acessibilidade extra e rejogo (voltam em "Mostrar todas") */
+  body.simples #plat-opcoes .sp-pai:not(.sp-tudo) > *:not(h2):not(.sp-box):not(.sp-todas):not(.op-bts) { display: none !important; }
+  body.simples #plat-opcoes .sp-pai:not(.sp-tudo) .op-bts > *:not(#pop-voltar) { display: none !important; }
+  body.simples #opcoes .sp-pai:not(.sp-tudo) #op-brilho, body.simples #opcoes .sp-pai:not(.sp-tudo) #op-padrao { display: none !important; }`;
   document.head.appendChild(stOp);
 
   const API = { on, faro, opcoesCompactas, chaveNao, legNao, maxLeg, subNao, falaNao, vozOk, toastNao, mundoExtra, rejogoExtra, sustosOk };
