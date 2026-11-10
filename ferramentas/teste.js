@@ -107,7 +107,7 @@ T.tudo = async () => {
     }
     T.usar(/porta-malas/); T.usar(/Falar com/); T.dlg(); T.dlg(); T.usar(/chave do portão/);
     await T.ate(() => J.S.inv.chaves.portao, 20); T.usar(/cadeado/);
-    passo('prólogo', await T.cap(1) && J.S.mapa === 'terreo'); passo('portas e lore: térreo', !T.checarMapa().length);
+    passo('prólogo', await T.cap(1) && await T.ate(() => J.S.mapa === 'terreo', 30)); passo('portas e lore: térreo', !T.checarMapa().length);
     T.usar(/Forçar a porta/); T.usar(/galão/); T.usar(/caixa de fusíveis/); T.usar(/Ligar o gerador/);
     T.usar(/Esconder (no armário|embaixo da cama)/); // o gerador acorda o Inspetor: a Lia se esconde, como o jogo manda (a caçada do lote 5 estica tanto o escape que a espera de 20 s não fecha a tempo parada no meio da sala)
     passo('cap I', await T.cap(2));
@@ -117,18 +117,18 @@ T.tudo = async () => {
     T.usar(/código do quadro/); for (const d of J.S.quadro) T.tecla('Digit' + d); T.tecla('Enter');
     await T.ate(() => J.S.done.procissao, 90);
     T.usar(/Subir para os dormitórios/);
-    passo('cap II', await T.cap(3) && J.S.mapa === 'superior'); passo('portas e lore: andar de cima', !T.checarMapa().length);
+    passo('cap II', await T.cap(3) && await T.ate(() => J.S.mapa === 'superior', 30)); passo('portas e lore: andar de cima', !T.checarMapa().length);
     T.usar(/Pegar a engrenagem/); T.usar(/dar corda na caixinha/); await T.ate(() => J.S.done.ana, 150);
     T.usar(/página 3/); T.dlg();
     T.usar(/chave da Irmã/); T.usar(/porta da Irmã/); await T.semFita(); T.usar(/Fita 2/); await T.ate(() => J.S.fitas.f2, 120);
     T.usar(/página 2/); T.dlg();
     T.usar(/chave do monta-cargas/); T.usar(/Descer pelo monta-cargas/);
-    passo('cap III', await T.cap(4) && J.S.mapa === 'tuneis'); passo('portas e lore: túneis', !T.checarMapa().length);
+    passo('cap III', await T.cap(4) && await T.ate(() => J.S.mapa === 'tuneis', 30)); passo('portas e lore: túneis', !T.checarMapa().length);
     for (const n of J.S.ordem) T.usar(new RegExp('Girar a válvula ' + n));
     T.usar(/página 4/); T.dlg();
     T.usar(/cofre/); for (const d of J.S.code) T.tecla('Digit' + d); T.tecla('Enter');
     await T.ate(() => J.S.flags.cofre, 20); T.usar(/escotilha/);
-    passo('cap IV', await T.cap(5) && J.S.mapa === 'cemiterio'); passo('portas e lore: cemitério', !T.checarMapa().length);
+    passo('cap IV', await T.cap(5) && await T.ate(() => J.S.mapa === 'cemiterio', 30)); passo('portas e lore: cemitério', !T.checarMapa().length);
     T.todos(/Cavar o túmulo/); T.usar(/porta da capela/); T.ir(0, -52); await T.ate(() => J.S.done.capela, 10);
     T.usar(/altar/); T.usar(/corda do sino/); await T.ate(() => J.S.flags.sino, 20);
     T.ir(0, 11.6); await T.ate(() => J.S.fim || J.ui === 'escolha', 30);

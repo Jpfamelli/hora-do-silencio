@@ -2765,7 +2765,7 @@ function precarregarProximo(id) {
     if (mode !== 'jogo') return void setTimeout(tenta, 4000);
     (window.requestIdleCallback || (f => setTimeout(f, 50)))(() => carregarGrupo(alvo).catch(() => {}));
   };
-  setTimeout(tenta, id === 'estrada' ? 25000 : 10000);
+  setTimeout(tenta, id === 'estrada' ? 8000 : 6000);
 }
 function carregarMapa(id, spawn, opc = {}) {
   if (!mapaPronto(id)) { esperarMapa(id, () => carregarMapa(id, spawn, opc)); return; }
@@ -2794,6 +2794,8 @@ function carregarMapa(id, spawn, opc = {}) {
   JGL6.mapa(id); // lote 6: Caçada, Esconderijo Podre e economia da noite
   JGL6B.mapa(id); // lote 6 (2ª rodada): giz, guizos, trouxinha e fantasma voltam ao mapa
   precarregarProximo(id);
+  // leveza: compila os shaders do mapa em paralelo, já no escuro da troca (sem isso cada material novo travava o quadro na 1ª vez que aparecia)
+  try { _luzT = 0; orcamentoLuzes(0); renderer.compile(scene, camera); /* síncrono de propósito: o compileAsync acessa programas que o limparMundo já descartou se o mapa troca de novo */ } catch (e) {}
 }
 function syncLuzes() {
   const ligada = W.def && W.def.energia ? W.def.energia() : false;
@@ -4806,19 +4808,42 @@ function frame(dt) {
 // névoa (sobra menos de 0,4% da cor, invisível de qualquer jeito) sai só deste desenho. Ao ar livre nada muda: no
 // clarão do relâmpago o céu fica mais claro que a névoa e as silhuetas distantes precisam continuar lá.
 function cortarNevoa() {
-  if (!W.grupo || !scene.fog || luzBase > .02 || mode === 'titulo') { _cortados.length = 0; _cortQ = 0; return _cortados; }
+  if (!W.grupo || !scene.fog || mode === 'titulo') { _cortados.length = 0; _cortQ = 0; return _cortados; }
   // leveza: a varredura de ~3000 objetos roda a cada 4 quadros (a lista vale nos intermediários: o limite é a névoa total, ninguém percebe 0,4 m)
   if (_cortQ++ % 4) { for (const o of _cortados) o.layers.disable(0); return _cortados; }
   _cortados.length = 0;
-  const lim = 2.4 / Math.max(.01, scene.fog.density);
+  const lim = luzBase > .02 ? 1e9 : 2.4 / Math.max(.01, scene.fog.density), rects = salasVisiveis(); // ao ar livre não há corte pela névoa (clarão do relâmpago), mas o interior distante continua fora do desenho
   W.grupo.traverseVisible(o => {
     if (!o.isMesh || o.isInstancedMesh || o.isSkinnedMesh || !o.frustumCulled || (o.material && o.material.fog === false)) return;
     const g = o.geometry; if (!g) return; if (!g.boundingSphere) g.computeBoundingSphere();
     const e = o.matrixWorld.elements, k = Math.sqrt(Math.max(e[0] * e[0] + e[1] * e[1] + e[2] * e[2], e[4] * e[4] + e[5] * e[5] + e[6] * e[6], e[8] * e[8] + e[9] * e[9] + e[10] * e[10]));
     _cortV.copy(g.boundingSphere.center).applyMatrix4(o.matrixWorld);
-    if (_cortV.distanceTo(camera.position) - g.boundingSphere.radius * k > lim) { o.layers.disable(0); _cortados.push(o); }
+    const rr = g.boundingSphere.radius * k, dc = _cortV.distanceTo(camera.position);
+    if (dc - rr > lim) { o.layers.disable(0); _cortados.push(o); return; }
+    if (luzBase > .02 && rr < .9 && dc > 42) { o.layers.disable(0); _cortados.push(o); return; } // ao ar livre: só os objetos miúdos e longe (já são pó na névoa)
+    if (rects && dc > 10 + rr) { // leveza: o que está em salas que o jogador não alcança a olho (fora da vizinhança) nem entra no desenho
+      let dentro = false;
+      for (const r of rects) { const dx = Math.max(r.x0 - 1.2 - _cortV.x, 0, _cortV.x - r.x1 - 1.2), dz = Math.max(r.z0 - 1.2 - _cortV.z, 0, _cortV.z - r.z1 - 1.2); if (dx * dx + dz * dz <= rr * rr) { dentro = true; break; } }
+      if (!dentro) { o.layers.disable(0); _cortados.push(o); }
+    }
   });
   return _cortados;
+}
+// Salas "visíveis": a do jogador, as vizinhas (porta aberta ou fechada) e as vizinhas das vizinhas só por porta aberta. As de fora sempre contam.
+function salasVisiveis() {
+  const ini = P.room; if (!ini || !W.salas || W.mapa === 'estrada' || W.mapa === 'cemiterio') return null;
+  const vistos = new Map([[ini.id, 0]]); const fila = [ini];
+  while (fila.length) {
+    const r = fila.shift(), d = vistos.get(r.id); if (d >= 2) continue;
+    for (const l of W.links) {
+      const o = l.a === r.id ? l.b : l.b === r.id ? l.a : null; if (!o || vistos.has(o)) continue;
+      if (d >= 1 && l.door && !l.door.open) continue;
+      vistos.set(o, d + 1); const sa = SALA(o); if (sa) fila.push(sa);
+    }
+  }
+  const rects = []; for (const id of vistos.keys()) { const sa = SALA(id); if (sa) rects.push(sa); }
+  for (const sa of W.salas) if (sa.fora && !vistos.has(sa.id)) rects.push(sa);
+  return rects;
 }
 // Orçamento de luzes (leveza): cada mapa tem de 30 a 50 luzes de ponto e o Three.js soma TODAS no cálculo de cada pixel de cada objeto,
 // mesmo as apagadas (intensidade 0). Aqui só as K de maior influência sobre o jogador ficam ligadas (as outras saem do desenho pela

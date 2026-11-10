@@ -119,7 +119,7 @@ function medir(now) {
   if (!detectou && O.qual == null && amostras > 180) {
     detectou = true;
     const hw = aparelho();
-    O.qual = mediaMs > 28 || hw === 'fraco' ? 'baixa' : toque || hw === 'medio' ? 'media' : 'alta'; salvar(); aplicarQual(); syncOpcoes();
+    O.qual = mediaMs > 28 || hw === 'fraco' ? 'baixa' : toque || hw === 'medio' || (window.__SIMP && window.__SIMP.on()) ? 'media' : 'alta'; salvar(); aplicarQual(); syncOpcoes(); // modo simples: nunca começa na Alta (pixel 1,5 + sombra 1024 pesam até em notebook bom)
     if (O.qual === 'baixa') aviso('Seu computador é mais modesto: ativei a qualidade Baixa (dá para mudar em Opções).');
   }
   if (!O.resDin) return;
@@ -1072,6 +1072,7 @@ export const PLAT = {
     const tcl = $('#death .teclas'); if (tcl && !/lápide/.test(tcl.textContent)) tcl.textContent += ' · L guarda a lápide';
     embrulharSons(); instalarFoco(); aplicarOpcoes(); avisoCelular(); lerDesafio(); atualizarContinuar();
     bateria();
+    try { if (window.__SIMP && window.__SIMP.on() && O.qual === 'alta' && !localStorage.getItem('hs-q17')) { O.qual = 'media'; salvar(); } localStorage.setItem('hs-q17', '1'); } catch (e) {} // uma vez: quem ficou na Alta passa para a Média (mais leve)
     if (O.qual) aplicarQual(); else { tetoPR = Math.min(devicePixelRatio || 1, 1.5); prAtual = tetoPR; }
     if (toqueNativo) ativarToque();
     if (!robo) montarPortal();

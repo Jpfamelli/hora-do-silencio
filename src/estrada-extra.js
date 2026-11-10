@@ -456,7 +456,7 @@ export function extrasEstrada(A, S, c) {
     if (tampaK < 1 && S.inv.lanterna) { tampaK = Math.min(1, tampaK + dt * 2.2); poseTampa(); }
     if (!S.flags.viuPegadas && S.flags.saiuCarro && Math.hypot(P.pos.x - 5.3, P.pos.z - 13) < 2.6) { S.flags.viuPegadas = true; A.falar('pegadas'); }
     tickZumbido(); tickLuzPosto(dt); tickFliperama(dt); tickJoaquim(); tickOrelhao(dt);
-    tickEspreita(dt); tickRevela(dt); tickPerseguicao(dt); tickJanela(); tickGalhos(dt);
+    if (!(window.__SIMP && window.__SIMP.on())) { tickEspreita(dt); tickRevela(dt); tickPerseguicao(dt); tickJanela(); } /* modo simples: prólogo sem vulto, sem perseguição e sem figura na janela */ tickGalhos(dt);
   });
 
   // ---------- cena de abertura (o carro chegando)
